@@ -1,84 +1,59 @@
 ---
-title: Overview - Adobe Analytics
-description: This is the overview page of Adobe Analytics
-contributors:
-  - https://github.com/icaraps 
+title: Document Services APIs 
 ---
 
-<Hero slots="heading, text"/> 
+<Hero slots="image, heading" background="rgb(250, 105, 85)"/>
 
-# Adobe Analytics API
+![](bg-hero.jpeg) 
 
-Adobe Product API offers limitless ways to integrate your most important customer data into key business processes. Adobe Product API offer limitless ways.
+# Document Services APIs
 
-<Resources slots="heading, links"/>
 
-#### Resources
 
-* [Quickstart Guide](https://www.adobe.io/apis/experiencecloud/analytics/docs.html)
-* [Adobe Analytics Github Repo](https://github.com/AdobeDocs/analytics-2.0-apis)
+## What are Document Services APIs?
 
-## Overview
+Increasingly content and application owners are looking for easy-to-use PDF functionality when building modern web experiences. They are looking to cloud-based platforms with simple and reliable plug-and-play services.
 
-This documentation provides instructions for Adobe Analytics 2.0 APIs. For working with Analytics 1.4 APIs, see [Analytics 1.4 API Documentation](https://github.com/AdobeDocs/analytics-1.4-apis).
+Adobe Document Services has four main APIs: the Adobe PDF Services API , the Adobe PDF Embed API, the Adobe Document Generation API and Adobe PDF Extract API. The latter two APIs and their SDKs are bundled into Adobe PDF Services API as part of a paid offering. PDF Embed API is a free offering. These APIs automate the generation, manipulation, and transformation of document content via a set of modern cloud-based web services. They help you deliver simpler, faster, and branded experiences so that you control user interaction with your documents, streamline PDF workflows and promote usage and retention.
 
-The Adobe Analytics APIs are a collection of APIs that power Adobe Analytics products like Analysis Workspace. 
-The APIs allow for the creation of data rich user interfaces that you can use to manipulate and integrate data.
-You can also create reports to explore, get insights, or answer important questions about your data.
+With tools and language support that caters to developers’ existing skill sets, you can now create compelling and consistent PDF experiences, including viewing, exporting, creating and working with PDFs.
 
-## Discover 
+These APIs represent a paradigm shift in the way PDF workflows exist and interact with your environment and digital documents. Adobe is rapidly evolving and expanding the portfolio of APIs to support additional use cases. We are also continually enhancing the APIs, including supporting SDKs, sample code, and documentation.
 
-<DiscoverBlock width="100%" slots="heading, link, text"/>
+## PDF Embed API for viewing and collaboration within your web pages
 
-### Get Started
+The [PDF Embed API](pdf-embed-api) brings PDF viewing to any web application with only a few lines of JavaScript. Multiple embed modes make it easy to support different views, from full browser to boxed containers and in line. Document collaboration is achieved with support for commenting, drawing, highlighting, and text editing tools. Analytics insights provide an opportunity to embed dynamic interactivity to enhance end-user experiences with chats, prompts, and other with event triggers based on PDF viewing activity.
 
-[Quickstart Guide](guides/)
-    
-Get started with the Adobe Analytics APIs.
+## PDF Services API to automate for your document workflows
 
-<DiscoverBlock slots="heading, link, text"/> 
+The [PDF Services API](pdf-services-api) offers a number of operations to programmatically manipulate documents and automate many different types of document workflows. You can easily create a PDF from a dynamic HTML report, set a password to prevent unauthorized opening of the document, and compress it for sharing as an attachment. Linearize a PDF for faster web viewing when end users have a large document to read.
 
-### Guides
+There are additional services to compress, linearize, and password-protect PDF documents. There are also capabilities to insert, reorder, rotate, replace, and delete pages within documents.
 
-[Calculated Metrics API](guides/calculated_metrics_api/) 
-     
-Returns information on the user's company that is necessary for making other Adobe Analytics API calls.
+The PDF Services API includes ready-to-use code samples for Java, Node.JS and .NET and offers a [free trial that includes up to 1,000 free Document Transactions or runs for 6 months, whichever occurs earlier.](../gettingstarted)
 
-<DiscoverBlock slots="link, text"/>
+## Document Generation API for automating document workflows    
 
-[Segments API](guides/segments_api/) 
+The [Document Generation API](document-generation-api) is a cloud-based web service that allows you to produce high fidelity PDF and Word documents with dynamic data inputs. Using Document Generation API, you can merge your data(e.g. JSON file) with Word templates to create dynamic documents for contracts and agreements, invoices, proposals, reports, forms, branded marketing documents and more.
 
-Provides configuration guidance and best practices for the /segments endpoint.
+Embed Document Generation API into any application using [PDFServices SDK](pdf-services-api) for Node.js, .Net, and Java. [Start a free trial that includes up to 1,000 free Document transactions or runs for 6 months, whichever occurs earlier.](../gettingstarted)
 
-<DiscoverBlock slots="link, text"/>
+## PDF Extract API for extracting pdf structure and information
 
-[Reporting Guide API](guides/reporting_api/)
+The [PDF Extract API](pdf-services-api/index.md#extract-pdf) is a cloud-based web service that uses Adobe’s Sensei AI technology to automatically extract content and structural information from PDF documents – native or scanned – and to output it in a structured JSON format. The service extracts text, complex tables, and figures as follows:
 
-Provides configuration guidance and best practices for the /reports endpoint.
+* Text is extracted in contextual blocks – paragraphs, headings, lists, footnotes, etc. – and includes font, styling, and other text formatting information.
 
-<DiscoverBlock slots="link, text"/>
+* Tables are extracted and parsed with the contents and table formatting information delivered for each cell. The service automatically identifies table cells that span multiple rows or columns. Table data is delivered within the resulting JSON and can also optionally be output in CSV and XLSX files. Tables are also output as PNG images allowing the table data to be visually validated.
 
-[Migrating from 1.4 to 2.0](guides/migrating/)
+* Objects that are identified as figures or images are extracted as PNG files.
 
-For help migrating from the 1.4 versions of the Analytics API to the newer and more capable /reports API.   
+The JSON output also captures document structure information, such as the natural reading order of the various extracted elements and the layout of the elements on each given page.
 
-<DiscoverBlock width="100%" slots="heading, link, text"/>
+The PDF Extract API provides a method for developers to extract and structure content for use in a number of downstream applications including content republishing, workflow automation, content analysis, and data aggregation, management, and search.
 
-### API References
+The PDF Extract API can be embedded into any application using the PDFServices SDK for Node.js, Python, and Java. [Start a free trial that includes up to 1,000 free Document transactions or runs for 6 months, whichever occurs earlier.](../gettingstarted)
 
-[Try the API](api/) 
+## Community forum and feedback
 
-Try the Analytics API with Swagger UI. Explore, make calls, with full endpoint descriptions.
-
-## Contributing 
-
-We encourage you to participate in our open documentation initiative, if you have suggestions, corrections, additions 
-or deletions for this documentation, check out the source from [this github repo](https://github.com/adobe/gatsby-theme-spectrum-example), and submit a pull 
-request with your contribution. For more information, refer to the [contributing page](support/contribute/).
-
-## API Requests & Rate Limits
-
-The timeout for API requests through adobe.io is currently *60 seconds*.
-
-The default rate limit for an Adobe Analytics Company is *120 requests per minute*. (The limit is enforced as *12 requests every 6 seconds*).
-When rate limiting is being enforced you will get `429` HTTP response codes with the following response body: `{"error_code":"429050","message":"Too many requests"}`    
+Customer feedback is particularly valuable as it helps the team validate use cases, guide development, and troubleshoot issues. Comments and questions are always welcome on the [Community Forum](https://community.adobe.com/t5/document-cloud-sdk/bd-p/Document-Cloud-SDK?page=1&sort=latest_replies&filter=all).

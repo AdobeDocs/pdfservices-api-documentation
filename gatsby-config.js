@@ -12,145 +12,170 @@
 
 module.exports = {
   siteMetadata: {
-    versions: [
-      {
-        title: 'v2.0',
-        selected: true
-      },
-      {
-        title: 'v1.4',
-        path: 'https://github.com/AdobeDocs/analytics-1.4-apis'
-      }
-    ],
+    home: {
+      title: 'Adobe Document Services',
+      path: '/document-services/'
+    },
     pages: [
       {
-        title: 'Adobe Analytics',
+        title: 'Documentation',
         path: '/'
       },
       {
-        title: 'Guides',
-        path: '/guides/'
+        title: 'APIs',
+        menu: [
+          {
+            title: 'PDF Services API',
+            path: 'pdf-services-api'
+          },
+          {
+            title: 'PDF Embed API',
+            path: 'pdf-embed-api'
+          },
+          {
+            title: 'Document Generation API',
+            path: 'document-generation-api'
+          },
+        ]
       },
       {
-        title: 'API Reference',
-        menu: [{
-          title: 'API Reference v2.0',
-          description: 'Adobe Analytics Reporting API',
-          path: '/api/index.md'
-        }, {
-          title: 'API Reference v1.4',
-          description: 'API Spec for the Adobe Marketing Cloud',
-          path: '/api/1.4.md'
-        }]
+        title: 'Community Forum',
+        path: 'https://community.adobe.com/t5/document-cloud-sdk/bd-p/Document-Cloud-SDK?page=1&sort=latest_replies&filter=all#://'
       },
-      {
-        title: 'Support',
-        path: '/support/'
-      }
     ],
     subPages: [
       {
-        title: 'Get Started',
-        path: '/guides/',
+        title: 'Quickstart',
+        path: 'pdf-services-api/index.md'
+      },
+      {
+        title: 'How Tos',
+        path: 'pdf-services-api/howtos',
         pages: [
           {
             title: 'Overview',
-            path: '/guides/'
+            path: 'pdf-services-api/howtos/index.md'
           },
           {
-            title: 'Creating an OAuth Client',
-            path: '/guides/creating_oauth_client/'
+            title: 'Create PDF',
+            path: 'pdf-services-api/howtos/create-pdf.md'
           },
           {
-            title: 'OAuth using cURL',
-            path: '/guides/oauth_using_curl/'
+            title: 'Export PDF',
+            path: 'pdf-services-api/howtos/export-pdf.md'
           },
           {
-            title: 'OAuth using POSTMAN',
-            path: '/guides/oauth_using_postman/'
+            title: 'Combine PDF Files',
+            path: 'pdf-services-api/howtos/combine-pdf.md'
           },
           {
-            title: 'JWT Authentication',
-            path: '/guides/jwt_authentication/'
+            title: 'OCR PDF',
+            path: 'pdf-services-api/howtos/ocr-pdf.md'
+          },
+          {
+            title: 'Compress PDFs',
+            path: 'pdf-services-api/howtos/compress-pdf.md'
+          },
+          {
+            title: 'Linearize PDF',
+            path: 'pdf-services-api/howtos/linearize-pdf.md'
+          },
+          {
+            title: 'Protect PDF',
+            path: 'pdf-services-api/howtos/protect-pdf.md'
+          },
+          {
+            title: 'Remove Protection',
+            path: 'pdf-services-api/howtos/remove-protection.md'
+          },
+          {
+            title: 'Insert Pages',
+            path: 'pdf-services-api/howtos/insert-pages.md'
+          },
+          {
+            title: 'Replace Pages',
+            path: 'pdf-services-api/howtos/replace-pages.md'
+          },
+          {
+            title: 'Delete Pages',
+            path: 'pdf-services-api/howtos/delete-pages.md'
+          },
+          {
+            title: 'Reorder Pages',
+            path: 'pdf-services-api/howtos/reorder-pages.md'
+          },
+          {
+            title: 'Rotate Pages',
+            path: 'pdf-services-api/howtos/rotate-pages.md'
+          },
+          {
+            title: 'Split PDF',
+            path: 'pdf-services-api/howtos/split-pdf.md'
+          },
+          {
+            title: 'Extract PDF',
+            path: 'pdf-services-api/howtos/extract-pdf.md'
           }
         ]
       },
       {
-        title: 'Reporting API',
-        path: '/guides/reporting_api/',
-        pages: [
-          {
-            title: 'Overview',
-            path: '/guides/reporting_api/'
-          },
-          {
-            title: 'Reporting with breakdowns',
-            path: '/guides/reporting_api/reporting_breakdowns/',
-            pages: [
-              {
-                title: 'Reporting with single breakdowns',
-                path: '/guides/reporting_api/reporting_breakdowns/',
-              },
-              {
-                title: 'Reporting with multiple breakdowns',
-                path: '/guides/reporting_api/reporting_breakdowns/reporting_multiple_breakdowns/',
-              },
-            ]
-          },
-          {
-            title: 'Reporting tips and tricks',
-            path: '/guides/reporting_api/reporting_tips_tricks/'
-          }
-        ]
+        title: 'Version - Support policy',
+        path: 'pdf-services-api/policies.md'
       },
       {
-        title: 'Discovery API',
-        path: '/guides/discovery_api/'
+        title: 'Release notes',
+        path: 'pdf-services-api/releasenotes.md'
       },
       {
-        title: 'Segments API',
-        path: '/guides/segments_api/'
+        title: 'PDF Services API Licensing',
+        path: 'pdf-services-api/dcserviceslicensing.md'
       },
       {
-        title: 'Calculated Metrics API',
-        path: '/guides/calculated_metrics_api/'
+        title: 'Quickstarts',
+        path: 'pdf-embed-api/index.md'
       },
       {
-        title: 'Migrating',
-        path: '/guides/migrating/'
+        title: 'PDF Embed API basics',
+        path: 'pdf-embed-api/howtos.md'
+      },
+      {
+        title: 'UI customization',
+        path: 'pdf-embed-api/howtos_ui.md'
+      },
+      {
+        title: 'Comments and Markup',
+        path: 'pdf-embed-api/howtos_comments.md'
+      },
+      {
+        title: 'Analytics',
+        path: 'pdf-embed-api/howtodata.md'
+      },
+      {
+        title: 'Handle search engine indexing',
+        path: 'pdf-embed-api/searchengineindexing.md'
+      },
+      {
+        title: 'Release notes',
+        path: 'pdf-embed-api/releasenotes.md'
       },
       {
         title: 'Overview',
-        path: '/support/',
-        header: true,
-        pages: [
-          {
-            title: 'Help',
-            path: '/support/'
-          },
-          {
-            title: 'FAQ',
-            path: '/support/FAQ/'
-          },
-          {
-            title: 'How to contribute',
-            path: '/support/contribute/'
-          }
-        ]
+        path: 'document-generation-api/index.md'
       },
       {
-        title: 'Community',
-        path: '/support/community/',
-        header: true,
-        pages: [
-          {
-            title: 'Information',
-            path: '/support/community/'
-          }
-        ]
+        title: 'Quickstarts',
+        path: 'document-generation-api/quickstarts.md'
+      },
+      {
+        title: 'Template Tags',
+        path: 'document-generation-api/templatetags.md'
+      },
+      {
+        title: 'Word Add-in',
+        path: 'document-generation-api/wordaddin.md'
       }
     ]
   },
   plugins: [`@adobe/gatsby-theme-aio`],
-  pathPrefix: process.env.PATH_PREFIX || '/dev-site-documentation-template/'
+  pathPrefix: process.env.PATH_PREFIX || '/document-services/docs/'
 };
