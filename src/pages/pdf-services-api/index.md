@@ -19,7 +19,7 @@ During the credential creation process you'll be asked to whether you'd like a *
 
 ## Public API
 
-PDF Services API is accessible directly via REST APIs which requires Adobe-provided credential for authentication. Once you've completed the getcred workflow, a zip file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
+PDF Services API is accessible directly via REST APIs which requires Adobe-provided credential for authentication. Once you've completed the [Getting Credentials](#getting-credentials) workflow, a zip file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
 
 -   **Personalized Download**: The samples download zip contains a private.key file and a samples folder with a preconfigured pdfservices-api-credentials.json file.
 -   **Non Personalized Download**: The samples download zip contains the private.key file and a pdfservices-api-credentials.json file.
