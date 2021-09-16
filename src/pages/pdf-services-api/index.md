@@ -19,7 +19,7 @@ During the credential creation process you'll be asked to whether you'd like a *
 
 ## Public API
 
-PDF Services API is accessible directly via REST APIs which requires Adobe-provided credential for authentication. Once you've completed the [Getting Credentials](#getting-credentials) workflow, a zip file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
+PDF Services API is accessible directly via REST APIs which requires Adobe-provided credential for authentication. Once you've completed the [Getting Credentials](pdf-services-api/#getting-credentials) workflow, a zip file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
 
 -   **Personalized Download**: The samples download zip contains a private.key file and a samples folder with a preconfigured pdfservices-api-credentials.json file.
 -   **Non Personalized Download**: The samples download zip contains the private.key file and a pdfservices-api-credentials.json file.
@@ -58,7 +58,7 @@ Jump start your development by bookmarking or downloading the following key reso
 
 #### Authentication
 
-Once you complete the getcred workflow, a zip file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
+Once you complete the [getcred workflow](pdf-services-api/#getting-credentials), a zip file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
 
 -   **Personalized Download**: The samples download zip contains a private.key file and an adobe-dc-pdf-services-sdk-java-samples with a preconfigured pdfservices-api-credentials.json file.
 -   **Non Personalized Download**: The samples download zip contains the private.key file and a pdfservices-api-credentials.json file.
@@ -130,7 +130,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 4.  Verify the hash you generated matches the value in the .sha1 file.
 
 ```
-feddd53e25b6c87dab843a19a7a2537b3d9749ac
+9f48ce8c34bdc14ac842530588c734a52b216276
 ```
 
 #### Logging
@@ -210,7 +210,7 @@ The samples project requires the following:
 
 #### Authentication
 
-Once you complete the getcred workflow, you will receive a zip file with content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
+Once you complete the [getcred workflow](pdf-services-api/#getting-credentials), you will receive a zip file with content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
 
 -   **Personalized Download**: The samples download zip contains a private.key file and an adobe-DC.PDFServices.SDK.NET.Samples directory. Each sample directory contains the sample code as well as a preconfigured pdfservices-api-credentials.json file.
 -   **Non Personalized Download**: The samples download zip contains the private.key file and unconfigured pdfservices-api-credentials.json file.
@@ -272,7 +272,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 3.  Verify the hash in the downloaded file matches the value published here.
 
 ```
-sXjImwOopz+X90NkO9olc2PjW0jvamn+S6vh+8JCc1DExMcJWe/sPQk5mo4SW/gAcjvzMdCLI5iUqTtt5mKBoA==
+r+QhCZTFx2TU0f3ny2V5uXh4iUFI12Sa0hSVprx8XMM+DnHrPhJL9aSBAM+EwEp0Wz+obYoSC247XFe2pDIrBw==
 ```
 
 #### Logging
@@ -321,7 +321,7 @@ Jumpstart your development by bookmarking or downloading the following key resou
 
 #### Authentication
 
-Once you complete the getcred workflow, you will receive a zip file with content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
+Once you complete the [getcred workflow](pdf-services-api/#getting-credentials), you will receive a zip file with content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
 
 -   **Personalized Download**: The samples download.zip contains a private.key file and an adobe-dc-pdf-services-sdk-node-samples directory. Each sample directory contains the sample code as well as a preconfigured pdfservices-api-credentials.json file.
 -   **Non Personalized Download**: The samples download zip contains the private.key file and unconfigured pdfservices-api-credentials.json file.
@@ -385,7 +385,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 3.  Verify the hash in the downloaded file matches the value published here.
 
 ```
-sha512-c5iJAUvU+DbfZTODe+iotGYUyH15B8m8+9QN+r1Z8UGuSLPi3HeMMa9j5ETAzX9vhSlVWmHaN/uFHjSMehAfWQ==
+  sha512-9g6D3Ts/HJXktogLyYN9QxzpB1KhpAnTPDlRX+sohCVz2IhMSskAhxGQtu9Pa1zxv+J1Vh68rm0Wr3d8tUVCBA==
 ```
 
 #### Logging
@@ -420,7 +420,7 @@ The SDK uses the [log4js API](https://www.npmjs.com/package/log4js) for logging.
 
 #### Test files
 
-Refer to each sample project's [resource directory](https://github.com/adobe/pdfservices-node-sdk-samples/tree/master/resources) for the requisite input/output files.
+The sample files reference input and output files located in the sample project’s [resource directory](https://github.com/adobe/pdfservices-node-sdk-samples/tree/master/resources). You can of course modify the files and paths or use your own files.
 
 #### Custom projects
 
@@ -441,7 +441,7 @@ Jumpstart your development by bookmarking or downloading the following key resou
 
 #### Authentication
 
-Once you complete the getcred workflow, you will receive a zip file with content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
+Once you complete the [getcred workflow](pdf-services-api/#getting-credentials), you will receive a zip file with content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
 
 -   **Personalized Download**: The samples download.zip contains a private.key file and an adobe-dc-pdfservices-sdk-python-samples directory. Each sample directory contains the sample code as well as a preconfigured pdfservices-api-credentials.json file.
 -   **Non Personalized Download**: The samples download zip contains the private.key file and unconfigured pdfservices-api-credentials.json file.

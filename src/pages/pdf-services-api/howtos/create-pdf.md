@@ -14,9 +14,9 @@ following formats:
 -   Text (TXT, RTF)
 -   Image (BMP, JPEG, GIF, TIFF, PNG)
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, NodeJS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
-#### Sample
+#### Java
 
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
@@ -60,7 +60,7 @@ public class CreatePDFFromDOCX {
 }
 ```
 
-#### Sample
+#### .NET
 
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
@@ -114,7 +114,7 @@ namespace CreatePDFFromDocx
  }
 ```
 
-#### Sample
+#### Node JS
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
@@ -154,8 +154,33 @@ const PDFservicesSdk = require('@adobe/pdfservices-node-sdk');
  }
 ```
 
-The REST API example can be found [here](https://documentcloud.adobe.com/document-services/index.html#post-createPDF)
- 
+#### Rest API
+
+```javascript
+curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--header 'Accept: application/json, text/plain, */*' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Prefer: respond-async,wait=0' \
+--form 'contentAnalyzerRequests="{
+	\"cpf:inputs\": {
+		\"documentIn\": {
+			\"cpf:location\": \"InputFile0\",
+			\"dc:format\": \"application/vnd.openxmlformats-officedocument.wordprocessingml.document\"
+		}
+	},
+	\"cpf:engine\": {
+		\"repo:assetId\": \"urn:aaid:cpf:Service-1538ece812254acaac2a07799503a430\"
+	},
+	\"cpf:outputs\": {
+		\"documentOut\": {
+			\"cpf:location\": \"multipartLabelOut\",
+			\"dc:format\": \"application/pdf\"
+		}
+	}
+}"' \
+--form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+```
 
 ## Create PDF with DocumentLanguage
 
@@ -171,9 +196,9 @@ file, the SDK supports the following formats:
 
 
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, NodeJS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
-#### Sample
+#### Java
 
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
@@ -230,7 +255,7 @@ public class CreatePDFFromDOCXWithOptions {
  }
 ```
 
-#### Sample
+#### .NET
 
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
@@ -284,7 +309,7 @@ namespace CreatePDFFromDocx
  }
 ```
 
-#### Sample
+#### Node JS
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
@@ -337,7 +362,33 @@ try {
 }
 ```
 
-The REST API example can be found [here](https://documentcloud.adobe.com/document-services/index.html#post-createPDF)
+#### Rest API
+
+```javascript
+curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--header 'Accept: application/json, text/plain, */*' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Prefer: respond-async,wait=0' \
+--form 'contentAnalyzerRequests="{
+	\"cpf:inputs\": {
+		\"documentIn\": {
+			\"cpf:location\": \"InputFile0\",
+			\"dc:format\": \"application/vnd.openxmlformats-officedocument.wordprocessingml.document\"
+		}
+	},
+	\"cpf:engine\": {
+		\"repo:assetId\": \"urn:aaid:cpf:Service-1538ece812254acaac2a07799503a430\"
+	},
+	\"cpf:outputs\": {
+		\"documentOut\": {
+			\"cpf:location\": \"multipartLabelOut\",
+			\"dc:format\": \"application/pdf\"
+		}
+	}
+}"' \
+--form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+```
 
 ## Create a PDF from static HTML
 
@@ -347,9 +398,9 @@ the input file must be a zip file containing an index.html at the top
 level of the archive as well as any dependencies such as images, css
 files, and so on.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, NodeJS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
-#### Sample
+#### Java
 
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
@@ -407,7 +458,7 @@ public class CreatePDFFromStaticHTML {
  }
 ```
 
-#### Sample
+#### .NET
 
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
@@ -478,7 +529,7 @@ namespace CreatePDFFromStaticHtml
  }
 ```
 
-#### Sample
+#### Node JS
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
@@ -535,7 +586,506 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
  }
 ```
 
-The REST API example can be found [here](https://documentcloud.adobe.com/document-services/index.html#post-createPDFFromHTML)
+#### Rest API
+
+```javascript
+curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--header 'Accept: application/json, text/plain, */*' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Prefer: respond-async,wait=0' \
+--form 'contentAnalyzerRequests="{
+  \"cpf:inputs\": {
+    \"params\": {
+      \"cpf:inline\": {
+        \"print\": {
+          \"includeHeaderFooter\": true
+        },
+        \"pageLayout\": {
+          \"pageHeight\": 8.5,
+          \"pageWidth\": 11
+        },
+        \"json\": \"{\\\"k1\\\": \\\"v1\\\", \\\"k2\\\": \\\"v2\\\"}\"
+      }
+    },
+    \"documentIn\": {
+      \"cpf:location\": \"InputFile0\",
+      \"dc:format\": \"application/zip\"
+    }
+  },
+  \"cpf:engine\": {
+    \"repo:assetId\": \"urn:aaid:cpf:Service-e2ee120a2b06427cb449592f5db967e7\"
+  },
+  \"cpf:outputs\": {
+    \"documentOut\": {
+      \"cpf:location\": \"multipartLabelOut\",
+      \"dc:format\": \"application/pdf\"
+    }
+  }
+}"' \
+--form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+```
+
+## Create a PDF from static HTML with inline CSS
+
+The sample below creates a PDF file from a static HTML file with inline CSS. The file must be local.
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+
+#### Java
+
+```javascript 
+// Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
+// Run the sample:
+// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.createpdf.CreatePDFFromHTMLWithInlineCSS
+
+   public class CreatePDFFromHTMLWithInlineCSS {
+
+    // Initialize the logger.
+    private static final Logger LOGGER = LoggerFactory.getLogger(CreatePDFFromStaticHTML.class);
+
+    public static void main(String[] args) {
+
+      try {
+
+        // Initial setup, create credentials instance.
+        Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
+            .fromFile("pdfservices-api-credentials.json")
+            .build();
+
+        //Create an ExecutionContext using credentials and create a new operation instance.
+        ExecutionContext executionContext = ExecutionContext.create(credentials);
+        CreatePDFOperation htmlToPDFOperation = CreatePDFOperation.createNew();
+
+        // Set operation input from a source file.
+        FileRef source = FileRef.createFromLocalFile("src/main/resources/createPDFFromHTMLWithInlineCSSInput.html");
+        htmlToPDFOperation.setInput(source);
+
+        // Provide any custom configuration options for the operation.
+        setCustomOptions(htmlToPDFOperation);
+
+        // Execute the operation.
+        FileRef result = htmlToPDFOperation.execute(executionContext);
+
+        // Save the result to the specified location.
+        result.saveAs("output/createPDFFromHTMLWithInlineCSSOutput.pdf");
+
+      } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
+        LOGGER.error("Exception encountered while executing operation", ex);
+      }
+    }
+
+    private static void setCustomOptions(CreatePDFOperation htmlToPDFOperation) {
+      // Define the page layout, in this case an 20 x 25 inch page (effectively portrait orientation).
+      PageLayout pageLayout = new PageLayout();
+      pageLayout.setPageSize(20, 25);
+
+      // Set the desired HTML-to-PDF conversion options.
+      CreatePDFOptions htmlToPdfOptions = CreatePDFOptions.htmlOptionsBuilder()
+          .includeHeaderFooter(true)
+          .withPageLayout(pageLayout)
+          .build();
+      htmlToPDFOperation.setOptions(htmlToPdfOptions);
+    }
+  }
+```
+
+#### .NET
+
+```javascript
+// Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
+// Run the sample:
+// cd CreatePDFFromHTMLWithInlineCSS/
+// dotnet run CreatePDFFromHTMLWithInlineCSS.csproj
+
+namespace CreatePDFFromHTMLWithInlineCSS
+  {
+    class Program
+    {
+      private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+      static void Main()
+      {
+        //Configure the logging
+        ConfigureLogging();
+        try
+        {
+          // Initial setup, create credentials instance.
+          Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
+                  .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                  .Build();
+
+          //Create an ExecutionContext using credentials and create a new operation instance.
+          ExecutionContext executionContext = ExecutionContext.Create(credentials);
+          CreatePDFOperation htmlToPDFOperation = CreatePDFOperation.CreateNew();
+
+          // Set operation input from a source file.
+          FileRef source = FileRef.CreateFromLocalFile(@"createPDFFromHTMLWithInlineCSSInput.html");
+          htmlToPDFOperation.SetInput(source);
+
+          // Provide any custom configuration options for the operation.
+          SetCustomOptions(htmlToPDFOperation);
+
+          // Execute the operation.
+          FileRef result = htmlToPDFOperation.Execute(executionContext);
+
+          // Save the result to the specified location.
+          result.SaveAs(Directory.GetCurrentDirectory() + "/output/createPDFFromHTMLWithInlineCSSOutput.pdf");
+        }
+        catch (ServiceUsageException ex)
+        {
+          log.Error("Exception encountered while executing operation", ex);
+        }
+         // Catch more errors here. . .
+      }
+
+      private static void SetCustomOptions(CreatePDFOperation htmlToPDFOperation)
+      {
+        // Define the page layout, in this case an 20 x 25 inch page (effectively portrait orientation).
+        PageLayout pageLayout = new PageLayout();
+        pageLayout.SetPageSize(20, 25);
+
+        // Set the desired HTML-to-PDF conversion options.
+        CreatePDFOptions htmlToPdfOptions = CreatePDFOptions.HtmlOptionsBuilder()
+            .IncludeHeaderFooter(true)
+            .WithPageLayout(pageLayout)
+            . Build();
+        htmlToPDFOperation.SetOptions(htmlToPdfOptions);
+      }
+
+      static void ConfigureLogging()
+      {
+        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+      }
+    }
+  }
+```
+
+#### Node JS
+
+```javascript
+// Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
+// Run the sample:
+// node src/create-pdf-from-html-with-inline-css.js
+
+const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+
+const setCustomOptions = (htmlToPDFOperation) => {
+    // Define the page layout, in this case an 20 x 25 inch page (effectively portrait orientation).
+    const pageLayout = new PDFServicesSdk.CreatePDF.options.PageLayout();
+    pageLayout.setPageSize(20, 25);
+
+    // Set the desired HTML-to-PDF conversion options.
+    const htmlToPdfOptions = new PDFServicesSdk.CreatePDF.options.html.CreatePDFFromHtmlOptions.Builder()
+        .includesHeaderFooter(true)
+        .withPageLayout(pageLayout)
+        .build();
+    htmlToPDFOperation.setOptions(htmlToPdfOptions);
+};
+
+
+try {
+    // Initial setup, create credentials instance.
+    const credentials =  PDFServicesSdk.Credentials
+        .serviceAccountCredentialsBuilder()
+        .fromFile("pdfservices-api-credentials.json")
+        .build();
+
+    // Create an ExecutionContext using credentials and create a new operation instance.
+    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
+        htmlToPDFOperation = PDFServicesSdk.CreatePDF.Operation.createNew();
+
+    // Set operation input from a source file.
+    const input = PDFServicesSdk.FileRef.createFromLocalFile('resources/createPDFFromHTMLWithInlineCSSInput.html');
+    htmlToPDFOperation.setInput(input);
+
+    // Provide any custom configuration options for the operation.
+    setCustomOptions(htmlToPDFOperation);
+
+    // Execute the operation and Save the result to the specified location.
+    htmlToPDFOperation.execute(executionContext)
+        .then(result => result.saveAsFile('output/createPDFFromHTMLWithInlineCSSOutput.pdf'))
+        .catch(err => {
+            if(err instanceof PDFServicesSdk.Error.ServiceApiError
+                || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
+                console.log('Exception encountered while executing operation', err);
+            } else {
+                console.log('Exception encountered while executing operation', err);
+            }
+        });
+} catch (err) {
+    console.log('Exception encountered while executing operation', err);
+}
+```
+
+#### Rest API
+
+```javascript
+curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--header 'Accept: application/json, text/plain, */*' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Prefer: respond-async,wait=0' \
+--form 'contentAnalyzerRequests="{
+  \"cpf:inputs\": {
+    \"params\": {
+      \"cpf:inline\": {
+        \"print\": {
+          \"includeHeaderFooter\": true
+        },
+        \"pageLayout\": {
+          \"pageHeight\": 8.5,
+          \"pageWidth\": 11
+        },
+        \"json\": \"{\\\"k1\\\": \\\"v1\\\", \\\"k2\\\": \\\"v2\\\"}\"
+      }
+    },
+    \"documentIn\": {
+      \"cpf:location\": \"InputFile0\",
+      \"dc:format\": \"application/zip\"
+    }
+  },
+  \"cpf:engine\": {
+    \"repo:assetId\": \"urn:aaid:cpf:Service-e2ee120a2b06427cb449592f5db967e7\"
+  },
+  \"cpf:outputs\": {
+    \"documentOut\": {
+      \"cpf:location\": \"multipartLabelOut\",
+      \"dc:format\": \"application/pdf\"
+    }
+  }
+}"' \
+--form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+```
+
+## Create a PDF File From HTML specified via URL
+
+The sample below creates a PDF file from a HTML file specified via URL.
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+
+#### Java
+
+```javascript 
+// Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
+// Run the sample:
+// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.createpdf.CreatePDFFromURL
+
+  public class CreatePDFFromURL {
+
+    // Initialize the logger.
+    private static final Logger LOGGER = LoggerFactory.getLogger(CreatePDFFromStaticHTML.class);
+
+    public static void main(String[] args) {
+
+      try {
+
+        // Initial setup, create credentials instance.
+        Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
+            .fromFile("pdfservices-api-credentials.json")
+            .build();
+
+        //Create an ExecutionContext using credentials and create a new operation instance.
+        ExecutionContext executionContext = ExecutionContext.create(credentials);
+        CreatePDFOperation htmlToPDFOperation = CreatePDFOperation.createNew();
+
+        // Set operation input from a source URL.
+        FileRef source = FileRef.createFromURL(new URL("https://www.adobe.io"));
+        htmlToPDFOperation.setInput(source);
+
+        // Provide any custom configuration options for the operation.
+        setCustomOptions(htmlToPDFOperation);
+
+        // Execute the operation.
+        FileRef result = htmlToPDFOperation.execute(executionContext);
+
+        // Save the result to the specified location.
+        result.saveAs("output/createPDFFromURLOutput.pdf");
+
+      } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
+        LOGGER.error("Exception encountered while executing operation", ex);
+      }
+    }
+
+    private static void setCustomOptions(CreatePDFOperation htmlToPDFOperation) {
+      // Define the page layout, in this case an 20 x 25 inch page (effectively portrait orientation).
+      PageLayout pageLayout = new PageLayout();
+      pageLayout.setPageSize(20, 25);
+
+      // Set the desired HTML-to-PDF conversion options.
+      CreatePDFOptions htmlToPdfOptions = CreatePDFOptions.htmlOptionsBuilder()
+          .includeHeaderFooter(true)
+          .withPageLayout(pageLayout)
+          .build();
+      htmlToPDFOperation.setOptions(htmlToPdfOptions);
+    }
+  }
+```
+
+#### .NET
+
+```javascript
+// Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
+// Run the sample:
+// cd CreatePDFFromURL/
+// dotnet run CreatePDFFromURL.csproj
+
+namespace CreatePDFFromURL
+{
+    class Program
+    {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+        static void Main()
+    {
+        //Configure the logging
+        ConfigureLogging();
+        try
+        {
+            // Initial setup, create credentials instance.
+            Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
+            .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+            .Build();
+
+            //Create an ExecutionContext using credentials and create a new operation instance.
+            ExecutionContext executionContext = ExecutionContext.Create(credentials);
+            CreatePDFOperation htmlToPDFOperation = CreatePDFOperation.CreateNew();
+
+            // Set operation input from a source URL.
+            FileRef source = FileRef.CreateFromURI(new Uri("https://www.adobe.io"));
+            htmlToPDFOperation.SetInput(source);
+
+            // Provide any custom configuration options for the operation.
+            SetCustomOptions(htmlToPDFOperation);
+
+            // Execute the operation.
+            FileRef result = htmlToPDFOperation.Execute(executionContext);
+
+            // Save the result to the specified location.
+            result.SaveAs(Directory.GetCurrentDirectory() + "/output/createPdfFromURLOutput.pdf");
+        }
+        catch (ServiceUsageException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+        // Catch more errors here. . .
+    }
+
+        private static void SetCustomOptions(CreatePDFOperation htmlToPDFOperation)
+    {
+        // Define the page layout, in this case an 20 x 25 inch page (effectively portrait orientation).
+        PageLayout pageLayout = new PageLayout();
+        pageLayout.SetPageSize(20, 25);
+
+        // Set the desired HTML-to-PDF conversion options.
+        CreatePDFOptions htmlToPdfOptions = CreatePDFOptions.HtmlOptionsBuilder()
+        .IncludeHeaderFooter(true)
+        .WithPageLayout(pageLayout)
+        . Build();
+        htmlToPDFOperation.SetOptions(htmlToPdfOptions);
+    }
+
+    static void ConfigureLogging()
+    {
+        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+    }
+}
+}
+```
+
+#### Node JS
+
+```javascript
+// Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
+// Run the sample:
+// node src/create-pdf-from-url.js
+const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+
+const setCustomOptions = (htmlToPDFOperation) => {
+    // Define the page layout, in this case an 20 x 25 inch page (effectively portrait orientation).
+    const pageLayout = new PDFServicesSdk.CreatePDF.options.PageLayout();
+    pageLayout.setPageSize(20, 25);
+
+    // Set the desired HTML-to-PDF conversion options.
+    const htmlToPdfOptions = new PDFServicesSdk.CreatePDF.options.html.CreatePDFFromHtmlOptions.Builder()
+        .includesHeaderFooter(true)
+        .withPageLayout(pageLayout)
+        .build();
+    htmlToPDFOperation.setOptions(htmlToPdfOptions);
+};
+
+
+try {
+    // Initial setup, create credentials instance.
+    const credentials =  PDFServicesSdk.Credentials
+        .serviceAccountCredentialsBuilder()
+        .fromFile("pdfservices-api-credentials.json")
+        .build();
+
+    // Create an ExecutionContext using credentials and create a new operation instance.
+    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
+        htmlToPDFOperation = PDFServicesSdk.CreatePDF.Operation.createNew();
+
+    // Set operation input from a source file.
+    const input = PDFServicesSdk.FileRef.createFromURL(
+        "https://www.adobe.io"
+    );
+    htmlToPDFOperation.setInput(input);
+
+    // Provide any custom configuration options for the operation.
+    setCustomOptions(htmlToPDFOperation);
+
+    // Execute the operation and Save the result to the specified location.
+    htmlToPDFOperation.execute(executionContext)
+        .then(result => result.saveAsFile('output/createPdfFromURLOutput.pdf'))
+        .catch(err => {
+            if(err instanceof PDFServicesSdk.Error.ServiceApiError
+                || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
+                console.log('Exception encountered while executing operation', err);
+            } else {
+                console.log('Exception encountered while executing operation', err);
+            }
+        });
+} catch (err) {
+    console.log('Exception encountered while executing operation', err);
+}
+```
+
+#### Rest API
+
+```javascript
+curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--header 'Accept: application/json, text/plain, */*' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Prefer: respond-async,wait=0' \
+--form 'contentAnalyzerRequests="{
+  \"cpf:inputs\": {
+    \"params\": {
+      \"cpf:inline\": {
+        \"print\": {
+          \"includeHeaderFooter\": true
+        },
+        \"pageLayout\": {
+          \"pageHeight\": 8.5,
+          \"pageWidth\": 11
+        },
+        \"json\": \"{\\\"k1\\\": \\\"v1\\\", \\\"k2\\\": \\\"v2\\\"}\"
+      }
+    },
+    \"inputUrl\": \"{{Placeholder for inputUrl}}\"
+  },
+  \"cpf:engine\": {
+    \"repo:assetId\": \"urn:aaid:cpf:Service-e2ee120a2b06427cb449592f5db967e7\"
+  },
+  \"cpf:outputs\": {
+    \"documentOut\": {
+      \"cpf:location\": \"multipartLabelOut\",
+      \"dc:format\": \"application/pdf\"
+    }
+  }
+}"'
+```
 
 ## Create a PDF from dynamic HTML
 
@@ -554,9 +1104,9 @@ manipulate the HTML DOM, thus effectively updating the source HTML file.
 This mechanism can be used to provide data to the template HTML
 dynamically prior to PDF conversion.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, NodeJS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
-#### Sample
+#### Java
 
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
@@ -619,7 +1169,7 @@ dynamically prior to PDF conversion.
  }
 ```
 
-#### Sample
+#### .NET
 
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
@@ -698,7 +1248,7 @@ dynamically prior to PDF conversion.
  }
 ```
 
-#### Sample
+#### Node JS
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
@@ -760,4 +1310,42 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
  }
 ```
 
-The REST API example can be found [here](https://documentcloud.adobe.com/document-services/index.html#post-createPDFFromHTML)
+#### Rest API 
+
+```javascript
+curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--header 'Accept: application/json, text/plain, */*' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Prefer: respond-async,wait=0' \
+--form 'contentAnalyzerRequests="{
+  \"cpf:inputs\": {
+    \"params\": {
+      \"cpf:inline\": {
+        \"print\": {
+          \"includeHeaderFooter\": true
+        },
+        \"pageLayout\": {
+          \"pageHeight\": 8.5,
+          \"pageWidth\": 11
+        },
+        \"json\": \"{\\\"k1\\\": \\\"v1\\\", \\\"k2\\\": \\\"v2\\\"}\"
+      }
+    },
+    \"documentIn\": {
+      \"cpf:location\": \"InputFile0\",
+      \"dc:format\": \"application/zip\"
+    }
+  },
+  \"cpf:engine\": {
+    \"repo:assetId\": \"urn:aaid:cpf:Service-e2ee120a2b06427cb449592f5db967e7\"
+  },
+  \"cpf:outputs\": {
+    \"documentOut\": {
+      \"cpf:location\": \"multipartLabelOut\",
+      \"dc:format\": \"application/pdf\"
+    }
+  }
+}"' \
+--form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+```

@@ -5,9 +5,9 @@
 You can password protect PDFs so that only users with a document open
 password can open the file.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, NodeJS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
-#### Sample
+#### Java
 
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
@@ -56,7 +56,7 @@ password can open the file.
       }
 ```
 
-#### Sample
+#### .NET
 
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
@@ -119,7 +119,7 @@ password can open the file.
   }
 ```
 
-#### Sample
+#### Node JS
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
@@ -169,7 +169,44 @@ password can open the file.
     }
 ```
 
-The REST API example can be found [here](https://documentcloud.adobe.com/document-services/index.html#post-protectPDF)
+#### Rest API
+
+```javascript
+curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--header 'Accept: application/json, text/plain, */*' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Prefer: respond-async,wait=0' \
+--form 'contentAnalyzerRequests="{
+	\"cpf:inputs\": {
+		\"params\": {
+			\"cpf:inline\": {
+				\"passwordProtection\": {
+					\"userPassword\": \"user_password\",
+					\"ownerPassword\": \"owner_password\"
+				},
+				\"permissions\": [\"PRINT_LOW_QUALITY\", \"PRINT_HIGH_QUALITY\", \"EDIT_CONTENT\", \"EDIT_FILL_AND_SIGN_FORM_FIELDS\", \"EDIT_ANNOTATIONS\", \"EDIT_DOCUMENT_ASSEMBLY\", \"COPY_CONTENT\"],
+				\"contentToEncrypt\": \"ALL_CONTENT_EXCEPT_METADATA\",
+				\"encryptionAlgorithm\": \"AES_128\"
+			}
+		},
+		\"documentIn\": {
+			\"cpf:location\": \"InputFile0\",
+			\"dc:format\": \"application/pdf\"
+		}
+	},
+	\"cpf:engine\": {
+		\"repo:assetId\": \"urn:aaid:cpf:Service-627aa455ac5d4c338ad49ca882e0fce5\"
+	},
+	\"cpf:outputs\": {
+		\"documentOut\": {
+			\"cpf:location\": \"multipartLabelOut\",
+			\"dc:format\": \"application/pdf\"
+		}
+	}
+}"' \
+--form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+```
 
 ## Protect PDFs with owner password
 
@@ -179,9 +216,9 @@ the PDF document. Refer to `ContentEncryption` and `Permission` in the
 API docs for a list of supported types of content to encrypt and types
 of document permissions.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, NodeJS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
-#### Sample
+#### Java
 
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
@@ -240,7 +277,7 @@ of document permissions.
      
 ```
 
-#### Sample
+#### .NET
 
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
@@ -312,7 +349,7 @@ of document permissions.
    
 ```
 
-#### Sample
+#### Node JS
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
@@ -371,4 +408,41 @@ of document permissions.
   }
 ```
 
-The REST API example can be found [here](https://documentcloud.adobe.com/document-services/index.html#post-protectPDF)
+#### Rest API
+
+```javascript
+curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--header 'Accept: application/json, text/plain, */*' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Prefer: respond-async,wait=0' \
+--form 'contentAnalyzerRequests="{
+	\"cpf:inputs\": {
+		\"params\": {
+			\"cpf:inline\": {
+				\"passwordProtection\": {
+					\"userPassword\": \"user_password\",
+					\"ownerPassword\": \"owner_password\"
+				},
+				\"permissions\": [\"PRINT_LOW_QUALITY\", \"PRINT_HIGH_QUALITY\", \"EDIT_CONTENT\", \"EDIT_FILL_AND_SIGN_FORM_FIELDS\", \"EDIT_ANNOTATIONS\", \"EDIT_DOCUMENT_ASSEMBLY\", \"COPY_CONTENT\"],
+				\"contentToEncrypt\": \"ALL_CONTENT_EXCEPT_METADATA\",
+				\"encryptionAlgorithm\": \"AES_128\"
+			}
+		},
+		\"documentIn\": {
+			\"cpf:location\": \"InputFile0\",
+			\"dc:format\": \"application/pdf\"
+		}
+	},
+	\"cpf:engine\": {
+		\"repo:assetId\": \"urn:aaid:cpf:Service-627aa455ac5d4c338ad49ca882e0fce5\"
+	},
+	\"cpf:outputs\": {
+		\"documentOut\": {
+			\"cpf:location\": \"multipartLabelOut\",
+			\"dc:format\": \"application/pdf\"
+		}
+	}
+}"' \
+--form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+```

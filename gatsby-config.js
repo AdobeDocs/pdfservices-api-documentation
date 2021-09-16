@@ -36,6 +36,10 @@ module.exports = {
             title: 'Document Generation API',
             path: 'document-generation-api'
           },
+          {
+            title: 'PDF Extract API',
+            path: 'pdf-extract-api'
+          }
         ]
       },
       {
@@ -44,6 +48,26 @@ module.exports = {
       },
     ],
     subPages: [
+      {
+        title: 'Overview',
+        path: 'pdf-extract-api/index.md'
+      },
+      {
+        title: 'How Tos',
+        path: 'pdf-extract-api/howtos.md'
+      },
+      {
+        title: 'Extract API',
+        path: 'pdf-extract-api/extract-api.md'
+      },
+      {
+        title: 'API Licensing',
+        path: 'pdf-extract-api/dcserviceslicensing.md'
+      },
+      {
+        title: 'Release Notes',
+        path: 'pdf-extract-api/releasenotes.md'
+      },
       {
         title: 'Quickstart',
         path: 'pdf-services-api/index.md'
@@ -113,8 +137,8 @@ module.exports = {
             path: 'pdf-services-api/howtos/split-pdf.md'
           },
           {
-            title: 'Extract PDF',
-            path: 'pdf-services-api/howtos/extract-pdf.md'
+            title: 'PDF Properties',
+            path: 'pdf-services-api/howtos/pdf-properties.md'
           }
         ]
       },
@@ -173,7 +197,15 @@ module.exports = {
       {
         title: 'Word Add-in',
         path: 'document-generation-api/wordaddin.md'
-      }
+      },
+      {
+        title: 'API Licensing',
+        path: 'document-generation-api/dcserviceslicensing.md'
+      },
+      {
+        title: 'Release Notes',
+        path: 'document-generation-api/releasenotes.md'
+      },
     ]
   },
   plugins: [`@adobe/gatsby-theme-aio`],

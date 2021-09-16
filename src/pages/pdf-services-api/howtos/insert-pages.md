@@ -5,7 +5,7 @@ an existing PDF.
 
 <CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, NodeJS" /> 
 
-#### Sample
+#### Java
 
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
@@ -72,7 +72,7 @@ an existing PDF.
    }
 ```
 
-#### Sample
+#### .NET
 
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
@@ -155,7 +155,7 @@ an existing PDF.
   }
 ```
 
-#### Sample
+#### Node JS
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample

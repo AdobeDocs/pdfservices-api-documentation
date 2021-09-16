@@ -9,9 +9,9 @@ be `application/pdf`.
 
 This sample defaults to the en-us locale. For other languages, see [OCR with explicit language.](#ocr-with-explicit-language)
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, NodeJS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
-#### Sample
+#### Java
 
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
@@ -53,7 +53,7 @@ This sample defaults to the en-us locale. For other languages, see [OCR with exp
  }
 ```
 
-#### Sample
+#### .NET
 
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
@@ -107,7 +107,7 @@ This sample defaults to the en-us locale. For other languages, see [OCR with exp
  }
 ```
 
-#### Sample
+#### Node JS
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
@@ -147,7 +147,39 @@ This sample defaults to the en-us locale. For other languages, see [OCR with exp
  }
 ```
 
-The REST API example can be found [here](https://documentcloud.adobe.com/document-services/index.html#post-ocr)
+#### Rest API
+
+```javascript
+curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--header 'Accept: application/json, text/plain, */*' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Prefer: respond-async,wait=0' \
+--form 'contentAnalyzerRequests="{
+	\"cpf:inputs\": {
+		\"params\": {
+			\"cpf:inline\": {
+				\"ocrLang\": \"en-US\",
+				\"ocrType\": \"searchable_image\"
+			}
+		},
+		\"documentIn\": {
+			\"cpf:location\": \"InputFile0\",
+			\"dc:format\": \"application/pdf\"
+		}
+	},
+	\"cpf:engine\": {
+		\"repo:assetId\": \"urn:aaid:cpf:Service-7e6a5d2b6bb141d7832398076914a07b\"
+	},
+	\"cpf:outputs\": {
+		\"documentOut\": {
+			\"cpf:location\": \"multipartLabelOut\",
+			\"dc:format\": \"application/pdf\"
+		}
+	}
+}"' \
+--form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+```
 
 ## OCR with explicit language
 
@@ -170,9 +202,9 @@ are two types which produce a different result:
     unchanged. This type produces maximum fidelity to the original
     image.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, NodeJS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
-#### Sample
+#### Java
 
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
@@ -221,7 +253,7 @@ are two types which produce a different result:
   }
 ```
 
-#### Sample
+#### .NET
 
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
@@ -281,7 +313,7 @@ are two types which produce a different result:
  }
 ```
 
-#### Sample
+#### Node JS
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
@@ -328,4 +360,36 @@ are two types which produce a different result:
   }
 ```
 
-The REST API example can be found [here](https://documentcloud.adobe.com/document-services/index.html#post-ocr)
+#### Rest API
+
+```javascript
+curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--header 'Accept: application/json, text/plain, */*' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Prefer: respond-async,wait=0' \
+--form 'contentAnalyzerRequests="{
+	\"cpf:inputs\": {
+		\"params\": {
+			\"cpf:inline\": {
+				\"ocrLang\": \"en-US\",
+				\"ocrType\": \"searchable_image\"
+			}
+		},
+		\"documentIn\": {
+			\"cpf:location\": \"InputFile0\",
+			\"dc:format\": \"application/pdf\"
+		}
+	},
+	\"cpf:engine\": {
+		\"repo:assetId\": \"urn:aaid:cpf:Service-7e6a5d2b6bb141d7832398076914a07b\"
+	},
+	\"cpf:outputs\": {
+		\"documentOut\": {
+			\"cpf:location\": \"multipartLabelOut\",
+			\"dc:format\": \"application/pdf\"
+		}
+	}
+}"' \
+--form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+```

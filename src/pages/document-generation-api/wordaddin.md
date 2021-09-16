@@ -3,7 +3,7 @@
 Document Generation Word Add-in provides the capability to author
 templates to generate data-driven Word and PDF documents. It provides
 the capability to add different tags and enable users to author
-templates seamlessly. You can refer to the addindemo for the explanation
+templates seamlessly. You can refer to the [Add-in Demo](#add-in-demo) for the explanation
 on how to use the add-in.
 
 <InlineAlert slots="text"/>
@@ -52,19 +52,19 @@ at the user level if desired.
     ADDINS** tab on Add-ins pop-up page.
 *   Navigate to the **STORE** tab in the Office Add-ins pop-up, if the
     add-in is not enabled/installed.
-
-    <InlineAlert slots="text"/>
     
-    If you face an issue, as illustrated below, while accessing your
-    Office Add-ins store then you can contact your organizational
-    Office 365 Admins to get
-    Add-in installed at the tenant level\<tenant\>.
+<InlineAlert slots="text"/>
 
-    ![image](../images/enterprise_error.png)
+If you face an issue, as illustrated below, while accessing your
+Office Add-ins store then you can contact your organizational
+Office 365 Admins to get
+Add-in installed at the tenant level\<tenant\>.
 
-    - Otherwise, In the top left search box, search for **Adobe Document Generation** and click on add button.
+![image](../images/enterprise_error.png)
 
-    ![image](../images/document_generation_search_browser.png)
+- Otherwise, In the top left search box, search for **Adobe Document Generation** and click on add button.
+
+![image](../images/document_generation_search_browser.png)
 
 *   After enabling/installing the add-in, you will find a new Adobe
     Document Generation add-in on the Home tab.
@@ -85,18 +85,17 @@ at the user level if desired.
     ADDINS** tab on Add-ins pop-up page.
 *   Navigate to **STORE** tab in the Office Add-ins popup, if add-in is
     not already enabled/installed.
-
-    <InlineAlert slots="text"/>
     
-    If you face an issue, as illustrated below, while accessing your
-    Office Add-ins store then you can contact your organizational
-    Office 365 Admins to get
-    Add-in installed at the tenant level\<tenant\>.
+<InlineAlert slots="text"/>
 
-    ![image](../images/enterprise_error.png)
+If you face an issue, as illustrated below, while accessing your
+Office Add-ins store then you can contact your organizational
+Office 365 Admins to get
+Add-in installed at the tenant level\<tenant\>.
 
-    -   Otherwise, In the top left search box, search for **Adobe
-        Document Generation** and click on **add** button to install.
+![image](../images/enterprise_error.png)
+
+-   Otherwise, In the top left search box, search for **Adobe Document Generation** and click on **add** button to install.
 
     ![image](../images/document_generation_search_desktop.png)
 
