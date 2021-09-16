@@ -4,6 +4,10 @@ Use Document Generation API to merge JSON data into Word based document
 templates and produce high fidelity PDF and Word documents from any
 application.
 
+## Live Demo
+
+The [Document Generation API Demo](https://documentcloud.adobe.com/dc-docgen-playground/index.html#/) demonstrates how easy it is to generate customized documents from Word-based document templates and input JSON data.
+
 ## How It Works
 
 **Use MS Word Add-In to design document templates**
@@ -42,9 +46,9 @@ format.
 
 ### Generate Word document
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, NodeJS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
-#### Sample
+#### Java
 
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
@@ -97,7 +101,7 @@ format.
      
 ```
 
-#### Sample
+#### .NET
 
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
@@ -174,7 +178,7 @@ format.
    }
 ```
 
-#### Sample
+#### Node JS
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
@@ -226,11 +230,64 @@ format.
  }
 ```
 
+#### Rest API
+
+```javascript
+curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--header 'Accept: application/json, text/plain, */*' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Prefer: respond-async,wait=0' \
+--form 'contentAnalyzerRequests="{
+   \"cpf:engine\":{
+      \"repo:assetId\":\"urn:aaid:cpf:Service-52d5db6097ed436ebb96f13a4c7bf8fb\"
+   },
+   \"cpf:inputs\":{
+      \"documentIn\":{
+         \"dc:format\":\"application/vnd.openxmlformats-officedocument.wordprocessingml.document\",
+         \"cpf:location\":\"InputFile0\"
+      },
+      \"params\":{
+         \"cpf:inline\":{
+            \"outputFormat\": \"docx\",
+            \"jsonDataForMerge\": {
+              \"customerName\": \"Kane Miller\",
+              \"customerVisits\": 100,
+              \"itemsBought\": [
+                {
+                  \"name\": \"Sprays\",
+                  \"quantity\": 50,
+                  \"amount\": 100
+                },
+                {
+                  \"name\": \"Chemicals\",
+                  \"quantity\": 100,
+                  \"amount\": 200
+                }
+              ],
+              \"totalAmount\": 300,
+              \"previousBalance\": 50,
+              \"lastThreeBillings\": [100, 200, 300],
+              \"photograph\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII=\"
+            }
+         }
+      }
+   },
+   \"cpf:outputs\":{
+      \"documentOut\":{
+         \"dc:format\":\"application/vnd.openxmlformats-officedocument.wordprocessingml.document\",
+         \"cpf:location\":\"multipartLabel\"
+      }
+   }
+}"' \
+--form 'InputFile0=@"{{Placeholder for the input document template (absolute path)}}"'
+```
+
 ### Generate PDF document
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, NodeJS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
-#### Sample
+#### Java
 
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
@@ -282,7 +339,7 @@ format.
      
 ```
 
-#### Sample
+#### .NET
 
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
@@ -360,7 +417,7 @@ format.
    }
 ```
 
-#### Sample
+#### Node JS
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
@@ -411,6 +468,59 @@ format.
       console.log('Exception encountered while executing operation', err);
   }
   
+```
+
+#### Rest API
+
+```javascript
+curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--header 'Accept: application/json, text/plain, */*' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Prefer: respond-async,wait=0' \
+--form 'contentAnalyzerRequests="{
+   \"cpf:engine\":{
+      \"repo:assetId\":\"urn:aaid:cpf:Service-52d5db6097ed436ebb96f13a4c7bf8fb\"
+   },
+   \"cpf:inputs\":{
+      \"documentIn\":{
+         \"dc:format\":\"application/vnd.openxmlformats-officedocument.wordprocessingml.document\",
+         \"cpf:location\":\"InputFile0\"
+      },
+      \"params\":{
+         \"cpf:inline\":{
+            \"outputFormat\": \"pdf\",
+            \"jsonDataForMerge\": {
+              \"customerName\": \"Kane Miller\",
+              \"customerVisits\": 100,
+              \"itemsBought\": [
+                {
+                  \"name\": \"Sprays\",
+                  \"quantity\": 50,
+                  \"amount\": 100
+                },
+                {
+                  \"name\": \"Chemicals\",
+                  \"quantity\": 100,
+                  \"amount\": 200
+                }
+              ],
+              \"totalAmount\": 300,
+              \"previousBalance\": 50,
+              \"lastThreeBillings\": [100, 200, 300],
+              \"photograph\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII=\"
+            }
+         }
+      }
+   },
+   \"cpf:outputs\":{
+      \"documentOut\":{
+         \"dc:format\":\"application/pdf\",
+         \"cpf:location\":\"multipartLabel\"
+      }
+   }
+}"' \
+--form 'InputFile0=@"{{Placeholder for the input document template (absolute path)}}"'
 ```
 
 As a result of the Document Generation API, template tags are replaced

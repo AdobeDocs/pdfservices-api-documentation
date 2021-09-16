@@ -1,11 +1,13 @@
 # Rotate Pages
 
+## Rotate Pages in PDF
+
 The rotate pages operation selectively rotates pages in PDF file. For
 example, you can change portrait view to landscape view.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, NodeJS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
-#### Sample
+#### Java
 
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
@@ -75,7 +77,7 @@ example, you can change portrait view to landscape view.
   }
 ```
 
-#### Sample
+#### .NET
 
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
@@ -163,7 +165,7 @@ example, you can change portrait view to landscape view.
   }
 ```
 
-#### Sample
+#### Node JS
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
@@ -234,4 +236,45 @@ example, you can change portrait view to landscape view.
   }
 ```
 
-The REST API example can be found [here](https://documentcloud.adobe.com/document-services/index.html#post-pageManipulation)
+#### Rest API
+
+```javascript
+curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--header 'Accept: application/json, text/plain, */*' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Prefer: respond-async,wait=0' \
+--form 'contentAnalyzerRequests="{
+	\"cpf:inputs\": {
+		\"params\": {
+			\"cpf:inline\": {
+				\"pageActions\": [{
+					\"pageAction\": {
+						\"rotate\": {
+							\"pageRanges\": [{
+								\"start\": 1,
+								\"end\": 1
+							}],
+							\"angle\": 90
+						}
+					}
+				}]
+			}
+		},
+		\"documentIn\": {
+			\"cpf:location\": \"InputFile0\",
+			\"dc:format\": \"application/pdf\"
+		}
+	},
+	\"cpf:engine\": {
+		\"repo:assetId\": \"urn:aaid:cpf:Service-4735fcf3cf924b25879e6fcf7aa84ad4\"
+	},
+	\"cpf:outputs\": {
+		\"documentOut\": {
+			\"cpf:location\": \"cid:multipartLabelOut\",
+			\"dc:format\": \"application/pdf\"
+		}
+	}
+}"' \
+--form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+```

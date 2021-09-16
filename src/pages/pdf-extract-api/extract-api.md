@@ -7,9 +7,9 @@ following:
 
 -   The structuredData.json file with the extracted content & PDF
     element structure. See the [JSON
-    schema]( ../../resources/extractJSONOutputSchema2.json) for a
+    schema]( src/pages/resources/extractJSONOutputSchema2.json) for a
     description of the default output. (Please refer the [Styling JSON
-    schema]( ../../resources/extractJSONOutputSchemaStylingInfo.json)
+    schema]( src/pages/resources/extractJSONOutputSchemaStylingInfo.json)
     for a description of the output when the styling option is enabled.)
 -   A renditions folder(s) containing renditions for each element type
     selected as input. The folder name is either "tables" or "figures"
@@ -17,11 +17,11 @@ following:
     renditions with filenames that correspond to the element information
     in the JSON file.
 
-![image]( ../../images/extractsamplefiles.png)
+![image]( ../images/extractsamplefiles.png)
 
 The following is a summary of key elements in the extracted JSON(See
 additional descriptions in the [JSON
-schema]( ../../resources/extractJSONOutputSchema2.json)):
+schema]( src/pages/resources/extractJSONOutputSchema2.json)):
 
 -   Elements : Ordered list of semantic elements (like headings,
     paragraphs, tables, figures) found in the document, on the basis of
@@ -102,15 +102,16 @@ schema]( ../../resources/extractJSONOutputSchema2.json)):
 -   **Page limits**: Non scanned PDFs are limited to 200 pages and
     Scanned PDFs must be 100 pages or less.Limits may be lower for files
     with a large number of tables.
+-   **Rate limits(Extract)**: Keep request rate below 25 requests per minute.
 
 ## Extract Text from a PDF
 
 Use the sample below to extract text element information from a PDF
 document.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, NodeJS, Python" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
 
-#### Sample
+#### Java
 
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
@@ -159,7 +160,82 @@ public class ExtractTextInfoFromPDF {
       
 ```
 
-#### Sample
+#### .NET
+
+```javascript
+// Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
+// Run the sample:
+// cd ExtractTextInfoFromPDF/
+// dotnet run ExtractTextInfoFromPDF.csproj
+
+namespace ExtractTextInfoFromPDF
+{
+    class Program
+    {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+        static void Main()
+    {
+        //Configure the logging
+        ConfigureLogging();
+        try
+        {
+            // Initial setup, create credentials instance.
+            Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
+            .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+            .Build();
+
+            //Create an ExecutionContext using credentials and create a new operation instance.
+            ExecutionContext executionContext = ExecutionContext.Create(credentials);
+            ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
+
+            // Set operation input from a source file.
+            FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+            extractPdfOperation.SetInputFile(sourceFileRef);
+
+            // Build ExtractPDF options and set them into the operation
+            ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
+            .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT}))
+            .build();
+            extractPdfOperation .SetOptions(extractPdfOptions);
+
+            // Execute the operation.
+            FileRef result = extractPdfOperation.Execute(executionContext);
+
+            // Save the result to the specified location.
+            result.SaveAs(Directory.GetCurrentDirectory() + "/output/ExtractTextInfoFromPDF.zip");
+        }
+        catch (ServiceUsageException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (ServiceApiException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (SDKException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (IOException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (Exception ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    }
+
+        static void ConfigureLogging()
+    {
+        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+    }
+    }
+}
+```
+
+#### Node JS
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
@@ -209,7 +285,7 @@ public class ExtractTextInfoFromPDF {
   }
 ```
 
-#### Sample
+#### Python
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
@@ -250,16 +326,54 @@ public class ExtractTextInfoFromPDF {
          logging.exception("Exception encountered while executing operation")
 ```
 
-The REST API example can be found [here](https://documentcloud.adobe.com/document-services/index.html#post-extractPDF)
+#### Rest API
+
+```javascript
+curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--header 'Accept: application/json, text/plain, */*' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Prefer: respond-async,wait=0' \
+--form 'contentAnalyzerRequests="{
+    \"cpf:engine\": {
+        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
+    },
+    \"cpf:inputs\": {
+        \"documentIn\": {
+            \"cpf:location\": \"InputFile0\",
+            \"dc:format\": \"application/pdf\"
+        },
+        \"params\": {
+            \"cpf:inline\": {
+                \"elementsToExtract\": [
+                    \"text\", \"tables\"
+                ],
+                \"renditionsToExtract\": [ \"tables\", \"figures\"]
+            }
+        }
+    },
+    \"cpf:outputs\": {
+        \"elementsInfo\": {
+            \"cpf:location\": \"jsonoutput\",
+            \"dc:format\": \"application/json\"
+        },
+        \"elementsRenditions\": {
+            \"cpf:location\": \"fileoutpart\",
+            \"dc:format\": \"text/directory\"
+        }
+    }
+} "' \
+--form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+```
 
 ## Extract Text and Tables
 
-The sample below extracts text, tables, and figures element information
-from a PDF document.
+The sample below extracts text and table elements information from a PDF document.It also generates table renditions in xlsx format by default.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, NodeJS, Python" /> 
 
-#### Sample
+<CodeBlock slots="heading, code" repeat="5" languages="Java,.NET, Node JS, Python, Rest API" /> 
+
+#### Java
 
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
@@ -308,7 +422,82 @@ public class ExtractTextTableInfoFromPDF {
       
 ```
 
-#### Sample
+#### .NET
+
+```javascript
+// Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
+// Run the sample:
+// cd ExtractTextTableInfoFromPDF/
+// dotnet run ExtractTextTableInfoFromPDF.csproj
+
+namespace ExtractTextTableInfoFromPDF
+{
+    class Program
+    {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+        static void Main()
+    {
+        //Configure the logging
+        ConfigureLogging();
+        try
+        {
+            // Initial setup, create credentials instance.
+            Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
+            .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+            .Build();
+
+            //Create an ExecutionContext using credentials and create a new operation instance.
+            ExecutionContext executionContext = ExecutionContext.Create(credentials);
+            ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
+
+            // Set operation input from a source file.
+            FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+            extractPdfOperation.SetInputFile(sourceFileRef);
+
+            // Build ExtractPDF options and set them into the operation
+            ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
+            .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
+            .build();
+            extractPdfOperation.SetOptions(extractPdfOptions);
+
+            // Execute the operation.
+            FileRef result = extractPdfOperation.Execute(executionContext);
+
+            // Save the result to the specified location.
+            result.SaveAs(Directory.GetCurrentDirectory() + "/output/ExtractTextTableInfoFromPDF.zip");
+        }
+        catch (ServiceUsageException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (ServiceApiException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (SDKException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (IOException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (Exception ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    }
+
+        static void ConfigureLogging()
+    {
+        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+    }
+    }
+}
+```
+
+#### Node JS
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
@@ -361,7 +550,7 @@ public class ExtractTextTableInfoFromPDF {
 
 ```
 
-#### Sample
+#### Python
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
@@ -403,17 +592,53 @@ public class ExtractTextTableInfoFromPDF {
       logging.exception("Exception encountered while executing operation")
 ```
 
-The REST API example can be found [here](https://documentcloud.adobe.com/document-services/index.html#post-extractPDF)
+#### Rest API
 
-## Extract Text and Tables (w/ Renditions)
+```javascript
+curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--header 'Accept: application/json, text/plain, */*' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Prefer: respond-async,wait=0' \
+--form 'contentAnalyzerRequests="{
+    \"cpf:engine\": {
+        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
+    },
+    \"cpf:inputs\": {
+        \"documentIn\": {
+            \"cpf:location\": \"InputFile0\",
+            \"dc:format\": \"application/pdf\"
+        },
+        \"params\": {
+            \"cpf:inline\": {
+                \"elementsToExtract\": [
+                    \"text\", \"tables\"
+                ],
+                \"renditionsToExtract\": [ \"tables\", \"figures\"]
+            }
+        }
+    },
+    \"cpf:outputs\": {
+        \"elementsInfo\": {
+            \"cpf:location\": \"jsonoutput\",
+            \"dc:format\": \"application/json\"
+        },
+        \"elementsRenditions\": {
+            \"cpf:location\": \"fileoutpart\",
+            \"dc:format\": \"text/directory\"
+        }
+    }
+} "' \
+--form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+```
 
-The sample below extracts text, table, and figure element information as
-well as table renditions from PDF Document. Note that the output is a
-zip containing the structured information along with renditions.
+## Extract Text and Tables (w/ Tables Renditions)
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, NodeJS, Python" /> 
+The sample below extracts text and table elements information as well as table renditions from PDF Document. Note that the output is a zip containing the structured information along with renditions.
 
-#### Sample
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
+
+#### Java
 
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
@@ -462,7 +687,84 @@ public class ExtractTextTableInfoWithRenditionsFromPDF {
 }
 ```
 
-#### Sample
+#### .NET 
+
+```javascript
+// Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
+// Run the sample:
+// cd ExtractTextTableInfoWithRenditionsFromPDF/
+// dotnet run ExtractTextTableInfoWithRenditionsFromPDF.csproj
+
+namespace ExtractTextTableInfoWithRenditionsFromPDF
+{
+    class Program
+    {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+        static void Main()
+    {
+        //Configure the logging
+        ConfigureLogging();
+        try
+        {
+            // Initial setup, create credentials instance.
+            Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
+            .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+            .Build();
+
+            //Create an ExecutionContext using credentials and create a new operation instance.
+            ExecutionContext executionContext = ExecutionContext.Create(credentials);
+            ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
+
+            // Set operation input from a source file.
+            FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+            extractPdfOperation.SetInputFile(sourceFileRef);
+
+            // Build ExtractPDF options and set them into the operation
+            ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
+            .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
+            .AddElementsToExtractRenditions(new List<ExtractRenditionsElementType> (new [] {ExtractRenditionsElementType.TABLES}))
+            .build();
+
+            extractPdfOperation.SetOptions(extractPdfOptions);
+
+            // Execute the operation.
+            FileRef result = extractPdfOperation.Execute(executionContext);
+
+            // Save the result to the specified location.
+            result.SaveAs(Directory.GetCurrentDirectory() + "/output/ExtractTextTableInfoWithRenditionsFromPDF.zip");
+        }
+        catch (ServiceUsageException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (ServiceApiException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (SDKException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (IOException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (Exception ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    }
+
+        static void ConfigureLogging()
+    {
+        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+    }
+    }
+}
+```
+
+#### Node JS
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
@@ -515,7 +817,7 @@ public class ExtractTextTableInfoWithRenditionsFromPDF {
    
 ```
 
-#### Sample
+#### Python
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
@@ -557,7 +859,312 @@ public class ExtractTextTableInfoWithRenditionsFromPDF {
       logging.exception("Exception encountered while executing operation")
 ```
 
-The REST API example can be found [here](https://documentcloud.adobe.com/document-services/index.html#post-extractPDF)
+#### Rest API
+
+```javascript
+curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--header 'Accept: application/json, text/plain, */*' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Prefer: respond-async,wait=0' \
+--form 'contentAnalyzerRequests="{
+    \"cpf:engine\": {
+        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
+    },
+    \"cpf:inputs\": {
+        \"documentIn\": {
+            \"cpf:location\": \"InputFile0\",
+            \"dc:format\": \"application/pdf\"
+        },
+        \"params\": {
+            \"cpf:inline\": {
+                \"elementsToExtract\": [
+                    \"text\", \"tables\"
+                ],
+                \"renditionsToExtract\": [ \"tables\", \"figures\"]
+            }
+        }
+    },
+    \"cpf:outputs\": {
+        \"elementsInfo\": {
+            \"cpf:location\": \"jsonoutput\",
+            \"dc:format\": \"application/json\"
+        },
+        \"elementsRenditions\": {
+            \"cpf:location\": \"fileoutpart\",
+            \"dc:format\": \"text/directory\"
+        }
+    }
+} "' \
+--form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+```
+
+## Extract Text and Tables (w/ Tables and Figures Renditions)
+
+The sample below extracts text and table elements information as well as tables and figures renditions from PDF Document. Note that the output is a zip containing the structured information along with renditions.
+
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
+
+#### Java
+
+```javascript 
+// Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
+// Run the sample:
+// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.extractpdf.ExtractTextTableInfoWithRenditionsFromPDF
+ 
+public class ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF {
+
+      private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF.class);
+
+      public static void main(String[] args) {
+
+          try {
+
+              // Initial setup, create credentials instance.
+              Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
+                      .fromFile("pdfservices-api-credentials.json")
+                      .build();
+
+              // Create an ExecutionContext using credentials.
+              ExecutionContext executionContext = ExecutionContext.create(credentials);
+
+              ExtractPDFOperation extractPDFOperation = ExtractPDFOperation.createNew();
+
+              // Provide an input FileRef for the operation
+              FileRef source = FileRef.createFromLocalFile("src/main/resources/extractPdfInput.pdf");
+              extractPDFOperation.setInputFile(source);
+
+              // Build ExtractPDF options and set them into the operation
+              ExtractPDFOptions extractPDFOptions = ExtractPDFOptions.extractPdfOptionsBuilder()
+                      .addElementsToExtract(Arrays.asList(ExtractElementType.TEXT, ExtractElementType.TABLES))
+                      .addElementsToExtractRenditions(Arrays.asList(ExtractRenditionsElementType.TABLES, ExtractRenditionsElementType.FIGURES))
+                      .build();
+              extractPDFOperation.setOptions(extractPDFOptions);
+
+              // Execute the operation
+              FileRef result = extractPDFOperation.execute(executionContext);
+
+              // Save the result at the specified location
+              result.saveAs("output/ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF.zip");
+
+          } catch (ServiceApiException | IOException | SdkException | ServiceUsageException e) {
+              LOGGER.error("Exception encountered while executing operation", e);
+          }
+      }
+  }
+```
+
+#### .NET
+
+```javascript
+// Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
+// Run the sample:
+// cd ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF/
+// dotnet run ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF.csproj
+
+namespace ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF
+{
+    class Program
+    {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+        static void Main()
+    {
+        //Configure the logging
+        ConfigureLogging();
+        try
+        {
+            // Initial setup, create credentials instance.
+            Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
+            .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+            .Build();
+
+            //Create an ExecutionContext using credentials and create a new operation instance.
+            ExecutionContext executionContext = ExecutionContext.Create(credentials);
+            ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
+
+            // Set operation input from a source file.
+            FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+            extractPdfOperation.SetInputFile(sourceFileRef);
+
+            // Build ExtractPDF options and set them into the operation
+            ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
+            .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
+        .AddElementsToExtractRenditions(new List<ExtractRenditionsElementType> (new []{ExtractRenditionsElementType.FIGURES, ExtractRenditionsElementType.TABLES}))
+        .build();
+
+            extractPdfOperation.SetOptions(extractPdfOptions);
+
+
+            // Execute the operation.
+            FileRef result = extractPdfOperation.Execute(executionContext);
+
+            // Save the result to the specified location.
+            result.SaveAs(Directory.GetCurrentDirectory() + "/output/ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF.zip");
+        }
+        catch (ServiceUsageException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (ServiceApiException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (SDKException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (IOException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (Exception ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    }
+
+        static void ConfigureLogging()
+    {
+        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+    }
+    }
+}
+```
+
+#### Node JS
+
+```javascript
+// Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
+// Run the sample:
+// node src/extractpdf/extract-text-table-info-with-figures-tables-renditions-from-pdf.js
+
+const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+try {
+    // Initial setup, create credentials instance.
+    const credentials =  PDFServicesSdk.Credentials
+        .serviceAccountCredentialsBuilder()
+        .fromFile("pdfservices-api-credentials.json")
+        .build();
+
+    // Create an ExecutionContext using credentials
+    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
+
+    // Build extractPDF options
+    const options = new PDFServicesSdk.ExtractPDF.options.ExtractPdfOptions.Builder()
+        .addElementsToExtract(PDFServicesSdk.ExtractPDF.options.ExtractElementType.TEXT, PDFServicesSdk.ExtractPDF.options.ExtractElementType.TABLES)
+        .addElementsToExtractRenditions(PDFServicesSdk.ExtractPDF.options.ExtractRenditionsElementType.FIGURES, PDFServicesSdk.ExtractPDF.options.ExtractRenditionsElementType.TABLES)
+        .build()
+
+    // Create a new operation instance.
+    const extractPDFOperation = PDFServicesSdk.ExtractPDF.Operation.createNew(),
+        input = PDFServicesSdk.FileRef.createFromLocalFile(
+            'resources/extractPDFInput.pdf',
+            PDFServicesSdk.ExtractPDF.SupportedSourceFormat.pdf
+        );
+
+    // Set operation input from a source file
+    extractPDFOperation.setInput(input);
+
+    // Set options
+    extractPDFOperation.setOptions(options);
+
+    extractPDFOperation.execute(executionContext)
+        .then(result => result.saveAsFile('output/ExtractTextTableWithFigureTableRendition.zip'))
+        .catch(err => {
+            if(err instanceof PDFServicesSdk.Error.ServiceApiError
+                || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
+                console.log('Exception encountered while executing operation', err);
+            } else {
+                console.log('Exception encountered while executing operation', err);
+            }
+        });
+} catch (err) {
+    console.log('Exception encountered while executing operation', err);
+}   
+```
+
+#### Python
+
+```javascript
+// Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
+// Run the sample:
+// python src/extractpdf/extract_txt_table_info_with_figure_tables_rendition_from_pdf.py
+
+  logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
+
+  try:
+       get base path.
+      base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+       Initial setup, create credentials instance.
+      credentials = Credentials.service_account_credentials_builder() \
+          .from_file(base_path + "/pdfservices-api-credentials.json") \
+          .build()
+
+       Create an ExecutionContext using credentials and create a new operation instance.
+      execution_context = ExecutionContext.create(credentials)
+      extract_pdf_operation = ExtractPDFOperation.create_new()
+
+       Set operation input from a source file.
+      source = FileRef.create_from_local_file(base_path + "/resources/extractPdfInput.pdf")
+      extract_pdf_operation.set_input(source)
+
+       Build ExtractPDF options and set them into the operation
+      extract_pdf_options: ExtractPDFOptions = ExtractPDFOptions.builder() \
+          .with_elements_to_extract([ExtractElementType.TEXT, ExtractElementType.TABLES]) \
+          .with_element_to_extract_renditions(ExtractRenditionsElementType.TABLES,ExtractRenditionsElementType.FIGURES]) \
+          .build()
+      extract_pdf_operation.set_options(extract_pdf_options)
+
+       Execute the operation.
+      result: FileRef = extract_pdf_operation.execute(execution_context)
+
+       Save the result to the specified location.
+      result.save_as(base_path + "/output/ExtractTextTableWithTableRendition.zip")
+  except (ServiceApiException, ServiceUsageException, SdkException):
+      logging.exception("Exception encountered while executing operation")
+```
+
+#### Rest API
+
+```javascript
+curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--header 'Accept: application/json, text/plain, */*' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Prefer: respond-async,wait=0' \
+--form 'contentAnalyzerRequests="{
+    \"cpf:engine\": {
+        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
+    },
+    \"cpf:inputs\": {
+        \"documentIn\": {
+            \"cpf:location\": \"InputFile0\",
+            \"dc:format\": \"application/pdf\"
+        },
+        \"params\": {
+            \"cpf:inline\": {
+                \"elementsToExtract\": [
+                    \"text\", \"tables\"
+                ],
+                \"renditionsToExtract\": [ \"tables\", \"figures\"]
+            }
+        }
+    },
+    \"cpf:outputs\": {
+        \"elementsInfo\": {
+            \"cpf:location\": \"jsonoutput\",
+            \"dc:format\": \"application/json\"
+        },
+        \"elementsRenditions\": {
+            \"cpf:location\": \"fileoutpart\",
+            \"dc:format\": \"text/directory\"
+        }
+    }
+} "' \
+--form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+```
 
 ## Extract Text and Tables and Character Bounding Boxes (w/ Renditions)
 
@@ -568,9 +1175,9 @@ Document. Note that the output is a zip containing the structured
 information along with renditions.
 
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, NodeJS, Python" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
 
-#### Sample
+#### Java
 
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
@@ -619,7 +1226,83 @@ public class ExtractTextTableInfoWithCharBoundsFromPDF {
 }
 ```
 
-#### Sample
+#### .NET 
+
+```javascript
+// Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
+// Run the sample:
+// cd ExtractTextTableInfoWithCharBoundsFromPDF/
+// dotnet run ExtractTextTableInfoWithCharBoundsFromPDF.csproj
+
+namespace ExtractTextTableInfoWithCharBoundsFromPDF
+{
+    class Program
+    {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+        static void Main()
+    {
+        //Configure the logging
+        ConfigureLogging();
+        try
+        {
+            // Initial setup, create credentials instance.
+            Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
+            .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+            .Build();
+
+            //Create an ExecutionContext using credentials and create a new operation instance.
+            ExecutionContext executionContext = ExecutionContext.Create(credentials);
+            ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
+
+            // Set operation input from a source file.
+            FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+            extractPdfOperation.SetInputFile(sourceFileRef);
+
+            // Build ExtractPDF options and set them into the operation
+            ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
+            .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
+            .AddAddCharInfo(true)
+            .build();
+            extractPdfOperation.SetOptions(extractPdfOptions);
+
+            // Execute the operation.
+            FileRef result = extractPdfOperation.Execute(executionContext);
+
+            // Save the result to the specified location.
+            result.SaveAs(Directory.GetCurrentDirectory() + "/output/ExtractTextTableInfoWithCharBoundsFromPDF.zip");
+        }
+        catch (ServiceUsageException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (ServiceApiException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (SDKException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (IOException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (Exception ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    }
+
+        static void ConfigureLogging()
+    {
+        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+    }
+    }
+}
+```
+
+#### Node JS
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
@@ -671,7 +1354,7 @@ public class ExtractTextTableInfoWithCharBoundsFromPDF {
   }
 ```
 
-#### Sample
+#### Python
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
@@ -713,7 +1396,45 @@ public class ExtractTextTableInfoWithCharBoundsFromPDF {
       logging.exception("Exception encountered while executing operation")
 ```
 
-The REST API example can be found [here](https://documentcloud.adobe.com/document-services/index.html#post-extractPDF)
+#### Rest API
+
+```javascript
+curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--header 'Accept: application/json, text/plain, */*' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Prefer: respond-async,wait=0' \
+--form 'contentAnalyzerRequests="{
+    \"cpf:engine\": {
+        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
+    },
+    \"cpf:inputs\": {
+        \"documentIn\": {
+            \"cpf:location\": \"InputFile0\",
+            \"dc:format\": \"application/pdf\"
+        },
+        \"params\": {
+            \"cpf:inline\": {
+                \"elementsToExtract\": [
+                    \"text\", \"tables\"
+                ],
+                \"renditionsToExtract\": [ \"tables\", \"figures\"]
+            }
+        }
+    },
+    \"cpf:outputs\": {
+        \"elementsInfo\": {
+            \"cpf:location\": \"jsonoutput\",
+            \"dc:format\": \"application/json\"
+        },
+        \"elementsRenditions\": {
+            \"cpf:location\": \"fileoutpart\",
+            \"dc:format\": \"text/directory\"
+        }
+    }
+} "' \
+--form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+```
 
 ## Extract Text and Tables and Table Structure as CSV (w/ Renditions)
 
@@ -723,9 +1444,9 @@ renditions from PDF Document. Note that the output is a zip containing
 the structured information along with renditions.
 
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, NodeJS, Python" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
 
-#### Sample
+#### Java
 
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
@@ -775,7 +1496,85 @@ public class ExtractTextTableInfoWithTableStructureFromPdf {
 }
 ```
 
-#### Sample
+#### .NET
+
+```javascript
+// Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
+// Run the sample:
+// cd ExtractTextTableInfoWithTableStructureFromPDF/
+// dotnet run ExtractTextTableInfoWithTableStructureFromPDF.csproj
+
+namespace ExtractTextTableInfoWithTableStructureFromPDF
+{
+    class Program
+    {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+        static void Main()
+    {
+        //Configure the logging
+        ConfigureLogging();
+        try
+        {
+            // Initial setup, create credentials instance.
+            Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
+            .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+            .Build();
+
+            //Create an ExecutionContext using credentials and create a new operation instance.
+            ExecutionContext executionContext = ExecutionContext.Create(credentials);
+            ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
+
+            // Set operation input from a source file.
+            FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+            extractPdfOperation.SetInputFile(sourceFileRef);
+
+            // Build ExtractPDF options and set them into the operation
+            ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
+            .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
+            .AddElementsToExtractRenditions(new List<ExtractRenditionsElementType>(new [] {ExtractRenditionsElementType.TABLES}))
+            .AddTableStructureFormat(TableStructureType.CSV)
+            .build();
+
+            extractPdfOperation.SetOptions(extractPdfOptions);
+
+            // Execute the operation.
+            FileRef result = extractPdfOperation.Execute(executionContext);
+
+            // Save the result to the specified location.
+            result.SaveAs(Directory.GetCurrentDirectory() + "/output/ExtractTextTableInfoWithTableStructureFromPDF.zip");
+        }
+        catch (ServiceUsageException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (ServiceApiException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (SDKException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (IOException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (Exception ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    }
+
+        static void ConfigureLogging()
+    {
+        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+    }
+    }
+}
+```
+
+#### Node JS
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
@@ -828,7 +1627,7 @@ public class ExtractTextTableInfoWithTableStructureFromPdf {
     }
 ```
 
-#### Sample
+#### Python 
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
@@ -872,7 +1671,45 @@ public class ExtractTextTableInfoWithTableStructureFromPdf {
 
 ```
 
-The REST API example can be found [here](https://documentcloud.adobe.com/document-services/index.html#post-extractPDF)
+#### Rest API
+
+```javascript
+curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--header 'Accept: application/json, text/plain, */*' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Prefer: respond-async,wait=0' \
+--form 'contentAnalyzerRequests="{
+    \"cpf:engine\": {
+        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
+    },
+    \"cpf:inputs\": {
+        \"documentIn\": {
+            \"cpf:location\": \"InputFile0\",
+            \"dc:format\": \"application/pdf\"
+        },
+        \"params\": {
+            \"cpf:inline\": {
+                \"elementsToExtract\": [
+                    \"text\", \"tables\"
+                ],
+                \"renditionsToExtract\": [ \"tables\", \"figures\"]
+            }
+        }
+    },
+    \"cpf:outputs\": {
+        \"elementsInfo\": {
+            \"cpf:location\": \"jsonoutput\",
+            \"dc:format\": \"application/json\"
+        },
+        \"elementsRenditions\": {
+            \"cpf:location\": \"fileoutpart\",
+            \"dc:format\": \"text/directory\"
+        }
+    }
+} "' \
+--form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+```
 
 ## (Beta Feature) Extract Text and Tables and Styling Info
 
@@ -887,12 +1724,12 @@ Bold / Italics / Superscript etc) in addition to extracting text, table,
 and figure element information as well as table renditions from PDF
 Document. Note that the output is a zip containing the structured
 information along with renditions. Please see the [Styling JSON
-schema]( ../../resources/extractJSONOutputSchemaStylingInfo.json)
+schema]( src/pages/resources/extractJSONOutputSchemaStylingInfo.json)
 for reference.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, NodeJS, Python" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java,.NET, Node JS, Python, Rest API" /> 
 
-#### Sample
+#### Java
 
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
@@ -941,7 +1778,85 @@ public class ExtractTextTableInfoWithStylingFromPDF {
 }
 ```
 
-#### Sample
+#### .NET 
+
+```javascript
+// Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
+// Run the sample:
+// cd ExtractTextTableInfoWithStylingFromPDF/
+// dotnet run ExtractTextTableInfoWithStylingFromPDF.csproj
+
+namespace ExtractTextTableInfoWithStylingFromPDF
+{
+    class Program
+    {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+        static void Main()
+    {
+        //Configure the logging
+        ConfigureLogging();
+        try
+        {
+            // Initial setup, create credentials instance.
+            Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
+            .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+            .Build();
+
+            //Create an ExecutionContext using credentials and create a new operation instance.
+            ExecutionContext executionContext = ExecutionContext.Create(credentials);
+            ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
+
+            // Set operation input from a source file.
+            FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+            extractPdfOperation.SetInputFile(sourceFileRef);
+
+            // Build ExtractPDF options and set them into the operation
+            ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
+            .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
+            .AddGetStylingInfo(true)
+            .build();
+
+            extractPdfOperation.SetOptions(extractPdfOptions);
+
+
+            // Execute the operation.
+            FileRef result = extractPdfOperation.Execute(executionContext);
+
+            // Save the result to the specified location.
+            result.SaveAs(Directory.GetCurrentDirectory() + "/output/ExtractTextTableInfoWithStylingFromPDF.zip");
+        }
+        catch (ServiceUsageException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (ServiceApiException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (SDKException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (IOException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (Exception ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    }
+
+        static void ConfigureLogging()
+    {
+        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+    }
+    }
+}
+```
+
+#### Node JS
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
@@ -994,7 +1909,7 @@ public class ExtractTextTableInfoWithStylingFromPDF {
   }
 ```
 
-#### Sample
+#### Python
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
@@ -1036,4 +1951,42 @@ public class ExtractTextTableInfoWithStylingFromPDF {
       logging.exception("Exception encountered while executing operation")
 ```
 
-The REST API example can be found [here](https://documentcloud.adobe.com/document-services/index.html#post-extractPDF)
+#### Rest API
+
+```javascript
+curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--header 'Accept: application/json, text/plain, */*' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Prefer: respond-async,wait=0' \
+--form 'contentAnalyzerRequests="{
+    \"cpf:engine\": {
+        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
+    },
+    \"cpf:inputs\": {
+        \"documentIn\": {
+            \"cpf:location\": \"InputFile0\",
+            \"dc:format\": \"application/pdf\"
+        },
+        \"params\": {
+            \"cpf:inline\": {
+                \"elementsToExtract\": [
+                    \"text\", \"tables\"
+                ],
+                \"renditionsToExtract\": [ \"tables\", \"figures\"]
+            }
+        }
+    },
+    \"cpf:outputs\": {
+        \"elementsInfo\": {
+            \"cpf:location\": \"jsonoutput\",
+            \"dc:format\": \"application/json\"
+        },
+        \"elementsRenditions\": {
+            \"cpf:location\": \"fileoutpart\",
+            \"dc:format\": \"text/directory\"
+        }
+    }
+} "' \
+--form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+```

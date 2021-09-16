@@ -1,10 +1,8 @@
 # Template Tags
 
-This section describes all the template tags that can be used to author
-a document template.
-
-During the [Document Generation
-Process](index.md#document-generation-process) , the Document
+**This section describes all the template tags that can be used to author
+a document template.** During the [Document Generation
+Process](/document-generation-api/) , the Document
 Generation API replaces the template tags in the document template with
 the input data to generate the output document.
 
@@ -332,3 +330,14 @@ Performs aggregations on a list of elements.
 Here is the list of [supported aggregation functions](https://docs.jsonata.org/aggregation-functions) |br| An
 aggregate numerical calculation can only be applied to a list of
 numbers.
+
+## Adobe Sign 
+
+Adobe Sign text tags can be placed anywhere within the contents of the document template.
+
+These tags are converted into Adobe Sign form fields when the final document is sent for a signature using Adobe Sign.
+
+<InlineAlert slots="text"/>
+
+Please visit [Adobe Sign Text Tag Guide](https://helpx.adobe.com/in/sign/using/text-tag.html) to learn about different Adobe Sign text tags.
+

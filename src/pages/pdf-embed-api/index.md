@@ -111,6 +111,12 @@ PDF Embed API is also supported in IE 11 and Microsoft Edge legacy but
 the support for these browsers will end soon. We strongly recommend to
 use the other supported browsers.
 
+## Support for print PDF
+
+PDF printing is currently not supported in Firefox browser. Clicking on the print PDF button will show a popup asking users to download the file and print using Adobe Acrobat Reader.
+
+![image](../images/print_unsupported_FF.png)
+
 ## Mobile support
 
 Much of what the PDF Embed API delivers is supported in the mobile

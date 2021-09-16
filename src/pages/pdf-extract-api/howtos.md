@@ -1,23 +1,18 @@
 # How Tos
+The [samples and documentation](src/pages/pdf-extract-api/extract-api.md#extract-text-from-a-pdf) should get you quickly up and running with PDF Extract capabilities in the [PDFServices SDK](src/pages/pdf-services-api/index.md) including:
 
-The samples and documentation here should get you quickly up and running
-with the PDF Services SDK. These code examples illustrate how to perform
-PDF actions using the SDK, including:
+- Extracting PDF as JSON: the content, structure & renditions of table and figure elements along with Character Bounding Boxes
 
--   Creating a PDF from multiple formats, including HTML, Microsoft
-    Office documents, and text files
--   Exporting a PDF to other formats or an image
--   Combining entire PDFs or specified page ranges
--   Using OCR to make a PDF file searchable with a custom locale
--   Compress PDFs with compression level and Linearize PDFs
--   Protect PDFs with password(s) and Remove password protection from
-    PDFs
--   Common page operations, including inserting, replacing, deleting,
-    reordering, and rotating
--   Splitting PDFs into multiple files
--   Extract PDF as JSON: the content, structure & renditions of table
-    and figure elements along with Character Bounding Boxes
--   Get the properties of a PDF file like page count, PDF version, file size, compliance levels, font info, permissions and more
+For code examples illustrating other PDF actions including those below, see the [PDFServices SDK](src/pages/pdf-services-api/index.md) :
+
+- Creating a PDF from multiple formats, including HTML, Microsoft Office documents, and text files
+- Exporting a PDF to other formats or an image
+- Combining entire PDFs or specified page ranges
+- Using OCR to make a PDF file searchable with a custom locale
+- Compress PDFs with compression level and Linearize PDFs
+- Protect PDFs with password(s) and Remove password protection from PDFs
+- Common page operations, including inserting, replacing, deleting, reordering, and rotating
+- Splitting PDFs into multiple files
 
 ## Runtime in-memory authentication
 
@@ -79,7 +74,7 @@ ClientConfig clientConfig = ClientConfig.ConfigBuilder()
     .readWriteTimeout(15000)
     .Build();
 ```
-    
+
 ### Node.js timeout configuration
 
 Available properties:

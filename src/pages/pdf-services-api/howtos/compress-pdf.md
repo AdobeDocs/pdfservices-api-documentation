@@ -5,9 +5,9 @@
 Compress PDFs to reduce the file size prior to performing workflow
 operations that use bandwidth or memory.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, NodeJS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
-#### Sample
+#### Java
 
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
@@ -47,7 +47,7 @@ operations that use bandwidth or memory.
    }
 ```
 
-#### Sample
+#### .NET
 
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
@@ -101,7 +101,7 @@ operations that use bandwidth or memory.
  }
 ```
 
-#### Sample
+#### Node JS
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
@@ -142,7 +142,38 @@ operations that use bandwidth or memory.
    }
 ```
 
-The REST API example can be found [here](https://documentcloud.adobe.com/document-services/index.html#post-compressPDF)
+#### Rest API
+
+```javascript
+curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--header 'Accept: application/json, text/plain, */*' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Prefer: respond-async,wait=0' \
+--form 'contentAnalyzerRequests="{
+	\"cpf:inputs\": {
+		\"params\": {
+			\"cpf:inline\": {
+				\"compressionLevel\": \"MEDIUM\"
+			}
+		},
+		\"documentIn\": {
+			\"cpf:location\": \"InputFile0\",
+			\"dc:format\": \"application/pdf\"
+		}
+	},
+	\"cpf:engine\": {
+		\"repo:assetId\": \"urn:aaid:cpf:Service-f37d36f4e6724eed92149a8ff35ea061\"
+	},
+	\"cpf:outputs\": {
+		\"documentOut\": {
+			\"cpf:location\": \"multipartLabelOut\",
+			\"dc:format\": \"application/pdf\"
+		}
+	}
+}"' \
+--form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+```
 
 ## Compress PDFs with Compression Level
 
@@ -151,9 +182,9 @@ compression level, prior to performing workflow operations that use
 bandwidth or memory. Refer to `CompressionLevel` in the API docs for a
 list of supported compression levels.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, NodeJS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
-#### Sample
+#### Java
 
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
@@ -199,7 +230,7 @@ list of supported compression levels.
     }
 ```
 
-#### Sample
+#### .NET
 
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
@@ -259,7 +290,7 @@ list of supported compression levels.
   }
 ```
 
-#### Sample
+#### Node JS
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
@@ -306,4 +337,35 @@ list of supported compression levels.
  }
 ```
 
-The REST API example can be found [here](https://documentcloud.adobe.com/document-services/index.html#post-compressPDF)
+#### Rest API
+
+```javascript
+curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--header 'Accept: application/json, text/plain, */*' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Prefer: respond-async,wait=0' \
+--form 'contentAnalyzerRequests="{
+	\"cpf:inputs\": {
+		\"params\": {
+			\"cpf:inline\": {
+				\"compressionLevel\": \"MEDIUM\"
+			}
+		},
+		\"documentIn\": {
+			\"cpf:location\": \"InputFile0\",
+			\"dc:format\": \"application/pdf\"
+		}
+	},
+	\"cpf:engine\": {
+		\"repo:assetId\": \"urn:aaid:cpf:Service-f37d36f4e6724eed92149a8ff35ea061\"
+	},
+	\"cpf:outputs\": {
+		\"documentOut\": {
+			\"cpf:location\": \"multipartLabelOut\",
+			\"dc:format\": \"application/pdf\"
+		}
+	}
+}"' \
+--form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+```
