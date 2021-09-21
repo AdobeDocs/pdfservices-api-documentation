@@ -1,0 +1,787 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "definitions": {
+    "colorGray": {
+      "description": "Value of color in gray space (0.0 - 1.0)",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "colorRGB": {
+      "description": "Value of color in RGB space. All 3 components in range (0.0 - 1.0).",
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "$ref": "#/definitions/colorGray"
+      }
+    },
+    "rect": {
+      "description": "Rectangle/Box in PDF coordinate system (bottom-left is origin). Values are in PDF user space units. Order of values - left, bottom, right, top",
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "number"
+      }
+    }
+  },
+  "properties": {
+    "version": {
+      "description": "Versions of components used to identify, create and export document's structure tree",
+      "type": "object",
+      "properties": {
+        "schema": {
+          "type": "string",
+          "const": "0.2.0"
+        },
+        "structure": {
+          "type": "string"
+        },
+        "page_segmentation": {
+          "type": "string"
+        },
+        "json_export": {
+          "type": "string"
+        },
+        "table_structure": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema",
+        "structure",
+        "page_segmentation",
+        "json_export"
+      ],
+      "additionalProperties": false
+    },
+    "extended_metadata": {
+      "description": "Metadata about the PDF document",
+      "type": "object",
+      "properties": {
+        "ID_instance": {
+          "description": "Modified document identifier. This is same as ID_permanent if the document is not modified.",
+          "type": "string"
+        },
+        "ID_permanent": {
+          "description": "Permanent document identifier",
+          "type": "string"
+        },
+        "pdf_version": {
+          "description": "PDF version of the document",
+          "type": "string"
+        },
+        "pdfa_compliance_level": {
+          "description": "PDF/A (Archival) compliance level",
+          "type": "string"
+        },
+        "is_encrypted": {
+          "description": "Document is encrypted or not",
+          "type": "boolean"
+        },
+        "has_acroform": {
+          "description": "Document contains AcroForms or not",
+          "type": "boolean"
+        },
+        "is_digitally_signed": {
+          "description": "Document is digitally signed or not",
+          "type": "boolean"
+        },
+        "pdfua_compliance_level": {
+          "description": "PDF/UA (Universal Accessibility) compliance level",
+          "type": "string"
+        },
+        "page_count": {
+          "description": "Number of pages in the document",
+          "type": "integer"
+        },
+        "has_embedded_files": {
+          "description": "Document contains embedded files or not",
+          "type": "boolean"
+        },
+        "is_certified": {
+          "description": "Document has been digitally signed with a certifying signature or not",
+          "type": "boolean"
+        },
+        "is_XFA": {
+          "description": "Document is based on the XFA (Extensible Forms Architecture) format or not",
+          "type": "boolean"
+        },
+        "language": {
+          "description": "Predominate natural language (as a BCP-47 code) for text in the document",
+          "type": "string"
+        },
+        "extension_base_version": {
+          "description": "Base version of document's Adobe extensions to ISO 32000 (aka ISO PDF)",
+          "type": "string"
+        },
+        "extension_level": {
+          "description": "Extension level of document's Adobe extensions to ISO 32000 (aka ISO PDF)",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "has_acroform",
+        "has_embedded_files",
+        "is_XFA",
+        "is_certified",
+        "is_digitally_signed",
+        "is_encrypted",
+        "language",
+        "page_count",
+        "pdf_version",
+        "pdfa_compliance_level",
+        "pdfua_compliance_level"
+      ]
+    },
+    "elements": {
+      "title": "List of semantic elements found in the PDF",
+      "description": "List of semantic elements (like headings, paragraphs, tables, figures) found in the document. List is ordered based on the position of elements in the structure tree of the document. For more information on various elements reported in this list, please visit https://opensource.adobe.com/pdftools-sdk-docs/beta/extract",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Bounds": {
+            "description": "Bounding box enclosing the content items forming this element. E.g. For a table cell, this value won't be the boundary of the cell, but union of the bounds of content (text, images etc.) inside the cell. Not reported for elements which don't have any content items (like empty table cells).",
+            "$ref": "#/definitions/rect"
+          },
+          "ClipBounds": {
+            "description": "Bounding box enlosing the content items, post clipping, forming this element. Only reported if any content item forming this element has an associated clip path. Box in corresponding \"Bounds\" key always encloses this box.",
+            "$ref": "#/definitions/rect"
+          },
+          "CharBounds": {
+            "description": "List of bounds for each character in this element",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/rect"
+            }
+          },
+          "Font": {
+            "description": "Font description for the font associated with the first character. Only reported for text elements.",
+            "type": "object",
+            "properties": {
+              "alt_family_name": {
+                "description": "Alternate font family name",
+                "type": "string"
+              },
+              "embedded": {
+                "description": "The font is embedded in the document or not",
+                "type": "boolean"
+              },
+              "encoding": {
+                "description": "Font's encoding like WinAnsiEncoding, Identity-H, MacRomanEncoding etc.",
+                "type": "string"
+              },
+              "family_name": {
+                "description": "Font's family name. Example - For font \"Times Bold Italic\", family name is \"Times\"",
+                "type": "string",
+                "maxLength": 1023
+              },
+              "font_type": {
+                "description": "Font technology (type) - eg. Type 1, TrueType, OpenType",
+                "type": "string"
+              },
+              "italic": {
+                "description": "Font is italics or not",
+                "type": "boolean"
+              },
+              "monospaced": {
+                "description": "Font is monospaced or not",
+                "type": "boolean"
+              },
+              "name": {
+                "description": "The PostScript name of the font",
+                "type": "string",
+                "maxLength": 127
+              },
+              "subset": {
+                "description": "Font is a subset i.e. only contains some characters from the original font",
+                "type": "boolean"
+              },
+              "weight": {
+                "description": "Weight (thickness) of the font",
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "alt_family_name",
+              "embedded",
+              "encoding",
+              "family_name",
+              "font_type",
+              "italic",
+              "monospaced",
+              "name",
+              "subset",
+              "weight"
+            ]
+          },
+          "HasClip": {
+            "description": "Clip path is associated with the element or not. True if at least one content item forming this element has an associated clip path, false otherwise",
+            "type": "boolean",
+            "default": false
+          },
+          "ObjectID": {
+            "description": "Unique identifier for the element",
+            "type": "integer",
+            "minimum": 0
+          },
+          "Lang": {
+            "description": "BCP-47 code for language of text elements",
+            "type": "string"
+          },
+          "Page": {
+            "description": "Page on which the element is present (zero-based).",
+            "type": "integer",
+            "minimum": 0
+          },
+          "Path": {
+            "description": "Path describing the location of the element in the structure tree. The type of the element and instance number are also part of the path. For more information, please visit https://opensource.adobe.com/pdftools-sdk-docs/beta/extract",
+            "type": "string"
+          },
+          "Text": {
+            "description": "Text for the element in UTF-8 format. Only reported for text elements. When inline elements are reported separately from parent block element, then this value has references to those inline elements. For more information, please visit https://opensource.adobe.com/pdftools-sdk-docs/beta/extract",
+            "type": "string"
+          },
+          "TextSize": {
+            "description": "Text size (in points) of the last character. Only reported for text elements.",
+            "type": "number",
+            "minimum": 0,
+            "exclusiveMinimum": true
+          },
+          "attributes": {
+            "description": "Miscellaneous attributes of the element",
+            "type": "object",
+            "properties": {
+              "LineHeight": {
+                "description": "Line height (in PDF user units) of the text. Only reported for text elements. Inline elements inherit this value from parent element.",
+                "default": 0,
+                "type": "number"
+              },
+              "SpaceAfter": {
+                "description": "Amount of padding/spacing (in PDF user units) after the element",
+                "default": 0,
+                "type": "number"
+              },
+              "TextAlign": {
+                "description": "Horizontal alignment (left, right, center, justified) of text inside the element. Only reported for text elements.",
+                "type": "string",
+                "default": "Start",
+                "enum": [
+                  "Start",
+                  "End",
+                  "Center",
+                  "Justify"
+                ]
+              },
+              "Placement": {
+                "description": "Positioning of the element with respect to the enclosing reference area and other content",
+                "type": "string",
+                "default": "Block",
+                "enum": [
+                  "Block",
+                  "Inline",
+                  "Before",
+                  "After",
+                  "Start",
+                  "End"
+                ]
+              },
+              "BBox": {
+                "description": "Visual bounding box. Only reported for tables and table cells. Useful for getting bounds of the element including borders, if any. Use this to get bounding box of an empty tables/table cells",
+                "$ref": "#/definitions/rect"
+              },
+              "NumCol": {
+                "description": "Number of columns in the table element",
+                "default": 1,
+                "type": "integer"
+              },
+              "NumRow": {
+                "description": "Number of rows in the table element",
+                "default": 1,
+                "type": "integer"
+              },
+              "TextPosition": {
+                "description": "Position of text - subscript / superscript / normal",
+                "type": "string",
+                "default": "Normal",
+                "enum": [
+                  "Sub",
+                  "Sup",
+                  "Normal"
+                ]
+              },
+              "StartIndent": {
+                "description": "First line indent (in PDF user units) in text. Only reported for text elements.",
+                "default": 0,
+                "type": "number"
+              },
+              "TextDecorationColor": {
+                "description": "Color of text decoration",
+                "$ref": "#/definitions/colorRGB"
+              },
+              "TextDecorationThickness": {
+                "description": "Thickness of text decoration (in PDF user Units) rounded off to nearest integer",
+                "type": "integer",
+                "minimum": 0
+              },
+              "TextDecorationType": {
+                "description": "Type of text decoration - line-through / underline / overline / none",
+                "type": "string",
+                "default": "None",
+                "enum": [
+                  "LineThrough",
+                  "Underline",
+                  "Overline",
+                  "None"
+                ]
+              },
+              "BlockAlign": {
+                "description": "Vertical placement (top, middle, bottom, justified) of elements inside table cell. Only applicable for table cells.",
+                "type": "string",
+                "default": "Before",
+                "enum": [
+                  "Before",
+                  "Middle",
+                  "After",
+                  "Justify"
+                ]
+              },
+              "BorderColor": {
+                "description": "Color of border(s), if any. Single color reported if all 4 borders are of same color. If colors are different, each border color reported individually in order - top, bottom, left, right. Reported for table cells only.",
+                "default": [
+                  0,
+                  0,
+                  0
+                ],
+                "oneOf": [
+                  {
+                    "oneOf": [
+                      {
+                        "$ref": "#/definitions/colorRGB"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "array",
+                    "minItems": 4,
+                    "maxItems": 4,
+                    "items": {
+                      "oneOf": [
+                        {
+                          "$ref": "#/definitions/colorRGB"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "BorderStyle": {
+                "description": "Style of border(s), if any. Single style reported if all 4 borders are of same style. If styles are different, each border style reported individually in order - top, bottom, left, right. Reported for table cells only.",
+                "default": "None",
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "enum": [
+                      "None",
+                      "Hidden",
+                      "Dotted",
+                      "Dashed",
+                      "Solid",
+                      "Double",
+                      "Grooved",
+                      "Ridge",
+                      "Inset",
+                      "Outset"
+                    ]
+                  },
+                  {
+                    "type": "array",
+                    "minItems": 4,
+                    "maxItems": 4,
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "None",
+                        "Hidden",
+                        "Dotted",
+                        "Dashed",
+                        "Solid",
+                        "Double",
+                        "Grooved",
+                        "Ridge",
+                        "Inset",
+                        "Outset"
+                      ]
+                    }
+                  }
+                ]
+              },
+              "BorderThickness": {
+                "description": "Thickness of border(s), if any, (in PDF user units) rounded off to nearest integer. Single thickness value reported if all 4 borders are of same thickness. If thickness varies, thickness of each border reported individually in order - top, bottom, left, right. Reported for table cells only.",
+                "default": 0,
+                "oneOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "array",
+                    "minItems": 4,
+                    "maxItems": 4,
+                    "items": {
+                      "type": "number",
+                      "minimum": 0
+                    }
+                  }
+                ]
+              },
+              "ColIndex": {
+                "description": "Column index of the table cell (zero-based)",
+                "type": "integer"
+              },
+              "Height": {
+                "description": "Height (in PDF user units) of table cell element. Useful for getting table cell dimensions.",
+                "type": "number",
+                "default": 0,
+                "minimum": 0
+              },
+              "InlineAlign": {
+                "description": "Horizontal placement (left, center, right, justified) of elements inside table cell",
+                "default": "Start",
+                "type": "string",
+                "enum": [
+                  "Start",
+                  "Center",
+                  "End",
+                  "Justify"
+                ]
+              },
+              "RowIndex": {
+                "description": "Row index of the table cell (zero-based)",
+                "type": "integer"
+              },
+              "Width": {
+                "description": "Width (in PDF user units) of table cell element. Useful for getting table cell dimensions.",
+                "default": 0,
+                "type": "number",
+                "minimum": 0
+              },
+              "BackgroundColor": {
+                "description": "Background color (if any) of the element. Also used for reporting text highlight color.",
+                "$ref": "#/definitions/colorRGB"
+              },
+              "BaselineShift": {
+                "description": "Value of offset (in PDF user units) of text from current baseline. Only reported for text elements.",
+                "default": 0,
+                "type": "number"
+              },
+              "ColSpan": {
+                "description": "Number of columns spanned by a table cell",
+                "type": "integer",
+                "default": 1,
+                "minimum": 1
+              },
+              "RowSpan": {
+                "description": "Number of rows spanned by a table cell",
+                "type": "integer",
+                "default": 1,
+                "minimum": 1
+              }
+            }
+          },
+          "Skew": {
+            "description": "Clockwise skew angle (in degrees) of the last character. Only reported for text elements.",
+            "default": 0,
+            "type": "number",
+            "minimum": -90,
+            "maximum": 90
+          },
+          "Rotation": {
+            "description": "Clockwise rotation angle (in degrees) of the last character. Only reported for text elements.",
+            "default": 0,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 360,
+            "exclusiveMaximum": true
+          },
+          "Image": {
+            "description": "Image description",
+            "type": "object",
+            "properties": {
+              "bits_per_component": {
+                "description": "Bits used for each component of color in a sample",
+                "type": "integer",
+                "enum": [
+                  1,
+                  2,
+                  4,
+                  8,
+                  16
+                ]
+              },
+              "colorspace": {
+                "description": "Description for color space used by the image",
+                "type": "object",
+                "properties": {
+                  "Name": {
+                    "description": "PDF name of the color space like DeviceGray, CalGray, DeviceRGB, DeviceCMYK, ICCBased e.t.c",
+                    "type": "string"
+                  },
+                  "ICCProfile": {
+                    "description": "ICC profile characteristics of the color space. Reported only when \"Name\" is \"ICCBased\".",
+                    "type": "object",
+                    "properties": {
+                      "CMM ID": {
+                        "description": "Profile's CMM identifier",
+                        "type": "string"
+                      },
+                      "ColorSpace": {
+                        "description": "ICC name of the color space",
+                        "type": "string",
+                        "enum": [
+                          "Gray",
+                          "RGB",
+                          "CMYK",
+                          "Lab"
+                        ]
+                      },
+                      "Colorspace": {
+                        "description": "ICC name of the color space",
+                        "type": "string",
+                        "enum": [
+                          "Gray",
+                          "RGB",
+                          "CMYK",
+                          "Lab"
+                        ]
+                      },
+                      "Creator": {
+                        "description": "Profile's creator",
+                        "type": "string"
+                      },
+                      "Date": {
+                        "description": "Date the profile was created",
+                        "type": "string"
+                      },
+                      "Device Class": {
+                        "description": "Type of profile",
+                        "type": "string",
+                        "enum": [
+                          "scnr",
+                          "mntr",
+                          "prtr",
+                          "spac"
+                        ]
+                      },
+                      "Flags": {
+                        "description": "Various bit settings of the profile",
+                        "type": "string"
+                      },
+                      "ICCVersion": {
+                        "description": "Profile's format version number",
+                        "type": "string"
+                      },
+                      "Illuminant": {
+                        "description": "Profile illuminant",
+                        "type": "string"
+                      },
+                      "Magic": {
+                        "description": "ICC magic number",
+                        "type": "string"
+                      },
+                      "Manufacturer": {
+                        "description": "Device manufacturer",
+                        "type": "string"
+                      },
+                      "Model": {
+                        "description": "Device model number",
+                        "type": "string"
+                      },
+                      "Name": {
+                        "description": "Profile's name",
+                        "type": "string"
+                      },
+                      "NumComps": {
+                        "description": "Number of components used to represent a color. Gray = 1, RGB = 3, CMYK = 4, Lab = 3",
+                        "type": "integer",
+                        "enum": [
+                          0,
+                          1,
+                          3,
+                          4
+                        ]
+                      },
+                      "PCS": {
+                        "description": "PCS, XYZ or Lab only",
+                        "type": "string"
+                      },
+                      "Platform": {
+                        "description": "Primary Platform",
+                        "type": "string"
+                      },
+                      "Rendering Intent": {
+                        "description": "Rendering intent",
+                        "type": "string",
+                        "enum": [
+                          "AbsoluteColorimetric",
+                          "RelativeColorimetric",
+                          "Saturation",
+                          "Perceptual"
+                        ]
+                      },
+                      "Size": {
+                        "description": "Profile size in bytes",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "CMM ID",
+                      "ColorSpace",
+                      "Colorspace",
+                      "Creator",
+                      "Date",
+                      "Device Class",
+                      "Flags",
+                      "ICCVersion",
+                      "Illuminant",
+                      "Magic",
+                      "Manufacturer",
+                      "Model",
+                      "Name",
+                      "NumComps",
+                      "PCS",
+                      "Platform",
+                      "Rendering Intent",
+                      "Size"
+                    ]
+                  }
+                },
+                "required": [
+                  "Name"
+                ]
+              },
+              "data_length": {
+                "description": "Number of bytes in image data stream",
+                "type": "integer"
+              },
+              "height": {
+                "description": "Height of the image in PDF user units",
+                "type": "integer"
+              },
+              "resolution_horizontal": {
+                "description": "Horizontal resolution",
+                "type": "number"
+              },
+              "resolution_vertical": {
+                "description": "Vertical resolution",
+                "type": "number"
+              },
+              "width": {
+                "description": "Width of the image in PDF user units",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "bits_per_component",
+              "colorspace",
+              "data_length",
+              "height",
+              "resolution_horizontal",
+              "resolution_vertical",
+              "width"
+            ]
+          },
+          "filePaths": {
+            "description": "List of file paths to additional output files (images and spreadsheets). For more information, please see API documentation at https://opensource.adobe.com/pdftools-sdk-docs/beta/extract",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "ObjectID",
+          "Path"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "pages": {
+      "description": "A list of properties for each page of the PDF",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "description": "Page properties.",
+        "type": "object",
+        "properties": {
+          "page_number": {
+            "description": "Page number (zero-based).",
+            "type": "integer",
+            "minimum": 0
+          },
+          "width": {
+            "description": "Width (in PDF user units) of the page.",
+            "type": "number",
+            "minimum": 0
+          },
+          "height": {
+            "description": "Height (in PDF user units) of the page.",
+            "type": "number",
+            "minimum": 0
+          },
+          "rotation": {
+            "description": "Clockwise rotation value of the page (in degrees).",
+            "type": "integer",
+            "enum": [
+              0,
+              90,
+              180,
+              270
+            ]
+          },
+          "user_units": {
+            "description": "Multiplier on the size of the default user space unit (eg. 1 == 72/inch)",
+            "type": "number",
+            "minimum": 1,
+            "maximum": 75000
+          },
+          "boxes": {
+            "type": "object",
+            "properties": {
+              "MediaBox": {
+                "description": "Media box of the page. Defines the boundaries of the physical medium on which the page is printed/displayed.",
+                "$ref": "#/definitions/rect"
+              },
+              "CropBox": {
+                "description": "Crop box of the page. Defines the visible region of the page. Content of the page clipped to this rectangle before print/display.",
+                "$ref": "#/definitions/rect"
+              }
+            }
+          }
+        },
+        "required": [
+          "page_number",
+          "width",
+          "height",
+          "rotation",
+          "boxes"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "version",
+    "elements",
+    "extended_metadata"
+  ],
+  "additionalProperties": false
+}
