@@ -19,7 +19,7 @@ module.exports = {
     pages: [
       {
         title: 'Adobe Document Services',
-        path: '../../'
+        path: '../../../document-services'
       },
       {
         title: 'APIs',
