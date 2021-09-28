@@ -3,7 +3,7 @@
 ## Export a PDF
 
 The sample below converts a PDF file into a number of [supported
-formats](https://opensource.adobe.com/pdfservices-java-sdk-samples/apidocs/latest/com/adobe/platform/operation/pdfops/options/exportpdf/ExportPDFTargetFormat.html)
+formats](https://opensource.adobe.com/pdfservices-java-sdk-samples/apidocs/latest/com/adobe/pdfservices/operation/pdfops/options/exportpdf/ExportPDFTargetFormat.html)
 such as:
 
 -   Microsoft Office file formats

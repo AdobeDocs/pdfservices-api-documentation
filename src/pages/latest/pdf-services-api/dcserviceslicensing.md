@@ -21,6 +21,7 @@ will be counted with the following page limits:
 Document Transactions for the Operations below resulting in a Document
 will be counted with the following page limits:<br/>
 *Extract PDF Operation: up to 5 pages per Document Transaction<br/>*
+*All other Operations: up to 50 pages per Document Transaction<br/>*
 Notes can have more than one paragraph. Successive paragraphs must
 indent to the same level as the rest of the note.
 
@@ -87,7 +88,7 @@ result in an error message.
 | Payload size (Document Generation): Word template and JSON file | 100MB       |
 | Maximum Requests Per Minute (Extract)                           | 25 RPM      |
 
-*Page limits may be lower for documents with a large number of tables.*
+**Page limits may be lower for documents with a large number of tables.*
 
 Licensing Metrics & Free Trial
 ------------------------------

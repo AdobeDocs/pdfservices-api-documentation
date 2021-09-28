@@ -4,7 +4,7 @@
 
 Use the sample below to create PDFs from Microsoft Office documents
 (Word, Excel and PowerPoint) and other [supported file
-formats](https://opensource.adobe.com/pdfservices-java-sdk-samples/apidocs/latest/com/adobe/platform/operation/pdfops/CreatePDFOperation.SupportedSourceFormat.html).
+formats](https://opensource.adobe.com/pdfservices-java-sdk-samples/apidocs/latest/com/adobe/pdfservices/operation/pdfops/CreatePDFOperation.SupportedSourceFormat.html).
 While the example shows .docx file conversion, the SDK supports the
 following formats:
 

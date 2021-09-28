@@ -2,7 +2,7 @@
 
 This document describes the change history across releases for supported
 versions. For details regarding versioning and support policies, see
-policies.
+[Version - Support policy](./policies.md).
 
 ## Supported versions
 
@@ -88,7 +88,7 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 
 ### .NET changes
 
-* Nuget package name changed from `Adobe.DocumentServices.PDFTools` to `Adobe.PDFServicesSDK
+* Nuget package name changed from `Adobe.DocumentServices.PDFTools` to `Adobe.PDFServicesSDK`
 * Update the SDK dependency in your project’s .csproj file with the following:
 
 ```
@@ -98,7 +98,10 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 </ItemGroup> 
 ```
 
-* Update the namespaces accordingly in your .cs file as per the new dependency using Adobe.PDFServicesSDK
+* Update the namespaces accordingly in your .cs file as per the new dependency: 
+```javascript
+using Adobe.PDFServicesSDK
+```  
 
 ## Documentation library
 
