@@ -95,7 +95,7 @@ Once a version reaches its end of life, functionality may be deprecated and stop
 ## Deprecated docs - past versions
 
 Only the latest documentation is typically available online. Refer to
-the library for links.
+the [Documentation Library](./policies.md#documentation-library) for links.
 
 <InlineAlert slots="text" variant="warning" />
 

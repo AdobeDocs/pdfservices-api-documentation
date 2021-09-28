@@ -423,9 +423,9 @@ To view the code in action, see the [online demo](https://dc.acrobat.com/view-sd
 
 | Embed mode                          | Description                                                                                                            | Example                                               |
 | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| [Full window](#full) (default mode) | The viewing area renders in the full browser. Best suited for storage and productivity applications.                   | ![_images/embedfull.png](../images/embedfull.png)     |
-| [Sized container](#sized)           | The sized container mode displays PDFs in a boxed container with landscape orientation. Best suited for presentations. | ![_images/embedsized.png](../images/embedsized.png)   |
-| [In-Line](#inline)                  | All PDF pages rendered in line within a web page. Best suited for reading applications.                                | ![_images/embedinline.png](../images/embedinline.png) |
+| [Full window](#full-window) (default mode) | The viewing area renders in the full browser. Best suited for storage and productivity applications.                   | ![_images/embedfull.png](../images/embedfull.png)     |
+| [Sized container](#sized-container)           | The sized container mode displays PDFs in a boxed container with landscape orientation. Best suited for presentations. | ![_images/embedsized.png](../images/embedsized.png)   |
+| [In-Line](#in-line)                  | All PDF pages rendered in line within a web page. Best suited for reading applications.                                | ![_images/embedinline.png](../images/embedinline.png) |
 | [Lightbox](#lightbox)               | Displays PDFs in a focused view. Best suited for content websites, content portals, and email.                         | ![_images/lightbox.png](../images/lightbox.png)       |
  
 ### Full window
