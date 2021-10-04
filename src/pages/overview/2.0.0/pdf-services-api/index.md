@@ -130,7 +130,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 4.  Verify the hash you generated matches the value in the .sha1 file.
 
 ```
-9f48ce8c34bdc14ac842530588c734a52b216276
+feddd53e25b6c87dab843a19a7a2537b3d9749ac
 ```
 
 #### Logging
@@ -272,7 +272,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 3.  Verify the hash in the downloaded file matches the value published here.
 
 ```
-r+QhCZTFx2TU0f3ny2V5uXh4iUFI12Sa0hSVprx8XMM+DnHrPhJL9aSBAM+EwEp0Wz+obYoSC247XFe2pDIrBw==
+sXjImwOopz+X90NkO9olc2PjW0jvamn+S6vh+8JCc1DExMcJWe/sPQk5mo4SW/gAcjvzMdCLI5iUqTtt5mKBoA==
 ```
 
 #### Logging
@@ -385,7 +385,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 3.  Verify the hash in the downloaded file matches the value published here.
 
 ```
-  sha512-9g6D3Ts/HJXktogLyYN9QxzpB1KhpAnTPDlRX+sohCVz2IhMSskAhxGQtu9Pa1zxv+J1Vh68rm0Wr3d8tUVCBA==
+sha512-c5iJAUvU+DbfZTODe+iotGYUyH15B8m8+9QN+r1Z8UGuSLPi3HeMMa9j5ETAzX9vhSlVWmHaN/uFHjSMehAfWQ==
 ```
 
 #### Logging

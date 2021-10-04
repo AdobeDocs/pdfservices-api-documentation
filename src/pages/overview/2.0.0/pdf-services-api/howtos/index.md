@@ -17,7 +17,6 @@ PDF actions using the SDK, including:
 -   Splitting PDFs into multiple files
 -   Extract PDF as JSON: the content, structure & renditions of table
     and figure elements along with Character Bounding Boxes
--   Get the properties of a PDF file like page count, PDF version, file size, compliance levels, font info, permissions and more
 
 ## Runtime in-memory authentication
 

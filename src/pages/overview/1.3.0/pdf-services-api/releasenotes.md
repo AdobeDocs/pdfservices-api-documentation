@@ -24,7 +24,7 @@ repo as follows:
 ## Migration Guide to PDF Services SDK
 
 Refer to the following table for migrating to PDF Services SDK version
-2.1.0, you can also refer our Samples(
+1.3.0, you can also refer our Samples(
 [Java](https://www.adobe.com/go/pdftoolsapi_java_samples), [Node
 JS](https://www.adobe.com/go/pdftoolsapi_node_sample),
 [.NET](https://www.adobe.com/go/pdftoolsapi_net_samples)). for the
@@ -47,8 +47,8 @@ version.
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <pdfservices.sdk.version>2.1.0</pdfservices.sdk.version>
-    <pdfservices.sdk.samples.version>2.1.0</pdfservices.sdk.samples.version>
+    <pdfservices.sdk.version>1.3.0</pdfservices.sdk.version>
+    <pdfservices.sdk.samples.version>1.3.0</pdfservices.sdk.samples.version>
 </properties>
 
 <dependency>
@@ -70,7 +70,7 @@ import com.adobe.pdfservices.operation.ExecutionContext;
 * Update the latest SDK dependency in package.json file of your project
  
 ```
-"@adobe/pdfservices-node-sdk": "2.1.0"
+"@adobe/pdfservices-node-sdk": "1.3.0"
 ```
 
 * Require the `@adobe/pdfservices-node-sdk` in the Sample file to access the SDK interface
@@ -94,7 +94,7 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 ```
 <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.12" />
-    <PackageReference Include="Adobe.PDFServicesSDK" Version="2.1.0" />
+    <PackageReference Include="Adobe.PDFServicesSDK" Version="1.3.0" />
 </ItemGroup> 
 ```
 
@@ -109,11 +109,9 @@ Refer to the following for links to supported product documentation.
 
 | Item  | Public doc                                                                |
 | ----- | ------------------------------------------------------------------------- |
-| 2.0.0 | [Web page](../../2.0.0/index.md) |
-| 1.3.0 | [Web page](../../1.3.0/index.md) |
-| 1.2.0 | [Web page](https://opensource.adobe.com/pdftools-sdk-docs/release/1.2.0/) |
-| 1.1.0 | [Web page](https://opensource.adobe.com/pdftools-sdk-docs/release/1.1.0/) |
-| 1.0.0 | [Web page](https://opensource.adobe.com/pdftools-sdk-docs/release/1.0.0/) |
+| 1.2.0 | [Web page](../../1.3.0/index.md) |
+| 1.1.0 | [Web page](../../1.3.0/index.md) |
+| 1.0.0 | [Web page](../../1.3.0/index.md) |
 
 ## Change types
 
@@ -131,34 +129,6 @@ Change types include the following:
 
 The new release is backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
-
-## Change history
-
-### 2.1.0 (September, 2021; minor release)
-
-| Change  | Language            | Description                                                                                                                                                   |
-| ------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| New     | .NET                | Extract operation is now available in .NET SDK as part of **Adobe.PDFServicesSDK**.                                                                                |
-| New     | Java, Node JS, .NET | Support for fetching the properties of a PDF file - metadata including page count, PDF version, file size, compliance levels, font info, permissions and more.     |
-| New     | Java, Node JS, .NET | Support for returning the list of images besides returning ZIP of all image files.                                                                                 |
-| New     | Java, Node JS, .NET | Support for converting the content hosted on a URL to PDF files.                                                                                                   |
-| New     | Java, Node JS, .NET | Support for converting an HTML file containing inline CSS to PDF files.                                                                                            |
-
-### Extract PDF Server Side Release (26 Aug, 2021; server side release)
-| Change  | Language            | Description                                     |
-| ------- | ------------------- | ----------------------------------------------- |
-| Changed | All                 | PDF Extract API bug fixes and stability release |
-
-### 2.0.0 (May, 2021; major release)
-
-| Change  | Language | Description                                                                                                    |
-| ------- | -------- | -------------------------------------------------------------------------------------------------------------- |
-| New     | All      | Extract operation released as part of **pdfservices-sdk**                                                      |
-| Changed | Java     | artifactId changed from pdftools-sdk to **pdfservices-sdk**                                                    |
-| Changed | Node JS  | NPM package name changed from @adobe/documentservices-pdftools-node-sdk to **@adobe/pdfservices-node-sdk**     |
-| Changed | Node JS  | For HTML to PDF Conversions, the PageLayout object interface is moved inside html object.                      |
-| Changed | .NET     | Nuget package name changed from Adobe.DocumentServices.PDFTools to **Adobe.PDFServicesSDK**                    |
-| New     | Python   | Python SDK “pdfservices-sdk” v1.0 is released for ML Services which consists of ExtractPDFOperation currently. |
 
 ### 1.3.0 (March, 2021; minor release)
 
