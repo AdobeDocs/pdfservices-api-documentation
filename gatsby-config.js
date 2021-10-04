@@ -75,19 +75,19 @@ module.exports = {
           },
           {
             title: 'Document Generation API',
-            path: '/document-generation-api/index.md'
+            path: 'overview/document-generation-api/index.md'
           },
           {
             title: 'PDF Extract API',
-            path: './pdf-extract-api/index.md'
+            path: 'overview/pdf-extract-api/index.md'
           },
           {
             title: 'PDF Embed API',
-            path: './pdf-embed-api/index.md'
+            path: 'overview/pdf-embed-api/index.md'
           },
           {
             title: 'PDF Services API',
-            path: './pdf-services-api/index.md'
+            path: 'overview/pdf-services-api/index.md'
           }
         ]
       },

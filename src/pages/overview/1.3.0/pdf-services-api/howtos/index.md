@@ -17,7 +17,6 @@ PDF actions using the SDK, including:
 -   Splitting PDFs into multiple files
 -   Extract PDF as JSON: the content, structure & renditions of table
     and figure elements along with Character Bounding Boxes
--   Get the properties of a PDF file like page count, PDF version, file size, compliance levels, font info, permissions and more
 
 ## Runtime in-memory authentication
 
@@ -29,7 +28,6 @@ samples for details.
 -   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/createpdf/CreatePDFWithInMemoryAuthCredentials.java)
 -   [.NET](https://github.com/adobe/PDFServices.NET.SDK.Samples/tree/master/CreatePDFWithInMemoryAuthCredentials)
 -   [Node.js](https://github.com/adobe/pdfservices-node-sdk-samples/blob/master/src/createpdf/create-pdf-with-inmemory-auth-credentials.js)
--   [Python](https://github.com/adobe/pdfservices-python-sdk-samples/blob/master/src/extractpdf/extract_txt_from_pdf_with_in_memory_auth_credentials.py)
 
 ## Custom timeout configuration
 
@@ -41,7 +39,6 @@ the details below, you can refer to working code samples:
 -   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/createpdf/CreatePDFWithCustomTimeouts.java)
 -   [.NET](https://github.com/adobe/PDFServices.NET.SDK.Samples/blob/master/CreatePDFWithCustomTimeouts/Program.cs)
 -   [Node.js](https://github.com/adobe/pdfservices-node-sdk-samples/blob/master/src/createpdf/create-pdf-with-custom-timeouts.js)
--   [Python](https://github.com/adobe/pdfservices-python-sdk-samples/blob/master/src/extractpdf/extract_txt_from_pdf_with_custom_timeouts.py)
 
 ### Java timeout configuration
 
@@ -98,22 +95,3 @@ const clientConfig = PDFServicesSdk.ClientConfig
   .withReadTimeout(15000)
   .build();
 ```  
-
-### Python timeout configuration
-
-Available properties:
-
--   **connectTimeout**: Default: 4000. The number of milliseconds
-    Requests will wait for the client to establish a connection to
-    Server.
--   **readTimeout**: Default: 10000. The number of milliseconds the
-    client will wait for the server to send a response.
-
-Override the timeout properties via a custom `ClientConfig` class:
-
-``` 
-client_config = ClientConfig.builder()
-    .with_connect_timeout(10000)
-    .with_read_timeout(40000)
-    .build()
-```
