@@ -39,7 +39,7 @@ module.exports = {
         ]
       },
       {
-        title: 'Community Forum',
+        title: 'New Community Forum',
         path: 'https://community.adobe.com/t5/document-cloud-sdk/bd-p/Document-Cloud-SDK?page=1&sort=latest_replies&filter=all#://'
       },
     ],
