@@ -36,6 +36,10 @@ module.exports = {
             title: 'Document Generation API',
             path: 'document-generation-api'
           },
+          {
+            title: 'Document Generation API',
+            path: 'document-generation-api'
+          },
         ]
       },
       {
