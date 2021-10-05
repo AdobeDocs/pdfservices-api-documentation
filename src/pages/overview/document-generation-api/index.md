@@ -1,4 +1,4 @@
-# <a name = "docgen">Overview</a>
+# Overview
 
 **What is Document Generation?**
 

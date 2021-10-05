@@ -10,6 +10,10 @@
  * governing permissions and limitations under the License.
  */
 
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     home: {
@@ -64,7 +68,7 @@ module.exports = {
       },
       {
         title: 'Get Started',
-        path: 'home/gettingstarted.md'
+        path: process.env.GETTING_STARTED
       },
       {
         title: 'Documentation',
@@ -285,303 +289,23 @@ module.exports = {
         pages: [
           {
             title: 'v2.0.0',
-            path: 'overview/2.0.0/index.md',
-            pages: [
-              {
-                title: 'Overview',
-                path: 'overview/2.0.0/index.md',
-              },
-              {
-                title: 'PDF Services API',
-                path: 'overview/2.0.0/pdf-services-api/index.md',
-                pages: [
-                  {
-                    title: 'Overview',
-                    path: 'overview/2.0.0/pdf-services-api/index.md'
-                  },
-                  {
-                    title: 'How Tos',
-                    path: 'overview/2.0.0/pdf-services-api/howtos',
-                    pages: [
-                      {
-                        title: 'Overview',
-                        path: 'overview/2.0.0/pdf-services-api/howtos/index.md'
-                      },
-                      {
-                        title: 'Create PDF',
-                        path: 'overview/2.0.0/pdf-services-api/howtos/create-pdf.md'
-                      },
-                      {
-                        title: 'Export PDF',
-                        path: 'overview/2.0.0/pdf-services-api/howtos/export-pdf.md'
-                      },
-                      {
-                        title: 'Extract PDF',
-                        path: 'overview/2.0.0/pdf-services-api/howtos/extract-pdf.md'
-                      },
-                      {
-                        title: 'Combine PDF Files',
-                        path: 'overview/2.0.0/pdf-services-api/howtos/combine-pdf.md'
-                      },
-                      {
-                        title: 'OCR PDF',
-                        path: 'overview/2.0.0/pdf-services-api/howtos/ocr-pdf.md'
-                      },
-                      {
-                        title: 'Compress PDFs',
-                        path: 'overview/2.0.0/pdf-services-api/howtos/compress-pdf.md'
-                      },
-                      {
-                        title: 'Linearize PDF',
-                        path: 'overview/2.0.0/pdf-services-api/howtos/linearize-pdf.md'
-                      },
-                      {
-                        title: 'Protect PDF',
-                        path: 'overview/2.0.0/pdf-services-api/howtos/protect-pdf.md'
-                      },
-                      {
-                        title: 'Remove Protection',
-                        path: 'overview/2.0.0/pdf-services-api/howtos/remove-protection.md'
-                      },
-                      {
-                        title: 'Insert Pages',
-                        path: 'overview/2.0.0/pdf-services-api/howtos/insert-pages.md'
-                      },
-                      {
-                        title: 'Replace Pages',
-                        path: 'overview/2.0.0/pdf-services-api/howtos/replace-pages.md'
-                      },
-                      {
-                        title: 'Delete Pages',
-                        path: 'overview/2.0.0/pdf-services-api/howtos/delete-pages.md'
-                      },
-                      {
-                        title: 'Reorder Pages',
-                        path: 'overview/2.0.0/pdf-services-api/howtos/reorder-pages.md'
-                      },
-                      {
-                        title: 'Rotate Pages',
-                        path: 'overview/2.0.0/pdf-services-api/howtos/rotate-pages.md'
-                      },
-                      {
-                        title: 'Split PDF',
-                        path: 'overview/2.0.0/pdf-services-api/howtos/split-pdf.md'
-                      },
-                    ]
-                  },
-                  {
-                    title: 'Version - Support policy',
-                    path: 'overview/2.0.0/pdf-services-api/policies.md'
-                  },
-                  {
-                    title: 'Release notes',
-                    path: 'overview/2.0.0/pdf-services-api/releasenotes.md'
-                  },
-                  {
-                    title: 'PDF Services API Licensing',
-                    path: 'overview/2.0.0/pdf-services-api/dcserviceslicensing.md'
-                  },
-                ]
-              },
-              {
-                title: 'PDF Extract API',
-                path: 'overview/2.0.0/pdf-extract-api/index.md',
-                pages: [
-                  {
-                    title: 'How Tos',
-                    path: 'overview/2.0.0/pdf-extract-api/howtos/howtos.md'
-                  },
-                  {
-                    title: 'Extract API',
-                    path: 'overview/2.0.0/pdf-extract-api/howtos/extract-api.md'
-                  },
-                  {
-                    title: 'API Licensing',
-                    path: 'overview/2.0.0/pdf-extract-api/dcserviceslicensing.md'
-                  },
-                  {
-                    title: 'Release Notes',
-                    path: 'overview/2.0.0/pdf-extract-api/releasenotes.md'
-                  },
-                ]
-              },
-              {
-                title: 'Document Generation API',
-                path: 'overview/2.0.0/document-generation-api/index.md',
-                pages: [
-                  {
-                    title: 'Quickstarts',
-                    path: 'overview/2.0.0/document-generation-api/quickstarts.md'
-                  },
-                  {
-                    title: 'Template Tags',
-                    path: 'overview/2.0.0/document-generation-api/templatetags.md'
-                  },
-                  {
-                    title: 'Word Add-in',
-                    path: 'overview/2.0.0/document-generation-api/wordaddin.md'
-                  },
-                  {
-                    title: 'API Licensing',
-                    path: 'overview/2.0.0/document-generation-api/dcserviceslicensing.md'
-                  },
-                  {
-                    title: 'Release Notes',
-                    path: 'overview/2.0.0/document-generation-api/releasenotes.md'
-                  },
-                ]
-              },
-            ]
+            path: 'https://opensource.adobe.com/pdftools-sdk-docs/release/2.0.0/',
           },
           {
             title: 'v1.3.0',
-            path: 'overview/1.3.0/index.md',
-            pages: [
-              {
-                title: 'Overview',
-                path: 'overview/1.3.0/index.md',
-              },
-              {
-                title: 'PDF Services API',
-                path: 'overview/1.3.0/pdf-services-api/index.md',
-                pages: [
-                  {
-                    title: 'Overview',
-                    path: 'overview/1.3.0/pdf-services-api/index.md'
-                  },
-                  {
-                    title: 'How Tos',
-                    path: 'overview/1.3.0/pdf-services-api/howtos',
-                    pages: [
-                      {
-                        title: 'Overview',
-                        path: 'overview/1.3.0/pdf-services-api/howtos/index.md'
-                      },
-                      {
-                        title: 'Create PDF',
-                        path: 'overview/1.3.0/pdf-services-api/howtos/create-pdf.md'
-                      },
-                      {
-                        title: 'Export PDF',
-                        path: 'overview/1.3.0/pdf-services-api/howtos/export-pdf.md'
-                      },
-                      {
-                        title: 'Extract PDF',
-                        path: 'overview/1.3.0/pdf-services-api/howtos/extract-pdf.md'
-                      },
-                      {
-                        title: 'Combine PDF Files',
-                        path: 'overview/1.3.0/pdf-services-api/howtos/combine-pdf.md'
-                      },
-                      {
-                        title: 'OCR PDF',
-                        path: 'overview/1.3.0/pdf-services-api/howtos/ocr-pdf.md'
-                      },
-                      {
-                        title: 'Compress PDFs',
-                        path: 'overview/1.3.0/pdf-services-api/howtos/compress-pdf.md'
-                      },
-                      {
-                        title: 'Linearize PDF',
-                        path: 'overview/1.3.0/pdf-services-api/howtos/linearize-pdf.md'
-                      },
-                      {
-                        title: 'Protect PDF',
-                        path: 'overview/1.3.0/pdf-services-api/howtos/protect-pdf.md'
-                      },
-                      {
-                        title: 'Remove Protection',
-                        path: 'overview/1.3.0/pdf-services-api/howtos/remove-protection.md'
-                      },
-                      {
-                        title: 'Insert Pages',
-                        path: 'overview/1.3.0/pdf-services-api/howtos/insert-pages.md'
-                      },
-                      {
-                        title: 'Replace Pages',
-                        path: 'overview/1.3.0/pdf-services-api/howtos/replace-pages.md'
-                      },
-                      {
-                        title: 'Delete Pages',
-                        path: 'overview/1.3.0/pdf-services-api/howtos/delete-pages.md'
-                      },
-                      {
-                        title: 'Reorder Pages',
-                        path: 'overview/1.3.0/pdf-services-api/howtos/reorder-pages.md'
-                      },
-                      {
-                        title: 'Rotate Pages',
-                        path: 'overview/1.3.0/pdf-services-api/howtos/rotate-pages.md'
-                      },
-                      {
-                        title: 'Split PDF',
-                        path: 'overview/1.3.0/pdf-services-api/howtos/split-pdf.md'
-                      },
-                    ]
-                  },
-                  {
-                    title: 'Version - Support policy',
-                    path: 'overview/1.3.0/pdf-services-api/policies.md'
-                  },
-                  {
-                    title: 'Release notes',
-                    path: 'overview/1.3.0/pdf-services-api/releasenotes.md'
-                  },
-                  {
-                    title: 'PDF Services API Licensing',
-                    path: 'overview/1.3.0/pdf-services-api/dcserviceslicensing.md'
-                  },
-                ]
-              },
-              {
-                title: 'PDF Extract API',
-                path: 'overview/1.3.0/pdf-extract-api/index.md',
-                pages: [
-                  {
-                    title: 'How Tos',
-                    path: 'overview/1.3.0/pdf-extract-api/howtos/howtos.md'
-                  },
-                  {
-                    title: 'Extract API',
-                    path: 'overview/1.3.0/pdf-extract-api/howtos/extract-api.md'
-                  },
-                  {
-                    title: 'API Licensing',
-                    path: 'overview/1.3.0/pdf-extract-api/dcserviceslicensing.md'
-                  },
-                  {
-                    title: 'Release Notes',
-                    path: 'overview/1.3.0/pdf-extract-api/releasenotes.md'
-                  },
-                ]
-              },
-              {
-                title: 'Document Generation API',
-                path: 'overview/1.3.0/document-generation-api/index.md',
-                pages: [
-                  {
-                    title: 'Quickstarts',
-                    path: 'overview/1.3.0/document-generation-api/quickstarts.md'
-                  },
-                  {
-                    title: 'Template Tags',
-                    path: 'overview/1.3.0/document-generation-api/templatetags.md'
-                  },
-                  {
-                    title: 'Word Add-in',
-                    path: 'overview/1.3.0/document-generation-api/wordaddin.md'
-                  },
-                  {
-                    title: 'API Licensing',
-                    path: 'overview/1.3.0/document-generation-api/dcserviceslicensing.md'
-                  },
-                  {
-                    title: 'Release Notes',
-                    path: 'overview/1.3.0/document-generation-api/releasenotes.md'
-                  },
-                ]
-              },
-            ]
+            path: 'https://opensource.adobe.com/pdftools-sdk-docs/release/1.3.0/',
+          },
+          {
+            title: 'v1.2.0',
+            path: 'https://opensource.adobe.com/pdftools-sdk-docs/release/1.2.0/',
+          },
+          {
+            title: 'v1.1.0',
+            path: 'https://opensource.adobe.com/pdftools-sdk-docs/release/1.1.0/',
+          },
+          {
+            title: 'v1.0.0',
+            path: 'https://opensource.adobe.com/pdftools-sdk-docs/release/1.0.0/',
           }
         ]
       },
