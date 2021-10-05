@@ -32,7 +32,7 @@ viewer on your machine.
 
 If you wish to run it in a local web server (for example, localhost),
 then you need a valid client ID. You can generate a client ID from
-[here](https://developer-stage.adobe.com/document-services/gettingstarted/). Insert the client
+[here](https://www.adobe.io/apis/documentcloud/dcsdk/gettingstarted.html#). Insert the client
 ID within the double quotes in line 16 in the code below and run the
 webpage from your server.
 
