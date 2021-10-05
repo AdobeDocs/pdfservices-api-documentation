@@ -36,10 +36,6 @@ module.exports = {
             title: 'Document Generation API',
             path: 'document-generation-api'
           },
-          {
-            title: 'PDF Extract API',
-            path: 'pdf-extract-api'
-          },
         ]
       },
       {
