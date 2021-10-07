@@ -11,6 +11,9 @@
  */
 
 module.exports = {
+  flags: {
+    DEV_SSR: false
+  },
   siteMetadata: {
     home: {
       title: 'Products',
@@ -64,7 +67,7 @@ module.exports = {
       },
       {
         title: 'Get Started',
-        path: process.env.GETTING_STARTED
+        path: process.env.GETTING_STARTED || 'getting-started'
       },
       {
         title: 'Documentation',
