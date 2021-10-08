@@ -2,7 +2,7 @@
 
 **This section describes all the template tags that can be used to author
 a document template.** During the [Document Generation
-Process](/document-generation-api/) , the Document
+Process](../document-generation-api/index.md) , the Document
 Generation API replaces the template tags in the document template with
 the input data to generate the output document.
 
@@ -24,7 +24,7 @@ A placeholder(text tags) gets replaced by the actual input data.
 <InlineAlert slots="text"/>
 
 A placeholder variable can only be applied to an input field of type
-string, number or boolean. |br| Formatting applied to the placeholder
+string, number or boolean. <br/> Formatting applied to the placeholder
 variable in the document template will be retained in the output
 document.
 
@@ -100,7 +100,7 @@ property as defined in the format.
 <InlineAlert slots="text"/>
 
 The height and width of the placeholder image is retained in the
-output document. |br| Supported image formats are JPEG, PNG, GIF, BMP
+output document. <br/> Supported image formats are JPEG, PNG, GIF, BMP
 and TIFF.
 
 JSON representation of the input data:
@@ -239,7 +239,7 @@ Show or hide content in the document based on the conditions.
 
 <InlineAlert slots="text"/>
 
-The condition must be wrapped inside *expr()*. |br| Supported
+The condition must be wrapped inside *expr()*. <br/> Supported
 conditional operators are =, !=, \>=, \>, \<=, \<.
 
 JSON representation of the input data:
@@ -314,7 +314,7 @@ Performs simple arithmetic operations.
 
 <InlineAlert slots="text"/>
 
-Supported arithmetic operations are +, -, \*, /, % . |br| An
+Supported arithmetic operations are +, -, \*, /, % . <br/> An
 arithmetic numerical calculation can only be applied to input fields
 that corresponds to a number.
 
@@ -327,7 +327,7 @@ Performs aggregations on a list of elements.
 
 <InlineAlert slots="text"/>
 
-Here is the list of [supported aggregation functions](https://docs.jsonata.org/aggregation-functions) |br| An
+Here is the list of [supported aggregation functions](https://docs.jsonata.org/aggregation-functions) <br/> An
 aggregate numerical calculation can only be applied to a list of
 numbers.
 

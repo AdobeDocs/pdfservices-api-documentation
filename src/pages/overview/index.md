@@ -32,11 +32,11 @@ The PDF Services API includes ready-to-use code samples for Java, Node.JS and .N
 
 The [Document Generation API](src/pages/overview/document-generation-api) is a cloud-based web service that allows you to produce high fidelity PDF and Word documents with dynamic data inputs. Using Document Generation API, you can merge your data(e.g. JSON file) with Word templates to create dynamic documents for contracts and agreements, invoices, proposals, reports, forms, branded marketing documents and more.
 
-Embed Document Generation API into any application using [PDFServices SDK](pdf-services-api) for Node.js, .Net, and Java. [Start a free trial that includes up to 1,000 free Document transactions or runs for 6 months, whichever occurs earlier.](https://www.adobe.io/apis/documentcloud/dcsdk/gettingstarted.html#)
+Embed Document Generation API into any application using [PDFServices SDK](pdf-services-api#sdk) for Node.js, .Net, and Java. [Start a free trial that includes up to 1,000 free Document transactions or runs for 6 months, whichever occurs earlier.](https://www.adobe.io/apis/documentcloud/dcsdk/gettingstarted.html#)
 
 ## PDF Extract API for extracting pdf structure and information
 
-The [PDF Extract API](pdf-services-api/index.md#extract-pdf) is a cloud-based web service that uses Adobe’s Sensei AI technology to automatically extract content and structural information from PDF documents – native or scanned – and to output it in a structured JSON format. The service extracts text, complex tables, and figures as follows:
+The [PDF Extract API](pdf-extract-api/index.md) is a cloud-based web service that uses Adobe’s Sensei AI technology to automatically extract content and structural information from PDF documents – native or scanned – and to output it in a structured JSON format. The service extracts text, complex tables, and figures as follows:
 
 * Text is extracted in contextual blocks – paragraphs, headings, lists, footnotes, etc. – and includes font, styling, and other text formatting information.
 

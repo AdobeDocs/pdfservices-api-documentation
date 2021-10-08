@@ -33,7 +33,7 @@ There are two ways to access Document Generation API:
 -   Use cloud based [REST
     API](https://www.adobe.com/go/dcsdk_APIdocs#post-documentGeneration).
 -   Or, directly use our offering through [PDFServices
-    SDK](../pdf-services-api).
+    SDK](../pdf-services-api#sdk).
 
 <InlineAlert slots="text"/>
 

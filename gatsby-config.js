@@ -62,7 +62,7 @@ module.exports = {
           path: 'https://community.adobe.com/t5/document-services-apis/bd-p/Document-Cloud-SDK?page=1&sort=latest_replies&filter=all'
         }, {
           title: 'Use Cases',
-          path: '../document-services/sales-proposals-and-contracts/'
+          path: '../document-services/use-cases/'
         }]
       },
       {
@@ -214,7 +214,7 @@ module.exports = {
           },
           {
             title: 'Release Notes',
-            path: 'docs/pdf-extract-api/releasenotes.md'
+            path: 'overview/pdf-extract-api/releasenotes.md'
           },
         ]
       },
