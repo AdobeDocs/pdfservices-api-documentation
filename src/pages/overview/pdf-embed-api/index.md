@@ -106,7 +106,7 @@ browsers.
 
 PDF Embed API will end support for Internet Explorer 11 and Microsoft Edge Legacy after September, 2021. Please use the latest version of Microsoft Edge or any other supported browser.
 
-## Support for print PDF
+### Support for print PDF
 
 PDF printing is currently not supported in Firefox browser. Clicking on the print PDF button will show a popup asking users to download the file and print using Adobe Acrobat Reader.
 
@@ -156,7 +156,7 @@ and select the desired view mode from the dropdown.
 These view modes can also be set using the configuration variable
 `defaultViewMode`. Set the appropriate value of the variable and pass it
 as a preview configuration to the `previewFile` API. For details, see
-menuoptions
+[Menu and tool options](./howtos_ui.md#menu-and-tool-options)
 
 ### Go to a Page
 

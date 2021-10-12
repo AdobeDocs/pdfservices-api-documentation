@@ -98,7 +98,7 @@ module.exports = {
     ],
     subPages: [
       {
-        title: 'Overview',
+        title: 'Introduction',
         path: 'overview/index.md'
       },
       {

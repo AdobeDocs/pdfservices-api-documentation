@@ -24,7 +24,7 @@ two fields:
 
 -   **content**: The file content either provided as a file path or file
     promise which resolves to ArrayBuffer of the file content. See
-    passing.
+    [Passing file content](#passing-file-content).
 -   **metaData**: File metadata information. Note that `fileName` is
     mandatory.
 
@@ -182,7 +182,7 @@ overall faster PDF viewing experience.
 PDF Embed API supports the rendering of linearized PDFs which are hosted
 on servers with byte-range support.
 
-For details, see enablebytestream.
+For details, see [Enabling byte-streaming on a server](#enabling-byte-streaming-on-a-server).
 
 ### Display linearized PDFs
 
@@ -362,7 +362,7 @@ mobile browsers, it will automatically fall back to the normal behaviour
     annotation tools and APIs, print and download PDF, document search,
     etc.) will be available once the PDF is fully downloaded and website
     developers will be notified through the PDF\_VIEWER\_READY event. To
-    know more about this event, see the section basicevents under
+    know more about this event, see the section [basicevents](./howtodata.md#basic-events) under
     Analytics.
 
 ### Enabling byte-streaming on a server
@@ -438,7 +438,7 @@ Demo](https://documentcloud.adobe.com/view-sdk-demo/index.html#/view/FULL_WINDOW
 <InlineAlert slots="text"/>
 
 Note that the full window embed mode applies by default, and there is
-no need to pass any `embedMode` value. Configuring menuoptions is
+no need to pass any `embedMode` value. Configuring [Menu and tool options](howtos_ui.md#menu-and-tool-options) is
 optional.
 
 -   **Commenting**: By default, all commenting tools (add text comment,
@@ -494,13 +494,13 @@ To use this mode:
     to the enclosing `div` tag of the PDF viewer.
 * Pass `embedMode: "SIZED_CONTAINER"`
 * Optional: Configure the page and tool options
- - **Print and download**: This mode supports options to download
+ <ul><li> <b>Print and download</b>: This mode supports options to download
 and print the PDF (`showDownloadPDF` and `showPrintPDF`) as
-well as document search.
- - **Page controls**: The page control toolbar containing the
+well as document search.</li>
+ <li> <b>Page controls</b>: The page control toolbar containing the
 Adobe Acrobat logo and navigation options is docked but can be
 undocked by setting `dockPageControls` to false. A full screen
-mode button also appears in the page control toolbar (`showFullScreen`).
+mode button also appears in the page control toolbar (`showFullScreen`).</li></ul>
 
 ```html
 <div id="adobe-dc-view" style="height: 360px; width: 500px;"></div>
@@ -617,7 +617,7 @@ Top bar with Back button (`exitPDFViewerType: "RETURN"`)
 
 Using PDF Embed API, website developers have the flexibility to control if the PDF should take focus when it is rendered within a website.
 
-This is achieved through the variable `focusOnRendering` which can be passed as a configuration to the previewFile API. This variable accepts a Boolean value.
+This is achieved through the variable `focusOnRendering` which can be passed as a configuration to the `previewFile` API. This variable accepts a Boolean value.
 
 ```javascript
 adobeDCView.previewFile({
@@ -630,10 +630,10 @@ The default value of this configuration variable varies according to the embed m
 
 | Embed mode      | Default value of focusOnRendering                   | Default behaviour                                                  |                                                             |
 | --------------- | --------------------------------------------------- | ------------------------------------------------------------------ |
-| Full window     | true                                                | Acquires focus when PDF is rendered.                               |
-| Sized container | false | Doesn’t acquire focus when PDF is rendered. | Doesn’t acquire focus when PDF is rendered.                        |
-| In-Line | false | Doesn’t acquire focus when PDF is rendered.         | Doesn’t acquire focus when PDF is rendered.                        |
-| Lightbox        | true (Cannot be set to false)                       | Always acquires focus when PDF is rendered. This cannot be changed.|
+| [Full window](#full-window)     | true                                                | Acquires focus when PDF is rendered.                               |
+| [Sized container](#sized-container) | false | Doesn’t acquire focus when PDF is rendered. | Doesn’t acquire focus when PDF is rendered.                        |
+| [In-Line](#in-line) | false | Doesn’t acquire focus when PDF is rendered.         | Doesn’t acquire focus when PDF is rendered.                        |
+| [Lightbox](#lightbox)        | true (Cannot be set to false)                       | Always acquires focus when PDF is rendered. This cannot be changed.|
 
 <InlineAlert slots="text"/>
 
