@@ -2,8 +2,7 @@
 title: Document Services APIs 
 ---
 
-# Document Services APIs
-
+# Overview
 
 
 ## What are Document Services APIs?
@@ -26,17 +25,17 @@ The [PDF Services API](pdf-services-api) offers a number of operations to progra
 
 There are additional services to compress, linearize, and password-protect PDF documents. There are also capabilities to insert, reorder, rotate, replace, and delete pages within documents.
 
-The PDF Services API includes ready-to-use code samples for Java, Node.JS and .NET and offers a [free trial that includes up to 1,000 free Document Transactions or runs for 6 months, whichever occurs earlier.](https://www.adobe.io/apis/documentcloud/dcsdk/gettingstarted.html#)
+The PDF Services API includes ready-to-use code samples for Java, Node.JS and .NET and offers a [free trial that includes up to 1,000 free Document Transactions or runs for 6 months, whichever occurs earlier.](https://www.adobe.io/apis/documentcloud/dcsdk/gettingstarted.html)
 
 ## Document Generation API for automating document workflows    
 
 The [Document Generation API](src/pages/overview/document-generation-api) is a cloud-based web service that allows you to produce high fidelity PDF and Word documents with dynamic data inputs. Using Document Generation API, you can merge your data(e.g. JSON file) with Word templates to create dynamic documents for contracts and agreements, invoices, proposals, reports, forms, branded marketing documents and more.
 
-Embed Document Generation API into any application using [PDFServices SDK](pdf-services-api#sdk) for Node.js, .Net, and Java. [Start a free trial that includes up to 1,000 free Document transactions or runs for 6 months, whichever occurs earlier.](https://www.adobe.io/apis/documentcloud/dcsdk/gettingstarted.html#)
+Embed Document Generation API into any application using [PDFServices SDK](pdf-services-api#sdk) for Node.js, .Net, and Java. [Start a free trial that includes up to 1,000 free Document transactions or runs for 6 months, whichever occurs earlier.](https://www.adobe.io/apis/documentcloud/dcsdk/gettingstarted.html)
 
 ## PDF Extract API for extracting pdf structure and information
 
-The [PDF Extract API](pdf-extract-api/index.md) is a cloud-based web service that uses Adobe’s Sensei AI technology to automatically extract content and structural information from PDF documents – native or scanned – and to output it in a structured JSON format. The service extracts text, complex tables, and figures as follows:
+The [PDF Extract API (included with the PDF Services API)](pdf-extract-api/index.md) is a cloud-based web service that uses Adobe’s Sensei AI technology to automatically extract content and structural information from PDF documents – native or scanned – and to output it in a structured JSON format. The service extracts text, complex tables, and figures as follows:
 
 * Text is extracted in contextual blocks – paragraphs, headings, lists, footnotes, etc. – and includes font, styling, and other text formatting information.
 
@@ -48,7 +47,7 @@ The JSON output also captures document structure information, such as the natura
 
 The PDF Extract API provides a method for developers to extract and structure content for use in a number of downstream applications including content republishing, workflow automation, content analysis, and data aggregation, management, and search.
 
-The PDF Extract API can be embedded into any application using the PDFServices SDK for Node.js, Python, and Java. [Start a free trial that includes up to 1,000 free Document transactions or runs for 6 months, whichever occurs earlier.](https://www.adobe.io/apis/documentcloud/dcsdk/gettingstarted.html#)
+The PDF Extract API can be embedded into any application using the [PDFServices SDK](./pdf-services-api/index.md#sdk) for Node.js, Python, and Java. [Start a free trial that includes up to 1,000 free Document transactions or runs for 6 months, whichever occurs earlier.](https://www.adobe.io/apis/documentcloud/dcsdk/gettingstarted.html)
 
 ## Community forum and feedback
 

@@ -15,10 +15,6 @@ module.exports = {
     DEV_SSR: false
   },
   siteMetadata: {
-    home: {
-      title: 'Products',
-      path: '../../apis'
-    },
     pages: [
       {
         title: 'Adobe Document Services',
@@ -26,23 +22,28 @@ module.exports = {
       },
       {
         title: 'APIs',
-        menu: [{
-          title: 'Document Generation',
-          description: 'Generate PDF and Word documents from custom Word templates',
-          path: '../document-services/doc-generation/'
-        }, {
-          title: 'PDF Extract',
-          description: 'Extract text, tables, images, and document structure',
-          path: '../document-services/pdf-extract/'
-        }, {
-          title: 'PDF Embed',
-          description: 'Embed high-fidelity PDFs in web apps with analytics',
-          path: '../document-services/pdf-embed/'
-        }, {
-          title: 'PDF Services',
-          description: 'Create, combine and export PDFs',
-          path: '../document-services/pdf-services/'
-        }]
+        menu: [
+          {
+            title: 'PDF Services',
+            description: 'Create, combine and export PDFs',
+            path: '../document-services/pdf-services/'
+          },
+          {
+            title: 'PDF Extract',
+            description: 'Extract text, tables, images, and document structure',
+            path: '../document-services/pdf-extract/'
+          },
+          {
+            title: 'Document Generation',
+            description: 'Generate PDF and Word documents from custom Word templates',
+            path: '../document-services/doc-generation/'
+          },
+          {
+            title: 'PDF Embed',
+            description: 'Embed high-fidelity PDFs in web apps with analytics',
+            path: '../document-services/pdf-embed/'
+          },
+        ]
       },
       {
         title: 'Use Cases',
@@ -77,25 +78,29 @@ module.exports = {
             path: 'overview'
           },
           {
-            title: 'Document Generation API',
-            path: 'overview/document-generation-api/index.md'
+            title: 'PDF Services API',
+            path: 'overview/pdf-services-api/index.md'
           },
           {
             title: 'PDF Extract API',
             path: 'overview/pdf-extract-api/index.md'
           },
           {
+            title: 'Document Generation API',
+            path: 'overview/document-generation-api/index.md'
+          },
+          {
             title: 'PDF Embed API',
             path: 'overview/pdf-embed-api/index.md'
           },
-          {
-            title: 'PDF Services API',
-            path: 'overview/pdf-services-api/index.md'
-          }
         ]
       },
     ],
     subPages: [
+      {
+        title: 'Overview',
+        path: 'overview/index.md'
+      },
       {
         title: 'PDF Services API',
         path: 'overview/pdf-services-api/index.md',
@@ -286,6 +291,10 @@ module.exports = {
         title: 'Archives',
         path: 'overview/pdf-services-api/policies.md',
         pages: [
+          {
+            title: 'Version Support Policy',
+            path: 'overview/pdf-services-api/policies.md',
+          },
           {
             title: 'v2.0.0',
             path: 'https://opensource.adobe.com/pdftools-sdk-docs/release/2.0.0/',
