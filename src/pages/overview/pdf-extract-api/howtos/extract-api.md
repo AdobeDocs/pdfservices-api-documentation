@@ -95,14 +95,18 @@ schema]( ../../resources/extractJSONOutputSchema2.json)):
 
 ## API limitations
 
--   **Unsupported PDF types**: The API does not support extracting from
-    policy protected and secured PDFs unless the security restrictions
-    allow for Content Copying.
--   **Size limits**: Maximum supported file size is 100MB.
--   **Page limits**: Non scanned PDFs are limited to 200 pages and
-    Scanned PDFs must be 100 pages or less.Limits may be lower for files
-    with a large number of tables.
--   **Rate limits(Extract)**: Keep request rate below 25 requests per minute.
+- **File size:** Files up to a maximum of 100MB are supported.
+- **Number of Pages:** Non-scanned PDFs up to 200 pages and scanned PDFs up to 100 pages are supported, however limits may be lower for files with a large number of tables.
+- **Rate limits:** Keep request rate below 25 requests per minutes.
+- **Page Size:** The API supports standard page sizes not to exceed 17.5” or less than 6” in either dimension.
+- **Hidden Objects:** PDF files that contain content that is not visible on the page like javascript, OCG (optional content groups), etc are not supported. Files that contain such hidden information may fail to process. For such cases, removing hidden content prior to processing files again may return a successful result.
+- **Language:** The API is currently optimized for English language content. Files containing content in other Latin languages should return good results, but may have issues with non-English punctuation.
+- **OCR and Scan quality:** The quality of text extracted from scanned files is dependent on the clarity of content in the input file. Conditions like skewed pages, shadowing, obscured or overlapping fonts, and page resolution less than 200 DPI can all result in lower quality text output.
+- **Form fields:** Files containing XFA and other fillable form elements are not supported.
+- **Unprotected files:** The API supports files that are unprotected or where security restrictions allow copying of content. Files that are secured and do not allow copying of content will not be processed.
+- **Annotations:** Content in PDF files containing annotations such as highlights and sticky notes will be processed, but annotations that obscure text could impact output quality. Text within annotations will not be included in the output.
+- **PDF Producers:** The Extract API is designed to extract content from files that contain text, table data, and figures. Files created from applications that produce other types of content like illustrations, CAD drawings or other types of vector art may not return quality results.
+- **PDF Collections:** PDFs that are made from a collection of files including PDF Portfolios are not currently supported.
 
 ## Extract Text from a PDF
 
@@ -295,10 +299,10 @@ namespace ExtractTextInfoFromPDF
      logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
    
      try:
-          get base path.
+         #get base path.
          base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
    
-          Initial setup, create credentials instance.
+         #Initial setup, create credentials instance.
          credentials = Credentials.service_account_credentials_builder()\
              .from_file(base_path + "/pdfservices-api-credentials.json") \
              .build()
@@ -311,7 +315,7 @@ namespace ExtractTextInfoFromPDF
          source = FileRef.create_from_local_file(base_path + "/resources/extractPdfInput.pdf")
          extract_pdf_operation.set_input(source)
    
-          Build ExtractPDF options and set them into the operation
+         #Build ExtractPDF options and set them into the operation
          extract_pdf_options: ExtractPDFOptions = ExtractPDFOptions.builder() \
              .with_element_to_extract(ExtractElementType.TEXT) \
              .build()
@@ -320,7 +324,7 @@ namespace ExtractTextInfoFromPDF
          #Execute the operation.
          result: FileRef = extract_pdf_operation.execute(execution_context)
    
-          Save the result to the specified location.
+         #Save the result to the specified location.
          result.save_as(base_path + "/output/ExtractTextInfoFromPDF.zip")
      except (ServiceApiException, ServiceUsageException, SdkException):
          logging.exception("Exception encountered while executing operation")
@@ -1717,14 +1721,14 @@ Note: This option is experimental which means that the output may change
 without notice. It is provided for evaluation and feedback purposes
 only. Use of this option is not supported under the [Document Cloud
 Services versioning
-policy](./policies.md)
+policy](../../pdf-services-api/policies.md)
 
 The sample below adds option to get styling information of each element(
 Bold / Italics / Superscript etc) in addition to extracting text, table,
 and figure element information as well as table renditions from PDF
 Document. Note that the output is a zip containing the structured
 information along with renditions. Please see the [Styling JSON
-schema]( src/pages/resources/extractJSONOutputSchemaStylingInfo.json)
+schema]( ../../resources/extractJSONOutputSchemaStylingInfo.json)
 for reference.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java,.NET, Node JS, Python, Rest API" /> 

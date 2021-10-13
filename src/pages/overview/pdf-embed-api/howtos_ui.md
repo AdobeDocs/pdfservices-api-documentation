@@ -378,9 +378,7 @@ and data in the following format:
 
 ![image](../images/fail.png)
 
--   FILE\_MODIFIED
-
-Use the response code FILE\_MODIFIED to capture the case when two users
+-   FILE\_MODIFIED: Use the response code FILE\_MODIFIED to capture the case when two users
 simultaneously modify a single PDF. This case only occurs for shared
 files. The save functionality will fail for the current user if the file
 content has been previously modified by another user. The response data

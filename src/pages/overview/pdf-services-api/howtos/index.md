@@ -54,7 +54,11 @@ Available properties:
 
 Override the timeout properties via a custom `ClientConfig` class:
 
-```
+<CodeBlock slots="heading, code" repeat="1" languages="Java" />
+
+### Java
+
+```javascript
 ClientConfig clientConfig = ClientConfig.builder()
     .withConnectTimeout(3000)
     .withSocketTimeout(20000)
@@ -70,10 +74,14 @@ Available properties:
     getting a response.
 -   **readWriteTimeout**: Default: 10000. The maximum allowed time in
     milliseconds to read or write data after connection is established.
-
+    
 Override the timeout properties via a custom `ClientConfig` class:
 
-```
+<CodeBlock slots="heading, code" repeat="1" languages=".NET" />
+
+### .NET
+
+```javascript
 ClientConfig clientConfig = ClientConfig.ConfigBuilder()
     .timeout(500000)
     .readWriteTimeout(15000)
@@ -88,10 +96,14 @@ Available properties:
     milliseconds for creating an initial HTTPS connection.
 -   **readTimeout**: Default: 10000. The maximum allowed time in
     milliseconds between two successive HTTP response packets.
-
+    
 Override the timeout properties via a custom `ClientConfig` class:
 
-```
+<CodeBlock slots="heading, code" repeat="1" languages="Node JS" />
+
+### Node JS
+
+```javascript
 const clientConfig = PDFServicesSdk.ClientConfig
   .clientConfigBuilder()
   .withConnectTimeout(15000)
@@ -111,7 +123,11 @@ Available properties:
 
 Override the timeout properties via a custom `ClientConfig` class:
 
-``` 
+<CodeBlock slots="heading, code" repeat="1" languages="Python" />
+
+### Python
+
+```javascript
 client_config = ClientConfig.builder()
     .with_connect_timeout(10000)
     .with_read_timeout(40000)

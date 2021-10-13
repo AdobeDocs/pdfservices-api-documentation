@@ -202,9 +202,6 @@ pages will generate 15 image files. The first file's name ends with
 // Run the sample:
 // mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.exportpdf.ExportPDFToJPEG
 
- package com.adobe.pdfservices.operation.samples.exportpdf;
-
-
  public class ExportPDFToJPEG {
 
    // Initialize the logger.
@@ -385,9 +382,6 @@ The sample below converts a PDF file to one or more jpeg or png images.
 // Run the sample:
 // mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.exportpdf.ExportPDFToJPEGList
 
- package com.adobe.pdfservices.operation.samples.exportpdf;
-
-
   public class ExportPDFToJPEGList {
 
     // Initialize the logger.
@@ -491,7 +485,6 @@ namespace
 // Run the sample:
 // node src/exportpdf/export-pdf-to-jpeg-list.js
 
-// Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 
 try {

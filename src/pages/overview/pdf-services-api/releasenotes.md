@@ -100,7 +100,7 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 
 * Update the namespaces accordingly in your .cs file as per the new dependency: 
 ```javascript
-using Adobe.PDFServicesSDK
+using Adobe.PDFServicesSDK;
 ```  
 
 ## Documentation library
@@ -133,6 +133,11 @@ The new release is backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
+
+### Extract PDF Server Side Release (29 September, 2021; server side release)
+| Change  | Language            | Description|
+| ------- | ------------------- | ---------- |
+| Changed | All                 | Support for more descriptive error messages and PDF Extract API bug fixes. |
 
 ### 2.1.0 (September, 2021; minor release)
 

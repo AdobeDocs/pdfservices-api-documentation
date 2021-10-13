@@ -25,29 +25,27 @@ following formats:
 
 public class CreatePDFFromDOCX {
 
-    // Initialize the logger. private static final Logger LOGGER =
-    LoggerFactory.getLogger(CreatePDFFromDOCX .class);
+    // Initialize the logger. 
+    private static final Logger LOGGER = LoggerFactory.getLogger(CreatePDFFromDOCX .class);
 
     public static void main(String[] args) {
 
         try {
 
-            // Initial setup, create credentials instance. Credentials
-            credentials = Credentials.serviceAccountCredentialsBuilder()
+            // Initial setup, create credentials instance. 
+            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
                     .fromFile("pdfservices-api-credentials.json").build();
 
-            //Create an ExecutionContext using credentials and create a
-            new operation instance.ExecutionContext executionContext =
-                    ExecutionContext.create(credentials);
-            CreatePDFOperation
-                    createPdfOperation = CreatePDFOperation.createNew();
+            //Create an ExecutionContext using credentials and create a new operation instance.
+            ExecutionContext executionContext = ExecutionContext.create(credentials);
+            CreatePDFOperation createPdfOperation = CreatePDFOperation.createNew();
 
-            // Set operation input from a source file. FileRef source =
-            FileRef.createFromLocalFile("src/main/resources/createPDFInput.docx");
+            // Set operation input from a source file. 
+            FileRef source = FileRef.createFromLocalFile("src/main/resources/createPDFInput.docx");
             createPdfOperation.setInput(source);
 
-            // Execute the operation. FileRef result =
-            createPdfOperation.execute(executionContext);
+            // Execute the operation. 
+            FileRef result = createPdfOperation.execute(executionContext);
 
             // Save the result to the specified location.
             result.saveAs("output/createPDFFromDOCX.pdf");
@@ -266,7 +264,7 @@ public class CreatePDFFromDOCXWithOptions {
 // cd CreatePDFFromDocxWithOptions/
 // dotnet run CreatePDFFromDocxWithOptions.csproj
 
-namespace CreatePDFFromDocx
+namespace CreatePDFFromDocxWithOptions
  {
    class Program
    {
@@ -294,13 +292,25 @@ namespace CreatePDFFromDocx
          FileRef result = createPdfOperation.Execute(executionContext);
 
          // Save the result to the specified location.
-         result.SaveAs(Directory.GetCurrentDirectory() + "/output/createPdfOutput.pdf");
+         result.SaveAs(Directory.GetCurrentDirectory() + "/output/createPDFFromDOCXWithOptionsOutput.pdf");
        }
        catch (ServiceUsageException ex)
        {
          log.Error("Exception encountered while executing operation", ex);
        }
        // Catch more errors here. . .
+     }
+
+     private static void SetCustomOptions(CreatePDFOperation createPdfOperation)
+     {
+       // Select the documentLanguage for input file.
+       SupportedDocumentLanguage documentLanguage = SupportedDocumentLanguage.EN_US;
+
+       // Set the desired Word-to-PDF conversion options.
+       CreatePDFOptions createPDFOptions = CreatePDFOptions.WordOptionsBuilder()
+       .WithDocumentLanguage(documentLanguage)
+       .Build();
+       createPdfOperation.SetOptions(createPDFOptions);
      }
 
      static void ConfigureLogging()

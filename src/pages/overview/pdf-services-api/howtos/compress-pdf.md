@@ -187,7 +187,7 @@ list of supported compression levels.
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
-// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.compresspdf.CompressPDF
+// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.compresspdf.CompressPDFWithOptions
  
     public class CompressPDFWithOptions {
       // Initialize the logger.
@@ -234,7 +234,7 @@ list of supported compression levels.
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
 // cd CompressPDF/
-// dotnet run CompressPDF.csproj
+// dotnet run CompressPDFWithOptions.csproj
 
   namespace CompressPDFWithOptions
   {

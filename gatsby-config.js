@@ -126,10 +126,6 @@ module.exports = {
                 path: 'overview/pdf-services-api/howtos/export-pdf.md'
               },
               {
-                title: 'Extract PDF',
-                path: 'overview/pdf-services-api/howtos/extract-pdf.md'
-              },
-              {
                 title: 'Combine PDF Files',
                 path: 'overview/pdf-services-api/howtos/combine-pdf.md'
               },
@@ -178,6 +174,10 @@ module.exports = {
                 path: 'overview/pdf-services-api/howtos/split-pdf.md'
               },
               {
+                title: 'Extract PDF',
+                path: 'overview/pdf-services-api/howtos/extract-pdf.md'
+              },
+              {
                 title: 'PDF Properties',
                 path: 'overview/pdf-services-api/howtos/pdf-properties.md'
               }
@@ -210,16 +210,12 @@ module.exports = {
             path: 'overview/pdf-extract-api/howtos/howtos.md'
           },
           {
-            title: 'Extract API',
+            title: 'PDF Extract API',
             path: 'overview/pdf-extract-api/howtos/extract-api.md'
           },
           {
-            title: 'API Licensing',
+            title: 'PDF Services API Licensing',
             path: 'overview/pdf-extract-api/dcserviceslicensing.md'
-          },
-          {
-            title: 'Release Notes',
-            path: 'overview/pdf-extract-api/releasenotes.md'
           },
         ]
       },
@@ -289,11 +285,11 @@ module.exports = {
       },
       {
         title: 'Archives',
-        path: 'overview/pdf-services-api/policies.md',
+        path: 'overview/policies.md',
         pages: [
           {
             title: 'Version Support Policy',
-            path: 'overview/pdf-services-api/policies.md',
+            path: 'overview/policies.md',
           },
           {
             title: 'v2.0.0',

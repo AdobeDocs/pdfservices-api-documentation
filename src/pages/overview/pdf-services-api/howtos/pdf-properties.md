@@ -1,6 +1,6 @@
-# Fetch PDF Properties
+# Get PDF Properties
 
-### Fetch PDF Properties as a JSON File
+### Get PDF Properties as a JSON File
 
 The sample below fetches the properties of an input PDF, as a JSON file.
 
@@ -180,7 +180,7 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
 --form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
 ```
 
-### Fetch PDF Properties as a JSON Object
+### Get PDF Properties as a JSON Object
 
 The sample below fetches the properties of an input PDF, as a JSON object.
 

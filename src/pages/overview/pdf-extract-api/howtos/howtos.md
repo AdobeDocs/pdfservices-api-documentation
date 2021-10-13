@@ -33,7 +33,7 @@ the SDK supports custom timeouts for the API calls. You can tailor the
 timeout settings for your environment and network speed. In addition to
 the details below, you can refer to working code samples:
 
--   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/platform/operation/samples/createpdf/CreatePDFWithCustomTimeouts.java)
+-   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/createpdf/CreatePDFWithCustomTimeouts.java)
 -   [.NET](https://github.com/adobe/PDFServices.NET.SDK.Samples/blob/master/CreatePDFWithCustomTimeouts/Program.cs)
 -   [Node.js](https://github.com/adobe/pdfservices-node-sdk-samples/blob/master/src/createpdf/create-pdf-with-custom-timeouts.js)
 -   [Python](https://github.com/adobe/pdfservices-python-sdk-samples/blob/master/src/extractpdf/extract_txt_from_pdf_with_custom_timeouts.py)
@@ -49,7 +49,11 @@ Available properties:
 
 Override the timeout properties via a custom `ClientConfig` class:
 
-```
+<CodeBlock slots="heading, code" repeat="1" languages="Java" /> 
+
+### Java
+
+```javascript
 ClientConfig clientConfig = ClientConfig.builder()
     .withConnectTimeout(3000)
     .withSocketTimeout(20000)
@@ -68,7 +72,11 @@ Available properties:
 
 Override the timeout properties via a custom `ClientConfig` class:
 
-```
+<CodeBlock slots="heading, code" repeat="1" languages=".NET" />
+
+### .NET
+
+```javascript
 ClientConfig clientConfig = ClientConfig.ConfigBuilder()
     .timeout(500000)
     .readWriteTimeout(15000)
@@ -86,7 +94,11 @@ Available properties:
 
 Override the timeout properties via a custom `ClientConfig` class:
 
-```
+<CodeBlock slots="heading, code" repeat="1" languages="Node JS" />
+
+### Node JS
+
+```javascript
 const clientConfig = PDFServicesSdk.ClientConfig
   .clientConfigBuilder()
   .withConnectTimeout(15000)
@@ -106,7 +118,11 @@ Available properties:
 
 Override the timeout properties via a custom `ClientConfig` class:
 
-``` 
+<CodeBlock slots="heading, code" repeat="1" languages="Python" />
+
+### Python
+
+```javascript
 client_config = ClientConfig.builder()
     .with_connect_timeout(10000)
     .with_read_timeout(40000)

@@ -9,7 +9,7 @@ The SDK only supports server-based use cases where credentials are saved securel
 
 ## Getting credentials
 
-Developing with the PDF Services SDK requires an Adobe-provided credential. To get one, [click HERE](https://www.adobe.io/apis/documentcloud/dcsdk/gettingstarted.html), and complete the workflow. Be sure to copy and save the credential values to a secure location.
+Developing with the PDF Services SDK requires an Adobe-provided credential. To get one, [click HERE](https://www.adobe.io/apis/documentcloud/dcsdk/gettingstarted.html?ref=getStartedWithServicesSDK), and complete the workflow. Be sure to copy and save the credential values to a secure location.
 
 **Validity term**: The certificate associated with your credential is valid for one year. However, you can simply regenerate a new credential or apply a new certificate to the current credentials from the Document Cloud [developer console](https://console.adobe.io/).
 
@@ -187,7 +187,7 @@ To build a custom project:
 1.  Access the .jar in the [central Maven repository](https://www.adobe.com/go/pdftoolsapi_java_maven).
 2.  Use your preferred dependency management tool (Ivy, Gradle, Maven), to include the SDK .jar dependency.
 3.  Open the pdfservices-api-credentials.json downloaded when you created your credential.
-4.  Add the [Authentication](#Authentication) details as described above.
+4.  Add the [Authentication](./index.md#authentication) details as described above.
 
 ![image](../images/maven.png)
 

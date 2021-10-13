@@ -19,11 +19,7 @@ will be counted with the following page limits:
 <InlineAlert slots="text"/>
 
 Document Transactions for the Operations below resulting in a Document
-will be counted with the following page limits:<br/>
-*Extract PDF Operation: up to 5 pages per Document Transaction<br/>*
-*All other Operations: up to 50 pages per Document Transaction<br/>*
-Notes can have more than one paragraph. Successive paragraphs must
-indent to the same level as the rest of the note.
+will be counted with the following page limits:<ul><li>Extract PDF Operation: up to 5 pages per Document Transaction</li><li>All other Operations: up to 50 pages per Document Transaction</li></ul>
 
 ### Metrics
 

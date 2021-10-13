@@ -365,6 +365,8 @@ ranges where each page range corresponds to a single output file.
 // Run the sample:
 // node src/splitpdf/split-pdf-by-page-ranges.js
 
+  const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+
   const getPageRanges = () => {
     // Specify pages ranges.
     const pageRanges = new PDFServicesSdk.PageRanges();
