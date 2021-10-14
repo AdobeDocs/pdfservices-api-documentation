@@ -178,63 +178,63 @@ namespace ExtractTextInfoFromPDF
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         static void Main()
-    {
-        //Configure the logging
-        ConfigureLogging();
-        try
         {
-            // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-            .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-            .Build();
+            //Configure the logging
+            ConfigureLogging();
+            try
+            {
+                // Initial setup, create credentials instance.
+                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
+                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                    .Build();
 
-            //Create an ExecutionContext using credentials and create a new operation instance.
-            ExecutionContext executionContext = ExecutionContext.Create(credentials);
-            ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
+                //Create an ExecutionContext using credentials and create a new operation instance.
+                ExecutionContext executionContext = ExecutionContext.Create(credentials);
+                ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
 
-            // Set operation input from a source file.
-            FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
-            extractPdfOperation.SetInputFile(sourceFileRef);
+                // Set operation input from a source file.
+                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+                extractPdfOperation.SetInputFile(sourceFileRef);
 
-            // Build ExtractPDF options and set them into the operation
-            ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
-            .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT}))
-            .build();
-            extractPdfOperation .SetOptions(extractPdfOptions);
+                // Build ExtractPDF options and set them into the operation
+                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
+                    .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT}))
+                    .build();
+                extractPdfOperation .SetOptions(extractPdfOptions);
 
-            // Execute the operation.
-            FileRef result = extractPdfOperation.Execute(executionContext);
+                // Execute the operation.
+                FileRef result = extractPdfOperation.Execute(executionContext);
 
-            // Save the result to the specified location.
-            result.SaveAs(Directory.GetCurrentDirectory() + "/output/ExtractTextInfoFromPDF.zip");
+                // Save the result to the specified location.
+                result.SaveAs(Directory.GetCurrentDirectory() + "/output/ExtractTextInfoFromPDF.zip");
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
         }
-        catch (ServiceUsageException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (ServiceApiException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (SDKException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (IOException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (Exception ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    }
 
         static void ConfigureLogging()
-    {
-        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-    }
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
     }
 }
 ```
@@ -259,7 +259,7 @@ namespace ExtractTextInfoFromPDF
 
       // Build extractPDF options
       const options = new PDFServicesSdk.ExtractPDF.options.ExtractPdfOptions.Builder()
-          .addElementsToExtract(PDFServicesSdk.ExtractPDF.options.ExtractElementType.TEXT).build()
+          .addElementsToExtract(PDFServicesSdk.ExtractPDF.options.ExtractElementType.TEXT).build();
 
       // Create a new operation instance.
       const extractPDFOperation = PDFServicesSdk.ExtractPDF.Operation.createNew(),
@@ -291,10 +291,10 @@ namespace ExtractTextInfoFromPDF
 
 #### Python
 
-```javascript
-// Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
-// Run the sample:
-// python src/extractpdf/extract_txt_from_pdf.py
+```python
+# Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
+# Run the sample:
+# python src/extractpdf/extract_txt_from_pdf.py
 
      logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
    
@@ -556,10 +556,10 @@ namespace ExtractTextTableInfoFromPDF
 
 #### Python
 
-```javascript
-// Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
-// Run the sample:
-// python src/extractpdf/extract_txt_table_info_from_pdf.py
+```python
+# Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
+# Run the sample:
+# python src/extractpdf/extract_txt_table_info_from_pdf.py
 
   logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 

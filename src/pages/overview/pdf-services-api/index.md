@@ -146,7 +146,7 @@ Refer to the API docs for error and exception details.
 
 **log4js.properties file**
 
-```
+```properties
 name=PropertiesConfig
 appenders = console
 
@@ -286,7 +286,7 @@ The .NET SDK uses [LibLog](https://github.com/damianh/LibLog) as a bridge betwee
 
 **log4net.config file**
 
-```
+```html
 <log4net>
  <root>
    <level value="INFO" />
