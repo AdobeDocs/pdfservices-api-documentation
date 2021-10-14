@@ -350,9 +350,8 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
         \"params\": {
             \"cpf:inline\": {
                 \"elementsToExtract\": [
-                    \"text\", \"tables\"
-                ],
-                \"renditionsToExtract\": [ \"tables\", \"figures\"]
+                    \"text\"
+                ]
             }
         }
     },
@@ -440,63 +439,63 @@ namespace ExtractTextTableInfoFromPDF
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         static void Main()
-    {
-        //Configure the logging
-        ConfigureLogging();
-        try
         {
-            // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-            .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-            .Build();
+            //Configure the logging
+            ConfigureLogging();
+            try
+            {
+                // Initial setup, create credentials instance.
+                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
+                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                    .Build();
 
-            //Create an ExecutionContext using credentials and create a new operation instance.
-            ExecutionContext executionContext = ExecutionContext.Create(credentials);
-            ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
+                //Create an ExecutionContext using credentials and create a new operation instance.
+                ExecutionContext executionContext = ExecutionContext.Create(credentials);
+                ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
 
-            // Set operation input from a source file.
-            FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
-            extractPdfOperation.SetInputFile(sourceFileRef);
+                // Set operation input from a source file.
+                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+                extractPdfOperation.SetInputFile(sourceFileRef);
 
-            // Build ExtractPDF options and set them into the operation
-            ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
-            .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
-            .build();
-            extractPdfOperation.SetOptions(extractPdfOptions);
+                // Build ExtractPDF options and set them into the operation
+                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
+                    .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
+                    .build();
+                extractPdfOperation.SetOptions(extractPdfOptions);
 
-            // Execute the operation.
-            FileRef result = extractPdfOperation.Execute(executionContext);
+                // Execute the operation.
+                FileRef result = extractPdfOperation.Execute(executionContext);
 
-            // Save the result to the specified location.
-            result.SaveAs(Directory.GetCurrentDirectory() + "/output/ExtractTextTableInfoFromPDF.zip");
+                // Save the result to the specified location.
+                result.SaveAs(Directory.GetCurrentDirectory() + "/output/ExtractTextTableInfoFromPDF.zip");
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
         }
-        catch (ServiceUsageException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (ServiceApiException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (SDKException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (IOException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (Exception ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    }
 
         static void ConfigureLogging()
-    {
-        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-    }
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
     }
 }
 ```
@@ -523,7 +522,7 @@ namespace ExtractTextTableInfoFromPDF
       // Build extractPDF options
       const options = new PDFServicesSdk.ExtractPDF.options.ExtractPdfOptions.Builder()
           .addElementsToExtract(PDFServicesSdk.ExtractPDF.options.ExtractElementType.TEXT, PDFServicesSdk.ExtractPDF.options.ExtractElementType.TABLES)
-          .build()
+          .build();
 
       // Create a new operation instance.
       const extractPDFOperation = PDFServicesSdk.ExtractPDF.Operation.createNew(),
@@ -617,8 +616,7 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
             \"cpf:inline\": {
                 \"elementsToExtract\": [
                     \"text\", \"tables\"
-                ],
-                \"renditionsToExtract\": [ \"tables\", \"figures\"]
+                ]
             }
         }
     },
@@ -705,65 +703,65 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         static void Main()
-    {
-        //Configure the logging
-        ConfigureLogging();
-        try
         {
-            // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-            .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-            .Build();
+            //Configure the logging
+            ConfigureLogging();
+            try
+            {
+                // Initial setup, create credentials instance.
+                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
+                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                    .Build();
 
-            //Create an ExecutionContext using credentials and create a new operation instance.
-            ExecutionContext executionContext = ExecutionContext.Create(credentials);
-            ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
+                //Create an ExecutionContext using credentials and create a new operation instance.
+                ExecutionContext executionContext = ExecutionContext.Create(credentials);
+                ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
 
-            // Set operation input from a source file.
-            FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
-            extractPdfOperation.SetInputFile(sourceFileRef);
+                // Set operation input from a source file.
+                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+                extractPdfOperation.SetInputFile(sourceFileRef);
 
-            // Build ExtractPDF options and set them into the operation
-            ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
-            .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
-            .AddElementsToExtractRenditions(new List<ExtractRenditionsElementType> (new [] {ExtractRenditionsElementType.TABLES}))
-            .build();
+                // Build ExtractPDF options and set them into the operation
+                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
+                    .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
+                    .AddElementsToExtractRenditions(new List<ExtractRenditionsElementType> (new [] {ExtractRenditionsElementType.TABLES}))
+                    .build();
 
-            extractPdfOperation.SetOptions(extractPdfOptions);
+                extractPdfOperation.SetOptions(extractPdfOptions);
 
-            // Execute the operation.
-            FileRef result = extractPdfOperation.Execute(executionContext);
+                // Execute the operation.
+                FileRef result = extractPdfOperation.Execute(executionContext);
 
-            // Save the result to the specified location.
-            result.SaveAs(Directory.GetCurrentDirectory() + "/output/ExtractTextTableInfoWithRenditionsFromPDF.zip");
+                // Save the result to the specified location.
+                result.SaveAs(Directory.GetCurrentDirectory() + "/output/ExtractTextTableInfoWithRenditionsFromPDF.zip");
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
         }
-        catch (ServiceUsageException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (ServiceApiException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (SDKException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (IOException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (Exception ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    }
 
         static void ConfigureLogging()
-    {
-        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-    }
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
     }
 }
 ```
@@ -790,7 +788,7 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
       const options = new PDFServicesSdk.ExtractPDF.options.ExtractPdfOptions.Builder()
           .addElementsToExtract(PDFServicesSdk.ExtractPDF.options.ExtractElementType.TEXT, PDFServicesSdk.ExtractPDF.options.ExtractElementType.TABLES)
           .addElementsToExtractRenditions(PDFServicesSdk.ExtractPDF.options.ExtractRenditionsElementType.TABLES)
-          .build()
+          .build();
 
       // Create a new operation instance.
       const extractPDFOperation = PDFServicesSdk.ExtractPDF.Operation.createNew(),
@@ -823,10 +821,10 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
 
 #### Python
 
-```javascript
-// Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
-// Run the sample:
-// python src/extractpdf/extract_txt_table_info_with_rendition_from_pdf.py
+```python
+# Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
+# Run the sample:
+# python src/extractpdf/extract_txt_table_info_with_rendition_from_pdf.py
 
   logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 
@@ -885,7 +883,7 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
                 \"elementsToExtract\": [
                     \"text\", \"tables\"
                 ],
-                \"renditionsToExtract\": [ \"tables\", \"figures\"]
+                \"renditionsToExtract\": [ \"tables\"]
             }
         }
     },
@@ -972,66 +970,66 @@ namespace ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         static void Main()
-    {
-        //Configure the logging
-        ConfigureLogging();
-        try
         {
-            // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-            .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-            .Build();
+            //Configure the logging
+            ConfigureLogging();
+            try
+            {
+                // Initial setup, create credentials instance.
+                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
+                .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                .Build();
 
-            //Create an ExecutionContext using credentials and create a new operation instance.
-            ExecutionContext executionContext = ExecutionContext.Create(credentials);
-            ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
+                //Create an ExecutionContext using credentials and create a new operation instance.
+                ExecutionContext executionContext = ExecutionContext.Create(credentials);
+                ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
 
-            // Set operation input from a source file.
-            FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
-            extractPdfOperation.SetInputFile(sourceFileRef);
+                // Set operation input from a source file.
+                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+                extractPdfOperation.SetInputFile(sourceFileRef);
 
-            // Build ExtractPDF options and set them into the operation
-            ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
-            .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
-        .AddElementsToExtractRenditions(new List<ExtractRenditionsElementType> (new []{ExtractRenditionsElementType.FIGURES, ExtractRenditionsElementType.TABLES}))
-        .build();
+                // Build ExtractPDF options and set them into the operation
+                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
+                .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
+                .AddElementsToExtractRenditions(new List<ExtractRenditionsElementType> (new []{ExtractRenditionsElementType.FIGURES, ExtractRenditionsElementType.TABLES}))
+                .build();
 
-            extractPdfOperation.SetOptions(extractPdfOptions);
+                extractPdfOperation.SetOptions(extractPdfOptions);
 
 
-            // Execute the operation.
-            FileRef result = extractPdfOperation.Execute(executionContext);
+                // Execute the operation.
+                FileRef result = extractPdfOperation.Execute(executionContext);
 
-            // Save the result to the specified location.
-            result.SaveAs(Directory.GetCurrentDirectory() + "/output/ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF.zip");
+                // Save the result to the specified location.
+                result.SaveAs(Directory.GetCurrentDirectory() + "/output/ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF.zip");
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
         }
-        catch (ServiceUsageException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (ServiceApiException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (SDKException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (IOException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (Exception ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    }
 
         static void ConfigureLogging()
-    {
-        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-    }
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
     }
 }
 ```
@@ -1058,7 +1056,7 @@ try {
     const options = new PDFServicesSdk.ExtractPDF.options.ExtractPdfOptions.Builder()
         .addElementsToExtract(PDFServicesSdk.ExtractPDF.options.ExtractElementType.TEXT, PDFServicesSdk.ExtractPDF.options.ExtractElementType.TABLES)
         .addElementsToExtractRenditions(PDFServicesSdk.ExtractPDF.options.ExtractRenditionsElementType.FIGURES, PDFServicesSdk.ExtractPDF.options.ExtractRenditionsElementType.TABLES)
-        .build()
+        .build();
 
     // Create a new operation instance.
     const extractPDFOperation = PDFServicesSdk.ExtractPDF.Operation.createNew(),
@@ -1090,10 +1088,10 @@ try {
 
 #### Python
 
-```javascript
-// Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
-// Run the sample:
-// python src/extractpdf/extract_txt_table_info_with_figure_tables_rendition_from_pdf.py
+```python
+# Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
+# Run the sample:
+# python src/extractpdf/extract_txt_table_info_with_figure_tables_rendition_from_pdf.py
 
   logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 
@@ -1244,64 +1242,64 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         static void Main()
-    {
-        //Configure the logging
-        ConfigureLogging();
-        try
         {
-            // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-            .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-            .Build();
+            //Configure the logging
+            ConfigureLogging();
+            try
+            {
+                // Initial setup, create credentials instance.
+                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
+                .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                .Build();
 
-            //Create an ExecutionContext using credentials and create a new operation instance.
-            ExecutionContext executionContext = ExecutionContext.Create(credentials);
-            ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
+                //Create an ExecutionContext using credentials and create a new operation instance.
+                ExecutionContext executionContext = ExecutionContext.Create(credentials);
+                ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
 
-            // Set operation input from a source file.
-            FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
-            extractPdfOperation.SetInputFile(sourceFileRef);
+                // Set operation input from a source file.
+                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+                extractPdfOperation.SetInputFile(sourceFileRef);
 
-            // Build ExtractPDF options and set them into the operation
-            ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
-            .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
-            .AddAddCharInfo(true)
-            .build();
-            extractPdfOperation.SetOptions(extractPdfOptions);
+                // Build ExtractPDF options and set them into the operation
+                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
+                    .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
+                    .AddAddCharInfo(true)
+                    .build();
+                extractPdfOperation.SetOptions(extractPdfOptions);
 
-            // Execute the operation.
-            FileRef result = extractPdfOperation.Execute(executionContext);
+                // Execute the operation.
+                FileRef result = extractPdfOperation.Execute(executionContext);
 
-            // Save the result to the specified location.
-            result.SaveAs(Directory.GetCurrentDirectory() + "/output/ExtractTextTableInfoWithCharBoundsFromPDF.zip");
+                // Save the result to the specified location.
+                result.SaveAs(Directory.GetCurrentDirectory() + "/output/ExtractTextTableInfoWithCharBoundsFromPDF.zip");
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
         }
-        catch (ServiceUsageException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (ServiceApiException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (SDKException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (IOException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (Exception ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    }
 
         static void ConfigureLogging()
-    {
-        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-    }
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
     }
 }
 ```
@@ -1328,7 +1326,7 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
       const options = new PDFServicesSdk.ExtractPDF.options.ExtractPdfOptions.Builder()
           .addElementsToExtract(PDFServicesSdk.ExtractPDF.options.ExtractElementType.TEXT, PDFServicesSdk.ExtractPDF.options.ExtractElementType.TABLES)
           .addCharInfo(true)
-          .build()
+          .build();
 
       // Create a new operation instance.
       const extractPDFOperation = PDFServicesSdk.ExtractPDF.Operation.createNew(),
@@ -1360,10 +1358,10 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
 
 #### Python
 
-```javascript
-// Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
-// Run the sample:
-// python src/extractpdf/extract_txt_table_info_with_char_bounds_from_pdf.py
+```python
+# Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
+# Run the sample:
+# python src/extractpdf/extract_txt_table_info_with_char_bounds_from_pdf.py
 
   logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 
@@ -1514,66 +1512,66 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         static void Main()
-    {
-        //Configure the logging
-        ConfigureLogging();
-        try
         {
-            // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-            .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-            .Build();
+            //Configure the logging
+            ConfigureLogging();
+            try
+            {
+                // Initial setup, create credentials instance.
+                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
+                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                    .Build();
 
-            //Create an ExecutionContext using credentials and create a new operation instance.
-            ExecutionContext executionContext = ExecutionContext.Create(credentials);
-            ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
+                //Create an ExecutionContext using credentials and create a new operation instance.
+                ExecutionContext executionContext = ExecutionContext.Create(credentials);
+                ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
 
-            // Set operation input from a source file.
-            FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
-            extractPdfOperation.SetInputFile(sourceFileRef);
+                // Set operation input from a source file.
+                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+                extractPdfOperation.SetInputFile(sourceFileRef);
 
-            // Build ExtractPDF options and set them into the operation
-            ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
-            .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
-            .AddElementsToExtractRenditions(new List<ExtractRenditionsElementType>(new [] {ExtractRenditionsElementType.TABLES}))
-            .AddTableStructureFormat(TableStructureType.CSV)
-            .build();
+                // Build ExtractPDF options and set them into the operation
+                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
+                    .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
+                    .AddElementsToExtractRenditions(new List<ExtractRenditionsElementType>(new [] {ExtractRenditionsElementType.TABLES}))
+                    .AddTableStructureFormat(TableStructureType.CSV)
+                    .build();
 
-            extractPdfOperation.SetOptions(extractPdfOptions);
+                extractPdfOperation.SetOptions(extractPdfOptions);
 
-            // Execute the operation.
-            FileRef result = extractPdfOperation.Execute(executionContext);
+                // Execute the operation.
+                FileRef result = extractPdfOperation.Execute(executionContext);
 
-            // Save the result to the specified location.
-            result.SaveAs(Directory.GetCurrentDirectory() + "/output/ExtractTextTableInfoWithTableStructureFromPDF.zip");
+                // Save the result to the specified location.
+                result.SaveAs(Directory.GetCurrentDirectory() + "/output/ExtractTextTableInfoWithTableStructureFromPDF.zip");
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
         }
-        catch (ServiceUsageException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (ServiceApiException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (SDKException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (IOException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (Exception ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    }
 
         static void ConfigureLogging()
-    {
-        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-    }
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
     }
 }
 ```
@@ -1601,7 +1599,7 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
             .addElementsToExtract(PDFServicesSdk.ExtractPDF.options.ExtractElementType.TEXT, PDFServicesSdk.ExtractPDF.options.ExtractElementType.TABLES)
             .addElementsToExtractRenditions(PDFServicesSdk.ExtractPDF.options.ExtractRenditionsElementType.TABLES)
             .addTableStructureFormat(PDFServicesSdk.ExtractPDF.options.TableStructureType.CSV)
-            .build()
+            .build();
   
         // Create a new operation instance.
         const extractPDFOperation = PDFServicesSdk.ExtractPDF.Operation.createNew(),
@@ -1633,10 +1631,10 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
 
 #### Python 
 
-```javascript
-// Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
-// Run the sample:
-// python src/extractpdf/extract_txt_table_info_with_table_structure_from_pdf.py
+```python
+# Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
+# Run the sample:
+# python src/extractpdf/extract_txt_table_info_with_table_structure_from_pdf.py
 
   logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 
@@ -1738,7 +1736,7 @@ for reference.
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
-// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.extractpdf.ExtractTextTableWithStylingInfoFromPdfpolicies.md
+// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.extractpdf.ExtractTextTableWithStylingInfoFromPdf
  
 public class ExtractTextTableInfoWithStylingFromPDF {
 
@@ -1796,66 +1794,66 @@ namespace ExtractTextTableInfoWithStylingFromPDF
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         static void Main()
-    {
-        //Configure the logging
-        ConfigureLogging();
-        try
         {
-            // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-            .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-            .Build();
+            //Configure the logging
+            ConfigureLogging();
+            try
+            {
+                // Initial setup, create credentials instance.
+                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
+                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                    .Build();
 
-            //Create an ExecutionContext using credentials and create a new operation instance.
-            ExecutionContext executionContext = ExecutionContext.Create(credentials);
-            ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
+                //Create an ExecutionContext using credentials and create a new operation instance.
+                ExecutionContext executionContext = ExecutionContext.Create(credentials);
+                ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
 
-            // Set operation input from a source file.
-            FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
-            extractPdfOperation.SetInputFile(sourceFileRef);
+                // Set operation input from a source file.
+                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+                extractPdfOperation.SetInputFile(sourceFileRef);
 
-            // Build ExtractPDF options and set them into the operation
-            ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
-            .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
-            .AddGetStylingInfo(true)
-            .build();
+                // Build ExtractPDF options and set them into the operation
+                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
+                    .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
+                    .AddGetStylingInfo(true)
+                    .build();
 
-            extractPdfOperation.SetOptions(extractPdfOptions);
+                extractPdfOperation.SetOptions(extractPdfOptions);
 
 
-            // Execute the operation.
-            FileRef result = extractPdfOperation.Execute(executionContext);
+                // Execute the operation.
+                FileRef result = extractPdfOperation.Execute(executionContext);
 
-            // Save the result to the specified location.
-            result.SaveAs(Directory.GetCurrentDirectory() + "/output/ExtractTextTableInfoWithStylingFromPDF.zip");
+                // Save the result to the specified location.
+                result.SaveAs(Directory.GetCurrentDirectory() + "/output/ExtractTextTableInfoWithStylingFromPDF.zip");
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
         }
-        catch (ServiceUsageException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (ServiceApiException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (SDKException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (IOException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (Exception ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    }
 
         static void ConfigureLogging()
-    {
-        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-    }
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
     }
 }
 ```
@@ -1883,7 +1881,7 @@ namespace ExtractTextTableInfoWithStylingFromPDF
       const options = new PDFServicesSdk.ExtractPDF.options.ExtractPdfOptions.Builder()
           .addElementsToExtract(PDFServicesSdk.ExtractPDF.options.ExtractElementType.TEXT, PDFServicesSdk.ExtractPDF.options.ExtractElementType.TABLES)
           .getStylingInfo(true)
-          .build()
+          .build();
 
       // Create a new operation instance.
       const extractPDFOperation = PDFServicesSdk.ExtractPDF.Operation.createNew(),
