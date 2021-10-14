@@ -88,7 +88,7 @@ deprecation notice, no new enhancements are made to the service. Adobe
 reserves the right to modify, deprecate, or discontinue the service, in
 whole or in part, at any time.
 
-<InlineAlert slots="text" variant="warning" />
+<InlineAlert slots="text" />
 
 Once a version reaches its end of life, functionality may be deprecated and stop working.
 
@@ -97,6 +97,6 @@ Once a version reaches its end of life, functionality may be deprecated and stop
 Only the latest documentation is typically available online. Refer to
 the [Documentation Library](./releasenotes.md#documentation-library) for links.
 
-<InlineAlert slots="text" variant="warning" />
+<InlineAlert slots="text" />
 
 Legacy docs for all past releases are not maintained. Some links may be broken and content may be outdated.

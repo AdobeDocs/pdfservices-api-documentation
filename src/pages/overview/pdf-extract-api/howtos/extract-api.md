@@ -1915,18 +1915,18 @@ namespace ExtractTextTableInfoWithStylingFromPDF
 
 #### Python
 
-```javascript
-// Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
-// Run the sample:
-// python src/extractpdf/extract_txt_table_with_styling_info_from_pdf.py
+```python
+# Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
+# Run the sample:
+# python src/extractpdf/extract_txt_table_with_styling_info_from_pdf.py
 
   logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 
   try:
-       get base path.
+      #get base path.
       base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-       Initial setup, create credentials instance.
+      #Initial setup, create credentials instance.
       credentials = Credentials.service_account_credentials_builder()\
           .from_file(base_path + "/pdfservices-api-credentials.json") \
           .build()
@@ -1939,7 +1939,7 @@ namespace ExtractTextTableInfoWithStylingFromPDF
       source = FileRef.create_from_local_file(base_path + "/resources/extractPdfInput.pdf")
       extract_pdf_operation.set_input(source)
 
-       Build ExtractPDF options and set them into the operation
+      #Build ExtractPDF options and set them into the operation
       extract_pdf_options: ExtractPDFOptions = ExtractPDFOptions.builder() \
           .with_element_to_extract(ExtractElementType.TEXT) \
           .with_include_styling_info(True) \
@@ -1949,7 +1949,7 @@ namespace ExtractTextTableInfoWithStylingFromPDF
       #Execute the operation.
       result: FileRef = extract_pdf_operation.execute(execution_context)
 
-       Save the result to the specified location.
+      #Save the result to the specified location.
       result.save_as(base_path + "/output/ExtractTextInfoWithStylingInfoFromPDF.zip")
   except (ServiceApiException, ServiceUsageException, SdkException):
       logging.exception("Exception encountered while executing operation")

@@ -1,6 +1,6 @@
 # Overview
 
-**What is Document Generation?**
+## **What is Document Generation?**
 
 Document Generation is the method of creating business-critical
 documents like invoices, contracts, sales proposals, and work orders

@@ -116,6 +116,7 @@ Embed API supports the following highlighting, strikethrough, and
 underlining. Features include:
 
 ![image](../images/textselectiontool.png)
+<br/>
 
 -   Adding a text markup: There are two ways to add a text markup:
     -   Click the highlight tool in the top bar and select some text.
@@ -126,6 +127,7 @@ underlining. Features include:
         a comment box opens up where you can type in some text.
 
 ![image](../images/contextmenu.png)
+<br/>
 
 -   Updating a text markup: While moving or resizing text markup is
     unsupported, you can:
@@ -135,6 +137,7 @@ underlining. Features include:
         overflow menu in the comments panel.
 
 ![image](../images/highlight_menu.png)
+<br/>
 
 -   Removing a text markup
     -   Click on an existing text markup to open the toolbar, and choose
@@ -891,6 +894,7 @@ as needed:
     toolbar is visible. Set to *false* to hide the toolbar.
 
 ![image](../images/drawingtools1.png)
+<br/>
 
 -   `downloadWithAnnotations`: Annotations are not saved to the PDF
     buffer if annotation APIs are enabled. By default, the downloaded

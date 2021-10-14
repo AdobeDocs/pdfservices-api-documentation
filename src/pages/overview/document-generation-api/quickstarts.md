@@ -422,7 +422,7 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
-// node src/documentmerge/merge-document-to-docx.js
+// node src/documentmerge/merge-document-to-pdf.js
 
   const PDFServicesSdk = require('@adobe/pdfservices-node-sdk'),
       fs = require('fs');

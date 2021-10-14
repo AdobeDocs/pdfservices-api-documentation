@@ -1,6 +1,9 @@
 # Quickstarts
+<p>
 
 The Adobe PDF Services API provides modern cloud-based capabilities for PDF manipulation. The API is accessible through SDKs which help you get up and running quickly. Once you've received your developer credential, download and set up one of the sample projects. After you're familiar with the APIs, leverage the samples in your own server-side code.
+
+</p>
 
 <InlineAlert slots="text"/>
 

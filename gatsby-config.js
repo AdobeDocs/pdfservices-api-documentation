@@ -82,12 +82,12 @@ module.exports = {
             path: 'overview/pdf-services-api/index.md'
           },
           {
-            title: 'PDF Extract API',
-            path: 'overview/pdf-extract-api/index.md'
-          },
-          {
             title: 'Document Generation API',
             path: 'overview/document-generation-api/index.md'
+          },
+          {
+            title: 'PDF Extract API',
+            path: 'overview/pdf-extract-api/index.md'
           },
           {
             title: 'PDF Embed API',
@@ -198,28 +198,6 @@ module.exports = {
         ]
       },
       {
-        title: 'PDF Extract API',
-        path: 'overview/pdf-extract-api/index.md',
-        pages: [
-          {
-            title: 'Overview',
-            path: 'overview/pdf-extract-api/index.md'
-          },
-          {
-            title: 'How Tos',
-            path: 'overview/pdf-extract-api/howtos/howtos.md'
-          },
-          {
-            title: 'PDF Extract API',
-            path: 'overview/pdf-extract-api/howtos/extract-api.md'
-          },
-          {
-            title: 'PDF Services API Licensing',
-            path: 'overview/pdf-extract-api/dcserviceslicensing.md'
-          },
-        ]
-      },
-      {
         title: 'Document Generation API',
         path: 'overview/document-generation-api/index.md',
         pages: [
@@ -243,9 +221,27 @@ module.exports = {
             title: 'API Licensing',
             path: 'overview/document-generation-api/dcserviceslicensing.md'
           },
+        ]
+      },
+      {
+        title: 'PDF Extract API',
+        path: 'overview/pdf-extract-api/index.md',
+        pages: [
           {
-            title: 'Release Notes',
-            path: 'overview/document-generation-api/releasenotes.md'
+            title: 'Overview',
+            path: 'overview/pdf-extract-api/index.md'
+          },
+          {
+            title: 'How Tos',
+            path: 'overview/pdf-extract-api/howtos/howtos.md'
+          },
+          {
+            title: 'PDF Extract API',
+            path: 'overview/pdf-extract-api/howtos/extract-api.md'
+          },
+          {
+            title: 'PDF Services API Licensing',
+            path: 'overview/pdf-extract-api/dcserviceslicensing.md'
           },
         ]
       },

@@ -4,7 +4,6 @@ UI customization
 The Embed API provides a number of options for customizing the user
 interface and user interactions with the PDF. Features which are enabled
 by default can be explicitly disabled.
-
 Optional configurations include
 controls for:
 -   Managing the page controls (applicable in Full Window, Sized
@@ -377,6 +376,7 @@ and data in the following format:
     should retry saving.
 
 ![image](../images/fail.png)
+<br/>
 
 -   FILE\_MODIFIED: Use the response code FILE\_MODIFIED to capture the case when two users
 simultaneously modify a single PDF. This case only occurs for shared
@@ -522,6 +522,7 @@ modifying the same file. Note the following:
     which will reload the latest version of the file.
 
 ![image](../images/getlatest.png)
+<br/>
 
 -   If the Promise returns FILE\_MODIFIED after the current user has
     changed the file, that denotes that two users are modifying the same
@@ -669,6 +670,8 @@ follows:
 </html>
 ```
 
+<hr />
+
 ### Zoom APIs
 
 These APIs can be used to perform zoom operations on the PDF
@@ -699,6 +702,8 @@ previewFilePromise.then(adobeViewer => {
 });
 ```
 
+<hr />
+
 ### getZoomLimits
 
 This API returns the minimum and maximum allowed zoom levels of the PDF.
@@ -725,6 +730,8 @@ previewFilePromise.then(adobeViewer => {
         });
 });
 ```
+
+<hr />
 
 ### zoomIn
 
@@ -755,6 +762,8 @@ previewFilePromise.then(adobeViewer => {
 });
 ```
 
+<hr />
+
 ### zoomOut
 
 This API zooms out of the PDF and reduces the PDF view to the previous
@@ -783,6 +792,8 @@ previewFilePromise.then(adobeViewer => {
         });
 });
 ```
+
+<hr />
 
 ### setZoomLevel
 
@@ -817,6 +828,8 @@ previewFilePromise.then(adobeViewer => {
         });
 });
 ```
+
+<hr />
 
 ### Search APIs
 
@@ -893,6 +906,8 @@ previewFilePromise.then(adobeViewer => {
 });
 ```
 
+<hr />
+
 ### onResultsUpdate
 
 Users can register a callback function and pass as an input to the
@@ -945,6 +960,8 @@ previewFilePromise.then(adobeViewer => {
 });
 ```    
 
+<hr />
+
 ### next
 
 This function will highlight and navigate to the next search result in
@@ -976,6 +993,8 @@ previewFilePromise.then(adobeViewer => {
 });
 ```   
 
+<hr />
+
 ### previous
 
 This function will highlight and navigate to the previous search result
@@ -1006,6 +1025,8 @@ previewFilePromise.then(adobeViewer => {
         });
 });
 ```   
+
+<hr />
 
 ### clear
 
@@ -1043,6 +1064,8 @@ previewFilePromise.then(adobeViewer => {
 Find the working code sample for search and zoom APIs
 [here](https://www.adobe.com/go/pdfembedapi_samples) under
 `/More Samples/Viewer APIs/Search and Zoom APIs`
+
+<hr />
 
 ### Bookmark APIs
 
@@ -1087,6 +1110,8 @@ previewFilePromise.then(adobeViewer => {
 });
 ```       
 
+<hr />
+
 ### openBookmark
 
 This API accepts a bookmark ID as input and navigates to that particular
@@ -1122,6 +1147,8 @@ previewFilePromise.then(adobeViewer => {
 Find the working code sample
 [here](https://www.adobe.com/go/pdfembedapi_samples) under
 `/More Samples/Viewer APIs/Bookmark APIs`
+
+<hr />
 
 ### Attachment APIs
 
@@ -1169,6 +1196,8 @@ previewFilePromise.then(adobeViewer => {
 });
 ```      
 
+<hr />
+
 ### getAttachmentBuffer
 
 This API accepts the name of an attachment as input and returns the
@@ -1203,25 +1232,27 @@ Find the working code sample
 [here](https://www.adobe.com/go/pdfembedapi_samples) under
 `/More Samples/Viewer APIs/Attachment APIs`
 
+<hr />
+
 ### Other APIs
 
-### getPDFMetadata
+#### getPDFMetadata
 
 This API returns basic information about the PDF fetched from the PDF
 dictionary; for example, the PDF's number of pages and title.
 
-#### Input parameters
+##### Input parameters
 
 N/A
 
-#### API output
+##### API output
 
 Returns a Promise which, 
 
 * Resolves with a JSON object which includes the number of pages and title of PDF if successful: `{ numPages: <NUMBER_OF_PAGES>, pdfTitle: <PDF_TITLE> }`
 * Rejects with an error object that includes a code and message.
 
-#### API signature 
+##### API signature 
 
 ```
 previewFilePromise.then(adobeViewer => {
@@ -1233,7 +1264,9 @@ previewFilePromise.then(adobeViewer => {
 });
 ```   
 
-### getXMPMetadata
+<hr />
+
+#### getXMPMetadata
 
 XMP (Extensible Metadata Platform) is a technology developed by Adobe
 which provides a common XML framework to store metadata in digital
@@ -1251,18 +1284,18 @@ present. The API accepts two optional input parameters.
     *true*, the API will also return the complete XMP metadata stream.
     The default value is *false*.
     
-#### Input parameters
+##### Input parameters
 
 `(fields = [<field1>, <field2>, ...], includeRawStream = <Boolean>)`
 
-#### API output
+##### API output
 
 Returns a Promise which, 
 
 * Resolves with the JSON object containing the XMP metadata and XML stream (if `includeRawStream` is set to true) if successful: `{ xmpMetadata: <XMP_METADATA>, xmpStream: <XML> }`
 * Rejects with an error object that includes a code and message.
 
-#### API signature 
+##### API signature 
 
 ```
 	
@@ -1275,26 +1308,28 @@ previewFilePromise.then(adobeViewer => {
                         .catch(error => console.log(error));
         });
 });
-```       
+```
 
-### getSelectedContent
+<hr />
+
+#### getSelectedContent
 
 If a user selects any content in the viewer, then the selected content
 can be fetched using this API. This API currently only works with text
 selection.
 
-#### Input parameters
+##### Input parameters
 
 N/A
 
-#### API output
+##### API output
 
 Returns a Promise which, 
 
 * Resolves with a JSON object including the type of content and actual selected content if successful: `{ type: "<CONTENT_TYPE>", data: "<SELECTED_CONTENT>" }`
 * Rejects with an error object that includes a code and message.
 
-#### API signature 
+##### API signature 
 
 ```
 	
@@ -1307,20 +1342,22 @@ previewFilePromise.then(adobeViewer => {
 });
 ```   
 
-### setCursor
+<hr />
+
+#### setCursor
 
 This API sets the page cursor to any cursor style, such as help, wait,
 crosshair, etc.
 
-#### Input parameters
+##### Input parameters
 
 [A string denoting the cursor style](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor): <Cursor_Type>
 
-#### API output
+##### API output
 
 N/A
 
-#### API signature 
+##### API signature 
 
 ```
 	
@@ -1334,20 +1371,22 @@ previewFilePromise.then(adobeViewer => {
 });
 ```   
 
-### resetCursor
+<hr />
+
+#### resetCursor
 
 This API revokes an applied cursor style and reverts it to the default
 cursor style.
 
-#### Input parameters
+##### Input parameters
 
 N/A
 
-#### API output
+##### API output
 
 N/A
 
-#### API signature 
+##### API signature 
 
 ```
 previewFilePromise.then(adobeViewer => {
@@ -1358,22 +1397,24 @@ previewFilePromise.then(adobeViewer => {
 });
 ```   
 
-### getCurrentPage
+<hr />
+
+#### getCurrentPage
 
 This API returns the current page number of the in focus page.
 
-#### Input parameters
+##### Input parameters
 
 N/A
 
-#### API output
+##### API output
 
 Returns a Promise which, 
 
 * Resolves with the current page number if successful
 * Rejects with an error object that includes a code and message.
 
-#### API signature 
+##### API signature 
 
 ```
 previewFilePromise.then(adobeViewer => {
@@ -1385,23 +1426,25 @@ previewFilePromise.then(adobeViewer => {
 });
 ```   
 
-### getPageZoom
+<hr />
+
+#### getPageZoom
 
 This API takes the PDF page number as input and returns the zoom level
 of that page.
 
-#### Input parameters
+##### Input parameters
 
 <Page_Number>
 
-#### API output
+##### API output
 
 Returns a Promise which, 
 
 * Resolves with the zoom level if successful
 * Rejects with an error object that includes a code and message.
 
-#### API signature 
+##### API signature 
 
 ```
 	
@@ -1412,9 +1455,11 @@ previewFilePromise.then(adobeViewer => {
                         .catch(error => console.log(error));
          });
 });
-```   
+```
 
-### gotoLocation
+<hr />
+
+#### gotoLocation
 
 This API enables navigation to any PDF page. It accepts a page number as
 input. You can also pass the x and y coordinates on the page as optional
@@ -1429,18 +1474,18 @@ page limit. Moreover, the x and y input coordinates must be within the
 PDF page width and height limit. If either the x or y coordinate is
 not within the page limit, then they default to 0.
 
-#### Input parameters
+##### Input parameters
 
 (<Page_Number>, <X_Coordinate>, <Y_Coordinate>)
 
-#### API output
+##### API output
 
 Returns a Promise which, 
 
 * Resolves if successful
 * Rejects with an error object that includes a code and message.
 
-#### API signature 
+##### API signature 
 
 ```
 previewFilePromise.then(adobeViewer => {
@@ -1453,23 +1498,25 @@ previewFilePromise.then(adobeViewer => {
 });
 ```   
 
-### clearPageSelection
+<hr />
+
+#### clearPageSelection
 
 This API accepts a page number as input and clears any text selection
 applied to the page.
 
-#### Input parameters
+##### Input parameters
 
 <Page_Number>
 
-#### API output
+##### API output
 
 Returns a Promise which, 
 
 * Resolves if successful
 * Rejects with an error object that includes a code and message.
 
-#### API signature 
+##### API signature 
 
 ```
 previewFilePromise.then(adobeViewer => {
@@ -1480,26 +1527,28 @@ adobeViewer.getAPIs().then(apis => {
                         .catch(error => console.log(error));
          });
 });
-```   
+```
 
-### enableTextSelection
+<hr />
+
+#### enableTextSelection
 
 This API controls text selection in PDF. The default is enabled
 (*true*). Note that disabling text selection also disables the highlight
 option in the top toolbar.
 
-#### Input parameters
+##### Input parameters
 
 Boolean
 
-#### API output
+##### API output
 
 Returns a Promise which, 
 
 * Resolves if successful
 * Rejects with an error object that includes a code and message.
 
-#### API signature 
+##### API signature 
 
 ```
 const allowTextSelection = false;

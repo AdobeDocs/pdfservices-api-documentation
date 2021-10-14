@@ -1,4 +1,5 @@
 # Overview
+<p>
 
 **What is Extract?**
 
@@ -14,7 +15,7 @@ The PDF Extract API provides a method for developers to extract and structure co
 
 The PDF Extract API can be embedded into any application using the [PDFServices SDK](../pdf-services-api/index.md) for Node.js, Python, .NET and Java. [Start a free trial that includes up to 1,000 free Document transactions or runs for 6 months, whichever occurs earlier.](https://www.adobe.com/go/dcsdks_credentials)
 
-
+</p>
 
 ## Extract Process
 

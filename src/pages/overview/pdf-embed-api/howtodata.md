@@ -37,12 +37,14 @@ Once you've logged in to Analytics, do the following:
 2.  Select your report suite.
 
 ![image](../images/aemsuite.png)
+<br/>
 
 3.  Navigate to the Report Suite Manager.
 4.  Highlight your report suite.
 5.  Choose **Edit Settings > General > Processing Rules**.
 
 ![image](../images/aemeditsettingsmenu.png)
+<br/>
 
 6.  Click the **Processing Rules** tab. You'll need to create two rules
     and configure them so that you can map collected events and event

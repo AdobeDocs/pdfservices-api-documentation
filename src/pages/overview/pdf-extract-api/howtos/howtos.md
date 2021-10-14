@@ -1,4 +1,6 @@
 # How Tos
+<p>
+
 The [samples and documentation](extract-api.md#extract-text-from-a-pdf) should get you quickly up and running with PDF Extract capabilities in the [PDFServices SDK](../../pdf-services-api/index.md) including:
 
 - Extracting PDF as JSON: the content, structure & renditions of table and figure elements along with Character Bounding Boxes
@@ -13,6 +15,8 @@ For code examples illustrating other PDF actions including those below, see the 
 - Protect PDFs with password(s) and Remove password protection from PDFs
 - Common page operations, including inserting, replacing, deleting, reordering, and rotating
 - Splitting PDFs into multiple files
+
+</p>
 
 ## Runtime in-memory authentication
 
@@ -51,7 +55,7 @@ Override the timeout properties via a custom `ClientConfig` class:
 
 <CodeBlock slots="heading, code" repeat="1" languages="Java" /> 
 
-### Java
+### 
 
 ```javascript
 ClientConfig clientConfig = ClientConfig.builder()
@@ -74,7 +78,7 @@ Override the timeout properties via a custom `ClientConfig` class:
 
 <CodeBlock slots="heading, code" repeat="1" languages=".NET" />
 
-### .NET
+### 
 
 ```javascript
 ClientConfig clientConfig = ClientConfig.ConfigBuilder()
@@ -96,7 +100,7 @@ Override the timeout properties via a custom `ClientConfig` class:
 
 <CodeBlock slots="heading, code" repeat="1" languages="Node JS" />
 
-### Node JS
+### 
 
 ```javascript
 const clientConfig = PDFServicesSdk.ClientConfig
@@ -120,7 +124,7 @@ Override the timeout properties via a custom `ClientConfig` class:
 
 <CodeBlock slots="heading, code" repeat="1" languages="Python" />
 
-### Python
+### 
 
 ```javascript
 client_config = ClientConfig.builder()

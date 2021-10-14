@@ -1,6 +1,6 @@
 # Handle search engine indexing
 
-PDFs displayed using the PDF Embed API are not indexed and won't appear
+<p>PDFs displayed using the PDF Embed API are not indexed and won't appear
 in search engine results by default since the API doesn't store a direct
 reference of the PDF URL in the DOM. In order to index the PDF so that
 text appears in a search result, the URL of the PDF must be available in
@@ -10,6 +10,7 @@ and navigate all the links in the DOM.
 Search engine indexing and optimisation of any website can only be
 controlled by the website developers. One **approach** which enables PDF
 indexing via the PDF Embed API involves using sitemaps.
+</p>
 
 ## Sitemap
 

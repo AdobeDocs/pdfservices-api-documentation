@@ -362,7 +362,7 @@ mobile browsers, it will automatically fall back to the normal behaviour
     annotation tools and APIs, print and download PDF, document search,
     etc.) will be available once the PDF is fully downloaded and website
     developers will be notified through the PDF\_VIEWER\_READY event. To
-    know more about this event, see the section [basicevents](./howtodata.md#basic-events) under
+    know more about this event, see the section [Basic events](./howtodata.md#basic-events) under
     Analytics.
 
 ### Enabling byte-streaming on a server
