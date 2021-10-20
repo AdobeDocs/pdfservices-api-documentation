@@ -235,18 +235,18 @@
                             "description": "Color of border(s), if any. Single color reported if all 4 borders are of same color. If colors are different, each border color reported individually in order - top, bottom, left, right. Reported for table cells only.",
                             "default": [0.0, 0.0, 0.0],
                             "oneOf": [{
-                                    "oneOf": [{
-                                        "$ref": "#/definitions/colorRGB"
-                                    }]
-                                },
+                                "oneOf": [{
+                                    "$ref": "#/definitions/colorRGB"
+                                }]
+                            },
                                 {
                                     "type": "array",
                                     "minItems": 4,
                                     "maxItems": 4,
                                     "items": {
                                         "oneOf": [{
-                                                "$ref": "#/definitions/colorRGB"
-                                            },
+                                            "$ref": "#/definitions/colorRGB"
+                                        },
                                             {
                                                 "type": "null"
                                             }
@@ -259,20 +259,20 @@
                             "description": "Style of border(s), if any. Single style reported if all 4 borders are of same style. If styles are different, each border style reported individually in order - top, bottom, left, right. Reported for table cells only.",
                             "default": "None",
                             "oneOf": [{
-                                    "type": "string",
-                                    "enum": [
-                                        "None",
-                                        "Hidden",
-                                        "Dotted",
-                                        "Dashed",
-                                        "Solid",
-                                        "Double",
-                                        "Grooved",
-                                        "Ridge",
-                                        "Inset",
-                                        "Outset"
-                                    ]
-                                },
+                                "type": "string",
+                                "enum": [
+                                    "None",
+                                    "Hidden",
+                                    "Dotted",
+                                    "Dashed",
+                                    "Solid",
+                                    "Double",
+                                    "Grooved",
+                                    "Ridge",
+                                    "Inset",
+                                    "Outset"
+                                ]
+                            },
                                 {
                                     "type": "array",
                                     "minItems": 4,
@@ -299,9 +299,9 @@
                             "description": "Thickness of border(s), if any, (in PDF user units) rounded off to nearest integer. Single thickness value reported if all 4 borders are of same thickness. If thickness varies, thickness of each border reported individually in order - top, bottom, left, right. Reported for table cells only.",
                             "default": 0,
                             "oneOf": [{
-                                    "type": "number",
-                                    "minimum": 0
-                                },
+                                "type": "number",
+                                "minimum": 0
+                            },
                                 {
                                     "type": "array",
                                     "minItems": 4,
@@ -588,8 +588,8 @@
                     "minItems": 1,
                     "items": {
                         "allOf": [{
-                                "$ref": "#/definitions/elementProperties"
-                            },
+                            "$ref": "#/definitions/elementProperties"
+                        },
                             {
                                 "$ref": "#/definitions/kidPropertyNames"
                             }
@@ -762,8 +762,8 @@
             "type": "array",
             "items": {
                 "allOf": [{
-                        "$ref": "#/definitions/elementProperties"
-                    },
+                    "$ref": "#/definitions/elementProperties"
+                },
                     {
                         "$ref": "#/definitions/elementPropertyNames"
                     }
