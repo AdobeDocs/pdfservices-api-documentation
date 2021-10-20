@@ -1,0 +1,569 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "definitions": {
+    "colorGray": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 255
+    },
+    "colorRGB": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "$ref": "#/definitions/colorGray"
+      }
+    }
+  },
+  "properties": {
+    "version": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "type": "string",
+          "const": "0.1"
+        },
+        "structure": {
+          "type": "string"
+        },
+        "page_segmentation": {
+          "type": "string"
+        },
+        "json_export": {
+          "type": "string"
+        },
+        "table_structure": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema",
+        "structure",
+        "page_segmentation",
+        "json_export"
+      ]
+    },
+    "extended_metadata": {
+      "type": "object",
+      "properties": {
+        "ID_instance": {
+          "type": "string"
+        },
+        "ID_permanent": {
+          "type": "string"
+        },
+        "pdf_version": {
+          "type": "string"
+        },
+        "pdfa_compliance_level": {
+          "type": "string"
+        },
+        "is_encrypted": {
+          "type": "boolean"
+        },
+        "has_acroform": {
+          "type": "boolean"
+        },
+        "is_digitally_signed": {
+          "type": "boolean"
+        },
+        "pdfua_compliance_level": {
+          "type": "string"
+        },
+        "page_count": {
+          "type": "integer"
+        },
+        "has_embedded_files": {
+          "type": "boolean"
+        },
+        "is_certified": {
+          "type": "boolean"
+        },
+        "is_XFA": {
+          "type": "boolean"
+        },
+        "language": {
+          "type": "string"
+        },
+        "extension_base_version": {
+          "type": "string"
+        },
+        "extension_level": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "ID_instance",
+        "ID_permanent",
+        "has_acroform",
+        "has_embedded_files",
+        "is_XFA",
+        "is_certified",
+        "is_digitally_signed",
+        "is_encrypted",
+        "language",
+        "page_count",
+        "pdf_version",
+        "pdfa_compliance_level",
+        "pdfua_compliance_level"
+      ]
+    },
+    "elements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Bounds": {
+            "type": "array",
+            "minItems": 4,
+            "maxItems": 4,
+            "items": {
+              "type": "number"
+            }
+          },
+          "Font": {
+            "type": "object",
+            "properties": {
+              "alt_family_name": {
+                "type": "string"
+              },
+              "embedded": {
+                "type": "boolean"
+              },
+              "encoding": {
+                "type": "string"
+              },
+              "family_name": {
+                "type": "string",
+                "maxLength": 1023
+              },
+              "font_type": {
+                "type": "string"
+              },
+              "italic": {
+                "type": "boolean"
+              },
+              "monospaced": {
+                "type": "boolean"
+              },
+              "name": {
+                "type": "string",
+                "maxLength": 127
+              },
+              "subset": {
+                "type": "boolean"
+              },
+              "weight": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "alt_family_name",
+              "embedded",
+              "encoding",
+              "family_name",
+              "font_type",
+              "italic",
+              "monospaced",
+              "name",
+              "subset",
+              "weight"
+            ]
+          },
+          "HasClip": {
+            "type": "boolean"
+          },
+          "Lang": {
+            "type": "string"
+          },
+          "Page": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "Path": {
+            "type": "string"
+          },
+          "Text": {
+            "type": "string"
+          },
+          "TextSize": {
+            "type": "number",
+            "minimum": 0,
+            "exclusiveMinimum": true
+          },
+          "attributes": {
+            "type": "object",
+            "properties": {
+              "LineHeight": {
+                "type": "number"
+              },
+              "SpaceAfter": {
+                "type": "number"
+              },
+              "TextAlign": {
+                "type": "string",
+                "enum": [
+                  "Start",
+                  "End",
+                  "Center",
+                  "Justify"
+                ]
+              },
+              "Placement": {
+                "type": "string",
+                "enum": [
+                  "Block",
+                  "Inline",
+                  "Before",
+                  "After",
+                  "Start",
+                  "End"
+                ]
+              },
+              "BBox": {
+                "type": "array",
+                "minItems": 4,
+                "maxItems": 4,
+                "items": {
+                  "type": "number"
+                }
+              },
+              "NumCol": {
+                "type": "integer"
+              },
+              "NumRow": {
+                "type": "integer"
+              },
+              "TextPosition": {
+                "type": "string",
+                "enum": [
+                  "Sub",
+                  "Sup",
+                  "Normal"
+                ]
+              },
+              "StartIndent": {
+                "type": "number"
+              },
+              "TextDecorationColor": {
+                "oneOf": [
+                  {
+                    "$ref": "#/definitions/colorRGB"
+                  }
+                ]
+              },
+              "TextDecorationThickness": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "TextDecorationType": {
+                "type": "string",
+                "enum": [
+                  "LineThrough",
+                  "Underline",
+                  "Overline",
+                  "None"
+                ]
+              },
+              "BlockAlign": {
+                "type": "string",
+                "enum": [
+                  "Before",
+                  "Middle",
+                  "After",
+                  "Justify"
+                ]
+              },
+              "BorderColor": {
+                "oneOf": [
+                  {
+                    "oneOf": [
+                      {
+                        "$ref": "#/definitions/colorRGB"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "array",
+                    "minItems": 4,
+                    "maxItems": 4,
+                    "items": {
+                      "oneOf": [
+                        {
+                          "$ref": "#/definitions/colorRGB"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "BorderStyle": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "enum": [
+                      "None",
+                      "Hidden",
+                      "Dotted",
+                      "Dashed",
+                      "Solid",
+                      "Double",
+                      "Grooved",
+                      "Ridge",
+                      "Inset",
+                      "Outset"
+                    ]
+                  },
+                  {
+                    "type": "array",
+                    "minItems": 4,
+                    "maxItems": 4,
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "None",
+                        "Hidden",
+                        "Dotted",
+                        "Dashed",
+                        "Solid",
+                        "Double",
+                        "Grooved",
+                        "Ridge",
+                        "Inset",
+                        "Outset"
+                      ]
+                    }
+                  }
+                ]
+              },
+              "BorderThickness": {
+                "oneOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "array",
+                    "minItems": 4,
+                    "maxItems": 4,
+                    "items": {
+                      "type": "number",
+                      "minimum": 0
+                    }
+                  }
+                ]
+              },
+              "ColIndex": {
+                "type": "integer"
+              },
+              "Height": {
+                "type": "number",
+                "minimum": 0
+              },
+              "InlineAlign": {
+                "type": "string",
+                "enum": [
+                  "Start",
+                  "Center",
+                  "End",
+                  "Justify",
+                  "Left",
+                  "Right"
+                ]
+              },
+              "RowIndex": {
+                "type": "integer"
+              },
+              "Width": {
+                "type": "number",
+                "minimum": 0
+              },
+              "BackgroundColor": {
+                "oneOf": [
+                  {
+                    "$ref": "#/definitions/colorRGB"
+                  }
+                ]
+              },
+              "BaselineShift": {
+                "type": "number"
+              },
+              "ColSpan": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "RowSpan": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "Suspicion": {
+                "type": "string"
+              },
+              "SuspicionFBName": {
+                "type": "string"
+              },
+              "Suspicious": {
+                "type": "boolean"
+              }
+            }
+          },
+          "Skew": {
+            "type": "number",
+            "minimum": -90,
+            "maximum": 90
+          },
+          "Rotation": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 360,
+            "exclusiveMaximum": true
+          },
+          "Image": {
+            "type": "object",
+            "properties": {
+              "bits_per_component": {
+                "type": "integer",
+                "enum": [
+                  1,
+                  2,
+                  4,
+                  8,
+                  16
+                ]
+              },
+              "colorspace": {
+                "type": "object",
+                "properties": {
+                  "Name": {
+                    "type": "string"
+                  },
+                  "ICCProfile": {
+                    "type": "object",
+                    "properties": {
+                      "CMM ID": {
+                        "type": "string"
+                      },
+                      "ColorSpace": {
+                        "type": "string"
+                      },
+                      "Colorspace": {
+                        "type": "string"
+                      },
+                      "Creator": {
+                        "type": "string"
+                      },
+                      "Date": {
+                        "type": "string"
+                      },
+                      "Device Class": {
+                        "type": "string"
+                      },
+                      "Flags": {
+                        "type": "string"
+                      },
+                      "ICCVersion": {
+                        "type": "string"
+                      },
+                      "Illuminant": {
+                        "type": "string"
+                      },
+                      "Magic": {
+                        "type": "string"
+                      },
+                      "Manufacturer": {
+                        "type": "string"
+                      },
+                      "Model": {
+                        "type": "string"
+                      },
+                      "Name": {
+                        "type": "string"
+                      },
+                      "NumComps": {
+                        "type": "integer"
+                      },
+                      "PCS": {
+                        "type": "string"
+                      },
+                      "Platform": {
+                        "type": "string"
+                      },
+                      "Rendering Intent": {
+                        "type": "string"
+                      },
+                      "Size": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "CMM ID",
+                      "ColorSpace",
+                      "Colorspace",
+                      "Creator",
+                      "Date",
+                      "Device Class",
+                      "Flags",
+                      "ICCVersion",
+                      "Illuminant",
+                      "Magic",
+                      "Manufacturer",
+                      "Model",
+                      "Name",
+                      "NumComps",
+                      "PCS",
+                      "Platform",
+                      "Rendering Intent",
+                      "Size"
+                    ]
+                  }
+                },
+                "required": [
+                  "Name"
+                ]
+              },
+              "data_length": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "resolution_horizontal": {
+                "type": "number"
+              },
+              "resolution_vertical": {
+                "type": "number"
+              },
+              "width": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "bits_per_component",
+              "colorspace",
+              "data_length",
+              "height",
+              "resolution_horizontal",
+              "resolution_vertical",
+              "width"
+            ]
+          }
+        },
+        "required": [
+          "Bounds",
+          "Page",
+          "Path"
+        ]
+      }
+    }
+  },
+  "required": [
+    "version",
+    "elements",
+    "extended_metadata"
+  ]
+}
