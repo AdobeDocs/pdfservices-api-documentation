@@ -315,7 +315,7 @@ are two types which produce a different result:
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
-// node src/ocr/ocr-with-pdf-options.js
+// node src/ocr/ocr-pdf-with-options.js
 
   const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
  

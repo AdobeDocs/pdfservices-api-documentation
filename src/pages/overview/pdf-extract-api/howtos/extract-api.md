@@ -99,7 +99,7 @@ schema]( ../../resources/extractJSONOutputSchema2.json)):
 - **Number of Pages:** Non-scanned PDFs up to 200 pages and scanned PDFs up to 100 pages are supported, however limits may be lower for files with a large number of tables.
 - **Rate limits:** Keep request rate below 25 requests per minutes.
 - **Page Size:** The API supports standard page sizes not to exceed 17.5” or less than 6” in either dimension.
-- **Hidden Objects:** PDF files that contain content that is not visible on the page like javascript, OCG (optional content groups), etc are not supported. Files that contain such hidden information may fail to process. For such cases, removing hidden content prior to processing files again may return a successful result.
+- **Hidden Objects:** PDF files that contain content that is not visible on the page like javascript, OCG (optional content groups), etc are not supported. Files that contain such hidden information may fail to process. For such cases, [removing hidden content](https://helpx.adobe.com/acrobat/using/removing-sensitive-content-pdfs.html) prior to processing files again may return a successful result.
 - **Language:** The API is currently optimized for English language content. Files containing content in other Latin languages should return good results, but may have issues with non-English punctuation.
 - **OCR and Scan quality:** The quality of text extracted from scanned files is dependent on the clarity of content in the input file. Conditions like skewed pages, shadowing, obscured or overlapping fonts, and page resolution less than 200 DPI can all result in lower quality text output.
 - **Form fields:** Files containing XFA and other fillable form elements are not supported.
@@ -563,10 +563,10 @@ namespace ExtractTextTableInfoFromPDF
   logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 
   try:
-       get base path.
+      #get base path.
       base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-       Initial setup, create credentials instance.
+      #Initial setup, create credentials instance.
       credentials = Credentials.service_account_credentials_builder()\
           .from_file(base_path + "/pdfservices-api-credentials.json") \
           .build()
@@ -579,7 +579,7 @@ namespace ExtractTextTableInfoFromPDF
       source = FileRef.create_from_local_file(base_path + "/resources/extractPdfInput.pdf")
       extract_pdf_operation.set_input(source)
 
-       Build ExtractPDF options and set them into the operation
+      #Build ExtractPDF options and set them into the operation
       extract_pdf_options: ExtractPDFOptions = ExtractPDFOptions.builder() \
           .with_element_to_extract(ExtractElementType.TEXT) \
           .with_element_to_extract(ExtractElementType.TABLES) \
@@ -589,7 +589,7 @@ namespace ExtractTextTableInfoFromPDF
       #Execute the operation.
       result: FileRef = extract_pdf_operation.execute(execution_context)
 
-       Save the result to the specified location.
+      #Save the result to the specified location.
       result.save_as(base_path + "/output/ExtractTextTableInfoFromPDF.zip")
   except (ServiceApiException, ServiceUsageException, SdkException):
       logging.exception("Exception encountered while executing operation")
@@ -829,33 +829,33 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
   logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 
   try:
-       get base path.
+      #get base path.
       base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-       Initial setup, create credentials instance.
+      #Initial setup, create credentials instance.
       credentials = Credentials.service_account_credentials_builder() \
           .from_file(base_path + "/pdfservices-api-credentials.json") \
           .build()
 
-       Create an ExecutionContext using credentials and create a new operation instance.
+      #Create an ExecutionContext using credentials and create a new operation instance.
       execution_context = ExecutionContext.create(credentials)
       extract_pdf_operation = ExtractPDFOperation.create_new()
 
-       Set operation input from a source file.
+      #Set operation input from a source file.
       source = FileRef.create_from_local_file(base_path + "/resources/extractPdfInput.pdf")
       extract_pdf_operation.set_input(source)
 
-       Build ExtractPDF options and set them into the operation
+      #Build ExtractPDF options and set them into the operation
       extract_pdf_options: ExtractPDFOptions = ExtractPDFOptions.builder() \
           .with_elements_to_extract([ExtractElementType.TEXT, ExtractElementType.TABLES]) \
           .with_element_to_extract_renditions(ExtractRenditionsElementType.TABLES) \
           .build()
       extract_pdf_operation.set_options(extract_pdf_options)
 
-       Execute the operation.
+      #Execute the operation.
       result: FileRef = extract_pdf_operation.execute(execution_context)
 
-       Save the result to the specified location.
+      #Save the result to the specified location.
       result.save_as(base_path + "/output/ExtractTextTableWithTableRendition.zip")
   except (ServiceApiException, ServiceUsageException, SdkException):
       logging.exception("Exception encountered while executing operation")
@@ -1096,33 +1096,33 @@ try {
   logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 
   try:
-       get base path.
+      #get base path.
       base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-       Initial setup, create credentials instance.
+      #Initial setup, create credentials instance.
       credentials = Credentials.service_account_credentials_builder() \
           .from_file(base_path + "/pdfservices-api-credentials.json") \
           .build()
 
-       Create an ExecutionContext using credentials and create a new operation instance.
+      #Create an ExecutionContext using credentials and create a new operation instance.
       execution_context = ExecutionContext.create(credentials)
       extract_pdf_operation = ExtractPDFOperation.create_new()
 
-       Set operation input from a source file.
+      #Set operation input from a source file.
       source = FileRef.create_from_local_file(base_path + "/resources/extractPdfInput.pdf")
       extract_pdf_operation.set_input(source)
 
-       Build ExtractPDF options and set them into the operation
+      #Build ExtractPDF options and set them into the operation
       extract_pdf_options: ExtractPDFOptions = ExtractPDFOptions.builder() \
           .with_elements_to_extract([ExtractElementType.TEXT, ExtractElementType.TABLES]) \
           .with_element_to_extract_renditions(ExtractRenditionsElementType.TABLES,ExtractRenditionsElementType.FIGURES]) \
           .build()
       extract_pdf_operation.set_options(extract_pdf_options)
 
-       Execute the operation.
+      #Execute the operation.
       result: FileRef = extract_pdf_operation.execute(execution_context)
 
-       Save the result to the specified location.
+      #Save the result to the specified location.
       result.save_as(base_path + "/output/ExtractTextTableWithTableRendition.zip")
   except (ServiceApiException, ServiceUsageException, SdkException):
       logging.exception("Exception encountered while executing operation")
@@ -1366,10 +1366,10 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
   logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 
   try:
-       get base path.
+      #get base path.
       base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-       Initial setup, create credentials instance.
+      #Initial setup, create credentials instance.
       credentials = Credentials.service_account_credentials_builder()\
           .from_file(base_path + "/pdfservices-api-credentials.json") \
           .build()
@@ -1382,7 +1382,7 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
       source = FileRef.create_from_local_file(base_path + "/resources/extractPdfInput.pdf")
       extract_pdf_operation.set_input(source)
 
-       Build ExtractPDF options and set them into the operation
+      #Build ExtractPDF options and set them into the operation
       extract_pdf_options: ExtractPDFOptions = ExtractPDFOptions.builder() \
           .with_element_to_extract(ExtractElementType.TEXT) \
           .with_get_char_info(True) \
@@ -1392,7 +1392,7 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
       #Execute the operation.
       result: FileRef = extract_pdf_operation.execute(execution_context)
 
-       Save the result to the specified location.
+      #Save the result to the specified location.
       result.save_as(base_path + "/output/ExtractTextInfoWithCharBoundsFromPDF.zip")
   except (ServiceApiException, ServiceUsageException, SdkException):
       logging.exception("Exception encountered while executing operation")
@@ -1639,23 +1639,23 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
   logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 
   try:
-       get base path.
+      #get base path.
       base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-       Initial setup, create credentials instance.
+      #Initial setup, create credentials instance.
       credentials = Credentials.service_account_credentials_builder() \
           .from_file(base_path + "/pdfservices-api-credentials.json") \
           .build()
 
-       Create an ExecutionContext using credentials and create a new operation instance.
+      #Create an ExecutionContext using credentials and create a new operation instance.
       execution_context = ExecutionContext.create(credentials)
       extract_pdf_operation = ExtractPDFOperation.create_new()
 
-       Set operation input from a source file.
+      #Set operation input from a source file.
       source = FileRef.create_from_local_file(base_path + "/resources/extractPdfInput.pdf")
       extract_pdf_operation.set_input(source)
 
-       Build ExtractPDF options and set them into the operation
+      #Build ExtractPDF options and set them into the operation
       extract_pdf_options: ExtractPDFOptions = ExtractPDFOptions.builder() \
           .with_elements_to_extract([ExtractElementType.TEXT, ExtractElementType.TABLES]) \
           .with_element_to_extract_renditions(ExtractRenditionsElementType.TABLES) \
@@ -1663,10 +1663,10 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
           .build()
       extract_pdf_operation.set_options(extract_pdf_options)
 
-       Execute the operation.
+      #Execute the operation.
       result: FileRef = extract_pdf_operation.execute(execution_context)
 
-       Save the result to the specified location.
+      #Save the result to the specified location.
       result.save_as(base_path + "/output/ExtractTextTableWithTableStructure.zip")
   except (ServiceApiException, ServiceUsageException, SdkException):
       logging.exception("Exception encountered while executing operation")

@@ -49,7 +49,7 @@ continue to function securely as follows:
     deployment on a supported major release should migrate to the last
     minor update for that release.
 
-<InlineAlert slots="text" variant="warning" />
+<InlineAlert slots="text"/>
 
 Once a version reaches its end of life, functionality may be deprecated and stop working.
 

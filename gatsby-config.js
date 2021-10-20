@@ -178,7 +178,7 @@ module.exports = {
                 path: 'overview/pdf-services-api/howtos/extract-pdf.md'
               },
               {
-                title: 'PDF Properties',
+                title: 'Get PDF Properties',
                 path: 'overview/pdf-services-api/howtos/pdf-properties.md'
               }
             ]
@@ -218,9 +218,14 @@ module.exports = {
             path: 'overview/document-generation-api/wordaddin.md'
           },
           {
-            title: 'API Licensing',
+            title: 'Release Notes',
+            path: 'overview/document-generation-api/releasenotes.md'
+          },
+          {
+            title: 'PDF Services API Licensing',
             path: 'overview/document-generation-api/dcserviceslicensing.md'
           },
+
         ]
       },
       {
@@ -238,6 +243,10 @@ module.exports = {
           {
             title: 'PDF Extract API',
             path: 'overview/pdf-extract-api/howtos/extract-api.md'
+          },
+          {
+            title: 'Release Notes',
+            path: 'overview/pdf-extract-api/releasenotes.md'
           },
           {
             title: 'PDF Services API Licensing',
@@ -258,7 +267,7 @@ module.exports = {
             path: 'overview/pdf-embed-api/howtos.md'
           },
           {
-            title: 'UI customization',
+            title: 'UI Customization',
             path: 'overview/pdf-embed-api/howtos_ui.md'
           },
           {

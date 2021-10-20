@@ -287,6 +287,9 @@ namespace CreatePDFFromDocxWithOptions
          // Set operation input from a source file.
          FileRef source = FileRef.CreateFromLocalFile(@"createPdfInput.docx");
          createPdfOperation.SetInput(source);
+         
+         //Provide any custom conifguration option for the operation.
+         SetCustomOptions(createPdfOperation);  
 
          // Execute the operation.
          FileRef result = createPdfOperation.Execute(executionContext);

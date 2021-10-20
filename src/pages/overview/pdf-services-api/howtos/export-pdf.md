@@ -298,7 +298,6 @@ pages will generate 15 image files. The first file's name ends with
 // Run the sample:
 // node src/exportpdf/export-pdf-to-jpeg.js
 
-// Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
  const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 
  try {

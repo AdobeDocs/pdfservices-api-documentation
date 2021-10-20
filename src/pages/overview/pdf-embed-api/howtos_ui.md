@@ -1,5 +1,7 @@
-UI customization
+UI Customization
 ================
+
+<p>
 
 The Embed API provides a number of options for customizing the user
 interface and user interactions with the PDF. Features which are enabled
@@ -17,6 +19,8 @@ controls for:
     Full Window and Lightbox embed modes).
 
 ![image](../images/ui.png)
+
+</p>
 
 ## Menu and tool options
 
@@ -142,7 +146,7 @@ return new Promise((resolve, reject) => {
 ```
 
 
-## User profiles
+## User Profiles
 
 The user profile callback allows the user to specify user profile
 details such as first name, last name, and email address. By default, if
@@ -678,18 +682,22 @@ These APIs can be used to perform zoom operations on the PDF
 programmatically. These APIs are supported in all embed modes except
 in-line embed mode.
 
-#### Input parameters
+#### getZoomLimits
+
+This API returns the minimum and maximum allowed zoom levels of the PDF.
+
+##### Input parameters
 
 N/A
 
-#### API output
+##### API output
 
 Returns a Promise which, 
 
 * Resolves with a JSON object including the minimum and maximum zoom level of the PDF. `{ minZoom: <MIN_ZOOM_LEVEL>, maxZoom: <MAX_ZOOM_LEVEL> }`
 * Rejects with an error object that includes a code and message.
 
-#### API signature 
+##### API signature 
 
 ```
 	
@@ -704,53 +712,24 @@ previewFilePromise.then(adobeViewer => {
 
 <hr />
 
-### getZoomLimits
-
-This API returns the minimum and maximum allowed zoom levels of the PDF.
-
-#### Input parameters
-
-N/A
-
-#### API output
-
-Returns a Promise which, 
-
-* Resolves with the updated zoom level.
-* Rejects with an error object that includes a code and message.
-
-#### API signature 
-
-```
-previewFilePromise.then(adobeViewer => {
-        adobeViewer.getAPIs().then(apis => {
-                apis.getZoomAPIs().zoomIn()
-                        .then(result => console.log(result))
-                        .catch(error => console.log(error));
-        });
-});
-```
-
-<hr />
-
-### zoomIn
+#### zoomIn
 
 This API zooms in on the PDF and magnifies the PDF view to the next zoom
 level. The magnified zoom level will never exceed the maximum zoom level
 of the PDF.
 
-#### Input parameters
+##### Input parameters
 
 N/A
 
-#### API output
+##### API output
 
 Returns a Promise which, 
 
 * Resolves with the updated zoom level.
 * Rejects with an error object that includes a code and message.
 
-#### API signature 
+##### API signature 
 
 ```
 previewFilePromise.then(adobeViewer => {
@@ -764,24 +743,24 @@ previewFilePromise.then(adobeViewer => {
 
 <hr />
 
-### zoomOut
+#### zoomOut
 
 This API zooms out of the PDF and reduces the PDF view to the previous
 zoom level. The reduced zoom level will never be less than the minimum
 zoom level of the PDF.
 
-#### Input parameters
+##### Input parameters
 
 N/A
 
-#### API output
+##### API output
 
 Returns a Promise which, 
 
 * Resolves with the updated zoom level.
 * Rejects with an error object that includes a code and message.
 
-#### API signature 
+##### API signature 
 
 ```
 previewFilePromise.then(adobeViewer => {
@@ -795,7 +774,7 @@ previewFilePromise.then(adobeViewer => {
 
 <hr />
 
-### setZoomLevel
+#### setZoomLevel
 
 This API accepts a float value as input and sets the zoom level of the
 PDF to that value. The input must lie between the minimum and maximum
@@ -806,18 +785,18 @@ minimum zoom level is applied to the PDF. Similarly, if the input passed
 is greater than the maximum zoom level, then the maximum zoom level is
 applied.
 
-#### Input parameters
+##### Input parameters
 
 <ZOOM_LEVEL: Float>
 
-#### API output
+##### API output
 
 Returns a Promise which, 
 
 * Resolves with the updated zoom level.
 * Rejects with an error object that includes a code and message.
 
-#### API signature 
+##### API signature 
 
 ```
 previewFilePromise.then(adobeViewer => {
@@ -879,11 +858,11 @@ The search API takes a search term of String value as input and searches
 for that term in the entire document. The first occurrence of the search
 term is highlighted in the PDF, starting from the current page in view.
 
-#### Input parameters
+##### Input parameters
 
 <SEARCH_STRING: String>
 
-#### API output
+##### API output
 
 Returns a Promise which, 
 
@@ -894,7 +873,7 @@ Returns a Promise which,
   - `clear()`
 * Rejects with an error object that includes a code and message.
 
-#### API signature 
+##### API signature 
 
 ```
 previewFilePromise.then(adobeViewer => {
@@ -908,7 +887,7 @@ previewFilePromise.then(adobeViewer => {
 
 <hr />
 
-### onResultsUpdate
+#### onResultsUpdate
 
 Users can register a callback function and pass as an input to the
 `onResultsUpdate()` function. This callback function will be triggered
@@ -930,18 +909,18 @@ status.
 }
 ```
  
-#### Input parameters
+##### Input parameters
 
 N/A
 
-#### API output
+##### API output
 
 Returns a Promise which, 
 
 * Resolves to true on successful operation. When operation is successful, the callback function is executed and receives information about the search results in the form of a JSON. Resolves to false when `onResultsUpdate()` operation fails.
 * Rejects with an error object that includes a code and message.
 
-#### API signature 
+##### API signature 
 
 ```
 function callbackFunction(searchResult) {
@@ -962,23 +941,23 @@ previewFilePromise.then(adobeViewer => {
 
 <hr />
 
-### next
+#### next
 
 This function will highlight and navigate to the next search result in
 the PDF.
 
-#### Input parameters
+##### Input parameters
 
 N/A
 
-#### API output
+##### API output
 
 Returns a Promise which, 
 
 * Resolves to true on successful operation and the next search result is highlighted in the PDF. Resolves to false when `next()` operation fails.
 * Rejects with an error object that includes a code and message.
 
-#### API signature 
+##### API signature 
 
 ```
 previewFilePromise.then(adobeViewer => {
@@ -995,23 +974,23 @@ previewFilePromise.then(adobeViewer => {
 
 <hr />
 
-### previous
+#### previous
 
 This function will highlight and navigate to the previous search result
 in the PDF.
 
-#### Input parameters
+##### Input parameters
 
 N/A
 
-#### API output
+##### API output
 
 Returns a Promise which, 
 
 * Resolves to true on successful operation and the previous search result is highlighted in the PDF. Resolves to false when `previous()` operation fails.
 * Rejects with an error object that includes a code and message.
 
-#### API signature 
+##### API signature 
 
 ```
 previewFilePromise.then(adobeViewer => {
@@ -1028,23 +1007,23 @@ previewFilePromise.then(adobeViewer => {
 
 <hr />
 
-### clear
+#### clear
 
 This function will cancel the ongoing search operation and clear the
 search results.
 
-#### Input parameters
+##### Input parameters
 
 N/A
 
-#### API output
+##### API output
 
 Returns a Promise which, 
 
 * Resolves to true on successful operation. Stops ongoing search operation and clears the search results. Resolves to false when `clear()` operation fails.
 * Rejects with an error object that includes a code and message.
 
-#### API signature 
+##### API signature 
 
 ```
 previewFilePromise.then(adobeViewer => {
@@ -1072,7 +1051,7 @@ Find the working code sample for search and zoom APIs
 These APIs programmatically access existing PDF bookmarks. Note that
 only the Full Window embed mode supports these APIs.
 
-### getBookmarks
+#### getBookmarks
 
 This API returns the list of existing PDF bookmarks Each bookmark item
 in this list is represented as a JSON containing important information
@@ -1087,18 +1066,18 @@ bookmark.
 }
 ```
 
-#### Input parameters
+##### Input parameters
 
 N/A
 
-#### API output
+##### API output
 
 Returns a Promise which, 
 
 * Resolves with the list of bookmarks available in the PDF. `[ Bookmark_1, Bookmark_2, ...]`
 * Rejects with an error object that includes a code and message.
 
-#### API signature 
+##### API signature 
 
 ```
 previewFilePromise.then(adobeViewer => {
@@ -1112,23 +1091,23 @@ previewFilePromise.then(adobeViewer => {
 
 <hr />
 
-### openBookmark
+#### openBookmark
 
 This API accepts a bookmark ID as input and navigates to that particular
 PDF bookmark.
 
-#### Input parameters
+##### Input parameters
 
 <BOOKMARK_ID>
 
-#### API output
+##### API output
 
 Returns a Promise which, 
 
 * Resolves to true on successful API execution and the user navigates to that particular bookmark. Resolves to false when the bookmark does not exist in the PDF.
 * Rejects with an error object that includes a code and message.
 
-#### API signature 
+##### API signature 
 
 ```
 const bookmark_ID = <BOOKMARK_ID>;
@@ -1154,7 +1133,7 @@ Find the working code sample
 
 These APIs access the existing attachments in the PDF programmatically.
 
-### getAttachments
+#### getAttachments
 
 This API returns the list of existing attachments in the PDF. Each
 attachment item in this list is represented as a JSON containing
@@ -1171,11 +1150,11 @@ date and modified date.
 }
 ```
    
-#### Input parameters
+##### Input parameters
 
 N/A
 
-#### API output
+##### API output
 
 Returns a Promise which, 
 
@@ -1183,7 +1162,7 @@ Returns a Promise which,
 * Every attachment item in this list will contain information, such as, `name`, `description`, `mimeType`, `created` and `modified`.
 * Rejects with an error object that includes a code and message.
 
-#### API signature 
+##### API signature 
 
 ```
 	
@@ -1198,23 +1177,23 @@ previewFilePromise.then(adobeViewer => {
 
 <hr />
 
-### getAttachmentBuffer
+#### getAttachmentBuffer
 
 This API accepts the name of an attachment as input and returns the
 ArrayBuffer of the attachment content.
 
-#### Input parameters
+##### Input parameters
 
 <ATTACHMENT_NAME: String>
 
-#### API output
+##### API output
 
 Returns a Promise which, 
 
 * Resolves with the ArrayBuffer of the attachment file: `{ buffer: Int8Array }`
 * Rejects with an error object that includes a code and message.
 
-#### API signature 
+##### API signature 
 
 ```
 previewFilePromise.then(adobeViewer => {

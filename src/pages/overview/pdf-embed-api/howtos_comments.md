@@ -580,6 +580,8 @@ previewFilePromise.then(adobeViewer => {
 });
 ```
 
+<hr />
+
 ### getAnnotations API
 
 This API exports and receives PDF annotation data based on the filter
@@ -639,6 +641,8 @@ received through the GET API. Note that the ID of such annotations
 received in the GET API output will be different for every browser
 session.
 
+<hr />
+
 ### deleteAnnotations API
 
 This API deletes PDF annotations based on the filter provided by the
@@ -686,6 +690,8 @@ previewFilePromise.then(adobeViewer => {
 });
 ```
 
+<hr />
+
 ### updateAnnotation API
 
 This API updates a single existing annotation in the PDF, including the
@@ -727,6 +733,8 @@ previewFilePromise.then(adobeViewer => {
  });
 });
 ```
+
+<hr />
 
 ## Annotation events
 
@@ -830,6 +838,8 @@ previewFilePromise.then(adobeViewer => {
 });
 ```
 
+<hr />
+
 ### addAnnotationsInPDF API
 
 This API takes a list of supported annotations as input and saves those
@@ -860,6 +870,8 @@ previewFilePromise.then(adobeViewer => {
          });
 });
 ```
+
+<hr />
 
 ## APIs to control UI configurations
 
@@ -969,6 +981,8 @@ annotationUIConfig: {
 }
 ```
 
+<hr />
+
 ### selectAnnotation API
 
 This API selects any existing annotation and shifts the focus to the
@@ -978,17 +992,6 @@ specified by the annotation ID.
 #### Input parameters
 
 <Annotation_ID>
-
-```javascript
-filter = {
-        annotationIds:
-                [Annotation_ID_1, Annotation_ID_2, ...],
-        pageRange:{
-                startPage: <Page_Number>,
-                endPage: <Page_Number>
-        },
-}
-```
 
 #### API output
 
@@ -1010,6 +1013,7 @@ previewFilePromise.then(adobeViewer => {
   });
 });
 ```
+<hr />
 
 ### unselectAnnotation API
 
@@ -1033,6 +1037,8 @@ previewFilePromise.then(adobeViewer => {
  });
 });
 ```
+
+<hr />
 
 ### startAnnotationMode API
 
@@ -1092,7 +1098,9 @@ previewFilePromise.then(adobeViewer => {
         .catch(error => console.log(error));
    });
 });
-```    
+```  
+
+<hr />
 
 ### endAnnotationMode API
 
@@ -1115,6 +1123,8 @@ previewFilePromise.then(adobeViewer => {
   });
 });
 ```
+
+<hr />
 
 ## Code Samples
 

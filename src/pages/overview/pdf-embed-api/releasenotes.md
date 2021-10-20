@@ -8,7 +8,7 @@ the changes below for each release.
 ### August, 2021 (Patch Release)
 | Change  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| New | With this patch release, PDF Embed API now no longer gathers anonymous usage data to measure performance. This was earlier collected using Adobe Analytics.  |
+| Changed | With this patch release, PDF Embed API now no longer gathers anonymous usage data to measure performance. This was earlier collected using Adobe Analytics.  |
 
 ### August, 2021
 
@@ -36,7 +36,7 @@ the changes below for each release.
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | New     | New tools for undo and redo actions introduced in the top bar.                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | Changed | Updated the Adobe Acrobat branding in all embed modes. The new Adobe Acrobat logo will appear in the page controls toolbar at the bottom for full window, sized container and in-line embed modes, and in the top bar for lightbox embed mode. Clicking on the logo will open the [Adobe Acrobat online](https://documentcloud.adobe.com/link/home) application in a new browser tab. See the section [Embed modes](howtos.md#embed-modes) for more details. |
-| Changed | Added support for passing `strokeWidth` input parameter to the `startAnnotationMode()` annotation API in order to set the line thickness of drawing annotation programmatically.                                                                                                                                                                                                                                                                                                                             |
+| New | Added support for passing `strokeWidth` input parameter to the `startAnnotationMode()` annotation API in order to set the line thickness of drawing annotation programmatically.                                                                                                                                                                                                                                                                                                                             |
 
 ### April, 2021
 
@@ -67,7 +67,7 @@ the changes below for each release.
 | Change | Description                                                                                                                                         |
 | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
 | New    | Added support for document search in the in-line embed mode.                                                                                        |
-| New    | Previously, the updateAnnotation API only supported updating comment text. It now supports updating color, stroke width, position and bounding box. |
+| Changed    | Previously, the updateAnnotation API only supported updating comment text. It now supports updating color, stroke width, position and bounding box. |
 
 ### September, 2020
 
@@ -84,12 +84,12 @@ the changes below for each release.
 | Change  | Description                                                                                                                                                                                                                     |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | New     | Sized container full screen mode only: To facilitate exiting from full screen mode, support was added for a **Close** button in the top bar on all platforms as well as support for the swipe down gesture on mobile browsers.  |
-| New     | Sized container full screen mode only: Improved the PDF preview experience in full screen mode on mobile browsers.                                                                                                              |
+| Changed     | Sized container full screen mode only: Improved the PDF preview experience in full screen mode on mobile browsers.                                                                                                              |
 | Bug fix | Previously, disabling print via the API disabled the context menu items behind the overflow icon but did not disable the keyboard shortcuts in all cases. Now, the API disables both the menu items and the keyboard shortcuts. |
 
 ### July, 2020
 
 | Change | Description                                                                                                                          |
 | ------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| New    | Moved the document search bar below the top bar in full window embed mode to unblock the annotation tools during a search operation. |
+| Changed    | Moved the document search bar below the top bar in full window embed mode to unblock the annotation tools during a search operation. |
 | New    | PDF Embed API bug fixes and documentation updates around the save behavior.                                                          |
