@@ -12,40 +12,77 @@
 
 module.exports = {
   siteMetadata: {
-    home: {
-      title: 'Adobe Document Services',
-      path: '/document-services/'
+    docs: {
+      title: 'Get credentials',
+      path: 'https://developer-stage.adobe.com/document-services/gettingstarted'
     },
     pages: [
       {
-        title: 'Documentation',
-        path: '/'
+        title: 'Adobe Document Services',
+        path: 'https://developer-stage.adobe.com/document-services'
       },
       {
         title: 'APIs',
+        menu: [{
+          title: 'PDF Services',
+          path: 'https://developer-stage.adobe.com/document-services/pdf-services/'
+        },{
+          title: 'PDF Extract',
+          path: 'https://developer-stage.adobe.com/document-services/pdf-extract'
+        },{
+          title: 'Document Generation',
+          path: 'https://developer-stage.adobe.com/document-services/doc-generation'
+        },{
+          title: 'PDF Embed',
+          path: 'https://developer-stage.adobe.com/document-services/pdf-embed'
+        }]
+      },
+      {
+        title: 'Use Cases',
+        path: 'https://developer-stage.adobe.com/document-services/use-cases/'
+      },
+      {
+        title: 'Pricing',
+        path: 'https://developer-stage.adobe.com/document-services/pdf-pricing/'
+      },
+      {
+        title: 'Documentaion',
         menu: [
           {
-            title: 'PDF Services API',
+            title: 'Overview',
+            path: '/'
+          },
+          {
+            title: 'PDF Services',
             path: 'pdf-services-api'
           },
           {
-            title: 'PDF Embed API',
+            title: 'PDF Extract',
             path: 'pdf-embed-api'
           },
           {
-            title: 'Document Generation API',
+            title: 'Document Generation',
             path: 'document-generation-api'
           },
           {
-            title: 'Document Generation API',
-            path: 'document-generation-api'
+            title: 'PDF Embed',
+            path: '/'
           },
         ]
       },
       {
-        title: 'Community Forum',
-        path: 'https://community.adobe.com/t5/document-cloud-sdk/bd-p/Document-Cloud-SDK?page=1&sort=latest_replies&filter=all#://'
-      },
+        title: 'Resources',
+        menu: [{
+          title: 'Developer Resources',
+           path: 'https://developer-stage.adobe.com/document-services/pdf-resources'
+        }, {
+          title: 'Forum',
+          path: 'https://community.adobe.com/t5/document-services-apis/bd-p/Document-Cloud-SDK?page=1&sort=latest_replies&filter=all'
+        }, {
+          title: 'Licensing',
+          path: 'https://developer-stage.adobe.com/document-services/licensing'
+        }]
+      }
     ],
     subPages: [
       {
