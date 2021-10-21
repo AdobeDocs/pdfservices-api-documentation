@@ -59,7 +59,7 @@ Override the timeout properties via a custom `ClientConfig` class:
 
 <CodeBlock slots="heading, code" repeat="1" languages="Java" />
 
-### Java
+### 
 
 ```javascript
 ClientConfig clientConfig = ClientConfig.builder()
@@ -82,7 +82,7 @@ Override the timeout properties via a custom `ClientConfig` class:
 
 <CodeBlock slots="heading, code" repeat="1" languages=".NET" />
 
-### .NET
+### 
 
 ```javascript
 ClientConfig clientConfig = ClientConfig.ConfigBuilder()
@@ -104,7 +104,7 @@ Override the timeout properties via a custom `ClientConfig` class:
 
 <CodeBlock slots="heading, code" repeat="1" languages="Node JS" />
 
-### Node JS
+### 
 
 ```javascript
 const clientConfig = PDFServicesSdk.ClientConfig
@@ -128,7 +128,7 @@ Override the timeout properties via a custom `ClientConfig` class:
 
 <CodeBlock slots="heading, code" repeat="1" languages="Python" />
 
-### Python
+### 
 
 ```javascript
 client_config = ClientConfig.builder()
