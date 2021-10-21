@@ -1,5 +1,6 @@
 # How Tos
 
+<p>
 The samples and documentation here should get you quickly up and running
 with the PDF Services SDK. These code examples illustrate how to perform
 PDF actions using the SDK, including:
@@ -18,6 +19,8 @@ PDF actions using the SDK, including:
 -   Extract PDF as JSON: the content, structure & renditions of table
     and figure elements along with Character Bounding Boxes
 -   Get the properties of a PDF file like page count, PDF version, file size, compliance levels, font info, permissions and more
+
+</p>
 
 ## Runtime in-memory authentication
 
