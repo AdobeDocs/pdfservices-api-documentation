@@ -15,6 +15,10 @@ module.exports = {
     DEV_SSR: false
   },
   siteMetadata: {
+    docs: {
+      title: 'Get credentials',
+      path:  process.env.GETTING_STARTED || 'getting-started'
+    },
     pages: [
       {
         title: 'Adobe Document Services',
@@ -62,13 +66,9 @@ module.exports = {
           title: 'Forum',
           path: 'https://community.adobe.com/t5/document-services-apis/bd-p/Document-Cloud-SDK?page=1&sort=latest_replies&filter=all'
         }, {
-          title: 'Use Cases',
-          path: '../document-services/use-cases/'
+          title: 'Licensing',
+          path: '../document-services/licensing.md'
         }]
-      },
-      {
-        title: 'Get Started',
-        path: process.env.GETTING_STARTED || 'getting-started'
       },
       {
         title: 'Documentation',
