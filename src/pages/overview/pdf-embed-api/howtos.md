@@ -190,7 +190,7 @@ In order to display linearized PDFs using PDF Embed API, set the
 variable `enableLinearization` to true (default value is false) and pass
 it as a preview configuration to the `previewFile` API.
 
-As described in the section passing, the linearized PDF can be passed as
+As described in the [Passing file content](#passing-file-content), the linearized PDF can be passed as
 a file URL or file Promise.
 
 ### File URL
