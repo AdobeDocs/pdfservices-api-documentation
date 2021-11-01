@@ -240,7 +240,7 @@ Show or hide content in the document based on the conditions.
 <InlineAlert slots="text"/>
 
 The condition must be wrapped inside *expr()*. <br/> Supported
-conditional operators are =, !=, \>=, \>, \<=, \<.
+conditional operators are =, !=, >=, >, <=, <.
 
 JSON representation of the input data:
 
