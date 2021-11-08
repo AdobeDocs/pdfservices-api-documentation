@@ -22,10 +22,14 @@
       window.location.pathname === "/document-services/docs/" &&
       window.location.host.indexOf("localhost") < 0)
   ) {
+    console.log("redirect hash detected");
     switch (window.location.hash) {
       case "#adobe-analytics":
+        console.log('#adobe-analytics')
+        console.log('redirecting to:')
         redirectPath =
           prefixPath + "overview/pdf-embed-api/howtodata/#adobe-analytics";
+          console.log(redirectPath)
         break;
       case "#images":
         redirectPath =
@@ -106,5 +110,7 @@
     }
     window.location.href =
       "http://" + window.location.host + "/" + redirectPath;
+  } else {
+    console.log("redirect path not detected");
   }
 })();
