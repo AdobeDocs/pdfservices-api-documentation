@@ -13,9 +13,15 @@
 (() => {
   let prefixPath = (window.location.host.indexOf('localhost') === 0 ? '' : 'document-services/docs/');
   let redirectPath = '';
-  // TODO: will need to make sure this works on localhost as well other environments
-  // when checking the pathname
-  if(window.location.hash !== '' && window.location.pathname === '/'){
+
+  if (
+    (window.location.hash !== "" &&
+      window.location.pathname === "/" &&
+      window.location.host.indexOf("localhost") === 0) ||
+    (window.location.hash !== "" &&
+      window.location.pathname === "document-services/docs/" &&
+      window.location.host.indexOf("localhost") < 0)
+  ) {
     switch (window.location.hash) {
       case "#adobe-analytics":
         redirectPath =
@@ -77,10 +83,13 @@
           prefixPath + "overview/pdf-services-api/howtos/protect-pdf";
         break;
       case "#protect-pdfs-with-user-password":
-        redirectPath = prefixPath + "overview/pdf-services-api/howtos/protect-pdf/#protect-pdfs-with-owner-password";
+        redirectPath =
+          prefixPath +
+          "overview/pdf-services-api/howtos/protect-pdf/#protect-pdfs-with-owner-password";
         break;
       case "#split-pdf":
-        redirectPath = prefixPath + "overview/pdf-services-api/howtos/split-pdf";
+        redirectPath =
+          prefixPath + "overview/pdf-services-api/howtos/split-pdf";
         break;
       case "#java":
         redirectPath = prefixPath + "overview/pdf-services-api/#java";
@@ -95,6 +104,7 @@
         redirectPath = prefixPath + "overview/pdf-services-api/#sdk";
         break;
     }
-    window.location.href = 'http://' + window.location.host + '/'+ redirectPath;
+    window.location.href =
+      "http://" + window.location.host + "/" + redirectPath;
   }
 })();
