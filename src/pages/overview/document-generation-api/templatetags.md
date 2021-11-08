@@ -2,7 +2,7 @@
 
 **This section describes all the template tags that can be used to author
 a document template.** During the [Document Generation
-Process](../document-generation-api/index.md) , the Document
+Process](../document-generation-api/index.md#document-generation-process) , the Document
 Generation API replaces the template tags in the document template with
 the input data to generate the output document.
 
@@ -240,7 +240,7 @@ Show or hide content in the document based on the conditions.
 <InlineAlert slots="text"/>
 
 The condition must be wrapped inside *expr()*. <br/> Supported
-conditional operators are =, !=, \>=, \>, \<=, \<.
+conditional operators are =, !=, >=, >, <=, <.
 
 JSON representation of the input data:
 
