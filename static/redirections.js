@@ -19,7 +19,7 @@
       window.location.pathname === "/" &&
       window.location.host.indexOf("localhost") === 0) ||
     (window.location.hash !== "" &&
-      window.location.pathname === "document-services/docs/" &&
+      window.location.pathname === "/document-services/docs/" &&
       window.location.host.indexOf("localhost") < 0)
   ) {
     switch (window.location.hash) {
