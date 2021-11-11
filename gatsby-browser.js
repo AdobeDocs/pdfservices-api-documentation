@@ -13,7 +13,6 @@
 import React from 'react';
 
 export const onClientEntry = () => {
-  // init data layer
   window.digitalData = window.digitalData || {};
   window.digitalData = {
     page : {
@@ -36,8 +35,6 @@ export const onClientEntry = () => {
 }
 
 export const onRouteUpdate = ({ location, prevLocation }) => {
-  console.log('new pathname', location.pathname)
-  console.log('old pathname', prevLocation ? prevLocation.pathname : null)
   let siteSection = location.pathname.split('/');
   digitalData.page.pageInfo.siteSection = siteSection.pop() || siteSection.pop();
 }
