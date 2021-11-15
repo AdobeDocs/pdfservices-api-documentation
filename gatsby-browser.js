@@ -10,42 +10,54 @@
  * governing permissions and limitations under the License.
  */
 
-import React from 'react';
+const isBrowser = typeof window !== "undefined";
 
 export const onClientEntry = () => {
-  window.digitalData = window.digitalData || {};
-  window.digitalData = {
-    page : {
-      pageInfo : {
-        siteSection : '',
-        template : '',
-        language: 'en-us',
-        geoRegion: '',
-        issueDate: '',
-        breadCrumbs: []
+  if(isBrowser){
+    window.digitalData = window.digitalData || {};
+    window.digitalData = {
+      page : {
+        pageInfo : {
+          siteSection : '',
+          template : '',
+          language: 'en-us',
+          geoRegion: '',
+          issueDate: '',
+          breadCrumbs: []
+        }
+      }
+    }
+
+    window.onload = () => {
+      window.digitalData.page.pageInfo.breadCrumbs = [];
+      document.querySelectorAll('.spectrum-Breadcrumbs-item').forEach((item) => {
+        window.digitalData.page.pageInfo.breadCrumbs.push(item.innerText);
+      });
+
+      if(typeof window._satellite !== 'undefined') {
+        window._satellite.track('state', {
+          digitalData: window.digitalData
+        });
       }
     }
   }
 
-  window.onload = () => { 
-    document.querySelectorAll('.spectrum-Breadcrumbs-item').forEach((item) => {
-      digitalData.page.pageInfo.breadCrumbs.push(item.innerText);
-    });
-  
-    if(typeof _satellite !== 'undefined') {
-      _satellite.track('state', {
-        digitalData: digitalData
-      });
-    }
-
-    
-  }
 }
 
 export const onRouteUpdate = ({ location, prevLocation }) => {
-  let siteSection = location.pathname.split('/');
-  digitalData.page.pageInfo.siteSection = siteSection.pop() || siteSection.pop();
-  _satellite.track('state', {
-    digitalData: digitalData
-  });
+  if(isBrowser) {
+    let siteSection = location.pathname.split('/');
+    window.digitalData.page.pageInfo.siteSection = siteSection.pop() || siteSection.pop();
+
+    window.digitalData.page.pageInfo.breadCrumbs = [];
+    document.querySelectorAll('.spectrum-Breadcrumbs-item').forEach((item) => {
+      window.digitalData.page.pageInfo.breadCrumbs.push(item.innerText);
+    });
+
+    if(typeof window._satellite !== 'undefined') {
+      window._satellite.track('state', {
+        digitalData: window.digitalData
+      });
+    }
+  }
 }
