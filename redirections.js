@@ -11,7 +11,7 @@
  */
 
 (() => {
-  let prefixPath = (window.location.host.indexOf('localhost') === 0 ? '' : 'document-services/docs/');
+  let prefixPath = (window.location.host.indexOf('localhost') === 0 ? '' : 'document-services/docs/overview/');
   let redirectPath = '';
 
   if (
@@ -25,83 +25,83 @@
     switch (window.location.hash) {
       case "#adobe-analytics":
         redirectPath =
-          prefixPath + "overview/pdf-embed-api/howtodata/#adobe-analytics";
+          prefixPath + "pdf-embed-api/howtodata/#adobe-analytics";
         break;
       case "#images":
         redirectPath =
-          prefixPath + "overview/document-generation-api/templatetags/#images";
+          prefixPath + "document-generation-api/templatetags/#images";
         break;
       case "#pdf-extract-api-for-extracting-pdf-structure-and-information":
         redirectPath =
           prefixPath +
-          "overview/#pdf-extract-api-for-extracting-pdf-structure-and-information";
+          "#pdf-extract-api-for-extracting-pdf-structure-and-information";
         break;
       case "#beta-feature-extract-text-and-tables-and-styling-info":
         redirectPath =
           prefixPath +
-          "overview/pdf-extract-api/howtos/extract-api/#beta-feature-extract-text-and-tables-and-styling-info";
+          "pdf-extract-api/howtos/extract-api/#beta-feature-extract-text-and-tables-and-styling-info";
         break;
       case "#export-pdf":
         redirectPath =
           prefixPath +
-          "overview/pdf-services-api/howtos/export-pdf/#export-a-pdf";
+          "pdf-services-api/howtos/export-pdf/#export-a-pdf";
         break;
       case "#extract-pdf":
         redirectPath =
-          prefixPath + "overview/pdf-services-api/howtos/extract-pdf";
+          prefixPath + "pdf-services-api/howtos/extract-pdf";
         break;
       case "#extract-text-and-tables":
         redirectPath =
           prefixPath +
-          "overview/pdf-services-api/howtos/extract-pdf/#extract-text-and-tables";
+          "pdf-services-api/howtos/extract-pdf/#extract-text-and-tables";
         break;
       case "#extract-text-and-tables-and-character-bounding-boxes-w-renditions":
         redirectPath =
           prefixPath +
-          "overview/pdf-services-api/howtos/extract-pdf/#extract-text-and-tables-and-character-bounding-boxes-w-renditions";
+          "pdf-services-api/howtos/extract-pdf/#extract-text-and-tables-and-character-bounding-boxes-w-renditions";
         break;
       case "#extract-text-and-tables-and-table-structure-as-csv-w-renditions":
         redirectPath =
           prefixPath +
-          "overview/pdf-services-api/howtos/extract-pdf/#extract-text-and-tables-and-table-structure-as-csv-w-renditions";
+          "pdf-services-api/howtos/extract-pdf/#extract-text-and-tables-and-table-structure-as-csv-w-renditions";
         break;
       case "#extract-text-and-tables-w-renditions":
         redirectPath =
           prefixPath +
-          "overview/pdf-services-api/howtos/extract-pdf/#extract-text-and-tables-w-tables-renditions";
+          "pdf-services-api/howtos/extract-pdf/#extract-text-and-tables-w-tables-renditions";
         break;
       case "#extract-text-from-a-pdf":
         redirectPath =
           prefixPath +
-          "overview/pdf-services-api/howtos/extract-pdf/#extract-text-from-a-pdf";
+          "pdf-services-api/howtos/extract-pdf/#extract-text-from-a-pdf";
         break;
       case "#ocr-pdf":
-        redirectPath = prefixPath + "overview/pdf-services-api/howtos/ocr-pdf";
+        redirectPath = prefixPath + "pdf-services-api/howtos/ocr-pdf";
         break;
       case "#protect-pdf":
         redirectPath =
-          prefixPath + "overview/pdf-services-api/howtos/protect-pdf";
+          prefixPath + "pdf-services-api/howtos/protect-pdf";
         break;
       case "#protect-pdfs-with-user-password":
         redirectPath =
           prefixPath +
-          "overview/pdf-services-api/howtos/protect-pdf/#protect-pdfs-with-owner-password";
+          "pdf-services-api/howtos/protect-pdf/#protect-pdfs-with-owner-password";
         break;
       case "#split-pdf":
         redirectPath =
-          prefixPath + "overview/pdf-services-api/howtos/split-pdf";
+          prefixPath + "pdf-services-api/howtos/split-pdf";
         break;
       case "#java":
-        redirectPath = prefixPath + "overview/pdf-services-api/#java";
+        redirectPath = prefixPath + "pdf-services-api/#java";
         break;
       case "#node-js":
-        redirectPath = prefixPath + "overview/pdf-services-api/#nodejs";
+        redirectPath = prefixPath + "pdf-services-api/#nodejs";
         break;
       case "#python":
-        redirectPath = prefixPath + "overview/pdf-services-api/#python";
+        redirectPath = prefixPath + "pdf-services-api/#python";
         break;
       case "#sdk":
-        redirectPath = prefixPath + "overview/pdf-services-api/#sdk";
+        redirectPath = prefixPath + "pdf-services-api/#sdk";
         break;
     }
     window.location.href =
