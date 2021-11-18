@@ -33,12 +33,6 @@ export const onClientEntry = () => {
       document.querySelectorAll('.spectrum-Breadcrumbs-item').forEach((item) => {
         window.digitalData.page.pageInfo.breadCrumbs.push(item.innerText);
       });
-
-      if(typeof window._satellite !== 'undefined') {
-        window._satellite.track('state', {
-          digitalData: window.digitalData
-        });
-      }
     }
   }
 
@@ -53,11 +47,5 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
     document.querySelectorAll('.spectrum-Breadcrumbs-item').forEach((item) => {
       window.digitalData.page.pageInfo.breadCrumbs.push(item.innerText);
     });
-
-    if(typeof window._satellite !== 'undefined') {
-      window._satellite.track('state', {
-        digitalData: window.digitalData
-      });
-    }
   }
 }
