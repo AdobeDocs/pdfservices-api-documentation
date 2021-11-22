@@ -17,8 +17,7 @@ module.exports = {
   siteMetadata: {
     docs: {
       title: 'Get credentials',
-      // path:  process.env.GETTING_STARTED || 'getting-started'
-      path: 'https://dc.stage.acrobat.com/dc-integration-creation-app-cdn/index.html'
+      path:  process.env.GETTING_STARTED || 'getting-started'
     },
     pages: [
       {
