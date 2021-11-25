@@ -245,6 +245,10 @@ module.exports = {
             path: 'overview/pdf-extract-api/index.md'
           },
           {
+            title: 'Quickstarts',
+            path: 'overview/pdf-extract-api/quickstarts.md'
+          },
+          {
             title: 'How Tos',
             path: 'overview/pdf-extract-api/howtos/howtos.md'
           },
