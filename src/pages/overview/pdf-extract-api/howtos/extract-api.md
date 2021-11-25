@@ -108,6 +108,22 @@ schema]( ../../../resources/extractJSONOutputSchema2.json)):
 - **PDF Producers:** The Extract API is designed to extract content from files that contain text, table data, and figures. Files created from applications that produce other types of content like illustrations, CAD drawings or other types of vector art may not return quality results.
 - **PDF Collections:** PDFs that are made from a collection of files including PDF Portfolios are not currently supported.
 
+## Error codes
+| Scenario           | Error code                                                                                                                                                                                                                     | Error message                               |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------ |
+| Invalid API parameters | \-                                                                                                                                    | Invalid parameters                 |
+| File size violation         | DISQUALIFIED_FILE_SIZE                                                                                                                                          | File exceeds size limit. |
+| Page limit violation              | DISQUALIFIED_PAGE_LIMIT | File exceeds page limit.                 |
+| Scan page limit violation              | DISQUALIFIED_SCAN_PAGE_LIMIT                                                                                                                     | Scanned file exceeds page limit.                 |
+| Unsupported XFA file             | DISQUALIFIED_XFA                                                                                                                                                                         | File contains XFA form(s). Not supported for content extraction.                 |
+| Encryption permission                 | DISQUALIFIED_ENCRYPTION                                                                                                                                                                             | File permissions do not allow for content extraction.                 |
+| Complex file            | DISQUALIFIED_CMPLX_FILE                                                                                                                                                                                                       | File contents are too complex for content extraction.                 |
+| Bad PDF             | BAD_PDF                                                                                                                                             | Unable to extract content. File is corrupted, malformed or an empty PDF.                 |
+| Protected PDF     | PROTECTED_PDF                                                                   | Unable to extract content. File is password protected.                 |
+| Timeout           | TIMEOUT                                                                                             | Processing timeout. Please try splitting the file into multiple files with fewer pages.                 |
+| Unknown error / failure               | ERROR                                                                                                                                                                                | Unable to extract content - Internal error.                 |
+
+
 ## Extract Text from a PDF
 
 Use the sample below to extract text element information from a PDF
