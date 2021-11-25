@@ -55,7 +55,7 @@ Develop your web app using your preferred methods and tools.
 </head>
 <body style="margin: 0px">
  <div id="adobe-dc-view"></div>
- <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+ <script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
  <script type="text/javascript">
     document.addEventListener("adobe_dc_view_sdk.ready", function()
     {
@@ -131,7 +131,7 @@ PDF Embed API provides some optimizations in order to enhance the mobile
 view experience. These optimizations are available only in mobile phone
 browsers.
 
-### View modes in mobile browsers
+<!-- ### View modes in mobile browsers
 
 PDF Embed API provides a couple of view modes on mobile phone browsers
 to enhance the viewing experience of the PDFs. Note that these modes are
@@ -151,16 +151,24 @@ and select the desired view mode from the dropdown.
 
 **Continuous view mode**
 
-![Continous Mode](../images/continuous_mode.png)
+<InlineAlert slots="text"/>
 
-**Single page view mode**
+Screenshot TBD..
 
-![Single Page Mode](../images/single_page_mode.png)
+<!-- ![Continous Mode](../images/continuous_mode.png) -->
 
-These view modes can also be set using the configuration variable
+<!-- **Single page view mode**
+
+<InlineAlert slots="text"/> -->
+
+<!-- Screenshot TBD.. -->
+
+<!-- ![Single Page Mode](../images/single_page_mode.png) -->
+
+<!-- These view modes can also be set using the configuration variable
 `defaultViewMode`. Set the appropriate value of the variable and pass it
 as a preview configuration to the `previewFile` API. For details, see
-[Menu and tool options](./howtos_ui.md#menu-and-tool-options).
+[Menu and tool options](./howtos_ui.md#menu-and-tool-options). -->
 
 ### Go to a Page
 
@@ -176,7 +184,11 @@ particular page.
 Note that this functionality is available only with Full Window embed
 mode.
 
-![Go To Page Dialog](../images/goto_page.png)
+<InlineAlert slots="text"/>
+
+Screenshot TBD..
+
+<!-- ![Go To Page Dialog](../images/goto_page.png) -->
 
 ### Zoom in
 

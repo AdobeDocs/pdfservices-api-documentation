@@ -5,7 +5,15 @@ the changes below for each release.
 
 ## Change history
 
+### May, 2022
+
+| Change | Description                                                            |
+| ------ | ---------------------------------------------------------------------- |
+| New    | Website developers can now integrate Google Analytics with PDF Embed API with only a few steps and collect PDF analytics. For more details, see the section [Google Analytics](./howtodata.md#google-analytics).                         |
+| New    | The PDF viewer is revamped for all embed modes. Please use this script [URL](https://documentcloud.adobe.com/view-sdk/viewer.js) to access the new PDF viewer. For more details, please refer the documentation. |
+
 ### August, 2021 (Patch Release)
+
 | Change  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Changed | PDF Embed API now no longer uses Adobe Analytics to gather anonymous usage data for measuring performance. For more details, see the section [Analytics](../#analytics) |

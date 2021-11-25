@@ -8,10 +8,6 @@ interface and user interactions with the PDF. Features which are enabled
 by default can be explicitly disabled.
 Optional configurations include
 controls for:
--   Managing the page controls (applicable in Full Window, Sized
-    Container and Lightbox embed modes).
--   Hiding and showing the left-hand pane (applicable only in Full
-    Window embed mode).
 -   Enabling and disabling commenting, form filling, and other user
     interactions (applicable only in Full Window embed mode).
 -   Enabling and disabling PDF download and print options.
@@ -24,8 +20,7 @@ controls for:
 
 ## Menu and tool options
 
-You can control UI elements such as the left hand panel, comments pane,
-toolbars, etc. UI option variables. The `previewFile` function reads the
+You can control various options provided by PDF Embed API. The `previewFile` function reads the
 variable values and toggles features on and off accordingly. As usual
 with Javascript, there's more than one way to accomplish the task. In
 example 1, you can create an object that stores the variables.
@@ -34,18 +29,18 @@ list within the function.
 
 In both examples below, the download PDF option is disabled from the
 overflow menu in the top bar with `showDownloadPDF` set to *false*. The
-page control bar is disabled with `showPageControls` set to *false*.
+page navigation controls are disabled with `showPageNavigationControl` set to *false*.
 
 **Example 1: UI options stored in a constant**
 
 ```html
 <div id="adobe-dc-view"></div>
-<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+<script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
 <script type="text/javascript">
 // Store the UI options in a constant
 const previewConfig = {
    showDownloadPDF: false,
-   showPageControls: false
+   showPageNavigationControl: false
 }
 
 document.addEventListener("adobe_dc_view_sdk.ready", function () {
@@ -63,14 +58,14 @@ document.addEventListener("adobe_dc_view_sdk.ready", function () {
 
 ```html
 <div id="adobe-dc-view"></div>
-<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+<script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
 <script type="text/javascript">
   document.addEventListener("adobe_dc_view_sdk.ready", function () {
      var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
         adobeDCView.previewFile({
            content:{location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
            metaData:{fileName: "Bodea Brochure.pdf"}
-        }, {showDownloadPDF: false, showPageControls: false});
+        }, {showDownloadPDF: false, showPageNavigationControl: false});
   });
 </script\>
 ```
@@ -79,14 +74,15 @@ document.addEventListener("adobe_dc_view_sdk.ready", function () {
 
 | Variable            | Default | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | ------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| showPageControls    | true    | If true, the page control toolbar displays.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| dockPageControls    | true    | If true, the page control toolbar is locked to the bottom bar and expands to the page width. End users can still dock/undock via the dock button on the page control toolbar.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| showAnnotationTools | true    | If true, tools such as add text, sticky note, highlight, and so on appear in the upper toolbar. For more detail, see [Comments and Markup](./howtos_comments.md).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| showLeftHandPanel   | true    | By default, the left-hand pane is always displayed in the file preview. Set this variable to false if you wish to hide the left-hand pane. The pane allows users to view the PDF thumbnails. If the PDF contains bookmarks and file attachments, then those are also displayed in this pane.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| defaultViewMode     | null    | This variable takes a string value of FIT\_WIDTH or FIT\_PAGE. FIT\_WIDTH expands the page horizontally to the full width of the document pane. FIT\_PAGE displays the entire page in the current view pane. Note that end users can toggle the mode via the Fit Width/Fit Page button on the page controls bar.<br/> In addition to these, there are two other view modes which are supported only in mobile browsers.<br/> <ul><li>CONTINUOUS: This mode displays all the document pages one after the other and users can easily navigate through the pages by scrolling up or down.</li> <li>SINGLE\_PAGE: This mode displays only a single document page at a time and doesn’t show any adjoining page. Users can use the swipe gesture to navigate to other pages which will be displayed one at a time.</li></ul> |
-| enableFormFilling   | true    | If true, form filling is enabled and users can edit fields.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| showPageNavigationControl    | true    | Set this to false to hide the page navigation options in the right-hand pane. This configuration will work for full window and lightbox embed modes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| showZoomControl    | true    | Set this to false to hide the zoom-ina nd zoom-out options available in the right0hand pane. This configuration will work for full window and lightbox embed modes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| showAnnotationTools | true    | If true, tools such as add text, sticky note, highlight, and so on appear in the upper toolbar. For more details, see [Comments and Markup](./howtos_comments.md).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| showFullScreen   | true    | By default, the full screen toggle appears in the bottom toolbar in sized container embed mode. Set this to false to hide the full screen toggle.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| defaultViewMode     | null    | This variable takes a string value of FIT\_WIDTH, FIT\_PAGE or TWO\_COLUMN. FIT\_WIDTH expands the page horizontally to the full width of the document pane. FIT\_PAGE displays the entire page in the current view pane. TWO\_COLUMN displays two pages side by side in the current view pane. Note that end users can toggle the mode via the Fit Width, Fit Page or Two-Column button on the right-hand pane. |
+| enableFormFilling   | true    | If true, form filling is enabled and users can edit fields.            Form-filling is available only in full window embed mode.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | showDownloadPDF     | true    | If true, a download button appears in the overflow menu on the top bar.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| showPrintPDF        | true    | If true, then a print PDF option appears in the overflow menu on the top bar.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| showPrintPDF        | true    | If true, then a print PDF option appears in the overflow menu on the top bar. |
+|  exitPDFViewerType    |  "CLOSE"  |  The top bar in lightbox embed mode contains the close button by default to close the PDF preview which can be configured to Back button by setting exitPDFViewerType to "RETURN".   |
 
 
 ## Annotations
@@ -151,7 +147,7 @@ return new Promise((resolve, reject) => {
 The user profile callback allows the user to specify user profile
 details such as first name, last name, and email address. By default, if
 you do not register a user profile callback, the user name is displayed
-as "Guest" in the comments pane.
+as "Guest" in the comments panel.
 
 ![User being referred to as guest](../images/userprofile_new.png)
 
@@ -190,7 +186,7 @@ adobeDCView.registerCallback(
 Users can update the colour of an annotation by clicking on the PDF
 annotation and changing the colour from the toolbar. The updated colour
 is applied to all new annotations of that type added to the PDF. Also,
-when any annotation tool is selected from the top bar for the first
+when any annotation tool is selected for the first
 time, there is a coach mark displayed to educate users about the
 annotation tool which goes away after a few seconds.
 
@@ -295,16 +291,18 @@ appears in disabled state until the PDF is modified.
 This callback allows users to save the updated PDF buffer which can then
 be stored in an external file storage system.
 
--   If you do not register a callback, when a user triggers the save
-    functionality, the app downloads the updated PDF to the user’s local
-    machine. The default location is often the Downloads folder.
--   If you do register a callback, then your code can enable saving the
+-   **If you do not register a callback**: When any annotation is added to the PDF, 
+    a download button appears in the top bar. Click on the download button to save
+    the updated PDF to the user’s local machine. 
+    The default location is often the Downloads folder.
+-   **If you do register a callback**: When any annotation is added to the PDF, 
+    a save button appears in the top bar. Your code can enable saving the
     modified document to an external file storage system like OneDrive
     or Google Drive. In this case, the code varies with the website
     developer’s implementation.
 
 Users can trigger the save functionality by either clicking on the
-**Save** button manually or by pressing **Ctrl+S** on the keyboard. You
+**Save** or **Download** button manually or by pressing **Ctrl+S** on the keyboard. You
 should register the callback to receive the modified file content when
 the user initiates the save.
 
@@ -380,6 +378,7 @@ and data in the following format:
     should retry saving.
 
 ![Generic Error Message](../images/fail.png)
+
 <br/>
 
 -   FILE\_MODIFIED: Use the response code FILE\_MODIFIED to capture the case when two users
@@ -579,7 +578,7 @@ const statusOptions = {
 The PDF Embed API supports live form editing by default. End users can
 add and edit text in text fields and interact with other form objects,
 including radio buttons, check boxes, lists, and drop downs (select
-lists). When users fill any form field, the Save button in the top menu
+lists). When users fill any form field, the Save button on the top bar
 is automatically enabled so that they can save their information to the
 PDF. The PDF Embed API renders forms so that they appear similar to
 forms viewed in the full Acrobat app:
@@ -596,7 +595,7 @@ default, you can disable the feature by setting it to *false*.
 
 ```html
 <div id="adobe-dc-view"></div>
-<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+<script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
 <script type="text/javascript">
    document.addEventListener("adobe_dc_view_sdk.ready", function () {
       var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
@@ -653,7 +652,7 @@ follows:
 </head>
 <body style="margin: 0px">
  <div id="adobe-dc-view"></div>
- <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+ <script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
  <script type="text/javascript">
     document.addEventListener("adobe_dc_view_sdk.ready", function()
     {
@@ -829,7 +828,7 @@ configuration to the `previewFile` API.
 </head>
 <body style="margin: 0px">
  <div id="adobe-dc-view"></div>
- <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+ <script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
  <script type="text/javascript">
     document.addEventListener("adobe_dc_view_sdk.ready", function()
     {
@@ -1514,7 +1513,7 @@ adobeViewer.getAPIs().then(apis => {
 
 This API controls text selection in PDF. The default is enabled
 (*true*). Note that disabling text selection also disables the highlight
-option in the top toolbar.
+annotation tool from the quick tools menu on the left-hand side.
 
 ##### Input parameters
 

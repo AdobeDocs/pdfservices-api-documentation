@@ -8,6 +8,10 @@ tool which can be used to erase parts of drawing annotations. In
 addition to these, there are undo and redo tools available in the top
 bar.
 
+<InlineAlert slots="text"/>
+
+Screenshots TBD..
+
 ![Annotation Tools like save button, adding sticky notes, text formatting menu and popover menu](../images/annotstoolsoverview.png)
 
 ![Comment Pane with features to add comments, reply to a comment, add a note with comment and delete comments](../images/commentpane.png)
@@ -22,7 +26,7 @@ embedded JavaScript.
 
 ```html
 <div id="adobe-dc-view"></div>
-<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+<script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
 <script type="text/javascript">
 document.addEventListener("adobe_dc_view_sdk.ready", function () {
    var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
@@ -51,36 +55,44 @@ functionality:
 -   Support for adding replies to annotations so that document
     recipients can respond to the author’s original markup. All comments
     appear in the right-hand comments panel.
--   Adding or updating any annotation enables the **Save** button.
+-   Adding or updating any annotation enables the **Save** or **Download** button.
 -   Once saved, the annotation is added to the PDF and becomes part of
     the PDF buffer.
 
+<InlineAlert slots="text"/>
+
+Screenshots TBD..
+
 ![Viewer UI with undo and redo button and annotation tools](../images/viewerui1.png)
 
-### Freehand text comments
+### Add text comments
 
-Users can add freehand text anywhere on a PDF page as follows: select
-the Add Text tool in the top bar, click on the page to place the cursor
+Users can add freehand text anywhere on a PDF page as follows: Select
+the **Add text comment** tool from the quick tools menu on the left-hand side, click on the page to place the cursor
 and type in your desired text. Click outside the text box to add the
-annotation. A comment with the same text also appears in the right-hand
+annotation. A comment with the same text also appears on the right-hand
 comments panel. Features include:
 
--   Updating free text annotation: Click on an existing add text
-    annotation to edit the text or change any of the text attributes
-    from the toolbar. You can change attributes such as colour and font
-    size of the free text. **Note**: The display of the text size is
+-   Updating a text comment: Click on an existing text comment
+    to edit the text or change any of the text attributes
+    from the toolbar. You can change attributes such as color and font
+    size of the text comment. **Note**: The display of the text size is
     relative to the PDF zoom level. Text can also be edited by clicking
     on the Edit option in the overflow menu for the associated comment
     in the comments panel.
--   Removing free text annotation
-    -   Click any existing add text annotation to open the toolbar, and
+-   Removing a text comment:
+    -   Click any existing text comment in the PDF to open the toolbar, and
         choose **Delete**.
     -   Alternatively, click the overflow menu for the associated
         comment in the comments panel, and choose **Delete**.
--   Moving or resizing free text annotation: Place the cursor on an
-    existing add text annotation and move the free text to a different
+-   Moving or resizing a text comment: Place the cursor on an
+    existing text comment and move the text to a different
     location on the same PDF page. You can also drag one of the corner
     circles of the text box to resize.
+
+<InlineAlert slots="text"/>
+
+Screenshots TBD..
 
 ![Add Text Menu with option to style font and delete](../images/addtext_menu.png)
 
@@ -90,17 +102,18 @@ Use the sticky note to add a text message and place it anywhere on the
 PDF. There is no support for resizing. Features include:
 
 -   Adding a sticky note
-    -   Select the sticky note tool in the top bar and click where you
-        want to place the note. This opens a comment box where you can
+    -   Select the **Add comment** tool from the quick tools menu on the 
+        left-hand side and click where you want to place the note. 
+        This opens a comment box where you can
         type in some text. Click Post to add the comment.
     -   You can also add a sticky note by performing right-click and
-        selecting *Add sticky note* option from the popover menu.
--   Updating sticky note
+        selecting *Add comment* option from the popover menu.
+-   Updating a sticky note
     -   Click on an existing sticky note to open a toolbar to change the
-        colour of the note.
+        color of the note.
     -   Edit the comment by clicking on the Edit option in the overflow
         menu in the comments panel.
--   Removing sticky note
+-   Removing a sticky note
     -   Click on an existing sticky note to open the toolbar and click
         on delete option to remove the note.
     -   Alternatively, click on the overflow menu for the comment in the
@@ -108,23 +121,35 @@ PDF. There is no support for resizing. Features include:
 -   Moving a sticky note: Place the cursor over an existing sticky note
     and drag to move it to some other location.
 
+<InlineAlert slots="text"/>
+
+Screenshots TBD..
+
 ![Sticky Note with option to change colour and delete](../images/stickynote1.png)
 
 ### Text markup annotations
 
-Embed API supports the following highlighting, strikethrough, and
-underlining. Features include:
+Embed API supports the following text markup annotation types - highlight, strikethrough, and
+underline. Features include:
+
+<InlineAlert slots="text"/>
+
+Screenshots TBD..
 
 ![Text Selection with strikethrough](../images/textselectiontool.png)
 <br/>
 
 -   Adding a text markup: There are two ways to add a text markup:
-    -   Click the highlight tool in the top bar and select some text.
+    -   Click the highlight/underline/strikethrough tool in the quick tools 
+        menu on the left-hand side and select some text.
         The text gets highlighted and a comment box opens up where you
         can type in some text.
-    -   Select some text. Select either the highlight, strikethrough or
-        underline options from the context menu. The markup is added and
+    -   Select some text. Select the highlight text option from the context menu. The markup is added and
         a comment box opens up where you can type in some text.
+
+<InlineAlert slots="text"/>
+
+Screenshots TBD..
 
 ![Context Menu with text styling options available](../images/contextmenu.png)
 <br/>
@@ -132,9 +157,13 @@ underlining. Features include:
 -   Updating a text markup: While moving or resizing text markup is
     unsupported, you can:
     -   Click on an existing text markup to open a toolbar to change the
-        colour.
+        color.
     -   You can edit the comment by clicking on the Edit option in the
         overflow menu in the comments panel.
+
+<InlineAlert slots="text"/>
+
+Screenshots TBD..
 
 ![Highlight Menu with option to change colour and delete](../images/highlight_menu.png)
 <br/>
@@ -150,16 +179,16 @@ underlining. Features include:
 Use this tool to create any freehand drawing or shape. Features include:
 
 -   Adding a drawing
-    -   Select the drawing tool in the top bar, click where you want to
-        begin drawing and drag to create a shape. You can release the
+    -   Select the drawing tool from the quick tools menu on the left-hand side, 
+        click where you want to begin drawing and drag to create a shape. You can release the
         mouse button, move the pointer to a new location, and continue
         drawing. The drawing gets added along with a default comment in
         the comments panel.
     -   You can also add a drawing by performing right-click and
-        selecting *Use drawing tool* option from the popover menu.
+        selecting *Draw freeform* option from the popover menu.
 -   Updating a drawing
     -   Click on an existing drawing to display the toolbar. You can
-        change attributes such as colour and stroke width.
+        change attributes such as color and stroke width.
     -   You can edit the comment by clicking on the Edit option in the
         overflow menu in the comments panel.
 -   Removing a drawing
@@ -173,6 +202,10 @@ Use this tool to create any freehand drawing or shape. Features include:
     -   Place the cursor over a drawing and drag one of the corner
         circles to resize the annotation.
 
+<InlineAlert slots="text"/>
+
+Screenshots TBD..
+
 ![Drawing Menu with option to change colour of marker and delete](../images/drawing_menu.png)
 
 ### Eraser tool
@@ -180,15 +213,19 @@ Use this tool to create any freehand drawing or shape. Features include:
 This tool can be used to erase parts of freehand drawing annotations you
 added via the drawing tool.
 
-Select the eraser tool in the top bar and drag it across the areas of
-the drawing annotation that you wish to remove. The updated drawing
+Select the eraser tool from the quick tools menu on the left-hand side 
+and drag it across the areas of the drawings that you wish to remove. The updated drawing
 annotation is saved to the PDF.
 
--   Parts of a single drawing or multiple drawing annotations can be
-    erased at the same time. The corresponding drawing annotations are
+-   Parts of a single drawing or multiple drawings can be
+    erased at the same time. The corresponding drawings are
     updated in the PDF.
--   If the entire drawing is erased, then that particular drawing
-    annotation gets removed from the PDF.
+-   If the entire drawing is erased, then that particular drawing 
+    gets removed from the PDF.
+
+<InlineAlert slots="text"/>
+
+Screenshots TBD..
 
 ![Eraser to erase drawing](../images/eraser.png)
 
@@ -200,13 +237,27 @@ remove as many of the previous actions as necessary.
 
 Use the Redo tool to reverse the action of the undo command.
 
+<InlineAlert slots="text"/>
+
+Screenshots TBD..
+
 ![Undo Redo button on top right toolbar](../images/undo_redo.png)
+
+### Select text
+
+There are a couple of select text options available in the quick tools menu.
+Choose **Select** option to select some text in the document 
+and **Pan** option to drag and pan the entire document.
+
+<InlineAlert slots="text"/>
+
+Screenshots TBD..
 
 ## Annotations API overview
 
 The annotations API supports programmatic importing, creating, deleting,
 updating, and exporting both comments (sticky notes) and other types of
-markup such as underlines and highlight. The PDF Embed API provides two
+markup such as highlight, underline and strikethrough. The PDF Embed API provides two
 configuration variables to enable and control annotations:
 
 -   `enableAnnotationAPIs`: Default is *false*. *true* enables the APIs.
@@ -215,7 +266,7 @@ configuration variables to enable and control annotations:
 -   `includePDFAnnotations`: Default is *false*. When *true*, the API
     displays existing annotations. Supported annotations can be modified
     and unsupported annotations are read only. Annotation modifications
-    enable the **Save** button so that add, update, and delete actions
+    enable the **Save** or **Download** button so that add, update, and delete actions
     may be saved to the PDF.
 
 <InlineAlert slots="text" />
@@ -247,7 +298,7 @@ scenarios:
 > -   The PDF Embed API does not display existing annotations, but will
 >     display new ones.
 > -   Any annotation added or updated either from the UI or API is not
->     saved to the PDF buffer; therefore, no **Save** button appears in
+>     saved to the PDF buffer; therefore, no **Save** or **Download** button appears in
 >     the top bar.
 
 3.  If both `enableAnnotationAPIs` and `includePDFAnnotations` are
@@ -258,7 +309,7 @@ scenarios:
 >     annotations appear in read-only mode and are not accessible to the
 >     APIs.
 > -   Any annotation added or updated from UI or API is saved to the PDF
->     buffer, and the Save button is enabled when the PDF has unsaved
+>     buffer, and the **Save** or **Download** button is enabled when the PDF has unsaved
 >     changes.
 
 ## Annotation schema
@@ -314,7 +365,7 @@ key fields:
 | modified         | The date-time in UTC timezone format to denote the annotation modification time after it was created. Use xsd:dateTime with the UTC timezone expressed as “Z”.                                                                                                                                                                                                                                                                                                                                                        | Yes       |
 | source           | The PDF’s unique identifier. This is same as the value of `id` in the metadata field in the `previewFile` API.                                                                                                                                                                                                                                                                                                                                                                                                        | Yes       |
 | stylesheet.type  | The type of style applied to freehand text annotations. The only permissible value is CssStylesheet.                                                                                                                                                                                                                                                                                                                                                                                                                  | No        |
-| stylesheet.value | This specifies the font size and colour as a valid CSS JSON. This parameter is applicable only in case of freehand text annotations.<br/>**Note:** In the current implementation, there is no support to set the font family of the text annotation. Depending on the language of the text, the following font families will be applied:<br/><ul><li>English: Helvetica</li><li>Chinese Simplified: Adobe Song Std L</li><li>Chinese Traditional: Kozuka Mincho Pr6N R</li><li>Japanese: Kozuka Mincho Pr6N R</li><li>Korean: Adobe Myungjo Std M</li><li>Other languages: Helvetica</li></ul> | No        |
+| stylesheet.value | This specifies the font size and color as a valid CSS JSON. This parameter is applicable only in case of freehand text annotations.<br/>**Note:** In the current implementation, there is no support to set the font family of the text annotation. Depending on the language of the text, the following font families will be applied:<br/><ul><li>English: Helvetica</li><li>Chinese Simplified: Adobe Song Std L</li><li>Chinese Traditional: Kozuka Mincho Pr6N R</li><li>Japanese: Kozuka Mincho Pr6N R</li><li>Korean: Adobe Myungjo Std M</li><li>Other languages: Helvetica</li></ul> | No        |
 
 If the annotation is a comment on the PDF, then the value of the
 `target` parameter is *target-node* as follows:
@@ -506,7 +557,7 @@ Invoke the APIs with the `annotationManager` as follows:
 
 <body style="margin: 0px">
  <div id="adobe-dc-view"></div>
- <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+ <script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
  <script type="text/javascript">
  document.addEventListener("adobe_dc_view_sdk.ready", function()
  {
@@ -823,7 +874,7 @@ N/A
 
 Returns a Promise which:
 
-* Resolves with both a list of removed annotations as well as an updated PDF buffer if the operation succeeds
+* Resolves with both a list of removed annotations as well as an updated PDF buffer if the operation succeeds.
 * Rejects with an error object that includes both an error code and message on operation failure.
 
 #### API signature
@@ -886,8 +937,8 @@ UI control is available through the following APIs:
 ### setConfig API
 
 `setConfig` allows you to set special UI configurations, including
-hiding the commenting tools from the top bar, hiding the right-hand
-comments pane, hiding the toolbar on text selection, and enabling the
+hiding the annotation tools from the left-hand side, hiding the right-hand
+comments panel, hiding the toolbar on text selection, and enabling the
 downloaded and printed PDF to contain annotations even when unsaved to
 the PDF buffer.
 
@@ -895,12 +946,12 @@ The API supports the following flags. You can pass 1-N flags to the API
 as needed:
 
 -   `showToolbar`: This flag shows or hides the add text, sticky note,
-    highlight, drawing and eraser tools in the top bar. The default
-    value is *true*, and these annotation tools are visible. Set this
-    flag to false if these tools need to be hidden from the top bar.
+    highlight, strikethrough, underline, drawing and eraser tools on the left-hand side. 
+    The default value is *true*, and these annotation tools are visible. Set this
+    flag to false if these tools need to be hidden.
 -   `showCommentsPanel`: This flag shows or hides the right-hand
-    comments pane. The default value is *true*, and the comments pane is
-    visible. Set to *false* to hide the right-hand comments pane.
+    comments panel. The default value is *true*, and the comments panel is
+    visible. Set to *false* to hide the right-hand comments panel.
 -   `showToolsOnTextSelection`: This flag shows or hides the toolbar
     available on text selection. The default value is *true*, and the
     toolbar is visible. Set to *false* to hide the toolbar.
@@ -1054,7 +1105,7 @@ optional parameters:
     string value to denote the cursor style on annotation start. This
     parameter is applicable for all annotation types.
 -   `fontSize`: Font size within the range of 6-24px. This parameter is
-    applicable only in case of freehand text annotations.
+    applicable only in case of add text annotations.
 -   `strokeWidth`: Stroke width within the range of 1-12, to set the
     line thickness of the drawing annotation.
     

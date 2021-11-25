@@ -4,7 +4,7 @@ The samples and documentation provide an easy way to jump-start
 development. The sections below describe how to embed a customized PDF
 viewer in a web page.
 
-![PDF Embed API Workflow : User opens your web application which has a script tag containing the PDF Embed API by source URL. PDF Embed API is initialized by passing the API Key, The PDF will now be embedded in your web app and displayed to the user](../images/workflow.png)
+<!-- ![PDF Embed API Workflow : User opens your web application which has a script tag containing the PDF Embed API by source URL. PDF Embed API is initialized by passing the API Key, The PDF will now be embedded in your web app and displayed to the user](../images/workflow.png) -->
 
 ## Embed a PDF viewer
 
@@ -12,7 +12,7 @@ Once you've received your client ID, embedding the DC PDF viewer
 involves:
 
 1.  Adding a `<script>` tag to load the PDF Embed API by source url:
-    <https://documentcloud.adobe.com/view-sdk/main.js> (**line 6**).
+    <https://documentcloud.adobe.com/view-sdk/viewer.js> (**line 6**).
 2.  Setting up the rendering area: use a div tag with an ID of
     `adobe-dc-view` (**line 9**).
 3.  Initializing the PDF Embed API by passing client ID, and call
@@ -37,7 +37,7 @@ viewer.
   <title>Your title</title>
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
 </head>
 <body>
   <div id="adobe-dc-view"></div>
@@ -200,7 +200,7 @@ Pass the URL of the linearized PDF in the `content` field and invoke the
 
 ```html
 <div id="adobe-dc-view"></div>
-<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+<script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
 <script type="text/javascript">
   document.addEventListener("adobe_dc_view_sdk.ready", function() {
     var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
@@ -281,7 +281,7 @@ of these functions and pass it to the `linearizationInfo` object.
 
 ```html
 <div id="adobe-dc-view"></div>
-<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+<script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
 <script type="text/javascript">
   document.addEventListener("adobe_dc_view_sdk.ready", function() {
     const linearizationInfoObject = {
@@ -448,24 +448,21 @@ optional.
     *false*.
 -   **Print and download**: This mode supports options to download and
     print the PDF (`showDownloadPDF` and `showPrintPDF`).
--   **Left-hand pane**: The left-hand pane is available by default
-    (`showLeftHandPanel`) to display the page thumbnails, view existing
-    bookmarks and access the file attachments available in the PDF.
--   **View mode**: Set the default page view to either fit page or fit
-    width (`defaultViewMode`).
--   **Page controls**: Show or hide the page control toolbar at the
-    bottom containing various options, such as, zoom level, fit page,
-    fit width, dock/undock page controls and navigation controls.
-    (`showPageControls` and `dockPageControls`).
-
-The bottom toolbar also contains the Adobe Acrobat logo in docked as
-well as undocked state. When the toolbar is hidden, the logo displays
-along with a floating label "Powered by Adobe Acrobat" and appears at
-the bottom right-side.
+-   **Right-hand pane**: The right-hand pane is available by default
+    to display the comments, page thumbnails, bookmarks and access the file attachments 
+    available in the PDF. It also provides various page navigation as well as 
+    page viewing controls.
+-   **Page navigation controls**: The page navigation controls 
+    are available by default in the 
+    right-hand pane. (`showPageNavigationControl`).
+-   **Zoom control**: This mode also provides zoom-in and 
+    zoom-out controls in the right-hand pane. (`showZoomControl`).
+-   **View mode**: Set the default page view to either fit page, fit
+    width or two-column (`defaultViewMode`). You can choose to view one page or two pages at a time. 
 
 ```html
 <div id="adobe-dc-view"></div>
-<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+<script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
 <script type="text/javascript">
   document.addEventListener("adobe_dc_view_sdk.ready", function(){
     var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
@@ -493,13 +490,12 @@ To use this mode:
 * Pass `embedMode: "SIZED_CONTAINER"`
 * Optional: Configure the page and tool options
   -   **Print and download**: This mode supports options to download and print the PDF (`showDownloadPDF` and `showPrintPDF`) 
-      as well as document search.
-  -   **Page controls**: The page control toolbar containing the Adobe Acrobat logo and navigation options is docked but 
-      can be undocked by setting `dockPageControls` to false. A full screen mode button also appears in the page control toolbar(`showFullScreen`).
+      as well as document search. These options are available in the bottom toolbar.
+  -   **Page controls**: The bottom toolbar contains page navigation options. A full screen mode button also appears in the page control toolbar(`showFullScreen`).
 
 ```html
 <div id="adobe-dc-view" style="height: 360px; width: 500px;"></div>
-<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+<script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
 <script type="text/javascript">
   document.addEventListener("adobe_dc_view_sdk.ready", function(){
     var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
@@ -511,14 +507,23 @@ To use this mode:
 </script>
 ```
 
+<InlineAlert slots="text"/>
+
+Screenshot TBD..
+
 ![Sized Container](../images/sized_new.png)
 
 #### Toggling full screen
 
 To display the PDF in full screen view, choose the **full screen mode**
-button in the page toolbar. The top bar contains a traditional exit
-(**X**) button which returns full screen mode to normal mode. In mobile
-browsers, you can also exit full screen mode by swiping down.
+button in the bottom toolbar. In the full screen mode, the top bar contains a traditional exit
+(**X**) button which returns full screen mode to normal mode. The full screen mode also displays a right-hand pane
+which contains various options, such as, page thumbnails, page navigation, page viewing and zoom control options.
+In mobile browsers, you can also exit full screen mode by swiping down.
+
+<InlineAlert slots="text"/>
+
+Screenshot TBD..
 
 ![Exit Button and full screen button to toggle between full screen](../images/exit.png)
 
@@ -537,14 +542,13 @@ To use this mode:
     PDF viewer.
 -   Pass `embedMode: "IN_LINE"`
 -   Optional: By default, the page control toolbar only displays when a
-    user scrolls pages. The toolbar displays the Adobe Acrobat logo,
-    basic navigation controls and document search along with options to
-    download and print the PDF. You can toggle both `showDownloadPDF`
-    and `showPrintPDF` on and off.
+    user scrolls pages. The bottom toolbar provides basic page navigation controls 
+    and document search along with options to download and print the PDF. 
+    You can toggle both `showDownloadPDF` and `showPrintPDF` on and off.
 
 ```html
 <div id="adobe-dc-view" style="width: 800px;"></div>
-<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+<script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
 <script type="text/javascript">
    document.addEventListener("adobe_dc_view_sdk.ready", function(){
      var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
@@ -556,37 +560,38 @@ To use this mode:
 </script>
 ```
 
+<InlineAlert slots="text"/>
+
+Screenshot TBD..
+
 ![Inline Search](../images/inline_search.png)
 
 ### Lightbox
 
 Lightbox mode renders the PDF in the foreground at top of the page. The
 background remains visible, but the focus is on the previewed PDF. The
-top bar displays the Adobe Acrobat logo and also provides configurable
+top bar provides configurable
 **Close** and **Back** buttons. The **Close** button appears by default.
 ([Lightbox Demo](https://documentcloud.adobe.com/view-sdk-demo/index.html#/view/LIGHT_BOX))
 
 To use this mode:
 
 *   Pass `embedMode: "LIGHT_BOX"`.
-*   Optional: Configure the page, tool, and exit PDF Viewer options
+*   Optional: Configure the various PDF Viewer options.
     -   **Print and download**: This mode supports options to download
         and print the PDF (`showDownloadPDF` and `showPrintPDF`).
-    -   **View mode**: Set the default page view to either fit page or
-        fit width (`defaultViewMode`).
-    -   **Page controls**: Show or hide the page control options in the
-        bottom toolbar, such as zoom level, fit page, fit width,
-        dock/undock page controls, and navigation controls
-        (`showPageControls`).The page control toolbar is undocked by
-        default but can be docked by setting `dockPageControls` to
-        *true*.
+    -   **View mode**: Set the default page view to either fit page, fit width or 
+        two-column (`defaultViewMode`). You can choose to view one page or two pages at a time.
+    -   **Right-hand pane**: The right-hand pane is available by default
+        to display the page thumbnails and also provides various page navigation as well as 
+        page viewing controls.
     -   **Exit PDF Viewer**: The top bar contains the Close button by
         default to close the PDF preview which can be configured to Back
         button by setting `exitPDFViewerType` to RETURN
         (`exitPDFViewerType: "RETURN"`).
 
 ```html
-<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+<script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
 <script type="text/javascript">
     document.addEventListener("adobe_dc_view_sdk.ready", function(){
         var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>"});
@@ -674,6 +679,20 @@ Supported languages
 | Turkish                  | tr-TR |
 | Chinese                  | zh-CN |
 | Chinese                  | zh-TW |
+
+## Legacy to Modern viewer
+
+In order to use PDF Embed API, website developers are required to add the PDF Embed API script URL in their websites. 
+We recommend that developers use the [viewer.js](https://documentcloud.adobe.com/view-sdk/viewer.js) script to access the revamped and modern PDF viewer. All APIs and callbacks will function as expected with significant improvement in user experience.
+
+
+Developers using the [main.js](https://documentcloud.adobe.com/view-sdk/main.js) script in their websites will continue to see the legacy PDF viewer and they can continue to use all other fucntionality.
+
+<InlineAlert slots="text"/>
+
+Note that the following preview configurations will be deprecated and no longer work when you move to the modern viewer: `showLeftHandPanel`, `showPageControls` and `dockPageControls`
+
+For more details about the configurations supported in modern PDF viewer, see the section [Menu and tool options](../howtos_ui.md/#menu-and-tool-options).
 
 ## Troubleshooting
 
