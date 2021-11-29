@@ -181,6 +181,47 @@ over the specified array of objects.
 
 ![image](../images/table_result.png)
 
+### Dynamically expand table rows or columns
+
+Specify the cell extension property inside the table cell to indicate whether to expand table rows vertically or columns horizontally.
+
+JSON representation of the input data:
+
+```json
+{
+  "subscriptions": [
+    {
+      "name": "Adobe Document API",
+      "price": "99"
+    },
+    {
+      "name": "Adobe Marketing API",
+      "price": "199"
+    },
+    {
+      "name": "Adobe Design API",
+      "price": "299"
+    }
+
+  ]
+}
+```
+
+- *Repeat table rows vertically*
+    - {{subscriptions.name:**cell-extension(vertical)**}} tag lets the engine know that cells will be extended in vertical direction.
+
+![image](../images/vertical-extension1.png)
+
+**Note**: Default extension is vertical. If cell-extension construct is not provided, then table will be extended in vertical direction.
+
+<br/>
+
+- *Repeat table columns horizontally*
+    - {{subscriptions.name:**cell-extension(horizontal)**}} tag lets the engine know that cells will be extended in horizontal direction.
+
+![image](../images/horizontal-extension1.png)
+
+
 ## Lists
 
 Dynamically generate numbered or bullet lists by repeating over a list

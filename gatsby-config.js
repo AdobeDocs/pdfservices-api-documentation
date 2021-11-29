@@ -214,6 +214,14 @@ module.exports = {
             path: 'overview/document-generation-api/templatetags.md'
           },
           {
+            title: 'Apply styling and formatting',
+            path: 'overview/document-generation-api/stylingformattingtags.md'
+          },
+          {
+            title: 'Hyperlink',
+            path: 'overview/document-generation-api/hyperlink.md'
+          },
+          {
             title: 'Word Add-in',
             path: 'overview/document-generation-api/wordaddin.md'
           },
