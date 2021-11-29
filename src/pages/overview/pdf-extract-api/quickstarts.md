@@ -12,9 +12,10 @@ The PDF Extract API provides modern cloud-based capabilities for automatically e
 
 ## Getting credentials
 
-Developing with the PDF Services SDK requires an Adobe-provided credential. To get one, (https://www.adobe.com/go/dcsdks_credentials?ref=getStartedWithServicesSDK)_, and complete the workflow. Be sure to copy and save the credential values to a secure location.
+Developing with the PDF Services SDK requires an Adobe-provided credential. [To get one](https://www.adobe.com/go/dcsdks_credentials?ref=getStartedWithServicesSDK), and complete the workflow. Be sure to copy and save the credential values to a secure location.
 
-**Validity term**: The certificate associated with your credential is valid for one year. However, you can simply regenerate a new credential or apply a new certificate to the current credentials from the Document Cloud developer console (https://console.adobe.io/)_.
+**Validity term**: The certificate associated with your credential is valid for one year. However, you can simply regenerate a new credential or apply a new certificate to the current credentials from [the Document Cloud developer console](https://console.adobe.io/).
+
 
 <InlineAlert slots="text"/>
 
@@ -29,7 +30,8 @@ a zip file automatically downloads that contains content whose structure varies 
 * **Personalized Download**: The samples download zip contains a private.key file and a samples folder with a preconfigured pdfservices-api-credentials.json file.
 * **Non Personalized Download**: The samples download zip  contains the private.key file and a pdfservices-api-credentials.json file.
 
-After downloading the zip, private.key and credentials info in pdfservices-api-credentials.json can be used to call REST APIs directly per the instructions mentioned in `Public API Docs:-(https://documentcloud.adobe.com/document-services/index.html#how-to-get-started)_ under Sub-Section (Introduction -> How to get started?)
+After downloading the zip, private.key and credentials info in pdfservices-api-credentials.json can be used to call REST APIs directly per the instructions mentioned in [Public API Docs](https://documentcloud.adobe.com/document-services/index.html#how-to-get-started) under Sub-Section (Introduction -> How to get started?)
+
 
 
 **Example pdfservices-api-credentials.json file**
@@ -57,9 +59,10 @@ PDF Extract API is also accessible via SDKs in popular languages such as Node.js
 Jump start your development by bookmarking or downloading the following key resources:
 
 * This document
-* API reference (Javadoc) (https://www.adobe.com/go/pdftoolsapi_java_docs)__
-* Sample code (https://www.adobe.com/go/pdftoolsapi_java_samples)
-* Java library (https://www.adobe.com/go/pdftoolsapi_java_maven)_. The Maven project contains the .jar file.
+* [API reference (Javadoc)](https://www.adobe.com/go/pdftoolsapi_java_docs)
+* [Sample code](https://www.adobe.com/go/pdftoolsapi_java_samples)
+* [Java library](https://www.adobe.com/go/pdftoolsapi_java_maven). The Maven project contains the .jar file.
+
 
 
 ## Authentication
@@ -70,7 +73,7 @@ Once you complete the :ref:getcred workflow, a zip file automatically downloads 
 * **Personalized Download**: The samples download zip contains a private.key file and an adobe-dc-pdf-services-sdk-java-samples with a preconfigured pdfservices-api-credentials.json file.
 * **Non Personalized Download**: The samples download zip  contains the private.key file and a pdfservices-api-credentials.json file.
 
-After downloading the zip, you can either run the samples in the zip directly, or you can replace the pdfservices-api-credentials.json and  private.key files in the sample code (https://www.adobe.com/go/pdftoolsapi_java_samples)__  with those in the zip.
+After downloading the zip, you can either run the samples in the zip directly, or you can replace the pdfservices-api-credentials.json and  private.key files in the [sample code](https://www.adobe.com/go/pdftoolsapi_java_samples)  with those in the zip.
 
 
 **Example pdfservices-api-credentials.json file**
@@ -92,12 +95,13 @@ After downloading the zip, you can either run the samples in the zip directly, o
 ## Setup a Java environment
 
 
-#. Install Java 8 or above (http://www.oracle.com/technetwork/java/javase/downloads/index.html)_.
+#. [Install Java 8 or above](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 #. Run javac -version to verify your install.
 #. Verify the JDK bin folder is included in the PATH variable (method varies by OS).
-#. Install Maven (\https://maven.apache.org/install.html)_. You may use your preferred tool; for example:
+#. [Install Maven](\https://maven.apache.org/install.html). You may use your preferred tool; for example:
 
-  * **Windows**: Example: Chocolatey (https://chocolatey.org/packages/maven)_.
+  * **Windows**: Example: [Chocolatey](https://chocolatey.org/packages/maven).
+
   * **Macintosh**: Example: brew install maven.
 
 <InlineAlert slots="text"/>
@@ -110,7 +114,8 @@ After downloading the zip, you can either run the samples in the zip directly, o
 
 The quickest way to get up and running is to download the personalized code samples during the Getting Credentials workflow. These samples provide everything from ready-to-run sample code, an embedded credential json file, and pre-configured connections to dependencies.
 
-#. Download the sample project (https://www.adobe.com/go/pdftoolsapi_java_samples)_.
+#. Download the [sample project](https://www.adobe.com/go/pdftoolsapi_java_samples).
+
 #. Build the sample project with Maven:  mvn clean install.
 #. Test the sample code on the command line.
 #. Refer to this document for details about running samples as well as the API Reference for API details.
@@ -121,7 +126,8 @@ The quickest way to get up and running is to download the personalized code samp
 
 If you did not choose **Personalized Code Sample Download** during the credential setup process:
 
-#. Download the sample project (https://www.adobe.com/go/pdftoolsapi_java_samples)_.
+#. Download the [sample project](https://www.adobe.com/go/pdftoolsapi_java_samples).
+
 #. Find and replace pdfservices-api-credentials.json with the one present in the downloaded zip file.
 #. Find and replace private.key with the one present in the downloaded zip file.
 #. Build the sample project with Maven:  mvn clean install.
@@ -150,7 +156,8 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 
 Refer to the API docs for error and exception details.
 
-* For logging, use the slf4j API (https://www.slf4j.org/)_ with a log4js-slf4j binding.
+* For logging, use [the slf4j API](https://www.slf4j.org/) with a log4js-slf4j binding.
+
 * Logging configurations are provided in src/main/resources/log4js.properties.
 * Specify alternate bindings, if required, in pom.xml.
 
@@ -200,7 +207,8 @@ While the samples use Maven, you can use your own tools and process.
 
 To build a custom project:
 
-#. Access the .jar in the central Maven repository (https://www.adobe.com/go/pdftoolsapi_java_maven)_.
+#. Access the .jar in the [central Maven repository](https://www.adobe.com/go/pdftoolsapi_java_maven).
+
 #. Use your preferred dependency management tool (Ivy, Gradle, Maven), to include the SDK .jar dependency.
 #. Open the pdfservices-api-credentials.json downloaded when you created your credential.
 #. Add the :ref:auth details as described above.
@@ -213,9 +221,10 @@ To build a custom project:
 Jumpstart your development by bookmarking or downloading the following key resources:
 
 * This document
-* Nuget package (https://www.adobe.com/go/pdftoolsapi_net_nuget)__
-* API reference (https://www.adobe.com/go/pdftoolsapi_net_docs)__
-* Sample code (https://www.adobe.com/go/pdftoolsapi_net_samples)__
+* [Nuget package](https://www.adobe.com/go/pdftoolsapi_net_nuget)
+* [API reference](https://www.adobe.com/go/pdftoolsapi_net_docs)
+* [Sample code](https://www.adobe.com/go/pdftoolsapi_net_samples)
+
 * Input/output test files reside in the their respective sample directories
 
 ## Prerequisites
@@ -234,7 +243,7 @@ Once you complete the :ref: getcred workflow, you will receive a zip file with c
 * **Personalized Download**: The samples download zip contains a private.key file and an adobe-DC.PDFServices.SDK.NET.Samples directory. Each sample directory contains the sample code as well as a preconfigured pdfservices-api-credentials.json file.
 * **Non Personalized Download**: The samples download zip contains the private.key file and unconfigured pdfservices-api-credentials.json file.
 
-After downloading the zip, you can either run the samples in the zip directly, or you can replace the pdfservices-api-credentials.json and  private.key files in the sample code (https://www.adobe.com/go/pdftoolsapi_net_samples)__  with those in the zip.
+After downloading the zip, you can either run the samples in the zip directly, or you can replace the pdfservices-api-credentials.json and  private.key files in the [sample code](https://www.adobe.com/go/pdftoolsapi_net_samples) with those in the zip.
 
 
 **Example pdfservices-api-credentials.json file**
@@ -258,7 +267,8 @@ After downloading the zip, you can either run the samples in the zip directly, o
 
 Running any sample or custom code requires the following:
 
-#. Download and install the .NET SDK  (https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/install)_.
+#. Download and install the [.NET SDK](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/install).
+
 <InlineAlert slots="text"/>
 
 **Note:: The Nuget package automatically downloads when you build the sample project.**
@@ -280,7 +290,8 @@ The quickest way to get up and running is to download the personalized code samp
 
 If you did not choose **Personalized Code Sample Download** during the credential setup process:
 
-#. Clone or download the samples project (https://www.adobe.com/go/pdftoolsapi_net_samples)_.
+#. Clone or download the [samples project](https://www.adobe.com/go/pdftoolsapi_net_samples).
+
 #. Find and replace all occurrences of pdfservices-api-credentials.json and private.key files with the ones present in your PDFServicesSDK-Credentials.zip file.
 #. From the samples directory, build the sample project: dotnet build.
 #. Test the sample code on the command line.
@@ -305,7 +316,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 
 Refer to the API docs for error and exception details.
 
-The .NET SDK uses LibLog (https://github.com/damianh/LibLog)_ as a bridge between different logging frameworks. Log4net is used as a logging provider in the sample projects and the logging configurations are provided in log4net.config. Add the configuration for your preferred provider and set up the necessary appender as required to enable logging.
+The .NET SDK uses [LibLog](https://github.com/damianh/LibLog) as a bridge between different logging frameworks. Log4net is used as a logging provider in the sample projects and the logging configurations are provided in log4net.config. Add the configuration for your preferred provider and set up the necessary appender as required to enable logging.
 
 
 **log4net.config file**
@@ -345,9 +356,10 @@ While building the sample project automatically downloads the Nuget package, you
 Jumpstart your development by bookmarking or downloading the following key resources:
 
 * This document
-* API reference (https://www.adobe.com/go/pdftoolsapi_node_docs)__
-* Sample code (http://www.adobe.com/go/pdftoolsapi_node_sample)__
-* Node.js SDK (http://www.adobe.com/go/pdftoolsapi_node_npm)_
+* [API reference](https://www.adobe.com/go/pdftoolsapi_node_docs)
+* [Sample code](http://www.adobe.com/go/pdftoolsapi_node_sample)
+* [Node.js SDK](http://www.adobe.com/go/pdftoolsapi_node_npm)
+
 
 ## Authentication
 
@@ -357,7 +369,7 @@ Once you complete the :ref:getcred workflow, you will receive a zip file with co
 * **Personalized Download**: The samples download.zip contains a private.key file and an  adobe-dc-pdf-services-sdk-node-samples directory. Each sample directory contains the sample code as well as a preconfigured pdfservices-api-credentials.json file.
 * **Non Personalized Download**: The samples download zip contains the private.key file and unconfigured pdfservices-api-credentials.json file.
 
-After downloading the zip, you can either run the samples in the zip directly, or you can replace the pdfservices-api-credentials.json and  private.key files in the sample code (http://www.adobe.com/go/pdftoolsapi_node_sample)__  with those in the zip.
+After downloading the zip, you can either run the samples in the zip directly, or you can replace the pdfservices-api-credentials.json and  private.key files in the [sample code](http://www.adobe.com/go/pdftoolsapi_node_sample)  with those in the zip.
 
 
 
@@ -381,9 +393,11 @@ After downloading the zip, you can either run the samples in the zip directly, o
 
 Running any sample or custom code requires the following steps:
 
-#. Install Node.js 10.13.0 (https://nodejs.org/en/download/)_ or higher.
+#. Install [Node.js 10.13.0](https://nodejs.org/en/download/) or higher.
 
-Note:: The @adobe/pdfservices-node-sdk npm package automatically downloads when you build the sample project.
+<InlineAlert slots="text"/>
+
+**Note: The @adobe/pdfservices-node-sdk npm package automatically downloads when you build the sample project.**
 
 
 
@@ -402,11 +416,9 @@ Note:: The @adobe/pdfservices-node-sdk npm package automatically downloads when 
 
 If you did not choose **Personalized Code Sample Download** during the credential setup process:
 
+#. Download the [sample project](http://www.adobe.com/go/pdftoolsapi_node_sample).
+=======
 #. Download the sample project (http://www.adobe.com/go/pdftoolsapi_node_sample)_.
-#. Find and replace all occurrences of pdfservices-api-credentials.json and private.key files with the ones present in your PDFServicesCredentials.zip file.
-#. From the samples root directory, run npm install.
-#. Test the sample code on the command line.
-#. Refer to this document for details about running samples as well as the API Reference for API details.
 
 ## Verifying download authenticity
 
@@ -426,7 +438,8 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 
 Refer to the API docs for error and exception details.
 
-The SDK uses the log4js API (https://www.npmjs.com/package/log4js)_ for logging. During execution, the SDK searches for config/pdfservices-sdk-log4js-config.json in the working directory and reads the logging properties from there. If you do not provide a configuration file, the default logging logs INFO to the console. Customize the logging settings as needed.
+The SDK uses the [log4js API](https://www.npmjs.com/package/log4js) for logging. During execution, the SDK searches for config/pdfservices-sdk-log4js-config.json in the working directory and reads the logging properties from there. If you do not provide a configuration file, the default logging logs INFO to the console. Customize the logging settings as needed.
+
 
 **log4js.properties file**
 
@@ -456,7 +469,7 @@ The SDK uses the log4js API (https://www.npmjs.com/package/log4js)_ for logging.
 ## Test files
 
 
-The sample files reference input and output files located in the sample project’s resource directory (https://github.com/adobe/pdfservices-node-sdk-samples/tree/master/resources)_. You can of course modify the files and paths or use your own files.
+The sample files reference input and output files located in the [sample project’s resource directory ](https://github.com/adobe/pdfservices-node-sdk-samples/tree/master/resources). You can of course modify the files and paths or use your own files.
 
 ## Custom projects
 
@@ -473,9 +486,10 @@ While building the sample project automatically downloads the Node package, you 
 
 Jumpstart your development by bookmarking or downloading the following key resources:
 
-* API reference (https://www.adobe.com/go/pdfservices_python_docs)__
-* Sample code (https://www.adobe.com/go/pdfservices_python_samples)__
-* Python SDK (https://www.adobe.com/go/pdfservices_python_pypi)_
+* [API reference](https://www.adobe.com/go/pdfservices_python_docs)
+* [Sample code](https://www.adobe.com/go/pdfservices_python_samples)
+* [Python SDK](https://www.adobe.com/go/pdfservices_python_pypi)
+
 
 ## Authentication
 
@@ -485,7 +499,7 @@ Once you complete the :ref:getcred workflow, you will receive a zip file with co
 * **Personalized Download**: The samples download.zip contains a private.key file and an  adobe-dc-pdfservices-sdk-python-samples directory. Each sample directory contains the sample code as well as a preconfigured pdfservices-api-credentials.json file.
 * **Non Personalized Download**: The samples download zip contains the private.key file and unconfigured pdfservices-api-credentials.json file.
 
-After downloading the zip, you can either run the samples in the zip directly, or you can replace the pdfservices-api-credentials.json and  private.key files in the sample code (http://www.adobe.com/go/pdfservices_python_samples)__  with those in the zip.
+After downloading the zip, you can either run the samples in the zip directly, or you can replace the pdfservices-api-credentials.json and  private.key files in the [sample code](http://www.adobe.com/go/pdfservices_python_samples)  with those in the zip.
 
 
 **Example pdfservices-api-credentials.json file**
@@ -508,10 +522,10 @@ After downloading the zip, you can either run the samples in the zip directly, o
 
 Running any sample or custom code requires the following steps:
 
-#. Install Python 3.6 (https://www.python.org/downloads/)_ or higher.
+#. Install [Python 3.6](https://www.python.org/downloads/)_ or higher.
 <InlineAlert slots="text"/>
 
-**Note : The pdfservices-sdk package automatically downloads when you build the sample project.
+**Note : The pdfservices-sdk package automatically downloads when you build the sample project.**
 
 
   pip install pdfservices-sdk
@@ -522,16 +536,17 @@ Running any sample or custom code requires the following steps:
 #. Extract the downloaded samples .zip.
 #. From the samples root directory, run pip install -r requirements.txt.
 #. Test the sample code on the command line.
-#. Refer to the :ref:howtos for details about running samples. Additional details also reside in the API documentation (https://www.adobe.com/go/pdfservices_python_docs)__.
+#. Refer to the :ref:howtos for details about running samples. Additional details also reside in the [API documentation](https://www.adobe.com/go/pdfservices_python_docs).
 
 Option 2: Generic samples setup
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-#. Download the sample project (https://github.com/adobe/pdfservices-python-sdk-samples)_.
+]#. Download the [sample project](https://github.com/adobe/pdfservices-python-sdk-samples).
 #. Replace pdfservices-api-credentials.json & private.key with the zipped files within ZIP sent by Adobe.
 #. From the samples root directory, run pip install -r requirements.txt.
 #. Test the sample code on the command line.
-#. Refer to the :ref:howtos for details about running samples. Additional details also reside in the API documentation (https://www.adobe.com/go/pdfservices_python_docs)__.
+#. Refer to the :ref:howtos for details about running samples. Additional details also reside in the [API documentation](https://www.adobe.com/go/pdfservices_python_docs).
+
 
 ## Verifying download authenticity
 
@@ -565,14 +580,16 @@ The SDK uses the Python standard logging module. Customize the logging settings 
 ## Test files
 
 
-Refer to each sample project's resource directory (https://github.com/adobe/pdfservices-python-sdk-samples/tree/master/resources)_ for the requisite input/output files.
+Refer to each [sample project's resource directory](https://github.com/adobe/pdfservices-python-sdk-samples/tree/master/resources) for the requisite input/output files.
+
 
 ## Custom projects
 
 
 While building the sample project automatically downloads the Python package, you can do it manually if you wish to use your own tools and process.
 
-#. Go to (https://pypi.org/project/pdfservices-sdk/)
+#. [Go to](https://pypi.org/project/pdfservices-sdk/)
+
 #. Download the latest package.
 
 ![image](../images/python2.png)
