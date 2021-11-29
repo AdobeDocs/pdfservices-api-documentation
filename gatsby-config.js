@@ -222,6 +222,10 @@ module.exports = {
             path: 'overview/document-generation-api/hyperlink.md'
           },
           {
+            title: 'Dynamic Table Constructs ',
+            path: 'overview/document-generation-api/dynamictableconstructs.md'
+          },
+          {
             title: 'Word Add-in',
             path: 'overview/document-generation-api/wordaddin.md'
           },
