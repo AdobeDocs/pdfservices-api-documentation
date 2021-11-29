@@ -22,7 +22,7 @@ module.exports = {
     pages: [
       {
         title: 'Adobe Document Services',
-        path: '../../../document-services'
+        path: '../../../document-services/homepage'
       },
       {
         title: 'APIs',
@@ -51,11 +51,11 @@ module.exports = {
       },
       {
         title: 'Use Cases',
-        path: '../document-services/use-cases.md'
+        path: '../document-services/use-cases/agreements-and-contracts/sales-proposals-and-contracts.md'
       },
       {
         title: 'Pricing',
-        path: '../document-services/pricing/main'
+        path: '../document-services/pricing/#main'
       },
       {
         title: 'Resources',
