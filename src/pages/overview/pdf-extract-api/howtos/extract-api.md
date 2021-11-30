@@ -194,7 +194,7 @@ namespace ExtractTextInfoFromPDF
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         static void Main()
         {
-            //Configure the logging
+            // Configure the logging.
             ConfigureLogging();
             try
             {
@@ -208,13 +208,13 @@ namespace ExtractTextInfoFromPDF
                 ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
 
                 // Set operation input from a source file.
-                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPDFInput.pdf");
                 extractPdfOperation.SetInputFile(sourceFileRef);
-
-                // Build ExtractPDF options and set them into the operation
-                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
+    
+                // Build ExtractPDF options and set them into the operation.
+                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPDFOptionsBuilder()
                     .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT}))
-                    .build();
+                    .Build();
                 extractPdfOperation .SetOptions(extractPdfOptions);
 
                 // Execute the operation.
@@ -455,7 +455,7 @@ namespace ExtractTextTableInfoFromPDF
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         static void Main()
         {
-            //Configure the logging
+            // Configure the logging
             ConfigureLogging();
             try
             {
@@ -463,19 +463,19 @@ namespace ExtractTextTableInfoFromPDF
                 Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
                     .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
                     .Build();
-
-                //Create an ExecutionContext using credentials and create a new operation instance.
+    
+                // Create an ExecutionContext using credentials and create a new operation instance.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
                 ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
 
                 // Set operation input from a source file.
-                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPDFInput.pdf");
                 extractPdfOperation.SetInputFile(sourceFileRef);
-
-                // Build ExtractPDF options and set them into the operation
-                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
+    
+                // Build ExtractPDF options and set them into the operation.
+                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPDFOptionsBuilder()
                     .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
-                    .build();
+                    .Build();
                 extractPdfOperation.SetOptions(extractPdfOptions);
 
                 // Execute the operation.
@@ -719,7 +719,7 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         static void Main()
         {
-            //Configure the logging
+            // Configure the logging.
             ConfigureLogging();
             try
             {
@@ -728,20 +728,20 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
                     .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
                     .Build();
 
-                //Create an ExecutionContext using credentials and create a new operation instance.
+                // Create an ExecutionContext using credentials and create a new operation instance.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
                 ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
 
                 // Set operation input from a source file.
-                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPDFInput.pdf");
                 extractPdfOperation.SetInputFile(sourceFileRef);
-
+    
                 // Build ExtractPDF options and set them into the operation
-                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
+                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPDFOptionsBuilder()
                     .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
                     .AddElementsToExtractRenditions(new List<ExtractRenditionsElementType> (new [] {ExtractRenditionsElementType.TABLES}))
-                    .build();
-
+                    .Build();
+    
                 extractPdfOperation.SetOptions(extractPdfOptions);
 
                 // Execute the operation.
@@ -986,32 +986,31 @@ namespace ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         static void Main()
         {
-            //Configure the logging
+            // Configure the logging.
             ConfigureLogging();
             try
             {
                 // Initial setup, create credentials instance.
                 Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                .Build();
-
-                //Create an ExecutionContext using credentials and create a new operation instance.
+                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                    .Build();
+    
+                // Create an ExecutionContext using credentials and create a new operation instance.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
                 ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
 
                 // Set operation input from a source file.
-                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPDFInput.pdf");
                 extractPdfOperation.SetInputFile(sourceFileRef);
-
-                // Build ExtractPDF options and set them into the operation
-                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
-                .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
-                .AddElementsToExtractRenditions(new List<ExtractRenditionsElementType> (new []{ExtractRenditionsElementType.FIGURES, ExtractRenditionsElementType.TABLES}))
-                .build();
-
+    
+                // Build ExtractPDF options and set them into the operation.
+                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPDFOptionsBuilder()
+                    .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
+                    .AddElementsToExtractRenditions(new List<ExtractRenditionsElementType> (new []{ExtractRenditionsElementType.FIGURES, ExtractRenditionsElementType.TABLES}))
+                    .Build();
+    
                 extractPdfOperation.SetOptions(extractPdfOptions);
-
-
+                
                 // Execute the operation.
                 FileRef result = extractPdfOperation.Execute(executionContext);
 
@@ -1254,7 +1253,7 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         static void Main()
         {
-            //Configure the logging
+            // Configure the logging.
             ConfigureLogging();
             try
             {
@@ -1262,20 +1261,21 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
                 Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
                 .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
                 .Build();
-
-                //Create an ExecutionContext using credentials and create a new operation instance.
+    
+                // Create an ExecutionContext using credentials and create a new operation instance.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
                 ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
 
                 // Set operation input from a source file.
-                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPDFInput.pdf");
                 extractPdfOperation.SetInputFile(sourceFileRef);
-
-                // Build ExtractPDF options and set them into the operation
-                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
+    
+                // Build ExtractPDF options and set them into the operation.
+                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPDFOptionsBuilder()
                     .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
-                    .AddAddCharInfo(true)
-                    .build();
+                    .AddCharsInfo(true)
+                    .Build();
+                
                 extractPdfOperation.SetOptions(extractPdfOptions);
 
                 // Execute the operation.
@@ -1521,7 +1521,7 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         static void Main()
         {
-            //Configure the logging
+            // Configure the logging.
             ConfigureLogging();
             try
             {
@@ -1529,22 +1529,22 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
                 Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
                     .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
                     .Build();
-
-                //Create an ExecutionContext using credentials and create a new operation instance.
+    
+                // Create an ExecutionContext using credentials and create a new operation instance.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
                 ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
 
                 // Set operation input from a source file.
-                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPDFInput.pdf");
                 extractPdfOperation.SetInputFile(sourceFileRef);
-
-                // Build ExtractPDF options and set them into the operation
-                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
+    
+                // Build ExtractPDF options and set them into the operation.
+                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPDFOptionsBuilder()
                     .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
                     .AddElementsToExtractRenditions(new List<ExtractRenditionsElementType>(new [] {ExtractRenditionsElementType.TABLES}))
                     .AddTableStructureFormat(TableStructureType.CSV)
-                    .build();
-
+                    .Build();
+    
                 extractPdfOperation.SetOptions(extractPdfOptions);
 
                 // Execute the operation.
@@ -1792,7 +1792,7 @@ namespace ExtractTextTableInfoWithStylingFromPDF
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         static void Main()
         {
-            //Configure the logging
+            // Configure the logging.
             ConfigureLogging();
             try
             {
@@ -1800,24 +1800,23 @@ namespace ExtractTextTableInfoWithStylingFromPDF
                 Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
                     .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
                     .Build();
-
-                //Create an ExecutionContext using credentials and create a new operation instance.
+    
+                // Create an ExecutionContext using credentials and create a new operation instance.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
                 ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
 
                 // Set operation input from a source file.
-                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPDFInput.pdf");
                 extractPdfOperation.SetInputFile(sourceFileRef);
-
-                // Build ExtractPDF options and set them into the operation
-                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
+    
+                // Build ExtractPDF options and set them into the operation.
+                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPDFOptionsBuilder()
                     .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
                     .AddGetStylingInfo(true)
-                    .build();
-
+                    .Build();
+    
                 extractPdfOperation.SetOptions(extractPdfOptions);
-
-
+                
                 // Execute the operation.
                 FileRef result = extractPdfOperation.Execute(executionContext);
 
