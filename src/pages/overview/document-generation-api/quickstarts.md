@@ -1,8 +1,8 @@
 # Quickstarts
-
 Use Document Generation API to merge JSON data into Word based document
 templates and produce high fidelity PDF and Word documents from any
 application.
+
 
 ## Live Demo
 

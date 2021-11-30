@@ -108,10 +108,25 @@ schema]( ../../../resources/extractJSONOutputSchema2.json)):
 - **PDF Producers:** The Extract API is designed to extract content from files that contain text, table data, and figures. Files created from applications that produce other types of content like illustrations, CAD drawings or other types of vector art may not return quality results.
 - **PDF Collections:** PDFs that are made from a collection of files including PDF Portfolios are not currently supported.
 
+## Error codes
+| Scenario           | Error code                                                                                                                                                                                                                     | Error message                               |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------ |
+| Invalid API parameters | \-                                                                                                                                    | Invalid parameters                 |
+| File size violation         | DISQUALIFIED_FILE_SIZE                                                                                                                                          | File exceeds size limit. |
+| Page limit violation              | DISQUALIFIED_PAGE_LIMIT | File exceeds page limit.                 |
+| Scan page limit violation              | DISQUALIFIED_SCAN_PAGE_LIMIT                                                                                                                     | Scanned file exceeds page limit.                 |
+| Unsupported XFA file             | DISQUALIFIED_XFA                                                                                                                                                                         | File contains XFA form(s). Not supported for content extraction.                 |
+| Encryption permission                 | DISQUALIFIED_ENCRYPTION                                                                                                                                                                             | File permissions do not allow for content extraction.                 |
+| Complex file            | DISQUALIFIED_CMPLX_FILE                                                                                                                                                                                                       | File contents are too complex for content extraction.                 |
+| Bad PDF             | BAD_PDF                                                                                                                                             | Unable to extract content. File is corrupted, malformed or an empty PDF.                 |
+| Protected PDF     | PROTECTED_PDF                                                                   | Unable to extract content. File is password protected.                 |
+| Timeout           | TIMEOUT                                                                                             | Processing timeout. Please try splitting the file into multiple files with fewer pages.                 |
+| Unknown error / failure               | ERROR                                                                                                                                                                                | Unable to extract content - Internal error.                 |
+
+
 ## Extract Text from a PDF
 
-Use the sample below to extract text element information from a PDF
-document.
+The sample below extracts text element information from a PDF document and returns a JSON file.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
 
@@ -179,7 +194,7 @@ namespace ExtractTextInfoFromPDF
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         static void Main()
         {
-            //Configure the logging
+            // Configure the logging.
             ConfigureLogging();
             try
             {
@@ -193,13 +208,13 @@ namespace ExtractTextInfoFromPDF
                 ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
 
                 // Set operation input from a source file.
-                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPDFInput.pdf");
                 extractPdfOperation.SetInputFile(sourceFileRef);
-
-                // Build ExtractPDF options and set them into the operation
-                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
+    
+                // Build ExtractPDF options and set them into the operation.
+                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPDFOptionsBuilder()
                     .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT}))
-                    .build();
+                    .Build();
                 extractPdfOperation .SetOptions(extractPdfOptions);
 
                 // Execute the operation.
@@ -371,7 +386,7 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
 
 ## Extract Text and Tables
 
-The sample below extracts text and table elements information from a PDF document.It also generates table renditions in xlsx format by default.
+The sample below extracts text and table element information from a PDF document and returns a JSON file along with table data in XLSX format.
 
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java,.NET, Node JS, Python, Rest API" /> 
@@ -440,7 +455,7 @@ namespace ExtractTextTableInfoFromPDF
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         static void Main()
         {
-            //Configure the logging
+            // Configure the logging
             ConfigureLogging();
             try
             {
@@ -448,19 +463,19 @@ namespace ExtractTextTableInfoFromPDF
                 Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
                     .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
                     .Build();
-
-                //Create an ExecutionContext using credentials and create a new operation instance.
+    
+                // Create an ExecutionContext using credentials and create a new operation instance.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
                 ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
 
                 // Set operation input from a source file.
-                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPDFInput.pdf");
                 extractPdfOperation.SetInputFile(sourceFileRef);
-
-                // Build ExtractPDF options and set them into the operation
-                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
+    
+                // Build ExtractPDF options and set them into the operation.
+                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPDFOptionsBuilder()
                     .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
-                    .build();
+                    .Build();
                 extractPdfOperation.SetOptions(extractPdfOptions);
 
                 // Execute the operation.
@@ -636,7 +651,7 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
 
 ## Extract Text and Tables (w/ Tables Renditions)
 
-The sample below extracts text and table elements information as well as table renditions from PDF Document. Note that the output is a zip containing the structured information along with renditions.
+The sample below extracts text and table element information as well as table renditions from a PDF Document. Note that the output is a zip containing the structured information in a JSON file along with table renditions in PNG and XLSX format.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
 
@@ -704,7 +719,7 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         static void Main()
         {
-            //Configure the logging
+            // Configure the logging.
             ConfigureLogging();
             try
             {
@@ -713,20 +728,20 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
                     .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
                     .Build();
 
-                //Create an ExecutionContext using credentials and create a new operation instance.
+                // Create an ExecutionContext using credentials and create a new operation instance.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
                 ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
 
                 // Set operation input from a source file.
-                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPDFInput.pdf");
                 extractPdfOperation.SetInputFile(sourceFileRef);
-
+    
                 // Build ExtractPDF options and set them into the operation
-                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
+                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPDFOptionsBuilder()
                     .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
                     .AddElementsToExtractRenditions(new List<ExtractRenditionsElementType> (new [] {ExtractRenditionsElementType.TABLES}))
-                    .build();
-
+                    .Build();
+    
                 extractPdfOperation.SetOptions(extractPdfOptions);
 
                 // Execute the operation.
@@ -903,7 +918,7 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
 
 ## Extract Text and Tables (w/ Tables and Figures Renditions)
 
-The sample below extracts text and table elements information as well as tables and figures renditions from PDF Document. Note that the output is a zip containing the structured information along with renditions.
+The sample below extracts text and table elements information as well as table and figure renditions from a PDF Document. Note that the output is a zip containing the structured information in a JSON file along with figure renditions as PNGs and table renditions in PNG and XLSX format.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
 
@@ -971,32 +986,31 @@ namespace ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         static void Main()
         {
-            //Configure the logging
+            // Configure the logging.
             ConfigureLogging();
             try
             {
                 // Initial setup, create credentials instance.
                 Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                .Build();
-
-                //Create an ExecutionContext using credentials and create a new operation instance.
+                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                    .Build();
+    
+                // Create an ExecutionContext using credentials and create a new operation instance.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
                 ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
 
                 // Set operation input from a source file.
-                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPDFInput.pdf");
                 extractPdfOperation.SetInputFile(sourceFileRef);
-
-                // Build ExtractPDF options and set them into the operation
-                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
-                .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
-                .AddElementsToExtractRenditions(new List<ExtractRenditionsElementType> (new []{ExtractRenditionsElementType.FIGURES, ExtractRenditionsElementType.TABLES}))
-                .build();
-
+    
+                // Build ExtractPDF options and set them into the operation.
+                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPDFOptionsBuilder()
+                    .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
+                    .AddElementsToExtractRenditions(new List<ExtractRenditionsElementType> (new []{ExtractRenditionsElementType.FIGURES, ExtractRenditionsElementType.TABLES}))
+                    .Build();
+    
                 extractPdfOperation.SetOptions(extractPdfOptions);
-
-
+                
                 // Execute the operation.
                 FileRef result = extractPdfOperation.Execute(executionContext);
 
@@ -1170,11 +1184,7 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
 
 ## Extract Text and Tables and Character Bounding Boxes (w/ Renditions)
 
-The sample below extracts table renditions and bounding boxes for
-characters present in text blocks(paragraphs, list, headings), in
-addition to text, table, and figure element information from PDF
-Document. Note that the output is a zip containing the structured
-information along with renditions.
+The sample below extracts table renditions and bounding boxes for characters present in text blocks (paragraphs, list, headings), in addition to text and table element information from a PDF Document. Note that the output is a zip containing the structured information along with table renditions in PNG and XLSX format.
 
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
@@ -1243,7 +1253,7 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         static void Main()
         {
-            //Configure the logging
+            // Configure the logging.
             ConfigureLogging();
             try
             {
@@ -1251,20 +1261,21 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
                 Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
                 .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
                 .Build();
-
-                //Create an ExecutionContext using credentials and create a new operation instance.
+    
+                // Create an ExecutionContext using credentials and create a new operation instance.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
                 ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
 
                 // Set operation input from a source file.
-                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPDFInput.pdf");
                 extractPdfOperation.SetInputFile(sourceFileRef);
-
-                // Build ExtractPDF options and set them into the operation
-                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
+    
+                // Build ExtractPDF options and set them into the operation.
+                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPDFOptionsBuilder()
                     .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
-                    .AddAddCharInfo(true)
-                    .build();
+                    .AddCharsInfo(true)
+                    .Build();
+                
                 extractPdfOperation.SetOptions(extractPdfOptions);
 
                 // Execute the operation.
@@ -1440,10 +1451,7 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
 
 ## Extract Text and Tables and Table Structure as CSV (w/ Renditions)
 
-The sample below adds option to get CSV output for tables in addition to
-extracting text, table, and figure element information as well as table
-renditions from PDF Document. Note that the output is a zip containing
-the structured information along with renditions.
+The sample below adds option to get CSV output for tables in addition to extracting text and table element information as well as table renditions from a PDF Document. Note that the output is a zip containing the structured information along with table renditions in PNG and CSV format.
 
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
@@ -1513,7 +1521,7 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         static void Main()
         {
-            //Configure the logging
+            // Configure the logging.
             ConfigureLogging();
             try
             {
@@ -1521,22 +1529,22 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
                 Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
                     .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
                     .Build();
-
-                //Create an ExecutionContext using credentials and create a new operation instance.
+    
+                // Create an ExecutionContext using credentials and create a new operation instance.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
                 ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
 
                 // Set operation input from a source file.
-                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPDFInput.pdf");
                 extractPdfOperation.SetInputFile(sourceFileRef);
-
-                // Build ExtractPDF options and set them into the operation
-                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
+    
+                // Build ExtractPDF options and set them into the operation.
+                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPDFOptionsBuilder()
                     .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
                     .AddElementsToExtractRenditions(new List<ExtractRenditionsElementType>(new [] {ExtractRenditionsElementType.TABLES}))
                     .AddTableStructureFormat(TableStructureType.CSV)
-                    .build();
-
+                    .Build();
+    
                 extractPdfOperation.SetOptions(extractPdfOptions);
 
                 // Execute the operation.
@@ -1713,21 +1721,10 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
 --form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
 ```
 
-## (Beta Feature) Extract Text and Tables and Styling Info
+## Extract Text and Tables and Styling Info
 
-Note: This option is experimental which means that the output may change
-without notice. It is provided for evaluation and feedback purposes
-only. Use of this option is not supported under the [Document Cloud
-Services versioning
-policy](../../pdf-services-api/policies.md)
-
-The sample below adds option to get styling information of each element(
-Bold / Italics / Superscript etc) in addition to extracting text, table,
-and figure element information as well as table renditions from PDF
-Document. Note that the output is a zip containing the structured
-information along with renditions. Please see the [Styling JSON
-schema]( ../../resources/extractJSONOutputSchemaStylingInfo.json)
-for reference.
+The sample below adds an option to get styling information for each text element( Bold / Italics / Superscript etc) in addition to extracting text and table element information. Note that the output is a zip containing the structured information along with table renditions in PNG and XLSX format. Please see the [Styling JSON
+schema]( ../../../resources/extractJSONOutputSchemaStylingInfo.json) for reference.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java,.NET, Node JS, Python, Rest API" /> 
 
@@ -1795,7 +1792,7 @@ namespace ExtractTextTableInfoWithStylingFromPDF
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         static void Main()
         {
-            //Configure the logging
+            // Configure the logging.
             ConfigureLogging();
             try
             {
@@ -1803,24 +1800,23 @@ namespace ExtractTextTableInfoWithStylingFromPDF
                 Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
                     .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
                     .Build();
-
-                //Create an ExecutionContext using credentials and create a new operation instance.
+    
+                // Create an ExecutionContext using credentials and create a new operation instance.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
                 ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
 
                 // Set operation input from a source file.
-                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPdfInput.pdf");
+                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"extractPDFInput.pdf");
                 extractPdfOperation.SetInputFile(sourceFileRef);
-
-                // Build ExtractPDF options and set them into the operation
-                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPdfOptionsBuilder()
+    
+                // Build ExtractPDF options and set them into the operation.
+                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPDFOptionsBuilder()
                     .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT, ExtractElementType.TABLES}))
                     .AddGetStylingInfo(true)
-                    .build();
-
+                    .Build();
+    
                 extractPdfOperation.SetOptions(extractPdfOptions);
-
-
+                
                 // Execute the operation.
                 FileRef result = extractPdfOperation.Execute(executionContext);
 
