@@ -32,7 +32,7 @@ JSON representation of the input data:
 
 Styling for the text tag can be provided using the json data through the HTML based constructs. The constructs follows the additional rules as listed below :
 
-- HTML tags supported are <span\>, nested span, <br\> (new line), <b\> (bold), <i\> (italic), <u\> (underline).
+- HTML tags supported are <span\>, nested span, <br\> (new line), <b\> (bold), <strong\> (bold), <em\> (italic), <i\> (italic), <u\> (underline).
 
 - Either use Inline custom css inside the span tag to style the data or use basic styling tags such as <b\> (bold), <i\> (italic) and <u\> (underline).
 
@@ -72,6 +72,10 @@ JSON representation of the input data:
 - <br\> (new line)
 
 - <b\> (bold)
+
+- <strong\> (bold)
+
+- <em\> (italic)
 
 - <i\> (italic)
 
