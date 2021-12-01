@@ -51,28 +51,28 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
     let getCredentialsButton = Array.from(document.querySelectorAll('a')).find(el => el.textContent === 'Get credentials');
     // production
     if(window.location.host.indexOf('developer.adobe.com') >= 0) {
-      getCredentialsButton.href = 'https://documentcloud.adobe.com/dc-integration-creation-app-cdn/index.html';
+      getCredentialsButton.href = 'https://documentcloud.adobe.com/dc-integration-creation-app-cdn/main.html';
       if(window.location.pathname.indexOf('pdf-services-api') >= 0) {
-        getCredentialsButton.href = 'https://documentcloud.adobe.com/dc-integration-creation-app-cdn/index.html?api=pdf-services-api';
+        getCredentialsButton.href = 'https://documentcloud.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api';
       } else if(window.location.pathname.indexOf('document-generation-api') >= 0){
-        getCredentialsButton.href = 'https://documentcloud.adobe.com/dc-integration-creation-app-cdn/index.html?api=document-generation-api';
+        getCredentialsButton.href = 'https://documentcloud.adobe.com/dc-integration-creation-app-cdn/main.html?api=document-generation-api';
       } else if(window.location.pathname.indexOf('pdf-extract-api') >= 0){
-        getCredentialsButton.href = 'https://documentcloud.adobe.com/dc-integration-creation-app-cdn/index.html?api=pdf-extract-api';
+        getCredentialsButton.href = 'https://documentcloud.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api';
       } else if(window.location.pathname.indexOf('pdf-embed-api') >= 0){
-        getCredentialsButton.href = 'https://documentcloud.adobe.com/dc-integration-creation-app-cdn/index.html?api=pdf-embed-api';
+        getCredentialsButton.href = 'https://documentcloud.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-embed-api';
       }
     // stage
     } else {
-      getCredentialsButton.href = 'https://dc.stage.acrobat.com/dc-integration-creation-app-cdn/index.html';
+      getCredentialsButton.href = 'https://dc.stage.acrobat.com/dc-integration-creation-app-cdn/main.html';
 
       if(window.location.pathname.indexOf('pdf-services-api') >= 0) {
-        getCredentialsButton.href = 'https://dc.stage.acrobat.com/dc-integration-creation-app-cdn/index.html?api=pdf-services-api';
+        getCredentialsButton.href = 'https://dc.stage.acrobat.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api';
       } else if(window.location.pathname.indexOf('document-generation-api') >= 0){
-        getCredentialsButton.href = ' https://dc.stage.acrobat.com/dc-integration-creation-app-cdn/index.html?api=document-generation-api';
+        getCredentialsButton.href = ' https://dc.stage.acrobat.com/dc-integration-creation-app-cdn/main.html?api=document-generation-api';
       } else if(window.location.pathname.indexOf('pdf-extract-api') >= 0){
         getCredentialsButton.href = 'https://dc.stage.acrobat.com/dc-integration-creation-app-cdn/index.html?api=pdf-extract-api';
       } else if(window.location.pathname.indexOf('pdf-embed-api') >= 0){
-        getCredentialsButton.href = 'https://dc.stage.acrobat.com/dc-integration-creation-app-cdn/index.html?api=pdf-embed-api';
+        getCredentialsButton.href = 'https://dc.stage.acrobat.com/dc-integration-creation-app-cdn/main.html?api=pdf-embed-api';
       }
     }
   }
