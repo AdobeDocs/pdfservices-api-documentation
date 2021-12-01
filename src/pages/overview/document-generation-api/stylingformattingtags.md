@@ -20,13 +20,15 @@ JSON representation of the input data:
 
 ```json
 {
-  "Employee Name": "Sarah Rose",
-  "Certification Program": "Certificate in Life and Thoughts of <span style=\"font-weight: bold \">Dr. BR Ambedkar </span> ",
-  "Completion Date": "01/03/2021"
+    "LMS Certificate": {
+                "Employee Name": "Sarah Rose",
+                "Certification Program": "Certificate in Life and Thoughts of <span style=\"font-weight: bold \">Dr. BR Ambedkar </span> ",
+                "Completion Date": "01/03/2021"
+        }
 }
 ```
 
-![image](../images/placeholder_basic.png)
+![image](../images/consolidated_styling_formatting.png)
 
 ## Styling and Formatting rules
 
