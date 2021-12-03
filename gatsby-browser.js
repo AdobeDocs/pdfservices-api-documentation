@@ -40,8 +40,6 @@ export const onClientEntry = () => {
 
 export const onRouteUpdate = ({ location, prevLocation }) => {
   // TODO: move this into a plugin 
-  console.log('new pathname', location.pathname)
-  console.log('old pathname', prevLocation ? prevLocation.pathname : null)
   if(isBrowser) {
     let siteSection = location.pathname.split('/');
     window.digitalData.page.pageInfo.siteSection = siteSection.pop() || siteSection.pop();
