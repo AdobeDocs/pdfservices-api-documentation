@@ -40,6 +40,8 @@ export const onClientEntry = () => {
 
 export const onRouteUpdate = ({ location, prevLocation }) => {
   // TODO: move this into a plugin 
+  console.log('new pathname', location.pathname)
+  console.log('old pathname', prevLocation ? prevLocation.pathname : null)
   if(isBrowser) {
     let siteSection = location.pathname.split('/');
     window.digitalData.page.pageInfo.siteSection = siteSection.pop() || siteSection.pop();
@@ -49,9 +51,17 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
       window.digitalData.page.pageInfo.breadCrumbs.push(item.innerText);
     });
 
-    let pageName = window.location.pathname.replace('/','');
-    pageName = window.location.pathname.replaceAll('/',':');
-    digitalData._set('digitalData.page.pageInfo.pageName', pageName);
+    let pageName = location.pathname.replace('/','');
+    pageName = location.pathname.replaceAll('/',':');
+    if(window.digitalData._set){
+      window.digitalData._set('digitalData.page.pageInfo.pageName', pageName);
+      if(window._satellite){
+        window._satellite.track('state', {
+          digitalData: window.digitalData._snapshot()
+        });  
+      }
+    }
+
 
     let getCredentialsButton = Array.from(document.querySelectorAll('a')).find(el => el.textContent === 'Get credentials');
     // production
