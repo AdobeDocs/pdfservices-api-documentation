@@ -38,7 +38,7 @@ schema]( ../../../resources/extractJSONOutputSchema2.json)):
 -   Attributes: Includes additional properties like line height and text
     alignment.
 -   Path : The Path describes the location of elements in the structure
-    tree including the element type and the instance number. Element
+    tree including the element type and the instance number. Path along with bounds defines the reading order of the document. Element
     types are based on the [ISO
     standard](https://www.iso.org/standard/75839.html) , a summary is
     included below for convenience :
@@ -91,7 +91,7 @@ schema]( ../../../resources/extractJSONOutputSchema2.json)):
     can occur for elements extracted from their container (eg. A
     reference link in the middle of a paragraph). However, the order is
     preserved in Styling mode where all Elements and their Kids are
-    represented in the natural reading order.
+    represented in the natural reading order. Reading order is determined by Bounds and path element provided in the .json file.
 
 ## API limitations
 
