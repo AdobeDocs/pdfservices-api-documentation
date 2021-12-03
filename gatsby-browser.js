@@ -39,6 +39,7 @@ export const onClientEntry = () => {
 }
 
 export const onRouteUpdate = ({ location, prevLocation }) => {
+  // TODO: move this into a plugin 
   if(isBrowser) {
     let siteSection = location.pathname.split('/');
     window.digitalData.page.pageInfo.siteSection = siteSection.pop() || siteSection.pop();
@@ -47,6 +48,10 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
     document.querySelectorAll('.spectrum-Breadcrumbs-item').forEach((item) => {
       window.digitalData.page.pageInfo.breadCrumbs.push(item.innerText);
     });
+
+    let pageName = window.location.pathname.replace('/','');
+    pageName = window.location.pathname.replaceAll('/',':');
+    digitalData._set('digitalData.page.pageInfo.pageName', pageName);
 
     let getCredentialsButton = Array.from(document.querySelectorAll('a')).find(el => el.textContent === 'Get credentials');
     // production
