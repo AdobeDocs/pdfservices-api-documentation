@@ -49,7 +49,6 @@ import { Divider } from '@adobe/gatsby-theme-aio/src/components/Divider';
 import DEFAULT_AVATAR from './avatar.svg';
 import {  DESKTOP_SCREEN_WIDTH } from "@adobe/gatsby-theme-aio/src/utils";
 
-
 const getSelectedTabIndex = (location, pages) => {
   const pathWithRootFix = rootFix(location.pathname);
   const pagesWithRootFix = rootFixPages(pages);
@@ -212,7 +211,7 @@ const GlobalHeader = ({
 
     return () => tabsContainerRef.current.removeEventListener('scroll', onScroll);
   }, []);
-
+  
   return (
     <header
       role="banner"
@@ -511,6 +510,7 @@ const GlobalHeader = ({
                         ref={setTabRef}
                         selected={isSelectedTab}
                         aria-controls={menuPopoverId}
+                        aria-label={page.title}
                         onClick={(event) => {
                           event.stopImmediatePropagation();
 
@@ -533,7 +533,7 @@ const GlobalHeader = ({
                             setOpenMenuIndex(-1)
                           }
                         }
-                        
+
                         >
                         <TabsItemLabel>{page.title}</TabsItemLabel>
                         <ChevronDown
@@ -548,7 +548,7 @@ const GlobalHeader = ({
                         <div
                           onClick={(event) => {
                             event.stopImmediatePropagation();
-  
+
                             setOpenVersion(false);
                             setOpenProfile(false);
                             setOpenMenuIndex(openMenuIndex === i ? -1 : i);
@@ -569,10 +569,11 @@ const GlobalHeader = ({
                           }
                           role="button"
                           tabIndex={0}
-                          aria-label='APIs'
+                          aria-label={page.title}
                           onFocus={() => {
                             setOpenMenuIndex(i);
                           }}
+                          
                         >
                         <Popover
                           ref={setTabMenuRef}
@@ -596,7 +597,7 @@ const GlobalHeader = ({
                               const pathWithRootFix = rootFix(location.pathname);
                               const selectedMenu = findSelectedTopPageMenu(pathWithRootFix, page);
                               const menuHref = withPrefix(menu.href);
-
+                              
                               return (
                                 <MenuItem
                                   key={k}
@@ -604,16 +605,21 @@ const GlobalHeader = ({
                                   {...getExternalLinkProps(menuHref)}
                                   isHighlighted={menu === selectedMenu}
                                   onKeyDown={(e) => {
-                                    if (e.key === 'ArrowDown') {                                      
+   
+                                    if (e.key === 'ArrowDown') {
                                       e.currentTarget.nextSibling && e.currentTarget.nextSibling.focus();
                                     }
-                                    if (e.key === 'ArrowUp') {                                      
+                                    if (e.key === 'ArrowUp') {
                                       e.currentTarget.previousSibling && e.currentTarget.previousSibling.focus();
                                     }
                                     if( e.key === 'Enter'){
                                       e.currentTarget.focus();
                                     }
+                                    if(!e.currentTarget.nextSibling){
+                                       setOpenMenuIndex(-1);
+                                    }
                                   }}
+                                
                                   >
                                   {menu.description ? (
                                     <div
