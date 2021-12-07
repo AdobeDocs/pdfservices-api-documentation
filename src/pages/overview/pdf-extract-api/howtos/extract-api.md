@@ -28,13 +28,14 @@ schema]( ../../../resources/extractJSONOutputSchema2.json)):
     position in the structure tree of the document.The output does not
     include headers or footers.In addition, headings that repeat across
     pages are reported for the first occurrence only.
--   Bounds : The bounds are as per PDF specification coordinates.
+-   Bounds : Bounding box enclosing the content items forming this
+    element. Not reported for elements which don't have any content
+    items (like empty table cells). The bounds are as per PDF specification coordinates.
     PDF pages are generally specified in inches (like A4 page is 8.3 inches x 11.7 inches). If values are required in coordinates, we need a DPI value i.e. dots per inches. As per PDF specification, 72 DPI is used when creating a PDF. So, width of an A4 page is specified to be ~= 598 units (8.3 inches x 72) when creating the PDF.
     All values reported in Extract use this 72 dpi based coordinates. Again as per PDF spec, absolute values of bounds are in a coordinate system where origin is (0,0), up and right directions are positive. Going by this coordinate system, for all rects reported in Extract, bottom < top and left < right.
-
     In Extract JSON schema, all rects are of type #/definitions/rect  and rect is defined as:
-
-    **"description": "Rectangle/Box in PDF coordinate system (bottom-left is origin). Values are in PDF user space units. Order of values - left, bottom, right, top",**
+    
+    **description: Rectangle/Box in PDF coordinate system (bottom-left is origin). Values are in PDF user space units. Order of values - left, bottom, right, top.**
 
 -   Font : Font description for the font associated with the first
     character. Only reported for text elements.
