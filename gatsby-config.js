@@ -328,10 +328,6 @@ module.exports = {
             title: 'Release Notes',
             path: 'overview/pdf-autotag-api/beta/releasenotes.md'
           },
-          {
-            title: 'PDF Services API Licensing',
-            path: 'overview/pdf-autotag-api/beta/dcservicelicensing.md'
-          },
         ]
       },
       {
