@@ -32,19 +32,33 @@ The output of an SDK autotag operation contains the following:
 | Disqualified Experiment   | DISQUALIFIED_EXPERIMENT   | File belongs to an experiment.                                                                                            |
 | Unknown error / failure   | ERROR                     | Unexpected error.                                                                                                         |
 
+## Sample code lists
+
+- [Generate tagged pdf of version 1.7 from a PDF](autotag-api/#generate-tagged-pdf-of-version-17-from-a-pdf)
+- [Generate tagged pdf of version 1.7 and an excel report from a PDF](autotag-api/#generate-tagged-pdf-of-version-17-and-an-excel-report-from-a-pdf)
+- [Generate tagged pdf of version 1.7 and shift its headings and an excel report from a PDF](autotag-api/#generate-tagged-pdf-of-version-17-and-shift-its-headings-and-an-excel-report-from-a-pdf)
+- [Generate tagged pdf of version 1.7 from a PDF and shift its headings](autotag-api/#generate-tagged-pdf-of-version-17-from-a-pdf-and-shift-its-headings)
+- [Generate tagged pdf of version 2.0 from a PDF](autotag-api/#generate-tagged-pdf-of-version-20-from-a-pdf)
+- [Generate tagged pdf of version 2.0 and an excel report from a PDF](autotag-api/#generate-tagged-pdf-of-version-20-and-an-excel-report-from-a-pdf)
+- [Generate tagged pdf of version 2.0 and shifting its headings and an excel report from a PDF](autotag-api/#generate-tagged-pdf-of-version-20-and-shifting-its-headings-and-an-excel-report-from-a-pdf)
+- [Generate tagged pdf of version 2.0 from a PDF and shift its headings](autotag-api/#generate-tagged-pdf-of-version-20-from-a-pdf-and-shift-its-headings)
+
 ## Generate tagged pdf of version 1.7 from a PDF
 
 Use the sample below to generate tagged pdf of version 1.7 from a PDF document.
+
+Copy this command in terminal to run the sample:
+```
+mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.platform.operation.samples.autotagpdf.AutotagPDFWithV17
+```
+
+Sample code:
 
 <CodeBlock slots="heading, code" repeat="1" languages="Java" /> 
 
 #### Java
 
-```javascript 
-// Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
-// Run the sample:
-// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.platform.operation.samples.autotagpdf.AutotagPDFWithV17
- 
+```javascript  
 public class AutotagPDFWithV17 {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(AutotagPDFWithV17.class);
@@ -98,16 +112,18 @@ public class AutotagPDFWithV17 {
 
 Use the sample below to generate tagged pdf of version 1.7 and an excel report from a PDF document.
 
+Copy this command in terminal to run the sample:
+```
+mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.platform.operation.samples.autotagpdf.AutotagPDFWithV17AndReport
+```
+
+Sample code:
 
 <CodeBlock slots="heading, code" repeat="1" languages="Java" /> 
 
 #### Java
 
-```javascript 
-// Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
-// Run the sample:
-// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.platform.operation.samples.autotagpdf.AutotagPDFWithV17AndReport
- 
+```javascript  
 public class AutotagPDFWithV17AndReport {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(AutotagPDFWithV17AndReport.class);
@@ -163,15 +179,18 @@ public class AutotagPDFWithV17AndReport {
 
 Use the sample below to generate tagged pdf of version 1.7 and shift its headings an excel report from a PDF document.
 
+Copy this command in terminal to run the sample:
+```
+mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.platform.operation.samples.autotagpdf.AutotagPDFWithV17AndReportAndShiftHeadings
+```
+
+Sample code:
+
 <CodeBlock slots="heading, code" repeat="1" languages="Java" /> 
 
 #### Java
 
 ```javascript 
-// Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
-// Run the sample:
-// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.platform.operation.samples.autotagpdf.AutotagPDFWithV17AndReportAndShiftHeadings
- 
 public class AutotagPDFWithV17AndReportAndShiftHeadings {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(AutotagPDFWithV17AndReportAndShiftHeadings.class);
@@ -227,15 +246,18 @@ public class AutotagPDFWithV17AndReportAndShiftHeadings {
 
 Use the sample below to generate tagged pdf of version 1.7 from a PDF and shift its headings.
 
+Copy this command in terminal to run the sample:
+```
+mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.platform.operation.samples.autotagpdf.AutotagPDFWithV17AndShiftHeadings
+```
+
+Sample code:
+
 <CodeBlock slots="heading, code" repeat="1" languages="Java" /> 
 
 #### Java
 
 ```javascript 
-// Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
-// Run the sample:
-// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.platform.operation.samples.autotagpdf.AutotagPDFWithV17AndShiftHeadings
- 
 public class AutotagPDFWithV17AndShiftHeadings {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(AutotagPDFWithV17AndShiftHeadings.class);
@@ -289,15 +311,18 @@ public class AutotagPDFWithV17AndShiftHeadings {
 
 Use the sample below to generate tagged pdf of version 2.0 from a PDF document.
 
+Copy this command in terminal to run the sample:
+```
+mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.platform.operation.samples.autotagpdf.AutotagPDFWithV20
+```
+
+Sample code:
+
 <CodeBlock slots="heading, code" repeat="1" languages="Java" /> 
 
 #### Java
 
-```javascript 
-// Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
-// Run the sample:
-// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.platform.operation.samples.autotagpdf.AutotagPDFWithV20
- 
+```javascript  
 public class AutotagPDFWithV20 {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(AutotagPDFWithV20.class);
@@ -350,15 +375,18 @@ public class AutotagPDFWithV20 {
 
 Use the sample below to generate tagged pdf of version 2.0 and an excel report from a PDF document.
 
+Copy this command in terminal to run the sample:
+```
+mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.platform.operation.samples.autotagpdf.AutotagPDFWithV20AndReport
+```
+
+Sample code:
+
 <CodeBlock slots="heading, code" repeat="1" languages="Java" /> 
 
 #### Java
 
 ```javascript 
-// Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
-// Run the sample:
-// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.platform.operation.samples.autotagpdf.AutotagPDFWithV20AndReport
- 
 public class AutotagPDFWithV20AndReport {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(AutotagPDFWithV20AndReport.class);
@@ -414,15 +442,18 @@ public class AutotagPDFWithV20AndReport {
 
 Use the sample below to generate tagged pdf of version 2.0 and shifting its headings an excel report from a PDF document.
 
+Copy this command in terminal to run the sample:
+```
+mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.platform.operation.samples.autotagpdf.AutotagPDFWithV20AndReportAndShiftHeadings
+```
+
+Sample code:
+
 <CodeBlock slots="heading, code" repeat="1" languages="Java" /> 
 
 #### Java
 
 ```javascript 
-// Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
-// Run the sample:
-// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.platform.operation.samples.autotagpdf.AutotagPDFWithV20AndReportAndShiftHeadings
- 
 public class AutotagPDFWithV20AndReportAndShiftHeadings {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(AutotagPDFWithV20AndReportAndShiftHeadings.class);
@@ -479,15 +510,18 @@ public class AutotagPDFWithV20AndReportAndShiftHeadings {
 
 Use the sample below to generate tagged pdf of version 2.0 from a PDF and shift its headings.
 
+Copy this command in terminal to run the sample:
+```
+mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.platform.operation.samples.autotagpdf.AutotagPDFWithV20AndShiftHeadings
+```
+
+Sample code:
+
 <CodeBlock slots="heading, code" repeat="1" languages="Java" /> 
 
 #### Java
 
 ```javascript 
-// Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
-// Run the sample:
-// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.platform.operation.samples.autotagpdf.AutotagPDFWithV20AndShiftHeadings
- 
 public class AutotagPDFWithV20AndShiftHeadings {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(AutotagPDFWithV20AndShiftHeadings.class);
