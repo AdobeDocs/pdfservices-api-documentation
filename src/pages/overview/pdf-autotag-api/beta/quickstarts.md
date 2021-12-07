@@ -10,7 +10,7 @@ To get started with PDF Autotag API, follow these steps:
 - [Getting credentials](quickstarts/#getting-credentials)
 - Using PDF Autotag API in
    - [Java](quickstarts/#java)
-      - [Java environment](quickstarts/#setup-a-java-environment), if not done already
+      - Setup a [Java environment](quickstarts/#setup-a-java-environment), if not done already
       - [Samples project setup](quickstarts/#samples-project-setup)
       - Executing [the samples code](howtos/autotag-api/#sample-code-lists)
 
