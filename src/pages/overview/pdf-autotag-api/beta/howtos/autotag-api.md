@@ -32,7 +32,7 @@ The output of an SDK autotag operation contains the following:
 | Disqualified Experiment   | DISQUALIFIED_EXPERIMENT   | File belongs to an experiment.                                                                                            |
 | Unknown error / failure   | ERROR                     | Unexpected error.                                                                                                         |
 
-## Sample code lists
+## Code samples
 
 - [Generate tagged pdf of version 1.7 from a PDF](autotag-api/#generate-tagged-pdf-of-version-17-from-a-pdf)
 - [Generate tagged pdf of version 1.7 and an excel report from a PDF](autotag-api/#generate-tagged-pdf-of-version-17-and-an-excel-report-from-a-pdf)
