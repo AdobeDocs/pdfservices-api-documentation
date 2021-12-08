@@ -16,15 +16,10 @@ Change types include the following:
 -   **Deprecated**: Existing functionality for which support is ending
     (or ended).
 
-<InlineAlert slots="text" />
-
-The new release is backward compatible with the previous release.
-Upgrading to the latest SDK should not break existing applications.
-
 ## Change history
 
 ### 2.2.0-beta.1 (December, 2021; First major beta release)
 
 | Change | Language | Description                                                                                       |
 | ------ | -------- | ------------------------------------------------------------------------------------------------  |
-| New    | Java      | Added an Autotag operation to make PDF files accessible.                                          |
+| New    | Java     | Added an AutotagPDF operation.                                         |

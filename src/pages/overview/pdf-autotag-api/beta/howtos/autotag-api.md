@@ -49,7 +49,7 @@ Use the sample below to generate tagged pdf of version 1.7 from a PDF document.
 
 Copy this command in terminal to run the sample:
 ```
-mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.platform.operation.samples.autotagpdf.AutotagPDFWithV17
+mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.autotagpdf.AutotagPDFWithV17 
 ```
 
 Sample code:
@@ -114,7 +114,7 @@ Use the sample below to generate tagged pdf of version 1.7 and an excel report f
 
 Copy this command in terminal to run the sample:
 ```
-mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.platform.operation.samples.autotagpdf.AutotagPDFWithV17AndReport
+mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.autotagpdf.AutotagPDFWithV17AndReport
 ```
 
 Sample code:
@@ -181,7 +181,7 @@ Use the sample below to generate tagged pdf of version 1.7 and shift its heading
 
 Copy this command in terminal to run the sample:
 ```
-mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.platform.operation.samples.autotagpdf.AutotagPDFWithV17AndReportAndShiftHeadings
+mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.autotagpdf.AutotagPDFWithV17AndReportAndShiftHeadings 
 ```
 
 Sample code:
@@ -248,7 +248,7 @@ Use the sample below to generate tagged pdf of version 1.7 from a PDF and shift 
 
 Copy this command in terminal to run the sample:
 ```
-mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.platform.operation.samples.autotagpdf.AutotagPDFWithV17AndShiftHeadings
+mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.autotagpdf.AutotagPDFWithV17AndShiftHeadings 
 ```
 
 Sample code:
@@ -313,7 +313,7 @@ Use the sample below to generate tagged pdf of version 2.0 from a PDF document.
 
 Copy this command in terminal to run the sample:
 ```
-mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.platform.operation.samples.autotagpdf.AutotagPDFWithV20
+mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.autotagpdf.AutotagPDFWithV20 
 ```
 
 Sample code:
@@ -377,7 +377,7 @@ Use the sample below to generate tagged pdf of version 2.0 and an excel report f
 
 Copy this command in terminal to run the sample:
 ```
-mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.platform.operation.samples.autotagpdf.AutotagPDFWithV20AndReport
+mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.autotagpdf.AutotagPDFWithV20AndReport 
 ```
 
 Sample code:
@@ -444,7 +444,7 @@ Use the sample below to generate tagged pdf of version 2.0 and shifting its head
 
 Copy this command in terminal to run the sample:
 ```
-mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.platform.operation.samples.autotagpdf.AutotagPDFWithV20AndReportAndShiftHeadings
+mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.autotagpdf.AutotagPDFWithV20AndReportAndShiftHeadings 
 ```
 
 Sample code:
@@ -512,7 +512,7 @@ Use the sample below to generate tagged pdf of version 2.0 from a PDF and shift 
 
 Copy this command in terminal to run the sample:
 ```
-mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.platform.operation.samples.autotagpdf.AutotagPDFWithV20AndShiftHeadings
+mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.autotagpdf.AutotagPDFWithV20AndShiftHeadings 
 ```
 
 Sample code:
