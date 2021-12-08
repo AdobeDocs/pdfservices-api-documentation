@@ -1,24 +1,4 @@
 # How Tos
-<p>
-
-The samples and documentation provide sample “Hello World” code that speeds development with the Autotag API. The service has options as follows:
-
-- PDF Version :- There are 2 versions supported of pdf 1.7 and 2.0
-- Generate Report :- It determines whether an excel report containing the information of the tagged pdf will be in the ouput or not
-- Shift Headings :- It determines whether the headings of the pdf is to be shifted or not
-
-For code examples illustrating other PDF actions including those below, see the [PDFServices SDK](../../../pdf-services-api/index.md) :
-
-- Creating a PDF from multiple formats, including HTML, Microsoft Office documents, and text files
-- Exporting a PDF to other formats or an image
-- Combining entire PDFs or specified page ranges
-- Using OCR to make a PDF file searchable with a custom locale
-- Compress PDFs with compression level and Linearize PDFs
-- Protect PDFs with password(s) and Remove password protection from PDFs
-- Common page operations, including inserting, replacing, deleting, reordering, and rotating
-- Splitting PDFs into multiple files
-
-</p>
 
 ## Runtime in-memory authentication
 
