@@ -91,10 +91,8 @@ After downloading the zip, you can either run the samples in the zip directly, o
 2.  Run `javac -version` to verify your install.
 3.  Verify the JDK bin folder is included in the PATH variable (method varies by OS).
 4.  Install [Maven](https://maven.apache.org/install.html). You may use your preferred tool; for example:
-<ul>
-<li><b>Windows:</b> Example: [Chocolatey](https://chocolatey.org/packages/maven).</li>
-<li><b>Macintosh:</b> Example: `brew install maven`.</li>
-</ul>
+    - **Windows:** Example: [Chocolatey](https://chocolatey.org/packages/maven).
+    - **Macintosh:** Example: `brew install maven`.
 
 <InlineAlert slots="text" />
 
