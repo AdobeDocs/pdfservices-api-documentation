@@ -26,7 +26,8 @@ A placeholder(text tags) gets replaced by the actual input data.
 A placeholder variable can only be applied to an input field of type
 string, number or boolean. <br/> Formatting applied to the placeholder
 variable in the document template will be retained in the output
-document.
+document.<br/>
+For more simplified styling and formatting for the placeholder tag from the input json data, please refer [styling and formatting](../document-generation-api/stylingformattingtags.md) section:
 
 JSON representation of the input data:
 
@@ -224,7 +225,9 @@ JSON representation of the input data:
 
 ![image](../images/vertical-extension1.png)
 
-**Note**: Default extension is vertical. If cell-extension construct is not provided, then table will be extended in vertical direction.
+<InlineAlert slots="text"/>
+
+Default extension is vertical. If cell-extension construct is not provided, then table will be extended in vertical direction.
 
 <br/>
 
