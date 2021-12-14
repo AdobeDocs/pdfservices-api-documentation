@@ -21,17 +21,19 @@ The [PDF Embed API](pdf-embed-api) brings PDF viewing to any web application wit
 
 ## PDF Services API to automate for your document workflows
 
-The [PDF Services API](pdf-services-api) offers a number of operations to programmatically manipulate documents and automate many different types of document workflows. You can easily create a PDF from a dynamic HTML report, set a password to prevent unauthorized opening of the document, and compress it for sharing as an attachment. Linearize a PDF for faster web viewing when end users have a large document to read.
+The [PDF Services API](pdf-services-api) offers a number of operations to programmatically manipulate documents and automate many different types of document workflows. You can easily create a PDF from a dynamic HTML report, set a password to prevent unauthorized opening of the document, compress it for sharing as an attachment, or extract text, tables, images and document structure to enable downstream solutions. 
 
-There are additional services to compress, linearize, and password-protect PDF documents. There are also capabilities to insert, reorder, rotate, replace, and delete pages within documents.
+There are also capabilities to compress or linearize document for faster web viewing, and to insert, reorder, rotate, replace, and delete pages within documents.
 
-The PDF Services API includes ready-to-use code samples for Java, Node.JS and .NET and offers a [free trial that includes up to 1,000 free Document Transactions or runs for 6 months, whichever occurs earlier.](https://www.adobe.io/apis/documentcloud/dcsdk/gettingstarted.html)
+The PDF Services API includes ready-to-use code samples for Java, Node.JS and .NET and offers a [free trial that includes up to 1,000 free Document Transactions or runs for 6 months, whichever occurs earlier.](https://dc.stage.acrobat.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api)
+
+The PDF Services API is also available on [Power Automate](https://docs.microsoft.com/en-us/power-automate/) with easy to integrate Power Automate connectors.
 
 ## Document Generation API for automating document workflows    
 
 The [Document Generation API](src/pages/overview/document-generation-api) is a cloud-based web service that allows you to produce high fidelity PDF and Word documents with dynamic data inputs. Using Document Generation API, you can merge your data(e.g. JSON file) with Word templates to create dynamic documents for contracts and agreements, invoices, proposals, reports, forms, branded marketing documents and more.
 
-Embed Document Generation API into any application using [PDFServices SDK](pdf-services-api#sdk) for Node.js, .Net, and Java. [Start a free trial that includes up to 1,000 free Document transactions or runs for 6 months, whichever occurs earlier.](https://www.adobe.io/apis/documentcloud/dcsdk/gettingstarted.html)
+Embed Document Generation API into any application using [PDFServices SDK](pdf-services-api#sdk) for Node.js, .Net, and Java. [Start a free trial that includes up to 1,000 free Document transactions or runs for 6 months, whichever occurs earlier.](https://dc.stage.acrobat.com/dc-integration-creation-app-cdn/main.html?api=docgen-api)
 
 ## PDF Extract API for extracting pdf structure and information
 
@@ -47,7 +49,7 @@ The JSON output also captures document structure information, such as the natura
 
 The PDF Extract API provides a method for developers to extract and structure content for use in a number of downstream applications including content republishing, workflow automation, content analysis, and data aggregation, management, and search.
 
-The PDF Extract API can be embedded into any application using the [PDFServices SDK](./pdf-services-api/index.md#sdk) for Node.js, Python, and Java. [Start a free trial that includes up to 1,000 free Document transactions or runs for 6 months, whichever occurs earlier.](https://www.adobe.io/apis/documentcloud/dcsdk/gettingstarted.html)
+The PDF Extract API can be embedded into any application using the [PDFServices SDK](./pdf-services-api/index.md#sdk) for Node.js, Python, and Java. [Start a free trial that includes up to 1,000 free Document transactions or runs for 6 months, whichever occurs earlier.](https://dc.stage.acrobat.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api)
 
 ## Community forum and feedback
 
