@@ -18,6 +18,11 @@ For code examples illustrating other PDF actions including those below, see the 
 
 </p>
 
+## How It Works
+
+PDF Extract uses AI/ML technology to identify and categorize the various objects within documents – such as paragraphs, lists, headings, tables, and images – and extract the text, formatting, and associated document structural information which is then delivered in a resulting JSON file. Extracted table data can optionally be delivered within .CSV or .XLSX files, and extracted images are delivered as .PNG files. For additional information, please refer to [PDF Extract API white paper](https://adobe.sharepoint.com/:w:/s/DCPM/EQUrHgYanq5Iq9PR0XwRIfsBI6uBOu5iG1nRB0t_7amJYA?email=cfrench%40adobe.com&e=JFgscn)
+
+
 ## Runtime in-memory authentication
 
 The SDK supports providing the authentication credentials at runtime.
