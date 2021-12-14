@@ -134,7 +134,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
-### Adobe Document Generation Server Side Release (14 December, 2022; server side release)
+### Adobe Document Generation Server Side Release (14 December, 2021; server side release)
 
 | Change  | Language | Description                                                                                                                                                   |
 | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
