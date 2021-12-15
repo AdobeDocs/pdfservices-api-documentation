@@ -30,7 +30,13 @@ schema]( ../../../resources/extractJSONOutputSchema2.json)):
     pages are reported for the first occurrence only.
 -   Bounds : Bounding box enclosing the content items forming this
     element. Not reported for elements which don't have any content
-    items (like empty table cells).
+    items (like empty table cells). The bounds are as per PDF specification coordinates.
+    PDF pages are generally specified in inches (like A4 page is 8.3 inches x 11.7 inches). If values are required in coordinates, we need a DPI value i.e. dots per inches. As per PDF specification, 72 DPI is used when creating a PDF. So, width of an A4 page is specified to be ~= 598 units (8.3 inches x 72) when creating the PDF.
+    All values reported in Extract use this 72 dpi based coordinates. Again as per PDF spec, absolute values of bounds are in a coordinate system where origin is (0,0), up and right directions are positive. Going by this coordinate system, for all rects reported in Extract, bottom < top and left < right.
+    In Extract JSON schema, all rects are of type #/definitions/rect  and rect is defined as:
+    
+    **description: Rectangle/Box in PDF coordinate system (bottom-left is origin). Values are in PDF user space units. Order of values - left, bottom, right, top.**
+
 -   Font : Font description for the font associated with the first
     character. Only reported for text elements.
 -   TextSize : Text size (in points) of the last character. Only
@@ -38,7 +44,7 @@ schema]( ../../../resources/extractJSONOutputSchema2.json)):
 -   Attributes: Includes additional properties like line height and text
     alignment.
 -   Path : The Path describes the location of elements in the structure
-    tree including the element type and the instance number. Element
+    tree including the element type and the instance number. Path along with bounds defines the reading order of the document. Element
     types are based on the [ISO
     standard](https://www.iso.org/standard/75839.html) , a summary is
     included below for convenience :
@@ -91,7 +97,7 @@ schema]( ../../../resources/extractJSONOutputSchema2.json)):
     can occur for elements extracted from their container (eg. A
     reference link in the middle of a paragraph). However, the order is
     preserved in Styling mode where all Elements and their Kids are
-    represented in the natural reading order.
+    represented in the natural reading order. Reading order is determined by Bounds and path element provided in the .json file.
 
 ## API limitations
 
