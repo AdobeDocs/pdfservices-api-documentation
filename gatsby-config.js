@@ -218,6 +218,10 @@ module.exports = {
             path: 'overview/document-generation-api/templatetags.md'
           },
           {
+            title: 'Fragments',
+            path: 'overview/document-generation-api/fragments.md'
+          },
+          {
             title: 'Apply styling and formatting',
             path: 'overview/document-generation-api/stylingformattingtags.md'
           },
