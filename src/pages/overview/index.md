@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs 
+title: Document Services APIs
 ---
 
 # Introduction
@@ -21,7 +21,7 @@ The [PDF Embed API](pdf-embed-api) brings PDF viewing to any web application wit
 
 ## PDF Services API to automate for your document workflows
 
-The [PDF Services API](pdf-services-api) offers a number of operations to programmatically manipulate documents and automate many different types of document workflows. You can easily create a PDF from a dynamic HTML report, set a password to prevent unauthorized opening of the document, compress it for sharing as an attachment, or extract text, tables, images and document structure to enable downstream solutions. 
+The [PDF Services API](pdf-services-api) offers a number of operations to programmatically manipulate documents and automate many different types of document workflows. You can easily create a PDF from a dynamic HTML report, set a password to prevent unauthorized opening of the document, compress it for sharing as an attachment, or extract text, tables, images and document structure to enable downstream solutions.
 
 There are also capabilities to compress or linearize document for faster web viewing, and to insert, reorder, rotate, replace, and delete pages within documents.
 
