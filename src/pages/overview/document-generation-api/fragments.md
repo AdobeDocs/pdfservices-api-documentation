@@ -9,7 +9,7 @@ Fragments is a special type of text tag which is used to group one or multiple  
 
 Fragments allow user to write complex structure of text tag seperately thus saves complexity and eases maintainablity of editing and manipulating such complex structure in document templates.
 
-####Example:
+#### Example:
 
 
 ![image](../images/use_fragments.png)
@@ -20,7 +20,7 @@ Here `addressDetails` is a fragment defined which comprises `addressline1`, `add
 
 For the above example, the `jsonDataForMerge.json` and `fragments.json` would look like:
 
-###Fragments JSON file
+### Fragments JSON file
 fragments.json
 
 ```json
@@ -31,7 +31,7 @@ fragments.json
 ]
 ```
 
-###Input JSON file
+### Input JSON file
 jsonDataForMerge.json
 ```json
 {
@@ -44,12 +44,12 @@ jsonDataForMerge.json
 }
 ```
 
-###Sample Input Document 
+### Sample Input Document 
 In the input document below, `address_details` is a fragment which will be resolved using `fragments.json` and `jsonDataForMerge.json` files.
 
 ![image](../images/fragments_input.png)
 
-###Sample Output Document 
+### Sample Output Document 
 Below is the final document generated:
 
 ![image](../images/fragments_output.png)
