@@ -21,12 +21,28 @@ Here `addressDetails` is a fragment defined which comprises `addressline1`, `add
 For the above example, the `jsonDataForMerge.json` and `fragments.json` would look like:
 
 ###Fragments JSON file
+fragments.json
 
-![image](../images/fragments_json_file.png)
+```json
+[
+  {
+    "address_details" : "<br>{{addressline1}}<br>{{addressline2}}<br>{{addressline3}}<br>{{city}}, {{state}}-{{pincode}}"
+  }
+]
+```
 
 ###Input JSON file
-
-![image](../images/jsonDataForMerge.png)
+jsonDataForMerge.json
+```json
+{
+  "addressline1": "Sample Address Line 1",
+  "addressline2": "Sample Address Line 2",
+  "addressline3": "Sample Address Line 3",
+  "city": "Sample City",
+  "state": "Sample State",
+  "pincode": "42132xx"
+}
+```
 
 ###Sample Input Document 
 In the input document below, `address_details` is a fragment which will be resolved using `fragments.json` and `jsonDataForMerge.json` files.
