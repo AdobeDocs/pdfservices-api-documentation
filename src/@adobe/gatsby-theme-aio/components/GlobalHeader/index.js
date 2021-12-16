@@ -22,7 +22,8 @@ import {
   rootFixPages,
   getExternalLinkProps,
   MOBILE_SCREEN_WIDTH,
-  DEFAULT_HOME
+  DEFAULT_HOME,
+  DESKTOP_SCREEN_WIDTH
 } from '@adobe/gatsby-theme-aio/src/utils';
 import { css } from '@emotion/react';
 import { AnchorButton } from '@adobe/gatsby-theme-aio/src/components/AnchorButton';
@@ -37,17 +38,17 @@ import { Image } from '@adobe/gatsby-theme-aio/src/components/Image';
 import { Link } from '@adobe/gatsby-theme-aio/src/components/Link';
 import {
   Tabs,
-  Item as TabsItem,
+  HeaderTabItem as TabsItem,
   Label as TabsItemLabel,
   TabsIndicator,
   positionIndicator,
-  animateIndicator
-} from '@adobe/gatsby-theme-aio/src/components/Tabs';
+  animateIndicator,
+} from '../Tabs';
 import '@spectrum-css/typography';
 import '@spectrum-css/assetlist';
 import { Divider } from '@adobe/gatsby-theme-aio/src/components/Divider';
 import DEFAULT_AVATAR from './avatar.svg';
-import {  DESKTOP_SCREEN_WIDTH } from "@adobe/gatsby-theme-aio/src/utils";
+
 
 const getSelectedTabIndex = (location, pages) => {
   const pathWithRootFix = rootFix(location.pathname);
@@ -211,7 +212,19 @@ const GlobalHeader = ({
 
     return () => tabsContainerRef.current.removeEventListener('scroll', onScroll);
   }, []);
-  
+
+  const openDropDown=(data)=>{
+    if(data.isOpen){
+      setOpenMenuIndex(data.index)
+      setOpenVersion(data.isOpen)
+      if(openMenuIndex === -1 ||openMenuIndex !==data.index){
+      setTimeout(()=>{
+         document.getElementById(`menuIndex${data.index}-0`).focus();
+      },100)
+    }
+    }
+  }
+
   return (
     <header
       role="banner"
@@ -287,6 +300,13 @@ const GlobalHeader = ({
                 </div>
                 <a
                   href="/"
+                    tabIndex={"0"}
+                    id="adobeIcon"
+                    onKeyDown={(e)=>{
+                      if(e.key==="ArrowRight"){
+                      document.getElementById("product").focus();
+                      }
+                    }}
                   css={css`
                     display: flex;
                     height: 100%;
@@ -341,6 +361,7 @@ const GlobalHeader = ({
 
               {hasHome && (
                 <div
+               
                   css={css`
                     height: calc(100% + var(--spectrum-global-dimension-size-10));
                     border-left: var(--spectrum-global-dimension-size-10) solid var(--spectrum-global-color-gray-200);
@@ -352,6 +373,17 @@ const GlobalHeader = ({
                   `}>
                   <Link isQuiet variant="secondary">
                     <a
+                      tabIndex={"0"}
+                      id={"product"}
+                      onFocus={()=>setOpenMenuIndex(-1)}
+                      onKeyDown={(e)=>{
+                       if(e.key==="ArrowLeft"){
+                       document.getElementById("adobeIcon").focus();
+                       }
+                       if(e.key==="ArrowRight"){
+                        document.getElementById("tabindex0").focus();
+                        }
+                      }}
                       css={css`
                         display: flex;
                         height: calc(100% - var(--spectrum-global-dimension-size-10));
@@ -416,7 +448,6 @@ const GlobalHeader = ({
             <div
               css={css`
                 display: none;
-
                 @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
                   display: block;
                   pointer-events: none;
@@ -469,7 +500,6 @@ const GlobalHeader = ({
               {pages.map((page, i) => {
                 const isSelectedTab = selectedTabIndex === i;
                 const menuPopoverId = nextId();
-
                 const setTabRef = (element) => {
                   page.tabRef = { current: element };
                 };
@@ -483,14 +513,22 @@ const GlobalHeader = ({
                     {page.href ? (
                       <TabsItem
                         elementType={GatsbyLink}
+                        onBlur={()=>setOpenMenuIndex(-1)}
                         {...getExternalLinkProps(page.href)}
                         ref={setTabRef}
+                        id={`tabindex${i}`}
                         to={withPrefix(page.href)}
                         selected={isSelectedTab}>
                         <TabsItemLabel>{page.title}</TabsItemLabel>
                       </TabsItem>
                     ) : (
                       <TabsItem
+                       tabIndex={"0"}
+                       id={`tabindex${i}`}
+                       onBlur={()=>setOpenMenuIndex(-1)}
+                       index={i}
+                       hasDropdown
+                       openDropDown={openDropDown}
                         css={css`
                           ${openMenuIndex === i &&
                           `
@@ -504,7 +542,6 @@ const GlobalHeader = ({
                             top: calc(-1 * var(--spectrum-global-dimension-size-100));
                             background-color: var(--spectrum-global-color-gray-100);
                           }
-
                         `}
                         `}
                         ref={setTabRef}
@@ -573,7 +610,6 @@ const GlobalHeader = ({
                           onFocus={() => {
                             setOpenMenuIndex(i);
                           }}
-                          
                         >
                         <Popover
                           ref={setTabMenuRef}
@@ -597,29 +633,57 @@ const GlobalHeader = ({
                               const pathWithRootFix = rootFix(location.pathname);
                               const selectedMenu = findSelectedTopPageMenu(pathWithRootFix, page);
                               const menuHref = withPrefix(menu.href);
-                              
                               return (
                                 <MenuItem
+                                  className="spectrum-Link spectrum-Link--quiet global_header"
                                   key={k}
+                                  tabIndex="0"
+                                  id={`menuIndex${i}-${k}`}
                                   href={menuHref}
                                   {...getExternalLinkProps(menuHref)}
                                   isHighlighted={menu === selectedMenu}
                                   onKeyDown={(e) => {
-   
-                                    if (e.key === 'ArrowDown') {
-                                      e.currentTarget.nextSibling && e.currentTarget.nextSibling.focus();
+                                     if (e.key === 'ArrowDown') {
+                                      e.preventDefault();                                
+                                      if(k+1===page.menu.length){
+                                        setTimeout(()=>{
+                                          if(pages.length===i+1){
+                                            document.getElementById("getCredentialID").focus();
+                                          }else{
+                                          document.getElementById(`tabindex${i+1}`).focus();
+                                          }
+                                        },100)
+                                      }else{
+                                        e.preventDefault();       
+                                        e.currentTarget.nextElementSibling && e.currentTarget.nextElementSibling.focus();
+                                      }
                                     }
                                     if (e.key === 'ArrowUp') {
-                                      e.currentTarget.previousSibling && e.currentTarget.previousSibling.focus();
+                                      e.preventDefault();
+                                      var event =e;
+                                      if(k===0){
+                                        setOpenMenuIndex(-1)
+                                        setTimeout(()=>{
+                                          document.getElementById(`tabindex${i}`).focus();
+                                        },100)
+                                      }
+                                      event.currentTarget.previousElementSibling && e.currentTarget.previousElementSibling.focus();
+                                    }
+                                    if (e.key === 'ArrowRigt') {
+                                      e.preventDefault();
+                                      e.currentTarget.nextElementSibling && e.currentTarget.nextElementSibling.focus();
+                                    }
+                                    if (e.key === 'ArrowLeft') {
+                                      e.preventDefault();
+                                      if(k===0){
+                                        document.getElementById(`tabindex${i}`).focus()
+                                      }
+                                      e.currentTarget.previousElementSibling && e.currentTarget.previousElementSibling.focus();
                                     }
                                     if( e.key === 'Enter'){
                                       e.currentTarget.focus();
                                     }
-                                    if(!e.currentTarget.nextSibling){
-                                       setOpenMenuIndex(-1);
-                                    }
                                   }}
-                                
                                   >
                                   {menu.description ? (
                                     <div
@@ -642,7 +706,10 @@ const GlobalHeader = ({
                                       </div>
                                     </div>
                                   ) : (
-                                    <span>{menu.title}</span>
+                                    <div css={css`
+                                    margin-top: var(--spectrum-global-dimension-size-50);
+                                    margin-bottom: var(--spectrum-global-dimension-size-50);
+                                  `}>{menu.title}</div>
                                   )}
                                 </MenuItem>
                               );
@@ -720,7 +787,16 @@ const GlobalHeader = ({
                     margin-left: var(--spectrum-global-dimension-size-300);
                     white-space: nowrap;
                   `}>
-                  <AnchorButton variant="primary" href={withPrefix(docs.href)}>
+                  <AnchorButton
+                    onFocus={(e)=>{
+                      setOpenMenuIndex(-1)
+                    }}
+                  onKeyDown={(e)=>{
+                    if(e.key==="ArrowLeft"){
+                      document.getElementById("tabindex5").focus();
+                    }
+                  }}  
+                   id={"getCredentialID"} variant="primary" href={withPrefix(docs.href)}>
                     {docs.title ?? 'View Docs'}
                   </AnchorButton>
                 </div>
@@ -770,6 +846,7 @@ const GlobalHeader = ({
               <AnchorButton
                 variant="primary"
                 href="/console"
+                id={"consoleId"}
                 css={css`
                   @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
                     display: none;
