@@ -22,7 +22,7 @@ module.exports = {
     pages: [
       {
         title: 'Adobe Document Services',
-        path: '../../../document-services'
+        path: '../../../document-services/homepage'
       },
       {
         title: 'APIs',
@@ -51,11 +51,11 @@ module.exports = {
       },
       {
         title: 'Use Cases',
-        path: '../document-services/use-cases.md'
+        path: '../document-services/use-cases/agreements-and-contracts/sales-proposals-and-contracts.md'
       },
       {
         title: 'Pricing',
-        path: '../document-services/pricing/main'
+        path: '../document-services/pricing/#main'
       },
       {
         title: 'Resources',
@@ -92,6 +92,10 @@ module.exports = {
           {
             title: 'PDF Embed API',
             path: 'overview/pdf-embed-api/index.md'
+          },
+          {
+            title: 'PDF Autotag API',
+            path: 'overview/pdf-autotag-api/beta/index.md'
           },
         ]
       },
@@ -214,6 +218,22 @@ module.exports = {
             path: 'overview/document-generation-api/templatetags.md'
           },
           {
+            title: 'Fragments',
+            path: 'overview/document-generation-api/fragments.md'
+          },
+          {
+            title: 'Apply styling and formatting',
+            path: 'overview/document-generation-api/stylingformattingtags.md'
+          },
+          {
+            title: 'Hyperlink',
+            path: 'overview/document-generation-api/hyperlink.md'
+          },
+          {
+            title: 'Dynamic Table Constructs ',
+            path: 'overview/document-generation-api/dynamictableconstructs.md'
+          },
+          {
             title: 'Word Add-in',
             path: 'overview/document-generation-api/wordaddin.md'
           },
@@ -235,6 +255,10 @@ module.exports = {
           {
             title: 'Overview',
             path: 'overview/pdf-extract-api/index.md'
+          },
+          {
+            title: 'Quickstarts',
+            path: 'overview/pdf-extract-api/quickstarts.md'
           },
           {
             title: 'How Tos',
@@ -285,6 +309,32 @@ module.exports = {
           {
             title: 'Release notes',
             path: 'overview/pdf-embed-api/releasenotes.md'
+          },
+        ]
+      },
+      {
+        title: 'PDF Autotag API',
+        path: 'overview/pdf-autotag-api/beta/index.md',
+        pages: [
+          {
+            title: 'Overview',
+            path: 'overview/pdf-autotag-api/beta/index.md'
+          },
+          {
+            title: 'Quickstarts',
+            path: 'overview/pdf-autotag-api/beta/quickstarts.md'
+          },
+          {
+            title: 'How Tos',
+            path: 'overview/pdf-autotag-api/beta/howtos/howtos.md'
+          },
+          {
+            title: 'PDF Autotag API',
+            path: 'overview/pdf-autotag-api/beta/howtos/autotag-api.md'
+          },
+          {
+            title: 'Release Notes',
+            path: 'overview/pdf-autotag-api/beta/releasenotes.md'
           },
         ]
       },

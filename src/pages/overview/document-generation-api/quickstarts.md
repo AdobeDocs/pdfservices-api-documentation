@@ -1,8 +1,10 @@
 # Quickstarts
-
+This quickstart will guide you through the necessary steps to setup and make a request to the Document Generation API.<br/>
 Use Document Generation API to merge JSON data into Word based document
 templates and produce high fidelity PDF and Word documents from any
-application.
+application. <br/>
+To learn more about the Document Generation, read [Overview](../document-generation-api/index.md)
+
 
 ## Live Demo
 

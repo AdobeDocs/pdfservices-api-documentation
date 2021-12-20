@@ -12,7 +12,7 @@ The SDK only supports server-based use cases where credentials are saved securel
 
 ## Getting credentials
 
-Developing with the PDF Services SDK requires an Adobe-provided credential. To get one, [click HERE](https://www.adobe.io/apis/documentcloud/dcsdk/gettingstarted.html?ref=getStartedWithServicesSDK), and complete the workflow. Be sure to copy and save the credential values to a secure location.
+Developing with the PDF Services SDK requires an Adobe-provided credential. To get one, [click HERE](https://dc.stage.acrobat.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
 
 **Validity term**: The certificate associated with your credential is valid for one year. However, you can simply regenerate a new credential or apply a new certificate to the current credentials from the Document Cloud [developer console](https://console.adobe.io/).
 
@@ -91,9 +91,8 @@ After downloading the zip, you can either run the samples in the zip directly, o
 2.  Run `javac -version` to verify your install.
 3.  Verify the JDK bin folder is included in the PATH variable (method varies by OS).
 4.  Install [Maven](https://maven.apache.org/install.html). You may use your preferred tool; for example:
-
--   **Windows**: Example: [Chocolatey](https://chocolatey.org/packages/maven).
--   **Macintosh**: Example: `brew install maven`.
+    - **Windows:** Example: [Chocolatey](https://chocolatey.org/packages/maven).
+    - **Macintosh:** Example: `brew install maven`.
 
 <InlineAlert slots="text" />
 

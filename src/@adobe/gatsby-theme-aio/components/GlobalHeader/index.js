@@ -21,7 +21,6 @@ import {
   rootFix,
   rootFixPages,
   getExternalLinkProps,
-  DESKTOP_SCREEN_WIDTH,
   MOBILE_SCREEN_WIDTH,
   DEFAULT_HOME
 } from '@adobe/gatsby-theme-aio/src/utils';
@@ -48,6 +47,7 @@ import '@spectrum-css/typography';
 import '@spectrum-css/assetlist';
 import { Divider } from '@adobe/gatsby-theme-aio/src/components/Divider';
 import DEFAULT_AVATAR from './avatar.svg';
+import {  DESKTOP_SCREEN_WIDTH } from "@adobe/gatsby-theme-aio/src/utils";
 
 const getSelectedTabIndex = (location, pages) => {
   const pathWithRootFix = rootFix(location.pathname);
@@ -211,7 +211,7 @@ const GlobalHeader = ({
 
     return () => tabsContainerRef.current.removeEventListener('scroll', onScroll);
   }, []);
-
+  
   return (
     <header
       role="banner"
@@ -504,12 +504,13 @@ const GlobalHeader = ({
                             top: calc(-1 * var(--spectrum-global-dimension-size-100));
                             background-color: var(--spectrum-global-color-gray-100);
                           }
-                        
+
                         `}
                         `}
                         ref={setTabRef}
                         selected={isSelectedTab}
                         aria-controls={menuPopoverId}
+                        aria-label={page.title}
                         onClick={(event) => {
                           event.stopImmediatePropagation();
 
@@ -532,6 +533,7 @@ const GlobalHeader = ({
                             setOpenMenuIndex(-1)
                           }
                         }
+
                         >
                         <TabsItemLabel>{page.title}</TabsItemLabel>
                         <ChevronDown
@@ -543,7 +545,14 @@ const GlobalHeader = ({
                             ${openMenuIndex === i && `transform: rotate(-90deg);`}
                           `}
                         />
-                        <div 
+                        <div
+                          onClick={(event) => {
+                            event.stopImmediatePropagation();
+
+                            setOpenVersion(false);
+                            setOpenProfile(false);
+                            setOpenMenuIndex(openMenuIndex === i ? -1 : i);
+                          }}
                           onMouseEnter={(event) => {
                             event.stopImmediatePropagation();
                             setOpenVersion(false);
@@ -560,12 +569,16 @@ const GlobalHeader = ({
                           }
                           role="button"
                           tabIndex={0}
-
+                          aria-label={page.title}
+                          onFocus={() => {
+                            setOpenMenuIndex(i);
+                          }}
+                          
                         >
                         <Popover
                           ref={setTabMenuRef}
                           id={menuPopoverId}
-                          
+
                           css={css`
                             margin-left: calc(-1 * var(--spectrum-global-dimension-size-65));
                             margin-top: var(--spectrum-global-dimension-size-25);
@@ -584,13 +597,30 @@ const GlobalHeader = ({
                               const pathWithRootFix = rootFix(location.pathname);
                               const selectedMenu = findSelectedTopPageMenu(pathWithRootFix, page);
                               const menuHref = withPrefix(menu.href);
-
+                              
                               return (
                                 <MenuItem
                                   key={k}
                                   href={menuHref}
                                   {...getExternalLinkProps(menuHref)}
-                                  isHighlighted={menu === selectedMenu}>
+                                  isHighlighted={menu === selectedMenu}
+                                  onKeyDown={(e) => {
+   
+                                    if (e.key === 'ArrowDown') {
+                                      e.currentTarget.nextSibling && e.currentTarget.nextSibling.focus();
+                                    }
+                                    if (e.key === 'ArrowUp') {
+                                      e.currentTarget.previousSibling && e.currentTarget.previousSibling.focus();
+                                    }
+                                    if( e.key === 'Enter'){
+                                      e.currentTarget.focus();
+                                    }
+                                    if(!e.currentTarget.nextSibling){
+                                       setOpenMenuIndex(-1);
+                                    }
+                                  }}
+                                
+                                  >
                                   {menu.description ? (
                                     <div
                                       css={css`
