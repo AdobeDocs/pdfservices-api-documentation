@@ -138,7 +138,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 | Change  | Language | Description                                                                                                                                                   |
 | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| New     | All      | Adding support for additional tags (<strong/> and <em/>) in [styling and formatting](../document-generation-api/stylingformattingtags.md#apply-styling-and-formatting) feature.                                                                               |
+| New     | All      | Adding support for additional tags (<strong\> and <em\>) in [styling and formatting](../document-generation-api/stylingformattingtags.md#apply-styling-and-formatting) feature.                                                                               |
 | New     | All      | Support for [dynamic table constructs](../document-generation-api/dynamictableconstructs.md).     |
 
 ### Extract PDF Server Side Release (15 November, 2021; server side release)
