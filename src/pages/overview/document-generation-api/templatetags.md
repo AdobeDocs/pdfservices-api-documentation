@@ -239,8 +239,7 @@ Default extension is vertical. If cell-extension construct is not provided, then
 
 ## Lists
 
-Dynamically generate numbered or bullet lists by repeating over a list
-of objects.
+Dynamically generate numbered or bullet lists by repeating over a list.
 
 **How to insert Lists**
 
@@ -273,14 +272,28 @@ JSON representation of the input data:
 Dynamically generate a numbered list by placing it inside a repeating
 section.
 
-![image](../images/list_numbered.png)
+![image](../images/numbered_list.png)
 
 **Bullet Lists**
 
 Dynamically generate a bullet list by placing it inside a repeating
 section.
 
-![image](../images/list_bullet.png)
+![image](../images/bullet_list.png)
+
+
+JSON representation of the input data in case of simple lists:
+
+```json
+{
+  "products": ["Adobe Photoshop", "Adobe Premiere Pro", "Adobe InDesign"]
+}
+```
+
+Dynamically generate a numbered or bullet list by placing it inside a repeating section.
+
+![image](../images/simple_lists.png)
+
 
 ## Conditionals
 
