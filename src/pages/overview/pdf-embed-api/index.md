@@ -180,6 +180,29 @@ PDF Embed API also supports pinch zoom gesture and users can zoom-in to
 magnify the PDF content for better reading experience. This
 functionality is supported with all embed modes.
 
+## Analytics
+
+**What information is collected to analyze PDF Embed API usage?**
+
+PDF Embed API ONLY collects essential information which helps Adobe understand how to scale the product and gain insights on product usage. The following information is collected:
+
+-   Browser and operating system type and version.
+-   Type of device used to open the PDF - desktop, mobile or tablet.
+-   Embed mode used to render the PDF.
+-   File size and number of pages.
+-   Performance metrics, such as, whether PDF was rendered in linearized manner or not, time taken to download the PDF and render the first page.
+-   URL of the webpage.
+
+Please note that PDF Embed API doesn’t store any user-generated content and never shares user-generated content with Adobe servers.
+
+**How will Adobe use the information?**
+
+The anonymous information will be used to develop new features, collect performance metrics and understand product usage in order to make improvements.
+
+**How is my privacy protected?**
+
+Adobe takes many precautions in protecting the information that is collected and transmitted. Since no personally identifiable information is collected, the data will not be meaningful to anyone outside Adobe.
+
 ## Feedback and forum
 
 Customer feedback is particularly valuable as it helps the team validate
