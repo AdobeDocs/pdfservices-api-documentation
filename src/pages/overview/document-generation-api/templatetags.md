@@ -282,6 +282,9 @@ section.
 ![image](../images/bullet_list.png)
 
 
+
+**Simple Lists**
+
 JSON representation of the input data in case of simple lists:
 
 ```json
