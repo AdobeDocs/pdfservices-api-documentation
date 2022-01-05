@@ -38,10 +38,7 @@ webpage from your server.
 
 <InlineAlert slots="text"/>
 
-After the first page of the PDF is rendered, PDF Embed API calls into a 
-service to validate if the client ID is used with the correct website domain. 
-If the client ID is incorrect or you are using it on a domain other than the one
-you registered, then the PDF preview is blocked with an error message.
+After the first page of the PDF is rendered, PDF Embed API calls into a service to validate if the client ID is used with the correct website domain. If the client ID is incorrect or you are using it on a domain other than the one you registered, then the PDF preview is blocked with an error message.
 
 There really are no environment setup steps or system requirements.
 Develop your web app using your preferred methods and tools.
