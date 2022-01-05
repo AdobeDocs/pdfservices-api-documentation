@@ -494,13 +494,10 @@ To use this mode:
     to the enclosing `div` tag of the PDF viewer.
 * Pass `embedMode: "SIZED_CONTAINER"`
 * Optional: Configure the page and tool options
-  -   **Print and download**: This mode supports options to download and 
-      print the PDF (`showDownloadPDF` and `showPrintPDF`) as well as
-      document search.
-  -   **Page controls**: The page control toolbar containing the Adobe
-      Acrobat logo and navigation options is docked but can be undocked
-      by setting `dockPageControls` to false. A full screen mode button
-      also appears in the page control toolbar (`showFullScreen`).
+  -   **Print and download**: This mode supports options to download and print the PDF (`showDownloadPDF` and `showPrintPDF`) 
+      as well as document search.
+  -   **Page controls**: The page control toolbar containing the Adobe Acrobat logo and navigation options is docked but 
+      can be undocked by setting `dockPageControls` to false. A full screen mode button also appears in the page control toolbar(`showFullScreen`).
 
 ```html
 <div id="adobe-dc-view" style="height: 360px; width: 500px;"></div>
