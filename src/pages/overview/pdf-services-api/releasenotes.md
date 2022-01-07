@@ -109,6 +109,7 @@ Refer to the following for links to supported product documentation.
 
 | Item  | Public doc                                                                |
 | ----- | ------------------------------------------------------------------------- |
+| 2.1.0 | [Web page](https://opensource.adobe.com/pdftools-sdk-docs/release/2.1.0/) |
 | 2.0.0 | [Web page](https://opensource.adobe.com/pdftools-sdk-docs/release/2.0.0/) |
 | 1.3.0 | [Web page](https://opensource.adobe.com/pdftools-sdk-docs/release/1.3.0/) |
 | 1.2.0 | [Web page](https://opensource.adobe.com/pdftools-sdk-docs/release/1.2.0/) |
@@ -138,7 +139,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 | Change  | Language | Description                                                                                                                                                   |
 | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| New     | All      | Adding support for additional tags (<strong/> and <em/>) in [styling and formatting](../document-generation-api/stylingformattingtags.md#apply-styling-and-formatting) feature.                                                                               |
+| New     | All      | Adding support for additional tags (<strong\> and <em\>) in [styling and formatting](../document-generation-api/stylingformattingtags.md#apply-styling-and-formatting) feature.                                                                               |
 | New     | All      | Support for [dynamic table constructs](../document-generation-api/dynamictableconstructs.md).     |
 
 ### Extract PDF Server Side Release (15 November, 2021; server side release)
