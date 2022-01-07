@@ -109,6 +109,7 @@ Refer to the following for links to supported product documentation.
 
 | Item  | Public doc                                                                |
 | ----- | ------------------------------------------------------------------------- |
+| 2.1.0 | [Web page](https://opensource.adobe.com/pdftools-sdk-docs/release/2.1.0/) |
 | 2.0.0 | [Web page](https://opensource.adobe.com/pdftools-sdk-docs/release/2.0.0/) |
 | 1.3.0 | [Web page](https://opensource.adobe.com/pdftools-sdk-docs/release/1.3.0/) |
 | 1.2.0 | [Web page](https://opensource.adobe.com/pdftools-sdk-docs/release/1.2.0/) |
