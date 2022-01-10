@@ -93,10 +93,6 @@ module.exports = {
             title: 'PDF Embed API',
             path: 'overview/pdf-embed-api/index.md'
           },
-          {
-            title: 'PDF Autotag API',
-            path: 'overview/pdf-autotag-api/beta/index.md'
-          },
         ]
       },
     ],
@@ -309,32 +305,6 @@ module.exports = {
           {
             title: 'Release notes',
             path: 'overview/pdf-embed-api/releasenotes.md'
-          },
-        ]
-      },
-      {
-        title: 'PDF Autotag API',
-        path: 'overview/pdf-autotag-api/beta/index.md',
-        pages: [
-          {
-            title: 'Overview',
-            path: 'overview/pdf-autotag-api/beta/index.md'
-          },
-          {
-            title: 'Quickstarts',
-            path: 'overview/pdf-autotag-api/beta/quickstarts.md'
-          },
-          {
-            title: 'How Tos',
-            path: 'overview/pdf-autotag-api/beta/howtos/howtos.md'
-          },
-          {
-            title: 'PDF Autotag API',
-            path: 'overview/pdf-autotag-api/beta/howtos/autotag-api.md'
-          },
-          {
-            title: 'Release Notes',
-            path: 'overview/pdf-autotag-api/beta/releasenotes.md'
           },
         ]
       },
