@@ -55,7 +55,7 @@ Placeholder variables get replaced with the actual input data.
 A default value can be specified for the placeholder variable. In case,
 the specified variable is not present in the input data, the placeholder
 gets replaced with the default value.
-``
+
 ![image](../images/placeholder_default.png)
 
 
