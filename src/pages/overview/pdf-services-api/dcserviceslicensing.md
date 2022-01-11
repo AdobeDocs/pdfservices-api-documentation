@@ -10,7 +10,7 @@ provided along with examples for clarity.
 
 Paid credentials enable a greater processing quota and require entering
 into a separate written agreement. To learn more, please see our
-[pricing page](/document-services/pdf-pricing/)
+[pricing page](/document-services/pricing/#main)
 for purchase options.
 
 Document Transactions for the Operations below resulting in a Document
