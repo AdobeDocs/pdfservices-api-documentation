@@ -49,18 +49,6 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
       window.digitalData.page.pageInfo.breadCrumbs.push(item.innerText);
     });
 
-    let pageName = location.pathname.replace('/','');
-    pageName = location.pathname.replaceAll('/',':');
-    if(window.digitalData._set){
-      window.digitalData._set('digitalData.page.pageInfo.pageName', pageName);
-      if(window._satellite){
-        window._satellite.track('state', {
-          digitalData: window.digitalData._snapshot()
-        });  
-      }
-    }
-
-
     let getCredentialsButton = Array.from(document.querySelectorAll('a')).find(el => el.textContent === 'Get credentials');
     // production
     if(window.location.host.indexOf('developer.adobe.com') >= 0) {

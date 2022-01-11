@@ -30,7 +30,13 @@ fragments.json
   }
 ]
 ```
-
+Or
+If there is only a single entity, we can skip the formation of a list.
+```json
+{
+  "address_details" : "<br>{{addressline1}}<br>{{addressline2}}<br>{{addressline3}}<br>{{city}}, {{state}}-{{pincode}}"
+}
+```
 ### Input JSON file
 jsonDataForMerge.json
 ```json
