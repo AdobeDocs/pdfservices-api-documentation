@@ -120,6 +120,7 @@ jobs:
           GATSBY_ALGOLIA_INDEX_ALL_SRC: ${{ secrets.AIO_ALGOLIA_INDEX_ALL_SRC }}
           GATSBY_ALGOLIA_SEARCH_INDEX: ${{ secrets.AIO_ALGOLIA_SEARCH_INDEX }}
           GETTING_STARTED: ${{ secrets.GETTING_STARTED_DEV }}
+          DOMAINS: ${{ secrets.STAGE_DOMAIN }}
       - name: Deploy
         uses: icaraps/static-website-deploy@master
         with:
@@ -200,6 +201,7 @@ jobs:
           GATSBY_ALGOLIA_INDEX_ALL_SRC: ${{ secrets.AIO_ALGOLIA_INDEX_ALL_SRC }}
           GATSBY_ALGOLIA_SEARCH_INDEX: ${{ secrets.AIO_ALGOLIA_SEARCH_INDEX }}
           GETTING_STARTED: ${{ secrets.GETTING_STARTED_PROD }}
+          DOMAINS: ${{ secrets.PROD_DOMAIN }}
       - name: Deploy
         uses: icaraps/static-website-deploy@master
         with:
