@@ -135,6 +135,13 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### 2.2.0 (January, 2022; minor release)
+
+| Change  | Language            | Description                                                                                                                                                   |
+| ------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Changed | Java                |  Java SDK is enabled to connect to Internet through Proxy where proxy server settings can be set via client config. |
+| Changed | All                 | PDF Extract API bug fixes and stability release. |
+
 ### Adobe Document Generation Server Side Release (10 January, 2022; server side release)
 
 | Change  | Language | Description                                                                                                                                                   |
