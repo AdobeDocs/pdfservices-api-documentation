@@ -71,13 +71,13 @@ To get started with PDF Services SDK, refer [Quickstarts](../pdf-services-api).
 
 <br/>
 
-### Generate PDF or Word document
+#### Generate PDF or Word document
 
 The sample below generates the output document in the **PDF** format. Similarly, you can specify **DOCX** as the **OutputFormat** to generate Word documents.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
-#### Java
+##### Java
 
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
@@ -130,7 +130,7 @@ The sample below generates the output document in the **PDF** format. Similarly,
      
 ```
 
-#### .NET
+##### .NET
 
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
@@ -207,7 +207,7 @@ The sample below generates the output document in the **PDF** format. Similarly,
    }
 ```
 
-#### Node JS
+##### Node JS
 
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
@@ -259,7 +259,7 @@ The sample below generates the output document in the **PDF** format. Similarly,
  }
 ```
 
-#### Rest API
+##### Rest API
 
 ```javascript
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
