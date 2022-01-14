@@ -1,12 +1,4 @@
 ---
-keywords:
-  - Adobe I/O
-  - Document Services
-  - API Documentation
-  - Developer Tooling
----
-
----
 title: Document Services APIs 
 ---
 
