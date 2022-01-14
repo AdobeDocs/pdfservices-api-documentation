@@ -11,100 +11,101 @@
  */
 
 (() => {
-  let prefixPath = (window.location.host.indexOf('localhost') === 0 ? '' : 'document-services/docs/overview/');
-  let redirectPath = '';
+  let prefixPath =
+    window.location.host.indexOf("localhost") >= 0
+      ? "overview/"
+      : "document-services/docs/overview/";
+  let redirectPath = "";
 
+  // redirect paths must land on developer.adobe.com/document-services/docs/overview/
+  // or on localhost/overview/
   if (
     (window.location.hash !== "" &&
-      window.location.pathname === "/" &&
-      window.location.host.indexOf("localhost") === 0) ||
+      window.location.host.indexOf("localhost") < 0 &&
+      window.location.pathname === "/document-services/docs/overview/") ||
     (window.location.hash !== "" &&
-      window.location.pathname === "/document-services/docs/" &&
-      window.location.host.indexOf("localhost") < 0)
+      window.location.host.indexOf("localhost") >= 0 &&
+      window.location.pathname === "/overview/")
   ) {
     switch (window.location.hash) {
       case "#adobe-analytics":
-        redirectPath =
-          prefixPath + "pdf-embed-api/howtodata/#adobe-analytics";
+        redirectPath = prefixPath + `pdf-embed-api/howtodata/${window.location.search}#adobe-analytics`;
         break;
       case "#images":
         redirectPath =
-          prefixPath + "document-generation-api/templatetags/#images";
+          prefixPath + `document-generation-api/templatetags/${window.location.search}#images`;
         break;
       case "#pdf-extract-api-for-extracting-pdf-structure-and-information":
         redirectPath =
           prefixPath +
-          "#pdf-extract-api-for-extracting-pdf-structure-and-information";
+          `${window.location.search}#pdf-extract-api-for-extracting-pdf-structure-and-information`;
         break;
       case "#beta-feature-extract-text-and-tables-and-styling-info":
         redirectPath =
           prefixPath +
-          "pdf-extract-api/howtos/extract-api/#beta-feature-extract-text-and-tables-and-styling-info";
+          `pdf-extract-api/howtos/extract-api/${window.location.search}#beta-feature-extract-text-and-tables-and-styling-info`;
         break;
       case "#export-pdf":
         redirectPath =
-          prefixPath +
-          "pdf-services-api/howtos/export-pdf/#export-a-pdf";
+          prefixPath + `pdf-services-api/howtos/export-pdf/${window.location.search}#export-a-pdf`;
         break;
       case "#extract-pdf":
-        redirectPath =
-          prefixPath + "pdf-services-api/howtos/extract-pdf";
+        redirectPath = prefixPath + `pdf-services-api/howtos/extract-pdf${window.location.search}`;
         break;
       case "#extract-text-and-tables":
         redirectPath =
           prefixPath +
-          "pdf-services-api/howtos/extract-pdf/#extract-text-and-tables";
+          `pdf-services-api/howtos/extract-pdf/${window.location.search}#extract-text-and-tables`;
         break;
       case "#extract-text-and-tables-and-character-bounding-boxes-w-renditions":
         redirectPath =
           prefixPath +
-          "pdf-services-api/howtos/extract-pdf/#extract-text-and-tables-and-character-bounding-boxes-w-renditions";
+          `pdf-services-api/howtos/extract-pdf/${window.location.search}#extract-text-and-tables-and-character-bounding-boxes-w-renditions`;
         break;
       case "#extract-text-and-tables-and-table-structure-as-csv-w-renditions":
         redirectPath =
           prefixPath +
-          "pdf-services-api/howtos/extract-pdf/#extract-text-and-tables-and-table-structure-as-csv-w-renditions";
+          `pdf-services-api/howtos/extract-pdf/${window.location.search}#extract-text-and-tables-and-table-structure-as-csv-w-renditions`;
         break;
       case "#extract-text-and-tables-w-renditions":
         redirectPath =
           prefixPath +
-          "pdf-services-api/howtos/extract-pdf/#extract-text-and-tables-w-tables-renditions";
+          `pdf-services-api/howtos/extract-pdf/${window.location.search}#extract-text-and-tables-w-tables-renditions`;
         break;
       case "#extract-text-from-a-pdf":
         redirectPath =
           prefixPath +
-          "pdf-services-api/howtos/extract-pdf/#extract-text-from-a-pdf";
+          `pdf-services-api/howtos/extract-pdf/${window.location.search}#extract-text-from-a-pdf`;
         break;
       case "#ocr-pdf":
-        redirectPath = prefixPath + "pdf-services-api/howtos/ocr-pdf";
+        redirectPath = prefixPath + `pdf-services-api/howtos/ocr-pdf`;
         break;
       case "#protect-pdf":
-        redirectPath =
-          prefixPath + "pdf-services-api/howtos/protect-pdf";
+        redirectPath = prefixPath + `pdf-services-api/howtos/protect-pdf${window.location.search}`;
         break;
       case "#protect-pdfs-with-user-password":
         redirectPath =
           prefixPath +
-          "pdf-services-api/howtos/protect-pdf/#protect-pdfs-with-owner-password";
+          `pdf-services-api/howtos/protect-pdf/${window.location.search}#protect-pdfs-with-owner-password`;
         break;
       case "#split-pdf":
-        redirectPath =
-          prefixPath + "pdf-services-api/howtos/split-pdf";
+        redirectPath = prefixPath + `pdf-services-api/howtos/split-pdf${window.location.search}`;
         break;
       case "#java":
-        redirectPath = prefixPath + "pdf-services-api/#java";
+        redirectPath = prefixPath + `pdf-services-api/${window.location.search}#java`;
         break;
       case "#node-js":
-        redirectPath = prefixPath + "pdf-services-api/#nodejs";
+        redirectPath = prefixPath + `pdf-services-api/${window.location.search}#nodejs`;
         break;
       case "#python":
-        redirectPath = prefixPath + "pdf-services-api/#python";
+        redirectPath = prefixPath + `pdf-services-api/${window.location.search}#python`;
         break;
       case "#sdk":
-        redirectPath = prefixPath + "pdf-services-api/#sdk";
+        redirectPath = prefixPath + `pdf-services-api/${window.location.search}#sdk`;
         break;
     }
+
     window.location.href =
-      "http://" + window.location.host + "/" + redirectPath;
+      decodeURIComponent("http://" + window.location.host + "/" + redirectPath);
   }
 })();
