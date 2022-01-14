@@ -76,7 +76,7 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
       } else if(window.location.pathname.indexOf('pdf-embed-api') >= 0){
         getCredentialsButton.href = 'https://dc.stage.acrobat.com/dc-integration-creation-app-cdn/main.html?api=pdf-embed-api';
       }
-      getCredentialsButton.setAttribute('daa-ll', getCredentialsButton.href);
+      getCredentialsButton.setAttribute('daa-ll', `Documentation| Top Nav | Get credentials`);
     }
   }
 }
