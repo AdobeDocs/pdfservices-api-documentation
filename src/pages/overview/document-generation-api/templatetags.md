@@ -122,7 +122,7 @@ Image data can be provided either in the form of the base64 encoded string or in
 ```
 <InlineAlert slots="text"/>
 
-Only https URLs are supported.
+Only https image urls with an image size of less than 20 MB are allowed.
 
 Add the image placeholder.
 
