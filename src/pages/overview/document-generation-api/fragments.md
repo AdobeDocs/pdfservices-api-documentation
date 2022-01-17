@@ -11,7 +11,7 @@ Below is a json defining fragments related to an **address** and a **name** use-
 {
   "addressDetails" : "<br>{{streetDetails}}<br>{{localityDetails}}",
   "streetDetails":"<span style=\"color: 0000FF;\">{{addressline1}}<br>{{addressline2}}<br>{{addressline3}}",
-  "localityDetails" : "{{city}},<i>{{state}}</i>-<b>{{pincode}}</b>",
+  "localityDetails" : "<span style=\"color: 006400;\">{{city}},<i>{{state}}</i>-<b>{{pincode}}</b>",
   "fullname": "<span style=\"color: ff0000;\">{{firstname}} {{lastnameStyled}}",
   "lastnameStyled": "<span STYLE=\"font-size:14mm\"><b><i>{{lastname}}</i></b>"
 }
@@ -48,8 +48,8 @@ There is one more way to define **fragments** json which can be used to organize
 [
   {
     "addressDetails": "<br>{{streetDetails}}<br>{{localityDetails}}",
-    "streetDetails": "{{addressline1}}<br>{{addressline2}}<br>{{addressline3}}",
-    "localityDetails": "{{city}},{{state}}-{{pincode}}"
+    "streetDetails": "<span style=\"color: 0000FF;\">{{addressline1}}<br>{{addressline2}}<br>{{addressline3}}",
+    "localityDetails": "<span style=\"color: 006400;\">{{city}},<i>{{state}}</i>-<b>{{pincode}}</b>"
   },
   {
     "fullname": "<span style=\"color: ff0000;\">{{firstname}} {{lastnameStyled}}",
