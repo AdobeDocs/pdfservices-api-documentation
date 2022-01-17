@@ -34,6 +34,37 @@ samples for details.
 -   [Node.js](https://github.com/adobe/pdfservices-node-sdk-samples/blob/master/src/createpdf/create-pdf-with-inmemory-auth-credentials.js)
 -   [Python](https://github.com/adobe/pdfservices-python-sdk-samples/blob/master/src/extractpdf/extract_txt_from_pdf_with_in_memory_auth_credentials.py)
 
+## Proxy Server Configuration
+
+The JAVA SDK enables to connect to API calls through Proxy via Client Configurations.
+It allows the clients to use SDK within the network where all outgoing calls have to 
+go through a proxy and allowed only if allow-listed on the proxy. Please refer the 
+following sample for details.
+
+-   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/createpdf/CreatePDFWithProxyServer.java)
+
+### Java Proxy Server configuration
+
+Available properties:
+
+- **proxyHost**: The proxy Server Hostname (DNS or IP Address)
+- **proxyScheme**: Default: http. Scheme of the proxy server i.e. http or https. 
+- **proxyPort**: Default: 80 for http, 443 for https. Port on which proxy server is listening.
+
+Configure the Proxy Server via a custom `ClientConfig` class:
+
+<CodeBlock slots="heading, code" repeat="1" languages="Java" />
+
+### 
+
+```javascript
+ClientConfig clientConfig = ClientConfig.builder()
+    .withProxyScheme(ClientConfig.ProxyScheme.HTTPS)
+    .withProxyHost("PROXY_HOSTNAME")
+    .withProxyPort(443)
+    .build();
+```
+
 ## Custom timeout configuration
 
 The APIs use inferred timeout properties and provide defaults. However,
