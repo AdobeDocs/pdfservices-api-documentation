@@ -1,44 +1,36 @@
 # Fragments
 
-Fragments is a special type of text tag which is used to group one or multiple  text tags as well as other fragments together. One fragment tag definition can comprise below tags:
+Fragments are special tags which enables users to write a composition using text tags or other fragments. Fragments introduce re-usability among the tags and enable users to create multiple such compositions and use them in their templates.
 
-- Placeholder Text Tag 
-- Fragment Tag
+## How to use ?
 
-## Uses
+To use fragments in the api, user will need to create a **fragments** json and pass it as a parameter in the api request body or they can use SDKs as well.
 
-Fragments allow user to write complex structure of text tag seperately thus saves complexity and eases maintainablity of editing and manipulating such complex structure in document templates.
-
-#### Example:
-
-
-![image](../images/use_fragments.png)
-
-![image](../images/fragment_desc.png)
-
-Here `addressDetails` is a fragment defined which comprises `addressline1`, `addressline2`, `addressline3`, `state`, `city` and `pincode`.
-
-For the above example, the `jsonDataForMerge.json` and `fragments.json` would look like:
-
-### Fragments JSON file
-fragments.json
-
-```json
-[
-  {
-    "address_details" : "<br>{{addressline1}}<br>{{addressline2}}<br>{{addressline3}}<br>{{city}}, {{state}}-{{pincode}}"
-  }
-]
-```
-Or
-If there is only a single entity, we can skip the formation of a list.
+Below is a json defining fragments related to an **address** and a **name** use-case.
 ```json
 {
-  "address_details" : "<br>{{addressline1}}<br>{{addressline2}}<br>{{addressline3}}<br>{{city}}, {{state}}-{{pincode}}"
+  "addressDetails" : "<br>{{streetDetails}}<br>{{localityDetails}}",
+  "streetDetails":"<span style=\"color: 0000FF;\">{{addressline1}}<br>{{addressline2}}<br>{{addressline3}}",
+  "localityDetails" : "{{city}},<i>{{state}}</i>-<b>{{pincode}}</b>",
+  "fullname": "<span style=\"color: ff0000;\">{{firstname}} {{lastnameStyled}}",
+  "lastnameStyled": "<span STYLE=\"font-size:14mm\"><b><i>{{lastname}}</i></b>"
 }
 ```
-### Input JSON file
-jsonDataForMerge.json
+
+In the above json, we have defined fragments named `addressDetails`, `streetDetails`, `localityDetails` related to an "address" use-case and,  `fullname` and `lastnameStyled` for a "name" use-case. Below is the explanation of the fragments defined above: 
+
+The `addressDetails` fragment composes `streetDetails` and `localityDetails` fragment tags.
+
+The `streetDetails` fragment composes `addressline1`, `addressline2` and `addressline3` text tags.
+
+The `localityDetails` fragment composes `state`, `city` and `pincode` text tags.
+
+The `fullname` fragment composes `firstname` text tag and a `lastnameStyled` fragment tag.
+
+The `lastnameStyled` fragment composes `lastname` text tag.
+
+To resolve the text tags used in the above fragments, the "jsonDataForMerge" json would be:
+
 ```json
 {
   "addressline1": "Sample Address Line 1",
@@ -46,16 +38,42 @@ jsonDataForMerge.json
   "addressline3": "Sample Address Line 3",
   "city": "Sample City",
   "state": "Sample State",
-  "pincode": "42132xx"
+  "pincode": "42132xx",
+  "firstname": "John",
+  "lastname": "Roy"
 }
 ```
+There is one more way to define **fragments** json which can be used to organize related fragments together and separate unrelated fragments in another object, then all such objects can be combined in a json array. 
+```json
+[
+  {
+    "addressDetails": "<br>{{streetDetails}}<br>{{localityDetails}}",
+    "streetDetails": "{{addressline1}}<br>{{addressline2}}<br>{{addressline3}}",
+    "localityDetails": "{{city}},{{state}}-{{pincode}}"
+  },
+  {
+    "fullname": "<span style=\"color: ff0000;\">{{firstname}} {{lastnameStyled}}",
+    "lastnameStyled": "<span STYLE=\"font-size:14mm\"><b><i>{{lastname}}</i></b>"
+  }
+]
+```
 
-### Sample Input Document 
-In the input document below, `address_details` is a fragment which will be resolved using `fragments.json` and `jsonDataForMerge.json` files.
+In the above json array, first json object corresponds to the **address** related fragments and second for **name** related fragments.
 
-![image](../images/fragments_input.png)
+Below are the sample input and output documents snapshots describing the use of fragments.
 
-### Sample Output Document 
-Below is the final document generated:
+Here the `addressDetails` fragment is used in the word document template file.
 
-![image](../images/fragments_output.png)
+![image](../images/address_input.png)
+
+The output document generated will look like:
+
+![image](../images/address_output.png)
+
+Similarly,  the `fullname` fragment can be used like this in the word document template file.
+
+![image](../images/name_input.png)
+
+And the output document generated will look like:
+
+![image](../images/name_output.png)
