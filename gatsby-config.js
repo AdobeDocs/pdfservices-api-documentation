@@ -317,6 +317,10 @@ module.exports = {
             path: 'overview/policies.md',
           },
           {
+            title: 'v2.1.0',
+            path: 'https://opensource.adobe.com/pdftools-sdk-docs/release/2.1.0/',
+          },
+          {
             title: 'v2.0.0',
             path: 'https://opensource.adobe.com/pdftools-sdk-docs/release/2.0.0/',
           },
