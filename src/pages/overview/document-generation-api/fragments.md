@@ -29,7 +29,7 @@ The `fullname` fragment composes `firstname` text tag and a `lastnameStyled` fra
 
 The `lastnameStyled` fragment composes `lastname` text tag.
 
-To resolve the text tags used in the above fragments, the "jsonDataForMerge" json would be:
+To resolve the text tags used in the above fragments, the **jsonDataForMerge** json would be:
 
 ```json
 {
