@@ -11,13 +11,13 @@ Below is a json defining fragments related to an **address** and a **name** use-
 {
   "addressDetails" : "<br>{{streetDetails}}<br>{{localityDetails}}",
   "streetDetails":"<span style=\"color: 0000FF;\">{{addressline1}}<br>{{addressline2}}<br>{{addressline3}}",
-  "localityDetails" : "{{city}},<i>{{state}}</i>-<b>{{pincode}}</b>",
+  "localityDetails" : "<span style=\"color: 006400;\">{{city}},<i>{{state}}</i>-<b>{{pincode}}</b>",
   "fullname": "<span style=\"color: ff0000;\">{{firstname}} {{lastnameStyled}}",
   "lastnameStyled": "<span STYLE=\"font-size:14mm\"><b><i>{{lastname}}</i></b>"
 }
 ```
 
-In the above json, we have defined fragments named `addressDetails`, `streetDetails`, `localityDetails` related to an "address" use-case and,  `fullname` and `lastnameStyled` for a "name" use-case. Below is the explanation of the fragments defined above: 
+In the above json, we have defined fragments named `addressDetails`, `streetDetails`, `localityDetails` related to the **address** use-case and,  `fullname` and `lastnameStyled` for the **name** use-case. Below is the explanation of the fragments defined above: 
 
 The `addressDetails` fragment composes `streetDetails` and `localityDetails` fragment tags.
 
@@ -29,7 +29,7 @@ The `fullname` fragment composes `firstname` text tag and a `lastnameStyled` fra
 
 The `lastnameStyled` fragment composes `lastname` text tag.
 
-To resolve the text tags used in the above fragments, the "jsonDataForMerge" json would be:
+To resolve the text tags used in the above fragments, the **jsonDataForMerge** json would be:
 
 ```json
 {
@@ -43,13 +43,13 @@ To resolve the text tags used in the above fragments, the "jsonDataForMerge" jso
   "lastname": "Roy"
 }
 ```
-There is one more way to define **fragments** json which can be used to organize related fragments together and separate unrelated fragments in another object, then all such objects can be combined in a json array. 
+There is one more way to define **fragments** json which can be used to organize related fragments together and separate unrelated fragments into another object, then all such objects can be combined in a json array. 
 ```json
 [
   {
     "addressDetails": "<br>{{streetDetails}}<br>{{localityDetails}}",
-    "streetDetails": "{{addressline1}}<br>{{addressline2}}<br>{{addressline3}}",
-    "localityDetails": "{{city}},{{state}}-{{pincode}}"
+    "streetDetails": "<span style=\"color: 0000FF;\">{{addressline1}}<br>{{addressline2}}<br>{{addressline3}}",
+    "localityDetails": "<span style=\"color: 006400;\">{{city}},<i>{{state}}</i>-<b>{{pincode}}</b>"
   },
   {
     "fullname": "<span style=\"color: ff0000;\">{{firstname}} {{lastnameStyled}}",
