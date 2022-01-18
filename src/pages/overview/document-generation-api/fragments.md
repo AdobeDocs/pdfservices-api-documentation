@@ -43,7 +43,7 @@ To resolve the text tags used in the above fragments, the **jsonDataForMerge** j
   "lastname": "Roy"
 }
 ```
-There is one more way to define **fragments** json which can be used to organize related fragments together and separate unrelated fragments in another object, then all such objects can be combined in a json array. 
+There is one more way to define **fragments** json which can be used to organize related fragments together and separate unrelated fragments into another object, then all such objects can be combined in a json array. 
 ```json
 [
   {
