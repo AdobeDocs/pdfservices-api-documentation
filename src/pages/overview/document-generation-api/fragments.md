@@ -17,7 +17,7 @@ Below is a json defining fragments related to an **address** and a **name** use-
 }
 ```
 
-In the above json, we have defined fragments named `addressDetails`, `streetDetails`, `localityDetails` related to an "address" use-case and,  `fullname` and `lastnameStyled` for a "name" use-case. Below is the explanation of the fragments defined above: 
+In the above json, we have defined fragments named `addressDetails`, `streetDetails`, `localityDetails` related to the **address** use-case and,  `fullname` and `lastnameStyled` for the **name** use-case. Below is the explanation of the fragments defined above: 
 
 The `addressDetails` fragment composes `streetDetails` and `localityDetails` fragment tags.
 
