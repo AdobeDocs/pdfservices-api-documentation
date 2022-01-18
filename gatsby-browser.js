@@ -51,7 +51,7 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
 
     let getCredentialsButton = Array.from(document.querySelectorAll('a')).find(el => el.textContent === 'Get credentials');
     // production
-    if(window.location.host.indexOf('developer.adobe.com') >= 0) {
+    if(window.location.host.indexOf('developer.adobe.com') >= 0 || window.location.host.indexOf('adobe.io') >= 0) {
       getCredentialsButton.href = 'https://documentcloud.adobe.com/dc-integration-creation-app-cdn/main.html';
       if(window.location.pathname.indexOf('pdf-services-api') >= 0) {
         getCredentialsButton.href = 'https://documentcloud.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api';
