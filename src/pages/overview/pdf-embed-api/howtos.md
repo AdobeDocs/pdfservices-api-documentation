@@ -12,7 +12,7 @@ Once you've received your client ID, embedding the DC PDF viewer
 involves:
 
 1.  Adding a `<script>` tag to load the PDF Embed API by source url:
-    <https://documentcloud.adobe.com/view-sdk/main.js> (**line 6**).
+    <https://acrobat.adobe.com/view-sdk/main.js> (**line 6**).
 2.  Setting up the rendering area: use a div tag with an ID of
     `adobe-dc-view` (**line 9**).
 3.  Initializing the PDF Embed API by passing client ID, and call
@@ -37,7 +37,7 @@ viewer.
   <title>Your title</title>
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script src="https://acrobat.adobe.com/view-sdk/main.js"></script>
 </head>
 <body>
   <div id="adobe-dc-view"></div>
@@ -200,7 +200,7 @@ Pass the URL of the linearized PDF in the `content` field and invoke the
 
 ```html
 <div id="adobe-dc-view"></div>
-<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+<script src="https://acrobat.adobe.com/view-sdk/main.js"></script>
 <script type="text/javascript">
   document.addEventListener("adobe_dc_view_sdk.ready", function() {
     var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
@@ -281,7 +281,7 @@ of these functions and pass it to the `linearizationInfo` object.
 
 ```html
 <div id="adobe-dc-view"></div>
-<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+<script src="https://acrobat.adobe.com/view-sdk/main.js"></script>
 <script type="text/javascript">
   document.addEventListener("adobe_dc_view_sdk.ready", function() {
     const linearizationInfoObject = {
@@ -433,7 +433,7 @@ To view the code in action, see the [online demo](https://dc.acrobat.com/view-sd
 The full window mode is the default embed mode and renders the PDF in
 the full browser. This mode is best suited for storage and productivity
 applications. ([View
-Demo](https://documentcloud.adobe.com/view-sdk-demo/index.html#/view/FULL_WINDOW))
+Demo](https://acrobat.adobe.com/view-sdk-demo/index.html#/view/FULL_WINDOW))
 
 <InlineAlert slots="text"/>
 
@@ -466,12 +466,12 @@ the bottom right-side.
 
 ```html
 <div id="adobe-dc-view"></div>
-<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+<script src="https://acrobat.adobe.com/view-sdk/main.js"></script>
 <script type="text/javascript">
   document.addEventListener("adobe_dc_view_sdk.ready", function(){
     var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
     adobeDCView.previewFile({
-      content:{location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
+      content:{location: {url: "https://acrobat.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
       metaData:{fileName: "Bodea Brochure.pdf"}
     }, {});
   });
@@ -486,7 +486,7 @@ The sized container mode displays PDFs in a boxed container with
 landscape orientation. Each page appears as a slide, so this mode works
 well for presentations and other workflows that require accurate
 placement of the PDF content within other content. ([View
-Demo](https://documentcloud.adobe.com/view-sdk-demo/index.html#/view/SIZED_CONTAINER))
+Demo](https://acrobat.adobe.com/view-sdk-demo/index.html#/view/SIZED_CONTAINER))
 
 To use this mode:
 
@@ -501,12 +501,12 @@ To use this mode:
 
 ```html
 <div id="adobe-dc-view" style="height: 360px; width: 500px;"></div>
-<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+<script src="https://acrobat.adobe.com/view-sdk/main.js"></script>
 <script type="text/javascript">
   document.addEventListener("adobe_dc_view_sdk.ready", function(){
     var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
     adobeDCView.previewFile({
-      content:{location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
+      content:{location: {url: "https://acrobat.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
       metaData:{fileName: "Bodea Brochure.pdf"}
     }, {embedMode: "SIZED_CONTAINER"});
   });
@@ -532,7 +532,7 @@ smooth navigation. In this mode you need only specify the width of the
 embedded viewer in the enclosing div tag since the viewer height is
 automatically sized for the number of PDF pages. This mode is ideal for
 whitepapers, brochures, e-books, and other reading applications. ([View
-Demo](https://documentcloud.adobe.com/view-sdk-demo/index.html#/view/IN_LINE))
+Demo](https://acrobat.adobe.com/view-sdk-demo/index.html#/view/IN_LINE))
 
 To use this mode:
 
@@ -547,12 +547,12 @@ To use this mode:
 
 ```html
 <div id="adobe-dc-view" style="width: 800px;"></div>
-<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+<script src="https://acrobat.adobe.com/view-sdk/main.js"></script>
 <script type="text/javascript">
    document.addEventListener("adobe_dc_view_sdk.ready", function(){
      var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
    adobeDCView.previewFile({
-     content:{location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
+     content:{location: {url: "https://acrobat.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
      metaData:{fileName: "Bodea Brochure.pdf"}
  }, {embedMode: "IN_LINE"});
  });
@@ -568,7 +568,7 @@ background remains visible, but the focus is on the previewed PDF. The
 top bar displays the Adobe Acrobat logo and also provides configurable
 **Close** and **Back** buttons. The **Close** button appears by default.
 ([View
-Demo](https://documentcloud.adobe.com/view-sdk-demo/index.html#/view/LIGHT_BOX))
+Demo](https://acrobat.adobe.com/view-sdk-demo/index.html#/view/LIGHT_BOX))
 
 To use this mode:
 
@@ -590,12 +590,12 @@ To use this mode:
         (`exitPDFViewerType: "RETURN"`).
 
 ```html
-<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+<script src="https://acrobat.adobe.com/view-sdk/main.js"></script>
 <script type="text/javascript">
     document.addEventListener("adobe_dc_view_sdk.ready", function(){
         var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>"});
         adobeDCView.previewFile({
-            content:{location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
+            content:{location: {url: "https://acrobat.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
             metaData:{fileName: "Bodea Brochure.pdf"}
         }, {embedMode: "LIGHT_BOX"});
     });
