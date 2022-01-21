@@ -258,11 +258,17 @@ module.exports = {
           },
           {
             title: 'How Tos',
-            path: 'overview/pdf-extract-api/howtos/howtos.md'
-          },
-          {
-            title: 'PDF Extract API',
-            path: 'overview/pdf-extract-api/howtos/extract-api.md'
+            path: 'overview/pdf-extract-api/howtos',
+            pages: [
+              {
+                title: 'Overview',
+                path: 'overview/pdf-extract-api/howtos/index.md'
+              },
+              {
+                title: 'PDF Extract API',
+                path: 'overview/pdf-extract-api/howtos/extract-api.md'
+              }
+            ]
           },
           {
             title: 'Release Notes',

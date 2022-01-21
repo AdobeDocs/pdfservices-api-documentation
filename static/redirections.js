@@ -31,10 +31,6 @@
       case "#adobe-analytics":
         redirectPath = prefixPath + `pdf-embed-api/howtodata/${window.location.search}#adobe-analytics`;
         break;
-      case "#images":
-        redirectPath =
-          prefixPath + `document-generation-api/templatetags/${window.location.search}#images`;
-        break;
       case "#pdf-extract-api-for-extracting-pdf-structure-and-information":
         redirectPath =
           prefixPath +

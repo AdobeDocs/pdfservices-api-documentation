@@ -30,7 +30,7 @@ JS](https://www.adobe.com/go/pdftoolsapi_node_sample),
 [.NET](https://www.adobe.com/go/pdftoolsapi_net_samples)). for the
 latest release.
 
-<InlineAlert variant="warning" slots="text"/>
+<InlineAlert slots="text"/>
 
 The 1.X.X versions of PDF Tools SDK will be reaching End of Life in
 May 2022. Once a version reaches its end of life, functionality may be
