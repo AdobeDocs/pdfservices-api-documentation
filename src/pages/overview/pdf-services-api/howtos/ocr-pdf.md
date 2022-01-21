@@ -151,7 +151,7 @@ This sample defaults to the en-us locale. For other languages, see [OCR with exp
 
 ```javascript
 // Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-ocr
+// https://acrobat.adobe.com/document-services/index.html#post-ocr
 
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
@@ -361,7 +361,7 @@ are two types which produce a different result:
 
 ```javascript
 // Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-ocr
+// https://acrobat.adobe.com/document-services/index.html#post-ocr
 
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
