@@ -320,7 +320,7 @@ with the input JSON data.
 
 #### Generate PDF or Word document (with [Fragments](./fragments.md))
 
-The sample below shows the use of **Fragments** in the word template and generates the output document in the **PDF** format. Similarly, you can specify **DOCX** as the **OutputFormat** to generate Word documents.
+The sample below shows the use of **Fragments** in the word template and generates the output document in the **PDF** format.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" />
 
