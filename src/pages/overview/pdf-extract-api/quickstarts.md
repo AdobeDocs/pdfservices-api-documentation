@@ -11,7 +11,7 @@ The SDK only supports server-based use cases where credentials are saved securel
 
 ## Getting credentials
 
-Developing with the PDF Services SDK requires an Adobe-provided credential. To get one, [click HERE](https://documentcloud.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
+Developing with the PDF Services SDK requires an Adobe-provided credential. To get one, [click HERE](https://acrobat.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
 
 **Validity term**: The certificate associated with your credential is valid for one year. However, you can simply regenerate a new credential or apply a new certificate to the current credentials from the Document Cloud [developer console](https://console.adobe.io/).
 
@@ -26,7 +26,7 @@ PDF Services API is accessible directly via REST APIs which requires Adobe-provi
 -   **Personalized Download**: The samples download zip contains a private.key file and a samples folder with a preconfigured pdfservices-api-credentials.json file.
 -   **Non Personalized Download**: The samples download zip contains the private.key file and a pdfservices-api-credentials.json file.
 
-After downloading the zip, private.key and credentials info in pdfservices-api-credentials.json can be used to call REST APIs directly per the instructions mentioned in [Public API Docs](https://documentcloud.adobe.com/document-services/index.html#how-to-get-started-) under Sub-Section (Introduction -\> How to get started?)
+After downloading the zip, private.key and credentials info in pdfservices-api-credentials.json can be used to call REST APIs directly per the instructions mentioned in [Public API Docs](https://acrobat.adobe.com/document-services/index.html#how-to-get-started-) under Sub-Section (Introduction -\> How to get started?)
 
 **Example pdfservices-api-credentials.json file**
 
