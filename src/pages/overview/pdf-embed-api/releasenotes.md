@@ -8,7 +8,7 @@ the changes below for each release.
 ### August, 2021 (Patch Release)
 | Change  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Changed | With this patch release, PDF Embed API now no longer gathers anonymous usage data to measure performance. This was earlier collected using Adobe Analytics.  |
+| Changed | PDF Embed API now no longer uses Adobe Analytics to gather anonymous usage data for measuring performance. For more details, see the section [Analytics](../#analytics) |
 
 ### August, 2021
 
