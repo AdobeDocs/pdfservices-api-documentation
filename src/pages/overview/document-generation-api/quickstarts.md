@@ -8,7 +8,7 @@ To learn more about the Document Generation, read [Overview](../document-generat
 
 ## Live Demo
 
-The [Document Generation API Demo](https://acrobat.adobe.com/dc-docgen-playground/index.html#/) demonstrates how easy it is to generate customized documents from Word-based document templates and input JSON data.
+The [Document Generation API Demo](https://documentcloud.adobe.com/dc-docgen-playground/index.html#/) demonstrates how easy it is to generate customized documents from Word-based document templates and input JSON data.
 
 ## How It Works
 
@@ -60,7 +60,7 @@ You can use our cloud based [REST API](https://www.adobe.com/go/dcsdk_APIdocs#po
 
 <InlineAlert slots="text"/>
 
-Before you begin with the REST API, refer [How To Get Started](https://acrobat.adobe.com/document-services/index.html#how-to-get-started-) to learn more about generating the required credentials and invoking the APIs.
+Before you begin with the REST API, refer [How To Get Started](https://documentcloud.adobe.com/document-services/index.html#how-to-get-started-) to learn more about generating the required credentials and invoking the APIs.
 
 **3.2. PDF Services SDK** <br/>
 Alternatively, you can use our offering through [PDF Services SDK](../pdf-services-api#sdk).

@@ -173,7 +173,7 @@ password can open the file.
 
 ```javascript
 // Please refer our Rest API docs for more information
-// https://acrobat.adobe.com/document-services/index.html#post-protectPDF
+// https://documentcloud.adobe.com/document-services/index.html#post-protectPDF
 
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
@@ -412,7 +412,7 @@ of document permissions.
 
 ```javascript
 // Please refer our Rest API docs for more information
-// https://acrobat.adobe.com/document-services/index.html#post-protectPDF
+// https://documentcloud.adobe.com/document-services/index.html#post-protectPDF
 
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
