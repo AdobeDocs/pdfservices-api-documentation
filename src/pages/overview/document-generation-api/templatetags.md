@@ -117,7 +117,7 @@ Image data can be provided either in the form of the base64 encoded string or in
 
 ```json
 {
-  "logo": "https://acrobat.adobe.com/dc-docgen-app/assets/dc_icon.png"
+  "logo": "https://documentcloud.adobe.com/dc-docgen-app/assets/dc_icon.png"
 }
 ```
 <InlineAlert slots="text"/>

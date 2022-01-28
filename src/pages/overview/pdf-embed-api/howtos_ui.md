@@ -40,7 +40,7 @@ page control bar is disabled with `showPageControls` set to *false*.
 
 ```html
 <div id="adobe-dc-view"></div>
-<script src="https://acrobat.adobe.com/view-sdk/main.js"></script>
+<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
 <script type="text/javascript">
 // Store the UI options in a constant
 const previewConfig = {
@@ -52,7 +52,7 @@ document.addEventListener("adobe_dc_view_sdk.ready", function () {
    var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
    // Consume previewConfig here. . .
    adobeDCView.previewFile({
-      content:{location: {url: "https://acrobat.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
+      content:{location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
       metaData:{fileName: "Bodea Brochure.pdf"}
    }, previewConfig);
 });
@@ -63,12 +63,12 @@ document.addEventListener("adobe_dc_view_sdk.ready", function () {
 
 ```html
 <div id="adobe-dc-view"></div>
-<script src="https://acrobat.adobe.com/view-sdk/main.js"></script>
+<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
 <script type="text/javascript">
   document.addEventListener("adobe_dc_view_sdk.ready", function () {
      var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
         adobeDCView.previewFile({
-           content:{location: {url: "https://acrobat.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
+           content:{location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
            metaData:{fileName: "Bodea Brochure.pdf"}
         }, {showDownloadPDF: false, showPageControls: false});
   });
@@ -596,12 +596,12 @@ default, you can disable the feature by setting it to *false*.
 
 ```html
 <div id="adobe-dc-view"></div>
-<script src="https://acrobat.adobe.com/view-sdk/main.js"></script>
+<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
 <script type="text/javascript">
    document.addEventListener("adobe_dc_view_sdk.ready", function () {
       var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
       adobeDCView.previewFile({
-         content:{location: {url: "https://acrobat.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
+         content:{location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
          metaData:{fileName: "Bodea Brochure.pdf"}
       }, {enableFormFilling: false, dockPageControls: false});
    });
@@ -653,13 +653,13 @@ follows:
 </head>
 <body style="margin: 0px">
  <div id="adobe-dc-view"></div>
- <script src="https://acrobat.adobe.com/view-sdk/main.js"></script>
+ <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
  <script type="text/javascript">
     document.addEventListener("adobe_dc_view_sdk.ready", function()
     {
         var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
         var previewFilePromise = adobeDCView.previewFile({
-         content:   {location: {url: "https://acrobat.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
+         content:   {location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
            metaData:  {fileName: "Bodea Brochure.pdf"}
      });
 
@@ -829,13 +829,13 @@ configuration to the `previewFile` API.
 </head>
 <body style="margin: 0px">
  <div id="adobe-dc-view"></div>
- <script src="https://acrobat.adobe.com/view-sdk/main.js"></script>
+ <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
  <script type="text/javascript">
     document.addEventListener("adobe_dc_view_sdk.ready", function()
     {
         var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
         var previewFilePromise = adobeDCView.previewFile({
-           content:   {location: {url: "https://acrobat.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
+           content:   {location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
            metaData:  {fileName: "Bodea Brochure.pdf"}
        }, { enableSearchAPIs: true });
 

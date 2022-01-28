@@ -240,7 +240,7 @@ example, you can change portrait view to landscape view.
 
 ```javascript
 // Please refer our Rest API docs for more information
-// https://acrobat.adobe.com/document-services/index.html#post-pageManipulation
+// https://documentcloud.adobe.com/document-services/index.html#post-pageManipulation
 
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
