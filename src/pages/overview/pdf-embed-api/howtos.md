@@ -432,8 +432,7 @@ To view the code in action, see the [online demo](https://dc.acrobat.com/view-sd
 
 The full window mode is the default embed mode and renders the PDF in
 the full browser. This mode is best suited for storage and productivity
-applications. ([View
-Demo](https://documentcloud.adobe.com/view-sdk-demo/index.html#/view/FULL_WINDOW))
+applications. ([Full Window Demo](https://documentcloud.adobe.com/view-sdk-demo/index.html#/view/FULL_WINDOW))
 
 <InlineAlert slots="text"/>
 
@@ -485,8 +484,7 @@ the bottom right-side.
 The sized container mode displays PDFs in a boxed container with
 landscape orientation. Each page appears as a slide, so this mode works
 well for presentations and other workflows that require accurate
-placement of the PDF content within other content. ([View
-Demo](https://documentcloud.adobe.com/view-sdk-demo/index.html#/view/SIZED_CONTAINER))
+placement of the PDF content within other content. ([Sized Container Demo](https://documentcloud.adobe.com/view-sdk-demo/index.html#/view/SIZED_CONTAINER))
 
 To use this mode:
 
@@ -531,8 +529,7 @@ this mode, all PDF pages are displayed at once which enables easy and
 smooth navigation. In this mode you need only specify the width of the
 embedded viewer in the enclosing div tag since the viewer height is
 automatically sized for the number of PDF pages. This mode is ideal for
-whitepapers, brochures, e-books, and other reading applications. ([View
-Demo](https://documentcloud.adobe.com/view-sdk-demo/index.html#/view/IN_LINE))
+whitepapers, brochures, e-books, and other reading applications. ([In-Line Demo](https://documentcloud.adobe.com/view-sdk-demo/index.html#/view/IN_LINE))
 
 To use this mode:
 
@@ -567,8 +564,7 @@ Lightbox mode renders the PDF in the foreground at top of the page. The
 background remains visible, but the focus is on the previewed PDF. The
 top bar displays the Adobe Acrobat logo and also provides configurable
 **Close** and **Back** buttons. The **Close** button appears by default.
-([View
-Demo](https://documentcloud.adobe.com/view-sdk-demo/index.html#/view/LIGHT_BOX))
+([Lightbox Demo](https://documentcloud.adobe.com/view-sdk-demo/index.html#/view/LIGHT_BOX))
 
 To use this mode:
 
