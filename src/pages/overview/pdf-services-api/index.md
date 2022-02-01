@@ -509,7 +509,7 @@ pip hash <download_dir>/pdfservices-sdk-1.0.0.tar.gz
 2.  Verify the hash matches the value published here.
 
 ```
-sha256-73d38723a3f72dbde221f757b430dfdf13409c46b033503b30812804588da88f
+sha256-0b6a43399d2d40ee4f6eb0d30561874c5186d72672828d89791704a9027f2b92
 ```
 
 #### Logging
