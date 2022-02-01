@@ -121,6 +121,7 @@ jobs:
           GATSBY_ALGOLIA_SEARCH_INDEX: ${{ secrets.AIO_ALGOLIA_SEARCH_INDEX }}
           GETTING_STARTED: ${{ secrets.GETTING_STARTED_DEV }}
           LICENSING: ${{ secrets.STAGE_LICENSING }}
+          GATSBY_FEDS_PRIVACY_ID: ${{ secrets.AIO_FEDS_PRIVACY_ID }}
       - name: Deploy
         uses: icaraps/static-website-deploy@master
         with:
@@ -202,6 +203,7 @@ jobs:
           GATSBY_ALGOLIA_SEARCH_INDEX: ${{ secrets.AIO_ALGOLIA_SEARCH_INDEX }}
           GETTING_STARTED: ${{ secrets.GETTING_STARTED_PROD }}
           LICENSING: ${{ secrets.PROD_LICENSING }}
+          GATSBY_FEDS_PRIVACY_ID: ${{ secrets.AIO_FEDS_PRIVACY_ID }}
       - name: Deploy
         uses: icaraps/static-website-deploy@master
         with:

@@ -132,7 +132,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 4.  Verify the hash you generated matches the value in the .sha1 file.
 
 ```
-9f48ce8c34bdc14ac842530588c734a52b216276
+25f4c2e3a119d51cf2f3e3df0db42052d77e0bea
 ```
 
 #### Logging
@@ -274,7 +274,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 3.  Verify the hash in the downloaded file matches the value published here.
 
 ```
-r+QhCZTFx2TU0f3ny2V5uXh4iUFI12Sa0hSVprx8XMM+DnHrPhJL9aSBAM+EwEp0Wz+obYoSC247XFe2pDIrBw==
+Gvvoj/xR59AuMAiy/vxxZpcyBWlfbEQuWdOEg6w/YeEPnkOcyNVpY9lJgbxLeg3QuoDmL9sMnHSuHuuBMtp6pw==
 ```
 
 #### Logging
@@ -387,7 +387,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 3.  Verify the hash in the downloaded file matches the value published here.
 
 ```
-  sha512-9g6D3Ts/HJXktogLyYN9QxzpB1KhpAnTPDlRX+sohCVz2IhMSskAhxGQtu9Pa1zxv+J1Vh68rm0Wr3d8tUVCBA==
+  sha512-8vKY2fJHMNAHYL4j9JDSYozCbcy7U4nDseVU9cO3HeDYi6DJb+vAumWwTK00jOYtBYl9icNH9sBdJ39BTdfdOA==
 ```
 
 #### Logging
@@ -509,7 +509,7 @@ pip hash <download_dir>/pdfservices-sdk-1.0.0.tar.gz
 2.  Verify the hash matches the value published here.
 
 ```
-sha256-73d38723a3f72dbde221f757b430dfdf13409c46b033503b30812804588da88f
+sha256-0b6a43399d2d40ee4f6eb0d30561874c5186d72672828d89791704a9027f2b92
 ```
 
 #### Logging
