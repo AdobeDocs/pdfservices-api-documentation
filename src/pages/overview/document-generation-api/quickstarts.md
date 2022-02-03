@@ -107,7 +107,7 @@ The sample below generates the output document in the **PDF** format. Similarly,
             ExecutionContext executionContext = ExecutionContext.create(credentials);
  
             // Create a new DocumentMergeOptions instance.
-            DocumentMergeOptions documentMergeOptions = new DocumentMergeOptions(jsonDataForMerge, OutputFormat.DOCX);
+            DocumentMergeOptions documentMergeOptions = new DocumentMergeOptions(jsonDataForMerge, OutputFormat.PDF);
  
             // Create a new DocumentMergeOperation instance with the DocumentMergeOptions instance.
             DocumentMergeOperation documentMergeOperation = DocumentMergeOperation.createNew(documentMergeOptions);
@@ -120,7 +120,7 @@ The sample below generates the output document in the **PDF** format. Similarly,
             FileRef result = documentMergeOperation.execute(executionContext);
  
             // Save the result to the specified location.
-            result.saveAs("output/documentMergeOutput.docx");
+            result.saveAs("output/documentMergeOutput.pdf");
  
           } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
               LOGGER.error("Exception encountered while executing operation", ex);
@@ -162,7 +162,7 @@ The sample below generates the output document in the **PDF** format. Similarly,
                    JObject jsonDataForMerge = JObject.Parse("{\"customerName\": \"Kane Miller\",\"customerVisits\": 100}");
   
                    // Create a new DocumentMerge Options instance.
-                   DocumentMergeOptions documentMergeOptions = new DocumentMergeOptions(jsonDataForMerge, OutputFormat.DOCX);
+                   DocumentMergeOptions documentMergeOptions = new DocumentMergeOptions(jsonDataForMerge, OutputFormat.PDF);
   
                    // Create a new DocumentMerge Operation instance with the DocumentMerge Options instance.
                    DocumentMergeOperation documentMergeOperation = DocumentMergeOperation.CreateNew(documentMergeOptions);
@@ -174,7 +174,7 @@ The sample below generates the output document in the **PDF** format. Similarly,
                    FileRef result = documentMergeOperation.Execute(executionContext);
   
                    // Save the result to the specified location.
-                   result.SaveAs(Directory.GetCurrentDirectory() + "/output/DocumentMergeOutput.docx");
+                   result.SaveAs(Directory.GetCurrentDirectory() + "/output/DocumentMergeOutput.pdf");
                }
                catch (ServiceUsageException ex)
                {
@@ -233,7 +233,7 @@ The sample below generates the output document in the **PDF** format. Similarly,
    // Create a new DocumentMerge options instance.
    const documentMerge = PDFServicesSdk.DocumentMerge,
        documentMergeOptions = documentMerge.options,
-       options = new documentMergeOptions.DocumentMergeOptions(jsonDataForMerge, documentMergeOptions.OutputFormat.DOCX);
+       options = new documentMergeOptions.DocumentMergeOptions(jsonDataForMerge, documentMergeOptions.OutputFormat.PDF);
 
    // Create a new operation instance using the options instance.
    const documentMergeOperation = documentMerge.Operation.createNew(options);
@@ -244,7 +244,7 @@ The sample below generates the output document in the **PDF** format. Similarly,
 
    // Execute the operation and Save the result to the specified location.
    documentMergeOperation.execute(executionContext)
-       .then(result => result.saveAsFile('output/documentMergeOutput.docx'))
+       .then(result => result.saveAsFile('output/documentMergeOutput.pdf'))
        .catch(err => {
            if(err instanceof PDFServicesSdk.Error.ServiceApiError
                || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
@@ -304,7 +304,7 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
    },
    \"cpf:outputs\":{
       \"documentOut\":{
-         \"dc:format\":\"application/vnd.openxmlformats-officedocument.wordprocessingml.document\",
+         \"dc:format\":\"application/pdf\",
          \"cpf:location\":\"multipartLabel\"
       }
    }
@@ -401,7 +401,7 @@ The sample below shows the use of **Fragments** in the word template and generat
             FileRef result = documentMergeOperation.execute(executionContext);
 
             // Save the result to the specified location.
-            result.saveAs("output/documentMergeFragmentsOutput.docx");
+            result.saveAs("output/documentMergeFragmentsOutput.pdf");
 
         } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
             LOGGER.error("Exception encountered while executing operation", ex);
@@ -469,7 +469,7 @@ The sample below shows the use of **Fragments** in the word template and generat
                     FileRef result = documentMergeOperation.Execute(executionContext);
     
                     // Save the result to the specified location
-                    result.SaveAs(Directory.GetCurrentDirectory() + "/output/orderDetailOutput.docx");
+                    result.SaveAs(Directory.GetCurrentDirectory() + "/output/orderDetailOutput.pdf");
                 }
                 catch (ServiceUsageException ex)
                 {
@@ -564,7 +564,7 @@ The sample below shows the use of **Fragments** in the word template and generat
     
         // Execute the operation and Save the result to the specified location.
         documentMergeOperation.execute(executionContext)
-            .then(result => result.saveAsFile('output/documentMergeOutput.docx'))
+            .then(result => result.saveAsFile('output/documentMergeOutput.pdf'))
             .catch(err => {
                 if(err instanceof PDFServicesSdk.Error.ServiceApiError
                     || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
@@ -632,7 +632,7 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
    },
    \"cpf:outputs\":{
       \"documentOut\":{
-         \"dc:format\":\"application/vnd.openxmlformats-officedocument.wordprocessingml.document\",
+         \"dc:format\":\"application/pdf\",
          \"cpf:location\":\"multipartLabel\"
       }
    }
