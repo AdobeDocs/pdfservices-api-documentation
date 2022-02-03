@@ -17,6 +17,26 @@ export const onRenderBody = ({setHeadComponents}) => {
   setHeadComponents([
     <script async src='https://www.googletagmanager.com/gtag/js?id=AW-625212545'></script>,
     <script src={withPrefix('/gtag.js')}></script>,
-    <script src={withPrefix('/redirections.js')}></script>
+    <script src={withPrefix('/redirections.js')}></script>,
+
+    process.env.GATSBY_ADOBE_ANALYTICS_ENV && (
+      <script type="text/javascript">{`
+        window.marketingtech = {
+          'adobe': {
+            'launch': {
+              'property': 'global',
+              'environment': '${process.env.GATSBY_ADOBE_ANALYTICS_ENV}'
+            },
+            'analytics': {
+              'additionalAccounts': '${process.env.GATSBY_ADDITIONAL_ADOBE_ANALYTICS_ACCOUNTS}'
+            }
+          }
+        };
+      `}</script>
+    ),
+
+    process.env.GATSBY_ADOBE_ANALYTICS_ENV && (
+      <script src="https://www.adobe.com/marketingtech/main.min.js"></script>
+    )
   ]);
 };
