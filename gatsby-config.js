@@ -195,6 +195,10 @@ module.exports = {
             title: 'PDF Services API Licensing',
             path: 'overview/pdf-services-api/dcserviceslicensing.md'
           },
+          {
+            title: 'Usage Limits',
+            path: 'overview/pdf-services-api/dcserviceslicensing.md#usage-limits'
+          }
         ]
       },
       {
@@ -241,7 +245,10 @@ module.exports = {
             title: 'PDF Services API Licensing',
             path: 'overview/document-generation-api/dcserviceslicensing.md'
           },
-
+          {
+            title: 'API Limitations',
+            path: 'overview/document-generation-api/quickstarts/#api-limitations'
+          }
         ]
       },
       {
@@ -278,6 +285,10 @@ module.exports = {
             title: 'PDF Services API Licensing',
             path: 'overview/pdf-extract-api/dcserviceslicensing.md'
           },
+          {
+            title: 'Usage Limits',
+            path: 'overview/pdf-extract-api/dcserviceslicensing.md#usage-limits'
+          }
         ]
       },
       {
