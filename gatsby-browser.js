@@ -16,7 +16,7 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
   // TODO: move this into a plugin
   if (isBrowser) {
     let siteSection = location.pathname.split("/");
-    if (window.digitalData) {
+    if (window.digitalData && window.digitalData.page) {
       window.digitalData.page.pageInfo.siteSection =
         siteSection.pop() || siteSection.pop();
 
@@ -28,7 +28,7 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
         });
     }
 
-    if (window._satellite) {
+    if (window._satellite && window.digitalData) {
       window._satellite.track("state", {
         digitalData: window.digitalData._snapshot(),
       });
