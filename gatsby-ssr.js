@@ -25,7 +25,8 @@ export const onRenderBody = ({setHeadComponents}) => {
           'adobe': {
             'launch': {
               'property': 'global',
-              'environment': '${process.env.GATSBY_ADOBE_ANALYTICS_ENV}'
+              'environment': '${process.env.GATSBY_ADOBE_ANALYTICS_ENV}',
+              'controlPageLoad': true
             },
             'analytics': {
               'additionalAccounts': '${process.env.GATSBY_ADDITIONAL_ADOBE_ANALYTICS_ACCOUNTS}'
