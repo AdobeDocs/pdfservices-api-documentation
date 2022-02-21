@@ -239,7 +239,7 @@ module.exports = {
           },
           {
             title: 'Release Notes',
-            path: 'overview/document-generation-api/releasenotes.md'
+            path: 'overview/pdf-services-api/releasenotes.md'
           },
           {
             title: 'PDF Services API Licensing',
@@ -279,7 +279,7 @@ module.exports = {
           },
           {
             title: 'Release Notes',
-            path: 'overview/pdf-extract-api/releasenotes.md'
+            path: 'overview/pdf-services-api/releasenotes.md'
           },
           {
             title: 'PDF Services API Licensing',

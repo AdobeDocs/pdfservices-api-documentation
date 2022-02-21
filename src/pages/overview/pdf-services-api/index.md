@@ -20,32 +20,6 @@ Developing with the PDF Services SDK requires an Adobe-provided credential. To g
 
 During the credential creation process you'll be asked to whether you'd like a **Personalized Code Sample Download**. Choosing *Personalized* preconfigures the samples with your credential and removes a few steps from your development setup process.
 
-## Public API
-
-PDF Services API is accessible directly via REST APIs which requires Adobe-provided credential for authentication. Once you've completed the [Getting Credentials](pdf-services-api/#getting-credentials) workflow, a zip file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
-
--   **Personalized Download**: The samples download zip contains a private.key file and a samples folder with a preconfigured pdfservices-api-credentials.json file.
--   **Non Personalized Download**: The samples download zip contains the private.key file and a pdfservices-api-credentials.json file.
-
-After downloading the zip, private.key and credentials info in pdfservices-api-credentials.json can be used to call REST APIs directly per the instructions mentioned in [Public API Docs](https://documentcloud.adobe.com/document-services/index.html#how-to-get-started-) under Sub-Section (Introduction -\> How to get started?)
-
-**Example pdfservices-api-credentials.json file**
-
-```json 
-{
- "client_credentials": {
-   "client_id": "<YOUR_CLIENT_ID>",
-   "client_secret": "<YOUR_CLIENT_SECRET>"
- },
- "service_account_credentials": {
-   "organization_id": "<YOUR_ORGANIZATION_ID>",
-   "account_id": "<YOUR_TECHNICAL_ACCOUNT_ID>",
-   "private_key_file": "<PRIVATE_KEY_FILE_PATH>"
- }
-}
-```
-    
-
 ## SDK
 
 PDF Services API is also accessible via SDKs in popular languages such as Node.js, Java and .NET.
@@ -536,3 +510,29 @@ While building the sample project automatically downloads the Python package, yo
 2.  Download the latest package.
 
 ![image](../images/python2.png)
+
+## Public API
+
+PDF Services API is accessible directly via REST APIs which requires Adobe-provided credential for authentication. Once you've completed the [Getting Credentials](pdf-services-api/#getting-credentials) workflow, a zip file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
+
+-   **Personalized Download**: The samples download zip contains a private.key file and a samples folder with a preconfigured pdfservices-api-credentials.json file.
+-   **Non Personalized Download**: The samples download zip contains the private.key file and a pdfservices-api-credentials.json file.
+
+After downloading the zip, private.key and credentials info in pdfservices-api-credentials.json can be used to call REST APIs directly per the instructions mentioned in [Public API Docs](https://documentcloud.adobe.com/document-services/index.html#how-to-get-started-) under Sub-Section (Introduction -\> How to get started?)
+
+**Example pdfservices-api-credentials.json file**
+
+```json 
+{
+ "client_credentials": {
+   "client_id": "<YOUR_CLIENT_ID>",
+   "client_secret": "<YOUR_CLIENT_SECRET>"
+ },
+ "service_account_credentials": {
+   "organization_id": "<YOUR_ORGANIZATION_ID>",
+   "account_id": "<YOUR_TECHNICAL_ACCOUNT_ID>",
+   "private_key_file": "<PRIVATE_KEY_FILE_PATH>"
+ }
+}
+```
+
