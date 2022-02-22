@@ -1,1 +1,0 @@
-../pdf-services-api/releasenotes.md
