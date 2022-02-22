@@ -654,7 +654,7 @@
             "properties": {
                 "schema": {
                     "type": "string",
-                    "const": "1.0.0"
+                    "const": "1.1.0"
                 },
                 "structure": {
                     "type": "string"
@@ -793,6 +793,10 @@
                         "type": "number",
                         "minimum": 0.0
                     },
+                    "is_scanned": {
+                        "description": "Page is scanned or not.",
+                        "type": "boolean"
+                    },
                     "rotation": {
                         "description": "Clockwise rotation value of the page (in degrees).",
                         "type": "integer",
@@ -827,6 +831,7 @@
                     "page_number",
                     "width",
                     "height",
+                    "is_scanned",
                     "rotation",
                     "boxes"
                 ],

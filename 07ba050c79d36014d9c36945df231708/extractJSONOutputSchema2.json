@@ -34,7 +34,7 @@
       "properties": {
         "schema": {
           "type": "string",
-          "const": "0.2.0"
+          "const": "1.1.0"
         },
         "structure": {
           "type": "string"
@@ -223,11 +223,6 @@
             "description": "Clip path is associated with the element or not. True if at least one content item forming this element has an associated clip path, false otherwise",
             "type": "boolean",
             "default": false
-          },
-          "ObjectID": {
-            "description": "Unique identifier for the element",
-            "type": "integer",
-            "minimum": 0
           },
           "Lang": {
             "description": "BCP-47 code for language of text elements",
@@ -708,7 +703,6 @@
           }
         },
         "required": [
-          "ObjectID",
           "Path"
         ],
         "additionalProperties": false
@@ -736,6 +730,10 @@
             "description": "Height (in PDF user units) of the page.",
             "type": "number",
             "minimum": 0
+          },
+          "is_scanned": {
+            "description": "Page is scanned or not.",
+            "type": "boolean"
           },
           "rotation": {
             "description": "Clockwise rotation value of the page (in degrees).",
@@ -771,6 +769,7 @@
           "page_number",
           "width",
           "height",
+          "is_scanned",
           "rotation",
           "boxes"
         ],
