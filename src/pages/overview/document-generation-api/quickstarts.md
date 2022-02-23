@@ -174,7 +174,7 @@ The sample below generates the output document in the **PDF** format. Similarly,
                    FileRef result = documentMergeOperation.Execute(executionContext);
   
                    // Save the result to the specified location.
-                   result.SaveAs(Directory.GetCurrentDirectory() + "/output/DocumentMergeOutput.pdf");
+                   result.SaveAs(Directory.GetCurrentDirectory() + "/output/documentMergeOutput.pdf");
                }
                catch (ServiceUsageException ex)
                {
