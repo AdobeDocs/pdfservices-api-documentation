@@ -86,10 +86,10 @@ The sample below generates the output document in the **PDF** format. Similarly,
  
    package com.adobe.pdfservices.operation.samples.documentmerge;
  
-   public class MergeDocumentToDOCX {
+   public class MergeDocumentToPDF {
  
       // Initialize the logger.
-      private static final Logger LOGGER = LoggerFactory.getLogger(MergeDocumentToDOCX.class);
+      private static final Logger LOGGER = LoggerFactory.getLogger(MergeDocumentToPDF.class);
  
       public static void main(String[] args) {
  
@@ -138,7 +138,7 @@ The sample below generates the output document in the **PDF** format. Similarly,
 // cd MergeDocumentToDocx/
 // dotnet run MergeDocumentToDOCX.csproj
 
-  namespace MergeDocumentToDOCX
+  namespace MergeDocumentToPDF
    {
        class Program
        {
