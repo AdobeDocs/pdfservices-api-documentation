@@ -16,22 +16,34 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
   // TODO: move this into a plugin
   if (isBrowser) {
     let siteSection = location.pathname.split("/");
-    if (window.digitalData && window.digitalData.page) {
-      window.digitalData.page.pageInfo.siteSection =
-        siteSection.pop() || siteSection.pop();
+    try {
+      if (
+        window.digitalData &&
+        window.digitalData.page &&
+        window.digitalData.page.pageInfo
+      ) {
+        window.digitalData.page.pageInfo.siteSection =
+          siteSection.pop() || siteSection.pop();
 
-      window.digitalData.page.pageInfo.breadCrumbs = [];
-      document
-        .querySelectorAll(".spectrum-Breadcrumbs-item")
-        .forEach((item) => {
-          window.digitalData.page.pageInfo.breadCrumbs.push(item.innerText);
-        });
+        window.digitalData.page.pageInfo.breadCrumbs = [];
+        document
+          .querySelectorAll(".spectrum-Breadcrumbs-item")
+          .forEach((item) => {
+            window.digitalData.page.pageInfo.breadCrumbs.push(item.innerText);
+          });
+      }
+    } catch (err) {
+      console.error("Unable to set site section", err);
     }
 
-    if (window._satellite && window.digitalData) {
-      window._satellite.track("state", {
-        digitalData: window.digitalData._snapshot(),
-      });
+    try {
+      if (window._satellite && window.digitalData) {
+        window._satellite.track("state", {
+          digitalData: window.digitalData._snapshot(),
+        });
+      }
+    } catch (err) {
+      console.error("Unable to set state", err);
     }
 
     let getCredentialsButton = Array.from(document.querySelectorAll("a")).find(
