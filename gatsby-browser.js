@@ -151,5 +151,21 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
     } else if (window.location.pathname.indexOf("pdf-embed-api") >= 0) {
       getCredentialsButton.href = `${baseurl}?api=pdf-embed-api`;
     }
+    
+    if(window.location.pathname.indexOf("dcserviceslicensing") >= 0){
+        document.querySelector('footer')
+          .closest('main')
+          .setAttribute("daa-lh", "Body");
+
+        document.querySelector('footer')
+          .closest('main')
+          .querySelector('div')
+          .setAttribute("daa-lh", "PDF Services API Licensing");
+
+        document.querySelectorAll(".spectrum-Link").forEach((link)=>{
+          link.setAttribute("daa-ll",link.textContent)
+        })
+    }
+
   }
 };
