@@ -509,7 +509,6 @@ The sample below shows the use of **Fragments** in the word template and generat
 // node src/documentmerge/merge-document-to-pdf-fragments.js
 
     const PDFServicesSdk = require('@dcloud/pdfservices-node-sdk');
-    const Fragments = PDFServicesSdk.Fragments;
     
     try {
         // Initial setup, create credentials instance.
