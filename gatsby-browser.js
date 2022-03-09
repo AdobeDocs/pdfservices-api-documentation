@@ -21,21 +21,19 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
         siteSection.pop() || siteSection.pop();
 
       window.digitalData.page.pageInfo.breadCrumbs = [];
-      document
-        .querySelectorAll(".spectrum-Breadcrumbs-item")
-        .forEach((item) => {
-          window.digitalData.page.pageInfo.breadCrumbs.push(item.innerText);
-        });
+      document.querySelectorAll(".spectrum-Breadcrumbs-item").forEach(item => {
+        window.digitalData.page.pageInfo.breadCrumbs.push(item.innerText);
+      });
     }
 
     if (window._satellite && window.digitalData) {
       window._satellite.track("state", {
-        digitalData: window.digitalData._snapshot(),
+        digitalData: window.digitalData._snapshot()
       });
     }
 
     let getCredentialsButton = Array.from(document.querySelectorAll("a")).find(
-      (el) => el.textContent === "Get credentials"
+      el => el.textContent === "Get credentials"
     );
 
     let navLinksBaseUrl = "/document-services";
@@ -134,7 +132,7 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
 
     let footer = document.querySelector("footer");
     footer?.setAttribute("daa-lh", "Footer");
-    footer?.querySelectorAll("a").forEach((link) => {
+    footer?.querySelectorAll("a").forEach(link => {
       if (link.textContent) {
         link.setAttribute("daa-ll", link.textContent);
       }
@@ -151,21 +149,250 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
     } else if (window.location.pathname.indexOf("pdf-embed-api") >= 0) {
       getCredentialsButton.href = `${baseurl}?api=pdf-embed-api`;
     }
-    
-    if(window.location.pathname.indexOf("dcserviceslicensing") >= 0){
-        document.querySelector('footer')
-          .closest('main')
-          .setAttribute("daa-lh", "Body");
 
-        document.querySelector('footer')
-          .closest('main')
-          .querySelector('div')
-          .setAttribute("daa-lh", "PDF Services API Licensing");
+    var pageHeadTittle = null;
+    if (window.location.pathname.indexOf("pdf-services-api/") >= 0) {
+      pageHeadTittle = "PDF Services API Overview Quickstarts";
+      if (
+        window.location.pathname.indexOf(
+          "pdf-services-api/howtos/create-pdf/"
+        ) >= 0
+      ) {
+        pageHeadTittle = "PDF Services API Create PDF";
+      } else if (
+        window.location.pathname.indexOf(
+          "pdf-services-api/howtos/export-pdf/"
+        ) >= 0
+      ) {
+        pageHeadTittle = "PDF Services API Export PDF";
+      } else if (
+        window.location.pathname.indexOf(
+          "pdf-services-api/howtos/combine-pdf/"
+        ) >= 0
+      ) {
+        pageHeadTittle = "PDF Services API Combine PDF Files";
+      } else if (
+        window.location.pathname.indexOf("pdf-services-api/howtos/ocr-pdf/") >=
+        0
+      ) {
+        pageHeadTittle = "PDF Services API OCR PDF";
+      } else if (
+        window.location.pathname.indexOf(
+          "pdf-services-api/howtos/compress-pdf/"
+        ) >= 0
+      ) {
+        pageHeadTittle = "PDF Services API Compress PDFs";
+      } else if (
+        window.location.pathname.indexOf(
+          "pdf-services-api/howtos/linearize-pdf/"
+        ) >= 0
+      ) {
+        pageHeadTittle = "PDF Services API Linearize PDFs";
+      } else if (
+        window.location.pathname.indexOf(
+          "pdf-services-api/howtos/protect-pdf/"
+        ) >= 0
+      ) {
+        pageHeadTittle = "PDF Services API Protect PDF";
+      } else if (
+        window.location.pathname.indexOf(
+          "pdf-services-api/howtos/remove-protection/"
+        ) >= 0
+      ) {
+        pageHeadTittle = "PDF Services API Remove Protection";
+      } else if (
+        window.location.pathname.indexOf(
+          "pdf-services-api/howtos/insert-pages/"
+        ) >= 0
+      ) {
+        pageHeadTittle = "PDF Services API Insert Pages";
+      } else if (
+        window.location.pathname.indexOf(
+          "pdf-services-api/howtos/replace-pages/"
+        ) >= 0
+      ) {
+        pageHeadTittle = "PDF Services API Replace Pages";
+      } else if (
+        window.location.pathname.indexOf(
+          "pdf-services-api/howtos/delete-pages/"
+        ) >= 0
+      ) {
+        pageHeadTittle = "PDF Services API Delete Pages";
+      } else if (
+        window.location.pathname.indexOf(
+          "pdf-services-api/howtos/reorder-pages/"
+        ) >= 0
+      ) {
+        pageHeadTittle = "PDF Services API Reorder Pages";
+      } else if (
+        window.location.pathname.indexOf(
+          "pdf-services-api/howtos/rotate-pages/"
+        ) >= 0
+      ) {
+        pageHeadTittle = "PDF Services API Rotate Pages";
+      } else if (
+        window.location.pathname.indexOf(
+          "pdf-services-api/howtos/split-pdf/"
+        ) >= 0
+      ) {
+        pageHeadTittle = "PDF Services API Split PDF";
+      } else if (
+        window.location.pathname.indexOf(
+          "pdf-services-api/howtos/extract-pdf/"
+        ) >= 0
+      ) {
+        pageHeadTittle = "PDF Services API Split PDF";
+      } else if (
+        window.location.pathname.indexOf(
+          "pdf-services-api/howtos/pdf-properties/"
+        ) >= 0
+      ) {
+        pageHeadTittle = "PDF Services API Get PDF Properties";
+      } else if (
+        window.location.pathname.indexOf("pdf-services-api/policies/") >= 0
+      ) {
+        pageHeadTittle = "PDF Services API Version - Support policy";
+      } else if (
+        window.location.pathname.indexOf("pdf-services-api/releasenotes/") >= 0
+      ) {
+        pageHeadTittle = "PDF Services API Release Notes";
+      } else if (
+        window.location.pathname.indexOf(
+          "pdf-services-api/dcserviceslicensing/"
+        ) >= 0
+      ) {
+        pageHeadTittle = "PDF Services API Licensing";
+      }else if (window.location.pathname.indexOf("pdf-services-api/howtos/") >= 0) {
+        pageHeadTittle = "PDF Services API How Tos";
+      }  
+    } else if (window.location.pathname.indexOf("policies/") >= 0) {
+      pageHeadTittle = "Archives Version Support Policy";
+    } else if (window.location.pathname.indexOf("pdf-embed-api/") >= 0) {
+      pageHeadTittle = "PDF Embed API Overview Quick starts";
+      if (window.location.pathname.indexOf("pdf-embed-api/howtos/") >= 0) {
+        pageHeadTittle = "PDF Embed API basics";
+      } else if (
+        window.location.pathname.indexOf("pdf-embed-api/howtos_ui/") >= 0
+      ) {
+        pageHeadTittle = "PDF Embed API UI Customization";
+      } else if (
+        window.location.pathname.indexOf("pdf-embed-api/howtos_comments/") >= 0
+      ) {
+        pageHeadTittle = "PDF Embed API Comments and Markup";
+      } else if (
+        window.location.pathname.indexOf("pdf-embed-api/howtodata/") >= 0
+      ) {
+        pageHeadTittle = "PDF Embed API Analytics";
+      } else if (
+        window.location.pathname.indexOf("pdf-embed-api/searchengineindexing/") >= 0
+      ) {
+        pageHeadTittle = "PDF Embed API Handle search engine indexing";
+      } else if (
+        window.location.pathname.indexOf("pdf-embed-api/releasenotes/") >= 0
+      ) {
+        pageHeadTittle = "PDF Embed API Release Notes";
+      }
+    } else if (window.location.pathname.indexOf("pdf-extract-api/") >= 0) {
+      pageHeadTittle = "PDF Extract API Overview";
+      if (
+        window.location.pathname.indexOf("pdf-extract-api/quickstarts") >= 0
+      ) {
+        pageHeadTittle = "PDF Embed API Quickstarts";
+      } else if (
+        window.location.pathname.indexOf("pdf-extract-api/howtos/") >= 0
+      ) {
+        pageHeadTittle = "PDF Embed API How Tos Overview";
+      } else if (
+        window.location.pathname.indexOf(
+          "pdf-extract-api/howtos/extract-api"
+        ) >= 0
+      ) {
+        pageHeadTittle = "PDF Embed API How Tos Extract PDF";
+      } else if (
+        window.location.pathname.indexOf("pdf-extract-api/releasenotes") >= 0
+      ) {
+        pageHeadTittle = "PDF Embed API Release Notes";
+      } else if (
+        window.location.pathname.indexOf(
+          "pdf-extract-api/dcserviceslicensing"
+        ) >= 0
+      ) {
+        pageHeadTittle = "PDF Services API Licensing";
+      }
+    } else if (
+      window.location.pathname.indexOf("document-generation-api/") >= 0
+    ) {
+      pageHeadTittle = "Document Generation API Overview";
+      if (
+        window.location.pathname.indexOf(
+          "document-generation-api/quickstarts"
+        ) >= 0
+      ) {
+        pageHeadTittle = "Document Generation API Limitations Quickstarts";
+      } else if (
+        window.location.pathname.indexOf(
+          "document-generation-api/templatetags"
+        ) >= 0
+      ) {
+        pageHeadTittle = "Document Generation API Template Tags";
+      } else if (
+        window.location.pathname.indexOf("document-generation-api/fragments") >=
+        0
+      ) {
+        pageHeadTittle = "Document Generation API Fragments";
+      } else if (
+        window.location.pathname.indexOf(
+          "document-generation-api/stylingformattingtags"
+        ) >= 0
+      ) {
+        pageHeadTittle = "Document Generation API Apply styling and formatting";
+      } else if (
+        window.location.pathname.indexOf("document-generation-api/hyperlink") >=
+        0
+      ) {
+        pageHeadTittle = "Document Generation API Hyperlink";
+      } else if (
+        window.location.pathname.indexOf(
+          "document-generation-api/dynamictableconstructs"
+        ) >= 0
+      ) {
+        pageHeadTittle = "Document Generation API Dynamic Table Constructs";
+      } else if (
+        window.location.pathname.indexOf("document-generation-api/wordaddin") >=
+        0
+      ) {
+        pageHeadTittle = "Document Generation API Word Add-in";
+      } else if (
+        window.location.pathname.indexOf(
+          "document-generation-api/releasenotes"
+        ) >= 0
+      ) {
+        pageHeadTittle = "Document Generation API Release Notes";
+      } else if (
+        window.location.pathname.indexOf(
+          "document-generation-api/dcserviceslicensing"
+        ) >= 0
+      ) {
+        pageHeadTittle = "PDF Services API Licensing";
+      }
+    }else  if (window.location.pathname.indexOf("overview/") >= 0) {
+        pageHeadTittle = "Overview Introduction";
+      }  
+    if (pageHeadTittle != null) {
+      document
+        .querySelector("footer")
+        .closest("main")
+        .setAttribute("daa-lh", "Body");
 
-        document.querySelectorAll(".spectrum-Link").forEach((link)=>{
-          link.setAttribute("daa-ll",link.textContent)
-        })
+      document
+        .querySelector("footer")
+        .closest("main")
+        .querySelector("div")
+        .setAttribute("daa-lh", `${pageHeadTittle}`);
+
+      document.querySelectorAll(".spectrum-Link").forEach(link => {
+        link.setAttribute("daa-ll", link.textContent);
+      });
     }
-
   }
 };
