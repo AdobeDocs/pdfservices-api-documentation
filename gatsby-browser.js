@@ -241,7 +241,7 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
           "pdf-services-api/howtos/extract-pdf/"
         ) >= 0
       ) {
-        pageHeadTittle = "PDF Services API Split PDF";
+        pageHeadTittle = "PDF Services API Extract PDF";
       } else if (
         window.location.pathname.indexOf(
           "pdf-services-api/howtos/pdf-properties/"
@@ -297,21 +297,21 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
       if (
         window.location.pathname.indexOf("pdf-extract-api/quickstarts") >= 0
       ) {
-        pageHeadTittle = "PDF Embed API Quickstarts";
+        pageHeadTittle = "PDF Extract API Quickstarts";
       } else if (
         window.location.pathname.indexOf("pdf-extract-api/howtos/") >= 0
       ) {
-        pageHeadTittle = "PDF Embed API How Tos Overview";
+        pageHeadTittle = "PDF Extract API How Tos Overview";
       } else if (
         window.location.pathname.indexOf(
           "pdf-extract-api/howtos/extract-api"
         ) >= 0
       ) {
-        pageHeadTittle = "PDF Embed API How Tos Extract PDF";
+        pageHeadTittle = "PDF Extract API How Tos Extract PDF";
       } else if (
         window.location.pathname.indexOf("pdf-extract-api/releasenotes") >= 0
       ) {
-        pageHeadTittle = "PDF Embed API Release Notes";
+        pageHeadTittle = "PDF Extract API Release Notes";
       } else if (
         window.location.pathname.indexOf(
           "pdf-extract-api/dcserviceslicensing"
