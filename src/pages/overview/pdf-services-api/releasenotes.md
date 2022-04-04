@@ -138,7 +138,7 @@ Upgrading to the latest SDK should not break existing applications.
 ### Create PDF Server Side Release (5 April, 2022; server side release)
 | Change  | Language            | Description                                                                                   |
 | ------- | ------------------- | --------------------------------------------------------------------------------------------- |
-| Changed | All                 | Enhanced support for leveraging Embedded TrueType fonts.                                               |
+| Changed | All                 | Enhanced support for leveraging embedded TrueType fonts.                                               |
 
 ### Extract PDF Server Side Release (05 April, 2022; server side release)
 | Change  | Language            | Description                                                                                   |
