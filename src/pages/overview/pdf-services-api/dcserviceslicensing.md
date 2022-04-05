@@ -82,6 +82,8 @@ result in an error message.
 | Page limit(Non-Scanned - Extract API)\*                         | 200         |
 | JSON file size (Document Generation)                            | 10MB        |
 | Payload size (Document Generation): Word template and JSON file | 100MB       |
+| JSON file size (HTML to PDF)                            | 10MB        |
+| Payload size (HTML to PDF): Complete zip size | 100MB       |
 | Maximum Requests Per Minute (Extract)                           | 25 RPM      |
 
 **Page limits may be lower for documents with a large number of tables.*
