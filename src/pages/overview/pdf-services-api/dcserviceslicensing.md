@@ -80,11 +80,9 @@ result in an error message.
 | Output images per Document Transaction (export)                 | 50          |
 | Page limit (OCR)\*                                              | 100         |
 | Page limit(Non-Scanned - Extract API)\*                         | 200         |
-| JSON file size (Document Generation)                            | 10MB        |
-| Payload size (Document Generation): Word template and JSON file | 100MB       |
-| JSON file size (HTML to PDF)                            | 10MB        |
-| Payload size (HTML to PDF): Complete zip size | 100MB       |
-| Maximum Requests Per Minute (Extract)                           | 25 RPM      |
+| JSON file size (Document Generation and HTML to PDF)            | 10MB        |
+| Maximum Requests Per Minute                                     | 25 RPM      |
+| Payload size (For all APIs)                                     | 100MB       |
 
 **Page limits may be lower for documents with a large number of tables.*
 
