@@ -107,7 +107,7 @@ module.exports = {
       },
       {
         title: "Rest APIs",
-        path: 'overview/rest-apis.md'
+        path: 'apis/index.md'
       }
     ],
     subPages: [
