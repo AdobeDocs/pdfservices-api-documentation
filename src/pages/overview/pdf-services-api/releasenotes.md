@@ -141,17 +141,31 @@ Upgrading to the latest SDK should not break existing applications.
 | Changed | All                 | Improved handling of bad PDFs with 50% reduction in frequency of bad PDF errors and improved successful conversion rate.                                                        |
 | Changed | All                 | Bug fixes and stability improvements.                                                         |
 
+### 2.2.1 (March, 2022; patch release)
+| Change  | Language            | Description                                                                                   |
+| ------- | ------------------- | --------------------------------------------------------------------------------------------- |
+| Changed | .NET                | Dependent library upgrades.FileRef.CreateFromUrl can only be invoked in context of HTML2PDF operation.Bug fixes in SDK and documentation  |
+| Changed | .NET                | FileRef.CreateFromUrl can only be invoked in context of HTML2PDF operation.Bug fixes in SDK and documentation  |
+| Changed | .NET                | Bug fixes in SDK and documentation  |
+
 ### Extract PDF Server Side Release (22 February, 2022; server side release)
 | Change  | Language            | Description                                                                                   |
 | ------- | ------------------- | --------------------------------------------------------------------------------------------- |
 | Changed | All                 | Adding support for identification of scanned pages with "is_scanned" field in Extract output. |
 | Changed | All                 | Bug fixes and stability improvements.                                                         |
 
+### 2.2.1 (February, 2022; patch release)
+
+| Change  | Language            | Description                                                                                                                                                   |
+| ------- | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Changed | Java                | Dependent library upgrades.  |
+
+
 ### 2.2.1 (January, 2022; patch release)
 
 | Change  | Language            | Description                                                                                                                                                   |
 | ------- | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Changed | Node JS                 | Enhanced Document Generation interface to support Json Object and Json array as Fragments data.   |
+| Changed | Node JS             | Enhanced Document Generation interface to support Json Object and Json array as Fragments data.   |
 
 ### 2.2.0 (January, 2022; minor release)
 
