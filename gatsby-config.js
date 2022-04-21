@@ -47,6 +47,11 @@ module.exports = {
             description: 'Embed high-fidelity PDFs in web apps with analytics',
             path: '../document-services/apis/pdf-embed/'
           },
+          {
+            title: 'Sign API',
+            description: 'Integrate e-signatures into your platform or application',
+            path: '../document-services/apis/sign-api/'
+          }
         ]
       },
       {
