@@ -149,9 +149,7 @@ Upgrading to the latest SDK should not break existing applications.
 ### 2.2.1 (March, 2022; patch release)
 | Change  | Language            | Description                                                                                   |
 | ------- | ------------------- | --------------------------------------------------------------------------------------------- |
-| Changed | .NET                | Dependent library upgrades.FileRef.CreateFromUrl can only be invoked in context of HTML2PDF operation.Bug fixes in SDK and documentation  |
-| Changed | .NET                | FileRef.CreateFromUrl can only be invoked in context of HTML2PDF operation.Bug fixes in SDK and documentation  |
-| Changed | .NET                | Bug fixes in SDK and documentation  |
+| Changed | .NET                | Dependent library upgrades and SDK internal additional validation checks.  |
 
 ### Extract PDF Server Side Release (22 February, 2022; server side release)
 | Change  | Language            | Description                                                                                   |
