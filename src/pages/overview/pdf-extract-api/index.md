@@ -19,4 +19,4 @@ The PDF Extract API can be embedded into any application using the [PDFServices 
 
 ## Extract Process
 
-![image](../images/extract_process_21.png)
+![PDF Extract Process](../images/extract_process_21.png)

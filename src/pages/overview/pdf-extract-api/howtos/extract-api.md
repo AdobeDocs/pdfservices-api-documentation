@@ -17,7 +17,7 @@ following:
     renditions with filenames that correspond to the element information
     in the JSON file.
 
-![image](../../images/extractsamplefiles.png)
+![Extract Sample Files](../../images/extractsamplefiles.png)
 
 The following is a summary of key elements in the extracted JSON(See
 additional descriptions in the [JSON

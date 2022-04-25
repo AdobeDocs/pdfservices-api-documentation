@@ -72,19 +72,19 @@ Below are the sample input and output documents snapshots describing the use of 
 
 Here the `addressDetails` fragment is used in the word document template file.
 
-![image](../images/address_input.png)
+![Address Input](../images/address_input.png)
 
 The output document generated will look like:
 
-![image](../images/address_output.png)
+![Address Output](../images/address_output.png)
 
 Similarly,  the `fullname` fragment can be used like this in the word document template file.
 
-![image](../images/name_input.png)
+![Name Input](../images/name_input.png)
 
 And the output document generated will look like:
 
-![image](../images/name_output.png)
+![Name Output](../images/name_output.png)
 
 ## Limitations
 

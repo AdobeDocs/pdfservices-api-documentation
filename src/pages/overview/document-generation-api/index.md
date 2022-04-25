@@ -15,7 +15,7 @@ customer will be different.
 
 ## Document Generation Process
 
-![image](../images/docgen_process.jpeg)
+![Document Generation Process](../images/docgen_process.jpeg)
 
 ## Components of Document Generation
 

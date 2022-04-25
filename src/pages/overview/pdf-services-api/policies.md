@@ -53,7 +53,7 @@ continue to function securely as follows:
 
 Once a version reaches its end of life, functionality may be deprecated and stop working.
 
-![image](../images/support1.png)
+![Support Cycle](../images/support1.png)
 
 ## Public API
 

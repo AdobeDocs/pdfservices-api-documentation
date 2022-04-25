@@ -47,7 +47,7 @@ JSON representation of the input data:
 
 Placeholder variables get replaced with the actual input data.
 
-![image](../images/placeholder_basic.png)
+![Basic Placeholder](../images/placeholder_basic.png)
 
 
 **Default Value**
@@ -56,7 +56,7 @@ A default value can be specified for the placeholder variable. In case,
 the specified variable is not present in the input data, the placeholder
 gets replaced with the default value.
 
-![image](../images/placeholder_default.png)
+![Default Placeholder](../images/placeholder_default.png)
 
 
 **Optional**
@@ -65,7 +65,7 @@ Setting placeholder variable as optional will replace the placeholder
 with an empty string in case the specified variable is not present in
 the input data.
 
-![image](../images/placeholder_optional_image.png)
+![Placeholder Optional Image](../images/placeholder_optional_image.png)
 
 
 ## Images
@@ -126,16 +126,16 @@ Only https image urls with an image size of less than 20 MB are allowed.
 
 Add the image placeholder.
 
-![image](../images/image_tag_initial.png)
+![Image Tag Initial](../images/image_tag_initial.png)
 
 Add the alt text to the image as per the specified format.
 
-![image](../images/image_alt_text.png)
+![Image Alternative text](../images/image_alt_text.png)
 
 The image placeholder will be replaced by the image data in
 the output document.
 
-![image](../images/image_tag_final.png)
+![Image Tag Final](../images/image_tag_final.png)
 
 ## Tables
 
@@ -187,12 +187,12 @@ illustrates one such template tag where *subscriptions* refer to the
 array of objects while name refers to the property of one such object in
 the array.
 
-![image](../images/table.png)
+![Table](../images/table.png)
 
 Table rows are dynamically populated in the output document by repeating
 over the specified array of objects.
 
-![image](../images/table_result.png)
+![Table Result](../images/table_result.png)
 
 ### Dynamically expand table rows or columns
 
@@ -223,7 +223,7 @@ JSON representation of the input data:
 - *Repeat table rows vertically*
     - {{subscriptions.name:**cell-extension(vertical)**}} tag lets the engine know that cells will be extended in vertical direction.
 
-![image](../images/vertical-extension1.png)
+![Vertical Extension](../images/vertical-extension1.png)
 
 <InlineAlert slots="text"/>
 
@@ -234,7 +234,7 @@ Default extension is vertical. If cell-extension construct is not provided, then
 - *Repeat table columns horizontally*
     - {{subscriptions.name:**cell-extension(horizontal)**}} tag lets the engine know that cells will be extended in horizontal direction.
 
-![image](../images/horizontal-extension1.png)
+![Horizontal Extension](../images/horizontal-extension1.png)
 
 
 ## Lists
@@ -272,14 +272,14 @@ JSON representation of the input data:
 Dynamically generate a numbered list by placing it inside a repeating
 section.
 
-![image](../images/numbered_list.png)
+![Numbered List](../images/numbered_list.png)
 
 **Bullet Lists**
 
 Dynamically generate a bullet list by placing it inside a repeating
 section.
 
-![image](../images/bullet_list.png)
+![Bullet List](../images/bullet_list.png)
 
 
 
@@ -295,7 +295,7 @@ JSON representation of the input data in case of simple lists:
 
 Dynamically generate a numbered or bullet list by placing it inside a repeating section.
 
-![image](../images/simple_lists.png)
+![Sample Lists](../images/simple_lists.png)
 
 
 ## Conditionals
@@ -327,14 +327,14 @@ JSON representation of the input data:
 
 Show or hide paragraphs based on conditions.
 
-![image](../images/conditional_section.png)
+![Conditional Section](../images/conditional_section.png)
 
 
 **Conditional Phrases**
 
 Show or hide text inside a paragraph based on conditions.
 
-![image](../images/conditional_phrase.png)
+![Conditional Phrase](../images/conditional_phrase.png)
 
 ## Numerical Calculations
 
@@ -382,7 +382,7 @@ JSON representation of the input data:
 
 Performs simple arithmetic operations.
 
-![image](../images/arithmetic.png)
+![Arithmetic](../images/arithmetic.png)
 
 <InlineAlert slots="text"/>
 
@@ -395,7 +395,7 @@ that corresponds to a number.
 
 Performs aggregations on a list of elements.
 
-![image](../images/aggregation.png)
+![Aggregation](../images/aggregation.png)
 
 <InlineAlert slots="text"/>
 

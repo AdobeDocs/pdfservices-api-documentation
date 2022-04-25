@@ -44,9 +44,9 @@ at the user level if desired.
 -   Navigate to the **Insert** tab, and click the **Add-ins** icon in
     the insert section. Office Add-ins pop-up page will open up.
 
-![image](../images/browser_insert_tab.png)
+![Browser Insert Tab](../images/browser_insert_tab.png)
 
-![image](../images/browser_addin_tab.png)
+![Browser Add-In Tab](../images/browser_addin_tab.png)
 <br/>
 
 *   Check for the **Adobe Document Generation** add-in in the **MY
@@ -61,18 +61,18 @@ Office Add-ins store then you can contact your organizational
 Office 365 Admins to get
 [Add-in installed at the tenant level](#installing-at-the-tenant-level).
 
-![image](../images/enterprise_error.png)
+![Enterprise Error](../images/enterprise_error.png)
 <br/>
 
 - Otherwise, In the top left search box, search for **Adobe Document Generation** and click on add button.
 
-![image](../images/document_generation_search_browser.png)
+![Document Generation Browser Search](../images/document_generation_search_browser.png)
 <br/>
 
 *   After enabling/installing the add-in, you will find a new Adobe
     Document Generation add-in on the Home tab.
 
-![image](../images/browser_final2.png)
+![Document Generation Add-In on Home Tab](../images/browser_final2.png)
 <br/>
 
 **Installing the add-in for the desktop client**
@@ -81,9 +81,9 @@ Office 365 Admins to get
 -   Navigate to the **Insert** tab, and click the **Get Add-ins**
     option.
 
-![image](../images/desktop_insert_tab.png)
+![Desktop Insert Tab](../images/desktop_insert_tab.png)
 
-![image](../images/desktop_addin_tab.png)
+![Desktop Add-In Tab](../images/desktop_addin_tab.png)
 <br/>
 
 *   Check for the **Adobe Document Generation** add-in in the **MY
@@ -98,18 +98,18 @@ Office Add-ins store then you can contact your organizational
 Office 365 Admins to get
 [Add-in installed at the tenant level](#installing-at-the-tenant-level).
 
-![image](../images/enterprise_error.png)
+![Enterprise Error](../images/enterprise_error.png)
 <br/>
 
 -   Otherwise, In the top left search box, search for **Adobe Document Generation** and click on **add** button to install.
 
-    ![image](../images/document_generation_search_desktop.png)
+    ![Document Generation Search Desktop](../images/document_generation_search_desktop.png)
     <br/>
 
 *   After enabling/installing the add-in, you will find a new Adobe
     Document Generation add-in on the Home tab.
 
-![image](../images/browser_final2.png)
+![Browser Final](../images/browser_final2.png)
 <br/>
 
 
@@ -143,7 +143,7 @@ organization.](https://docs.microsoft.com/en-gb/microsoft-365/admin/manage/centr
     don't see the Add-in Page, go to the Settings \> Integrated apps.
 -   On the top of the Integrated apps page, click the Add-ins link.
 
-![image](../images/admincenter_addin_tab.png)
+![Admin Center Add-In Tab](../images/admincenter_addin_tab.png)
 <br/>
 
 -   Select Deploy Add-in at the top of the page, and then select Next.
@@ -151,7 +151,7 @@ organization.](https://docs.microsoft.com/en-gb/microsoft-365/admin/manage/centr
     left search box, search for **Adobe Document Generation** and click
     on add button.
 
-![image](../images/tenant_search.png)
+![Tenant Search](../images/tenant_search.png)
 <br/>
 
 -   Assign Users
@@ -162,7 +162,7 @@ organization.](https://docs.microsoft.com/en-gb/microsoft-365/admin/manage/centr
     -   Just me - Applies the deployment method to just the user (admin)
         doing the configuration
 
-![image](../images/admincenter_assign_user.png)
+![Admin Center Assign User](../images/admincenter_assign_user.png)
 <br/>
 
 -   Click Deploy after assigning users.

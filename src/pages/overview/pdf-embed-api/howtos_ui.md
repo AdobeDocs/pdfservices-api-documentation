@@ -18,7 +18,7 @@ controls for:
 -   Modifying the PDF display to Fit Page or Fit Width (applicable in
     Full Window and Lightbox embed modes).
 
-![image](../images/ui.png)
+![Options for Customising User Interface](../images/ui.png)
 
 </p>
 
@@ -153,12 +153,12 @@ details such as first name, last name, and email address. By default, if
 you do not register a user profile callback, the user name is displayed
 as "Guest" in the comments pane.
 
-![image](../images/userprofile_new.png)
+![New User Profile](../images/userprofile_new.png)
 
 When the callback is registered, user annotations are associated with
 the corresponding username.
 
-![image](../images/userprofile1.png)
+![User Profile](../images/userprofile1.png)
 
 **User profile callback signature**
 
@@ -379,7 +379,7 @@ and data in the following format:
     data is optional in this case. The user will see an error popup and
     should retry saving.
 
-![image](../images/fail.png)
+![Generic Error Message](../images/fail.png)
 <br/>
 
 -   FILE\_MODIFIED: Use the response code FILE\_MODIFIED to capture the case when two users
@@ -399,7 +399,7 @@ In this scenario, the current user sees a popup with two options:
 -   **Discard my changes**: Discards the current user’s changes and
     reloads the PDF.
 
-![image](../images/file_modified.png)
+![File Modified](../images/file_modified.png)
 
 **Save callback**
 
@@ -525,7 +525,7 @@ modifying the same file. Note the following:
     file. The user sees a popup with the "Get Latest Version" option
     which will reload the latest version of the file.
 
-![image](../images/getlatest.png)
+![Get Lates Version](../images/getlatest.png)
 <br/>
 
 -   If the Promise returns FILE\_MODIFIED after the current user has
@@ -535,7 +535,7 @@ modifying the same file. Note the following:
     current user’s changes while **Discard my changes** discards the
     current user’s changes and reloads the PDF.
 
-![image](../images/saveconflict.png)
+![Conflict On Save](../images/saveconflict.png)
 
 **Status callback**
 
@@ -584,7 +584,7 @@ is automatically enabled so that they can save their information to the
 PDF. The PDF Embed API renders forms so that they appear similar to
 forms viewed in the full Acrobat app:
 
-![image](../images/form1.png)
+![Form 1](../images/form1.png)
 
 <InlineAlert slots="text" />
 
@@ -610,7 +610,7 @@ default, you can disable the feature by setting it to *false*.
 
 Disabling form editing un-highlights form fields:
 
-![image](../images/form2.png)
+![Form 2](../images/form2.png)
 
 ### Unsupported form fields
 
@@ -630,7 +630,7 @@ In the current version, following form fields are unsupported:
 When the API detects unsuppported form fields, a dialog appears on the
 rendered PDF:
 
-![image](../images/formnosupport.png)
+![No Support for Form Fields](../images/formnosupport.png)
 
 ## Viewer API
 

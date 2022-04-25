@@ -11,6 +11,6 @@ JSON representation of the input data:
   "Notes Section": "Please refer to our terms and conditions over <a href=\"https://www.adobe.com/legal/terms.html\">here</a>"
 }
 ```
-![image](../images/anchor-tag_sample.png)
+![Anchor Tag Sample](../images/anchor-tag_sample.png)
 
-![image](../images/anchor-tag1.png)
+![Anchor Tag](../images/anchor-tag1.png)

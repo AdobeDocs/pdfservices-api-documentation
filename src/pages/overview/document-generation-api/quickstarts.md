@@ -18,7 +18,7 @@ This section details out step by step instructions to get started with Document 
 
 Authoring a document template involves adding the template tags to your Word document as illustrated below:
 
-![image](../images/design_document_templates.gif)
+![Design Document Templates](../images/design_document_templates.gif)
 
 <br/>
 
@@ -315,7 +315,7 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
 As a result of the Document Generation API, template tags are replaced
 with the input JSON data.
 
-![image](../images/generate_document.gif)
+![Generate Document](../images/generate_document.gif)
 
 
 #### Generate PDF or Word document (with [Fragments](./fragments.md))
