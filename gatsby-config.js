@@ -251,8 +251,8 @@ module.exports = {
             path: 'overview/document-generation-api/dcserviceslicensing.md'
           },
           {
-            title: 'API Limitations',
-            path: 'overview/document-generation-api/quickstarts/#api-limitations'
+            title: 'Usage Limits',
+            path: 'overview/pdf-services-api/dcserviceslicensing.md#usage-limits'
           }
         ]
       },
