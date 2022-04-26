@@ -639,3 +639,12 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
 --form 'InputFile0=@"{{Placeholder for the input document template (absolute path)}}"'
 ```
 
+## API Limitations
+
+The Document Generation API has the following limitations:
+
+-   **Document template size limit**: Maximum supported document
+    template file size is 100MB.
+-   **Input JSON size limit**: Maximum supported input JSON size is
+    10MB.
+
