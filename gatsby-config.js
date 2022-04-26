@@ -252,7 +252,7 @@ module.exports = {
           },
           {
             title: 'Usage Limits',
-            path: 'overview/pdf-services-api/dcserviceslicensing.md#usage-limits'
+            path: 'overview/document-generation-api/dcserviceslicensing.md#usage-limits'
           }
         ]
       },
