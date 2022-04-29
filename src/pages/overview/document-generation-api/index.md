@@ -15,7 +15,7 @@ customer will be different.
 
 ## Document Generation Process
 
-![image](../images/docgen_process.jpeg)
+![Document Generation Process : Request consisting of a docx file and a json is sent to Adobe Document Generation API by client application. Adobe Document Generation API returns a document with these template tags replaced by the actual data as per the json.](../images/docgen_process.jpeg)
 
 ## Components of Document Generation
 

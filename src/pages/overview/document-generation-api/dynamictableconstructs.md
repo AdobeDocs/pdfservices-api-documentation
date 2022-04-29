@@ -76,17 +76,17 @@ JSON representation of the input data:
   ]
 }
 ```
-![image](../images/discard_column_if_empty.png)
+![Adding discard-if-empty construct with boolean false/true along with the template tag to activate discard if empty feature for the corresponding column](../images/discard_column_if_empty.png)
 
 - {{Project.Notes:**discard_if_empty(true)**}} tag lets the engine discard the particular column if every element of an array in the input json is either empty or null.
 
 **Note**: The row above the authored row will be considered as a header row. Cell from the header row will be discarded along with discarded column.
 
-![image](../images/header_row1.png)
+![Header Row of Development Milestones table](../images/header_row1.png)
 
-![image](../images/header_row2.png)
+![Header Row of Conversion tracking table](../images/header_row2.png)
 
-![image](../images/without_header_row.png)
+![Development Milestones table without header row](../images/without_header_row.png)
 
 ### Discard column if condition evaluates to true
 Column in the table can be discarded If condition provided in the discard-if(expr(**condition**)) evaluates to true. Add discard-if(expr(**condition**)) construct along with the template tag to activate discard if feature for the corresponding column.
@@ -125,7 +125,7 @@ JSON representation of the input data:
 }
 ```
 
-![image](../images/discard_if_condition_true.png)
+![Added discard-if(expr(**condition**)) construct along with the template tag to activate discard if feature for the corresponding column](../images/discard_if_condition_true.png)
 
 - {{Conversion.Rate:**discard-if(expr($sum(Conversion.Rate)!= 100))**}}% tag lets the engine discard the particular column if condition provided in the **expr** construct evaluates to true.
 

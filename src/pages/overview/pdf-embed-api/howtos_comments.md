@@ -8,9 +8,9 @@ tool which can be used to erase parts of drawing annotations. In
 addition to these, there are undo and redo tools available in the top
 bar.
 
-![image](../images/annotstoolsoverview.png)
+![Annotation Tools like save button, adding sticky notes, text formatting menu and popover menu](../images/annotstoolsoverview.png)
 
-![image](../images/commentpane.png)
+![Comment Pane with features to add comments, reply to a comment, add a note with comment and delete comments](../images/commentpane.png)
 
 ## Single line implementation
 
@@ -55,7 +55,7 @@ functionality:
 -   Once saved, the annotation is added to the PDF and becomes part of
     the PDF buffer.
 
-![image](../images/viewerui1.png)
+![Viewer UI with undo and redo button and annotation tools](../images/viewerui1.png)
 
 ### Freehand text comments
 
@@ -82,7 +82,7 @@ comments panel. Features include:
     location on the same PDF page. You can also drag one of the corner
     circles of the text box to resize.
 
-![image](../images/addtext_menu.png)
+![Add Text Menu with option to style font and delete](../images/addtext_menu.png)
 
 ### Sticky notes
 
@@ -108,14 +108,14 @@ PDF. There is no support for resizing. Features include:
 -   Moving a sticky note: Place the cursor over an existing sticky note
     and drag to move it to some other location.
 
-![image](../images/stickynote1.png)
+![Sticky Note with option to change colour and delete](../images/stickynote1.png)
 
 ### Text markup annotations
 
 Embed API supports the following highlighting, strikethrough, and
 underlining. Features include:
 
-![image](../images/textselectiontool.png)
+![Text Selection with strikethrough](../images/textselectiontool.png)
 <br/>
 
 -   Adding a text markup: There are two ways to add a text markup:
@@ -126,7 +126,7 @@ underlining. Features include:
         underline options from the context menu. The markup is added and
         a comment box opens up where you can type in some text.
 
-![image](../images/contextmenu.png)
+![Context Menu with text styling options available](../images/contextmenu.png)
 <br/>
 
 -   Updating a text markup: While moving or resizing text markup is
@@ -136,7 +136,7 @@ underlining. Features include:
     -   You can edit the comment by clicking on the Edit option in the
         overflow menu in the comments panel.
 
-![image](../images/highlight_menu.png)
+![Highlight Menu with option to change colour and delete](../images/highlight_menu.png)
 <br/>
 
 -   Removing a text markup
@@ -173,7 +173,7 @@ Use this tool to create any freehand drawing or shape. Features include:
     -   Place the cursor over a drawing and drag one of the corner
         circles to resize the annotation.
 
-![image](../images/drawing_menu.png)
+![Drawing Menu with option to change colour of marker and delete](../images/drawing_menu.png)
 
 ### Eraser tool
 
@@ -190,7 +190,7 @@ annotation is saved to the PDF.
 -   If the entire drawing is erased, then that particular drawing
     annotation gets removed from the PDF.
 
-![image](../images/eraser.png)
+![Eraser to erase drawing](../images/eraser.png)
 
 ### Undo or Redo changes
 
@@ -200,7 +200,7 @@ remove as many of the previous actions as necessary.
 
 Use the Redo tool to reverse the action of the undo command.
 
-![image](../images/undo_redo.png)
+![Undo Redo button on top right toolbar](../images/undo_redo.png)
 
 ## Annotations API overview
 
@@ -905,7 +905,7 @@ as needed:
     available on text selection. The default value is *true*, and the
     toolbar is visible. Set to *false* to hide the toolbar.
 
-![image](../images/drawingtools1.png)
+![Drawing Tools with optin to showToolbar and showCommentsPanel](../images/drawingtools1.png)
 <br/>
 
 -   `downloadWithAnnotations`: Annotations are not saved to the PDF

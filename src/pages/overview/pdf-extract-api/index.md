@@ -19,4 +19,4 @@ The PDF Extract API can be embedded into any application using the [PDFServices 
 
 ## Extract Process
 
-![image](../images/extract_process_21.png)
+![PDF Extract Process : PDF containing title, image, header, paragraph, list and table and provide output as json, png and csv files to client applications](../images/extract_process_21.png)

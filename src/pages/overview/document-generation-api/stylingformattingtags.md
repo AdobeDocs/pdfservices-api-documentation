@@ -28,7 +28,7 @@ JSON representation of the input data:
 }
 ```
 
-![image](../images/consolidated_styling_formatting.png)
+![Sending text styling constructs, provide styling for the output document in json file. Adobe Document Generation API analyses the json data and inserts styled text in output documents](../images/consolidated_styling_formatting.png)
 
 ## Styling and Formatting rules
 
@@ -61,9 +61,9 @@ JSON representation of the input data:
   "Notes Section": "Has the Board of directors established a basic policy <span style=\"font-size: 12pt;\">regarding legal compliance<span style=\"font-weight: bold; font-style: italic;\"> (hereinafter referred to as the Legal Compliance policy) </span></span><a href=\"http://www.samplewebsite.com/\">Board</a>in accordance to the institution's <span style=\"text-decoration : underline; color:ff6347;\">corporate management policy</span> <span style=\"color: red;\">and disseminated it throughout the institution</span>"
 }
 ```
-![image](../images/styling_attributes_sample.png)
+![Styling Tags Sample with style for font-size, font-weight and font-style attribute added to span tag](../images/styling_attributes_sample.png)
 
-![image](../images/styling_attributes1.png)
+![Styling Tags output when style for font-size, font-weight and font-style attribute was added to span tag](../images/styling_attributes1.png)
 
 ## Tags Supported
 
@@ -90,9 +90,9 @@ JSON representation of the input data:
   "Notes Section": "Has the Board of directors established a basic policy <span style=\"font-size: 12pt;\">regarding legal compliance <b><i>(hereinafter referred to as the Legal Compliance policy)</i></b><a href=\"http://www.samplewebsite.com/\">Board</a> in accordance to the institution's <br><u>corporate management policy</u> and disseminated it throughout the institution"
 }
 ```
-![image](../images/styling_tags_sample.png)
+![Styling Tags Sample with style for font-size attribute added to span tag](../images/styling_tags_sample.png)
 
-![image](../images/styling_tags1.png)
+![Styling Tags output when style for font-size attribute was added to span tag](../images/styling_tags1.png)
 
 
 

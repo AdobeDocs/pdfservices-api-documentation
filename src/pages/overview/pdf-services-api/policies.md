@@ -53,7 +53,10 @@ continue to function securely as follows:
 
 Once a version reaches its end of life, functionality may be deprecated and stop working.
 
-![image](../images/support1.png)
+![Every Major/Minor Version is supported for one year after the
+release of a newer Major/Minor Version; that is a Major.Minor.X
+version reaches its end of life 1 year after the next Major/Minor
+Release](../images/support1.png)
 
 ## Public API
 

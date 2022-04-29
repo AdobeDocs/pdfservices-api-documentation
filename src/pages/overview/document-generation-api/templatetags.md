@@ -47,7 +47,7 @@ JSON representation of the input data:
 
 Placeholder variables get replaced with the actual input data.
 
-![image](../images/placeholder_basic.png)
+![Placeholder tags being replaced by values](../images/placeholder_basic.png)
 
 
 **Default Value**
@@ -56,7 +56,7 @@ A default value can be specified for the placeholder variable. In case,
 the specified variable is not present in the input data, the placeholder
 gets replaced with the default value.
 
-![image](../images/placeholder_default.png)
+![Placeholder tags with default value set](../images/placeholder_default.png)
 
 
 **Optional**
@@ -65,7 +65,7 @@ Setting placeholder variable as optional will replace the placeholder
 with an empty string in case the specified variable is not present in
 the input data.
 
-![image](../images/placeholder_optional_image.png)
+![Placeholder tags with optional image set](../images/placeholder_optional_image.png)
 
 
 ## Images
@@ -126,16 +126,16 @@ Only https image urls with an image size of less than 20 MB are allowed.
 
 Add the image placeholder.
 
-![image](../images/image_tag_initial.png)
+![Initial rendering of the image tag](../images/image_tag_initial.png)
 
 Add the alt text to the image as per the specified format.
 
-![image](../images/image_alt_text.png)
+![Adding alternative text for the image](../images/image_alt_text.png)
 
 The image placeholder will be replaced by the image data in
 the output document.
 
-![image](../images/image_tag_final.png)
+![Image placeholder replaced by the image data](../images/image_tag_final.png)
 
 ## Tables
 
@@ -187,12 +187,12 @@ illustrates one such template tag where *subscriptions* refer to the
 array of objects while name refers to the property of one such object in
 the array.
 
-![image](../images/table.png)
+![Table created with column headers and template tags for each subsequent rows](../images/table.png)
 
 Table rows are dynamically populated in the output document by repeating
 over the specified array of objects.
 
-![image](../images/table_result.png)
+![Table with template tags replaced with actual values in the rows](../images/table_result.png)
 
 ### Dynamically expand table rows or columns
 
@@ -223,7 +223,7 @@ JSON representation of the input data:
 - *Repeat table rows vertically*
     - {{subscriptions.name:**cell-extension(vertical)**}} tag lets the engine know that cells will be extended in vertical direction.
 
-![image](../images/vertical-extension1.png)
+![Table gets vertically extended as table rows are repeated](../images/vertical-extension1.png)
 
 <InlineAlert slots="text"/>
 
@@ -234,7 +234,7 @@ Default extension is vertical. If cell-extension construct is not provided, then
 - *Repeat table columns horizontally*
     - {{subscriptions.name:**cell-extension(horizontal)**}} tag lets the engine know that cells will be extended in horizontal direction.
 
-![image](../images/horizontal-extension1.png)
+![Table gets horizontally extended as table columns are repeated](../images/horizontal-extension1.png)
 
 
 ## Lists
@@ -272,14 +272,14 @@ JSON representation of the input data:
 Dynamically generate a numbered list by placing it inside a repeating
 section.
 
-![image](../images/numbered_list.png)
+![Template tag items are replaced by numbered list](../images/numbered_list.png)
 
 **Bullet Lists**
 
 Dynamically generate a bullet list by placing it inside a repeating
 section.
 
-![image](../images/bullet_list.png)
+![Template tag items are replaced by bullet list](../images/bullet_list.png)
 
 
 
@@ -295,7 +295,7 @@ JSON representation of the input data in case of simple lists:
 
 Dynamically generate a numbered or bullet list by placing it inside a repeating section.
 
-![image](../images/simple_lists.png)
+![Template tag items are replaced by numbered or bullet list](../images/simple_lists.png)
 
 
 ## Conditionals
@@ -327,14 +327,14 @@ JSON representation of the input data:
 
 Show or hide paragraphs based on conditions.
 
-![image](../images/conditional_section.png)
+![Showing an paragraph based on a condition](../images/conditional_section.png)
 
 
 **Conditional Phrases**
 
 Show or hide text inside a paragraph based on conditions.
 
-![image](../images/conditional_phrase.png)
+![Showing a text inside a paragraph based on a condition](../images/conditional_phrase.png)
 
 ## Numerical Calculations
 
@@ -347,8 +347,7 @@ Performing numerical calculations on the input data.
 <https://images-tv.adobe.com/mpcv3/5158/e5e5e7c6-a63c-45cf-8a17-b60291068626_1615916868.854x480at800_h264.mp4#t=3>
 
 
-All calculations supported are [JSONata
-compliant](https://docs.jsonata.org/overview.html).
+All calculations supported are [JSONata compliant](https://docs.jsonata.org/overview.html).
 
 <InlineAlert slots="text"/>
 
@@ -382,7 +381,7 @@ JSON representation of the input data:
 
 Performs simple arithmetic operations.
 
-![image](../images/arithmetic.png)
+![Performing simple arithmetic to show revenue-expenditure](../images/arithmetic.png)
 
 <InlineAlert slots="text"/>
 
@@ -395,7 +394,7 @@ that corresponds to a number.
 
 Performs aggregations on a list of elements.
 
-![image](../images/aggregation.png)
+![Performing simple arithmetic to show aggregation](../images/aggregation.png)
 
 <InlineAlert slots="text"/>
 
