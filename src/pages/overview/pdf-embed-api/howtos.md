@@ -474,7 +474,7 @@ optional.
 </script>
 ```
 
-![Full Window](../images/fullwindow1.png)
+![Image for full window embed mode](../images/fullwindow1.png)
 
 ### Sized container
 
@@ -605,11 +605,11 @@ To use this mode:
 
 Top bar with Close button (default)
 
-![Lightbox Screen](../images/lightboxscreen.png)
+![Image for lightbox embed mode](../images/lightboxscreen.png)
 
 Top bar with Back button (`exitPDFViewerType: "RETURN"`)
 
-![Back Button](../images/backbutton.png)
+![Image for lightbox embed mode with back button](../images/backbutton.png)
 
 ### Focus on PDF rendering
 
