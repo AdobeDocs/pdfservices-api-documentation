@@ -524,7 +524,7 @@ modifying the same file. Note the following:
     file. The user sees a popup with the "Get Latest Version" option
     which will reload the latest version of the file.
 
-![Get Latest Versio message](../images/getlatest.png)
+![Get Latest Version message](../images/getlatest.png)
 <br/>
 
 -   If the Promise returns FILE\_MODIFIED after the current user has
@@ -583,7 +583,7 @@ is automatically enabled so that they can save their information to the
 PDF. The PDF Embed API renders forms so that they appear similar to
 forms viewed in the full Acrobat app:
 
-![Editing text in a form](../images/form1.png)
+![Image for form-filling in full window embed mode](../images/form1.png)
 
 <InlineAlert slots="text" />
 
