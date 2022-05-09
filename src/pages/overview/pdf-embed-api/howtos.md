@@ -451,7 +451,8 @@ optional.
 -   **Right-hand pane**: The right-hand pane is available by default
     to display the comments, page thumbnails, bookmarks and access the file attachments 
     available in the PDF. It also provides various page navigation as well as 
-    page viewing controls.
+    page viewing controls. Page thumbnails and bookmarks are available by default, but can be
+    disabled (`showThumbnails` and `showBookmarks`).
 -   **Page navigation controls**: The page navigation controls 
     are available by default in the 
     right-hand pane. (`showPageNavigationControl`).
@@ -489,9 +490,10 @@ To use this mode:
     to the enclosing `div` tag of the PDF viewer.
 * Pass `embedMode: "SIZED_CONTAINER"`
 * Optional: Configure the page and tool options
+  -   **Page Controls**: The page control toolbar at the bottom contains page navigation options. It is docked by default but can be undocked by setting `dockPageControls` to false.
+      A full screen mode button also appears in this toolbar (`showFullScreen`).
   -   **Print and download**: This mode supports options to download and print the PDF (`showDownloadPDF` and `showPrintPDF`) 
       as well as document search. These options are available in the bottom toolbar.
-  -   **Page controls**: The bottom toolbar contains page navigation options. A full screen mode button also appears in the page control toolbar(`showFullScreen`).
 
 ```html
 <div id="adobe-dc-view" style="height: 360px; width: 500px;"></div>
@@ -584,7 +586,8 @@ To use this mode:
         two-column (`defaultViewMode`). You can choose to view one page or two pages at a time.
     -   **Right-hand pane**: The right-hand pane is available by default
         to display the page thumbnails and also provides various page navigation as well as 
-        page viewing controls.
+        page viewing controls. Page thumbnails and bookmarks are available by default, but can be
+        disabled (`showThumbnails` and `showBookmarks`).
     -   **Exit PDF Viewer**: The top bar contains the Close button by
         default to close the PDF preview which can be configured to Back
         button by setting `exitPDFViewerType` to RETURN
@@ -714,9 +717,11 @@ We recommend that developers use the [viewer.js](https://documentcloud.adobe.com
 
 Developers using the [main.js](https://documentcloud.adobe.com/view-sdk/main.js) script in their websites will continue to see the legacy PDF viewer and all PDF Embed API functionality would be available to them in the legacy viewer.
 
-<InlineAlert slots="text"/>
+Note that the following preview configurations will be deprecated and no longer work when you move to the modern viewer: 
 
-Note that the following preview configurations will be deprecated and no longer work when you move to the modern viewer: `showLeftHandPanel`, `showPageControls` and `dockPageControls`
+* `showLeftHandPanel`: Deprecated in full window embed mode. 
+* `showPageControls`: Deprecated in full window embed mode. 
+* `dockPageControls`: Deprecated in full window and lightbox embed modes. This will work only for sized container embed mode in modern viewer.
 
 For more details about the configurations supported in modern PDF viewer, see the section [Menu and tool options](../howtos_ui.md/#menu-and-tool-options).
 
