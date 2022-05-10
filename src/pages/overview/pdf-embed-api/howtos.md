@@ -4,7 +4,7 @@ The samples and documentation provide an easy way to jump-start
 development. The sections below describe how to embed a customized PDF
 viewer in a web page.
 
-![](../images/workflow.png)
+![PDF Embed API Workflow : User opens your web application which has a script tag containing the PDF Embed API by source URL. PDF Embed API is initialized by passing the API Key, The PDF will now be embedded in your web app and displayed to the user](../images/workflow.png)
 
 ## Embed a PDF viewer
 
@@ -477,7 +477,7 @@ the bottom right-side.
 </script>
 ```
 
-![image](../images/fullwindow1.png)
+![Full Window](../images/fullwindow1.png)
 
 ### Sized container
 
@@ -511,7 +511,7 @@ To use this mode:
 </script>
 ```
 
-![image](../images/sized_new.png)
+![Sized Container](../images/sized_new.png)
 
 #### Toggling full screen
 
@@ -520,7 +520,7 @@ button in the page toolbar. The top bar contains a traditional exit
 (**X**) button which returns full screen mode to normal mode. In mobile
 browsers, you can also exit full screen mode by swiping down.
 
-![image](../images/exit.png)
+![Exit Button and full screen button to toggle between full screen](../images/exit.png)
 
 ### In-Line
 
@@ -556,7 +556,7 @@ To use this mode:
 </script>
 ```
 
-![image](../images/inline_search.png)
+![Inline Search](../images/inline_search.png)
 
 ### Lightbox
 
@@ -600,11 +600,11 @@ To use this mode:
 
 Top bar with Close button (default)
 
-![image](../images/lightboxscreen.png)
+![Lightbox Screen](../images/lightboxscreen.png)
 
 Top bar with Back button (`exitPDFViewerType: "RETURN"`)
 
-![image](../images/backbutton.png)
+![Back Button](../images/backbutton.png)
 
 ### Focus on PDF rendering
 

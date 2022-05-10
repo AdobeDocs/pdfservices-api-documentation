@@ -36,21 +36,21 @@ Once you've logged in to Analytics, do the following:
 1.  In the top menu, go to **Admin > Report Suites**.
 2.  Select your report suite.
 
-![image](../images/aemsuite.png)
+![Selecting Site Title as DC SDK PDF Viewer Metrics in AEM Suite](../images/aemsuite.png)
 <br/>
 
 3.  Navigate to the Report Suite Manager.
 4.  Highlight your report suite.
 5.  Choose **Edit Settings > General > Processing Rules**.
 
-![image](../images/aemeditsettingsmenu.png)
+![Selecting Processing Rules from AEM Edit Settings Menu](../images/aemeditsettingsmenu.png)
 <br/>
 
 6.  Click the **Processing Rules** tab. You'll need to create two rules
     and configure them so that you can map collected events and event
     attributes to Analytics variables.
 
-![image](../images/aemprocessingrules.png)
+![Setting up AEM Processing Rules on event dimensions and events](../images/aemprocessingrules.png)
 
 #### Mapping event attibutes
 
@@ -79,7 +79,7 @@ Map event attributes as follows:
 6.  The left hand columns should remain set to "Overwrite value of".
 7.  Repeat the above steps for each incoming event attribute you track.
 
-![image](../images/aemdimmap.png)
+![AEM Dim Map with dimension variable and incoming event attribute field set](../images/aemdimmap.png)
 
 #### Mapping events
 
@@ -112,14 +112,14 @@ Map events as follows:
 6.  The left hand column should remain set to "Set event".
 7.  Repeat the above steps for each metric (incoming event).
 
-![image](../images/aemsection3.png)
+![AEM Section 3 with event variable and incoming event attribute field set](../images/aemsection3.png)
 
 ### Viewing your data
 
 Set up your reporting as usual, and view the dimensions and metrics in
 your workspace.
 
-![image](../images/aemreport.png)
+![AEM Report with number of page views metric](../images/aemreport.png)
 
 ### Help, support, forum
 

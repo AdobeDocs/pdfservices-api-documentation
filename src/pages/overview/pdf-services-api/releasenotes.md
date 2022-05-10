@@ -19,7 +19,7 @@ repo as follows:
 2.  Select *Releases*.
 3.  Select and download the needed release.
 
-![image](../images/prevrelease.png)
+![Previous Release tags with release notes and links to the assets](../images/prevrelease.png)
 
 ## Migration Guide to PDF Services SDK
 
