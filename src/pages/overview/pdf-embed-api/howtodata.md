@@ -20,10 +20,14 @@ website where you are embedding the PDF Viewer.
 var adobeDCView = new AdobeDC.View({
     clientId: "<YOUR_CLIENT_ID>",
     divId: "adobe-dc-view"
-    reportSuiteId: <YOUR_Adobe_Analytics_REPORT_SUITE ID>,
+    reportSuiteId: "<YOUR_Adobe_Analytics_REPORT_SUITE ID>",
     ...
 })
 ```
+
+Find the code sample for Adobe Analytics integration 
+in PDF Embed API [here](https://www.adobe.com/go/pdfembedapi_samples) under
+`/More Samples/Analytics/Adobe Analytics`.
 
 ### Configure Adobe Analytics
 
@@ -130,9 +134,150 @@ You can also ask questions and get help here:
 -   [Community forum](https://forums.adobe.com/community/experience-cloud/analytics-cloud/analytics)
 -   [Analytics Support](https://helpx.adobe.com/support/analytics.html)
 
+## Google Analytics
+
+If your website is already integrated with Google Analytics, you can collect PDF analytics 
+from PDF Embed API in Google Analytics with a few simple setup steps. 
+
+### Set up the PDF Viewer
+
+Since you want to track user interaction with the PDF viewer, 
+you need to make sure events appear in the correct Google Analytics property. 
+To automatically receive PDF analytics events, pass the **Google Analytics 4 
+measurement ID** when creating the `AdobeDC.View` instance. 
+You must ensure that Google Analytics is instrumented using the same 
+measurement ID for the website where you are embedding the PDF Viewer.
+
+<InlineAlert slots="text" />
+
+PDF analytics can only be collected in Google Analytics 4 property.
+Analytics collection in Universal Analytics is not supported in the
+current implementation.
+
+```javascript
+var adobeDCView = new AdobeDC.View({
+    clientId: "<YOUR_CLIENT_ID>",
+    divId: "adobe-dc-view"
+    measurementId: "<YOUR_GA4_MEASUREMENT ID>",
+    ...
+})
+```
+
+The following PDF analytics will be tracked:
+
+| Event action            | Event description                                                                                                                                                                 | Event data                                                                                                                      |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Load PDF        | On successful opening of PDF.                                                                                                                                                     | File name                                                                                                       |
+| Page View            | Page information on change in page(s) in view                                                                                                                                     | Page number, File name                                                                               |
+| Bookmark Click | On clicking on any bookmark item                                                                                                                                                  | File name                                                                              |
+| Download    | When the PDF is downloaded                                                                                                                                                        | File name
+| Print       | When the PDF is printed                                                                                                                                                           | File name                                                                                  |
+| Hyperlink Open       | On clicking any external hyperlink in the PDF                                                                                                                                     | File name |
+| Text Copy            | On copying any text from a PDF. | File name                                                                            |
+| Search          | When the user searches for any text via the document search field                                                                                                                 | Searched text, file name                                                                        |
+| Change Zoom           | When zoom in/out actions are performed on the PDF toolbar                                                                                                              | Zoom level, File name |
+
+Find the code sample for Google Analytics integration 
+in PDF Embed API [here](https://www.adobe.com/go/pdfembedapi_samples) under
+`/More Samples/Analytics/Google Analytics`.
+
+### Configure Google Analytics
+
+The current release requires a few configuration steps to correctly map 
+PDF Embed API data collected from your PDF viewer to Google Analytics.
+
+### Custom Dimensions
+
+You need to set up some custom dimensions in the Google Analytics 4 property, 
+that will map to the attributes which are part of the event data sent by PDF Embed API.
+
+Once you've logged in to Google Analytics, do the following:
+
+1.  From the top bar, select the Google Analytics 4 property which contains your **measurement ID**.
+2.  Click **Custom definitions** under **Configure** (in the left navigation pane).
+3.  Click **Create custom dimensions**.
+
+![Configure in GA4](../images/ga_create_dimension.png)
+<br/>
+
+4.  Enter Dimension name.
+5.  Set the scope as **Event**.
+6.  Enter a  description for this custom dimension.
+7.  Enter the name of the event attribute sent from PDF Embed API. Custom dimensions need to be created for these event attributes: **filename**, **pageNum**, **searchTerm** and **zoomLevel**.
+8. Click **Save**. 
+(Note: You will see a value of "Not set" for a custom dimension during the first 48 hours. )
+9. You need to set up four custom dimensions, as follows:
+
+  * File Name 
+  * Page Number 
+  * Search Term, and, 
+  * Zoom Level 
+
+10. Map these custom dimensions with the correct event attributes sent from PDF Embed API, as shown in the table below.
+
+| Dimension name | Scope                                                                     |  User property/parameter    |
+| ------ | ------------------------------------------------------------------------------- |  ----------------------------- |
+| File name | Event |                filename                |
+| Page number    | Event        |                                  pageNum  |
+| Search term    | Event         |                                  searchTerm  |
+| Zoom level    | Event         |                                   zoomLevel |
+
+
+
+
+![Configure in GA4](../images/ga_custom_dimension.png)
+<br/>
+
+### Viewing your data in Google Analytics 4
+
+Once you start receiving PDF analytics in Google Analytics 4, 
+set up your reporting as usual and view the dimensions and metrics in your workspace.
+
+**Creating a sample exploration to track page views**
+
+You can set up reports for different dimensions and metrics and view the data. 
+This example below creates a sample exploration to track page views in the PDF. 
+
+1.  Select **Explore** from the left navigation pane and click the plus sign to create a new blank report.
+2.  Select a custom timeline.
+3.  Select **Line Chart** from the Visualisation.
+4.  Drag and drop **Event Name** from Dimensions in Breakdowns.
+5.  Remove Active Count from Values.
+6.  Drag and drop **Event Count** from Metrics in Values.
+7.  Go to Filters and select **Event Name**.
+8.  Select match type 'contains' and enter 'Page View' in expression. 
+9.  Click Apply. 
+
+![View sample exploration in GA4](../images/ga_page_view_2.png)
+
+<InlineAlert slots="text" />
+
+If your website subscribes to both Adobe Analytics and Google Analytics, 
+then analytics will be collected only in Adobe Analytics and no PDF analytics 
+data would be sent to Google Analytics. 
+
+## Control analytics collection
+
+If your website is already integrated with analytics tools, such as, Adobe Analytics or Google Analytics, 
+then you can collect PDF analytics with few additional setup steps. 
+To know more about the setup steps, see the sections [Adobe Analytics](./howtodata.md#adobe-analytics) and [Google Analytics](./howtodata.md#google-analytics).
+
+The `sendAutoPDFAnalytics` configuration controls the PDF analytics collection in these tools. 
+The default value of `sendAutoPDFAnalytics` is *true*. 
+Set this configuration to *false* if you would like to disable PDF analytics collection. 
+
+```javascript
+var adobeDCView = new AdobeDC.View({
+    clientId: "<YOUR_CLIENT_ID>",
+    divId: "adobe-dc-view"
+    sendAutoPDFAnalytics: false,
+    ...
+})
+```
+
 ## Default analytics
 
-If you are not subscribed to Adobe Analytics, you can still collect PDF
+If you are not subscribed to Adobe Analytics or Google Analytics, you can still collect PDF
 analytics events as users interact with PDFs. You enable PDF analytics
 events by registering a callback with the API to listen the events.
 Tracking PDF events provides insight into user actions and thereby helps
@@ -223,7 +368,7 @@ adobeDCView.registerCallback(
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | PREVIEW_KEY_DOWN            | Any keyboard key is pressed over any PDF page.                                                                                                                                                                                                                                                                                                                | `{ altKey: <BOOLEAN>, code: <KEY_VALUE>, composed: <BOOLEAN>, ctrlKey: <BOOLEAN>, key: <KEYBOARD_CHARACTER>, keyCode: <KEY_CODE>, location: <LOCATION>, metaKey: <BOOLEAN>, shiftKey: <BOOLEAN>, type: “keydown” }`                                                                                                             |
 | PREVIEW_PAGE_VIEW_SCROLLED | The PDF page is scrolled.                                                                                                                                                                                                                                                                                                                                     | `{ clientHeight: <CLIENT_HEIGHT>, clientWidth: <CLIENT_WIDTH>, scrollHeight: <SCROLL_HEIGHT>, scrollWidth: <SCROLL_WIDTH>, scrollLeft: <SCROLL_LEFT>, scrollTop: <SCROLL_TOP> }`                                                                                                                                             |
-| PREVIEW_DOCUMENT_CLICK      | A user clicks on the area in the webpage which is outside the PDF preview (excluding the top bar and left hand panel).                                                                                                                                                                                                                                        | `{ clientX: <CLIENT_WIDTH>, clientY: <CLIENT_HEIGHT>, pageX: <PAGE_WIDTH>, pageY: <PAGE_HEIGHT>, screenX: <SCREEN_WIDTH>, screenY: <SCREEN_HEIGHT> }`                                                                                                                                                                        |
+| PREVIEW_DOCUMENT_CLICK      | A user clicks on the area in the webpage which is outside the PDF preview (excluding the top bar and right-hand panel).                                                                                                                                                                                                                                        | `{ clientX: <CLIENT_WIDTH>, clientY: <CLIENT_HEIGHT>, pageX: <PAGE_WIDTH>, pageY: <PAGE_HEIGHT>, screenX: <SCREEN_WIDTH>, screenY: <SCREEN_HEIGHT> }`                                                                                                                                                                        |
 | PREVIEW_PAGE_CLICK          | A user clicks on any PDF page.                                                                                                                                                                                                                                                                                                                                | `{ pageNumber: <PAGE_NUMBER> }`                                                                                                                                                                                                                                                                                                   |
 | PREVIEW_PAGE_DOUBLE_CLICK  | A user double-clicks on any PDF page.                                                                                                                                                                                                                                                                                                                         | `{ pageNumber: <PAGE_NUMBER> }`                                                                                                                                                                                                                                                                                                   |
 | PREVIEW_PAGE_MOUSE_ENTER   | The mouse pointer enters any PDF page.                                                                                                                                                                                                                                                                                                                        | `{ pageNumber: <PAGE_NUMBER> }`                                                                                                                                                                                                                                                                                                   |
@@ -263,8 +408,6 @@ const eventOptions = {
 
 *List of annotation events*
 
-| Event type                | Event description                                                                                               | Event data                |
-| ------------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------- |
 | ANNOTATION_ADDED         | A new annotation is added to PDF.                                                                               | <ANNOTATION_TYPE>        |
 | ANNOTATION_CLICKED       | An existing annotation is clicked.                                                                              | <ANNOTATION_TYPE>        |
 | ANNOTATION_UPDATED       | An existing annotation is updated.                                                                              | <ANNOTATION_TYPE>        |

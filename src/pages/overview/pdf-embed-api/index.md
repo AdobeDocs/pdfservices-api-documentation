@@ -98,7 +98,7 @@ sample.
 
 ## Supported browsers
 
-PDF Embed API is supported on the latest versions of all modern
+PDF Embed API is supported on the latest versions of the following 
 browsers.
 
 -   Windows - Microsoft Edge, Google Chrome, Mozilla Firefox.
