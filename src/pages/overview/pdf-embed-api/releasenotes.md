@@ -5,6 +5,12 @@ the changes below for each release.
 
 ## Change history
 
+### May, 2022
+
+| Change | Description                                                            |
+| ------ | ---------------------------------------------------------------------- |
+| New    | Website developers can now integrate Google Analytics with PDF Embed API with only a few steps and collect PDF analytics. For more details, see the section [Google Analytics](./howtodata.md#google-analytics).                         |
+
 ### August, 2021 (Patch Release)
 | Change  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
