@@ -153,7 +153,7 @@ details such as first name, last name, and email address. By default, if
 you do not register a user profile callback, the user name is displayed
 as "Guest" in the comments pane.
 
-![User being referred to as gues](../images/userprofile_new.png)
+![User being referred to as guest](../images/userprofile_new.png)
 
 When the callback is registered, user annotations are associated with
 the corresponding username.
