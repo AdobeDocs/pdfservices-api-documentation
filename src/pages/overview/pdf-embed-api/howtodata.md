@@ -213,7 +213,7 @@ Once you've logged in to Google Analytics, do the following:
   * Search Term, and, 
   * Zoom Level 
 
-10. Map these custom dimensions with the correct event attributes sent from PDF Embed API, as shown in the table below.
+10. Map these custom dimensions with the correct event attributes sent from PDF Embed API, as shown in the table below:
 
 | Dimension name | Scope                                                                     |  User property/parameter    |
 | ------ | ------------------------------------------------------------------------------- |  ----------------------------- |
