@@ -163,7 +163,7 @@ var adobeDCView = new AdobeDC.View({
 })
 ```
 
-The following PDF analytics will be tracked:
+*Following PDF analytics will be tracked:*
 
 | Event action            | Event description                                                                                                                                                                 | Event data                                                                                                                      |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
@@ -408,6 +408,8 @@ const eventOptions = {
 
 *List of annotation events*
 
+| Event type  | Event description | Event data  |
+| ------ | -----------------------  | ----------------------------------------------- |
 | ANNOTATION_ADDED         | A new annotation is added to PDF.                                                                               | <ANNOTATION_TYPE>        |
 | ANNOTATION_CLICKED       | An existing annotation is clicked.                                                                              | <ANNOTATION_TYPE>        |
 | ANNOTATION_UPDATED       | An existing annotation is updated.                                                                              | <ANNOTATION_TYPE>        |
