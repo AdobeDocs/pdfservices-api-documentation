@@ -82,10 +82,6 @@ The PDF Embed API provides ready-to-run sample files for every feature.
 
 If a PDF renders in the web viewer, the sample has correctly executed.
 
-<InlineAlert slots="text"/>
-
-You do not need a client ID to run the samples locally.
-
 ## Live demo
 
 The [Adobe PDF Embed API
