@@ -25,8 +25,6 @@ var adobeDCView = new AdobeDC.View({
 })
 ```
 
-<InlineAlert slots="text" />
-
 Find the code sample for Adobe Analytics integration 
 in PDF Embed API [here](https://www.adobe.com/go/pdfembedapi_samples) under
 `/More Samples/Analytics/Adobe Analytics`.
@@ -156,7 +154,6 @@ PDF analytics can only be collected in Google Analytics 4 property.
 Analytics collection in Universal Analytics is not supported in the
 current implementation.
 
-
 ```javascript
 var adobeDCView = new AdobeDC.View({
     clientId: "<YOUR_CLIENT_ID>",
@@ -166,13 +163,7 @@ var adobeDCView = new AdobeDC.View({
 })
 ```
 
-<InlineAlert slots="text" />
-
-Find the code sample for Google Analytics integration 
-in PDF Embed API [here](https://www.adobe.com/go/pdfembedapi_samples) under
-`/More Samples/Analytics/Google Analytics`.
-
-The following PDF analytics will be tracked:
+*Following PDF analytics will be tracked:*
 
 | Event action            | Event description                                                                                                                                                                 | Event data                                                                                                                      |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
@@ -187,6 +178,9 @@ The following PDF analytics will be tracked:
 | Change Zoom           | When zoom in/out actions are performed on the PDF toolbar                                                                                                              | Zoom level, File name |
 
 
+Find the code sample for Google Analytics integration 
+in PDF Embed API [here](https://www.adobe.com/go/pdfembedapi_samples) under
+`/More Samples/Analytics/Google Analytics`.
 
 ### Configure Google Analytics
 
@@ -195,55 +189,51 @@ PDF Embed API data collected from your PDF viewer to Google Analytics.
 
 ### Custom Dimensions
 
-You need to set up some custom dimensions in Google Analytics 4, 
-that will map to the event attributes sent by PDF Embed API.
+You need to set up some custom dimensions in the Google Analytics 4 property, 
+that will map to the attributes which are part of the event data sent by PDF Embed API.
 
 Once you've logged in to Google Analytics, do the following:
 
-1.  Select the Google Analytics 4 property from the top bar.
-2.  Click **Custom definitions** under **Configure** (in the left navigation pane). 
-
-<InlineAlert slots="text"/>
-
-Screenshot TBD..
-
+1.  From the top bar, select the Google Analytics 4 property which contains your **measurement ID**.
+2.  Click **Custom definitions** under **Configure** (in the left navigation pane).
 3.  Click **Create custom dimensions**.
 
-<InlineAlert slots="text"/>
-
-Screenshot TBD..
+![Configure in GA4](../images/ga_create_dimension.png)
+<br/>
 
 4.  Enter Dimension name.
 5.  Set the scope as **Event**.
 6.  Enter a  description for this custom dimension.
 7.  Enter the name of the event attribute sent from PDF Embed API. Custom dimensions need to be created for these event attributes: **filename**, **pageNum**, **searchTerm** and **zoomLevel**.
 8. Click Save. 
+(Note: You will see a value of "Not set" for a custom dimension during the first 48 hours. )
 
-Note: You will see a value of "not set" for a custom dimension during the first 48 hours. 
+9. You need to set up four custom dimensions, as follows:
+
+  * File Name 
+  * Page Number 
+  * Search Term, and, 
+  * Zoom Level 
+
+10. Map these custom dimensions with the correct event attributes sent from PDF Embed API, as shown in the table below:
+
+| Dimension name | Scope                                                                     |  User property/parameter    |
+| ------ | ------------------------------------------------------------------------------- |  ----------------------------- |
+| File name | Event |                filename                |
+| Page number    | Event        |                                  pageNum  |
+| Search term    | Event         |                                  searchTerm  |
+| Zoom level    | Event         |                                   zoomLevel |
 
 
 
-You need to set up four custom dimensions, as follows: 
 
-* File Name 
-* Page Number 
-* Search Term, and, 
-* Zoom Level 
-
-Map these custom dimensions with the correct event attributes sent from PDF Embed API, as shown in the screenshot below. 
-
-<InlineAlert slots="text"/>
-
-Screenshot TBD..
+![Configure in GA4](../images/ga_custom_dimension.png)
+<br/>
 
 ### Viewing your data in Google Analytics 4
 
 Once you start receiving PDF analytics in Google Analytics 4, 
 set up your reporting as usual and view the dimensions and metrics in your workspace. 
-
-<InlineAlert slots="text"/>
-
-Screenshot TBD..
 
 **Creating a sample exploration to track page views**
 
@@ -260,9 +250,7 @@ This example below creates a sample exploration to track page views in the PDF.
 8.  Select match type 'contains' and enter 'Page View' in expression. 
 9.  Click Apply. 
 
-<InlineAlert slots="text"/>
-
-Screenshot TBD..
+![View sample exploration in GA4](../images/ga_page_view_2.png)
 
 <InlineAlert slots="text" />
 
@@ -291,7 +279,7 @@ var adobeDCView = new AdobeDC.View({
 
 ## Default analytics
 
-If you are not subscribed to Adobe Analytics, you can still collect PDF
+If you are not subscribed to Adobe Analytics or Google Analytics, you can still collect PDF
 analytics events as users interact with PDFs. You enable PDF analytics
 events by registering a callback with the API to listen the events.
 Tracking PDF events provides insight into user actions and thereby helps
@@ -422,8 +410,8 @@ const eventOptions = {
 
 *List of annotation events*
 
-| Event type                | Event description                                                                                               | Event data                |
-| ------------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------- |
+| Event type  | Event description | Event data  |
+| ------ | -----------------------  | ----------------------------------------------- |
 | ANNOTATION_ADDED         | A new annotation is added to PDF.                                                                               | <ANNOTATION_TYPE>        |
 | ANNOTATION_CLICKED       | An existing annotation is clicked.                                                                              | <ANNOTATION_TYPE>        |
 | ANNOTATION_UPDATED       | An existing annotation is updated.                                                                              | <ANNOTATION_TYPE>        |

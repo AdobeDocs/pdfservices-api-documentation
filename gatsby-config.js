@@ -53,7 +53,7 @@ module.exports = {
             path: '../document-services/apis/sign-api/'
           },
           {
-            title: 'Microsoft PA Integration',
+            title: 'Power Automate Connector',
             description: 'Build workflows on Microsoft Power Platform easily',
             path: '../document-services/apis/microsoft-pa-integration/'
           }

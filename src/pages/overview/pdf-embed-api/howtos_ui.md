@@ -1215,9 +1215,7 @@ Find the working code sample
 
 <hr />
 
-### Other APIs
-
-#### getPDFMetadata
+### getPDFMetadata
 
 This API returns basic information about the PDF fetched from the PDF
 dictionary; for example, the PDF's number of pages and title.
@@ -1247,7 +1245,7 @@ previewFilePromise.then(adobeViewer => {
 
 <hr />
 
-#### getXMPMetadata
+### getXMPMetadata
 
 XMP (Extensible Metadata Platform) is a technology developed by Adobe
 which provides a common XML framework to store metadata in digital
@@ -1293,7 +1291,7 @@ previewFilePromise.then(adobeViewer => {
 
 <hr />
 
-#### getSelectedContent
+### getSelectedContent
 
 If a user selects any content in the viewer, then the selected content
 can be fetched using this API. This API currently only works with text
@@ -1325,7 +1323,7 @@ previewFilePromise.then(adobeViewer => {
 
 <hr />
 
-#### setCursor
+### setCursor
 
 This API sets the page cursor to any cursor style, such as help, wait,
 crosshair, etc.
@@ -1354,7 +1352,7 @@ previewFilePromise.then(adobeViewer => {
 
 <hr />
 
-#### resetCursor
+### resetCursor
 
 This API revokes an applied cursor style and reverts it to the default
 cursor style.
@@ -1380,7 +1378,7 @@ previewFilePromise.then(adobeViewer => {
 
 <hr />
 
-#### getCurrentPage
+### getCurrentPage
 
 This API returns the current page number of the in focus page.
 
@@ -1409,7 +1407,7 @@ previewFilePromise.then(adobeViewer => {
 
 <hr />
 
-#### getPageZoom
+### getPageZoom
 
 This API takes the PDF page number as input and returns the zoom level
 of that page.
@@ -1440,7 +1438,7 @@ previewFilePromise.then(adobeViewer => {
 
 <hr />
 
-#### gotoLocation
+### gotoLocation
 
 This API enables navigation to any PDF page. It accepts a page number as
 input. You can also pass the x and y coordinates on the page as optional
@@ -1481,7 +1479,7 @@ previewFilePromise.then(adobeViewer => {
 
 <hr />
 
-#### clearPageSelection
+### clearPageSelection
 
 This API accepts a page number as input and clears any text selection
 applied to the page.
@@ -1512,7 +1510,7 @@ adobeViewer.getAPIs().then(apis => {
 
 <hr />
 
-#### enableTextSelection
+### enableTextSelection
 
 This API controls text selection in PDF. The default is enabled
 (*true*). Note that disabling text selection also disables the highlight
