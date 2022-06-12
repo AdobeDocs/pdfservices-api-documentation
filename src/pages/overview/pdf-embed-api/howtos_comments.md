@@ -8,10 +8,6 @@ tool which can be used to erase parts of drawing annotations. In
 addition to these, there are undo and redo tools available in the top
 bar.
 
-<InlineAlert slots="text"/>
-
-Screenshots TBD..
-
 ![Annotation Tools like save button, adding sticky notes, text formatting menu and popover menu](../images/annotstoolsoverview.png)
 
 ![Comment Pane with features to add comments, reply to a comment, add a note with comment and delete comments](../images/commentpane.png)
@@ -59,12 +55,6 @@ functionality:
 -   Once saved, the annotation is added to the PDF and becomes part of
     the PDF buffer.
 
-<InlineAlert slots="text"/>
-
-Screenshots TBD..
-
-![Viewer UI with undo and redo button and annotation tools](../images/viewerui1.png)
-
 ### Add text comments
 
 Users can add freehand text anywhere on a PDF page as follows: Select
@@ -89,10 +79,6 @@ comments panel. Features include:
     existing text comment and move the text to a different
     location on the same PDF page. You can also drag one of the corner
     circles of the text box to resize.
-
-<InlineAlert slots="text"/>
-
-Screenshots TBD..
 
 ![Add Text Menu with option to style font and delete](../images/addtext_menu.png)
 
@@ -121,20 +107,12 @@ PDF. There is no support for resizing. Features include:
 -   Moving a sticky note: Place the cursor over an existing sticky note
     and drag to move it to some other location.
 
-<InlineAlert slots="text"/>
-
-Screenshots TBD..
-
-![Sticky Note with option to change colour and delete](../images/stickynote1.png)
+![Sticky Note with option to change color and delete](../images/stickynote1.png)
 
 ### Text markup annotations
 
 Embed API supports the following text markup annotation types - highlight, strikethrough, and
 underline. Features include:
-
-<InlineAlert slots="text"/>
-
-Screenshots TBD..
 
 ![Text Selection with strikethrough](../images/textselectiontool.png)
 <br/>
@@ -147,10 +125,6 @@ Screenshots TBD..
     -   Select some text. Select the highlight text option from the context menu. The markup is added and
         a comment box opens up where you can type in some text.
 
-<InlineAlert slots="text"/>
-
-Screenshots TBD..
-
 ![Context Menu with text styling options available](../images/contextmenu.png)
 <br/>
 
@@ -161,11 +135,7 @@ Screenshots TBD..
     -   You can edit the comment by clicking on the Edit option in the
         overflow menu in the comments panel.
 
-<InlineAlert slots="text"/>
-
-Screenshots TBD..
-
-![Highlight Menu with option to change colour and delete](../images/highlight_menu.png)
+![Highlight Menu with option to change color and delete](../images/highlight_menu.png)
 <br/>
 
 -   Removing a text markup
@@ -202,11 +172,7 @@ Use this tool to create any freehand drawing or shape. Features include:
     -   Place the cursor over a drawing and drag one of the corner
         circles to resize the annotation.
 
-<InlineAlert slots="text"/>
-
-Screenshots TBD..
-
-![Drawing Menu with option to change colour of marker and delete](../images/drawing_menu.png)
+![Drawing Menu with option to change color of marker and delete](../images/drawing_menu.png)
 
 ### Eraser tool
 
@@ -223,10 +189,6 @@ annotation is saved to the PDF.
 -   If the entire drawing is erased, then that particular drawing 
     gets removed from the PDF.
 
-<InlineAlert slots="text"/>
-
-Screenshots TBD..
-
 ![Eraser to erase drawing](../images/eraser.png)
 
 ### Undo or Redo changes
@@ -237,10 +199,6 @@ remove as many of the previous actions as necessary.
 
 Use the Redo tool to reverse the action of the undo command.
 
-<InlineAlert slots="text"/>
-
-Screenshots TBD..
-
 ![Undo Redo button on top right toolbar](../images/undo_redo.png)
 
 ### Select text
@@ -249,9 +207,7 @@ There are a couple of select text options available in the quick tools menu.
 Choose **Select** option to select some text in the document 
 and **Pan** option to drag and pan the entire document.
 
-<InlineAlert slots="text"/>
-
-Screenshots TBD..
+![Select and pan option](../images/select_pan.png)
 
 ## Annotations API overview
 
@@ -747,7 +703,7 @@ previewFilePromise.then(adobeViewer => {
 
 This API updates a single existing annotation in the PDF, including the
 parameter `bodyValue`, parameters `font` and `color` under `stylesheet`,
-as well as other parameters under `selector` such as, `strokeColor`,
+as well as other parameters under `selector` such as `strokeColor`,
 `strokeWidth`, `boundingBox` and `inkList`.
 
 This API takes the annotation data containing the updated parameters,

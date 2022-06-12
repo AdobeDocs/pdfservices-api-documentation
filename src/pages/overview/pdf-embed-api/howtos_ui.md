@@ -20,18 +20,19 @@ controls for:
 
 ## Menu and tool options
 
-You can control various options provided by PDF Embed API. The `previewFile` function reads the
-variable values and toggles features on and off accordingly. As usual
-with Javascript, there's more than one way to accomplish the task. In
-example 1, you can create an object that stores the variables.
-Alternatively, `previewFile` could read the variables directly from a
-list within the function.
+You can control various options provided by PDF Embed API and
+customize the PDF viewer as per your requirements.
 
-In both examples below, the download PDF option is disabled from the
-overflow menu in the top bar with `showDownloadPDF` set to *false*. The
+Initialize the `AdobeDC.View` object with your client ID and
+then invoke the `previewFile` API on `AdobeDC.View` object.
+The `previewFile` API reads the variable values and toggles 
+features on and off accordingly.
+
+In the example below, the embed mode is set as `FULL_WINDOW` and the download PDF option is disabled from the
+overflow menu in the top bar in full window embed mode with `showDownloadPDF` set to *false*. The
 page navigation controls are disabled with `showPageNavigationControl` set to *false*.
 
-**Example 1: UI options stored in a constant**
+**Example**
 
 ```html
 <div id="adobe-dc-view"></div>
@@ -39,6 +40,7 @@ page navigation controls are disabled with `showPageNavigationControl` set to *f
 <script type="text/javascript">
 // Store the UI options in a constant
 const previewConfig = {
+   embedMode: "FULL_WINDOW",
    showDownloadPDF: false,
    showPageNavigationControl: false
 }
@@ -54,39 +56,46 @@ document.addEventListener("adobe_dc_view_sdk.ready", function () {
 </script>
 ```
 
-**Example 2: UI options passed to previewFile**
+**Configuration options for AdobeDC.View object**
 
-```html
-<div id="adobe-dc-view"></div>
-<script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
-<script type="text/javascript">
-  document.addEventListener("adobe_dc_view_sdk.ready", function () {
-     var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
-        adobeDCView.previewFile({
-           content:{location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
-           metaData:{fileName: "Bodea Brochure.pdf"}
-        }, {showDownloadPDF: false, showPageNavigationControl: false});
-  });
-</script\>
-```
+This table lists down the various configurations which can be passed while initializing the `AdobeDC.View` object.
+<br/>
 
-**Menu and tool options**
+| Variable | Default | Description |
+| -------- | ------- | ----------- |
+| clientId | None | You'll need a client ID to use the Adobe PDF Embed API. To get one, [click HERE]( https://documentcloud.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-embed-api).|
+| divId | "adobe-dc-view" | The div ID where your PDF will render. |
+| locale | "en-US" | You can select another language by passing the locale code variable. For more details, see the section [Language support](../howtos/#language-support). |
+| reportSuiteId | None | Pass the report suite ID to collect PDF analytics in Adobe Analytics. For more details, see the section [Adobe analytics](../howtodata/#adobe-analytics). |
+| measurementId | None | Pass the measurement ID to collect PDF analytics in Google Analytics. For more details, see the section [Google Analytics](../howtodata/#google-analytics). |
+| sendAutoPDFAnalytics | *true* | Use this configuration to disable PDF analytics collection in Adobe Analytics or Google Analytics. For more details, see the section [Control analytics collection](../howtodata/#control-analytics-collection). |
+
+
+**Configuration options for previewFile API**
+
+This table lists down the various preview configurations which can be passed to the `previewFile` API to customize the PDF viewer.
+<br/>
 
 | Variable            | Default | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | ------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| showPageNavigationControl    | true    | Set this to false to hide the page navigation options in the right-hand pane. This configuration will work for full window and lightbox embed modes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| showZoomControl    | true    | Set this to false to hide the zoom-ina nd zoom-out options available in the right0hand pane. This configuration will work for full window and lightbox embed modes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| showAnnotationTools | true    | If true, tools such as add text, sticky note, highlight, and so on appear in the upper toolbar. For more details, see [Comments and Markup](./howtos_comments.md).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| dockPageControls         | true                                                                               | By default, the page control toolbar is locked to the bottom bar and expands to the page width in sized container embed mode. Set this variable to false to undock the page control toolbar.   |
-| showFullScreen   | true    | By default, the full screen toggle appears in the bottom toolbar in sized container embed mode. Set this to false to hide the full screen toggle.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| defaultViewMode     | null    | This variable takes a string value of FIT\_WIDTH, FIT\_PAGE or TWO\_COLUMN. FIT\_WIDTH expands the page horizontally to the full width of the document pane. FIT\_PAGE displays the entire page in the current view pane. TWO\_COLUMN displays two pages side by side in the current view pane. Note that end users can toggle the mode via the Fit Width, Fit Page or Two-Column button on the right-hand pane. |
-| enableFormFilling   | true    | If true, form filling is enabled and users can edit fields.            Form-filling is available only in full window embed mode.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| showDownloadPDF     | true    | If true, a download button appears in the overflow menu on the top bar.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| showPrintPDF        | true    | If true, then a print PDF option appears in the overflow menu on the top bar. |
-|  exitPDFViewerType    |  "CLOSE"  |  The top bar in lightbox embed mode contains the close button by default to close the PDF preview which can be configured to Back button by setting exitPDFViewerType to "RETURN".   |
-| showThumbnails         | true                                                                               |   Page thumbnails are available by default in full window and lightbox embed modes. Set this to false if you want to hide the thumbnails from the right-hand pane.      |
-| showBookmarks         | true                                                                               |    PDF bookmarks are available by default in full window and lightbox embed modes. Set this to false if you want to hide the bookmarks from the right-hand pane. 
-
+| showPageNavigationControl    | *true*    | Set this to *false* to hide the page navigation options in the right-hand panel. This configuration will work for full window and lightbox embed modes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| showZoomControl    | *true*    | Set this to *false* to hide the zoom-in and zoom-out options available in the right-hand panel. This configuration will work for full window and lightbox embed modes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| showAnnotationTools | *true*    | If *true*, tools such as add text, sticky note, highlight, and so on appear in the quick tools menu on the left-hand side in full window embed mode. For more details, see [Comments and Markup](./howtos_comments.md).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| dockPageControls         | *true*                                                                               | By default, the page control toolbar is locked to the bottom bar and expands to the page width in sized container embed mode. Set this variable to *false* to undock the page control toolbar.   |
+| showFullScreen   | *true*    | By default, the full screen toggle appears in the bottom toolbar in sized container embed mode. Set this to *false* to hide the full screen toggle.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| defaultViewMode     | ""    | This variable takes a string value of FIT\_WIDTH, FIT\_PAGE, TWO\_COLUMN or TWO\_COLUMN\_FIT\_PAGE. **FIT\_WIDTH**: Expands the page horizontally to the full width of the document pane. **FIT\_PAGE**: Displays the entire page in the current view pane. **TWO\_COLUMN**: Displays two pages of the PDF side by side in the current view pane. **TWO\_COLUMN\_FIT\_PAGE**: Displays two pages of the PDF side by side where the entire two pages are displayed in the current view pane. Note that end users can also toggle the view mode via the Fit Width, Fit Page or Two-Column button on the right-hand panel. In addition to these, there are two other view modes which are supported only in mobile browsers - **CONTINUOUS**: This mode displays all the document pages one after the other and users can easily navigate through the pages by scrolling up or down, **SINGLE\_PAGE**: This mode displays only a single document page at a time and doesn’t show any adjoining page. Users can use the swipe gesture to navigate to other pages which will be displayed one at a time. |
+| enableFormFilling   | *true*    | If *true*, form filling is enabled and users can edit fields in full window embed mode.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| showDownloadPDF     | *true*    | If *true*, PDF can be downloaded in all embed modes. Set this to *false*  to disable PDF download.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| showPrintPDF        | *true*    | If true, PDF can be printed in all embed modes. Set this to *false* to disable PDF printing. |
+|  exitPDFViewerType    |  "CLOSE"  |  The top bar in lightbox embed mode contains the close button by default to close the PDF preview which can be configured to Back button by setting `exitPDFViewerType` to "RETURN".   |
+| showThumbnails         | *true*                                                                           |   Page thumbnails are available by default in full window and lightbox embed modes. Set this to *false* if you want to hide the thumbnails from the right-hand panel.      |
+| showBookmarks         | *true*                                                                               |    PDF bookmarks are available by default in full window and lightbox embed modes. Set this to *false* if you want to hide the bookmarks from the right-hand panel. |
+| enableLinearization | *false* | Set this to *true* to enable PDF linearization. For more details, see the section [PDF linearization](../howtos.md#pdf-linearization). |
+| enableAnnotationAPIs| *false* | Set this to *true* to add, update and delete PDF annotations programmatically in full window embed mode. For more details, see the section [Annotations API overview](../howtos_comments/#annotations-api-overview). |
+| includePDFAnnotations | *false* | This configuration is used with `enableAnnotationAPIs` to access existing PDF annotations. For more details, see the section [Annotations API overview](../howtos_comments/#annotations-api-overview). |
+| enableSearchAPIs | *false* | Set this to *true* to perform search operation in the PDF programmatically. For more details, see the section [Search APIs](../howtos_ui/#search-apis).|
+| showDisabledSaveButton | *false* | Set this to *true* to show the save button in disabled state even when there are no changes to be saved to the PDF. |
+| focusOnRendering | Varies according to embed mode | With this configuration, website developers have the flexibility to control if the PDF should take focus when it is rendered. For more details, see the section [Focus on PDF rendering](../howtos/#focus-on-pdf-rendering).|
 
 ## Annotations
 
@@ -186,8 +195,8 @@ adobeDCView.registerCallback(
 
 ## User settings
 
-Users can update the colour of an annotation by clicking on the PDF
-annotation and changing the colour from the toolbar. The updated colour
+Users can update the color of an annotation by clicking on the PDF
+annotation and changing the color from the toolbar. The updated color
 is applied to all new annotations of that type added to the PDF. Also,
 when any annotation tool is selected for the first
 time, there is a coach mark displayed to educate users about the
@@ -196,15 +205,15 @@ annotation tool which goes away after a few seconds.
 <InlineAlert slots="text" />
 
 Previously, the default implementation of these user preferences was
-that the browser used to remember the updated annotation colour and
+that the browser used to remember the updated annotation color and
 also whether the coach mark for a selected annotation tool has been
 displayed or not. This was achieved by storing this data in the local
 storage of the PDF Embed API domain. This is now deprecated and PDF
 Embed API does not store this data.
 
 By default, these preferences are lost when the PDF reloads. As a
-result, the updated annotation colour is not remembered (default
-annotation colour will be applied in this case) and users will see
+result, the updated annotation color is not remembered (default
+annotation color will be applied in this case) and users will see
 annotation tool coach marks again when the PDF reloads.
 
 Website developers can improve this experience by registering the user
@@ -256,7 +265,7 @@ Find the working code sample
 `/More Samples/Save User Preferences/`. In this code sample, the user
 setting callbacks are used to save the user preferences in the local
 storage of the website domain. Using this implementation, the browser
-remembers the updated annotation colour and also shows the coach mark
+remembers the updated annotation color and also shows the coach mark
 only once for every annotation tool in the current browser.
 
 This is only an example and it is up to the website developer how they
@@ -280,7 +289,7 @@ button are hidden for such files.
 Note that while the Save button is hidden by default, you can show the
 button even when there are no changes to save by setting
 `showDisabledSaveButton` to *true* and passing it as a preview
-configuration to the previewFile API. In this case, the save button
+configuration to the `previewFile` API. In this case, the save button
 appears in disabled state until the PDF is modified.
 
 ```javascript
@@ -330,7 +339,7 @@ options:
     never displayed and save operation will be done through auto-save or
     through the keyboard by pressing Ctrl+S.
 
-The second callback parameter is a Javascript function returning a
+The second callback parameter is a JavaScript function returning a
 Promise which either resolves or fails with a response object containing
 code and data. The function parameters include:
 
@@ -506,7 +515,7 @@ adobeDCView.registerCallback(
 );
 ```
 
-The second parameter of the callback is a Javascript function returning
+The second parameter of the callback is a JavaScript function returning
 a Promise which either resolves or fails with a response object
 containing a code and data. `metaData` is the only function parameter,
 and it refers to the file information. The response code in the Promise
@@ -574,65 +583,6 @@ const statusOptions = {
        statusOptions
     );
 ```
-    
-## Forms handling
-
-
-The PDF Embed API supports live form editing by default. End users can
-add and edit text in text fields and interact with other form objects,
-including radio buttons, check boxes, lists, and drop downs (select
-lists). When users fill any form field, the Save button on the top bar
-is automatically enabled so that they can save their information to the
-PDF. The PDF Embed API renders forms so that they appear similar to
-forms viewed in the full Acrobat app:
-
-![Image for form-filling in full window embed mode](../images/form1.png)
-
-<InlineAlert slots="text" />
-
-Form editing capability is supported only in Full Window embed mode.
-
-Control form editing capability by simply toggling `enableFormFilling`
-on and off as needed. While the Embed API enables form editing by
-default, you can disable the feature by setting it to *false*.
-
-```html
-<div id="adobe-dc-view"></div>
-<script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
-<script type="text/javascript">
-   document.addEventListener("adobe_dc_view_sdk.ready", function () {
-      var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
-      adobeDCView.previewFile({
-         content:{location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
-         metaData:{fileName: "Bodea Brochure.pdf"}
-      }, {enableFormFilling: false, dockPageControls: false});
-   });
-</script>
-```
-
-Disabling form editing un-highlights form fields:
-
-![Disabling form editing](../images/form2.png)
-
-### Unsupported form fields
-
-In the current version, following form fields are unsupported:
-
--   XFA forms
--   Digital Signature fields.
--   Barcode fields.
--   File picker text field
--   RTF (rich text) text field
--   Fields containing JavaScript or any kind of calculation and
-    validation
--   Text field and drop downs with some special and custom formats
--   PDF Actions that includes button Submit scenarios (only button
-    viewing is supported)
-
-When the API detects unsuppported form fields, a dialog appears on the
-rendered PDF:
-
-![No Support for Form Fields message](../images/formnosupport.png)
 
 ## Viewer API
 
@@ -896,7 +846,7 @@ Users can register a callback function and pass as an input to the
 every time a search operation takes place through the search API and the
 search result is highlighted in the PDF. The callback function will
 receive important information about the current search result in the
-form of a JSON. The JSON will include information such as, current page
+form of a JSON. The JSON will include information such as current page
 number, current search result index, total number of search results and
 status.
 
@@ -1057,7 +1007,7 @@ only the Full Window embed mode supports these APIs.
 
 This API returns the list of existing PDF bookmarks Each bookmark item
 in this list is represented as a JSON containing important information
-such as, ID, title and the list of nested bookmarks residing under this
+such as ID, title and the list of nested bookmarks residing under this
 bookmark.
 
 ```javascript
@@ -1139,7 +1089,7 @@ These APIs access the existing attachments in the PDF programmatically.
 
 This API returns the list of existing attachments in the PDF. Each
 attachment item in this list is represented as a JSON containing
-important information such as, name, mime type, description, creation
+important information such as name, mime type, description, creation
 date and modified date.
 
 ```javascript
@@ -1161,7 +1111,7 @@ N/A
 Returns a Promise which, 
 
 * Resolves with the list of attachments available in the PDF: `[ Attachment_1, Attachment_2,...]`
-* Every attachment item in this list will contain information, such as, `name`, `description`, `mimeType`, `created` and `modified`.
+* Every attachment item in this list will contain information such as `name`, `description`, `mimeType`, `created` and `modified`.
 * Rejects with an error object that includes a code and message.
 
 ##### API signature 

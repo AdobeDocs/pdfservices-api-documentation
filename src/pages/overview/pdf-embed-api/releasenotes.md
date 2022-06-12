@@ -9,7 +9,7 @@ the changes below for each release.
 
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
-| New    | The PDF viewer is revamped for all embed modes. Please use this script [URL](https://documentcloud.adobe.com/view-sdk/viewer.js) to access the new PDF viewer. For more details, please refer the documentation. |
+| New    | Adobe has launched a modern PDF viewer across all embed modes to render PDFs. For more details, see the section [Modern viewer](../modernviewer/). |
 
 ### May, 2022
 
@@ -41,7 +41,7 @@ the changes below for each release.
 
 | Change  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Changed | The default behaviour of saving user preferences in the local storage (such as updated annotation colour) has been deprecated for the commenting feature in full window embed mode. Website developers can still save these user preferences elsewhere using the existing user setting callbacks provided by PDF Embed API. For more details, see the section [User settings](howtos_ui.md#user-settings). |
+| Changed | The default behaviour of saving user preferences in the local storage (such as updated annotation color) has been deprecated for the commenting feature in full window embed mode. Website developers can still save these user preferences elsewhere using the existing user setting callbacks provided by PDF Embed API. For more details, see the section [User settings](howtos_ui.md#user-settings). |
 
 ### May, 2021
 

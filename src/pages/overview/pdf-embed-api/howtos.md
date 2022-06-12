@@ -47,7 +47,7 @@ viewer.
       var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
       adobeDCView.previewFile(
      {
-         content:  {location: {url: "(path to your PDF)/yourfilename.pdf"}},
+         content:  {location: {url: "<Path to your PDF/yourfilename.pdf">}},
          metaData: {fileName: "yourfilename.pdf"}
      });
    });
@@ -168,6 +168,323 @@ function listenForFileUpload() {
     }, false);
 }
 ```
+
+## Embed modes
+
+The PDF Embed API's embed modes govern the PDF viewing area's size and
+position within a web page. Available options allow you to control the
+viewing experience and layout much like you would an image, video, or
+any other web content. In order to use any of the available modes, pass
+the mode name along with other preview configurations in the
+`previewFile` API. For example, you could set "FULL_WINDOW", "SIZED_CONTAINER", 
+"IN_LINE" or "LIGHT_BOX" as the `embedMode` value (line 5):
+
+```javascript
+adobeDCView.previewFile({
+   content: { ... },
+   metaData: { ... }
+      },
+  {embedMode: "<FULL_WINDOW, SIZED_CONTAINER, IN_LINE OR LIGHT_BOX>",
+   showDownloadPDF: ...,
+   showPrintPDF: ...
+      }
+);
+```
+
+<InlineAlert slots="text"/>
+
+To view the code in action, see the [online demo](https://dc.acrobat.com/view-sdk-demo/index.html) or run the [embed mode samples](https://www.adobe.com/go/pdfembedapi_samples) on your machine.
+
+
+**Embed mode overview**
+
+| Embed mode                          | Description                                                                                                            | Example                                               |
+| ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| [Full window](#full-window-embed-mode) (default mode) | The viewing area renders in the full browser. Best suited for storage and productivity applications.                   | ![_images/embedfull.png](../images/embedfull.png)     |
+| [Sized container](#sized-container-embed-mode)           | The sized container mode displays PDFs in a boxed container with landscape orientation. Best suited for presentations. | ![_images/embedsized.png](../images/embedsized.png)   |
+| [In-Line](#in-line-embed-mode)                  | All PDF pages rendered in line within a web page. Best suited for reading applications.                                | ![_images/embedinline.png](../images/embedinline.png) |
+| [Lightbox](#lightbox-embed-mode)               | Displays PDFs in a focused view. Best suited for content websites, content portals, and email.                         | ![_images/lightbox.png](../images/lightbox.png)       |
+
+ ### Full window embed mode
+
+The full window mode renders the PDF in the full browser. 
+This mode is best suited for storage and productivity
+applications. Note that this embed mode applies by default, even when no embed mode value is passed.
+([Full Window Demo](https://documentcloud.adobe.com/view-sdk-demo/index.html#/view/FULL_WINDOW))
+
+To use this mode:
+
+-   Pass `embedMode: "FULL_WINDOW"`.
+-   **Commenting**: By default, all commenting tools (add text comment,
+    sticky notes, highlight, drawing tool, strikethrough and underline),
+    eraser tool and the undo/redo tools are available with this mode.
+    Users can add and save annotations to the PDF. If desired, disable
+    commenting feature by setting the `showAnnotationTools` variable to
+    *false*.
+-   **Print and download**: This mode supports options to download and
+    print the PDF from the top bar. (`showDownloadPDF` and `showPrintPDF`).
+    The top bar also contains the Adobe Acrobat logo and document search option.
+-   **Right-hand panel**: The right-hand panel is available by default
+    to display the comments, page thumbnails, bookmarks and access the file attachments 
+    available in the PDF. It also provides various page navigation as well as 
+    page viewing controls. Page thumbnails and bookmarks are available by default, but can be
+    disabled (`showThumbnails` and `showBookmarks`).
+-   **Page navigation controls**: The page navigation controls 
+    are available by default in the 
+    right-hand panel. (`showPageNavigationControl`).
+-   **Zoom control**: This mode also provides zoom-in and 
+    zoom-out controls in the right-hand panel. (`showZoomControl`).
+-   **View mode**: Set the default page view to either "FIT_PAGE", "FIT_WIDTH",
+    "TWO_COLUMN" or "TWO_COLUMN_FIT_PAGE" (`defaultViewMode`).
+-   **Linearization**: Enable linearization to optimize PDFs for faster viewing. To enable PDF linearization, 
+    set `enableLinearization` to *true*. For more details, see the section [PDF linearization](#pdf-linearization).
+-   **Form-filling**: Control form editing capability by simply toggling `enableFormFilling` on and off as needed.
+    For more details, see the section [Forms handling](#forms-handling).
+-   **Annotation APIs**: Enable annotation APIs to be able to access PDF annotations programmatically. 
+    For more details, see the section [Annotations API overview](../howtos_comments/#annotations-api-overview).
+
+<InlineAlert slots="text"/>
+
+For the complete list of supported preview configurations, see the section [Menu and tool options](../howtos_ui/#menu-and-tool-options).
+
+
+```html
+<div id="adobe-dc-view"></div>
+<script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
+<script type="text/javascript">
+  document.addEventListener("adobe_dc_view_sdk.ready", function(){
+    var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
+    adobeDCView.previewFile({
+      content:{location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
+      metaData:{fileName: "Bodea Brochure.pdf"}
+    }, { embedMode: "FULL_WINDOW", defaultViewMode: "FIT_PAGE", showAnnotationTools: true, showDownloadPDF: true });
+  });
+</script>
+```
+
+![Image for full window embed mode](../images/fullwindow1.png)
+
+
+#### Forms handling
+
+The PDF Embed API supports live form editing by default. End users can
+add and edit text in text fields and interact with other form objects,
+including radio buttons, check boxes, lists, and drop downs (select
+lists). When users fill any form field, the Save button on the top bar
+is automatically enabled so that they can save their information to the
+PDF. The PDF Embed API renders forms so that they appear similar to
+forms viewed in the full Acrobat app:
+
+![Image for form-filling in full window embed mode](../images/form1.png)
+
+<InlineAlert slots="text" />
+
+Form editing capability is supported only in Full Window embed mode.
+
+Control form editing capability by simply toggling `enableFormFilling`
+on and off as needed. While the Embed API enables form editing by
+default, you can disable the feature by setting it to *false*.
+
+```html
+<div id="adobe-dc-view"></div>
+<script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
+<script type="text/javascript">
+   document.addEventListener("adobe_dc_view_sdk.ready", function () {
+      var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
+      adobeDCView.previewFile({
+         content:{location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
+         metaData:{fileName: "Bodea Brochure.pdf"}
+      }, { embedMode: "FULL_WINDOW", enableFormFilling: false });
+   });
+</script>
+```
+
+Disabling form editing un-highlights form fields:
+
+![Disabling form editing](../images/form2.png)
+
+#### Unsupported form fields
+
+In the current version, following form fields are unsupported:
+
+-   XFA forms
+-   Digital Signature fields.
+-   Barcode fields.
+-   File picker text field
+-   RTF (rich text) text field
+-   Fields containing JavaScript or any kind of calculation and
+    validation
+-   Text field and drop downs with some special and custom formats
+-   PDF Actions that includes button Submit scenarios (only button
+    viewing is supported)
+
+When the API detects unsuppported form fields, a dialog appears on the
+rendered PDF:
+
+![No Support for Form Fields message](../images/formnosupport.png)
+
+### Sized container embed mode
+
+The sized container mode displays PDFs in a boxed container with
+landscape orientation. Each page appears as a slide, so this mode works
+well for presentations and other workflows that require accurate
+placement of the PDF content within other content. ([Sized Container Demo](https://documentcloud.adobe.com/view-sdk-demo/index.html#/view/SIZED_CONTAINER))
+
+To use this mode:
+
+* Specify the embedded viewer size by passing height and width values
+    to the enclosing `div` tag of the PDF viewer.
+* Pass `embedMode: "SIZED_CONTAINER"`
+* Optional: Configure the page and tool options
+  -   **Page Controls**: The page control toolbar at the bottom contains page navigation options. It is docked by default but can be undocked by setting `dockPageControls` to false. It also contains the Adobe Acrobat logo and document search option.
+  -   **Full screen mode**: A full screen button also appears in the bottom toolbar which allows users to view the PDF in full screen mode. (`showFullScreen`).
+  -   **Print and download**: This mode supports options to download and print the PDF (`showDownloadPDF` and `showPrintPDF`).
+
+```html
+<div id="adobe-dc-view" style="height: 360px; width: 500px;"></div>
+<script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
+<script type="text/javascript">
+  document.addEventListener("adobe_dc_view_sdk.ready", function(){
+    var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
+    adobeDCView.previewFile({
+      content:{location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
+      metaData:{fileName: "Bodea Brochure.pdf"}
+    }, { embedMode: "SIZED_CONTAINER", showFullScreen: true });
+  });
+</script>
+```
+
+![Sized Container](../images/sized_new.png)
+
+#### Toggling full screen
+
+To display the PDF in full screen view, choose the **full screen mode**
+button in the bottom toolbar. In the full screen mode, the top bar contains a traditional exit
+(**X**) button which returns full screen mode to normal mode. The full screen mode also displays a right-hand panel
+which contains various options such as page thumbnails, bookmarks and page navigation options.
+In mobile browsers, the user will be prompted to view the PDF in full screen mode for optimal reading. You can exit full screen mode in mobile browsers by swiping down.
+
+
+### In-Line embed mode
+
+In-Line mode renders PDF pages inline with other web page content. In
+this mode, all PDF pages are displayed at once which enables easy and
+smooth navigation. In this mode you need only specify the width of the
+embedded viewer in the enclosing div tag since the viewer height is
+automatically sized for the number of PDF pages. This mode is ideal for
+whitepapers, brochures, e-books, and other reading applications. ([In-Line Demo](https://documentcloud.adobe.com/view-sdk-demo/index.html#/view/IN_LINE))
+
+To use this mode:
+
+-   Specify the viewer width attribute in the enclosing `div` tag of the
+    PDF viewer.
+-   Pass `embedMode: "IN_LINE"`
+-   Optional: By default, the page control toolbar at the bottom only displays when a
+    user scrolls pages. This toolbar contains the Adobe Acrobat logo and 
+    provides basic page navigation controls and document search along with 
+    options to download and print the PDF. You can toggle both 
+    `showDownloadPDF` and `showPrintPDF` on and off.
+
+```html
+<div id="adobe-dc-view" style="width: 800px;"></div>
+<script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
+<script type="text/javascript">
+   document.addEventListener("adobe_dc_view_sdk.ready", function(){
+     var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
+   adobeDCView.previewFile({
+     content:{location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
+     metaData:{fileName: "Bodea Brochure.pdf"}
+ }, { embedMode: "IN_LINE", showPrintPDF: true });
+ });
+</script>
+```
+
+![Inline Search](../images/inline_search.png)
+
+### Lightbox embed mode
+
+Lightbox mode renders the PDF in the foreground at top of the page. The
+background remains visible, but the focus is on the previewed PDF. The
+top bar provides configurable
+**Close** and **Back** buttons. The **Close** button appears by default.
+([Lightbox Demo](https://documentcloud.adobe.com/view-sdk-demo/index.html#/view/LIGHT_BOX))
+
+To use this mode:
+
+*   Pass `embedMode: "LIGHT_BOX"`.
+*   Optional: Configure the various PDF Viewer options.
+
+    -   **Print and download**: This mode supports options to download
+        and print the PDF from the top bar (`showDownloadPDF` and `showPrintPDF`).
+        The top bar also contains the Adobe Acrobat logo.
+    -   **Right-hand panel**: The right-hand panel is available by default
+        to display the page thumbnails, bookmarks and access the file attachments 
+        available in the PDF. It also provides various page navigation as well as 
+        page viewing controls. Page thumbnails and bookmarks are available 
+        by default, but can be disabled (`showThumbnails` and `showBookmarks`).
+    -   **Page navigation controls**: The page navigation controls 
+        are available by default in the 
+        right-hand panel. (`showPageNavigationControl`).
+    -   **Zoom control**: This mode also provides zoom-in and 
+        zoom-out controls in the right-hand panel. (`showZoomControl`).
+    -   **View mode**: Set the default page view to either "FIT_PAGE", "FIT_WIDTH",
+        "TWO_COLUMN" or "TWO_COLUMN_FIT_PAGE" (`defaultViewMode`).
+    -   **Exit PDF Viewer**: The top bar contains the Close button by
+        default to close the PDF preview (`exitPDFViewerType: "CLOSE"`) 
+        which can be configured to Back button by setting `exitPDFViewerType` to RETURN
+        (`exitPDFViewerType: "RETURN"`).
+
+```html
+<script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
+<script type="text/javascript">
+    document.addEventListener("adobe_dc_view_sdk.ready", function(){
+        var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>"});
+        adobeDCView.previewFile({
+            content:{location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
+            metaData:{fileName: "Bodea Brochure.pdf"}
+        }, {embedMode: "LIGHT_BOX", exitPDFViewerType: "CLOSE"});
+    });
+</script>
+```
+
+Top bar with Close button (`exitPDFViewerType: "CLOSE"`)
+
+![Image for lightbox embed mode](../images/lightboxscreen.png)
+
+Top bar with Back button (`exitPDFViewerType: "RETURN"`)
+
+![Image for lightbox embed mode with back button](../images/backbutton.png)
+
+### Focus on PDF rendering
+
+Using PDF Embed API, website developers have the flexibility to control if the PDF should take focus when it is rendered within a website.
+
+This is achieved through the variable `focusOnRendering` which can be passed as a configuration to the `previewFile` API. This variable accepts a Boolean value.
+
+```javascript
+adobeDCView.previewFile({
+  content:{location: {url: "<URL_OF_PDF>"}},
+  metaData:{fileName: "<FILE_NAME>"}
+}, {embedMode: "<EMBED_MODE>", focusOnRendering: true});
+```
+
+The default value of this configuration variable varies according to the embed mode.
+
+| Embed mode      | Default value of focusOnRendering                   | Default behaviour                                                  |                                                             |
+| --------------- | --------------------------------------------------- | ------------------------------------------------------------------ |
+| [Full window](#full-window-embed-mode)     | true                                                | Acquires focus when PDF is rendered.                               |
+| [Sized container](#sized-container-embed-mode) | false | Doesn’t acquire focus when PDF is rendered. | Doesn’t acquire focus when PDF is rendered.                        |
+| [In-Line](#in-line-embed-mode) | false | Doesn’t acquire focus when PDF is rendered.         | Doesn’t acquire focus when PDF is rendered.                        |
+| [Lightbox](#lightbox-embed-mode)        | true (Cannot be set to false)                       | Always acquires focus when PDF is rendered. This cannot be changed.|
+
+<InlineAlert slots="text"/>
+
+The PDF will always acquire focus in Lightbox embed mode since this embed mode is intended to provide a focused view of the PDF by opening the PDF viewer on top of the webpage. This default behaviour in Lightbox embed mode cannot be changed.
+
+The default behaviour of taking focus can be modified for all embed modes (except lightbox).
+
+* Set the variable to true (`focusOnRendering: true`) if the PDF should take focus after rendering.
+* Set the variable to false (`focusOnRendering: false`) if the PDF should not take focus after rendering.
 
 ## PDF Linearization
 
@@ -392,259 +709,6 @@ Please see this
 [article](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Headers)
 to know more about Access-Control-Allow-Headers.
 
-## Embed modes
-
-The PDF Embed API's embed modes govern the PDF viewing area's size and
-position within a web page. Available options allow you to control the
-viewing experience and layout much like you would an image, video, or
-any other web content. In order to use any of the available modes, pass
-the mode name along with other preview configurations in the
-`previewFile` API. For example, you could set IN\_LINE as the
-`embedMode` value (line 5):
-
-```javascript
-adobeDCView.previewFile({
-   content: { ... },
-   metaData: { ... }
-      },
-  {embedMode: "<some value such as: IN_LINE">,
-   showDownloadPDF: ...,
-   showPrintPDF: ...
-      }
-);
-```
-
-<InlineAlert slots="text"/>
-
-To view the code in action, see the [online demo](https://dc.acrobat.com/view-sdk-demo/index.html) or run the [embed mode samples](https://www.adobe.com/go/pdfembedapi_samples) on your machine.
-
-
-**Embed mode overview**
-
-| Embed mode                          | Description                                                                                                            | Example                                               |
-| ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| [Full window](#full-window) (default mode) | The viewing area renders in the full browser. Best suited for storage and productivity applications.                   | ![_images/embedfull.png](../images/embedfull.png)     |
-| [Sized container](#sized-container)           | The sized container mode displays PDFs in a boxed container with landscape orientation. Best suited for presentations. | ![_images/embedsized.png](../images/embedsized.png)   |
-| [In-Line](#in-line)                  | All PDF pages rendered in line within a web page. Best suited for reading applications.                                | ![_images/embedinline.png](../images/embedinline.png) |
-| [Lightbox](#lightbox)               | Displays PDFs in a focused view. Best suited for content websites, content portals, and email.                         | ![_images/lightbox.png](../images/lightbox.png)       |
- 
-### Full window
-
-The full window mode is the default embed mode and renders the PDF in
-the full browser. This mode is best suited for storage and productivity
-applications. ([Full Window Demo](https://documentcloud.adobe.com/view-sdk-demo/index.html#/view/FULL_WINDOW))
-
-<InlineAlert slots="text"/>
-
-Note that the full window embed mode applies by default, and there is
-no need to pass any `embedMode` value. Configuring [Menu and tool options](howtos_ui.md#menu-and-tool-options) is
-optional.
-
--   **Commenting**: By default, all commenting tools (add text comment,
-    sticky notes, highlight, drawing tool, strikethrough and underline),
-    eraser tool and the undo/redo tools are available with this mode.
-    Users can add and save annotations to the PDF. If desired, disable
-    commenting feature by setting the `showAnnotationTools` variable to
-    *false*.
--   **Print and download**: This mode supports options to download and
-    print the PDF (`showDownloadPDF` and `showPrintPDF`).
--   **Right-hand pane**: The right-hand pane is available by default
-    to display the comments, page thumbnails, bookmarks and access the file attachments 
-    available in the PDF. It also provides various page navigation as well as 
-    page viewing controls. Page thumbnails and bookmarks are available by default, but can be
-    disabled (`showThumbnails` and `showBookmarks`).
--   **Page navigation controls**: The page navigation controls 
-    are available by default in the 
-    right-hand pane. (`showPageNavigationControl`).
--   **Zoom control**: This mode also provides zoom-in and 
-    zoom-out controls in the right-hand pane. (`showZoomControl`).
--   **View mode**: Set the default page view to either fit page, fit
-    width or two-column (`defaultViewMode`). You can choose to view one page or two pages at a time. 
-
-```html
-<div id="adobe-dc-view"></div>
-<script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
-<script type="text/javascript">
-  document.addEventListener("adobe_dc_view_sdk.ready", function(){
-    var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
-    adobeDCView.previewFile({
-      content:{location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
-      metaData:{fileName: "Bodea Brochure.pdf"}
-    }, {});
-  });
-</script>
-```
-
-![Image for full window embed mode](../images/fullwindow1.png)
-
-### Sized container
-
-The sized container mode displays PDFs in a boxed container with
-landscape orientation. Each page appears as a slide, so this mode works
-well for presentations and other workflows that require accurate
-placement of the PDF content within other content. ([Sized Container Demo](https://documentcloud.adobe.com/view-sdk-demo/index.html#/view/SIZED_CONTAINER))
-
-To use this mode:
-
-* Specify the embedded viewer size by passing height and width values
-    to the enclosing `div` tag of the PDF viewer.
-* Pass `embedMode: "SIZED_CONTAINER"`
-* Optional: Configure the page and tool options
-  -   **Page Controls**: The page control toolbar at the bottom contains page navigation options. It is docked by default but can be undocked by setting `dockPageControls` to false.
-      A full screen mode button also appears in this toolbar (`showFullScreen`).
-  -   **Print and download**: This mode supports options to download and print the PDF (`showDownloadPDF` and `showPrintPDF`) 
-      as well as document search. These options are available in the bottom toolbar.
-
-```html
-<div id="adobe-dc-view" style="height: 360px; width: 500px;"></div>
-<script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
-<script type="text/javascript">
-  document.addEventListener("adobe_dc_view_sdk.ready", function(){
-    var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
-    adobeDCView.previewFile({
-      content:{location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
-      metaData:{fileName: "Bodea Brochure.pdf"}
-    }, {embedMode: "SIZED_CONTAINER"});
-  });
-</script>
-```
-
-<InlineAlert slots="text"/>
-
-Screenshot TBD..
-
-![Sized Container](../images/sized_new.png)
-
-#### Toggling full screen
-
-To display the PDF in full screen view, choose the **full screen mode**
-button in the bottom toolbar. In the full screen mode, the top bar contains a traditional exit
-(**X**) button which returns full screen mode to normal mode. The full screen mode also displays a right-hand pane
-which contains various options, such as, page thumbnails, page navigation, page viewing and zoom control options.
-In mobile browsers, you can also exit full screen mode by swiping down.
-
-<InlineAlert slots="text"/>
-
-Screenshot TBD..
-
-![Exit Button and full screen button to toggle between full screen](../images/exit.png)
-
-### In-Line
-
-In-Line mode renders PDF pages inline with other web page content. In
-this mode, all PDF pages are displayed at once which enables easy and
-smooth navigation. In this mode you need only specify the width of the
-embedded viewer in the enclosing div tag since the viewer height is
-automatically sized for the number of PDF pages. This mode is ideal for
-whitepapers, brochures, e-books, and other reading applications. ([In-Line Demo](https://documentcloud.adobe.com/view-sdk-demo/index.html#/view/IN_LINE))
-
-To use this mode:
-
--   Specify the viewer width attribute in the enclosing `div` tag of the
-    PDF viewer.
--   Pass `embedMode: "IN_LINE"`
--   Optional: By default, the page control toolbar only displays when a
-    user scrolls pages. The bottom toolbar provides basic page navigation controls 
-    and document search along with options to download and print the PDF. 
-    You can toggle both `showDownloadPDF` and `showPrintPDF` on and off.
-
-```html
-<div id="adobe-dc-view" style="width: 800px;"></div>
-<script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
-<script type="text/javascript">
-   document.addEventListener("adobe_dc_view_sdk.ready", function(){
-     var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
-   adobeDCView.previewFile({
-     content:{location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
-     metaData:{fileName: "Bodea Brochure.pdf"}
- }, {embedMode: "IN_LINE"});
- });
-</script>
-```
-
-<InlineAlert slots="text"/>
-
-Screenshot TBD..
-
-![Inline Search](../images/inline_search.png)
-
-### Lightbox
-
-Lightbox mode renders the PDF in the foreground at top of the page. The
-background remains visible, but the focus is on the previewed PDF. The
-top bar provides configurable
-**Close** and **Back** buttons. The **Close** button appears by default.
-([Lightbox Demo](https://documentcloud.adobe.com/view-sdk-demo/index.html#/view/LIGHT_BOX))
-
-To use this mode:
-
-*   Pass `embedMode: "LIGHT_BOX"`.
-*   Optional: Configure the various PDF Viewer options.
-    -   **Print and download**: This mode supports options to download
-        and print the PDF (`showDownloadPDF` and `showPrintPDF`).
-    -   **View mode**: Set the default page view to either fit page, fit width or 
-        two-column (`defaultViewMode`). You can choose to view one page or two pages at a time.
-    -   **Right-hand pane**: The right-hand pane is available by default
-        to display the page thumbnails and also provides various page navigation as well as 
-        page viewing controls. Page thumbnails and bookmarks are available by default, but can be
-        disabled (`showThumbnails` and `showBookmarks`).
-    -   **Exit PDF Viewer**: The top bar contains the Close button by
-        default to close the PDF preview which can be configured to Back
-        button by setting `exitPDFViewerType` to RETURN
-        (`exitPDFViewerType: "RETURN"`).
-
-```html
-<script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
-<script type="text/javascript">
-    document.addEventListener("adobe_dc_view_sdk.ready", function(){
-        var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>"});
-        adobeDCView.previewFile({
-            content:{location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
-            metaData:{fileName: "Bodea Brochure.pdf"}
-        }, {embedMode: "LIGHT_BOX"});
-    });
-</script>
-```
-
-Top bar with Close button (default)
-
-![Image for lightbox embed mode](../images/lightboxscreen.png)
-
-Top bar with Back button (`exitPDFViewerType: "RETURN"`)
-
-![Image for lightbox embed mode with back button](../images/backbutton.png)
-
-### Focus on PDF rendering
-
-Using PDF Embed API, website developers have the flexibility to control if the PDF should take focus when it is rendered within a website.
-
-This is achieved through the variable `focusOnRendering` which can be passed as a configuration to the `previewFile` API. This variable accepts a Boolean value.
-
-```javascript
-adobeDCView.previewFile({
-  content:{location: {url: "<URL_OF_PDF>"}},
-  metaData:{fileName: "<FILE_NAME>"}
-}, {embedMode: "<EMBED_MODE>", focusOnRendering: true});
-```
-
-The default value of this configuration variable varies according to the embed mode.
-
-| Embed mode      | Default value of focusOnRendering                   | Default behaviour                                                  |                                                             |
-| --------------- | --------------------------------------------------- | ------------------------------------------------------------------ |
-| [Full window](#full-window)     | true                                                | Acquires focus when PDF is rendered.                               |
-| [Sized container](#sized-container) | false | Doesn’t acquire focus when PDF is rendered. | Doesn’t acquire focus when PDF is rendered.                        |
-| [In-Line](#in-line) | false | Doesn’t acquire focus when PDF is rendered.         | Doesn’t acquire focus when PDF is rendered.                        |
-| [Lightbox](#lightbox)        | true (Cannot be set to false)                       | Always acquires focus when PDF is rendered. This cannot be changed.|
-
-<InlineAlert slots="text"/>
-
-The PDF will always acquire focus in Lightbox embed mode since this embed mode is intended to provide a focused view of the PDF by opening the PDF viewer on top of the webpage. This default behaviour in Lightbox embed mode cannot be changed.
-
-The default behaviour of taking focus can be modified for all embed modes (except lightbox).
-
-* Set the variable to true (`focusOnRendering: true`) if the PDF should take focus after rendering.
-* Set the variable to false (`focusOnRendering: false`) if the PDF should not take focus after rendering.
-
 ## Language support
 
 The PDF Embed API supports a number of languages. The default language
@@ -683,48 +747,6 @@ Supported languages
 | Chinese                  | zh-CN |
 | Chinese                  | zh-TW |
 
-## Legacy to Modern viewer
-
-In order to use PDF Embed API, website developers are required to add the PDF Embed API script URL in their websites. 
-We recommend that developers use the [viewer.js](https://documentcloud.adobe.com/view-sdk/viewer.js) script (line 11) to access the revamped and modern PDF viewer. All APIs and callbacks will function as expected with significant improvement in user experience.
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
- <title>Adobe Document Services PDF Embed API Sample</title>
- <meta charset="utf-8"/>
- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
- <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1"/>
-</head>
-<body style="margin: 0px">
- <div id="adobe-dc-view"></div>
- <script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
- <script type="text/javascript">
-    document.addEventListener("adobe_dc_view_sdk.ready", function()
-    {
-        var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
-        adobeDCView.previewFile(
-       {
-          content:   {location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
-          metaData: {fileName: "Bodea Brochure.pdf"}
-       });
-    });
- </script>
-</body>
-</html>
-```
-
-Developers using the [main.js](https://documentcloud.adobe.com/view-sdk/main.js) script in their websites will continue to see the legacy PDF viewer and all PDF Embed API functionality would be available to them in the legacy viewer.
-
-Note that the following preview configurations will be deprecated and no longer work when you move to the modern viewer: 
-
-* `showLeftHandPanel`: Deprecated in full window embed mode. 
-* `showPageControls`: Deprecated in full window embed mode. 
-* `dockPageControls`: Deprecated in full window and lightbox embed modes. This will work only for sized container embed mode in modern viewer.
-
-For more details about the configurations supported in modern PDF viewer, see the section [Menu and tool options](../howtos_ui.md/#menu-and-tool-options).
-
 ## Troubleshooting
 
 Troubleshooting a web app and the PDF Embed API is straightforward web
@@ -740,7 +762,3 @@ the URL value is ignored.
 
 Either your client ID is incorrect, or you are using it on a domain
 other than the one you registered.
-
-**Why does the file preview fail to load?**
-
-Cookies must be enabled in the browser for the file preview to load.

@@ -127,7 +127,7 @@ PDF Embed API provides some optimizations in order to enhance the mobile
 view experience. These optimizations are available only in mobile phone
 browsers.
 
-<!-- ### View modes in mobile browsers
+### View modes in mobile browsers
 
 PDF Embed API provides a couple of view modes on mobile phone browsers
 to enhance the viewing experience of the PDFs. Note that these modes are
@@ -147,24 +147,16 @@ and select the desired view mode from the dropdown.
 
 **Continuous view mode**
 
-<InlineAlert slots="text"/>
+![Continous Mode](../images/continuous_mode.png)
 
-Screenshot TBD..
+**Single page view mode**
 
-<!-- ![Continous Mode](../images/continuous_mode.png) -->
+![Single Page Mode](../images/single_page_mode.png)
 
-<!-- **Single page view mode**
-
-<InlineAlert slots="text"/> -->
-
-<!-- Screenshot TBD.. -->
-
-<!-- ![Single Page Mode](../images/single_page_mode.png) -->
-
-<!-- These view modes can also be set using the configuration variable
+These view modes can also be set using the configuration variable
 `defaultViewMode`. Set the appropriate value of the variable and pass it
 as a preview configuration to the `previewFile` API. For details, see
-[Menu and tool options](./howtos_ui.md#menu-and-tool-options). -->
+[Menu and tool options](./howtos_ui.md#menu-and-tool-options).
 
 ### Go to a Page
 
@@ -180,11 +172,7 @@ particular page.
 Note that this functionality is available only with Full Window embed
 mode.
 
-<InlineAlert slots="text"/>
-
-Screenshot TBD..
-
-<!-- ![Go To Page Dialog](../images/goto_page.png) -->
+![Go To Page Dialog](../images/goto_page.png)
 
 ### Zoom in
 
@@ -202,7 +190,7 @@ PDF Embed API ONLY collects essential information which helps Adobe understand h
 -   Type of device used to open the PDF - desktop, mobile or tablet.
 -   Embed mode used to render the PDF.
 -   File size and number of pages.
--   Performance metrics, such as, whether PDF was rendered in linearized manner or not, time taken to download the PDF and render the first page.
+-   Performance metrics, such as whether PDF was rendered in linearized manner or not, time taken to download the PDF and render the first page.
 -   URL of the webpage.
 
 Please note that PDF Embed API doesn’t store any user-generated content and never shares user-generated content with Adobe servers.
