@@ -34,7 +34,6 @@ document and helps you find content that you might need to review or correct.
 The service has the following options:
 
 - **GenerateReport** - Create a report about the document and its tags (in XLSX format).
-
 - **ShiftHeadings** - The default tagging identifies a title (if present) and includes it as an additional heading level 1 (H1). If you wish to be more consistent with WCAG HTML accessibility, if a title is identified, then it is marked as an H1, and all remaining headings in the document can be shifted down one level (e.g., H1->H2). This defaults to false (no shift).
 
 The PDF produced by PDF Accessibility Auto-Tag API has its structure identified (Headings, Tables, Lists, Paragraphs, 
