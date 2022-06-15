@@ -194,6 +194,10 @@ module.exports = {
               {
                 title: 'Get PDF Properties',
                 path: 'overview/pdf-services-api/howtos/pdf-properties.md'
+              },
+              {
+                title: 'Accessibility Auto-Tag PDF',
+                path: 'overview/pdf-services-api/howtos/accessibility-auto-tag-pdf.md'
               }
             ]
           },
