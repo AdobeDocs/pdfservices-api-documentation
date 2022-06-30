@@ -51,9 +51,7 @@ The PDF Extract API provides a method for developers to extract and structure co
 
 The PDF Extract API can be embedded into any application using the [PDFServices SDK](./pdf-services-api/index.md#sdk) for Node.js, Python, and Java. [Start a PDF Extract free trial that includes up to 1,000 free Document transactions or runs for 6 months, whichever occurs earlier.](https://documentcloud.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api)
 
-<h2> PDF Accessibility Auto-Tag API for improving accessibility in PDFs <span style="color:red;font-size:15px;margin-left:10px;vertical-align:middle;border:1px solid">
-                <b> Coming Soon </b>
-            </span></h2>
+## PDF Accessibility Auto-Tag API for improving accessibility in PDFs <span align="center" style="color:red;font-size:15px;margin-left:10px;vertical-align:middle;border:1px solid;padding-left:2px;padding-right:2px;"><b>Available under Early Access Program</b></span>
 
 PDF Accessibility Auto-Tag API is a powerful tool that may be used as part of the process of improving accessibility in individual PDFs and can be applied at scale for large backlogs of PDFs. Auto-tagging adds document structure tags to the PDF file that are used to read a document's text and present it in a way that makes sense to users using assistive technology. Part of the Adobe PDF Services API offering, it is available as a REST-powered SDK with underlying Sensei AI and is easily called by automated workflows.
 

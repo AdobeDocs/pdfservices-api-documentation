@@ -1,16 +1,16 @@
+# <h1>Quickstarts<span style="color:red;font-size:15px;margin-left:10px;vertical-align:middle;border:1px solid;padding-left:2px;padding-right:2px"><b>Available under Early Access Program</b></span></h1>
 
-# Quickstarts
 <p>
 PDF Accessibility Auto-Tag API is available as SDKs to help you get up and running quickly. You can then leverage the samples in your own code
 </p>
 
 ## Get Early Access
 
-The PDF Accessibility Auto-Tag API is currently available as Early Access. To request access, send an email to <br/> autotag-pdf-apiprerelease-access-request@adobe.com&#46; Once you receive confirmation that you’ve been given access, proceed to the next step to [Get API credentials](quickstarts/#get-api-credentials).
+The PDF Accessibility Auto-Tag API is currently available as Early Access. To request access, [Contact Us](https://acrobatusers.com/documentcloud_sdk/index_lead_gen.php?api=accessibility). Once you receive confirmation that you’ve been given access, proceed to the next step to [Get API credentials](quickstarts/#get-api-credentials).
 
 ## Get API credentials
 
-Calling the PDF Accessibility Auto-Tag API requires an Adobe-provided credential. To get one, [click here](https://stage.documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api) and complete the workflow. Be sure to copy and save the credential values to a secure location.
+Calling the PDF Accessibility Auto-Tag API requires an Adobe-provided credential. To get one, [click here](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api) and complete the workflow. Be sure to copy and save the credential values to a secure location.
 
 <InlineAlert slots="text"/>
 
@@ -25,9 +25,9 @@ PDF Accessibility Auto-Tag API is available as SDKs in Java and Python.
 Jumpstart your development by bookmarking or downloading the following key resources:
 
 -   This document
--   [API reference (Javadoc)](https://git.corp.adobe.com/pages/dc/dc-cpf-sdk-java-samples/apidocs/beta/)
--   [Java sample code](https://git.corp.adobe.com/dc/dc-cpf-sdk-java-samples/tree/beta)
--   [Java library](https://artifactory.corp.adobe.com/ui/native/maven-dcapi-release/com/adobe/documentservices/pdfservices-sdk/). The Maven project contains the .jar file.
+-   [API reference (Javadoc)](https://opensource.adobe.com/pdfservices-java-sdk-samples/apidocs/beta/)
+-   [Java sample code](https://github.com/adobe/pdfservices-java-sdk-samples/tree/beta)
+-   [Java library](https://www.adobe.com/go/pdftoolsapi_java_maven). The Maven project contains the .jar file.
 
 #### Authentication
 
@@ -36,7 +36,7 @@ Once you complete the [Get API credentials](quickstarts/#get-api-credentials), a
 - **Personalized Download**: The samples download zip contains a private.key file and an adobe-dc-pdf-services-sdk-java-samples with a preconfigured pdfservices-api-credentials.json file.
 - **Non Personalized Download**: The samples download zip contains the private.key file and a pdfservices-api-credentials.json file.
 
-After downloading the zip, you can either run the samples in the zip directly, or you can replace the pdfservices-api-credentials.json and private.key files in the [Java sample code](https://git.corp.adobe.com/dc/dc-cpf-sdk-java-samples/tree/beta) with those in the zip.
+After downloading the zip, you can either run the samples in the zip directly, or you can replace the pdfservices-api-credentials.json and private.key files in the [Java sample code](https://github.com/adobe/pdfservices-java-sdk-samples/tree/beta) with those in the zip.
 
 **Example pdfservices-api-credentials.json file**
 
@@ -67,7 +67,7 @@ Skip this step if you already have Java and Maven running on your computer.
 
 The quickest way to get up and running is to download the personalized code samples during the Get API credentials workflow. These samples provide everything from ready-to-run sample code, an embedded credential json file, and pre-configured connections to dependencies.
 
-1. Download and extract the [Java sample project](https://git.corp.adobe.com/dc/dc-cpf-sdk-java-samples/tree/beta).
+1. Download and extract the [Java sample project](https://github.com/adobe/pdfservices-java-sdk-samples/tree/beta).
 2. Cd to the project directory (which contains pom.xml file) and build the sample project with Maven using this command in terminal: `mvn clean install`.
 3. You can import the samples Maven project into your preferred IDE and run the samples from there or run the below commands from terminal:
 
@@ -83,7 +83,7 @@ Note: The above commands run on the input file “autotagPdfInput.pdf” present
 
 If you did not choose **Personalized Code Sample Download** during the credential setup process:
 
-1. Download and extract the [Java sample project](https://git.corp.adobe.com/dc/dc-cpf-sdk-java-samples/tree/beta).
+1. Download and extract the [Java sample project](https://github.com/adobe/pdfservices-java-sdk-samples/tree/beta).
 2. Copy the downloaded zip to the directory that you set-up for this project and unzip the files there.
 3. In the top-level directory of your samples, find and replace following files with the one present in the downloaded zip file from [Get API credentials](quickstarts/#get-api-credentials) step:
    1. pdfservices-api-credentials.json 
@@ -108,9 +108,9 @@ Other sample programs in the SDK let you try out API options including generatin
 Jumpstart your development by bookmarking or downloading the following key resources:
 
 -   This document
--   [Python API reference](https://git.corp.adobe.com/pages/dc/dc-cpf-python-sdk-samples/apidocs/beta/)
--   [Python sample code](https://git.corp.adobe.com/dc/dc-cpf-python-sdk-samples/tree/beta)
--   [Python SDK](https://artifactory.corp.adobe.com/ui/native/pypi-docservices-release-local/pdfservices-sdk/)
+-   [Python API reference](https://opensource.adobe.com/pdfservices-python-sdk-samples/apidocs/beta/)
+-   [Python sample code](https://github.com/adobe/pdfservices-python-sdk-samples/tree/beta)
+-   [Python SDK](https://www.adobe.com/go/pdfservices_python_pypi)
 
 #### Authentication
 
@@ -119,7 +119,7 @@ Once you complete the [Get API credentials](quickstarts/#get-api-credentials), a
 - **Personalized Download**: The samples download.zip contains a private.key file and an adobe-dc-pdfservices-sdk-python-samples directory. Each sample directory contains the sample code as well as a preconfigured pdfservices-api-credentials.json file.
 - **Non Personalized Download**: The samples download zip contains the private.key file and a pdfservices-api-credentials.json file.
 
-After downloading the zip, you can either run the samples in the zip directly, or you can replace the pdfservices-api-credentials.json and private.key files in the [Python sample code](https://git.corp.adobe.com/dc/dc-cpf-python-sdk-samples/tree/beta) with those in the zip.
+After downloading the zip, you can either run the samples in the zip directly, or you can replace the pdfservices-api-credentials.json and private.key files in the [Python sample code](https://github.com/adobe/pdfservices-python-sdk-samples/tree/beta) with those in the zip.
 
 **Example pdfservices-api-credentials.json file**
 
@@ -148,7 +148,7 @@ Skip this step if you already have Python running on your computer.
 
 The quickest way to get up and running is to download the personalized code samples during the Get API credentials workflow. These samples provide everything from ready-to-run sample code, an embedded credential json file, and pre-configured connections to dependencies.
 
-1. Download and extract the [Python sample project](https://git.corp.adobe.com/dc/dc-cpf-python-sdk-samples/tree/beta).
+1. Download and extract the [Python sample project](https://github.com/adobe/pdfservices-python-sdk-samples/tree/beta).
 2. Cd to the project directory (which contains requirements.txt file) and build the sample project using this command in terminal: `pip install -r requirements.txt`.
 3. You can import the samples project into your preferred IDE and run the samples from there or run the below commands from terminal:
 
@@ -164,7 +164,7 @@ Note: The above commands run on the input file “autotagPdfInput.pdf” present
 
 If you did not choose **Personalized Code Sample Download** during the credential setup process:
 
-1. Download and extract the [Python sample project](https://git.corp.adobe.com/dc/dc-cpf-python-sdk-samples/tree/beta).
+1. Download and extract the [Python sample project](https://github.com/adobe/pdfservices-python-sdk-samples/tree/beta).
 2. Copy the downloaded zip to the directory that you set-up for this project and unzip the files there.
 3. In the top-level directory of your samples, find and replace following files with the one present in the downloaded zip file from [Get API credentials](quickstarts/#get-api-credentials) step:
    1. pdfservices-api-credentials.json
