@@ -138,7 +138,7 @@ Upgrading to the latest SDK should not break existing applications.
 ### Extract PDF Server Side Release (21 June, 2022; server side release)
 | Change  | Language            | Description                                                                                   |
 | ------- | ------------------- | --------------------------------------------------------------------------------------------- |
-| Changed | All                 | Enhanced error messages by adding more sub error codes							|
+| Changed | All                 | Enhanced error messages by adding more sub error codes							            |
 | Changed | All                 | Bug fixes and stability improvements.								|
 
 ### Extract PDF Server Side Release (16 May, 2022; server side release)
