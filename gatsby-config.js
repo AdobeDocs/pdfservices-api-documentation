@@ -96,6 +96,10 @@ module.exports = {
             path: 'overview/document-generation-api/index.md'
           },
           {
+            title: 'Digital Seal API',
+            path: 'overview/digital-seal-api/index.md'
+          },
+          {
             title: 'PDF Extract API',
             path: 'overview/pdf-extract-api/index.md'
           },
@@ -258,6 +262,24 @@ module.exports = {
           {
             title: 'Usage Limits',
             path: 'overview/document-generation-api/dcserviceslicensing.md#usage-limits'
+          }
+        ]
+      },
+      {
+        title: 'Digital Seal API',
+        path: 'overview/digital-seal-api/index.md',
+        pages: [
+          {
+            title: 'Overview',
+            path: 'overview/digital-seal-api/index.md'
+          },
+          {
+            title: 'Prerequisites',
+            path: 'overview/digital-seal-api/prerequisites.md'
+          },
+          {
+            title: 'Quickstarts',
+            path: 'overview/digital-seal-api/quickstarts.md'
           }
         ]
       },

@@ -135,6 +135,9 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
       )
       ?.setAttribute("daa-ll", "Documenation Document Generation API");
     header
+        .querySelector(`a[href='${navLinksDocsBaseUrl}/overview/digital-seal-api/']`)
+        ?.setAttribute("daa-ll", "Documentation Digital Seal API");
+    header
       .querySelector(`a[href='${navLinksDocsBaseUrl}/overview/pdf-embed-api/']`)
       ?.setAttribute("daa-ll", "Documenation PDF Embed API");
     header
@@ -158,6 +161,8 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
       window.location.pathname.indexOf("document-generation-api") >= 0
     ) {
       getCredentialsButton.href = `${baseurl}?api=document-generation-api`;
+    } else if ( window.location.pathname.indexOf("digital-seal-api") >= 0 ) {
+      getCredentialsButton.href = `${baseurl}?api=digital-seal-api`;
     } else if (window.location.pathname.indexOf("pdf-extract-api") >= 0) {
       getCredentialsButton.href = `${baseurl}?api=pdf-extract-api`;
     } else if (window.location.pathname.indexOf("pdf-embed-api") >= 0) {
@@ -388,6 +393,19 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
         ) >= 0
       ) {
         pageHeadTittle = "PDF Services API Licensing";
+      }
+    } else if(
+        window.location.pathname.indexOf("digital-seal-api/") >= 0
+    ){
+      pageHeadTittle = "Digital Seal API Overview";
+      if (
+          window.location.pathname.indexOf("digital-seal-api/quickstarts") >= 0
+      ) {
+        pageHeadTittle = "Digital Seal API Quickstarts";
+      } else if (
+          window.location.pathname.indexOf("digital-seal-api/prerequisites") >= 0
+      ) {
+        pageHeadTittle = "Digital Seal API Prerequisites";
       }
     }else  if (window.location.pathname.indexOf("overview/") >= 0) {
         pageHeadTittle = "Overview Introduction";
