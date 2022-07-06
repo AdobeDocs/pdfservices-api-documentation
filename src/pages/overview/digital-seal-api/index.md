@@ -11,7 +11,7 @@ altered, and that the signatures are valid.
 https://www.adobe.com/sign/digital-signatures.html
 -->
 
-## Digital Seal Process
+## Digital Seal Flow
 
 ![Digital Seal Process](../images/sealProcess.png)
 
@@ -36,6 +36,14 @@ to be bound to the specified legal entity.
  
 To Get Started, visit [Quickstarts](./quickstarts.md)
 
+**Signature Image**
+
+Digital Seal API can accept the signature image as input file. This is an optional field.
+
+**Logo Image**
+
+Digital Seal API can accept the logo image as input file. This is an optional field that defaults to 'Acribat Trefoil'
+unless overridden by this parameter.
 
 ## FAQ
 <details><summary>Digital Signature vs Electronic Signature ?</summary><p>

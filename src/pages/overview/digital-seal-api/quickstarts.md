@@ -1,6 +1,6 @@
 # Quickstarts
 
-Before Getting started with Digital Seal API, make sure all the [Prerequisites](prerequisites.md) are met. 
+Before getting started with Digital Seal API, make sure all the [Prerequisites](prerequisites.md) are met. 
 
 ## Workflow
 
@@ -9,110 +9,97 @@ Before Getting started with Digital Seal API, make sure all the [Prerequisites](
 ## How-to Guide
 
 ### 1. Configure Sealing Parameters
+**Signature Type** <span style="color:red">*</span>
 
-#### Signature Type*
 Specifies the type of digital signature being applied
-* Author signatures/ CERTIFY : first signature in the document often created by the document author, and there can be at most one in any given document.
-* Recipient signatures/ SIGN : Digital signatures which are signed with a certificate.
+ * Author signatures/ CERTIFY : first signature in the document often created by the document author, and there can be at most one in any given document.
+ * Recipient signatures/ SIGN : Digital signatures which are signed with a certificate.
 API currently supports SIGN signature type.
 
-#### Signature Format*
+**Signature Format** <span style="color:red">*</span>
+
 Specifies the format of the digital signature. API supports below formats
 * PKCS#7 : Defined in [ISO 32000-1](https://opensource.adobe.com/dc-acrobat-sdk-docs/standards/pdfstandards/pdf/PDF32000_2008.pdf) section 12.8.3.3 
            PKCS#7 Signatures; the signature value Contents contain a DER-encoded PKCS#7 binary data object.
 * PADES : Defined in [ETSI TS 102 778-3](https://www.etsi.org/deliver/etsi_ts/102700_102799/10277803/01.02.01_60/ts_10277803v010201p.pdf) the signature 
             value Contents contain a DER-encoded SignedData object as specified in CMS (Cryptographic Message Syntax). This format is more strict and concrete than PKCS#7.
 
-#### Trust Service Provider's (TSP) Credential Information*
+**Trust Service Provider's (TSP) Credential Information** <span style="color:red">*</span>  
+
 Encapsulates the [certificate credential](/overview/digital-seal-api/prerequisites/#1-procure-certificate-credentials) to be used 
 for signing and the associated authentication and authorization data.
 
-<details><summary>Trust Service Provider's(TSP) Credential Information</summary><p>
+* **TSP Name**<span style="color:red">*</span>
+<br/>Specifies the name of the Trust Service Provider used to generate the certificate.
 
-* ##### TSP Name*
-Specifies the name of the Trust Service Provider used to generate the certificate.
+* **TSP Credential Id**<span style="color:red">*</span>
+<br/>Specifies the Digital ID stored with the TSP provider that should be used for signing.
 
-* ##### TSP Credential Id*
-Specifies the Digital ID stored with the TSP provider that should be used for signing.
+* **TSP Authorization Context**<span style="color:red">*</span>
+<br/>Encapsulates the service authorization data required to communicate with the TSP and access CSC provider APIs.
 
-* ##### TSP Authorization Context*
-Encapsulates the service authorization data required to communicate with the TSP and access CSC provider APIs.
-
-  <details><summary></summary><p>
-
-  ##### Access Token*
-  Specifies the service access token used to authorize access to the CSC provider hosted APIs.
+  * **Access Token**<span style="color:red">*</span>
+  <br/>Specifies the service access token used to authorize access to the CSC provider hosted APIs.
    
-  ##### Token Type
-  Specifies the type of service token which is Bearer.
-   
-  </p></details>
+  * **Token Type**
+  <br/>Specifies the type of service token which is Bearer.
 
-* ##### TSP Credential Authorization Parameter*
-Encapsulates the credentials authorization information required to authorize access to their signing keys.
+* **TSP Credential Authorization Parameter**<span style="color:red">*</span>
+<br/>Encapsulates the credentials authorization information required to authorize access to their signing keys.
 
- <details><summary></summary><p>
+   * **PIN**<span style="color:red">*</span>
+   <br/>Specifies the PIN associated with credential id.
 
- ##### PIN*
- Specifies the PIN associated with credential id.
-   
- </p></details>
 
-</p></details>
+**Signature Field Parameters** <span style="color:red">*</span>
 
-#### Signature Widget Parameters*
 Encapsulates the parameters required to create a new unsigned signature field or sign an existing field.
 
-<details><summary>Signature Widget Parameters</summary><p>
-
-* ##### Field Name
-Specified the field name for the signature field.
-* ##### Visibility
-Specified whether the signature field is visible or not. Set to true to create a visible signature. Set to false to 
+* **Field Name**
+<br/>Specified the field name for the signature field.
+* **Visibility**
+<br/>Specified whether the signature field is visible or not. Set to true to create a visible signature. Set to false to 
 create an invisible (hidden) signature. The default value is true.
-* ##### Page Number*
-Specifies the number of the page to which the signature field should be attached.
-* ##### Location*
-Encapsulates the parameters related to the location of the signature field.
+* **Page Number**<span style="color:red">*</span>
+<br/>Specifies the number of the page to which the signature field should be attached.
+* **Location**<span style="color:red">*</span>
+<br/>Encapsulates the parameters related to the location of the signature field.
 
- <details><summary></summary><p>
-
-  ##### Left*
-  Specifies the left-most x-coordinate of the signature appearance's bounding box in default PDF user 
+  * **Left**<span style="color:red">*</span>
+  <br/>Specifies the left-most x-coordinate of the signature appearance's bounding box in default PDF user 
     space units.
-  ##### Bottom*
-  Specifies the bottom-most y-coordinate of the signature appearance's bounding box in default PDF user 
+  * **Bottom**<span style="color:red">*</span>
+  <br/>Specifies the bottom-most y-coordinate of the signature appearance's bounding box in default PDF user 
     space units.
-  ##### Right*
-  Specifies the right-most x-coordinate of the signature appearance's bounding box in default PDF user 
+  * **Right**<span style="color:red">*</span>
+  <br/>Specifies the right-most x-coordinate of the signature appearance's bounding box in default PDF user 
     space units.
-  ##### Top*
-  Specifies the top-most y-coordinate of the signature appearance's bounding box in default PDF user 
+  * **Top**<span style="color:red">*</span>
+  <br/>Specifies the top-most y-coordinate of the signature appearance's bounding box in default PDF user 
     space units.
- </p></details>
 
-</p></details>
+**Signature Appearance Parameters** <span style="color:red">*</span>
 
-#### Signature Appearance Parameters*
-Encapsulates the parameters related to the appearance of the signature field.
+Encapsulates the parameters related to the appearance of the signature field
 
-<details><summary>Signature Appearance Parameters</summary><p>
-
-   * ##### Display Parameters*
-   An enum set of display items: NAME, DATE, LOGO, DISTINGUISHED_NAME, LABELS. Specifies the information to display in the signature.
+   * **Display Parameters**<span style="color:red">*</span>
+   <br/>An enum set of display items: NAME, DATE, LOGO, DISTINGUISHED_NAME, LABELS. Specifies the information to display in the signature.
    <br/> 
-   NAME - Specifies that the signer's name should be displayed in the signature appearance.This is a default value.<br/> 
-   DATE - Specifies that the signing date/time should be displayed in the signature appearance. This option only controls whether the value of the 
+   
+   **NAME** - Specifies that the signer's name should be displayed in the signature appearance.This is a default value.<br/> 
+   
+   **DATE** - Specifies that the signing date/time should be displayed in the signature appearance. This option only controls whether the value of the 
    time/date in the signature dictionary is displayed or not. This value should not be mistaken for a signed timestamp 
    from a timestamp authority. <br/> 
-   DISTINGUISHED_NAME - Specifies that the distinguished name information from the 
+   
+   **DISTINGUISHED_NAME** - Specifies that the distinguished name information from the 
    signer's certificate should be displayed in the signature appearance. <br/>
-   LABELS - Specifies that text labels should 
+   
+   **LABELS** - Specifies that text labels should 
    be displayed in the signature appearance. This is a default value. <br/>
-   LOGO - Specifies that the logo should be 
-   displayed in the signature appearance. If a logo image was not supplied in the request body,  the default Acrobat trefoil image is used. |
-
-</p></details>    
+   
+   **LOGO** - Specifies that the logo should be 
+   displayed in the signature appearance. If a logo image was not supplied in the request body,  the default Acrobat trefoil image is used.  
 
 **Example JSON**
 ```json
@@ -151,18 +138,18 @@ Encapsulates the parameters related to the appearance of the signature field.
 }
 ```
 
-### 2. Generate sealed PDF using Digital Seal API
+### 2. Generate digitally signed PDF using Digital Seal API
 Digital Seal API is invoked after interacting with third-party dependencies, configuring sealing parameters and collating 
 required input data to form the request. The request-id generated in the response headers can be polled anytime 
-to retrieve the output sealed PDF. <br/>
+to retrieve the status and asset Id of the output signed PDF. <br/>
 Upload all the input assets to get the corresponding [Asset Ids](https://wiki.corp.adobe.com/pages/viewpage.action?pageId=2589901901#CustomTempstorage(forDCPlatformAPIs)-Upload/downloadassets). 
 Given below are the request body parameters:
 
-#### Document Asset Id*
-A file asset ID of an input PDF document in which seal has to be applied
+#### PDF Document<span style="color:red">*</span> 
+Specifies asset ID generated after uploading input PDF document in which seal has to be applied
 
-#### Logo Asset Id
-A file asset ID of the logo/watermark/background image to use as part of the 
+#### Logo Image
+Specifies asset ID generated after uploading the logo/watermark/background image used as part of the 
 signature field's signed appearance. The format of the asset should be among 
 the below format.
 
@@ -170,8 +157,8 @@ the below format.
 2. image/jpeg
 3. image/png
 
-#### Signature Asset Id
-A file asset ID of the signature image (i.e., drawn signature) to use as part of 
+#### Signature Image
+Specifies asset ID generated after uploading the signature image (i.e., drawn signature) used as part of 
 the signature field's signed appearance. The format of the asset should be among 
 the below format.
 
@@ -179,93 +166,67 @@ the below format.
 2. image/jpeg
 3. image/png
 
-#### Sealing Parameters*
+#### Sealing Parameters<span style="color:red">*</span>
 A collection of [parameters](/overview/digital-seal-api/quickstarts/#1-configure-sealing-parameters) 
-that will be applied during sealing creation
+that will be applied during seal creation
 
 There are two ways to access Digital Seal API
 
 **2.1 REST API**
+
 You can use our cloud based REST API to generate seal on PDF documents.
 <InlineAlert slots="text"/>
 
 Before you begin with the REST API, refer [How To Get Started](https://documentcloud.adobe.com/document-services/index.html#how-to-get-started-) to learn more about generating the required credentials and invoking the APIs.
 
 ```javascript
-curl --location --request POST 'https://cpf-stage-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%2C%20%22fragment%22%3A%20%22output%3DdocumentOut%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
---header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-   \"cpf:engine\":{
-      \"repo:assetId\":\"urn:aaid:cpf:Service-2629a6ba5aba43eca5ec4c65e1ceaed0\"
-   },
-   \"cpf:inputs\":{
-      \"documentIn\":{
-         \"dc:format\":\"application/pdf\",
-         \"cpf:location\":\"InputFile\"
-      },
-      \"logoIn\":{
-        \"dc:format\":\"image/png\",
-        \"cpf:location\":\"LogoFile\"
-      },
-      \"signatureIn\":{
-        \"dc:format\":\"image/png\",
-        \"cpf:location\":\"SignatureFile\"
-      },
-      \"params\":{
-         \"cpf:inline\":{
-            \"sealingOptions\":{
-               \"signatureType\":\"SIGN\",
-               \"signatureFormat\":\"PADES\",
-               \"cscCredentialInfo\":{
-                  \"authorizationContext\":{
-                     \"accessToken\":\"<ACCESS TOKEN>\",
-                     \"tokenType\":\"Bearer\"
-                  },
-                  \"credentialAuthParameters\":{
-                     \"pin\":\"<PIN>\"
-                  },
-                  \"providerName\":\"<PROVIDER_NAME>\",
-                  \"credentialId\":\"<CREDENTIAL_ID>\"
-               },
-               \"signatureFieldOptions\":{
-                  \"pageNumber\":1,
-                  \"fieldName\":\"Signature\",
-                  \"visible\":true,
-                  \"location\":{
-                     \"top\":300,
-                     \"bottom\":250,
-                     \"left\":300,
-                     \"right\":500
-                  }
-               },
-               \"signatureAppearanceOptions\":{
-                  \"displayOptions\":[
-                     \"DATE\",
-                     \"LOGO\",
-                     \"DISTINGUISHED_NAME\"
-                  ]
-               }
+curl --location --request POST 'https://pdf-services-dev.adobe.io/operation/digitalseal'
+--header 'Authorization: Bearer {{Placeholder for token}}'
+--header 'Accept: application/json, text/plain, */*'
+--header 'x-api-key: {{Placeholder for client_id}}'
+--header 'Content-Type: application/json'
+--data-raw '{
+    "documentassetID" : "<ASSET_ID>",
+    "logoInassetID" : "<ASSET_ID>",
+    "signatureInassetID" : "<ASSET_ID>",
+    "sealingOptions" : {
+        "signatureType": "SIGN",
+        "signatureFormat": "PADES",
+        "cscCredentialInfo": {
+            "authorizationContext": {
+                "accessToken": "<ACCESS TOKEN>",
+                "tokenType": "Bearer"
+            },
+            "credentialAuthParameters": {
+                "pin": "<PIN>"
+            },
+            "providerName": "<PROVIDER_NAME>",
+            "credentialId": "<CREDENTIAL_ID>"
+        },
+        "signatureFieldOptions": {
+            "pageNumber": 1,
+            "fieldName": "Signature",
+            "visible": true,
+            "location": {
+                "top": 300,
+                "bottom": 250,
+                "left": 300,
+                "right": 500
             }
-         }
-      }
-   },
-   \"cpf:outputs\":{
-      \"documentOut\":{
-         \"dc:format\":\"application/pdf\",
-         \"cpf:location\":\"file\"
-      }
-   }
-}"' \
---form 'InputFile=@"{{Placeholder for the input PDF document (absolute path)}}"' \
---form 'LogoFile=@"{{Placeholder for LOGO Image (absolute path)}}"' \
---form 'SignatureFile=@"{{Placeholder for Signature Image (absolute path)}}"'
-
+        },
+        "signatureAppearanceOptions": {
+            "displayOptions": [
+            "DATE",
+            "LOGO",
+            "DISTINGUISHED_NAME"
+            ]
+        }
+    }
+}'
 ```
 
 **2.2 PDF Services JAVA SDK**
+
 Alternatively, you can use our offering through [PDF Services SDK](../pdf-services-api#sdk).
 
 <InlineAlert slots="text"/>
