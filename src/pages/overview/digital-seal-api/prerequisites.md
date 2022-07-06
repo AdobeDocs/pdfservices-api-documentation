@@ -15,22 +15,25 @@ can be protected from unauthorised use by creating a static PIN.
 The Client should reserve Digital Id and PIN generated in this step for [configuring sealing paramaters](/overview/digital-seal-api/quickstarts/#1-configure-sealing-parameters)
 
 ### 2. Obtain your OAuth Token
-  
+
 The client will use OAuth 2.0 Client Credentials procured from [Trust Service provider](/overview/digital-seal-api/prerequisites/#1-procure-certificate-credentials). 
-The generated client_id and client_secret are passed as the input parameters in the request body of Cloud Signature Consortium Authorization API. 
+The generated client_id and client_secret are passed as the input parameters in the request body of Trust Service Provider's API endpoint. 
 The access token generated in the response is further used in the [next steps](/overview/digital-seal-api/quickstarts/#2-configure-sealing-parameters)
 to access with Cloud Signature Consortium APIs.
 
 To know more about Cloud Signature Consortium APIs refer [Cloud Signature Consortium Standard](https://cloudsignatureconsortium.org/wp-content/uploads/2020/01/CSC_API_V1_1.0.4.0.pdf)
-
-**Sample Request**
-```json
-{
+![TSP Token Generation](../images/TSPToken.png)
+**Sample OAuth Request**
+```javascript
+curl --location --request POST 'https://services.time4mind.com/csc/v0/oauth2/token'
+--header 'cache-control: no-cache'
+--header 'content-type: application/json'
+--data-raw '{
    "lang": "en-US",
    "client_id": "<YOUR_CLIENT_ID>",
    "client_secret": "<YOUR_CLIENT_SECRET>",
    "grant_type": "client_credentials"
-}
+}'
 ```
 
 **Sample Response**
