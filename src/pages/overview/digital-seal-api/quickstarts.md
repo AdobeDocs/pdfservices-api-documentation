@@ -9,14 +9,23 @@ Before getting started with Digital Seal API, make sure all the [Prerequisites](
 ## How-to Guide
 
 ### 1. Configure Sealing Parameters
-**Signature Type** <span style="color:red">*</span>
+
+#### Signature Type <span style="color:red">*</span>
+
+<details>
+<summary>Click here</summary>
 
 Specifies the type of digital signature being applied
  * Author signatures/ CERTIFY : first signature in the document often created by the document author, and there can be at most one in any given document.
  * Recipient signatures/ SIGN : Digital signatures which are signed with a certificate.
 API currently supports SIGN signature type.
 
-**Signature Format** <span style="color:red">*</span>
+</details>
+
+#### Signature Format <span style="color:red">*</span>
+
+<details>
+<summary>Click here</summary>
 
 Specifies the format of the digital signature. API supports below formats
 * PKCS#7 : Defined in [ISO 32000-1](https://opensource.adobe.com/dc-acrobat-sdk-docs/standards/pdfstandards/pdf/PDF32000_2008.pdf) section 12.8.3.3 
@@ -24,7 +33,12 @@ Specifies the format of the digital signature. API supports below formats
 * PADES : Defined in [ETSI TS 102 778-3](https://www.etsi.org/deliver/etsi_ts/102700_102799/10277803/01.02.01_60/ts_10277803v010201p.pdf) the signature 
             value Contents contain a DER-encoded SignedData object as specified in CMS (Cryptographic Message Syntax). This format is more strict and concrete than PKCS#7.
 
-**Trust Service Provider's (TSP) Credential Information** <span style="color:red">*</span>  
+</details>
+
+#### Trust Service Provider's (TSP) Credential Information <span style="color:red">*</span>  
+
+<details>
+<summary>Click here</summary>
 
 Encapsulates the [certificate credential](/overview/digital-seal-api/prerequisites/#1-procure-certificate-credentials) to be used 
 for signing and the associated authentication and authorization data.
@@ -50,12 +64,16 @@ for signing and the associated authentication and authorization data.
    * **PIN**<span style="color:red">*</span>
    <br/>Specifies the PIN associated with credential id.
 
+</details>
 
-**Signature Field Parameters** <span style="color:red">*</span>
+#### Signature Field Parameters <span style="color:red">*</span>
+
+<details>
+<summary>Click here</summary>
 
 Encapsulates the parameters required to create a new unsigned signature field or sign an existing field.
 
-* **Field Name**
+* **Field Name**<span style="color:red">*</span>
 <br/>Specified the field name for the signature field.
 * **Visibility**
 <br/>Specified whether the signature field is visible or not. Set to true to create a visible signature. Set to false to 
@@ -78,7 +96,12 @@ create an invisible (hidden) signature. The default value is true.
   <br/>Specifies the top-most y-coordinate of the signature appearance's bounding box in default PDF user 
     space units.
 
-**Signature Appearance Parameters** <span style="color:red">*</span>
+</details>
+
+#### Signature Appearance Parameters
+
+<details>
+<summary>Click here</summary>
 
 Encapsulates the parameters related to the appearance of the signature field
 
@@ -100,6 +123,8 @@ Encapsulates the parameters related to the appearance of the signature field
    
    **LOGO** - Specifies that the logo should be 
    displayed in the signature appearance. If a logo image was not supplied in the request body,  the default Acrobat trefoil image is used.  
+
+</details>
 
 **Example JSON**
 ```json

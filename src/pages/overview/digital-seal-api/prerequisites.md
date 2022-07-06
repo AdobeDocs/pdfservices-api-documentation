@@ -25,7 +25,7 @@ To know more about Cloud Signature Consortium APIs refer [Cloud Signature Consor
 ![TSP Token Generation](../images/TSPToken.png)
 **Sample OAuth Request**
 ```javascript
-curl --location --request POST 'https://services.time4mind.com/csc/v0/oauth2/token'
+curl --location --request POST 'https://<base-url>/<API-domain-name>/csc/v0/oauth2/token'
 --header 'cache-control: no-cache'
 --header 'content-type: application/json'
 --data-raw '{
