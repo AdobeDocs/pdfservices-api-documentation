@@ -7,6 +7,8 @@ When you use a digital certificate obtained from a trusted third party, the resu
 virtually impossible to spoof. It also provides powerful evidence of signer identity, that the signed document was not 
 altered, and that the signatures are valid.
 
+![Digital Seal Identification](../images/blueBar.png)
+
 <!--- 
 https://www.adobe.com/sign/digital-signatures.html
 -->
