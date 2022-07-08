@@ -28,10 +28,10 @@ API currently supports SIGN signature type.
 <summary>Click here</summary>
 
 Specifies the format of the digital signature. API supports below formats
-* PKCS#7 : Defined in [ISO 32000-1](https://opensource.adobe.com/dc-acrobat-sdk-docs/standards/pdfstandards/pdf/PDF32000_2008.pdf) section 12.8.3.3 
-           PKCS#7 Signatures; the signature value Contents contain a DER-encoded PKCS#7 binary data object.
-* PADES : Defined in [ETSI TS 102 778-3](https://www.etsi.org/deliver/etsi_ts/102700_102799/10277803/01.02.01_60/ts_10277803v010201p.pdf) the signature 
-            value Contents contain a DER-encoded SignedData object as specified in CMS (Cryptographic Message Syntax). This format is more strict and concrete than PKCS#7.
+* PADES : This is the latest and improved format which is more strict, concrete and secure.
+          For more details refer [ETSI TS 102 778-3](https://www.etsi.org/deliver/etsi_ts/102700_102799/10277803/01.02.01_60/ts_10277803v010201p.pdf)  
+* PKCS#7 : PKCS #7 signature is comparatively more relaxed and it's possible to change more things in PDF without invalidating digital signatures.
+           For more details refer [ISO 32000-1](https://opensource.adobe.com/dc-acrobat-sdk-docs/standards/pdfstandards/pdf/PDF32000_2008.pdf)
 
 </details>
 
