@@ -294,18 +294,18 @@ public class DigitalSealSuccessTest {
                     .build();
 
             //Set the name of CSC Provider being used.
-            String providerName = "intesi";
+            String providerName = "<PROVIDER_NAME>";
             //Set the access token to be used to access CSC provider hosted APIs.
-            String accessToken = "0a07948d-bfb7-4a77-8b07-199e0e9a2208";
+            String accessToken = "<ACCESS_TOKEN>";
             //Set the credential ID.
-            String credentialID = "[ADOBE_TEST]_AUTO_12834_SIGN_1647837397700:44";
+            String credentialID = "<CREDENTIAL_ID>";
             //Set the PIN generated while creating credentials.
-            String credentialPin = "12345678";
+            String credentialPin = "<PIN>";
 
             CSCCredentialOptions signatureCredentialOptions = SignatureCredentialOptions.cscCredentialOptions(providerName, credentialID, credentialPin, accessToken);
 
             //TODO: usage of signAuth is temporary and will be removed after service to service token support.
-            String signAuth = "3AAABLZtkPdAGKvHEl8kAGdhMI0QPHM7TNZIoe3Mf6wGk_2p6wwFoDx6AdEAU1KTdZCFxBBCu_B2GYBFWUGDJQlphrkWsmbFO";
+            String signAuth = "<AUTH>";
             SignatureOptions signatureOptions = new SignatureOptions(SignatureType.SIGN, SignatureFormat.PKCS7, signatureCredentialOptions,
                     signatureFieldOptions, signatureDisplayOptions, signAuth);
 
