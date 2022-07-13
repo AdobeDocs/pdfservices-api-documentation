@@ -135,6 +135,11 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### 2.2.3 (July, 2022; patch release)
+| Change  | Language            | Description                                                                                   |
+| ------- | ------------------- | --------------------------------------------------------------------------------------------- |
+| Changed | NodeJS               | Fixed the issue of sending UNKNOWN error code for extract operation.
+
 ### Extract PDF Server Side Release (21 June, 2022; server side release)
 | Change  | Language            | Description                                                                                   |
 | ------- | ------------------- | --------------------------------------------------------------------------------------------- |
