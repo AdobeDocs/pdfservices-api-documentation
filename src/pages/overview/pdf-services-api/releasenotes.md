@@ -135,6 +135,11 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### PDF Accessibility Auto-Tag Release - Available under Early Access Program (21 June, 2022)
+| Change  | Language            | Description                                                                                   |
+| ------- | ------------------- | --------------------------------------------------------------------------------------------- |
+| New     | Java, Python        | PDF Accessibility Auto-Tag operation is now available in Beta PDF Services SDKs                                |
+
 ### Extract PDF Server Side Release (21 June, 2022; server side release)
 | Change  | Language            | Description                                                                                   |
 | ------- | ------------------- | --------------------------------------------------------------------------------------------- |
