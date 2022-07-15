@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+
+.titleBlock-align-left div:first-child {
+    text-align: left !important;
+    margin-left: var(--spectrum-global-dimension-size-0) !important;
+}
+
+@media screen and (max-width: 768px) {
+    pre:not(.prism-code) div[class^="spectrum"] div:first-child {
+        top: -52px;
+    }
+    .titleBlock-align-left div:first-child {
+        margin-left: var(--spectrum-global-dimension-size-0) !important;
+    }
+}
