@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "DC Platform APIs",
-    "description": "Trying to document dc platform api's here",
-    "termsOfService": "http://swagger.io/terms/",
+    "title": "PDF Services API",
+    "description": "Adobe PDF Services API allows you to create and manipulate PDF documents within any document workflow through scalable cloud-based web services.\nEasily automate powerful PDF operations into any application, whether you want to create PDFs from a Word document, export existing PDFs to other formats in your document workflows or manipulate PDFs performing different operations on them.\nBrowse through the Operations and choose any combination of PDF operations for dynamic digital workflows that seamlessly integrate end-user experiences.",
+    "termsOfService": "https://developer.adobe.com/document-services/docs/overview//terms/",
     "contact": {
       "email": "apiteam@swagger.io"
     },
@@ -14,141 +14,93 @@
     "version": "2.0.0"
   },
   "externalDocs": {
-    "description": "Find out more about Swagger",
-    "url": "http://swagger.io"
+    "description": "Find out more",
+    "url": "https://developer.adobe.com/document-services/docs/overview/"
   },
   "servers": [
     {
-      "url": "https://dc-platform-api.adobe.io/"
+      "url": "https://pdf-services.adobe.io/"
     }
   ],
   "tags": [
     {
-      "name": "asset",
-      "description": "Upload and download asset",
-      "externalDocs": {
-        "description": "Find out more",
-        "url": "http://swagger.io"
-      }
+      "name": "assets",
+      "description": "Upload and download assets"
     },
     {
       "name": "createpdf",
-      "description": "Create PDF document from Microsoft Office documents",
-      "externalDocs": {
-        "description": "Find out more",
-        "url": "http://swagger.io"
-      }
+      "description": "Create PDF document from Microsoft Office documents (Word, Excel and PowerPoint) and Image file formats."
     },
     {
       "name": "exportpdf",
-      "description": "Convert a PDF File to a non-PDF File",
-      "externalDocs": {
-        "description": "Find out more",
-        "url": "http://swagger.io"
-      }
+      "description": "Convert a PDF File to a non-PDF File"
+    },
+    {
+      "name": "pdftoimages",
+      "description": "Convert a PDF File to image files"
     },
     {
       "name": "extractpdf",
-      "description": "Extract content from PDF documents and output it in a structured JSON format, along with tables and figures",
-      "externalDocs": {
-        "description": "Find out more",
-        "url": "http://swagger.io"
-      }
+      "description": "Extract content from PDF documents and output it in a structured JSON format, along with tables and figures"
     },
     {
       "name": "htmltopdf",
-      "description": "Convert HTML Resources to a PDF File",
-      "externalDocs": {
-        "description": "Find out more",
-        "url": "http://swagger.io"
-      }
+      "description": "Convert HTML Resources to a PDF File"
     },
     {
       "name": "combinepdf",
-      "description": "Combine multiple PDF Files into a single PDF File",
-      "externalDocs": {
-        "description": "Find out more",
-        "url": "http://swagger.io"
-      }
+      "description": "Combine multiple PDF Files into a single PDF File"
     },
     {
       "name": "compresspdf",
-      "description": "Compress a PDF File",
-      "externalDocs": {
-        "description": "Find out more",
-        "url": "http://swagger.io"
-      }
+      "description": "Compress a PDF File"
     },
     {
       "name": "linearizepdf",
-      "description": "Convert a PDF File to a Linearized or Web Optimized PDF File",
-      "externalDocs": {
-        "description": "Find out more",
-        "url": "http://swagger.io"
-      }
+      "description": "Convert a PDF File to a Linearized or Web Optimized PDF File"
     },
     {
       "name": "ocr",
-      "description": "Perform OCR on a PDF File",
-      "externalDocs": {
-        "description": "Find out more",
-        "url": "http://swagger.io"
-      }
+      "description": "Perform OCR on a PDF File"
     },
     {
       "name": "pagemanipulation",
-      "description": "Rotate and delete pages of a PDF File",
-      "externalDocs": {
-        "description": "Find out more",
-        "url": "http://swagger.io"
-      }
+      "description": "Rotate and delete pages of a PDF File"
     },
     {
       "name": "pdfproperties",
-      "description": "Extract basic information about a PDF document.",
-      "externalDocs": {
-        "description": "Find out more",
-        "url": "http://swagger.io"
-      }
+      "description": "Extract basic information about a PDF document."
     },
     {
       "name": "protectpdf",
-      "description": "Add encryption and/or restrict permissions on a PDF File",
-      "externalDocs": {
-        "description": "Find out more",
-        "url": "http://swagger.io"
-      }
+      "description": "Add encryption and/or restrict permissions on a PDF File"
     },
     {
       "name": "removeprotection",
-      "description": "Remove password protection from a PDF File",
-      "externalDocs": {
-        "description": "Find out more",
-        "url": "http://swagger.io"
-      }
+      "description": "Remove password protection from a PDF File"
     },
     {
       "name": "splitpdf",
-      "description": "Split a PDF File into multiple PDF Files",
-      "externalDocs": {
-        "description": "Find out more",
-        "url": "http://swagger.io"
-      }
+      "description": "Split a PDF File into multiple PDF Files"
     },
     {
       "name": "documentGeneration",
-      "description": "Merge Word based templates with input JSON data to create Word and PDF documents",
-      "externalDocs": {
-        "description": "Find out more",
-        "url": "http://swagger.io"
-      }
+      "description": "Merge Word based templates with input JSON data to create Word and PDF documents"
+    },
+    {
+      "name": "digitalseal1",
+      "description": "An operation that applies cryptographic seals on input documents using a selected certificate provider."
+    },
+    {
+      "name": "digitalseal2",
+      "description": "An operation that applies cryptographic seals on input documents using a selected certificate provider."
     }
   ],
   "x-tagGroups": [
     {
       "name": "Files",
       "tags": [
-        "asset"
+        "assets"
       ]
     },
     {
@@ -156,6 +108,7 @@
       "tags": [
         "createpdf",
         "exportpdf",
+        "pdftoimages",
         "extractpdf",
         "htmltopdf",
         "combinepdf",
@@ -167,30 +120,21 @@
         "protectpdf",
         "removeprotection",
         "splitpdf",
-        "documentGeneration"
+        "documentGeneration",
+        "digitalseal"
       ]
     }
-
   ],
   "paths": {
-    "/tmp": {
+    "/assets": {
       "post": {
         "tags": [
-          "asset"
+          "assets"
         ],
-        "summary": "Upload an asset to tmp storage",
-        "description": "Upload file",
-        "operationId": "asset.upload",
+        "summary": "Get the pre-signed URI to directly upload the content to the cloud provider. ",
+        "description": "Get the pre-signed URI to directly upload the content to the cloud provider. \n\nOutput: Response will have the asset URI of created asset and pre-signed URI for uploading the content.",
+        "operationId": "asset.uploadpresignedurl",
         "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "description": "The content type (media type) of the file. For example, application/pdf",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
           {
             "name": "Authorization",
             "in": "header",
@@ -208,21 +152,45 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "X-Request-ID",
+            "in": "header",
+            "description": "The request identifier used to trace the request in logs.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
+          "description": "Params for getting upload presigned url Operation",
           "content": {
-            "*/*": {
+            "application/json": {
               "schema": {
-                "type": "string",
-                "format": "binary"
+                "$ref": "#/components/schemas/GetUploadPresignedUrl"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
-            "description": "Asset uploaded successfully",
+            "description": "The request was successfully",
+            "headers": {
+              "location": {
+                "description": "An asset URI identifying an asset that is globally unique and never reused.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
             "content": {
               "application/json": {
                 "schema": {
@@ -248,7 +216,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
@@ -282,7 +250,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/401"
                 }
@@ -306,7 +274,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/408"
                 }
@@ -330,7 +298,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/429"
                 }
@@ -354,40 +322,25 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/500"
                 }
               }
             }
           }
-        },
-        "security": [
-          {
-            "auth": [
-            ]
-          }
-        ]
+        }
       }
     },
-    "/tmp/blob/{assetID}": {
+    "/assets/{assetId}": {
       "get": {
         "tags": [
-          "asset"
+          "assets"
         ],
-        "summary": "Download asset from temp storage",
-        "description": "Download file",
-        "operationId": "asset.download",
+        "summary": "Get the pre-signed URI to fetch the content directly from the cloud provider.",
+        "description": "Get the pre-signed URI to fetch the content directly from the cloud provider.",
+        "operationId": "asset.get",
         "parameters": [
-          {
-            "name": "assetID",
-            "in": "path",
-            "description": "ID of the asset",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
           {
             "name": "Authorization",
             "in": "header",
@@ -405,24 +358,38 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "X-Request-ID",
+            "in": "header",
+            "description": "The request identifier used to trace the request in logs.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "Asset downloaded successfully",
+            "description": "The request was successfully",
             "headers": {
               "Content-Type": {
-                "description": "Content type of the file",
+                "description": "The media type of the response body, which is application/json.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique ID to identify each individual request.",
                 "schema": {
                   "type": "string"
                 }
               }
             },
             "content": {
-              "application/octet-stream": {
+              "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
+                  "$ref": "#/components/schemas/GetPresignedUrl"
                 }
               }
             }
@@ -444,22 +411,17 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "error": {
-                      "type": "object",
-                      "properties": {
-                        "error_code": {
-                          "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>INVALID_ASSET_ID</td><td>Invalid asset id present in path param</td></tr></table>",
-                          "type": "string"
-                        },
-                        "message": {
-                          "description": "An English language string that contains more information about the error.",
-                          "type": "string"
-                        }
-                      }
+                    "error_code": {
+                      "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>INVALID_REQUEST</td><td>Invalid Request Schema.</td></tr></tr><tr><td>REQUEST_TOO_LARGE</td><td>Total size of inline inputs exceeds permitted size.</td></tr></table>",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "An English language string that contains more information about the error.",
+                      "type": "string"
                     }
                   }
                 }
@@ -470,13 +432,7 @@
             "description": "Unauthorized.",
             "headers": {
               "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-server": {
-                "description": "The name and version of the server.",
+                "description": "The content type of the error JSON response.",
                 "schema": {
                   "type": "string"
                 }
@@ -489,9 +445,9 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Satus401"
+                  "$ref": "#/components/schemas/401"
                 }
               }
             }
@@ -513,9 +469,9 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Satus408"
+                  "$ref": "#/components/schemas/408"
                 }
               }
             }
@@ -537,9 +493,9 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Satus429"
+                  "$ref": "#/components/schemas/429"
                 }
               }
             }
@@ -561,20 +517,209 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Satus500"
+                  "$ref": "#/components/schemas/500"
                 }
               }
             }
           }
-        },
-        "security": [
+        }
+      }
+    },
+    "/assets/{assetId}/metadata": {
+      "get": {
+        "tags": [
+          "assets"
+        ],
+        "summary": "Get the metadata of the stored temporary asset.",
+        "description": "Get the metadata of the stored temporary asset.",
+        "operationId": "asset.metadata",
+        "parameters": [
           {
-            "auth": [
-            ]
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer + Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-API-key",
+            "in": "header",
+            "description": "The clientId from the generated credentials",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Request-ID",
+            "in": "header",
+            "description": "The request identifier used to trace the request in logs.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
-        ]
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successfully",
+            "headers": {
+              "Content-Type": {
+                "description": "The media type of the response body, which is application/json.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique ID to identify each individual request.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetMetadata"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error_code": {
+                      "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>INVALID_REQUEST</td><td>Invalid Request Schema.</td></tr></tr><tr><td>REQUEST_TOO_LARGE</td><td>Total size of inline inputs exceeds permitted size.</td></tr></table>",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "An English language string that contains more information about the error.",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the error JSON response.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/401"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "Request Timed Out. Some operation has timed out due to client issue.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/408"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Caller doesn't have sufficient quota for this operation.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/pdf-services/operation/createpdf": {
@@ -583,7 +728,7 @@
           "createpdf"
         ],
         "summary": "Create PDF document from non PDF document.",
-        "description": "Create PDF document from Microsoft Office documents (Word, Excel and PowerPoint).",
+        "description": "Create PDF document from Microsoft Office documents (Word, Excel and PowerPoint) and Image file formats.",
         "operationId": "pdfoperations.createpdf",
         "parameters": [
           {
@@ -651,7 +796,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/400"
                 }
@@ -675,7 +820,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/404"
                 }
@@ -699,7 +844,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/401"
                 }
@@ -723,7 +868,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/429"
                 }
@@ -747,7 +892,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/500"
                 }
@@ -812,7 +957,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/JobStatus"
                 }
@@ -836,7 +981,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus404"
                 }
@@ -866,7 +1011,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus401"
                 }
@@ -890,7 +1035,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus408"
                 }
@@ -914,7 +1059,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus429"
                 }
@@ -938,7 +1083,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus500"
                 }
@@ -954,7 +1099,7 @@
           "exportpdf"
         ],
         "summary": "Export a PDF file into a number of supported formats.",
-        "description": "Export a PDF file into a number of supported formats. By default Exporting to an image produces a zip archive containing one image per page. Each image file name ends with _<unpadded_page_index_number>. For example, a PDF file with 15 pages will generate 15 image files. The first file name ends with _1 and the last file name ends with _15. To get the results of Exporting to image as non zip output, please set the outputType parameter to listOfPageImages and use assetIDList to get the result.",
+        "description": "Export a PDF file into a number of supported formats. The supported formats are doc, docx, pptx, xlsx, rtf.",
         "operationId": "pdfoperations.exportpdf",
         "parameters": [
           {
@@ -1022,7 +1167,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/400"
                 }
@@ -1046,7 +1191,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/404"
                 }
@@ -1076,7 +1221,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/401"
                 }
@@ -1100,7 +1245,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/429"
                 }
@@ -1124,7 +1269,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/500"
                 }
@@ -1189,7 +1334,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ExportPDFJobStatus"
                 }
@@ -1213,7 +1358,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus404"
                 }
@@ -1243,7 +1388,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus401"
                 }
@@ -1267,7 +1412,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus408"
                 }
@@ -1291,7 +1436,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus429"
                 }
@@ -1315,7 +1460,384 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus500"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pdf-services/operation/pdftoimages": {
+      "post": {
+        "tags": [
+          "pdftoimages"
+        ],
+        "summary": "Convert a PDF file into supported image formats.",
+        "description": "Convert a PDF file into supported image formats.Each image file name ends with _<unpadded_page_index_number>. For example, a PDF file with 15 pages will generate 15 image files. The first file name ends with _1 and the last file name ends with _15.",
+        "operationId": "pdfoperations.pdftoimages",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer + Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-API-key",
+            "in": "header",
+            "description": "The clientId from the generated credentials",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Parameter to specify output document target format",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PDFToImage"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Request creation for the operation and status uri generated, which can be found in the 'location' header.",
+            "headers": {
+              "location": {
+                "description": "Job status URI for polling the results",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource Not Found.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the error JSON response.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-server": {
+                "description": "The name and version of the server.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/401"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Caller doesn't have sufficient quota for this operation.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/pdf-services/operation/pdftoimages/{jobID}/status": {
+      "get": {
+        "tags": [
+          "pdftoimages"
+        ],
+        "summary": "Poll the pdftoimage Job for completion",
+        "operationId": "pdfoperations.pdftoimages.jobstatus",
+        "parameters": [
+          {
+            "name": "jobID",
+            "in": "path",
+            "description": "Job ID of the request",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer + Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-API-key",
+            "in": "header",
+            "description": "The clientId from the generated credentials",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A response with job information.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the status call response.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PDFTOImageJobStatus"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource Not Found.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus404"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-server": {
+                "description": "The name and version of the server.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus401"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "Request Timed Out. Some operation has timed out due to client issue.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus408"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Caller doesn't have sufficient quota for this operation.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus500"
                 }
@@ -1399,7 +1921,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/400"
                 }
@@ -1423,7 +1945,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/404"
                 }
@@ -1453,7 +1975,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/401"
                 }
@@ -1477,7 +1999,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/429"
                 }
@@ -1501,7 +2023,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/500"
                 }
@@ -1566,7 +2088,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ExtractPDFJobStatus"
                 }
@@ -1590,7 +2112,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus404"
                 }
@@ -1620,7 +2142,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus401"
                 }
@@ -1644,7 +2166,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus408"
                 }
@@ -1668,7 +2190,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus429"
                 }
@@ -1692,7 +2214,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus500"
                 }
@@ -1776,7 +2298,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/400"
                 }
@@ -1800,7 +2322,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/404"
                 }
@@ -1824,7 +2346,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/401"
                 }
@@ -1848,7 +2370,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/429"
                 }
@@ -1872,7 +2394,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/500"
                 }
@@ -1937,7 +2459,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/HtmlToPdfJobStatus"
                 }
@@ -1961,7 +2483,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus404"
                 }
@@ -1991,7 +2513,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus401"
                 }
@@ -2015,7 +2537,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus408"
                 }
@@ -2039,7 +2561,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus429"
                 }
@@ -2063,7 +2585,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus500"
                 }
@@ -2147,7 +2669,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/400"
                 }
@@ -2171,7 +2693,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/404"
                 }
@@ -2195,7 +2717,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/401"
                 }
@@ -2219,7 +2741,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/429"
                 }
@@ -2243,7 +2765,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/500"
                 }
@@ -2308,7 +2830,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/CombinePDFJobStatus"
                 }
@@ -2332,7 +2854,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus404"
                 }
@@ -2362,7 +2884,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus401"
                 }
@@ -2386,7 +2908,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus408"
                 }
@@ -2410,7 +2932,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus429"
                 }
@@ -2434,7 +2956,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus500"
                 }
@@ -2518,7 +3040,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/400"
                 }
@@ -2542,7 +3064,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/404"
                 }
@@ -2566,7 +3088,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/401"
                 }
@@ -2590,7 +3112,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/429"
                 }
@@ -2614,7 +3136,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/500"
                 }
@@ -2679,7 +3201,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/CompressPDFJobStatus"
                 }
@@ -2703,7 +3225,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus404"
                 }
@@ -2733,7 +3255,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus401"
                 }
@@ -2757,7 +3279,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus408"
                 }
@@ -2781,7 +3303,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus429"
                 }
@@ -2805,7 +3327,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus500"
                 }
@@ -2889,7 +3411,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/400"
                 }
@@ -2913,7 +3435,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/404"
                 }
@@ -2937,7 +3459,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/401"
                 }
@@ -2961,7 +3483,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/429"
                 }
@@ -2985,7 +3507,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/500"
                 }
@@ -3050,7 +3572,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/LinearizePDFJobStatus"
                 }
@@ -3074,7 +3596,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus404"
                 }
@@ -3104,7 +3626,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus401"
                 }
@@ -3128,7 +3650,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus408"
                 }
@@ -3152,7 +3674,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus429"
                 }
@@ -3176,7 +3698,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus500"
                 }
@@ -3260,7 +3782,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/400"
                 }
@@ -3284,7 +3806,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/404"
                 }
@@ -3308,7 +3830,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/401"
                 }
@@ -3332,7 +3854,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/429"
                 }
@@ -3356,7 +3878,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/500"
                 }
@@ -3421,7 +3943,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/OCRJobStatus"
                 }
@@ -3445,7 +3967,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus404"
                 }
@@ -3475,7 +3997,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus401"
                 }
@@ -3499,7 +4021,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus408"
                 }
@@ -3523,7 +4045,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus429"
                 }
@@ -3547,7 +4069,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus500"
                 }
@@ -3631,7 +4153,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/400"
                 }
@@ -3655,7 +4177,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/404"
                 }
@@ -3679,7 +4201,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/401"
                 }
@@ -3703,7 +4225,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/429"
                 }
@@ -3727,7 +4249,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/500"
                 }
@@ -3792,7 +4314,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PageManipulationJobStatus"
                 }
@@ -3816,7 +4338,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus404"
                 }
@@ -3846,7 +4368,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus401"
                 }
@@ -3870,7 +4392,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus408"
                 }
@@ -3894,7 +4416,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus429"
                 }
@@ -3918,7 +4440,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus500"
                 }
@@ -4002,7 +4524,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/400"
                 }
@@ -4026,7 +4548,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/404"
                 }
@@ -4050,7 +4572,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/401"
                 }
@@ -4074,7 +4596,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/429"
                 }
@@ -4098,7 +4620,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/500"
                 }
@@ -4163,7 +4685,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PDFPropertiesJobStatus"
                 }
@@ -4187,7 +4709,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus404"
                 }
@@ -4217,7 +4739,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus401"
                 }
@@ -4241,7 +4763,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus408"
                 }
@@ -4265,7 +4787,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus429"
                 }
@@ -4289,7 +4811,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus500"
                 }
@@ -4373,7 +4895,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/400"
                 }
@@ -4397,7 +4919,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/404"
                 }
@@ -4421,7 +4943,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/401"
                 }
@@ -4445,7 +4967,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/429"
                 }
@@ -4469,7 +4991,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/500"
                 }
@@ -4534,7 +5056,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ProtectPDFJobStatus"
                 }
@@ -4558,7 +5080,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus404"
                 }
@@ -4588,7 +5110,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus401"
                 }
@@ -4612,7 +5134,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus408"
                 }
@@ -4636,7 +5158,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus429"
                 }
@@ -4660,7 +5182,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus500"
                 }
@@ -4744,7 +5266,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/400"
                 }
@@ -4768,7 +5290,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/404"
                 }
@@ -4792,7 +5314,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/401"
                 }
@@ -4816,7 +5338,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/429"
                 }
@@ -4840,7 +5362,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/500"
                 }
@@ -4905,7 +5427,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/RemoveProtectionJobStatus"
                 }
@@ -4929,7 +5451,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus404"
                 }
@@ -4959,7 +5481,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus401"
                 }
@@ -4983,7 +5505,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus408"
                 }
@@ -5007,7 +5529,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus429"
                 }
@@ -5031,7 +5553,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus500"
                 }
@@ -5115,7 +5637,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/400"
                 }
@@ -5139,7 +5661,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/404"
                 }
@@ -5163,7 +5685,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/401"
                 }
@@ -5187,7 +5709,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/429"
                 }
@@ -5211,7 +5733,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/500"
                 }
@@ -5276,7 +5798,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SplitPDFJobStatus"
                 }
@@ -5300,7 +5822,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus404"
                 }
@@ -5330,7 +5852,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus401"
                 }
@@ -5354,7 +5876,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus408"
                 }
@@ -5378,7 +5900,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus429"
                 }
@@ -5402,7 +5924,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus500"
                 }
@@ -5486,7 +6008,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/400"
                 }
@@ -5510,7 +6032,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/404"
                 }
@@ -5534,7 +6056,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/401"
                 }
@@ -5558,7 +6080,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/429"
                 }
@@ -5582,7 +6104,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/500"
                 }
@@ -5647,7 +6169,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/JobStatus"
                 }
@@ -5671,7 +6193,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus404"
                 }
@@ -5701,7 +6223,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus401"
                 }
@@ -5725,7 +6247,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus408"
                 }
@@ -5749,7 +6271,7 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus429"
                 }
@@ -5773,7 +6295,378 @@
               }
             },
             "content": {
-              "application/json":{
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus500"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pdf-services/operation/digitalseal": {
+      "post": {
+        "tags": [
+          "digitalseal"
+        ],
+        "summary": "An operation to create a digital signature on input PDF documents using the digital certificate provided by the user.",
+        "description": "An operation to create a digital signature on input PDF documents using the digital certificate provided by the user.",
+        "operationId": "pdfoperations.digitalseal",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer + Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-API-key",
+            "in": "header",
+            "description": "The clientId from the generated credentials",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Params for Digital seal Operation",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Digitalseal"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Request creation for the operation and status uri generated, which can be found in the 'location' header.",
+            "headers": {
+              "location": {
+                "description": "Job status URI for polling the results",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource Not Found.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the error JSON response.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/401"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Caller doesn't have sufficient quota for this operation.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/pdf-services/operation/digitalseal/{jobID}/status": {
+      "get": {
+        "tags": [
+          "digitalseal"
+        ],
+        "summary": "Poll the digitalseal Job for completion",
+        "operationId": "pdfoperations.digitalseal.jobstatus",
+        "parameters": [
+          {
+            "name": "jobID",
+            "in": "path",
+            "description": "Job ID of the request",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer + Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-API-key",
+            "in": "header",
+            "description": "The clientId from the generated credentials",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A response with job information.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the status call response.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DigitalSealPDFJobStatus"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource Not Found.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus404"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-server": {
+                "description": "The name and version of the server.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus401"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "Request Timed Out. Some operation has timed out due to client issue.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus408"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Caller doesn't have sufficient quota for this operation.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus500"
                 }
@@ -5889,8 +6782,8 @@
           }
         },
         "example": {
-          "error" : {
-            "error_code" : "BAD_REQUEST",
+          "error": {
+            "error_code": "BAD_REQUEST",
             "message": "Bad Request."
           }
         }
@@ -5912,15 +6805,15 @@
           }
         },
         "example": {
-          "error" : {
-            "error_code" : "NOT_FOUND",
+          "error": {
+            "error_code": "NOT_FOUND",
             "message": "Asset not found."
           }
         }
       },
       "401": {
         "properties": {
-          "error" : {
+          "error": {
             "type": "object",
             "properties": {
               "error_code": {
@@ -5935,8 +6828,8 @@
           }
         },
         "example": {
-          "error" : {
-            "error_code" : "UNAUTHORIZED",
+          "error": {
+            "error_code": "UNAUTHORIZED",
             "message": "Not authorised to perform the operation."
           }
         }
@@ -5958,15 +6851,15 @@
           }
         },
         "example": {
-          "error" : {
-            "error_code" : "REQUEST_TIMEOUT",
+          "error": {
+            "error_code": "REQUEST_TIMEOUT",
             "message": "Request processing took more than %s seconds."
           }
         }
       },
       "429": {
         "properties": {
-          "error" : {
+          "error": {
             "type": "object",
             "properties": {
               "error_code": {
@@ -5981,15 +6874,15 @@
           }
         },
         "example": {
-          "error" : {
-            "error_code" : "INSUFFICIENT_QUOTA",
+          "error": {
+            "error_code": "INSUFFICIENT_QUOTA",
             "message": "Client exhausted the Quota."
           }
         }
       },
       "500": {
         "properties": {
-          "error" : {
+          "error": {
             "type": "object",
             "properties": {
               "error_code": {
@@ -6004,8 +6897,8 @@
           }
         },
         "example": {
-          "error" : {
-            "error_code" : "INTERNAL_SERVER_ERROR",
+          "error": {
+            "error_code": "INTERNAL_SERVER_ERROR",
             "message": "There was an error processing your request."
           }
         }
@@ -6027,8 +6920,8 @@
           }
         },
         "example": {
-          "error" : {
-            "error_code" : "INVALID_JOB_ID",
+          "error": {
+            "error_code": "INVALID_JOB_ID",
             "message": "Invalid job id present in path param."
           }
         }
@@ -6050,8 +6943,8 @@
           }
         },
         "example": {
-          "error" : {
-            "error_code" : "NOT_FOUND",
+          "error": {
+            "error_code": "NOT_FOUND",
             "message": "Job not found."
           }
         }
@@ -6073,8 +6966,8 @@
           }
         },
         "example": {
-          "error" : {
-            "error_code" : "UNAUTHORIZED",
+          "error": {
+            "error_code": "UNAUTHORIZED",
             "message": "Not authorised to perform the operation."
           }
         }
@@ -6096,8 +6989,8 @@
           }
         },
         "example": {
-          "error" : {
-            "error_code" : "REQUEST_TIMEOUT",
+          "error": {
+            "error_code": "REQUEST_TIMEOUT",
             "message": "Request processing took more than %s seconds."
           }
         }
@@ -6119,8 +7012,8 @@
           }
         },
         "example": {
-          "error" : {
-            "error_code" : "INSUFFICIENT_QUOTA",
+          "error": {
+            "error_code": "INSUFFICIENT_QUOTA",
             "message": "Client exhausted the Quota."
           }
         }
@@ -6142,8 +7035,8 @@
           }
         },
         "example": {
-          "error" : {
-            "error_code" : "INTERNAL_SERVER_ERROR",
+          "error": {
+            "error_code": "INTERNAL_SERVER_ERROR",
             "message": "There was an error processing your request."
           }
         }
@@ -6156,8 +7049,8 @@
         "description": "Params for Create PDF Operation",
         "type": "object",
         "properties": {
-          "assetID": {
-            "description": "A file asset ID. Supported file formats are doc, docx, ppt, pptx, xls and xlsx",
+          "assetURI": {
+            "description": "A file asset Uri. Supported file formats are bmp, doc, docx, gif, jpeg, jpg, png, ppt, pptx, rtf, tif, tiff, txt, xls and xlsx",
             "type": "string"
           },
           "documentLanguage": {
@@ -6168,40 +7061,81 @@
           "documentLanguage": "en-US"
         },
         "example": {
-          "assetID": "urn:aaid:sc:VA6C2:509d853b-6c1b-453d-b799-36ce40904b79",
+          "assetURI": "https://pdf-services.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
           "documentLanguage": "en-US"
         },
-        "required": ["assetID"],
+        "required": [
+          "assetURI"
+        ],
         "additionalProperties": false
       },
       "ExportPDF": {
-        "description": "Parameter to specify output document target format",
+        "description": "Parameter for export pdf operation",
         "type": "object",
-        "required": ["assetID","targetFormat"],
+        "required": [
+          "assetURI",
+          "targetFormat"
+        ],
         "properties": {
-          "assetID": {
-            "description": "A file asset ID",
+          "assetURI": {
+            "description": "A file asset Uri",
             "type": "string"
           },
           "targetFormat": {
             "description": "Target exported File Format",
             "type": "string",
-            "enum": ["doc", "docx", "jpeg", "png", "pptx", "xlsx", "rtf"]
+            "enum": [
+              "doc",
+              "docx",
+              "pptx",
+              "xlsx",
+              "rtf"
+            ]
           }
         },
         "example": {
-          "assetID": "urn:aaid:sc:VA6C2:52239170-7ada-47cf-8af2-790848e363fb",
+          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
           "targetFormat": "docx"
+        },
+        "additionalProperties": false
+      },
+      "PDFToImage": {
+        "description": "Parameter for PDF to Image operation.",
+        "type": "object",
+        "required": [
+          "assetURI",
+          "targetFormat"
+        ],
+        "properties": {
+          "assetURI": {
+            "description": "A file asset Uri",
+            "type": "string"
+          },
+          "targetFormat": {
+            "description": "Target exported image File Format",
+            "type": "string",
+            "enum": [
+              "jpeg",
+              "png"
+            ]
+          }
+        },
+        "example": {
+          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "targetFormat": "jpeg"
         },
         "additionalProperties": false
       },
       "ExtractPDF": {
         "description": "Params for Extract PDF Operation",
         "type": "object",
-        "required": ["assetID","elementsToExtract"],
+        "required": [
+          "assetURI",
+          "elementsToExtract"
+        ],
         "properties": {
-          "assetID": {
-            "description": "A file asset ID",
+          "assetURI": {
+            "description": "A file asset Uri",
             "type": "string"
           },
           "getCharBounds": {
@@ -6219,7 +7153,10 @@
             "type": "array",
             "items": {
               "type": "string",
-              "enum": ["text", "tables"]
+              "enum": [
+                "text",
+                "tables"
+              ]
             }
           },
           "tableOutputFormat": {
@@ -6232,18 +7169,30 @@
             "type": "array",
             "items": {
               "type": "string",
-              "enum": ["tables", "figure"]
+              "enum": [
+                "tables",
+                "figure"
+              ]
             },
-            "default": ["tables", "figure"]
+            "default": [
+              "tables",
+              "figure"
+            ]
           }
         },
         "example": {
-          "assetID":"urn:aaid:sc:us:ab400ed7-a097-402b-a93f-8b47cfd3b518",
+          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
           "getCharBounds": "false",
           "includeStyling": "false",
-          "elementsToExtract": ["text","tables"],
+          "elementsToExtract": [
+            "text",
+            "tables"
+          ],
           "tableOutputFormat": "xlsx",
-          "renditionsToExtract": ["tables", "figure"]
+          "renditionsToExtract": [
+            "tables",
+            "figure"
+          ]
         },
         "additionalProperties": false
       },
@@ -6251,12 +7200,12 @@
         "description": "Params for converting HTML To PDF Operation",
         "type": "object",
         "properties": {
-          "assetID": {
-            "description": "A file asset ID",
+          "assetURI": {
+            "description": "A file asset Uri",
             "type": "string"
           },
           "inputUrl": {
-            "description": "Parameter to provide the URL as input. <b> Provide one of the value between assetId and inputUrl </b>",
+            "description": "Parameter to provide the URL as input. <b> Provide one of the value between assetURI and inputUrl </b>",
             "type": "string"
           },
           "json": {
@@ -6291,7 +7240,7 @@
           }
         },
         "example": {
-          "assetID": "urn:aaid:sc:us:ab400ed7-a097-402b-a93f-8b47cfd3b518",
+          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
           "json": "",
           "includeHeaderFooter": true,
           "pageLayout": {
@@ -6310,8 +7259,8 @@
             "type": "array",
             "items": {
               "properties": {
-                "assetID": {
-                  "description": "A file asset ID",
+                "assetURI": {
+                  "description": "A file asset Uri",
                   "type": "string",
                   "required": true
                 },
@@ -6325,7 +7274,7 @@
         "example": {
           "assets": [
             {
-              "assetID": "urn:aaid:sc:us:ab400ed7-a097-402b-a93f-8b47cfd3b518",
+              "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
               "pageRanges": [
                 {
                   "start": 1,
@@ -6347,44 +7296,52 @@
         "description": "Params for Compress PDF Operation",
         "type": "object",
         "properties": {
-          "assetID": {
-            "description": "A file asset ID",
+          "assetURI": {
+            "description": "A file asset Uri",
             "type": "string"
           },
           "compressionLevel": {
             "description": "Specify the level of compression to reduce the file size of the pdf. Supported levels of compression which reduces the file size of pdf:\n\n1. Low : Reduces resolution of the coloured and grayscale images above 250 dpi to 200 dpi. This option uses JP2K high quality compression.\n\n2. Medium : Reduces resolution of the coloured and grayscale images above 200 dpi to 144 dpi. This option uses JP2K medium quality compression.\n\n3. High : Reduces resolution of the coloured and grayscale images above 100 dpi to 72 dpi. This option uses JPEG medium quality compression. Output pdf will not contain hidden layers, document structure, metadata, javascript, user properties and print settings.",
             "type": "string",
-            "enum": ["LOW","MEDIUM","HIGH"]
+            "enum": [
+              "LOW",
+              "MEDIUM",
+              "HIGH"
+            ]
           }
         },
         "example": {
-          "assetID" : "urn:aaid:sc:us:ab400ed7-a097-402b-a93f-8b47cfd3b518",
-          "compressionLevel" :  "LOW"
+          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "compressionLevel": "LOW"
         },
-        "required": ["assetID"],
+        "required": [
+          "assetURI"
+        ],
         "additionalProperties": false
       },
       "LinearizePDF": {
         "description": "Params for Linearize PDF Operation",
         "type": "object",
         "properties": {
-          "assetID": {
-            "description": "A file asset ID",
+          "assetURI": {
+            "description": "A file asset Uri",
             "type": "string"
           }
         },
         "example": {
-          "assetID" : "urn:aaid:sc:us:ab400ed7-a097-402b-a93f-8b47cfd3b518"
+          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
         },
-        "required": ["assetID"],
+        "required": [
+          "assetURI"
+        ],
         "additionalProperties": false
       },
       "OCR": {
         "description": "Params for OCR PDF Operation",
         "type": "object",
         "properties": {
-          "assetID": {
-            "description": "A file asset ID",
+          "assetURI": {
+            "description": "A file asset Uri",
             "type": "string"
           },
           "ocrLang": {
@@ -6394,23 +7351,28 @@
             "description": "Specifies OCR Type. \n\nThere are two types which produce a different result:\n\n1. One type ensures that text is searchable and selectable, but modifies the original image during the cleanup process (for example, deskews it) before placing an invisible text layer over it. This type removes unwanted artifacts and may result in a more readable document in some scenarios.\n\n2. The second (EXACT) type, also overlays a searchable text layer over the original image, but in this case, the original image is unchanged. This type produces maximum fidelity to the original image.",
             "type": "string",
             "default": "searchable_image",
-            "enum": ["searchable_image", "searchable_image_exact"]
+            "enum": [
+              "searchable_image",
+              "searchable_image_exact"
+            ]
           }
         },
         "example": {
-          "assetID" : "urn:aaid:sc:us:ab400ed7-a097-402b-a93f-8b47cfd3b518",
-          "ocrLang" :  "en-US",
-          "ocrType" : "searchable_image"
+          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "ocrLang": "en-US",
+          "ocrType": "searchable_image"
         },
-        "required": ["assetID"],
+        "required": [
+          "assetURI"
+        ],
         "additionalProperties": false
       },
       "PageManipulation": {
         "description": "Params for Page Manipulation PDF Operation",
         "type": "object",
         "properties": {
-          "assetID": {
-            "description": "A file asset ID",
+          "assetURI": {
+            "description": "A file asset Uri",
             "type": "string"
           },
           "pageActions": {
@@ -6421,19 +7383,21 @@
                 "pageAction": {
                   "description": "An action to perform on pdf pages",
                   "type": "object",
-                  "oneOf": [{
-                    "$ref": "#/components/schemas/delete"
-                  },
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/delete"
+                    },
                     {
                       "$ref": "#/components/schemas/rotate"
-                    }]
+                    }
+                  ]
                 }
               }
             }
           }
         },
         "example": {
-          "assetID": "urn:aaid:sc:us:ab400ed7-a097-402b-a93f-8b47cfd3b518",
+          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
           "pageActions": [
             {
               "pageAction": {
@@ -6451,7 +7415,7 @@
           ]
         },
         "required": [
-          "assetID",
+          "assetURI",
           "pageActions"
         ],
         "additionalProperties": false
@@ -6460,8 +7424,8 @@
         "description": "Params for PDF Properties Operation",
         "type": "object",
         "properties": {
-          "assetID": {
-            "description": "A file asset ID",
+          "assetURI": {
+            "description": "A file asset Uri",
             "type": "string"
           },
           "pageLevel": {
@@ -6471,38 +7435,49 @@
           }
         },
         "example": {
-          "assetID" : "urn:aaid:sc:us:ab400ed7-a097-402b-a93f-8b47cfd3b518",
-          "pageLevel" : false
+          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "pageLevel": false
         },
-        "required": ["assetID"],
+        "required": [
+          "assetURI"
+        ],
         "additionalProperties": false
       },
       "ProtectPDF": {
         "description": "Params for Protect PDF Operation",
         "type": "object",
         "properties": {
-          "assetID": {
-            "description": "A file asset ID",
+          "assetURI": {
+            "description": "A file asset Uri",
             "type": "string"
           },
           "passwordProtection": {
             "description": "Enables the use of passwords to encrypt the input PDF document. At least one of userPassword and ownerPassword must be specified and non-empty. Each password can be up to 128 characters in length.",
-            "anyOf": [{
-              "$ref": "#/components/schemas/userPassword"
-            },
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/userPassword"
+              },
               {
                 "$ref": "#/components/schemas/ownerPassword"
-              }]
+              }
+            ]
           },
           "encryptionAlgorithm": {
             "description": "Sets the encryption algorithm. For AES-128 encryption, the password supports LATIN-I characters only. For AES-256 encryption, the password supports Unicode character set.",
             "type": "string",
-            "enum": ["AES_128", "AES_256"]
+            "enum": [
+              "AES_128",
+              "AES_256"
+            ]
           },
           "contentToEncrypt": {
             "description": "Sets the type of content to be encrypted. If ONLY_EMBEDDED_FILES option is set, it will render any provided access permissions as ineffective.",
             "type": "string",
-            "enum": ["ALL_CONTENT","ALL_CONTENT_EXCEPT_METADATA","ONLY_EMBEDDED_FILES"],
+            "enum": [
+              "ALL_CONTENT",
+              "ALL_CONTENT_EXCEPT_METADATA",
+              "ONLY_EMBEDDED_FILES"
+            ],
             "default": "ALL_CONTENT"
           },
           "permissions": {
@@ -6510,12 +7485,20 @@
             "type": "array",
             "items": {
               "type": "string",
-              "enum": ["PRINT_LOW_QUALITY","PRINT_HIGH_QUALITY","EDIT_CONTENT","EDIT_FILL_AND_SIGN_FORM_FIELDS","EDIT_ANNOTATIONS","EDIT_DOCUMENT_ASSEMBLY","COPY_CONTENT"]
+              "enum": [
+                "PRINT_LOW_QUALITY",
+                "PRINT_HIGH_QUALITY",
+                "EDIT_CONTENT",
+                "EDIT_FILL_AND_SIGN_FORM_FIELDS",
+                "EDIT_ANNOTATIONS",
+                "EDIT_DOCUMENT_ASSEMBLY",
+                "COPY_CONTENT"
+              ]
             }
           }
         },
         "example": {
-          "assetID": "urn:aaid:sc:us:ab400ed7-a097-402b-a93f-8b47cfd3b518",
+          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
           "passwordProtection": {
             "userPassword": "XXXXXX"
           },
@@ -6527,7 +7510,7 @@
           ]
         },
         "required": [
-          "assetID",
+          "assetURI",
           "passwordProtection",
           "encryptionAlgorithm"
         ],
@@ -6537,8 +7520,8 @@
         "description": "Params for Remove Protection PDF Operation",
         "type": "object",
         "properties": {
-          "assetID": {
-            "description": "A file asset ID",
+          "assetURI": {
+            "description": "A file asset Uri",
             "type": "string"
           },
           "password": {
@@ -6547,18 +7530,21 @@
           }
         },
         "example": {
-          "assetID" : "urn:aaid:sc:us:ab400ed7-a097-402b-a93f-8b47cfd3b518",
-          "password" : "XXXXX"
+          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "password": "XXXXX"
         },
-        "required": ["assetID","password"],
+        "required": [
+          "assetURI",
+          "password"
+        ],
         "additionalProperties": false
       },
       "SplitPDF": {
         "description": "Params for Split PDF Operation.",
         "type": "object",
         "properties": {
-          "assetID": {
-            "description": "A file asset ID.",
+          "assetURI": {
+            "description": "A file asset Uri.",
             "type": "string"
           },
           "splitopntion": {
@@ -6581,7 +7567,7 @@
           }
         },
         "example": {
-          "assetID": "https://XXXXXX/1597672362/assets/urn:aaid:sc:us:ab400ed7-a097-402b-a93f-8b47cfd3b518",
+          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
           "splitoption": {
             "pageRanges": [
               {
@@ -6592,7 +7578,7 @@
           }
         },
         "required": [
-          "assetID",
+          "assetURI",
           "inline"
         ],
         "additionalProperties": false
@@ -6601,27 +7587,30 @@
         "description": "Params for Document Generation Operation",
         "type": "object",
         "properties": {
-          "assetID": {
-            "description": "A file asset ID.",
+          "assetURI": {
+            "description": "A file asset Uri.",
             "type": "string"
           },
-          "outputFormat" : {
+          "outputFormat": {
             "description": "Specifies the target format of the generated output document. Possible values are pdf and docx.",
             "type": "string",
-            "enum": ["docx","pdf"],
+            "enum": [
+              "docx",
+              "pdf"
+            ],
             "default": "pdf"
           },
           "jsonDataForMerge": {
             "description": "pecifies the JSON data to merge into the document template.",
             "type": "object"
           },
-          "fragments" : {
+          "fragments": {
             "description": "Specifies the Fragments JSON object or a JSON array to resolve fragments in the document template. To know more about fragments use-case in document generation and document templates, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/document-generation-api/fragments/\">documentation</a>..",
             "type": "object"
           }
         },
         "example": {
-          "assetID": "urn:aaid:sc:VA6C2:509d853b-6c1b-453d-b799-36ce40904b79",
+          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
           "outputFormat": "pdf",
           "jsonDataForMerge": {
             "customerName": "Kane Miller",
@@ -6649,7 +7638,7 @@
           }
         },
         "required": [
-          "assetID",
+          "assetURI",
           "jsonDataForMerge"
         ],
         "additionalProperties": false
@@ -6665,11 +7654,13 @@
       "delete": {
         "type": "object",
         "properties": {
-          "pageRanges" : {
+          "pageRanges": {
             "$ref": "#/components/schemas/PageManipulationPageRanges"
           }
         },
-        "required": ["pageRanges"]
+        "required": [
+          "pageRanges"
+        ]
       },
       "rotate": {
         "type": "object",
@@ -6677,13 +7668,20 @@
           "angle": {
             "description": "Required for 'rotate' cmd. It specifies the clockwise rotation angle relative to the starting orientation of the page. e.g. if a page is already rotated 90 degrees (landscape), specifying a rotation of 90 degrees will rotate it a further 90 degrees. The valid rotation angles are: 90, 180, 270.",
             "type": "number",
-            "enum": [90,180,270]
+            "enum": [
+              90,
+              180,
+              270
+            ]
           },
-          "pageRanges" : {
+          "pageRanges": {
             "$ref": "#/components/schemas/PageManipulationPageRanges"
           }
         },
-        "required": ["angle","pageRanges"]
+        "required": [
+          "angle",
+          "pageRanges"
+        ]
       },
       "userPassword": {
         "description": "Password used to control opening of an encrypted PDF document. When this property is included and non-empty, the use of a password (either this one or, if specified, the owner password) is necessary to open/view the document. If this password is empty or omitted the document can be opened automatically by conforming PDF viewers.",
@@ -6694,7 +7692,7 @@
         "type": "string"
       },
       "pageRanges": {
-        "description":"Page ranges on the basis of which to split the input PDF file. Each page range corresponds to a single output file having the pages specified in the page range. The page ranges may not overlap.",
+        "description": "Page ranges on the basis of which to split the input PDF file. Each page range corresponds to a single output file having the pages specified in the page range. The page ranges may not overlap.",
         "type": "array",
         "items": {
           "properties": {
@@ -6707,23 +7705,6 @@
               "description": "End page of this page range.Page numbers are indexed from 1 to N.",
               "type": "number",
               "required": true
-            }
-          }
-        }
-      },
-      "CombinePageRanges1": {
-        "title": "pageRanges",
-        "description":"Parameters to allow specifying which pages to be included for the PDF document. If pageRanges is not provided, all pages are considered by default. An array of ranges to allow specifying which pages to include from the source PDF document.",
-        "type": "array",
-        "items": {
-          "properties": {
-            "start": {
-              "description": "Start page index of this page range.",
-              "type": "number"
-            },
-            "end": {
-              "description": "End page index of this page range.",
-              "type": "number"
             }
           }
         }
@@ -6749,7 +7730,7 @@
       },
       "PageManipulationPageRanges": {
         "title": "pageRanges",
-        "description":"Page ranges of a PDF file. Pages in a document can be can be referred in any order, either from the start or end. For e.g.: For a file containing 10 pages, page number 1 can be referred using 1 or -10, page number 10 can be referred using 10 or -1. For performing an operation on the last page, we can provide a range as -1:-1. A page range provided is relative to the input document.",
+        "description": "Page ranges of a PDF file. Pages in a document can be can be referred in any order, either from the start or end. For e.g.: For a file containing 10 pages, page number 1 can be referred using 1 or -10, page number 10 can be referred using 10 or -1. For performing an operation on the last page, we can provide a range as -1:-1. A page range provided is relative to the input document.",
         "type": "array",
         "items": {
           "anyOf": [
@@ -6766,10 +7747,283 @@
           ]
         }
       },
+      "Digitalseal": {
+        "description": "Params for Digitalseal PDF Operation",
+        "type": "object",
+        "required": [
+          "inputDocumentassetURI",
+          "sealingOptions"
+        ],
+        "properties": {
+          "inputDocumentassetURI": {
+            "description": "A file asset Uri of an input PDF document in which seal has to be applied.",
+            "type": "string"
+          },
+          "logoassetURI": {
+            "description": "A file asset Uri of the logo/watermark/background image to use as part of the signature field's signed appearance.",
+            "type": "string"
+          },
+          "signatureassetURI": {
+            "description": "A file asset Uri of the signature image (i.e., drawn signature) to use as part of the signature field's signed appearance.",
+            "type": "string"
+          },
+          "sealingOptions": {
+            "$ref": "#/components/schemas/SealingOptions"
+          }
+        },
+        "example": {
+          "inputDocumentassetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "logoassetURI": "https://pdf-services-dev.adobe.io/assets/ab400ed7-a097-402b-a93f-8b47cfd3b519",
+          "signatureassetURI": "https://pdf-services-dev.adobe.io/assets/ab400ed7-a097-402b-a93f-8b47cfd3b520",
+          "sealingOptions": {
+            "signatureType": "SIGN",
+            "signatureFormat": "PKCS7",
+            "cscCredentialInfo": {
+              "credentialId": "[ADOBE]_54563_01:35",
+              "providerName": "intesitest",
+              "authorizationContext": {
+                "tokenType": "bearer",
+                "accessToken": "b7338a1f-c24d-4c83-a6fe-1eec91c47c12"
+              },
+              "credentialAuthParameters": {
+                "pin": "12345678"
+              }
+            },
+            "signatureFieldOptions": {
+              "visible": true,
+              "location": {
+                "top": 300,
+                "left": 50,
+                "right": 250,
+                "bottom": 100
+              },
+              "fieldName": "mytestfield",
+              "pageNumber": 1
+            },
+            "signatureAppearanceOptions": {
+              "displayOptions": [
+                "NAME",
+                "LABELS"
+              ]
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "SealingOptions": {
+        "title": "sealingOptions",
+        "description": "Specifies all the signing parameters for the signature.",
+        "type": "object",
+        "required": [
+          "signatureType",
+          "signatureFormat",
+          "cscCredentialInfo",
+          "signatureFieldOptions"
+        ],
+        "properties": {
+          "signatureType": {
+            "type": "string",
+            "description": "Specifies the type for signature to be applied.",
+            "default": "SIGN",
+            "enum": [
+              "SIGN"
+            ]
+          },
+          "signatureFormat": {
+            "type": "string",
+            "description": "Specifies the standard format for signature to be applied.",
+            "default": "PKCS7",
+            "enum": [
+              "PADES",
+              "PKCS7"
+            ]
+          },
+          "cscCredentialInfo": {
+            "type": "object",
+            "description": "Specifies the CSC credential information that encapsulates the credential to be used for signing.",
+            "required": [
+              "providerName",
+              "credentialId",
+              "authorizationContext",
+              "credentialAuthParameters"
+            ],
+            "properties": {
+              "credentialId": {
+                "type": "string",
+                "description": "Specifies the Digital ID stored with the CSC provider that should be used for signing"
+              },
+              "providerName": {
+                "type": "string",
+                "description": "Specifies the name of CSC provider to be used."
+              },
+              "authorizationContext": {
+                "type": "object",
+                "description": "Specifies the service authorization data required to communicate with the CSC provider.",
+                "required": [
+                  "accessToken"
+                ],
+                "properties": {
+                  "tokenType": {
+                    "type": "string",
+                    "default": "Bearer",
+                    "description": "Specifies the type of service token which is Bearer"
+                  },
+                  "accessToken": {
+                    "type": "string",
+                    "description": "Specifies the service access token used to authorize access to the CSC provider hosted apis"
+                  }
+                }
+              },
+              "credentialAuthParameters": {
+                "type": "object",
+                "description": "Specifies the credentials authorization information required to authorize the access to their signing keys.",
+                "required": [
+                  "pin"
+                ],
+                "properties": {
+                  "pin": {
+                    "type": "string",
+                    "description": "Specifies the PIN associated with credential id."
+                  }
+                }
+              }
+            }
+          },
+          "signatureFieldOptions": {
+            "type": "object",
+            "description": "Specifies the paraemters required to creates a new unsigned signature field or sign an existing field.",
+            "required": [
+              "fieldName",
+              "pageNumber",
+              "location"
+            ],
+            "properties": {
+              "visible": {
+                "type": "boolean",
+                "description": "Specified whether the signture field is visible or not.",
+                "default": true
+              },
+              "location": {
+                "type": "object",
+                "required": [
+                  "left",
+                  "bottom",
+                  "right",
+                  "top"
+                ],
+                "properties": {
+                  "top": {
+                    "type": "integer",
+                    "description": "Specifies the top-most y-coordinate of the signature appearance's bounding box in default PDF user space units."
+                  },
+                  "left": {
+                    "type": "integer",
+                    "description": "Specifies the left-most x-coordinate of the signature appearance's bounding box in default PDF user space units."
+                  },
+                  "right": {
+                    "type": "integer",
+                    "description": "Specifies the right-most x-coordinate of the signature appearance's bounding box in default PDF user space units."
+                  },
+                  "bottom": {
+                    "type": "integer",
+                    "description": "Specifies the bottom-most y-coordinate of the signature appearance's bounding box in default PDF user space units."
+                  }
+                },
+                "description": "Specifies the parameters related to the location of the signature field."
+              },
+              "fieldName": {
+                "type": "string",
+                "description": "Specified the field name for the signture field."
+              },
+              "pageNumber": {
+                "type": "integer",
+                "description": "Specifies the number of the page to which the signature field should be attached."
+              }
+            }
+          },
+          "signatureAppearanceOptions": {
+            "type": "object",
+            "description": "Specifies the parameters related to the apperance of the signature field.",
+            "default": {
+              "displayOptions": [
+                "NAME",
+                "LABELS"
+              ]
+            },
+            "required": [
+              "displayOptions"
+            ],
+            "properties": {
+              "displayOptions": {
+                "type": "array",
+                "description": "Specifies the information to display in the signature.",
+                "items": {
+                  "enum": [
+                    "NAME",
+                    "DATE",
+                    "DISTINGUISHED_NAME",
+                    "LABELS",
+                    "LOGO"
+                  ],
+                  "type": "string"
+                },
+                "default": [
+                  "NAME",
+                  "LABELS"
+                ]
+              }
+            }
+          }
+        }
+      },
       "Asset": {
         "type": "object",
         "properties": {
-          "assetID": {
+          "uri": {
+            "description": "The URL used to upload the Resource directly to the cloud provider.",
+            "type": "string"
+          }
+        }
+      },
+      "GetUploadPresignedUrl": {
+        "type": "object",
+        "properties": {
+          "mediaType": {
+            "description": "The content type of the file to be stored. For e.g: application/pdf.",
+            "type": "string"
+          }
+        }
+      },
+      "GetPresignedUrl": {
+        "type": "object",
+        "properties": {
+          "uri": {
+            "description": "The URL used to download the Resource directly from the storage provider.",
+            "type": "string"
+          },
+          "size": {
+            "description": "The size of the Resource in bytes. This value helps in making range requests.",
+            "type": "integer"
+          },
+          "type": {
+            "description": "The media type of the Resource.",
+            "type": "string"
+          }
+        }
+      },
+      "AssetMetadata": {
+        "type": "object",
+        "properties": {
+          "entity": {
+            "description": "Technical Account ID or User ID with access to blob.",
+            "type": "string"
+          },
+          "size": {
+            "description": "The size of the Resource in bytes. This value helps in making range requests.",
+            "type": "integer"
+          },
+          "type": {
+            "description": "The content type of the file. For e.g: application/pdf.",
             "type": "string"
           }
         }
@@ -6793,6 +8047,19 @@
             "$ref": "#/components/schemas/inprogress"
           },
           {
+            "$ref": "#/components/schemas/done"
+          },
+          {
+            "$ref": "#/components/schemas/failed"
+          }
+        ]
+      },
+      "PDFTOImageJobStatus": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/inprogress"
+          },
+          {
             "$ref": "#/components/schemas/doneWithMultipleAsset"
           },
           {
@@ -6806,7 +8073,7 @@
             "$ref": "#/components/schemas/inprogress"
           },
           {
-            "$ref": "#/components/schemas/doneWithJSONData"
+            "$ref": "#/components/schemas/extractPdfDone"
           },
           {
             "$ref": "#/components/schemas/failed"
@@ -6897,7 +8164,7 @@
             "$ref": "#/components/schemas/inprogress"
           },
           {
-            "$ref": "#/components/schemas/doneWithJSONData"
+            "$ref": "#/components/schemas/pdfPropertiesDone"
           },
           {
             "$ref": "#/components/schemas/failed"
@@ -6943,6 +8210,19 @@
           }
         ]
       },
+      "DigitalSealPDFJobStatus": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/inprogress"
+          },
+          {
+            "$ref": "#/components/schemas/done"
+          },
+          {
+            "$ref": "#/components/schemas/failed"
+          }
+        ]
+      },
       "inprogress": {
         "description": "Response in case of 'in progress' status",
         "type": "object",
@@ -6950,11 +8230,13 @@
           "status": {
             "description": "Job Status",
             "type": "string",
-            "enum": ["in progress"]
+            "enum": [
+              "in progress"
+            ]
           }
         },
         "example": {
-          "status" : "in progress"
+          "status": "in progress"
         }
       },
       "done": {
@@ -6964,16 +8246,18 @@
           "status": {
             "description": "Job Status",
             "type": "string",
-            "enum": ["done"]
+            "enum": [
+              "done"
+            ]
           },
-          "assetID": {
-            "description": "A file asset ID",
+          "assetURI": {
+            "description": "A file asset Uri",
             "type": "string"
           }
         },
         "example": {
-          "status" : "done",
-          "assetID" : "urn:aaid:sc:VA6C2:509d853b-6c1b-453d-b799-36ce40904b79"
+          "status": "done",
+          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
         }
       },
       "doneWithMultipleAsset": {
@@ -6984,10 +8268,12 @@
           "status": {
             "description": "Job Status",
             "type": "string",
-            "enum": ["done"]
+            "enum": [
+              "done"
+            ]
           },
-          "assetIDList" : {
-            "description": "List of assetID",
+          "assetURIList": {
+            "description": "List of assetURI",
             "type": "array",
             "items": {
               "type": "string"
@@ -6995,11 +8281,14 @@
           }
         },
         "example": {
-          "status" : "done",
-          "assetIDList" : ["urn:aaid:sc:VA6C2:509d853b-6c1b-453d-b799-36ce40904b79","urn:aaid:sc:VA6C2:509d853b-6c1b-453d-b799-36ce40904b91"]
+          "status": "done",
+          "assetURIList": [
+            "https://pdf-services-dev.adobe.io/assets/509d853b-6c1b-453d-b799-36ce40904b79",
+            "https://pdf-services-dev.adobe.io/assets/509d853b-6c1b-453d-b799-36ce40904b91"
+          ]
         }
       },
-      "doneWithJSONData": {
+      "pdfPropertiesDone": {
         "title": "done",
         "description": "Response in case of 'done' status",
         "type": "object",
@@ -7007,16 +8296,45 @@
           "status": {
             "description": "Job Status",
             "type": "string",
-            "enum": ["done"]
+            "enum": [
+              "done"
+            ]
           },
-          "data" : {
-            "description": "Json data",
+          "metadata": {
+            "description": "Json containing metadata information about pdf document such as the title, the fonts used, and security settings. ",
             "type": "string"
           }
         },
         "example": {
-          "status" : "done",
-          "data" : "{\"pages\":[{\"page_number\":0,\"is_scanned\":false,\"width\":612.0,\"has_structure\":false,\"content\":{\"number_of_images\":0,\"only_images\":false,\"has_text\":true,\"has_images\":false,\"is_empty\":false},\"height\":792.0}],\"document\":{\"is_linearized\":false,\"pdfe_compliance_level\":\"\",\"is_tagged\":false,\"is_portfolio\":false,\"is_certified\":false,\"is_encrypted\":false,\"info_dict\":{\"CreationDate\":\"D:19980204171401Z\",\"Producer\":\"Acrobat Distiller 3.0 for Windows\"},\"is_FTPDF\":false,\"pdf_version\":\"1.2\",\"has_acroform\":false,\"file_size\":\"4.2 KB\",\"is_signed\":false,\"incremental_save_count\":0,\"has_embedded_files\":false,\"is_XFA\":false,\"fonts\":[{\"name\":\"Times-Roman\",\"font_type\":\"Type1\",\"family_name\":\"Titlingmes\"},{\"name\":\"Courier\",\"font_type\":\"Type1\",\"family_name\":\"Courier\"},{\"name\":\"Courier-Bold\",\"font_type\":\"Type1\",\"family_name\":\"Courier\"}],\"pdfa_compliance_level\":\"\",\"pdfvt_compliance_level\":\"\",\"pdfx_compliance_level\":\"\",\"pdfua_compliance_level\":\"\",\"XMP\":\"\",\"page_count\":1}}"
+          "status": "done",
+          "metadata": "{\"pages\":[{\"page_number\":0,\"is_scanned\":false,\"width\":612.0,\"has_structure\":false,\"content\":{\"number_of_images\":0,\"only_images\":false,\"has_text\":true,\"has_images\":false,\"is_empty\":false},\"height\":792.0}],\"document\":{\"is_linearized\":false,\"pdfe_compliance_level\":\"\",\"is_tagged\":false,\"is_portfolio\":false,\"is_certified\":false,\"is_encrypted\":false,\"info_dict\":{\"CreationDate\":\"D:19980204171401Z\",\"Producer\":\"Acrobat Distiller 3.0 for Windows\"},\"is_FTPDF\":false,\"pdf_version\":\"1.2\",\"has_acroform\":false,\"file_size\":\"4.2 KB\",\"is_signed\":false,\"incremental_save_count\":0,\"has_embedded_files\":false,\"is_XFA\":false,\"fonts\":[{\"name\":\"Times-Roman\",\"font_type\":\"Type1\",\"family_name\":\"Titlingmes\"},{\"name\":\"Courier\",\"font_type\":\"Type1\",\"family_name\":\"Courier\"},{\"name\":\"Courier-Bold\",\"font_type\":\"Type1\",\"family_name\":\"Courier\"}],\"pdfa_compliance_level\":\"\",\"pdfvt_compliance_level\":\"\",\"pdfx_compliance_level\":\"\",\"pdfua_compliance_level\":\"\",\"XMP\":\"\",\"page_count\":1}}"
+        }
+      },
+      "extractPdfDone": {
+        "title": "done",
+        "description": "Response in case of 'done' status",
+        "type": "object",
+        "properties": {
+          "status": {
+            "description": "Job Status",
+            "type": "string",
+            "enum": [
+              "done"
+            ]
+          },
+          "assetURI": {
+            "description": "Asset Uri of zip file containing all the extracted documents",
+            "type": "string"
+          },
+          "content": {
+            "description": "Json containing metadata informations about extracted elements such as text, tables, figures etc.",
+            "type": "string"
+          }
+        },
+        "example": {
+          "status": "done",
+          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "content": "{\n    \"version\": {\n        \"json_export\": \"175\",\n        \"page_segmentation\": \"5\",\n        \"schema\": \"1.1.0\",\n        \"structure\": \"1.989.0\",\n        \"table_structure\": \"5\"\n    },\n    \"extended_metadata\": {\n        \"ID_instance\": \"25 8E CF 70 76 B4 B2 11 0A 00 67 45 8B 6B C6 23 \",\n        \"ID_permanent\": \"37 35 20 34 31 20 43 45 20 37 30 20 37 36 20 42 34 20 42 32 20 31 31 20 30 41 20 30 30 20 36 37 20 34 35 20 38 42 20 36 42 20 43 36 20 32 33 20 \",\n        \"pdf_version\": \"1.6\",\n        \"pdfa_compliance_level\": \"\",\n        \"is_encrypted\": false,\n        \"has_acroform\": false,\n        \"is_digitally_signed\": false,\n        \"pdfua_compliance_level\": \"\",\n        \"page_count\": 1,\n        \"has_embedded_files\": false,\n        \"is_certified\": false,\n        \"is_XFA\": false,\n        \"language\": \"\"\n    },\n    \"elements\": [\n        {\n            \"Bounds\": [\n                -9.615859985351563,\n                -3.0042877197265627,\n                414.59596252441409,\n                571.9671020507813\n            ],\n            \"Page\": 0,\n            \"Path\": \"//Document/Figure\",\n            \"attributes\": {\n                \"BBox\": [\n                    0.0,\n                    0.024902299999999934,\n                    414.10299999998827,\n                    571.4419999999809\n                ],\n                \"Placement\": \"Block\"\n            },\n            \"filePaths\": [\n                \"fileoutpart0.png\"\n            ]\n        },\n        {\n            \"Bounds\": [\n                377.39906311035159,\n                8.479598999023438,\n                414.59596252441409,\n                27.676605224609376\n            ],\n            \"Page\": 0,\n            \"Path\": \"//Document/Figure[2]\",\n            \"attributes\": {\n                \"BBox\": [\n                    377.8649999999907,\n                    9.024539999999888,\n                    414.10299999998827,\n                    27.26379999999972\n                ],\n                \"Placement\": \"Block\",\n                \"SpaceBefore\": 17.875\n            },\n            \"filePaths\": [\n                \"fileoutpart1.png\"\n            ]\n        },\n        {\n            \"Bounds\": [\n                439.2789764404297,\n                349.16004943847659,\n                729.5063171386719,\n                555.1563568115234\n            ],\n            \"Page\": 0,\n            \"Path\": \"//Document/Figure[3]\",\n            \"attributes\": {\n                \"BBox\": [\n                    438.10199999999898,\n                    351.73099999999979,\n                    728.9699999999721,\n                    553.6819999999716\n                ],\n                \"Placement\": \"Block\",\n                \"SpaceBefore\": 17.875\n            },\n            \"filePaths\": [\n                \"fileoutpart2.png\"\n            ]\n        },\n        {\n            \"Bounds\": [\n                413.39219665527346,\n                214.2003936767578,\n                757.2446746826172,\n                333.4831085205078\n            ],\n            \"Page\": 0,\n            \"Path\": \"//Document/Figure[4]\",\n            \"attributes\": {\n                \"BBox\": [\n                    413.86299999999758,\n                    214.21599999999308,\n                    756.6889999999839,\n                    333.0109999999986\n                ],\n                \"Placement\": \"Block\",\n                \"SpaceBefore\": 18\n            },\n            \"filePaths\": [\n                \"fileoutpart3.png\"\n            ]\n        },\n        {\n            \"Bounds\": [\n                421.27980041503909,\n                26.26739501953125,\n                783.4609069824219,\n                198.8172607421875\n            ],\n            \"Page\": 0,\n            \"Path\": \"//Document/Figure[5]\",\n            \"attributes\": {\n                \"BBox\": [\n                    421.06299999999467,\n                    28.823699999999918,\n                    782.9679999999935,\n                    197.29699999999867\n                ],\n                \"Placement\": \"Block\",\n                \"SpaceBefore\": 16.875\n            },\n            \"filePaths\": [\n                \"fileoutpart4.png\"\n            ]\n        }\n    ],\n    \"pages\": [\n        {\n            \"boxes\": {\n                \"CropBox\": [\n                    0.0,\n                    0.0,\n                    792.0,\n                    612.0\n                ],\n                \"MediaBox\": [\n                    0.0,\n                    0.0,\n                    792.0,\n                    612.0\n                ]\n            },\n            \"height\": 612.0,\n            \"is_scanned\": false,\n            \"page_number\": 0,\n            \"rotation\": 0,\n            \"width\": 792.0\n        }\n    ]\n}"
         }
       },
       "failed": {
@@ -7033,7 +8351,7 @@
           "error": {
             "type": "object",
             "properties": {
-              "status" : {
+              "status": {
                 "description": "Http status code returned by the service",
                 "type": "integer"
               },
