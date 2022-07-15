@@ -8375,21 +8375,6 @@
           }
         }
       }
-    },
-    "securitySchemes": {
-      "auth": {
-        "type": "JWT",
-        "flows": {
-          "implicit": {
-            "authorizationUrl": "http://console.adobe.io/jwt/exchange"
-          }
-        }
-      },
-      "api_key": {
-        "type": "apiKey",
-        "name": "api_key",
-        "in": "header"
-      }
     }
   }
 }
