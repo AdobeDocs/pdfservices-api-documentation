@@ -105,7 +105,7 @@ The following features and configuration variables are deprecated in modern view
 
 In order to use PDF Embed API, website developers are required to add the PDF Embed API 
 script URL in their websites. 
-Website evelopers should use the [viewer.js](https://documentcloud.adobe.com/view-sdk/viewer.js) 
+Website developers should use the [viewer.js](https://documentcloud.adobe.com/view-sdk/viewer.js) 
 script (line 11) to access Adobe's modern PDF viewer. 
 All APIs and callbacks will work as expected with significant improvement in user experience.
 
