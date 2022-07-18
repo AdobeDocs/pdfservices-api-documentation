@@ -1,6 +1,6 @@
 # Overview
 ## What is Digital Seal?
-Digital Seal on a PDF means to digitally sign a PDF document. Digital Seal, alias Digital Signature is a specific type 
+Digital Seal on a PDF means to digitally sign a PDF document. Digital Seal, also known as Digital Signature is a specific type 
 of signature that is backed by a digital certificate, providing proof of your identity. Digital signatures are recognized 
 as being more secure because they’re cryptographically bound to the signed document and can be verified. 
 When you use a digital certificate obtained from a trusted third party, the resulting digital signature is 
@@ -28,7 +28,7 @@ Digital Seal API requires a PDF document as an input file on which a seal has to
 Digital Seal API requires a few input parameters for the creation of a seal. The parameters should specify the type, 
 format, visibility and appearance of the seal. It should also have the certificate credentials required to communicate with Trust Service Providers.<br/>
 
-Refer [sealing parameters](/overview/digital-seal-api/quickstarts/#2-configure-sealing-parameters) for more details.
+Refer to [sealing parameters](/overview/digital-seal-api/quickstarts/#2-configure-sealing-parameters) for more details.
 
 **Digital Seal API**
 
@@ -44,7 +44,7 @@ Digital Seal API can accept the signature image as input file. This is an option
 
 **Logo Image**
 
-Digital Seal API can accept the logo image as input file. This is an optional field that defaults to 'Acribat Trefoil'
+Digital Seal API can accept the logo image as input file. This is an optional field that defaults to 'Acrobat Trefoil'
 unless overridden by this parameter.
 
 ## FAQ

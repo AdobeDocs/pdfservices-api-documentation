@@ -29,9 +29,9 @@ API currently supports SIGN signature type.
 
 Specifies the format of the digital signature. API supports below formats
 * PADES : This is the latest and improved format which is more strict, concrete and secure.
-          For more details refer [ETSI TS 102 778-3](https://www.etsi.org/deliver/etsi_ts/102700_102799/10277803/01.02.01_60/ts_10277803v010201p.pdf)  
+          For more details refer to [ETSI TS 102 778-3](https://www.etsi.org/deliver/etsi_ts/102700_102799/10277803/01.02.01_60/ts_10277803v010201p.pdf)  
 * PKCS#7 : PKCS #7 signature is comparatively more relaxed and it's possible to change more things in PDF without invalidating digital signatures.
-           For more details refer [ISO 32000-1](https://opensource.adobe.com/dc-acrobat-sdk-docs/standards/pdfstandards/pdf/PDF32000_2008.pdf)
+           For more details refer to [ISO 32000-1](https://opensource.adobe.com/dc-acrobat-sdk-docs/standards/pdfstandards/pdf/PDF32000_2008.pdf)
 
 </details>
 
@@ -193,16 +193,16 @@ the below format.
 
 #### Sealing Parameters<span style="color:red">*</span>
 A collection of [parameters](/overview/digital-seal-api/quickstarts/#1-configure-sealing-parameters) 
-that will be applied during seal creation
+that will be applied during seal creation.
 
-There are two ways to access Digital Seal API
+There are two ways to access Digital Seal API:
 
 **2.1 REST API**
 
 You can use our cloud based REST API to generate seal on PDF documents.
 <InlineAlert slots="text"/>
 
-Before you begin with the REST API, refer [How To Get Started](https://documentcloud.adobe.com/document-services/index.html#how-to-get-started-) to learn more about generating the required credentials and invoking the APIs.
+Before you begin with the REST API, refer to [How To Get Started](https://documentcloud.adobe.com/document-services/index.html#how-to-get-started-) to learn more about generating the required credentials and invoking the APIs.
 
 ```javascript
 curl --location --request POST 'https://pdf-services-dev.adobe.io/operation/digitalseal'
@@ -256,7 +256,7 @@ Alternatively, you can use our offering through [PDF Services SDK](../pdf-servic
 
 <InlineAlert slots="text"/>
 
-To get started with PDF Services SDK, refer [Quickstarts](../pdf-services-api).
+To get started with PDF Services SDK, refer to [Quickstarts](../pdf-services-api).
 
 ```javascript
 public class DigitalSealSuccessTest {
