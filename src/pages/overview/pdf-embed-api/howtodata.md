@@ -12,7 +12,7 @@ the incoming data to Adobe Analytics variables.
 Since you want to track user interaction with the PDF viewer, you need
 to make sure events appear in the correct report suites. To
 automatically receive PDF analytics events, pass the Analytics report
-suite ID when creating the AdobeDC.View instance. You must ensure that
+suite ID when creating the `AdobeDC.View` instance. You must ensure that
 Adobe Analytics is instrumented using the same `reportSuiteId` for the
 website where you are embedding the PDF Viewer.
 
@@ -177,6 +177,7 @@ var adobeDCView = new AdobeDC.View({
 | Search          | When the user searches for any text via the document search field                                                                                                                 | Searched text, file name                                                                        |
 | Change Zoom           | When zoom in/out actions are performed on the PDF toolbar                                                                                                              | Zoom level, File name |
 
+
 Find the code sample for Google Analytics integration 
 in PDF Embed API [here](https://www.adobe.com/go/pdfembedapi_samples) under
 `/More Samples/Analytics/Google Analytics`.
@@ -204,8 +205,9 @@ Once you've logged in to Google Analytics, do the following:
 5.  Set the scope as **Event**.
 6.  Enter a  description for this custom dimension.
 7.  Enter the name of the event attribute sent from PDF Embed API. Custom dimensions need to be created for these event attributes: **filename**, **pageNum**, **searchTerm** and **zoomLevel**.
-8. Click **Save**. 
+8. Click Save. 
 (Note: You will see a value of "Not set" for a custom dimension during the first 48 hours. )
+
 9. You need to set up four custom dimensions, as follows:
 
   * File Name 
@@ -231,7 +233,7 @@ Once you've logged in to Google Analytics, do the following:
 ### Viewing your data in Google Analytics 4
 
 Once you start receiving PDF analytics in Google Analytics 4, 
-set up your reporting as usual and view the dimensions and metrics in your workspace.
+set up your reporting as usual and view the dimensions and metrics in your workspace. 
 
 **Creating a sample exploration to track page views**
 
@@ -258,7 +260,7 @@ data would be sent to Google Analytics.
 
 ## Control analytics collection
 
-If your website is already integrated with analytics tools, such as, Adobe Analytics or Google Analytics, 
+If your website is already integrated with analytics tools such as Adobe Analytics or Google Analytics, 
 then you can collect PDF analytics with few additional setup steps. 
 To know more about the setup steps, see the sections [Adobe Analytics](./howtodata.md#adobe-analytics) and [Google Analytics](./howtodata.md#google-analytics).
 
@@ -283,8 +285,8 @@ events by registering a callback with the API to listen the events.
 Tracking PDF events provides insight into user actions and thereby helps
 you manage and evolve the PDF experience you're delivering to customers.
 
-As always, initialize the AdobeDC View object with your client ID, and
-then invoke the `previewFile` API on AdobeDC.View object as usual.
+As always, initialize the `AdobeDC.View` object with your client ID, and
+then invoke the `previewFile` API on `AdobeDC.View` object as usual.
 Finally, register the callback to receive the events and set
 `enablePDFAnalytics` to *true*:
 
@@ -338,7 +340,7 @@ generated:
 | APP_RENDERING_FAILED | When the PDF fails to render because of an unexpected error.                                                                                                                                                                                                                                                                                                                                | None       |
 | PDF_VIEWER_OPEN      | When the PDF viewer opens.                                                                                                                                                                                                                                                                                                                                                                  | None       |
 | PDF_VIEWER_CLOSE     | When the PDF viewer closes.                                                                                                                                                                                                                                                                                                                                                                 | None       |
-| PDF_VIEWER_READY     | When the PDF is rendered completely and the PDF viewer is ready to perform functionalities, such as, annotations and form-filling. This event is especially useful in case of linearized PDFs to check when the PDF gets fully downloaded. To know more about linearization, see the section [PDF Linearization](../howtos/#pdf-linearization). | None       |
+| PDF_VIEWER_READY     | When the PDF is rendered completely and the PDF viewer is ready to perform functionalities, such as annotations and form-filling. This event is especially useful in case of linearized PDFs to check when the PDF gets fully downloaded. To know more about linearization, see the section [PDF Linearization](../howtos/#pdf-linearization). | None       |
 
 In order to receive additional file preview events, set
 `enableFilePreviewEvents` to *true* and pass it to the events callback.

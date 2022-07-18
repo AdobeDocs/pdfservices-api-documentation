@@ -8,7 +8,7 @@ the website DOM. Search engine bots start by reading the website content
 and navigate all the links in the DOM.
 
 Search engine indexing and optimisation of any website can only be
-controlled by the website developers. One **approach** which enables PDF
+controlled by the website developers. One approach which enables PDF
 indexing via the PDF Embed API involves using sitemaps.
 </p>
 
