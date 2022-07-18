@@ -103,8 +103,16 @@ module.exports = {
             title: 'PDF Embed API',
             path: 'overview/pdf-embed-api/index.md'
           },
+          {
+            title: 'PDF Accessibility Auto-Tag API',
+            path: 'overview/pdf-accessibility-auto-tag-api/index.md'
+          },
         ]
       },
+      {
+        title: "Rest APIs",
+        path: 'apis/index.md'
+      }
     ],
     subPages: [
       {
@@ -190,6 +198,10 @@ module.exports = {
               {
                 title: 'Get PDF Properties',
                 path: 'overview/pdf-services-api/howtos/pdf-properties.md'
+              },
+              {
+                title: 'Accessibility Auto-Tag PDF',
+                path: 'overview/pdf-services-api/howtos/accessibility-auto-tag-pdf.md'
               }
             ]
           },
@@ -337,6 +349,46 @@ module.exports = {
             title: 'Release Notes',
             path: 'overview/pdf-embed-api/releasenotes.md'
           },
+        ]
+      },
+      {
+        title: 'PDF Accessibility Auto-Tag API',
+        path: 'overview/pdf-accessibility-auto-tag-api/index.md',
+        pages: [
+          {
+            title: 'Overview',
+            path: 'overview/pdf-accessibility-auto-tag-api/index.md'
+          },
+          {
+            title: 'Quickstarts',
+            path: 'overview/pdf-accessibility-auto-tag-api/quickstarts.md'
+          },
+          {
+            title: 'How Tos',
+            path: 'overview/pdf-accessibility-auto-tag-api/howtos',
+            pages: [
+              {
+                title: 'Overview',
+                path: 'overview/pdf-accessibility-auto-tag-api/howtos/index.md'
+              },
+              {
+                title: 'PDF Accessibility Auto-Tag API',
+                path: 'overview/pdf-accessibility-auto-tag-api/howtos/accessibility-auto-tag-api.md'
+              }
+            ]
+          },
+          {
+            title: 'Release Notes',
+            path: 'overview/pdf-services-api/releasenotes.md'
+          },
+          {
+            title: 'PDF Services API Licensing',
+            path: 'overview/pdf-accessibility-auto-tag-api/dcserviceslicensing.md'
+          },
+          {
+            title: 'Usage Limits',
+            path: 'overview/pdf-accessibility-auto-tag-api/dcserviceslicensing.md#usage-limits'
+          }
         ]
       },
       {
