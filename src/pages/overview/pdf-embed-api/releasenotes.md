@@ -5,7 +5,7 @@ the changes below for each release.
 
 ## Change history
 
-### July, 2022
+### August, 2022
 
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |

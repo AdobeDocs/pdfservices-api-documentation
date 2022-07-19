@@ -25,8 +25,16 @@ two fields:
 -   **content**: The file content either provided as a file path or file
     promise which resolves to ArrayBuffer of the file content. See
     [Passing file content](#passing-file-content).
--   **metaData**: File metadata information. Note that `fileName` is
-    mandatory.
+-   **metaData**: File metadata information.
+
+This table lists down the various options which can be passed in `metaData`.
+<br/>
+
+| Variable | Default | Description |
+| -------- | ------- | ----------- |
+| fileName | None | The name of the PDF to be rendered. An example of `fileName` is "Bodea Brochure.pdf". Note that `fileName` is mandatory. |
+| id | None | Pass the PDF ID when annotation APIs are enabled to uniquely identify the PDF. For more details, see [Annotations API overview](./howtos_comments/#annotations-api-overview). |
+| hasReadOnlyAccess | false | Set this flag to *true* if you want to render the PDF in read-only mode. Commenting is not allowed and existing PDF comments are displayed as read only. |
 
 That's it! View the page in a browser to see your fully functional PDF
 viewer.
