@@ -241,6 +241,7 @@ export default ({ children, pageContext, location }) => {
                 path
                 pages {
                   title
+                  subTitle
                   path
                   pages {
                     title
