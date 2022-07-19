@@ -55,7 +55,7 @@ Develop your web app using your preferred methods and tools.
 </head>
 <body style="margin: 0px">
  <div id="adobe-dc-view"></div>
- <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+ <script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
  <script type="text/javascript">
     document.addEventListener("adobe_dc_view_sdk.ready", function()
     {
@@ -190,7 +190,7 @@ PDF Embed API ONLY collects essential information which helps Adobe understand h
 -   Type of device used to open the PDF - desktop, mobile or tablet.
 -   Embed mode used to render the PDF.
 -   File size and number of pages.
--   Performance metrics, such as, whether PDF was rendered in linearized manner or not, time taken to download the PDF and render the first page.
+-   Performance metrics, such as whether PDF was rendered in linearized manner or not, time taken to download the PDF and render the first page.
 -   URL of the webpage.
 
 Please note that PDF Embed API doesn’t store any user-generated content and never shares user-generated content with Adobe servers.
