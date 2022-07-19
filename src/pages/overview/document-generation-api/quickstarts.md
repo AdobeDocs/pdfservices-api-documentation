@@ -71,6 +71,12 @@ To get started with PDF Services SDK, refer [Quickstarts](../pdf-services-api).
 
 <br/>
 
+<InlineAlert slots="text"/>
+
+Please allow-list the following hostnames before using Adobe PDF Services SDK :<ul><li>ims-na1.adobelogin.com</li><li>cpf-ue1.adobe.io</li><li>senseicore-ue1.adobe.io (for versions below 1.x.x)</li></ul>
+
+<br/>
+
 #### Generate PDF or Word document
 
 The sample below generates the output document in the **PDF** format. Similarly, you can specify **DOCX** as the **OutputFormat** to generate Word documents.
