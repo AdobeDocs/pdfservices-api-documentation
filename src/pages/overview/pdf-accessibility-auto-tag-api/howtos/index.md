@@ -1,5 +1,24 @@
 # How Tos
 
+<p>
+
+The [samples and documentation](accessibility-auto-tag-api.md/#generate-tagged-pdf-with-version-17-along-with-an-xlsx-report-and-shift-the-headings-in-the-output-pdf-file) should get you quickly up and running with PDF Accessibility Auto-Tag capabilities in the [PDFServices SDK](../../pdf-services-api/index.md) including:
+
+- Improving the accessibility of PDFs
+
+For code examples illustrating other PDF actions including those below, see the [PDFServices SDK](../../pdf-services-api/index.md) :
+
+- Creating a PDF from multiple formats, including HTML, Microsoft Office documents, and text files
+- Exporting a PDF to other formats or an image
+- Combining entire PDFs or specified page ranges
+- Using OCR to make a PDF file searchable with a custom locale
+- Compress PDFs with compression level and Linearize PDFs
+- Protect PDFs with password(s) and Remove password protection from PDFs
+- Common page operations, including inserting, replacing, deleting, reordering, and rotating
+- Splitting PDFs into multiple files
+
+</p>
+
 ## Runtime in-memory authentication
 
 The SDK supports providing the authentication credentials at runtime. Doing so allows fetching the credentials from a secret server during runtime instead of storing them in a file. Please refer to the following code snippet for details.
