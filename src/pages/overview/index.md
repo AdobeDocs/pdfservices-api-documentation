@@ -9,7 +9,7 @@ title: Document Services APIs
 
 Increasingly content and application owners are looking for easy-to-use PDF functionality when building modern web experiences. They are looking to cloud-based platforms with simple and reliable plug-and-play services.
 
-Adobe Document Services has four main APIs: the Adobe PDF Services API , the Adobe PDF Embed API, the Adobe Document Generation API and Adobe PDF Extract API. The latter two APIs and their SDKs are bundled into Adobe PDF Services API as part of a paid offering. PDF Embed API is a free offering. These APIs automate the generation, manipulation, and transformation of document content via a set of modern cloud-based web services. They help you deliver simpler, faster, and branded experiences so that you control user interaction with your documents, streamline PDF workflows and promote usage and retention.
+Adobe Document Services has five main APIs: the Adobe PDF Services API , the Adobe PDF Embed API, the Adobe Document Generation API, the Adobe PDF Extract API and Adobe PDF Accessibility Auto-Tag API. The latter two APIs and their SDKs are bundled into Adobe PDF Services API as part of a paid offering. PDF Embed API is a free offering. These APIs automate the generation, manipulation, and transformation of document content via a set of modern cloud-based web services. They help you deliver simpler, faster, and branded experiences so that you control user interaction with your documents, streamline PDF workflows and promote usage and retention.
 
 With tools and language support that caters to developers’ existing skill sets, you can now create compelling and consistent PDF experiences, including viewing, exporting, creating and working with PDFs.
 
@@ -35,7 +35,7 @@ The [Document Generation API](src/pages/overview/document-generation-api) is a c
 
 Embed Document Generation API into any application using [PDFServices SDK](pdf-services-api#sdk) for Node.js, .Net, and Java. [Start a Document Generation free trial that includes up to 1,000 free Document transactions or runs for 6 months, whichever occurs earlier.](https://documentcloud.adobe.com/dc-integration-creation-app-cdn/main.html?api=document-generation-api)
 
-## PDF Extract API for extracting pdf structure and information
+## PDF Extract API for extracting PDF structure and information
 
 The [PDF Extract API (included with the PDF Services API)](pdf-extract-api/index.md) is a cloud-based web service that uses Adobe’s Sensei AI technology to automatically extract content and structural information from PDF documents – native or scanned – and to output it in a structured JSON format. The service extracts text, complex tables, and figures as follows:
 
@@ -59,7 +59,7 @@ Automatic tagging is a good first step on a document’s journey to full accessi
 
 The output from the API is a tagged PDF, but it is not guaranteed to fully comply with accessibility standards such as WCAG and PDF/UA, as you may need to perform further downstream remediation and it is your responsibility to seek independent review of the same to meet those standards. After auto-tagging, to further improve accessibility, you may use Adobe Acrobat Pro to add alt-text to all figures and review the tagging of complex tables. Next you should check the first page and how the title is identified, the reading order, and then run the accessibility report, resolving any errors.
 
-You can learn more about PDF Accessibility in [this Overview](https://www.adobe.com/accessibility/pdf/pdf-accessibility-overview.html).
+You can learn more about PDF Accessibility in [this overview](https://www.adobe.com/accessibility/pdf/pdf-accessibility-overview.html).
 
 ## Community forum and feedback
 
