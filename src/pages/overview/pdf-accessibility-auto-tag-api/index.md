@@ -1,4 +1,4 @@
-# <h1>Overview<span style="color:red;font-size:15px;margin-left:10px;vertical-align:middle;border:1px solid;padding-left:2px;padding-right:2px"><b>Available under Early Access Program</b></span></h1>
+# Overview
 <p>
 
 **What is PDF Tag structure?**
@@ -8,7 +8,7 @@ or other text-to-speech tool requires that the document be structured. Document 
 reading order and identify headings, paragraphs, sections, tables and other page elements. The tags structure also 
 allows for documents to be resized and reflowed for viewing at larger sizes and on mobile devices.
 
-You can learn more about PDF Accessibility in [this Overview](https://www.adobe.com/accessibility/pdf/pdf-accessibility-overview.html).
+You can learn more about PDF Accessibility in [this overview](https://www.adobe.com/accessibility/pdf/pdf-accessibility-overview.html).
 
 
 **What is Adobe PDF Accessibility Auto-Tag API?**

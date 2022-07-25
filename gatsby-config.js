@@ -22,6 +22,7 @@ module.exports = {
     pages: [
       {
         title: 'Adobe Document Services',
+        subTitle: '',
         path: '../../../document-services/homepage'
       },
       {
@@ -117,6 +118,7 @@ module.exports = {
       },
       {
         title: 'PDF Services API',
+        subTitle: '',
         path: 'overview/pdf-services-api/index.md',
         pages: [
           {
@@ -197,7 +199,8 @@ module.exports = {
               },
               {
                 title: 'Accessibility Auto-Tag PDF',
-                path: 'overview/pdf-services-api/howtos/accessibility-auto-tag-pdf.md'
+                path: 'overview/pdf-services-api/howtos/accessibility-auto-tag-pdf.md',
+                subTitle: 'Early Access Program',
               }
             ]
           },
@@ -221,6 +224,7 @@ module.exports = {
       },
       {
         title: 'Document Generation API',
+        subTitle: '',
         path: 'overview/document-generation-api/index.md',
         pages: [
           {
@@ -271,6 +275,7 @@ module.exports = {
       },
       {
         title: 'PDF Extract API',
+        subTitle: '',
         path: 'overview/pdf-extract-api/index.md',
         pages: [
           {
@@ -283,6 +288,7 @@ module.exports = {
           },
           {
             title: 'How Tos',
+            subTitle: '',
             path: 'overview/pdf-extract-api/howtos',
             pages: [
               {
@@ -311,6 +317,7 @@ module.exports = {
       },
       {
         title: 'PDF Embed API',
+        subTitle: '',
         path: 'overview/pdf-embed-api/index.md',
         pages: [
           {
@@ -345,6 +352,7 @@ module.exports = {
       },
       {
         title: 'PDF Accessibility Auto-Tag API',
+        subTitle: 'Early Access Program',
         path: 'overview/pdf-accessibility-auto-tag-api/index.md',
         pages: [
           {
@@ -357,6 +365,7 @@ module.exports = {
           },
           {
             title: 'How Tos',
+            subTitle: '',
             path: 'overview/pdf-accessibility-auto-tag-api/howtos',
             pages: [
               {
@@ -385,6 +394,7 @@ module.exports = {
       },
       {
         title: 'Archives',
+        subTitle: '',
         path: 'overview/policies.md',
         pages: [
           {
