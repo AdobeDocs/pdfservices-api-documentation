@@ -22,7 +22,7 @@ PDF Accessibility Auto-Tag API is available as SDKs in Java and Python.
 
 <InlineAlert slots="text"/>
 
-Please allow-list the following hostnames before using Adobe PDF Services SDK :<ul><li>ims-na1.adobelogin.com</li><li>cpf-ue1.adobe.io</li><li>senseicore-ue1.adobe.io (for versions below 1.x.x)</li></ul>
+Please allow-list the following hostnames before using Adobe PDF Services SDK:<ul><li>ims-na1.adobelogin.com</li><li>cpf-ue1.adobe.io</li><li>senseicore-ue1.adobe.io (for versions below 1.x.x)</li></ul>
 
 ### Java
 
