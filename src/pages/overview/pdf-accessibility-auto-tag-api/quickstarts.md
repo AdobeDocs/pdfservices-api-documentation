@@ -6,7 +6,7 @@ PDF Accessibility Auto-Tag API is available as SDKs to help you get up and runni
 
 ## Get Early Access
 
-The PDF Accessibility Auto-Tag API is currently available as Early Access. To request access, [Contact Us](https://acrobatusers.com/documentcloud_sdk/index_lead_gen.php?api=accessibility). Once you receive confirmation that you’ve been given access, proceed to the next step to [Get API credentials](quickstarts/#get-api-credentials).
+The PDF Accessibility Auto-Tag API is currently available as Early Access. To request access, [Contact Us](https://developer.adobe.com/document-services/pricing/contacts/accessibility/). Once you receive confirmation that you’ve been given access, proceed to the next step to [Get API credentials](quickstarts/#get-api-credentials).
 
 ## Get API credentials
 
