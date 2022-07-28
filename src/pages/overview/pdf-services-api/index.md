@@ -365,7 +365,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 3.  Verify the hash in the downloaded file matches the value published here.
 
 ```
-sha512-Rzq/8vEcir38gxTygOYQPx87hyli68JDU81PrBIAVWIJm9Yp7OUpy3vUH0SXEjBbtRIdEtOhELh/iAFbhYzq8Q==
+sha512-oYPbb2bNCmmjHpCNyr3/4Eof/xh98GIV+9Rm6xMEZilrRO1TWeRc0ni4zD/L6SE9hEIThSmDw7URO2MVYtUy5g==
 ```
 
 #### Logging
