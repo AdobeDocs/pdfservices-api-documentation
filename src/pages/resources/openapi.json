@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "PDF Services API",
-    "description": "Adobe PDF Services API allows you to create and manipulate PDF documents within any document workflow through scalable cloud-based web services.\nEasily automate powerful PDF operations into any application, whether you want to create PDFs from a Word document, export existing PDFs to other formats in your document workflows or manipulate PDFs performing different operations on them.\nBrowse through the Operations and choose any combination of PDF operations for dynamic digital workflows that seamlessly integrate end-user experiences.",
+    "description": "Adobe PDF Services API allows you to create and manipulate PDF documents within any document workflow through scalable cloud-based web services.\nEasily automate powerful PDF operations into any application, whether you want to create PDFs from a Word document, export existing PDFs to other formats in your document workflows or manipulate PDFs performing different operations on them.\nBrowse through the Operations and choose any combination of PDF operations for dynamic digital workflows that seamlessly integrate end-user experiences.\n\n# Authentication\n <h2>How to get started?</h2>\n\n **STEP 1: Get Credentials -** Invoking PDF Services API requires an Adobe-provided credential. To get one, <a href=\"https://documentcloud.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api\" target=\"_blank\">click here</a>, and complete the workflow. Be sure to copy and save the credential values to a secure location.\n\n**Validity term:** The certificate associated with your credential is valid for one year. However, you can simply regenerate a new credential or apply a new certificate to the current credential from the <a href=\"https://console.adobe.io/\" target=\"_blank\">Document Cloud Developer Console</a>.\n\n**STEP 2: Generate JWT -** Use the credential created in STEP-1 to generate a signed JSON Web Token (JWT). There are following two ways to generate JWT:\n\n  **• Using Adobe IO Console:**\n 1. Goto <a href=\"https://console.adobe.io/\" target=\"_blank\">Document Cloud Developer Console</a> > Select your newly created Integration > Click on \"Service Account (JWT)\" > Goto \"Generate JWT\" tab.\n 2. Paste your private.key (from the Credentials zip downloaded in STEP-1) > Click on \"Generate token\".\n 3. Save the Generated JWT and Sample cURL command to retrieve access_token in STEP-3.\n\n  **• Using JWT Libraries:** The steps to generate the JWT using libraries can be referred from <a href=\"https://developer.adobe.com/developer-console/docs/guides/authentication/JWT/\" target=\"_blank\">here</a>.\n\n Use <a href=\"https://developer.adobe.com/developer-console/docs/guides/authentication/JWT/samples/#sample-code\" target=\"_blank\">sample code</a> in your preferred programming language to generate JWT.\nWhile generating JWT use the metascope as mentioned here.\n\n **STEP 3: Retrieve Access Token -** The PDF Services APIs require an access_token to authorize the request.\nUse the \"Exchange JWT\" API from the <a href=\"./7c4e4c4d/resources/postman/PlatformAPIs.json\" download=\"PDFServicesAPI_Collection\">Postman Collection</a> with your client_id, client_secret (mentioned in the pdfservices-api-credentials.json file present in the Credentials zip downloaded in STEP-1) and the above generated JWT to get the access_token OR directly use the saved Sample cURL command in STEP-2 to get the access_token. \n\nFollow this link <a href=\"https://www.adobe.io/authentication/auth-methods.html#!AdobeDocs/adobeio-auth/master/JWT/JWT.md#exchanging-jwt-to-retrieve-an-access-token\" target=\"_blank\">How to retrieve Access Token?</a> to understand the request format to get the access_token.\n\n",
     "termsOfService": "https://developer.adobe.com/document-services/docs/overview//terms/",
     "contact": {
       "email": "apiteam@swagger.io"
@@ -25,7 +25,7 @@
   "tags": [
     {
       "name": "assets",
-      "description": "Upload and download assets"
+      "description": "Upload and download assets."
     },
     {
       "name": "createpdf",
@@ -131,7 +131,7 @@
         "tags": [
           "assets"
         ],
-        "summary": "Get the pre-signed URI to directly upload the content to the cloud provider. ",
+        "summary": "Get upload pre-signed URI. ",
         "description": "Get the pre-signed URI to directly upload the content to the cloud provider. \n\nOutput: Response will have the asset URI of created asset and pre-signed URI for uploading the content.",
         "operationId": "asset.uploadpresignedurl",
         "parameters": [
@@ -176,14 +176,8 @@
         },
         "responses": {
           "200": {
-            "description": "The request was successfully",
+            "description": "The request was successfull",
             "headers": {
-              "location": {
-                "description": "An asset URI identifying an asset that is globally unique and never reused.",
-                "schema": {
-                  "type": "string"
-                }
-              },
               "x-request-id": {
                 "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
                 "schema": {
@@ -221,7 +215,7 @@
                   "type": "object",
                   "properties": {
                     "error_code": {
-                      "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>INVALID_REQUEST</td><td>Invalid Request Schema.</td></tr></tr><tr><td>REQUEST_TOO_LARGE</td><td>Total size of inline inputs exceeds permitted size.</td></tr></table>",
+                      "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>INVALID_REQUEST</td><td>Invalid Request Schema.</td></tr></tr></table>",
                       "type": "string"
                     },
                     "message": {
@@ -337,7 +331,7 @@
         "tags": [
           "assets"
         ],
-        "summary": "Get the pre-signed URI to fetch the content directly from the cloud provider.",
+        "summary": "Get download pre-signed URI.",
         "description": "Get the pre-signed URI to fetch the content directly from the cloud provider.",
         "operationId": "asset.get",
         "parameters": [
@@ -371,7 +365,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The request was successfully",
+            "description": "The request was successfull",
             "headers": {
               "Content-Type": {
                 "description": "The media type of the response body, which is application/json.",
@@ -416,7 +410,7 @@
                   "type": "object",
                   "properties": {
                     "error_code": {
-                      "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>INVALID_REQUEST</td><td>Invalid Request Schema.</td></tr></tr><tr><td>REQUEST_TOO_LARGE</td><td>Total size of inline inputs exceeds permitted size.</td></tr></table>",
+                      "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>INVALID_REQUEST</td><td>Invalid Request Schema.</td></tr></table>",
                       "type": "string"
                     },
                     "message": {
@@ -532,7 +526,7 @@
         "tags": [
           "assets"
         ],
-        "summary": "Get the metadata of the stored temporary asset.",
+        "summary": "Get asset metadata.",
         "description": "Get the metadata of the stored temporary asset.",
         "operationId": "asset.metadata",
         "parameters": [
@@ -566,7 +560,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The request was successfully",
+            "description": "The request was successfull",
             "headers": {
               "Content-Type": {
                 "description": "The media type of the response body, which is application/json.",
@@ -611,7 +605,7 @@
                   "type": "object",
                   "properties": {
                     "error_code": {
-                      "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>INVALID_REQUEST</td><td>Invalid Request Schema.</td></tr></tr><tr><td>REQUEST_TOO_LARGE</td><td>Total size of inline inputs exceeds permitted size.</td></tr></table>",
+                      "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>INVALID_REQUEST</td><td>Invalid Request Schema.</td></tr></tr></table>",
                       "type": "string"
                     },
                     "message": {
@@ -959,7 +953,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/JobStatus"
+                  "$ref": "#/components/schemas/CreatePDFJobStatus"
                 }
               }
             }
@@ -6310,8 +6304,8 @@
         "tags": [
           "digitalseal"
         ],
-        "summary": "An operation to create a digital signature on input PDF documents using the digital certificate provided by the user.",
-        "description": "An operation to create a digital signature on input PDF documents using the digital certificate provided by the user.",
+        "summary": "Add Digital seal on input PDF documents.",
+        "description": "An operation to create a digital seal on input PDF documents using the digital certificate provided by the user.",
         "operationId": "pdfoperations.digitalseal",
         "parameters": [
           {
@@ -7104,7 +7098,8 @@
         "type": "object",
         "required": [
           "assetURI",
-          "targetFormat"
+          "targetFormat",
+          "outputType"
         ],
         "properties": {
           "assetURI": {
@@ -7118,11 +7113,20 @@
               "jpeg",
               "png"
             ]
+          },
+          "outputType": {
+            "description": "f it is set to zipOfPageImages then the response will be provided as a zip response, otherwise if set as listOfPageImages the response will be provided as list of images as specified in the targetFormat.",
+            "type": "string",
+            "enum": [
+              "listOfPageImages",
+              "zipOfPageImages"
+            ]
           }
         },
         "example": {
           "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
-          "targetFormat": "jpeg"
+          "targetFormat": "jpeg",
+          "outputType": "listOfPageImages"
         },
         "additionalProperties": false
       },
@@ -7274,14 +7278,20 @@
         "example": {
           "assets": [
             {
-              "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+              "assetURI": "https://pdf-services-dev.adobe.io/assets/5952d81f-55be-4bb1-8206-49f695f07ff7",
               "pageRanges": [
                 {
                   "start": 1,
                   "end": 2
-                },
+                }
+              ]
+            },
+            {
+              "assetURI": "https://pdf-services-dev.adobe.io/assets/5952d81f-55be-4bb1-8206-49f695f07ff7",
+              "pageRanges": [
                 {
-                  "start": 4
+                  "start": 1,
+                  "end": 2
                 }
               ]
             }
@@ -7378,38 +7388,42 @@
           "pageActions": {
             "description": "A list of page actions to be performed on an input PDF document in a given order.",
             "type": "array",
-            "items": {
-              "properties": {
-                "pageAction": {
-                  "description": "An action to perform on pdf pages",
-                  "type": "object",
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/schemas/delete"
-                    },
-                    {
-                      "$ref": "#/components/schemas/rotate"
-                    }
-                  ]
-                }
+            "items": [
+              {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/delete"
+                  },
+                  {
+                    "$ref": "#/components/schemas/rotate"
+                  }
+                ]
               }
-            }
+            ]
           }
         },
         "example": {
-          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "assetURI": "e453ed48-d830-4f59-86ae-d658f5f57a53",
           "pageActions": [
             {
-              "pageAction": {
-                "rotate": {
-                  "angle": 90,
-                  "pageRanges": [
-                    {
-                      "start": 1,
-                      "end": 2
-                    }
-                  ]
-                }
+              "rotate": {
+                "angle": 270,
+                "pageRanges": [
+                  {
+                    "start": 1,
+                    "end": 2
+                  }
+                ]
+              }
+            },
+            {
+              "delete": {
+                "pageRanges": [
+                  {
+                    "start": 1,
+                    "end": 2
+                  }
+                ]
               }
             }
           ]
@@ -7728,6 +7742,19 @@
           ]
         }
       },
+      "PageAction": {
+        "title": "pageAction",
+        "description": "An action to perform on pdf pages",
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/delete"
+          },
+          {
+            "$ref": "#/components/schemas/rotate"
+          }
+        ]
+      },
       "PageManipulationPageRanges": {
         "title": "pageRanges",
         "description": "Page ranges of a PDF file. Pages in a document can be can be referred in any order, either from the start or end. For e.g.: For a file containing 10 pages, page number 1 can be referred using 1 or -10, page number 10 can be referred using 10 or -1. For performing an operation on the last page, we can provide a range as -1:-1. A page range provided is relative to the input document.",
@@ -7748,23 +7775,19 @@
         }
       },
       "Digitalseal": {
-        "description": "Params for Digitalseal PDF Operation",
+        "description": "Params to specify the options required for applying digital seal.",
         "type": "object",
         "required": [
-          "inputDocumentassetURI",
+          "inputDocumentassetID",
           "sealingOptions"
         ],
         "properties": {
-          "inputDocumentassetURI": {
+          "inputDocumentassetID": {
             "description": "A file asset Uri of an input PDF document in which seal has to be applied.",
             "type": "string"
           },
-          "logoassetURI": {
-            "description": "A file asset Uri of the logo/watermark/background image to use as part of the signature field's signed appearance.",
-            "type": "string"
-          },
-          "signatureassetURI": {
-            "description": "A file asset Uri of the signature image (i.e., drawn signature) to use as part of the signature field's signed appearance.",
+          "sealImageassetID": {
+            "description": "A file asset Uri of the logo/watermark/background image to use as part of the seal field's appearance. The asset format should be one of the below format \n\n 1. application/pdf \n\n2. image/jpeg \n\n3. image/png",
             "type": "string"
           },
           "sealingOptions": {
@@ -7774,35 +7797,34 @@
         "example": {
           "inputDocumentassetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
           "logoassetURI": "https://pdf-services-dev.adobe.io/assets/ab400ed7-a097-402b-a93f-8b47cfd3b519",
-          "signatureassetURI": "https://pdf-services-dev.adobe.io/assets/ab400ed7-a097-402b-a93f-8b47cfd3b520",
           "sealingOptions": {
-            "signatureType": "SIGN",
             "signatureFormat": "PKCS7",
-            "cscCredentialInfo": {
-              "credentialId": "[ADOBE]_54563_01:35",
-              "providerName": "intesitest",
-              "authorizationContext": {
-                "tokenType": "bearer",
-                "accessToken": "b7338a1f-c24d-4c83-a6fe-1eec91c47c12"
+            "cscCredentialOptions": {
+              "credentialId":"[ADOBE]_54563_01:35",
+              "providerName":"intesitest",
+              "authorizationContext":{
+                "tokenType":"bearer",
+                "accessToken":"b7338a1f-c24d-4c83-a6fe-1eec91c47c12"
               },
-              "credentialAuthParameters": {
-                "pin": "12345678"
+              "credentialAuthParameters":{
+                "pin":"12345678"
               }
             },
-            "signatureFieldOptions": {
-              "visible": true,
-              "location": {
-                "top": 300,
-                "left": 50,
-                "right": 250,
-                "bottom": 100
+            "sealFieldOptions": {
+              "location":{
+                "top":300,
+                "left":50,
+                "right":250,
+                "bottom":100
               },
-              "fieldName": "mytestfield",
-              "pageNumber": 1
+              "fieldName":"mytestfield",
+              "pageNumber":1
             },
-            "signatureAppearanceOptions": {
-              "displayOptions": [
+            "sealAppearanceOptions": {
+              "displayOptions":[
                 "NAME",
+                "DATE",
+                "DISTINGUISHED_NAME",
                 "LABELS"
               ]
             }
@@ -7812,23 +7834,14 @@
       },
       "SealingOptions": {
         "title": "sealingOptions",
-        "description": "Specifies all the signing parameters for the signature.",
+        "description": "Specifies all the sealing parameters for the seal.",
         "type": "object",
         "required": [
-          "signatureType",
           "signatureFormat",
-          "cscCredentialInfo",
-          "signatureFieldOptions"
+          "cscCredentialOptions",
+          "sealFieldOptions"
         ],
         "properties": {
-          "signatureType": {
-            "type": "string",
-            "description": "Specifies the type for signature to be applied.",
-            "default": "SIGN",
-            "enum": [
-              "SIGN"
-            ]
-          },
           "signatureFormat": {
             "type": "string",
             "description": "Specifies the standard format for signature to be applied.",
@@ -7838,9 +7851,9 @@
               "PKCS7"
             ]
           },
-          "cscCredentialInfo": {
+          "cscCredentialOptions": {
             "type": "object",
-            "description": "Specifies the CSC credential information that encapsulates the credential to be used for signing.",
+            "description": "Specifies the CSC credential information that encapsulates the credential to be used for sealing.",
             "required": [
               "providerName",
               "credentialId",
@@ -7850,7 +7863,7 @@
             "properties": {
               "credentialId": {
                 "type": "string",
-                "description": "Specifies the Digital ID stored with the CSC provider that should be used for signing"
+                "description": "Specifies the Digital ID stored with the CSC provider that should be used for sealing"
               },
               "providerName": {
                 "type": "string",
@@ -7866,17 +7879,17 @@
                   "tokenType": {
                     "type": "string",
                     "default": "Bearer",
-                    "description": "Specifies the type of service token which is Bearer"
+                    "description": "Specifies the type of service token which is Bearer."
                   },
                   "accessToken": {
                     "type": "string",
-                    "description": "Specifies the service access token used to authorize access to the CSC provider hosted apis"
+                    "description": "Specifies the service access token used to authorize access to the CSC provider hosted apis."
                   }
                 }
               },
               "credentialAuthParameters": {
                 "type": "object",
-                "description": "Specifies the credentials authorization information required to authorize the access to their signing keys.",
+                "description": "Specifies the credentials authorization information required to authorize the access to their certificate.",
                 "required": [
                   "pin"
                 ],
@@ -7889,7 +7902,7 @@
               }
             }
           },
-          "signatureFieldOptions": {
+          "sealFieldOptions": {
             "type": "object",
             "description": "Specifies the paraemters required to creates a new unsigned signature field or sign an existing field.",
             "required": [
@@ -7900,11 +7913,12 @@
             "properties": {
               "visible": {
                 "type": "boolean",
-                "description": "Specified whether the signture field is visible or not.",
+                "description": "Specified whether the seal field is visible or not.",
                 "default": true
               },
               "location": {
                 "type": "object",
+                "description":"Specifies the parameters related to the location of the seal field.",
                 "required": [
                   "left",
                   "bottom",
@@ -7912,40 +7926,39 @@
                   "top"
                 ],
                 "properties": {
-                  "top": {
-                    "type": "integer",
-                    "description": "Specifies the top-most y-coordinate of the signature appearance's bounding box in default PDF user space units."
+                  "top":{
+                    "type":"integer",
+                    "description":"Specifies the top-most y-coordinate of the seal appearance's bounding box in default PDF user space units."
                   },
-                  "left": {
-                    "type": "integer",
-                    "description": "Specifies the left-most x-coordinate of the signature appearance's bounding box in default PDF user space units."
+                  "left":{
+                    "type":"integer",
+                    "description":"Specifies the left-most x-coordinate of the seal appearance's bounding box in default PDF user space units."
                   },
-                  "right": {
-                    "type": "integer",
-                    "description": "Specifies the right-most x-coordinate of the signature appearance's bounding box in default PDF user space units."
+                  "right":{
+                    "type":"integer",
+                    "description":"Specifies the right-most x-coordinate of the seal appearance's bounding box in default PDF user space units."
                   },
-                  "bottom": {
-                    "type": "integer",
-                    "description": "Specifies the bottom-most y-coordinate of the signature appearance's bounding box in default PDF user space units."
+                  "bottom":{
+                    "type":"integer",
+                    "description":"Specifies the bottom-most y-coordinate of the seal appearance's bounding box in default PDF user space units."
                   }
-                },
-                "description": "Specifies the parameters related to the location of the signature field."
+                }
               },
               "fieldName": {
                 "type": "string",
-                "description": "Specified the field name for the signture field."
+                "description": "Specified the field name for the seal field."
               },
               "pageNumber": {
                 "type": "integer",
-                "description": "Specifies the number of the page to which the signature field should be attached."
+                "description": "Specifies the number of the page to which the seal field should be attached."
               }
             }
           },
-          "signatureAppearanceOptions": {
+          "sealAppearanceOptions": {
             "type": "object",
-            "description": "Specifies the parameters related to the apperance of the signature field.",
-            "default": {
-              "displayOptions": [
+            "description": "Specifies the parameters related to the apperance of the seal field.",
+            "default":{
+              "displayOptions":[
                 "NAME",
                 "LABELS"
               ]
@@ -7954,20 +7967,20 @@
               "displayOptions"
             ],
             "properties": {
-              "displayOptions": {
-                "type": "array",
-                "description": "Specifies the information to display in the signature.",
-                "items": {
-                  "enum": [
+              "displayOptions":{
+                "type":"array",
+                "description":"Specifies the information to display in the seal.",
+                "items":{
+                  "enum":[
                     "NAME",
                     "DATE",
                     "DISTINGUISHED_NAME",
                     "LABELS",
-                    "LOGO"
+                    "SEAL_IMAGE"
                   ],
-                  "type": "string"
+                  "type":"string"
                 },
-                "default": [
+                "default":[
                   "NAME",
                   "LABELS"
                 ]
@@ -7979,7 +7992,11 @@
       "Asset": {
         "type": "object",
         "properties": {
-          "uri": {
+          "assetID": {
+            "description": "An asset ID identifying an asset that is globally unique and never reused.",
+            "type": "string"
+          },
+          "uploadUri": {
             "description": "The URL used to upload the Resource directly to the cloud provider.",
             "type": "string"
           }
@@ -8035,6 +8052,19 @@
           },
           {
             "$ref": "#/components/schemas/done"
+          },
+          {
+            "$ref": "#/components/schemas/failed"
+          }
+        ]
+      },
+      "CreatePDFJobStatus": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/inprogress"
+          },
+          {
+            "$ref": "#/components/schemas/createpdfdone"
           },
           {
             "$ref": "#/components/schemas/failed"
@@ -8203,7 +8233,7 @@
             "$ref": "#/components/schemas/inprogress"
           },
           {
-            "$ref": "#/components/schemas/doneWithMultipleAsset"
+            "$ref": "#/components/schemas/splitpdfdone"
           },
           {
             "$ref": "#/components/schemas/failed"
@@ -8260,6 +8290,45 @@
           "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
         }
       },
+      "createpdfdone": {
+        "title": "done",
+        "description": "Response in case of 'done' status",
+        "type": "object",
+        "properties": {
+          "status": {
+            "description": "Job Status",
+            "type": "string",
+            "enum": [
+              "done"
+            ]
+          },
+          "asset": {
+            "$ref": "#/components/schemas/responseAsset"
+          }
+
+        },
+        "example": {
+          "status": "done",
+          "asset": {
+            "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+            "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3.amazonaws.com/f5bf46f7-41fe-41e4-b2f9-04dc3ccaafab?X-Amz-Security-Token=FwoGZXIvYXdzELX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDMSG%2FVEb9q7gN%2FxLWyLTAZFhMLUCD5Y9VTPsEvv80TB6lg9kLqzDa8dMlMVk1XIBBnM0kzAuMWkUErkntndcISqqo3CkRh%2FNe%2B4MfhBpK7c4ZVtZnpxTT1UGjzt62%2BCriLacsN51Luhxe2JMJEl8nyT%2FVXG3faLd6mbT87dwZqnjLOcymO0Lx5MiOJNUmZfx9WMDGBf%2FZ3WfXRHmEkG5TOF9RIwbcUH2FzYbJ2KYYKcqXNre4PmVuniKpNR%2FS3jcyNbyr1WJlfXV%2FeSkEPO%2FB%2B61g1Q%2FJVSMxvLrAFJLG0UsSNMo8tyJlwYyLbRSBjtT2%2BaRpvS%2BmA7STX%2B5rluZ7zdOmHrdsvLLR%2Fre4TobbYj3oO0CdQaQJQ%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220728T111352Z&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47P7JYWTNQ%2F20220728%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=cb0509592038f44507d03f76f48321386e2493df734004193f93b9d45236c662"
+          }
+        }
+      },
+      "responseAsset": {
+        "title": "asset",
+        "type": "object",
+        "properties": {
+          "assetID": {
+            "description": "An asset ID identifying an asset that is globally unique and never reused.",
+            "type": "string"
+          },
+          "downloadUri": {
+            "description": "The URL used to download the Resource directly to the cloud provider.",
+            "type": "string"
+          }
+        }
+      },
       "doneWithMultipleAsset": {
         "title": "done",
         "description": "Response in case of 'done' status",
@@ -8285,6 +8354,42 @@
           "assetURIList": [
             "https://pdf-services-dev.adobe.io/assets/509d853b-6c1b-453d-b799-36ce40904b79",
             "https://pdf-services-dev.adobe.io/assets/509d853b-6c1b-453d-b799-36ce40904b91"
+          ]
+        }
+      },
+      "splitpdfdone": {
+        "title": "done",
+        "description": "Response in case of 'done' status",
+        "type": "object",
+        "properties": {
+          "status": {
+            "description": "Job Status",
+            "type": "string",
+            "enum": [
+              "done"
+            ]
+          },
+          "assetList": {
+            "description": "List of assets",
+            "type": "array",
+            "items": [
+              {
+                "$ref": "#/components/schemas/responseAsset"
+              }
+            ]
+          }
+        },
+        "example": {
+          "status": "done",
+          "assetList": [
+            {
+              "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+              "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3.amazonaws.com/f5bf46f7-41fe-41e4-b2f9-04dc3ccaafab?X-Amz-Security-Token=FwoGZXIvYXdzELX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDMSG%2FVEb9q7gN%2FxLWyLTAZFhMLUCD5Y9VTPsEvv80TB6lg9kLqzDa8dMlMVk1XIBBnM0kzAuMWkUErkntndcISqqo3CkRh%2FNe%2B4MfhBpK7c4ZVtZnpxTT1UGjzt62%2BCriLacsN51Luhxe2JMJEl8nyT%2FVXG3faLd6mbT87dwZqnjLOcymO0Lx5MiOJNUmZfx9WMDGBf%2FZ3WfXRHmEkG5TOF9RIwbcUH2FzYbJ2KYYKcqXNre4PmVuniKpNR%2FS3jcyNbyr1WJlfXV%2FeSkEPO%2FB%2B61g1Q%2FJVSMxvLrAFJLG0UsSNMo8tyJlwYyLbRSBjtT2%2BaRpvS%2BmA7STX%2B5rluZ7zdOmHrdsvLLR%2Fre4TobbYj3oO0CdQaQJQ%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220728T111352Z&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47P7JYWTNQ%2F20220728%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=cb0509592038f44507d03f76f48321386e2493df734004193f93b9d45236c662"
+            },
+            {
+              "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+              "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3.amazonaws.com/f5bf46f7-41fe-41e4-b2f9-04dc3ccaafab?X-Amz-Security-Token=FwoGZXIvYXdzELX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDMSG%2FVEb9q7gN%2FxLWyLTAZFhMLUCD5Y9VTPsEvv80TB6lg9kLqzDa8dMlMVk1XIBBnM0kzAuMWkUErkntndcISqqo3CkRh%2FNe%2B4MfhBpK7c4ZVtZnpxTT1UGjzt62%2BCriLacsN51Luhxe2JMJEl8nyT%2FVXG3faLd6mbT87dwZqnjLOcymO0Lx5MiOJNUmZfx9WMDGBf%2FZ3WfXRHmEkG5TOF9RIwbcUH2FzYbJ2KYYKcqXNre4PmVuniKpNR%2FS3jcyNbyr1WJlfXV%2FeSkEPO%2FB%2B61g1Q%2FJVSMxvLrAFJLG0UsSNMo8tyJlwYyLbRSBjtT2%2BaRpvS%2BmA7STX%2B5rluZ7zdOmHrdsvLLR%2Fre4TobbYj3oO0CdQaQJQ%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220728T111352Z&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47P7JYWTNQ%2F20220728%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=cb0509592038f44507d03f76f48321386e2493df734004193f93b9d45236c662"
+            }
           ]
         }
       },
