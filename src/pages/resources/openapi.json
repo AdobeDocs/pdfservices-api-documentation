@@ -88,12 +88,8 @@
       "description": "Merge Word based templates with input JSON data to create Word and PDF documents"
     },
     {
-      "name": "digitalseal1",
-      "description": "An operation that applies cryptographic seals on input documents using a selected certificate provider."
-    },
-    {
-      "name": "digitalseal2",
-      "description": "An operation that applies cryptographic seals on input documents using a selected certificate provider."
+      "name": "electronicseal",
+      "description": "An operation to create an electronic seal on input PDF documents using the digital certificate provided by the user."
     }
   ],
   "x-tagGroups": [
@@ -121,7 +117,7 @@
         "removeprotection",
         "splitpdf",
         "documentGeneration",
-        "digitalseal"
+        "electronicseal"
       ]
     }
   ],
@@ -6299,14 +6295,14 @@
         }
       }
     },
-    "/pdf-services/operation/digitalseal": {
+    "/pdf-services/operation/electronicseal": {
       "post": {
         "tags": [
-          "digitalseal"
+          "electronicseal"
         ],
-        "summary": "Add Digital seal on input PDF documents.",
-        "description": "An operation to create a digital seal on input PDF documents using the digital certificate provided by the user.",
-        "operationId": "pdfoperations.digitalseal",
+        "summary": "PDF Electronic Seal Operation",
+        "description": "An operation to create an electronic seal on input PDF documents using the digital certificate provided by the user.",
+        "operationId": "pdfoperations.electronicseal",
         "parameters": [
           {
             "name": "Authorization",
@@ -6328,11 +6324,11 @@
           }
         ],
         "requestBody": {
-          "description": "Params for Digital seal Operation",
+          "description": "Params to specify the options required for applying electronic seal.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Digitalseal"
+                "$ref": "#/components/schemas/ElectronicSeal"
               }
             }
           },
@@ -6480,13 +6476,13 @@
         "x-codegen-request-body-name": "body"
       }
     },
-    "/pdf-services/operation/digitalseal/{jobID}/status": {
+    "/pdf-services/operation/electronicseal/{jobID}/status": {
       "get": {
         "tags": [
           "digitalseal"
         ],
-        "summary": "Poll the digitalseal Job for completion",
-        "operationId": "pdfoperations.digitalseal.jobstatus",
+        "summary": "Poll the electronicseal Job for completion",
+        "operationId": "pdfoperations.electronicseal.jobstatus",
         "parameters": [
           {
             "name": "jobID",
@@ -6536,7 +6532,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DigitalSealPDFJobStatus"
+                  "$ref": "#/components/schemas/ElectronicSealPDFJobStatus"
                 }
               }
             }
@@ -7774,7 +7770,7 @@
           ]
         }
       },
-      "Digitalseal": {
+      "ElectronicSeal": {
         "description": "Params to specify the options required for applying digital seal.",
         "type": "object",
         "required": [
@@ -7800,14 +7796,14 @@
           "sealingOptions": {
             "signatureFormat": "PKCS7",
             "cscCredentialOptions": {
-              "credentialId":"[ADOBE]_54563_01:35",
-              "providerName":"intesitest",
+              "credentialId":"[ADOBE]_xxxx_xx:35",
+              "providerName":"intxxxxxst",
               "authorizationContext":{
                 "tokenType":"bearer",
-                "accessToken":"b7338a1f-c24d-4c83-a6fe-1eec91c47c12"
+                "accessToken":"b7338a1f-xxxx-xxxx-xxxx-1eec91c47c12"
               },
               "credentialAuthParameters":{
-                "pin":"12345678"
+                "pin":"12xxxx65"
               }
             },
             "sealFieldOptions": {
@@ -7825,7 +7821,8 @@
                 "NAME",
                 "DATE",
                 "DISTINGUISHED_NAME",
-                "LABELS"
+                "LABELS",
+                "SEAL_IMAGE"
               ]
             }
           }
@@ -8240,7 +8237,7 @@
           }
         ]
       },
-      "DigitalSealPDFJobStatus": {
+      "ElectronicSealPDFJobStatus": {
         "oneOf": [
           {
             "$ref": "#/components/schemas/inprogress"
