@@ -36,7 +36,7 @@ PDF Electronic Seal API requires a PDF document as an input file on which a seal
 PDF Electronic Seal API requires a few input parameters for the creation of a seal. The parameters should specify the 
 format, visibility and appearance of the seal. It should also have the certificate credentials required to communicate with Trust Service Providers.<br/>
 
-Refer to [sealing parameters](/overview/digital-seal-api/quickstarts/#2-configure-sealing-parameters) for more details.
+Refer to [sealing parameters](/overview/pdf-electronic-seal-api/quickstarts/#2-configure-sealing-parameters) for more details.
 
 **PDF Electronic Seal API**
 

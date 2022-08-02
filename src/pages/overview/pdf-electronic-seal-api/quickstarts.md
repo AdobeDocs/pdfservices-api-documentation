@@ -1,6 +1,6 @@
 # Quickstarts
 
-Before getting started with [PDF Electronic Seal API](/overview/digital-seal-api/#what-is-pdf-electronic-seal), make sure all the [Prerequisites](prerequisites.md) are met. 
+Before getting started with [PDF Electronic Seal API](/overview/pdf-electronic-seal-api/#what-is-pdf-electronic-seal), make sure all the [Prerequisites](prerequisites.md) are met. 
 
 ## Workflow
 
@@ -28,7 +28,7 @@ Specifies the format of the digital signature. API supports below formats
 <details>
 <summary>Click here</summary>
 
-Encapsulates the [certificate credential](/overview/digital-seal-api/prerequisites/#1-procure-certificate-credentials) to be used 
+Encapsulates the [certificate credential](/overview/pdf-electronic-seal-api/prerequisites/#1-procure-certificate-credentials) to be used 
 for signing, and the associated authentication and authorization data.
 
 * **TSP Name**<span style="color:red">*</span>
@@ -171,7 +171,7 @@ the below format.
 3. image/png
 
 #### Sealing Parameters<span style="color:red">*</span>
-A collection of [parameters](/overview/digital-seal-api/quickstarts/#1-configure-sealing-parameters) 
+A collection of [parameters](/overview/pdf-electronic-seal-api/quickstarts/#1-configure-sealing-parameters) 
 that will be applied during seal creation.
 
 There are two ways to access PDF Electronic Seal API:

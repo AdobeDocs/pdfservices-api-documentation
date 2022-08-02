@@ -5,19 +5,19 @@ assurance that they are authorized to add a electronic seal on a specific docume
 ## Prerequisites for PDF Electronic Seal API
 
 ### 1. Procure Certificate Credentials
-* The Client has to purchase a certificate from any of the [supported Trust Service Providers.](/overview/digital-seal-api/prerequisites/#supported-trusted-service-providers)
+* The Client has to purchase a certificate from any of the [supported Trust Service Providers.](/overview/pdf-electronic-seal-api/prerequisites/#supported-trusted-service-providers)
 * Trust Service Provider will perform remote identity verification of the client representative who acts as the legal owner of the Seal certificate.
 * After the identity verification, a client will create an account in their respective portal. A Certificate will be issued to the client which 
 can be protected from unauthorised use by creating a static PIN.
 * Now the client can generate OAuth 2.0 Client Credentials, required for the Cloud Signature Consortium API Authorization.
 
-The Client should reserve Digital Id and PIN generated in this step for [configuring sealing paramaters.](/overview/digital-seal-api/quickstarts/#1-configure-sealing-parameters)
+The Client should reserve Digital Id and PIN generated in this step for [configuring sealing paramaters.](/overview/pdf-electronic-seal-api/quickstarts/#1-configure-sealing-parameters)
 
 ### 2. Obtain your OAuth Token
 
-The client will use OAuth 2.0 Client Credentials procured from [Trust Service provider](/overview/digital-seal-api/prerequisites/#1-procure-certificate-credentials). 
+The client will use OAuth 2.0 Client Credentials procured from [Trust Service provider](/overview/pdf-electronic-seal-api/prerequisites/#1-procure-certificate-credentials). 
 The generated client_id and client_secret are passed as the input parameters in the request body of Trust Service Provider's API endpoint. 
-The access token generated in the response is further used in the [next steps](/overview/digital-seal-api/quickstarts/#2-configure-sealing-parameters)
+The access token generated in the response is further used in the [next steps](/overview/pdf-electronic-seal-api/quickstarts/#2-configure-sealing-parameters)
 to access with Cloud Signature Consortium APIs.
 
 To know more about Cloud Signature Consortium APIs refer to [Cloud Signature Consortium Standard](https://cloudsignatureconsortium.org/wp-content/uploads/2020/01/CSC_API_V1_1.0.4.0.pdf)

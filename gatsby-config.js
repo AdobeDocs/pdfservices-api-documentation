@@ -96,8 +96,8 @@ module.exports = {
             path: 'overview/document-generation-api/index.md'
           },
           {
-            title: 'Digital Seal API',
-            path: 'overview/digital-seal-api/index.md'
+            title: 'PDF Electronic Seal API',
+            path: 'overview/pdf-electronic-seal-api/index.md'
           },
           {
             title: 'PDF Extract API',
@@ -266,20 +266,20 @@ module.exports = {
         ]
       },
       {
-        title: 'Digital Seal API',
-        path: 'overview/digital-seal-api/index.md',
+        title: 'PDF Electronic Seal API',
+        path: 'overview/pdf-electronic-seal-api/index.md',
         pages: [
           {
             title: 'Overview',
-            path: 'overview/digital-seal-api/index.md'
+            path: 'overview/pdf-electronic-seal-api/index.md'
           },
           {
             title: 'Prerequisites',
-            path: 'overview/digital-seal-api/prerequisites.md'
+            path: 'overview/pdf-electronic-seal-api/prerequisites.md'
           },
           {
             title: 'Quickstarts',
-            path: 'overview/digital-seal-api/quickstarts.md'
+            path: 'overview/pdf-electronic-seal-api/quickstarts.md'
           }
         ]
       },
