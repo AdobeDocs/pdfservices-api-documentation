@@ -1,8 +1,8 @@
 # Prerequisites
 A client has to register itself to a Trusted Service Provider for getting digital certificates which provide an 
-assurance that they are authorized to add a digital seal on a specific document.
+assurance that they are authorized to add a electronic seal on a specific document.
 
-## Prerequisites for Digital Seal API
+## Prerequisites for PDF Electronic Seal API
 
 ### 1. Procure Certificate Credentials
 * The Client has to purchase a certificate from any of the [supported Trust Service Providers.](/overview/digital-seal-api/prerequisites/#supported-trusted-service-providers)
@@ -50,9 +50,9 @@ Trust service providers are companies that offer a wide range of secure identity
 certificate authority services by providing and preserving digital certificates to create and validate digital signatures 
 and to authenticate their signatories.
 
-Digital Seal supports digital certificates hosted by Qualified Trust Service Provider(QTSP) certified under the eIDAS 
+Electronic Seal supports digital certificates hosted by Qualified Trust Service Provider(QTSP) certified under the eIDAS 
 regulation and supporting the open API standard from the Cloud Signature Consortium. Trusted Service Providers shall support 
-the OAuth 2.0 Client Credential flow. This restricts Digital Seal to support the following list of providers: <!-- https://helpx.adobe.com/acrobat/kb/approved-trust-list1.html -->
+the OAuth 2.0 Client Credential flow. This restricts Electronic Seal to support the following list of providers: <!-- REFERENCES https://helpx.adobe.com/acrobat/kb/approved-trust-list1.html -->
 
 <br/>
 

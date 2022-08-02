@@ -1,54 +1,57 @@
 # Overview
-## What is Digital Seal?
-Digital Seal on a PDF means to digitally sign a PDF document. Digital Seal, also known as Digital Signature is a specific type 
-of signature that is backed by a digital certificate, providing proof of your identity. Digital signatures are recognized 
-as being more secure because they’re cryptographically bound to the signed document and can be verified. 
-When you use a digital certificate obtained from a trusted third party, the resulting digital signature is 
-virtually impossible to spoof. It also provides powerful evidence of signer identity, that the signed document was not 
-altered, and that the signatures are valid.
+## What is PDF Electronic Seal?
+PDF Electronic Seal powered by Digital Signature, is the concept to digitally sign the pdf document by an organisation or legal entity.
+It authenticates the identity of the organisation using digital certificate, and the integrity by digitally signing large volumes of documents, 
+such as invoices, bills, educational transcripts, health documents etc. 
 
-![Digital Seal Identification](../images/blueBar.png)
+
+![PDF Electronic Seal Identification](../images/blueBar.png)
 
 <!--- 
+REFERENCES
+https://wiki.corp.adobe.com/pages/viewpage.action?spaceKey=DEX&title=DC+Platform+-+Sealing+Service+API+and+Use-cases#DCPlatformSealingServiceAPIandUsecases-SignvsSeal-Howdotheydiffer
+https://www.adobe.com/in/sign/electronic-signatures.html
 https://www.adobe.com/sign/digital-signatures.html
 -->
 
-## Digital Seal Flow
+## Electronic Signature vs Electronic Seal
+Electronic Signature or e-signature is a simple and legally recognised way to indicate consent or approval on a digital document or form.
 
-![Digital Seal Process](../images/sealProcess.png)
+Electronic Seal on the other hand, is an organisational construct which ties the identity of the organisation/company 
+issuing the document to the actual digital document and not of any specific individual. It focuses on use-cases where 2-parties are not involved and document 
+first needs to be certified by a legal entity and then distributed across many consumers.
 
-## Components of Digital Seal
+## PDF Electronic Seal Flow
+
+![PDF Electronic Seal Process](../images/sealProcess.png)
+
+## Components of PDF Electronic Seal
 
 **PDF Document**
 
-Digital Seal API requires a PDF document as an input file on which a seal has to be applied.
+PDF Electronic Seal API requires a PDF document as an input file on which a seal has to be applied.
 
 **Sealing Parameters**
 
-Digital Seal API requires a few input parameters for the creation of a seal. The parameters should specify the type, 
+PDF Electronic Seal API requires a few input parameters for the creation of a seal. The parameters should specify the 
 format, visibility and appearance of the seal. It should also have the certificate credentials required to communicate with Trust Service Providers.<br/>
 
 Refer to [sealing parameters](/overview/digital-seal-api/quickstarts/#2-configure-sealing-parameters) for more details.
 
-**Digital Seal API**
+**PDF Electronic Seal API**
 
-Digital Seal API enables the generation of digital seal on PDF documents with no user interaction. It uses the provided 
-sealing parameters to authorize the client and apply seal on the input PDF document. The generated PDF document is said
-to be bound to the specified legal entity.
+PDF Electronic Seal API enables the generation of PDF Electronic Seal on PDF documents with no user interaction. It uses the provided 
+sealing parameters to authorize the client and apply a seal on the input PDF document. The generated PDF document is said to be bound to the specified legal entity.
  
 To Get Started, visit [Quickstarts](./quickstarts.md)
 
-**Signature Image**
+**Seal Image**
 
-Digital Seal API can accept the signature image as input file. This is an optional field.
-
-**Logo Image**
-
-Digital Seal API can accept the logo image as input file. This is an optional field that defaults to 'Acrobat Trefoil'
+PDF Electronic Seal API can accept the seal image as input file. This is an optional field that defaults to 'Acrobat Trefoil'
 unless overridden by this parameter.
 
 ## FAQ
-<details><summary>Digital Signature vs Electronic Signature ?</summary><p>
+<details><summary>Digital Signature vs Electronic Signature</summary><p>
 
 Electronic Signature is a broad term referring to any electronic process that indicates acceptance of 
 an agreement or a record. Typical e-signature solutions use common electronic authentication methods to verify signer 
@@ -60,43 +63,6 @@ identity and demonstrate proof of signing by binding each signature to the docum
 through trusted certificate authorities (CAs) or trust service providers (TSPs).
 
 </p></details>
-<br/>
-<details><summary>Use-cases of Digital Signature</summary><p>
-
-1. Government<br/>
-The governments have started using the digital sign for their low cost and high security. The government offices 
-are involved with almost everything from inducing new bills, tax returns, managing contracts, ID cards, and more. 
-These are all sensitive documents and using a digital signature completely eliminates the involvement of a 3rd party. 
-This makes the process smooth and reduces the chances of a leak.
-<br/>
-2. Legal Offices<br/>
-The legal offices handle some of the most cases sensitive documents in a country. The implementation of digital 
-signatures has reduced the cost of paper and labor significantly. The preservation of sensitive documents is also a factor here.
-<br/>
-3. Healthcare<br/>
-The administrative process for healthcare and treatment has been thoroughly improved by digital signature. 
-The process takes less time and the data security has improved for admission.
-<br/>
-4. Military<br/>
-The military is one of the biggest and sensitive sectors of any country that has seen a lot of improvements due to 
-the advent of digital signature. Mainly, compartmentalization of information and security has improved tenfold.
-<br/>
-5. Manufacturing<br/>
-The manufacturing companies use digital signs to smooth up the process. This improves the product design, the number of 
-production and sales get enhanced.
-<br/>
-6. Finance<br/>
-Paperless banking, contracts and easy loan has become the pinnacle of the new-age banking process. This was possible 
-due to digital signatures.
-<br/>
-7. Cryptocurrencies<br/>
-The cryptocurrencies are complex in nature and the digital signatures are used for blockchain authentication. 
-Digital sig is also used for the verification of cryptocurrency transaction data, this helps to show the ownership.
-
-</p></details>
-
-<!--- https://www.adobe.com/lt/sign/digital-signatures.html#:~:text=What's%20the%20difference%20between%20digital,specific%20type%20of%20e%2Dsignature. 
--->
 
 
 
