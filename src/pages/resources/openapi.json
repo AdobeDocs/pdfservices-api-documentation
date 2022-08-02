@@ -6479,7 +6479,7 @@
     "/pdf-services/operation/electronicseal/{jobID}/status": {
       "get": {
         "tags": [
-          "digitalseal"
+          "electronicseal"
         ],
         "summary": "Poll the electronicseal Job for completion",
         "operationId": "pdfoperations.electronicseal.jobstatus",
@@ -7775,7 +7775,7 @@
         "type": "object",
         "required": [
           "inputDocumentassetID",
-          "sealingOptions"
+          "sealOptions"
         ],
         "properties": {
           "inputDocumentassetID": {
@@ -7786,14 +7786,14 @@
             "description": "A file asset Uri of the logo/watermark/background image to use as part of the seal field's appearance. The asset format should be one of the below format \n\n 1. application/pdf \n\n2. image/jpeg \n\n3. image/png",
             "type": "string"
           },
-          "sealingOptions": {
-            "$ref": "#/components/schemas/SealingOptions"
+          "sealOptions": {
+            "$ref": "#/components/schemas/sealOptions"
           }
         },
         "example": {
           "inputDocumentassetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
           "logoassetURI": "https://pdf-services-dev.adobe.io/assets/ab400ed7-a097-402b-a93f-8b47cfd3b519",
-          "sealingOptions": {
+          "sealOptions": {
             "signatureFormat": "PKCS7",
             "cscCredentialOptions": {
               "credentialId":"[ADOBE]_xxxx_xx:35",
@@ -7829,8 +7829,8 @@
         },
         "additionalProperties": false
       },
-      "SealingOptions": {
-        "title": "sealingOptions",
+      "sealOptions": {
+        "title": "sealOptions",
         "description": "Specifies all the sealing parameters for the seal.",
         "type": "object",
         "required": [
