@@ -345,7 +345,11 @@ module.exports = {
             path: 'overview/pdf-embed-api/searchengineindexing.md'
           },
           {
-            title: 'Release notes',
+            title: 'Legacy to Modern viewer',
+            path: 'overview/pdf-embed-api/modernviewer.md'
+          },
+          {
+            title: 'Release Notes',
             path: 'overview/pdf-embed-api/releasenotes.md'
           },
         ]
