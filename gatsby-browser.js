@@ -302,6 +302,10 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
       ) {
         pageHeadTittle = "PDF Embed API Handle search engine indexing";
       } else if (
+        window.location.pathname.indexOf("pdf-embed-api/modernviewer/") >= 0
+      ) {
+        pageHeadTittle = "PDF Embed API Modern Viewer";
+      } else if (
         window.location.pathname.indexOf("pdf-embed-api/releasenotes/") >= 0
       ) {
         pageHeadTittle = "PDF Embed API Release Notes";
