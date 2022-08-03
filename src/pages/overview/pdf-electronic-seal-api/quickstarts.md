@@ -98,19 +98,24 @@ Encapsulates the parameters related to the appearance of the signature field
    <br/> 
    
    **NAME** - Specifies that the signer's name should be displayed in the signature appearance.This is a default value.<br/> 
+   ![Display Options](../images/sealName.png)
    
    **DATE** - Specifies that the signing date/time should be displayed in the signature appearance. This option only controls whether the value of the 
    time/date in the signature dictionary is displayed or not. This value should not be mistaken for a signed timestamp 
    from a timestamp authority. <br/> 
+   ![Display Options](../images/sealDate.png)
    
    **DISTINGUISHED_NAME** - Specifies that the distinguished name information from the 
    signer's certificate should be displayed in the signature appearance. <br/>
+   ![Display Options](../images/sealDN.png)
    
    **LABELS** - Specifies that text labels should 
    be displayed in the signature appearance. This is a default value. <br/>
+   ![Display Options](../images/sealLabel.png)
    
    **SEAL_IMAGE** - Specifies that the seal image should be 
-   displayed in the signature appearance. If a seal image, not supplied in the request body, the default Acrobat trefoil image is used.  
+   displayed in the signature appearance. If a seal image, not supplied in the request body, the default Acrobat trefoil image is used. <br/>
+   ![Display Options](../images/sealImage.png) 
 
 </details>
 
@@ -154,41 +159,52 @@ Encapsulates the parameters related to the appearance of the signature field
 ### 2. Generate digitally signed PDF using PDF Electronic Seal API
 PDF Electronic Seal API is invoked after interacting with third-party dependencies, configuring sealing parameters and collating 
 required input data to form the request. The request-id generated in the response headers can be polled anytime 
-to retrieve the status and asset Id of the output signed PDF. <br/>
-Upload all the input assets to get the corresponding [Asset Ids](https://wiki.corp.adobe.com/pages/viewpage.action?pageId=2589901901#CustomTempstorage(forDCPlatformAPIs)-Upload/downloadassets). 
-Given below are the request body parameters:
-
-#### PDF Document<span style="color:red">*</span> 
-Specifies asset ID generated after uploading input PDF document on which seal has to be applied.
-
-#### Seal Image
-Specifies asset ID generated after uploading the logo/watermark/background image used as part of the 
-signature field's signed appearance. The format of the asset should be among 
-the below format.
-
-1. application/pdf
-2. image/jpeg
-3. image/png
-
-#### Sealing Parameters<span style="color:red">*</span>
-A collection of [parameters](/overview/pdf-electronic-seal-api/quickstarts/#1-configure-sealing-parameters) 
-that will be applied during seal creation.
+to retrieve the status and asset ID of the output signed PDF. <br/>
 
 There are two ways to access PDF Electronic Seal API:
 
-**2.1 REST API** <br/>
+#### **2.1 REST API**
 You can use our cloud based REST API to generate seal on PDF documents.
 
 <InlineAlert slots="text"/>
 
 Before you begin with the REST API, refer to [How To Get Started](https://documentcloud.adobe.com/document-services/index.html#how-to-get-started-) to learn more about generating the required credentials and invoking the APIs.
 
-**2.2 PDF Services JAVA SDK** <br/>
+**INPUT DOCUMENTS** <br/>
+
+**PDF Document**<span style="color:red">*</span> <br/>
+Specifies asset ID generated after uploading input PDF document on which seal has to be applied.<br/>
+For uploading the document, refer to [Asset Upload](https://wiki.corp.adobe.com/pages/viewpage.action?pageId=2589901901#CustomTempstorage(forDCPlatformAPIs)-Upload/downloadassets).
+
+**Seal Image** <br/>
+Specifies asset ID generated after uploading the logo/watermark/background image used as part of the 
+signature field's signed appearance. The format of the asset should be among 
+the below format.
+1. application/pdf
+2. image/jpeg
+3. image/png
+
+For uploading the document, refer to [Asset Upload](https://wiki.corp.adobe.com/pages/viewpage.action?pageId=2589901901#CustomTempstorage(forDCPlatformAPIs)-Upload/downloadassets).
+
+#### **2.2 PDF Services JAVA SDK**
 Alternatively, you can use our offering through [PDF Services SDK](../pdf-services-api#sdk).
 
 <InlineAlert slots="text"/>
 
 To get started with PDF Services SDK, refer to [Quickstarts](../pdf-services-api).
+
+**INPUT DOCUMENTS** <br/>
+
+**PDF Document**<span style="color:red">*</span> <br/>
+Specifies the file path for input PDF document on which seal has to be applied.
+
+**Seal Image** <br/>
+Specifies the file path for the logo/watermark/background image used as part of the 
+signature field's signed appearance. Below are the supported file formats:
+
+1. application/pdf
+2. image/jpeg
+3. image/png
 
 <br/>
 
