@@ -26,15 +26,13 @@ complete the workflow.
 ## Copy it. Run it.
 
 The quickest way to get up and running is to simply copy the code below
-to an index.html file and open it in a browser. The example already
-points to an online PDF, and you do not need a client ID to run the
-viewer on your machine.
+to an index.html file. The example already
+points to an online PDF.
 
-If you wish to run it in a local web server (for example, localhost),
-then you need a valid client ID. You can generate a client ID from
+Generate a client ID from
 [here](https://documentcloud.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-embed-api). Insert the client
 ID within the double quotes in line 16 in the code below and run the
-webpage from your server.
+webpage from your server in any browser.
 
 <InlineAlert slots="text"/>
 
@@ -101,10 +99,6 @@ browsers:
 -   macOS - Safari, Google Chrome, Microsoft Edge, Mozilla Firefox.
 -   Android - Google Chrome.
 -   iOS - Safari, Google Chrome.
-
-<InlineAlert slots="text"/>
-
-PDF Embed API will end support for Internet Explorer 11 and Microsoft Edge Legacy after September, 2021. Please use the latest version of Microsoft Edge or any other supported browser.
 
 ### Support for print PDF
 
