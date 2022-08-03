@@ -98,8 +98,7 @@ The following features and configuration variables are deprecated in modern view
 * The bottom page control toolbar (`showPageControls`) is deprecated in full window 
   and lightbox embed modes. Page navigation has moved to the right panel in modern viewer.
 * Docking and undocking the bottom page control toolbar (`dockPageControls`) is deprecated 
-  in full window and lightbox embed modes and will work only for sized container 
-  embed mode in modern viewer.
+  in full window and lightbox embed modes.
 
 ## Customer impact
 

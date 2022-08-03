@@ -241,7 +241,7 @@ To use this mode:
     disabled (`showThumbnails` and `showBookmarks`).
 -   **Page navigation controls**: The page navigation controls 
     are available by default in the 
-    right-hand panel. (`showPageNavigationControl`).
+    right-hand panel.
 -   **Zoom control**: This mode also provides zoom-in and 
     zoom-out controls in the right-hand panel. (`showZoomControl`).
 -   **View mode**: Set the default page view to either "FIT_PAGE", "FIT_WIDTH",
@@ -346,7 +346,7 @@ To use this mode:
     to the enclosing `div` tag of the PDF viewer.
 * Pass `embedMode: "SIZED_CONTAINER"`
 * Optional: Configure the page and tool options
-  -   **Page Controls**: The page control toolbar at the bottom contains page navigation options. It is docked by default but can be undocked by setting `dockPageControls` to false. It also contains the Adobe Acrobat logo and document search option.
+  -   **Page Controls**: The page control toolbar at the bottom contains page navigation options. It also contains the Adobe Acrobat logo and document search option.
   -   **Full screen mode**: A full screen button also appears in the bottom toolbar which allows users to view the PDF in full screen mode. (`showFullScreen`).
   -   **Print and download**: This mode supports options to download and print the PDF (`showDownloadPDF` and `showPrintPDF`).
 
@@ -434,7 +434,7 @@ To use this mode:
         by default, but can be disabled (`showThumbnails` and `showBookmarks`).
     -   **Page navigation controls**: The page navigation controls 
         are available by default in the 
-        right-hand panel. (`showPageNavigationControl`).
+        right-hand panel.
     -   **Zoom control**: This mode also provides zoom-in and 
         zoom-out controls in the right-hand panel. (`showZoomControl`).
     -   **View mode**: Set the default page view to either "FIT_PAGE", "FIT_WIDTH",
