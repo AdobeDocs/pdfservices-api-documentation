@@ -9,7 +9,7 @@ the changes below for each release.
 
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
-| New    | Adobe has launched a modern PDF viewer across all embed modes to render PDFs. For more details, see the section [Modern viewer](../modernviewer/). |
+| New    | Adobe has launched a modern PDF viewer across all embed modes to render PDFs. For more details, see the section [Legacy to Modern viewer](../modernviewer/). |
 
 ### May, 2022
 

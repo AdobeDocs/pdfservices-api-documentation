@@ -8,7 +8,7 @@ viewer in a web page.
 
 ## Embed a PDF viewer
 
-Once you've received your client ID, embedding the DC PDF viewer
+Once you've received your client ID, embedding the PDF viewer
 involves:
 
 1.  Adding a `<script>` tag to load the PDF Embed API by source url:
@@ -166,10 +166,10 @@ function listenForFileUpload() {
         reader.onloadend = function(e) {
             var filePromise = Promise.resolve(e.target.result);
             // Pass the filePromise and name of the file to the previewFile API
-            // adobeDCView.previewFile({
-            //      content: {promise: filePromise}
-            //      metaData: { fileName: files[0].name }
-            // })
+            adobeDCView.previewFile({
+                 content: {promise: filePromise}
+                 metaData: { fileName: files[0].name }
+            })
         };
         reader.readAsArrayBuffer(files[0]);
       }
@@ -208,14 +208,16 @@ To view the code in action, see the [online demo](https://dc.acrobat.com/view-sd
 
 | Embed mode                          | Description                                                                                                            | Example                                               |
 | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| [Full window](#full-window-embed-mode) (default mode) | The viewing area renders in the full browser. Best suited for storage and productivity applications.                   | ![_images/embedfull.png](../images/embedfull.png)     |
+| [Full window](#full-window-embed-mode) (default mode) | Renders the PDF viewer into the full height and width of the parent element. Best suited for storage and productivity applications.                   | ![_images/embedfull.png](../images/embedfull.png)     |
 | [Sized container](#sized-container-embed-mode)           | The sized container mode displays PDFs in a boxed container with landscape orientation. Best suited for presentations. | ![_images/embedsized.png](../images/embedsized.png)   |
 | [In-Line](#in-line-embed-mode)                  | All PDF pages rendered in line within a web page. Best suited for reading applications.                                | ![_images/embedinline.png](../images/embedinline.png) |
 | [Lightbox](#lightbox-embed-mode)               | Displays PDFs in a focused view. Best suited for content websites, content portals, and email.                         | ![_images/lightbox.png](../images/lightbox.png)       |
 
  ### Full window embed mode
 
-The full window mode renders the PDF in the full browser. 
+This embed mode renders the PDF viewer into the full height and width of the parent element. 
+It is different from sized container in that full window embed mode enables all of the annotation tools
+as well as other options included in Embed API to be available in the Embed UI.
 This mode is best suited for storage and productivity
 applications. Note that this embed mode applies by default, even when no embed mode value is passed.
 ([Full Window Demo](https://documentcloud.adobe.com/view-sdk-demo/index.html#/view/FULL_WINDOW))
