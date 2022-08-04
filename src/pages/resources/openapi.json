@@ -84,12 +84,16 @@
       "description": "Split a PDF File into multiple PDF Files"
     },
     {
-      "name": "documentGeneration",
+      "name": "documentgeneration",
       "description": "Merge Word based templates with input JSON data to create Word and PDF documents"
     },
     {
       "name": "electronicseal",
       "description": "An operation to create an electronic seal on input PDF documents using the digital certificate provided by the user."
+    },
+    {
+      "name": "autotag",
+      "description": "Operation to create the tagged pdf and excel report for autotag use case."
     }
   ],
   "x-tagGroups": [
@@ -116,8 +120,9 @@
         "protectpdf",
         "removeprotection",
         "splitpdf",
-        "documentGeneration",
-        "electronicseal"
+        "documentgeneration",
+        "electronicseal",
+        "autotag"
       ]
     }
   ],
@@ -164,7 +169,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUploadPresignedUrl"
+                "$ref": "#/components/schemas/GetUploadPresignedUrlRequest"
               }
             }
           },
@@ -184,7 +189,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Asset"
+                  "$ref": "#/components/schemas/GetUploadPresignedUrlAsset"
                 }
               }
             }
@@ -5924,14 +5929,14 @@
         }
       }
     },
-    "/pdf-services/operation/documentGeneration": {
+    "/pdf-services/operation/documentgeneration": {
       "post": {
         "tags": [
-          "documentGeneration"
+          "documentgeneration"
         ],
         "summary": "Merge Word based templates with input JSON data to create Word and PDF documents",
         "description": "Merges the input JSON data with Word based templates to create dynamic documents. To learn more about document generation and document templates, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/document-generation-api/\">documentation</a>.",
-        "operationId": "pdfoperations.documentGeneration",
+        "operationId": "pdfoperations.documentgeneration",
         "parameters": [
           {
             "name": "Authorization",
@@ -6105,13 +6110,13 @@
         "x-codegen-request-body-name": "body"
       }
     },
-    "/pdf-services/operation/documentGeneration/{jobID}/status": {
+    "/pdf-services/operation/documentgeneration/{jobID}/status": {
       "get": {
         "tags": [
-          "documentGeneration"
+          "documentgeneration"
         ],
         "summary": "Poll the documentGeneration Job for completion",
-        "operationId": "pdfoperations.documentGeneration.jobstatus",
+        "operationId": "pdfoperations.documentgeneration.jobstatus",
         "parameters": [
           {
             "name": "jobID",
@@ -6665,6 +6670,377 @@
           }
         }
       }
+    },
+    "/pdf-services/operation/autotag": {
+      "post": {
+        "tags": [
+          "autotag"
+        ],
+        "summary": "PDF Electronic Seal Operation",
+        "description": "Operation to create the tagged pdf and excel report for autotag use case.",
+        "operationId": "pdfoperations.autotag",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer + Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-API-key",
+            "in": "header",
+            "description": "The clientId from the generated credentials",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Params to specify the options required for applying electronic seal.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AutoTagPDF"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Request creation for the operation and status uri generated, which can be found in the 'location' header.",
+            "headers": {
+              "location": {
+                "description": "Job status URI for polling the results",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource Not Found.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the error JSON response.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/401"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Caller doesn't have sufficient quota for this operation.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/pdf-services/operation/autotag/{jobID}/status": {
+      "get": {
+        "tags": [
+          "autotag"
+        ],
+        "summary": "Poll the autotag Job for completion",
+        "operationId": "pdfoperations.autotag.jobstatus",
+        "parameters": [
+          {
+            "name": "jobID",
+            "in": "path",
+            "description": "Job ID of the request",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer + Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-API-key",
+            "in": "header",
+            "description": "The clientId from the generated credentials",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A response with job information.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the status call response.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AutoTagPDFJobStatus"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource Not Found.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus404"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-server": {
+                "description": "The name and version of the server.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus401"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "Request Timed Out. Some operation has timed out due to client issue.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus408"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Caller doesn't have sufficient quota for this operation.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus500"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -7039,8 +7415,8 @@
         "description": "Params for Create PDF Operation",
         "type": "object",
         "properties": {
-          "assetURI": {
-            "description": "A file asset Uri. Supported file formats are bmp, doc, docx, gif, jpeg, jpg, png, ppt, pptx, rtf, tif, tiff, txt, xls and xlsx",
+          "assetID": {
+            "description": "A file assetID. Supported file formats are bmp, doc, docx, gif, jpeg, jpg, png, ppt, pptx, rtf, tif, tiff, txt, xls and xlsx",
             "type": "string"
           },
           "documentLanguage": {
@@ -7051,11 +7427,11 @@
           "documentLanguage": "en-US"
         },
         "example": {
-          "assetURI": "https://pdf-services.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
           "documentLanguage": "en-US"
         },
         "required": [
-          "assetURI"
+          "assetID"
         ],
         "additionalProperties": false
       },
@@ -7063,12 +7439,12 @@
         "description": "Parameter for export pdf operation",
         "type": "object",
         "required": [
-          "assetURI",
+          "assetID",
           "targetFormat"
         ],
         "properties": {
-          "assetURI": {
-            "description": "A file asset Uri",
+          "assetID": {
+            "description": "A file assetID",
             "type": "string"
           },
           "targetFormat": {
@@ -7084,7 +7460,7 @@
           }
         },
         "example": {
-          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
           "targetFormat": "docx"
         },
         "additionalProperties": false
@@ -7093,13 +7469,13 @@
         "description": "Parameter for PDF to Image operation.",
         "type": "object",
         "required": [
-          "assetURI",
+          "assetID",
           "targetFormat",
           "outputType"
         ],
         "properties": {
-          "assetURI": {
-            "description": "A file asset Uri",
+          "assetID": {
+            "description": "A file assetID",
             "type": "string"
           },
           "targetFormat": {
@@ -7120,7 +7496,7 @@
           }
         },
         "example": {
-          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
           "targetFormat": "jpeg",
           "outputType": "listOfPageImages"
         },
@@ -7130,12 +7506,12 @@
         "description": "Params for Extract PDF Operation",
         "type": "object",
         "required": [
-          "assetURI",
+          "assetID",
           "elementsToExtract"
         ],
         "properties": {
-          "assetURI": {
-            "description": "A file asset Uri",
+          "assetID": {
+            "description": "A file assetID",
             "type": "string"
           },
           "getCharBounds": {
@@ -7144,7 +7520,7 @@
             "default": false
           },
           "includeStyling": {
-            "description": "Boolean specifying whether to add styling information to jsonoutput",
+            "description": "Boolean specifying whether to add styling information to json output",
             "type": "boolean",
             "default": false
           },
@@ -7160,7 +7536,7 @@
             }
           },
           "tableOutputFormat": {
-            "description": "Specifies the format of table contents output. Possible values are csv and xlsx",
+            "description": "Specifies the format of table contents output. Possible values are csv and xlsx.",
             "type": "string",
             "default": "xlsx"
           },
@@ -7178,10 +7554,15 @@
               "tables",
               "figure"
             ]
+          },
+          "zipOutput": {
+            "description": "Boolean specifying whether you want zip file in response or not.",
+            "type": "boolean",
+            "default": false
           }
         },
         "example": {
-          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
           "getCharBounds": "false",
           "includeStyling": "false",
           "elementsToExtract": [
@@ -7192,7 +7573,8 @@
           "renditionsToExtract": [
             "tables",
             "figure"
-          ]
+          ],
+          "zipOutput": true
         },
         "additionalProperties": false
       },
@@ -7200,12 +7582,12 @@
         "description": "Params for converting HTML To PDF Operation",
         "type": "object",
         "properties": {
-          "assetURI": {
-            "description": "A file asset Uri",
+          "assetID": {
+            "description": "A file assetID",
             "type": "string"
           },
           "inputUrl": {
-            "description": "Parameter to provide the URL as input. <b> Provide one of the value between assetURI and inputUrl </b>",
+            "description": "Parameter to provide the URL as input. <b> Provide one of the value between assetID and inputUrl </b>",
             "type": "string"
           },
           "json": {
@@ -7240,7 +7622,7 @@
           }
         },
         "example": {
-          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
           "json": "",
           "includeHeaderFooter": true,
           "pageLayout": {
@@ -7259,8 +7641,8 @@
             "type": "array",
             "items": {
               "properties": {
-                "assetURI": {
-                  "description": "A file asset Uri",
+                "assetID": {
+                  "description": "A file assetID",
                   "type": "string",
                   "required": true
                 },
@@ -7274,7 +7656,7 @@
         "example": {
           "assets": [
             {
-              "assetURI": "https://pdf-services-dev.adobe.io/assets/5952d81f-55be-4bb1-8206-49f695f07ff7",
+              "assetID": "5952d81f-55be-4bb1-8206-49f695f07ff7",
               "pageRanges": [
                 {
                   "start": 1,
@@ -7283,7 +7665,7 @@
               ]
             },
             {
-              "assetURI": "https://pdf-services-dev.adobe.io/assets/5952d81f-55be-4bb1-8206-49f695f07ff7",
+              "assetID": "5952d81f-55be-4bb1-8206-49f695f07ff7",
               "pageRanges": [
                 {
                   "start": 1,
@@ -7302,8 +7684,8 @@
         "description": "Params for Compress PDF Operation",
         "type": "object",
         "properties": {
-          "assetURI": {
-            "description": "A file asset Uri",
+          "assetID": {
+            "description": "A file assetID",
             "type": "string"
           },
           "compressionLevel": {
@@ -7317,11 +7699,11 @@
           }
         },
         "example": {
-          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
           "compressionLevel": "LOW"
         },
         "required": [
-          "assetURI"
+          "assetID"
         ],
         "additionalProperties": false
       },
@@ -7329,16 +7711,16 @@
         "description": "Params for Linearize PDF Operation",
         "type": "object",
         "properties": {
-          "assetURI": {
-            "description": "A file asset Uri",
+          "assetID": {
+            "description": "A file assetID",
             "type": "string"
           }
         },
         "example": {
-          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
+          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
         },
         "required": [
-          "assetURI"
+          "assetID"
         ],
         "additionalProperties": false
       },
@@ -7346,8 +7728,8 @@
         "description": "Params for OCR PDF Operation",
         "type": "object",
         "properties": {
-          "assetURI": {
-            "description": "A file asset Uri",
+          "assetID": {
+            "description": "A file assetID",
             "type": "string"
           },
           "ocrLang": {
@@ -7364,12 +7746,12 @@
           }
         },
         "example": {
-          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
           "ocrLang": "en-US",
           "ocrType": "searchable_image"
         },
         "required": [
-          "assetURI"
+          "assetID"
         ],
         "additionalProperties": false
       },
@@ -7377,8 +7759,8 @@
         "description": "Params for Page Manipulation PDF Operation",
         "type": "object",
         "properties": {
-          "assetURI": {
-            "description": "A file asset Uri",
+          "assetID": {
+            "description": "A file assetID",
             "type": "string"
           },
           "pageActions": {
@@ -7399,7 +7781,7 @@
           }
         },
         "example": {
-          "assetURI": "e453ed48-d830-4f59-86ae-d658f5f57a53",
+          "assetID": "e453ed48-d830-4f59-86ae-d658f5f57a53",
           "pageActions": [
             {
               "rotate": {
@@ -7425,7 +7807,7 @@
           ]
         },
         "required": [
-          "assetURI",
+          "assetID",
           "pageActions"
         ],
         "additionalProperties": false
@@ -7434,8 +7816,8 @@
         "description": "Params for PDF Properties Operation",
         "type": "object",
         "properties": {
-          "assetURI": {
-            "description": "A file asset Uri",
+          "assetID": {
+            "description": "A file assetID",
             "type": "string"
           },
           "pageLevel": {
@@ -7445,11 +7827,11 @@
           }
         },
         "example": {
-          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
           "pageLevel": false
         },
         "required": [
-          "assetURI"
+          "assetID"
         ],
         "additionalProperties": false
       },
@@ -7457,8 +7839,8 @@
         "description": "Params for Protect PDF Operation",
         "type": "object",
         "properties": {
-          "assetURI": {
-            "description": "A file asset Uri",
+          "assetID": {
+            "description": "A file assetID",
             "type": "string"
           },
           "passwordProtection": {
@@ -7508,7 +7890,7 @@
           }
         },
         "example": {
-          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
           "passwordProtection": {
             "userPassword": "XXXXXX"
           },
@@ -7520,7 +7902,7 @@
           ]
         },
         "required": [
-          "assetURI",
+          "assetID",
           "passwordProtection",
           "encryptionAlgorithm"
         ],
@@ -7530,8 +7912,8 @@
         "description": "Params for Remove Protection PDF Operation",
         "type": "object",
         "properties": {
-          "assetURI": {
-            "description": "A file asset Uri",
+          "assetID": {
+            "description": "A file assetID",
             "type": "string"
           },
           "password": {
@@ -7540,11 +7922,11 @@
           }
         },
         "example": {
-          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
           "password": "XXXXX"
         },
         "required": [
-          "assetURI",
+          "assetID",
           "password"
         ],
         "additionalProperties": false
@@ -7553,8 +7935,8 @@
         "description": "Params for Split PDF Operation.",
         "type": "object",
         "properties": {
-          "assetURI": {
-            "description": "A file asset Uri.",
+          "assetID": {
+            "description": "A file assetID.",
             "type": "string"
           },
           "splitopntion": {
@@ -7577,7 +7959,7 @@
           }
         },
         "example": {
-          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
           "splitoption": {
             "pageRanges": [
               {
@@ -7588,8 +7970,8 @@
           }
         },
         "required": [
-          "assetURI",
-          "inline"
+          "assetID",
+          "splitoption"
         ],
         "additionalProperties": false
       },
@@ -7597,8 +7979,8 @@
         "description": "Params for Document Generation Operation",
         "type": "object",
         "properties": {
-          "assetURI": {
-            "description": "A file asset Uri.",
+          "assetID": {
+            "description": "A file assetID.",
             "type": "string"
           },
           "outputFormat": {
@@ -7620,7 +8002,7 @@
           }
         },
         "example": {
-          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
           "outputFormat": "pdf",
           "jsonDataForMerge": {
             "customerName": "Kane Miller",
@@ -7648,7 +8030,7 @@
           }
         },
         "required": [
-          "assetURI",
+          "assetID",
           "jsonDataForMerge"
         ],
         "additionalProperties": false
@@ -7708,13 +8090,11 @@
           "properties": {
             "start": {
               "description": "Start page of this page range.Page numbers are indexed from 1 to N.",
-              "type": "number",
-              "required": true
+              "type": "number"
             },
             "end": {
               "description": "End page of this page range.Page numbers are indexed from 1 to N.",
-              "type": "number",
-              "required": true
+              "type": "number"
             }
           }
         }
@@ -7779,11 +8159,11 @@
         ],
         "properties": {
           "inputDocumentassetID": {
-            "description": "A file asset Uri of an input PDF document in which seal has to be applied.",
+            "description": "A file assetID of an input PDF document in which seal has to be applied.",
             "type": "string"
           },
           "sealImageassetID": {
-            "description": "A file asset Uri of the logo/watermark/background image to use as part of the seal field's appearance. The asset format should be one of the below format \n\n 1. application/pdf \n\n2. image/jpeg \n\n3. image/png",
+            "description": "A file assetID of the logo/watermark/background image to use as part of the seal field's appearance. The asset format should be one of the below format \n\n 1. application/pdf \n\n2. image/jpeg \n\n3. image/png",
             "type": "string"
           },
           "sealOptions": {
@@ -7791,33 +8171,33 @@
           }
         },
         "example": {
-          "inputDocumentassetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
-          "logoassetURI": "https://pdf-services-dev.adobe.io/assets/ab400ed7-a097-402b-a93f-8b47cfd3b519",
+          "inputDocumentassetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "sealImageassetID": "ab400ed7-a097-402b-a93f-8b47cfd3b519",
           "sealOptions": {
             "signatureFormat": "PKCS7",
             "cscCredentialOptions": {
-              "credentialId":"[ADOBE]_xxxx_xx:35",
-              "providerName":"intxxxxxst",
-              "authorizationContext":{
-                "tokenType":"bearer",
-                "accessToken":"b7338a1f-xxxx-xxxx-xxxx-1eec91c47c12"
+              "credentialId": "[ADOBE]_xxxx_xx:35",
+              "providerName": "intxxxxxst",
+              "authorizationContext": {
+                "tokenType": "bearer",
+                "accessToken": "b7338a1f-xxxx-xxxx-xxxx-1eec91c47c12"
               },
-              "credentialAuthParameters":{
-                "pin":"12xxxx65"
+              "credentialAuthParameters": {
+                "pin": "12xxxx65"
               }
             },
             "sealFieldOptions": {
-              "location":{
-                "top":300,
-                "left":50,
-                "right":250,
-                "bottom":100
+              "location": {
+                "top": 300,
+                "left": 50,
+                "right": 250,
+                "bottom": 100
               },
-              "fieldName":"mytestfield",
-              "pageNumber":1
+              "fieldName": "mytestfield",
+              "pageNumber": 1
             },
             "sealAppearanceOptions": {
-              "displayOptions":[
+              "displayOptions": [
                 "NAME",
                 "DATE",
                 "DISTINGUISHED_NAME",
@@ -7915,7 +8295,7 @@
               },
               "location": {
                 "type": "object",
-                "description":"Specifies the parameters related to the location of the seal field.",
+                "description": "Specifies the parameters related to the location of the seal field.",
                 "required": [
                   "left",
                   "bottom",
@@ -7923,21 +8303,21 @@
                   "top"
                 ],
                 "properties": {
-                  "top":{
-                    "type":"integer",
-                    "description":"Specifies the top-most y-coordinate of the seal appearance's bounding box in default PDF user space units."
+                  "top": {
+                    "type": "integer",
+                    "description": "Specifies the top-most y-coordinate of the seal appearance's bounding box in default PDF user space units."
                   },
-                  "left":{
-                    "type":"integer",
-                    "description":"Specifies the left-most x-coordinate of the seal appearance's bounding box in default PDF user space units."
+                  "left": {
+                    "type": "integer",
+                    "description": "Specifies the left-most x-coordinate of the seal appearance's bounding box in default PDF user space units."
                   },
-                  "right":{
-                    "type":"integer",
-                    "description":"Specifies the right-most x-coordinate of the seal appearance's bounding box in default PDF user space units."
+                  "right": {
+                    "type": "integer",
+                    "description": "Specifies the right-most x-coordinate of the seal appearance's bounding box in default PDF user space units."
                   },
-                  "bottom":{
-                    "type":"integer",
-                    "description":"Specifies the bottom-most y-coordinate of the seal appearance's bounding box in default PDF user space units."
+                  "bottom": {
+                    "type": "integer",
+                    "description": "Specifies the bottom-most y-coordinate of the seal appearance's bounding box in default PDF user space units."
                   }
                 }
               },
@@ -7954,8 +8334,8 @@
           "sealAppearanceOptions": {
             "type": "object",
             "description": "Specifies the parameters related to the apperance of the seal field.",
-            "default":{
-              "displayOptions":[
+            "default": {
+              "displayOptions": [
                 "NAME",
                 "LABELS"
               ]
@@ -7964,20 +8344,20 @@
               "displayOptions"
             ],
             "properties": {
-              "displayOptions":{
-                "type":"array",
-                "description":"Specifies the information to display in the seal.",
-                "items":{
-                  "enum":[
+              "displayOptions": {
+                "type": "array",
+                "description": "Specifies the information to display in the seal.",
+                "items": {
+                  "enum": [
                     "NAME",
                     "DATE",
                     "DISTINGUISHED_NAME",
                     "LABELS",
                     "SEAL_IMAGE"
                   ],
-                  "type":"string"
+                  "type": "string"
                 },
-                "default":[
+                "default": [
                   "NAME",
                   "LABELS"
                 ]
@@ -7986,7 +8366,36 @@
           }
         }
       },
-      "Asset": {
+      "AutoTagPDF": {
+        "description": "Parameter for Autotag operation.",
+        "type": "object",
+        "required": [
+          "assetID"
+        ],
+        "properties": {
+          "assetID": {
+            "description": "A file assetID",
+            "type": "string"
+          },
+          "shiftHeadings": {
+            "description": "Boolean specifying whether to shift headings, used for autotag use case.",
+            "type": "boolean",
+            "default": true
+          },
+          "generateReport": {
+            "description": "Boolean specifying whether to generate excel report, used for autotag use case.",
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "example": {
+          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "shiftHeadings": true,
+          "generateReport": false
+        },
+        "additionalProperties": false
+      },
+      "GetUploadPresignedUrlAsset": {
         "type": "object",
         "properties": {
           "assetID": {
@@ -7999,7 +8408,7 @@
           }
         }
       },
-      "GetUploadPresignedUrl": {
+      "GetUploadPresignedUrlRequest": {
         "type": "object",
         "properties": {
           "mediaType": {
@@ -8011,7 +8420,7 @@
       "GetPresignedUrl": {
         "type": "object",
         "properties": {
-          "uri": {
+          "downloadUri": {
             "description": "The URL used to download the Resource directly from the storage provider.",
             "type": "string"
           },
@@ -8061,7 +8470,7 @@
             "$ref": "#/components/schemas/inprogress"
           },
           {
-            "$ref": "#/components/schemas/createpdfdone"
+            "$ref": "#/components/schemas/done"
           },
           {
             "$ref": "#/components/schemas/failed"
@@ -8100,7 +8509,7 @@
             "$ref": "#/components/schemas/inprogress"
           },
           {
-            "$ref": "#/components/schemas/extractPdfDone"
+            "$ref": "#/components/schemas/extractpdfdone"
           },
           {
             "$ref": "#/components/schemas/failed"
@@ -8250,6 +8659,19 @@
           }
         ]
       },
+      "AutoTagPDFJobStatus": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/inprogress"
+          },
+          {
+            "$ref": "#/components/schemas/autotagpdfdone"
+          },
+          {
+            "$ref": "#/components/schemas/failed"
+          }
+        ]
+      },
       "inprogress": {
         "description": "Response in case of 'in progress' status",
         "type": "object",
@@ -8277,38 +8699,19 @@
               "done"
             ]
           },
-          "assetURI": {
-            "description": "A file asset Uri",
-            "type": "string"
-          }
-        },
-        "example": {
-          "status": "done",
-          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
-        }
-      },
-      "createpdfdone": {
-        "title": "done",
-        "description": "Response in case of 'done' status",
-        "type": "object",
-        "properties": {
-          "status": {
-            "description": "Job Status",
-            "type": "string",
-            "enum": [
-              "done"
-            ]
-          },
           "asset": {
             "$ref": "#/components/schemas/responseAsset"
           }
-
         },
         "example": {
           "status": "done",
           "asset": {
-            "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
-            "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3.amazonaws.com/f5bf46f7-41fe-41e4-b2f9-04dc3ccaafab?X-Amz-Security-Token=FwoGZXIvYXdzELX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDMSG%2FVEb9q7gN%2FxLWyLTAZFhMLUCD5Y9VTPsEvv80TB6lg9kLqzDa8dMlMVk1XIBBnM0kzAuMWkUErkntndcISqqo3CkRh%2FNe%2B4MfhBpK7c4ZVtZnpxTT1UGjzt62%2BCriLacsN51Luhxe2JMJEl8nyT%2FVXG3faLd6mbT87dwZqnjLOcymO0Lx5MiOJNUmZfx9WMDGBf%2FZ3WfXRHmEkG5TOF9RIwbcUH2FzYbJ2KYYKcqXNre4PmVuniKpNR%2FS3jcyNbyr1WJlfXV%2FeSkEPO%2FB%2B61g1Q%2FJVSMxvLrAFJLG0UsSNMo8tyJlwYyLbRSBjtT2%2BaRpvS%2BmA7STX%2B5rluZ7zdOmHrdsvLLR%2Fre4TobbYj3oO0CdQaQJQ%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220728T111352Z&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47P7JYWTNQ%2F20220728%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=cb0509592038f44507d03f76f48321386e2493df734004193f93b9d45236c662"
+            "metadata": {
+              "type": "application/pdf",
+              "size": 200791
+            },
+            "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+            "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
           }
         }
       },
@@ -8316,6 +8719,20 @@
         "title": "asset",
         "type": "object",
         "properties": {
+          "metadata": {
+            "type": "object",
+            "description": "metadata details of output asset.",
+            "properties": {
+              "size": {
+                "description": "The size of the Resource in bytes. This value helps in making range requests.",
+                "type": "integer"
+              },
+              "type": {
+                "description": "The media type of the Resource.",
+                "type": "string"
+              }
+            }
+          },
           "assetID": {
             "description": "An asset ID identifying an asset that is globally unique and never reused.",
             "type": "string"
@@ -8323,6 +8740,17 @@
           "downloadUri": {
             "description": "The URL used to download the Resource directly to the cloud provider.",
             "type": "string"
+          }
+        },
+        "example": {
+          "status": "done",
+          "asset": {
+            "metadata": {
+              "type": "application/pdf",
+              "size": 200791
+            },
+            "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+            "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
           }
         }
       },
@@ -8338,19 +8766,35 @@
               "done"
             ]
           },
-          "assetURIList": {
-            "description": "List of assetURI",
+          "assetList": {
+            "description": "List of assets",
             "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "items": [
+              {
+                "$ref": "#/components/schemas/responseAsset"
+              }
+            ]
           }
         },
         "example": {
           "status": "done",
-          "assetURIList": [
-            "https://pdf-services-dev.adobe.io/assets/509d853b-6c1b-453d-b799-36ce40904b79",
-            "https://pdf-services-dev.adobe.io/assets/509d853b-6c1b-453d-b799-36ce40904b91"
+          "assetList": [
+            {
+              "metadata": {
+                "type": "image/jpeg",
+                "size": 200791
+              },
+              "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+              "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
+            },
+            {
+              "metadata": {
+                "type": "image/jpeg",
+                "size": 200791
+              },
+              "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+              "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
+            }
           ]
         }
       },
@@ -8380,12 +8824,20 @@
           "status": "done",
           "assetList": [
             {
-              "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
-              "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3.amazonaws.com/f5bf46f7-41fe-41e4-b2f9-04dc3ccaafab?X-Amz-Security-Token=FwoGZXIvYXdzELX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDMSG%2FVEb9q7gN%2FxLWyLTAZFhMLUCD5Y9VTPsEvv80TB6lg9kLqzDa8dMlMVk1XIBBnM0kzAuMWkUErkntndcISqqo3CkRh%2FNe%2B4MfhBpK7c4ZVtZnpxTT1UGjzt62%2BCriLacsN51Luhxe2JMJEl8nyT%2FVXG3faLd6mbT87dwZqnjLOcymO0Lx5MiOJNUmZfx9WMDGBf%2FZ3WfXRHmEkG5TOF9RIwbcUH2FzYbJ2KYYKcqXNre4PmVuniKpNR%2FS3jcyNbyr1WJlfXV%2FeSkEPO%2FB%2B61g1Q%2FJVSMxvLrAFJLG0UsSNMo8tyJlwYyLbRSBjtT2%2BaRpvS%2BmA7STX%2B5rluZ7zdOmHrdsvLLR%2Fre4TobbYj3oO0CdQaQJQ%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220728T111352Z&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47P7JYWTNQ%2F20220728%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=cb0509592038f44507d03f76f48321386e2493df734004193f93b9d45236c662"
+              "metadata": {
+                "type": "application/pdf",
+                "size": 200791
+              },
+              "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+              "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
             },
             {
-              "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
-              "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3.amazonaws.com/f5bf46f7-41fe-41e4-b2f9-04dc3ccaafab?X-Amz-Security-Token=FwoGZXIvYXdzELX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDMSG%2FVEb9q7gN%2FxLWyLTAZFhMLUCD5Y9VTPsEvv80TB6lg9kLqzDa8dMlMVk1XIBBnM0kzAuMWkUErkntndcISqqo3CkRh%2FNe%2B4MfhBpK7c4ZVtZnpxTT1UGjzt62%2BCriLacsN51Luhxe2JMJEl8nyT%2FVXG3faLd6mbT87dwZqnjLOcymO0Lx5MiOJNUmZfx9WMDGBf%2FZ3WfXRHmEkG5TOF9RIwbcUH2FzYbJ2KYYKcqXNre4PmVuniKpNR%2FS3jcyNbyr1WJlfXV%2FeSkEPO%2FB%2B61g1Q%2FJVSMxvLrAFJLG0UsSNMo8tyJlwYyLbRSBjtT2%2BaRpvS%2BmA7STX%2B5rluZ7zdOmHrdsvLLR%2Fre4TobbYj3oO0CdQaQJQ%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220728T111352Z&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47P7JYWTNQ%2F20220728%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=cb0509592038f44507d03f76f48321386e2493df734004193f93b9d45236c662"
+              "metadata": {
+                "type": "application/pdf",
+                "size": 200791
+              },
+              "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+              "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
             }
           ]
         }
@@ -8412,7 +8864,7 @@
           "metadata": "{\"pages\":[{\"page_number\":0,\"is_scanned\":false,\"width\":612.0,\"has_structure\":false,\"content\":{\"number_of_images\":0,\"only_images\":false,\"has_text\":true,\"has_images\":false,\"is_empty\":false},\"height\":792.0}],\"document\":{\"is_linearized\":false,\"pdfe_compliance_level\":\"\",\"is_tagged\":false,\"is_portfolio\":false,\"is_certified\":false,\"is_encrypted\":false,\"info_dict\":{\"CreationDate\":\"D:19980204171401Z\",\"Producer\":\"Acrobat Distiller 3.0 for Windows\"},\"is_FTPDF\":false,\"pdf_version\":\"1.2\",\"has_acroform\":false,\"file_size\":\"4.2 KB\",\"is_signed\":false,\"incremental_save_count\":0,\"has_embedded_files\":false,\"is_XFA\":false,\"fonts\":[{\"name\":\"Times-Roman\",\"font_type\":\"Type1\",\"family_name\":\"Titlingmes\"},{\"name\":\"Courier\",\"font_type\":\"Type1\",\"family_name\":\"Courier\"},{\"name\":\"Courier-Bold\",\"font_type\":\"Type1\",\"family_name\":\"Courier\"}],\"pdfa_compliance_level\":\"\",\"pdfvt_compliance_level\":\"\",\"pdfx_compliance_level\":\"\",\"pdfua_compliance_level\":\"\",\"XMP\":\"\",\"page_count\":1}}"
         }
       },
-      "extractPdfDone": {
+      "extractpdfdone": {
         "title": "done",
         "description": "Response in case of 'done' status",
         "type": "object",
@@ -8424,19 +8876,80 @@
               "done"
             ]
           },
-          "assetURI": {
-            "description": "Asset Uri of zip file containing all the extracted documents",
-            "type": "string"
-          },
-          "content": {
-            "description": "Json containing metadata informations about extracted elements such as text, tables, figures etc.",
-            "type": "string"
+          "assetList": {
+            "description": "List of assets",
+            "type": "array",
+            "items": [
+              {
+                "$ref": "#/components/schemas/responseAsset"
+              }
+            ]
           }
         },
         "example": {
           "status": "done",
-          "assetURI": "https://pdf-services-dev.adobe.io/assets/ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
-          "content": "{\n    \"version\": {\n        \"json_export\": \"175\",\n        \"page_segmentation\": \"5\",\n        \"schema\": \"1.1.0\",\n        \"structure\": \"1.989.0\",\n        \"table_structure\": \"5\"\n    },\n    \"extended_metadata\": {\n        \"ID_instance\": \"25 8E CF 70 76 B4 B2 11 0A 00 67 45 8B 6B C6 23 \",\n        \"ID_permanent\": \"37 35 20 34 31 20 43 45 20 37 30 20 37 36 20 42 34 20 42 32 20 31 31 20 30 41 20 30 30 20 36 37 20 34 35 20 38 42 20 36 42 20 43 36 20 32 33 20 \",\n        \"pdf_version\": \"1.6\",\n        \"pdfa_compliance_level\": \"\",\n        \"is_encrypted\": false,\n        \"has_acroform\": false,\n        \"is_digitally_signed\": false,\n        \"pdfua_compliance_level\": \"\",\n        \"page_count\": 1,\n        \"has_embedded_files\": false,\n        \"is_certified\": false,\n        \"is_XFA\": false,\n        \"language\": \"\"\n    },\n    \"elements\": [\n        {\n            \"Bounds\": [\n                -9.615859985351563,\n                -3.0042877197265627,\n                414.59596252441409,\n                571.9671020507813\n            ],\n            \"Page\": 0,\n            \"Path\": \"//Document/Figure\",\n            \"attributes\": {\n                \"BBox\": [\n                    0.0,\n                    0.024902299999999934,\n                    414.10299999998827,\n                    571.4419999999809\n                ],\n                \"Placement\": \"Block\"\n            },\n            \"filePaths\": [\n                \"fileoutpart0.png\"\n            ]\n        },\n        {\n            \"Bounds\": [\n                377.39906311035159,\n                8.479598999023438,\n                414.59596252441409,\n                27.676605224609376\n            ],\n            \"Page\": 0,\n            \"Path\": \"//Document/Figure[2]\",\n            \"attributes\": {\n                \"BBox\": [\n                    377.8649999999907,\n                    9.024539999999888,\n                    414.10299999998827,\n                    27.26379999999972\n                ],\n                \"Placement\": \"Block\",\n                \"SpaceBefore\": 17.875\n            },\n            \"filePaths\": [\n                \"fileoutpart1.png\"\n            ]\n        },\n        {\n            \"Bounds\": [\n                439.2789764404297,\n                349.16004943847659,\n                729.5063171386719,\n                555.1563568115234\n            ],\n            \"Page\": 0,\n            \"Path\": \"//Document/Figure[3]\",\n            \"attributes\": {\n                \"BBox\": [\n                    438.10199999999898,\n                    351.73099999999979,\n                    728.9699999999721,\n                    553.6819999999716\n                ],\n                \"Placement\": \"Block\",\n                \"SpaceBefore\": 17.875\n            },\n            \"filePaths\": [\n                \"fileoutpart2.png\"\n            ]\n        },\n        {\n            \"Bounds\": [\n                413.39219665527346,\n                214.2003936767578,\n                757.2446746826172,\n                333.4831085205078\n            ],\n            \"Page\": 0,\n            \"Path\": \"//Document/Figure[4]\",\n            \"attributes\": {\n                \"BBox\": [\n                    413.86299999999758,\n                    214.21599999999308,\n                    756.6889999999839,\n                    333.0109999999986\n                ],\n                \"Placement\": \"Block\",\n                \"SpaceBefore\": 18\n            },\n            \"filePaths\": [\n                \"fileoutpart3.png\"\n            ]\n        },\n        {\n            \"Bounds\": [\n                421.27980041503909,\n                26.26739501953125,\n                783.4609069824219,\n                198.8172607421875\n            ],\n            \"Page\": 0,\n            \"Path\": \"//Document/Figure[5]\",\n            \"attributes\": {\n                \"BBox\": [\n                    421.06299999999467,\n                    28.823699999999918,\n                    782.9679999999935,\n                    197.29699999999867\n                ],\n                \"Placement\": \"Block\",\n                \"SpaceBefore\": 16.875\n            },\n            \"filePaths\": [\n                \"fileoutpart4.png\"\n            ]\n        }\n    ],\n    \"pages\": [\n        {\n            \"boxes\": {\n                \"CropBox\": [\n                    0.0,\n                    0.0,\n                    792.0,\n                    612.0\n                ],\n                \"MediaBox\": [\n                    0.0,\n                    0.0,\n                    792.0,\n                    612.0\n                ]\n            },\n            \"height\": 612.0,\n            \"is_scanned\": false,\n            \"page_number\": 0,\n            \"rotation\": 0,\n            \"width\": 792.0\n        }\n    ]\n}"
+          "assetList": [
+            {
+              "metadata": {
+                "type": "application/json",
+                "size": 200791
+              },
+              "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+              "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
+            },
+            {
+              "metadata": {
+                "type": "application/zip",
+                "size": 200791
+              },
+              "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+              "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
+            }
+          ]
+        }
+      },
+      "autotagpdfdone": {
+        "title": "done",
+        "description": "Response in case of 'done' status",
+        "type": "object",
+        "properties": {
+          "status": {
+            "description": "Job Status",
+            "type": "string",
+            "enum": [
+              "done"
+            ]
+          },
+          "assetList": {
+            "description": "List of assets",
+            "type": "array",
+            "items": [
+              {
+                "$ref": "#/components/schemas/responseAsset"
+              }
+            ]
+          }
+        },
+        "example": {
+          "status": "done",
+          "assetList": [
+            {
+              "metadata": {
+                "type": "application/pdf",
+                "size": 200791
+              },
+              "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+              "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
+            },
+            {
+              "metadata": {
+                "type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                "size": 200791
+              },
+              "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+              "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
+            }
+          ]
         }
       },
       "failed": {
