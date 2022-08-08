@@ -146,7 +146,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -155,10 +155,10 @@
             }
           },
           {
-            "name": "X-Request-ID",
+            "name": "x-request-id",
             "in": "header",
             "description": "The request identifier used to trace the request in logs.",
-            "required": true,
+            "required": false,
             "schema": {
               "type": "string"
             }
@@ -346,7 +346,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -355,10 +355,10 @@
             }
           },
           {
-            "name": "X-Request-ID",
+            "name": "x-request-id",
             "in": "header",
             "description": "The request identifier used to trace the request in logs.",
-            "required": true,
+            "required": false,
             "schema": {
               "type": "string"
             }
@@ -541,7 +541,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -550,10 +550,10 @@
             }
           },
           {
-            "name": "X-Request-ID",
+            "name": "x-request-id",
             "in": "header",
             "description": "The request identifier used to trace the request in logs.",
-            "required": true,
+            "required": false,
             "schema": {
               "type": "string"
             }
@@ -736,7 +736,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -925,7 +925,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -1107,7 +1107,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -1302,7 +1302,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -1484,7 +1484,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -1679,7 +1679,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -1861,7 +1861,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -2056,7 +2056,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -2238,7 +2238,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -2427,7 +2427,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -2609,7 +2609,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -2798,7 +2798,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -2980,7 +2980,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -3169,7 +3169,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -3351,7 +3351,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -3540,7 +3540,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -3722,7 +3722,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -3911,7 +3911,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -4093,7 +4093,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -4282,7 +4282,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -4464,7 +4464,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -4653,7 +4653,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -4835,7 +4835,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -5024,7 +5024,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -5206,7 +5206,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -5395,7 +5395,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -5577,7 +5577,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -5766,7 +5766,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -5948,7 +5948,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -6137,7 +6137,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -6319,7 +6319,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -6508,7 +6508,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -6676,7 +6676,7 @@
         "tags": [
           "autotag"
         ],
-        "summary": "PDF Electronic Seal Operation",
+        "summary": "Autotag PDF Operation",
         "description": "Operation to create the tagged pdf and excel report for autotag use case.",
         "operationId": "pdfoperations.autotag",
         "parameters": [
@@ -6690,7 +6690,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -6700,7 +6700,7 @@
           }
         ],
         "requestBody": {
-          "description": "Params to specify the options required for applying electronic seal.",
+          "description": "Input Params for Autotag Operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -6879,7 +6879,7 @@
             }
           },
           {
-            "name": "X-API-key",
+            "name": "x-api-key",
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
@@ -7547,18 +7547,13 @@
               "type": "string",
               "enum": [
                 "tables",
-                "figure"
+                "figures"
               ]
             },
             "default": [
               "tables",
-              "figure"
+              "figures"
             ]
-          },
-          "zipOutput": {
-            "description": "Boolean specifying whether you want zip file in response or not.",
-            "type": "boolean",
-            "default": false
           }
         },
         "example": {
@@ -7573,8 +7568,7 @@
           "renditionsToExtract": [
             "tables",
             "figure"
-          ],
-          "zipOutput": true
+          ]
         },
         "additionalProperties": false
       },
@@ -7593,7 +7587,7 @@
           "json": {
             "description": "JavaScript variables to be placed in global scope to reference while rendering the HTML. This mechanism is intended to be used to supply data that might otherwise be retrieved using ajax requests. The actual mechanics of accessing this content varies depending if rendering from a zip file or from a url. When rendering from a zip file, the source collateral must include a script element such as:\n<script src='./json.js' type='text/javascript'></script>\nWhen rendering from a URL, the content of this json object is injected into the browser VM before the page is rendered.",
             "type": "string",
-            "default": ""
+            "default": null
           },
           "includeHeaderFooter": {
             "description": "Determine whether to add default headers and footers to the output pages. The default header includes a short date and the contents of document.title. The default footer includes a file name and a page n/m reference.",
@@ -7939,7 +7933,7 @@
             "description": "A file assetID.",
             "type": "string"
           },
-          "splitopntion": {
+          "splitoption": {
             "description": "Provide option to split the PDF document. Different options for splitting PDF document are mutually exclusive.",
             "oneOf": [
               {
@@ -7993,7 +7987,7 @@
             "default": "pdf"
           },
           "jsonDataForMerge": {
-            "description": "pecifies the JSON data to merge into the document template.",
+            "description": "Specifies the JSON data to merge into the document template.",
             "type": "object"
           },
           "fragments": {
@@ -8089,11 +8083,11 @@
         "items": {
           "properties": {
             "start": {
-              "description": "Start page of this page range.Page numbers are indexed from 1 to N.",
+              "description": "Start page of this page range. Page numbers are indexed from 1 to N.",
               "type": "number"
             },
             "end": {
-              "description": "End page of this page range.Page numbers are indexed from 1 to N.",
+              "description": "End page of this page range. Page numbers are indexed from 1 to N.",
               "type": "number"
             }
           }
@@ -8154,16 +8148,16 @@
         "description": "Params to specify the options required for applying digital seal.",
         "type": "object",
         "required": [
-          "inputDocumentassetID",
+          "inputDocumentAssetID",
           "sealOptions"
         ],
         "properties": {
-          "inputDocumentassetID": {
+          "inputDocumentAssetID": {
             "description": "A file assetID of an input PDF document in which seal has to be applied.",
             "type": "string"
           },
-          "sealImageassetID": {
-            "description": "A file assetID of the logo/watermark/background image to use as part of the seal field's appearance. The asset format should be one of the below format \n\n 1. application/pdf \n\n2. image/jpeg \n\n3. image/png",
+          "sealImageAssetID": {
+            "description": "A file assetID of the logo/watermark/background image to use as part of the seal field's appearance. The asset format should be one of the below format \n 1. application/pdf \n2. image/jpeg \n3. image/png",
             "type": "string"
           },
           "sealOptions": {
@@ -8171,8 +8165,8 @@
           }
         },
         "example": {
-          "inputDocumentassetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
-          "sealImageassetID": "ab400ed7-a097-402b-a93f-8b47cfd3b519",
+          "inputDocumentAssetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "sealImageAssetID": "ab400ed7-a097-402b-a93f-8b47cfd3b519",
           "sealOptions": {
             "signatureFormat": "PKCS7",
             "cscCredentialOptions": {
@@ -8378,12 +8372,12 @@
             "type": "string"
           },
           "shiftHeadings": {
-            "description": "Boolean specifying whether to shift headings, used for autotag use case.",
+            "description": "Boolean specifying whether to shift headings.",
             "type": "boolean",
-            "default": true
+            "default": false
           },
           "generateReport": {
-            "description": "Boolean specifying whether to generate excel report, used for autotag use case.",
+            "description": "Boolean specifying whether to generate excel report.",
             "type": "boolean",
             "default": false
           }
@@ -8876,36 +8870,87 @@
               "done"
             ]
           },
-          "assetList": {
-            "description": "List of assets",
-            "type": "array",
-            "items": [
-              {
-                "$ref": "#/components/schemas/responseAsset"
+          "content": {
+            "type": "object",
+            "description": "Asset of json file containig extracted content of pdf file.",
+            "properties": {
+              "metadata": {
+                "type": "object",
+                "description": "metadata details of output asset.",
+                "properties": {
+                  "size": {
+                    "description": "The size of the Resource in bytes. This value helps in making range requests.",
+                    "type": "integer"
+                  },
+                  "type": {
+                    "description": "The media type of the Resource.",
+                    "type": "string",
+                    "enum": [
+                      "application/json"
+                    ]
+                  }
+                }
+              },
+              "assetID": {
+                "description": "An asset ID identifying an asset that is globally unique and never reused.",
+                "type": "string"
+              },
+              "downloadUri": {
+                "description": "The URL used to download the Resource directly to the cloud provider.",
+                "type": "string"
               }
-            ]
+            }
+          },
+          "resource": {
+            "type": "object",
+            "description": "Asset of zip file containg generated resources from extract operation.",
+            "properties": {
+              "metadata": {
+                "type": "object",
+                "description": "metadata details of output asset.",
+                "properties": {
+                  "size": {
+                    "description": "The size of the Resource in bytes. This value helps in making range requests.",
+                    "type": "integer"
+                  },
+                  "type": {
+                    "description": "The media type of the Resource.",
+                    "type": "string",
+                    "enum": [
+                      "application/json"
+                    ]
+                  }
+                }
+              },
+              "assetID": {
+                "description": "An asset ID identifying an asset that is globally unique and never reused.",
+                "type": "string"
+              },
+              "downloadUri": {
+                "description": "The URL used to download the Resource directly to the cloud provider.",
+                "type": "string"
+              }
+            }
           }
         },
         "example": {
           "status": "done",
-          "assetList": [
-            {
-              "metadata": {
-                "type": "application/json",
-                "size": 200791
-              },
-              "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
-              "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
+          "content": {
+            "metadata": {
+              "type": "application/json",
+              "size": 200791
             },
-            {
-              "metadata": {
-                "type": "application/zip",
-                "size": 200791
-              },
-              "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
-              "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
-            }
-          ]
+            "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+            "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
+          },
+          "resource": {
+            "metadata": {
+              "type": "application/zip",
+              "size": 200791
+            },
+            "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+            "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
+          }
         }
       },
       "autotagpdfdone": {
@@ -8920,36 +8965,87 @@
               "done"
             ]
           },
-          "assetList": {
-            "description": "List of assets",
-            "type": "array",
-            "items": [
-              {
-                "$ref": "#/components/schemas/responseAsset"
+          "tagged-pdf": {
+            "type": "object",
+            "description": "Asset of tagged pdf file.",
+            "properties": {
+              "metadata": {
+                "type": "object",
+                "description": "metadata details of output asset.",
+                "properties": {
+                  "size": {
+                    "description": "The size of the Resource in bytes. This value helps in making range requests.",
+                    "type": "integer"
+                  },
+                  "type": {
+                    "description": "The media type of the Resource.",
+                    "type": "string",
+                    "enum": [
+                      "application/pdf"
+                    ]
+                  }
+                }
+              },
+              "assetID": {
+                "description": "An asset ID identifying an asset that is globally unique and never reused.",
+                "type": "string"
+              },
+              "downloadUri": {
+                "description": "The URL used to download the Resource directly to the cloud provider.",
+                "type": "string"
               }
-            ]
+            }
+          },
+          "report": {
+            "type": "object",
+            "description": "Asset of autotag report.",
+            "properties": {
+              "metadata": {
+                "type": "object",
+                "description": "metadata details of output asset.",
+                "properties": {
+                  "size": {
+                    "description": "The size of the Resource in bytes. This value helps in making range requests.",
+                    "type": "integer"
+                  },
+                  "type": {
+                    "description": "The media type of the Resource.",
+                    "type": "string",
+                    "enum": [
+                      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                    ]
+                  }
+                }
+              },
+              "assetID": {
+                "description": "An asset ID identifying an asset that is globally unique and never reused.",
+                "type": "string"
+              },
+              "downloadUri": {
+                "description": "The URL used to download the Resource directly to the cloud provider.",
+                "type": "string"
+              }
+            }
           }
         },
         "example": {
           "status": "done",
-          "assetList": [
-            {
-              "metadata": {
-                "type": "application/pdf",
-                "size": 200791
-              },
-              "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
-              "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
+          "content": {
+            "metadata": {
+              "type": "application/json",
+              "size": 200791
             },
-            {
-              "metadata": {
-                "type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                "size": 200791
-              },
-              "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
-              "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
-            }
-          ]
+            "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+            "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
+          },
+          "resource": {
+            "metadata": {
+              "type": "application/zip",
+              "size": 200791
+            },
+            "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+            "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
+          }
         }
       },
       "failed": {
