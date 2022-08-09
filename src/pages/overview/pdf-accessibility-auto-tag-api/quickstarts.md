@@ -1,4 +1,4 @@
-# Quickstarts
+# <h1>Quickstarts<span style="color:red;font-size:15px;margin-left:10px;vertical-align:middle;border:1px solid;padding-left:2px;padding-right:2px"><b>Available under Early Access Program</b></span></h1>
 
 <p>
 PDF Accessibility Auto-Tag API is available as SDKs to help you get up and running quickly. You can then leverage the samples in your own code
@@ -6,7 +6,7 @@ PDF Accessibility Auto-Tag API is available as SDKs to help you get up and runni
 
 ## Get Early Access
 
-The PDF Accessibility Auto-Tag API is currently available as Early Access. To request access, [Contact Us](https://developer.adobe.com/document-services/pricing/contacts/accessibility/). Once you receive confirmation that you’ve been given access, proceed to the next step to [Get API credentials](quickstarts/#get-api-credentials).
+The PDF Accessibility Auto-Tag API is currently available as Early Access. To request access, [Contact Us](https://developer.adobe.com/document-services/pricing/contact/sales/accessibility/). Once you receive confirmation that you’ve been given access, proceed to the next step to [Get API credentials](quickstarts/#get-api-credentials).
 
 ## Get API credentials
 
@@ -19,10 +19,6 @@ During the credential creation process you'll be asked to whether you'd like a *
 ## Install SDK and samples
 
 PDF Accessibility Auto-Tag API is available as SDKs in Java and Python.
-
-<InlineAlert slots="text"/>
-
-Please allow-list the following hostnames before using Adobe PDF Services SDK:<ul><li>ims-na1.adobelogin.com</li><li>cpf-ue1.adobe.io</li><li>senseicore-ue1.adobe.io (for versions below 1.x.x)</li></ul>
 
 ### Java
 
@@ -90,7 +86,7 @@ If you did not choose **Personalized Code Sample Download** during the credentia
 1. Download and extract the [Java sample project](https://github.com/adobe/pdfservices-java-sdk-samples/tree/beta).
 2. Copy the downloaded zip to the directory that you set-up for this project and unzip the files there.
 3. In the top-level directory of your samples, find and replace following files with the one present in the downloaded zip file from [Get API credentials](quickstarts/#get-api-credentials) step:
-   1. pdfservices-api-credentials.json 
+   1. pdfservices-api-credentials.json
    2. private.key
 4. Cd to the project directory (which contains pom.xml file) and build the sample project with Maven using this command in terminal: `mvn clean install`.
 5. You can import the samples Maven project into your preferred IDE and run the samples from there or run the below commands from terminal:
