@@ -1,4 +1,4 @@
-# <h1>Quickstarts<span style="color:red;font-size:15px;margin-left:10px;vertical-align:middle;border:1px solid;padding-left:2px;padding-right:2px"><b>Available under Early Access Program</b></span></h1>
+# Quickstarts
 
 <p>
 PDF Accessibility Auto-Tag API is available as SDKs to help you get up and running quickly. You can then leverage the samples in your own code
@@ -19,6 +19,10 @@ During the credential creation process you'll be asked to whether you'd like a *
 ## Install SDK and samples
 
 PDF Accessibility Auto-Tag API is available as SDKs in Java and Python.
+
+<InlineAlert slots="text"/>
+
+Please allow-list the following hostnames before using Adobe PDF Services SDK:<ul><li>ims-na1.adobelogin.com</li><li>cpf-ue1.adobe.io</li><li>senseicore-ue1.adobe.io (for versions below 1.x.x)</li></ul>
 
 ### Java
 
