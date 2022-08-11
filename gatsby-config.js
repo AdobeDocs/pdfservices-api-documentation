@@ -113,6 +113,10 @@ module.exports = {
           },
         ]
       },
+      {
+        title: "Rest APIs",
+        path: 'apis/index.md'
+      }
     ],
     subPages: [
       {
