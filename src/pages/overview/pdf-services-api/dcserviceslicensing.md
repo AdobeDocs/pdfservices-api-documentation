@@ -75,7 +75,7 @@ result in an error message.
 
 | Usage limit                                                     | Value       |
 | --------------------------------------------------------------- | ----------- |
-| Document limit (combine, insert, replace)                       | 20          |
+| Document limit (combine, insert, replace, split)                       | 20          |
 | Document file size                                              | 100MB       |
 | Output images per Document Transaction (export)                 | 50          |
 | Page limit (OCR)\*                                              | 100         |
