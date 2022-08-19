@@ -211,8 +211,8 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "error_code": {
-                      "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>INVALID_REQUEST</td><td>Invalid Request Schema.</td></tr></tr></table>",
+                    "code": {
+                      "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>INVALID_REQUEST</td><td>Invalid Request Schema.</td></tr></tr></table>",
                       "type": "string"
                     },
                     "message": {
@@ -406,8 +406,8 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "error_code": {
-                      "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>INVALID_REQUEST</td><td>Invalid Request Schema.</td></tr></table>",
+                    "code": {
+                      "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>INVALID_REQUEST</td><td>Invalid Request Schema.</td></tr></table>",
                       "type": "string"
                     },
                     "message": {
@@ -601,8 +601,8 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "error_code": {
-                      "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>INVALID_REQUEST</td><td>Invalid Request Schema.</td></tr></tr></table>",
+                    "code": {
+                      "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>INVALID_REQUEST</td><td>Invalid Request Schema.</td></tr></tr></table>",
                       "type": "string"
                     },
                     "message": {
@@ -7181,12 +7181,12 @@
           "error": {
             "type": "object",
             "properties": {
-              "error_code": {
-                "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>BAD_REQUEST</td><td>Bad Request.</td></tr></table>",
+                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>BAD_REQUEST</td><td>Bad Request.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -7194,7 +7194,7 @@
         },
         "example": {
           "error": {
-            "error_code": "BAD_REQUEST",
+            "code": "BAD_REQUEST",
             "message": "Bad Request."
           }
         }
@@ -7204,12 +7204,12 @@
           "error": {
             "type": "object",
             "properties": {
-              "error_code": {
-                "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>NOT_FOUND</td><td>Asset not found.</td></tr></table>",
+                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>NOT_FOUND</td><td>Asset not found.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -7217,7 +7217,7 @@
         },
         "example": {
           "error": {
-            "error_code": "NOT_FOUND",
+            "code": "NOT_FOUND",
             "message": "Asset not found."
           }
         }
@@ -7227,12 +7227,12 @@
           "error": {
             "type": "object",
             "properties": {
-              "error_code": {
-                "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>UNAUTHORIZED</td><td>Not authorised to perform the operation.</td></tr></table>",
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>UNAUTHORIZED</td><td>Not authorised to perform the operation.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -7240,7 +7240,7 @@
         },
         "example": {
           "error": {
-            "error_code": "UNAUTHORIZED",
+            "code": "UNAUTHORIZED",
             "message": "Not authorised to perform the operation."
           }
         }
@@ -7250,12 +7250,12 @@
           "error": {
             "type": "object",
             "properties": {
-              "error_code": {
-                "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>REQUEST_TIMEOUT</td><td>Request processing took more than %s seconds.</td></tr></table>",
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>REQUEST_TIMEOUT</td><td>Request processing took more than %s seconds.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -7263,7 +7263,7 @@
         },
         "example": {
           "error": {
-            "error_code": "REQUEST_TIMEOUT",
+            "code": "REQUEST_TIMEOUT",
             "message": "Request processing took more than %s seconds."
           }
         }
@@ -7273,12 +7273,12 @@
           "error": {
             "type": "object",
             "properties": {
-              "error_code": {
-                "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>INSUFFICIENT_QUOTA</td><td>Client exhausted the Quota.</td></tr><tr><td>INSUFFICIENT_QUOTA</td><td>Client did not purchase a policy to call this engine.</td></tr></table>",
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>INSUFFICIENT_QUOTA</td><td>Client exhausted the Quota.</td></tr><tr><td>INSUFFICIENT_QUOTA</td><td>Client did not purchase a policy to call this engine.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -7286,7 +7286,7 @@
         },
         "example": {
           "error": {
-            "error_code": "INSUFFICIENT_QUOTA",
+            "code": "INSUFFICIENT_QUOTA",
             "message": "Client exhausted the Quota."
           }
         }
@@ -7296,12 +7296,12 @@
           "error": {
             "type": "object",
             "properties": {
-              "error_code": {
-                "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>INTERNAL_SERVER_ERROR</td><td>There was an error processing your request.</td></tr><tr><td>UNKNOWN</td><td>Unknown error.</td></tr></table>",
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>INTERNAL_SERVER_ERROR</td><td>There was an error processing your request.</td></tr><tr><td>UNKNOWN</td><td>Unknown error.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -7309,7 +7309,7 @@
         },
         "example": {
           "error": {
-            "error_code": "INTERNAL_SERVER_ERROR",
+            "code": "INTERNAL_SERVER_ERROR",
             "message": "There was an error processing your request."
           }
         }
@@ -7319,12 +7319,12 @@
           "error": {
             "type": "object",
             "properties": {
-              "error_code": {
-                "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>INVALID_JOB_ID</td><td>Invalid job id present in path param.</td></tr></table>",
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>INVALID_JOB_ID</td><td>Invalid job id present in path param.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -7332,7 +7332,7 @@
         },
         "example": {
           "error": {
-            "error_code": "INVALID_JOB_ID",
+            "code": "INVALID_JOB_ID",
             "message": "Invalid job id present in path param."
           }
         }
@@ -7342,12 +7342,12 @@
           "error": {
             "type": "object",
             "properties": {
-              "error_code": {
-                "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>NOT_FOUND</td><td>Job not found.</td></tr></table>",
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>NOT_FOUND</td><td>Job not found.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -7355,7 +7355,7 @@
         },
         "example": {
           "error": {
-            "error_code": "NOT_FOUND",
+            "code": "NOT_FOUND",
             "message": "Job not found."
           }
         }
@@ -7365,12 +7365,12 @@
           "error": {
             "type": "object",
             "properties": {
-              "error_code": {
-                "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>UNAUTHORIZED</td><td>Not authorised to perform the operation.</td></tr></table>",
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>UNAUTHORIZED</td><td>Not authorised to perform the operation.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -7378,7 +7378,7 @@
         },
         "example": {
           "error": {
-            "error_code": "UNAUTHORIZED",
+            "code": "UNAUTHORIZED",
             "message": "Not authorised to perform the operation."
           }
         }
@@ -7388,12 +7388,12 @@
           "error": {
             "type": "object",
             "properties": {
-              "error_code": {
-                "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>REQUEST_TIMEOUT</td><td>Request processing took more than %s seconds.</td></tr></table>",
+                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>REQUEST_TIMEOUT</td><td>Request processing took more than %s seconds.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -7401,7 +7401,7 @@
         },
         "example": {
           "error": {
-            "error_code": "REQUEST_TIMEOUT",
+            "code": "REQUEST_TIMEOUT",
             "message": "Request processing took more than %s seconds."
           }
         }
@@ -7411,12 +7411,12 @@
           "error": {
             "type": "object",
             "properties": {
-              "error_code": {
-                "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. ",
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. ",
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>INSUFFICIENT_QUOTA</td><td>Client exhausted the Quota.</td></tr><tr><td>INSUFFICIENT_QUOTA</td><td>Client did not purchase a policy to call this engine.</td></tr></table>",
+                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>INSUFFICIENT_QUOTA</td><td>Client exhausted the Quota.</td></tr><tr><td>INSUFFICIENT_QUOTA</td><td>Client did not purchase a policy to call this engine.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -7424,7 +7424,7 @@
         },
         "example": {
           "error": {
-            "error_code": "INSUFFICIENT_QUOTA",
+            "code": "INSUFFICIENT_QUOTA",
             "message": "Client exhausted the Quota."
           }
         }
@@ -7434,12 +7434,12 @@
           "error": {
             "type": "object",
             "properties": {
-              "error_code": {
-                "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>INTERNAL_SERVER_ERROR</td><td>There was an error processing your request.</td></tr><tr><td>UNKNOWN</td><td>Unknown error.</td></tr></table>",
+                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>INTERNAL_SERVER_ERROR</td><td>There was an error processing your request.</td></tr><tr><td>UNKNOWN</td><td>Unknown error.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -7447,7 +7447,7 @@
         },
         "example": {
           "error": {
-            "error_code": "INTERNAL_SERVER_ERROR",
+            "code": "INTERNAL_SERVER_ERROR",
             "message": "There was an error processing your request."
           }
         }
@@ -7461,7 +7461,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID. Supported file formats are bmp, doc, docx, gif, jpeg, jpg, png, ppt, pptx, rtf, tif, tiff, txt, xls and xlsx",
+            "description": "A file assetID. Supported file formats are bmp, doc, docx, gif, jpeg, jpg, png, ppt, pptx, rtf, tif, tiff, txt, xls and xlsx. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "documentLanguage": {
@@ -7489,7 +7489,7 @@
         ],
         "properties": {
           "assetID": {
-            "description": "A file assetID",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "targetFormat": {
@@ -7524,7 +7524,7 @@
         ],
         "properties": {
           "assetID": {
-            "description": "A file assetID",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "targetFormat": {
@@ -7560,7 +7560,7 @@
         ],
         "properties": {
           "assetID": {
-            "description": "A file assetID",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "getCharBounds": {
@@ -7626,7 +7626,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "inputUrl": {
@@ -7685,7 +7685,7 @@
             "items": {
               "properties": {
                 "assetID": {
-                  "description": "A file assetID",
+                  "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
                   "type": "string",
                   "required": true
                 },
@@ -7728,7 +7728,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "compressionLevel": {
@@ -7755,7 +7755,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           }
         },
@@ -7772,7 +7772,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "ocrLang": {
@@ -7803,7 +7803,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "pageActions": {
@@ -7860,7 +7860,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "pageLevel": {
@@ -7883,7 +7883,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "passwordProtection": {
@@ -7956,7 +7956,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "password": {
@@ -7979,7 +7979,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID.",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "splitoption": {
@@ -8023,7 +8023,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID.",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "outputFormat": {
@@ -8202,11 +8202,11 @@
         ],
         "properties": {
           "inputDocumentAssetID": {
-            "description": "A file assetID of an input PDF document in which seal has to be applied.",
+            "description": "A file assetID of an input PDF document in which seal has to be applied. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "sealImageAssetID": {
-            "description": "A file assetID of the logo/watermark/background image to use as part of the seal field's appearance. The asset format should be one of the below format \n 1. application/pdf \n2. image/jpeg \n3. image/png",
+            "description": "A file assetID of the logo/watermark/background image to use as part of the seal field's appearance. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>. The asset format should be one of the below format \n 1. application/pdf \n2. image/jpeg \n3. image/png.",
             "type": "string"
           },
           "sealOptions": {
@@ -8417,7 +8417,7 @@
         ],
         "properties": {
           "assetID": {
-            "description": "A file assetID",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "shiftHeadings": {
@@ -8760,7 +8760,7 @@
       },
       "responseAsset": {
         "title": "asset",
-        "description": "Details of output asset document. To know more about asset <a href = \"https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets\" target=\"_blank\" rel=\"noopener noreferrer\"> click here </a>.",
+        "description": "Details of output asset document. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
         "type": "object",
         "properties": {
           "metadata": {
@@ -8811,7 +8811,7 @@
             ]
           },
           "assetList": {
-            "description": "List of assets. To know more about asset <a href = \"https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets\" target=\"_blank\" rel=\"noopener noreferrer\"> click here </a>.",
+            "description": "List of assets. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "array",
             "items": [
               {
@@ -8855,7 +8855,7 @@
             ]
           },
           "assetList": {
-            "description": "List of assets. To know more about asset <a href = \"https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets\" target=\"_blank\" rel=\"noopener noreferrer\"> click here </a>.",
+            "description": "List of assets. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "array",
             "items": {
               "type": "object",
@@ -8921,7 +8921,7 @@
             ]
           },
           "assetList": {
-            "description": "List of assets will be generated if 'listOfPageImages' is provided in outputType field. Details of output asset document. To know more about asset <a href = \"https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets\" target=\"_blank\" rel=\"noopener noreferrer\"> click here </a>.",
+            "description": "List of assets will be generated if 'listOfPageImages' is provided in outputType field. Details of output asset document. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "array",
             "items": {
               "type": "object",
@@ -8952,7 +8952,7 @@
             }
           },
           "asset": {
-            "description": "Single asset will be generated if 'zipOfPageImages' is provided in outputType field. Details of output asset document. To know more about asset <a href = \"https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets\" target=\"_blank\" rel=\"noopener noreferrer\"> click here </a>.",
+            "description": "Single asset will be generated if 'zipOfPageImages' is provided in outputType field. Details of output asset document. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "object",
             "properties": {
               "metadata": {
@@ -10881,7 +10881,7 @@
           },
           "content": {
             "type": "object",
-            "description": "Asset of json file containig extracted content of pdf file. To know more about asset <a href = \"https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets\" target=\"_blank\" rel=\"noopener noreferrer\"> click here </a>.",
+            "description": "Asset of json file containig extracted content of pdf file. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "properties": {
               "metadata": {
                 "type": "object",
@@ -10912,7 +10912,7 @@
           },
           "resource": {
             "type": "object",
-            "description": "Asset of zip file containg generated resources from extract operation. To know more about asset <a href = \"https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets\" target=\"_blank\" rel=\"noopener noreferrer\"> click here </a>.",
+            "description": "Asset of zip file containg generated resources from extract operation. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "properties": {
               "metadata": {
                 "type": "object",
@@ -10976,7 +10976,7 @@
           },
           "tagged-pdf": {
             "type": "object",
-            "description": "Asset of tagged pdf file. Details of output asset document. To know more about asset <a href = \"https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets\" target=\"_blank\" rel=\"noopener noreferrer\"> click here </a>.",
+            "description": "Asset of tagged pdf file. Details of output asset document. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "properties": {
               "metadata": {
                 "type": "object",
@@ -11007,7 +11007,7 @@
           },
           "report": {
             "type": "object",
-            "description": "Asset of autotag report. Details of output asset document. To know more about asset <a href = \"https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets\" target=\"_blank\" rel=\"noopener noreferrer\"> click here </a>.",
+            "description": "Asset of autotag report. Details of output asset document. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "properties": {
               "metadata": {
                 "type": "object",
@@ -11075,12 +11075,12 @@
                 "description": "Http status code returned by the service",
                 "type": "integer"
               },
-              "error_code": {
-                "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>status</th><th>error_code</th><th>message</th></tr><tr><td>400</td><td>CORRUPT_DOCUMENT</td><td>For $(format) mime-type The input file appears to be corrupted and cannot be processed.</td></tr><tr><td>400</td><td>PASSWORD_PROTECTED</td><td>Source file is protected and cannot be processed.</td></tr><tr><td>500</td><td>INTERNAL_SERVER_ERROR</td><td>There was an error processing your request.</td></tr></table>",
+                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>status</th><th>code</th><th>message</th></tr><tr><td>400</td><td>CORRUPT_DOCUMENT</td><td>For $(format) mime-type The input file appears to be corrupted and cannot be processed.</td></tr><tr><td>400</td><td>PASSWORD_PROTECTED</td><td>Source file is protected and cannot be processed.</td></tr><tr><td>500</td><td>INTERNAL_SERVER_ERROR</td><td>There was an error processing your request.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -11090,7 +11090,7 @@
           "status": "failed",
           "error": {
             "status": 500,
-            "error_code": "INTERNAL_SERVER_ERROR",
+            "code": "INTERNAL_SERVER_ERROR",
             "message": "There was an error processing your request"
           }
         }
