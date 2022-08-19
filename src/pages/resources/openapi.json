@@ -211,8 +211,8 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "error_code": {
-                      "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>INVALID_REQUEST</td><td>Invalid Request Schema.</td></tr></tr></table>",
+                    "code": {
+                      "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>INVALID_REQUEST</td><td>Invalid Request Schema.</td></tr></tr></table>",
                       "type": "string"
                     },
                     "message": {
@@ -406,8 +406,8 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "error_code": {
-                      "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>INVALID_REQUEST</td><td>Invalid Request Schema.</td></tr></table>",
+                    "code": {
+                      "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>INVALID_REQUEST</td><td>Invalid Request Schema.</td></tr></table>",
                       "type": "string"
                     },
                     "message": {
@@ -601,8 +601,8 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "error_code": {
-                      "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>INVALID_REQUEST</td><td>Invalid Request Schema.</td></tr></tr></table>",
+                    "code": {
+                      "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>INVALID_REQUEST</td><td>Invalid Request Schema.</td></tr></tr></table>",
                       "type": "string"
                     },
                     "message": {
@@ -7127,17 +7127,66 @@
           "iw-IL"
         ]
       },
+      "exportOCRLang": {
+        "title": "ocrLang",
+        "type": "string",
+        "description": "Language to be used for ocr operation",
+        "enum": [
+          "en-GB",
+          "en-US",
+          "nl-NL",
+          "fr-FR",
+          "de-DE",
+          "it-IT",
+          "es-ES",
+          "sv-SE",
+          "da-DK",
+          "fi-FI",
+          "no-NO",
+          "pt-BR",
+          "pt-PT",
+          " ca-CA",
+          "nn-NO",
+          "de-CH",
+          "ja-JP",
+          "bg-BG",
+          " hr-HR",
+          "cs-CZ",
+          "et-EE",
+          "el-GR",
+          "hu-HU",
+          "lv-LV",
+          "lt-LT",
+          "po-PO",
+          "ro-RO",
+          "ru-RU",
+          "zh-Hans",
+          "sl-SL",
+          "zh-Hant",
+          "tr-TR",
+          "ko-KR",
+          "sk-SK",
+          "eu-ES",
+          "gl-ES",
+          "mk-MK",
+          "mt-MT",
+          "oc",
+          "sr-SR",
+          "uk-UA",
+          "he-IL"
+        ]
+      },
       "400": {
         "properties": {
           "error": {
             "type": "object",
             "properties": {
-              "error_code": {
-                "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>BAD_REQUEST</td><td>Bad Request.</td></tr></table>",
+                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>BAD_REQUEST</td><td>Bad Request.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -7145,7 +7194,7 @@
         },
         "example": {
           "error": {
-            "error_code": "BAD_REQUEST",
+            "code": "BAD_REQUEST",
             "message": "Bad Request."
           }
         }
@@ -7155,12 +7204,12 @@
           "error": {
             "type": "object",
             "properties": {
-              "error_code": {
-                "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>NOT_FOUND</td><td>Asset not found.</td></tr></table>",
+                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>NOT_FOUND</td><td>Asset not found.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -7168,7 +7217,7 @@
         },
         "example": {
           "error": {
-            "error_code": "NOT_FOUND",
+            "code": "NOT_FOUND",
             "message": "Asset not found."
           }
         }
@@ -7178,12 +7227,12 @@
           "error": {
             "type": "object",
             "properties": {
-              "error_code": {
-                "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>UNAUTHORIZED</td><td>Not authorised to perform the operation.</td></tr></table>",
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>UNAUTHORIZED</td><td>Not authorised to perform the operation.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -7191,7 +7240,7 @@
         },
         "example": {
           "error": {
-            "error_code": "UNAUTHORIZED",
+            "code": "UNAUTHORIZED",
             "message": "Not authorised to perform the operation."
           }
         }
@@ -7201,12 +7250,12 @@
           "error": {
             "type": "object",
             "properties": {
-              "error_code": {
-                "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>REQUEST_TIMEOUT</td><td>Request processing took more than %s seconds.</td></tr></table>",
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>REQUEST_TIMEOUT</td><td>Request processing took more than %s seconds.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -7214,7 +7263,7 @@
         },
         "example": {
           "error": {
-            "error_code": "REQUEST_TIMEOUT",
+            "code": "REQUEST_TIMEOUT",
             "message": "Request processing took more than %s seconds."
           }
         }
@@ -7224,12 +7273,12 @@
           "error": {
             "type": "object",
             "properties": {
-              "error_code": {
-                "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>INSUFFICIENT_QUOTA</td><td>Client exhausted the Quota.</td></tr><tr><td>INSUFFICIENT_QUOTA</td><td>Client did not purchase a policy to call this engine.</td></tr></table>",
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>INSUFFICIENT_QUOTA</td><td>Client exhausted the Quota.</td></tr><tr><td>INSUFFICIENT_QUOTA</td><td>Client did not purchase a policy to call this engine.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -7237,7 +7286,7 @@
         },
         "example": {
           "error": {
-            "error_code": "INSUFFICIENT_QUOTA",
+            "code": "INSUFFICIENT_QUOTA",
             "message": "Client exhausted the Quota."
           }
         }
@@ -7247,12 +7296,12 @@
           "error": {
             "type": "object",
             "properties": {
-              "error_code": {
-                "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>INTERNAL_SERVER_ERROR</td><td>There was an error processing your request.</td></tr><tr><td>UNKNOWN</td><td>Unknown error.</td></tr></table>",
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>INTERNAL_SERVER_ERROR</td><td>There was an error processing your request.</td></tr><tr><td>UNKNOWN</td><td>Unknown error.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -7260,7 +7309,7 @@
         },
         "example": {
           "error": {
-            "error_code": "INTERNAL_SERVER_ERROR",
+            "code": "INTERNAL_SERVER_ERROR",
             "message": "There was an error processing your request."
           }
         }
@@ -7270,12 +7319,12 @@
           "error": {
             "type": "object",
             "properties": {
-              "error_code": {
-                "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>INVALID_JOB_ID</td><td>Invalid job id present in path param.</td></tr></table>",
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>INVALID_JOB_ID</td><td>Invalid job id present in path param.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -7283,7 +7332,7 @@
         },
         "example": {
           "error": {
-            "error_code": "INVALID_JOB_ID",
+            "code": "INVALID_JOB_ID",
             "message": "Invalid job id present in path param."
           }
         }
@@ -7293,12 +7342,12 @@
           "error": {
             "type": "object",
             "properties": {
-              "error_code": {
-                "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>NOT_FOUND</td><td>Job not found.</td></tr></table>",
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>NOT_FOUND</td><td>Job not found.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -7306,7 +7355,7 @@
         },
         "example": {
           "error": {
-            "error_code": "NOT_FOUND",
+            "code": "NOT_FOUND",
             "message": "Job not found."
           }
         }
@@ -7316,12 +7365,12 @@
           "error": {
             "type": "object",
             "properties": {
-              "error_code": {
-                "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>UNAUTHORIZED</td><td>Not authorised to perform the operation.</td></tr></table>",
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>UNAUTHORIZED</td><td>Not authorised to perform the operation.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -7329,7 +7378,7 @@
         },
         "example": {
           "error": {
-            "error_code": "UNAUTHORIZED",
+            "code": "UNAUTHORIZED",
             "message": "Not authorised to perform the operation."
           }
         }
@@ -7339,12 +7388,12 @@
           "error": {
             "type": "object",
             "properties": {
-              "error_code": {
-                "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>REQUEST_TIMEOUT</td><td>Request processing took more than %s seconds.</td></tr></table>",
+                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>REQUEST_TIMEOUT</td><td>Request processing took more than %s seconds.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -7352,7 +7401,7 @@
         },
         "example": {
           "error": {
-            "error_code": "REQUEST_TIMEOUT",
+            "code": "REQUEST_TIMEOUT",
             "message": "Request processing took more than %s seconds."
           }
         }
@@ -7362,12 +7411,12 @@
           "error": {
             "type": "object",
             "properties": {
-              "error_code": {
-                "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. ",
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. ",
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>INSUFFICIENT_QUOTA</td><td>Client exhausted the Quota.</td></tr><tr><td>INSUFFICIENT_QUOTA</td><td>Client did not purchase a policy to call this engine.</td></tr></table>",
+                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>INSUFFICIENT_QUOTA</td><td>Client exhausted the Quota.</td></tr><tr><td>INSUFFICIENT_QUOTA</td><td>Client did not purchase a policy to call this engine.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -7375,7 +7424,7 @@
         },
         "example": {
           "error": {
-            "error_code": "INSUFFICIENT_QUOTA",
+            "code": "INSUFFICIENT_QUOTA",
             "message": "Client exhausted the Quota."
           }
         }
@@ -7385,12 +7434,12 @@
           "error": {
             "type": "object",
             "properties": {
-              "error_code": {
-                "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>error_code</th><th>message</th></tr><tr><td>INTERNAL_SERVER_ERROR</td><td>There was an error processing your request.</td></tr><tr><td>UNKNOWN</td><td>Unknown error.</td></tr></table>",
+                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>INTERNAL_SERVER_ERROR</td><td>There was an error processing your request.</td></tr><tr><td>UNKNOWN</td><td>Unknown error.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -7398,7 +7447,7 @@
         },
         "example": {
           "error": {
-            "error_code": "INTERNAL_SERVER_ERROR",
+            "code": "INTERNAL_SERVER_ERROR",
             "message": "There was an error processing your request."
           }
         }
@@ -7412,7 +7461,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID. Supported file formats are bmp, doc, docx, gif, jpeg, jpg, png, ppt, pptx, rtf, tif, tiff, txt, xls and xlsx",
+            "description": "A file assetID. Supported file formats are bmp, doc, docx, gif, jpeg, jpg, png, ppt, pptx, rtf, tif, tiff, txt, xls and xlsx. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "documentLanguage": {
@@ -7440,7 +7489,7 @@
         ],
         "properties": {
           "assetID": {
-            "description": "A file assetID",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "targetFormat": {
@@ -7453,11 +7502,15 @@
               "xlsx",
               "rtf"
             ]
+          },
+          "ocrLang": {
+            "$ref": "#/components/schemas/exportOCRLang"
           }
         },
         "example": {
           "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
-          "targetFormat": "docx"
+          "targetFormat": "docx",
+          "ocrLang": "en-US"
         },
         "additionalProperties": false
       },
@@ -7471,7 +7524,7 @@
         ],
         "properties": {
           "assetID": {
-            "description": "A file assetID",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "targetFormat": {
@@ -7507,7 +7560,7 @@
         ],
         "properties": {
           "assetID": {
-            "description": "A file assetID",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "getCharBounds": {
@@ -7563,7 +7616,7 @@
           "tableOutputFormat": "xlsx",
           "renditionsToExtract": [
             "tables",
-            "figure"
+            "figures"
           ]
         },
         "additionalProperties": false
@@ -7573,7 +7626,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "inputUrl": {
@@ -7632,7 +7685,7 @@
             "items": {
               "properties": {
                 "assetID": {
-                  "description": "A file assetID",
+                  "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
                   "type": "string",
                   "required": true
                 },
@@ -7675,7 +7728,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "compressionLevel": {
@@ -7702,7 +7755,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           }
         },
@@ -7719,7 +7772,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "ocrLang": {
@@ -7750,7 +7803,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "pageActions": {
@@ -7807,7 +7860,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "pageLevel": {
@@ -7830,7 +7883,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "passwordProtection": {
@@ -7903,7 +7956,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "password": {
@@ -7926,7 +7979,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID.",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "splitoption": {
@@ -7970,7 +8023,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID.",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "outputFormat": {
@@ -8149,11 +8202,11 @@
         ],
         "properties": {
           "inputDocumentAssetID": {
-            "description": "A file assetID of an input PDF document in which seal has to be applied.",
+            "description": "A file assetID of an input PDF document in which seal has to be applied. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "sealImageAssetID": {
-            "description": "A file assetID of the logo/watermark/background image to use as part of the seal field's appearance. The asset format should be one of the below format \n 1. application/pdf \n2. image/jpeg \n3. image/png",
+            "description": "A file assetID of the logo/watermark/background image to use as part of the seal field's appearance. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>. The asset format should be one of the below format \n 1. application/pdf \n2. image/jpeg \n3. image/png.",
             "type": "string"
           },
           "sealOptions": {
@@ -8220,7 +8273,7 @@
           },
           "cscCredentialOptions": {
             "type": "object",
-            "description": "Specifies the CSC credential information that encapsulates the credential to be used for sealing.",
+            "description": "Specifies the CSC credential information that encapsulates the credential to be used for sealing. For more information, please see the <a href=\\\"http://www.adobe.com/go/dceseal_howtoguide_doc\\\" target=\\\"_blank\\\">documentation</a>.",
             "required": [
               "providerName",
               "credentialId",
@@ -8364,7 +8417,7 @@
         ],
         "properties": {
           "assetID": {
-            "description": "A file assetID",
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "string"
           },
           "shiftHeadings": {
@@ -8380,7 +8433,7 @@
         },
         "example": {
           "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
-          "shiftHeadings": true,
+          "shiftHeadings": false,
           "generateReport": false
         },
         "additionalProperties": false
@@ -8486,7 +8539,7 @@
             "$ref": "#/components/schemas/inprogress"
           },
           {
-            "$ref": "#/components/schemas/doneWithMultipleAsset"
+            "$ref": "#/components/schemas/PDFTOImagedone"
           },
           {
             "$ref": "#/components/schemas/failed"
@@ -8707,6 +8760,7 @@
       },
       "responseAsset": {
         "title": "asset",
+        "description": "Details of output asset document. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
         "type": "object",
         "properties": {
           "metadata": {
@@ -8757,7 +8811,7 @@
             ]
           },
           "assetList": {
-            "description": "List of assets",
+            "description": "List of assets. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "array",
             "items": [
               {
@@ -8801,13 +8855,129 @@
             ]
           },
           "assetList": {
-            "description": "List of assets",
+            "description": "List of assets. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "type": "array",
-            "items": [
-              {
-                "$ref": "#/components/schemas/responseAsset"
+            "items": {
+              "type": "object",
+              "properties": {
+                "metadata": {
+                  "type": "object",
+                  "description": "metadata details of output asset.",
+                  "properties": {
+                    "size": {
+                      "description": "The size of the Resource in bytes. This value helps in making range requests.",
+                      "type": "integer"
+                    },
+                    "type": {
+                      "description": "The media type of the Resource.",
+                      "type": "string"
+                    }
+                  }
+                },
+                "assetID": {
+                  "description": "An asset ID identifying an asset that is globally unique and never reused.",
+                  "type": "string"
+                },
+                "downloadUri": {
+                  "description": "The URL used to download the Resource directly to the cloud provider.",
+                  "type": "string"
+                }
               }
+            }
+          }
+        },
+        "example": {
+          "status": "done",
+          "assetList": [
+            {
+              "metadata": {
+                "type": "application/pdf",
+                "size": 200791
+              },
+              "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+              "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
+            },
+            {
+              "metadata": {
+                "type": "application/pdf",
+                "size": 200791
+              },
+              "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+              "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
+            }
+          ]
+        }
+      },
+      "PDFTOImagedone": {
+        "title": "done",
+        "description": "Response in case of 'done' status",
+        "type": "object",
+        "properties": {
+          "status": {
+            "description": "Job Status",
+            "type": "string",
+            "enum": [
+              "done"
             ]
+          },
+          "assetList": {
+            "description": "List of assets will be generated if 'listOfPageImages' is provided in outputType field. Details of output asset document. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "metadata": {
+                  "type": "object",
+                  "description": "metadata details of output asset.",
+                  "properties": {
+                    "size": {
+                      "description": "The size of the Resource in bytes. This value helps in making range requests.",
+                      "type": "integer"
+                    },
+                    "type": {
+                      "description": "The media type of the Resource.",
+                      "type": "string"
+                    }
+                  }
+                },
+                "assetID": {
+                  "description": "An asset ID identifying an asset that is globally unique and never reused.",
+                  "type": "string"
+                },
+                "downloadUri": {
+                  "description": "The URL used to download the Resource directly to the cloud provider.",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "asset": {
+            "description": "Single asset will be generated if 'zipOfPageImages' is provided in outputType field. Details of output asset document. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
+            "type": "object",
+            "properties": {
+              "metadata": {
+                "type": "object",
+                "description": "metadata details of output asset.",
+                "properties": {
+                  "size": {
+                    "description": "The size of the Resource in bytes. This value helps in making range requests.",
+                    "type": "integer"
+                  },
+                  "type": {
+                    "description": "The media type of the Resource.",
+                    "type": "string"
+                  }
+                }
+              },
+              "assetID": {
+                "description": "An asset ID identifying an asset that is globally unique and never reused.",
+                "type": "string"
+              },
+              "downloadUri": {
+                "description": "The URL used to download the Resource directly to the cloud provider.",
+                "type": "string"
+              }
+            }
           }
         },
         "example": {
@@ -8846,12 +9016,1855 @@
           },
           "metadata": {
             "description": "Json containing metadata information about pdf document such as the title, the fonts used, and security settings. ",
-            "type": "string"
+            "type": "object",
+            "properties": {
+              "document": {
+                "type": "object",
+                "properties": {
+                  "is_XFA": {
+                    "description": "Document is based on the XFA (Extensible Forms Architecture) format or not",
+                    "type": "boolean"
+                  },
+                  "has_acroform": {
+                    "description": "If the file contains any form fields.",
+                    "type": "boolean"
+                  },
+                  "file_size": {
+                    "description": "Size of input PDF file.",
+                    "type": "string"
+                  },
+                  "has_embedded_files": {
+                    "description": "Document contains embedded files or not.",
+                    "type": "boolean"
+                  },
+                  "incremental_save_count": {
+                    "description": "Number of times the file is edited and saved.",
+                    "type": "number"
+                  },
+                  "is_certified": {
+                    "description": "Document has been digitally signed with a certifying signature or not.",
+                    "type": "boolean"
+                  },
+                  "is_signed": {
+                    "description": "If the PDF file is digitally signed.",
+                    "type": "boolean"
+                  },
+                  "is_encrypted": {
+                    "description": "If the file is encrypted.",
+                    "type": "boolean"
+                  },
+                  "is_linearized": {
+                    "description": "If it is a linearized PDF file that makes viewing faster over the Internet.",
+                    "type": "boolean"
+                  },
+                  "is_portfolio": {
+                    "description": "If it is a portfolio PDF - multiple documents are packaged together into one PDF File.",
+                    "type": "boolean"
+                  },
+                  "is_tagged": {
+                    "description": "If it is a tagged PDF.",
+                    "type": "boolean"
+                  },
+                  "is_FTPDF": {
+                    "description": "If it is a Fully Tagged PDF file. ",
+                    "type": "boolean"
+                  },
+                  "page_count": {
+                    "description": "Number of pages in file.",
+                    "type": "number"
+                  },
+                  "pdf_version": {
+                    "description": "PDF version of the document.",
+                    "type": "string"
+                  },
+                  "pdfa_compliance_level": {
+                    "description": "Returns the pdfa compliance level for the input file",
+                    "type": "string"
+                  },
+                  "pdfe_compliance_level": {
+                    "description": "Returns the pdfe compliance level for the input file",
+                    "type": "string"
+                  },
+                  "pdfua_compliance_level": {
+                    "description": "Returns the pdfua compliance level for the input file",
+                    "type": "string"
+                  },
+                  "pdfvt_compliance_level": {
+                    "description": "Returns the pdfvt compliance level for the input file",
+                    "type": "string"
+                  },
+                  "pdfx_compliance_level": {
+                    "description": "Returns the pdfx compliance level for the input file",
+                    "type": "string"
+                  },
+                  "fonts": {
+                    "type": "array",
+                    "description": "Tag describing list of fonts in input pdf",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "font_type": {
+                          "description": "Font technology (type) - eg. Type 1, TrueType, OpenType",
+                          "type": "string"
+                        },
+                        "family_name": {
+                          "description": "Font's family name. Example - For font \"Times Bold Italic\", family name is \"Times\"",
+                          "type": "string"
+                        },
+                        "name": {
+                          "description": "The PostScript name of the font",
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "XMP": {
+                    "description": "Tag describing properties.",
+                    "type": "string"
+                  },
+                  "info_dict": {
+                    "type": "object",
+                    "description": "Information related to file",
+                    "properties": {
+                      "CreationDate": {
+                        "description": "Date of file creation.",
+                        "type": "string"
+                      },
+                      "Creator": {
+                        "description": "The one by which the PDF is created. Eg. Adobe Acrobat 21.5.",
+                        "type": "string"
+                      },
+                      "ModDate": {
+                        "description": "Date when the file is last modified.",
+                        "type": "string"
+                      },
+                      "Producer": {
+                        "description": "By which we get PDF for example Adobe Acrobat 21.5 Image Conversion Plug-in.",
+                        "type": "string"
+                      },
+                      "Author": {
+                        "description": "The one who created the PDF.",
+                        "type": "string"
+                      },
+                      "Title": {
+                        "description": "Title of PDF if there.",
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "security_info": {
+                "type": "object",
+                "properties": {
+                  "encryption": {
+                    "type": "object",
+                    "description": "Password, encryption algorithm related information.",
+                    "properties": {
+                      "algorithm": {
+                        "description": "Encryption algorithm used like AES",
+                        "type": "string"
+                      },
+                      "bit_length": {
+                        "description": "The number of bits in a key used by a cryptographic algorithm.",
+                        "type": "number"
+                      },
+                      "encrypt_attachments_only": {
+                        "description": "If the PDF is encrypted only for file attachments.",
+                        "type": "boolean"
+                      },
+                      "encrypt_metadata": {
+                        "description": "If the PDF is encrypted for metadata.",
+                        "type": "boolean"
+                      },
+                      "has_owner_password": {
+                        "description": "If the file has a password for any permissions ( like to edit, copy etc)",
+                        "type": "boolean"
+                      },
+                      "has_user_password": {
+                        "description": "If the file has a password to open it.",
+                        "type": "boolean"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "permissions": {
+                    "type": "object",
+                    "description": "Permission settings include restricting printing, content copying, editing, page extracting, commenting, etc in the PDF",
+                    "properties": {
+                      "assistive_technology": {
+                        "description": "Whether or not the file will be exposed to a screen reader.",
+                        "type": "boolean"
+                      },
+                      "form_filling": {
+                        "description": "Permission for filling in form fields.",
+                        "type": "boolean"
+                      },
+                      "copying": {
+                        "description": "Permission for copying the content of file.",
+                        "type": "boolean"
+                      },
+                      "page_extraction": {
+                        "description": "Permission for extracting pages.",
+                        "type": "boolean"
+                      },
+                      "document_assembly": {
+                        "description": "Permission for adding or inserting pages.",
+                        "type": "boolean"
+                      },
+                      "commenting": {
+                        "description": "Permission to add comments to file.",
+                        "type": "boolean"
+                      },
+                      "printing": {
+                        "description": "Permission for printing the file.",
+                        "type": "string"
+                      },
+                      "editing": {
+                        "description": "Permission for editing the content in file.",
+                        "type": "boolean"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              },
+              "pages": {
+                "type": "array",
+                "description": "Json array consisting page level properties",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "page_number": {
+                      "description": "Page number starting from 0.",
+                      "type": "number"
+                    },
+                    "is_scanned": {
+                      "description": "If the page is scanned or not.",
+                      "type": "boolean"
+                    },
+                    "has_structure": {
+                      "description": "If the page has structure/tagging.",
+                      "type": "boolean"
+                    },
+                    "height": {
+                      "description": "Dimension of the page.",
+                      "type": "number"
+                    },
+                    "width": {
+                      "description": "Dimension of the page.",
+                      "type": "number"
+                    },
+                    "content": {
+                      "type": "object",
+                      "properties": {
+                        "is_empty": {
+                          "description": "If it is an empty/blank page.",
+                          "type": "boolean"
+                        },
+                        "has_images": {
+                          "description": "If the page has any images.",
+                          "type": "boolean"
+                        },
+                        "number_of_images": {
+                          "description": "Number of images in that page.",
+                          "type": "number"
+                        },
+                        "only_images": {
+                          "description": "If the page consists only images.",
+                          "type": "boolean"
+                        },
+                        "has_text": {
+                          "description": "If the pages has any text.",
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
           }
         },
         "example": {
           "status": "done",
-          "metadata": "{\"pages\":[{\"page_number\":0,\"is_scanned\":false,\"width\":612.0,\"has_structure\":false,\"content\":{\"number_of_images\":0,\"only_images\":false,\"has_text\":true,\"has_images\":false,\"is_empty\":false},\"height\":792.0}],\"document\":{\"is_linearized\":false,\"pdfe_compliance_level\":\"\",\"is_tagged\":false,\"is_portfolio\":false,\"is_certified\":false,\"is_encrypted\":false,\"info_dict\":{\"CreationDate\":\"D:19980204171401Z\",\"Producer\":\"Acrobat Distiller 3.0 for Windows\"},\"is_FTPDF\":false,\"pdf_version\":\"1.2\",\"has_acroform\":false,\"file_size\":\"4.2 KB\",\"is_signed\":false,\"incremental_save_count\":0,\"has_embedded_files\":false,\"is_XFA\":false,\"fonts\":[{\"name\":\"Times-Roman\",\"font_type\":\"Type1\",\"family_name\":\"Titlingmes\"},{\"name\":\"Courier\",\"font_type\":\"Type1\",\"family_name\":\"Courier\"},{\"name\":\"Courier-Bold\",\"font_type\":\"Type1\",\"family_name\":\"Courier\"}],\"pdfa_compliance_level\":\"\",\"pdfvt_compliance_level\":\"\",\"pdfx_compliance_level\":\"\",\"pdfua_compliance_level\":\"\",\"XMP\":\"\",\"page_count\":1}}"
+          "metadata": {
+            "pages": [
+              {
+                "page_number": 0,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 1,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 2,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 3,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 4,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 5,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 6,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 7,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 8,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 9,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 10,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 11,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 12,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 13,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 14,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 15,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 16,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 17,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 18,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 19,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 20,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 21,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 22,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 23,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 24,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 25,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 26,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 27,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 28,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 29,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 30,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 31,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 32,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 33,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 34,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 35,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 36,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 37,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 38,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 39,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 40,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 41,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 42,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 43,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 44,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 45,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 46,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 47,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 48,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 49,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 50,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 51,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 52,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 53,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 54,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 55,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 56,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 57,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 58,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 59,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 60,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 61,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 62,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 63,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 64,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 65,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 66,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 67,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 68,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 69,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 70,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 71,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 72,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 73,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 74,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 75,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 76,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 77,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 78,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 79,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 80,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 81,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 82,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 83,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 84,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 85,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 86,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 87,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 88,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 89,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 90,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 91,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 92,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 93,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 94,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 95,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 96,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 97,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 98,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 0,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": false,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 99,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              },
+              {
+                "page_number": 100,
+                "is_scanned": false,
+                "width": 595.0,
+                "has_structure": false,
+                "content": {
+                  "number_of_images": 1,
+                  "only_images": false,
+                  "has_text": true,
+                  "has_images": true,
+                  "is_empty": false
+                },
+                "height": 842.0
+              }
+            ],
+            "document": {
+              "is_linearized": false,
+              "pdfe_compliance_level": "",
+              "is_tagged": false,
+              "is_portfolio": false,
+              "is_certified": false,
+              "is_encrypted": false,
+              "info_dict": {
+                "CreationDate": null,
+                "Producer": null,
+                "Creator": null,
+                "ModDate": null
+              },
+              "is_FTPDF": false,
+              "pdf_version": "1.6",
+              "has_acroform": false,
+              "file_size": "4550.09 KB",
+              "is_signed": false,
+              "incremental_save_count": 0,
+              "has_embedded_files": false,
+              "is_XFA": false,
+              "fonts": [
+                {
+                  "name": "BAAAAA+LiberationSans-Bold",
+                  "font_type": "TrueType",
+                  "family_name": "Liberation Sans"
+                },
+                {
+                  "name": "CAAAAA+DejaVuSans",
+                  "font_type": "TrueType",
+                  "family_name": "Deja Vu Sans"
+                },
+                {
+                  "name": "DAAAAA+DejaVuSans-Bold",
+                  "font_type": "TrueType",
+                  "family_name": "Deja Vu Sans"
+                },
+                {
+                  "name": "Symbol",
+                  "font_type": "Type1",
+                  "family_name": "Symbol"
+                },
+                {
+                  "name": "FAAAAA+LiberationSans",
+                  "font_type": "TrueType",
+                  "family_name": "Liberation Sans"
+                },
+                {
+                  "name": "BAAAAA+LiberationSans-Bold",
+                  "font_type": "TrueType",
+                  "family_name": "Liberation Sans"
+                },
+                {
+                  "name": "CAAAAA+DejaVuSans",
+                  "font_type": "TrueType",
+                  "family_name": "Deja Vu Sans"
+                },
+                {
+                  "name": "DAAAAA+DejaVuSans-Bold",
+                  "font_type": "TrueType",
+                  "family_name": "Deja Vu Sans"
+                },
+                {
+                  "name": "Symbol",
+                  "font_type": "Type1",
+                  "family_name": "Symbol"
+                },
+                {
+                  "name": "FAAAAA+LiberationSans",
+                  "font_type": "TrueType",
+                  "family_name": "Liberation Sans"
+                },
+                {
+                  "name": "BAAAAA+LiberationSans-Bold",
+                  "font_type": "TrueType",
+                  "family_name": "Liberation Sans"
+                },
+                {
+                  "name": "CAAAAA+DejaVuSans",
+                  "font_type": "TrueType",
+                  "family_name": "Deja Vu Sans"
+                },
+                {
+                  "name": "DAAAAA+DejaVuSans-Bold",
+                  "font_type": "TrueType",
+                  "family_name": "Deja Vu Sans"
+                },
+                {
+                  "name": "Symbol",
+                  "font_type": "Type1",
+                  "family_name": "Symbol"
+                },
+                {
+                  "name": "FAAAAA+LiberationSans",
+                  "font_type": "TrueType",
+                  "family_name": "Liberation Sans"
+                },
+                {
+                  "name": "BAAAAA+LiberationSans-Bold",
+                  "font_type": "TrueType",
+                  "family_name": "Liberation Sans"
+                },
+                {
+                  "name": "CAAAAA+DejaVuSans",
+                  "font_type": "TrueType",
+                  "family_name": "Deja Vu Sans"
+                },
+                {
+                  "name": "DAAAAA+DejaVuSans-Bold",
+                  "font_type": "TrueType",
+                  "family_name": "Deja Vu Sans"
+                },
+                {
+                  "name": "Symbol",
+                  "font_type": "Type1",
+                  "family_name": "Symbol"
+                },
+                {
+                  "name": "FAAAAA+LiberationSans",
+                  "font_type": "TrueType",
+                  "family_name": "Liberation Sans"
+                },
+                {
+                  "name": "BAAAAA+LiberationSans-Bold",
+                  "font_type": "TrueType",
+                  "family_name": "Liberation Sans"
+                },
+                {
+                  "name": "CAAAAA+DejaVuSans",
+                  "font_type": "TrueType",
+                  "family_name": "Deja Vu Sans"
+                },
+                {
+                  "name": "DAAAAA+DejaVuSans-Bold",
+                  "font_type": "TrueType",
+                  "family_name": "Deja Vu Sans"
+                },
+                {
+                  "name": "Symbol",
+                  "font_type": "Type1",
+                  "family_name": "Symbol"
+                },
+                {
+                  "name": "FAAAAA+LiberationSans",
+                  "font_type": "TrueType",
+                  "family_name": "Liberation Sans"
+                }
+              ],
+              "pdfa_compliance_level": "",
+              "pdfvt_compliance_level": "",
+              "pdfx_compliance_level": "",
+              "pdfua_compliance_level": "",
+              "XMP": null,
+              "page_count": 101
+            },
+            "permissions": null
+          }
         }
       },
       "extractpdfdone": {
@@ -8868,7 +10881,7 @@
           },
           "content": {
             "type": "object",
-            "description": "Asset of json file containig extracted content of pdf file.",
+            "description": "Asset of json file containig extracted content of pdf file. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "properties": {
               "metadata": {
                 "type": "object",
@@ -8899,7 +10912,7 @@
           },
           "resource": {
             "type": "object",
-            "description": "Asset of zip file containg generated resources from extract operation.",
+            "description": "Asset of zip file containg generated resources from extract operation. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "properties": {
               "metadata": {
                 "type": "object",
@@ -8963,7 +10976,7 @@
           },
           "tagged-pdf": {
             "type": "object",
-            "description": "Asset of tagged pdf file.",
+            "description": "Asset of tagged pdf file. Details of output asset document. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "properties": {
               "metadata": {
                 "type": "object",
@@ -8994,7 +11007,7 @@
           },
           "report": {
             "type": "object",
-            "description": "Asset of autotag report.",
+            "description": "Asset of autotag report. Details of output asset document. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/assets'> click here </a>.",
             "properties": {
               "metadata": {
                 "type": "object",
@@ -9062,12 +11075,12 @@
                 "description": "Http status code returned by the service",
                 "type": "integer"
               },
-              "error_code": {
-                "description": "The string containing the error_code field. error_code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>status</th><th>error_code</th><th>message</th></tr><tr><td>400</td><td>CORRUPT_DOCUMENT</td><td>For $(format) mime-type The input file appears to be corrupted and cannot be processed.</td></tr><tr><td>400</td><td>PASSWORD_PROTECTED</td><td>Source file is protected and cannot be processed.</td></tr><tr><td>500</td><td>INTERNAL_SERVER_ERROR</td><td>There was an error processing your request.</td></tr></table>",
+                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>status</th><th>code</th><th>message</th></tr><tr><td>400</td><td>CORRUPT_DOCUMENT</td><td>For $(format) mime-type The input file appears to be corrupted and cannot be processed.</td></tr><tr><td>400</td><td>PASSWORD_PROTECTED</td><td>Source file is protected and cannot be processed.</td></tr><tr><td>500</td><td>INTERNAL_SERVER_ERROR</td><td>There was an error processing your request.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -9077,7 +11090,7 @@
           "status": "failed",
           "error": {
             "status": 500,
-            "error_code": "INTERNAL_SERVER_ERROR",
+            "code": "INTERNAL_SERVER_ERROR",
             "message": "There was an error processing your request"
           }
         }
