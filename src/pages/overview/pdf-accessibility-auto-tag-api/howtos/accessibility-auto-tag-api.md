@@ -1,3 +1,6 @@
+---
+title: Document Services APIs | PDF Accessibility Auto-Tag API | How Tos | Accessibility API
+---
 # <h1>PDF Accessibility Auto-Tag API<span style="color:red;font-size:15px;margin-left:10px;vertical-align:middle;border:1px solid;padding-left:2px;padding-right:2px"><b>Available under Early Access Program</b></span></h1>
 
 ## PDF Accessibility Auto-Tag API Output Format
@@ -46,6 +49,10 @@ The output of PDF Accessibility Auto-Tag API contains the following:
 | Protected PDF	                | PROTECTED_PDF		            | PDF is encrypted or password-protected                                                                   |
 | Empty or corrupted input	    | BAD_INPUT		                | Input is corrupted or empty                                                                              |
 | Invalid input parameters	    | BAD_INPUT_PARAMS		        | Invalid input parameters                                                                                 |
+
+## Rest API 
+
+See our public API Reference for [Combine PDF](../../../apis/#tag/autotag).
 
 ## Generate tagged PDF with version 1.7 along with an XLSX report and shift the headings in the output PDF file
 

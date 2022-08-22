@@ -1,3 +1,6 @@
+---
+title: Document Services APIs | PDF Embed API | Release Notes
+---
 # Release Notes
 
 In addition to general bug fixes, and performance enhancements, refer to

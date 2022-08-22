@@ -1,10 +1,21 @@
+---
+title: Document Services APIs | How Tos | PDF Properties
+---
 # Get PDF Properties
+
+Use this service to get the metadata properties of a PDF. Metadata including page count, PDF version, file size, compliance levels, font info, permissions and more are provided in JSON format for easy processing.
+
+This data can be used to: check if a document is fully text searchable (OCR), understand the e-signature certificate info, find out compliance levels (e.g., PDF/A and PDF/UA), assess file size before compressing, check permissions related to copy, edit, printing, encryption, and much more.
+
+## Rest API 
+
+See our public API Reference for [PDF Properties](../../../apis/#tag/pdfproperties).
 
 ### Get PDF Properties as a JSON File
 
 The sample below fetches the properties of an input PDF, as a JSON file.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, Node JS" /> 
 
 #### Java
 
@@ -144,47 +155,11 @@ try {
 }
 ```
 
-#### Rest API
-
-```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-pdfProperties
-
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
---header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-  \"cpf:inputs\": {
-    \"params\": {
-      \"cpf:inline\": {
-        \"pageLevel\": true
-      }
-    },
-    \"documentIn\": {
-      \"cpf:location\": \"InputFile0\",
-      \"dc:format\": \"application/pdf\"
-    }
-  },
-  \"cpf:engine\": {
-    \"repo:assetId\": \"urn:aaid:cpf:Service-fd9b06fe2f164df7975254581d6ab00e\"
-  },
-  \"cpf:outputs\": {
-    \"metadata\": {
-      \"dc:format\": \"application/json\",
-      \"cpf:location\": \"jsonoutput\"
-    }
-  }
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
-```
-
 ### Get PDF Properties as a JSON Object
 
 The sample below fetches the properties of an input PDF, as a JSON object.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, Node JS" /> 
 
 #### Java
 
@@ -335,40 +310,4 @@ try {
 } catch (err) {
     console.log('Exception encountered while executing operation', err);
 }
-```
-
-#### Rest API
-
-```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-pdfProperties
-
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
---header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-  \"cpf:inputs\": {
-    \"params\": {
-      \"cpf:inline\": {
-        \"pageLevel\": true
-      }
-    },
-    \"documentIn\": {
-      \"cpf:location\": \"InputFile0\",
-      \"dc:format\": \"application/pdf\"
-    }
-  },
-  \"cpf:engine\": {
-    \"repo:assetId\": \"urn:aaid:cpf:Service-fd9b06fe2f164df7975254581d6ab00e\"
-  },
-  \"cpf:outputs\": {
-    \"metadata\": {
-      \"dc:format\": \"application/json\",
-      \"cpf:location\": \"jsonoutput\"
-    }
-  }
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
 ```

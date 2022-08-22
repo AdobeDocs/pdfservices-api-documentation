@@ -1,4 +1,13 @@
+---
+title: Document Services APIs | How Tos | Delete Pages
+---
 # Delete Pages
+
+Delete one or more pages from a document
+
+## Rest API
+
+See our public API Reference for [Delete Pages](../../../apis/#tag/pagemanipulation)
 
 ## Delete Pages in a PDF
 

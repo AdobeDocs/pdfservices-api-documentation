@@ -1,4 +1,13 @@
+---
+title: Document Services APIs | How Tos | Reorder Pages
+---
 # Remove Protection
+
+Remove password security from a PDF document. This can only be accomplished with the owner password of the document which must be passed in the operation.
+
+## Rest API 
+
+See our public API Reference for [Remove Protection](../../../apis/#tag/removeprotection).
 
 ## Remove security from PDFs
 

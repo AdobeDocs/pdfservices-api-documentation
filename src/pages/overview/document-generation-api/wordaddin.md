@@ -1,3 +1,6 @@
+---
+title: Document Services APIs | Document Generation API | Word Add-In
+---
 # Word Add-in
 
 Document Generation Word Add-in provides the capability to author

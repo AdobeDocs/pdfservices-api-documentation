@@ -1,4 +1,15 @@
+---
+title: Document Services APIs | How Tos | Compress PDF
+---
 # Compress PDFs
+
+Reduce the size of PDF files by compressing to smaller sizes for lower bandwidth viewing, downloading, and sharing.
+
+Support for multiple compression levels to retain the quality of images and graphics
+
+## Rest API
+
+See our public API Reference for [Compress PDF.](../../../apis/#tag/compresspdf)
 
 ## Compress PDFs
 

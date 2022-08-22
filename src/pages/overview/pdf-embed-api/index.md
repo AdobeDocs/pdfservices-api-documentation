@@ -1,3 +1,6 @@
+---
+title: Document Services APIs | PDF Embed API
+---
 # Quickstarts
 <p>
 Adobe PDF Embed API allows you to embed a PDF viewer in your web applications with only a few lines of code. With options for controlling how a PDF appears and functions, your applications can deliver the rich and compelling digital document experiences to your customers expect and need.

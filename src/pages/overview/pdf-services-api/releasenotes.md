@@ -1,3 +1,6 @@
+---
+title: Document Services APIs | PDF Services API | Release Notes
+---
 # Release Notes
 
 This document describes the change history across releases for supported

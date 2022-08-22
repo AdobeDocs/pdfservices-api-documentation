@@ -1,3 +1,6 @@
+---
+title: Document Services APIs | Document Generation API | Template Tags
+---
 # Template Tags
 
 **This section describes all the template tags that can be used to author

@@ -1,3 +1,6 @@
+---
+title: Document Services APIs | PDF Accessibility Auto-Tag API
+---
 # <h1>Overview<span style="color:red;font-size:15px;margin-left:10px;vertical-align:middle;border:1px solid;padding-left:2px;padding-right:2px"><b>Available under Early Access Program</b></span></h1>
 <p>
 

@@ -1,3 +1,6 @@
+---
+title: Document Services APIs | PDF Electronic Seal API | Prerequisites
+---
 # Prerequisites
 A client has to register itself to a Trusted Service Provider for getting digital certificates which provide an 
 assurance that they are authorized to add a electronic seal on a specific document.
