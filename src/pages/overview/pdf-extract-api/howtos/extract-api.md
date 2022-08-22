@@ -139,6 +139,10 @@ schema]( ../../../resources/extractJSONOutputSchema2.json)):
 | Unknown error / failure               | ERROR                                                                                                                                                                                | Unable to extract content - Internal error.                 |
 
 
+## Rest API 
+
+See our public API Reference for [Extract PDF](../../../apis/#tag/extractpdf).
+
 ## Extract Text from a PDF
 
 The sample below extracts text element information from a PDF document and returns a JSON file.
