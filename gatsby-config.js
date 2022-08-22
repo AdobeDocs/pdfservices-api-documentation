@@ -212,7 +212,7 @@ module.exports = {
               },
               {
                 title: 'Accessibility Auto-Tag PDF',
-                path: 'overview/pdf-services-api/howtos/accessibility-auto-tag-pdfl.md',
+                path: 'overview/pdf-services-api/howtos/accessibility-auto-tag-pdf.md',
                 subTitle: 'Early Access Program',
               }
             ]
