@@ -1,4 +1,13 @@
+---
+title: Document Services APIs | How Tos | Split PDF
+---
 # Split PDF
+
+Split a PDF document into multiple smaller documents by simply specifying either the number of files, pages per file, or page ranges.
+
+## Rest API 
+
+See our public API Reference for [Split PDF](../../../apis/#tag/splitpdf).
 
 ## Split PDF by number of pages
 
@@ -6,7 +15,7 @@ This operation splits a PDF into multiple smaller documents. Simply use
 the page count to specify the maximum number of pages of each output
 file.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, Node JS" /> 
 
 #### Java
 
@@ -175,49 +184,13 @@ file.
      
 ```
 
-#### Rest API
-
-```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
-
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
---header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"params\": {
-			\"cpf:inline\": {
-				\"pageCount\": 4
-			}
-		},
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-d99c7660cba14e5c98f9023221dab40f\"
-	},
-	\"cpf:outputs\": {
-		\"documentOutList\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"text/directory\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
-```
-
 ## Split PDF by page ranges
 
 As an alternative to creating smaller PDFs with a set number of pages,
 you can split PDFs into multiple smaller documents by specifying page
 ranges where each page range corresponds to a single output file.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, Node JS" /> 
 
 #### Java
 
@@ -422,48 +395,6 @@ ranges where each page range corresponds to a single output file.
   }
 ```
 
-#### Rest API
-
-```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
-
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
---header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"params\": {
-			\"cpf:inline\": {
-				\"pageRanges\": [{
-					\"start\": 2,
-					\"end\": 4
-				}, {
-					\"start\": 7,
-					\"end\": 9
-				}]
-			}
-		},
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-d99c7660cba14e5c98f9023221dab40f\"
-	},
-	\"cpf:outputs\": {
-		\"documentOutList\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"text/directory\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
-```
-
 ## Split PDF into number of files
 
 As an alternative to creating smaller PDFs by specifying a set number of
@@ -471,7 +402,7 @@ pages or a page range, you can split PDFs by file count. In this case,
 the operation creates the specified number of files with each containing
 an identical number of pages (if possible).
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, Node JS" /> 
 
 #### Java
 
@@ -640,40 +571,3 @@ an identical number of pages (if possible).
      console.log('Exception encountered while executing operation', err);
    }
 ```
-
-#### Rest API
-
-```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
-
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
---header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"params\": {
-			\"cpf:inline\": {
-				\"fileCount\": 2
-			}
-		},
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-d99c7660cba14e5c98f9023221dab40f\"
-	},
-	\"cpf:outputs\": {
-		\"documentOutList\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"text/directory\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
-```
-

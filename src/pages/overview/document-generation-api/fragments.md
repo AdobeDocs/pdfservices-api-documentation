@@ -1,3 +1,6 @@
+---
+title: Document Services APIs | Document Generation API | Fragments
+---
 # Fragments
 
 Fragments are special tags which enables users to write a composition using text tags or other fragments. Fragments introduce re-usability among the tags and enable users to create multiple such compositions and use them in their templates.

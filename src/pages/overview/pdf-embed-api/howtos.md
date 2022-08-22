@@ -1,3 +1,6 @@
+---
+title: Document Services APIs | PDF Embed API | How Tos
+---
 # PDF Embed API basics
 
 The samples and documentation provide an easy way to jump-start

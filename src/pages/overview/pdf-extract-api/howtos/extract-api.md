@@ -1,3 +1,6 @@
+---
+title: Document Services APIs | PDF Extract API | How Tos | Extract API
+---
 # Extract PDF
 
 ## Structured Information Output Format
@@ -140,7 +143,7 @@ schema]( ../../../resources/extractJSONOutputSchema2.json)):
 
 The sample below extracts text element information from a PDF document and returns a JSON file.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python" /> 
 
 #### Java
 
@@ -357,51 +360,12 @@ namespace ExtractTextInfoFromPDF
          logging.exception("Exception encountered while executing operation")
 ```
 
-#### Rest API
-
-```javascript
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
---header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-    \"cpf:engine\": {
-        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
-    },
-    \"cpf:inputs\": {
-        \"documentIn\": {
-            \"cpf:location\": \"InputFile0\",
-            \"dc:format\": \"application/pdf\"
-        },
-        \"params\": {
-            \"cpf:inline\": {
-                \"elementsToExtract\": [
-                    \"text\"
-                ]
-            }
-        }
-    },
-    \"cpf:outputs\": {
-        \"elementsInfo\": {
-            \"cpf:location\": \"jsonoutput\",
-            \"dc:format\": \"application/json\"
-        },
-        \"elementsRenditions\": {
-            \"cpf:location\": \"fileoutpart\",
-            \"dc:format\": \"text/directory\"
-        }
-    }
-} "' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
-```
-
 ## Extract Text and Tables
 
 The sample below extracts text and table element information from a PDF document and returns a JSON file along with table data in XLSX format.
 
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java,.NET, Node JS, Python, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java,.NET, Node JS, Python" /> 
 
 #### Java
 
@@ -622,50 +586,11 @@ namespace ExtractTextTableInfoFromPDF
       logging.exception("Exception encountered while executing operation")
 ```
 
-#### Rest API
-
-```javascript
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
---header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-    \"cpf:engine\": {
-        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
-    },
-    \"cpf:inputs\": {
-        \"documentIn\": {
-            \"cpf:location\": \"InputFile0\",
-            \"dc:format\": \"application/pdf\"
-        },
-        \"params\": {
-            \"cpf:inline\": {
-                \"elementsToExtract\": [
-                    \"text\", \"tables\"
-                ]
-            }
-        }
-    },
-    \"cpf:outputs\": {
-        \"elementsInfo\": {
-            \"cpf:location\": \"jsonoutput\",
-            \"dc:format\": \"application/json\"
-        },
-        \"elementsRenditions\": {
-            \"cpf:location\": \"fileoutpart\",
-            \"dc:format\": \"text/directory\"
-        }
-    }
-} "' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
-```
-
 ## Extract Text and Tables (w/ Tables Renditions)
 
 The sample below extracts text and table element information as well as table renditions from a PDF Document. Note that the output is a zip containing the structured information in a JSON file along with table renditions in PNG and XLSX format.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python" /> 
 
 #### Java
 
@@ -888,51 +813,11 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
       logging.exception("Exception encountered while executing operation")
 ```
 
-#### Rest API
-
-```javascript
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
---header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-    \"cpf:engine\": {
-        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
-    },
-    \"cpf:inputs\": {
-        \"documentIn\": {
-            \"cpf:location\": \"InputFile0\",
-            \"dc:format\": \"application/pdf\"
-        },
-        \"params\": {
-            \"cpf:inline\": {
-                \"elementsToExtract\": [
-                    \"text\", \"tables\"
-                ],
-                \"renditionsToExtract\": [ \"tables\"]
-            }
-        }
-    },
-    \"cpf:outputs\": {
-        \"elementsInfo\": {
-            \"cpf:location\": \"jsonoutput\",
-            \"dc:format\": \"application/json\"
-        },
-        \"elementsRenditions\": {
-            \"cpf:location\": \"fileoutpart\",
-            \"dc:format\": \"text/directory\"
-        }
-    }
-} "' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
-```
-
 ## Extract Text and Tables (w/ Tables and Figures Renditions)
 
 The sample below extracts text and table elements information as well as table and figure renditions from a PDF Document. Note that the output is a zip containing the structured information in a JSON file along with figure renditions as PNGs and table renditions in PNG and XLSX format.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python" /> 
 
 #### Java
 
@@ -1154,52 +1039,12 @@ try {
       logging.exception("Exception encountered while executing operation")
 ```
 
-#### Rest API
-
-```javascript
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
---header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-    \"cpf:engine\": {
-        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
-    },
-    \"cpf:inputs\": {
-        \"documentIn\": {
-            \"cpf:location\": \"InputFile0\",
-            \"dc:format\": \"application/pdf\"
-        },
-        \"params\": {
-            \"cpf:inline\": {
-                \"elementsToExtract\": [
-                    \"text\", \"tables\"
-                ],
-                \"renditionsToExtract\": [ \"tables\", \"figures\"]
-            }
-        }
-    },
-    \"cpf:outputs\": {
-        \"elementsInfo\": {
-            \"cpf:location\": \"jsonoutput\",
-            \"dc:format\": \"application/json\"
-        },
-        \"elementsRenditions\": {
-            \"cpf:location\": \"fileoutpart\",
-            \"dc:format\": \"text/directory\"
-        }
-    }
-} "' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
-```
-
 ## Extract Text and Tables and Character Bounding Boxes (w/ Renditions)
 
 The sample below extracts table renditions and bounding boxes for characters present in text blocks (paragraphs, list, headings), in addition to text and table element information from a PDF Document. Note that the output is a zip containing the structured information along with table renditions in PNG and XLSX format.
 
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python" /> 
 
 #### Java
 
@@ -1421,52 +1266,12 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
       logging.exception("Exception encountered while executing operation")
 ```
 
-#### Rest API
-
-```javascript
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
---header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-    \"cpf:engine\": {
-        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
-    },
-    \"cpf:inputs\": {
-        \"documentIn\": {
-            \"cpf:location\": \"InputFile0\",
-            \"dc:format\": \"application/pdf\"
-        },
-        \"params\": {
-            \"cpf:inline\": {
-                \"elementsToExtract\": [
-                    \"text\", \"tables\"
-                ],
-                \"renditionsToExtract\": [ \"tables\", \"figures\"]
-            }
-        }
-    },
-    \"cpf:outputs\": {
-        \"elementsInfo\": {
-            \"cpf:location\": \"jsonoutput\",
-            \"dc:format\": \"application/json\"
-        },
-        \"elementsRenditions\": {
-            \"cpf:location\": \"fileoutpart\",
-            \"dc:format\": \"text/directory\"
-        }
-    }
-} "' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
-```
-
 ## Extract Text and Tables and Table Structure as CSV (w/ Renditions)
 
 The sample below adds option to get CSV output for tables in addition to extracting text and table element information as well as table renditions from a PDF Document. Note that the output is a zip containing the structured information along with table renditions in PNG and CSV format.
 
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python" /> 
 
 #### Java
 
@@ -1693,52 +1498,12 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
 
 ```
 
-#### Rest API
-
-```javascript
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
---header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-    \"cpf:engine\": {
-        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
-    },
-    \"cpf:inputs\": {
-        \"documentIn\": {
-            \"cpf:location\": \"InputFile0\",
-            \"dc:format\": \"application/pdf\"
-        },
-        \"params\": {
-            \"cpf:inline\": {
-                \"elementsToExtract\": [
-                    \"text\", \"tables\"
-                ],
-                \"renditionsToExtract\": [ \"tables\", \"figures\"]
-            }
-        }
-    },
-    \"cpf:outputs\": {
-        \"elementsInfo\": {
-            \"cpf:location\": \"jsonoutput\",
-            \"dc:format\": \"application/json\"
-        },
-        \"elementsRenditions\": {
-            \"cpf:location\": \"fileoutpart\",
-            \"dc:format\": \"text/directory\"
-        }
-    }
-} "' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
-```
-
 ## Extract Text and Tables and Styling Info
 
 The sample below adds an option to get styling information for each text element( Bold / Italics / Superscript etc) in addition to extracting text and table element information. Note that the output is a zip containing the structured information along with table renditions in PNG and XLSX format. Please see the [Styling JSON
 schema]( ../../../resources/extractJSONOutputSchemaStylingInfo.json) for reference.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java,.NET, Node JS, Python, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java,.NET, Node JS, Python" /> 
 
 #### Java
 
@@ -1959,44 +1724,4 @@ namespace ExtractTextTableInfoWithStylingFromPDF
       result.save_as(base_path + "/output/ExtractTextInfoWithStylingInfoFromPDF.zip")
   except (ServiceApiException, ServiceUsageException, SdkException):
       logging.exception("Exception encountered while executing operation")
-```
-
-#### Rest API
-
-```javascript
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
---header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-    \"cpf:engine\": {
-        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
-    },
-    \"cpf:inputs\": {
-        \"documentIn\": {
-            \"cpf:location\": \"InputFile0\",
-            \"dc:format\": \"application/pdf\"
-        },
-        \"params\": {
-            \"cpf:inline\": {
-                \"elementsToExtract\": [
-                    \"text\", \"tables\"
-                ],
-                \"renditionsToExtract\": [ \"tables\", \"figures\"]
-            }
-        }
-    },
-    \"cpf:outputs\": {
-        \"elementsInfo\": {
-            \"cpf:location\": \"jsonoutput\",
-            \"dc:format\": \"application/json\"
-        },
-        \"elementsRenditions\": {
-            \"cpf:location\": \"fileoutpart\",
-            \"dc:format\": \"text/directory\"
-        }
-    }
-} "' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
 ```

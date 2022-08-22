@@ -1,4 +1,13 @@
+---
+title: Document Services APIs | How Tos | OCR PDF
+---
 # OCR PDF
+
+Use built-in optical character recognition (OCR) to convert images to text and enable fully text searchable documents for archiving and creation of searchable indexes.
+
+## Rest API 
+
+See our public API Reference for [OCR PDF](../../../apis/#tag/ocr).
 
 ## Text recognition (OCR)
 
@@ -9,7 +18,7 @@ be `application/pdf`.
 
 This sample defaults to the en-us locale. For other languages, see [OCR with explicit language.](#ocr-with-explicit-language)
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, Node JS" /> 
 
 #### Java
 
@@ -147,37 +156,6 @@ This sample defaults to the en-us locale. For other languages, see [OCR with exp
  }
 ```
 
-#### Rest API
-
-```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-ocr
-
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
---header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-7e6a5d2b6bb141d7832398076914a07b\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"application/pdf\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
-```
-
 ## OCR with explicit language
 
 You can perform OCR on files in other languages, including German,
@@ -199,7 +177,7 @@ are two types which produce a different result:
     unchanged. This type produces maximum fidelity to the original
     image.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, Node JS" /> 
 
 #### Java
 
@@ -355,41 +333,4 @@ are two types which produce a different result:
   } catch (err) {
     console.log('Exception encountered while executing operation', err);
   }
-```
-
-#### Rest API
-
-```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-ocr
-
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
---header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"params\": {
-			\"cpf:inline\": {
-				\"ocrLang\": \"en-US\",
-				\"ocrType\": \"searchable_image\"
-			}
-		},
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-7e6a5d2b6bb141d7832398076914a07b\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"application/pdf\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
 ```

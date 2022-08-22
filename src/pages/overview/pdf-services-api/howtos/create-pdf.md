@@ -1,4 +1,15 @@
+---
+title: Document Services APIs | How Tos | Create PDF
+---
 # Create PDF
+
+Create PDFs from a variety of formats, including static and dynamic HTML; Microsoft Word, PowerPoint, and Excel; as well as text, image, Zip, and URL. Support for HTML to PDF, DOC to PDF, DOCX to PDF, PPT to PDF, PPTX to PDF, XLS to PDF, XLSX to PDF, TXT to PDF, RTF to PDF, BMP to PDF, JPEG to PDF, GIF to PDF, TIFF to PDF, PNG to PDF
+
+## Rest API
+
+See our public API Reference for :
+- [Create PDF from Office formats](../../../apis/#tag/createpdf).
+- [Create PDF from HTML](../../../apis/#tag/htmltopdf).
 
 ## Create a PDF
 

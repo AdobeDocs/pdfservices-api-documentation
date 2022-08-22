@@ -1,11 +1,22 @@
+---
+title: Document Services APIs | How Tos | Protect PDF
+---
 # Protect PDF
+
+Secure a PDF file with a password encrypt the document. Set an owner password and restrictions on certain features like printing, editing and copying in the PDF document to prevent end users from modifying it.
+
+Support for AES-128 and AES-256 encryption on PDF files, with granular permissions for high and low quality printing and fill and sign form field restrictions.
+
+## Rest API 
+
+See our public API Reference for [Protect PDF](../../../apis/#tag/protectpdf).
 
 ## Protect PDFs with user password
 
 You can password protect PDFs so that only users with a document open
 password can open the file.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, Node JS" /> 
 
 #### Java
 
@@ -169,45 +180,6 @@ password can open the file.
     }
 ```
 
-#### Rest API
-
-```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-protectPDF
-
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
---header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"params\": {
-			\"cpf:inline\": {
-				\"passwordProtection\": {
-					\"userPassword\": \"user_password\",
-				},
-				\"encryptionAlgorithm\": \"AES_128\"
-			}
-		},
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-627aa455ac5d4c338ad49ca882e0fce5\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"application/pdf\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
-```
-
 ## Protect PDFs with owner password
 
 You can secure a PDF file with owner/permissions password and set the
@@ -216,7 +188,7 @@ the PDF document. Refer to `ContentEncryption` and `Permission` in the
 API docs for a list of supported types of content to encrypt and types
 of document permissions.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, Node JS" /> 
 
 #### Java
 
@@ -406,45 +378,4 @@ of document permissions.
   } catch (err) {
     console.log('Exception encountered while executing operation', err);
   }
-```
-
-#### Rest API
-
-```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-protectPDF
-
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
---header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"params\": {
-			\"cpf:inline\": {
-				\"passwordProtection\": {
-					\"ownerPassword\": \"owner_password\"
-				},
-				\"permissions\": [\"PRINT_LOW_QUALITY\", \"PRINT_HIGH_QUALITY\", \"EDIT_CONTENT\", \"EDIT_FILL_AND_SIGN_FORM_FIELDS\", \"EDIT_ANNOTATIONS\", \"EDIT_DOCUMENT_ASSEMBLY\", \"COPY_CONTENT\"],
-				\"contentToEncrypt\": \"ALL_CONTENT_EXCEPT_METADATA\",
-				\"encryptionAlgorithm\": \"AES_128\"
-			}
-		},
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-627aa455ac5d4c338ad49ca882e0fce5\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"application/pdf\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
 ```
