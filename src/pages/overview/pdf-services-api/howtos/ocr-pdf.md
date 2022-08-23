@@ -170,7 +170,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/ocr' \
     "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
 }'
 
-//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-ocr
+// Please refer our legacy APIs 
+// https://documentcloud.adobe.com/document-services/index.html#post-ocr
 ```
 
 ## OCR with explicit language
@@ -367,5 +368,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/ocr' \
     "ocrLang": "en-US"
 }'
 
-//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-ocr
+// Please refer our legacy APIs 
+// https://documentcloud.adobe.com/document-services/index.html#post-ocr
 ```

@@ -381,7 +381,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
     ]
 }'
 
-//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
+// Please refer our legacy APIs 
+// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables
@@ -628,7 +629,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
     ]
 }'
 
-//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
+// Please refer our legacy APIs 
+// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables (w/ Tables Renditions)
@@ -879,7 +881,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
     ],
 }'
 
-//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
+// Please refer our legacy APIs 
+// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables (w/ Tables and Figures Renditions)
@@ -1130,7 +1133,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
     ]
 }'
 
-//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
+// Please refer our legacy APIs 
+// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables and Character Bounding Boxes (w/ Renditions)
@@ -1383,7 +1387,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
     "getCharBounds": true
 }'
 
-//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
+// Please refer our legacy APIs 
+// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables and Table Structure as CSV (w/ Renditions)
@@ -1639,7 +1644,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
     "tableOutputFormat": "csv"
 }'
 
-//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
+// Please refer our legacy APIs 
+// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables and Styling Info
@@ -1889,5 +1895,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
     "includeStyling": true
 }'
 
-//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
+// Please refer our legacy APIs 
+// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```

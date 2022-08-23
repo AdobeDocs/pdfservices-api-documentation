@@ -182,7 +182,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/createpd
     "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
 }'
 
-//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-createPDF
+// Please refer our legacy APIs 
+// https://documentcloud.adobe.com/document-services/index.html#post-createPDF
 ```
 
 ## Create PDF with DocumentLanguage
@@ -395,7 +396,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/createpd
     "documentLanguage": "en-US"
 }'
 
-//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-createPDF
+// Please refer our legacy APIs 
+// https://documentcloud.adobe.com/document-services/index.html#post-createPDF
 ```
 
 ## Create a PDF from static HTML
@@ -614,7 +616,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
     }
 }'
 
-//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
+// Please refer our legacy APIs 
+// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```
 
 ## Create a PDF from static HTML with inline CSS
@@ -829,7 +832,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
     }
 }'
 
-//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
+// Please refer our legacy APIs 
+// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```
 
 ## Create a PDF File From HTML specified via URL
@@ -1045,7 +1049,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
     }
 }'
 
-//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
+// Please refer our legacy APIs 
+// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```
 
 ## Create a PDF from dynamic HTML
@@ -1291,5 +1296,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
     }
 }'
 
-//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
+// Please refer our legacy APIs 
+// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```

@@ -201,7 +201,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf
     }
 }'
 
-//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
+// Please refer our legacy APIs 
+// https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
 ```
 
 ## Split PDF by page ranges
@@ -441,7 +442,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf
     }
 }'
 
-//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
+// Please refer our legacy APIs 
+// https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
 ```
 
 ## Split PDF into number of files
@@ -638,5 +640,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf
     }
 }'
 
-//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
+// Please refer our legacy APIs 
+// https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
 ```

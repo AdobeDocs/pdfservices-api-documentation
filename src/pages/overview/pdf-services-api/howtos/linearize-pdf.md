@@ -165,5 +165,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/lineariz
     "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
 }'
 
-//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-linearizePDF
+// Please refer our legacy APIs 
+// https://documentcloud.adobe.com/document-services/index.html#post-linearizePDF
 ```
