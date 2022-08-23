@@ -1,1 +1,1 @@
-/Users/labuser/IdeaProjects/pdfservices-api-documentation/src/pages/overview/pdf-electronic-seal-api/quickstarts.md
+../../pdf-electronic-seal-api/quickstarts.md

@@ -222,7 +222,6 @@ module.exports = {
               {
                 title: 'Electronic Seal API',
                 path: 'overview/pdf-services-api/howtos/electronic-seal-api.md',
-                subTitle: 'Early Access Program',
               }
             ]
           },
