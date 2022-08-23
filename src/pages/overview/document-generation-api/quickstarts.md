@@ -307,7 +307,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/document
     }
 }'
 
-//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-documentGeneration
+// Please refer our legacy APIs 
+// https://documentcloud.adobe.com/document-services/index.html#post-documentGeneration
 ```
 
 As a result of the Document Generation API, template tags are replaced
@@ -622,7 +623,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/document
     ]
 }'
 
-//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-documentGeneration
+// Please refer our legacy APIs here 
+// https://documentcloud.adobe.com/document-services/index.html#post-documentGeneration
 ```
 
 ## API Limitations
