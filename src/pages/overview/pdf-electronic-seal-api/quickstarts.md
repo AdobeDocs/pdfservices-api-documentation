@@ -167,7 +167,7 @@ to retrieve the status and asset ID of the output signed PDF. <br/>
 There are two ways to access PDF Electronic Seal API:
 
 #### **2.1 REST API**
-You can use our cloud based REST API to generate seal on PDF documents.
+You can use our cloud based [REST API](../../../apis/#tag/electronicseal) to generate seal on PDF documents.
 
 <InlineAlert slots="text"/>
 
@@ -546,45 +546,43 @@ namespace ESealWithCustomAppearanceOptions
 ##### REST API
 
 ```javascript
-curl --location --request POST 'https://pdf-services-dev.adobe.io/operation/electronicseal'
---header 'Authorization: Bearer {{Placeholder for token}}'
---header 'Accept: application/json, text/plain, */*'
---header 'x-api-key: {{Placeholder for client_id}}'
---header 'Content-Type: application/json'
+curl --location --request POST 'https://pdf-services.adobe.io/operation/electronicseal' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
 --data-raw '{
-    "documentassetID" : "<ASSET_ID>",
-    "logoInassetID" : "<ASSET_ID>",
-    "signatureInassetID" : "<ASSET_ID>",
-    "sealingOptions" : {
-        "signatureType": "SIGN",
-        "signatureFormat": "PADES",
-        "cscCredentialInfo": {
+    "inputDocumentAssetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "sealImageAssetID": "ab400ed7-a097-402b-a93f-8b47cfd3b519",
+    "sealOptions": {
+        "signatureFormat": "PKCS7",
+        "cscCredentialOptions": {
+            "credentialId": "[ADOBE]_xxxx_xx:35",
+            "providerName": "intxxxxxst",
             "authorizationContext": {
-                "accessToken": "<ACCESS TOKEN>",
-                "tokenType": "Bearer"
+                "tokenType": "bearer",
+                "accessToken": "b7338a1f-xxxx-xxxx-xxxx-1eec91c47c12"
             },
             "credentialAuthParameters": {
-                "pin": "<PIN>"
-            },
-            "providerName": "<PROVIDER_NAME>",
-            "credentialId": "<CREDENTIAL_ID>"
-        },
-        "signatureFieldOptions": {
-            "pageNumber": 1,
-            "fieldName": "Signature",
-            "visible": true,
-            "location": {
-                "top": 300,
-                "bottom": 250,
-                "left": 300,
-                "right": 500
+                "pin": "12xxxx65"
             }
         },
-        "signatureAppearanceOptions": {
+        "sealFieldOptions": {
+            "location": {
+                "top": 300,
+                "left": 50,
+                "right": 250,
+                "bottom": 100
+            },
+            "fieldName": "mytestfield",
+            "pageNumber": 1
+        },
+        "sealAppearanceOptions": {
             "displayOptions": [
-            "DATE",
-            "LOGO",
-            "DISTINGUISHED_NAME"
+                "NAME",
+                "DATE",
+                "DISTINGUISHED_NAME",
+                "LABELS",
+                "SEAL_IMAGE"
             ]
         }
     }

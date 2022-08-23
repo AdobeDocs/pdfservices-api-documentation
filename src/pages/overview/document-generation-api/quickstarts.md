@@ -84,7 +84,7 @@ Please allow-list the following hostnames before using Adobe PDF Services SDK:<u
 
 The sample below generates the output document in the **PDF** format. Similarly, you can specify **DOCX** as the **OutputFormat** to generate Word documents.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, Node JS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 ##### Java
 
@@ -268,6 +268,43 @@ The sample below generates the output document in the **PDF** format. Similarly,
  }
 ```
 
+#### Rest API 
+
+```javascript
+curl --location --request POST 'https://pdf-services.adobe.io/operation/documentgeneration' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "outputFormat": "pdf",
+    "jsonDataForMerge": {
+        "customerName": "Kane Miller",
+        "customerVisits": 100,
+        "itemsBought": [
+            {
+                "name": "Sprays",
+                "quantity": 50,
+                "amount": 100
+            },
+            {
+                "name": "Chemicals",
+                "quantity": 100,
+                "amount": 200
+            }
+        ],
+        "totalAmount": 300,
+        "previousBalance": 50,
+        "lastThreeBillings": [
+            100,
+            200,
+            300
+        ],
+        "photograph": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII="
+    }
+}'
+```
+
 As a result of the Document Generation API, template tags are replaced
 with the input JSON data.
 
@@ -278,7 +315,7 @@ with the input JSON data.
 
 The sample below shows the use of **Fragments** in the word template and generates the output document in the **PDF** format.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, Node JS" />
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" />
 
 ##### Java
 
@@ -531,7 +568,51 @@ The sample below shows the use of **Fragments** in the word template and generat
     } catch (err) {
         console.log('Exception encountered while executing operation', err);
     }
+```
 
+#### Rest API 
+
+```javascript
+curl --location --request POST 'https://pdf-services.adobe.io/operation/documentgeneration' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "outputFormat": "pdf",
+    "jsonDataForMerge": {
+        "customerName": "Kane Miller",
+        "customerVisits": 100,
+        "itemsBought": [
+            {
+                "name": "Sprays",
+                "quantity": 50,
+                "amount": 100
+            },
+            {
+                "name": "Chemicals",
+                "quantity": 100,
+                "amount": 200
+            }
+        ],
+        "totalAmount": 300,
+        "previousBalance": 50,
+        "lastThreeBillings": [
+            100,
+            200,
+            300
+        ],
+        "photograph": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII="
+    },
+    "fragments": [
+        {
+            "orderDetails": "<b>Quantity</b>:{{quantity}}, <b>Description</b>:{{description}}, <b>Amount</b>:{{amount}}"
+        },
+        {
+            "customerDetails": "{{customerName}}, Visits: {{customerVisits}}"
+        }
+    ]
+}'
 ```
 
 ## API Limitations

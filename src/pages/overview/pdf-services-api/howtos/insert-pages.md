@@ -14,7 +14,7 @@ See our public API Reference for [Insert Pages](../../../apis/#tag/combinepdf).
 The insert operation inserts additional pages from different PDFs into
 an existing PDF.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, Node JS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -231,4 +231,50 @@ an existing PDF.
     } catch (err) {
       console.log('Exception encountered while executing operation', err);
     }
+```
+
+#### Rest API 
+
+```javascript
+curl --location --request POST 'https://pdf-services.adobe.io/operation/combinepdf' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assets": [
+        {
+            "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+            "pageRanges": [
+                {
+                    "start": 1,
+                    "end": 1
+                }
+            ]
+        },
+        {
+            "assetID": "4f497053-8359-47ed-bc05-c34a0e5e4a8c",
+            "pageRanges": [
+                {
+                    "start": 4
+                }
+            ]
+        },
+        {
+            "assetID": "527a6ad0-086f-4682-be5c-8d340c9c08a1",
+            "pageRanges": [
+                {
+                    "start": 1
+                }
+            ]
+        },
+        {
+            "assetID": "aefd44fb-49ea-43c8-b4aa-ede453ff47b2",
+            "pageRanges": [
+                {
+                    "start": 2
+                }
+            ]
+        }
+    ]
+}'
 ```

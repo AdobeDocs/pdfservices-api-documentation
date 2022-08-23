@@ -19,9 +19,8 @@ such as:
 
 -   Microsoft Office file formats
 -   Text files
--   Images
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, Node JS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -159,6 +158,19 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
  }
 ```
 
+#### Rest API 
+
+```javascript
+curl --location --request POST 'https://pdf-services.adobe.io/operation/exportpdf' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "targetFormat": "docx"
+}'
+```
+
 ## Export a PDF to images
 
 The sample below converts a PDF file to one or more jpeg or png images.
@@ -168,7 +180,7 @@ page. Each image file name ends with
 pages will generate 15 image files. The first file's name ends with
 "\_1" and the last file's name ends with "\_15".
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, Node JS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -307,11 +319,25 @@ pages will generate 15 image files. The first file's name ends with
  }
 ```
 
+#### Rest API 
+
+```javascript
+curl --location --request POST 'https://pdf-services.adobe.io/operation/pdftoimages' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "targetFormat": "jpeg",
+    "outputType": "zipOfPageImages"
+}'
+```
+
 ## Export a PDF to list of images
 
 The sample below converts a PDF file to one or more jpeg or png images.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, Node JS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -461,4 +487,18 @@ try {
 } catch (err) {
     console.log('Exception encountered while executing operation', err);
 }
+```
+
+#### Rest API 
+
+```javascript
+curl --location --request POST 'https://pdf-services.adobe.io/operation/pdftoimages' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "targetFormat": "jpeg",
+    "outputType": "listOfPageImages"
+}'
 ```

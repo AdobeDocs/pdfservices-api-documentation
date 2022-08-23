@@ -14,7 +14,7 @@ See our public API Reference for [Rotate Pages.](../../../apis/#tag/pagemanipula
 The rotate pages operation selectively rotates pages in PDF file. For
 example, you can change portrait view to landscape view.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, Node JS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -243,4 +243,39 @@ example, you can change portrait view to landscape view.
   } catch (err) {
     console.log('Exception encountered while executing operation', err);
   }
+```
+
+#### Rest API 
+
+```javascript
+curl --location --request POST 'https://pdf-services.adobe.io/operation/pagemanipulation' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "pageActions": [
+        {
+            "rotate": {
+                "angle": 90,
+                "pageRanges": [
+                    {
+                        "start": 1
+                    }
+                ]
+            }
+        },
+        {
+            "rotate": {
+                "angle": 180,
+                "pageRanges": [
+                    {
+                        "start": 2,
+                        "end": 2
+                    }
+                ]
+            }
+        }
+    ]
+}'
 ```

@@ -16,7 +16,7 @@ See our public API Reference for [Protect PDF](../../../apis/#tag/protectpdf).
 You can password protect PDFs so that only users with a document open
 password can open the file.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, Node JS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -180,6 +180,22 @@ password can open the file.
     }
 ```
 
+#### Rest API 
+
+```javascript
+curl --location --request POST 'https://pdf-services.adobe.io/operation/protectpdf' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "passwordProtection": {
+        "userPassword": "user_password"
+    },
+    "encryptionAlgorithm": "AES_128",
+    "assetID": "b22fb87c-d75b-4c0f-920c-949862e79f43"
+}'
+```
+
 ## Protect PDFs with owner password
 
 You can secure a PDF file with owner/permissions password and set the
@@ -188,7 +204,7 @@ the PDF document. Refer to `ContentEncryption` and `Permission` in the
 API docs for a list of supported types of content to encrypt and types
 of document permissions.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, Node JS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -378,4 +394,20 @@ of document permissions.
   } catch (err) {
     console.log('Exception encountered while executing operation', err);
   }
+```
+
+#### Rest API 
+
+```javascript
+curl --location --request POST 'https://pdf-services.adobe.io/operation/protectpdf' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+  "passwordProtection": {
+    "ownerPassword": "owner_password"
+  },
+  "encryptionAlgorithm": "AES_256",
+  "assetID": "b5334def-2e00-49ae-b9fd-f9880a905a0f"
+}'
 ```

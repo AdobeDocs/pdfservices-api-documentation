@@ -15,7 +15,7 @@ This operation splits a PDF into multiple smaller documents. Simply use
 the page count to specify the maximum number of pages of each output
 file.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, Node JS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -184,13 +184,28 @@ file.
      
 ```
 
+#### Rest API
+
+```javascript
+curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "splitoption": {
+        "pageCount": 9
+    }
+}'
+```
+
 ## Split PDF by page ranges
 
 As an alternative to creating smaller PDFs with a set number of pages,
 you can split PDFs into multiple smaller documents by specifying page
 ranges where each page range corresponds to a single output file.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, Node JS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -395,6 +410,30 @@ ranges where each page range corresponds to a single output file.
   }
 ```
 
+#### Rest API 
+
+```javascript
+curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "splitoption": {
+        "pageRanges": [
+            {
+                "start": 2,
+                "end": 4
+            },
+            {
+                "start": 7,
+                "end": 9
+            }
+        ]
+    }
+}'
+```
+
 ## Split PDF into number of files
 
 As an alternative to creating smaller PDFs by specifying a set number of
@@ -402,7 +441,7 @@ pages or a page range, you can split PDFs by file count. In this case,
 the operation creates the specified number of files with each containing
 an identical number of pages (if possible).
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, Node JS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -570,4 +609,19 @@ an identical number of pages (if possible).
    } catch (err) {
      console.log('Exception encountered while executing operation', err);
    }
+```
+
+#### Rest API 
+
+```javascript
+curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "splitoption": {
+        "fileCount": 3
+    }
+}'
 ```

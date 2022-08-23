@@ -156,32 +156,13 @@ operations that use bandwidth or memory.
 #### Rest API
 
 ```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-compressPDF
-
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/compresspdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-f37d36f4e6724eed92149a8ff35ea061\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"application/pdf\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
+}'
 ```
 
 ## Compress PDFs with Compression Level
@@ -349,35 +330,12 @@ list of supported compression levels.
 #### Rest API
 
 ```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-compressPDF
-
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/compresspdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"params\": {
-			\"cpf:inline\": {
-				\"compressionLevel\": \"MEDIUM\"
-			}
-		},
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-f37d36f4e6724eed92149a8ff35ea061\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"application/pdf\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "compressionLevel": "MEDIUM"
+}'
 ```
