@@ -59,7 +59,7 @@ Once you are ready with the Word-based document template and the JSON data, the 
 There are two ways to access the Document Generation API:
 
 **3.1. REST API** <br/>
-You can use our cloud based [REST API]() to generate documents.
+You can use our cloud based [REST API](../../../apis/#tag/documentgeneration) to generate documents.
 
 <InlineAlert slots="text"/>
 
