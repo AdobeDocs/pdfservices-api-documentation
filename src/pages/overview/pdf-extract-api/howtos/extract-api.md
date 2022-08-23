@@ -367,6 +367,9 @@ namespace ExtractTextInfoFromPDF
 #### Rest API 
 
 ```javascript
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/extractpdf
+
 curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
 --header 'Content-Type: application/json' \
@@ -377,6 +380,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
         "text"
     ]
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables
@@ -608,6 +613,9 @@ namespace ExtractTextTableInfoFromPDF
 #### Rest API
 
 ```javascript
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/extractpdf
+
 curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
 --header 'Content-Type: application/json' \
@@ -619,6 +627,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
         "tables"
     ]
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables (w/ Tables Renditions)
@@ -851,6 +861,9 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
 #### Rest API 
 
 ```javascript
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/extractpdf
+
 curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
 --header 'Content-Type: application/json' \
@@ -865,6 +878,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
         "tables"
     ],
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables (w/ Tables and Figures Renditions)
@@ -1096,6 +1111,9 @@ try {
 #### Rest API 
 
 ```javascript
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/extractpdf
+
 curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
 --header 'Content-Type: application/json' \
@@ -1111,6 +1129,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
         "tables"
     ]
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables and Character Bounding Boxes (w/ Renditions)
@@ -1343,6 +1363,9 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
 #### Rest API 
 
 ```javascript
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/extractpdf
+
 curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
 --header 'Content-Type: application/json' \
@@ -1359,6 +1382,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
     ],
     "getCharBounds": true
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables and Table Structure as CSV (w/ Renditions)
@@ -1595,6 +1620,9 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
 #### Rest API 
 
 ```javascript
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/extractpdf
+
 curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
 --header 'Content-Type: application/json' \
@@ -1610,6 +1638,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
     ],
     "tableOutputFormat": "csv"
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables and Styling Info
@@ -1843,6 +1873,9 @@ namespace ExtractTextTableInfoWithStylingFromPDF
 #### Rest API 
 
 ```javascript
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/extractpdf
+
 curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
 --header 'Content-Type: application/json' \
@@ -1855,4 +1888,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
     ],
     "includeStyling": true
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```

@@ -324,6 +324,9 @@ pages will generate 15 image files. The first file's name ends with
 #### Rest API 
 
 ```javascript
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/exportpdf
+
 curl --location --request POST 'https://pdf-services.adobe.io/operation/pdftoimages' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
 --header 'Content-Type: application/json' \
@@ -496,6 +499,9 @@ try {
 #### Rest API 
 
 ```javascript
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/exportpdf
+
 curl --location --request POST 'https://pdf-services.adobe.io/operation/pdftoimages' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
 --header 'Content-Type: application/json' \

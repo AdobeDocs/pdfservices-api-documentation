@@ -160,6 +160,9 @@ This sample combines up to 20 PDF files into a single PDF file.
 #### Rest API
 
 ```javascript
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/combinepdf
+
 curl --location --request POST 'https://pdf-services.adobe.io/operation/combinepdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
 --header 'Content-Type: application/json' \
@@ -413,6 +416,9 @@ ranges for each file to combine in the output file.
 #### Rest API
 
 ```javascript
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/combinepdf
+
 curl --location --request POST 'https://pdf-services.adobe.io/operation/combinepdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
 --header 'Content-Type: application/json' \

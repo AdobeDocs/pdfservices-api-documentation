@@ -168,6 +168,9 @@ Use the below sample to remove security from a PDF document.
 #### Rest API
 
 ```javascript
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/removeprotection
+
 curl --location --request POST 'https://pdf-services.adobe.io/operation/removeprotection' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
 --header 'Content-Type: application/json' \

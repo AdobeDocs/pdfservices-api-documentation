@@ -183,6 +183,9 @@ password can open the file.
 #### Rest API 
 
 ```javascript
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/protectpdf
+
 curl --location --request POST 'https://pdf-services.adobe.io/operation/protectpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
 --header 'Content-Type: application/json' \
@@ -401,6 +404,9 @@ of document permissions.
 #### Rest API 
 
 ```javascript
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/protectpdf
+
 curl --location --request POST 'https://pdf-services.adobe.io/operation/protectpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
 --header 'Content-Type: application/json' \

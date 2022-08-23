@@ -187,6 +187,9 @@ file.
 #### Rest API
 
 ```javascript
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/splitpdf
+
 curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
 --header 'Content-Type: application/json' \
@@ -415,6 +418,9 @@ ranges where each page range corresponds to a single output file.
 #### Rest API 
 
 ```javascript
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/splitpdf
+
 curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
 --header 'Content-Type: application/json' \
@@ -618,6 +624,9 @@ an identical number of pages (if possible).
 #### Rest API 
 
 ```javascript
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/splitpdf
+
 curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
 --header 'Content-Type: application/json' \

@@ -271,6 +271,9 @@ The sample below generates the output document in the **PDF** format. Similarly,
 #### Rest API 
 
 ```javascript
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/documentgeneration
+
 curl --location --request POST 'https://pdf-services.adobe.io/operation/documentgeneration' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
 --header 'Content-Type: application/json' \
@@ -303,6 +306,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/document
         "photograph": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII="
     }
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-documentGeneration
 ```
 
 As a result of the Document Generation API, template tags are replaced
@@ -573,6 +578,9 @@ The sample below shows the use of **Fragments** in the word template and generat
 #### Rest API 
 
 ```javascript
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/documentgeneration
+
 curl --location --request POST 'https://pdf-services.adobe.io/operation/documentgeneration' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
 --header 'Content-Type: application/json' \
@@ -613,6 +621,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/document
         }
     ]
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-documentGeneration
 ```
 
 ## API Limitations

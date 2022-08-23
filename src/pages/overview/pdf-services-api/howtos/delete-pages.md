@@ -201,6 +201,9 @@ The delete pages operation selectively removes pages from a PDF file.
 #### Rest API
 
 ```javascript
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/pagemanipulation
+
 curl --location --request POST 'https://pdf-services.adobe.io/operation/pagemanipulation' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
 --header 'Content-Type: application/json' \

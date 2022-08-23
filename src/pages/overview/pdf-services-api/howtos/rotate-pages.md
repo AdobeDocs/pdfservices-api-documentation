@@ -248,6 +248,9 @@ example, you can change portrait view to landscape view.
 #### Rest API 
 
 ```javascript
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/pagemanipulation
+
 curl --location --request POST 'https://pdf-services.adobe.io/operation/pagemanipulation' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
 --header 'Content-Type: application/json' \
