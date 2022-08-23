@@ -14,7 +14,7 @@ See our public API Reference for [Reorder Pages](../../../apis/#tag/combinepdf).
 The reorder pages operation moves pages from one location to another in
 a PDF file.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, Node JS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -196,4 +196,34 @@ a PDF file.
  } catch (err) {
    console.log('Exception encountered while executing operation', err);
  }
+```
+
+#### Rest API 
+
+```javascript
+curl --location --request POST 'https://pdf-services.adobe.io/operation/combinepdf' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assets": [
+        {
+            "assetID": "ebe92ced-7893-4f8d-9ece-1579030dd981",
+            "pageRanges": [
+                {
+                    "start": 3,
+                    "end": 3
+                },
+                {
+                    "start": 1,
+                    "end": 1
+                },
+                {
+                    "start": 4,
+                    "end": 4
+                }
+            ]
+        }
+    ]
+}'
 ```

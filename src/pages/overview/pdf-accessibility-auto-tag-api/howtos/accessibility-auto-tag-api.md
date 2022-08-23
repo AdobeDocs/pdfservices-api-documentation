@@ -59,7 +59,7 @@ See our public API Reference for [PDF Accessibility Auto-Tag API](../../../apis/
 The sample below generate tagged PDF of version 1.7 along with an XLSX report and shift the headings in the output PDF file.
 
 
-<CodeBlock slots="heading, code" repeat="2" languages="Java, Python" /> 
+<CodeBlock slots="heading, code" repeat="3" languages="Java, Python, Rest API" /> 
 
 #### Java
 
@@ -162,12 +162,26 @@ except (ServiceApiException, ServiceUsageException, SdkException) as e:
     logging.exception(f'Exception encountered while executing operation: {e}')
 ```
 
+#### Rest API 
+
+```javascript
+curl --location --request POST 'https://pdf-services.adobe.io/operation/autotag' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "shiftHeadings": true,
+    "generateReport": true
+}'
+```
+
 
 ## Generate tagged PDF from a PDF
 
 The sample below generates tagged PDF from a PDF.
 
-<CodeBlock slots="heading, code" repeat="2" languages="Java, Python" /> 
+<CodeBlock slots="heading, code" repeat="3" languages="Java, Python, Rest API" /> 
 
 #### Java
 
@@ -250,6 +264,18 @@ try:
 
 except (ServiceApiException, ServiceUsageException, SdkException) as e:
     logging.exception(f'Exception encountered while executing operation: {e}')
+```
+
+#### Rest API 
+
+```javascript
+curl --location --request POST 'https://pdf-services.adobe.io/operation/autotag' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
+}'
 ```
 
 ## Generates tagged PDF by setting options with command line arguments

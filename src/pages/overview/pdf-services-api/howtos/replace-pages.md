@@ -14,7 +14,7 @@ See our public API Reference for [Replace Pages](../../../apis/#tag/combinepdf).
 The replace pages operation replaces pages in a PDF with pages from
 other PDF files.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, Node JS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -229,4 +229,42 @@ other PDF files.
      } catch (err) {
        console.log('Exception encountered while executing operation', err);
      }
+```
+
+#### Rest API 
+
+```javascript
+curl --location --request POST 'https://pdf-services.adobe.io/operation/combinepdf' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assets": [
+        {
+            "assetID": "756126c4-5344-40c3-aeb6-7808c9355d2b",
+            "pageRanges": [
+                {
+                    "start": 1,
+                    "end": 1
+                }
+            ]
+        },
+        {
+            "assetID": "b7d60b0c-aad0-445a-ac3d-637d3fad84df",
+            "pageRanges": [
+                {
+                    "start": 2
+                }
+            ]
+        },
+        {
+            "assetID": "65955c3a-a430-4bf8-ac68-1ccefc426cb2",
+            "pageRanges": [
+                {
+                    "start": 3
+                }
+            ]
+        }
+    ]
+}'
 ```

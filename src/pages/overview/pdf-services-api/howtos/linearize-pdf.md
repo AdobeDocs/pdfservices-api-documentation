@@ -14,7 +14,7 @@ See our public API Reference for [Linearize PDF](../../../apis/#tag/linearizepdf
 Linearizing a PDF creates a web-optimized PDF file which supports
 incremental access in network environments.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, Node JS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -149,4 +149,16 @@ incremental access in network environments.
    } catch (err) {
      console.log('Exception encountered while executing operation', err);
    }
+```
+
+#### Rest API 
+
+```javascript
+curl --location --request POST 'https://pdf-services.adobe.io/operation/linearizepdf' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
+}'
 ```

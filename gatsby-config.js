@@ -207,12 +207,21 @@ module.exports = {
                 path: 'overview/pdf-services-api/howtos/extract-pdf.md'
               },
               {
+                title: 'Document Generation',
+                path: 'overview/pdf-services-api/howtos/document-generation.md'
+              },
+              {
                 title: 'Get PDF Properties',
                 path: 'overview/pdf-services-api/howtos/pdf-properties.md'
               },
               {
                 title: 'Accessibility Auto-Tag PDF',
                 path: 'overview/pdf-services-api/howtos/accessibility-auto-tag-pdf.md',
+                subTitle: 'Early Access Program',
+              },
+              {
+                title: 'Electronic Seal API',
+                path: 'overview/pdf-services-api/howtos/electronic-seal-api.md',
                 subTitle: 'Early Access Program',
               }
             ]
