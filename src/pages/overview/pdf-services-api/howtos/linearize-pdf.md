@@ -7,7 +7,7 @@ Optimize PDFs for quick viewing on the web, especially for mobile clients. Linea
 
 ## Rest API 
 
-See our public API Reference for [Linearize PDF](../../../apis/#tag/linearizepdf).
+See our public API Reference for [Linearize PDF](../../../apis/#tag/linearizepdf)
 
 ## Linearize PDF
 
@@ -161,4 +161,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/lineariz
 --data-raw '{
     "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-linearizePDF
 ```

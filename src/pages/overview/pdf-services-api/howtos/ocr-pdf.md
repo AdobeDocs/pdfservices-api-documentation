@@ -7,7 +7,7 @@ Use built-in optical character recognition (OCR) to convert images to text and e
 
 ## Rest API 
 
-See our public API Reference for [OCR PDF](../../../apis/#tag/ocr).
+See our public API Reference for [OCR PDF](../../../apis/#tag/ocr)
 
 ## Text recognition (OCR)
 
@@ -166,6 +166,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/ocr' \
 --data-raw '{
     "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-ocr
 ```
 
 ## OCR with explicit language
@@ -189,7 +191,7 @@ are two types which produce a different result:
     unchanged. This type produces maximum fidelity to the original
     image.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, Node JS" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -358,4 +360,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/ocr' \
     "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
     "ocrLang": "en-US"
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-ocr
 ```

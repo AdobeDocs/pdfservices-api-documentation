@@ -7,7 +7,7 @@ Rotate a page in an existing document.
 
 ## Rest API
 
-See our public API Reference for [Rotate Pages.](../../../apis/#tag/pagemanipulation).
+See our public API Reference for [Rotate Pages.](../../../apis/#tag/pagemanipulation)
 
 ## Rotate Pages in PDF
 
@@ -278,4 +278,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/pagemani
         }
     ]
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-pageManipulation
 ```

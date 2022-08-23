@@ -220,8 +220,9 @@ module.exports = {
                 subTitle: 'Early Access Program',
               },
               {
-                title: 'Electronic Seal API',
+                title: 'PDF Electronic Seal API',
                 path: 'overview/pdf-services-api/howtos/electronic-seal-api.md',
+                subTitle: 'Early Access Program',
               }
             ]
           },
@@ -295,7 +296,8 @@ module.exports = {
         ]
       },
       {
-        title: 'PDF Electronic Seal API',
+        title: 'PDF Electronic Seal API                       ',
+        subTitle: 'Early Access Program',
         path: 'overview/pdf-electronic-seal-api/index.md',
         pages: [
           {

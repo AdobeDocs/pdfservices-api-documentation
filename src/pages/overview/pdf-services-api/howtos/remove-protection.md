@@ -7,7 +7,7 @@ Remove password security from a PDF document. This can only be accomplished with
 
 ## Rest API 
 
-See our public API Reference for [Remove Protection](../../../apis/#tag/removeprotection).
+See our public API Reference for [Remove Protection](../../../apis/#tag/removeprotection)
 
 ## Remove security from PDFs
 
@@ -176,4 +176,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/removepr
     "password": "mypassword",
     "assetID": "13d7271e-ce46-4298-ab3f-73b3c204677b"
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-removeProtection
 ```

@@ -9,7 +9,7 @@ Support for AES-128 and AES-256 encryption on PDF files, with granular permissio
 
 ## Rest API 
 
-See our public API Reference for [Protect PDF](../../../apis/#tag/protectpdf).
+See our public API Reference for [Protect PDF](../../../apis/#tag/protectpdf)
 
 ## Protect PDFs with user password
 
@@ -194,6 +194,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/protectp
     "encryptionAlgorithm": "AES_128",
     "assetID": "b22fb87c-d75b-4c0f-920c-949862e79f43"
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-protectPDF
 ```
 
 ## Protect PDFs with owner password
@@ -410,4 +412,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/protectp
   "encryptionAlgorithm": "AES_256",
   "assetID": "b5334def-2e00-49ae-b9fd-f9880a905a0f"
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-protectPDF
 ```

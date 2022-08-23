@@ -8,8 +8,8 @@ Create PDFs from a variety of formats, including static and dynamic HTML; Micros
 ## Rest API
 
 See our public API Reference for :
-- [Create PDF from Office formats](../../../apis/#tag/createpdf).
-- [Create PDF from HTML](../../../apis/#tag/htmltopdf).
+- [Create PDF from Office formats](../../../apis/#tag/createpdf)
+- [Create PDF from HTML](../../../apis/#tag/htmltopdf)
 
 ## Create a PDF
 
@@ -178,6 +178,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/createpd
 --data-raw '{
     "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-createPDF
 ```
 
 ## Create PDF with DocumentLanguage
@@ -386,6 +388,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/createpd
     "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
     "documentLanguage": "en-US"
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-createPDF
 ```
 
 ## Create a PDF from static HTML
@@ -600,6 +604,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
         "pageHeight": 8.5
     }
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```
 
 ## Create a PDF from static HTML with inline CSS
@@ -810,6 +816,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
         "pageHeight": 8.5
     }
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```
 
 ## Create a PDF File From HTML specified via URL
@@ -1021,6 +1029,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
         "pageHeight": 8.5
     }
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```
 
 ## Create a PDF from dynamic HTML
@@ -1262,4 +1272,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
         "pageHeight": 8.5
     }
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```

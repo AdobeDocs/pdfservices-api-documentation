@@ -8,8 +8,8 @@ Export a source PDF file into doc, docx, jpeg, png, pptx, rtf, xlsx.
 ## Rest API 
 
 See our public API Reference for : 
-- [Export PDF to Office format or text files](../../../apis/#tag/exportpdf).
-- [Export PDF to Images](../../../apis/#tag/pdftoimages).
+- [Export PDF to Office format or text files](../../../apis/#tag/exportpdf)
+- [Export PDF to Images](../../../apis/#tag/pdftoimages)
 
 ## Export a PDF
 
@@ -169,6 +169,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/exportpd
     "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
     "targetFormat": "docx"
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
 ```
 
 ## Export a PDF to images
@@ -331,6 +333,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/pdftoima
     "targetFormat": "jpeg",
     "outputType": "zipOfPageImages"
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
 ```
 
 ## Export a PDF to list of images
@@ -501,4 +505,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/pdftoima
     "targetFormat": "jpeg",
     "outputType": "listOfPageImages"
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
 ```

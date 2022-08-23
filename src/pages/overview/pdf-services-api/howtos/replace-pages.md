@@ -7,7 +7,7 @@ Replace one or more pages with another page in an existing document
 
 ## Rest API 
 
-See our public API Reference for [Replace Pages](../../../apis/#tag/combinepdf).
+See our public API Reference for [Replace Pages](../../../apis/#tag/combinepdf)
 
 ## Replace Pages in PDF
 
@@ -267,4 +267,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/combinep
         }
     ]
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-combinePDF
 ```

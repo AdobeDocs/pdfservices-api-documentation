@@ -9,7 +9,7 @@ Support for multiple compression levels to retain the quality of images and grap
 
 ## Rest API
 
-See our public API Reference for [Compress PDF.](../../../apis/#tag/compresspdf)
+See our public API Reference for [Compress PDF](../../../apis/#tag/compresspdf)
 
 ## Compress PDFs
 
@@ -163,6 +163,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/compress
 --data-raw '{
     "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-compressPDF
 ```
 
 ## Compress PDFs with Compression Level
@@ -338,4 +340,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/compress
     "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
     "compressionLevel": "MEDIUM"
 }'
+
+//Please refer our legacy APIs here : https://documentcloud.adobe.com/document-services/index.html#post-compressPDF
 ```
