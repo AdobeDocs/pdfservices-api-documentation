@@ -178,7 +178,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/combinep
     ]
 }'
 
-// Please refer our legacy APIs
+// Legacy API can be found here
 // https://documentcloud.adobe.com/document-services/index.html#post-combinePDF
 ```
 
@@ -447,6 +447,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/combinep
     ]
 }'
 
-// Please refer our legacy APIs 
+// Legacy API can be found here 
 // https://documentcloud.adobe.com/document-services/index.html#post-combinePDF
 ```

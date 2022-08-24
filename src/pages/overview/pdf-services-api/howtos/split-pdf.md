@@ -201,7 +201,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf
     }
 }'
 
-// Please refer our legacy APIs 
+// Legacy API can be found here 
 // https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
 ```
 
@@ -442,7 +442,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf
     }
 }'
 
-// Please refer our legacy APIs 
+// Legacy API can be found here 
 // https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
 ```
 
@@ -640,6 +640,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf
     }
 }'
 
-// Please refer our legacy APIs 
+// Legacy API can be found here 
 // https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
 ```

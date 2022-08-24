@@ -167,7 +167,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/compress
     "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
 }'
 
-// Please refer our legacy APIs 
+// Legacy API can be found here 
 // https://documentcloud.adobe.com/document-services/index.html#post-compressPDF
 ```
 
@@ -348,6 +348,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/compress
     "compressionLevel": "MEDIUM"
 }'
 
-// Please refer our legacy APIs 
+// Legacy API can be found here 
 // https://documentcloud.adobe.com/document-services/index.html#post-compressPDF
 ```

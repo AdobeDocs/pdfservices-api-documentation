@@ -173,7 +173,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/exportpd
     "targetFormat": "docx"
 }'
 
-// Please refer our legacy APIs 
+// Legacy API can be found here 
 // https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
 ```
 
@@ -341,7 +341,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/pdftoima
     "outputType": "zipOfPageImages"
 }'
 
-// Please refer our legacy APIs 
+// Legacy API can be found here 
 // https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
 ```
 
@@ -517,6 +517,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/pdftoima
     "outputType": "listOfPageImages"
 }'
 
-// Please refer our legacy APIs 
+// Legacy API can be found here 
 // https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
 ```

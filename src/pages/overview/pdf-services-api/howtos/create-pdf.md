@@ -182,7 +182,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/createpd
     "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
 }'
 
-// Please refer our legacy APIs 
+// Legacy API can be found here 
 // https://documentcloud.adobe.com/document-services/index.html#post-createPDF
 ```
 
@@ -396,7 +396,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/createpd
     "documentLanguage": "en-US"
 }'
 
-// Please refer our legacy APIs 
+// Legacy API can be found here 
 // https://documentcloud.adobe.com/document-services/index.html#post-createPDF
 ```
 
@@ -616,7 +616,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
     }
 }'
 
-// Please refer our legacy APIs 
+// Legacy API can be found here 
 // https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```
 
@@ -832,7 +832,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
     }
 }'
 
-// Please refer our legacy APIs 
+// Legacy API can be found here 
 // https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```
 
@@ -1049,7 +1049,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
     }
 }'
 
-// Please refer our legacy APIs 
+// Legacy API can be found here 
 // https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```
 
@@ -1296,6 +1296,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
     }
 }'
 
-// Please refer our legacy APIs 
+// Legacy API can be found here 
 // https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```

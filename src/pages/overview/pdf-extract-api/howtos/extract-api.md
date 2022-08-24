@@ -381,7 +381,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
     ]
 }'
 
-// Please refer our legacy APIs 
+// Legacy API can be found here 
 // https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
@@ -629,7 +629,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
     ]
 }'
 
-// Please refer our legacy APIs 
+// Legacy API can be found here 
 // https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
@@ -881,7 +881,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
     ],
 }'
 
-// Please refer our legacy APIs 
+// Legacy API can be found here 
 // https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
@@ -1133,7 +1133,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
     ]
 }'
 
-// Please refer our legacy APIs 
+// Legacy API can be found here 
 // https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
@@ -1387,7 +1387,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
     "getCharBounds": true
 }'
 
-// Please refer our legacy APIs 
+// Legacy API can be found here 
 // https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
@@ -1644,7 +1644,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
     "tableOutputFormat": "csv"
 }'
 
-// Please refer our legacy APIs 
+// Legacy API can be found here 
 // https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
@@ -1895,6 +1895,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
     "includeStyling": true
 }'
 
-// Please refer our legacy APIs 
+// Legacy API can be found here 
 // https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```

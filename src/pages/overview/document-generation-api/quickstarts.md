@@ -307,7 +307,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/document
     }
 }'
 
-// Please refer our legacy APIs 
+// Legacy API can be found here 
 // https://documentcloud.adobe.com/document-services/index.html#post-documentGeneration
 ```
 
@@ -623,7 +623,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/document
     ]
 }'
 
-// Please refer our legacy APIs here 
+// Legacy API can be found here 
 // https://documentcloud.adobe.com/document-services/index.html#post-documentGeneration
 ```
 
