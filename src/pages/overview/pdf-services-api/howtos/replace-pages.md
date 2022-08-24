@@ -7,7 +7,7 @@ Replace one or more pages with another page in an existing document
 
 ## Rest API 
 
-See our public API Reference for [Replace Pages](../../../apis/#tag/combinepdf)
+See our public API Reference for [Replace Pages](../../../apis/#tag/Combine-PDF)
 
 ## Replace Pages in PDF
 
@@ -235,7 +235,7 @@ other PDF files.
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/combinepdf
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Combine-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/combinepdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \

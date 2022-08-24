@@ -7,7 +7,7 @@ Delete one or more pages from a document
 
 ## Rest API
 
-See our public API Reference for [Delete Pages](../../../apis/#tag/pagemanipulation)
+See our public API Reference for [Delete Pages](../../../apis/#tag/Page-Manipulation)
 
 ## Delete Pages in a PDF
 
@@ -202,7 +202,7 @@ The delete pages operation selectively removes pages from a PDF file.
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/pagemanipulation
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Page-Manipulation
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/pagemanipulation' \
 --header 'x-api-key: {{Placeholder for client_id}}' \

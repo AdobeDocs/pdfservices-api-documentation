@@ -59,7 +59,7 @@ Once you are ready with the Word-based document template and the JSON data, the 
 There are two ways to access the Document Generation API:
 
 **3.1. REST API** <br/>
-You can use our cloud based [REST API](../../../apis/#tag/documentgeneration) to generate documents.
+You can use our cloud based [REST API](../../../apis/#tag/Document-Generation) to generate documents.
 
 <InlineAlert slots="text"/>
 
@@ -272,7 +272,7 @@ The sample below generates the output document in the **PDF** format. Similarly,
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/documentgeneration
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Document-Generation
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/documentgeneration' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
@@ -580,7 +580,7 @@ The sample below shows the use of **Fragments** in the word template and generat
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/documentgeneration
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Document-Generation
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/documentgeneration' \
 --header 'x-api-key: {{Placeholder for client_id}}' \

@@ -52,7 +52,7 @@ The output of PDF Accessibility Auto-Tag API contains the following:
 
 ## Rest API 
 
-See our public API Reference for [PDF Accessibility Auto-Tag API](../../../apis/#tag/autotag).
+See our public API Reference for [PDF Accessibility Auto-Tag API](../../../apis/#tag/Auto-Tag).
 
 ## Generate tagged PDF with version 1.7 along with an XLSX report and shift the headings in the output PDF file
 
@@ -166,7 +166,7 @@ except (ServiceApiException, ServiceUsageException, SdkException) as e:
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/autotag
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Auto-Tag
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/autotag' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
@@ -273,7 +273,7 @@ except (ServiceApiException, ServiceUsageException, SdkException) as e:
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/autotag
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Auto-Tag
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/autotag' \
 --header 'x-api-key: {{Placeholder for client_id}}' \

@@ -7,7 +7,7 @@ Optimize PDFs for quick viewing on the web, especially for mobile clients. Linea
 
 ## Rest API 
 
-See our public API Reference for [Linearize PDF](../../../apis/#tag/linearizepdf)
+See our public API Reference for [Linearize PDF](../../../apis/#tag/Linearize-PDF)
 
 ## Linearize PDF
 
@@ -155,7 +155,7 @@ incremental access in network environments.
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/linearizepdf
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Linearize-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/linearizepdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \

@@ -7,7 +7,7 @@ Combine two or more documents into a single PDF file
 
 ## Rest API
 
-See our public API Reference for [Combine PDF](../../../apis/#tag/combinepdf)
+See our public API Reference for [Combine PDF](../../../apis/#tag/Combine-PDF)
 
 ## Combine Files
 
@@ -161,7 +161,7 @@ This sample combines up to 20 PDF files into a single PDF file.
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/combinepdf
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Combine-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/combinepdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
@@ -418,7 +418,7 @@ ranges for each file to combine in the output file.
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/combinepdf
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Combine-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/combinepdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \

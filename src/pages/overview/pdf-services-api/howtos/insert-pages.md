@@ -7,7 +7,7 @@ Insert one or more pages into an existing document
 
 ## Rest API 
 
-See our public API Reference for [Insert Pages](../../../apis/#tag/combinepdf)
+See our public API Reference for [Insert Pages](../../../apis/#tag/Combine-PDF)
 
 ## Insert Pages in PDF
 
@@ -237,7 +237,7 @@ an existing PDF.
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/combinepdf
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Combine-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/combinepdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \

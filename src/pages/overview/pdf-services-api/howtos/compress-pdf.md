@@ -9,7 +9,7 @@ Support for multiple compression levels to retain the quality of images and grap
 
 ## Rest API
 
-See our public API Reference for [Compress PDF](../../../apis/#tag/compresspdf)
+See our public API Reference for [Compress PDF](../../../apis/#tag/Compress-PDF)
 
 ## Compress PDFs
 
@@ -157,7 +157,7 @@ operations that use bandwidth or memory.
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/compresspdf
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Compress-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/compresspdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
@@ -337,7 +337,7 @@ list of supported compression levels.
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/compresspdf
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Compress-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/compresspdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \

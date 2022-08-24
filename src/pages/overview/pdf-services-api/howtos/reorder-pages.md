@@ -7,7 +7,7 @@ Reorder the pages of a PDF file to reorganize.
 
 ## Rest API
 
-See our public API Reference for [Reorder Pages](../../../apis/#tag/combinepdf)
+See our public API Reference for [Reorder Pages](../../../apis/#tag/Combine-PDF)
 
 ## Reorder Pages in PDF
 
@@ -202,7 +202,7 @@ a PDF file.
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/combinepdf
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Combine-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/combinepdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \

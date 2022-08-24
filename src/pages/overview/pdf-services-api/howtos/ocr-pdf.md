@@ -7,7 +7,7 @@ Use built-in optical character recognition (OCR) to convert images to text and e
 
 ## Rest API 
 
-See our public API Reference for [OCR PDF](../../../apis/#tag/ocr)
+See our public API Reference for [OCR PDF](../../../apis/#tag/Ocr)
 
 ## Text recognition (OCR)
 
@@ -160,7 +160,7 @@ This sample defaults to the en-us locale. For other languages, see [OCR with exp
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/ocr
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Ocr
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/ocr' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
@@ -357,7 +357,7 @@ are two types which produce a different result:
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/ocr
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Ocr
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/ocr' \
 --header 'x-api-key: {{Placeholder for client_id}}' \

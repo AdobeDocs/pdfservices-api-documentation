@@ -8,8 +8,8 @@ Export a source PDF file into doc, docx, jpeg, png, pptx, rtf, xlsx.
 ## Rest API 
 
 See our public API Reference for : 
-- [Export PDF to Office format or text files](../../../apis/#tag/exportpdf)
-- [Export PDF to Images](../../../apis/#tag/pdftoimages)
+- [Export PDF to Office format or text files](../../../apis/#tag/Export-PDF)
+- [Export PDF to Images](../../../apis/#tag/PDF-To-Images)
 
 ## Export a PDF
 
@@ -162,7 +162,7 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/exportpdf
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Export-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/exportpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
@@ -329,7 +329,7 @@ pages will generate 15 image files. The first file's name ends with
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/pdftoimages
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/PDF-To-Images
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/pdftoimages' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
@@ -505,7 +505,7 @@ try {
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/pdftoimages
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/PDF-To-Images
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/pdftoimages' \
 --header 'x-api-key: {{Placeholder for client_id}}' \

@@ -9,7 +9,7 @@ Support for AES-128 and AES-256 encryption on PDF files, with granular permissio
 
 ## Rest API 
 
-See our public API Reference for [Protect PDF](../../../apis/#tag/protectpdf)
+See our public API Reference for [Protect PDF](../../../apis/#tag/Protect-PDF)
 
 ## Protect PDFs with user password
 
@@ -184,7 +184,7 @@ password can open the file.
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/protectpdf
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Protect-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/protectpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
@@ -406,7 +406,7 @@ of document permissions.
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/protectpdf
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Protect-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/protectpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \

@@ -7,7 +7,7 @@ Split a PDF document into multiple smaller documents by simply specifying either
 
 ## Rest API 
 
-See our public API Reference for [Split PDF](../../../apis/#tag/splitpdf).
+See our public API Reference for [Split PDF](../../../apis/#tag/Split-PDF).
 
 ## Split PDF by number of pages
 
@@ -188,7 +188,7 @@ file.
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/splitpdf
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Split-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
@@ -420,7 +420,7 @@ ranges where each page range corresponds to a single output file.
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/splitpdf
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Split-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
@@ -627,7 +627,7 @@ an identical number of pages (if possible).
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/splitpdf
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Split-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \

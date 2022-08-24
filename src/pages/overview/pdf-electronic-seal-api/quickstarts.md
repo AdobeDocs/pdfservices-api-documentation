@@ -167,7 +167,7 @@ to retrieve the status and asset ID of the output signed PDF. <br/>
 There are two ways to access PDF Electronic Seal API:
 
 #### **2.1 REST API**
-You can use our cloud based [REST API](../../../apis/#tag/electronicseal) to generate seal on PDF documents.
+You can use our cloud based [REST API](../../../apis/#tag/Electronic-Seal) to generate seal on PDF documents.
 
 <InlineAlert slots="text"/>
 
@@ -547,7 +547,7 @@ namespace ESealWithCustomAppearanceOptions
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/electronicseal
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Electronic-Seal
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/electronicseal' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
