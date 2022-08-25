@@ -1,1 +1,1 @@
-/Users/labuser/IdeaProjects/pdfservices-api-documentation/src/pages/overview/pdf-services-api/dcserviceslicensing.md
+../pdf-services-api/dcserviceslicensing.md
