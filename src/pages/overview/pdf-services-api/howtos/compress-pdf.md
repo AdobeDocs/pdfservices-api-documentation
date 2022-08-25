@@ -16,7 +16,9 @@ See our public API Reference for [Compress PDF](../../../apis/#tag/Compress-PDF)
 Compress PDFs to reduce the file size prior to performing workflow
 operations that use bandwidth or memory.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" />
 
 #### Java
 
@@ -177,6 +179,8 @@ Compress PDFs to reduce the file size on the basis of provided
 compression level, prior to performing workflow operations that use
 bandwidth or memory. Refer to `CompressionLevel` in the API docs for a
 list of supported compression levels.
+
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 

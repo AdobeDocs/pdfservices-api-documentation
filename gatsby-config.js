@@ -147,6 +147,10 @@ module.exports = {
                 path: 'overview/pdf-services-api/howtos/index.md'
               },
               {
+                title: 'Using Our APIs',
+                path: 'overview/pdf-services-api/howtos/api-usage.md'
+              },
+              {
                 title: 'Create PDF',
                 path: 'overview/pdf-services-api/howtos/create-pdf.md'
               },
