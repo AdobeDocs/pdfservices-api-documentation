@@ -47,23 +47,7 @@ curl --location -g --request PUT 'https://dcplatformstorageservice-dev-us-east-1
 
 To create a job for the operation, please use the  `assetID` obtained in Step 2 in the API request body. On successful job submission you will get a status code of `201` and a response header `location` which will be used for polling. 
 
-For example, for creating a job for compressing a PDF use the following API. 
-
-You can read more about the API in detail [here](../../../apis/#operation/pdfoperations.compresspdf).
-
-<CodeBlock slots="heading, code" repeat="1" languages="Rest API" />
-
-### Rest API
-
-```javascript
-curl --location --request POST 'https://pdf-services.adobe.io/operation/compresspdf' \
---header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Content-Type: application/json' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---data-raw '{
-    "assetID": "{{Placeholder for assetID}}"
-}'
-```
+For creating the job, please refer to the corresponding API spec for the particular [PDF Operation](../../../apis).
 
 ## Step 4 : Fetching the status
 
