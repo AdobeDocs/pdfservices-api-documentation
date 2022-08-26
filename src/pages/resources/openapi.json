@@ -56,7 +56,7 @@
       "description": "Convert a PDF File to a Linearized or Web Optimized PDF File"
     },
     {
-      "name": "Ocr",
+      "name": "OCR",
       "description": "Perform OCR on a PDF File"
     },
     {
