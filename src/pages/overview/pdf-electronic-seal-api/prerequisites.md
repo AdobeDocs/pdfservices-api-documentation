@@ -2,25 +2,19 @@
 
 ## PDF Electronic Seal API Prerequisites
 
-### 1. Procure Certificate Credentials
+### Step 1: Procure Certificate Credentials
 
-1. A client must register with a trusted service provider and obtain the digital certificate which authorizes and validates electronically sealed documents. A certificate may be purchased from any of the [supported Trust Service Providers.](/overview/pdf-electronic-seal-api/prerequisites/#supported-trusted-service-providers)
+1. A client must register with a trust service provider and obtain the digital certificate which authorizes and validates electronically sealed documents. A certificate may be purchased from any of the [supported Trust Service Providers.](/overview/pdf-electronic-seal-api/prerequisites/#supported-trusted-service-providers). Note that supported TSPs are Cloud Signature Consortium compliant. For more detail, see [Cloud Signature Consortium Standard](https://cloudsignatureconsortium.org/wp-content/uploads/2020/01/CSC_API_V1_1.0.4.0.pdf).
 2. The trust service provider (TSP) performs remote identity verification of the client representative who acts as the legal owner of the seal certificate.
-3. After identity verification, a client creates an account in the TSP's portal. The TSP issues a certificate to the client and delivers a `client_id` and `client_secret`. These are typically protected from unauthorized use by a static PIN, but 3rd party TSPs may provide different user experiences. 
-4. The client then generates OAuth 2.0 Client Credentials (required for the Cloud Signature Consortium API authorization). ??? How? Link? The diagram says the TSP provides it. . . .  ???
+3. After identity verification, a client creates an account in the TSP's portal. The TSP issues a certificate to the client and delivers a `credential_id`, `client_id` and `client_secret`. These are typically protected by a static PIN, but 3rd party TSPs may provide different user experiences. The client should securely store the credential details and PIN for later use.
 
-The client should securely store the credential details and PIN for later use.
+![TSP Token Generation](../images/cert.png)
 
-### 2. Obtain your OAuth Token
+### Step 2: Obtain your OAuth Token
 
-The client uses the TSP-provided OAuth 2.0 client credentials to generate a `client_id` and `client_secret`. These are passed as input parameters in the request body of TSP's API endpoint. The TSPs response includes an access token used [as one of the parameters](/overview/pdf-electronic-seal-api/quickstarts/#2-configure-sealing-parameters)
-to access with Cloud Signature Consortium APIs ??? ** I think the client access the CSC-compliant PDF Electronic Seal APIs. Right?????
+The client sends the `client_id` and `client_secret` to the TSP's OAuth 2.0 authorization API. The TSP responds with an access token which is passed as one of the [input parameters](/overview/pdf-electronic-seal-api/quickstarts/#2-configure-sealing-parameters) to the PDF Electronic Seal API. The purpose of this token is to access the TSP's end point. It is valid for a timeframe specified by the TSP.  
 
-??? The meeting notes aren't clear wrt to the ID and secret. The 3rd bullet above is in conflict with the paragraph above. Does the TSP actually provide an id and secret? ?????
-
-To learn more about Cloud Signature Consortium APIs, refer to [Cloud Signature Consortium Standard](https://cloudsignatureconsortium.org/wp-content/uploads/2020/01/CSC_API_V1_1.0.4.0.pdf)
-
-![TSP Token Generation](../images/TSPToken1.png)
+![TSP Token Generation](../images/TSPToken.png)
 
 **Sample OAuth Request**
 
@@ -46,7 +40,7 @@ curl --location --request POST 'https://<base-url>/<API-domain-name>/csc/v0/oaut
 }
 ```
 
-## Supported Trusted Service Providers
+## Supported Trust Service Providers
 
 Trust service providers (TSPs) are companies that offer a wide range of secure identity and transactions services, including certificate authority services such as providing and preserving digital certificates for creating and validating digital signatures as well as authenticating their signatories.
 
