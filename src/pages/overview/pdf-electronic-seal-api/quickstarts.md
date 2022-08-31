@@ -27,21 +27,24 @@ TSP parameters encapsulate the signer's [certificate credential](/overview/pdf-e
   * **Token Type**: Specifies the type of service token which is Bearer.
 
 * **TSP Credential Authorization Parameter**  (*Required*): Encapsulates the credential's authorization information required to authorize access to their signing keys.
-* **PIN**  (*Required*): Specifies the PIN associated with credential ID.
+    
+    * **PIN**  (*Required*): Specifies the PIN associated with credential ID.
 
 ### Seal Field Parameters   (*Required*)
 
 The seal field parameters are required to create a new unsigned signature field or sign an existing field.
 
-* **Field Name**  (*Required*): The signature field's name.
+* **Field Name**  (*Required*): The signature field's name. If signature field with this field name already exist, that field will be used. 
+If it does not exist, a signature field with this field name will be created. This must be a non-empty string.
 * **Visibility**: Specifies whether the signature field is visible. The default value of `true` creates a visible signature
-* **Page Number**  (*Required*): Specifies the number of the pages to which the signature field should be attached.
-* **Location**  (*Required*): Specifies the coordinates of the signature appearance's bounding box in default PDF user space units.
+* **Page Number**: Specifies the page number to which the signature field should be attached. Page numbers are 1-based. The page must exist in the document if the signature field does not already exist on a page.
+* **Location**: Specifies the coordinates of the signature appearance's bounding box in default PDF user space units. This shall be specified if signature field with provided 
+field name does not exist. If this is specified along with signature field then it overrides the existing signature bounding box. The bounding box must intersect the page's media box.
 
-  * **Left**  (*Required*): The left x-coordinate
-  * **Bottom**  (*Required*): The bottom y-coordinate
-  * **Right**  (*Required*): The right x-coordinate
-  * **Top**  (*Required*)The top y-coordinate
+  * **Left**: The left x-coordinate
+  * **Bottom**: The bottom y-coordinate
+  * **Right**: The right x-coordinate
+  * **Top**: The top y-coordinate
 
 ### Seal Appearance Parameters
 
@@ -114,7 +117,7 @@ Clients using the REST API must perform the following:
 }
 ```
 
-### PDF Services]
+### PDF Services SDKs
 
 Clients can also access the PDF Electronic Seal API via one of the PDF Services SDKs (JAVA, NodeJS, DotNet). For additional details, see [Quickstarts](https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/).
 
@@ -122,17 +125,14 @@ Clients using the PDF Services SDKs must perform the following:
 
 1. Save the input document and seal image on the local machine. File paths must be absolute.
 1. Save the `pdfservices-api-credentials.json` file created after [generating credentials](https://developer.adobe.com/document-services/docs/overview/pdf-services-api/#authentication)
-1. Make a call to the PDF Service that includes the following: 
-
-* The file path to an input PDF (from the local machine). 
-* Required parameters
-* Specify an optional file path to a logo/watermark/background image used as part of the signature field's signed appearance. Supported formats include: 
-
-  * application/pdf
-  * image/jpeg
-  * image/png
-
-1. The the API responds with an output URL to the signed PDF, save the signed PDF. **This URL is only valid for 24 hours**.
+1. Make a call to the PDF Electronic Seal operation that includes the following: 
+    * The file path to an input PDF (from the local machine). 
+    * [Required parameters](/overview/pdf-electronic-seal-api/quickstarts/#parameters)
+    * Specify an optional file path to a logo/watermark/background image used as part of the signature field's signed appearance. Supported formats include: 
+        * application/pdf
+        * image/jpeg
+        * image/png
+1. The digitally signed pdf file obtained  will be saved to specified output file path.
 
 Use the samples below to generate a PDF with an electronic seal.
 
