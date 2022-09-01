@@ -35,8 +35,8 @@ TSP parameters encapsulate the signer's [certificate credential](/overview/pdf-e
 The seal field parameters are required to create a new unsigned signature field or sign an existing field.
 
 * **Field Name**  (*Required*): The signature field's name. If signature field with this field name already exist, that field will be used. 
-If it does not exist, a signature field with this field name will be created. This must be a non-empty string.
-* **Visibility**: Specifies whether the signature field is visible. The default value of `true` creates a visible signature
+If it does not exist, a signature field with this field name will be created. This must be a non-empty string. Check the steps [here](https://www.adobe.com/sign/hub/how-to/add-a-signature-block-to-pdf) to add signature block to a PDF.
+* **Visibility**: Specifies whether the signature field is visible. The default value of `true` creates a visible signature.
 * **Page Number**: Specifies the page number to which the signature field should be attached. Page numbers are 1-based. The page must exist in the document if the signature field does not already exist on a page.
 * **Location**: Specifies the coordinates of the signature appearance's bounding box in default PDF user space units. This shall be specified if signature field with provided 
 field name does not exist. If this is specified along with signature field then it overrides the existing signature bounding box. The bounding box must intersect the page's media box.
@@ -59,8 +59,10 @@ Specifies signature field appearance parameters. These are an enum set of displa
    ![Display Options](../images/sealDN.png)
 * **LABELS**: Specifies that text labels should be displayed in the signature appearance. This is a default value.
    ![Display Options](../images/sealLabel.png)
-* **SEAL_IMAGE**: Specifies that the seal image should be displayed in the signature appearance. If a seal image, not supplied in the request body, the default Acrobat trefoil image is used.
+* **SEAL_IMAGE**: Specifies that the seal image should be displayed in the signature appearance.
    ![Display Options](../images/sealImage.png) 
+   If a seal image, not supplied in the request body, the default Acrobat trefoil image is used.
+   ![Display Options](../images/sealImage_default.png)
 
 ## Workflows
 
@@ -119,7 +121,7 @@ Clients using the REST API must perform the following:
 
 ### PDF Services SDKs
 
-Clients can also access the PDF Electronic Seal API via one of the PDF Services SDKs (JAVA, NodeJS, DotNet). For additional details, see [Quickstarts](https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/).
+Clients can also access the PDF Electronic Seal API via PDF Services SDKs. For additional details, see [Quickstarts](https://developer.adobe.com/document-services/docs/overview/pdf-services-api/).
 
 Clients using the PDF Services SDKs must perform the following: 
 
@@ -136,7 +138,7 @@ Clients using the PDF Services SDKs must perform the following:
 
 Use the samples below to generate a PDF with an electronic seal.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="2" languages="Java, Rest API" /> 
 
 ##### Java
 
@@ -234,230 +236,6 @@ public class ESealWithCustomAppearanceOptions {
 
         } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
             LOGGER.error("Exception encountered while executing operation", ex);
-        }
-    }
-}
-
-```
-
-##### Node JS
-
-```javascript
-// Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
-// Run the sample:
-// node src/electronicseal/eseal-with-custom-appearance-options.js
-
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
-
-try {
-
-    // Initial setup, create credentials instance.
-    const credentials =  PDFServicesSdk.Credentials
-        .serviceAccountCredentialsBuilder()
-        .fromFile("pdfservices-api-credentials.json")
-        .build();
-
-    // Create an ExecutionContext using credentials
-    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
-
-    const electronicSeal = PDFServicesSdk.PDFElectronicSeal,
-        Options = electronicSeal.options;
-
-    //Get the input document to perform the sealing operation
-    const inputDoc = PDFServicesSdk.FileRef.createFromLocalFile('resources/Invoice.pdf'),
-
-        //Get the background seal image for signature , if required.
-        sealImage = PDFServicesSdk.FileRef.createFromLocalFile('resources/sealImage.jpeg');
-
-    //Create SealAppearanceOptions and add the required signature appearance items
-    sealAppearanceOptions = new Options.SealAppearanceOptions();
-    sealAppearanceOptions.addAppearanceItem(Options.SealAppearanceOptions.SealAppearanceItem.NAME);
-    sealAppearanceOptions.addAppearanceItem(Options.SealAppearanceOptions.SealAppearanceItem.LABELS);
-    sealAppearanceOptions.addAppearanceItem(Options.SealAppearanceOptions.SealAppearanceItem.DATE);
-    sealAppearanceOptions.addAppearanceItem(Options.SealAppearanceOptions.SealAppearanceItem.SEAL_IMAGE);
-    sealAppearanceOptions.addAppearanceItem(Options.SealAppearanceOptions.SealAppearanceItem.DISTINGUISHED_NAME);
-
-    // Set the Seal Field Name to be created in input PDF document.
-    signFieldName = "SealField";
-
-    // Set the page number in input document for applying seal.
-    signPageNumber = 1;
-
-    // Set if seal should be visible or invisible.
-    sealVisible = true;
-
-    // Create a Seal Field Options
-    sealFieldLocationOptions = new Options.SealFieldLocationOptions(150,250,350,200);
-    sealFieldOptions = new Options.SealFieldOptions.Builder(signFieldName, signPageNumber, sealFieldLocationOptions)
-        .setVisible(sealVisible)
-        .build();
-
-    //Set the name of TSP Provider being used.
-    providerName = "<PROVIDER_NAME>";
-
-    //Set the access token to be used to access TSP provider hosted APIs.
-    accessToken = "<ACCESS TOKEN>";
-
-    //Set the credential ID.
-    credentialID = "<CREDENTIAL_ID>";
-
-    //Set the PIN generated while creating credentials.
-    credentialPin = "<PIN>";
-
-    //Create SealCredentialOptions instance with required certificate details.
-    sealCredentialOptions = new Options.CSCCredentialOptions.Builder(providerName, credentialID, credentialPin, accessToken)
-        .setTokenType("Bearer")
-        .build();
-
-    //Create SealingOptions instance with all the sealing parameters.
-    sealOptions = new Options.SealOptions.Builder(Options.SealOptions.SignatureFormat.PKCS7, sealCredentialOptions, sealFieldOptions)
-        .build()
-
-    //Create a PDFElectronicSealOptions instance using the SealOptions instance
-    pdfElectronicSealOptions = new Options.PDFElectronicSealOptions(sealOptions);
-
-    // Create a new operation instance using the options instance
-    const electronicSealOperation = electronicSeal.Operation.createNew(pdfElectronicSealOptions);
-
-    // Set Operation Input Parameters
-    electronicSealOperation.setInputDocument(inputDoc);
-    electronicSealOperation.setSealImage(sealImage);
-
-    // Execute the operation and Save the result to the specified location.
-    electronicSealOperation.execute(executionContext);
-
-} catch (err) {
-    console.log('Exception encountered while executing operation', err);
-}
-
-```
-
-##### .NET
-
-```javascript
-// Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
-// Run the sample:
-// cd ESealWithCustomAppearanceOptions/
-// dotnet run ESealWithCustomAppearanceOptions.csproj
-
-namespace ESealWithCustomAppearanceOptions
-{
-    public class Program
-    {
-        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
-
-        static void Main(string[] args)
-        {
-            //Configure the logging
-            ConfigureLogging();
-
-            try
-            {
-                // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                                .FromFile("C:/git/a/Adobe.DocumentCloud.CPF.Services.SDK.Samples/ESealWithCustomAppearanceOptions/pdfservices-api-credentials.json")
-                                .Build();
-
-
-                //Create an ExecutionContext using credentials and create a new operation instance.
-                ExecutionContext executionContext = ExecutionContext.Create(credentials);
-
-                //Get the input document to perform the sealing operation
-                FileRef sourceFile = FileRef.CreateFromLocalFile("C:/git/a/Adobe.DocumentCloud.CPF.Services.SDK.Samples/ESealWithCustomAppearanceOptions/combineFilesInput1.pdf");
-
-                //Get the background seal image for signature , if required.
-                FileRef sealImageFile = FileRef.CreateFromLocalFile("C:/git/a/Adobe.DocumentCloud.CPF.Services.SDK.Samples/ESealWithCustomAppearanceOptions/combineFilesInput1.pdf");
-
-                //Create SealAppearanceOptions and add the required signature appearance items
-                SealAppearanceOptions sealAppearanceOptions = new SealAppearanceOptions();
-                sealAppearanceOptions.AddAppearanceItem(SealAppearanceItem.NAME);
-                sealAppearanceOptions.AddAppearanceItem(SealAppearanceItem.LABELS);
-                sealAppearanceOptions.AddAppearanceItem(SealAppearanceItem.DATE);
-                sealAppearanceOptions.AddAppearanceItem(SealAppearanceItem.SEAL_IMAGE);
-                sealAppearanceOptions.AddAppearanceItem(SealAppearanceItem.DISTINGUISHED_NAME);
-
-                //Set the Seal Field Name to be created in input PDF document.
-                string signFieldName = "<SEAL_FIELD_NAME>";
-
-                //Set the page number in input document for applying seal.
-                int signPageNumber = 1;
-
-                //Set if seal should be visible or invisible.
-                bool sealVisible = true;
-
-                //Create SealFieldLocationOptions instance and set the coordinates for applying signature
-                SealFieldLocationOptions signatureLocation = new SealFieldLocationOptions(150, 250, 350, 200);
-
-                //Create SealFieldOptions instance with required details.
-                SealFieldOptions sealFieldOptions = new SealFieldOptions.Builder(signatureLocation, signPageNumber, signFieldName)
-                        .SetVisible(sealVisible)
-                        .Build();
-
-                //Set the name of TSP Provider being used.
-                string providerName = "<PROVIDER_NAME>";
-
-                //Set the access token to be used to access TSP provider hosted APIs.
-                string accessToken = "<ACCESS TOKEN>";
-
-                //Set the credential ID.
-                string credentialID = "<CREDENTIAL_ID>";
-
-                //Set the PIN generated while creating credentials.
-                string credentialPin = "<PIN>";
-
-                //Create SealCredentialOptions instance with required certificate details.
-                SealCredentialOptions sealCredentialOptions = new CSCCredentialOptions.Builder(providerName, credentialID, credentialPin, accessToken).SetTokenType("Bearer").Build();
-
-                //Create SealingOptions instance with all the sealing parameters.
-                SealOptions sealOptions = new SealOptions.Builder(SignatureFormat.PKCS7, sealCredentialOptions,
-                        sealFieldOptions).SetSealAppearanceOptions(sealAppearanceOptions).Build();
-
-                //Create a PDFElectronicSealOptions instance using the SealOptions instance
-                PDFElectronicSealOptions pdfElectronicSealOptions = new PDFElectronicSealOptions(sealOptions);
-
-                //Create the PDFElectronicSealOperation instance using the PDFElectronicSealOptions instance
-                PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.CreateNew(pdfElectronicSealOptions);
-
-                //Set the input source file for PDFElectronicSealOperation instance
-                pdfElectronicSealOperation.SetInputDocument(sourceFile);
-
-                //Set the optional input seal image for PDFElectronicSealOperation instance
-                pdfElectronicSealOperation.SetSealImage(sealImageFile);
-
-                //Execute the operation
-                FileRef result = pdfElectronicSealOperation.Execute(executionContext);
-
-                //Save the output at specified location
-                result.SaveAs("output/sealedOutputWithAllAppearanceOptions.pdf");
-
-            }
-            catch (ServiceUsageException ex)
-            {
-                log.Error("Exception encountered while executing operation", ex);
-            }
-            catch (ServiceApiException ex)
-            {
-                log.Error("Exception encountered while executing operation", ex);
-            }
-            catch (SDKException ex)
-            {
-                log.Error("Exception encountered while executing operation", ex);
-            }
-            catch (IOException ex)
-            {
-                log.Error("Exception encountered while executing operation", ex);
-            }
-            catch (Exception ex)
-            {
-                log.Error("Exception encountered while executing operation", ex);
-            }
-
-        }
-
-        static void ConfigureLogging()
-        {
-            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
         }
     }
 }

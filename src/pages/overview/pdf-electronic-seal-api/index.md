@@ -25,5 +25,3 @@ A PDF electronic seal workflow involves the following:
 * **Sealing Parameters**: Parameters  specify the seal's format, visibility and appearance as well as the certificate credentials required to communicate with a trust service provider. For details, see [sealing parameters](/overview/pdf-electronic-seal-api/quickstarts/#2-configure-sealing-parameters).
 * **PDF Electronic Seal API**: The PDF Electronic Seal API enables signing PDF documents programmatically with no user interaction. It uses the sealing parameters to authorize the client and apply a seal on the input PDF which is then bound to the specified legal entity.
 * **Seal Image**: The API can accept an optional seal image as an input file which overrides the default Acrobat trefoil image. The maximum size of the seal image cannot exceed 2MB.
-
-![Acrobat Trefoil](../images/trefoil.png)
