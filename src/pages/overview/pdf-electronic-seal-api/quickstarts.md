@@ -3,126 +3,90 @@ title: Document Services APIs | PDF Electronic Seal API | Quickstarts
 ---
 # Quickstarts
 
-Before getting started with [PDF Electronic Seal API](/overview/pdf-electronic-seal-api/#what-is-pdf-electronic-seal), make sure all the [Prerequisites](prerequisites.md) are met. 
+Before getting started with [PDF Electronic Seal API](/overview/pdf-electronic-seal-api/#what-is-pdf-electronic-seal), verify the [prerequisites](prerequisites.md). 
 
-## Workflow
+Whether using the REST API or the PDF Services SDK, using the PDF Electronic Seal API involves simply calling the API with the appropriate parameters. 
 
-![Seal Workflow](../images/sealFlow.png)
+![Seal Workflow](../images/sealFlow1.png)
 
-## How-to Guide
+## Parameters
 
-### 1. Configure Sealing Parameters.
+### Signature Format (*Required*)
 
-#### Signature Format <span style="color:red">*</span>
+Specifies a supported digital signature format:
 
-<details>
-<summary>Click here</summary>
+* PADES : This is the latest and improved format which is strict, concrete, and secure. For details, see [ETSI TS 102 778-3](https://www.etsi.org/deliver/etsi_ts/102700_102799/10277803/01.02.01_60/ts_10277803v010201p.pdf)  
+* PKCS#7 : PKCS #7 signature is less stringent than PADES since it permits more PDF changes without invalidating the digital signature. For details, see [ISO 32000-1](https://opensource.adobe.com/dc-acrobat-sdk-docs/standards/pdfstandards/pdf/PDF32000_2008.pdf)
 
-Specifies the format of the digital signature. API supports below formats
-* PADES : This is the latest and improved format which is more strict, concrete and secure.
-          For more details refer to, [ETSI TS 102 778-3](https://www.etsi.org/deliver/etsi_ts/102700_102799/10277803/01.02.01_60/ts_10277803v010201p.pdf)  
-* PKCS#7 : PKCS #7 signature is comparatively more relaxed and it's possible to change more things in PDF without invalidating digital signatures.
-           For more details refer to, [ISO 32000-1](https://opensource.adobe.com/dc-acrobat-sdk-docs/standards/pdfstandards/pdf/PDF32000_2008.pdf)
+### TSP Credential Information (*Required*)  
 
-</details>
+TSP parameters encapsulate the signer's [certificate credential](/overview/pdf-electronic-seal-api/prerequisites/#1-procure-certificate-credentials) as well as the associated authentication and authorization data.
 
-#### Trust Service Provider's (TSP) Credential Information <span style="color:red">*</span>  
+* **TSP Name**  (*Required*): Specifies the name of the Trust Service Provider used to generate the certificate.
+* **TSP Credential Id**  (*Required*): Specifies the digital ID stored with the TSP provider that should be used for signing.
+* **TSP Authorization Context**  (*Required*): Encapsulates the service authorization data required to communicate with the TSP and access CSC provider APIs.
 
-<details>
-<summary>Click here</summary>
+  * **Access Token**  (*Required*): Specifies the service access token used to authorize access to the CSC provider hosted APIs.
+  * **Token Type**: Specifies the type of service token which is Bearer.
 
-Encapsulates the [certificate credential](/overview/pdf-electronic-seal-api/prerequisites/#1-procure-certificate-credentials) to be used 
-for signing, and the associated authentication and authorization data.
+* **TSP Credential Authorization Parameter**  (*Required*): Encapsulates the credential's authorization information required to authorize access to their signing keys.
+    
+    * **PIN**  (*Required*): Specifies the PIN associated with credential ID.
 
-* **TSP Name**<span style="color:red">*</span>
-<br/>Specifies the name of the Trust Service Provider used to generate the certificate.
+### Seal Field Parameters   (*Required*)
 
-* **TSP Credential Id**<span style="color:red">*</span>
-<br/>Specifies the Digital ID stored with the TSP provider that should be used for signing.
+The seal field parameters are required to create a new unsigned signature field or sign an existing field.
 
-* **TSP Authorization Context**<span style="color:red">*</span>
-<br/>Encapsulates the service authorization data required to communicate with the TSP and access CSC provider APIs.
+* **Field Name**  (*Required*): The signature field's name. This must be a non-empty string. If signature field with this field name already exist, that field will be used. 
+If it does not exist, a signature field with this field name will be created.
+* **Visibility**: Specifies whether the signature field is visible. The default value of `true` creates a visible signature.
+* **Page Number**: Specifies the page number to which the signature field should be attached. Page numbers are 1-based. The page number is only **required** if the signature field does not already exist in the pdf document. If this is specified along with signature field then it overrides the page on which signature field is present in the document.
+* **Location**: Specifies the coordinates of the signature appearance's bounding box in default PDF user space units. The location is only **required** if the signature field does not already exist in the pdf document. If this is specified along with signature field then it overrides the existing signature bounding box.
 
-  * **Access Token**<span style="color:red">*</span>
-  <br/>Specifies the service access token used to authorize access to the CSC provider hosted APIs.
-   
-  * **Token Type**
-  <br/>Specifies the type of service token which is Bearer.
+  * **Left**: The left x-coordinate
+  * **Bottom**: The bottom y-coordinate
+  * **Right**: The right x-coordinate
+  * **Top**: The top y-coordinate
 
-* **TSP Credential Authorization Parameter**<span style="color:red">*</span>
-<br/>Encapsulates the credential's authorization information required to authorize access to their signing keys.
+The **Location** and **Page Number** fields are **optional** if the signature field is already added in the input PDF document. To add the signature field explicitly, see [how to place a signature field in a PDF](https://www.adobe.com/sign/hub/how-to/add-a-signature-block-to-pdf).
+  
+### Seal Appearance Parameters
 
-   * **PIN**<span style="color:red">*</span>
-   <br/>Specifies the PIN associated with credential id.
+Specifies signature field appearance parameters. These are an enum set of display items: NAME, DATE, LOGO, DISTINGUISHED_NAME, LABELS. Specifies the information to display in the signature.
 
-</details>
-
-#### Seal Field Parameters <span style="color:red">*</span>
-
-<details>
-<summary>Click here</summary>
-
-Encapsulates the parameters required to create a new unsigned signature field or sign an existing field.
-
-* **Field Name**<span style="color:red">*</span>
-<br/>Specified the field name for the signature field.
-* **Visibility**
-<br/>Specified whether the signature field is visible or not. Set to true to create a visible signature. Set to false to 
-create an invisible (hidden) signature. The default value is true.
-* **Page Number**<span style="color:red">*</span>
-<br/>Specifies the number of the page to which the signature field should be attached.
-* **Location**<span style="color:red">*</span>
-<br/>Encapsulates the parameters related to the location of the signature field.
-
-  * **Left**<span style="color:red">*</span>
-  <br/>Specifies the left-most x-coordinate of the signature appearance's bounding box in default PDF user 
-    space units.
-  * **Bottom**<span style="color:red">*</span>
-  <br/>Specifies the bottom-most y-coordinate of the signature appearance's bounding box in default PDF user 
-    space units.
-  * **Right**<span style="color:red">*</span>
-  <br/>Specifies the right-most x-coordinate of the signature appearance's bounding box in default PDF user 
-    space units.
-  * **Top**<span style="color:red">*</span>
-  <br/>Specifies the top-most y-coordinate of the signature appearance's bounding box in default PDF user 
-    space units.
-
-</details>
-
-#### Seal Appearance Parameters
-
-<details>
-<summary>Click here</summary>
-
-Encapsulates the parameters related to the appearance of the signature field
-
-   * **Display Parameters**<span style="color:red">*</span>
-   <br/>An enum set of display items: NAME, DATE, LOGO, DISTINGUISHED_NAME, LABELS. Specifies the information to display in the signature.
-   <br/> 
-   
-   **NAME** - Specifies that the signer's name should be displayed in the signature appearance.This is a default value.<br/> 
+* **NAME**: Specifies that the signer's name should be displayed in the signature appearance.This is a default value.
    ![Display Options](../images/sealName.png)
-   
-   **DATE** - Specifies that the signing date/time should be displayed in the signature appearance. This option only controls whether the value of the 
-   time/date in the signature dictionary is displayed or not. This value should not be mistaken for a signed timestamp 
-   from a timestamp authority. <br/> 
+* **DATE**: Specifies that the signing date/time should be displayed in the signature appearance. This option only controls whether the value of the 
+   time/date in the signature dictionary is displayed or not. This value should not be mistaken for a signed timestamp from a timestamp authority.
    ![Display Options](../images/sealDate.png)
-   
-   **DISTINGUISHED_NAME** - Specifies that the distinguished name information from the 
-   signer's certificate should be displayed in the signature appearance. <br/>
+* **DISTINGUISHED_NAME**: Specifies that the distinguished name information from the signer's certificate should be displayed in the signature appearance.
    ![Display Options](../images/sealDN.png)
-   
-   **LABELS** - Specifies that text labels should 
-   be displayed in the signature appearance. This is a default value. <br/>
+* **LABELS**: Specifies that text labels should be displayed in the signature appearance. This is a default value.
    ![Display Options](../images/sealLabel.png)
-   
-   **SEAL_IMAGE** - Specifies that the seal image should be 
-   displayed in the signature appearance. If a seal image, not supplied in the request body, the default Acrobat trefoil image is used. <br/>
+* **SEAL_IMAGE**: Specifies that the seal image should be displayed in the signature appearance.
    ![Display Options](../images/sealImage.png) 
+   If a seal image, not supplied in the request body, the default Acrobat trefoil image is used.
+   ![Display Options](../images/sealImage_default.png)
 
-</details>
+## Workflows
+
+There are two ways to access PDF Electronic Seal API: via the REST API or with the PDF Services SDKs. 
+
+### REST API
+
+Clients using the REST API must perform the following: 
+
+1. [Generate asset IDs for all the input documents](https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets).
+1. Call the `/asset` API with `mediaType` in the request specifying the document upload type. For example, `application/pdf`. The API responds with an asset ID and upload URI. 
+1. Request to upload the input document to the upload URI.
+1. Invoke PDF Electronic Seal API (/pdf-services/operation/electronicseal) by providing the asset IDs generated in step 1 and other required sealing parameters. In the response, the client receives the job URI in the location header. [Details](https://developer-stage.adobe.com/document-services/docs/apis/#operation/pdfoperations.electronicseal).
+1. Use the job URI to poll the status of the submitted job (Electronic Seal operation). The response includes a job status: *In progress*, *Failed* or *Done*. If the status is done, the seal API returns an asset ID and download URI. **This download URI is valid for 24 hours.**.
+1. Download the digitally signed pdf using download URI from above step.
+
+
 
 **Example JSON**
+
 ```json
 {
   "signatureFormat": "PADES",
@@ -159,63 +123,26 @@ Encapsulates the parameters related to the appearance of the signature field
 }
 ```
 
-### 2. Generate digitally signed PDF using PDF Electronic Seal API
-PDF Electronic Seal API is invoked after interacting with third-party dependencies, configuring sealing parameters and collating 
-required input data to form the request. The request-id generated in the response headers can be polled anytime 
-to retrieve the status and asset ID of the output signed PDF. <br/>
+### PDF Services SDKs
 
-There are two ways to access PDF Electronic Seal API:
+Clients can also access the PDF Electronic Seal API via PDF Services SDKs. For additional details, see [Quickstarts](https://developer.adobe.com/document-services/docs/overview/pdf-services-api/).
 
-#### **2.1 REST API**
-You can use our cloud based [REST API](../../../apis/#tag/Electronic-Seal) to generate seal on PDF documents.
+Clients using the PDF Services SDKs must perform the following: 
 
-<InlineAlert slots="text"/>
+1. Save the input document and seal image on the local machine. File paths must be absolute.
+1. Save the `pdfservices-api-credentials.json` file created after [generating credentials](https://developer.adobe.com/document-services/docs/overview/pdf-services-api/#authentication)
+1. Make a call to the PDF Electronic Seal operation that includes the following: 
+    * The file path to an input PDF (from the local machine). 
+    * [Required parameters](/overview/pdf-electronic-seal-api/quickstarts/#parameters)
+    * Specify an optional file path to a logo/watermark/background image used as part of the signature field's signed appearance. Supported formats include: 
+        * application/pdf
+        * image/jpeg
+        * image/png
+1. The digitally signed pdf file obtained  will be saved to specified output file path.
 
-Before you begin with the REST API, refer to [How To Get Started](https://documentcloud.adobe.com/document-services/index.html#how-to-get-started-) to learn more about generating the required credentials and invoking the APIs.
+Use the samples below to generate a PDF with an electronic seal.
 
-**INPUT DOCUMENTS** <br/>
-
-**PDF Document**<span style="color:red">*</span> <br/>
-Specifies asset ID generated after uploading input PDF document on which seal has to be applied.<br/>
-For uploading the document, refer to [Asset Upload](https://wiki.corp.adobe.com/pages/viewpage.action?pageId=2589901901#CustomTempstorage(forDCPlatformAPIs)-Upload/downloadassets).
-
-**Seal Image** <br/>
-Specifies asset ID generated after uploading the logo/watermark/background image used as part of the 
-signature field's signed appearance. The format of the asset should be among 
-the below format.
-1. application/pdf
-2. image/jpeg
-3. image/png
-
-For uploading the document, refer to [Asset Upload](https://wiki.corp.adobe.com/pages/viewpage.action?pageId=2589901901#CustomTempstorage(forDCPlatformAPIs)-Upload/downloadassets).
-
-#### **2.2 PDF Services JAVA SDK**
-Alternatively, you can use our offering through [PDF Services SDK](../pdf-services-api#sdk).
-
-<InlineAlert slots="text"/>
-
-To get started with PDF Services SDK, refer to [Quickstarts](../pdf-services-api).
-
-**INPUT DOCUMENTS** <br/>
-
-**PDF Document**<span style="color:red">*</span> <br/>
-Specifies the file path for input PDF document on which seal has to be applied.
-
-**Seal Image** <br/>
-Specifies the file path for the logo/watermark/background image used as part of the 
-signature field's signed appearance. Below are the supported file formats:
-
-1. application/pdf
-2. image/jpeg
-3. image/png
-
-<br/>
-
-#### Generate PDF with Electronic Seal
-
-The sample below generates the output PDF document with Electronic Seal.
-
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="2" languages="Java, Rest API" /> 
 
 ##### Java
 
@@ -319,273 +246,48 @@ public class ESealWithCustomAppearanceOptions {
 
 ```
 
-##### Node JS
-
-```javascript
-// Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
-// Run the sample:
-// node src/electronicseal/eseal-with-custom-appearance-options.js
-
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
-
-try {
-
-    // Initial setup, create credentials instance.
-    const credentials =  PDFServicesSdk.Credentials
-        .serviceAccountCredentialsBuilder()
-        .fromFile("pdfservices-api-credentials.json")
-        .build();
-
-    // Create an ExecutionContext using credentials
-    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
-
-    const electronicSeal = PDFServicesSdk.PDFElectronicSeal,
-        Options = electronicSeal.options;
-
-    //Get the input document to perform the sealing operation
-    const inputDoc = PDFServicesSdk.FileRef.createFromLocalFile('resources/Invoice.pdf'),
-
-        //Get the background seal image for signature , if required.
-        sealImage = PDFServicesSdk.FileRef.createFromLocalFile('resources/sealImage.jpeg');
-
-    //Create SealAppearanceOptions and add the required signature appearance items
-    sealAppearanceOptions = new Options.SealAppearanceOptions();
-    sealAppearanceOptions.addAppearanceItem(Options.SealAppearanceOptions.SealAppearanceItem.NAME);
-    sealAppearanceOptions.addAppearanceItem(Options.SealAppearanceOptions.SealAppearanceItem.LABELS);
-    sealAppearanceOptions.addAppearanceItem(Options.SealAppearanceOptions.SealAppearanceItem.DATE);
-    sealAppearanceOptions.addAppearanceItem(Options.SealAppearanceOptions.SealAppearanceItem.SEAL_IMAGE);
-    sealAppearanceOptions.addAppearanceItem(Options.SealAppearanceOptions.SealAppearanceItem.DISTINGUISHED_NAME);
-
-    // Set the Seal Field Name to be created in input PDF document.
-    signFieldName = "SealField";
-
-    // Set the page number in input document for applying seal.
-    signPageNumber = 1;
-
-    // Set if seal should be visible or invisible.
-    sealVisible = true;
-
-    // Create a Seal Field Options
-    sealFieldLocationOptions = new Options.SealFieldLocationOptions(150,250,350,200);
-    sealFieldOptions = new Options.SealFieldOptions.Builder(signFieldName, signPageNumber, sealFieldLocationOptions)
-        .setVisible(sealVisible)
-        .build();
-
-    //Set the name of TSP Provider being used.
-    providerName = "<PROVIDER_NAME>";
-
-    //Set the access token to be used to access TSP provider hosted APIs.
-    accessToken = "<ACCESS TOKEN>";
-
-    //Set the credential ID.
-    credentialID = "<CREDENTIAL_ID>";
-
-    //Set the PIN generated while creating credentials.
-    credentialPin = "<PIN>";
-
-    //Create SealCredentialOptions instance with required certificate details.
-    sealCredentialOptions = new Options.CSCCredentialOptions.Builder(providerName, credentialID, credentialPin, accessToken)
-        .setTokenType("Bearer")
-        .build();
-
-    //Create SealingOptions instance with all the sealing parameters.
-    sealOptions = new Options.SealOptions.Builder(Options.SealOptions.SignatureFormat.PKCS7, sealCredentialOptions, sealFieldOptions)
-        .build()
-
-    //Create a PDFElectronicSealOptions instance using the SealOptions instance
-    pdfElectronicSealOptions = new Options.PDFElectronicSealOptions(sealOptions);
-
-    // Create a new operation instance using the options instance
-    const electronicSealOperation = electronicSeal.Operation.createNew(pdfElectronicSealOptions);
-
-    // Set Operation Input Parameters
-    electronicSealOperation.setInputDocument(inputDoc);
-    electronicSealOperation.setSealImage(sealImage);
-
-    // Execute the operation and Save the result to the specified location.
-    electronicSealOperation.execute(executionContext);
-
-} catch (err) {
-    console.log('Exception encountered while executing operation', err);
-}
-
-```
-
-##### .NET
-
-```javascript
-// Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
-// Run the sample:
-// cd ESealWithCustomAppearanceOptions/
-// dotnet run ESealWithCustomAppearanceOptions.csproj
-
-namespace ESealWithCustomAppearanceOptions
-{
-    public class Program
-    {
-        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
-
-        static void Main(string[] args)
-        {
-            //Configure the logging
-            ConfigureLogging();
-
-            try
-            {
-                // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                                .FromFile("C:/git/a/Adobe.DocumentCloud.CPF.Services.SDK.Samples/ESealWithCustomAppearanceOptions/pdfservices-api-credentials.json")
-                                .Build();
-
-
-                //Create an ExecutionContext using credentials and create a new operation instance.
-                ExecutionContext executionContext = ExecutionContext.Create(credentials);
-
-                //Get the input document to perform the sealing operation
-                FileRef sourceFile = FileRef.CreateFromLocalFile("C:/git/a/Adobe.DocumentCloud.CPF.Services.SDK.Samples/ESealWithCustomAppearanceOptions/combineFilesInput1.pdf");
-
-                //Get the background seal image for signature , if required.
-                FileRef sealImageFile = FileRef.CreateFromLocalFile("C:/git/a/Adobe.DocumentCloud.CPF.Services.SDK.Samples/ESealWithCustomAppearanceOptions/combineFilesInput1.pdf");
-
-                //Create SealAppearanceOptions and add the required signature appearance items
-                SealAppearanceOptions sealAppearanceOptions = new SealAppearanceOptions();
-                sealAppearanceOptions.AddAppearanceItem(SealAppearanceItem.NAME);
-                sealAppearanceOptions.AddAppearanceItem(SealAppearanceItem.LABELS);
-                sealAppearanceOptions.AddAppearanceItem(SealAppearanceItem.DATE);
-                sealAppearanceOptions.AddAppearanceItem(SealAppearanceItem.SEAL_IMAGE);
-                sealAppearanceOptions.AddAppearanceItem(SealAppearanceItem.DISTINGUISHED_NAME);
-
-                //Set the Seal Field Name to be created in input PDF document.
-                string signFieldName = "<SEAL_FIELD_NAME>";
-
-                //Set the page number in input document for applying seal.
-                int signPageNumber = 1;
-
-                //Set if seal should be visible or invisible.
-                bool sealVisible = true;
-
-                //Create SealFieldLocationOptions instance and set the coordinates for applying signature
-                SealFieldLocationOptions signatureLocation = new SealFieldLocationOptions(150, 250, 350, 200);
-
-                //Create SealFieldOptions instance with required details.
-                SealFieldOptions sealFieldOptions = new SealFieldOptions.Builder(signatureLocation, signPageNumber, signFieldName)
-                        .SetVisible(sealVisible)
-                        .Build();
-
-                //Set the name of TSP Provider being used.
-                string providerName = "<PROVIDER_NAME>";
-
-                //Set the access token to be used to access TSP provider hosted APIs.
-                string accessToken = "<ACCESS TOKEN>";
-
-                //Set the credential ID.
-                string credentialID = "<CREDENTIAL_ID>";
-
-                //Set the PIN generated while creating credentials.
-                string credentialPin = "<PIN>";
-
-                //Create SealCredentialOptions instance with required certificate details.
-                SealCredentialOptions sealCredentialOptions = new CSCCredentialOptions.Builder(providerName, credentialID, credentialPin, accessToken).SetTokenType("Bearer").Build();
-
-                //Create SealingOptions instance with all the sealing parameters.
-                SealOptions sealOptions = new SealOptions.Builder(SignatureFormat.PKCS7, sealCredentialOptions,
-                        sealFieldOptions).SetSealAppearanceOptions(sealAppearanceOptions).Build();
-
-                //Create a PDFElectronicSealOptions instance using the SealOptions instance
-                PDFElectronicSealOptions pdfElectronicSealOptions = new PDFElectronicSealOptions(sealOptions);
-
-                //Create the PDFElectronicSealOperation instance using the PDFElectronicSealOptions instance
-                PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.CreateNew(pdfElectronicSealOptions);
-
-                //Set the input source file for PDFElectronicSealOperation instance
-                pdfElectronicSealOperation.SetInputDocument(sourceFile);
-
-                //Set the optional input seal image for PDFElectronicSealOperation instance
-                pdfElectronicSealOperation.SetSealImage(sealImageFile);
-
-                //Execute the operation
-                FileRef result = pdfElectronicSealOperation.Execute(executionContext);
-
-                //Save the output at specified location
-                result.SaveAs("output/sealedOutputWithAllAppearanceOptions.pdf");
-
-            }
-            catch (ServiceUsageException ex)
-            {
-                log.Error("Exception encountered while executing operation", ex);
-            }
-            catch (ServiceApiException ex)
-            {
-                log.Error("Exception encountered while executing operation", ex);
-            }
-            catch (SDKException ex)
-            {
-                log.Error("Exception encountered while executing operation", ex);
-            }
-            catch (IOException ex)
-            {
-                log.Error("Exception encountered while executing operation", ex);
-            }
-            catch (Exception ex)
-            {
-                log.Error("Exception encountered while executing operation", ex);
-            }
-
-        }
-
-        static void ConfigureLogging()
-        {
-            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-        }
-    }
-}
-
-```
-
 ##### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Electronic-Seal
-
-curl --location --request POST 'https://pdf-services.adobe.io/operation/electronicseal' \
---header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Content-Type: application/json' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
+curl --location --request POST 'https://pdf-services-dev.adobe.io/operation/electronicseal'
+--header 'Authorization: Bearer {{Placeholder for token}}'
+--header 'Accept: application/json, text/plain, */*'
+--header 'x-api-key: {{Placeholder for client_id}}'
+--header 'Content-Type: application/json'
 --data-raw '{
-    "inputDocumentAssetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
-    "sealImageAssetID": "ab400ed7-a097-402b-a93f-8b47cfd3b519",
-    "sealOptions": {
-        "signatureFormat": "PKCS7",
-        "cscCredentialOptions": {
-            "credentialId": "[ADOBE]_xxxx_xx:35",
-            "providerName": "intxxxxxst",
+    "documentassetID" : "<ASSET_ID>",
+    "logoInassetID" : "<ASSET_ID>",
+    "signatureInassetID" : "<ASSET_ID>",
+    "sealingOptions" : {
+        "signatureType": "SIGN",
+        "signatureFormat": "PADES",
+        "cscCredentialInfo": {
             "authorizationContext": {
-                "tokenType": "bearer",
-                "accessToken": "b7338a1f-xxxx-xxxx-xxxx-1eec91c47c12"
+                "accessToken": "<ACCESS TOKEN>",
+                "tokenType": "Bearer"
             },
             "credentialAuthParameters": {
-                "pin": "12xxxx65"
-            }
+                "pin": "<PIN>"
+            },
+            "providerName": "<PROVIDER_NAME>",
+            "credentialId": "<CREDENTIAL_ID>"
         },
-        "sealFieldOptions": {
+        "signatureFieldOptions": {
+            "pageNumber": 1,
+            "fieldName": "Signature",
+            "visible": true,
             "location": {
                 "top": 300,
-                "left": 50,
-                "right": 250,
-                "bottom": 100
-            },
-            "fieldName": "mytestfield",
-            "pageNumber": 1
+                "bottom": 250,
+                "left": 300,
+                "right": 500
+            }
         },
-        "sealAppearanceOptions": {
+        "signatureAppearanceOptions": {
             "displayOptions": [
-                "NAME",
-                "DATE",
-                "DISTINGUISHED_NAME",
-                "LABELS",
-                "SEAL_IMAGE"
+            "DATE",
+            "LOGO",
+            "DISTINGUISHED_NAME"
             ]
         }
     }
