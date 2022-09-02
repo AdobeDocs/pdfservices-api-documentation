@@ -81,7 +81,7 @@ Clients using the REST API must perform the following:
 1. Request to upload the input document to the upload URI.
 1. Invoke PDF Electronic Seal API (/pdf-services/operation/electronicseal) by providing the asset IDs generated in step 1 and other required sealing parameters. In the response, the client receives the job URI in the location header. [Details](https://developer-stage.adobe.com/document-services/docs/apis/#operation/pdfoperations.electronicseal).
 1. Use the job URI to poll the status of the submitted job (Electronic Seal operation). The response includes a job status: *In progress*, *Failed* or *Done*. If the status is done, the seal API returns an asset ID and download URI. **This download URI is valid for 24 hours.**.
-1. Download the digitally signed pdf.
+1. Download the digitally signed pdf using download URI from above step.
 
 
 
