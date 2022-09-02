@@ -34,8 +34,8 @@ TSP parameters encapsulate the signer's [certificate credential](/overview/pdf-e
 
 The seal field parameters are required to create a new unsigned signature field or sign an existing field.
 
-* **Field Name**  (*Required*): The signature field's name. If signature field with this field name already exist, that field will be used. 
-If it does not exist, a signature field with this field name will be created. This must be a non-empty string. Check the steps [here](https://www.adobe.com/sign/hub/how-to/add-a-signature-block-to-pdf) to add signature block to a PDF.
+* **Field Name**  (*Required*): The signature field's name. This must be a non-empty string. If signature field with this field name already exist, that field will be used. 
+If it does not exist, a signature field with this field name will be created.
 * **Visibility**: Specifies whether the signature field is visible. The default value of `true` creates a visible signature.
 * **Page Number**: Specifies the page number to which the signature field should be attached. Page numbers are 1-based. The page number is only **required** if the signature field does not already exist in the pdf document. If this is specified along with signature field then it overrides the page on which signature field is present in the document.
 * **Location**: Specifies the coordinates of the signature appearance's bounding box in default PDF user space units. The location is only **required** if the signature field does not already exist in the pdf document. If this is specified along with signature field then it overrides the existing signature bounding box.
@@ -77,7 +77,7 @@ Clients using the REST API must perform the following:
 1. Call the `/asset` API with `mediaType` in the request specifying the document upload type. For example, `application/pdf`. The API responds with an asset ID and upload URI. 
 1. Request to upload the input document to the upload URI.
 1. Invoke PDF Electronic Seal API (/pdf-services/operation/electronicseal) by providing the asset IDs generated in step 1 and other required sealing parameters. In the response, the client receives the job URI in the location header. [Details](https://developer-stage.adobe.com/document-services/docs/apis/#operation/pdfoperations.electronicseal).
-1. Use the job URI to poll the status of the submitted job (Electronic Seal operation). The response includes a job status: *In progress* *Failed*, *Done*. If the status is done, the seal API returns an asset ID and download URI. **This URL is only valid for 24 hours**.
+1. Use the job URI to poll the status of the submitted job (Electronic Seal operation). The response includes a job status: *In progress*, *Failed* or *Done*. If the status is done, the seal API returns an asset ID and download URI. **This download URI is valid for 24 hours.**.
 1. Download the digitally signed pdf.
 
 
