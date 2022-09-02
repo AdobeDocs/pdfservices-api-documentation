@@ -38,7 +38,7 @@ experience whether you are viewing a PDF in Adobe Acrobat or embedded on your we
 
 ### Sized container embed mode in legacy viewer
 
-![Full window embed mode in legacy viewer](../images/sized_legacy.png)
+![Sized container embed mode in legacy viewer](../images/sized_legacy.png)
 
 ### Sized container embed mode in modern viewer
 
@@ -54,11 +54,15 @@ experience whether you are viewing a PDF in Adobe Acrobat or embedded on your we
 
 <br/>
 
-![Full window embed mode in legacy viewer](../images/sized_new.png)
+*Sized container embed mode*
 
-<InlineAlert slots="text" />
+![Sized container embed mode in modern viewer](../images/sized_new.png)
 
-Screenshot TBD for fullscreen view in sized container
+<br/>
+
+*Sized container in full screen mode*
+
+![Sized container embed mode in modern viewer](../images/sized_full.png)
 
 ## In-line embed mode
 
@@ -68,7 +72,7 @@ Screenshot TBD for fullscreen view in sized container
 
 ### In-line embed mode in modern viewer
 
-![In-line embed mode in legacy viewer](../images/inline_search.png)
+![In-line embed mode in modern viewer](../images/inline_search.png)
 
 ## Lightbox embed mode
 
@@ -87,7 +91,7 @@ Screenshot TBD for fullscreen view in sized container
 
 <br/>
 
-![Lightbox embed mode in legacy viewer](../images/lightboxscreen.png)
+![Lightbox embed mode in modern viewer](../images/lightboxscreen.png)
 
 ## Deprecated Features
 

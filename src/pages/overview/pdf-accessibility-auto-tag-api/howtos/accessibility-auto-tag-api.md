@@ -1,3 +1,6 @@
+---
+title: Document Services APIs | PDF Accessibility Auto-Tag API | How Tos | Accessibility API
+---
 # PDF Accessibility Auto-Tag API
 
 ## PDF Accessibility Auto-Tag API Output Format
@@ -47,12 +50,16 @@ The output of PDF Accessibility Auto-Tag API contains the following:
 | Empty or corrupted input	    | BAD_INPUT		                | Input is corrupted or empty                                                                              |
 | Invalid input parameters	    | BAD_INPUT_PARAMS		        | Invalid input parameters                                                                                 |
 
+## Rest API 
+
+See our public API Reference for [PDF Accessibility Auto-Tag API](../../../apis/#tag/Auto-Tag).
+
 ## Generate tagged PDF with version 1.7 along with an XLSX report and shift the headings in the output PDF file
 
 The sample below generate tagged PDF of version 1.7 along with an XLSX report and shift the headings in the output PDF file.
 
 
-<CodeBlock slots="heading, code" repeat="2" languages="Java, Python" /> 
+<CodeBlock slots="heading, code" repeat="3" languages="Java, Python, Rest API" /> 
 
 #### Java
 
@@ -155,12 +162,29 @@ except (ServiceApiException, ServiceUsageException, SdkException) as e:
     logging.exception(f'Exception encountered while executing operation: {e}')
 ```
 
+#### Rest API 
+
+```javascript
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Auto-Tag
+
+curl --location --request POST 'https://pdf-services.adobe.io/operation/autotag' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "shiftHeadings": true,
+    "generateReport": true
+}'
+```
+
 
 ## Generate tagged PDF from a PDF
 
 The sample below generates tagged PDF from a PDF.
 
-<CodeBlock slots="heading, code" repeat="2" languages="Java, Python" /> 
+<CodeBlock slots="heading, code" repeat="3" languages="Java, Python, Rest API" /> 
 
 #### Java
 
@@ -243,6 +267,21 @@ try:
 
 except (ServiceApiException, ServiceUsageException, SdkException) as e:
     logging.exception(f'Exception encountered while executing operation: {e}')
+```
+
+#### Rest API 
+
+```javascript
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Auto-Tag
+
+curl --location --request POST 'https://pdf-services.adobe.io/operation/autotag' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
+}'
 ```
 
 ## Generates tagged PDF by setting options with command line arguments

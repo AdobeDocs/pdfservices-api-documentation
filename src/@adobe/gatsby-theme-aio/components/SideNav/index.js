@@ -28,8 +28,9 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
 
   const handleSubtile=(title)=>{
     return <div>
-    {title.title}<span style={{color:'red',fontSize:'10px',border:'1px solid',padding:'2px', marginLeft:'3px'}}>{title.subTitle}</span>
-    </div> 
+    {title.title}
+    <span style={{color:'red',fontSize:'10px',border:'1px solid',padding:'2px', marginLeft:'3px'}}>{title.subTitle}</span>
+    </div>
   }
   const renderSubtree = (pages, level) =>
     pages

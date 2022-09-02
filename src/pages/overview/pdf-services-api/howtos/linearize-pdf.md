@@ -1,4 +1,13 @@
+---
+title: Document Services APIs | How Tos | Linearize PDF
+---
 # Linearize PDFs
+
+Optimize PDFs for quick viewing on the web, especially for mobile clients. Linearization allows your end users to view large PDF documents incrementally so that they can view pages much faster in lower bandwidth conditions.
+
+## Rest API 
+
+See our public API Reference for [Linearize PDF](../../../apis/#tag/Linearize-PDF)
 
 ## Linearize PDF
 
@@ -142,33 +151,20 @@ incremental access in network environments.
    }
 ```
 
-#### Rest API
+#### Rest API 
 
 ```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-linearizePDF
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Linearize-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/linearizepdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-e4d5f0b75e5d43ea9eaa187860772d27\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"application/pdf\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-linearizePDF
 ```

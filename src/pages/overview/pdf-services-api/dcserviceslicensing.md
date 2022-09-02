@@ -1,3 +1,6 @@
+---
+title: Document Services APIs | PDF Services API | DC Services Licensing
+---
 # PDF Services API Licensing
 
 ## Paid programs

@@ -147,6 +147,10 @@ module.exports = {
                 path: 'overview/pdf-services-api/howtos/index.md'
               },
               {
+                title: 'Using Our APIs',
+                path: 'overview/pdf-services-api/howtos/api-usage.md'
+              },
+              {
                 title: 'Create PDF',
                 path: 'overview/pdf-services-api/howtos/create-pdf.md'
               },
@@ -207,12 +211,21 @@ module.exports = {
                 path: 'overview/pdf-services-api/howtos/extract-pdf.md'
               },
               {
+                title: 'Document Generation',
+                path: 'overview/pdf-services-api/howtos/document-generation.md'
+              },
+              {
                 title: 'Get PDF Properties',
                 path: 'overview/pdf-services-api/howtos/pdf-properties.md'
               },
               {
                 title: 'Accessibility Auto-Tag PDF',
                 path: 'overview/pdf-services-api/howtos/accessibility-auto-tag-pdf.md',
+                subTitle: 'Early Access Program',
+              },
+              {
+                title: 'PDF Electronic Seal API',
+                path: 'overview/pdf-services-api/howtos/electronic-seal-api.md',
                 subTitle: 'Early Access Program',
               }
             ]
@@ -287,7 +300,8 @@ module.exports = {
         ]
       },
       {
-        title: 'PDF Electronic Seal API',
+        title: 'PDF Electronic Seal API                       ',
+        subTitle: 'Early Access Program',
         path: 'overview/pdf-electronic-seal-api/index.md',
         pages: [
           {

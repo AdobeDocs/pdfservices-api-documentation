@@ -1,3 +1,6 @@
+---
+title: Document Services APIs | PDF Embed API | How Tos
+---
 # PDF Embed API basics
 
 The samples and documentation provide an easy way to jump-start
@@ -374,6 +377,14 @@ button in the bottom toolbar. In the full screen mode, the top bar contains a tr
 which contains various options such as page thumbnails, bookmarks and page navigation options.
 In mobile browsers, the user will be prompted to view the PDF in full screen mode for optimal reading. You can exit full screen mode in mobile browsers by swiping down.
 
+*Full screen button in sized container embed mode*
+
+![Sized Container full screen button](../images/sized_fullscreen.png)
+
+*Exit button in sized container full screen mode*
+
+![Sized Container full screen view](../images/sized_exit.png)
+
 
 ### In-Line embed mode
 
@@ -457,11 +468,11 @@ To use this mode:
 </script>
 ```
 
-Top bar with Close button (`exitPDFViewerType: "CLOSE"`)
+*Top bar with Close button (`exitPDFViewerType: "CLOSE"`)*
 
 ![Image for lightbox embed mode](../images/lightboxscreen.png)
 
-Top bar with Back button (`exitPDFViewerType: "RETURN"`)
+*Top bar with Back button (`exitPDFViewerType: "RETURN"`)*
 
 ![Image for lightbox embed mode with back button](../images/backbutton.png)
 

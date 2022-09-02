@@ -1,4 +1,15 @@
+---
+title: Document Services APIs | How Tos | Export PDF
+---
 # Export PDF
+
+Export a source PDF file into doc, docx, jpeg, png, pptx, rtf, xlsx.
+
+## Rest API 
+
+See our public API Reference for : 
+- [Export PDF to Office format or text files](../../../apis/#tag/Export-PDF)
+- [Export PDF to Images](../../../apis/#tag/PDF-To-Images)
 
 ## Export a PDF
 
@@ -8,7 +19,6 @@ such as:
 
 -   Microsoft Office file formats
 -   Text files
--   Images
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
@@ -148,40 +158,23 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
  }
 ```
 
-#### Rest API
+#### Rest API 
 
 ```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Export-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/exportpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"params\": {
-			\"cpf:inline\": {
-				\"targetFormat\": \"docx\"
-			}
-		},
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-26c7fda2890b44ad9a82714682e35888\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"application/vnd.openxmlformats-officedocument.wordprocessingml.document\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "targetFormat": "docx"
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
 ```
 
 ## Export a PDF to images
@@ -332,40 +325,24 @@ pages will generate 15 image files. The first file's name ends with
  }
 ```
 
-#### Rest API
+#### Rest API 
 
 ```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/PDF-To-Images
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/pdftoimages' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"params\": {
-			\"cpf:inline\": {
-				\"targetFormat\": \"jpeg\"
-			}
-		},
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-26c7fda2890b44ad9a82714682e35888\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"application/zip\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "targetFormat": "jpeg",
+    "outputType": "zipOfPageImages"
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
 ```
 
 ## Export a PDF to list of images
@@ -524,39 +501,22 @@ try {
 }
 ```
 
-#### Rest API
+#### Rest API 
 
 ```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/PDF-To-Images
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/pdftoimages' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-  \"cpf:inputs\": {
-    \"params\": {
-      \"cpf:inline\": {
-        \"targetFormat\": \"jpeg\",
-        \"outputType\": \"listOfPageImages\"
-      }
-    },
-    \"documentIn\": {
-      \"cpf:location\": \"InputFile0\",
-      \"dc:format\": \"application/pdf\"
-    }
-  },
-  \"cpf:engine\": {
-    \"repo:assetId\": \"urn:aaid:cpf:Service-26c7fda2890b44ad9a82714682e35888\"
-  },
-  \"cpf:outputs\": {
-    \"documentOutList\": {
-      \"cpf:location\": \"multipartLabelOut\",
-      \"dc:format\": \"image/jpeg\"
-    }
-  }
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "targetFormat": "jpeg",
+    "outputType": "listOfPageImages"
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
 ```

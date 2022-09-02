@@ -1,4 +1,13 @@
+---
+title: Document Services APIs | How Tos | Split PDF
+---
 # Split PDF
+
+Split a PDF document into multiple smaller documents by simply specifying either the number of files, pages per file, or page ranges.
+
+## Rest API 
+
+See our public API Reference for [Split PDF](../../../apis/#tag/Split-PDF).
 
 ## Split PDF by number of pages
 
@@ -178,37 +187,22 @@ file.
 #### Rest API
 
 ```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Split-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"params\": {
-			\"cpf:inline\": {
-				\"pageCount\": 4
-			}
-		},
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-d99c7660cba14e5c98f9023221dab40f\"
-	},
-	\"cpf:outputs\": {
-		\"documentOutList\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"text/directory\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "splitoption": {
+        "pageCount": 9
+    }
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
 ```
 
 ## Split PDF by page ranges
@@ -422,46 +416,34 @@ ranges where each page range corresponds to a single output file.
   }
 ```
 
-#### Rest API
+#### Rest API 
 
 ```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Split-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"params\": {
-			\"cpf:inline\": {
-				\"pageRanges\": [{
-					\"start\": 2,
-					\"end\": 4
-				}, {
-					\"start\": 7,
-					\"end\": 9
-				}]
-			}
-		},
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-d99c7660cba14e5c98f9023221dab40f\"
-	},
-	\"cpf:outputs\": {
-		\"documentOutList\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"text/directory\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "splitoption": {
+        "pageRanges": [
+            {
+                "start": 2,
+                "end": 4
+            },
+            {
+                "start": 7,
+                "end": 9
+            }
+        ]
+    }
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
 ```
 
 ## Split PDF into number of files
@@ -641,39 +623,23 @@ an identical number of pages (if possible).
    }
 ```
 
-#### Rest API
+#### Rest API 
 
 ```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Split-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"params\": {
-			\"cpf:inline\": {
-				\"fileCount\": 2
-			}
-		},
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-d99c7660cba14e5c98f9023221dab40f\"
-	},
-	\"cpf:outputs\": {
-		\"documentOutList\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"text/directory\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
-```
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "splitoption": {
+        "fileCount": 3
+    }
+}'
 
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
+```

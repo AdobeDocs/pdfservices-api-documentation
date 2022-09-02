@@ -1,4 +1,15 @@
+---
+title: Document Services APIs | How Tos | Create PDF
+---
 # Create PDF
+
+Create PDFs from a variety of formats, including static and dynamic HTML; Microsoft Word, PowerPoint, and Excel; as well as text, image, Zip, and URL. Support for HTML to PDF, DOC to PDF, DOCX to PDF, PPT to PDF, PPTX to PDF, XLS to PDF, XLSX to PDF, TXT to PDF, RTF to PDF, BMP to PDF, JPEG to PDF, GIF to PDF, TIFF to PDF, PNG to PDF
+
+## Rest API
+
+See our public API Reference for :
+- [Create PDF from Office formats](../../../apis/#tag/Create-PDF)
+- [Create PDF from HTML](../../../apis/#tag/Html-To-PDF)
 
 ## Create a PDF
 
@@ -160,32 +171,19 @@ const PDFservicesSdk = require('@adobe/pdfservices-node-sdk');
 #### Rest API
 
 ```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-createPDF
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Create-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/createpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/vnd.openxmlformats-officedocument.wordprocessingml.document\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-1538ece812254acaac2a07799503a430\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"application/pdf\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-createPDF
 ```
 
 ## Create PDF with DocumentLanguage
@@ -386,39 +384,20 @@ try {
 #### Rest API
 
 ```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-createPDF
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Create-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/createpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"params\": {
-			\"cpf:inline\": {
-				\"wordFormatOptions\": {
-					\"documentLanguage\": \"ja-JP\"
-				}
-			}
-		},
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/vnd.openxmlformats-officedocument.wordprocessingml.document\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-1538ece812254acaac2a07799503a430\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"application/pdf\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "documentLanguage": "en-US"
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-createPDF
 ```
 
 ## Create a PDF from static HTML
@@ -620,44 +599,25 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 #### Rest API
 
 ```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-  \"cpf:inputs\": {
-    \"params\": {
-      \"cpf:inline\": {
-        \"print\": {
-          \"includeHeaderFooter\": true
-        },
-        \"pageLayout\": {
-          \"pageHeight\": 8.5,
-          \"pageWidth\": 11
-        },
-        \"json\": \"{\\\"k1\\\": \\\"v1\\\", \\\"k2\\\": \\\"v2\\\"}\"
-      }
-    },
-    \"documentIn\": {
-      \"cpf:location\": \"InputFile0\",
-      \"dc:format\": \"application/zip\"
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "json": "{}",
+    "includeHeaderFooter": true,
+    "pageLayout": {
+        "pageWidth": 11,
+        "pageHeight": 8.5
     }
-  },
-  \"cpf:engine\": {
-    \"repo:assetId\": \"urn:aaid:cpf:Service-e2ee120a2b06427cb449592f5db967e7\"
-  },
-  \"cpf:outputs\": {
-    \"documentOut\": {
-      \"cpf:location\": \"multipartLabelOut\",
-      \"dc:format\": \"application/pdf\"
-    }
-  }
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```
 
 ## Create a PDF from static HTML with inline CSS
@@ -855,44 +815,25 @@ try {
 #### Rest API
 
 ```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-  \"cpf:inputs\": {
-    \"params\": {
-      \"cpf:inline\": {
-        \"print\": {
-          \"includeHeaderFooter\": true
-        },
-        \"pageLayout\": {
-          \"pageHeight\": 8.5,
-          \"pageWidth\": 11
-        },
-        \"json\": \"{\\\"k1\\\": \\\"v1\\\", \\\"k2\\\": \\\"v2\\\"}\"
-      }
-    },
-    \"documentIn\": {
-      \"cpf:location\": \"InputFile0\",
-      \"dc:format\": \"application/zip\"
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "json": "{}",
+    "includeHeaderFooter": true,
+    "pageLayout": {
+        "pageWidth": 11,
+        "pageHeight": 8.5
     }
-  },
-  \"cpf:engine\": {
-    \"repo:assetId\": \"urn:aaid:cpf:Service-e2ee120a2b06427cb449592f5db967e7\"
-  },
-  \"cpf:outputs\": {
-    \"documentOut\": {
-      \"cpf:location\": \"multipartLabelOut\",
-      \"dc:format\": \"application/pdf\"
-    }
-  }
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```
 
 ## Create a PDF File From HTML specified via URL
@@ -1091,40 +1032,25 @@ try {
 #### Rest API
 
 ```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-  \"cpf:inputs\": {
-    \"params\": {
-      \"cpf:inline\": {
-        \"print\": {
-          \"includeHeaderFooter\": true
-        },
-        \"pageLayout\": {
-          \"pageHeight\": 8.5,
-          \"pageWidth\": 11
-        },
-        \"json\": \"{\\\"k1\\\": \\\"v1\\\", \\\"k2\\\": \\\"v2\\\"}\"
-      }
-    },
-    \"inputUrl\": \"{{Placeholder for inputUrl}}\"
-  },
-  \"cpf:engine\": {
-    \"repo:assetId\": \"urn:aaid:cpf:Service-e2ee120a2b06427cb449592f5db967e7\"
-  },
-  \"cpf:outputs\": {
-    \"documentOut\": {
-      \"cpf:location\": \"multipartLabelOut\",
-      \"dc:format\": \"application/pdf\"
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "inputUrl": "https://developer.adobe.com/document-services/homepage",
+    "json": "{}",
+    "includeHeaderFooter": true,
+    "pageLayout": {
+        "pageWidth": 11,
+        "pageHeight": 8.5
     }
-  }
-}"'
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```
 
 ## Create a PDF from dynamic HTML
@@ -1353,42 +1279,23 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 #### Rest API 
 
 ```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-  \"cpf:inputs\": {
-    \"params\": {
-      \"cpf:inline\": {
-        \"print\": {
-          \"includeHeaderFooter\": true
-        },
-        \"pageLayout\": {
-          \"pageHeight\": 8.5,
-          \"pageWidth\": 11
-        },
-        \"json\": \"{\\\"k1\\\": \\\"v1\\\", \\\"k2\\\": \\\"v2\\\"}\"
-      }
-    },
-    \"documentIn\": {
-      \"cpf:location\": \"InputFile0\",
-      \"dc:format\": \"application/zip\"
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "json": "{}",
+    "includeHeaderFooter": true,
+    "pageLayout": {
+        "pageWidth": 11,
+        "pageHeight": 8.5
     }
-  },
-  \"cpf:engine\": {
-    \"repo:assetId\": \"urn:aaid:cpf:Service-e2ee120a2b06427cb449592f5db967e7\"
-  },
-  \"cpf:outputs\": {
-    \"documentOut\": {
-      \"cpf:location\": \"multipartLabelOut\",
-      \"dc:format\": \"application/pdf\"
-    }
-  }
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```

@@ -1,4 +1,7 @@
-# <h1>Quickstarts<span style="color:red;font-size:15px;margin-left:10px;vertical-align:middle;border:1px solid;padding-left:2px;padding-right:2px"><b>Available under Early Access Program</b></span></h1>
+---
+title: Document Services APIs | PDF Accessibility Auto-Tag API | Quickstarts
+---
+# Quickstarts
 
 <p>
 PDF Accessibility Auto-Tag API is available as SDKs to help you get up and running quickly. You can then leverage the samples in your own code
@@ -6,7 +9,7 @@ PDF Accessibility Auto-Tag API is available as SDKs to help you get up and runni
 
 ## Get Early Access
 
-The PDF Accessibility Auto-Tag API is currently available as Early Access. To request access, [Contact Us](https://developer.adobe.com/document-services/pricing/contact/sales/accessibility/). Once you receive confirmation that you’ve been given access, proceed to the next step to [Get API credentials](quickstarts/#get-api-credentials).
+The PDF Accessibility Auto-Tag API is currently available as Early Access. To request access, [Contact Us](https://adobe.com/go/accessibility_early_access_form). Once you receive confirmation that you’ve been given access, proceed to the next step to [Get API credentials](quickstarts/#get-api-credentials).
 
 ## Get API credentials
 
@@ -19,6 +22,10 @@ During the credential creation process you'll be asked to whether you'd like a *
 ## Install SDK and samples
 
 PDF Accessibility Auto-Tag API is available as SDKs in Java and Python.
+
+<InlineAlert slots="text"/>
+
+Please allow-list the following hostnames before using Adobe PDF Services SDK:<ul><li>ims-na1.adobelogin.com</li><li>cpf-ue1.adobe.io</li><li>senseicore-ue1.adobe.io (for versions below 1.x.x)</li></ul>
 
 ### Java
 

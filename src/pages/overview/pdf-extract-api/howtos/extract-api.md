@@ -1,3 +1,6 @@
+---
+title: Document Services APIs | PDF Extract API | How Tos | Extract API
+---
 # Extract PDF
 
 ## Structured Information Output Format
@@ -135,6 +138,10 @@ schema]( ../../../resources/extractJSONOutputSchema2.json)):
 | Timeout           | TIMEOUT                                                                                             | Processing timeout. Please try splitting the file into multiple files with fewer pages.                 |
 | Unknown error / failure               | ERROR                                                                                                                                                                                | Unable to extract content - Internal error.                 |
 
+
+## Rest API 
+
+See our public API Reference for [Extract PDF](../../../apis/#tag/Extract-PDF).
 
 ## Extract Text from a PDF
 
@@ -357,43 +364,25 @@ namespace ExtractTextInfoFromPDF
          logging.exception("Exception encountered while executing operation")
 ```
 
-#### Rest API
+#### Rest API 
 
 ```javascript
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Extract-PDF
+
+curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-    \"cpf:engine\": {
-        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
-    },
-    \"cpf:inputs\": {
-        \"documentIn\": {
-            \"cpf:location\": \"InputFile0\",
-            \"dc:format\": \"application/pdf\"
-        },
-        \"params\": {
-            \"cpf:inline\": {
-                \"elementsToExtract\": [
-                    \"text\"
-                ]
-            }
-        }
-    },
-    \"cpf:outputs\": {
-        \"elementsInfo\": {
-            \"cpf:location\": \"jsonoutput\",
-            \"dc:format\": \"application/json\"
-        },
-        \"elementsRenditions\": {
-            \"cpf:location\": \"fileoutpart\",
-            \"dc:format\": \"text/directory\"
-        }
-    }
-} "' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{  
+    "assetID": "9df97240-66b0-47e9-a6cd-7d3182d7cbb1",
+    "elementsToExtract": [
+        "text"
+    ]
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables
@@ -625,40 +614,23 @@ namespace ExtractTextTableInfoFromPDF
 #### Rest API
 
 ```javascript
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Extract-PDF
+
+curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-    \"cpf:engine\": {
-        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
-    },
-    \"cpf:inputs\": {
-        \"documentIn\": {
-            \"cpf:location\": \"InputFile0\",
-            \"dc:format\": \"application/pdf\"
-        },
-        \"params\": {
-            \"cpf:inline\": {
-                \"elementsToExtract\": [
-                    \"text\", \"tables\"
-                ]
-            }
-        }
-    },
-    \"cpf:outputs\": {
-        \"elementsInfo\": {
-            \"cpf:location\": \"jsonoutput\",
-            \"dc:format\": \"application/json\"
-        },
-        \"elementsRenditions\": {
-            \"cpf:location\": \"fileoutpart\",
-            \"dc:format\": \"text/directory\"
-        }
-    }
-} "' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "a922ee09-2a3c-4af8-bbfa-29afc6d81fbf",
+    "elementsToExtract": [
+        "text",
+        "tables"
+    ]
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables (w/ Tables Renditions)
@@ -888,44 +860,29 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
       logging.exception("Exception encountered while executing operation")
 ```
 
-#### Rest API
+#### Rest API 
 
 ```javascript
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Extract-PDF
+
+curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-    \"cpf:engine\": {
-        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
-    },
-    \"cpf:inputs\": {
-        \"documentIn\": {
-            \"cpf:location\": \"InputFile0\",
-            \"dc:format\": \"application/pdf\"
-        },
-        \"params\": {
-            \"cpf:inline\": {
-                \"elementsToExtract\": [
-                    \"text\", \"tables\"
-                ],
-                \"renditionsToExtract\": [ \"tables\"]
-            }
-        }
-    },
-    \"cpf:outputs\": {
-        \"elementsInfo\": {
-            \"cpf:location\": \"jsonoutput\",
-            \"dc:format\": \"application/json\"
-        },
-        \"elementsRenditions\": {
-            \"cpf:location\": \"fileoutpart\",
-            \"dc:format\": \"text/directory\"
-        }
-    }
-} "' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "5f8e4042-e000-4bd2-9aa1-4f8a189f228d",
+    "renditionsToExtract": [
+        "tables"
+    ],
+    "elementsToExtract": [
+        "text",
+        "tables"
+    ],
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables (w/ Tables and Figures Renditions)
@@ -1154,44 +1111,30 @@ try {
       logging.exception("Exception encountered while executing operation")
 ```
 
-#### Rest API
+#### Rest API 
 
 ```javascript
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Extract-PDF
+
+curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-    \"cpf:engine\": {
-        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
-    },
-    \"cpf:inputs\": {
-        \"documentIn\": {
-            \"cpf:location\": \"InputFile0\",
-            \"dc:format\": \"application/pdf\"
-        },
-        \"params\": {
-            \"cpf:inline\": {
-                \"elementsToExtract\": [
-                    \"text\", \"tables\"
-                ],
-                \"renditionsToExtract\": [ \"tables\", \"figures\"]
-            }
-        }
-    },
-    \"cpf:outputs\": {
-        \"elementsInfo\": {
-            \"cpf:location\": \"jsonoutput\",
-            \"dc:format\": \"application/json\"
-        },
-        \"elementsRenditions\": {
-            \"cpf:location\": \"fileoutpart\",
-            \"dc:format\": \"text/directory\"
-        }
-    }
-} "' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "e8d013a8-efef-4e0f-844c-3eea5b409155",
+    "renditionsToExtract": [
+        "tables",
+        "figures"
+    ], 
+    "elementsToExtract": [
+        "text", 
+        "tables"
+    ]
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables and Character Bounding Boxes (w/ Renditions)
@@ -1421,44 +1364,31 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
       logging.exception("Exception encountered while executing operation")
 ```
 
-#### Rest API
+#### Rest API 
 
 ```javascript
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Extract-PDF
+
+curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-    \"cpf:engine\": {
-        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
-    },
-    \"cpf:inputs\": {
-        \"documentIn\": {
-            \"cpf:location\": \"InputFile0\",
-            \"dc:format\": \"application/pdf\"
-        },
-        \"params\": {
-            \"cpf:inline\": {
-                \"elementsToExtract\": [
-                    \"text\", \"tables\"
-                ],
-                \"renditionsToExtract\": [ \"tables\", \"figures\"]
-            }
-        }
-    },
-    \"cpf:outputs\": {
-        \"elementsInfo\": {
-            \"cpf:location\": \"jsonoutput\",
-            \"dc:format\": \"application/json\"
-        },
-        \"elementsRenditions\": {
-            \"cpf:location\": \"fileoutpart\",
-            \"dc:format\": \"text/directory\"
-        }
-    }
-} "' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "e8d013a8-efef-4e0f-844c-3eea5b409155",
+    "renditionsToExtract": [
+        "tables",
+        "figures"
+    ],
+    "elementsToExtract": [
+        "text",
+        "tables"
+    ],
+    "getCharBounds": true
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables and Table Structure as CSV (w/ Renditions)
@@ -1690,47 +1620,32 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
       result.save_as(base_path + "/output/ExtractTextTableWithTableStructure.zip")
   except (ServiceApiException, ServiceUsageException, SdkException):
       logging.exception("Exception encountered while executing operation")
-
 ```
 
-#### Rest API
+#### Rest API 
 
 ```javascript
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Extract-PDF
+
+curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-    \"cpf:engine\": {
-        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
-    },
-    \"cpf:inputs\": {
-        \"documentIn\": {
-            \"cpf:location\": \"InputFile0\",
-            \"dc:format\": \"application/pdf\"
-        },
-        \"params\": {
-            \"cpf:inline\": {
-                \"elementsToExtract\": [
-                    \"text\", \"tables\"
-                ],
-                \"renditionsToExtract\": [ \"tables\", \"figures\"]
-            }
-        }
-    },
-    \"cpf:outputs\": {
-        \"elementsInfo\": {
-            \"cpf:location\": \"jsonoutput\",
-            \"dc:format\": \"application/json\"
-        },
-        \"elementsRenditions\": {
-            \"cpf:location\": \"fileoutpart\",
-            \"dc:format\": \"text/directory\"
-        }
-    }
-} "' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "75565749-3342-4bdb-9caf-92e0a67b2c9c",
+    "renditionsToExtract": [
+        "tables"
+    ],
+    "elementsToExtract": [
+        "text",
+        "tables"
+    ],
+    "tableOutputFormat": "csv"
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables and Styling Info
@@ -1961,42 +1876,25 @@ namespace ExtractTextTableInfoWithStylingFromPDF
       logging.exception("Exception encountered while executing operation")
 ```
 
-#### Rest API
+#### Rest API 
 
 ```javascript
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Extract-PDF
+
+curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-    \"cpf:engine\": {
-        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
-    },
-    \"cpf:inputs\": {
-        \"documentIn\": {
-            \"cpf:location\": \"InputFile0\",
-            \"dc:format\": \"application/pdf\"
-        },
-        \"params\": {
-            \"cpf:inline\": {
-                \"elementsToExtract\": [
-                    \"text\", \"tables\"
-                ],
-                \"renditionsToExtract\": [ \"tables\", \"figures\"]
-            }
-        }
-    },
-    \"cpf:outputs\": {
-        \"elementsInfo\": {
-            \"cpf:location\": \"jsonoutput\",
-            \"dc:format\": \"application/json\"
-        },
-        \"elementsRenditions\": {
-            \"cpf:location\": \"fileoutpart\",
-            \"dc:format\": \"text/directory\"
-        }
-    }
-} "' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "48ced553-05d4-4b89-be26-03f0e0149159"
+  "elementsToExtract": [
+        "text",
+        "tables"
+    ],
+    "includeStyling": true
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```

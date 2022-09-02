@@ -1,3 +1,6 @@
+---
+title: Document Services APIs | PDF Services API | AWS Marketplace
+---
 # Adobe PDF Services API (International)
 
 Thank you for your interest in Adobe PDF Services API subscription on Amazon Web Services. Our international subscription is available for purchase from billing addresses within the following list of allowed countries only:

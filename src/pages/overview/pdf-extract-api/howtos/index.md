@@ -1,3 +1,6 @@
+---
+title: Document Services APIs | PDF Extract API | How Tos 
+---
 # How Tos
 <p>
 

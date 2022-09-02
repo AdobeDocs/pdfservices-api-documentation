@@ -1,4 +1,13 @@
+---
+title: Document Services APIs | How Tos | Combine PDF
+---
 # Combine PDF Files
+
+Combine two or more documents into a single PDF file
+
+## Rest API
+
+See our public API Reference for [Combine PDF](../../../apis/#tag/Combine-PDF)
 
 ## Combine Files
 
@@ -151,46 +160,26 @@ This sample combines up to 20 PDF files into a single PDF file.
 #### Rest API
 
 ```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-combinePDF
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Combine-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/combinepdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"documentsIn\": [{
-			\"documentIn\": {
-				\"cpf:location\": \"InputFile0\",
-				\"dc:format\": \"application/pdf\"
-			}
-		}, {
-			\"documentIn\": {
-				\"cpf:location\": \"InputFile1\",
-				\"dc:format\": \"application/pdf\"
-			}
-		}, {
-			\"documentIn\": {
-				\"cpf:location\": \"InputFile2\",
-				\"dc:format\": \"application/pdf\"
-			}
-		}]
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-916ee91c156b42349a7847a7d564fb13\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"OutputFile\",
-			\"dc:format\": \"application/pdf\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"' \
---form 'InputFile1=@"{{Placeholder for input file (absolute path)}}"' \
---form 'InputFile2=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assets": [
+        {
+            "assetID": "5952d81f-55be-4bb1-8206-49f695f07ff7"
+        },
+        {
+            "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
+        }
+    ]
+}'
+
+// Legacy API can be found here
+// https://documentcloud.adobe.com/document-services/index.html#post-combinePDF
 ```
 
 ## Combine pages from multiple files
@@ -428,66 +417,36 @@ ranges for each file to combine in the output file.
 #### Rest API
 
 ```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-combinePDF
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Combine-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/combinepdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"documentsIn\": [{
-			\"pageRanges\": {
-				\"cpf:inline\": [{
-					\"start\": 1,
-					\"end\": 4
-				}]
-			},
-			\"documentIn\": {
-				\"cpf:location\": \"InputFile0\",
-				\"dc:format\": \"application/pdf\"
-			}
-		}, {
-			\"pageRanges\": {
-				\"cpf:inline\": [{
-					\"start\": 1,
-					\"end\": 25
-				}]
-			},
-			\"documentIn\": {
-				\"cpf:location\": \"InputFile1\",
-				\"dc:format\": \"application/pdf\"
-			}
-		}, {
-			\"pageRanges\": {
-				\"cpf:inline\": [{
-					\"start\": 1
-				}, {
-					\"end\": 25
-				}, {
-					\"start\": 1,
-					\"end\": 25
-				}]
-			},
-			\"documentIn\": {
-				\"cpf:location\": \"InputFile2\",
-				\"dc:format\": \"application/pdf\"
-			}
-		}]
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-916ee91c156b42349a7847a7d564fb13\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"OutputFile\",
-			\"dc:format\": \"application/pdf\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"' \
---form 'InputFile1=@"{{Placeholder for input file (absolute path)}}"' \
---form 'InputFile2=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assets": [
+        {
+            "assetID": "5952d81f-55be-4bb1-8206-49f695f07ff7",
+            "pageRanges": [
+                {
+                    "start": 1,
+                    "end": 3
+                }
+            ]
+        },
+        {
+            "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+            "pageRanges": [
+                {
+                    "start": 2,
+                    "end": 4
+                }
+            ]
+        }
+    ]
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-combinePDF
 ```

@@ -1,4 +1,13 @@
+---
+title: Document Services APIs | How Tos | Reorder Pages
+---
 # Reorder Pages
+
+Reorder the pages of a PDF file to reorganize.
+
+## Rest API
+
+See our public API Reference for [Reorder Pages](../../../apis/#tag/Combine-PDF)
 
 ## Reorder Pages in PDF
 
@@ -189,69 +198,38 @@ a PDF file.
  }
 ```
 
-#### Rest API
+#### Rest API 
 
 ```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-combinePDF
+// Please refer our Rest API docs for more information 
+// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Combine-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/combinepdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"documentsIn\": [{
-			\"pageRanges\": {
-				\"cpf:inline\": [{
-					\"start\": 1,
-					\"end\": 4
-				}]
-			},
-			\"documentIn\": {
-				\"cpf:location\": \"InputFile0\",
-				\"dc:format\": \"application/pdf\"
-			}
-		}, {
-			\"pageRanges\": {
-				\"cpf:inline\": [{
-					\"start\": 1,
-					\"end\": 25
-				}]
-			},
-			\"documentIn\": {
-				\"cpf:location\": \"InputFile1\",
-				\"dc:format\": \"application/pdf\"
-			}
-		}, {
-			\"pageRanges\": {
-				\"cpf:inline\": [{
-					\"start\": 1
-				}, {
-					\"end\": 25
-				}, {
-					\"start\": 1,
-					\"end\": 25
-				}]
-			},
-			\"documentIn\": {
-				\"cpf:location\": \"InputFile2\",
-				\"dc:format\": \"application/pdf\"
-			}
-		}]
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-916ee91c156b42349a7847a7d564fb13\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"OutputFile\",
-			\"dc:format\": \"application/pdf\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"' \
---form 'InputFile1=@"{{Placeholder for input file (absolute path)}}"' \
---form 'InputFile2=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assets": [
+        {
+            "assetID": "ebe92ced-7893-4f8d-9ece-1579030dd981",
+            "pageRanges": [
+                {
+                    "start": 3,
+                    "end": 3
+                },
+                {
+                    "start": 1,
+                    "end": 1
+                },
+                {
+                    "start": 4,
+                    "end": 4
+                }
+            ]
+        }
+    ]
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-combinePDF
 ```
