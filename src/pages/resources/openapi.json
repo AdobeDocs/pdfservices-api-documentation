@@ -85,7 +85,7 @@
     },
     {
       "name": "Electronic Seal",
-      "description": "An operation to create an electronic seal on input PDF documents using the digital certificate provided by the user."
+      "description": "Create electronic seal on PDF documents like invoices, agreements etc using the digital certificate provided by the user."
     },
     {
       "name": "Auto Tag",
@@ -100,23 +100,23 @@
       ]
     },
     {
-      "name": "PDFOperations",
+      "name": "PDF Operations",
       "tags": [
-        "Create PDF",
-        "Export PDF",
-        "PDF To Images",
+        "Document Generation",
         "Extract PDF",
+        "Create PDF",
         "Html To PDF",
         "Combine PDF",
         "Compress PDF",
+        "Export PDF",
+        "PDF To Images",
         "Linearize PDF",
-        "Ocr",
+        "OCR",
         "Page Manipulation",
         "PDF Properties",
         "Protect PDF",
         "Remove Protection",
         "Split PDF",
-        "Document Generation",
         "Electronic Seal",
         "Auto Tag"
       ]
@@ -173,7 +173,7 @@
         },
         "responses": {
           "200": {
-            "description": "The request was successfull",
+            "description": "The request was successful.",
             "headers": {
               "x-request-id": {
                 "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
@@ -352,7 +352,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The request was successfull",
+            "description": "The request was successful.",
             "headers": {
               "Content-Type": {
                 "description": "The media type of the response body, which is application/json.",
@@ -537,7 +537,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The request was successfull",
+            "description": "The request was successful.",
             "headers": {
               "Content-Type": {
                 "description": "The media type of the response body, which is application/json.",
@@ -683,14 +683,14 @@
         }
       }
     },
-    "/pdf-services/operation/createpdf": {
+    "/operation/documentgeneration": {
       "post": {
         "tags": [
-          "Create PDF"
+          "Document Generation"
         ],
-        "summary": "Create PDF document from non PDF document.",
-        "description": "Create PDF document from Microsoft Office documents (Word, Excel and PowerPoint) and Image file formats.",
-        "operationId": "pdfoperations.createpdf",
+        "summary": "Merge Word based templates with input JSON data to create Word and PDF documents",
+        "description": "Merges the input JSON data with Word based templates to create dynamic documents. To learn more about document generation and document templates, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/document-generation-api/\">documentation</a>.",
+        "operationId": "pdfoperations.documentgeneration",
         "parameters": [
           {
             "name": "Authorization",
@@ -712,11 +712,11 @@
           }
         ],
         "requestBody": {
-          "description": "Params for Create PDF Operation",
+          "description": "Params for Document Generation Operation",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreatePDF"
+                "$ref": "#/components/schemas/DocumentGeneration"
               }
             }
           },
@@ -864,13 +864,13 @@
         "x-codegen-request-body-name": "body"
       }
     },
-    "/pdf-services/operation/createpdf/{jobID}/status": {
+    "/operation/documentgeneration/{jobID}/status": {
       "get": {
         "tags": [
-          "Create PDF"
+          "Document Generation"
         ],
-        "summary": "Poll the createPDF Job for completion",
-        "operationId": "pdfoperations.jobstatus",
+        "summary": "Poll the document generation job for completion",
+        "operationId": "pdfoperations.documentgeneration.jobstatus",
         "parameters": [
           {
             "name": "jobID",
@@ -920,7 +920,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CreatePDFJobStatus"
+                  "$ref": "#/components/schemas/JobStatus"
                 }
               }
             }
@@ -1054,761 +1054,7 @@
         }
       }
     },
-    "/pdf-services/operation/exportpdf": {
-      "post": {
-        "tags": [
-          "Export PDF"
-        ],
-        "summary": "Export a PDF file into a number of supported formats.",
-        "description": "Export a PDF file into a number of supported formats. The supported formats are doc, docx, pptx, xlsx, rtf.",
-        "operationId": "pdfoperations.exportpdf",
-        "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "description": "Bearer + Token Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-api-key",
-            "in": "header",
-            "description": "The clientId from the generated credentials",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "Parameter to specify output document target format",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ExportPDF"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "Request creation for the operation and status uri generated, which can be found in the 'location' header.",
-            "headers": {
-              "location": {
-                "description": "Job status URI for polling the results",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/400"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource Not Found.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/404"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the error JSON response.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-server": {
-                "description": "The name and version of the server.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/401"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Caller doesn't have sufficient quota for this operation.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/429"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/500"
-                }
-              }
-            }
-          }
-        },
-        "x-codegen-request-body-name": "body"
-      }
-    },
-    "/pdf-services/operation/exportpdf/{jobID}/status": {
-      "get": {
-        "tags": [
-          "Export PDF"
-        ],
-        "summary": "Poll the exportPDF Job for completion",
-        "operationId": "pdfoperations.exportpdf.jobstatus",
-        "parameters": [
-          {
-            "name": "jobID",
-            "in": "path",
-            "description": "Job ID of the request",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "description": "Bearer + Token Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-api-key",
-            "in": "header",
-            "description": "The clientId from the generated credentials",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A response with job information.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the status call response.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ExportPDFJobStatus"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource Not Found.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus404"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-server": {
-                "description": "The name and version of the server.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus401"
-                }
-              }
-            }
-          },
-          "408": {
-            "description": "Request Timed Out. Some operation has timed out due to client issue.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus408"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Caller doesn't have sufficient quota for this operation.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus429"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus500"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/pdf-services/operation/pdftoimages": {
-      "post": {
-        "tags": [
-          "PDF To Images"
-        ],
-        "summary": "Convert a PDF file into supported image formats.",
-        "description": "Convert a PDF file into supported image formats.Each image file name ends with _<unpadded_page_index_number>. For example, a PDF file with 15 pages will generate 15 image files. The first file name ends with _1 and the last file name ends with _15.",
-        "operationId": "pdfoperations.pdftoimages",
-        "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "description": "Bearer + Token Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-api-key",
-            "in": "header",
-            "description": "The clientId from the generated credentials",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "Parameter to specify output document target format",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PDFToImage"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "Request creation for the operation and status uri generated, which can be found in the 'location' header.",
-            "headers": {
-              "location": {
-                "description": "Job status URI for polling the results",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/400"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource Not Found.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/404"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the error JSON response.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-server": {
-                "description": "The name and version of the server.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/401"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Caller doesn't have sufficient quota for this operation.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/429"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/500"
-                }
-              }
-            }
-          }
-        },
-        "x-codegen-request-body-name": "body"
-      }
-    },
-    "/pdf-services/operation/pdftoimages/{jobID}/status": {
-      "get": {
-        "tags": [
-          "PDF To Images"
-        ],
-        "summary": "Poll the pdftoimage Job for completion",
-        "operationId": "pdfoperations.pdftoimages.jobstatus",
-        "parameters": [
-          {
-            "name": "jobID",
-            "in": "path",
-            "description": "Job ID of the request",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "description": "Bearer + Token Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-api-key",
-            "in": "header",
-            "description": "The clientId from the generated credentials",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A response with job information.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the status call response.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PDFTOImageJobStatus"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource Not Found.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus404"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-server": {
-                "description": "The name and version of the server.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus401"
-                }
-              }
-            }
-          },
-          "408": {
-            "description": "Request Timed Out. Some operation has timed out due to client issue.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus408"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Caller doesn't have sufficient quota for this operation.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus429"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus500"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/pdf-services/operation/extractpdf": {
+    "/operation/extractpdf": {
       "post": {
         "tags": [
           "Extract PDF"
@@ -1995,12 +1241,12 @@
         "x-codegen-request-body-name": "body"
       }
     },
-    "/pdf-services/operation/extractpdf/{jobID}/status": {
+    "/operation/extractpdf/{jobID}/status": {
       "get": {
         "tags": [
           "Extract PDF"
         ],
-        "summary": "Poll the extractPDF Job for completion",
+        "summary": "Poll the extract pdf job for completion",
         "operationId": "pdfoperations.extractpdf.jobstatus",
         "parameters": [
           {
@@ -2185,7 +1431,378 @@
         }
       }
     },
-    "/pdf-services/operation/htmltopdf": {
+    "/operation/createpdf": {
+      "post": {
+        "tags": [
+          "Create PDF"
+        ],
+        "summary": "Create PDF document from non PDF document.",
+        "description": "Create PDF document from Microsoft Office documents (Word, Excel and PowerPoint) and Image file formats.",
+        "operationId": "pdfoperations.createpdf",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer + Token Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "The clientId from the generated credentials",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Params for Create PDF Operation",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePDF"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Request creation for the operation and status uri generated, which can be found in the 'location' header.",
+            "headers": {
+              "location": {
+                "description": "Job status URI for polling the results",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource Not Found.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the error JSON response.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/401"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Caller doesn't have sufficient quota for this operation.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/operation/createpdf/{jobID}/status": {
+      "get": {
+        "tags": [
+          "Create PDF"
+        ],
+        "summary": "Poll the create pdf job for completion",
+        "operationId": "pdfoperations.jobstatus",
+        "parameters": [
+          {
+            "name": "jobID",
+            "in": "path",
+            "description": "Job ID of the request",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer + Token Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "The clientId from the generated credentials",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A response with job information.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the status call response.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreatePDFJobStatus"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource Not Found.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus404"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-server": {
+                "description": "The name and version of the server.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus401"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "Request Timed Out. Some operation has timed out due to client issue.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus408"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Caller doesn't have sufficient quota for this operation.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus500"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/operation/htmltopdf": {
       "post": {
         "tags": [
           "Html To PDF"
@@ -2366,12 +1983,12 @@
         "x-codegen-request-body-name": "body"
       }
     },
-    "/pdf-services/operation/htmltopdf/{jobID}/status": {
+    "/operation/htmltopdf/{jobID}/status": {
       "get": {
         "tags": [
           "Html To PDF"
         ],
-        "summary": "Poll the htmlToPdf Job for completion",
+        "summary": "Poll the html to pdf job for completion",
         "operationId": "pdfoperations.htmltopdf.jobstatus",
         "parameters": [
           {
@@ -2556,7 +2173,7 @@
         }
       }
     },
-    "/pdf-services/operation/combinepdf": {
+    "/operation/combinepdf": {
       "post": {
         "tags": [
           "Combine PDF"
@@ -2737,12 +2354,12 @@
         "x-codegen-request-body-name": "body"
       }
     },
-    "/pdf-services/operation/combinepdf/{jobID}/status": {
+    "/operation/combinepdf/{jobID}/status": {
       "get": {
         "tags": [
           "Combine PDF"
         ],
-        "summary": "Poll the combinePDF Job for completion",
+        "summary": "Poll the combine pdf job for completion",
         "operationId": "pdfoperations.combinepdf.jobstatus",
         "parameters": [
           {
@@ -2927,7 +2544,7 @@
         }
       }
     },
-    "/pdf-services/operation/compresspdf": {
+    "/operation/compresspdf": {
       "post": {
         "tags": [
           "Compress PDF"
@@ -3108,12 +2725,12 @@
         "x-codegen-request-body-name": "body"
       }
     },
-    "/pdf-services/operation/compresspdf/{jobID}/status": {
+    "/operation/compresspdf/{jobID}/status": {
       "get": {
         "tags": [
           "Compress PDF"
         ],
-        "summary": "Poll the compressPDF Job for completion",
+        "summary": "Poll the compress pdf job for completion",
         "operationId": "pdfoperations.compresspdf.jobstatus",
         "parameters": [
           {
@@ -3298,7 +2915,761 @@
         }
       }
     },
-    "/pdf-services/operation/linearizepdf": {
+    "/operation/exportpdf": {
+      "post": {
+        "tags": [
+          "Export PDF"
+        ],
+        "summary": "Export a PDF file into a number of supported formats.",
+        "description": "Export a PDF file into a number of supported formats. The supported formats are doc, docx, pptx, xlsx, rtf.",
+        "operationId": "pdfoperations.exportpdf",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer + Token Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "The clientId from the generated credentials",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Parameter to specify output document target format",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExportPDF"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Request creation for the operation and status uri generated, which can be found in the 'location' header.",
+            "headers": {
+              "location": {
+                "description": "Job status URI for polling the results",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource Not Found.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the error JSON response.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-server": {
+                "description": "The name and version of the server.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/401"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Caller doesn't have sufficient quota for this operation.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/operation/exportpdf/{jobID}/status": {
+      "get": {
+        "tags": [
+          "Export PDF"
+        ],
+        "summary": "Poll the export pdf job for completion",
+        "operationId": "pdfoperations.exportpdf.jobstatus",
+        "parameters": [
+          {
+            "name": "jobID",
+            "in": "path",
+            "description": "Job ID of the request",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer + Token Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "The clientId from the generated credentials",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A response with job information.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the status call response.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExportPDFJobStatus"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource Not Found.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus404"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-server": {
+                "description": "The name and version of the server.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus401"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "Request Timed Out. Some operation has timed out due to client issue.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus408"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Caller doesn't have sufficient quota for this operation.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus500"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/operation/pdftoimages": {
+      "post": {
+        "tags": [
+          "PDF To Images"
+        ],
+        "summary": "Convert a PDF file into supported image formats.",
+        "description": "Convert a PDF file into supported image formats. Each image file name ends with _(unpadded_page_index_number). For example, a PDF file with 15 pages will generate 15 image files. The first file name ends with _1 and the last file name ends with _15.",
+        "operationId": "pdfoperations.pdftoimages",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer + Token Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "The clientId from the generated credentials",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Parameter to specify output document target format",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PDFToImage"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Request creation for the operation and status uri generated, which can be found in the 'location' header.",
+            "headers": {
+              "location": {
+                "description": "Job status URI for polling the results",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource Not Found.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the error JSON response.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-server": {
+                "description": "The name and version of the server.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/401"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Caller doesn't have sufficient quota for this operation.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/operation/pdftoimages/{jobID}/status": {
+      "get": {
+        "tags": [
+          "PDF To Images"
+        ],
+        "summary": "Poll the pdf to image job for completion",
+        "operationId": "pdfoperations.pdftoimages.jobstatus",
+        "parameters": [
+          {
+            "name": "jobID",
+            "in": "path",
+            "description": "Job ID of the request",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer + Token Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "The clientId from the generated credentials",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A response with job information.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the status call response.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PDFTOImageJobStatus"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource Not Found.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus404"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-server": {
+                "description": "The name and version of the server.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus401"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "Request Timed Out. Some operation has timed out due to client issue.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus408"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Caller doesn't have sufficient quota for this operation.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus500"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/operation/linearizepdf": {
       "post": {
         "tags": [
           "Linearize PDF"
@@ -3479,12 +3850,12 @@
         "x-codegen-request-body-name": "body"
       }
     },
-    "/pdf-services/operation/linearizepdf/{jobID}/status": {
+    "/operation/linearizepdf/{jobID}/status": {
       "get": {
         "tags": [
           "Linearize PDF"
         ],
-        "summary": "Poll the linearizePDF Job for completion",
+        "summary": "Poll the linearize pdf job for completion",
         "operationId": "pdfoperations.linearizepdf.jobstatus",
         "parameters": [
           {
@@ -3669,10 +4040,10 @@
         }
       }
     },
-    "/pdf-services/operation/ocr": {
+    "/operation/ocr": {
       "post": {
         "tags": [
-          "Ocr"
+          "OCR"
         ],
         "summary": "Perform OCR on a PDF File",
         "description": "Perform OCR on PDF Document by providing specific language and type.",
@@ -3850,12 +4221,12 @@
         "x-codegen-request-body-name": "body"
       }
     },
-    "/pdf-services/operation/ocr/{jobID}/status": {
+    "/operation/ocr/{jobID}/status": {
       "get": {
         "tags": [
-          "Ocr"
+          "OCR"
         ],
-        "summary": "Poll the ocr Job for completion",
+        "summary": "Poll the ocr job for completion",
         "operationId": "pdfoperations.ocr.jobstatus",
         "parameters": [
           {
@@ -4040,7 +4411,7 @@
         }
       }
     },
-    "/pdf-services/operation/pagemanipulation": {
+    "/operation/pagemanipulation": {
       "post": {
         "tags": [
           "Page Manipulation"
@@ -4221,12 +4592,12 @@
         "x-codegen-request-body-name": "body"
       }
     },
-    "/pdf-services/operation/pagemanipulation/{jobID}/status": {
+    "/operation/pagemanipulation/{jobID}/status": {
       "get": {
         "tags": [
           "Page Manipulation"
         ],
-        "summary": "Poll the pagemanipulation Job for completion",
+        "summary": "Poll the page manipulation job for completion",
         "operationId": "pdfoperations.pagemanipulation.jobstatus",
         "parameters": [
           {
@@ -4411,7 +4782,7 @@
         }
       }
     },
-    "/pdf-services/operation/pdfproperties": {
+    "/operation/pdfproperties": {
       "post": {
         "tags": [
           "PDF Properties"
@@ -4592,12 +4963,12 @@
         "x-codegen-request-body-name": "body"
       }
     },
-    "/pdf-services/operation/pdfproperties/{jobID}/status": {
+    "/operation/pdfproperties/{jobID}/status": {
       "get": {
         "tags": [
           "PDF Properties"
         ],
-        "summary": "Poll the PDF Properties Job for completion",
+        "summary": "Poll the pdf properties job for completion",
         "operationId": "pdfoperations.pdfproperties.jobstatus",
         "parameters": [
           {
@@ -4782,7 +5153,7 @@
         }
       }
     },
-    "/pdf-services/operation/protectpdf": {
+    "/operation/protectpdf": {
       "post": {
         "tags": [
           "Protect PDF"
@@ -4963,12 +5334,12 @@
         "x-codegen-request-body-name": "body"
       }
     },
-    "/pdf-services/operation/protectpdf/{jobID}/status": {
+    "/operation/protectpdf/{jobID}/status": {
       "get": {
         "tags": [
           "Protect PDF"
         ],
-        "summary": "Poll the protectPDF Job for completion",
+        "summary": "Poll the protect pdf job for completion",
         "operationId": "pdfoperations.protectpdf.jobstatus",
         "parameters": [
           {
@@ -5153,7 +5524,7 @@
         }
       }
     },
-    "/pdf-services/operation/removeprotection": {
+    "/operation/removeprotection": {
       "post": {
         "tags": [
           "Remove Protection"
@@ -5334,12 +5705,12 @@
         "x-codegen-request-body-name": "body"
       }
     },
-    "/pdf-services/operation/removeprotection/{jobID}/status": {
+    "/operation/removeprotection/{jobID}/status": {
       "get": {
         "tags": [
           "Remove Protection"
         ],
-        "summary": "Poll the removeProtection Job for completion",
+        "summary": "Poll the remove protection job for completion",
         "operationId": "pdfoperations.removeprotection.jobstatus",
         "parameters": [
           {
@@ -5524,7 +5895,7 @@
         }
       }
     },
-    "/pdf-services/operation/splitpdf": {
+    "/operation/splitpdf": {
       "post": {
         "tags": [
           "Split PDF"
@@ -5705,12 +6076,12 @@
         "x-codegen-request-body-name": "body"
       }
     },
-    "/pdf-services/operation/splitpdf/{jobID}/status": {
+    "/operation/splitpdf/{jobID}/status": {
       "get": {
         "tags": [
           "Split PDF"
         ],
-        "summary": "Poll the splitPDF Job for completion",
+        "summary": "Poll the split pdf job for completion",
         "operationId": "pdfoperations.splitpdf.jobstatus",
         "parameters": [
           {
@@ -5895,384 +6266,13 @@
         }
       }
     },
-    "/pdf-services/operation/documentgeneration": {
-      "post": {
-        "tags": [
-          "Document Generation"
-        ],
-        "summary": "Merge Word based templates with input JSON data to create Word and PDF documents",
-        "description": "Merges the input JSON data with Word based templates to create dynamic documents. To learn more about document generation and document templates, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/document-generation-api/\">documentation</a>.",
-        "operationId": "pdfoperations.documentgeneration",
-        "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "description": "Bearer + Token Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-api-key",
-            "in": "header",
-            "description": "The clientId from the generated credentials",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "Params for Document Generation Operation",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DocumentGeneration"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "Request creation for the operation and status uri generated, which can be found in the 'location' header.",
-            "headers": {
-              "location": {
-                "description": "Job status URI for polling the results",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/400"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource Not Found.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/404"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the error JSON response.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/401"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Caller doesn't have sufficient quota for this operation.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/429"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/500"
-                }
-              }
-            }
-          }
-        },
-        "x-codegen-request-body-name": "body"
-      }
-    },
-    "/pdf-services/operation/documentgeneration/{jobID}/status": {
-      "get": {
-        "tags": [
-          "Document Generation"
-        ],
-        "summary": "Poll the documentGeneration Job for completion",
-        "operationId": "pdfoperations.documentgeneration.jobstatus",
-        "parameters": [
-          {
-            "name": "jobID",
-            "in": "path",
-            "description": "Job ID of the request",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "description": "Bearer + Token Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-api-key",
-            "in": "header",
-            "description": "The clientId from the generated credentials",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A response with job information.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the status call response.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/JobStatus"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource Not Found.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus404"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-server": {
-                "description": "The name and version of the server.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus401"
-                }
-              }
-            }
-          },
-          "408": {
-            "description": "Request Timed Out. Some operation has timed out due to client issue.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus408"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Caller doesn't have sufficient quota for this operation.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus429"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus500"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/pdf-services/operation/electronicseal": {
+    "/operation/electronicseal": {
       "post": {
         "tags": [
           "Electronic Seal"
         ],
         "summary": "PDF Electronic Seal Operation",
-        "description": "An operation to create an electronic seal on input PDF documents using the digital certificate provided by the user.",
+        "description": "An operation to create an electronic seal on input PDF documents using the digital certificate issued to the user by Trust Service Provider. To know more about PDF Electronic Seal, please see the <a href=\"http://www.adobe.com/go/dc_eseal_overview_doc\" target=\"_blank\">documentation</a>.",
         "operationId": "pdfoperations.electronicseal",
         "parameters": [
           {
@@ -6447,12 +6447,12 @@
         "x-codegen-request-body-name": "body"
       }
     },
-    "/pdf-services/operation/electronicseal/{jobID}/status": {
+    "/operation/electronicseal/{jobID}/status": {
       "get": {
         "tags": [
           "Electronic Seal"
         ],
-        "summary": "Poll the electronicseal Job for completion",
+        "summary": "Poll the electronic seal job for completion",
         "operationId": "pdfoperations.electronicseal.jobstatus",
         "parameters": [
           {
@@ -6637,7 +6637,7 @@
         }
       }
     },
-    "/pdf-services/operation/autotag": {
+    "/operation/autotag": {
       "post": {
         "tags": [
           "Auto Tag"
@@ -6818,12 +6818,12 @@
         "x-codegen-request-body-name": "body"
       }
     },
-    "/pdf-services/operation/autotag/{jobID}/status": {
+    "/operation/autotag/{jobID}/status": {
       "get": {
         "tags": [
           "Auto Tag"
         ],
-        "summary": "Poll the autotag Job for completion",
+        "summary": "Poll the auto tag job for completion",
         "operationId": "pdfoperations.autotag.jobstatus",
         "parameters": [
           {
@@ -7442,7 +7442,7 @@
           "documentLanguage": "en-US"
         },
         "example": {
-          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "documentLanguage": "en-US"
         },
         "required": [
@@ -7478,7 +7478,7 @@
           }
         },
         "example": {
-          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "targetFormat": "docx",
           "ocrLang": "en-US"
         },
@@ -7506,7 +7506,7 @@
             ]
           },
           "outputType": {
-            "description": "f it is set to zipOfPageImages then the response will be provided as a zip response, otherwise if set as listOfPageImages the response will be provided as list of images as specified in the targetFormat.",
+            "description": "If it is set to zipOfPageImages then the response will be provided as a zip response, otherwise if set as listOfPageImages the response will be provided as list of images as specified in the targetFormat.",
             "type": "string",
             "enum": [
               "listOfPageImages",
@@ -7515,7 +7515,7 @@
           }
         },
         "example": {
-          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "targetFormat": "jpeg",
           "outputType": "listOfPageImages"
         },
@@ -7576,7 +7576,7 @@
           }
         },
         "example": {
-          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "getCharBounds": "false",
           "includeStyling": "false",
           "elementsToExtract": [
@@ -7635,7 +7635,7 @@
           }
         },
         "example": {
-          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "json": "",
           "includeHeaderFooter": true,
           "pageLayout": {
@@ -7669,7 +7669,7 @@
         "example": {
           "assets": [
             {
-              "assetID": "5952d81f-55be-4bb1-8206-49f695f07ff7",
+              "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
               "pageRanges": [
                 {
                   "start": 1,
@@ -7678,7 +7678,7 @@
               ]
             },
             {
-              "assetID": "5952d81f-55be-4bb1-8206-49f695f07ff7",
+              "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87d3-087832fca718",
               "pageRanges": [
                 {
                   "start": 1,
@@ -7712,7 +7712,7 @@
           }
         },
         "example": {
-          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "compressionLevel": "LOW"
         },
         "required": [
@@ -7730,7 +7730,7 @@
           }
         },
         "example": {
-          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
+          "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
         },
         "required": [
           "assetID"
@@ -7759,7 +7759,7 @@
           }
         },
         "example": {
-          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "ocrLang": "en-US",
           "ocrType": "searchable_image"
         },
@@ -7794,7 +7794,7 @@
           }
         },
         "example": {
-          "assetID": "e453ed48-d830-4f59-86ae-d658f5f57a53",
+          "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "pageActions": [
             {
               "rotate": {
@@ -7840,7 +7840,7 @@
           }
         },
         "example": {
-          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "pageLevel": false
         },
         "required": [
@@ -7903,7 +7903,7 @@
           }
         },
         "example": {
-          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "passwordProtection": {
             "userPassword": "XXXXXX"
           },
@@ -7935,7 +7935,7 @@
           }
         },
         "example": {
-          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "password": "XXXXX"
         },
         "required": [
@@ -7972,7 +7972,7 @@
           }
         },
         "example": {
-          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "splitoption": {
             "pageRanges": [
               {
@@ -8015,7 +8015,7 @@
           }
         },
         "example": {
-          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "outputFormat": "pdf",
           "jsonDataForMerge": {
             "customerName": "Kane Miller",
@@ -8184,8 +8184,8 @@
           }
         },
         "example": {
-          "inputDocumentAssetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
-          "sealImageAssetID": "ab400ed7-a097-402b-a93f-8b47cfd3b519",
+          "inputDocumentAssetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
+          "sealImageAssetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
           "sealOptions": {
             "signatureFormat": "PKCS7",
             "cscCredentialOptions": {
@@ -8243,7 +8243,7 @@
           },
           "cscCredentialOptions": {
             "type": "object",
-            "description": "Specifies the CSC credential information that encapsulates the credential to be used for sealing. For more information, please see the <a href=\\\"http://www.adobe.com/go/dceseal_howtoguide_doc\\\" target=\\\"_blank\\\">documentation</a>.",
+            "description": "Specifies the CSC credential information that encapsulates the credential to be used for sealing. For more information, please see the <a href=\"http://www.adobe.com/go/dc_eseal_howtoguide_doc\" target=\"_blank\">documentation</a>.",
             "required": [
               "providerName",
               "credentialId",
@@ -8402,7 +8402,7 @@
           }
         },
         "example": {
-          "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+          "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "shiftHeadings": false,
           "generateReport": false
         },
@@ -8419,6 +8419,10 @@
             "description": "The URL used to upload the Resource directly to the cloud provider.",
             "type": "string"
           }
+        },
+        "example": {
+          "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
+          "uploadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/aa8d8790-321a-4487-92da-0e90ba931239?X-Amz-Security-Token=FwoGZXIvYXdzEP7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDDvZayrA6JI2vhkxPiLTAVI%2Fy0F2v7Us5rBDlEd53dHuO2KAe5Bkbs2AmUHtscOPbsH%2Bzh1aFDnv%2BW2nHAiENSNbV2Auq6b5%2FatImE8hUs2wTwV%2BCSB%2FJb896AF905k%2B9ljhZDty2caFGQSHY2lC2OQ4Rr9%2FdS%2FNKwWgnHr4Ld5AtweavSyfhFMfz%2Fw7zLXvHupnLhOISBqqEOTMQim4YDLGzxIt9%2F4C1MKBUSSdGYBX14rfjTSiB%2FivjjjEdNrRRnkGoIg%2Fxe5b1dFDdgukwXWEBsKtZ2qpmZl2uW1boMTHonQoxMTCmAYyLS2FEiNOvaV7rvm8oy6MtGvv2JVY%2FPz%2FFPab%2BhjsCG60vS3kHih4Zy8rUUKv%2Fw%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220901T121500Z&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Expires=3599&X-Amz-Credential=ASIAU5PA7W47IU63S5WX%2F20220901%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5424c781b8671fb1d7e068267af26e9de4d9a606f343c0bb8602d2a70ab52fcd"
         }
       },
       "GetUploadPresignedUrlRequest": {
@@ -8445,6 +8449,11 @@
             "description": "The media type of the Resource.",
             "type": "string"
           }
+        },
+        "example": {
+          "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/a059e98b-43bf-4e76-886b-e61a1a19c7bd?X-Amz-Security-Token=FwoGZXIvYXdzEOz%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDJoRurLDIx1KmzjT9yLTAZwtCBavc2xtc6InMLLl2rS480ulHYpVTyWSAtCDj34blxS9sghuPqX%2FwTsvUOJZCvgL8kMqHm0khmO3Pnh1%2FOYU1MksBbAlZ47JExBGdzwIsnh8gMIEXBaty0nVmQjIVLUogOKTIyoBuJsnGDvjytpABIpIzbYH50aTS4yECx42ejL6Po%2F4LOroTO3bv98MuUh05hdiFeoCrTfu29%2FXL5%2FuHXo0R1TfgiNPeR6Riq4PL3v%2BSNzPflWlToGIPtWYMWKuEtIEtK0J2Ut3Bddpxevd%2BxsozM2%2BmAYyLblFR%2BVAADnVcQZDc0fW7A8g9iM9BpKQIgmBY9rJrKjj53%2BFHvDko8%2FbkUlGcA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220831T182204Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47P7L6NLGA%2F20220831%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=298a811048105d8093539c6fab4e8649f96af0fcbad17ee5a716e6175e6e166b",
+          "size": 13130,
+          "type": "application/pdf"
         }
       },
       "AssetMetadata": {
@@ -8462,6 +8471,11 @@
             "description": "The content type of the file. For e.g: application/pdf.",
             "type": "string"
           }
+        },
+        "example": {
+          "entity": "49505D56624424F00A49423A@techacct.adobe.com",
+          "size": 13552,
+          "type": "application/pdf"
         }
       },
       "JobStatus": {
@@ -8724,7 +8738,7 @@
               "size": 200791
             },
             "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
-            "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
+            "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
           }
         }
       },
@@ -8764,7 +8778,7 @@
               "size": 200791
             },
             "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
-            "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
+            "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
           }
         }
       },
@@ -8799,7 +8813,7 @@
                 "size": 200791
               },
               "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
-              "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
+              "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-43s6-87f2-087832fca718"
             },
             {
               "metadata": {
@@ -8807,7 +8821,7 @@
                 "size": 200791
               },
               "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
-              "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
+              "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
             }
           ]
         }
@@ -8865,7 +8879,7 @@
                 "size": 200791
               },
               "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
-              "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
+              "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
             },
             {
               "metadata": {
@@ -8873,7 +8887,7 @@
                 "size": 200791
               },
               "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
-              "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
+              "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-96a6-87f2-087832fca718"
             }
           ]
         }
@@ -8931,7 +8945,7 @@
                 "size": 200791
               },
               "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
-              "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
+              "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
             },
             {
               "metadata": {
@@ -8939,7 +8953,7 @@
                 "size": 200791
               },
               "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
-              "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
+              "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-97d3-87f2-087832fca718"
             }
           ]
         }
@@ -10892,7 +10906,7 @@
               "size": 200791
             },
             "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
-            "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
+            "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
           },
           "resource": {
             "metadata": {
@@ -10900,7 +10914,7 @@
               "size": 200791
             },
             "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
-            "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
+            "assetID": "urn:aaid:AS:UE1:23c30ee0-32s3-46d6-87f2-087832fca718"
           }
         }
       },
@@ -10987,7 +11001,7 @@
               "size": 200791
             },
             "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
-            "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
+            "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
           },
           "resource": {
             "metadata": {
@@ -10995,7 +11009,7 @@
               "size": 200791
             },
             "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
-            "assetID": "0c13e863-2be5-485f-aad9-becf083b73f0"
+            "assetID": "urn:aaid:AS:UE1:23c30ee0-2c6d-46d6-87f2-087832fca718"
           }
         }
       },
