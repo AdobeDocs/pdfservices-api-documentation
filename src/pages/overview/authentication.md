@@ -16,7 +16,7 @@ Paste your private.key (from the Credentials zip downloaded in STEP-1) > Click o
 
 Save the Generated JWT and Sample cURL command to retrieve access_token in STEP-3.
 
-**• Using JWT Libraries:** The steps to generate the JWT using libraries can be referred from here.
+**• Using JWT Libraries:** The steps to generate the JWT using libraries can be referred from [here](https://developer.adobe.com/developer-console/docs/guides/authentication/JWT/Scopes/).
 
 Use [sample code](https://developer.adobe.com/developer-console/docs/guides/authentication/JWT/samples/#sample-code) in your preferred programming language to generate JWT. While generating JWT use the metascope as mentioned here.
 
