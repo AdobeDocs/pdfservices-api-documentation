@@ -13,6 +13,8 @@ See our public API Reference for [Delete Pages](../../../apis/#tag/Page-Manipula
 
 The delete pages operation selectively removes pages from a PDF file.
 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
@@ -209,7 +211,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/pagemani
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
 --data-raw '{
-    "assetID": "e453ed48-d830-4f59-86ae-d658f5f57a53",
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
     "pageActions": [
         {
             "delete": {

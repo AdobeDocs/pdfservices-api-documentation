@@ -58,6 +58,7 @@ See our public API Reference for [PDF Accessibility Auto-Tag API](../../../apis/
 
 The sample below generate tagged PDF of version 1.7 along with an XLSX report and shift the headings in the output PDF file.
 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="3" languages="Java, Python, Rest API" /> 
 
@@ -173,7 +174,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/autotag'
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
 --data-raw '{
-    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
     "shiftHeadings": true,
     "generateReport": true
 }'
@@ -183,6 +184,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/autotag'
 ## Generate tagged PDF from a PDF
 
 The sample below generates tagged PDF from a PDF.
+
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="3" languages="Java, Python, Rest API" /> 
 
@@ -280,7 +283,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/autotag'
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
 --data-raw '{
-    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
 }'
 ```
 

@@ -20,6 +20,8 @@ such as:
 -   Microsoft Office file formats
 -   Text files
 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
@@ -169,7 +171,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/exportpd
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
 --data-raw '{
-    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
     "targetFormat": "docx"
 }'
 
@@ -185,6 +187,8 @@ page. Each image file name ends with
 "\_\<unpadded\_page\_index\_number\>". For example, a PDF file with 15
 pages will generate 15 image files. The first file's name ends with
 "\_1" and the last file's name ends with "\_15".
+
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
@@ -336,7 +340,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/pdftoima
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
 --data-raw '{
-    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
     "targetFormat": "jpeg",
     "outputType": "zipOfPageImages"
 }'
@@ -348,6 +352,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/pdftoima
 ## Export a PDF to list of images
 
 The sample below converts a PDF file to one or more jpeg or png images.
+
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
@@ -512,7 +518,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/pdftoima
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
 --data-raw '{
-    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
     "targetFormat": "jpeg",
     "outputType": "listOfPageImages"
 }'

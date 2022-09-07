@@ -9,11 +9,13 @@ This data can be used to: check if a document is fully text searchable (OCR), un
 
 ## Rest API 
 
-See our public API Reference for [PDF Properties](../../../apis/#tag/pdfproperties).
+See our public API Reference for [PDF Properties](../../../apis/#tag/PDF-Properties).
 
 ### Get PDF Properties as a JSON Object
 
 The sample below fetches the properties of an input PDF, as a JSON object.
+
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
@@ -179,7 +181,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/pdfprope
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
 --data-raw '{
-    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
     "pageLevel": false
 }'
 

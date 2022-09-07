@@ -14,6 +14,8 @@ See our public API Reference for [Linearize PDF](../../../apis/#tag/Linearize-PD
 Linearizing a PDF creates a web-optimized PDF file which supports
 incremental access in network environments.
 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
@@ -162,7 +164,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/lineariz
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
 --data-raw '{
-    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
 }'
 
 // Legacy API can be found here 

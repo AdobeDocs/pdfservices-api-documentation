@@ -7,7 +7,7 @@ Use built-in optical character recognition (OCR) to convert images to text and e
 
 ## Rest API 
 
-See our public API Reference for [OCR PDF](../../../apis/#tag/Ocr)
+See our public API Reference for [OCR PDF](../../../apis/#tag/OCR)
 
 ## Text recognition (OCR)
 
@@ -17,6 +17,8 @@ OCR, the PDF may be fully editable and searchable. The input format must
 be `application/pdf`.
 
 This sample defaults to the en-us locale. For other languages, see [OCR with explicit language.](#ocr-with-explicit-language)
+
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
@@ -167,7 +169,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/ocr' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
 --data-raw '{
-    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
 }'
 
 // Legacy API can be found here 
@@ -194,6 +196,8 @@ are two types which produce a different result:
     the original image, but in this case, the original image is
     unchanged. This type produces maximum fidelity to the original
     image.
+
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 

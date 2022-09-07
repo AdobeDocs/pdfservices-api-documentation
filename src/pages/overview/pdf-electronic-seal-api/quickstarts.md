@@ -142,6 +142,8 @@ Clients using the PDF Services SDKs must perform the following:
 
 Use the samples below to generate a PDF with an electronic seal.
 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
 <CodeBlock slots="heading, code" repeat="2" languages="Java, Rest API" /> 
 
 ##### Java
@@ -249,45 +251,43 @@ public class ESealWithCustomAppearanceOptions {
 ##### REST API
 
 ```javascript
-curl --location --request POST 'https://pdf-services-dev.adobe.io/operation/electronicseal'
---header 'Authorization: Bearer {{Placeholder for token}}'
---header 'Accept: application/json, text/plain, */*'
---header 'x-api-key: {{Placeholder for client_id}}'
---header 'Content-Type: application/json'
+curl --location --request POST 'https://pdf-services.adobe.io/operation/electronicseal' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
 --data-raw '{
-    "documentassetID" : "<ASSET_ID>",
-    "logoInassetID" : "<ASSET_ID>",
-    "signatureInassetID" : "<ASSET_ID>",
-    "sealingOptions" : {
-        "signatureType": "SIGN",
-        "signatureFormat": "PADES",
-        "cscCredentialInfo": {
+    "inputDocumentAssetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
+    "sealImageAssetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+    "sealOptions": {
+        "signatureFormat": "PKCS7",
+        "cscCredentialOptions": {
+            "credentialId": "[ADOBE]_xxxx_xx:35",
+            "providerName": "intxxxxxst",
             "authorizationContext": {
-                "accessToken": "<ACCESS TOKEN>",
-                "tokenType": "Bearer"
+                "tokenType": "bearer",
+                "accessToken": "b7338a1f-xxxx-xxxx-xxxx-1eec91c47c12"
             },
             "credentialAuthParameters": {
-                "pin": "<PIN>"
-            },
-            "providerName": "<PROVIDER_NAME>",
-            "credentialId": "<CREDENTIAL_ID>"
-        },
-        "signatureFieldOptions": {
-            "pageNumber": 1,
-            "fieldName": "Signature",
-            "visible": true,
-            "location": {
-                "top": 300,
-                "bottom": 250,
-                "left": 300,
-                "right": 500
+                "pin": "12xxxx65"
             }
         },
-        "signatureAppearanceOptions": {
+        "sealFieldOptions": {
+            "location": {
+                "top": 300,
+                "left": 50,
+                "right": 250,
+                "bottom": 100
+            },
+            "fieldName": "mytestfield",
+            "pageNumber": 1
+        },
+        "sealAppearanceOptions": {
             "displayOptions": [
-            "DATE",
-            "LOGO",
-            "DISTINGUISHED_NAME"
+                "NAME",
+                "DATE",
+                "DISTINGUISHED_NAME",
+                "LABELS",
+                "SEAL_IMAGE"
             ]
         }
     }

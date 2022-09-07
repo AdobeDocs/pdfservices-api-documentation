@@ -30,6 +30,8 @@ following formats:
 If a Microsoft Word/PowerPoint input file has an embedded TrueType font, the output pdf will also contain the same embedded TrueType font.
 For more information, refer [Benefits of embedding custom fonts](https://support.microsoft.com/en-us/office/benefits-of-embedding-custom-fonts-cb3982aa-ea76-4323-b008-86670f222dbc#OfficeVersion=Windows).
 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
@@ -179,7 +181,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/createpd
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
 --data-raw '{
-    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
 }'
 
 // Legacy API can be found here 
@@ -198,7 +200,7 @@ file, the SDK supports the following formats:
 -   Microsoft Excel (XLS, XLSX)
 -   Text (TXT, RTF)
 
-
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
@@ -392,7 +394,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/createpd
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
 --data-raw '{
-    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
     "documentLanguage": "en-US"
 }'
 
@@ -407,6 +409,8 @@ must be local. Since HTML/web pages typically contain external assets,
 the input file must be a zip file containing an index.html at the top
 level of the archive as well as any dependencies such as images, css
 files, and so on.
+
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
@@ -607,7 +611,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
 --data-raw '{
-    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
     "json": "{}",
     "includeHeaderFooter": true,
     "pageLayout": {
@@ -623,6 +627,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
 ## Create a PDF from static HTML with inline CSS
 
 The sample below creates a PDF file from a static HTML file with inline CSS. The file must be local.
+
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
@@ -823,7 +829,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
 --data-raw '{
-    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
     "json": "{}",
     "includeHeaderFooter": true,
     "pageLayout": {
@@ -839,6 +845,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
 ## Create a PDF File From HTML specified via URL
 
 The sample below creates a PDF file from a HTML file specified via URL.
+
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
@@ -1070,6 +1078,8 @@ manipulate the HTML DOM, thus effectively updating the source HTML file.
 This mechanism can be used to provide data to the template HTML
 dynamically prior to PDF conversion.
 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
@@ -1287,7 +1297,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
 --data-raw '{
-    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
     "json": "{}",
     "includeHeaderFooter": true,
     "pageLayout": {
