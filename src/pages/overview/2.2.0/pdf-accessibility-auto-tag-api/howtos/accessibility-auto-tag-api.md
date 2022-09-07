@@ -1,3 +1,6 @@
+---
+title: Document Services APIs | PDF Accessibility Auto-Tag API | How Tos | Accessibility API
+---
 # PDF Accessibility Auto-Tag API
 
 ## PDF Accessibility Auto-Tag API Output Format

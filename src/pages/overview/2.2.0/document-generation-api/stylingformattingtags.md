@@ -1,3 +1,6 @@
+---
+title: Document Services APIs | Document Generation API | Styling Formatting Tags
+---
 # Apply styling and formatting
 
 Apply styling and formatting in the generated output document using the HTML based constructs.

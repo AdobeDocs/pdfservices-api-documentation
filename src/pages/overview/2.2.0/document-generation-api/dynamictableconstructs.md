@@ -1,3 +1,6 @@
+---
+title: Document Services APIs | Document Generation API | Dynamic Constructs
+---
 # Dynamic Table Constructs
 Add dynamic behaviour to a table using [dynamic table columns constructs](../document-generation-api/dynamictableconstructs.md#dynamic-table-columns) to discard column or set of columns at runtime.
 

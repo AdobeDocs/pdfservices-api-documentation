@@ -1,3 +1,6 @@
+---
+title: Document Services APIs | PDF Extract API | How Tos | Extract API
+---
 # Extract PDF
 
 ## Structured Information Output Format

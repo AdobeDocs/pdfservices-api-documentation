@@ -1,3 +1,6 @@
+---
+title: Document Services APIs | Document Generation API | Hyperlink
+---
 # Hyperlink
 
 Add hyperlink in the document through json data using anchor <a\> tag.

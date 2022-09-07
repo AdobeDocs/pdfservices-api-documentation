@@ -1,3 +1,6 @@
+---
+title: Document Services APIs | PDF Services API | Authentication
+---
 # Authentication
 
 ## How to get started?
