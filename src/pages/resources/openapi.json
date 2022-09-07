@@ -6643,7 +6643,7 @@
           "Auto Tag"
         ],
         "summary": "Autotag PDF Operation",
-        "description": "Operation to create the tagged pdf and excel report for autotag use case.",
+        "description": "Operation to create the tagged pdf and excel report for autotag use case. Automatic tagging provides significant quality improvements over untagged PDF files including more accurate results for heading levels, reading order, complex lists, links, references, and tables. Screen reader users also benefit significantly from the improvements to heading levels for navigation.",
         "operationId": "pdfoperations.autotag",
         "parameters": [
           {
@@ -8976,6 +8976,7 @@
             "properties": {
               "document": {
                 "type": "object",
+                "description": "Details like page count, pdf version, number of times PDF is edited, if it is a XFA, has form fields etc.",
                 "properties": {
                   "is_XFA": {
                     "description": "Document is based on the XFA (Extensible Forms Architecture) format or not",
@@ -9113,6 +9114,7 @@
               },
               "security_info": {
                 "type": "object",
+                "description": "Details related to encryption if it is an encrypted PDF like encrypted for metadata, file attachments, permissions for copying, editing, printing etc.",
                 "properties": {
                   "encryption": {
                     "type": "object",

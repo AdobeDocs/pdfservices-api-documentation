@@ -166,7 +166,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/compress
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
 --data-raw '{
-    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
 }'
 
 // Legacy API can be found here 
@@ -348,7 +348,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/compress
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
 --data-raw '{
-    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
     "compressionLevel": "MEDIUM"
 }'
 

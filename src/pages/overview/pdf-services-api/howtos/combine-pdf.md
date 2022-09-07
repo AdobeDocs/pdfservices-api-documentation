@@ -13,6 +13,8 @@ See our public API Reference for [Combine PDF](../../../apis/#tag/Combine-PDF)
 
 This sample combines up to 20 PDF files into a single PDF file.
 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
@@ -170,10 +172,10 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/combinep
 --data-raw '{
     "assets": [
         {
-            "assetID": "5952d81f-55be-4bb1-8206-49f695f07ff7"
+            "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
         },
         {
-            "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f"
+            "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
         }
     ]
 }'
@@ -187,6 +189,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/combinep
 This combine sample combines specific pages from up to 20 different PDF
 files into a single PDF file. Optional arguments allow specifying page
 ranges for each file to combine in the output file.
+
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
@@ -427,7 +431,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/combinep
 --data-raw '{
     "assets": [
         {
-            "assetID": "5952d81f-55be-4bb1-8206-49f695f07ff7",
+            "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
             "pageRanges": [
                 {
                     "start": 1,
@@ -436,7 +440,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/combinep
             ]
         },
         {
-            "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+            "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
             "pageRanges": [
                 {
                     "start": 2,

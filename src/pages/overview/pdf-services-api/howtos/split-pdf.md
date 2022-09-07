@@ -15,6 +15,8 @@ This operation splits a PDF into multiple smaller documents. Simply use
 the page count to specify the maximum number of pages of each output
 file.
 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
@@ -195,7 +197,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
 --data-raw '{
-    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
     "splitoption": {
         "pageCount": 9
     }
@@ -210,6 +212,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf
 As an alternative to creating smaller PDFs with a set number of pages,
 you can split PDFs into multiple smaller documents by specifying page
 ranges where each page range corresponds to a single output file.
+
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
@@ -427,7 +431,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
 --data-raw '{
-    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
     "splitoption": {
         "pageRanges": [
             {
@@ -452,6 +456,8 @@ As an alternative to creating smaller PDFs by specifying a set number of
 pages or a page range, you can split PDFs by file count. In this case,
 the operation creates the specified number of files with each containing
 an identical number of pages (if possible).
+
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
@@ -634,7 +640,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
 --data-raw '{
-    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
     "splitoption": {
         "fileCount": 3
     }

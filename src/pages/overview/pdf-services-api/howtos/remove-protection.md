@@ -13,6 +13,8 @@ See our public API Reference for [Remove Protection](../../../apis/#tag/Remove-P
 
 Use the below sample to remove security from a PDF document.
 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
@@ -177,7 +179,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/removepr
 --header 'Authorization: Bearer {{Placeholder for token}}' \
 --data-raw '{
     "password": "mypassword",
-    "assetID": "13d7271e-ce46-4298-ab3f-73b3c204677b"
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
 }'
 
 // Legacy API can be found here 

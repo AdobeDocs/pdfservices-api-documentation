@@ -16,6 +16,8 @@ See our public API Reference for [Protect PDF](../../../apis/#tag/Protect-PDF)
 You can password protect PDFs so that only users with a document open
 password can open the file.
 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
@@ -195,7 +197,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/protectp
         "userPassword": "user_password"
     },
     "encryptionAlgorithm": "AES_128",
-    "assetID": "b22fb87c-d75b-4c0f-920c-949862e79f43"
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
 }'
 
 // Legacy API can be found here 
@@ -209,6 +211,8 @@ restriction on certain features like printing, editing and copying in
 the PDF document. Refer to `ContentEncryption` and `Permission` in the
 API docs for a list of supported types of content to encrypt and types
 of document permissions.
+
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
@@ -417,7 +421,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/protectp
     "ownerPassword": "owner_password"
   },
   "encryptionAlgorithm": "AES_256",
-  "assetID": "b5334def-2e00-49ae-b9fd-f9880a905a0f"
+  "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
 }'
 
 // Legacy API can be found here 
