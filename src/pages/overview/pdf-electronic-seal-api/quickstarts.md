@@ -40,8 +40,8 @@ The seal field parameters are required to create a new unsigned signature field 
 * **Field Name**  (*Required*): The signature field's name. This must be a non-empty string. If signature field with this field name already exist, that field will be used. 
 If it does not exist, a signature field with this field name will be created.
 * **Visibility**: Specifies whether the signature field is visible. The default value of `true` creates a visible signature.
-* **Page Number**: Specifies the page number to which the signature field should be attached. Page numbers are 1-based. The page number is only **required** if the signature field does not already exist in the pdf document. If this is specified along with signature field then it overrides the page on which signature field is present in the document.
-* **Location**: Specifies the coordinates of the signature appearance's bounding box in default PDF user space units. The location is only **required** if the signature field does not already exist in the pdf document. If this is specified along with signature field then it overrides the existing signature bounding box.
+* **Page Number**: Specifies the page number to which the signature field should be attached. Page numbers are 1-based. The page number is only **required** if the signature field does not already exist in the pdf document. If this is specified along with the signature field then it overrides the page on which signature field is present in the document.
+* **Location**: Specifies the coordinates of the signature appearance's bounding box in default PDF user space units. The location is only **required** if the signature field does not already exist in the pdf document. If this is specified along with the signature field then it overrides the existing signature bounding box.
 
   * **Left**: The left x-coordinate
   * **Bottom**: The bottom y-coordinate
@@ -54,7 +54,7 @@ The **Location** and **Page Number** fields are **optional** if the signature fi
 
 Specifies signature field appearance parameters. These are an enum set of display items: NAME, DATE, LOGO, DISTINGUISHED_NAME, LABELS. Specifies the information to display in the signature.
 
-* **NAME**: Specifies that the signer's name should be displayed in the signature appearance.This is a default value.
+* **NAME**: Specifies that the signer's name should be displayed in the signature appearance. This is a default value.
    ![Display Options](../images/sealName.png)
 * **DATE**: Specifies that the signing date/time should be displayed in the signature appearance. This option only controls whether the value of the 
    time/date in the signature dictionary is displayed or not. This value should not be mistaken for a signed timestamp from a timestamp authority.
@@ -67,24 +67,7 @@ Specifies signature field appearance parameters. These are an enum set of displa
    ![Display Options](../images/sealImage.png) 
    If a seal image, not supplied in the request body, the default Acrobat trefoil image is used.
    ![Display Options](../images/sealImage_default.png)
-
-## Workflows
-
-There are two ways to access PDF Electronic Seal API: via the REST API or with the PDF Services SDKs. 
-
-### REST API
-
-Clients using the REST API must perform the following: 
-
-1. [Generate asset IDs for all the input documents](https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets).
-1. Call the `/asset` API with `mediaType` in the request specifying the document upload type. For example, `application/pdf`. The API responds with an asset ID and upload URI. 
-1. Request to upload the input document to the upload URI.
-1. Invoke PDF Electronic Seal API (/pdf-services/operation/electronicseal) by providing the asset IDs generated in step 1 and other required sealing parameters. In the response, the client receives the job URI in the location header. [Details](https://developer-stage.adobe.com/document-services/docs/apis/#operation/pdfoperations.electronicseal).
-1. Use the job URI to poll the status of the submitted job (Electronic Seal operation). The response includes a job status: *In progress*, *Failed* or *Done*. If the status is done, the seal API returns an asset ID and download URI. **This download URI is valid for 24 hours.**.
-1. Download the digitally signed pdf using download URI from above step.
-
-
-
+   
 **Example JSON**
 
 ```json
@@ -122,6 +105,23 @@ Clients using the REST API must perform the following:
   }
 }
 ```
+
+
+## Workflows
+
+There are two ways to access PDF Electronic Seal API: via the REST API or with the PDF Services SDKs. 
+
+### REST API
+
+Clients using the REST API must perform the following: 
+
+1. [Generate asset IDs for all the input documents](https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets).
+1. Call the `/asset` API with `mediaType` in the request specifying the document upload type. For example, `application/pdf`. The API responds with an asset ID and upload URI. 
+1. Request to upload the input document to the upload URI.
+1. Invoke PDF Electronic Seal API (/pdf-services/operation/electronicseal) by providing the asset IDs generated in step 1 and other required sealing parameters. In the response, the client receives the job URI in the location header. [Details](https://developer-stage.adobe.com/document-services/docs/apis/#operation/pdfoperations.electronicseal).
+1. Use the job URI to poll the status of the submitted job (Electronic Seal operation). The response includes a job status: *In progress*, *Failed* or *Done*. If the status is done, the seal API returns an asset ID and download URI. **This download URI is valid for 24 hours.**.
+1. Download the digitally signed pdf using download URI from above step.
+
 
 ### PDF Services SDKs
 

@@ -7,7 +7,7 @@ title: Document Services APIs | PDF Electronic Seal API | Prerequisites
 
 ### Step 1: Procure Certificate Credentials
 
-1. A client must register with a trust service provider and obtain the digital certificate which authorizes and validates electronically sealed documents. A certificate may be purchased from any of the [supported Trust Service Providers.](/overview/pdf-electronic-seal-api/prerequisites/#supported-trusted-service-providers). Note that supported TSPs are Cloud Signature Consortium compliant. For more detail, see [Cloud Signature Consortium Standard](https://cloudsignatureconsortium.org/wp-content/uploads/2020/01/CSC_API_V1_1.0.4.0.pdf).
+1. A client must register with a trust service provider and obtain the digital certificate which authorizes and validates electronically sealed documents. A certificate may be purchased from any of the [supported Trust Service Providers.](/overview/pdf-electronic-seal-api/prerequisites/#supported-trust-service-providers). Note that supported TSPs are Cloud Signature Consortium compliant. For more detail, see [Cloud Signature Consortium Standard](https://cloudsignatureconsortium.org/wp-content/uploads/2020/01/CSC_API_V1_1.0.4.0.pdf).
 2. The trust service provider (TSP) performs remote identity verification of the client representative who acts as the legal owner of the seal certificate.
 3. After identity verification, a client creates an account in the TSP's portal. The TSP issues a certificate to the client and delivers a `credential_id`, `client_id` and `client_secret`. These are typically protected by a static PIN. The client should securely store the credential details and PIN for later use.
 
