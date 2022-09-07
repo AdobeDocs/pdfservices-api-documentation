@@ -451,6 +451,263 @@ module.exports = {
             path: 'overview/policies.md',
           },
           {
+            title: 'v2.2.0',
+            path: 'overview/2.2.0/',
+            pages: [
+              {
+                title: 'Introduction',
+                path: 'overview/2.2.0/index.md'
+              },
+              {
+                title: 'PDF Services API',
+                subTitle: '',
+                path: 'overview/2.2.0/pdf-services-api/index.md',
+                pages: [
+                  {
+                    title: 'Overview',
+                    path: 'overview/2.2.0/pdf-services-api/index.md'
+                  },
+                  {
+                    title: 'How Tos',
+                    path: 'overview/2.2.0/pdf-services-api/howtos',
+                    pages: [
+                      {
+                        title: 'Overview',
+                        path: 'overview/2.2.0/pdf-services-api/howtos/index.md'
+                      },
+                      {
+                        title: 'Create PDF',
+                        path: 'overview/2.2.0/pdf-services-api/howtos/create-pdf.md'
+                      },
+                      {
+                        title: 'Export PDF',
+                        path: 'overview/2.2.0/pdf-services-api/howtos/export-pdf.md'
+                      },
+                      {
+                        title: 'Combine PDF Files',
+                        path: 'overview/2.2.0/pdf-services-api/howtos/combine-pdf.md'
+                      },
+                      {
+                        title: 'OCR PDF',
+                        path: 'overview/2.2.0/pdf-services-api/howtos/ocr-pdf.md'
+                      },
+                      {
+                        title: 'Compress PDFs',
+                        path: 'overview/2.2.0/pdf-services-api/howtos/compress-pdf.md'
+                      },
+                      {
+                        title: 'Linearize PDF',
+                        path: 'overview/2.2.0/pdf-services-api/howtos/linearize-pdf.md'
+                      },
+                      {
+                        title: 'Protect PDF',
+                        path: 'overview/2.2.0/pdf-services-api/howtos/protect-pdf.md'
+                      },
+                      {
+                        title: 'Remove Protection',
+                        path: 'overview/2.2.0/pdf-services-api/howtos/remove-protection.md'
+                      },
+                      {
+                        title: 'Insert Pages',
+                        path: 'overview/2.2.0/pdf-services-api/howtos/insert-pages.md'
+                      },
+                      {
+                        title: 'Replace Pages',
+                        path: 'overview/2.2.0/pdf-services-api/howtos/replace-pages.md'
+                      },
+                      {
+                        title: 'Delete Pages',
+                        path: 'overview/2.2.0/pdf-services-api/howtos/delete-pages.md'
+                      },
+                      {
+                        title: 'Reorder Pages',
+                        path: 'overview/2.2.0/pdf-services-api/howtos/reorder-pages.md'
+                      },
+                      {
+                        title: 'Rotate Pages',
+                        path: 'overview/2.2.0/pdf-services-api/howtos/rotate-pages.md'
+                      },
+                      {
+                        title: 'Split PDF',
+                        path: 'overview/2.2.0/pdf-services-api/howtos/split-pdf.md'
+                      },
+                      {
+                        title: 'Extract PDF',
+                        path: 'overview/2.2.0/pdf-services-api/howtos/extract-pdf.md'
+                      },
+                      {
+                        title: 'Document Generation',
+                        path: 'overview/2.2.0/pdf-services-api/howtos/document-generation.md'
+                      },
+                      {
+                        title: 'Get PDF Properties',
+                        path: 'overview/2.2.0/pdf-services-api/howtos/pdf-properties.md'
+                      },
+                      {
+                        title: 'Accessibility Auto-Tag PDF',
+                        path: 'overview/2.2.0/pdf-services-api/howtos/accessibility-auto-tag-pdf.md',
+                      },
+                      {
+                        title: 'PDF Electronic Seal API',
+                        path: 'overview/2.2.0/pdf-services-api/howtos/electronic-seal-api.md',
+                      }
+                    ]
+                  },
+                  {
+                    title: 'Version - Support policy',
+                    path: 'overview/2.2.0/pdf-services-api/policies.md'
+                  },
+                  {
+                    title: 'Release notes',
+                    path: 'overview/2.2.0/pdf-services-api/releasenotes.md'
+                  },
+                  {
+                    title: 'PDF Services API Licensing',
+                    path: 'overview/2.2.0/pdf-services-api/dcserviceslicensing.md'
+                  },
+                  {
+                    title: 'Usage Limits',
+                    path: 'overview/2.2.0/pdf-services-api/dcserviceslicensing.md#usage-limits'
+                  }
+                ]
+              },
+              {
+                title: 'Document Generation API',
+                subTitle: '',
+                path: 'overview/2.2.0/document-generation-api/index.md',
+                pages: [
+                  {
+                    title: 'Overview',
+                    path: 'overview/2.2.0/document-generation-api/index.md'
+                  },
+                  {
+                    title: 'Quickstarts',
+                    path: 'overview/2.2.0/document-generation-api/quickstarts.md'
+                  },
+                  {
+                    title: 'Template Tags',
+                    path: 'overview/2.2.0/document-generation-api/templatetags.md'
+                  },
+                  {
+                    title: 'Fragments',
+                    path: 'overview/2.2.0/document-generation-api/fragments.md'
+                  },
+                  {
+                    title: 'Apply styling and formatting',
+                    path: 'overview/2.2.0/document-generation-api/stylingformattingtags.md'
+                  },
+                  {
+                    title: 'Hyperlink',
+                    path: 'overview/2.2.0/document-generation-api/hyperlink.md'
+                  },
+                  {
+                    title: 'Dynamic Table Constructs ',
+                    path: 'overview/2.2.0/document-generation-api/dynamictableconstructs.md'
+                  },
+                  {
+                    title: 'Word Add-in',
+                    path: 'overview/2.2.0/document-generation-api/wordaddin.md'
+                  },
+                  {
+                    title: 'Release Notes',
+                    path: 'overview/2.2.0/pdf-services-api/releasenotes.md'
+                  },
+                  {
+                    title: 'PDF Services API Licensing',
+                    path: 'overview/2.2.0/document-generation-api/dcserviceslicensing.md'
+                  },
+                  {
+                    title: 'Usage Limits',
+                    path: 'overview/2.2.0/document-generation-api/dcserviceslicensing.md#usage-limits'
+                  }
+                ]
+              },
+              {
+                title: 'PDF Extract API',
+                subTitle: '',
+                path: 'overview/2.2.0/pdf-extract-api/index.md',
+                pages: [
+                  {
+                    title: 'Overview',
+                    path: 'overview/2.2.0/pdf-extract-api/index.md'
+                  },
+                  {
+                    title: 'Quickstarts',
+                    path: 'overview/2.2.0/pdf-extract-api/quickstarts.md'
+                  },
+                  {
+                    title: 'How Tos',
+                    subTitle: '',
+                    path: 'overview/2.2.0/pdf-extract-api/howtos',
+                    pages: [
+                      {
+                        title: 'Overview',
+                        path: 'overview/2.2.0/pdf-extract-api/howtos/index.md'
+                      },
+                      {
+                        title: 'PDF Extract API',
+                        path: 'overview/2.2.0/pdf-extract-api/howtos/extract-api.md'
+                      }
+                    ]
+                  },
+                  {
+                    title: 'Release Notes',
+                    path: 'overview/2.2.0/pdf-services-api/releasenotes.md'
+                  },
+                  {
+                    title: 'PDF Services API Licensing',
+                    path: 'overview/2.2.0/pdf-extract-api/dcserviceslicensing.md'
+                  },
+                  {
+                    title: 'Usage Limits',
+                    path: 'overview/2.2.0/pdf-extract-api/dcserviceslicensing.md#usage-limits'
+                  }
+                ]
+              },
+              {
+                title: 'PDF Accessibility Auto-Tag API',
+                path: 'overview/2.2.0/pdf-accessibility-auto-tag-api/index.md',
+                pages: [
+                  {
+                    title: 'Overview',
+                    path: 'overview/2.2.0/pdf-accessibility-auto-tag-api/index.md'
+                  },
+                  {
+                    title: 'Quickstarts',
+                    path: 'overview/2.2.0/pdf-accessibility-auto-tag-api/quickstarts.md'
+                  },
+                  {
+                    title: 'How Tos',
+                    subTitle: '',
+                    path: 'overview/2.2.0/pdf-accessibility-auto-tag-api/howtos',
+                    pages: [
+                      {
+                        title: 'Overview',
+                        path: 'overview/2.2.0/pdf-accessibility-auto-tag-api/howtos/index.md'
+                      },
+                      {
+                        title: 'PDF Accessibility Auto-Tag API',
+                        path: 'overview/2.2.0/pdf-accessibility-auto-tag-api/howtos/accessibility-auto-tag-api.md'
+                      }
+                    ]
+                  },
+                  {
+                    title: 'Release Notes',
+                    path: 'overview/2.2.0/pdf-services-api/releasenotes.md'
+                  },
+                  {
+                    title: 'PDF Services API Licensing',
+                    path: 'overview/2.2.0/pdf-accessibility-auto-tag-api/dcserviceslicensing.md'
+                  },
+                  {
+                    title: 'Usage Limits',
+                    path: 'overview/2.2.0/pdf-accessibility-auto-tag-api/dcserviceslicensing.md#usage-limits'
+                  }
+                ]
+              }
+            ]
+          },
+          {
             title: 'v2.1.0',
             path: 'https://opensource.adobe.com/pdftools-sdk-docs/release/2.1.0/',
           },
