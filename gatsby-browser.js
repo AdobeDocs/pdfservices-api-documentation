@@ -59,7 +59,7 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
 
     // stage
     let baseurl =
-      "https://dc.stage.acrobat.com/dc-integration-creation-app-cdn/main.html";
+      "https://stage.documentservices.adobe.com/dc-integration-creation-app-cdn/main.html";
 
     // production
     if (
@@ -67,7 +67,7 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
       window.location.host.indexOf("adobe.io") >= 0
     ) {
       baseurl =
-        "https://documentcloud.adobe.com/dc-integration-creation-app-cdn/main.html";
+        "https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html";
     }
 
     getCredentialsButton.href = `${baseurl}`;

@@ -23,7 +23,7 @@ and view the code to see how easy it is!
 ## Getting credentials
 
 You'll need a client ID to use the Adobe PDF Embed API. To
-get one, [click HERE]( https://documentcloud.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-embed-api), and
+get one, [click HERE]( https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-embed-api), and
 complete the workflow.
 
 ## Copy it. Run it.
@@ -33,7 +33,7 @@ to an index.html file. The example already
 points to an online PDF.
 
 Generate a client ID from
-[here](https://documentcloud.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-embed-api). Insert the client
+[here](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-embed-api). Insert the client
 ID within the double quotes in line 16 in the code below and run the
 webpage from your server in any browser.
 
@@ -56,14 +56,14 @@ Develop your web app using your preferred methods and tools.
 </head>
 <body style="margin: 0px">
  <div id="adobe-dc-view"></div>
- <script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
+ <script src="https://documentservices.adobe.com/view-sdk/viewer.js"></script>
  <script type="text/javascript">
     document.addEventListener("adobe_dc_view_sdk.ready", function()
     {
         var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
         adobeDCView.previewFile(
        {
-          content:   {location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
+          content:   {location: {url: "https://documentservices.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
           metaData: {fileName: "Bodea Brochure.pdf"}
        });
     });
