@@ -5,9 +5,9 @@ title: Document Services APIs | PDF Electronic Seal API | Quickstarts
 
 Before getting started with [PDF Electronic Seal API](/overview/pdf-electronic-seal-api/#what-is-pdf-electronic-seal), verify the [prerequisites](prerequisites.md). 
 
-Whether using the REST API or the PDF Services SDK, using the PDF Electronic Seal API involves simply calling the API with the appropriate parameters. 
+The client has to call the PDF Electronic Seal API with the appropriate parameters to get the digitally signed PDF.
 
-![Seal Workflow](../images/sealFlow1.png)
+![Seal Workflow](../images/sealFlow.png)
 
 ## Parameters
 
@@ -15,15 +15,15 @@ Whether using the REST API or the PDF Services SDK, using the PDF Electronic Sea
 
 Specifies a supported digital signature format:
 
-* PADES : This is the latest and improved format which is strict, concrete, and secure. For details, see [ETSI TS 102 778-3](https://www.etsi.org/deliver/etsi_ts/102700_102799/10277803/01.02.01_60/ts_10277803v010201p.pdf)  
-* PKCS#7 : PKCS #7 signature is less stringent than PADES since it permits more PDF changes without invalidating the digital signature. For details, see [ISO 32000-1](https://opensource.adobe.com/dc-acrobat-sdk-docs/standards/pdfstandards/pdf/PDF32000_2008.pdf)
+* PADES : This is the latest and improved signature format which is strict, concrete, and secure. For details, see [ETSI TS 102 778-3](https://www.etsi.org/deliver/etsi_ts/102700_102799/10277803/01.02.01_60/ts_10277803v010201p.pdf)  
+* PKCS#7 : This signature format is less stringent than PADES since it permits more PDF changes without invalidating the digital signature. For details, see [ISO 32000-1](https://opensource.adobe.com/dc-acrobat-sdk-docs/standards/pdfstandards/pdf/PDF32000_2008.pdf)
 
 ### TSP Credential Information (*Required*)  
 
-TSP parameters encapsulate the signer's [certificate credential](/overview/pdf-electronic-seal-api/prerequisites/#1-procure-certificate-credentials) as well as the associated authentication and authorization data.
+TSP parameters encapsulate the signer's [certificate credential](/overview/pdf-electronic-seal-api/prerequisites/#step-1-procure-certificate-credentials) as well as the associated authentication and authorization data.
 
 * **TSP Name**  (*Required*): Specifies the name of the Trust Service Provider used to generate the certificate.
-* **TSP Credential Id**  (*Required*): Specifies the digital ID stored with the TSP provider that should be used for signing.
+* **TSP Credential Id**  (*Required*): Specifies the digital ID stored with the TSP provider that should be used for sealing.
 * **TSP Authorization Context**  (*Required*): Encapsulates the service authorization data required to communicate with the TSP and access CSC provider APIs.
 
   * **Access Token**  (*Required*): Specifies the service access token used to authorize access to the CSC provider hosted APIs.
@@ -52,20 +52,20 @@ The **Location** and **Page Number** fields are **optional** if the signature fi
   
 ### Seal Appearance Parameters
 
-Specifies signature field appearance parameters. These are an enum set of display items: NAME, DATE, LOGO, DISTINGUISHED_NAME, LABELS. Specifies the information to display in the signature.
+Specifies signature field appearance parameters. These are an enum set of display items: NAME, DATE, SEAL_IMAGE, DISTINGUISHED_NAME, LABELS. Specifies the information to display in the signature. NAME and LABELS are the default values.
 
-* **NAME**: Specifies that the signer's name should be displayed in the signature appearance. This is a default value.
+* **NAME**: Specifies that the signer's name should be displayed in the signature appearance.
    ![Display Options](../images/sealName.png)
 * **DATE**: Specifies that the signing date/time should be displayed in the signature appearance. This option only controls whether the value of the 
    time/date in the signature dictionary is displayed or not. This value should not be mistaken for a signed timestamp from a timestamp authority.
    ![Display Options](../images/sealDate.png)
 * **DISTINGUISHED_NAME**: Specifies that the distinguished name information from the signer's certificate should be displayed in the signature appearance.
    ![Display Options](../images/sealDN.png)
-* **LABELS**: Specifies that text labels should be displayed in the signature appearance. This is a default value.
+* **LABELS**: Specifies that text labels should be displayed in the signature appearance.
    ![Display Options](../images/sealLabel.png)
 * **SEAL_IMAGE**: Specifies that the seal image should be displayed in the signature appearance.
    ![Display Options](../images/sealImage.png) 
-   If a seal image, not supplied in the request body, the default Acrobat trefoil image is used.
+   If the seal image is not present in the request body, the default Acrobat trefoil image is used.
    ![Display Options](../images/sealImage_default.png)
    
 **Example JSON**
@@ -98,7 +98,6 @@ Specifies signature field appearance parameters. These are an enum set of displa
   "sealAppearanceOptions": {
     "displayOptions": [
       "DATE",
-      "LOGO",
       "DISTINGUISHED_NAME",
       "SEAL_IMAGE"
     ]
