@@ -7,7 +7,7 @@ Before getting started with [PDF Electronic Seal API](/overview/pdf-electronic-s
 
 The client has to call the PDF Electronic Seal API with the appropriate parameters to get the digitally signed PDF.
 
-![Seal Workflow](../images/sealFlow1.png)
+![Seal Workflow](../images/sealFlow.png)
 
 ## Parameters
 
@@ -23,7 +23,7 @@ Specifies a supported digital signature format:
 TSP parameters encapsulate the signer's [certificate credential](/overview/pdf-electronic-seal-api/prerequisites/#step-1-procure-certificate-credentials) as well as the associated authentication and authorization data.
 
 * **TSP Name**  (*Required*): Specifies the name of the Trust Service Provider used to generate the certificate.
-* **TSP Credential Id**  (*Required*): Specifies the digital ID stored with the TSP provider that should be used for signing.
+* **TSP Credential Id**  (*Required*): Specifies the digital ID stored with the TSP provider that should be used for sealing.
 * **TSP Authorization Context**  (*Required*): Encapsulates the service authorization data required to communicate with the TSP and access CSC provider APIs.
 
   * **Access Token**  (*Required*): Specifies the service access token used to authorize access to the CSC provider hosted APIs.
