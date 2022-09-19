@@ -16,7 +16,7 @@ A PDF Electronic Seal, powered by a digital signature, enables an organization t
 
 An *electronic signature* (or e-signature) is a broad term referring to any legally recognized electronic process that indicates acceptance of an agreement or a record. Typical e-signature solutions use common electronic authentication methods to verify signer identity, such as an email address, a corporate ID, or a phone PIN. If increased security is needed, multi-factor authentication may be used. Both digital signatures and electronic seal are electronic signatures. 
 
-* A *digital signature* is a specific type of e-signature that use certificate-based digital IDs to authenticate signer identity and demonstrate proof of signing by binding each signature to the document with encryption. Validation occurs through trusted Certifying Authority (CAs) or Trust Service Provider (TSPs).
+* A *digital signature* is a specific type of e-signature that use certificate-based digital IDs to authenticate signer identity and demonstrate proof of signing by binding each signature to the document with encryption. Validation occurs through trusted Certifying Authority (CA) or Trust Service Provider (TSP).
 
 * An *electronic seal* binds an organization rather than an individual to one or more documents. While validation happens the same way as digital signatures, electronic seal facilitate use-cases where 2-parties are not involved and the document first needs certification by a legal entity before distribution to multiple consumers. An electronic seal therefore provides cost-efficient bulk signing at the organizational level.
 
