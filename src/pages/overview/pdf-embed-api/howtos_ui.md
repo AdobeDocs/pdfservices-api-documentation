@@ -39,7 +39,7 @@ PDF zoom control options are disabled with `showZoomControl` set to *false*.
 
 ```html
 <div id="adobe-dc-view"></div>
-<script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
+<script src="https://documentservices.adobe.com/view-sdk/viewer.js"></script>
 <script type="text/javascript">
 // Store the UI options in a constant
 const previewConfig = {
@@ -52,7 +52,7 @@ document.addEventListener("adobe_dc_view_sdk.ready", function () {
    var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
    // Consume previewConfig here. . .
    adobeDCView.previewFile({
-      content:{location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
+      content:{location: {url: "https://documentservices.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
       metaData:{fileName: "Bodea Brochure.pdf"}
    }, previewConfig);
 });
@@ -66,7 +66,7 @@ This table lists down the various configurations which can be passed while initi
 
 | Variable | Default | Description |
 | -------- | ------- | ----------- |
-| clientId | None | You'll need a client ID to use the Adobe PDF Embed API. To get one, [click HERE]( https://documentcloud.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-embed-api).|
+| clientId | None | You'll need a client ID to use the Adobe PDF Embed API. To get one, [click HERE]( https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-embed-api).|
 | divId | "adobe-dc-view" | The div ID where your PDF will render. |
 | locale | "en-US" | You can select another language by passing the locale code variable. For more details, see the section [Language support](../howtos/#language-support). |
 | reportSuiteId | None | Pass the report suite ID to collect PDF analytics in Adobe Analytics. For more details, see the section [Adobe analytics](../howtodata/#adobe-analytics). |
@@ -606,13 +606,13 @@ follows:
 </head>
 <body style="margin: 0px">
  <div id="adobe-dc-view"></div>
- <script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
+ <script src="https://documentservices.adobe.com/view-sdk/viewer.js"></script>
  <script type="text/javascript">
     document.addEventListener("adobe_dc_view_sdk.ready", function()
     {
         var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
         var previewFilePromise = adobeDCView.previewFile({
-         content:   {location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
+         content:   {location: {url: "https://documentservices.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
            metaData:  {fileName: "Bodea Brochure.pdf"}
      });
 
@@ -782,13 +782,13 @@ configuration to the `previewFile` API.
 </head>
 <body style="margin: 0px">
  <div id="adobe-dc-view"></div>
- <script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
+ <script src="https://documentservices.adobe.com/view-sdk/viewer.js"></script>
  <script type="text/javascript">
     document.addEventListener("adobe_dc_view_sdk.ready", function()
     {
         var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
         var previewFilePromise = adobeDCView.previewFile({
-           content:   {location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
+           content:   {location: {url: "https://documentservices.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
            metaData:  {fileName: "Bodea Brochure.pdf"}
        }, { enableSearchAPIs: true });
 

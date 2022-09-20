@@ -11,7 +11,7 @@ To learn more about the Document Generation, read [Overview](../document-generat
 
 ## Live Demo
 
-The [Document Generation API Demo](https://documentcloud.adobe.com/dc-docgen-playground/index.html#/) demonstrates how easy it is to generate customized documents from Word-based document templates and input JSON data.
+The [Document Generation API Demo](https://documentservices.adobe.com/dc-docgen-playground/index.html#/) demonstrates how easy it is to generate customized documents from Word-based document templates and input JSON data.
 
 ## How It Works
 
