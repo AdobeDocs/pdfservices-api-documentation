@@ -48,9 +48,9 @@ curl --location --request POST 'https://<base-url>/<API-domain-name>/csc/v0/oaut
 
 ## Supported Trust Service Providers
 
-Trust service providers (TSPs) are companies that offer a wide range of secure identity and transaction services, including certificate authority services such as providing and preserving digital certificates for creating and validating digital signatures as well as authenticating their signatories.
+Trust Service Providers (TSPs) are companies that offer a wide range of secure identity and transaction services, including certificate authority services such as providing and preserving digital certificates for creating and validating digital signatures as well as authenticating their signatories.
 
-The PDF Electronic Seal API supports digital certificates hosted by Qualified Trust Service Providers (QTSP) certified under the eIDAS regulation and supporting the open API standard from the Cloud Signature Consortium. Because the TSPs must support explicit authorization based on a static PIN, and the OAuth 2.0 client credential flow, the PDF Electronic Seal API limits support to the following providers: <!-- REFERENCES https://helpx.adobe.com/acrobat/kb/approved-trust-list1.html -->
+The PDF Electronic Seal API supports digital certificates hosted by Qualified Trust Service Providers (QTSPs) certified under the eIDAS regulation and supporting the open API standard from the Cloud Signature Consortium. Because the TSPs must support explicit authorization based on a static PIN, and the OAuth 2.0 client credential flow, the PDF Electronic Seal API limits support to the following providers: <!-- REFERENCES https://helpx.adobe.com/acrobat/kb/approved-trust-list1.html -->
 <br/>
 
 * [Intesi Group](https://www.intesigroup.com/en/)

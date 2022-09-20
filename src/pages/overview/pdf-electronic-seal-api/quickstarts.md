@@ -52,7 +52,7 @@ The **Location** and **Page Number** fields are **optional** if the signature fi
   
 ### Seal Appearance Parameters
 
-Specifies signature field appearance parameters. These are an enum set of display items: NAME, DATE, SEAL_IMAGE, DISTINGUISHED_NAME, LABELS. Specifies the information to display in the signature. NAME and LABELS are the default values.
+Specifies signature field appearance parameters. These are an enum set of display items: NAME, DATE, DISTINGUISHED_NAME, LABELS and SEAL_IMAGE. Specifies the information to display in the signature. NAME and LABELS are the default values.
 
 * **NAME**: Specifies that the signer's name should be displayed in the signature appearance.
    ![Display Options](../images/sealName.png)
@@ -171,10 +171,10 @@ public class ESealWithCustomAppearanceOptions {
             ExecutionContext executionContext = ExecutionContext.create(credentials);
 
             //Get the input document to perform the sealing operation
-            FileRef sourceFile = FileRef.createFromLocalFile("src/main/resources/Invoice.pdf");
+            FileRef sourceFile = FileRef.createFromLocalFile("<SOURCE_DOCUMENT_FILE_PATH>");
 
             //Get the background seal image for signature , if required.
-            FileRef sealImageFile = FileRef.createFromLocalFile("src/main/resources/sealImage.jpeg");
+            FileRef sealImageFile = FileRef.createFromLocalFile("<SEAL_IMAGE_FILE_PATH>");
 
             //Create SealAppearanceOptions and add the required signature appearance items
             SealAppearanceOptions sealAppearanceOptions = new SealAppearanceOptions();
@@ -185,19 +185,21 @@ public class ESealWithCustomAppearanceOptions {
             sealAppearanceOptions.addAppearanceItem(SealAppearanceItem.DISTINGUISHED_NAME);
 
             //Set the Seal Field Name to be created in input PDF document.
-            String signFieldName = "<SEAL_FIELD_NAME>";
+            String sealFieldName = "<SEAL_FIELD_NAME>";
 
             //Set the page number in input document for applying seal.
-            Integer signPageNumber = 1;
+            Integer sealPageNumber = 1;
 
             //Set if seal should be visible or invisible.
             Boolean sealVisible = true;
 
             //Create SealFieldLocationOptions instance and set the coordinates for applying signature
-            SealFieldLocationOptions signatureLocation = new SealFieldLocationOptions(150, 250, 350, 200);
+            SealFieldLocationOptions sealFieldLocationOptions = new SealFieldLocationOptions(150, 250, 350, 200);
 
             //Create SealFieldOptions instance with required details.
-            SealFieldOptions sealFieldOptions = new SealFieldOptions.Builder(signatureLocation, signPageNumber, signFieldName)
+            SealFieldOptions sealFieldOptions = new SealFieldOptions.Builder(sealFieldName)
+                    .setSealFieldLocationOptions(sealFieldLocationOptions)
+                    .setPageNumber(sealPageNumber)
                     .setVisible(sealVisible)
                     .build();
 
