@@ -10,24 +10,25 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useState, useEffect, createElement } from 'react';
+import React, { createElement, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { Global, css } from '@emotion/react';
+import { css, Global } from '@emotion/react';
 import loadable from '@loadable/component';
-import algoliaSearch from 'algoliasearch/lite';
-import { useStaticQuery, graphql } from 'gatsby';
+import algoliaSearch from 'algoliasearch';
+import { graphql, useStaticQuery } from 'gatsby';
 import {
-  rootFix,
-  rootFixPages,
+  DESKTOP_SCREEN_WIDTH,
   findSelectedPages,
   findSubPages,
-  trailingSlashFix,
-  normalizePagePath,
-  SEARCH_PARAMS,
-  DESKTOP_SCREEN_WIDTH,
   MOBILE_SCREEN_WIDTH,
-  SIDENAV_WIDTH
+  normalizePagePath,
+  rootFix,
+  rootFixPages,
+  SEARCH_PARAMS,
+  SIDENAV_WIDTH,
+  trailingSlashFix
 } from '@adobe/gatsby-theme-aio/src/utils';
+import { adobeIndexes } from '@adobe/gatsby-theme-aio/algolia/helpers/get-products-indexes.js';
 import '@spectrum-css/vars/dist/spectrum-global.css';
 import '@spectrum-css/vars/dist/spectrum-medium.css';
 import '@spectrum-css/vars/dist/spectrum-large.css';
@@ -45,20 +46,15 @@ import { SEO } from '../SEO';
 import { ProgressCircle } from '@adobe/gatsby-theme-aio/src/components/ProgressCircle';
 import nextId from 'react-id-generator';
 
-// GATSBY_ALGOLIA_APP_ID=...
-// GATSBY_ALGOLIA_API_KEY=...
+// GATSBY_ALGOLIA_APPLICATION_ID=...
+// GATSBY_ALGOLIA_SEARCH_API_KEY=...
 // GATSBY_ALGOLIA_SEARCH_INDEX=[{"index": "index label"}, {"all": "All Results"}]
 // GATSBY_ALGOLIA_INDEX_ALL=["index1", "index2", ...]
-const hasSearch = !!(
-  process.env.GATSBY_ALGOLIA_APP_ID &&
-  process.env.GATSBY_ALGOLIA_API_KEY &&
-  (process.env.GATSBY_ALGOLIA_INDEX_ALL || process.env.GATSBY_ALGOLIA_INDEX_ALL_SRC) &&
-  process.env.GATSBY_ALGOLIA_SEARCH_INDEX
-);
+const hasSearch = !!(process.env.GATSBY_ALGOLIA_APPLICATION_ID && process.env.GATSBY_ALGOLIA_SEARCH_API_KEY);
 
 let algolia = null;
 if (hasSearch) {
-  algolia = algoliaSearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_API_KEY);
+  algolia = algoliaSearch(process.env.GATSBY_ALGOLIA_APPLICATION_ID, process.env.GATSBY_ALGOLIA_SEARCH_API_KEY);
 } else {
   console.warn('AIO: Algolia config missing.');
 }
@@ -155,15 +151,18 @@ export default ({ children, pageContext, location }) => {
   // Set Search indexAll
   useEffect(() => {
     (async () => {
-      const ALGOLIA_INDEX_ALL_SRC = process.env.GATSBY_ALGOLIA_INDEX_ALL_SRC;
-      const ALGOLIA_INDEX_ALL = process.env.GATSBY_ALGOLIA_INDEX_ALL;
+      // const ALGOLIA_INDEX_ALL_SRC = process.env.GATSBY_ALGOLIA_INDEX_ALL_SRC;
+      // const ALGOLIA_INDEX_ALL = adobeIndexes;
 
       try {
-        if (ALGOLIA_INDEX_ALL_SRC) {
-          await addScript(`${ALGOLIA_INDEX_ALL_SRC}`);
-          setIndexAll(window.AIO_ALGOLIA_INDEX_ALL);
-        } else if (ALGOLIA_INDEX_ALL) {
-          setIndexAll(JSON.parse(ALGOLIA_INDEX_ALL));
+        // if (ALGOLIA_INDEX_ALL_SRC) {
+        //   await addScript(`${ALGOLIA_INDEX_ALL_SRC}`);
+        //   setIndexAll(window.AIO_ALGOLIA_INDEX_ALL);
+        // } else if (ALGOLIA_INDEX_ALL) {
+        //   setIndexAll(JSON.parse(adobeIndexes));
+        // }
+        if (adobeIndexes) {
+          setIndexAll(adobeIndexes);
         }
       } catch (e) {
         console.error(`AIO: Failed setting search index.`);
@@ -222,7 +221,7 @@ export default ({ children, pageContext, location }) => {
               selected
             }
             pages {
-              title       
+              title
               path
               menu {
                 title
@@ -344,6 +343,133 @@ export default ({ children, pageContext, location }) => {
   // Update OpenAPI spec and Frame src
   updatePageSrc('openAPI', frontMatter, setIsLoading);
   updatePageSrc('frame', frontMatter, setIsLoading);
+
+  if (pathPrefix === "/search-frame") {
+    return (
+      <>
+        <Helmet>
+          <noscript>{`
+          <style>
+            #${layoutId} {
+              grid-template-columns: 0 auto;
+            }
+            
+            #${sideNavId} {
+              display: none !important;
+            }
+            
+            .gatsby-resp-image-image {
+              opacity: 1 !important;
+            }
+          </style>
+        `}</noscript>
+        </Helmet>
+
+        <Global
+          styles={css`
+          @font-face {
+            font-family: 'adobe-clean';
+            src: url('https://use.typekit.net/af/cb695f/000000000000000000017701/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+                format('woff2'),
+              url('https://use.typekit.net/af/cb695f/000000000000000000017701/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+                format('woff'),
+              url('https://use.typekit.net/af/cb695f/000000000000000000017701/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+                format('opentype');
+            font-display: swap;
+            font-style: normal;
+            font-weight: 400;
+          }
+
+          @font-face {
+            font-family: 'adobe-clean';
+            src: url('https://use.typekit.net/af/74ffb1/000000000000000000017702/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
+                format('woff2'),
+              url('https://use.typekit.net/af/74ffb1/000000000000000000017702/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
+                format('woff'),
+              url('https://use.typekit.net/af/74ffb1/000000000000000000017702/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
+                format('opentype');
+            font-display: swap;
+            font-style: italic;
+            font-weight: 400;
+          }
+
+          @font-face {
+            font-family: 'adobe-clean';
+            src: url('https://use.typekit.net/af/eaf09c/000000000000000000017703/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
+                format('woff2'),
+              url('https://use.typekit.net/af/eaf09c/000000000000000000017703/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
+                format('woff'),
+              url('https://use.typekit.net/af/eaf09c/000000000000000000017703/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
+                format('opentype');
+            font-display: swap;
+            font-style: normal;
+            font-weight: 700;
+          }
+
+          @font-face {
+            font-family: 'adobe-clean';
+            src: url('https://use.typekit.net/af/40207f/0000000000000000000176ff/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
+                format('woff2'),
+              url('https://use.typekit.net/af/40207f/0000000000000000000176ff/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
+                format('woff'),
+              url('https://use.typekit.net/af/40207f/0000000000000000000176ff/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
+                format('opentype');
+            font-display: swap;
+            font-style: normal;
+            font-weight: 300;
+          }
+
+          @font-face {
+            font-family: 'adobe-clean-serif';
+            src: url('https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3')
+                format('woff2'),
+              url('https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3')
+                format('woff'),
+              url('https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3')
+                format('opentype');
+            font-display: swap;
+            font-style: normal;
+            font-weight: 900;
+          }
+
+          html,
+          body {
+            margin: 0;
+            text-size-adjust: none;
+            overscroll-behavior: auto contain;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: transparent;
+
+            ${showSearch && 'overflow: hidden;'}
+          }
+
+          *[hidden] {
+            display: none !important;
+          }
+        `}
+        />
+        <div
+          dir="ltr"
+          className="spectrum spectrum--medium spectrum--large spectrum--light"
+          color-scheme="light"
+          css={css`
+          min-height: 100vh;
+          background-color: transparent;
+        `}>
+          <Search
+            algolia={algolia}
+            searchIndex={JSON.parse(process.env.GATSBY_ALGOLIA_SEARCH_INDEX)}
+            indexAll={indexAll}
+            showSearch={showSearch}
+            setShowSearch={setShowSearch}
+            searchButtonId={searchButtonId}
+            isIFramed
+          />
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
@@ -481,7 +607,7 @@ export default ({ children, pageContext, location }) => {
                 grid-template-columns: ${hasSideNav ? `${SIDENAV_WIDTH} auto` : '0 auto'};
 
                 @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
-                  grid-template-columns: 0px auto;
+                  grid-template-columns: 0 auto;
                 }
 
                 @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
@@ -611,7 +737,7 @@ export default ({ children, pageContext, location }) => {
                     width: 100%;
 
                     ${showSideNav &&
-                    `
+                  `
                     pointer-events: auto;
                     opacity: 1;
                   `}
