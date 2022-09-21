@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | Document Generation API | Template Tags
+title: Template Tags | Document Generation API | Adobe PDF Services
 ---
 # Template Tags
 

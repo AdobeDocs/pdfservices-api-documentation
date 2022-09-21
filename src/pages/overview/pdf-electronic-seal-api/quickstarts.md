@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | PDF Electronic Seal API | Quickstarts
+title: Quickstarts | PDF Electronic Seal API | Adobe PDF Services
 ---
 # Quickstarts
 

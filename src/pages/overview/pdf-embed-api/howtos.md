@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | PDF Embed API | How Tos
+title: How Tos | PDF Embed API | Adobe PDF Services
 ---
 # PDF Embed API basics
 

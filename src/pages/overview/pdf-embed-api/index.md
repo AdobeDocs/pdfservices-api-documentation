@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | PDF Embed API
+title: PDF Embed API | Adobe PDF Services
 ---
 # Quickstarts
 <p>

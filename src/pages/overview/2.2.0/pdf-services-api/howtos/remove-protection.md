@@ -1,3 +1,6 @@
+---
+title: Remove Protection | How Tos | PDF Services API | Adobe PDF Services
+---
 # Remove Protection
 
 ## Remove security from PDFs

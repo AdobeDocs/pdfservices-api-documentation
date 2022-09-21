@@ -1,3 +1,6 @@
+---
+title: Compress PDF | How Tos | PDF Services API | Adobe PDF Services
+---
 # Compress PDFs
 
 ## Compress PDFs

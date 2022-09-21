@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | How Tos | Delete Pages
+title: Delete Pages | How Tos | PDF Services API | Adobe PDF Services
 ---
 # Delete Pages
 

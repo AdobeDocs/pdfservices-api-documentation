@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | PDF Embed API | Search Engine Indexing
+title: Search Engine Indexing | PDF Embed API | Adobe PDF Services
 ---
 # Handle search engine indexing
 

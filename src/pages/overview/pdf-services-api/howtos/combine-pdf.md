@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | How Tos | Combine PDF
+title: Combine PDF | How Tos | PDF Services API | Adobe PDF Services
 ---
 # Combine PDF Files
 

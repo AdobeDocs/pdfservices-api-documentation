@@ -1,3 +1,6 @@
+---
+title: Modern Viewer | PDF Embed API | Adobe PDF Services
+---
 # Legacy to Modern Viewer
 
 Adobe’s new modern PDF viewer is a reimagining of the look and feel of PDF viewing 

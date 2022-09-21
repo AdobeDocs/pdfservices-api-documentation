@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | How Tos | Replace Pages
+title: Replace Pages | How Tos | PDF Services API | Adobe PDF Services
 ---
 # Replace Pages
 

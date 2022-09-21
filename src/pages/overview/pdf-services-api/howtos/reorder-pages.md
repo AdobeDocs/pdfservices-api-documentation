@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | How Tos | Reorder Pages
+title: Reorder Pages | How Tos | PDF Services API | Adobe PDF Services
 ---
 # Reorder Pages
 

@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | PDF Services API | Release Notes
+title: Release Notes | PDF Services API | Adobe PDF Services
 ---
 # Release Notes
 

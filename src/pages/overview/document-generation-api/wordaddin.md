@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | Document Generation API | Word Add-In
+title: Word Add-in | Document Generation API | Adobe PDF Services
 ---
 # Word Add-in
 

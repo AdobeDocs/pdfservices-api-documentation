@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | How Tos | Export PDF
+title: Export PDF | How Tos | PDF Services API | Adobe PDF Services
 ---
 # Export PDF
 

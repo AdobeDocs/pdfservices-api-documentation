@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | How Tos | Split PDF
+title: Split PDF | How Tos | PDF Services API | Adobe PDF Services
 ---
 # Split PDF
 

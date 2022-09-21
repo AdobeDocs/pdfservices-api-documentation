@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | PDF Electronic Seal API | Prerequisites
+title: Prerequisites | PDF Electronic Seal API | Adobe PDF Services
 ---
 # Prerequisites
 
