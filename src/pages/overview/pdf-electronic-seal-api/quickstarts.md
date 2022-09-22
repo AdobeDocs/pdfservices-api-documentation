@@ -141,7 +141,7 @@ Clients using the PDF Services SDKs must perform the following:
 
 Use the samples below to generate a PDF with an electronic seal.
 
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="2" languages="Java, Rest API" /> 
 
