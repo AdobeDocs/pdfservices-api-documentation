@@ -1,1 +1,0 @@
-../../pdf-accessibility-auto-tag-api/howtos/accessibility-auto-tag-api.md
