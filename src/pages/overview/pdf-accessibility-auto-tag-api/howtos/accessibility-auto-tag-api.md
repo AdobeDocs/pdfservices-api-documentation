@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | PDF Accessibility Auto-Tag API | How Tos | Accessibility API
+title: Accessibility API | How Tos | PDF Accessibility Auto-Tag API | Adobe PDF Services
 ---
 # PDF Accessibility Auto-Tag API
 

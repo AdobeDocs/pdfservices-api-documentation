@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | PDF Services API | Authentication
+title: Authentication | Adobe PDF Services
 ---
 # Authentication
 

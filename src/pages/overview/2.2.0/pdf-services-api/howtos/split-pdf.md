@@ -1,3 +1,6 @@
+---
+title: Split PDF | How Tos | PDF Services API | Adobe PDF Services
+---
 # Split PDF
 
 ## Split PDF by number of pages

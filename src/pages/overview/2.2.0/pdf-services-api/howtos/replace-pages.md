@@ -1,3 +1,6 @@
+---
+title: Replace Pages | How Tos | PDF Services API | Adobe PDF Services
+---
 # Replace Pages
 
 ## Replace Pages in PDF

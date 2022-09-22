@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | PDF Electronic Seal API
+title: PDF Electronic Seal API | Adobe PDF Services
 ---
 # Overview
 

@@ -1,3 +1,6 @@
+---
+title: OCR PDF | How Tos | PDF Services API | Adobe PDF Services
+---
 # OCR PDF
 
 ## Text recognition (OCR)

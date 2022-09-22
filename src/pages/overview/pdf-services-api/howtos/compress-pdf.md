@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | How Tos | Compress PDF
+title: Compress PDF | How Tos | PDF Services API | Adobe PDF Services
 ---
 # Compress PDFs
 

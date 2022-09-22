@@ -1,3 +1,6 @@
+---
+title: PDF Properties | How Tos | PDF Services API | Adobe PDF Services
+---
 # Get PDF Properties
 
 ### Get PDF Properties as a JSON File

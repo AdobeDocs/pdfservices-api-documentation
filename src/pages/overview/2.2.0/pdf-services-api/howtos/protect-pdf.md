@@ -1,3 +1,6 @@
+---
+title: Protect PDF | How Tos | PDF Services API | Adobe PDF Services
+---
 # Protect PDF
 
 ## Protect PDFs with user password

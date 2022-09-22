@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | PDF Services API | DC Services Licensing
+title: DC Services Licensing | How Tos | PDF Services API | Adobe PDF Services
 ---
 # PDF Services API Licensing
 

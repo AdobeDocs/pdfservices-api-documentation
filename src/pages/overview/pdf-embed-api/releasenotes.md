@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | PDF Embed API | Release Notes
+title: Release Notes | PDF Embed API | Adobe PDF Services
 ---
 # Release Notes
 

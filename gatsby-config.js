@@ -207,26 +207,8 @@ module.exports = {
                 path: 'overview/pdf-services-api/howtos/split-pdf.md'
               },
               {
-                title: 'Extract PDF',
-                path: 'overview/pdf-services-api/howtos/extract-pdf.md'
-              },
-              {
-                title: 'Document Generation',
-                path: 'overview/pdf-services-api/howtos/document-generation.md'
-              },
-              {
                 title: 'Get PDF Properties',
                 path: 'overview/pdf-services-api/howtos/pdf-properties.md'
-              },
-              {
-                title: 'Accessibility Auto-Tag PDF',
-                path: 'overview/pdf-services-api/howtos/accessibility-auto-tag-pdf.md',
-                subTitle: 'Early Access Program',
-              },
-              {
-                title: 'PDF Electronic Seal API',
-                path: 'overview/pdf-services-api/howtos/electronic-seal-api.md',
-                subTitle: 'Early Access Program',
               }
             ]
           },
@@ -532,24 +514,8 @@ module.exports = {
                         path: 'overview/2.2.0/pdf-services-api/howtos/split-pdf.md'
                       },
                       {
-                        title: 'Extract PDF',
-                        path: 'overview/2.2.0/pdf-services-api/howtos/extract-pdf.md'
-                      },
-                      {
-                        title: 'Document Generation',
-                        path: 'overview/2.2.0/pdf-services-api/howtos/document-generation.md'
-                      },
-                      {
                         title: 'Get PDF Properties',
                         path: 'overview/2.2.0/pdf-services-api/howtos/pdf-properties.md'
-                      },
-                      {
-                        title: 'Accessibility Auto-Tag PDF',
-                        path: 'overview/2.2.0/pdf-services-api/howtos/accessibility-auto-tag-pdf.md',
-                      },
-                      {
-                        title: 'PDF Electronic Seal API',
-                        path: 'overview/2.2.0/pdf-services-api/howtos/electronic-seal-api.md',
                       }
                     ]
                   },

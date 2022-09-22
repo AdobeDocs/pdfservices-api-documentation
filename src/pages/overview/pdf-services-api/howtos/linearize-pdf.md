@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | How Tos | Linearize PDF
+title: Linearize PDF | How Tos | PDF Services API | Adobe PDF Services
 ---
 # Linearize PDFs
 

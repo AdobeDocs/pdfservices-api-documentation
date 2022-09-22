@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | How Tos | Reorder Pages
+title: Remove Protection | How Tos | PDF Services API | Adobe PDF Services
 ---
 # Remove Protection
 

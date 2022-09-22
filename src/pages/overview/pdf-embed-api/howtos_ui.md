@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | PDF Embed API | How Tos UI
+title: How Tos UI | PDF Embed API | Adobe PDF Services
 ---
 UI Customization
 ================

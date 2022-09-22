@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | How Tos | Protect PDF
+title: Protect PDF | How Tos | PDF Services API | Adobe PDF Services
 ---
 # Protect PDF
 

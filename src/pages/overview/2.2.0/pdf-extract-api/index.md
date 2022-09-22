@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | PDF Extract API
+title: PDF Extract API | Adobe PDF Services
 ---
 # Overview
 <p>

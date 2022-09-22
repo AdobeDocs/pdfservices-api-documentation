@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | PDF Services API | Policies
+title: Policies | PDF Services API | Adobe PDF Services
 ---
 # Version - Support policy
 

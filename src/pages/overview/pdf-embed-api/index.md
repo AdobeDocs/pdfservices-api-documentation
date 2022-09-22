@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | PDF Embed API
+title: PDF Embed API | Adobe PDF Services
 ---
 # Quickstarts
 <p>
@@ -17,7 +17,7 @@ simple: a few of lines of code are all you need to get started.
 </p>
 <InlineAlert slots="text" />
 
-Check out the [online demo](https://www.adobe.com/go/dcviewsdk_demo),
+Check out the [online demo](https://documentservices.adobe.com/view-sdk-demo/index.html#/view/FULL_WINDOW/Bodea%20Brochure.pdf),
 and view the code to see how easy it is!
 
 ## Getting credentials
@@ -86,7 +86,7 @@ If a PDF renders in the web viewer, the sample has correctly executed.
 ## Live demo
 
 The [Adobe PDF Embed API
-demo](https://www.adobe.com/go/dcviewsdk_demo) demonstrates how easy it
+demo](https://documentservices.adobe.com/view-sdk-demo/index.html#/view/FULL_WINDOW/Bodea%20Brochure.pdf) demonstrates how easy it
 is to configure the viewer and also provides a "generate code" button so
 that you can immediately see your UI changes reflected in a live code
 sample.

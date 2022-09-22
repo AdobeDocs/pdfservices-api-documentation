@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | Document Generation API | Beta
+title: Beta | Document Generation API | Adobe PDF Services
 ---
 # DocGen Beta
 

@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | How Tos | PDF Properties
+title: PDF Properties | How Tos | PDF Services API | Adobe PDF Services
 ---
 # Get PDF Properties
 

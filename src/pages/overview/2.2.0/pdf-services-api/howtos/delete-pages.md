@@ -1,3 +1,6 @@
+---
+title: Delete Pages | How Tos | PDF Services API | Adobe PDF Services
+---
 # Delete Pages
 
 ## Delete Pages in a PDF

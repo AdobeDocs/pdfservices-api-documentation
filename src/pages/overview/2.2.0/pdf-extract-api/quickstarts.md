@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | PDF Extract API | Quickstarts
+title: Quickstarts | PDF Extract API | Adobe PDF Services
 ---
 # Quickstarts
 <p>

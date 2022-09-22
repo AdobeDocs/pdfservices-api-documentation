@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | PDF Embed API | How Tos Comments
+title: How Tos Comments | PDF Embed API | Adobe PDF Services
 ---
 # Comments and Markup
 

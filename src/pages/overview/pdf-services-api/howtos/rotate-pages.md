@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | How Tos | Rotate Pages
+title: Rotate Pages | How Tos | PDF Services API | Adobe PDF Services
 ---
 # Rotate Pages
 
