@@ -1,0 +1,2204 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "PDF Services API",
+    "description": "<ul>\n\t<li>Learn more about \n\t<a href=\"https://developer.adobe.com/document-services/docs/overview/\"> Adobe PDF Services API.</a>\n\t</li>\n\t<li> Invoking PDF Services API requires an Adobe-provided credential, <a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">learn more about authentication.</a>\n\t</li>\n<li><a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/#sdk\">Downloadable SDKs</a></li></ul>",
+    "termsOfService": "https://developer.adobe.com/document-services/docs/overview//terms/",
+    "contact": {
+      "email": "apiteam@swagger.io"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "2.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://pdf-services.adobe.io/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Assets",
+      "description": "Upload and download assets."
+    },
+    {
+      "name": "Electronic Seal",
+      "description": "Create electronic seal on PDF documents like invoices, agreements etc using the digital certificate provided by the user."
+    },
+    {
+      "name": "Auto Tag",
+      "description": "Operation to create the tagged pdf and excel report for autotag use case."
+    }
+  ],
+  "x-tagGroups": [
+    {
+      "name": "Files",
+      "tags": [
+        "Assets"
+      ]
+    },
+    {
+      "name": "PDF Operations [BETA]",
+      "tags": [
+        "Electronic Seal",
+        "Auto Tag"
+      ]
+    }
+  ],
+  "paths": {
+    "/assets": {
+      "post": {
+        "tags": [
+          "Assets"
+        ],
+        "summary": "Get upload pre-signed URI. ",
+        "description": "Get the pre-signed URI to directly upload the content to the cloud provider. \n\nOutput: Response will have the asset URI of created asset and pre-signed URI for uploading the content.",
+        "operationId": "asset.uploadpresignedurl",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer + Token Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "The clientId from the generated credentials",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-request-id",
+            "in": "header",
+            "description": "The request identifier used to trace the request in logs.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Params for getting upload presigned url Operation",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUploadPresignedUrlRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The request was successful.",
+            "headers": {
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetUploadPresignedUrlAsset"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the error JSON response.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/401"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "Request Timed Out. Some operation has timed out due to client issue.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/408"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Caller doesn't have sufficient quota for this operation.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/assets/{assetId}": {
+      "get": {
+        "tags": [
+          "Assets"
+        ],
+        "summary": "Get download pre-signed URI.",
+        "description": "Get the pre-signed URI to fetch the content directly from the cloud provider.",
+        "operationId": "asset.get",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer + Token Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "The clientId from the generated credentials",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-request-id",
+            "in": "header",
+            "description": "The request identifier used to trace the request in logs.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful.",
+            "headers": {
+              "Content-Type": {
+                "description": "The media type of the response body, which is application/json.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique ID to identify each individual request.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetPresignedUrl"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the error JSON response.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/401"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "Request Timed Out. Some operation has timed out due to client issue.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/408"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Caller doesn't have sufficient quota for this operation.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/assets/{assetId}/metadata": {
+      "get": {
+        "tags": [
+          "Assets"
+        ],
+        "summary": "Get asset metadata.",
+        "description": "Get the metadata of the stored temporary asset.",
+        "operationId": "asset.metadata",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer + Token Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "The clientId from the generated credentials",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-request-id",
+            "in": "header",
+            "description": "The request identifier used to trace the request in logs.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful.",
+            "headers": {
+              "Content-Type": {
+                "description": "The media type of the response body, which is application/json.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique ID to identify each individual request.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetMetadata"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the error JSON response.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/401"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "Request Timed Out. Some operation has timed out due to client issue.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/408"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Caller doesn't have sufficient quota for this operation.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/operation/electronicseal": {
+      "post": {
+        "tags": [
+          "Electronic Seal"
+        ],
+        "summary": "PDF Electronic Seal Operation",
+        "description": "An operation to create an electronic seal on input PDF documents using the digital certificate issued to the user by Trust Service Provider. To know more about PDF Electronic Seal, please see the <a href=\"http://www.adobe.com/go/dc_eseal_overview_doc\" target=\"_blank\">documentation</a>.",
+        "operationId": "pdfoperations.electronicseal",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer + Token Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "The clientId from the generated credentials",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Params to specify the options required for applying electronic seal.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ElectronicSeal"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Request creation for the operation and status uri generated, which can be found in the 'location' header.",
+            "headers": {
+              "location": {
+                "description": "Job status URI for polling the results",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource Not Found.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the error JSON response.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/401"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Caller doesn't have sufficient quota for this operation.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/operation/electronicseal/{jobID}/status": {
+      "get": {
+        "tags": [
+          "Electronic Seal"
+        ],
+        "summary": "Poll the electronic seal job for completion",
+        "operationId": "pdfoperations.electronicseal.jobstatus",
+        "parameters": [
+          {
+            "name": "jobID",
+            "in": "path",
+            "description": "Job ID of the request",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer + Token Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "The clientId from the generated credentials",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A response with job information.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the status call response.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ElectronicSealPDFJobStatus"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource Not Found.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus404"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-server": {
+                "description": "The name and version of the server.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus401"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "Request Timed Out. Some operation has timed out due to client issue.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus408"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Caller doesn't have sufficient quota for this operation.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus500"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/operation/autotag": {
+      "post": {
+        "tags": [
+          "Auto Tag"
+        ],
+        "summary": "Autotag PDF Operation",
+        "description": "Operation to create the tagged pdf and excel report for autotag use case. Automatic tagging provides significant quality improvements over untagged PDF files including more accurate results for heading levels, reading order, complex lists, links, references, and tables. Screen reader users also benefit significantly from the improvements to heading levels for navigation.",
+        "operationId": "pdfoperations.autotag",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer + Token Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "The clientId from the generated credentials",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Input Params for Autotag Operation.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AutoTagPDF"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Request creation for the operation and status uri generated, which can be found in the 'location' header.",
+            "headers": {
+              "location": {
+                "description": "Job status URI for polling the results",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource Not Found.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the error JSON response.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/401"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Caller doesn't have sufficient quota for this operation.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/operation/autotag/{jobID}/status": {
+      "get": {
+        "tags": [
+          "Auto Tag"
+        ],
+        "summary": "Poll the auto tag job for completion",
+        "operationId": "pdfoperations.autotag.jobstatus",
+        "parameters": [
+          {
+            "name": "jobID",
+            "in": "path",
+            "description": "Job ID of the request",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer + Token Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "The clientId from the generated credentials",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A response with job information.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the status call response.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AutoTagPDFJobStatus"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource Not Found.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus404"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-server": {
+                "description": "The name and version of the server.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus401"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "Request Timed Out. Some operation has timed out due to client issue.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus408"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Caller doesn't have sufficient quota for this operation.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Satus500"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "400": {
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+                "type": "string"
+              },
+              "message": {
+                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>BAD_REQUEST</td><td>Bad Request.</td></tr></table>",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "error": {
+            "code": "BAD_REQUEST",
+            "message": "Bad Request."
+          }
+        }
+      },
+      "404": {
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+                "type": "string"
+              },
+              "message": {
+                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>NOT_FOUND</td><td>Asset not found.</td></tr></table>",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "error": {
+            "code": "NOT_FOUND",
+            "message": "Asset not found."
+          }
+        }
+      },
+      "401": {
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+                "type": "string"
+              },
+              "message": {
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>UNAUTHORIZED</td><td>Not authorised to perform the operation.</td></tr></table>",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "error": {
+            "code": "UNAUTHORIZED",
+            "message": "Not authorised to perform the operation."
+          }
+        }
+      },
+      "408": {
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+                "type": "string"
+              },
+              "message": {
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>REQUEST_TIMEOUT</td><td>Request processing took more than %s seconds.</td></tr></table>",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "error": {
+            "code": "REQUEST_TIMEOUT",
+            "message": "Request processing took more than %s seconds."
+          }
+        }
+      },
+      "429": {
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+                "type": "string"
+              },
+              "message": {
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>INSUFFICIENT_QUOTA</td><td>Client exhausted the Quota.</td></tr><tr><td>INSUFFICIENT_QUOTA</td><td>Client did not purchase a policy to call this engine.</td></tr></table>",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "error": {
+            "code": "INSUFFICIENT_QUOTA",
+            "message": "Client exhausted the Quota."
+          }
+        }
+      },
+      "500": {
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+                "type": "string"
+              },
+              "message": {
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>INTERNAL_SERVER_ERROR</td><td>There was an error processing your request.</td></tr><tr><td>UNKNOWN</td><td>Unknown error.</td></tr></table>",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "error": {
+            "code": "INTERNAL_SERVER_ERROR",
+            "message": "There was an error processing your request."
+          }
+        }
+      },
+      "Satus400": {
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+                "type": "string"
+              },
+              "message": {
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>INVALID_JOB_ID</td><td>Invalid job id present in path param.</td></tr></table>",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "error": {
+            "code": "INVALID_JOB_ID",
+            "message": "Invalid job id present in path param."
+          }
+        }
+      },
+      "Satus404": {
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+                "type": "string"
+              },
+              "message": {
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>NOT_FOUND</td><td>Job not found.</td></tr></table>",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "error": {
+            "code": "NOT_FOUND",
+            "message": "Job not found."
+          }
+        }
+      },
+      "Satus401": {
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+                "type": "string"
+              },
+              "message": {
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>UNAUTHORIZED</td><td>Not authorised to perform the operation.</td></tr></table>",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "error": {
+            "code": "UNAUTHORIZED",
+            "message": "Not authorised to perform the operation."
+          }
+        }
+      },
+      "Satus408": {
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+                "type": "string"
+              },
+              "message": {
+                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>REQUEST_TIMEOUT</td><td>Request processing took more than %s seconds.</td></tr></table>",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "error": {
+            "code": "REQUEST_TIMEOUT",
+            "message": "Request processing took more than %s seconds."
+          }
+        }
+      },
+      "Satus429": {
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. ",
+                "type": "string"
+              },
+              "message": {
+                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>INSUFFICIENT_QUOTA</td><td>Client exhausted the Quota.</td></tr><tr><td>INSUFFICIENT_QUOTA</td><td>Client did not purchase a policy to call this engine.</td></tr></table>",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "error": {
+            "code": "INSUFFICIENT_QUOTA",
+            "message": "Client exhausted the Quota."
+          }
+        }
+      },
+      "Satus500": {
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+                "type": "string"
+              },
+              "message": {
+                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>INTERNAL_SERVER_ERROR</td><td>There was an error processing your request.</td></tr><tr><td>UNKNOWN</td><td>Unknown error.</td></tr></table>",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "error": {
+            "code": "INTERNAL_SERVER_ERROR",
+            "message": "There was an error processing your request."
+          }
+        }
+      },
+      "ElectronicSeal": {
+        "description": "Params to specify the options required for applying digital seal.",
+        "type": "object",
+        "required": [
+          "inputDocumentAssetID",
+          "sealOptions"
+        ],
+        "properties": {
+          "inputDocumentAssetID": {
+            "description": "A file assetID of an input PDF document in which seal has to be applied. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "type": "string"
+          },
+          "sealImageAssetID": {
+            "description": "A file assetID of the logo/watermark/background image to use as part of the seal field's appearance. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>. The asset format should be one of the below format \n 1. application/pdf \n2. image/jpeg \n3. image/png.",
+            "type": "string"
+          },
+          "sealOptions": {
+            "$ref": "#/components/schemas/sealOptions"
+          }
+        },
+        "example": {
+          "inputDocumentAssetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
+          "sealImageAssetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+          "sealOptions": {
+            "signatureFormat": "PKCS7",
+            "cscCredentialOptions": {
+              "credentialId": "[ADOBE]_xxxx_xx:35",
+              "providerName": "intxxxxxst",
+              "authorizationContext": {
+                "tokenType": "bearer",
+                "accessToken": "b7338a1f-xxxx-xxxx-xxxx-1eec91c47c12"
+              },
+              "credentialAuthParameters": {
+                "pin": "12xxxx65"
+              }
+            },
+            "sealFieldOptions": {
+              "location": {
+                "top": 300,
+                "left": 50,
+                "right": 250,
+                "bottom": 100
+              },
+              "fieldName": "mytestfield",
+              "pageNumber": 1
+            },
+            "sealAppearanceOptions": {
+              "displayOptions": [
+                "NAME",
+                "DATE",
+                "DISTINGUISHED_NAME",
+                "LABELS",
+                "SEAL_IMAGE"
+              ]
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "sealOptions": {
+        "title": "sealOptions",
+        "description": "Specifies all the sealing parameters for the seal.",
+        "type": "object",
+        "required": [
+          "signatureFormat",
+          "cscCredentialOptions",
+          "sealFieldOptions"
+        ],
+        "properties": {
+          "signatureFormat": {
+            "type": "string",
+            "description": "Specifies the standard format for signature to be applied.",
+            "default": "PKCS7",
+            "enum": [
+              "PADES",
+              "PKCS7"
+            ]
+          },
+          "cscCredentialOptions": {
+            "type": "object",
+            "description": "Specifies the CSC credential information that encapsulates the credential to be used for sealing. For more information, please see the <a href=\"http://www.adobe.com/go/dc_eseal_howtoguide_doc\" target=\"_blank\">documentation</a>.",
+            "required": [
+              "providerName",
+              "credentialId",
+              "authorizationContext",
+              "credentialAuthParameters"
+            ],
+            "properties": {
+              "credentialId": {
+                "type": "string",
+                "description": "Specifies the Digital ID stored with the CSC provider that should be used for sealing"
+              },
+              "providerName": {
+                "type": "string",
+                "description": "Specifies the name of CSC provider to be used."
+              },
+              "authorizationContext": {
+                "type": "object",
+                "description": "Specifies the service authorization data required to communicate with the CSC provider.",
+                "required": [
+                  "accessToken"
+                ],
+                "properties": {
+                  "tokenType": {
+                    "type": "string",
+                    "default": "Bearer",
+                    "description": "Specifies the type of service token which is Bearer."
+                  },
+                  "accessToken": {
+                    "type": "string",
+                    "description": "Specifies the service access token used to authorize access to the CSC provider hosted apis."
+                  }
+                }
+              },
+              "credentialAuthParameters": {
+                "type": "object",
+                "description": "Specifies the credentials authorization information required to authorize the access to their certificate.",
+                "required": [
+                  "pin"
+                ],
+                "properties": {
+                  "pin": {
+                    "type": "string",
+                    "description": "Specifies the PIN associated with credential id."
+                  }
+                }
+              }
+            }
+          },
+          "sealFieldOptions": {
+            "type": "object",
+            "description": "Specifies the paraemters required to creates a new unsigned signature field or sign an existing field.",
+            "required": [
+              "fieldName",
+              "pageNumber",
+              "location"
+            ],
+            "properties": {
+              "visible": {
+                "type": "boolean",
+                "description": "Specified whether the seal field is visible or not.",
+                "default": true
+              },
+              "location": {
+                "type": "object",
+                "description": "Specifies the parameters related to the location of the seal field.",
+                "required": [
+                  "left",
+                  "bottom",
+                  "right",
+                  "top"
+                ],
+                "properties": {
+                  "top": {
+                    "type": "integer",
+                    "description": "Specifies the top-most y-coordinate of the seal appearance's bounding box in default PDF user space units."
+                  },
+                  "left": {
+                    "type": "integer",
+                    "description": "Specifies the left-most x-coordinate of the seal appearance's bounding box in default PDF user space units."
+                  },
+                  "right": {
+                    "type": "integer",
+                    "description": "Specifies the right-most x-coordinate of the seal appearance's bounding box in default PDF user space units."
+                  },
+                  "bottom": {
+                    "type": "integer",
+                    "description": "Specifies the bottom-most y-coordinate of the seal appearance's bounding box in default PDF user space units."
+                  }
+                }
+              },
+              "fieldName": {
+                "type": "string",
+                "description": "Specified the field name for the seal field."
+              },
+              "pageNumber": {
+                "type": "integer",
+                "description": "Specifies the number of the page to which the seal field should be attached."
+              }
+            }
+          },
+          "sealAppearanceOptions": {
+            "type": "object",
+            "description": "Specifies the parameters related to the apperance of the seal field.",
+            "default": {
+              "displayOptions": [
+                "NAME",
+                "LABELS"
+              ]
+            },
+            "required": [
+              "displayOptions"
+            ],
+            "properties": {
+              "displayOptions": {
+                "type": "array",
+                "description": "Specifies the information to display in the seal.",
+                "items": {
+                  "enum": [
+                    "NAME",
+                    "DATE",
+                    "DISTINGUISHED_NAME",
+                    "LABELS",
+                    "SEAL_IMAGE"
+                  ],
+                  "type": "string"
+                },
+                "default": [
+                  "NAME",
+                  "LABELS"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "AutoTagPDF": {
+        "description": "Parameter for Autotag operation.",
+        "type": "object",
+        "required": [
+          "assetID"
+        ],
+        "properties": {
+          "assetID": {
+            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "type": "string"
+          },
+          "shiftHeadings": {
+            "description": "Boolean specifying whether to shift headings.",
+            "type": "boolean",
+            "default": false
+          },
+          "generateReport": {
+            "description": "Boolean specifying whether to generate excel report.",
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "example": {
+          "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
+          "shiftHeadings": false,
+          "generateReport": false
+        },
+        "additionalProperties": false
+      },
+      "GetUploadPresignedUrlAsset": {
+        "type": "object",
+        "properties": {
+          "assetID": {
+            "description": "An asset ID identifying an asset that is globally unique and never reused.",
+            "type": "string"
+          },
+          "uploadUri": {
+            "description": "The URL used to upload the Resource directly to the cloud provider.",
+            "type": "string"
+          }
+        },
+        "example": {
+          "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
+          "uploadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/aa8d8790-321a-4487-92da-0e90ba931239?X-Amz-Security-Token=FwoGZXIvYXdzEP7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDDvZayrA6JI2vhkxPiLTAVI%2Fy0F2v7Us5rBDlEd53dHuO2KAe5Bkbs2AmUHtscOPbsH%2Bzh1aFDnv%2BW2nHAiENSNbV2Auq6b5%2FatImE8hUs2wTwV%2BCSB%2FJb896AF905k%2B9ljhZDty2caFGQSHY2lC2OQ4Rr9%2FdS%2FNKwWgnHr4Ld5AtweavSyfhFMfz%2Fw7zLXvHupnLhOISBqqEOTMQim4YDLGzxIt9%2F4C1MKBUSSdGYBX14rfjTSiB%2FivjjjEdNrRRnkGoIg%2Fxe5b1dFDdgukwXWEBsKtZ2qpmZl2uW1boMTHonQoxMTCmAYyLS2FEiNOvaV7rvm8oy6MtGvv2JVY%2FPz%2FFPab%2BhjsCG60vS3kHih4Zy8rUUKv%2Fw%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220901T121500Z&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Expires=3599&X-Amz-Credential=ASIAU5PA7W47IU63S5WX%2F20220901%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5424c781b8671fb1d7e068267af26e9de4d9a606f343c0bb8602d2a70ab52fcd"
+        }
+      },
+      "GetUploadPresignedUrlRequest": {
+        "type": "object",
+        "properties": {
+          "mediaType": {
+            "description": "The content type of the file to be stored. For e.g: application/pdf.",
+            "type": "string"
+          }
+        }
+      },
+      "GetPresignedUrl": {
+        "type": "object",
+        "properties": {
+          "downloadUri": {
+            "description": "The URL used to download the Resource directly from the storage provider.",
+            "type": "string"
+          },
+          "size": {
+            "description": "The size of the Resource in bytes. This value helps in making range requests.",
+            "type": "integer"
+          },
+          "type": {
+            "description": "The media type of the Resource.",
+            "type": "string"
+          }
+        },
+        "example": {
+          "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/a059e98b-43bf-4e76-886b-e61a1a19c7bd?X-Amz-Security-Token=FwoGZXIvYXdzEOz%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDJoRurLDIx1KmzjT9yLTAZwtCBavc2xtc6InMLLl2rS480ulHYpVTyWSAtCDj34blxS9sghuPqX%2FwTsvUOJZCvgL8kMqHm0khmO3Pnh1%2FOYU1MksBbAlZ47JExBGdzwIsnh8gMIEXBaty0nVmQjIVLUogOKTIyoBuJsnGDvjytpABIpIzbYH50aTS4yECx42ejL6Po%2F4LOroTO3bv98MuUh05hdiFeoCrTfu29%2FXL5%2FuHXo0R1TfgiNPeR6Riq4PL3v%2BSNzPflWlToGIPtWYMWKuEtIEtK0J2Ut3Bddpxevd%2BxsozM2%2BmAYyLblFR%2BVAADnVcQZDc0fW7A8g9iM9BpKQIgmBY9rJrKjj53%2BFHvDko8%2FbkUlGcA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220831T182204Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47P7L6NLGA%2F20220831%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=298a811048105d8093539c6fab4e8649f96af0fcbad17ee5a716e6175e6e166b",
+          "size": 13130,
+          "type": "application/pdf"
+        }
+      },
+      "AssetMetadata": {
+        "type": "object",
+        "properties": {
+          "entity": {
+            "description": "Technical Account ID or User ID with access to blob.",
+            "type": "string"
+          },
+          "size": {
+            "description": "The size of the Resource in bytes. This value helps in making range requests.",
+            "type": "integer"
+          },
+          "type": {
+            "description": "The content type of the file. For e.g: application/pdf.",
+            "type": "string"
+          }
+        },
+        "example": {
+          "entity": "49505D56624424F00A49423A@techacct.adobe.com",
+          "size": 13552,
+          "type": "application/pdf"
+        }
+      },
+      "JobStatus": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/inprogress"
+          },
+          {
+            "$ref": "#/components/schemas/done"
+          },
+          {
+            "$ref": "#/components/schemas/failed"
+          }
+        ]
+      },
+      "ElectronicSealPDFJobStatus": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/inprogress"
+          },
+          {
+            "$ref": "#/components/schemas/done"
+          },
+          {
+            "$ref": "#/components/schemas/failed"
+          }
+        ]
+      },
+      "AutoTagPDFJobStatus": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/inprogress"
+          },
+          {
+            "$ref": "#/components/schemas/autotagpdfdone"
+          },
+          {
+            "$ref": "#/components/schemas/failed"
+          }
+        ]
+      },
+      "inprogress": {
+        "description": "Response in case of 'in progress' status",
+        "type": "object",
+        "properties": {
+          "status": {
+            "description": "Job Status",
+            "type": "string",
+            "enum": [
+              "in progress"
+            ]
+          }
+        },
+        "example": {
+          "status": "in progress"
+        }
+      },
+      "done": {
+        "description": "Response in case of 'done' status",
+        "type": "object",
+        "properties": {
+          "status": {
+            "description": "Job Status",
+            "type": "string",
+            "enum": [
+              "done"
+            ]
+          },
+          "asset": {
+            "$ref": "#/components/schemas/responseAsset"
+          }
+        },
+        "example": {
+          "status": "done",
+          "asset": {
+            "metadata": {
+              "type": "application/pdf",
+              "size": 200791
+            },
+            "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+            "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
+          }
+        }
+      },
+      "responseAsset": {
+        "title": "asset",
+        "description": "Details of output asset document. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+        "type": "object",
+        "properties": {
+          "metadata": {
+            "type": "object",
+            "description": "metadata details of output asset.",
+            "properties": {
+              "size": {
+                "description": "The size of the Resource in bytes. This value helps in making range requests.",
+                "type": "integer"
+              },
+              "type": {
+                "description": "The media type of the Resource.",
+                "type": "string"
+              }
+            }
+          },
+          "assetID": {
+            "description": "An asset ID identifying an asset that is globally unique and never reused.",
+            "type": "string"
+          },
+          "downloadUri": {
+            "description": "The URL used to download the Resource directly to the cloud provider.",
+            "type": "string"
+          }
+        },
+        "example": {
+          "status": "done",
+          "asset": {
+            "metadata": {
+              "type": "application/pdf",
+              "size": 200791
+            },
+            "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+            "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
+          }
+        }
+      },
+      "autotagpdfdone": {
+        "title": "done",
+        "description": "Response in case of 'done' status",
+        "type": "object",
+        "properties": {
+          "status": {
+            "description": "Job Status",
+            "type": "string",
+            "enum": [
+              "done"
+            ]
+          },
+          "tagged-pdf": {
+            "type": "object",
+            "description": "Asset of tagged pdf file. Details of output asset document. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "properties": {
+              "metadata": {
+                "type": "object",
+                "description": "metadata details of output asset.",
+                "properties": {
+                  "size": {
+                    "description": "The size of the Resource in bytes. This value helps in making range requests.",
+                    "type": "integer"
+                  },
+                  "type": {
+                    "description": "The media type of the Resource.",
+                    "type": "string",
+                    "enum": [
+                      "application/pdf"
+                    ]
+                  }
+                }
+              },
+              "assetID": {
+                "description": "An asset ID identifying an asset that is globally unique and never reused.",
+                "type": "string"
+              },
+              "downloadUri": {
+                "description": "The URL used to download the Resource directly to the cloud provider.",
+                "type": "string"
+              }
+            }
+          },
+          "report": {
+            "type": "object",
+            "description": "Asset of autotag report. Details of output asset document. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "properties": {
+              "metadata": {
+                "type": "object",
+                "description": "metadata details of output asset.",
+                "properties": {
+                  "size": {
+                    "description": "The size of the Resource in bytes. This value helps in making range requests.",
+                    "type": "integer"
+                  },
+                  "type": {
+                    "description": "The media type of the Resource.",
+                    "type": "string",
+                    "enum": [
+                      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                    ]
+                  }
+                }
+              },
+              "assetID": {
+                "description": "An asset ID identifying an asset that is globally unique and never reused.",
+                "type": "string"
+              },
+              "downloadUri": {
+                "description": "The URL used to download the Resource directly to the cloud provider.",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "status": "done",
+          "content": {
+            "metadata": {
+              "type": "application/json",
+              "size": 200791
+            },
+            "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+            "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
+          },
+          "resource": {
+            "metadata": {
+              "type": "application/zip",
+              "size": 200791
+            },
+            "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+            "assetID": "urn:aaid:AS:UE1:23c30ee0-2c6d-46d6-87f2-087832fca718"
+          }
+        }
+      },
+      "failed": {
+        "description": "Response in case of 'failed' status",
+        "type": "object",
+        "properties": {
+          "status": {
+            "description": "Job Status",
+            "type": "string",
+            "enum": [
+              "failed"
+            ]
+          },
+          "error": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "description": "Http status code returned by the service",
+                "type": "integer"
+              },
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+                "type": "string"
+              },
+              "message": {
+                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>status</th><th>code</th><th>message</th></tr><tr><td>400</td><td>CORRUPT_DOCUMENT</td><td>For $(format) mime-type The input file appears to be corrupted and cannot be processed.</td></tr><tr><td>400</td><td>PASSWORD_PROTECTED</td><td>Source file is protected and cannot be processed.</td></tr><tr><td>500</td><td>INTERNAL_SERVER_ERROR</td><td>There was an error processing your request.</td></tr></table>",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "status": "failed",
+          "error": {
+            "status": 500,
+            "code": "INTERNAL_SERVER_ERROR",
+            "message": "There was an error processing your request"
+          }
+        }
+      }
+    }
+  }
+}
