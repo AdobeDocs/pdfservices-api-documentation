@@ -7,7 +7,7 @@ Fragments are special tags which enables users to write a composition using text
 
 ## How to use ?
 
-To use fragments in the api, user will need to create a **fragments** json and pass it as a parameter in the api request body or they can use SDKs as well.
+To use fragments in the API, user will need to create a **fragments** json and pass it as a parameter in the api request body or they can use SDKs as well.
 
 Below is a json defining fragments related to an **address** and a **name** use-case.
 ```json
@@ -91,4 +91,6 @@ And the output document generated will look like:
 
 ## Limitations
 
- - The Expressions and Jsonata functions are not supported inside the fragment definition.
+<ul>
+<li> The Expressions and Jsonata functions are not supported inside the fragment definition.</li>
+</ul>
