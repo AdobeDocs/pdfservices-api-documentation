@@ -11,9 +11,9 @@ This data can be used to: check if a document is fully text searchable (OCR), un
 
 See our public API Reference for [PDF Properties](../../../apis/#tag/PDF-Properties).
 
-### Get PDF Properties as a JSON Object
+### Fetch PDF Properties
 
-The sample below fetches the properties of an input PDF, as a JSON object.
+The sample below fetches the properties of an input PDF.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
@@ -54,9 +54,15 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
               .build();
         pdfPropertiesOperation.setOptions(pdfPropertiesOptions);
 
-        // Execute the operation and return JSON Object
-        JSONObject result = pdfPropertiesOperation.execute(executionContext);
-        LOGGER.info("The resultant PDF Properties are: {}", result);
+        // Execute the operation ang get properties of the PDF in PDFProperties object.
+        PDFProperties result = pdfPropertiesOperation.execute(executionContext);
+            
+        // Get properties of the PDF
+        LOGGER.info("The Page level properties of the PDF: {}", result.getDocument().getPageCount());
+        LOGGER.info("The Fonts used in the PDF: ");
+        for(Font font: result.getDocument().getFonts()) {
+            LOGGER.info(font.getName());
+        }
 
       } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
         LOGGER.error("Exception encountered while executing operation", ex);
@@ -103,8 +109,8 @@ namespace PDFPropertiesAsJSONObject
             .Build();
             pdfPropertiesOperation.SetOptions(pdfPropertiesOptions);
 
-            // Execute the operation and return JSON Object
-            JObject result = pdfPropertiesOperation.Execute(executionContext);
+            // Execute the operation ang get properties of the PDF in PDFProperties object.
+            PDFProperties pdfProperties = pdfPropertiesOperation.Execute(executionContext);
             Console.WriteLine("The resultant PDF Properties are: " + result.ToString());
 
         }
@@ -154,9 +160,9 @@ try {
         .build();
     pdfPropertiesOperation.setOptions(options);
 
-    // Execute the operation and log the JSON Object.
+    // Execute the operation ang get properties of the PDF in PDFProperties object.
     pdfPropertiesOperation.execute(executionContext)
-        .then(result => console.log("The resultant json object is : " + JSON.stringify(result)))
+        .then(result => console.log("The resultant json object is : " + JSON.stringify(result, null, 4)))
         .catch(err => {
             if(err instanceof PDFServicesSdk.Error.ServiceApiError
                 || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
