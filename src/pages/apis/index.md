@@ -1,5 +1,5 @@
 ---
-title: Endpoint references—Document Cloud API
-description: The OpenAPI spec for Document Cloud API endpoints, parameters, and responses.
+title: Adobe PDF Services Open API spec
+description: The OpenAPI spec for Adobe PDF Services API endpoints, parameters, and responses.
 openAPISpec: https://raw.githubusercontent.com/AdobeDocs/pdfservices-api-documentation/develop/src/pages/resources/openapi.json
 ---

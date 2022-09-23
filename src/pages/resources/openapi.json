@@ -84,7 +84,7 @@
       "description": "Merge Word based templates with input JSON data to create Word and PDF documents"
     },
     {
-      "name": "Electronic Seal",
+      "name": "Electronic Seal <span style={{color:'red'}}>Beta</span>",
       "description": "Create electronic seal on PDF documents like invoices, agreements etc using the digital certificate provided by the user."
     },
     {

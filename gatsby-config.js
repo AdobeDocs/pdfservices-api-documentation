@@ -121,16 +121,7 @@ module.exports = {
             },
             {
                 title: "Rest APIs",
-                menu: [
-                    {
-                        title: 'Rest APIs',
-                        path: 'apis/index.md'
-                    },
-                    {
-                        title: 'Beta APIs',
-                        path: 'apis/beta.md'
-                    }
-                ]
+                path: 'apis/index.md'
             }
         ],
         subPages: [
