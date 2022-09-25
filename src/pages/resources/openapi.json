@@ -117,7 +117,7 @@
         "Protect PDF",
         "Remove Protection",
         "Split PDF",
-        "Beta : Electronic Seal",
+        "Early Access Program : Electronic Seal",
         "Auto Tag"
       ]
     }
@@ -6269,10 +6269,10 @@
     "/operation/electronicseal": {
       "post": {
         "tags": [
-          "Beta : Electronic Seal"
+          "Early Access Program : Electronic Seal"
         ],
         "summary": "PDF Electronic Seal Operation",
-        "description": "![Beta](https://img.shields.io/badge/Status-Beta-yellow) An operation to create an electronic seal on input PDF documents using the digital certificate issued to the user by Trust Service Provider. To know more about PDF Electronic Seal, please see the <a href=\"http://www.adobe.com/go/dc_eseal_overview_doc\" target=\"_blank\">documentation</a>.",
+        "description": "![Early Access Program](https://img.shields.io/badge/-Early%20Access%20Program-red) An operation to create an electronic seal on input PDF documents using the digital certificate issued to the user by Trust Service Provider. To know more about PDF Electronic Seal, please see the <a href=\"http://www.adobe.com/go/dc_eseal_overview_doc\" target=\"_blank\">documentation</a>.",
         "operationId": "pdfoperations.electronicseal",
         "parameters": [
           {
@@ -6450,7 +6450,7 @@
     "/operation/electronicseal/{jobID}/status": {
       "get": {
         "tags": [
-          "Beta : Electronic Seal"
+          "Early Access Program : Electronic Seal"
         ],
         "summary": "Poll the electronic seal job for completion",
         "operationId": "pdfoperations.electronicseal.jobstatus",
