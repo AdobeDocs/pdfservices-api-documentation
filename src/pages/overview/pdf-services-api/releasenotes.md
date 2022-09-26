@@ -138,6 +138,13 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### 3.0.0 (September, 2022; major release)
+| Change  | Language            | Description                                                                                   |
+| ------- | ------------------- | --------------------------------------------------------------------------------------------- |
+| Changed | All                 | Released SDK v3.0.0, based out of the new PDF Services APIs.                                       |
+| New     | Java                | PDF Electronic Seal operation is now available in Beta PDF Services SDKs.                          |
+
+
 ### 2.2.3 (July, 2022; patch release)
 | Change  | Language            | Description                                                                                   |
 | ------- | ------------------- | --------------------------------------------------------------------------------------------- |

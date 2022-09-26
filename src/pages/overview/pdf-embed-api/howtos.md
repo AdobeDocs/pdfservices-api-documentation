@@ -204,7 +204,7 @@ adobeDCView.previewFile({
 
 <InlineAlert slots="text"/>
 
-To view the code in action, see the [online demo](https://dc.acrobat.com/view-sdk-demo/index.html) or run the [embed mode samples](https://www.adobe.com/go/pdfembedapi_samples) on your machine.
+To view the code in action, see the [online demo](https://documentservices.adobe.com/view-sdk-demo/index.html#/view/FULL_WINDOW/Bodea%20Brochure.pdf) or run the [embed mode samples](https://www.adobe.com/go/pdfembedapi_samples) on your machine.
 
 
 **Embed mode overview**

@@ -111,7 +111,7 @@ The following features and configuration variables are deprecated in modern view
 
 In order to use PDF Embed API, website developers are required to add the PDF Embed API 
 script URL in their websites. 
-Website developers should use the [viewer.js](https://documentcloud.adobe.com/view-sdk/viewer.js) 
+Website developers should use the [viewer.js](https://documentservices.adobe.com/view-sdk/viewer.js) 
 script (line 11) to access Adobe's modern PDF viewer. 
 All APIs and callbacks will work as expected with significant improvement in user experience.
 
@@ -126,14 +126,14 @@ All APIs and callbacks will work as expected with significant improvement in use
 </head>
 <body style="margin: 0px">
  <div id="adobe-dc-view"></div>
- <script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
+ <script src="https://documentservices.adobe.com/view-sdk/viewer.js"></script>
  <script type="text/javascript">
     document.addEventListener("adobe_dc_view_sdk.ready", function()
     {
         var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
         adobeDCView.previewFile(
        {
-          content:   {location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
+          content:   {location: {url: "https://documentservices.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
           metaData: {fileName: "Bodea Brochure.pdf"}
        });
     });
@@ -142,7 +142,7 @@ All APIs and callbacks will work as expected with significant improvement in use
 </html>
 ```
 
-Developers using the [main.js](https://documentcloud.adobe.com/view-sdk/main.js) script in their websites 
+Developers using the [main.js](https://documentservices.adobe.com/view-sdk/main.js) script in their websites 
 will continue to see the legacy PDF viewer and all PDF Embed API functionality 
 would be available to them in the legacy viewer.
 
