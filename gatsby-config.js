@@ -207,6 +207,10 @@ module.exports = {
                                 path: 'overview/pdf-services-api/howtos/split-pdf.md'
                             },
                             {
+                                title: 'Extract PDF',
+                                path: 'overview/pdf-services-api/howtos/extract-pdf.md'
+                            },
+                            {
                                 title: 'Get PDF Properties',
                                 path: 'overview/pdf-services-api/howtos/pdf-properties.md'
                             }
@@ -512,6 +516,10 @@ module.exports = {
                                             {
                                                 title: 'Split PDF',
                                                 path: 'overview/2.2.0/pdf-services-api/howtos/split-pdf.md'
+                                            },
+                                            {
+                                                title: 'Extract PDF',
+                                                path: 'overview/2.2.0/pdf-services-api/howtos/extract-pdf.md'
                                             },
                                             {
                                                 title: 'Get PDF Properties',
