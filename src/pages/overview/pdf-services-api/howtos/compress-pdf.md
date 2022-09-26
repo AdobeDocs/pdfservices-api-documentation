@@ -159,7 +159,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Compress-PDF
+// https://developer.adobe.com/document-services/docs/apis/#tag/Compress-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/compresspdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
@@ -341,7 +341,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Compress-PDF
+// https://developer.adobe.com/document-services/docs/apis/#tag/Compress-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/compresspdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \

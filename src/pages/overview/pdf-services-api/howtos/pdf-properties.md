@@ -180,7 +180,7 @@ try {
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/PDF-Properties
+// https://developer.adobe.com/document-services/docs/apis/#tag/PDF-Properties
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/pdfproperties' \
 --header 'x-api-key: {{Placeholder for client_id}}' \

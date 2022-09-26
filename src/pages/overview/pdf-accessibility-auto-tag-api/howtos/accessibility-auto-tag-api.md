@@ -167,7 +167,7 @@ except (ServiceApiException, ServiceUsageException, SdkException) as e:
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Auto-Tag
+// https://developer.adobe.com/document-services/docs/apis/#tag/Auto-Tag
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/autotag' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
@@ -276,7 +276,7 @@ except (ServiceApiException, ServiceUsageException, SdkException) as e:
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Auto-Tag
+// https://developer.adobe.com/document-services/docs/apis/#tag/Auto-Tag
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/autotag' \
 --header 'x-api-key: {{Placeholder for client_id}}' \

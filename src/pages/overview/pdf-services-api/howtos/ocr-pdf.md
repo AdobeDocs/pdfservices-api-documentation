@@ -162,7 +162,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Ocr
+// https://developer.adobe.com/document-services/docs/apis/#tag/Ocr
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/ocr' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
@@ -361,7 +361,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Ocr
+// https://developer.adobe.com/document-services/docs/apis/#tag/Ocr
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/ocr' \
 --header 'x-api-key: {{Placeholder for client_id}}' \

@@ -2,15 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "PDF Services API",
-    "description": "<ul>\n\t<li>Learn more about \n\t<a href=\"https://developer.adobe.com/document-services/docs/overview/\"> Adobe PDF Services API.</a>\n\t</li>\n\t<li> Invoking PDF Services API requires an Adobe-provided credential, <a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">learn more about authentication.</a>\n\t</li>\n<li><a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/#sdk\">Downloadable SDKs</a></li></ul>",
-    "termsOfService": "https://developer.adobe.com/document-services/docs/overview//terms/",
-    "contact": {
-      "email": "apiteam@swagger.io"
-    },
-    "license": {
-      "name": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-    },
+    "description": "<ul>\n\t<li>Learn more about \n\t<a href=\"https://developer.adobe.com/document-services/docs/overview/\"> Adobe PDF Services API.</a>\n\t</li>\n\t<li> Invoking PDF Services API requires an Adobe-provided credential, <a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">learn more about authentication.</a>\n\t</li>\n<li><a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/#sdk\">Downloadable SDKs</a></li>\n<li><a href=\"https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK\">Support Forum</a></li></ul>",
     "version": "2.0.0"
   },
   "servers": [
@@ -116,7 +108,7 @@
         "PDF Properties",
         "Protect PDF",
         "Remove Protection",
-        "Split PDF",
+        "Split PDF"
       ]
     },
     {
@@ -7117,26 +7109,26 @@
           "sv-SE",
           "da-DK",
           "fi-FI",
-          "no-NO",
+          "nb-NO",
           "pt-BR",
           "pt-PT",
-          " ca-CA",
+          "ca-CA",
           "nn-NO",
           "de-CH",
           "ja-JP",
           "bg-BG",
-          " hr-HR",
+          "hr-HR",
           "cs-CZ",
           "et-EE",
           "el-GR",
           "hu-HU",
           "lv-LV",
           "lt-LT",
-          "po-PO",
+          "pl-PL",
           "ro-RO",
           "ru-RU",
-          "zh-Hans",
-          "sl-SL",
+          "zh-CN",
+          "sl-SI",
           "zh-Hant",
           "tr-TR",
           "ko-KR",
@@ -7145,10 +7137,9 @@
           "gl-ES",
           "mk-MK",
           "mt-MT",
-          "oc",
           "sr-SR",
           "uk-UA",
-          "he-IL"
+          "iw-IL"
         ]
       },
       "400": {
@@ -7436,7 +7427,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID. Supported file formats are bmp, doc, docx, gif, jpeg, jpg, png, ppt, pptx, rtf, tif, tiff, txt, xls and xlsx. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. Supported file formats are bmp, doc, docx, gif, jpeg, jpg, png, ppt, pptx, rtf, tif, tiff, txt, xls and xlsx. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "documentLanguage": {
@@ -7464,7 +7455,7 @@
         ],
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "targetFormat": {
@@ -7499,7 +7490,7 @@
         ],
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "targetFormat": {
@@ -7535,7 +7526,7 @@
         ],
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "getCharBounds": {
@@ -7601,7 +7592,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "inputUrl": {
@@ -7641,7 +7632,7 @@
         },
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
-          "json": "",
+          "json": "{}",
           "includeHeaderFooter": true,
           "pageLayout": {
             "pageWidth": 11,
@@ -7660,7 +7651,7 @@
             "items": {
               "properties": {
                 "assetID": {
-                  "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+                  "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
                   "type": "string",
                   "required": true
                 },
@@ -7703,7 +7694,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "compressionLevel": {
@@ -7730,7 +7721,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           }
         },
@@ -7747,7 +7738,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "ocrLang": {
@@ -7778,7 +7769,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "pageActions": {
@@ -7835,7 +7826,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "pageLevel": {
@@ -7858,7 +7849,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "passwordProtection": {
@@ -7931,7 +7922,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "password": {
@@ -7954,7 +7945,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "splitoption": {
@@ -7998,7 +7989,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "outputFormat": {
@@ -8177,11 +8168,11 @@
         ],
         "properties": {
           "inputDocumentAssetID": {
-            "description": "A file assetID of an input PDF document in which seal has to be applied. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID of an input PDF document in which seal has to be applied. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "sealImageAssetID": {
-            "description": "A file assetID of the logo/watermark/background image to use as part of the seal field's appearance. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>. The asset format should be one of the below format \n 1. application/pdf \n2. image/jpeg \n3. image/png.",
+            "description": "A file assetID of the logo/watermark/background image to use as part of the seal field's appearance. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>. The asset format should be one of the below format \n 1. application/pdf \n2. image/jpeg \n3. image/png.",
             "type": "string"
           },
           "sealOptions": {
@@ -8392,7 +8383,7 @@
         ],
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "shiftHeadings": {
@@ -8749,7 +8740,7 @@
       },
       "responseAsset": {
         "title": "asset",
-        "description": "Details of output asset document. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+        "description": "Details of output asset document. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
         "type": "object",
         "properties": {
           "metadata": {
@@ -8800,7 +8791,7 @@
             ]
           },
           "assetList": {
-            "description": "List of assets. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "List of assets. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "array",
             "items": [
               {
@@ -8844,7 +8835,7 @@
             ]
           },
           "assetList": {
-            "description": "List of assets. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "List of assets. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "array",
             "items": {
               "type": "object",
@@ -8910,7 +8901,7 @@
             ]
           },
           "assetList": {
-            "description": "List of assets. Details of output asset document. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "List of assets. Details of output asset document. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "array",
             "items": {
               "type": "object",
@@ -10844,7 +10835,7 @@
           },
           "content": {
             "type": "object",
-            "description": "Asset of json file containig extracted content of pdf file. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "Asset of json file containig extracted content of pdf file. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "properties": {
               "metadata": {
                 "type": "object",
@@ -10875,7 +10866,7 @@
           },
           "resource": {
             "type": "object",
-            "description": "Asset of zip file containg generated resources from extract operation. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "Asset of zip file containg generated resources from extract operation. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "properties": {
               "metadata": {
                 "type": "object",
@@ -10939,7 +10930,7 @@
           },
           "tagged-pdf": {
             "type": "object",
-            "description": "Asset of tagged pdf file. Details of output asset document. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "Asset of tagged pdf file. Details of output asset document. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "properties": {
               "metadata": {
                 "type": "object",
@@ -10970,7 +10961,7 @@
           },
           "report": {
             "type": "object",
-            "description": "Asset of autotag report. Details of output asset document. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "Asset of autotag report. Details of output asset document. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "properties": {
               "metadata": {
                 "type": "object",

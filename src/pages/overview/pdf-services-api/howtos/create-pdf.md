@@ -174,7 +174,7 @@ const PDFservicesSdk = require('@adobe/pdfservices-node-sdk');
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Create-PDF
+// https://developer.adobe.com/document-services/docs/apis/#tag/Create-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/createpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
@@ -387,7 +387,7 @@ try {
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Create-PDF
+// https://developer.adobe.com/document-services/docs/apis/#tag/Create-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/createpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
@@ -604,7 +604,7 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
+// https://developer.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
@@ -822,7 +822,7 @@ try {
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
+// https://developer.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
@@ -1041,7 +1041,7 @@ try {
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
+// https://developer.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
@@ -1290,7 +1290,7 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
+// https://developer.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \

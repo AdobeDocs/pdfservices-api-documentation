@@ -370,7 +370,7 @@ namespace ExtractTextInfoFromPDF
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Extract-PDF
+// https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
@@ -618,7 +618,7 @@ namespace ExtractTextTableInfoFromPDF
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Extract-PDF
+// https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
@@ -869,7 +869,7 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Extract-PDF
+// https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
@@ -1122,7 +1122,7 @@ try {
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Extract-PDF
+// https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
@@ -1376,7 +1376,7 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Extract-PDF
+// https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
@@ -1635,7 +1635,7 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Extract-PDF
+// https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
@@ -1891,7 +1891,7 @@ namespace ExtractTextTableInfoWithStylingFromPDF
 
 ```javascript
 // Please refer our Rest API docs for more information 
-// https://developer-stage.adobe.com/document-services/docs/apis/#tag/Extract-PDF
+// https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
