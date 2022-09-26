@@ -24,12 +24,12 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
-// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.pdfproperties.PDFPropertiesAsJSONObject
+// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.pdfproperties.GetPDFProperties
 
-  public class PDFPropertiesAsJSONObject {
+  public class GetPDFProperties {
 
     // Initialize the logger.
-    private static final Logger LOGGER = LoggerFactory.getLogger(PDFPropertiesAsJSONObject.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(GetPDFProperties.class);
 
     public static void main(String[] args) {
 
@@ -77,9 +77,9 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
 // cd PDFPropertiesAsJSONObject/
-// dotnet run PDFPropertiesAsJSONObject.csproj
+// dotnet run GetPDFProperties.csproj
 
-namespace PDFPropertiesAsJSONObject
+namespace GetPDFProperties
 {
     class Program
     {
@@ -135,7 +135,7 @@ namespace PDFPropertiesAsJSONObject
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
-// node src/exportpdf/pdf-properties-as-json.js
+// node src/exportpdf/get-pdf-properties.js
 
 const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 

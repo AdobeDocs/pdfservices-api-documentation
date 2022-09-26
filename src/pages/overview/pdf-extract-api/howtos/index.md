@@ -8,7 +8,7 @@ The [samples and documentation](extract-api.md#extract-text-from-a-pdf) should g
 
 - Extracting PDF as JSON: the content, structure & renditions of table and figure elements along with Character Bounding Boxes
 
-For code examples illustrating other PDF actions including those below, see the [PDFServices SDK](../../pdf-services-api/index.md) :
+For code examples illustrating other PDF actions including those below, see the [PDFServices SDK](../../pdf-services-api/index.md#sdk) :
 
 - Creating a PDF from multiple formats, including HTML, Microsoft Office documents, and text files
 - Exporting a PDF to other formats or an image

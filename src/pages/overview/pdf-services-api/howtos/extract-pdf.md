@@ -1,1 +1,1 @@
-../../pdf-extract-api/howtos/index.md
+../../pdf-extract-api/howtos/extract-api.md

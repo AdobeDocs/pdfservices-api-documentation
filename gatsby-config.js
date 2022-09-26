@@ -329,6 +329,10 @@ module.exports = {
                             {
                                 title: 'PDF Extract API',
                                 path: 'overview/pdf-extract-api/howtos/extract-api.md'
+                            },
+                            {
+                                title: 'Using Our APIs',
+                                path: 'overview/pdf-extract-api/howtos/api-usage.md'
                             }
                         ]
                     },
@@ -410,6 +414,10 @@ module.exports = {
                             {
                                 title: 'PDF Accessibility Auto-Tag API',
                                 path: 'overview/pdf-accessibility-auto-tag-api/howtos/accessibility-auto-tag-api.md'
+                            },
+                            {
+                                title: 'Using Our APIs',
+                                path: 'overview/pdf-accessibility-auto-tag-api/howtos/api-usage.md'
                             }
                         ]
                     },

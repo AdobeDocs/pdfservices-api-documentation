@@ -63,7 +63,7 @@ You can use our cloud based [REST API](../../../apis/#tag/Document-Generation) t
 
 <InlineAlert slots="text"/>
 
-Before you begin with the REST API, refer [How To Get Started](https://documentcloud.adobe.com/document-services/index.html#how-to-get-started-) to learn more about generating the required credentials and invoking the APIs.
+Before you begin with the REST API, refer [How To Get Started](../pdf-services-api/howtos/api-usage.md) to learn more about generating the required credentials and invoking the APIs.
 
 **3.2. PDF Services SDK** <br/>
 Alternatively, you can use our offering through [PDF Services SDK](../pdf-services-api#sdk).

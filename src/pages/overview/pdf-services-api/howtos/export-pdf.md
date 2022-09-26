@@ -306,7 +306,7 @@ public class ExportPDFToDOCXWithOCROption {
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
-// node src/exportpdf/export-docx-to-pdf-with-ocr-options.js.js
+// node src/exportpdf/export-docx-to-pdf-with-ocr-options.js
 
 const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 
@@ -382,7 +382,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
-// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.exportpdf.ExportPDFToJPEG
+// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.exportpdftoimages.ExportPDFToJPEG
 
  public class ExportPDFToJPEG {
 
@@ -428,7 +428,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
-// cd ExportPDFToImage/
+// cd ExportPDFToJPEG/
 // dotnet run ExportPDFToJPEG.csproj
 
  namespace ExportPDFToJPEG
@@ -488,7 +488,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
-// node src/exportpdf/export-pdf-to-jpeg.js
+// node src/exportpdftoimages/export-pdf-to-jpeg.js
 
  const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
  try {
@@ -563,12 +563,12 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
-// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.exportpdf.ExportPDFToJPEGZip
+// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.exportpdftoimages.ExportPDFToJPEGZip
 
   public class ExportPDFToJPEGZip {
 
     // Initialize the logger.
-    private static final Logger LOGGER = LoggerFactory.getLogger(ExportPDFToJPEG.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExportPDFToJPEGZip.class);
 
     public static void main(String[] args) {
       try {
@@ -606,7 +606,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
-// cd ExportPDFToJPEGList/
+// cd ExportPDFToJPEGZip/
 // dotnet run ExportPDFToJPEGZip.csproj
 
 namespace
@@ -663,7 +663,7 @@ namespace
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
-// node src/exportpdf/export-pdf-to-jpeg-zip.js
+// node src/exportpdftoimages/export-pdf-to-jpeg-zip.js
 
 const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 
