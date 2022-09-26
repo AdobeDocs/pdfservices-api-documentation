@@ -92,5 +92,6 @@ And the output document generated will look like:
 ## Limitations
 
 <ul>
-<li> The Expressions and Jsonata functions are not supported inside the fragment definition.</li>
+<br />
+<li>The Expressions and Jsonata functions are not supported inside the fragment definition.</li>
 </ul>
