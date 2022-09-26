@@ -25,7 +25,8 @@ The output of PDF Accessibility Auto-Tag API contains the following:
 <li><b>Unprotected files:</b> The API supports files that are unprotected or where security restrictions allow copying of content. Files that are secured and do not allow copying of content will not be processed.</li>
 <li><b>Annotations:</b> Content in PDF files containing annotations such as highlights and sticky notes will be processed, but annotations that obscure text could impact output quality. Text within annotations will not be included in the output.</li>
 <li><b>PDF Producers:</b> The Extract API is designed to extract content from files that contain text, table data, and figures. Files created from applications that produce other types of content like illustrations, CAD drawings or other types of vector art may not return quality results.</li>
-<li><b>PDF Collections:</b> PDFs that are made from a collection of files including PDF Portfolios are not currently supported.
+<li><b>PDF Collections:</b> PDFs that are made from a collection of files including PDF Portfolios are not currently supported.</li>
+</ul>
 
 ## Error codes
 
