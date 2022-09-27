@@ -124,12 +124,12 @@ Clients using the REST API must perform the following:
 
 ### PDF Services SDKs
 
-Clients can also access the PDF Electronic Seal API via PDF Services SDKs. For additional details, see [Quickstarts](https://developer.adobe.com/document-services/docs/overview/pdf-services-api/).
+Clients can also access the PDF Electronic Seal API via PDF Services SDKs. For additional details, see [Quickstarts](../pdf-services-api/).
 
 Clients using the PDF Services SDKs must perform the following: 
 
 1. Save the input document and seal image on the local machine. File paths must be absolute.
-1. Save the `pdfservices-api-credentials.json` file created after [generating credentials](https://developer.adobe.com/document-services/docs/overview/pdf-services-api/#authentication)
+1. Save the `pdfservices-api-credentials.json` file created after [generating credentials](../pdf-services-api/#authentication)
 1. Make a call to the PDF Electronic Seal operation that includes the following: 
     * The file path to an input PDF (from the local machine). 
     * [Required parameters](/overview/pdf-electronic-seal-api/quickstarts/#parameters)
@@ -154,10 +154,10 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
 
 package com.adobe.pdfservices.operation.samples.electronicseal;
 
-public class ESealWithCustomAppearanceOptions {
+public class ElectronicSeal {
 
     // Initialize the logger.
-    private static final Logger LOGGER = LoggerFactory.getLogger(ESealWithCustomAppearanceOptions.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ElectronicSeal.class);
 
     public static void main(String[] args) {
         try {
@@ -238,7 +238,7 @@ public class ESealWithCustomAppearanceOptions {
             FileRef result = pdfElectronicSealOperation.execute(executionContext);
 
             //Save the output at specified location
-            result.saveAs("output/sealedOutputWithAllAppearanceOptions.pdf");
+            result.saveAs("output/sealedOutput.pdf");
 
 
         } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {

@@ -13,7 +13,7 @@ Apply styling and formatting in the generated output document using the HTML bas
 
 - Underline text.
 
-- Create [Hyperlinks](../document-generation-api/hyperlink.md#how-it-works).
+- Create [Hyperlinks](../document-generation-api/hyperlink.md).
 
 ## How It Works
 
