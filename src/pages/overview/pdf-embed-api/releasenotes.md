@@ -8,6 +8,13 @@ the changes below for each release.
 
 ## Change history
 
+### September, 2022
+
+| Change | Description                                                            |
+| ------ | ---------------------------------------------------------------------- |
+| New    | PDF Embed API is also available on the new documentservices.adobe.com URL. For sample usage, see the section [sample usage](./index.md#copy-it-run-it). |
+
+
 ### August, 2022
 
 | Change | Description                                                            |
