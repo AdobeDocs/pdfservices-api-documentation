@@ -81,7 +81,7 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
       .querySelector("a[href='/apis/']")
       ?.setAttribute("daa-ll", "Products");
     header
-      .querySelector(`a[href='${navLinksBaseUrl}/homepage/']`)
+      .querySelector(`a[href='${navLinksBaseUrl}/']`)
       ?.setAttribute("daa-ll", "Adobe Document Services");
     header
       .querySelector(`a[href='${navLinksBaseUrl}/apis/pdf-services/']`)
