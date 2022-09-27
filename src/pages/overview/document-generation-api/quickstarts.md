@@ -30,7 +30,7 @@ The quickest way to author a Word-based document template is by using [Adobe Doc
 
 <InlineAlert slots="text"/>
 
-Learn more about our [Word Add-in](../document-generation-api/wordaddin.md#add-in-demo).
+Learn more about our [Word Add-in](../document-generation-api/wordaddin.md).
 
 ** Manually ** <br/>
 Alternatively, you can create a document template by manually inserting the template tags into a Word document.
