@@ -23,7 +23,7 @@ module.exports = {
             {
                 title: 'Adobe Document Services',
                 subTitle: '',
-                path: '../../../document-services/homepage'
+                path: '../../../document-services/'
             },
             {
                 title: 'APIs',
