@@ -309,7 +309,7 @@ Once you complete the [Getting Credentials](pdf-services-api/#getting-credential
 -   **Personalized Download**: The samples download.zip contains a private.key file and an adobe-dc-pdf-services-sdk-node-samples directory. Each sample directory contains the sample code as well as a preconfigured pdfservices-api-credentials.json file.
 -   **Non Personalized Download**: The samples download zip contains the private.key file and unconfigured pdfservices-api-credentials.json file.
 
-After downloading the zip, you can either run the samples in the zip directly, or you can replace the pdfservices-api-credentials.json and private.key files in the [Node,js sample code](http://www.adobe.com/go/pdftoolsapi_node_sample) with those in the zip.
+After downloading the zip, you can either run the samples in the zip directly, or you can replace the pdfservices-api-credentials.json and private.key files in the [Node.js sample code](http://www.adobe.com/go/pdftoolsapi_node_sample) with those in the zip.
 
 **Example pdfservices-api-credentials.json file**
 
@@ -353,7 +353,7 @@ npm install --save @adobe/pdfservices-node-sdk
 
 If you did not choose **Personalized Code Sample Download** during the credential setup process:
 
-1.  Download [the Node,js sample project ](http://www.adobe.com/go/pdftoolsapi_node_sample).
+1.  Download [the Node.js sample project ](http://www.adobe.com/go/pdftoolsapi_node_sample).
 2.  Find and replace all occurrences of `pdfservices-api-credentials.json` and `private.key` files with the ones present in your PDFServicesCredentials.zip file.
 3.  From the samples root directory, run `npm install`.
 4.  Test the sample code on the command line.

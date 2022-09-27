@@ -120,7 +120,7 @@ module.exports = {
                 ]
             },
             {
-                title: "Rest APIs",
+                title: "REST APIs",
                 path: 'apis/index.md'
             }
         ],

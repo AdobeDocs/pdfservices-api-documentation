@@ -167,6 +167,8 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
       getCredentialsButton.href = `${baseurl}?api=pdf-extract-api`;
     } else if (window.location.pathname.indexOf("pdf-embed-api") >= 0) {
       getCredentialsButton.href = `${baseurl}?api=pdf-embed-api`;
+    } else if (window.location.pathname.indexOf("pdf-accessibility-auto-tag-api") >= 0) {
+      getCredentialsButton.href = `${baseurl}?api=pdf-accessibility-auto-tag-api`;
     }
 
     var pageHeadTittle = null;
