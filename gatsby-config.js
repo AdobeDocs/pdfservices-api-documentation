@@ -79,11 +79,18 @@ module.exports = {
                 }, {
                     title: 'Licensing',
                     path: process.env.LICENSING || 'https://developer.adobe.com/document-services/docs/overview/pdf-services-api/dcserviceslicensing?aio_internal'
+                },{
+                    title: 'Sales FAQ',
+                    path: '../document-services/faq/sales/'
                 },
-                    {
-                        title: 'Contact Us',
-                        path: '../document-services/pricing/contact/'
-                    }
+                {
+                    title: 'Tech Support FAQ',
+                    path: '../document-services/faq/tech-support/'
+                },
+                {
+                    title: 'Contact Us',
+                    path: '../document-services/pricing/contact/'
+                }
                 ]
             },
             {
