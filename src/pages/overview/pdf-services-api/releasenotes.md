@@ -134,7 +134,7 @@ Change types include the following:
 
 <InlineAlert slots="text" />
 
-The new release is backward compatible with the previous release.
+Minor and Patch releases are backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
