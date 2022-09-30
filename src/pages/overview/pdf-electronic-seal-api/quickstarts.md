@@ -15,15 +15,15 @@ The client has to call the PDF Electronic Seal API with the appropriate paramete
 
 Specifies a supported digital signature format:
 
-* PADES : This is the latest and improved signature format which is strict, concrete, and secure. For details, see [ETSI TS 102 778-3](https://www.etsi.org/deliver/etsi_ts/102700_102799/10277803/01.02.01_60/ts_10277803v010201p.pdf)  
-* PKCS#7 : This signature format is less stringent than PADES since it permits more PDF changes without invalidating the digital signature. For details, see [ISO 32000-1](https://opensource.adobe.com/dc-acrobat-sdk-docs/standards/pdfstandards/pdf/PDF32000_2008.pdf)
+* **PADES** : This is the latest and improved signature format which is strict, concrete, and secure. For details, see [ETSI TS 102 778-3](https://www.etsi.org/deliver/etsi_ts/102700_102799/10277803/01.02.01_60/ts_10277803v010201p.pdf)  
+* **PKCS7** : This signature format is less stringent than PADES since it permits more PDF changes without invalidating the digital signature. For details, see [ISO 32000-1](https://opensource.adobe.com/dc-acrobat-sdk-docs/standards/pdfstandards/pdf/PDF32000_2008.pdf)
 
 ### TSP Credential Information (*Required*)  
 
 TSP parameters encapsulate the signer's [certificate credential](/overview/pdf-electronic-seal-api/prerequisites/#step-1-procure-certificate-credentials) as well as the associated authentication and authorization data.
 
 * **TSP Name**  (*Required*): Specifies the name of the Trust Service Provider used to generate the certificate.
-* **TSP Credential Id**  (*Required*): Specifies the digital ID stored with the TSP provider that should be used for sealing.
+* **TSP Credential ID**  (*Required*): Specifies the digital ID stored with the TSP provider that should be used for sealing.
 * **TSP Authorization Context**  (*Required*): Encapsulates the service authorization data required to communicate with the TSP and access CSC provider APIs.
 
   * **Access Token**  (*Required*): Specifies the service access token used to authorize access to the CSC provider hosted APIs.
@@ -40,8 +40,8 @@ The seal field parameters are required to create a new unsigned signature field 
 * **Field Name**  (*Required*): The signature field's name. This must be a non-empty string. If signature field with this field name already exist, that field will be used. 
 If it does not exist, a signature field with this field name will be created.
 * **Visibility**: Specifies whether the signature field is visible. The default value of `true` creates a visible signature.
-* **Page Number**: Specifies the page number to which the signature field should be attached. Page numbers are 1-based. The page number is only **required** if the signature field does not already exist in the pdf document. If this is specified along with the signature field then it overrides the page on which signature field is present in the document.
-* **Location**: Specifies the coordinates of the signature appearance's bounding box in default PDF user space units. The location is only **required** if the signature field does not already exist in the pdf document. If this is specified along with the signature field then it overrides the existing signature bounding box.
+* **Page Number**: Specifies the page number to which the signature field should be attached. Page numbers are 1-based. The page number is only **required** if the signature field does not already exist in the PDF document. If this is specified along with the signature field then it overrides the page on which signature field is present in the document.
+* **Location**: Specifies the coordinates of the signature appearance's bounding box in default PDF user space units. The location is only **required** if the signature field does not already exist in the PDF document. If this is specified along with the signature field then it overrides the existing signature bounding box.
 
   * **Left**: The left x-coordinate
   * **Bottom**: The bottom y-coordinate
@@ -52,7 +52,7 @@ The **Location** and **Page Number** fields are **optional** if the signature fi
   
 ### Seal Appearance Parameters
 
-Specifies signature field appearance parameters. These are an enum set of display items: NAME, DATE, DISTINGUISHED_NAME, LABELS and SEAL_IMAGE. Specifies the information to display in the signature. NAME and LABELS are the default values.
+Specifies the information to display in the seal. These are an enum set of display items: NAME, DATE, DISTINGUISHED_NAME, LABELS and SEAL_IMAGE. NAME and LABELS are the default values.
 
 * **NAME**: Specifies that the signer's name should be displayed in the signature appearance.
    ![Display Options](../images/sealName.png)
@@ -119,7 +119,7 @@ Clients using the REST API must perform the following:
 1. Request to upload the input document to the upload URI.
 1. Invoke PDF Electronic Seal API (/pdf-services/operation/electronicseal) by providing the asset IDs generated in step 1 and other required sealing parameters. In the response, the client receives the job URI in the location header. [Details](https://developer.adobe.com/document-services/docs/apis/#operation/pdfoperations.electronicseal).
 1. Use the job URI to poll the status of the submitted job (Electronic Seal operation). The response includes a job status: *In progress*, *Failed* or *Done*. If the status is done, the seal API returns an asset ID and download URI. **This download URI is valid for 24 hours.**.
-1. Download the digitally signed pdf using download URI from above step.
+1. Download the sealed PDF using download URI from above step.
 
 
 ### PDF Services SDKs
@@ -137,7 +137,7 @@ Clients using the PDF Services SDKs must perform the following:
         * application/pdf
         * image/jpeg
         * image/png
-1. The digitally signed pdf file obtained  will be saved to specified output file path.
+1. The sealed PDF file obtained  will be saved to specified output file path.
 
 Use the samples below to generate a PDF with an electronic seal.
 
