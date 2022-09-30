@@ -43,10 +43,10 @@ If it does not exist, a signature field with this field name will be created.
 * **Page Number**: Specifies the page number to which the signature field should be attached. Page numbers are 1-based. The page number is only **required** if the signature field does not already exist in the PDF document. If this is specified along with the signature field then it overrides the page on which signature field is present in the document.
 * **Location**: Specifies the coordinates of the signature appearance's bounding box in default PDF user space units. The location is only **required** if the signature field does not already exist in the PDF document. If this is specified along with the signature field then it overrides the existing signature bounding box.
 
-  * **Left**: The left x-coordinate
-  * **Bottom**: The bottom y-coordinate
-  * **Right**: The right x-coordinate
-  * **Top**: The top y-coordinate
+  * **Left**  (*Required*): The left x-coordinate
+  * **Bottom**  (*Required*): The bottom y-coordinate
+  * **Right**  (*Required*): The right x-coordinate
+  * **Top**  (*Required*): The top y-coordinate
 
 The **Location** and **Page Number** fields are **optional** if the signature field is already added in the input PDF document. To add the signature field explicitly, see [how to place a signature field in a PDF](https://www.adobe.com/sign/hub/how-to/add-a-signature-block-to-pdf).
   
