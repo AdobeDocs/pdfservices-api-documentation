@@ -77,7 +77,7 @@
     },
     {
       "name": "Electronic Seal",
-      "description": "Create electronic seal on PDF documents like invoices, agreements etc using the digital certificate provided by the user."
+      "description": "Create electronic seal on PDF documents like invoices, agreements etc using the digital certificate issued to the user by Trust Service Provider."
     },
     {
       "name": "Auto Tag",
@@ -8168,11 +8168,11 @@
         ],
         "properties": {
           "inputDocumentAssetID": {
-            "description": "A file assetID of an input PDF document in which seal has to be applied. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID of a PDF document to which a seal has to be applied. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "sealImageAssetID": {
-            "description": "A file assetID of the logo/watermark/background image to use as part of the seal field's appearance. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>. The asset format should be one of the below format \n 1. application/pdf \n2. image/jpeg \n3. image/png.",
+            "description": " A file assetID of the logo/watermark/background image to be used as part of the appearance of the seal field. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>. The asset format should be one of the below format \n 1. application/pdf \n2. image/jpeg \n3. image/png.",
             "type": "string"
           },
           "sealOptions": {
@@ -8188,7 +8188,6 @@
               "credentialId": "[ADOBE]_xxxx_xx:35",
               "providerName": "intxxxxxst",
               "authorizationContext": {
-                "tokenType": "bearer",
                 "accessToken": "b7338a1f-xxxx-xxxx-xxxx-1eec91c47c12"
               },
               "credentialAuthParameters": {
@@ -8220,7 +8219,7 @@
       },
       "sealOptions": {
         "title": "sealOptions",
-        "description": "Specifies all the sealing parameters for the seal.",
+        "description": "Specifies all the sealing parameters.",
         "type": "object",
         "required": [
           "signatureFormat",
@@ -8230,7 +8229,7 @@
         "properties": {
           "signatureFormat": {
             "type": "string",
-            "description": "Specifies the standard format for signature to be applied.",
+            "description": "Specifies a supported digital signature format. For supported signature formats, please refer <a href = \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/quickstarts/#signature-format-required\">documentation</a>.",
             "default": "PKCS7",
             "enum": [
               "PADES",
@@ -8239,7 +8238,7 @@
           },
           "cscCredentialOptions": {
             "type": "object",
-            "description": "Specifies the CSC credential information that encapsulates the credential to be used for sealing. For more information, please see the <a href=\"http://www.adobe.com/go/dc_eseal_howtoguide_doc\" target=\"_blank\">documentation</a>.",
+            "description": "Specifies the parameters that encapsulates the signer's certificate credential. For more information, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/quickstarts/#tsp-credential-information-required\">documentation</a>.",
             "required": [
               "providerName",
               "credentialId",
@@ -8247,29 +8246,24 @@
               "credentialAuthParameters"
             ],
             "properties": {
-              "credentialId": {
-                "type": "string",
-                "description": "Specifies the Digital ID stored with the CSC provider that should be used for sealing"
-              },
               "providerName": {
                 "type": "string",
-                "description": "Specifies the name of CSC provider to be used."
+                "description": "Specifies the name of the Trust Service Provider. For the list of supported TSPs, please refer <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/prerequisites/#supported-trust-service-providers\">documentation</a>."
+              },
+              "credentialId": {
+                "type": "string",
+                "description": "Specifies the credential ID stored with the TSP."
               },
               "authorizationContext": {
                 "type": "object",
-                "description": "Specifies the service authorization data required to communicate with the CSC provider.",
+                "description": "Specifies the service authorization data required to communicate with the TSP.",
                 "required": [
                   "accessToken"
                 ],
                 "properties": {
-                  "tokenType": {
-                    "type": "string",
-                    "default": "Bearer",
-                    "description": "Specifies the type of service token which is Bearer."
-                  },
                   "accessToken": {
                     "type": "string",
-                    "description": "Specifies the service access token used to authorize access to the CSC provider hosted apis."
+                    "description": "Specifies the service access token used to authorize access to the CSC provider hosted APIs."
                   }
                 }
               },
@@ -8282,7 +8276,7 @@
                 "properties": {
                   "pin": {
                     "type": "string",
-                    "description": "Specifies the PIN associated with credential id."
+                    "description": "Specifies the PIN associated with credential ID."
                   }
                 }
               }
@@ -8290,11 +8284,9 @@
           },
           "sealFieldOptions": {
             "type": "object",
-            "description": "Specifies the paraemters required to creates a new unsigned signature field or sign an existing field.",
+            "description": "Specifies the parameters required to create a new signature field or use an existing field.",
             "required": [
-              "fieldName",
-              "pageNumber",
-              "location"
+              "fieldName"
             ],
             "properties": {
               "visible": {
@@ -8304,12 +8296,12 @@
               },
               "location": {
                 "type": "object",
-                "description": "Specifies the parameters related to the location of the seal field.",
+                "description": "Specifies the coordinates of the signature appearance's bounding box in default PDF user space units. The location is only required if the signature field does not already exist in the PDF document. If this is specified along with the signature field then it overrides the existing signature bounding box.",
                 "required": [
+                  "top",
                   "left",
-                  "bottom",
                   "right",
-                  "top"
+                  "bottom"
                 ],
                 "properties": {
                   "top": {
@@ -8332,17 +8324,17 @@
               },
               "fieldName": {
                 "type": "string",
-                "description": "Specified the field name for the seal field."
+                "description": "The signature field's name. This must be a non-empty string. If signature field with this field name already exist, that field will be used. If it does not exist, a signature field with this field name will be created."
               },
               "pageNumber": {
                 "type": "integer",
-                "description": "Specifies the number of the page to which the seal field should be attached."
+                "description": "Specifies the page number to which the signature field should be attached. Page numbers are 1-based. The page number is only required if the signature field does not already exist in the pdf document. If this is specified along with the signature field then it overrides the page on which signature field is present in the document."
               }
             }
           },
           "sealAppearanceOptions": {
             "type": "object",
-            "description": "Specifies the parameters related to the apperance of the seal field.",
+            "description": "Specifies signature field appearance parameters. For more details, please refer <a href= \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/quickstarts/#seal-appearance-parameters\">documentation</a>.",
             "default": {
               "displayOptions": [
                 "NAME",
@@ -8355,15 +8347,8 @@
             "properties": {
               "displayOptions": {
                 "type": "array",
-                "description": "Specifies the information to display in the seal.",
+                "description": "Specifies the information to display in the signature. These are an enum set of display items: NAME, DATE, DISTINGUISHED_NAME, LABELS and SEAL_IMAGE.",
                 "items": {
-                  "enum": [
-                    "NAME",
-                    "DATE",
-                    "DISTINGUISHED_NAME",
-                    "LABELS",
-                    "SEAL_IMAGE"
-                  ],
                   "type": "string"
                 },
                 "default": [
