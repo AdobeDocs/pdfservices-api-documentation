@@ -23,7 +23,7 @@ Specifies a supported digital signature format:
 TSP parameters encapsulate the signer's [certificate credential](/overview/pdf-electronic-seal-api/prerequisites/#step-1-procure-certificate-credentials) as well as the associated authentication and authorization data.
 
 * **TSP Name**  (*Required*): Specifies the name of the Trust Service Provider used to generate the certificate.
-* **TSP Credential ID**  (*Required*): Specifies the digital ID stored with the TSP provider that should be used for sealing.
+* **TSP Credential ID**  (*Required*): Specifies the credential ID stored with the Trust Service Provider to be used for sealing.
 * **TSP Authorization Context**  (*Required*): Encapsulates the service authorization data required to communicate with the TSP and access CSC provider APIs.
 
   * **Access Token**  (*Required*): Specifies the service access token used to authorize access to the CSC provider hosted APIs.
@@ -35,7 +35,7 @@ TSP parameters encapsulate the signer's [certificate credential](/overview/pdf-e
 
 ### Seal Field Parameters   (*Required*)
 
-The seal field parameters are required to create a new unsigned signature field or sign an existing field.
+The seal field parameters are required to create a new signature field or use an existing field.
 
 * **Field Name**  (*Required*): The signature field's name. This must be a non-empty string. If signature field with this field name already exist, that field will be used. 
 If it does not exist, a signature field with this field name will be created.
@@ -52,7 +52,7 @@ The **Location** and **Page Number** fields are **optional** if the signature fi
   
 ### Seal Appearance Parameters
 
-Specifies the information to display in the seal. These are an enum set of display items: NAME, DATE, DISTINGUISHED_NAME, LABELS and SEAL_IMAGE. NAME and LABELS are the default values.
+Specifies the content to be displayed in the seal. These are an enum set of display items: NAME, DATE, DISTINGUISHED_NAME, LABELS and SEAL_IMAGE. NAME and LABELS are the default values.
 
 * **NAME**: Specifies that the signer's name should be displayed in the signature appearance.
    ![Display Options](../images/sealName.png)
@@ -203,10 +203,10 @@ public class ElectronicSeal {
                     .setVisible(sealVisible)
                     .build();
 
-            //Set the name of TSP Provider being used.
+            //Set the name of TSP being used.
             String providerName = "<PROVIDER_NAME>";
 
-            //Set the access token to be used to access TSP provider hosted APIs.
+            //Set the access token to be used to access TSP hosted APIs.
             String accessToken = "<ACCESS TOKEN>";
 
             //Set the credential ID.
