@@ -1,3 +1,6 @@
+---
+title: Release Notes | PDF Services API | Adobe PDF Services
+---
 # Release Notes
 
 This document describes the change history across releases for supported
@@ -109,6 +112,7 @@ Refer to the following for links to supported product documentation.
 
 | Item  | Public doc                                                                |
 | ----- | ------------------------------------------------------------------------- |
+| 2.2.0 | [Web page(2.2.0 docs)](../2.2.0/) |
 | 2.1.0 | [Web page(2.1.0 docs)](https://opensource.adobe.com/pdftools-sdk-docs/release/2.1.0/) |
 | 2.0.0 | [Web page(2.0.0 docs)](https://opensource.adobe.com/pdftools-sdk-docs/release/2.0.0/) |
 | 1.3.0 | [Web page(1.3.0 docs)](https://opensource.adobe.com/pdftools-sdk-docs/release/1.3.0/) |
@@ -130,10 +134,17 @@ Change types include the following:
 
 <InlineAlert slots="text" />
 
-The new release is backward compatible with the previous release.
+Minor and Patch releases are backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
+
+### 3.0.0 (September, 2022; major release)
+| Change  | Language            | Description                                                                                   |
+| ------- | ------------------- | --------------------------------------------------------------------------------------------- |
+| Changed | All                 | Released SDK v3.0.0, based out of the new PDF Services APIs.                                       |
+| New     | Java                | PDF Electronic Seal operation is now available in Beta PDF Services SDKs.                          |
+
 
 ### 2.2.3 (July, 2022; patch release)
 | Change  | Language            | Description                                                                                   |

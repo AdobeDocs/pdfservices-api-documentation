@@ -1,3 +1,6 @@
+---
+title: PDF Services API | Adobe PDF Services
+---
 # Quickstarts
 <p>
 
@@ -12,7 +15,7 @@ The SDK only supports server-based use cases where credentials are saved securel
 
 ## Getting credentials
 
-Developing with the PDF Services SDK requires an Adobe-provided credential. To get one, [click HERE](https://documentcloud.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
+Developing with the PDF Services SDK requires an Adobe-provided credential. To get one, [click HERE](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
 
 **Validity term**: The certificate associated with your credential is valid for one year. However, you can simply regenerate a new credential or apply a new certificate to the current credentials from the Document Cloud [developer console](https://console.adobe.io/).
 
@@ -110,7 +113,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 4.  Verify the hash you generated matches the value in the .sha1 file.
 
 ```
-8d6045f83fb934415e603d693623c27318f90f9e
+c3b8c208a913ffca17f4d92d9ab7f6bbbdd032ae
 ```
 
 #### Logging
@@ -185,7 +188,7 @@ Jumpstart your development by bookmarking or downloading the following key resou
 
 The samples project requires the following:
 
--   .NET Core: version 2.1 or above
+-   .NET Core: version 3.1 or above
 -   A build Tool: Either Visual Studio or .NET Core CLI.
 
 #### Authentication
@@ -252,7 +255,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 3.  Verify the hash in the downloaded file matches the value published here.
 
 ```
-Gvvoj/xR59AuMAiy/vxxZpcyBWlfbEQuWdOEg6w/YeEPnkOcyNVpY9lJgbxLeg3QuoDmL9sMnHSuHuuBMtp6pw==
+8bocSjsiXI+1STV1yNhwPExvJb+EcxcDjiIL76ivjGNGJn9jgIpDI2Ewm+Q+yn6X+AHSPT2zl6WZu+zg+v3NfQ==
 ```
 
 #### Logging
@@ -306,7 +309,7 @@ Once you complete the [Getting Credentials](pdf-services-api/#getting-credential
 -   **Personalized Download**: The samples download.zip contains a private.key file and an adobe-dc-pdf-services-sdk-node-samples directory. Each sample directory contains the sample code as well as a preconfigured pdfservices-api-credentials.json file.
 -   **Non Personalized Download**: The samples download zip contains the private.key file and unconfigured pdfservices-api-credentials.json file.
 
-After downloading the zip, you can either run the samples in the zip directly, or you can replace the pdfservices-api-credentials.json and private.key files in the [Node,js sample code](http://www.adobe.com/go/pdftoolsapi_node_sample) with those in the zip.
+After downloading the zip, you can either run the samples in the zip directly, or you can replace the pdfservices-api-credentials.json and private.key files in the [Node.js sample code](http://www.adobe.com/go/pdftoolsapi_node_sample) with those in the zip.
 
 **Example pdfservices-api-credentials.json file**
 
@@ -350,7 +353,7 @@ npm install --save @adobe/pdfservices-node-sdk
 
 If you did not choose **Personalized Code Sample Download** during the credential setup process:
 
-1.  Download [the Node,js sample project ](http://www.adobe.com/go/pdftoolsapi_node_sample).
+1.  Download [the Node.js sample project ](http://www.adobe.com/go/pdftoolsapi_node_sample).
 2.  Find and replace all occurrences of `pdfservices-api-credentials.json` and `private.key` files with the ones present in your PDFServicesCredentials.zip file.
 3.  From the samples root directory, run `npm install`.
 4.  Test the sample code on the command line.
@@ -365,7 +368,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 3.  Verify the hash in the downloaded file matches the value published here.
 
 ```
-sha512-oYPbb2bNCmmjHpCNyr3/4Eof/xh98GIV+9Rm6xMEZilrRO1TWeRc0ni4zD/L6SE9hEIThSmDw7URO2MVYtUy5g==
+sha512-xPvqpEM1Bd/XHLy3ywUhSH/tMNYWpv5rkQU+69pBv4IXdD2Qz+VyOXkvF5ysdVE1wbow7LIipi6JQgTlLlFqhQ==
 ```
 
 #### Logging
@@ -522,7 +525,7 @@ PDF Services API is accessible directly via REST APIs which requires Adobe-provi
 -   **Personalized Download**: The samples download zip contains a private.key file and a samples folder with a preconfigured pdfservices-api-credentials.json file.
 -   **Non Personalized Download**: The samples download zip contains the private.key file and a pdfservices-api-credentials.json file.
 
-After downloading the zip, private.key and credentials info in pdfservices-api-credentials.json can be used to call REST APIs directly per the instructions mentioned in [Public API Docs](https://documentcloud.adobe.com/document-services/index.html#how-to-get-started-) under Sub-Section (Introduction -\> How to get started?)
+After downloading the zip, private.key and credentials info in pdfservices-api-credentials.json can be used to call REST APIs directly per the instructions mentioned in [API Usage Guide](./howtos/api-usage.md).
 
 **Example pdfservices-api-credentials.json file**
 

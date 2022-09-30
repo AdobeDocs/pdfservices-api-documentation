@@ -1,3 +1,6 @@
+---
+title: Search Engine Indexing | PDF Embed API | Adobe PDF Services
+---
 # Handle search engine indexing
 
 <p>PDFs displayed using the PDF Embed API are not indexed and won't appear

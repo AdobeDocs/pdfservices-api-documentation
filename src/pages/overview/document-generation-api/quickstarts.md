@@ -1,3 +1,6 @@
+---
+title: Quickstarts | Document Generation API | Adobe PDF Services
+---
 # Quickstarts
 This quickstart will guide you through the necessary steps to setup and make a request to the Document Generation API.<br/>
 Use Document Generation API to merge JSON data into Word based document
@@ -8,7 +11,7 @@ To learn more about the Document Generation, read [Overview](../document-generat
 
 ## Live Demo
 
-The [Document Generation API Demo](https://documentcloud.adobe.com/dc-docgen-playground/index.html#/) demonstrates how easy it is to generate customized documents from Word-based document templates and input JSON data.
+The [Document Generation API Demo](https://documentservices.adobe.com/dc-docgen-playground/index.html#/) demonstrates how easy it is to generate customized documents from Word-based document templates and input JSON data.
 
 ## How It Works
 
@@ -27,7 +30,7 @@ The quickest way to author a Word-based document template is by using [Adobe Doc
 
 <InlineAlert slots="text"/>
 
-Learn more about our [Word Add-in](../document-generation-api/wordaddin.md#add-in-demo).
+Learn more about our [Word Add-in](../document-generation-api/wordaddin.md).
 
 ** Manually ** <br/>
 Alternatively, you can create a document template by manually inserting the template tags into a Word document.
@@ -56,11 +59,11 @@ Once you are ready with the Word-based document template and the JSON data, the 
 There are two ways to access the Document Generation API:
 
 **3.1. REST API** <br/>
-You can use our cloud based [REST API](https://www.adobe.com/go/dcsdk_APIdocs#post-documentGeneration) to generate documents.
+You can use our cloud based [REST API](../../../apis/#tag/Document-Generation) to generate documents.
 
 <InlineAlert slots="text"/>
 
-Before you begin with the REST API, refer [How To Get Started](https://documentcloud.adobe.com/document-services/index.html#how-to-get-started-) to learn more about generating the required credentials and invoking the APIs.
+Before you begin with the REST API, refer [How To Get Started](../pdf-services-api/howtos/api-usage.md) to learn more about generating the required credentials and invoking the APIs.
 
 **3.2. PDF Services SDK** <br/>
 Alternatively, you can use our offering through [PDF Services SDK](../pdf-services-api#sdk).
@@ -80,6 +83,8 @@ Please allow-list the following hostnames before using Adobe PDF Services SDK:<u
 #### Generate PDF or Word document
 
 The sample below generates the output document in the **PDF** format. Similarly, you can specify **DOCX** as the **OutputFormat** to generate Word documents.
+
+Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
@@ -265,57 +270,47 @@ The sample below generates the output document in the **PDF** format. Similarly,
  }
 ```
 
-##### Rest API
+#### Rest API 
 
 ```javascript
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Document-Generation
+
+curl --location --request POST 'https://pdf-services.adobe.io/operation/documentgeneration' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-   \"cpf:engine\":{
-      \"repo:assetId\":\"urn:aaid:cpf:Service-52d5db6097ed436ebb96f13a4c7bf8fb\"
-   },
-   \"cpf:inputs\":{
-      \"documentIn\":{
-         \"dc:format\":\"application/vnd.openxmlformats-officedocument.wordprocessingml.document\",
-         \"cpf:location\":\"InputFile0\"
-      },
-      \"params\":{
-         \"cpf:inline\":{
-            \"outputFormat\": \"pdf\",
-            \"jsonDataForMerge\": {
-              \"customerName\": \"Kane Miller\",
-              \"customerVisits\": 100,
-              \"itemsBought\": [
-                {
-                  \"name\": \"Sprays\",
-                  \"quantity\": 50,
-                  \"amount\": 100
-                },
-                {
-                  \"name\": \"Chemicals\",
-                  \"quantity\": 100,
-                  \"amount\": 200
-                }
-              ],
-              \"totalAmount\": 300,
-              \"previousBalance\": 50,
-              \"lastThreeBillings\": [100, 200, 300],
-              \"photograph\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII=\"
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+    "outputFormat": "pdf",
+    "jsonDataForMerge": {
+        "customerName": "Kane Miller",
+        "customerVisits": 100,
+        "itemsBought": [
+            {
+                "name": "Sprays",
+                "quantity": 50,
+                "amount": 100
+            },
+            {
+                "name": "Chemicals",
+                "quantity": 100,
+                "amount": 200
             }
-         }
-      }
-   },
-   \"cpf:outputs\":{
-      \"documentOut\":{
-         \"dc:format\":\"application/pdf\",
-         \"cpf:location\":\"multipartLabel\"
-      }
-   }
-}"' \
---form 'InputFile0=@"{{Placeholder for the input document template (absolute path)}}"'
+        ],
+        "totalAmount": 300,
+        "previousBalance": 50,
+        "lastThreeBillings": [
+            100,
+            200,
+            300
+        ],
+        "photograph": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII="
+    }
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-documentGeneration
 ```
 
 As a result of the Document Generation API, template tags are replaced
@@ -327,6 +322,8 @@ with the input JSON data.
 #### Generate PDF or Word document (with [Fragments](./fragments.md))
 
 The sample below shows the use of **Fragments** in the word template and generates the output document in the **PDF** format.
+
+Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" />
 
@@ -581,68 +578,57 @@ The sample below shows the use of **Fragments** in the word template and generat
     } catch (err) {
         console.log('Exception encountered while executing operation', err);
     }
-
 ```
 
-##### Rest API
+#### Rest API 
 
 ```javascript
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Document-Generation
+
+curl --location --request POST 'https://pdf-services.adobe.io/operation/documentgeneration' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-   \"cpf:engine\":{
-      \"repo:assetId\":\"urn:aaid:cpf:Service-52d5db6097ed436ebb96f13a4c7bf8fb\"
-   },
-   \"cpf:inputs\":{
-      \"documentIn\":{
-         \"dc:format\":\"application/vnd.openxmlformats-officedocument.wordprocessingml.document\",
-         \"cpf:location\":\"InputFile0\"
-      },
-      \"params\":{
-         \"cpf:inline\":{
-            \"outputFormat\": \"pdf\",
-            \"jsonDataForMerge\": {
-              \"customerName\": \"Kane Miller\",
-              \"customerVisits\": 100,
-              \"itemsBought\": [
-                {
-                  \"name\": \"Sprays\",
-                  \"quantity\": 50,
-                  \"amount\": 100
-                },
-                {
-                  \"name\": \"Chemicals\",
-                  \"quantity\": 100,
-                  \"amount\": 200
-                }
-              ],
-              \"totalAmount\": 300,
-              \"previousBalance\": 50,
-              \"lastThreeBillings\": [100, 200, 300],
-              \"photograph\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII=\"
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+    "outputFormat": "pdf",
+    "jsonDataForMerge": {
+        "customerName": "Kane Miller",
+        "customerVisits": 100,
+        "itemsBought": [
+            {
+                "name": "Sprays",
+                "quantity": 50,
+                "amount": 100
             },
-            \"fragments\": [
-                {
-                    \"orderDetails\": \"<b>Quantity</b>:{{quantity}}, <b>Description</b>:{{description}}, <b>Amount</b>:{{amount}}\"
-                },
-                {
-                    \"customerDetails\": \"{{customerName}}, Visits: {{customerVisits}}\"
-                }
-            ]
-         }
-      }
-   },
-   \"cpf:outputs\":{
-      \"documentOut\":{
-         \"dc:format\":\"application/pdf\",
-         \"cpf:location\":\"multipartLabel\"
-      }
-   }
-}"' \
---form 'InputFile0=@"{{Placeholder for the input document template (absolute path)}}"'
+            {
+                "name": "Chemicals",
+                "quantity": 100,
+                "amount": 200
+            }
+        ],
+        "totalAmount": 300,
+        "previousBalance": 50,
+        "lastThreeBillings": [
+            100,
+            200,
+            300
+        ],
+        "photograph": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII="
+    },
+    "fragments": [
+        {
+            "orderDetails": "<b>Quantity</b>:{{quantity}}, <b>Description</b>:{{description}}, <b>Amount</b>:{{amount}}"
+        },
+        {
+            "customerDetails": "{{customerName}}, Visits: {{customerVisits}}"
+        }
+    ]
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-documentGeneration
 ```
 
 ## API Limitations

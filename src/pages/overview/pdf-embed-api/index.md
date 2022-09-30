@@ -1,3 +1,6 @@
+---
+title: PDF Embed API | Adobe PDF Services
+---
 # Quickstarts
 <p>
 Adobe PDF Embed API allows you to embed a PDF viewer in your web applications with only a few lines of code. With options for controlling how a PDF appears and functions, your applications can deliver the rich and compelling digital document experiences to your customers expect and need.
@@ -14,13 +17,13 @@ simple: a few of lines of code are all you need to get started.
 </p>
 <InlineAlert slots="text" />
 
-Check out the [online demo](https://www.adobe.com/go/dcviewsdk_demo),
+Check out the [online demo](https://documentservices.adobe.com/view-sdk-demo/index.html#/view/FULL_WINDOW/Bodea%20Brochure.pdf),
 and view the code to see how easy it is!
 
 ## Getting credentials
 
 You'll need a client ID to use the Adobe PDF Embed API. To
-get one, [click HERE]( https://documentcloud.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-embed-api), and
+get one, [click HERE]( https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-embed-api), and
 complete the workflow.
 
 ## Copy it. Run it.
@@ -30,7 +33,7 @@ to an index.html file. The example already
 points to an online PDF.
 
 Generate a client ID from
-[here](https://documentcloud.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-embed-api). Insert the client
+[here](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-embed-api). Insert the client
 ID within the double quotes in line 16 in the code below and run the
 webpage from your server in any browser.
 
@@ -53,14 +56,14 @@ Develop your web app using your preferred methods and tools.
 </head>
 <body style="margin: 0px">
  <div id="adobe-dc-view"></div>
- <script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
+ <script src="https://documentservices.adobe.com/view-sdk/viewer.js"></script>
  <script type="text/javascript">
     document.addEventListener("adobe_dc_view_sdk.ready", function()
     {
         var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
         adobeDCView.previewFile(
        {
-          content:   {location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
+          content:   {location: {url: "https://documentservices.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
           metaData: {fileName: "Bodea Brochure.pdf"}
        });
     });
@@ -83,7 +86,7 @@ If a PDF renders in the web viewer, the sample has correctly executed.
 ## Live demo
 
 The [Adobe PDF Embed API
-demo](https://www.adobe.com/go/dcviewsdk_demo) demonstrates how easy it
+demo](https://documentservices.adobe.com/view-sdk-demo/index.html#/view/FULL_WINDOW/Bodea%20Brochure.pdf) demonstrates how easy it
 is to configure the viewer and also provides a "generate code" button so
 that you can immediately see your UI changes reflected in a live code
 sample.

@@ -1,10 +1,13 @@
+---
+title: Fragments | Document Generation API | Adobe PDF Services
+---
 # Fragments
 
 Fragments are special tags which enables users to write a composition using text tags or other fragments. Fragments introduce re-usability among the tags and enable users to create multiple such compositions and use them in their templates.
 
 ## How to use ?
 
-To use fragments in the api, user will need to create a **fragments** json and pass it as a parameter in the api request body or they can use SDKs as well.
+To use fragments in the API, user will need to create a **fragments** json and pass it as a parameter in the api request body or they can use SDKs as well.
 
 Below is a json defining fragments related to an **address** and a **name** use-case.
 ```json
@@ -88,4 +91,7 @@ And the output document generated will look like:
 
 ## Limitations
 
- - The Expressions and Jsonata functions are not supported inside the fragment definition.
+<ul>
+<br />
+<li>The Expressions and Jsonata functions are not supported inside the fragment definition.</li>
+</ul>

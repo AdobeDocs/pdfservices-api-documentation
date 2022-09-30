@@ -59,7 +59,7 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
 
     // stage
     let baseurl =
-      "https://dc.stage.acrobat.com/dc-integration-creation-app-cdn/main.html";
+      "https://stage.documentservices.adobe.com/dc-integration-creation-app-cdn/main.html";
 
     // production
     if (
@@ -67,7 +67,7 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
       window.location.host.indexOf("adobe.io") >= 0
     ) {
       baseurl =
-        "https://documentcloud.adobe.com/dc-integration-creation-app-cdn/main.html";
+        "https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html";
     }
 
     getCredentialsButton.href = `${baseurl}`;
@@ -81,7 +81,7 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
       .querySelector("a[href='/apis/']")
       ?.setAttribute("daa-ll", "Products");
     header
-      .querySelector(`a[href='${navLinksBaseUrl}/homepage/']`)
+      .querySelector(`a[href='${navLinksBaseUrl}/']`)
       ?.setAttribute("daa-ll", "Adobe Document Services");
     header
       .querySelector(`a[href='${navLinksBaseUrl}/apis/pdf-services/']`)
@@ -135,6 +135,9 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
       )
       ?.setAttribute("daa-ll", "Documenation Document Generation API");
     header
+        .querySelector(`a[href='${navLinksDocsBaseUrl}/overview/pdf-electronic-seal-api/']`)
+        ?.setAttribute("daa-ll", "Documentation PDF Electronic Seal API");
+    header
       .querySelector(`a[href='${navLinksDocsBaseUrl}/overview/pdf-embed-api/']`)
       ?.setAttribute("daa-ll", "Documenation PDF Embed API");
     header
@@ -158,10 +161,14 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
       window.location.pathname.indexOf("document-generation-api") >= 0
     ) {
       getCredentialsButton.href = `${baseurl}?api=document-generation-api`;
+    } else if ( window.location.pathname.indexOf("pdf-electronic-seal-api") >= 0 ) {
+      getCredentialsButton.href = `${baseurl}?api=pdf-electronic-seal-api`;
     } else if (window.location.pathname.indexOf("pdf-extract-api") >= 0) {
       getCredentialsButton.href = `${baseurl}?api=pdf-extract-api`;
     } else if (window.location.pathname.indexOf("pdf-embed-api") >= 0) {
       getCredentialsButton.href = `${baseurl}?api=pdf-embed-api`;
+    } else if (window.location.pathname.indexOf("pdf-accessibility-auto-tag-api") >= 0) {
+      getCredentialsButton.href = `${baseurl}?api=pdf-accessibility-auto-tag-api`;
     }
 
     var pageHeadTittle = null;
@@ -392,6 +399,19 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
         ) >= 0
       ) {
         pageHeadTittle = "PDF Services API Licensing";
+      }
+    } else if(
+        window.location.pathname.indexOf("pdf-electronic-seal-api/") >= 0
+    ){
+      pageHeadTittle = "PDF Electronic Seal API Overview";
+      if (
+          window.location.pathname.indexOf("pdf-electronic-seal-api/quickstarts") >= 0
+      ) {
+        pageHeadTittle = "PDF Electronic Seal API Quickstarts";
+      } else if (
+          window.location.pathname.indexOf("pdf-electronic-seal-api/prerequisites") >= 0
+      ) {
+        pageHeadTittle = "PDF Electronic Seal API Prerequisites";
       }
     }else  if (window.location.pathname.indexOf("overview/") >= 0) {
         pageHeadTittle = "Overview Introduction";

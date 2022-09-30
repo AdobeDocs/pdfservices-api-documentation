@@ -1,8 +1,11 @@
+---
+title: Authentication | Adobe PDF Services
+---
 # Authentication
 
 ## How to get started?
 
-**STEP 1: Get Credentials -** Invoking PDF Services API requires an Adobe-provided credential. To get one, [click here](https://documentcloud.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
+**STEP 1: Get Credentials -** Invoking PDF Services API requires an Adobe-provided credential. To get one, [click here](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
 
 **Validity term:** The certificate associated with your credential is valid for one year. However, you can simply regenerate a new credential or apply a new certificate to the current credential from the [Document Cloud Developer Console](https://developer.adobe.com/console/).
 

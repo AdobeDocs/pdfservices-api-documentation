@@ -1,8 +1,19 @@
+---
+title: Delete Pages | How Tos | PDF Services API | Adobe PDF Services
+---
 # Delete Pages
+
+Delete one or more pages from a document
+
+## Rest API
+
+See our public API Reference for [Delete Pages](../../../apis/#tag/Page-Manipulation)
 
 ## Delete Pages in a PDF
 
 The delete pages operation selectively removes pages from a PDF file.
+
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
@@ -192,44 +203,29 @@ The delete pages operation selectively removes pages from a PDF file.
 #### Rest API
 
 ```javascript
-// Please refer our Rest API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-pageManipulation
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Page-Manipulation
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/pagemanipulation' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"params\": {
-			\"cpf:inline\": {
-				\"pageActions\": [{
-					\"pageAction\": {
-						\"delete\": {
-							\"pageRanges\": [{
-								\"start\": 1,
-								\"end\": 1
-							}]
-						}
-					}
-				}]
-			}
-		},
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-4735fcf3cf924b25879e6fcf7aa84ad4\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"cid:multipartLabelOut\",
-			\"dc:format\": \"application/pdf\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+    "pageActions": [
+        {
+            "delete": {
+                "pageRanges": [
+                    {
+                        "start": 1,
+                        "end": 2
+                    }
+                ]
+            }
+        }
+    ]
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-pageManipulation
 ```

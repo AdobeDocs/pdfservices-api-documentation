@@ -1,3 +1,6 @@
+---
+title: How Tos Comments | PDF Embed API | Adobe PDF Services
+---
 # Comments and Markup
 
 The Embed API provides the capability to add comments to PDF documents
@@ -22,12 +25,12 @@ embedded JavaScript.
 
 ```html
 <div id="adobe-dc-view"></div>
-<script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
+<script src="https://documentservices.adobe.com/view-sdk/viewer.js"></script>
 <script type="text/javascript">
 document.addEventListener("adobe_dc_view_sdk.ready", function () {
    var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
    adobeDCView.previewFile({
-     content:{location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
+     content:{location: {url: "https://documentservices.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
      metaData:{fileName: "Bodea Brochure.pdf"}
    }, {showAnnotationTools: false});
 });
@@ -513,13 +516,13 @@ Invoke the APIs with the `annotationManager` as follows:
 
 <body style="margin: 0px">
  <div id="adobe-dc-view"></div>
- <script src="https://documentcloud.adobe.com/view-sdk/viewer.js"></script>
+ <script src="https://documentservices.adobe.com/view-sdk/viewer.js"></script>
  <script type="text/javascript">
  document.addEventListener("adobe_dc_view_sdk.ready", function()
  {
   var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
   var previewFilePromise = adobeDCView.previewFile({
-   content:   {location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
+   content:   {location: {url: "https://documentservices.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
    metaData:  {fileName: "Bodea Brochure.pdf", id: "77c6fa5d-6d74-4104-8349-657c8411a834"}
   },
   {
@@ -545,7 +548,7 @@ identifies the PDF so that annotations can be added.
 
 ```javascript
 adobeDCView.previewFile({
-   content:   {location: {url: "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
+   content:   {location: {url: "https://documentservices.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
    metaData:  {fileName: "Bodea Brochure.pdf", id: "77c6fa5d-6d74-4104-8349-657c8411a834"}
 }
 ```

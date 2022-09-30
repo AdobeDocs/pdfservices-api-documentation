@@ -1,3 +1,6 @@
+---
+title: Styling And Formatting | Document Generation API | Adobe PDF Services
+---
 # Apply styling and formatting
 
 Apply styling and formatting in the generated output document using the HTML based constructs.
@@ -10,7 +13,7 @@ Apply styling and formatting in the generated output document using the HTML bas
 
 - Underline text.
 
-- Create [Hyperlinks](../document-generation-api/hyperlink.md#how-it-works).
+- Create [Hyperlinks](../document-generation-api/hyperlink.md).
 
 ## How It Works
 

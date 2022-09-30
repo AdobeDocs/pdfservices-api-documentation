@@ -1,4 +1,6 @@
-
+---
+title: Quickstarts | PDF Extract API | Adobe PDF Services
+---
 # Quickstarts
 <p>
 The PDF Extract API provides modern cloud-based capabilities for automatically extracting contents from PDF. The API is accessible through SDKs which help you get up and running quickly. Once you've received your developer credential, download and set up one of the sample projects. After you're familiar with the APIs, leverage the samples in your own server-side code.
@@ -11,7 +13,7 @@ The SDK only supports server-based use cases where credentials are saved securel
 
 ## Getting credentials
 
-Developing with the PDF Services SDK requires an Adobe-provided credential. To get one, [click HERE](https://documentcloud.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
+Developing with the PDF Services SDK requires an Adobe-provided credential. To get one, [click HERE](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
 
 **Validity term**: The certificate associated with your credential is valid for one year. However, you can simply regenerate a new credential or apply a new certificate to the current credentials from the Document Cloud [developer console](https://console.adobe.io/).
 
@@ -110,7 +112,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 4.  Verify the hash you generated matches the value in the .sha1 file.
 
 ```
-25f4c2e3a119d51cf2f3e3df0db42052d77e0bea
+c3b8c208a913ffca17f4d92d9ab7f6bbbdd032ae
 ```
 
 #### Logging
@@ -185,7 +187,7 @@ Jumpstart your development by bookmarking or downloading the following key resou
 
 The samples project requires the following:
 
--   .NET Core: version 2.1 or above
+-   .NET Core: version 3.1 or above
 -   A build Tool: Either Visual Studio or .NET Core CLI.
 
 #### Authentication
@@ -252,7 +254,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 3.  Verify the hash in the downloaded file matches the value published here.
 
 ```
-Gvvoj/xR59AuMAiy/vxxZpcyBWlfbEQuWdOEg6w/YeEPnkOcyNVpY9lJgbxLeg3QuoDmL9sMnHSuHuuBMtp6pw==
+8bocSjsiXI+1STV1yNhwPExvJb+EcxcDjiIL76ivjGNGJn9jgIpDI2Ewm+Q+yn6X+AHSPT2zl6WZu+zg+v3NfQ==
 ```
 
 #### Logging
@@ -365,7 +367,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 3.  Verify the hash in the downloaded file matches the value published here.
 
 ```
-sha512-oYPbb2bNCmmjHpCNyr3/4Eof/xh98GIV+9Rm6xMEZilrRO1TWeRc0ni4zD/L6SE9hEIThSmDw7URO2MVYtUy5g==
+sha512-xPvqpEM1Bd/XHLy3ywUhSH/tMNYWpv5rkQU+69pBv4IXdD2Qz+VyOXkvF5ysdVE1wbow7LIipi6JQgTlLlFqhQ==
 ```
 
 #### Logging
@@ -522,7 +524,7 @@ PDF Services API is accessible directly via REST APIs which requires Adobe-provi
 -   **Personalized Download**: The samples download zip contains a private.key file and a samples folder with a preconfigured pdfservices-api-credentials.json file.
 -   **Non Personalized Download**: The samples download zip contains the private.key file and a pdfservices-api-credentials.json file.
 
-After downloading the zip, private.key and credentials info in pdfservices-api-credentials.json can be used to call REST APIs directly per the instructions mentioned in [Public API Docs](https://documentcloud.adobe.com/document-services/index.html#how-to-get-started-) under Sub-Section (Introduction -\> How to get started?)
+After downloading the zip, private.key and credentials info in pdfservices-api-credentials.json can be used to call REST APIs directly per the instructions mentioned in [API Usage Guide](../pdf-services-api/howtos/api-usage.md).
 
 **Example pdfservices-api-credentials.json file**
 
