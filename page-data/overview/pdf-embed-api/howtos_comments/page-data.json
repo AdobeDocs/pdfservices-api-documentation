@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-pages-overview-pdf-embed-api-howtos-comments-md",
-    "path": "/overview/pdf-embed-api/howtos_comments/",
-    "result": {"pageContext":{"frontmatter":{}}},
-    "staticQueryHashes": ["2631302149"]}
+{"componentChunkName":"component---src-pages-overview-pdf-embed-api-howtos-comments-md","path":"/overview/pdf-embed-api/howtos_comments/","result":{"pageContext":{"frontmatter":{"title":"How Tos Comments | PDF Embed API | Adobe PDF Services"}}},"staticQueryHashes":["2631302149"]}

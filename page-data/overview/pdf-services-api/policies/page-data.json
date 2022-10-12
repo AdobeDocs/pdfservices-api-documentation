@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-pages-overview-pdf-services-api-policies-md",
-    "path": "/overview/pdf-services-api/policies/",
-    "result": {"pageContext":{"frontmatter":{}}},
-    "staticQueryHashes": ["2631302149"]}
+{"componentChunkName":"component---src-pages-overview-pdf-services-api-policies-md","path":"/overview/pdf-services-api/policies/","result":{"pageContext":{"frontmatter":{"title":"Policies | PDF Services API | Adobe PDF Services"}}},"staticQueryHashes":["2631302149"]}

@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-pages-overview-pdf-services-api-index-md",
-    "path": "/overview/pdf-services-api/",
-    "result": {"pageContext":{"frontmatter":{}}},
-    "staticQueryHashes": ["2631302149"]}
+{"componentChunkName":"component---src-pages-overview-pdf-services-api-index-md","path":"/overview/pdf-services-api/","result":{"pageContext":{"frontmatter":{"title":"PDF Services API | Adobe PDF Services"}}},"staticQueryHashes":["2631302149"]}

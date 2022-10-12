@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-pages-overview-pdf-services-api-howtos-extract-pdf-md",
-    "path": "/overview/pdf-services-api/howtos/extract-pdf/",
-    "result": {"pageContext":{"frontmatter":{}}},
-    "staticQueryHashes": ["2631302149"]}
+{"componentChunkName":"component---src-pages-overview-pdf-services-api-howtos-extract-pdf-md","path":"/overview/pdf-services-api/howtos/extract-pdf/","result":{"pageContext":{"frontmatter":{"title":"Extract API | How Tos | PDF Extract API | Adobe PDF Services"}}},"staticQueryHashes":["2631302149"]}

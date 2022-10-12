@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-pages-overview-pdf-accessibility-auto-tag-api-quickstarts-md",
-    "path": "/overview/pdf-accessibility-auto-tag-api/quickstarts/",
-    "result": {"pageContext":{"frontmatter":{}}},
-    "staticQueryHashes": ["2631302149"]}
+{"componentChunkName":"component---src-pages-overview-pdf-accessibility-auto-tag-api-quickstarts-md","path":"/overview/pdf-accessibility-auto-tag-api/quickstarts/","result":{"pageContext":{"frontmatter":{"title":"Quickstarts | PDF Accessibility Auto-Tag API | Adobe PDF Services"}}},"staticQueryHashes":["2631302149"]}
