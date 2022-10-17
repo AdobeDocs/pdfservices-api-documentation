@@ -146,6 +146,10 @@ module.exports = {
                         path: 'overview/pdf-services-api/index.md'
                     },
                     {
+                        title: 'Quickstarts',
+                        path: 'overview/pdf-services-api/quickstarts'
+                    },
+                    {
                         title: 'How Tos',
                         path: 'overview/pdf-services-api/howtos',
                         pages: [
