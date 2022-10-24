@@ -1,0 +1,40 @@
+{
+  "author": "Gary Lee",
+  "Company": {
+    "Name": "Projected",
+    "Address": "19718 Mandrake Way",
+    "PhoneNumber": "+1-100000098"
+  },
+  "Invoice": {
+    "Date": "January 15, 2021",
+    "Number": 123,
+    "Items": [
+      {
+        "item": "Gloves",
+        "description": "Microwave gloves",
+        "UnitPrice": 5,
+        "Quantity": 2,
+        "Total": 10
+      },
+      {
+        "item": "Bowls",
+        "description": "Microwave bowls",
+        "UnitPrice": 10,
+        "Quantity": 2,
+        "Total": 20
+      }
+    ]
+  },
+  "Customer": {
+    "Name": "Collins Candy",
+    "Address": "315 Dunning Way",
+    "PhoneNumber": "+1-200000046",
+    "Email": "cc@abcdef.co.dw"
+  },
+  "Tax": 5,
+  "Shipping": 5,
+  "clause": {
+    "overseas": "The shipment might take 5-10 more than informed."
+  },
+  "paymentMethod": "Cash"
+}

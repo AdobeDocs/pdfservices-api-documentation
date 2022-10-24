@@ -1,10 +1,10 @@
 ---
-title: .NET | Quickstarts | PDF Services API | Adobe PDF Services
+title: .NET | Quickstarts | PDF Extract API | Adobe PDF Services
 ---
 
-# Getting Started with Adobe PDF Services API (.NET)
+# Getting Started with PDF Extract API (.NET)
 
-To get started using Adobe PDF Services API, let's walk through a simple scenario - taking an input PDF document and exporting it to Microsoft Word. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
+To get started using Adobe PDF Extract API, let's walk through a simple scenario - taking an input PDF document and running PDF Extract API against it. Once the PDF has been extracted, we'll parse the results and report on any major headers in the document. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
 
 ## Prerequisites
 
@@ -44,6 +44,7 @@ To complete this guide, you will need:
 
 2) We need two things from this download. The `private.key` file (as shown in the screenshot above, and the `pdfservices-api-credentials.json` file. You can find this in the `adobe-DC.PDFServicesSDK.NET.Samples` folder, inside any of the sample subdirectories, so for example, the `CombinePDF` folder.
 
+![alt](./shot6.png)
 
 <InlineAlert slots="text" />
 
@@ -51,7 +52,7 @@ Note that that private key is *also* found in this directory so feel free to cop
 
 3) Take these two files and place them in a new directory.
 
-4) In your new directory, create a new file, `ExportPDFToWord.csproj`. This file will declare our requirements as well as help define the application we're creating.
+4) In your new directory, create a new file, `ExtractTextInfoFromPDF.csproj`. This file will declare our requirements as well as help define the application we're creating.
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -84,7 +85,7 @@ Note that that private key is *also* found in this directory so feel free to cop
 </Project>
 ```
 
-Our application will take a PDF, `Bodea Brochure.pdf` (downloadable from [here](https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf)) and convert it to a Microsoft Word document, `Bodea Brochure.docx`.
+Our application will take a PDF, `Adobe Extract API Sample.pdf` (downloadable from [here](TBD)) and extract it's contents. The results will be saved as a ZIP file, `ExtractTextInfoFromPDF.zip`. We will then parse the results from the ZIP and print out the text of any `H1` headers found in the PDF.
 
 5) In your editor, open the directory where you previously copied the credentials and created the `csproj` file. Create a new file, `Program.cs`. 
 
@@ -94,7 +95,9 @@ Now you're ready to begin coding.
 
 1) We'll begin by including our required dependencies:
 
-```csharp
+```javascript
+using System.Text.Json;
+using System.IO.Compression;
 using System.IO;
 using System;
 using System.Collections.Generic;
@@ -105,15 +108,15 @@ using System.Reflection;
 using Adobe.PDFServicesSDK;
 using Adobe.PDFServicesSDK.auth;
 using Adobe.PDFServicesSDK.pdfops;
-using Adobe.PDFServicesSDK.options.exportpdf;
 using Adobe.PDFServicesSDK.io;
 using Adobe.PDFServicesSDK.exception;
+using Adobe.PDFServicesSDK.options.extractpdf;
 ```
 
 2) Now let's define our main class and `Main` method:
 
-```csharp
-namespace ExportPDFToWord
+```javascript
+namespace ExtractTextInfoFromPDF
 {
     class Program
     {
@@ -125,23 +128,23 @@ namespace ExportPDFToWord
 }
 ```
 
-3) Inside our class, we'll begin by defining our input PDF and output filenames. If the output file already exists, it will be deleted:
+3) Now let's define our input and output:
 
-```csharp
-String input = "./Bodea Brochure.pdf";
+```javascript
+String input = "Adobe Extract API Sample.pdf";
 
-String output = "./Bodea Brochure.docx";
+String output = "ExtractTextInfoFromPDF.zip";
 if(File.Exists(Directory.GetCurrentDirectory() + output))
 {
 	File.Delete(Directory.GetCurrentDirectory() + output);
 }
-
-Console.Write("Exporting "+ input + " to " + output + "\n");
 ```
+
+This defines what our output ZIP will be and optionally deletes it if it already exists. Then we define what PDF will be extracted. (You can download the source we used [here](./Adobe%20Extract%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic. 
 
 4) Next, we setup the SDK to use our credentials.
 
-```csharp
+```javascript
 // Initial setup, create credentials instance.
 Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
 	.FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
@@ -155,34 +158,66 @@ This code both points to the credentials downloaded previously as well as sets u
 
 5) Now, let's create the operation:
 
-```csharp
-ExportPDFOperation exportPdfOperation = ExportPDFOperation.CreateNew(ExportPDFTargetFormat.DOCX);
+```javascript
+ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
 
 // Provide an input FileRef for the operation.
 FileRef sourceFileRef = FileRef.CreateFromLocalFile(input);
-exportPdfOperation.SetInput(sourceFileRef);
+extractPdfOperation.SetInputFile(sourceFileRef);
+
+// Build ExtractPDF options and set them into the operation.
+ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPDFOptionsBuilder()
+	.AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT}))
+	.Build();
+extractPdfOperation .SetOptions(extractPdfOptions);
 ```
 
-This set of code defines what we're doing (an Export operation), points to our local file and specifies the input is a PDF, and then defines options for the Export call. In this example, the only option is the export format, DOCX.
+This set of code defines what we're doing (an Extract operation), points to our local file and specifies the input is a PDF, and then defines options for the Extract call. PDF Extract API has a few different options, but in this example, we're simply asking for the most basic of extractions, the textual content of the document. 
 
 6) The next code block executes the operation:
 
-```csharp
+```javascript
 // Execute the operation.
-FileRef result = exportPdfOperation.Execute(executionContext);
+FileRef result = extractPdfOperation.Execute(executionContext);
 
 // Save the result to the specified location.
 result.SaveAs(Directory.GetCurrentDirectory() + output);
 ```
 
-This code runs the Extraction process and then stores the result Word document to the file system. 
+This code runs the Extraction process and then stores the result zip to the file system. 
 
+7) In this block, we read in the ZIP file, extract the JSON result file, and parse it: 
+
+```javascript
+ZipArchive archive = ZipFile.OpenRead(Directory.GetCurrentDirectory() + output);
+ZipArchiveEntry jsonEntry = archive.GetEntry("structuredData.json");
+StreamReader osr = new StreamReader(jsonEntry.Open());
+String contents = osr.ReadToEnd();
+
+JsonElement data = JsonSerializer.Deserialize<JsonElement>(contents);
+```
+
+8) Finally we can loop over the result and print out any found element that is an `H1`:
+
+```javascript
+JsonElement elements = data.GetProperty("elements");
+foreach(JsonElement element in elements.EnumerateArray()) {
+    JsonElement pathElement = element.GetProperty("Path");
+    String path = pathElement.GetString();
+    if(path.EndsWith("/H1")) {
+        JsonElement textElement = element.GetProperty("Text");
+        Console.Write(textElement.GetString() +"\n");
+    }
+}
+```
 
 ![Example running in the command line](./shot9.png)
 
 Here's the complete application (`Program.cs`):
 
-```csharp
+```javascript
+using System.Text.Json;
+using System.IO.Compression;
 using System.IO;
 using System;
 using System.Collections.Generic;
@@ -193,11 +228,11 @@ using System.Reflection;
 using Adobe.PDFServicesSDK;
 using Adobe.PDFServicesSDK.auth;
 using Adobe.PDFServicesSDK.pdfops;
-using Adobe.PDFServicesSDK.options.exportpdf;
 using Adobe.PDFServicesSDK.io;
 using Adobe.PDFServicesSDK.exception;
+using Adobe.PDFServicesSDK.options.extractpdf;
 
-namespace ExportPDFToWord
+namespace ExtractTextInfoFromPDF
 {
     class Program
     {
@@ -209,15 +244,13 @@ namespace ExportPDFToWord
             try
             {
 
-                String input = "./Bodea Brochure.pdf";
+                String input = "Adobe Extract API Sample.pdf";
 
-                String output = "./Bodea Brochure.docx";
+                String output = "ExtractTextInfoFromPDF.zip";
                 if(File.Exists(Directory.GetCurrentDirectory() + output))
                 {
                     File.Delete(Directory.GetCurrentDirectory() + output);
                 }
-
-        		Console.Write("Exporting "+ input + " to " + output + "\n");
 
                 // Initial setup, create credentials instance.
                 Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
@@ -226,20 +259,42 @@ namespace ExportPDFToWord
 
                 // Create an ExecutionContext using credentials and create a new operation instance.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
-                ExportPDFOperation exportPdfOperation = ExportPDFOperation.CreateNew(ExportPDFTargetFormat.DOCX);
+                ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
 
                 // Provide an input FileRef for the operation.
                 FileRef sourceFileRef = FileRef.CreateFromLocalFile(input);
-                exportPdfOperation.SetInput(sourceFileRef);
+                extractPdfOperation.SetInputFile(sourceFileRef);
                 
+                // Build ExtractPDF options and set them into the operation.
+                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPDFOptionsBuilder()
+                    .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT}))
+                    .Build();
+                extractPdfOperation .SetOptions(extractPdfOptions);
 
                 // Execute the operation.
-                FileRef result = exportPdfOperation.Execute(executionContext);
+                FileRef result = extractPdfOperation.Execute(executionContext);
 
                 // Save the result to the specified location.
                 result.SaveAs(Directory.GetCurrentDirectory() + output);
 
-        		Console.Write("All Done");
+        		Console.Write("Successfully extracted information from PDF. Printing H1 Headers:\n\n");
+
+                ZipArchive archive = ZipFile.OpenRead(Directory.GetCurrentDirectory() + output);
+                ZipArchiveEntry jsonEntry = archive.GetEntry("structuredData.json");
+                StreamReader osr = new StreamReader(jsonEntry.Open());
+                String contents = osr.ReadToEnd();
+                
+                JsonElement data = JsonSerializer.Deserialize<JsonElement>(contents);
+                JsonElement elements = data.GetProperty("elements");
+                foreach(JsonElement element in elements.EnumerateArray()) {
+                    JsonElement pathElement = element.GetProperty("Path");
+                    String path = pathElement.GetString();
+                    if(path.EndsWith("/H1")) {
+                        JsonElement textElement = element.GetProperty("Text");
+                        Console.Write(textElement.GetString() +"\n");
+                    }
+                }
+
                 
             }
             catch (ServiceUsageException ex)

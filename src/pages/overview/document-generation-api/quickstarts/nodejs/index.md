@@ -1,3 +1,7 @@
+---
+title: Node.js | Quickstarts | Document Generation API | Adobe PDF Services
+---
+
 # Getting Started with Adobe Document Generation API (Node.js)
 
 To get started using Adobe Document Generation API, let's walk through a simple scenario - using a Word document as a template for dynamic receipt generation in PDF. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
@@ -40,9 +44,9 @@ To complete this guide, you will need:
 
 ![alt](./shot6.png)
 
->[!NOTE]
->
->Note that that private key is *also* found in this directory so feel free to copy them both from here.
+<InlineAlert slots="text" />
+
+Note that that private key is *also* found in this directory so feel free to copy them both from here.
 
 3) Take these two files and place them in a new directory. Remember that these credential files are important and should be stored safely.
 
@@ -56,7 +60,7 @@ To complete this guide, you will need:
 
 At this point, we've installed the Node.js SDK for Adobe PDF Services API as a dependency for our project and have copied over our credentials files. 
 
-Our application will take a Word document, `receiptTemplate.docx` (downloadable from [here](TBA)), and combine it with data in a JSON file, `receipt.json` (downloadable from [here](TBA)), to be sent to the Document Services API and generate a receipt PDF.
+Our application will take a Word document, `receiptTemplate.docx` (downloadable from [here](./receiptTemplate.docx)), and combine it with data in a JSON file, `receipt.json` (downloadable from [here](./receipt.json)), to be sent to the Document Services API and generate a receipt PDF.
 
 7) In your editor, open the directory where you previously copied the credentials. Create a new file, `generatePDF.js`.
 
@@ -242,4 +246,4 @@ try {
 
 ## Next Steps
 
-Now that you've successfully performed your first operation, [review then documentation](https://developer.adobe.com/document-services/docs/overview/document-generation-api/) for many other examples and reach out on our [forums](https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK) with any questions. Also remember the samples you downloaded while creating your credentials also have many demos.
+Now that you've successfully performed your first operation, [review the documentation](https://developer.adobe.com/document-services/docs/overview/document-generation-api/) for many other examples and reach out on our [forums](https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK) with any questions. Also remember the samples you downloaded while creating your credentials also have many demos.
