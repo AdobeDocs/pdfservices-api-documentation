@@ -10,9 +10,9 @@ following:
 
 -   The structuredData.json file with the extracted content & PDF
     element structure. See the [JSON
-    schema]( ../../../resources/extractJSONOutputSchema2.json) for a
+    schema]( /static/extractJSONOutputSchema2.json) for a
     description of the default output. (Please refer the [Styling JSON
-    schema]( ../../../resources/extractJSONOutputSchemaStylingInfo.json)
+    schema](/static/extractJSONOutputSchemaStylingInfo.json)
     for a description of the output when the styling option is enabled.)
 -   A renditions folder(s) containing renditions for each element type
     selected as input. The folder name is either "tables" or "figures"

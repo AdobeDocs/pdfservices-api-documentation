@@ -255,8 +255,12 @@ module.exports = {
                         path: 'overview/document-generation-api/index.md'
                     },
                     {
+                        title: 'Getting Started',
+                        path: 'overview/document-generation-api/gettingstarted.md'
+                    },
+                    {
                         title: 'Quickstarts',
-                        path: 'overview/document-generation-api/quickstarts.md'
+                        path: 'overview/document-generation-api/quickstarts'
                     },
                     {
                         title: 'Template Tags',
@@ -325,8 +329,12 @@ module.exports = {
                         path: 'overview/pdf-extract-api/index.md'
                     },
                     {
+                        title: 'Getting Started',
+                        path: 'overview/pdf-extract-api/gettingstarted.md'
+                    },
+                    {
                         title: 'Quickstarts',
-                        path: 'overview/pdf-extract-api/quickstarts.md'
+                        path: 'overview/pdf-extract-api/quickstarts'
                     },
                     {
                         title: 'How Tos',

@@ -1,10 +1,10 @@
 ---
-title: .NET | Quickstarts | PDF Services API | Adobe PDF Services
+title: .NET | Quickstarts | Document Generation API | Adobe PDF Services
 ---
 
-# Getting Started with Adobe PDF Services API (.NET)
+# Getting Started with Adobe Document Generation API (.NET)
 
-To get started using Adobe PDF Services API, let's walk through a simple scenario - taking an input PDF document and exporting it to Microsoft Word. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
+To get started using Adobe Document Generation API, let's walk through a simple scenario - using a Word document as a template for dynamic receipt generation in PDF. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
 
 ## Prerequisites
 
@@ -32,7 +32,7 @@ To complete this guide, you will need:
 
 ![Project setup](./shot2.png)
 
-6) After your credentials are created, they are automatically  downloaded:
+6) After your credentials are created, they are automatically downloaded:
 
 ![alt](./shot3.png)
 
@@ -44,6 +44,7 @@ To complete this guide, you will need:
 
 2) We need two things from this download. The `private.key` file (as shown in the screenshot above, and the `pdfservices-api-credentials.json` file. You can find this in the `adobe-DC.PDFServicesSDK.NET.Samples` folder, inside any of the sample subdirectories, so for example, the `CombinePDF` folder.
 
+![alt](./shot6.png)
 
 <InlineAlert slots="text" />
 
@@ -51,7 +52,7 @@ Note that that private key is *also* found in this directory so feel free to cop
 
 3) Take these two files and place them in a new directory.
 
-4) In your new directory, create a new file, `ExportPDFToWord.csproj`. This file will declare our requirements as well as help define the application we're creating.
+4) In your new directory, create a new file, `ExtractTextInfoFromPDF.csproj`. This file will declare our requirements as well as help define the application we're creating.
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -73,9 +74,6 @@ Note that that private key is *also* found in this directory so feel free to cop
         <None Update="private.key">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
-        <None Update="extractPDFInput.pdf">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
         <None Update="log4net.config">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
@@ -84,7 +82,7 @@ Note that that private key is *also* found in this directory so feel free to cop
 </Project>
 ```
 
-Our application will take a PDF, `Bodea Brochure.pdf` (downloadable from [here](https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf)) and convert it to a Microsoft Word document, `Bodea Brochure.docx`.
+Our application will take a Word document, `receiptTemplate.docx` (downloadable from [here](TBA)), and combine it with data in a JSON file, `receipt.json` (downloadable from [here](TBA)), to be sent to the Document Services API and generate a receipt PDF.
 
 5) In your editor, open the directory where you previously copied the credentials and created the `csproj` file. Create a new file, `Program.cs`. 
 
@@ -92,7 +90,60 @@ Now you're ready to begin coding.
 
 ## Step Three: Creating the application
 
-1) We'll begin by including our required dependencies:
+1) Let's start by looking at the Word template. If you open the document in Microsoft Word, you'll notice multiple tokens throughout the document (called out by the use of `{{` and `}}`).
+
+![Example of tokens](./shot10.png)
+
+When the Document Generation API is used, these tokens are replaced with the JSON data sent to the API. These tokens support simple replacements, for example, `{{Customer.Name}}` will be replaced by a customer's name passed in JSON. You can also have dynamic tables. In the Word template, the table uses invoice items as a way to dynamically render whatever items were ordered. Conditions can also be used to hide or show content as you can see two conditions at the end of the document. Finally, basic math can be also be dynamically applied, as seen in the "Grand Total". 
+
+2) Next, let's look at our sample data: 
+
+```json
+{
+  "author": "Gary Lee",
+  "Company": {
+    "Name": "Projected",
+    "Address": "19718 Mandrake Way",
+    "PhoneNumber": "+1-100000098"
+  },
+  "Invoice": {
+    "Date": "January 15, 2021",
+    "Number": 123,
+    "Items": [
+      {
+        "item": "Gloves",
+        "description": "Microwave gloves",
+        "UnitPrice": 5,
+        "Quantity": 2,
+        "Total": 10
+      },
+      {
+        "item": "Bowls",
+        "description": "Microwave bowls",
+        "UnitPrice": 10,
+        "Quantity": 2,
+        "Total": 20
+      }
+    ]
+  },
+  "Customer": {
+    "Name": "Collins Candy",
+    "Address": "315 Dunning Way",
+    "PhoneNumber": "+1-200000046",
+    "Email": "cc@abcdef.co.dw"
+  },
+  "Tax": 5,
+  "Shipping": 5,
+  "clause": {
+    "overseas": "The shipment might take 5-10 more than informed."
+  },
+  "paymentMethod": "Cash"
+}
+```
+
+Notice how the tokens in the Word document match up with values in our JSON. While our example will use a hard coded set of data in a file, production applications can get their data from anywhere. Now let's get into our code.
+
+3) We'll begin by including our required dependencies:
 
 ```csharp
 using System.IO;
@@ -105,15 +156,16 @@ using System.Reflection;
 using Adobe.PDFServicesSDK;
 using Adobe.PDFServicesSDK.auth;
 using Adobe.PDFServicesSDK.pdfops;
-using Adobe.PDFServicesSDK.options.exportpdf;
 using Adobe.PDFServicesSDK.io;
 using Adobe.PDFServicesSDK.exception;
+using Adobe.PDFServicesSDK.options.documentmerge;
+using Newtonsoft.Json.Linq;
 ```
 
-2) Now let's define our main class and `Main` method:
+4) Now let's define our main class and `Main` method:
 
 ```csharp
-namespace ExportPDFToWord
+namespace GeneratePDF
 {
     class Program
     {
@@ -125,21 +177,24 @@ namespace ExportPDFToWord
 }
 ```
 
-3) Inside our class, we'll begin by defining our input PDF and output filenames. If the output file already exists, it will be deleted:
+5) Inside our class, we'll begin by defining our input Word, JSON and output filenames. If the output file already exists, it will be deleted:
 
 ```csharp
-String input = "./Bodea Brochure.pdf";
+String input = "receiptTemplate.docx";
 
-String output = "./Bodea Brochure.docx";
+String output = "/generatedReceipt.pdf";
 if(File.Exists(Directory.GetCurrentDirectory() + output))
 {
 	File.Delete(Directory.GetCurrentDirectory() + output);
 }
 
-Console.Write("Exporting "+ input + " to " + output + "\n");
+string json = File.ReadAllText("receipt.json");
+JObject data = JObject.Parse(json);
 ```
 
-4) Next, we setup the SDK to use our credentials.
+These lines are hard coded but in a real application would typically be dynamic.
+
+6) Next, we setup the SDK to use our credentials.
 
 ```csharp
 // Initial setup, create credentials instance.
@@ -153,32 +208,32 @@ ExecutionContext executionContext = ExecutionContext.Create(credentials);
 
 This code both points to the credentials downloaded previously as well as sets up an execution context object that will be used later.
 
-5) Now, let's create the operation:
+7) Now, let's create the operation:
 
 ```csharp
-ExportPDFOperation exportPdfOperation = ExportPDFOperation.CreateNew(ExportPDFTargetFormat.DOCX);
+DocumentMergeOptions documentMergeOptions = new DocumentMergeOptions(data, OutputFormat.PDF);
+DocumentMergeOperation documentMergeOperation = DocumentMergeOperation.CreateNew(documentMergeOptions);
 
 // Provide an input FileRef for the operation.
 FileRef sourceFileRef = FileRef.CreateFromLocalFile(input);
-exportPdfOperation.SetInput(sourceFileRef);
+documentMergeOperation.SetInput(sourceFileRef);
 ```
 
-This set of code defines what we're doing (an Export operation), points to our local file and specifies the input is a PDF, and then defines options for the Export call. In this example, the only option is the export format, DOCX.
+This set of code defines what we're doing (a document merge operation, the SDK's way of describing Document Generation), points to our local JSON file and specifies the output is a PDF. It also points to the Word file used as a template.
 
-6) The next code block executes the operation:
+8) The next code block executes the operation:
 
 ```csharp
 // Execute the operation.
-FileRef result = exportPdfOperation.Execute(executionContext);
+FileRef result = documentMergeOperation.Execute(executionContext);
 
 // Save the result to the specified location.
 result.SaveAs(Directory.GetCurrentDirectory() + output);
 ```
 
-This code runs the Extraction process and then stores the result Word document to the file system. 
+This code runs the document generation process and then stores the result PDF document to the file system. 
 
-
-![Example running in the command line](./shot9.png)
+![Example running at the command line](./shot9.png)
 
 Here's the complete application (`Program.cs`):
 
@@ -193,11 +248,12 @@ using System.Reflection;
 using Adobe.PDFServicesSDK;
 using Adobe.PDFServicesSDK.auth;
 using Adobe.PDFServicesSDK.pdfops;
-using Adobe.PDFServicesSDK.options.exportpdf;
 using Adobe.PDFServicesSDK.io;
 using Adobe.PDFServicesSDK.exception;
+using Adobe.PDFServicesSDK.options.documentmerge;
+using Newtonsoft.Json.Linq;
 
-namespace ExportPDFToWord
+namespace GeneratePDF
 {
     class Program
     {
@@ -209,15 +265,16 @@ namespace ExportPDFToWord
             try
             {
 
-                String input = "./Bodea Brochure.pdf";
+                String input = "receiptTemplate.docx";
 
-                String output = "./Bodea Brochure.docx";
+                String output = "/generatedReceipt.pdf";
                 if(File.Exists(Directory.GetCurrentDirectory() + output))
                 {
                     File.Delete(Directory.GetCurrentDirectory() + output);
                 }
 
-        		Console.Write("Exporting "+ input + " to " + output + "\n");
+                string json = File.ReadAllText("receipt.json");
+                JObject data = JObject.Parse(json);
 
                 // Initial setup, create credentials instance.
                 Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
@@ -226,20 +283,22 @@ namespace ExportPDFToWord
 
                 // Create an ExecutionContext using credentials and create a new operation instance.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
-                ExportPDFOperation exportPdfOperation = ExportPDFOperation.CreateNew(ExportPDFTargetFormat.DOCX);
 
+                DocumentMergeOptions documentMergeOptions = new DocumentMergeOptions(data, OutputFormat.PDF);
+                DocumentMergeOperation documentMergeOperation = DocumentMergeOperation.CreateNew(documentMergeOptions);
+ 
                 // Provide an input FileRef for the operation.
                 FileRef sourceFileRef = FileRef.CreateFromLocalFile(input);
-                exportPdfOperation.SetInput(sourceFileRef);
+                documentMergeOperation.SetInput(sourceFileRef);
                 
-
                 // Execute the operation.
-                FileRef result = exportPdfOperation.Execute(executionContext);
+                FileRef result = documentMergeOperation.Execute(executionContext);
 
                 // Save the result to the specified location.
                 result.SaveAs(Directory.GetCurrentDirectory() + output);
+                
+        		Console.Write("All Done.\n");
 
-        		Console.Write("All Done");
                 
             }
             catch (ServiceUsageException ex)
@@ -275,4 +334,4 @@ namespace ExportPDFToWord
 
 ## Next Steps
 
-Now that you've successfully performed your first operation, [review the documentation](https://developer.adobe.com/document-services/docs/overview/pdf-services-api/) for many other examples and reach out on our [forums](https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK) with any questions. Also remember the samples you downloaded while creating your credentials also have many demos.
+Now that you've successfully performed your first operation, [review the documentation](https://developer.adobe.com/document-services/docs/overview/document-generation-api/) for many other examples and reach out on our [forums](https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK) with any questions. Also remember the samples you downloaded while creating your credentials also have many demos.
