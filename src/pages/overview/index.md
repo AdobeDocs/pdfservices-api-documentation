@@ -53,7 +53,7 @@ The PDF Extract API can be embedded into any application using the [PDFServices 
 
 ## PDF Accessibility Auto-Tag API for improving accessibility in PDFs
 
-<span align="center" style="margin-top: 50px;color:red;font-size:15px;vertical-align:middle;border:1px solid;padding-left:2px;padding-right:2px;">Available under Early Access Program</span><br/>
+<span align="center" style="display:inline-block;margin-top:10px;color:red;font-size:15px;vertical-align:middle;border:1px solid;padding-left:2px;padding-right:2px;">Available under Early Access Program</span><br/>
 
 PDF Accessibility Auto-Tag API is a powerful tool that may be used as part of the process of improving accessibility in individual PDFs and can be applied at scale for large backlogs of PDFs. Auto-tagging adds document structure tags to the PDF file that are used to read a document's text and present it in a way that makes sense to users using assistive technology. Part of the Adobe PDF Services API offering, it is available as a REST-powered SDK with underlying Sensei AI and is easily called by automated workflows.
 
