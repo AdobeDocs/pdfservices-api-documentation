@@ -2,7 +2,7 @@
 title: .NET | Quickstarts | PDF Services API | Adobe PDF Services
 ---
 
-# Getting Started with Adobe PDF Services API (.NET)
+# Quickstart for Adobe PDF Services API (.NET)
 
 To get started using Adobe PDF Services API, let's walk through a simple scenario - taking an input PDF document and exporting it to Microsoft Word. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
 

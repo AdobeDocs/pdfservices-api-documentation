@@ -2,7 +2,7 @@
 title: .NET | Quickstarts | Document Generation API | Adobe PDF Services
 ---
 
-# Getting Started with Adobe Document Generation API (.NET)
+# Quickstart for Adobe Document Generation API (.NET)
 
 To get started using Adobe Document Generation API, let's walk through a simple scenario - using a Word document as a template for dynamic receipt generation in PDF. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
 
@@ -82,7 +82,7 @@ Note that that private key is *also* found in this directory so feel free to cop
 </Project>
 ```
 
-Our application will take a Word document, `receiptTemplate.docx` (downloadable from [here](TBA)), and combine it with data in a JSON file, `receipt.json` (downloadable from [here](TBA)), to be sent to the Document Services API and generate a receipt PDF.
+Our application will take a Word document, `receiptTemplate.docx` (downloadable from [here](/receiptTemplate.docx)), and combine it with data in a JSON file, `receipt.json` (downloadable from [here](/receipt.json)), to be sent to the Document Services API and generate a receipt PDF.
 
 5) In your editor, open the directory where you previously copied the credentials and created the `csproj` file. Create a new file, `Program.cs`. 
 

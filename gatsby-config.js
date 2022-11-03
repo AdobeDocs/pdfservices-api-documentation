@@ -147,7 +147,21 @@ module.exports = {
                     },
                     {
                         title: 'Quickstarts',
-                        path: 'overview/pdf-services-api/quickstarts'
+                        path: 'overview/pdf-services-api/quickstarts',
+                        pages: [
+                            {
+                                title:'Node.js', 
+                                path: 'overview/pdf-services-api/quickstarts/nodejs/index.md'
+                            },
+                            {
+                                title:'Java', 
+                                path: 'overview/pdf-services-api/quickstarts/java/index.md'
+                            },
+                            {
+                                title:'.NET', 
+                                path: 'overview/pdf-services-api/quickstarts/dotnet/index.md'
+                            }
+                        ]
                     },
                     {
                         title: 'How Tos',
@@ -260,7 +274,22 @@ module.exports = {
                     },
                     {
                         title: 'Quickstarts',
-                        path: 'overview/document-generation-api/quickstarts'
+                        path: 'overview/document-generation-api/quickstarts',
+                        pages: [
+                            {
+                                title:'Node.js', 
+                                path: 'overview/document-generation-api/quickstarts/nodejs/index.md'
+                            },
+                            {
+                                title:'Java', 
+                                path: 'overview/document-generation-api/quickstarts/java/index.md'
+                            },
+                            {
+                                title:'.NET', 
+                                path: 'overview/document-generation-api/quickstarts/dotnet/index.md'
+                            }
+                        ]
+
                     },
                     {
                         title: 'Template Tags',
@@ -302,7 +331,7 @@ module.exports = {
             },
             {
                 title: 'PDF Electronic Seal API                       ',
-                subTitle: 'Early Access Program',
+                subTitle: 'Beta Program',
                 path: 'overview/pdf-electronic-seal-api/index.md',
                 pages: [
                     {
@@ -334,7 +363,25 @@ module.exports = {
                     },
                     {
                         title: 'Quickstarts',
-                        path: 'overview/pdf-extract-api/quickstarts'
+                        path: 'overview/pdf-extract-api/quickstarts',
+                        pages: [
+                            {
+                                title:'Node.js', 
+                                path: 'overview/pdf-extract-api/quickstarts/nodejs/index.md'
+                            },
+                            {
+                                title:'Java', 
+                                path: 'overview/pdf-extract-api/quickstarts/java/index.md'
+                            },
+                            {
+                                title:'.NET', 
+                                path: 'overview/pdf-extract-api/quickstarts/dotnet/index.md'
+                            },
+                            {
+                                title:'Python', 
+                                path: 'overview/pdf-extract-api/quickstarts/python/index.md'
+                            }
+                        ]
                     },
                     {
                         title: 'How Tos',

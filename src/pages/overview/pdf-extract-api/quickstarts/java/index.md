@@ -2,7 +2,7 @@
 title: Java | Quickstarts | PDF Extract API | Adobe PDF Services
 ---
 
-# Getting Started with PDF Extract API (Java)
+# Quickstart for PDF Extract API (Java)
 
 To get started using Adobe PDF Extract API, let's walk through a simple scenario - taking an input PDF document and running PDF Extract API against it. Once the PDF has been extracted, we'll parse the results and report on any major headers in the document. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
 
@@ -160,7 +160,7 @@ Note that that private key is *also* found in this directory so feel free to cop
 
 This file will define what dependencies we need and how the application will be built. 
 
-Our application will take a PDF, `Adobe Extract API Sample.pdf` (downloadable from [here](TBD)) and extract it's contents. The results will be saved as a ZIP file, `ExtractTextInfoFromPDF.zip`. We will then parse the results from the ZIP and print out the text of any `H1` headers found in the PDF.
+Our application will take a PDF, `Adobe Extract API Sample.pdf` (downloadable from [here](/Adobe%20Extract%20API%20Sample.pdf)) and extract it's contents. The results will be saved as a ZIP file, `ExtractTextInfoFromPDF.zip`. We will then parse the results from the ZIP and print out the text of any `H1` headers found in the PDF.
 
 5) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `ExtractTextInfoFromPDF.java`. 
 
