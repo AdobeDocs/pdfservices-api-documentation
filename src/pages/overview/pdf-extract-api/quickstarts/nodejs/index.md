@@ -2,7 +2,7 @@
 title: Node.js | Quickstarts | PDF Extract API | Adobe PDF Services
 ---
 
-# Getting Started with PDF Extract API (Node.js)
+# Quickstart for PDF Extract API (Node.js)
 
 To get started using Adobe PDF Extract API, let's walk through a simple scenario - taking an input PDF document and running PDF Extract API against it. Once the PDF has been extracted, we'll parse the results and report on any major headers in the document. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
 
@@ -62,7 +62,7 @@ Note that that private key is *also* found in this directory so feel free to cop
 
 At this point, we've installed the Node.js SDK for Adobe PDF Services API as a dependency for our project and have copied over our credentials files. 
 
-Our application will take a PDF, `Adobe Extract API Sample.pdf` (downloadable from [here](TBD)) and extract it's contents. The results will be saved as a ZIP file, `ExtractTextInfoFromPDF.zip`. We will then parse the results from the ZIP and print out the text of any `H1` headers found in the PDF.
+Our application will take a PDF, `Adobe Extract API Sample.pdf` (downloadable from [here](/Adobe%20Extract%20API%20Sample.pdf)) and extract it's contents. The results will be saved as a ZIP file, `ExtractTextInfoFromPDF.zip`. We will then parse the results from the ZIP and print out the text of any `H1` headers found in the PDF.
 
 7) In your editor, open the directory where you previously copied the credentials. Create a new file, `extract.js`.
 
