@@ -160,7 +160,7 @@ Note that that private key is *also* found in this directory so feel free to cop
 
 This file will define what dependencies we need and how the application will be built. 
 
-Our application will take a PDF, `Bodea Brochure.pdf` (downloadable from [here](https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf)) and convert it to a Microsoft Word document, `Bodea Brochure.docx`.
+Our application will take a PDF, `Bodea Brochure.pdf` (downloadable from <a href="https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf">here</a>) and convert it to a Microsoft Word document, `Bodea Brochure.docx`.
 
 5) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `ExportPDFToWord.java`. 
 

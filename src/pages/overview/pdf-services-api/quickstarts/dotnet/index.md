@@ -84,7 +84,7 @@ Note that that private key is *also* found in this directory so feel free to cop
 </Project>
 ```
 
-Our application will take a PDF, `Bodea Brochure.pdf` (downloadable from [here](https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf)) and convert it to a Microsoft Word document, `Bodea Brochure.docx`.
+Our application will take a PDF, `Bodea Brochure.pdf` (downloadable from <a href="https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf">here</a>) and convert it to a Microsoft Word document, `Bodea Brochure.docx`.
 
 5) In your editor, open the directory where you previously copied the credentials and created the `csproj` file. Create a new file, `Program.cs`. 
 

@@ -60,7 +60,7 @@ Note that that private key is *also* found in this directory so feel free to cop
 
 At this point, we've installed the Node.js SDK for Adobe PDF Services API as a dependency for our project and have copied over our credentials files. 
 
-Our application will take a PDF, `Bodea Brochure.pdf` (downloadable from [here](https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf)) and convert it to a Microsoft Word document, `Bodea Brochure.docx`.
+Our application will take a PDF, `Bodea Brochure.pdf` (downloadable from <a href="https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf">here</a>) and convert it to a Microsoft Word document, `Bodea Brochure.docx`.
 
 7) In your editor, open the directory where you previously copied the credentials. Create a new file, `export.js`.
 
