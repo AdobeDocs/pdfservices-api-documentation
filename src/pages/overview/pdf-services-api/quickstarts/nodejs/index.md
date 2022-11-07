@@ -45,6 +45,7 @@ To complete this guide, you will need:
 ![alt](./shot6.png)
 
 <InlineAlert slots="text" />
+
 Note that that private key is *also* found in this directory so feel free to copy them both from here.
 
 
