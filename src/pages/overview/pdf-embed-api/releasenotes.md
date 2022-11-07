@@ -8,6 +8,16 @@ the changes below for each release.
 
 ## Change history
 
+
+### November, 2022
+
+| Change | Description                                                            |
+| ------ | ---------------------------------------------------------------------- |
+| New    | Legacy viewer deprecation alert popup will be shown to new clients trying to access legacy viewer. 
+| Bug fix | File preview errors have been fixed for iOS.
+| Changed | Expired PDF linearization tokens have been renewed for documentcloud.adobe.com subdomain and tokens have been added for documentservices.adobe.com subdomain.
+| Changed | Korean term for 'Privacy Policy' has been updated to '개인정보 처리방침'.
+
 ### September, 2022
 
 | Change | Description                                                            |

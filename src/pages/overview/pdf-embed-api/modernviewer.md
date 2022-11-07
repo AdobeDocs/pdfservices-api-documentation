@@ -107,13 +107,15 @@ The following features and configuration variables are deprecated in modern view
 * Docking and undocking the bottom page control toolbar (`dockPageControls`) is deprecated 
   in full window and lightbox embed modes.
 
-## Customer impact
+## Migration changes
 
-In order to use PDF Embed API, website developers are required to add the PDF Embed API 
-script URL in their websites. 
-Website developers should use the [viewer.js](https://documentservices.adobe.com/view-sdk/viewer.js) 
-script (line 11) to access Adobe's modern PDF viewer. 
-All APIs and callbacks will work as expected with significant improvement in user experience.
+In order to migrate to Adobe's modern PDF viewer, developers need to use 
+[viewer.js](https://documentservices.adobe.com/view-sdk/viewer.js) script (line 11) instead of the
+[main.js](https://documentservices.adobe.com/view-sdk/main.js) script. All APIs and callbacks will work as expected 
+with significant improvement in user experience.
+
+
+### Modern PDF viewer integration
 
 ```html
 <!DOCTYPE html>
@@ -142,9 +144,38 @@ All APIs and callbacks will work as expected with significant improvement in use
 </html>
 ```
 
-Developers using the [main.js](https://documentservices.adobe.com/view-sdk/main.js) script in their websites 
-will continue to see the legacy PDF viewer and all PDF Embed API functionality 
+### Legacy PDF viewer integration
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Adobe Document Services PDF Embed API Sample</title>
+ <meta charset="utf-8"/>
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+ <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1"/>
+</head>
+<body style="margin: 0px">
+ <div id="adobe-dc-view"></div>
+ <script src="https://documentservices.adobe.com/view-sdk/main.js"></script>
+ <script type="text/javascript">
+    document.addEventListener("adobe_dc_view_sdk.ready", function()
+    {
+        var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
+        adobeDCView.previewFile(
+       {
+          content:   {location: {url: "https://documentservices.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
+          metaData: {fileName: "Bodea Brochure.pdf"}
+       });
+    });
+ </script>
+</body>
+</html>
+```
+
+Developers using the [main.js](https://documentservices.adobe.com/view-sdk/main.js) script in their websites
+will continue to see the legacy PDF viewer and all PDF Embed API functionality
 would be available to them in the legacy viewer.
 
-For more details about the configurations supported in modern PDF viewer, 
+For more details about the configurations supported in modern PDF viewer,
 see the section [Menu and tool options](../howtos_ui.md/#menu-and-tool-options).
