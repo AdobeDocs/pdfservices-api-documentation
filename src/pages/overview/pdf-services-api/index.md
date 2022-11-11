@@ -527,8 +527,6 @@ PDF Services API is accessible directly via REST APIs which requires Adobe-provi
 
 After downloading the zip, private.key and credentials info in pdfservices-api-credentials.json can be used to call REST APIs directly per the instructions mentioned in [API Usage Guide](./howtos/api-usage.md).
 
-[Download the API](../../resources/collections.zip)
-
 **Example pdfservices-api-credentials.json file**
 
 ```json 
