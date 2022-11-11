@@ -271,7 +271,11 @@ module.exports = {
                         path: 'overview/document-generation-api/hyperlink.md'
                     },
                     {
-                        title: 'Dynamic Table Constructs ',
+                        title: 'Inline Images',
+            path : 'overview/document-generation-api/inlineimages.md'
+          },
+          {
+            title: 'Dynamic Table Constructs ',
                         path: 'overview/document-generation-api/dynamictableconstructs.md'
                     },
                     {
@@ -588,6 +592,10 @@ module.exports = {
                                     {
                                         title: 'Hyperlink',
                                         path: 'overview/2.2.0/document-generation-api/hyperlink.md'
+                  },
+                  {
+                    title: 'Inline Images',
+                    path: 'overview/2.2.0/document-generation-api/inlineimage.md'
                                     },
                                     {
                                         title: 'Dynamic Table Constructs ',
