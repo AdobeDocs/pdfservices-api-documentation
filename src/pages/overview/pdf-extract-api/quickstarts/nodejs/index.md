@@ -91,7 +91,7 @@ if(fs.existsSync(OUTPUT_ZIP)) fs.unlinkSync(OUTPUT_ZIP);
 const INPUT_PDF = './Adobe Extract API Sample.pdf';
 ```
 
-This defines what our output ZIP will be and optionally deletes it if it already exists. Then we define what PDF will be extracted. (You can download the source we used [here](./Adobe%20Extract%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic. 
+This defines what our output ZIP will be and optionally deletes it if it already exists. Then we define what PDF will be extracted. (You can download the source we used [here](/Adobe%20Extract%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic. 
 
 3) Next, we setup the SDK to use our credentials.
 

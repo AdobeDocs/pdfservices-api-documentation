@@ -217,7 +217,7 @@ Files.deleteIfExists(Paths.get(zip_file));
 String input_file = "./Adobe Extract API Sample.pdf";
 ```
 
-This defines what our output ZIP will be and optionally deletes it if it already exists. Then we define what PDF will be extracted. (You can download the source we used [here](./Adobe%20Extract%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic. 
+This defines what our output ZIP will be and optionally deletes it if it already exists. Then we define what PDF will be extracted. (You can download the source we used [here](/Adobe%20Extract%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic. 
 
 4) Next, we can create our credentials and use them:
 

@@ -57,7 +57,7 @@ Note that that private key is *also* found in this directory so feel free to cop
 
 At this point, we've installed the Python SDK for Adobe PDF Services API as a dependency for our project and have copied over our credentials files.
 
-Our application will take a PDF, `Adobe Extract API Sample.pdf` (downloadable from [here](TBD)) and extract it's contents. The results will be saved as a ZIP file, `ExtractTextInfoFromPDF.zip`. We will then parse the results from the ZIP and print out the text of any `H1` headers found in the PDF.
+Our application will take a PDF, `Adobe Extract API Sample.pdf` (downloadable from [here](/Adobe%20Extract%20API%20Sample.pdf)) and extract it's contents. The results will be saved as a ZIP file, `ExtractTextInfoFromPDF.zip`. We will then parse the results from the ZIP and print out the text of any `H1` headers found in the PDF.
 
 6) In your editor, open the directory where you previously copied the credentials. Create a new file, `extract.py`.
 
@@ -94,7 +94,7 @@ if os.path.isfile(zip_file):
 input_pdf = "./Adobe Extract API Sample.pdf"
 ```
 
-This defines what our output ZIP will be and optionally deletes it if it already exists. Then we define what PDF will be extracted. (You can download the source we used [here](./Adobe%20Extract%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic. 
+This defines what our output ZIP will be and optionally deletes it if it already exists. Then we define what PDF will be extracted. (You can download the source we used [here](/Adobe%20Extract%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic. 
 
 3) Next, we setup the SDK to use our credentials.
 
