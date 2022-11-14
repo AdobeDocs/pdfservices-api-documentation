@@ -151,6 +151,8 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
       }
     });
 
+    getCredentialsButton.setAttribute("target", "_blank");
+
     if (window.location.pathname.indexOf("pdf-services-api") >= 0) {
       getCredentialsButton.href = `${baseurl}?api=pdf-services-api`;
     } else if (window.location.pathname.indexOf("document-generation-api") >= 0) {
