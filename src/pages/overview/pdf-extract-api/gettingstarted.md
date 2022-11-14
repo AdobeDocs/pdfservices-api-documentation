@@ -1,7 +1,8 @@
 ---
-title: Quickstarts | PDF Extract API | Adobe PDF Services
+title: Getting Started | PDF Extract API | Adobe PDF Services
 ---
-# Quickstarts
+
+# Getting Started
 <p>
 The PDF Extract API provides modern cloud-based capabilities for automatically extracting contents from PDF. The API is accessible through SDKs which help you get up and running quickly. Once you've received your developer credential, download and set up one of the sample projects. After you're familiar with the APIs, leverage the samples in your own server-side code.
 </p>

@@ -1,8 +1,10 @@
 ---
-title: Quickstarts | Document Generation API | Adobe PDF Services
+title: Getting Started | Document Generation API | Adobe PDF Services
 ---
-# Quickstarts
-This quickstart will guide you through the necessary steps to setup and make a request to the Document Generation API.<br/>
+
+# Getting Started
+
+This document will guide you through the necessary steps to setup and make a request to the Document Generation API.<br/>
 Use Document Generation API to merge JSON data into Word based document
 templates and produce high fidelity PDF and Word documents from any
 application. <br/>

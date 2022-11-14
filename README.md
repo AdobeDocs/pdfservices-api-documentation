@@ -3,11 +3,14 @@
 ## How to develop
 
 For local development, simply use :
+
 ```
-$ npm install
+$ yarn install
 $ npm run dev
 open http://localhost:8000/overview in your browser.
 ```
+
+**Note!** You must use `yarn install`, do not install with npm.
 
 For the documentation developer, please read these sections on how to:
 - [Arrange the structure content of your docs](https://github.com/adobe/gatsby-theme-aio#content-structure)
