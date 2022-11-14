@@ -58,19 +58,15 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
     }
 
     // stage
-    let baseurl =
-      "https://stage.documentservices.adobe.com/dc-integration-creation-app-cdn/main.html";
+    let baseurl = '/document-services/apis/interstitial/'
 
     // production
     if (
       window.location.host.indexOf("developer.adobe.com") >= 0 ||
       window.location.host.indexOf("adobe.io") >= 0
     ) {
-      baseurl =
-        "https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html";
+      baseurl = '/document-services/apis/interstitial/';
     }
-
-    getCredentialsButton.href = `${baseurl}`;
 
     let header = document.querySelector("header");
     header.setAttribute("daa-lh", "Gnav");
@@ -155,11 +151,11 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
       }
     });
 
+    getCredentialsButton.setAttribute("target", "_blank");
+
     if (window.location.pathname.indexOf("pdf-services-api") >= 0) {
       getCredentialsButton.href = `${baseurl}?api=pdf-services-api`;
-    } else if (
-      window.location.pathname.indexOf("document-generation-api") >= 0
-    ) {
+    } else if (window.location.pathname.indexOf("document-generation-api") >= 0) {
       getCredentialsButton.href = `${baseurl}?api=document-generation-api`;
     } else if ( window.location.pathname.indexOf("pdf-electronic-seal-api") >= 0 ) {
       getCredentialsButton.href = `${baseurl}?api=pdf-electronic-seal-api`;
@@ -169,6 +165,8 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
       getCredentialsButton.href = `${baseurl}?api=pdf-embed-api`;
     } else if (window.location.pathname.indexOf("pdf-accessibility-auto-tag-api") >= 0) {
       getCredentialsButton.href = `${baseurl}?api=pdf-accessibility-auto-tag-api`;
+    } else {
+      getCredentialsButton.href = baseurl;
     }
 
     var pageHeadTittle = null;

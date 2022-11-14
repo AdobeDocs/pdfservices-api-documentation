@@ -17,7 +17,7 @@ module.exports = {
     siteMetadata: {
         docs: {
             title: 'Get credentials',
-            path: process.env.GETTING_STARTED || 'getting-started'
+            path: '../document-services/apis/interstitial/'
         },
         pages: [
             {
