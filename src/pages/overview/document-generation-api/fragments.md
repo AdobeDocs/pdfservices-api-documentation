@@ -42,8 +42,13 @@ To resolve the text tags used in the above fragments, the **jsonDataForMerge** j
   "city": "Sample City",
   "state": "Sample State",
   "pincode": "42132xx",
+  "zipcode": "Sample zipcode",
   "firstname": "John",
-  "lastname": "Roy"
+  "lastname": "Roy",
+  "country": "USA",
+  "street": "Sample Street",
+  "postcode": "Sample PostCode",
+  "arr" : [1,2,3]
 }
 ```
 There is one more way to define **fragments** json which can be used to organize related fragments together and separate unrelated fragments into another object, then all such objects can be combined in a json array. 
@@ -89,9 +94,110 @@ And the output document generated will look like:
 
 ![Output of name fragment in document](../images/name_output.png)
 
-## Limitations
+## Other supported constructs
 
-<ul>
-<br />
-<li>The Expressions and Jsonata functions are not supported inside the fragment definition.</li>
-</ul>
+### Conditional Phrases
+Evaluate value of fragments based on the conditions.
+
+```json
+[
+  {
+    "addressDetails": "<br>{{streetDetails}}<br>{{localityDetails}}",
+    "streetDetails": "<span style=\"color: 0000FF;\">{{addressline1}}<br>{{addressline2}}<br>{{addressline3}}",
+    "localityDetails": "<span style=\"color: 006400;\">{% conditional-section expr(country=\"USA\") %}{{street}} {{postcode}} {{city}},<i>{{country}}</i> {% end-section %} {% conditional-section expr(country=\"India\") %}{{street}} {{city}} {{state}} {{zip}},<i>{{country}}</i> {% end-section %}"
+  },
+  {
+    "fullname": "<span style=\"color: ff0000;\">{{firstname}} {{lastnameStyled}}",
+    "lastnameStyled": "<span STYLE=\"font-size:14mm\"><b><i>{{lastname}}</i></b>"
+  }
+]
+```
+In the above example, the `addressDetails` depends upon `streetDetails` and `localityDetails`. But format of the address vary from country to country.
+For a country like USA, the format of `localityDetails` is
+`street`
+`postCode city`
+`country`. For a country like India, the format of `localityDetails` is
+`street`
+`city, state zip`
+`country`.
+
+![Output of fragment with condition in document](../images/fragments-condition.png)
+
+
+### Optional
+Setting the tag as optional will replace the tag with empty string if it's value is not present in input data and fragment data.
+
+```json
+[
+  {
+    "fullname": "{{firstname}} {{middlename:optional(true)}} {{lastname}}"
+  },
+  {
+    ...
+  }
+]
+```
+
+In the above example, the fragment tag `fullName` which is the composition of other tags namely `firstName`, `middleName` and `lastName`. But there are some people who don't have `middleName`. So, `middleName` needs to be optional, i.e, it should be ignore if it's value does n't exist.
+
+![Output of fragment with condition in document](../images/fragments-optional.png)
+
+### Default
+A default value can be specified for the tag used inside the fragment. In case, the specified tag is not present in the input data or fragment data, that tag gets replaced with the default value.
+```json
+[
+  {
+    "team": "ABC, {{organisation:default-val(\"Org\")}}"
+  },
+  {
+    ...
+  }
+]
+```
+
+In the above example, if the tag `organisation` does not exist in fragment or normal json, then default vaule (i.e. "Org") will be used.
+
+![Output of fragment with condition in document](../images/fragments-default.png)
+
+### Prefix
+Prefix is value appended before that tag used inside the fragment.
+```json
+[
+  {
+    "doctor": "{{fullname:prefix(\"Dr. \")}}",
+    "fullname": "{{firstname}} {{middlename:optional(true)}} {{lastname}}"
+  },
+  {
+    ...
+  }
+]
+```
+
+![Output of fragment with condition in document](../images/fragments-prefix.png)
+
+### Expression
+The Expressions and Jsonata functions are supported inside the fragment. We can pass expressions inside fragments using `expr()` tag.
+
+**Input Json**
+```json
+{
+  
+  "arr" : [1,2,3],
+  ...
+}
+```
+**Fragment Json**
+```json
+[
+  {
+    "exprFragment" : "Sum of the array is {{expr($sum(arr))}}"
+  },
+  {
+    ...
+  }
+]
+```
+**Note:** *The argument to expression function (`arr` in above case) should be part of  input json only.*
+
+![Output of fragment with condition in document](../images/fragments-expression.png)
+
