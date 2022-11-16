@@ -13,7 +13,8 @@ the changes below for each release.
 
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
-| Changed | Bug fixes and stability improvements.
+| New | Deprecation messaging for PDF Embed API legacy viewer. Refer the [migration guide](./modernviewer.md).
+| Bug fix | Added fixes for PDF preview issue on latest Safari versions and full screen view in FULL_WINDOW embed mode.
 
 ### September, 2022
 
