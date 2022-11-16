@@ -107,13 +107,15 @@ The following features and configuration variables are deprecated in modern view
 * Docking and undocking the bottom page control toolbar (`dockPageControls`) is deprecated 
   in full window and lightbox embed modes.
 
-## Customer impact
+## Migration Guide
 
-In order to use PDF Embed API, website developers are required to add the PDF Embed API 
-script URL in their websites. 
-Website developers should use the [viewer.js](https://documentservices.adobe.com/view-sdk/viewer.js) 
-script (line 11) to access Adobe's modern PDF viewer. 
-All APIs and callbacks will work as expected with significant improvement in user experience.
+To migrate over Adobe's new modern PDF viewer, developers are required to use 
+[viewer.js](https://documentservices.adobe.com/view-sdk/viewer.js) script (line 11) in place of the previously used
+[main.js](https://documentservices.adobe.com/view-sdk/main.js) script. All APIs and callbacks will work as expected 
+with significant improvement in user experience.
+
+
+### Modern PDF viewer integration
 
 ```html
 <!DOCTYPE html>
@@ -142,9 +144,5 @@ All APIs and callbacks will work as expected with significant improvement in use
 </html>
 ```
 
-Developers using the [main.js](https://documentservices.adobe.com/view-sdk/main.js) script in their websites 
-will continue to see the legacy PDF viewer and all PDF Embed API functionality 
-would be available to them in the legacy viewer.
-
-For more details about the configurations supported in modern PDF viewer, 
+For more details about the configurations supported in modern PDF viewer,
 see the section [Menu and tool options](../howtos_ui.md/#menu-and-tool-options).
