@@ -1,5 +1,5 @@
 ---
 title: Adobe PDF Services Open API spec
 description: The OpenAPI spec for Adobe PDF Services API endpoints, parameters, and responses.
-frameSrc: https://cold-octopus-76.redoc.ly
+openAPISpec: https://raw.githubusercontent.com/AdobeDocs/pdfservices-api-documentation/develop/src/pages/resources/openapi.json
 ---
