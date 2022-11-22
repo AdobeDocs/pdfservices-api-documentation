@@ -45,7 +45,7 @@ To resolve the text tags used in the above fragments, the **jsonDataForMerge** j
   "zipcode": "Sample zipcode",
   "firstname": "John",
   "lastname": "Roy",
-  "country": "USA",
+  "country": "India",
   "street": "Sample Street",
   "postcode": "Sample PostCode",
   "arr" : [1,2,3]
@@ -103,20 +103,20 @@ Evaluate value of fragments based on the conditions.
 [
   {
     "addressDetails": "<br>{{streetDetails}}<br>{{localityDetails}}",
-    "streetDetails": "<span style=\"color: 0000FF;\">{{addressline1}}<br>{{addressline2}}<br>{{addressline3}}",
-    "localityDetails": "<span style=\"color: 006400;\">{% conditional-section expr(country=\"USA\") %}{{street}} {{postcode}} {{city}},<i>{{country}}</i> {% end-section %} {% conditional-section expr(country=\"India\") %}{{street}} {{city}} {{state}} {{zip}},<i>{{country}}</i> {% end-section %}"
+    "streetDetails": "<span style=\"color: 0000FF;\">{{addressline1}}<br>{{addressline2}}<br>{{addressline3}}</span>",
+    "localityDetails": "<span style=\"color: 006400;\">{% conditional-section expr(country=\"India\") %}{{street}} {{postcode}} {{city}},<i>{{country}}</i> {% end-section %}{% conditional-section expr(country=\"USA\") %}{{street}}{{city}} {{state}} {{zip}},<i>{{country}}</i> {% end-section %}</span>"
   },
   {
-    "fullname": "<span style=\"color: ff0000;\">{{firstname}} {{lastnameStyled}}",
-    "lastnameStyled": "<span STYLE=\"font-size:14mm\"><b><i>{{lastname}}</i></b>"
+    "fullname": "<span style=\"color: ff0000;\">{{firstname}} {{lastnameStyled}}</span>",
+    "lastnameStyled": "<span STYLE=\"font-size:14mm\"><b><i>{{lastname}}</i></b></span>"
   }
 ]
 ```
 In the above example, the `addressDetails` depends upon `streetDetails` and `localityDetails`. But format of the address vary from country to country.
-For a country like USA, the format of `localityDetails` is
+For a country like India, the format of `localityDetails` is
 `street`
 `postCode city`
-`country`. For a country like India, the format of `localityDetails` is
+`country`. For a country like USA, the format of `localityDetails` is
 `street`
 `city, state zip`
 `country`.
@@ -138,9 +138,9 @@ Setting the tag as optional will replace the tag with empty string if it's value
 ]
 ```
 
-In the above example, the fragment tag `fullName` which is the composition of other tags namely `firstName`, `middleName` and `lastName`. But there are some people who don't have `middleName`. So, `middleName` needs to be optional, i.e, it should be ignore if it's value does n't exist.
+In the above example, the fragment tag `fullName` which is the composition of other tags namely `firstName`, `middleName` and `lastName`. But there are some people who don't have `middleName`. So, middleName needs to be optional, i.e, it should be ignored if it's value doesn't exist.
 
-![Output of fragment with condition in document](../images/fragments-optional.png)
+![Output of fragment with optional value in document](../images/fragments-optional.png)
 
 ### Default
 A default value can be specified for the tag used inside the fragment. In case, the specified tag is not present in the input data or fragment data, that tag gets replaced with the default value.
@@ -157,7 +157,7 @@ A default value can be specified for the tag used inside the fragment. In case, 
 
 In the above example, if the tag `organisation` does not exist in fragment or normal json, then default vaule (i.e. "Org") will be used.
 
-![Output of fragment with condition in document](../images/fragments-default.png)
+![Output of fragment with default value in document](../images/fragments-default.png)
 
 ### Prefix
 Prefix is value appended before that tag used inside the fragment.
@@ -173,31 +173,5 @@ Prefix is value appended before that tag used inside the fragment.
 ]
 ```
 
-![Output of fragment with condition in document](../images/fragments-prefix.png)
-
-### Expression
-The Expressions and Jsonata functions are supported inside the fragment. We can pass expressions inside fragments using `expr()` tag.
-
-**Input Json**
-```json
-{
-  
-  "arr" : [1,2,3],
-  ...
-}
-```
-**Fragment Json**
-```json
-[
-  {
-    "exprFragment" : "Sum of the array is {{expr($sum(arr))}}"
-  },
-  {
-    ...
-  }
-]
-```
-**Note:** *The argument to expression function (`arr` in above case) should be part of  input json only.*
-
-![Output of fragment with condition in document](../images/fragments-expression.png)
+![Output of fragment with prefix in document](../images/fragments-prefix.png)
 
