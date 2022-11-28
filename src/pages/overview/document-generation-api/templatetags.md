@@ -73,8 +73,8 @@ the input data.
 
 **Prefix**
 
-We can specify a prefix value for the placeholder variable. Doing so will append
-this value before the result of the tag.
+Adding a prefix value to a placeholder variable adds a value before the result
+of tag from the input json data
 
 ![Placeholder tags with prefix image set](../images/placeholder_prefix.png)
 ## Images
