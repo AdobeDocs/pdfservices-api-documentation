@@ -112,7 +112,7 @@ Evaluate value of fragments based on the conditions.
   }
 ]
 ```
-In the above example, the `addressDetails` depends upon `streetDetails` and `localityDetails`. But format of the address vary from country to country.
+The localityDetails fragment definition includes a conditional-phrase which depends on country text tag. Based on the value of country text tag, value of localityDetails differs.
 For a country like India, the format of `localityDetails` is
 `street`
 `postCode city`
@@ -125,7 +125,7 @@ For a country like India, the format of `localityDetails` is
 
 
 ### Optional
-Setting the tag as optional will replace the tag with empty string if it's value is not present in input data and fragment data.
+Setting the tag as optional will replace the tag with empty string if it's value is not present in input json data and fragment json data.
 
 ```json
 [
@@ -138,12 +138,12 @@ Setting the tag as optional will replace the tag with empty string if it's value
 ]
 ```
 
-In the above example, the fragment tag `fullName` which is the composition of other tags namely `firstName`, `middleName` and `lastName`. But there are some people who don't have `middleName`. So, middleName needs to be optional, i.e, it should be ignored if it's value doesn't exist.
+In the fragment definition above, there is an optional property used with middleName tag. Since the optional property is set to true, the middleName tag will be replaced by it's value if it exists else will be replaced by an empty string.
 
 ![Output of fragment with optional value in document](../images/fragments-optional.png)
 
 ### Default
-A default value can be specified for the tag used inside the fragment. In case, the specified tag is not present in the input data or fragment data, that tag gets replaced with the default value.
+A default value can be specified for the tag used inside the fragment. In case, the specified tag is not present in the input json data or fragment json data, the tag gets replaced with the default value.
 ```json
 [
   {
@@ -155,23 +155,24 @@ A default value can be specified for the tag used inside the fragment. In case, 
 ]
 ```
 
-In the above example, if the tag `organisation` does not exist in fragment or normal json, then default vaule (i.e. "Org") will be used.
+In the above example, if the tag `organisation` does not exist in inout json data or fragment json data, then default vaule (i.e. "Org") will be used.
 
 ![Output of fragment with default value in document](../images/fragments-default.png)
 
 ### Prefix
-Prefix is value appended before that tag used inside the fragment.
+Adds a value before the value of the tag in the fragment definition.
 ```json
 [
   {
-    "doctor": "{{fullname:prefix(\"Dr. \")}}",
-    "fullname": "{{firstname}} {{middlename:optional(true)}} {{lastname}}"
+    "doctor": "{{doctorName:prefix(\"Dr. \")}}",
+    "doctorName": "{{firstname}} {{lastname}}"
   },
   {
     ...
   }
 ]
 ```
+n the example above, `doctor` fragment tag is composed of `doctorName` fragment tag. Prefix property is used with `doctorName` fragment tag. Prefix value of **Dr. ** will be added before the value of the `doctorName` fragment tag in the output.
 
 ![Output of fragment with prefix in document](../images/fragments-prefix.png)
 
