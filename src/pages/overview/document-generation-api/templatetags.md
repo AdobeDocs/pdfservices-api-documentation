@@ -57,7 +57,7 @@ Placeholder variables get replaced with the actual input data.
 **Default Value**
 
 A default value can be specified for the placeholder variable. In case
-the specified variable is not present in the input data, the placeholder
+the specified tag is not present in the input json data, the placeholder
 gets replaced with the default value.
 
 ![Placeholder tags with default value set](../images/placeholder_default.png)
@@ -73,8 +73,8 @@ the input data.
 
 **Prefix**
 
-Adding a prefix value to a placeholder variable adds this corresponding prefix 
-to the value present in the input data 
+Adding a prefix value to a placeholder variable adds a value before the result
+of tag from the input json data
 
 ![Placeholder tags with prefix image set](../images/placeholder_prefix.png)
 ## Images
