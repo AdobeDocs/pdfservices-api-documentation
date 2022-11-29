@@ -176,3 +176,9 @@ In the example above, `doctor` fragment tag is composed of `doctorName` fragment
 
 ![Output of fragment with prefix in document](../images/fragments-prefix.png)
 
+## Limitations
+
+<ul>
+<br />
+<li>The Expressions and Jsonata functions are not supported inside the fragment definition.</li>
+</ul>
