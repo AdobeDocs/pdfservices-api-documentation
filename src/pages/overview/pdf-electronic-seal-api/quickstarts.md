@@ -24,11 +24,7 @@ TSP parameters encapsulate the signer's [certificate credential](/overview/pdf-e
 
 * **TSP Name**  (*Required*): Specifies the name of the Trust Service Provider used to generate the certificate.
 * **TSP Credential Id**  (*Required*): Specifies the digital ID stored with the TSP provider that should be used for sealing.
-* **TSP Authorization Context**  (*Required*): Encapsulates the service authorization data required to communicate with the TSP and access CSC provider APIs.
-
-  * **Access Token**  (*Required*): Specifies the service access token used to authorize access to the CSC provider hosted APIs.
-  * **Token Type**: Specifies the type of service token which is Bearer.
-
+* **TSP Access Token**  (*Required*): Specifies the service access token used to authorize access to the CSC provider hosted APIs.
 * **TSP Credential Authorization Parameter**  (*Required*): Encapsulates the credential's authorization information required to authorize access to their signing keys.
     
     * **PIN**  (*Required*): Specifies the PIN associated with credential ID.
@@ -74,15 +70,12 @@ Specifies signature field appearance parameters. These are an enum set of displa
 {
   "signatureFormat": "PADES",
   "cscCredentialOptions": {
-    "authorizationContext": {
-      "accessToken": "<ACCESS TOKEN>",
-      "tokenType": "Bearer"
-    },
+    "providerName": "<PROVIDER_NAME>",
+    "credentialId": "<CREDENTIAL_ID>",
+    "accessToken": "<ACCESS TOKEN>",
     "credentialAuthParameters": {
       "pin": "<PIN>"
-    },
-    "providerName": "<PROVIDER_NAME>",
-    "credentialId": "<CREDENTIAL_ID>"
+    }
   },
   "sealFieldOptions": {
     "pageNumber": 1,
@@ -143,14 +136,14 @@ Use the samples below to generate a PDF with an electronic seal.
 
 Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="2" languages="Java, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, Node JS, .NET, Rest API" /> 
 
 ##### Java
 
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
-// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.electronicseal.ESealWithCustomAppearanceOptions
+// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.electronicseal.ElectronicSeal
 
 package com.adobe.pdfservices.operation.samples.electronicseal;
 
@@ -216,7 +209,7 @@ public class ElectronicSeal {
             String credentialPin = "<PIN>";
 
             //Create SealCredentialOptions instance with required certificate details.
-            SealCredentialOptions sealCredentialOptions = new  CSCCredentialOptions.Builder(providerName, credentialID, credentialPin, accessToken).setTokenType("Bearer").build();
+            SealCredentialOptions sealCredentialOptions = new  CSCCredentialOptions.Builder(providerName, credentialID, credentialPin, accessToken).build();
 
             //Create SealingOptions instance with all the sealing parameters.
             SealOptions sealOptions = new SealOptions.Builder(SignatureFormat.PKCS7, sealCredentialOptions,
@@ -249,9 +242,125 @@ public class ElectronicSeal {
 
 ```
 
+##### Node JS
+
+```javascript
+// Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
+// Run the sample:
+// node src/electronicseal/electronic-seal.js
+const PDFServicesSdk = require('@dcloud/pdfservices-node-sdk');
+
+try {
+    // Initial setup, create credentials instance.
+    const credentials =  PDFServicesSdk.Credentials
+        .serviceAccountCredentialsBuilder()
+        .fromFile("pdfservices-api-credentials.json")
+        .build();
+
+    // Create an ExecutionContext using credentials
+    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
+
+    const pdfElectronicSeal = PDFServicesSdk.PDFElectronicSeal,
+        Options = pdfElectronicSeal.options;
+
+    //Get the input document to perform the sealing operation
+    const sourceFile = PDFServicesSdk.FileRef.createFromLocalFile('<SOURCE_DOCUMENT_FILE_PATH>'),
+
+        //Get the background seal image for signature , if required.
+        sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('<SEAL_IMAGE_FILE_PATH>');
+
+    //Create SealAppearanceOptions and add the required signature appearance items
+    sealAppearanceOptions = new Options.SealAppearanceOptions();
+    sealAppearanceOptions.addAppearanceItem(Options.SealAppearanceOptions.SealAppearanceItem.NAME);
+    sealAppearanceOptions.addAppearanceItem(Options.SealAppearanceOptions.SealAppearanceItem.LABELS);
+    sealAppearanceOptions.addAppearanceItem(Options.SealAppearanceOptions.SealAppearanceItem.DATE);
+    sealAppearanceOptions.addAppearanceItem(Options.SealAppearanceOptions.SealAppearanceItem.SEAL_IMAGE);
+    sealAppearanceOptions.addAppearanceItem(Options.SealAppearanceOptions.SealAppearanceItem.DISTINGUISHED_NAME);
+
+    // Set the Seal Field Name to be created in input PDF document.
+    sealFieldName = "<SEAL_FIELD_NAME>";
+
+    // Set the page number in input document for applying seal.
+    sealPageNumber = 1;
+
+    // Set if seal should be visible or invisible.
+    sealVisible = true;
+
+    //Create SealFieldLocationOptions instance and set the coordinates for applying signature
+    sealFieldLocationOptions = new Options.SealFieldLocationOptions(150,250,350,200);
+
+    //Create SealFieldOptions instance with required details.
+    sealFieldOptions = new Options.SealFieldOptions.Builder(sealFieldName)
+        .setSealFieldLocationOptions(sealFieldLocationOptions)
+        .setPageNumber(sealPageNumber)
+        .setVisible(sealVisible)
+        .build();
+
+    //Set the name of TSP Provider being used.
+    providerName = "<PROVIDER_NAME>";
+
+    //Set the access token to be used to access TSP provider hosted APIs.
+    accessToken = "<ACCESS TOKEN>";
+
+    //Set the credential ID.
+    credentialID = "<CREDENTIAL_ID>";
+
+    //Set the PIN generated while creating credentials.
+    credentialPin = "<PIN>";
+
+    //Create SealCredentialOptions instance with required certificate details.
+    sealCredentialOptions = new Options.CSCCredentialOptions(providerName, credentialID, credentialPin, accessToken);
+
+    //Create SealingOptions instance with all the sealing parameters.
+    sealOptions = new Options.SealOptions.Builder(Options.SealOptions.SignatureFormat.PKCS7, sealCredentialOptions, sealFieldOptions)
+        .setSealAppearanceOptions(sealAppearanceOptions)
+        .build()
+
+    //Create a PDFElectronicSealOptions instance using the SealOptions instance
+    pdfElectronicSealOptions = new Options.PDFElectronicSealOptions(sealOptions);
+
+    //Create the PDFElectronicSealOperation instance using the PDFElectronicSealOptions instance
+    const pdfElectronicSealOperation = pdfElectronicSeal.Operation.createNew(pdfElectronicSealOptions);
+
+    //Set the input source file for PDFElectronicSealOperation instance
+    pdfElectronicSealOperation.setInputDocument(sourceFile);
+
+    //Set the optional input seal image for PDFElectronicSealOperation instance
+    pdfElectronicSealOperation.setSealImage(sealImageFile);
+
+    // Execute the operation and Save the result to the specified location.
+    pdfElectronicSealOperation.execute(executionContext)
+        .then(result => result.saveAsFile('output/sealedOutput.pdf'))
+        .catch(err => {
+            if(err instanceof PDFServicesSdk.Error.ServiceApiError
+                || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
+                console.log('Exception encountered while executing operation', err);
+            } else {
+                console.log('Exception encountered while executing operation', err);
+            }
+        });
+
+} catch (err) {
+    console.log('Exception encountered while executing operation', err);
+}
+```
+
+##### .NET
+
+```javascript
+// Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
+// Run the sample:
+// cd MergeDocumentToDocx/
+// dotnet run MergeDocumentToDOCX.csproj
+
+```
+
 ##### REST API
 
 ```javascript
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Electronic-Seal
+
 curl --location --request POST 'https://pdf-services.adobe.io/operation/electronicseal' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
 --header 'Content-Type: application/json' \
@@ -264,10 +373,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/electron
         "cscCredentialOptions": {
             "credentialId": "[ADOBE]_xxxx_xx:35",
             "providerName": "intxxxxxst",
-            "authorizationContext": {
-                "tokenType": "bearer",
-                "accessToken": "b7338a1f-xxxx-xxxx-xxxx-1eec91c47c12"
-            },
+            "accessToken": "b7338a1f-xxxx-xxxx-xxxx-1eec91c47c12",
             "credentialAuthParameters": {
                 "pin": "12xxxx65"
             }
