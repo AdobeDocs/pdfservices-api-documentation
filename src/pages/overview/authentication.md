@@ -23,6 +23,6 @@ Save the Generated JWT and Sample cURL command to retrieve access_token in STEP-
 
 Use [sample code](https://developer.adobe.com/developer-console/docs/guides/authentication/JWT/samples/#sample-code) in your preferred programming language to generate JWT. While generating JWT use the metascope as mentioned here.
 
-**STEP 3: Retrieve Access Token -** The PDF Services APIs require an access_token to authorize the request. Use the "Exchange JWT" API from the Postman Collection with your client_id, client_secret (mentioned in the pdfservices-api-credentials.json file present in the Credentials zip downloaded in STEP-1) and the above generated JWT to get the access_token OR directly use the saved Sample cURL command in STEP-2 to get the access_token.
+**STEP 3: Retrieve Access Token -** The PDF Services APIs require an access_token to authorize the request. Use the "Get AccessToken" API from the Postman Collection with your client_id, client_secret (mentioned in the pdfservices-api-credentials.json file present in the Credentials zip downloaded in STEP-1) and the above generated JWT to get the access_token OR directly use the saved Sample cURL command in STEP-2 to get the access_token.
 
 Follow this link [How to retrieve Access Token](https://developer.adobe.com/developer-console/docs/guides/#!AdobeDocs/adobeio-auth/master/JWT/JWT.md#exchanging-jwt-to-retrieve-an-access-token)? to understand the request format to get the access_token.
