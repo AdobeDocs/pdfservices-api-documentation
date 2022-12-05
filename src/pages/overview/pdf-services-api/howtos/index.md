@@ -230,3 +230,77 @@ client_config = ClientConfig.builder()
     .with_read_timeout(40000)
     .build()
 ```
+
+## Custom region configuration
+
+The APIs and SDK use `US-EAST-1` as default region to access all the resources. 
+However, there is support in both the APIs and SDKs to fetch resources only from a custom specified region. 
+
+Currently, PDF Services APIs have support for the following regions :
+
+- [US-EAST-1(default region)]()
+- [EU-WEST-1 (Europe region)]()
+
+### Java region configuration 
+
+Available properties:
+
+-   **region**: Default: US. All resources will be fetched from this region. 
+
+Override the `region` property via a custom `ClientConfig` class:
+
+<CodeBlock slots="heading, code" repeat="1" languages="Java" />
+
+### 
+
+```javascript
+ClientConfig clientConfig = ClientConfig.builder()
+    .setRegion(Region.US)
+    .build();
+```
+
+### .NET region configuration
+
+Available properties:
+
+-   **region**: Default: US. All resources will be fetched from this region.
+
+Override the `region` property via a custom `ClientConfig` class:
+
+<CodeBlock slots="heading, code" repeat="1" languages="Java" />
+
+### 
+
+```javascript
+ClientConfig clientConfig = ClientConfig.ConfigBuilder()
+    .SetRegion(Region.EU)
+    .Build();
+```
+
+### Node.js region configuration
+
+Available properties:
+
+-   **region**: Default: US. All resources will be fetched from this region.
+
+Override the `region` property via a custom `ClientConfig` class:
+
+<CodeBlock slots="heading, code" repeat="1" languages="Java" />
+
+### 
+
+```javascript
+const clientConfig = PDFServicesSdk.ClientConfig
+    .clientConfigBuilder()
+    .setRegion(Region.EU)
+    .build();
+```
+
+### Rest API region configuration
+
+For invoking region specific PDF Services API endpoints, hostnames needs to be changed to the following format : `https://pdf-services-{regionCode}.adobe.io`.
+
+Currently, the following region codes are supported :
+
+- **US-EAST-1 :** https://pdf-services-va6.adobe.io (default region)
+- **EU-WEST-1 :** https://pdf-services-irl1.adobe.io (Europe region)
