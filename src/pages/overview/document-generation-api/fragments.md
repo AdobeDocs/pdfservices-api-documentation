@@ -78,7 +78,7 @@ If there are name collisions in the fragment keys within multiple objects, the f
 
 Below are the sample input and output documents snapshots describing the use of fragments.
 
-Here the `addressDetails` fragment is used in the word document template file.
+Here the `addressDetails` fragment is used in the Word document template file.
 
 ![Address Input fragment](../images/address_input.png)
 
