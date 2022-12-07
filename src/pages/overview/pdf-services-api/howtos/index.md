@@ -233,19 +233,23 @@ client_config = ClientConfig.builder()
 
 ## Custom region configuration
 
-The APIs and SDK use `US-EAST-1` as default region to access all the resources. 
-However, there is support in both the APIs and SDKs to fetch resources only from a custom specified region. 
+Adobe PDF Services APIs and SDKs use `us-east-1` as default region to access all the resources. 
+However, the APIs and SDKs can be configured to process the documents in the specified region.
 
-Currently, PDF Services APIs have support for the following regions :
+Currently, PDF Services has support for the following regions :
 
-- [US-EAST-1(default region)]()
-- [EU-WEST-1 (Europe region)]()
+
+
+|Region Code | Name         |
+| ------------| ------------|
+| `ue1`       | US East (N. Virginia)|
+| `ew1`       | Europe (Ireland)|
 
 ### Java region configuration 
 
 Available properties:
 
--   **region**: Default: US. All resources will be fetched from this region. 
+-   **region**: Default: `ue1`. All documents will be process in the specified region. 
 
 Override the `region` property via a custom `ClientConfig` class:
 
@@ -255,7 +259,7 @@ Override the `region` property via a custom `ClientConfig` class:
 
 ```javascript
 ClientConfig clientConfig = ClientConfig.builder()
-    .setRegion(Region.US)
+    .setRegion(Region.EW)
     .build();
 ```
 
@@ -263,7 +267,7 @@ ClientConfig clientConfig = ClientConfig.builder()
 
 Available properties:
 
--   **region**: Default: US. All resources will be fetched from this region.
+-   **region**: Default: US. All documents will be process in the specified region.
 
 Override the `region` property via a custom `ClientConfig` class:
 
@@ -273,7 +277,7 @@ Override the `region` property via a custom `ClientConfig` class:
 
 ```javascript
 ClientConfig clientConfig = ClientConfig.ConfigBuilder()
-    .SetRegion(Region.EU)
+    .SetRegion(Region.EW)
     .Build();
 ```
 
@@ -281,7 +285,7 @@ ClientConfig clientConfig = ClientConfig.ConfigBuilder()
 
 Available properties:
 
--   **region**: Default: US. All resources will be fetched from this region.
+-   **region**: Default: US. All documents will be process in the specified region.
 
 Override the `region` property via a custom `ClientConfig` class:
 
@@ -292,7 +296,7 @@ Override the `region` property via a custom `ClientConfig` class:
 ```javascript
 const clientConfig = PDFServicesSdk.ClientConfig
     .clientConfigBuilder()
-    .setRegion(Region.EU)
+    .setRegion(Region.EW)
     .build();
 ```
 
@@ -300,7 +304,18 @@ const clientConfig = PDFServicesSdk.ClientConfig
 
 For invoking region specific PDF Services API endpoints, hostnames needs to be changed to the following format : `https://pdf-services-{regionCode}.adobe.io`.
 
-Currently, the following region codes are supported :
+Example for uploading the Asset API endpoint will be changed to : 
 
-- **US-EAST-1 :** https://pdf-services-va6.adobe.io (default region)
-- **EU-WEST-1 :** https://pdf-services-irl1.adobe.io (Europe region)
+<CodeBlock slots="heading, code" repeat="1" languages="Rest API" />
+
+### 
+
+```javascript
+curl --location --request POST 'https://pdf-services-ew1.adobe.io/assets' \
+--header 'X-API-Key: {{Placeholder for client_id}}' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+"mediaType": "{{Placeholder for mediaType}}"
+}'
+```
