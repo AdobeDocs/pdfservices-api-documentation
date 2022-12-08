@@ -150,15 +150,15 @@ module.exports = {
                         path: 'overview/pdf-services-api/quickstarts',
                         pages: [
                             {
-                                title:'Node.js', 
+                                title:'Node.js',
                                 path: 'overview/pdf-services-api/quickstarts/nodejs/index.md'
                             },
                             {
-                                title:'Java', 
+                                title:'Java',
                                 path: 'overview/pdf-services-api/quickstarts/java/index.md'
                             },
                             {
-                                title:'.NET', 
+                                title:'.NET',
                                 path: 'overview/pdf-services-api/quickstarts/dotnet/index.md'
                             }
                         ]
@@ -174,6 +174,10 @@ module.exports = {
                             {
                                 title: 'Using Our APIs',
                                 path: 'overview/pdf-services-api/howtos/api-usage.md'
+                            },
+                            {
+                                title: 'Region Configuration for APIs',
+                                path: 'overview/pdf-services-api/howtos/service-region-configuration-for-apis.md'
                             },
                             {
                                 title: 'Create PDF',
@@ -277,15 +281,15 @@ module.exports = {
                         path: 'overview/document-generation-api/quickstarts',
                         pages: [
                             {
-                                title:'Node.js', 
+                                title:'Node.js',
                                 path: 'overview/document-generation-api/quickstarts/nodejs/index.md'
                             },
                             {
-                                title:'Java', 
+                                title:'Java',
                                 path: 'overview/document-generation-api/quickstarts/java/index.md'
                             },
                             {
-                                title:'.NET', 
+                                title:'.NET',
                                 path: 'overview/document-generation-api/quickstarts/dotnet/index.md'
                             }
                         ]
@@ -366,19 +370,19 @@ module.exports = {
                         path: 'overview/pdf-extract-api/quickstarts',
                         pages: [
                             {
-                                title:'Node.js', 
+                                title:'Node.js',
                                 path: 'overview/pdf-extract-api/quickstarts/nodejs/index.md'
                             },
                             {
-                                title:'Java', 
+                                title:'Java',
                                 path: 'overview/pdf-extract-api/quickstarts/java/index.md'
                             },
                             {
-                                title:'.NET', 
+                                title:'.NET',
                                 path: 'overview/pdf-extract-api/quickstarts/dotnet/index.md'
                             },
                             {
-                                title:'Python', 
+                                title:'Python',
                                 path: 'overview/pdf-extract-api/quickstarts/python/index.md'
                             }
                         ]
