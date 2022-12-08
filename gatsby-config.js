@@ -176,6 +176,10 @@ module.exports = {
                                 path: 'overview/pdf-services-api/howtos/api-usage.md'
                             },
                             {
+                                title: 'Region Configuration for APIs',
+                                path: 'overview/pdf-services-api/howtos/service-region-configuration-for-apis.md'
+                            },
+                            {
                                 title: 'Create PDF',
                                 path: 'overview/pdf-services-api/howtos/create-pdf.md'
                             },
