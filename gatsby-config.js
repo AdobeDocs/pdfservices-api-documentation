@@ -404,7 +404,7 @@ module.exports = {
                         path: 'overview/pdf-extract-api/dcserviceslicensing.md#usage-limits'
                     }
                 ]
-            },     
+            },
             {
                 title: 'PDF Embed API',
                 subTitle: '',
@@ -443,7 +443,7 @@ module.exports = {
                         path: 'overview/pdf-embed-api/releasenotes.md'
                     },
                 ]
-            },                   
+            },
             {
                 title: 'PDF Electronic Seal API                       ',
                 subTitle: 'Beta Program',
