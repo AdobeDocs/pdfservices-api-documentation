@@ -352,7 +352,119 @@ try {
 // Run the sample:
 // cd MergeDocumentToDocx/
 // dotnet run MergeDocumentToDOCX.csproj
+namespace ElectronicSeal
+{
+    public class Program
+{
+    // Initialize the logger.
+    private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+    static void Main(string[] args)
+{
+    //Configure the logging
+    ConfigureLogging();
 
+    try
+{
+    // Initial setup, create credentials instance.
+    Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
+    .FromFile("pdfservices-api-credentials.json")
+    .Build();
+
+    // Create an ExecutionContext using credentials.
+    ExecutionContext executionContext = ExecutionContext.Create(credentials);
+
+    //Get the input document to perform the sealing operation
+    FileRef sourceFile = FileRef.CreateFromLocalFile(@"SampleInvoice.pdf");
+
+    //Get the background seal image for signature , if required.
+    FileRef sealImageFile = FileRef.CreateFromLocalFile(@"sampleSealImage.png");
+
+    //Set the Seal Field Name to be created in input PDF document.
+    string sealFieldName = "<SEAL_FIELD_NAME>";
+
+    //Set the page number in input document for applying seal.
+    int sealPageNumber = 1;
+
+    //Set if seal should be visible or invisible.
+    bool sealVisible = true;
+
+    //Create SealFieldLocationOptions instance and set the coordinates for applying signature
+    SealFieldLocationOptions sealFieldLocationOptions = new SealFieldLocationOptions(150, 250, 350, 200);
+
+    //Create SealFieldOptions instance with required details.
+    SealFieldOptions sealFieldOptions = new SealFieldOptions.Builder(sealFieldName)
+    .SetVisible(sealVisible)
+    .SetSealFieldLocationOptions(sealFieldLocationOptions)
+    .SetPageNumber(sealPageNumber)
+    .Build();
+
+    //Set the name of TSP Provider being used.
+    string providerName = "<PROVIDER_NAME>";
+
+    //Set the access token to be used to access TSP provider hosted APIs.
+    string accessToken = "<ACCESS TOKEN>";
+
+    //Set the credential ID.
+    string credentialID = "<CREDENTIAL_ID>";
+
+    //Set the PIN generated while creating credentials.
+    string credentialPin = "<PIN>";
+
+    //Create SealCredentialOptions instance with required certificate details.
+    SealCredentialOptions sealCredentialOptions = new CSCCredentialOptions.Builder(providerName, credentialID, credentialPin, accessToken).Build();
+
+    //Create SealingOptions instance with all the sealing parameters.
+    SealOptions sealOptions = new SealOptions.Builder(SignatureFormat.PKCS7, sealCredentialOptions,
+    sealFieldOptions).Build();
+
+    //Create a PDFElectronicSealOptions instance using the SealOptions instance
+    PDFElectronicSealOptions pdfElectronicSealOptions = new PDFElectronicSealOptions(sealOptions);
+
+    //Create the PDFElectronicSealOperation instance using the PDFElectronicSealOptions instance
+    PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.CreateNew(pdfElectronicSealOptions);
+
+    //Set the input source file for PDFElectronicSealOperation instance
+    pdfElectronicSealOperation.SetInputDocument(sourceFile);
+
+    //Set the optional input seal image for PDFElectronicSealOperation instance
+    pdfElectronicSealOperation.SetSealImage(sealImageFile);
+
+    //Execute the operation
+    FileRef result = pdfElectronicSealOperation.Execute(executionContext);
+
+    //Save the output at specified location
+    result.SaveAs("output/sealedOutput.pdf");
+
+}
+catch (ServiceUsageException ex)
+    {
+        log.Error("Exception encountered while executing operation", ex);
+    }
+catch (ServiceApiException ex)
+    {
+        log.Error("Exception encountered while executing operation", ex);
+    }
+catch (SDKException ex)
+    {
+        log.Error("Exception encountered while executing operation", ex);
+    }
+catch (IOException ex)
+    {
+        log.Error("Exception encountered while executing operation", ex);
+    }
+catch (Exception ex)
+    {
+        log.Error("Exception encountered while executing operation", ex);
+    }
+
+}
+    static void ConfigureLogging()
+    {
+        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+    }
+}
+}
 ```
 
 ##### REST API
