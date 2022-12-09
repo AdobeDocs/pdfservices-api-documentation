@@ -176,7 +176,7 @@ module.exports = {
                                 path: 'overview/pdf-services-api/howtos/api-usage.md'
                             },
                             {
-                                title: 'Region Configuration for APIs',
+                                title: 'Region Configs for APIs',
                                 path: 'overview/pdf-services-api/howtos/service-region-configuration-for-apis.md'
                             },
                             {
