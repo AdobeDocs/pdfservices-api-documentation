@@ -107,6 +107,7 @@ The following features and configuration variables are deprecated in modern view
 * Docking and undocking the bottom page control toolbar (`dockPageControls`) is deprecated 
   in full window and lightbox embed modes.
 
+
 ## Migration Guide
 
 To migrate over Adobe's new modern PDF viewer, developers are required to use 
@@ -121,7 +122,7 @@ with significant improvement in user experience.
 <!DOCTYPE html>
 <html>
 <head>
- <title>Adobe Document Services PDF Embed API Sample</title>
+ <title>Adobe Acrobat Services PDF Embed API Sample</title>
  <meta charset="utf-8"/>
  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1"/>
