@@ -150,15 +150,15 @@ module.exports = {
                         path: 'overview/pdf-services-api/quickstarts',
                         pages: [
                             {
-                                title:'Node.js', 
+                                title:'Node.js',
                                 path: 'overview/pdf-services-api/quickstarts/nodejs/index.md'
                             },
                             {
-                                title:'Java', 
+                                title:'Java',
                                 path: 'overview/pdf-services-api/quickstarts/java/index.md'
                             },
                             {
-                                title:'.NET', 
+                                title:'.NET',
                                 path: 'overview/pdf-services-api/quickstarts/dotnet/index.md'
                             }
                         ]
@@ -247,7 +247,7 @@ module.exports = {
                     },
                     {
                         title: 'Release notes',
-                        path: 'overview/pdf-services-api/releasenotes.md'
+                        path: 'overview/releasenotes.md'
                     },
                     {
                         title: 'PDF Services API Licensing',
@@ -277,15 +277,15 @@ module.exports = {
                         path: 'overview/document-generation-api/quickstarts',
                         pages: [
                             {
-                                title:'Node.js', 
+                                title:'Node.js',
                                 path: 'overview/document-generation-api/quickstarts/nodejs/index.md'
                             },
                             {
-                                title:'Java', 
+                                title:'Java',
                                 path: 'overview/document-generation-api/quickstarts/java/index.md'
                             },
                             {
-                                title:'.NET', 
+                                title:'.NET',
                                 path: 'overview/document-generation-api/quickstarts/dotnet/index.md'
                             }
                         ]
@@ -317,7 +317,7 @@ module.exports = {
                     },
                     {
                         title: 'Release Notes',
-                        path: 'overview/pdf-services-api/releasenotes.md'
+                        path: 'overview/releasenotes.md'
                     },
                     {
                         title: 'PDF Services API Licensing',
@@ -347,19 +347,19 @@ module.exports = {
                         path: 'overview/pdf-extract-api/quickstarts',
                         pages: [
                             {
-                                title:'Node.js', 
+                                title:'Node.js',
                                 path: 'overview/pdf-extract-api/quickstarts/nodejs/index.md'
                             },
                             {
-                                title:'Java', 
+                                title:'Java',
                                 path: 'overview/pdf-extract-api/quickstarts/java/index.md'
                             },
                             {
-                                title:'.NET', 
+                                title:'.NET',
                                 path: 'overview/pdf-extract-api/quickstarts/dotnet/index.md'
                             },
                             {
-                                title:'Python', 
+                                title:'Python',
                                 path: 'overview/pdf-extract-api/quickstarts/python/index.md'
                             }
                         ]
@@ -385,7 +385,7 @@ module.exports = {
                     },
                     {
                         title: 'Release Notes',
-                        path: 'overview/pdf-services-api/releasenotes.md'
+                        path: 'overview/releasenotes.md'
                     },
                     {
                         title: 'PDF Services API Licensing',
@@ -396,7 +396,7 @@ module.exports = {
                         path: 'overview/pdf-extract-api/dcserviceslicensing.md#usage-limits'
                     }
                 ]
-            },     
+            },
             {
                 title: 'PDF Embed API',
                 subTitle: '',
@@ -435,7 +435,7 @@ module.exports = {
                         path: 'overview/pdf-embed-api/releasenotes.md'
                     },
                 ]
-            },                   
+            },
             {
                 title: 'PDF Electronic Seal API                       ',
                 subTitle: 'Beta Program',
@@ -489,7 +489,7 @@ module.exports = {
                     },
                     {
                         title: 'Release Notes',
-                        path: 'overview/pdf-services-api/releasenotes.md'
+                        path: 'overview/releasenotes.md'
                     },
                     {
                         title: 'PDF Services API Licensing',
