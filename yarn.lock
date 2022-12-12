@@ -24,10 +24,10 @@
     globby "^11.0.1"
     graphql-fetch "^1.0.1"
 
-"@adobe/gatsby-theme-aio@4.6.6":
-  version "4.6.6"
-  resolved "https://registry.yarnpkg.com/@adobe/gatsby-theme-aio/-/gatsby-theme-aio-4.6.6.tgz#f10f693615a5f6ae76853eec94419a9e2c721579"
-  integrity sha512-TreQ3tvYCWhb2CQgQnJ9I913a9UMdzZM+woSSVII8qWRC1ZyQLJUJ3FYBg+uTBxbpXYdmXfEdIgGWf8obFsWMQ==
+"@adobe/gatsby-theme-aio@4.7.5":
+  version "4.7.5"
+  resolved "https://registry.yarnpkg.com/@adobe/gatsby-theme-aio/-/gatsby-theme-aio-4.7.5.tgz#99f7c3d46ec3ba730a7caf5066b023c2657c9eb5"
+  integrity sha512-E65L89wpkyhTE8ZMHkc/7EINYdJBjduoj50hlSzwUSTB54x07UrDM/EP/O4ooZ5LL/imsXRfzgCVYLY+OwLI5Q==
   dependencies:
     "@adobe/focus-ring-polyfill" "^0.1.5"
     "@adobe/gatsby-source-github-file-contributors" "^0.3.1"
@@ -87,6 +87,7 @@
     gatsby-transformer-sharp "4.23.0"
     https-browserify "^1.0.0"
     jsdom "^20.0.0"
+    lottie-web "^5.9.6"
     mdx-embed "^1.0.0"
     mobx "^6.6.2"
     normalize-path "^3.0.0"
@@ -9271,6 +9272,11 @@ loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.4.0:
   integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
+
+lottie-web@^5.9.6:
+  version "5.10.0"
+  resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.10.0.tgz#72563f22efdcf2b8f7e8359743514930ebaf5f8c"
+  integrity sha512-q2hfqKrGXNkwjSSZjKxf3fWMi0e3ZBc03qBkVWoGbwUJ7BcG+9YXjMPtmmhitzk8Nc6VQ5PRnh9yInPdfq0PZg==
 
 lower-case-first@^1.0.0:
   version "1.0.2"
