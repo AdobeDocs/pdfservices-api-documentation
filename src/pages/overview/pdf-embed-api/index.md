@@ -49,7 +49,7 @@ Develop your web app using your preferred methods and tools.
 <!DOCTYPE html>
 <html>
 <head>
- <title>Adobe Document Services PDF Embed API Sample</title>
+ <title>Adobe Acrobat Services PDF Embed API Sample</title>
  <meta charset="utf-8"/>
  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1"/>
