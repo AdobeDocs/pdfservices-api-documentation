@@ -216,3 +216,11 @@ const clientConfig = PDFServicesSdk.ClientConfig
     .setRegion(Region.EU)
     .build();
 ```
+### Python
+
+```javascript
+    client_config = ClientConfig.builder()
+    .with_region(Region.EU)
+    .build()
+```
+
