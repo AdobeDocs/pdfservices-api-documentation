@@ -190,7 +190,7 @@ Available properties:
 
 Override the `region` property via a custom `ClientConfig` class:
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, .NET, Node JS" />
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python" />
 
 ### Java
 
@@ -219,7 +219,7 @@ const clientConfig = PDFServicesSdk.ClientConfig
 ### Python
 
 ```javascript
-    client_config = ClientConfig.builder()
+client_config = ClientConfig.builder()
     .with_region(Region.EU)
     .build()
 ```
