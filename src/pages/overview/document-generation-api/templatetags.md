@@ -185,11 +185,49 @@ Show or hide text inside a paragraph based on conditions.
 ![Showing a text inside a paragraph based on a condition](../images/conditional_phrase.png)
 
 ## Tables
+### Inserting Tables dynamically from input json
 
-Rows of a table can be dynamically populated by repeating over an array
-of objects from the input data.
+Text tags having HTML Table string as an input data can be used to insert tables in the output document.
 
-**How to insert Tables**
+[//]: # (Tables can be inserted in final document using text tags having HTML Table in the input json.)
+
+Below is a json containing textTag with an HTML Table value.
+
+```json
+{
+  "Table_Data": "<table border='1' cellpadding='0' cellspacing='0' align='right' style=\"width:100%\"><tr><th>Name</th><th>Age</th><th>Gender</th></tr><tr><td>Sheldon</td><td>29</td><td>Male</td></tr><tr><td>Leonard</td><td>30</td><td>Male</td></tr><tr><td>Howard</td><td>28</td><td>Male</td></tr><tr><td>Raj</td><td>29</td><td>Male</td></tr></table>"
+}
+```
+**Usage**
+
+Placeholder variable get replaced by a table generated from input html table string.
+![Sample for HTML Table insertion](../images/htmlTableTemplate.png)
+
+![Output for HTML Table insertion](../images/htmlTableOutput.png)
+
+- Prerequisites
+  - Text Tags containing table element in input data, should be placed in a separate paragraph.
+![Table Tag Prerequisite](../images/tableTagValidator.png)
+  - Only Inline Styling of Table elements is possible. i.e. using `style` attribute of `<table>`. Internal and External styling are not allowed.
+
+*Note:*
+
+`<table>` can be combined with other html tags in any order to add any additional info like table descriptions etc.
+
+
+
+### Dynamically populate table rows or columns
+
+Text tags having an array of items, can be used for populating table cells by extending over each item in the array.
+For each entry rows or columns can be inserted in the original table.
+
+[//]: # (Tables present in document template can be expanded by using arrays as an input data for text tags.)
+
+- Prerequisite
+  - Table must be present in your template document with cells containing appropriate text tags having array values.
+  
+
+**How to populating Tables**
 
 <Media slots="video"/>
 
@@ -240,8 +278,6 @@ Table rows are dynamically populated in the output document by repeating
 over the specified array of objects.
 
 ![Table with template tags replaced with actual values in the rows](../images/table_result.png)
-
-### Dynamically expand table rows or columns
 
 Specify the cell extension property inside the table cell to indicate whether to expand table rows vertically or columns horizontally.
 
