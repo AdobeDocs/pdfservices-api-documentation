@@ -174,8 +174,9 @@ Placeholder variable get replaced by a table generated from input html table str
 
 ### Dynamically populate table rows or columns
 
-Text tags having an array of items, can be used for populating table cells by extending over each item in the array.
-For each entry rows or columns can be inserted in the original table.
+Input JSON arrays can be used for populating table cells(row/columns) by extending over each item in the array.
+
+For each element in array, rows or columns can be inserted in the original table.
 
 [//]: # (Tables present in document template can be expanded by using arrays as an input data for text tags.)
 
@@ -183,7 +184,7 @@ For each entry rows or columns can be inserted in the original table.
   - Table must be present in your template document with cells containing appropriate text tags having array values.
   
 
-**How to populating Tables**
+**How to expand Tables**
 
 <Media slots="video"/>
 
