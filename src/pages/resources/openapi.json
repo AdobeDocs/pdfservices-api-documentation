@@ -7229,7 +7229,10 @@
                 "text",
                 "tables"
               ]
-            }
+            },
+           "default": [
+             "text"
+            ]
           },
           "tableOutputFormat": {
             "description": "Specifies the format of table contents output. Possible values are csv and xlsx.",
@@ -7247,8 +7250,6 @@
               ]
             },
             "default": [
-              "tables",
-              "figures"
             ]
           }
         },
