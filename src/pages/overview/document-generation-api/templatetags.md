@@ -201,11 +201,12 @@ Below is a json containing textTag with an HTML Table value.
 **Usage**
 
 Placeholder variable get replaced by a table generated from input html table string.
+ - Input Template
 ![Sample for HTML Table insertion](../images/htmlTableTemplate.png)
-
+ - Output Document
 ![Output for HTML Table insertion](../images/htmlTableOutput.png)
 
-- Prerequisites
+- **Prerequisites**
   - Text Tags containing table element in input data, should be placed in a separate paragraph.
 ![Table Tag Prerequisite](../images/tableTagValidator.png)
   - Only Inline Styling of Table elements is possible. i.e. using `style` attribute of `<table>`. Internal and External styling are not allowed.
@@ -224,8 +225,9 @@ For each element in array, rows or columns can be inserted in the original table
 
 [//]: # (Tables present in document template can be expanded by using arrays as an input data for text tags.)
 
-- Prerequisite
-  - Table must be present in your template document with cells containing appropriate text tags having array values.
+*Note:*
+
+Table must be present in your template document with cells containing appropriate text tags having array values.
   
 
 **How to expand Tables**

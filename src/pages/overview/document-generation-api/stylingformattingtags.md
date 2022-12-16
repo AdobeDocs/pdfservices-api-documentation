@@ -7,6 +7,8 @@ Apply styling and formatting in the generated output document using the HTML bas
 
 - Add line breaks in the text.
 
+- Add paragraphs in the document
+
 - Set color and font size of a text.
 
 - Set text as bold and italic.
@@ -26,10 +28,10 @@ JSON representation of the input data:
 ```json
 {
     "LMS Certificate": {
-                "Employee Name": "Sarah Rose",
-                "Certification Program": "Certificate in Life and Thoughts of <span style=\"font-weight: bold \">Dr. BR Ambedkar </span> ",
-                "Completion Date": "01/03/2021"
-        }
+        "Employee Name": "Sarah Rose",
+        "Certification Program": "Certificate in Life and Thoughts of <span style=\"font-weight: bold \">Dr. BR Ambedkar </span> ",
+        "Completion Date": "01/03/2021"
+    }
 }
 ```
 
@@ -39,7 +41,7 @@ JSON representation of the input data:
 
 Styling for the text tag can be provided using the json data through the HTML based constructs. The constructs follows the additional rules as listed below :
 
-- HTML tags supported are <span\>, nested span, <br\> (new line), <b\> (bold), <strong\> (strong), <em\> (emphasis), <i\> (italic), <u\> (underline), <p\> (para break).
+- HTML tags supported are <span\>, nested span, <br\> (new line), <b\> (bold), <strong\> (strong), <em\> (emphasis), <i\> (italic), <u\> (underline), <p\> (para).
 
 - Either use Inline custom css inside the span tag to style the data or use basic styling tags such as <b\> (bold), <i\> (italic) and <u\> (underline).
 
