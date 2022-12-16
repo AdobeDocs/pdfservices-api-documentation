@@ -7240,7 +7240,7 @@
             "default": "xlsx"
           },
           "renditionsToExtract": {
-            "description": "List of elements whose renditions should be generated. Possible values are figures and tables. If elementsToExtract parameter holds the value 'tables', it is mandatory for renditionsToExtract parameter to hold the same value or else it will fail",
+            "description": "List of elements whose renditions should be generated. Possible values are figures and tables. If elementsToExtract parameter holds the value 'tables', it is mandatory for renditionsToExtract parameter to hold the same value or else it will fail.",
             "type": "array",
             "items": {
               "type": "string",
