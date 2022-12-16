@@ -39,7 +39,7 @@ JSON representation of the input data:
 
 Styling for the text tag can be provided using the json data through the HTML based constructs. The constructs follows the additional rules as listed below :
 
-- HTML tags supported are <span\>, nested span, <br\> (new line), <b\> (bold), <strong\> (strong), <em\> (emphasis), <i\> (italic), <u\> (underline).
+- HTML tags supported are <span\>, nested span, <br\> (new line), <b\> (bold), <strong\> (strong), <em\> (emphasis), <i\> (italic), <u\> (underline), <p\> (para break).
 
 - Either use Inline custom css inside the span tag to style the data or use basic styling tags such as <b\> (bold), <i\> (italic) and <u\> (underline).
 
@@ -90,16 +90,18 @@ JSON representation of the input data:
 
 - <img\> (image)
 
+- <p\> (para break)
+
 JSON representation of the input data:
 
 ```json
 {
-  "Notes Section": "Has the Board of directors established a basic policy <span style=\"font-size: 12pt;\">regarding legal compliance <b><i>(hereinafter referred to as the Legal Compliance policy)</i></b><a href=\"http://www.samplewebsite.com/\">Board</a> in accordance to the institution's <br><u>corporate management policy</u> and disseminated it throughout the institution"
+  "Notes Section": "<p>Has the Board of directors established a basic policy</p> <span style=\"font-size: 12pt;\">regarding legal compliance <b><i>(hereinafter referred to as the Legal Compliance policy)</i></b><a href=\"http://www.samplewebsite.com/\">Board</a> in accordance to the institution's <br><u>corporate management policy</u> and disseminated it throughout the institution"
 }
 ```
-![Styling Tags Sample with style for font-size attribute added to span tag](../images/styling_tags_sample.png)
+![Styling Tags Sample with style for font-size attribute added to span tag](../images/styling_tags_sample_ptag.png)
 
-![Styling Tags output when style for font-size attribute was added to span tag](../images/styling_tags1.png)
+![Styling Tags output when style for font-size attribute was added to span tag](../images/styling_tags2.png)
 
 
 
