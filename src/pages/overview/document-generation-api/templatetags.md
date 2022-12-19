@@ -141,50 +141,36 @@ the output document.
 ![Image placeholder replaced by the image data](../images/image_tag_final.png)
 
 ## Tables
-### Inserting Tables dynamically from input json
+### Creating Tables dynamically using HTML
 
 Text tags having HTML Table string as an input data can be used to insert tables in the output document.
 
-[//]: # (Tables can be inserted in final document using text tags having HTML Table in the input json.)
 
 Below is a json containing textTag with an HTML Table value.
 
 ```json
 {
-  "Table_Data": "<table border='1' cellpadding='0' cellspacing='0' align='right' style=\"width:100%\"><tr><th>Name</th><th>Age</th><th>Gender</th></tr><tr><td>Sheldon</td><td>29</td><td>Male</td></tr><tr><td>Leonard</td><td>30</td><td>Male</td></tr><tr><td>Howard</td><td>28</td><td>Male</td></tr><tr><td>Raj</td><td>29</td><td>Male</td></tr></table>"
+  "Table_Data": "<table border='1' cellpadding='0' cellspacing='0' align='right' style='width:30%'>\n\t<tr>\n\t\t<th>Name</th>\n\t\t<th>Age</th>\n\t\t<th>Gender</th>\n\t</tr>\n\t<tr>\n\t\t<td>Sheldon</td>\n\t\t<td>29</td>\n\t\t<td>Male</td>\n\t</tr>\n\t<tr>\n\t\t<td>Leonard</td>\n\t\t<td>30</td>\n\t\t<td>Male</td>\n\t</tr>\n\t<tr>\n\t\t<td>Howard</td>\n\t\t<td>28</td>\n\t\t<td>Male</td>\n\t</tr>\n\t<tr>\n\t\t<td>Raj</td>\n\t\t<td>29</td>\n\t\t<td>Male</td>\n\t</tr>\n</table>\n"
 }
 ```
 **Usage**
 
 Placeholder variable get replaced by a table generated from input html table string.
- - Input Template
-![Sample for HTML Table insertion](../images/htmlTableTemplate.png)
- - Output Document
-![Output for HTML Table insertion](../images/htmlTableOutput.png)
+![Sample for HTML Table insertion](../images/html_table_sample.png)
 
-- **Prerequisites**
-  - Text Tags containing table element in input data, should be placed in a separate paragraph.
-![Table Tag Prerequisite](../images/tableTagValidator.png)
-  - Only Inline Styling of Table elements is possible. i.e. using `style` attribute of `<table>`. Internal and External styling are not allowed.
 
-*Note:*
+<InlineAlert slots="text"/>
 
-`<table>` can be combined with other html tags in any order to add any additional info like table descriptions etc.
+- Text Tags containing table element, in input data, should be placed in a separate paragraph.
+
+- Only Inline Styling of Table elements is possible. i.e. using `style` attribute of `<table>`. Internal and External styling are not allowed.)
 
 
 
 ### Dynamically populate table rows or columns
 
-Input JSON arrays can be used for populating table cells(row/columns) by extending over each item in the array.
+Rows of a table can be dynamically populated by repeating over an array of objects from the input data.
 
-For each element in array, rows or columns can be inserted in the original table.
-
-[//]: # (Tables present in document template can be expanded by using arrays as an input data for text tags.)
-
-*Note:*
-
-Table must be present in your template document with cells containing appropriate text tags having array values.
-  
 
 **How to expand Tables**
 
@@ -238,6 +224,7 @@ over the specified array of objects.
 
 ![Table with template tags replaced with actual values in the rows](../images/table_result.png)
 
+### Dynamically expand table rows or columns
 Specify the cell extension property inside the table cell to indicate whether to expand table rows vertically or columns horizontally.
 
 JSON representation of the input data:
