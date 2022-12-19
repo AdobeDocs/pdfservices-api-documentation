@@ -90,9 +90,9 @@ JSON representation of the input data:
 
 - <u\> (underline)
 
-- <img\> (image)
+- [<img\> (image)
 
-- <p\> (para break)
+- <p\> (para break)](/overview/document-generation-api/stylingformattingtags/#how-to-create-paragraphs-in-document)
 
 JSON representation of the input data:
 
@@ -104,6 +104,23 @@ JSON representation of the input data:
 ![Styling Tags Sample with style for font-size attribute added to span tag](../images/styling_tags_sample_ptag.png)
 
 ![Styling Tags output when style for font-size attribute was added to span tag](../images/styling_tags2.png)
+ 
+#### How to create paragraphs in document?
+
+New paragraphs can be created using `<p>` in input data
+
+**Usage**
+
+```json
+{
+    "Input_Data": "Here i am creating a sample series of test.<p>This is a part of random series of test to test DNA sequence.</p><p>We will identify useful ideas from here</p>"
+}
+```
+![Sample for P tag](../images/p_tag_sample.png)
+
+
+
+
 
 
 
