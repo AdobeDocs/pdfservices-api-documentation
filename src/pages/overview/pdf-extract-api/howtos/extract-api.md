@@ -138,7 +138,6 @@ schema](/extractJSONOutputSchema2.json)):
 | File contains unsupported font                         | BAD_PDF_UNSUPPORTED_FONT                                                                                                                                                                                | The input file contains font data that is corrupted or not supported.                |
 | Large PDF               | BAD_PDF_LARGE_FILE                                                                                                                                                                                | The input file size exceeds the maximum allowed.                 |
 | Protected PDF     | PROTECTED_PDF                                                                   | Unable to extract content. File is password protected.                 |
-| Disqualified Experiment    | DISQUALIFIED_EXPERIMENT                                                | File belongs to an experiment.                    |
 | Empty or corrupted input   | BAD_INPUT                                                              |	Input is corrupted or empty.                      |
 | Invalid input parameters    | BAD_INPUT_PARAMS                                                       | Invalid input parameters.                         |
 
