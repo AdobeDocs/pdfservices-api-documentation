@@ -1,4 +1,4 @@
-import {UploadUtil} from '../../components/upload1'
+import {UploadUtil} from '../../components/upload'
 
 <UploadUtil />
 
