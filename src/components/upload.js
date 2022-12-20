@@ -20,15 +20,71 @@ import {
 } from '@adobe/react-spectrum';
 import {defaultTheme} from '@adobe/react-spectrum';
 
+function doSomething() {
+    let apiKey = document.getElementById("clientID").value.toString();
+    let accessToken = "Bearer " + document.getElementById("accessToken").value.toString();
+    let input = document.getElementById("file").files[0];
+    // let content_type = "application/" + selected;
+    // let content_type = "application/" + document.getElementById("extn").value.toString();
+    // alert(content_type);
+    let axios = require("axios").default;
+    //console.log(selected," ",i);
+    // console.log(apiKey," ",accessToken);
+    ////////////////
+
+    let data1 = JSON.stringify({
+        "mediaType": "application/pdf"
+    });
+
+    let config = {
+        method: 'POST',
+        url: 'https://pdf-services.adobe.io/assets',
+        headers: {
+            'X-API-Key': apiKey,
+            'Authorization': accessToken,
+            'Content-Type': 'application/json'
+        },
+        data : data1
+    };
+
+    axios(config)
+        .then(function (response) {
+            console.log(JSON.stringify(response.data));
+            console.log("Success1!!");
+            let presignedURI = response.data['uploadUri'].toString();
+            let assetID = response.data['assetID'].toString();
+            alert("AssetID :" + assetID);
+
+            let options = {
+                method: 'PUT',
+                url: presignedURI,
+                headers: {'Content-Type': "application/pdf"},
+                data: input
+            };
+
+            axios.request(options).then(function (response1) {
+                //alert("Success");
+                console.log(response1.status);
+                console.log(response1.data);
+            }).catch(function (error) {
+                alert("Failure");
+                console.error(error);
+            });
+
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
 
 const UploadUtil = ({}) => {
-    let [selected, setSelected] = React.useState("pdf");
+    //let [selected, setSelected] = React.useState("pdf");
     let el = document.getElementById('btn');
     //let i=0;
-    let el2 = document.getElementById('clientID');
-    let el3 = document.getElementById('accessToken');
-    if(el2){console.log("CID exists!");}
-    if(el3){console.log("AT exists!");}
+    // let el2 = document.getElementById('clientID');
+    // let el3 = document.getElementById('accessToken');
+    // if(el2){console.log("CID exists!");}
+    // if(el3){console.log("AT exists!");}
 
 
     if(el) {
@@ -41,9 +97,9 @@ const UploadUtil = ({}) => {
             let apiKey = document.getElementById("clientID").value.toString();
             let accessToken = "Bearer " + document.getElementById("accessToken").value.toString();
             let input = document.getElementById("file").files[0];
-            let content_type = "application/" + selected;
+            // let content_type = "application/" + selected;
             // let content_type = "application/" + document.getElementById("extn").value.toString();
-            alert(content_type);
+            // alert(content_type);
             let axios = require("axios").default;
             //console.log(selected," ",i);
             // console.log(apiKey," ",accessToken);
@@ -141,7 +197,7 @@ const UploadUtil = ({}) => {
                             {/*</RadioGroup>*/}
                             <input type="file" id = "file"/> <br/>
                             {/*<button type="button" id="btn">Submit</button>*/}
-                            <Button variant="accent" id = "btn">Upload</Button>
+                            <Button variant="accent" id = "btn" onPress={() => doSomething()}>Upload</Button>
                         </Form>
                     </Content>
         {/*            <ButtonGroup>*/}
