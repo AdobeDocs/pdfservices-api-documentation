@@ -6681,7 +6681,7 @@
   "components": {
     "schemas": {
       "documentLanguage": {
-        "description": "Specifies the default language for the input non-PDF document. In absence of font info within file’s content, an appropriate font is chosen on its basis.",
+        "description": "Specifies the default language for the input non-PDF document. In absence of font info within file’s content, an appropriate font is chosen on its basis. \n\n Note : ja-JP Locale is currently not supported in EU region. ",
         "type": "string",
         "default": "en-US",
         "enum": [
