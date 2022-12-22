@@ -21,7 +21,7 @@ module.exports = {
         },
         pages: [
             {
-                title: 'Adobe Document Services',
+                title: 'Adobe Acrobat Services',
                 subTitle: '',
                 path: '../../../document-services/'
             },
@@ -251,7 +251,7 @@ module.exports = {
                     },
                     {
                         title: 'Release notes',
-                        path: 'overview/pdf-services-api/releasenotes.md'
+                        path: 'overview/releasenotes.md'
                     },
                     {
                         title: 'PDF Services API Licensing',
@@ -321,7 +321,7 @@ module.exports = {
                     },
                     {
                         title: 'Release Notes',
-                        path: 'overview/pdf-services-api/releasenotes.md'
+                        path: 'overview/releasenotes.md'
                     },
                     {
                         title: 'PDF Services API Licensing',
@@ -330,25 +330,6 @@ module.exports = {
                     {
                         title: 'Usage Limits',
                         path: 'overview/document-generation-api/dcserviceslicensing.md#usage-limits'
-                    }
-                ]
-            },
-            {
-                title: 'PDF Electronic Seal API                       ',
-                subTitle: 'Beta Program',
-                path: 'overview/pdf-electronic-seal-api/index.md',
-                pages: [
-                    {
-                        title: 'Overview',
-                        path: 'overview/pdf-electronic-seal-api/index.md'
-                    },
-                    {
-                        title: 'Prerequisites',
-                        path: 'overview/pdf-electronic-seal-api/prerequisites.md'
-                    },
-                    {
-                        title: 'Quickstarts',
-                        path: 'overview/pdf-electronic-seal-api/quickstarts.md'
                     }
                 ]
             },
@@ -408,7 +389,7 @@ module.exports = {
                     },
                     {
                         title: 'Release Notes',
-                        path: 'overview/pdf-services-api/releasenotes.md'
+                        path: 'overview/releasenotes.md'
                     },
                     {
                         title: 'PDF Services API Licensing',
@@ -460,6 +441,25 @@ module.exports = {
                 ]
             },
             {
+                title: 'PDF Electronic Seal API                       ',
+                subTitle: 'Beta Program',
+                path: 'overview/pdf-electronic-seal-api/index.md',
+                pages: [
+                    {
+                        title: 'Overview',
+                        path: 'overview/pdf-electronic-seal-api/index.md'
+                    },
+                    {
+                        title: 'Prerequisites',
+                        path: 'overview/pdf-electronic-seal-api/prerequisites.md'
+                    },
+                    {
+                        title: 'Quickstarts',
+                        path: 'overview/pdf-electronic-seal-api/quickstarts.md'
+                    }
+                ]
+            },
+            {
                 title: 'PDF Accessibility Auto-Tag API',
                 subTitle: 'Early Access Program',
                 path: 'overview/pdf-accessibility-auto-tag-api/index.md',
@@ -493,7 +493,7 @@ module.exports = {
                     },
                     {
                         title: 'Release Notes',
-                        path: 'overview/pdf-services-api/releasenotes.md'
+                        path: 'overview/releasenotes.md'
                     },
                     {
                         title: 'PDF Services API Licensing',
@@ -504,6 +504,26 @@ module.exports = {
                         path: 'overview/pdf-accessibility-auto-tag-api/dcserviceslicensing.md#usage-limits'
                     }
                 ]
+            },
+            {
+                title: 'Usage Limits and Licensing',
+                path: 'overview/limits.md'
+            },
+            {
+                title: 'Security, Privacy and Compliance',
+                path: 'overview/security.md'
+            },
+            {
+                title: 'Version and Release Notes',
+                path: 'overview/releasenotes.md'
+            },
+            {
+                title: 'Support',
+                path: 'overview/support.md'
+            },
+            {
+                title: 'API Status',
+                path: 'overview/status.md'
             },
             {
                 title: 'Archives',
