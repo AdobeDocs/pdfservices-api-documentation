@@ -13,7 +13,9 @@ Apply styling and formatting in the generated output document using the HTML bas
 
 - Underline text.
 
-- Create [Hyperlinks](../document-generation-api/hyperlink.md).
+- Create [Hyperlinks](../document-generation-api/hyperlink.md)
+
+- Create [Inline Images](../document-generation-api/inlineimages.md).
 
 ## How It Works
 
@@ -85,6 +87,8 @@ JSON representation of the input data:
 - <i\> (italic)
 
 - <u\> (underline)
+
+- <img\> (image)
 
 JSON representation of the input data:
 

@@ -107,6 +107,7 @@ The following features and configuration variables are deprecated in modern view
 * Docking and undocking the bottom page control toolbar (`dockPageControls`) is deprecated 
   in full window and lightbox embed modes.
 
+
 ## Migration Guide
 
 To migrate over Adobe's new modern PDF viewer, developers are required to use 
