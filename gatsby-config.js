@@ -176,6 +176,10 @@ module.exports = {
                                 path: 'overview/pdf-services-api/howtos/api-usage.md'
                             },
                             {
+                                title: 'Region Configs for APIs',
+                                path: 'overview/pdf-services-api/howtos/service-region-configuration-for-apis.md'
+                            },
+                            {
                                 title: 'Create PDF',
                                 path: 'overview/pdf-services-api/howtos/create-pdf.md'
                             },
@@ -247,7 +251,7 @@ module.exports = {
                     },
                     {
                         title: 'Release notes',
-                        path: 'overview/pdf-services-api/releasenotes.md'
+                        path: 'overview/releasenotes.md'
                     },
                     {
                         title: 'PDF Services API Licensing',
@@ -321,7 +325,7 @@ module.exports = {
                     },
                     {
                         title: 'Release Notes',
-                        path: 'overview/pdf-services-api/releasenotes.md'
+                        path: 'overview/releasenotes.md'
                     },
                     {
                         title: 'PDF Services API Licensing',
@@ -389,7 +393,7 @@ module.exports = {
                     },
                     {
                         title: 'Release Notes',
-                        path: 'overview/pdf-services-api/releasenotes.md'
+                        path: 'overview/releasenotes.md'
                     },
                     {
                         title: 'PDF Services API Licensing',
@@ -460,6 +464,25 @@ module.exports = {
                 ]
             },
             {
+                title: 'PDF Electronic Seal API                       ',
+                subTitle: 'Beta Program',
+                path: 'overview/pdf-electronic-seal-api/index.md',
+                pages: [
+                    {
+                        title: 'Overview',
+                        path: 'overview/pdf-electronic-seal-api/index.md'
+                    },
+                    {
+                        title: 'Prerequisites',
+                        path: 'overview/pdf-electronic-seal-api/prerequisites.md'
+                    },
+                    {
+                        title: 'Quickstarts',
+                        path: 'overview/pdf-electronic-seal-api/quickstarts.md'
+                    }
+                ]
+            },
+            {
                 title: 'PDF Accessibility Auto-Tag API',
                 subTitle: 'Early Access Program',
                 path: 'overview/pdf-accessibility-auto-tag-api/index.md',
@@ -493,7 +516,7 @@ module.exports = {
                     },
                     {
                         title: 'Release Notes',
-                        path: 'overview/pdf-services-api/releasenotes.md'
+                        path: 'overview/releasenotes.md'
                     },
                     {
                         title: 'PDF Services API Licensing',
