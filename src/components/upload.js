@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import {AssetID} from "./assetID";
 import axios from 'axios';
 import PropTypes from "prop-types";
 import {
     Form,
     TextField,
+    TextArea,
     ActionButton,
     Button,
     ButtonGroup,
@@ -15,17 +17,18 @@ import {
     Heading,
     Text,
     Provider,
-    RadioGroup,
+    Link,
     Radio
 } from '@adobe/react-spectrum';
 import {defaultTheme} from '@adobe/react-spectrum';
 
+
 function doSomething() {
-    let apiKey = document.getElementById("clientID").value.toString();
-    let accessToken = "Bearer " + document.getElementById("accessToken").value.toString();
-    let input = document.getElementById("file").files[0];
+    let apiKey = document.querySelector("#clientID").value.toString();
+    let accessToken = "Bearer " + document.querySelector("#accessToken").value.toString();
+    let input = document.querySelector("#file").files[0];
     // let content_type = "application/" + selected;
-    // let content_type = "application/" + document.getElementById("extn").value.toString();
+    // let content_type = "application/" + document.querySelector("#extn").value.toString();
     // alert(content_type);
     let axios = require("axios").default;
     //console.log(selected," ",i);
@@ -53,7 +56,7 @@ function doSomething() {
             console.log("Success1!!");
             let presignedURI = response.data['uploadUri'].toString();
             let assetID = response.data['assetID'].toString();
-            alert("AssetID :" + assetID);
+            let AID = ("AssetID :" + assetID);
 
             let options = {
                 method: 'PUT',
@@ -64,6 +67,7 @@ function doSomething() {
 
             axios.request(options).then(function (response1) {
                 //alert("Success");
+                AssetID(AID);
                 console.log(response1.status);
                 console.log(response1.data);
             }).catch(function (error) {
@@ -79,75 +83,76 @@ function doSomething() {
 
 const UploadUtil = ({}) => {
     //let [selected, setSelected] = React.useState("pdf");
-    let el = document.getElementById('btn');
+    // let el = document.querySelector('#btn');
     //let i=0;
-    // let el2 = document.getElementById('clientID');
-    // let el3 = document.getElementById('accessToken');
+    // let el2 = document.querySelector('clientID');
+    // let el3 = document.querySelector('accessToken');
     // if(el2){console.log("CID exists!");}
     // if(el3){console.log("AT exists!");}
 
 
-    if(el) {
-        console.log("button exists");
-        el.addEventListener("click", async (evt) => {
+    // if(el) {
+    //     console.log("button exists");
+    //     el.addEventListener("click", async (evt) => {
             //i++;
             //alert("click!!!");
             //console.log("click!!!");
-            //let uri = document.getElementById("uri").value.toString();
-            let apiKey = document.getElementById("clientID").value.toString();
-            let accessToken = "Bearer " + document.getElementById("accessToken").value.toString();
-            let input = document.getElementById("file").files[0];
+            //let uri = document.querySelector("uri").value.toString();
+            // let apiKey = document.querySelector("clientID").value.toString();
+            // let accessToken = "Bearer " + document.querySelector("accessToken").value.toString();
+            // let input = document.querySelector("file").files[0];
             // let content_type = "application/" + selected;
-            // let content_type = "application/" + document.getElementById("extn").value.toString();
+            // let content_type = "application/" + document.querySelector("extn").value.toString();
             // alert(content_type);
-            let axios = require("axios").default;
+            // let axios = require("axios").default;
             //console.log(selected," ",i);
             // console.log(apiKey," ",accessToken);
     ////////////////
 
-            let data1 = JSON.stringify({
-                "mediaType": "application/pdf"
-            });
-
-            let config = {
-                method: 'POST',
-                url: 'https://pdf-services.adobe.io/assets',
-                headers: {
-                    'X-API-Key': apiKey,
-                    'Authorization': accessToken,
-                    'Content-Type': 'application/json'
-                },
-                data : data1
-            };
-
-            axios(config)
-                .then(function (response) {
-                    console.log(JSON.stringify(response.data));
-                    console.log("Success1!!");
-                    let presignedURI = response.data['uploadUri'].toString();
-                    let assetID = response.data['assetID'].toString();
-                    alert("AssetID :" + assetID);
-
-                    let options = {
-                        method: 'PUT',
-                        url: presignedURI,
-                        headers: {'Content-Type': "application/pdf"},
-                        data: input
-                    };
-
-                    axios.request(options).then(function (response1) {
-                        //alert("Success");
-                        console.log(response1.status);
-                        console.log(response1.data);
-                    }).catch(function (error) {
-                        alert("Failure");
-                        console.error(error);
-                    });
-
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
+            // let data1 = JSON.stringify({
+            //     "mediaType": "application/pdf"
+            // });
+            //
+            // let config = {
+            //     method: 'POST',
+            //     url: 'https://pdf-services.adobe.io/assets',
+            //     headers: {
+            //         'X-API-Key': apiKey,
+            //         'Authorization': accessToken,
+            //         'Content-Type': 'application/json'
+            //     },
+            //     data : data1
+            // };
+            //
+            // axios(config)
+            //     .then(function (response) {
+            //         console.log(JSON.stringify(response.data));
+            //         console.log("Success1!!");
+            //         let presignedURI = response.data['uploadUri'].toString();
+            //         let assetID = response.data['assetID'].toString();
+            //         alert("AssetID :" + assetID);
+            //
+            //         let options = {
+            //             method: 'PUT',
+            //             url: presignedURI,
+            //             headers: {'Content-Type': "application/pdf"},
+            //             data: input
+            //         };
+            //
+            //         axios.request(options).then(function (response1) {
+            //             //alert("Success");
+            //             // alert("AssetID :" + assetID);
+            //             console.log(response1.status);
+            //             console.log(response1.data);
+            //         }).catch(function (error) {
+            //             alert("Failure");
+            //             console.error(error);
+            //         });
+            //
+            //     })
+            //     .catch(function (error) {
+            //         console.log(error);
+            //     });
 
     ////////////////
 
@@ -172,7 +177,7 @@ const UploadUtil = ({}) => {
             //     console.error(error);
             // });
 
-    })};
+    // })};
 
     return(
         <>
@@ -184,7 +189,7 @@ const UploadUtil = ({}) => {
                     <Heading>Upload Your File</Heading>
                     <Divider />
                     <Content>
-                        <Form maxWidth="size-3600" aria-labelledby="label-3">
+                        <Form maxWidth="size-1800" aria-labelledby="label-3">
                             {/*<TextField label="URI" id = "uri"/>*/}
                             <TextField label="Client ID" id = "clientID"/>
                             <TextField label="Access Token" id = "accessToken"/>
@@ -195,10 +200,17 @@ const UploadUtil = ({}) => {
                             {/*    <Radio value="pdf">PDF</Radio>*/}
                             {/*    <Radio value="docx">DOCX</Radio>*/}
                             {/*</RadioGroup>*/}
+                            <br/>
                             <input type="file" id = "file"/> <br/>
                             {/*<button type="button" id="btn">Submit</button>*/}
                             <Button variant="accent" id = "btn" onPress={() => doSomething()}>Upload</Button>
                         </Form>
+                        <br/>
+                        <Link alignSelf={"center"}>
+                            <a href="https://cowardly-insect-15.redoc.ly/" target="_blank">
+                                Continue Your Journey!
+                            </a>
+                        </Link>
                     </Content>
         {/*            <ButtonGroup>*/}
         {/*                <Button variant="secondary" onPress={close}>Close</Button>*/}

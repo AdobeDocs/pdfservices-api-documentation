@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@adobe/gatsby-theme-aio": "4.7.5",
-    "@adobe/react-spectrum": "^3.24.1",
+    "@adobe/react-spectrum": "^3.23.0",
     "axios": "^1.2.1",
     "gatsby": "4.22.0",
     "react": "^17.0.2",
