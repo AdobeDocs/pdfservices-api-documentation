@@ -404,7 +404,7 @@ module.exports = {
                         path: 'overview/pdf-extract-api/dcserviceslicensing.md#usage-limits'
                     }
                 ]
-            },     
+            },
             {
                 title: 'PDF Embed API',
                 subTitle: '',
@@ -442,25 +442,6 @@ module.exports = {
                         title: 'Release Notes',
                         path: 'overview/pdf-embed-api/releasenotes.md'
                     },
-                ]
-            },                   
-            {
-                title: 'PDF Electronic Seal API                       ',
-                subTitle: 'Beta Program',
-                path: 'overview/pdf-electronic-seal-api/index.md',
-                pages: [
-                    {
-                        title: 'Overview',
-                        path: 'overview/pdf-electronic-seal-api/index.md'
-                    },
-                    {
-                        title: 'Prerequisites',
-                        path: 'overview/pdf-electronic-seal-api/prerequisites.md'
-                    },
-                    {
-                        title: 'Quickstarts',
-                        path: 'overview/pdf-electronic-seal-api/quickstarts.md'
-                    }
                 ]
             },
             {
