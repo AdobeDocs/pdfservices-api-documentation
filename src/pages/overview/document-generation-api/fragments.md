@@ -96,9 +96,10 @@ And the output document generated will look like:
 
 ## Other supported constructs
 
-### Conditional Phrases
+### Conditionals
 Evaluate value of fragments based on the conditions.
 
+Json representation of input data:
 ```json
 [
   {
@@ -112,21 +113,22 @@ Evaluate value of fragments based on the conditions.
   }
 ]
 ```
-The `localityDetails` fragment includes a conditional-phrase which depends on `country` text tag. Based on the value of `country` text tag, value of `localityDetails` differs.
-For India, the format of `localityDetails` is
+The `localityDetails` fragment contains a conditional phrase that is evaluated based on the `country` text tag.
+The format of `localityDetails` for India is
 `street`
-`postCode city`,
-`country`. For USA, the format of `localityDetails` is
+`postCode` `city`,
+`country`. The format of `localityDetails` for the USA is
 `street`
-`city state zip`,
+`city` `state` `zip`,
 `country`.
 
 ![Output of fragment with condition in document](../images/fragments-condition.png)
 
 
 ### Optional
-Setting the tag as optional inside the fragment will replace the tag with empty string if it's value is not present in input json data and fragment json data.
+Setting a tag inside the fragment as *optional* will replace the tag with empty string if it’s not present either in input or fragment json data.
 
+JSON representation of the input data:
 ```json
 [
   {
@@ -138,12 +140,14 @@ Setting the tag as optional inside the fragment will replace the tag with empty 
 ]
 ```
 
-In the fragment above, there is an optional property used with `middleName` tag. Since the optional property is set to true, the `middleName` tag will be replaced by its value if it exists else will be replaced by an empty string.
+In the above fragment, there is an optional property used with middleName tag. Since the optional property is set to true, the middleName tag will be replaced by an empty string if it doesn’t exist.
 
 ![Output of fragment with optional value in document](../images/fragments-optional.png)
 
 ### Default
-A default value can be specified for the tag used inside the fragment. In case, the specified tag is not present in the input json data or fragment json data, the tag gets replaced by its default value.
+A *default value* can be specified for a tag inside the fragment. 
+
+JSON representation of the input data:
 ```json
 [
   {
@@ -155,12 +159,14 @@ A default value can be specified for the tag used inside the fragment. In case, 
 ]
 ```
 
-In the above example, if the `organisation` tag does not exist in input json data or fragment json data, then default value (i.e. "Org") will be used.
+In the above fragment, if the `organisation` tag does not exist in input json data or fragment json data, then default value (i.e. "Org") will be used.
 
 ![Output of fragment with default value in document](../images/fragments-default.png)
 
 ### Prefix
-Adds a value before the value of the tag inside the fragment.
+A *prefix value* can be specified for a tag inside the fragment.
+
+JSON representation of the input data:
 ```json
 [
   {
@@ -172,7 +178,7 @@ Adds a value before the value of the tag inside the fragment.
   }
 ]
 ```
-In the above example, `doctor` fragment tag contains `doctorName` tag, to which a prefix value is specified. So, **Dr. ** will be added before the value of the `doctorName` tag in the output.
+In the above fragment, `doctor` fragment tag further contains `doctorName` tag, to which a prefix value is specified. So, the prefix value (i.e. "Dr. ") will be added before the value of the `doctorName` tag in the output.
 
 ![Output of fragment with prefix in document](../images/fragments-prefix.png)
 

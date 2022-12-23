@@ -176,6 +176,10 @@ module.exports = {
                                 path: 'overview/pdf-services-api/howtos/api-usage.md'
                             },
                             {
+                                title: 'Region Configs for APIs',
+                                path: 'overview/pdf-services-api/howtos/service-region-configuration-for-apis.md'
+                            },
+                            {
                                 title: 'Create PDF',
                                 path: 'overview/pdf-services-api/howtos/create-pdf.md'
                             },
@@ -247,7 +251,7 @@ module.exports = {
                     },
                     {
                         title: 'Release notes',
-                        path: 'overview/pdf-services-api/releasenotes.md'
+                        path: 'overview/releasenotes.md'
                     },
                     {
                         title: 'PDF Services API Licensing',
@@ -321,7 +325,7 @@ module.exports = {
                     },
                     {
                         title: 'Release Notes',
-                        path: 'overview/pdf-services-api/releasenotes.md'
+                        path: 'overview/releasenotes.md'
                     },
                     {
                         title: 'PDF Services API Licensing',
@@ -389,7 +393,7 @@ module.exports = {
                     },
                     {
                         title: 'Release Notes',
-                        path: 'overview/pdf-services-api/releasenotes.md'
+                        path: 'overview/releasenotes.md'
                     },
                     {
                         title: 'PDF Services API Licensing',
@@ -400,7 +404,7 @@ module.exports = {
                         path: 'overview/pdf-extract-api/dcserviceslicensing.md#usage-limits'
                     }
                 ]
-            },     
+            },
             {
                 title: 'PDF Embed API',
                 subTitle: '',
@@ -439,7 +443,7 @@ module.exports = {
                         path: 'overview/pdf-embed-api/releasenotes.md'
                     },
                 ]
-            },                   
+            },
             {
                 title: 'PDF Electronic Seal API                       ',
                 subTitle: 'Beta Program',
@@ -493,7 +497,7 @@ module.exports = {
                     },
                     {
                         title: 'Release Notes',
-                        path: 'overview/pdf-services-api/releasenotes.md'
+                        path: 'overview/releasenotes.md'
                     },
                     {
                         title: 'PDF Services API Licensing',

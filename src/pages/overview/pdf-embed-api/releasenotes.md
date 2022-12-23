@@ -8,6 +8,12 @@ the changes below for each release.
 
 ## Change history
 
+### December, 2022
+
+| Change | Description                                                            |
+| ------ | ---------------------------------------------------------------------- |
+| Bug fix | Fixed issues with the Annotations API to address few failure cases related to adding annotations.
+
 
 ### November, 2022
 

@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "PDF Services API",
-    "description": "<ul>\n\t<li>Learn more about using \n\t<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/api-usage/\"> Adobe PDF Services API.</a>\n\t</li>\n\t<li> Invoking PDF Services API requires an Adobe-provided credential, <a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">learn more about authentication.</a>\n\t</li>\n<li><a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/#sdk\">Downloadable SDKs</a></li>\n<li><a href=\"https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK\">Support Forum</a></li></ul>",
+    "description": "<ul>\n\t<li>Learn more about using \n\t<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/api-usage/\"> Adobe PDF Services API.</a>\n\t</li>\n\t<li> Invoking PDF Services API requires an Adobe-provided credential, <a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">learn more about authentication.</a>\n\t</li>\n<li><a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/#sdk\">Downloadable SDKs</a></li>\n<li><a href=\"https://raw.githubusercontent.com/AdobeDocs/pdfservices-api-documentation/develop/src/pages/resources/Platform%20PDF%20Services%20Postman%20Collection.zip\" download>Click here</a> to download sample Postman collection</li>\n<li><a href=\"https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK\">Support Forum</a></li></ul>",
     "version": ""
   },
   "servers": [
@@ -235,30 +235,6 @@
               }
             }
           },
-          "408": {
-            "description": "Request Timed Out. Some operation has timed out due to client issue.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/408"
-                }
-              }
-            }
-          },
           "429": {
             "description": "Caller doesn't have sufficient quota for this operation.",
             "headers": {
@@ -278,7 +254,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/429"
+                  "$ref": "#/components/schemas/Asset429"
                 }
               }
             }
@@ -420,8 +396,8 @@
               }
             }
           },
-          "408": {
-            "description": "Request Timed Out. Some operation has timed out due to client issue.",
+          "429": {
+            "description": "Caller doesn't have sufficient quota for this operation.",
             "headers": {
               "content-type": {
                 "description": "The content type of the POST API call response",
@@ -439,7 +415,135 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/408"
+                  "$ref": "#/components/schemas/Asset429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Assets"
+        ],
+        "summary": "Delete the asset from storage.",
+        "description": "Delete the stored asset from the cloud provider.",
+        "operationId": "asset.delete",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "The clientId from the generated credentials",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-request-id",
+            "in": "header",
+            "description": "The request identifier used to trace the request in logs.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The request was successful, but no content received.",
+            "headers": {
+              "Content-Type": {
+                "description": "The media type of the response body, which is application/json.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique ID to identify each individual request.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the error JSON response.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/401"
                 }
               }
             }
@@ -463,7 +567,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/429"
+                  "$ref": "#/components/schemas/Asset429"
                 }
               }
             }
@@ -605,30 +709,6 @@
               }
             }
           },
-          "408": {
-            "description": "Request Timed Out. Some operation has timed out due to client issue.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/408"
-                }
-              }
-            }
-          },
           "429": {
             "description": "Caller doesn't have sufficient quota for this operation.",
             "headers": {
@@ -648,7 +728,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/429"
+                  "$ref": "#/components/schemas/Asset429"
                 }
               }
             }
@@ -972,30 +1052,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus401"
-                }
-              }
-            }
-          },
-          "408": {
-            "description": "Request Timed Out. Some operation has timed out due to client issue.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus408"
                 }
               }
             }
@@ -1353,30 +1409,6 @@
               }
             }
           },
-          "408": {
-            "description": "Request Timed Out. Some operation has timed out due to client issue.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus408"
-                }
-              }
-            }
-          },
           "429": {
             "description": "Caller doesn't have sufficient quota for this operation.",
             "headers": {
@@ -1720,30 +1752,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus401"
-                }
-              }
-            }
-          },
-          "408": {
-            "description": "Request Timed Out. Some operation has timed out due to client issue.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus408"
                 }
               }
             }
@@ -2095,30 +2103,6 @@
               }
             }
           },
-          "408": {
-            "description": "Request Timed Out. Some operation has timed out due to client issue.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus408"
-                }
-              }
-            }
-          },
           "429": {
             "description": "Caller doesn't have sufficient quota for this operation.",
             "headers": {
@@ -2466,30 +2450,6 @@
               }
             }
           },
-          "408": {
-            "description": "Request Timed Out. Some operation has timed out due to client issue.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus408"
-                }
-              }
-            }
-          },
           "429": {
             "description": "Caller doesn't have sufficient quota for this operation.",
             "headers": {
@@ -2833,30 +2793,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus401"
-                }
-              }
-            }
-          },
-          "408": {
-            "description": "Request Timed Out. Some operation has timed out due to client issue.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus408"
                 }
               }
             }
@@ -3214,30 +3150,6 @@
               }
             }
           },
-          "408": {
-            "description": "Request Timed Out. Some operation has timed out due to client issue.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus408"
-                }
-              }
-            }
-          },
           "429": {
             "description": "Caller doesn't have sufficient quota for this operation.",
             "headers": {
@@ -3591,30 +3503,6 @@
               }
             }
           },
-          "408": {
-            "description": "Request Timed Out. Some operation has timed out due to client issue.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus408"
-                }
-              }
-            }
-          },
           "429": {
             "description": "Caller doesn't have sufficient quota for this operation.",
             "headers": {
@@ -3958,30 +3846,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus401"
-                }
-              }
-            }
-          },
-          "408": {
-            "description": "Request Timed Out. Some operation has timed out due to client issue.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus408"
                 }
               }
             }
@@ -4333,30 +4197,6 @@
               }
             }
           },
-          "408": {
-            "description": "Request Timed Out. Some operation has timed out due to client issue.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus408"
-                }
-              }
-            }
-          },
           "429": {
             "description": "Caller doesn't have sufficient quota for this operation.",
             "headers": {
@@ -4700,30 +4540,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus401"
-                }
-              }
-            }
-          },
-          "408": {
-            "description": "Request Timed Out. Some operation has timed out due to client issue.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus408"
                 }
               }
             }
@@ -5075,30 +4891,6 @@
               }
             }
           },
-          "408": {
-            "description": "Request Timed Out. Some operation has timed out due to client issue.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus408"
-                }
-              }
-            }
-          },
           "429": {
             "description": "Caller doesn't have sufficient quota for this operation.",
             "headers": {
@@ -5442,30 +5234,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus401"
-                }
-              }
-            }
-          },
-          "408": {
-            "description": "Request Timed Out. Some operation has timed out due to client issue.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus408"
                 }
               }
             }
@@ -5817,30 +5585,6 @@
               }
             }
           },
-          "408": {
-            "description": "Request Timed Out. Some operation has timed out due to client issue.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus408"
-                }
-              }
-            }
-          },
           "429": {
             "description": "Caller doesn't have sufficient quota for this operation.",
             "headers": {
@@ -6184,30 +5928,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Satus401"
-                }
-              }
-            }
-          },
-          "408": {
-            "description": "Request Timed Out. Some operation has timed out due to client issue.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus408"
                 }
               }
             }
@@ -6559,30 +6279,6 @@
               }
             }
           },
-          "408": {
-            "description": "Request Timed Out. Some operation has timed out due to client issue.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus408"
-                }
-              }
-            }
-          },
           "429": {
             "description": "Caller doesn't have sufficient quota for this operation.",
             "headers": {
@@ -6930,30 +6626,6 @@
               }
             }
           },
-          "408": {
-            "description": "Request Timed Out. Some operation has timed out due to client issue.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus408"
-                }
-              }
-            }
-          },
           "429": {
             "description": "Caller doesn't have sufficient quota for this operation.",
             "headers": {
@@ -7009,7 +6681,7 @@
   "components": {
     "schemas": {
       "documentLanguage": {
-        "description": "Specifies the default language for the input non-PDF document. In absence of font info within file’s content, an appropriate font is chosen on its basis.",
+        "description": "Specifies the default language for the input non-PDF document. In absence of font info within file’s content, an appropriate font is chosen on its basis. \n\n Note : ja-JP Locale is currently not supported in EU region. ",
         "type": "string",
         "default": "en-US",
         "enum": [
@@ -7244,7 +6916,7 @@
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>INSUFFICIENT_QUOTA</td><td>Client exhausted the Quota.</td></tr><tr><td>INSUFFICIENT_QUOTA</td><td>Client did not purchase a policy to call this engine.</td></tr></table>",
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>TOO_MANY_REQUESTS</td><td>Too Many Requests.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -7252,8 +6924,8 @@
         },
         "example": {
           "error": {
-            "code": "INSUFFICIENT_QUOTA",
-            "message": "Client exhausted the Quota."
+            "code": "TOO_MANY_REQUESTS",
+            "message": "Too Many Requests."
           }
         }
       },
@@ -7278,6 +6950,22 @@
             "code": "INTERNAL_SERVER_ERROR",
             "message": "There was an error processing your request."
           }
+        }
+      },
+      "Asset429": {
+        "properties": {
+          "error_code": {
+            "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. ",
+            "type": "string"
+          },
+          "message": {
+            "description": "An English language string that contains more information about the error. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>429001</td><td>Service usage limit reached</td></tr><tr><td>429002</td><td>Developer key usage limit reached</td></tr><tr><td>429050</td><td>Too many requests</td></tr></table>",
+            "type": "string"
+          }
+        },
+        "example": {
+          "error_code": "429050",
+          "message": "Too many requests"
         }
       },
       "Satus400": {
@@ -7374,25 +7062,18 @@
       },
       "Satus429": {
         "properties": {
-          "error": {
-            "type": "object",
-            "properties": {
-              "code": {
-                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. ",
-                "type": "string"
-              },
-              "message": {
-                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>INSUFFICIENT_QUOTA</td><td>Client exhausted the Quota.</td></tr><tr><td>INSUFFICIENT_QUOTA</td><td>Client did not purchase a policy to call this engine.</td></tr></table>",
-                "type": "string"
-              }
-            }
+          "error_code": {
+            "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific. ",
+            "type": "string"
+          },
+          "message": {
+            "description": "An English language string that contains more information about the error. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>429001</td><td>Service usage limit reached</td></tr><tr><td>429002</td><td>Developer key usage limit reached</td></tr><tr><td>429050</td><td>Too many requests</td></tr></table>",
+            "type": "string"
           }
         },
         "example": {
-          "error": {
-            "code": "INSUFFICIENT_QUOTA",
-            "message": "Client exhausted the Quota."
-          }
+          "error_code": "429050",
+          "message": "Too many requests"
         }
       },
       "Satus500": {
@@ -7652,13 +7333,13 @@
               "properties": {
                 "assetID": {
                   "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
-                  "type": "string",
-                  "required": true
+                  "type": "string"
                 },
                 "pageRanges": {
                   "$ref": "#/components/schemas/CombinePageRanges"
                 }
-              }
+              },
+              "required": ["assetID"]
             }
           }
         },
@@ -9245,1406 +8926,6 @@
                   "is_empty": false
                 },
                 "height": 842.0
-              },
-              {
-                "page_number": 1,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 2,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 3,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 4,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 5,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 6,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 7,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 8,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 9,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 10,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 11,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 12,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 13,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 14,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 15,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 16,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 17,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 18,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 19,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 20,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 21,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 22,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 23,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 24,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 25,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 26,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 27,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 28,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 29,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 30,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 31,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 32,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 33,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 34,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 35,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 36,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 37,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 38,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 39,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 40,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 41,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 42,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 43,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 44,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 45,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 46,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 47,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 48,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 49,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 50,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 51,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 52,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 53,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 54,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 55,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 56,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 57,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 58,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 59,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 60,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 61,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 62,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 63,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 64,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 65,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 66,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 67,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 68,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 69,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 70,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 71,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 72,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 73,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 74,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 75,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 76,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 77,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 78,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 79,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 80,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 81,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 82,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 83,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 84,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 85,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 86,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 87,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 88,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 89,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 90,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 91,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 92,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 93,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 94,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 95,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 96,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 97,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 98,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 0,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": false,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 99,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
-              },
-              {
-                "page_number": 100,
-                "is_scanned": false,
-                "width": 595.0,
-                "has_structure": false,
-                "content": {
-                  "number_of_images": 1,
-                  "only_images": false,
-                  "has_text": true,
-                  "has_images": true,
-                  "is_empty": false
-                },
-                "height": 842.0
               }
             ],
             "document": {
@@ -10671,126 +8952,6 @@
               "fonts": [
                 {
                   "name": "BAAAAA+LiberationSans-Bold",
-                  "font_type": "TrueType",
-                  "family_name": "Liberation Sans"
-                },
-                {
-                  "name": "CAAAAA+DejaVuSans",
-                  "font_type": "TrueType",
-                  "family_name": "Deja Vu Sans"
-                },
-                {
-                  "name": "DAAAAA+DejaVuSans-Bold",
-                  "font_type": "TrueType",
-                  "family_name": "Deja Vu Sans"
-                },
-                {
-                  "name": "Symbol",
-                  "font_type": "Type1",
-                  "family_name": "Symbol"
-                },
-                {
-                  "name": "FAAAAA+LiberationSans",
-                  "font_type": "TrueType",
-                  "family_name": "Liberation Sans"
-                },
-                {
-                  "name": "BAAAAA+LiberationSans-Bold",
-                  "font_type": "TrueType",
-                  "family_name": "Liberation Sans"
-                },
-                {
-                  "name": "CAAAAA+DejaVuSans",
-                  "font_type": "TrueType",
-                  "family_name": "Deja Vu Sans"
-                },
-                {
-                  "name": "DAAAAA+DejaVuSans-Bold",
-                  "font_type": "TrueType",
-                  "family_name": "Deja Vu Sans"
-                },
-                {
-                  "name": "Symbol",
-                  "font_type": "Type1",
-                  "family_name": "Symbol"
-                },
-                {
-                  "name": "FAAAAA+LiberationSans",
-                  "font_type": "TrueType",
-                  "family_name": "Liberation Sans"
-                },
-                {
-                  "name": "BAAAAA+LiberationSans-Bold",
-                  "font_type": "TrueType",
-                  "family_name": "Liberation Sans"
-                },
-                {
-                  "name": "CAAAAA+DejaVuSans",
-                  "font_type": "TrueType",
-                  "family_name": "Deja Vu Sans"
-                },
-                {
-                  "name": "DAAAAA+DejaVuSans-Bold",
-                  "font_type": "TrueType",
-                  "family_name": "Deja Vu Sans"
-                },
-                {
-                  "name": "Symbol",
-                  "font_type": "Type1",
-                  "family_name": "Symbol"
-                },
-                {
-                  "name": "FAAAAA+LiberationSans",
-                  "font_type": "TrueType",
-                  "family_name": "Liberation Sans"
-                },
-                {
-                  "name": "BAAAAA+LiberationSans-Bold",
-                  "font_type": "TrueType",
-                  "family_name": "Liberation Sans"
-                },
-                {
-                  "name": "CAAAAA+DejaVuSans",
-                  "font_type": "TrueType",
-                  "family_name": "Deja Vu Sans"
-                },
-                {
-                  "name": "DAAAAA+DejaVuSans-Bold",
-                  "font_type": "TrueType",
-                  "family_name": "Deja Vu Sans"
-                },
-                {
-                  "name": "Symbol",
-                  "font_type": "Type1",
-                  "family_name": "Symbol"
-                },
-                {
-                  "name": "FAAAAA+LiberationSans",
-                  "font_type": "TrueType",
-                  "family_name": "Liberation Sans"
-                },
-                {
-                  "name": "BAAAAA+LiberationSans-Bold",
-                  "font_type": "TrueType",
-                  "family_name": "Liberation Sans"
-                },
-                {
-                  "name": "CAAAAA+DejaVuSans",
-                  "font_type": "TrueType",
-                  "family_name": "Deja Vu Sans"
-                },
-                {
-                  "name": "DAAAAA+DejaVuSans-Bold",
-                  "font_type": "TrueType",
-                  "family_name": "Deja Vu Sans"
-                },
-                {
-                  "name": "Symbol",
-                  "font_type": "Type1",
-                  "family_name": "Symbol"
-                },
-                {
-                  "name": "FAAAAA+LiberationSans",
                   "font_type": "TrueType",
                   "family_name": "Liberation Sans"
                 }
@@ -10978,17 +9139,17 @@
         },
         "example": {
           "status": "done",
-          "content": {
+          "tagged-pdf": {
             "metadata": {
-              "type": "application/json",
+              "type": "application/pdf",
               "size": 200791
             },
             "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
             "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
           },
-          "resource": {
+          "report": {
             "metadata": {
-              "type": "application/zip",
+              "type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
               "size": 200791
             },
             "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
