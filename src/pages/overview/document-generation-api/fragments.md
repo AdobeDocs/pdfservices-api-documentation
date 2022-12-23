@@ -96,7 +96,7 @@ And the output document generated will look like:
 
 ## Other supported constructs
 
-### Conditional Phrases
+### Conditionals
 Evaluate value of fragments based on the conditions.
 
 Json representation of input data:
@@ -126,7 +126,7 @@ The format of `localityDetails` for India is
 
 
 ### Optional
-Setting the tag as *optional* inside the fragment will replace the actual tag with empty string if it’s not present either in input or fragment json data.
+Setting a tag inside the fragment as *optional* will replace the tag with empty string if it’s not present either in input or fragment json data.
 
 JSON representation of the input data:
 ```json
@@ -145,7 +145,7 @@ In the above fragment, there is an optional property used with middleName tag. S
 ![Output of fragment with optional value in document](../images/fragments-optional.png)
 
 ### Default
-A *default value* can be specified for the tag used inside the fragment. In case, the specified tag is not present in the input json data or fragment json data, the tag gets replaced by its default value.
+A *default value* can be specified for a tag inside the fragment. 
 
 JSON representation of the input data:
 ```json
@@ -164,7 +164,7 @@ In the above fragment, if the `organisation` tag does not exist in input json da
 ![Output of fragment with default value in document](../images/fragments-default.png)
 
 ### Prefix
-Adds a value before the value of the tag inside the fragment.
+A *prefix value* can be specified for a tag inside the fragment.
 
 JSON representation of the input data:
 ```json
