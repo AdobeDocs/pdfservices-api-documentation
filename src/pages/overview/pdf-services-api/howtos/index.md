@@ -234,7 +234,7 @@ client_config = ClientConfig.builder()
 ## Service region configuration
 
 Adobe PDF Services SDKs use `US (United States)` as default region to process all the documents. 
-However, the SDKs can be configured to process the documents in a specified region.
+Once you purchase PDF Services SDK, the SDKs can be configured to process the documents in a specified region that is listed below.
 
 Currently, PDF Services SDKs has support for the following regions :
 
