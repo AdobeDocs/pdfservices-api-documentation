@@ -7202,8 +7202,7 @@
         "description": "Params for Extract PDF Operation",
         "type": "object",
         "required": [
-          "assetID",
-          "elementsToExtract"
+          "assetID"
         ],
         "properties": {
           "assetID": {
@@ -7229,7 +7228,10 @@
                 "text",
                 "tables"
               ]
-            }
+            },
+            "default": [
+              "text"
+            ]
           },
           "tableOutputFormat": {
             "description": "Specifies the format of table contents output. Possible values are csv and xlsx.",
@@ -7245,11 +7247,7 @@
                 "tables",
                 "figures"
               ]
-            },
-            "default": [
-              "tables",
-              "figures"
-            ]
+            }
           }
         },
         "example": {
