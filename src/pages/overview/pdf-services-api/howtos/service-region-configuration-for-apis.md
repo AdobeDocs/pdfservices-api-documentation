@@ -6,7 +6,7 @@ title: Region Configuration for APIs | How Tos | PDF Services API | Adobe PDF Se
 
 ## Default Configuration 
 
-Adobe PDF Services APIs use `United States` as default region to process all the documents.
+Adobe PDF Services APIs use `United States` as a default region to process all the documents.
 Once you purchase PDF Services API, its APIs can be configured to process the documents in a specified region that is listed below. 
 
 ## Service Region Configuration
