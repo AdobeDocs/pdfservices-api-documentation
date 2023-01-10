@@ -73,7 +73,7 @@ the input data.
 
 **Prefix**
 
-We can specify a prefix value for the placeholder variable. Doing so will append
+A prefix value can be specified for the placeholder variable. Doing so will append
 this value before the result of the tag.
 
 ![Placeholder tags with prefix image set](../images/placeholder_prefix.png)
