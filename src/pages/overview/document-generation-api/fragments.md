@@ -126,7 +126,7 @@ The format of `localityDetails` for India is
 
 
 ### Optional
-Setting a tag inside the fragment as *optional* will replace the tag with empty string if it’s not present either in input or fragment json data.
+Setting a tag inside the fragment as *optional* will replace the tag with empty string if it is not present either in input or fragment json data.
 
 JSON representation of the input data:
 ```json
@@ -140,7 +140,7 @@ JSON representation of the input data:
 ]
 ```
 
-In the above fragment, there is an optional property used with middleName tag. Since the optional property is set to true, the middleName tag will be replaced by an empty string if it doesn’t exist.
+In the above fragment, there is an optional property used with middlename tag. Since the optional property is set to true, the middlename tag will be replaced by an empty string if it does not exist.
 
 ![Output of fragment with optional value in document](../images/fragments-optional.png)
 
