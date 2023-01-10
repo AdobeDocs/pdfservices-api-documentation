@@ -99,7 +99,7 @@ And the output document generated will look like:
 ### Conditionals
 Evaluate value of fragments based on the conditions.
 
-Json representation of input data:
+JSON representation of the input data:
 ```json
 [
   {
@@ -126,7 +126,7 @@ The format of `localityDetails` for India is
 
 
 ### Optional
-Setting a tag inside the fragment as *optional* will replace the tag with empty string if it is not present either in input or fragment json data.
+Setting a tag inside the fragment as *optional* will replace the tag with an empty string if it is not present either in input or fragment json data.
 
 JSON representation of the input data:
 ```json
@@ -140,7 +140,7 @@ JSON representation of the input data:
 ]
 ```
 
-In the above fragment, there is an optional property used with middlename tag. Since the optional property is set to true, the middlename tag will be replaced by an empty string if it does not exist.
+In the above fragment, there is an optional property used with `middlename` tag. Since the optional property is set to true, the `middlename` tag will be replaced by an empty string if it does not exist.
 
 ![Output of fragment with optional value in document](../images/fragments-optional.png)
 
@@ -159,7 +159,7 @@ JSON representation of the input data:
 ]
 ```
 
-In the above fragment, if the `organisation` tag does not exist in input json data or fragment json data, then default value (i.e. "Org") will be used.
+In the above fragment, if the `organisation` tag does not exist either in input or fragment json data, then default value (i.e. "Org") will be used.
 
 ![Output of fragment with default value in document](../images/fragments-default.png)
 
@@ -178,7 +178,7 @@ JSON representation of the input data:
   }
 ]
 ```
-In the above fragment, `doctor` fragment tag further contains `doctorName` tag, to which a prefix value is specified. So, the prefix value (i.e. "Dr. ") will be added before the value of the `doctorName` tag in the output.
+In the above fragment, `doctor` tag further contains `doctorName` tag, to which a prefix value is specified. So, the prefix value (i.e. "Dr. ") will be added before the value of the `doctorName` tag in the output.
 
 ![Output of fragment with prefix in document](../images/fragments-prefix.png)
 
