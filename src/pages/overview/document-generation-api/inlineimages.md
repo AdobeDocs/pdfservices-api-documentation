@@ -7,13 +7,13 @@ Add inline images in the document through json data using the <img\> tag.
 
 ## How It Works
 
-You can provide the input image url by making use of html img tag in json. 
+Image url can be provided in the input json data using html img tag. 
 
 JSON representation of the input data:
 
 ```json
 {
-  "ContentBlock": "This is a sample image - <img src=\"https://documentcloud.adobe.com/dc-docgen-app/assets/dc_icon.png\">"
+  "ContentBlock": "sample image - <img src=\"https://documentcloud.adobe.com/dc-docgen-app/assets/dc_icon.png\">"
 }
 ```
 ![Representation of sample json data](../images/inlineImageJson.png)
