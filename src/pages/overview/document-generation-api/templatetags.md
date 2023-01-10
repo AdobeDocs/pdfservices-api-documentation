@@ -69,7 +69,7 @@ Setting placeholder variable as optional will replace the placeholder
 with an empty string in case the specified variable is not present in
 the input data.
 
-![Placeholder tags with optional image set](../images/placeholder_optional_image.png)
+![Placeholder tags with optional image set](../images/placeholder_optional.png)
 
 **Prefix**
 
