@@ -50,8 +50,8 @@ version.
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <pdfservices.sdk.version>2.1.0</pdfservices.sdk.version>
-    <pdfservices.sdk.samples.version>2.1.0</pdfservices.sdk.samples.version>
+    <pdfservices.sdk.version>3.2.0</pdfservices.sdk.version>
+    <pdfservices.sdk.samples.version>3.2.0</pdfservices.sdk.samples.version>
 </properties>
 
 <dependency>
@@ -73,7 +73,7 @@ import com.adobe.pdfservices.operation.ExecutionContext;
 * Update the latest SDK dependency in package.json file of your project
  
 ```
-"@adobe/pdfservices-node-sdk": "2.1.0"
+"@adobe/pdfservices-node-sdk": "3.2.0"
 ```
 
 * Require the `@adobe/pdfservices-node-sdk` in the Sample file to access the SDK interface
@@ -97,7 +97,7 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 ```
 <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.12" />
-    <PackageReference Include="Adobe.PDFServicesSDK" Version="2.1.0" />
+    <PackageReference Include="Adobe.PDFServicesSDK" Version="3.2.0" />
 </ItemGroup> 
 ```
 
@@ -112,6 +112,7 @@ Refer to the following for links to supported product documentation.
 
 | Item  | Public doc                                                                |
 | ----- | ------------------------------------------------------------------------- |
+| 3.0.0 | [Web page(2.2.0 docs)](../3.0.0/) |
 | 2.2.0 | [Web page(2.2.0 docs)](../2.2.0/) |
 | 2.1.0 | [Web page(2.1.0 docs)](https://opensource.adobe.com/pdftools-sdk-docs/release/2.1.0/) |
 | 2.0.0 | [Web page(2.0.0 docs)](https://opensource.adobe.com/pdftools-sdk-docs/release/2.0.0/) |
@@ -140,7 +141,7 @@ Upgrading to the latest SDK should not break existing applications.
 ## Change history
 
 
-### Python SDK 2.1.2 (December, 2022, minor release)
+### Python SDK 2.1.2 (January, 2023, minor release)
 | Change  | Language            | Description                                                                                   |
 | ------- | ------------------- | --------------------------------------------------------------------------------------------- |
 | New | Python                 | Added configuration for SDKs to process the documents in the specified region.|
