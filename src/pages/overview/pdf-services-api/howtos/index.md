@@ -175,20 +175,21 @@ client_config = ClientConfig.builder()
 ## Service region configuration
 
 Adobe PDF Services SDKs use `US (United States)` as a default region to process all the documents. 
-Once you purchase PDF Services SDK, the SDKs can be configured to process the documents in a specified region that is listed below. In addition to
-the details below, you can refer to working code samples:
-
--   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/ExportPDFWithSpecifiedRegion.java)
--   [.NET](https://github.com/adobe/PDFServices.NET.SDK.Samples/blob/master/ExportPDFWithSpecifiedRegion/Program.cs)
--   [Node.js](https://github.com/adobe/pdfservices-node-sdk-samples/blob/master/src/customconfigurations/export-pdf-with-specified-region.js)
--   [Python](https://github.com/adobe/pdfservices-python-sdk-samples/blob/master/src/extractpdf/extract_txt_from_pdf_with_specified_region.py)
-
+Once you purchase PDF Services SDK, the SDKs can be configured to process the documents in a specified region that is listed below. 
 Currently, PDF Services SDKs has support for the following regions :
 
 |Region Code | Name         |
 | ------------| ------------|
 | `US`       | United States (default)|
 | `EU`       | Europe |
+
+In addition to
+the details below, you can refer to working code samples:
+
+-   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/ExportPDFWithSpecifiedRegion.java)
+-   [.NET](https://github.com/adobe/PDFServices.NET.SDK.Samples/blob/master/ExportPDFWithSpecifiedRegion/Program.cs)
+-   [Node.js](https://github.com/adobe/pdfservices-node-sdk-samples/blob/master/src/customconfigurations/export-pdf-with-specified-region.js)
+-   [Python](https://github.com/adobe/pdfservices-python-sdk-samples/blob/master/src/extractpdf/extract_txt_from_pdf_with_specified_region.py)
 
 Available properties:
 
