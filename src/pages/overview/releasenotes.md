@@ -155,6 +155,7 @@ Refer to the following for links to supported product documentation.
 
 | Item  | Public doc                                                                |
 | ----- | ------------------------------------------------------------------------- |
+| 3.0.0 | [Web page(2.2.0 docs)](../3.0.0/) |
 | 2.2.0 | [Web page(2.2.0 docs)](../2.2.0/) |
 | 2.1.0 | [Web page(2.1.0 docs)](https://opensource.adobe.com/pdftools-sdk-docs/release/2.1.0/) |
 | 2.0.0 | [Web page(2.0.0 docs)](https://opensource.adobe.com/pdftools-sdk-docs/release/2.0.0/) |
@@ -181,6 +182,18 @@ Minor and Patch releases are backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
+
+### Python SDK 2.1.2 (December, 2022, minor release)
+| Change  | Language            | Description                                                                                   |
+| ------- | ------------------- | --------------------------------------------------------------------------------------------- |
+| New | Python                 | Added configuration for SDKs to process the documents in the specified region.|
+
+
+### 3.2.0 (January, 2023; minor release)
+| Change  | Language            | Description                                                                                   |
+| ------- | ------------------- | --------------------------------------------------------------------------------------------- |
+| New     | All                 | Added configuration for SDKs to process the documents in the specified region.                |
+| Changed     | NodeJS                | Upgraded libraries to fix recently discovered vulnerability..                          |
 
 ### Python SDK 2.0.0 (December, 2022, major release)
 | Change  | Language            | Description                                                                                   |
