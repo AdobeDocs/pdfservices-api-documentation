@@ -27,7 +27,7 @@ repo as follows:
 ## Migration Guide to PDF Services SDK
 
 Refer to the following table for migrating to PDF Services SDK version
-2.1.0, you can also refer our Samples(
+3.2.0, you can also refer our Samples(
 [Java](https://www.adobe.com/go/pdftoolsapi_java_samples), [Node
 JS](https://www.adobe.com/go/pdftoolsapi_node_sample),
 [.NET](https://www.adobe.com/go/pdftoolsapi_net_samples)). for the
@@ -112,7 +112,6 @@ Refer to the following for links to supported product documentation.
 
 | Item  | Public doc                                                                |
 | ----- | ------------------------------------------------------------------------- |
-| 3.0.0 | [Web page(2.2.0 docs)](../3.0.0/) |
 | 2.2.0 | [Web page(2.2.0 docs)](../2.2.0/) |
 | 2.1.0 | [Web page(2.1.0 docs)](https://opensource.adobe.com/pdftools-sdk-docs/release/2.1.0/) |
 | 2.0.0 | [Web page(2.0.0 docs)](https://opensource.adobe.com/pdftools-sdk-docs/release/2.0.0/) |
