@@ -98,7 +98,7 @@ const UploadUtil = ({}) => {
 
         return (
             <>
-                <Provider theme={lightTheme} colorScheme="light">
+                <Provider theme={defaultTheme} colorScheme="light">
                     <h1>Upload Your File</h1>
                     <Divider/>
                     {/*<Form maxWidth="size-1800" aria-labelledby="label-3">*/}
