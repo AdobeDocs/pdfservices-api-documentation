@@ -188,7 +188,7 @@ Jumpstart your development by bookmarking or downloading the following key resou
 
 The samples project requires the following:
 
--   .NET Core: version 3.1 or above
+-   .NET: version 6.0 or above
 -   A build Tool: Either Visual Studio or .NET Core CLI.
 
 #### Authentication
