@@ -145,6 +145,7 @@ Upgrading to the latest SDK should not break existing applications.
 | Change  | Language            | Description                                                                                   |
 | ------- | ------------------- | --------------------------------------------------------------------------------------------- |
 | New | Python                 | Added configuration for SDKs to process the documents in the specified region.|
+| Changed| Python               | Upgraded libraries to fix recently discovered vulnerability. |
 
 
 ### 3.2.0 (January, 2023; minor release)
