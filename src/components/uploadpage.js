@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {CopyToClipboard} from 'react-copy-to-clipboard';
+// import {CopyToClipboard} from 'react-copy-to-clipboard';
 //import {AssetID} from "./assetID";
 import axios from 'axios';
 import PropTypes from "prop-types";
@@ -134,9 +134,7 @@ const UploadUtil = ({}) => {
                                 </Content>
                                 <ButtonGroup>
                                     {showResponse === true &&
-                                        <CopyToClipboard text={AID}>
-                                            <Button variant="accent">Copy</Button>
-                                        </CopyToClipboard>}
+                                        <Button variant="accent" onPress={() => navigator.clipboard.writeText(AID)}>Copy</Button>}
                                     <Button variant="secondary" onPress={close}>Close</Button>
                                 </ButtonGroup>
                             </Dialog>
