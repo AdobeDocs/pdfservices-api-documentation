@@ -31,7 +31,7 @@ The PDF Services API is also available on [Power Automate](https://docs.microsof
 
 ## Document Generation API for automating document workflows    
 
-The [Document Generation API](src/pages/overview/document-generation-api) is a cloud-based web service that allows you to produce high fidelity PDF and Word documents with dynamic data inputs. Using Document Generation API, you can merge your data(e.g. JSON file) with Word templates to create dynamic documents for contracts and agreements, invoices, proposals, reports, forms, branded marketing documents and more.
+The [Document Generation API](document-generation-api) is a cloud-based web service that allows you to produce high fidelity PDF and Word documents with dynamic data inputs. Using Document Generation API, you can merge your data(e.g. JSON file) with Word templates to create dynamic documents for contracts and agreements, invoices, proposals, reports, forms, branded marketing documents and more.
 
 Embed Document Generation API into any application using [PDFServices SDK](pdf-services-api#sdk) for Node.js, .Net, and Java. [Start a Document Generation free trial that includes up to 1,000 free Document transactions or runs for 6 months, whichever occurs earlier.](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=document-generation-api)
 
