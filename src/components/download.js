@@ -5,7 +5,7 @@ import {
     Button,
     Divider,
     Provider,
-    lightTheme
+    lightTheme, defaultTheme
 } from '@adobe/react-spectrum';
 
 const DownloadUtil = ({}) => {
@@ -14,7 +14,7 @@ const DownloadUtil = ({}) => {
     if(isBrowser) {
         return (
             <>
-                <Provider theme={lightTheme} colorScheme="light">
+                <Provider theme={defaultTheme} colorScheme="light">
                     <h1>View Your File Here</h1>
                     <Divider/>
                     <Form maxWidth="size-3600">
