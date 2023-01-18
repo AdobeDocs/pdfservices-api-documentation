@@ -183,6 +183,14 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### Adobe Document Generation Server Side Release (January, 2023, server side release)
+
+| Change  | Language | Description                                                                                                                  |
+|---------|----------|------------------------------------------------------------------------------------------------------------------------------|
+| New     | All      | Adding support for [inline images](../document-generation-api/inlineimages.md#) feature.                                     |
+| New     | All      | Adding support for additional constructs in [fragments](../document-generation-api/fragments.md#Other-supported-constructs). |
+| Changed | All      | Adding support for prefix in [text tags](../document-generation-api/templatetags.md#Placeholder-Variables).                  |
+
 ### Python SDK 2.1.2 (January, 2023, minor release)
 | Change  | Language            | Description                                                                                   |
 | ------- | ------------------- | --------------------------------------------------------------------------------------------- |
