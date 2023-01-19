@@ -21,7 +21,7 @@ module.exports = {
         },
         pages: [
             {
-                title: 'Adobe Document Services',
+                title: 'Adobe Acrobat Services',
                 subTitle: '',
                 path: '../../../document-services/'
             },
@@ -146,6 +146,10 @@ module.exports = {
                         path: 'overview/pdf-services-api/index.md'
                     },
                     {
+                        title: 'Getting Started',
+                        path: 'overview/pdf-services-api/gettingstarted.md'
+                    },
+                    {
                         title: 'Quickstarts',
                         path: 'overview/pdf-services-api/quickstarts',
                         pages: [
@@ -244,22 +248,6 @@ module.exports = {
                                 path: 'overview/pdf-services-api/howtos/pdf-properties.md'
                             }
                         ]
-                    },
-                    {
-                        title: 'Version - Support policy',
-                        path: 'overview/pdf-services-api/policies.md'
-                    },
-                    {
-                        title: 'Release notes',
-                        path: 'overview/releasenotes.md'
-                    },
-                    {
-                        title: 'PDF Services API Licensing',
-                        path: 'overview/pdf-services-api/dcserviceslicensing.md'
-                    },
-                    {
-                        title: 'Usage Limits',
-                        path: 'overview/pdf-services-api/dcserviceslicensing.md#usage-limits'
                     }
                 ]
             },
@@ -296,44 +284,38 @@ module.exports = {
 
                     },
                     {
-                        title: 'Template Tags',
-                        path: 'overview/document-generation-api/templatetags.md'
-                    },
-                    {
-                        title: 'Fragments',
-                        path: 'overview/document-generation-api/fragments.md'
-                    },
-                    {
-                        title: 'Apply styling and formatting',
-                        path: 'overview/document-generation-api/stylingformattingtags.md'
-                    },
-                    {
-                        title: 'Hyperlink',
-                        path: 'overview/document-generation-api/hyperlink.md'
-                    },
-                    {
-                        title: 'Inline Images',
-                        path: 'overview/document-generation-api/inlineimages.md'
-                    },
-                    {
-                        title: 'Dynamic Table Constructs ',
-                        path: 'overview/document-generation-api/dynamictableconstructs.md'
-                    },
-                    {
-                        title: 'Word Add-in',
-                        path: 'overview/document-generation-api/wordaddin.md'
-                    },
-                    {
-                        title: 'Release Notes',
-                        path: 'overview/releasenotes.md'
-                    },
-                    {
-                        title: 'PDF Services API Licensing',
-                        path: 'overview/document-generation-api/dcserviceslicensing.md'
-                    },
-                    {
-                        title: 'Usage Limits',
-                        path: 'overview/document-generation-api/dcserviceslicensing.md#usage-limits'
+                        title:'How Tos',
+                        path: 'overview/document-generation-api/templatetags.md',
+                        pages: [
+                            {
+                                title: 'Template Tags',
+                                path: 'overview/document-generation-api/templatetags.md'
+                            },
+                            {
+                                title: 'Fragments',
+                                path: 'overview/document-generation-api/fragments.md'
+                            },
+                            {
+                                title: 'Apply styling and formatting',
+                                path: 'overview/document-generation-api/stylingformattingtags.md'
+                            },
+                            {
+                                title: 'Hyperlink',
+                                path: 'overview/document-generation-api/hyperlink.md'
+                            },
+                            {
+                                title: 'Inline Images',
+                                path: 'overview/document-generation-api/inlineimages.md'
+                            },
+                            {
+                                title: 'Dynamic Table Constructs ',
+                                path: 'overview/document-generation-api/dynamictableconstructs.md'
+                            },
+                            {
+                                title: 'Word Add-in',
+                                path: 'overview/document-generation-api/wordaddin.md'
+                            }
+                        ]
                     }
                 ]
             },
@@ -375,33 +357,13 @@ module.exports = {
                     {
                         title: 'How Tos',
                         subTitle: '',
-                        path: 'overview/pdf-extract-api/howtos',
+                        path: 'overview/pdf-extract-api/howtos/index.md',
                         pages: [
-                            {
-                                title: 'Overview',
-                                path: 'overview/pdf-extract-api/howtos/index.md'
-                            },
                             {
                                 title: 'PDF Extract API',
                                 path: 'overview/pdf-extract-api/howtos/extract-api.md'
-                            },
-                            {
-                                title: 'Using Our APIs',
-                                path: 'overview/pdf-extract-api/howtos/api-usage.md'
                             }
                         ]
-                    },
-                    {
-                        title: 'Release Notes',
-                        path: 'overview/releasenotes.md'
-                    },
-                    {
-                        title: 'PDF Services API Licensing',
-                        path: 'overview/pdf-extract-api/dcserviceslicensing.md'
-                    },
-                    {
-                        title: 'Usage Limits',
-                        path: 'overview/pdf-extract-api/dcserviceslicensing.md#usage-limits'
                     }
                 ]
             },
