@@ -15,7 +15,7 @@ After getting the access token, we need to upload the asset. Uploading an asset 
 
 1. First you need to get an upload pre-signed URI by using the following API.
 
-You can read more about the API in detail [here](../../../apis/#operation/asset.uploadpresignedurl).
+You can read more about the API in detail [here](../../../../apis/#operation/asset.uploadpresignedurl).
 
 <CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
 
@@ -47,13 +47,13 @@ curl --location -g --request PUT 'https://dcplatformstorageservice-us-east-1.s3-
 
 To create a job for the operation, please use the  `assetID` obtained in Step 2 in the API request body. On successful job submission you will get a status code of `201` and a response header `location` which will be used for polling. 
 
-For creating the job, please refer to the corresponding API spec for the particular [PDF Operation](../../../apis).
+For creating the job, please refer to the corresponding API spec for the particular [PDF Operation](../../../../apis).
 
 ## Step 4 : Fetching the status
 
 Once the job is successfully created, you need to poll the at the `location` returned in response header of Step 3 by using the following API 
 
-You can read more about the API in detail [here](../../../apis/#operation/pdfoperations.compresspdf.jobstatus).
+You can read more about the API in detail [here](../../../../apis/#operation/pdfoperations.compresspdf.jobstatus).
 
 <CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
 
@@ -73,7 +73,7 @@ If the `status` field is `in progress` you need to keep polling the location unt
 
 If the `status` field is `done` the response body will also have a download pre-signed URI in the `dowloadUri` field, which will be used to download the asset directly from cloud provider by making the following API call
 
-You can read more about the API in detail [here](../../../apis/#operation/asset.get).
+You can read more about the API in detail [here](../../../../apis/#operation/asset.get).
 
 <CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
 

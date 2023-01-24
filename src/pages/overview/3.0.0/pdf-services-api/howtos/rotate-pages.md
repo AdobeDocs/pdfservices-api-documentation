@@ -7,7 +7,7 @@ Rotate a page in an existing document.
 
 ## Rest API
 
-See our public API Reference for [Rotate Pages.](../../../apis/#tag/Page-Manipulation)
+See our public API Reference for [Rotate Pages.](../../../../apis/#tag/Page-Manipulation)
 
 ## Rotate Pages in PDF
 

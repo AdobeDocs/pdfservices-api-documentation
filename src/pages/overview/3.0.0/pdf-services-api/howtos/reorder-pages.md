@@ -7,7 +7,7 @@ Reorder the pages of a PDF file to reorganize.
 
 ## Rest API
 
-See our public API Reference for [Reorder Pages](../../../apis/#tag/Combine-PDF)
+See our public API Reference for [Reorder Pages](../../../../apis/#tag/Combine-PDF)
 
 ## Reorder Pages in PDF
 

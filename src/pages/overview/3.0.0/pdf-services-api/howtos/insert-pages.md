@@ -7,7 +7,7 @@ Insert one or more pages into an existing document
 
 ## Rest API 
 
-See our public API Reference for [Insert Pages](../../../apis/#tag/Combine-PDF)
+See our public API Reference for [Insert Pages](../../../../apis/#tag/Combine-PDF)
 
 ## Insert Pages in PDF
 

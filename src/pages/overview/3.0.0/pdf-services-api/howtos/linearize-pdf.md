@@ -7,7 +7,7 @@ Optimize PDFs for quick viewing on the web, especially for mobile clients. Linea
 
 ## Rest API 
 
-See our public API Reference for [Linearize PDF](../../../apis/#tag/Linearize-PDF)
+See our public API Reference for [Linearize PDF](../../../../apis/#tag/Linearize-PDF)
 
 ## Linearize PDF
 
