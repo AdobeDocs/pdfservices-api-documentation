@@ -5,7 +5,7 @@ title: Release Notes | PDF Services API | Adobe PDF Services
 
 This document describes the change history across releases for supported
 versions. For details regarding versioning and support policies, see
-[Version - Support policy](../pdf-services-api/policies.md).
+[Version - Support policy](src/pages/2.2.0/pdf-services-api/policies.md).
 
 ## Supported versions
 
@@ -22,12 +22,12 @@ repo as follows:
 2.  Select *Releases*.
 3.  Select and download the needed release.
 
-![Previous Release tags with release notes and links to the assets](../images/prevrelease.png)
+![Previous Release tags with release notes and links to the assets](src/pages/2.2.0/images/prevrelease.png)
 
 ## Migration Guide to PDF Services SDK
 
 Refer to the following table for migrating to PDF Services SDK version
-3.2.0, you can also refer our Samples(
+2.1.0, you can also refer our Samples(
 [Java](https://www.adobe.com/go/pdftoolsapi_java_samples), [Node
 JS](https://www.adobe.com/go/pdftoolsapi_node_sample),
 [.NET](https://www.adobe.com/go/pdftoolsapi_net_samples)). for the
@@ -50,8 +50,8 @@ version.
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <pdfservices.sdk.version>3.2.0</pdfservices.sdk.version>
-    <pdfservices.sdk.samples.version>3.2.0</pdfservices.sdk.samples.version>
+    <pdfservices.sdk.version>2.1.0</pdfservices.sdk.version>
+    <pdfservices.sdk.samples.version>2.1.0</pdfservices.sdk.samples.version>
 </properties>
 
 <dependency>
@@ -73,7 +73,7 @@ import com.adobe.pdfservices.operation.ExecutionContext;
 * Update the latest SDK dependency in package.json file of your project
  
 ```
-"@adobe/pdfservices-node-sdk": "3.2.0"
+"@adobe/pdfservices-node-sdk": "2.1.0"
 ```
 
 * Require the `@adobe/pdfservices-node-sdk` in the Sample file to access the SDK interface
@@ -97,7 +97,7 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 ```
 <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.12" />
-    <PackageReference Include="Adobe.PDFServicesSDK" Version="3.2.0" />
+    <PackageReference Include="Adobe.PDFServicesSDK" Version="2.1.0" />
 </ItemGroup> 
 ```
 
@@ -112,8 +112,6 @@ Refer to the following for links to supported product documentation.
 
 | Item  | Public doc                                                                |
 | ----- | ------------------------------------------------------------------------- |
-| 3.0.0 | [Web page(3.0.0 docs)](src/pages/3.0.0/) |
-| 2.2.0 | [Web page(2.2.0 docs)](src/pages/2.2.0/) |
 | 2.1.0 | [Web page(2.1.0 docs)](https://opensource.adobe.com/pdftools-sdk-docs/release/2.1.0/) |
 | 2.0.0 | [Web page(2.0.0 docs)](https://opensource.adobe.com/pdftools-sdk-docs/release/2.0.0/) |
 | 1.3.0 | [Web page(1.3.0 docs)](https://opensource.adobe.com/pdftools-sdk-docs/release/1.3.0/) |
@@ -135,38 +133,10 @@ Change types include the following:
 
 <InlineAlert slots="text" />
 
-Minor and Patch releases are backward compatible with the previous release.
+The new release is backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
-
-
-### Python SDK 2.1.2 (January, 2023, minor release)
-| Change  | Language            | Description                                                                                   |
-| ------- | ------------------- | --------------------------------------------------------------------------------------------- |
-| New | Python                 | Added configuration for SDKs to process the documents in the specified region.|
-| Changed| Python               | Upgraded libraries to fix recently discovered vulnerability. |
-
-
-### 3.2.0 (January, 2023; minor release)
-| Change  | Language            | Description                                                                                   |
-| ------- | ------------------- | --------------------------------------------------------------------------------------------- |
-| New     | All                 | Added configuration for SDKs to process the documents in the specified region.                |
-| Changed     | NodeJS                | Upgraded libraries to fix recently discovered vulnerability..                          |
-
-
-### Python SDK 2.0.0 (December, 2022; major release)
-| Change  | Language            | Description                                                                                   |
-| ------- | ------------------- | --------------------------------------------------------------------------------------------- |
-| Changed | Python                 | Released SDK v2.0.0 for Python, based out of the new PDF Services APIs.                                       |
-
-
-### 3.0.0 (September, 2022; major release)
-| Change  | Language            | Description                                                                                   |
-| ------- | ------------------- | --------------------------------------------------------------------------------------------- |
-| Changed | All                 | Released SDK v3.0.0, based out of the new PDF Services APIs.                                       |
-| New     | Java                | PDF Electronic Seal operation is now available in Beta PDF Services SDKs.                          |
-
 
 ### 2.2.3 (July, 2022; patch release)
 | Change  | Language            | Description                                                                                   |
@@ -233,7 +203,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 | Change  | Language            | Description                                                                                                                                                   |
 | ------- | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| New     | All                 | Adding support for [fragments](../document-generation-api/fragments.md#) feature.                                                                             |
+| New     | All                 | Adding support for [fragments](src/pages/2.2.0/document-generation-api/fragments.md#) feature.                                                                             |
 | Changed | Java                | Java SDK is enabled to connect to Internet through Proxy where proxy server settings can be set via client config. |
 | Changed | All                 | PDF Extract API bug fixes and stability release. |
 
@@ -241,16 +211,16 @@ Upgrading to the latest SDK should not break existing applications.
 
 | Change  | Language | Description                                                                                                                                                              |
 | ------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| New     | All      | Adding support for [fragments](../document-generation-api/fragments.md#) feature.                                                                                        |
-| Changed     | All      | Adding support to add [images](../document-generation-api/templatetags.md#images) (only base64 encoded image data was supported initially) through publicly accessible URLs.     |
-| Changed     | All      | Adding support for primitive type [list](../document-generation-api/templatetags.md#lists)
+| New     | All      | Adding support for [fragments](src/pages/2.2.0/document-generation-api/fragments.md#) feature.                                                                                        |
+| Changed     | All      | Adding support to add [images](src/pages/2.2.0/document-generation-api/templatetags.md#images) (only base64 encoded image data was supported initially) through publicly accessible URLs.     |
+| Changed     | All      | Adding support for primitive type [list](src/pages/2.2.0/document-generation-api/templatetags.md#lists)
 
 ### Adobe Document Generation Server Side Release (14 December, 2021; server side release)
 
 | Change  | Language | Description                                                                                                                                                              |
 | ------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| New     | All      | Adding support for additional tags (<strong\> and <em\>) in [styling and formatting](../document-generation-api/stylingformattingtags.md#apply-styling-and-formatting) feature.                                                                               |
-| New     | All      | Support for [dynamic table constructs](../document-generation-api/dynamictableconstructs.md).     |
+| New     | All      | Adding support for additional tags (<strong\> and <em\>) in [styling and formatting](src/pages/2.2.0/document-generation-api/stylingformattingtags.md#apply-styling-and-formatting) feature.                                                                               |
+| New     | All      | Support for [dynamic table constructs](src/pages/2.2.0/document-generation-api/dynamictableconstructs.md).     |
 
 ### Extract PDF Server Side Release (15 November, 2021; server side release)
 | Change  | Language            | Description                                                                                    |
@@ -263,8 +233,8 @@ Upgrading to the latest SDK should not break existing applications.
 
 | Change  | Language | Description                                                                                                                                                   |
 | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| New     | All      | HTML [styling and formatting](../document-generation-api/stylingformattingtags.md#apply-styling-and-formatting) support in json data.                                                                               |
-| New     | All      | Support for [horizontal tables](../document-generation-api/templatetags.md#dynamically-expand-table-rows-or-columns).     |
+| New     | All      | HTML [styling and formatting](src/pages/2.2.0/document-generation-api/stylingformattingtags.md#apply-styling-and-formatting) support in json data.                                                                               |
+| New     | All      | Support for [horizontal tables](src/pages/2.2.0/document-generation-api/templatetags.md#dynamically-expand-table-rows-or-columns).     |
 | New     | All      | Support for SVG images.                                                                               |
 
 ### Extract PDF Server Side Release (29 September, 2021; server side release)
