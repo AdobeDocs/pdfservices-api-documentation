@@ -16,14 +16,6 @@ and your users can fully interact with the PDF file. After performing
 OCR, the PDF may be fully editable and searchable. The input format must
 be `application/pdf`.
 
-To produce a good quality OCR output, following are the recommendations
-<ul>
-    <li>Image resolution should be 300dpi or higher.</li>
-    <li>Image scan should be in black and white whenever possible.</li>
-    <li>Image scan should be clear and the text should be visible.</li>
-    <li>There shall not be flash or glare etc on the image.</li>
-</ul>
-
 This sample defaults to the en-us locale. For other languages, see [OCR with explicit language.](#ocr-with-explicit-language)
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
