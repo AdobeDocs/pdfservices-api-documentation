@@ -42,7 +42,11 @@ To resolve the text tags used in the above fragments, the **jsonDataForMerge** j
   "city": "Sample City",
   "state": "Sample State",
   "pincode": "42132xx",
+<<<<<<< HEAD
   "zip": "Sample zip",
+=======
+  "zipcode": "Sample zipcode",
+>>>>>>> new constructs in fragments
   "firstname": "John",
   "lastname": "Roy",
   "country": "India",
@@ -96,10 +100,16 @@ And the output document generated will look like:
 
 ## Other supported constructs
 
+<<<<<<< HEAD
 ### Conditionals
 Evaluate value of fragments based on the conditions.
 
 JSON representation of the input data:
+=======
+### Conditional Phrases
+Evaluate value of fragments based on the conditions.
+
+>>>>>>> new constructs in fragments
 ```json
 [
   {
@@ -113,6 +123,7 @@ JSON representation of the input data:
   }
 ]
 ```
+<<<<<<< HEAD
 The `localityDetails` fragment contains a conditional phrase that is evaluated based on the `country` text tag.
 The format of `localityDetails` for India is
 `street`
@@ -120,15 +131,29 @@ The format of `localityDetails` for India is
 `country`. The format of `localityDetails` for the USA is
 `street`
 `city` `state` `zip`,
+=======
+The `localityDetails` fragment definition includes a conditional-phrase which depends on `country` text tag. Based on the value of `country` text tag, value of `localityDetails` differs.
+For India, the format of `localityDetails` is
+`street`
+`postCode city`
+`country`. For USA, the format of `localityDetails` is
+`street`
+`city, state zip`
+>>>>>>> new constructs in fragments
 `country`.
 
 ![Output of fragment with condition in document](../images/fragments-condition.png)
 
 
 ### Optional
+<<<<<<< HEAD
 Setting a tag inside the fragment as *optional* will replace the tag with an empty string if it is not present either in input or fragment json data.
 
 JSON representation of the input data:
+=======
+Setting the tag as optional will replace the tag with empty string if it's value is not present in input json data and fragment json data.
+
+>>>>>>> new constructs in fragments
 ```json
 [
   {
@@ -140,14 +165,22 @@ JSON representation of the input data:
 ]
 ```
 
+<<<<<<< HEAD
 In the above fragment, there is an optional property used with `middlename` tag. Since the optional property is set to true, the `middlename` tag will be replaced by an empty string if it does not exist.
+=======
+In the fragment definition above, there is an optional property used with `middleName` tag. Since the optional property is set to true, the `middleName` tag will be replaced by it's value if it exists else will be replaced by an empty string.
+>>>>>>> new constructs in fragments
 
 ![Output of fragment with optional value in document](../images/fragments-optional.png)
 
 ### Default
+<<<<<<< HEAD
 A *default value* can be specified for a tag inside the fragment. 
 
 JSON representation of the input data:
+=======
+A default value can be specified for the tag used inside the fragment. In case, the specified tag is not present in the input json data or fragment json data, the tag gets replaced by its default value.
+>>>>>>> new constructs in fragments
 ```json
 [
   {
@@ -159,14 +192,22 @@ JSON representation of the input data:
 ]
 ```
 
+<<<<<<< HEAD
 In the above fragment, if the `organisation` tag does not exist either in input or fragment json data, then default value (i.e. "Org") will be used.
+=======
+In the above example, if the `organisation` tag does not exist in input json data or fragment json data, then default vaule (i.e. "Org") will be used.
+>>>>>>> new constructs in fragments
 
 ![Output of fragment with default value in document](../images/fragments-default.png)
 
 ### Prefix
+<<<<<<< HEAD
 A *prefix value* can be specified for a tag inside the fragment.
 
 JSON representation of the input data:
+=======
+Adds a value before the value of the tag in the fragment definition.
+>>>>>>> new constructs in fragments
 ```json
 [
   {
@@ -178,6 +219,7 @@ JSON representation of the input data:
   }
 ]
 ```
+<<<<<<< HEAD
 In the above fragment, `doctor` tag further contains `doctorName` tag, to which a prefix value is specified. So, the prefix value (i.e. "Dr. ") will be added before the value of the `doctorName` tag in the output.
 
 ![Output of fragment with prefix in document](../images/fragments-prefix.png)
@@ -188,3 +230,9 @@ In the above fragment, `doctor` tag further contains `doctorName` tag, to which 
 <br />
 <li>The Expressions and Jsonata functions are not supported inside the fragments.</li>
 </ul>
+=======
+In the example above, `doctor` fragment tag is composed of `doctorName` fragment tag. **Prefix** property is used with `doctorName` fragment tag. Prefix value of **Dr. ** will be added before the value of the `doctorName` fragment tag in the output.
+
+![Output of fragment with prefix in document](../images/fragments-prefix.png)
+
+>>>>>>> new constructs in fragments
