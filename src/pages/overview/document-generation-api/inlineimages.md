@@ -1,5 +1,5 @@
 ---
-title: Document Services APIs | Document Generation API | Inline Images
+title: Inline Images | Document Generation API | Adobe PDF Services
 ---
 # Inline Images
 
