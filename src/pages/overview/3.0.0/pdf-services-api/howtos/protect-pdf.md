@@ -9,7 +9,7 @@ Support for AES-128 and AES-256 encryption on PDF files, with granular permissio
 
 ## Rest API 
 
-See our public API Reference for [Protect PDF](../../../apis/#tag/Protect-PDF)
+See our public API Reference for [Protect PDF](https://developer.adobe.com/document-services/docs/apis/#tag/Protect-PDF)
 
 ## Protect PDFs with user password
 
