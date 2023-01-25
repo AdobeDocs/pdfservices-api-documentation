@@ -55,7 +55,7 @@ The output of PDF Accessibility Auto-Tag API contains the following:
 
 ## Rest API 
 
-See our public API Reference for [PDF Accessibility Auto-Tag API](../../../apis/#tag/Auto-Tag).
+See our public API Reference for [PDF Accessibility Auto-Tag API](https://developer.adobe.com/document-services/docs/apis/#tag/Auto-Tag).
 
 ## Generate tagged PDF with version 1.7 along with an XLSX report and shift the headings in the output PDF file
 
