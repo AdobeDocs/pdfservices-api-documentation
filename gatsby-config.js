@@ -21,7 +21,7 @@ module.exports = {
         },
         pages: [
             {
-                title: 'Adobe Document Services',
+                title: 'Adobe Acrobat Services',
                 subTitle: '',
                 path: '../../../document-services/'
             },
