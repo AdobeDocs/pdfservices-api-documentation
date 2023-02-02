@@ -140,6 +140,12 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### 2.3.0 (February, 2023, minor release)
+
+| Change  | Language | Description                                                                                                                  |
+|---------|----------|------------------------------------------------------------------------------------------------------------------------------|
+| Changed | Node.JS      | Removing the usage of `Content-Length` and `Transfer-Encoding` headers to adapt to HTTP 1.1 standards.                  |
+
 
 ### Python SDK 2.1.2 (January, 2023, minor release)
 | Change  | Language            | Description                                                                                   |
