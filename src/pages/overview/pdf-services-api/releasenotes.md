@@ -144,7 +144,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 | Change  | Language | Description                                                                                                                  |
 |---------|----------|------------------------------------------------------------------------------------------------------------------------------|
-| Changed | Node.JS      | Removing the usage of `Content-Length` and `Transfer-Encoding` headers to adapt to HTTP 1.1 standards.                  |
+| Changed | NodeJS      | Fixed the response failures with `400` HTTP statusCode  and `UNKNOWN` errorCode for NodeJS SDK(s) v2.2.3 and below.               |
 
 
 ### Python SDK 2.1.2 (January, 2023, minor release)
