@@ -36,7 +36,7 @@ correspond to a major release, minor release, and patch/update
 ### Versioning
 
 As mentioned on [Public API
-Docs](../../apis),
+Docs](https://developer.adobe.com/document-services/docs/apis/),
 each operation has a unique assetId which is passed in Form Parameters.
 Generally, APIs will be enhanced while keeping them backward compatible.
 If its functionality can't be enhanced without breaking changes, then

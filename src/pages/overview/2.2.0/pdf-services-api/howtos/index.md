@@ -34,7 +34,7 @@ runtime instead of storing them in a file. Please refer the following
 samples for details.
 
 -   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithInMemoryAuthCredentials.java)
--   [.NET](https://github.com/adobe/PDFServices.NET.SDK.Samples/tree/master/CreatePDFWithInMemoryAuthCredentials)
+-   [.NET](https://github.com/adobe/PDFServices.NET.SDK.Samples/blob/master/CreatePDFWithInMemoryAuthCredentials/Program.cs)
 -   [Node.js](https://github.com/adobe/pdfservices-node-sdk-samples/blob/master/src/customconfigurations/create-pdf-with-inmemory-auth-credentials.js)
 -   [Python](https://github.com/adobe/pdfservices-python-sdk-samples/blob/master/src/extractpdf/extract_txt_from_pdf_with_in_memory_auth_credentials.py)
 
@@ -45,7 +45,7 @@ It allows the clients to use SDK within the network where all outgoing calls hav
 go through a proxy and allowed only if allow-listed on the proxy. Please refer the 
 following sample for details.
 
--   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/createpdf/CreatePDFWithProxyServer.java)
+-   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithProxyServer.java)
 
 ### Java Proxy Server configuration
 

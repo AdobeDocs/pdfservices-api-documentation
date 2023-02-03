@@ -147,7 +147,7 @@ schema](/extractJSONOutputSchema2.json)):
 
 ## Rest API 
 
-See our public API Reference for [Extract PDF](../../../apis/#tag/Extract-PDF).
+See our public API Reference for [Extract PDF](https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF).
 
 ## Extract Text from a PDF
 
