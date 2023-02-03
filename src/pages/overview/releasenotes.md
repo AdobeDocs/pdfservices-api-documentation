@@ -193,9 +193,9 @@ Upgrading to the latest SDK should not break existing applications.
 
 | Change  | Language | Description                                                                                                                  |
 |---------|----------|------------------------------------------------------------------------------------------------------------------------------|
-| New     | All      | Adding support for [inline images](../document-generation-api/inlineimages.md#) feature.                                     |
-| New     | All      | Adding support for additional constructs in [fragments](../document-generation-api/fragments.md#Other-supported-constructs). |
-| Changed | All      | Adding support for prefix in [text tags](../document-generation-api/templatetags.md#Placeholder-Variables).                  |
+| New     | Java,NodeJS,.NET      | Adding support for [inline images](../document-generation-api/inlineimages.md#) feature.                                     |
+| New     | Java,NodeJS,.NET      | Adding support for additional constructs in [fragments](../document-generation-api/fragments.md#Other-supported-constructs). |
+| Changed | Java,NodeJS,.NET      | Adding support for prefix in [text tags](../document-generation-api/templatetags.md#Placeholder-Variables).                  |
 
 ### Python SDK 2.1.2 (January, 2023, minor release)
 | Change  | Language            | Description                                                                                   |
@@ -207,7 +207,7 @@ Upgrading to the latest SDK should not break existing applications.
 ### 3.2.0 (January, 2023; minor release)
 | Change  | Language            | Description                                                                                   |
 | ------- | ------------------- | --------------------------------------------------------------------------------------------- |
-| New     | All                 | Added configuration for SDKs to process the documents in the specified region.                |
+| New     | Java,NodeJS,.NET                 | Added configuration for SDKs to process the documents in the specified region.                |
 | Changed     | NodeJS                | Upgraded libraries to fix recently discovered vulnerability..                          |
 
 ### Python SDK 2.0.0 (December, 2022, major release)
@@ -219,9 +219,8 @@ Upgrading to the latest SDK should not break existing applications.
 ### 3.0.0 (September, 2022; major release)
 | Change  | Language            | Description                                                                                   |
 | ------- | ------------------- | --------------------------------------------------------------------------------------------- |
-| Changed | All                 | Released SDK v3.0.0, based out of the new PDF Services APIs.                                       |
+| Changed | Java,NodeJS,.NET    | <ul><li>Released SDK v3.0.0, based out of the new PDF Services APIs.</li><li>Added the support of OCR locale for Export PDF operation.</li><li>Updated PDF Properties operation to return PDFProperties object. Discontinued the support of returning FileRef and JSON Object.</li><li>Image formats(JPEG and PNG) for Export PDF have been moved from Export PDF operation to ExportPDFToImages operation.</li>
 | New     | Java                | PDF Electronic Seal operation is now available in Beta PDF Services SDKs.                          |
-
 
 ### 2.2.3 (July, 2022; patch release)
 | Change  | Language            | Description                                                                                   |
