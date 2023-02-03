@@ -219,7 +219,7 @@ Upgrading to the latest SDK should not break existing applications.
 ### 3.0.0 (September, 2022; major release)
 | Change  | Language            | Description                                                                                   |
 | ------- | ------------------- | --------------------------------------------------------------------------------------------- |
-| Changed | Java,NodeJS,.NET    | <ul><li>Released SDK v3.0.0, based out of the new PDF Services APIs.</li><li>Added the support of OCR locale for Export PDF operation.</li><li>Updated PDF Properties operation to return PDFProperties object. Discontinued the support of returning FileRef and JSON Object.</li><li>Image formats(JPEG and PNG) for Export PDF have been moved from Export PDF operation to ExportPDFToImages operation.</li>
+| Changed | Java,NodeJS,.NET    | <ul><li>Released SDK v3.0.0, based out of the new PDF Services APIs.</li><li>Added the support of OCR locale for Export PDF operation.</li><li>Updated PDF Properties operation to return PDFProperties object. Discontinued the support of returning FileRef and JSON Object.</li><li>Image formats(JPEG and PNG) for Export PDF have been moved from Export PDF operation to ExportPDFToImages operation.</li></ul>
 | New     | Java                | PDF Electronic Seal operation is now available in Beta PDF Services SDKs.                          |
 
 ### 2.2.3 (July, 2022; patch release)
