@@ -26,6 +26,65 @@ PDF actions using the SDK, including:
 
 </p>
 
+## Service region configuration
+
+Adobe PDF Services SDKs use `US (United States)` as a default region to process all the documents.
+Once you purchase PDF Services SDK, the SDKs can be configured to process the documents in a specified region that is listed below.
+Currently, PDF Services SDKs has support for the following regions :
+
+|Region Code | Name         |
+| ------------| ------------|
+| `US`       | United States (default)|
+| `EU`       | Europe |
+
+In addition to
+the details below, you can refer to working code samples:
+
+-   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/ExportPDFWithSpecifiedRegion.java)
+-   [.NET](https://github.com/adobe/PDFServices.NET.SDK.Samples/blob/master/ExportPDFWithSpecifiedRegion/Program.cs)
+-   [Node.js](https://github.com/adobe/pdfservices-node-sdk-samples/blob/master/src/customconfigurations/export-pdf-with-specified-region.js)
+-   [Python](https://github.com/adobe/pdfservices-python-sdk-samples/blob/master/src/extractpdf/extract_txt_from_pdf_with_specified_region.py)
+
+Available properties:
+
+-   **region**: Default: `US`. All documents will be processed in the specified region.
+
+Override the `region` property via a custom `ClientConfig` class:
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python" />
+
+### Java
+
+```javascript
+ClientConfig clientConfig = ClientConfig.builder()
+    .setRegion(Region.EU)
+    .build();
+```
+
+### .NET
+
+```javascript
+ClientConfig clientConfig = ClientConfig.ConfigBuilder()
+    .SetRegion(Region.EU)
+    .Build();
+```
+
+### Node.js
+
+```javascript
+const clientConfig = PDFServicesSdk.ClientConfig
+    .clientConfigBuilder()
+    .setRegion(Region.EU)
+    .build();
+```
+### Python
+
+```javascript
+client_config = ClientConfig.builder()
+    .with_region(Region.EU)
+    .build()
+```
+
 ## Runtime in-memory authentication
 
 The SDK supports providing the authentication credentials at runtime.
@@ -33,9 +92,9 @@ Doing so allows fetching the credentials from a secret server during
 runtime instead of storing them in a file. Please refer the following
 samples for details.
 
--   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/createpdf/CreatePDFWithInMemoryAuthCredentials.java)
--   [.NET](https://github.com/adobe/PDFServices.NET.SDK.Samples/tree/master/CreatePDFWithInMemoryAuthCredentials)
--   [Node.js](https://github.com/adobe/pdfservices-node-sdk-samples/blob/master/src/createpdf/create-pdf-with-inmemory-auth-credentials.js)
+-   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithInMemoryAuthCredentials.java)
+-   [.NET](https://github.com/adobe/PDFServices.NET.SDK.Samples/blob/master/CreatePDFWithInMemoryAuthCredentials/Program.cs)
+-   [Node.js](https://github.com/adobe/pdfservices-node-sdk-samples/blob/master/src/customconfigurations/create-pdf-with-inmemory-auth-credentials.js)
 -   [Python](https://github.com/adobe/pdfservices-python-sdk-samples/blob/master/src/extractpdf/extract_txt_from_pdf_with_in_memory_auth_credentials.py)
 
 ## Proxy Server Configuration
@@ -45,7 +104,7 @@ It allows the clients to use SDK within the network where all outgoing calls hav
 go through a proxy and allowed only if allow-listed on the proxy. Please refer the 
 following sample for details.
 
--   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/createpdf/CreatePDFWithProxyServer.java)
+-   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithProxyServer.java)
 
 ### Java Proxy Server configuration
 
@@ -76,9 +135,9 @@ the SDK supports custom timeouts for the API calls. You can tailor the
 timeout settings for your environment and network speed. In addition to
 the details below, you can refer to working code samples:
 
--   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/createpdf/CreatePDFWithCustomTimeouts.java)
+-   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithCustomTimeouts.java)
 -   [.NET](https://github.com/adobe/PDFServices.NET.SDK.Samples/blob/master/CreatePDFWithCustomTimeouts/Program.cs)
--   [Node.js](https://github.com/adobe/pdfservices-node-sdk-samples/blob/master/src/createpdf/create-pdf-with-custom-timeouts.js)
+-   [Node.js](https://github.com/adobe/pdfservices-node-sdk-samples/blob/master/src/customconfigurations/create-pdf-with-custom-timeouts.js)
 -   [Python](https://github.com/adobe/pdfservices-python-sdk-samples/blob/master/src/extractpdf/extract_txt_from_pdf_with_custom_timeouts.py)
 
 ### Java timeout configuration
@@ -171,3 +230,4 @@ client_config = ClientConfig.builder()
     .with_read_timeout(40000)
     .build()
 ```
+

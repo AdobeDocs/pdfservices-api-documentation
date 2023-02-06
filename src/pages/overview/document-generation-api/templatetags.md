@@ -42,7 +42,8 @@ JSON representation of the input data:
     "street": "123 ABC Street",
     "state": "LA",
     "zip": "9XXXX"
-  }
+  },
+  "doctor" : "John Doe"
 }
 ```
 
@@ -55,8 +56,8 @@ Placeholder variables get replaced with the actual input data.
 
 **Default Value**
 
-A default value can be specified for the placeholder variable. In case,
-the specified variable is not present in the input data, the placeholder
+A default value can be specified for the placeholder variable. In case
+the specified tag is not present in the input json data, the placeholder
 gets replaced with the default value.
 
 ![Placeholder tags with default value set](../images/placeholder_default.png)
@@ -68,9 +69,14 @@ Setting placeholder variable as optional will replace the placeholder
 with an empty string in case the specified variable is not present in
 the input data.
 
-![Placeholder tags with optional image set](../images/placeholder_optional_image.png)
+![Placeholder tags with optional image set](../images/placeholder_optional.png)
 
+**Prefix**
 
+A prefix value can be specified for the placeholder variable. Doing so will append
+this value before the result of the tag.
+
+![Placeholder tags with prefix image set](../images/placeholder_prefix.png)
 ## Images
 
 To dynamically insert an image in the document, add any image as
