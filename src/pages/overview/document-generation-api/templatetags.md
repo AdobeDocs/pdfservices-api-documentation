@@ -245,6 +245,32 @@ Default extension is vertical. If cell-extension construct is not provided, then
 
 ![Table gets horizontally extended as table columns are repeated](../images/horizontal-extension1.png)
 
+### Add index based conditions
+Conditionals can also be added inside tables. Condition evaluation is similar to that outside table, but we provide an additional construct
+*"expr-context"* to support index based evaluation.
+
+JSON representation of the input data:
+
+```json
+{
+  "company": [
+    {
+      "name": "ABC",
+      "supportsX" : "TRUE"
+    },
+    {
+      "name": "XYZ",
+      "supportsX": "FALSE"
+    }
+
+  ]
+}
+```
+
+![Index based conditional evaluation inside table](../images/ConditionsInsideTables.png)
+In the above example, the array of objects on which the condition has to be evaluated (*company*) is provided in
+expr-context, so the expression *supportsX="TRUE"* is evaluated separately for each entry.
+
 
 ## Lists
 
