@@ -114,10 +114,12 @@ result in an error message.
 | Document limit (combine, insert, replace, split)                | 20          |
 | Document file size                                              | 100MB       |
 | Output images per Document Transaction (export)                 | 50          |
-| Page limit (OCR)\*                                              | 100         |
+| Page limit (Extract)\*                                              | 100         |
 | Page limit(Non-Scanned - Extract API)\*                         | 200         |
 | JSON file size (Document Generation and HTML to PDF)            | 10MB        |
-| Maximum Requests Per Minute                                     | 25 RPM      |
+| Maximum Requests Per Minute                                     | 25 RPM\**      |
 | Payload size (For all APIs)                                     | 100MB       |
 
 **Page limits may be lower for documents with a large number of tables.*
+
+**<i>25 RPM applies to free trial users only. Please [contact us](https://developer.adobe.com/document-services/pricing/contact/sales/) on RPM if interested in understanding how it can scale under your ETLA.</i>

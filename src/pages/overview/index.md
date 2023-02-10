@@ -63,6 +63,10 @@ The output from the API is a tagged PDF, but it is not guaranteed to fully compl
 
 You can learn more about PDF Accessibility in [this overview](https://www.adobe.com/accessibility/pdf/pdf-accessibility-overview.html).
 
+## PDF Services Region Support
+
+PDF Services now support two regions for transacting and working with documents. The default region uses the United States to process documents. Developers can now also use the European region (Ireland) for API calls. This can be done on a call by call basis so one project may make use of both. Details on how this is done can be found in [our documentation](./pdf-services-api/howtos/service-region-configuration-for-apis).
+
 ## Community forum and feedback
 
 Customer feedback is particularly valuable as it helps the team validate use cases, guide development, and troubleshoot issues. Comments and questions are always welcome on the [Community Forum](https://community.adobe.com/t5/document-cloud-sdk/bd-p/Document-Cloud-SDK?page=1&sort=latest_replies&filter=all).
