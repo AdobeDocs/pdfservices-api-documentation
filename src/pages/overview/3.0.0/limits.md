@@ -70,13 +70,13 @@ for other PDF Tools.
 | Create + Combine + Protect                     | Creating a 10 page PDF document from an HTML page, then combining the PDF into four other 5 page PDF documents, and finally password protecting all four PDF documents will consume nine Document Transactions. | 1 (Operation: create) x 1 (document) + 1 (Operation: combine) x 4 (documents) + 1 (Operation: export) x 4 (documents) = 9 Document Transactions |
 
 
-Licensing Metrics & Free Trial
+Licensing Metrics & Free Tier
 ------------------------------
 
-The PDF Services API provides a free trial program so that you can take
-a deep dive into its cool features at zero cost. Trial users that sign
+The PDF Services API provides a free tier program so that you can take
+a deep dive into its cool features at zero cost. Free tier users that sign
 up directly on Adobe I/O get free credentials that enable processing of
-1,000 Document Transactions for up to 6 months. A Document Transaction
+up to 1,000 Document Transactions for per month. A Document Transaction
 is based on the initial endpoint request (i.e., API call) and the
 digital output. For detailed licensing metrics, please see the tables
 above.
