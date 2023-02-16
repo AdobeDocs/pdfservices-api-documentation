@@ -68,6 +68,10 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
       baseurl = '/document-services/apis/interstitial/';
     }
 
+    if(window.location.host.indexOf("document-services/docs/overview/pdf-services-api/howtos/api-usage/")>=0) {
+      window.location.href = "document-services/docs/overview/pdf-services-api/gettingstarted/";
+    }
+
     let header = document.querySelector("header");
     header.setAttribute("daa-lh", "Gnav");
     header
