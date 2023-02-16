@@ -51,7 +51,7 @@ Styling for the text tag can be provided using the json data through the HTML ba
 
 ## Inline styling attributes supported
 
-- font-size : xpt ;  x=dynamic positive integer, 1pt =1/72 inch ( point (pt) is the only supported unit for font size.)
+- font-size : Xpt or Ypx ;  X=dynamic positive integer 1–1638 pt, 1pt = 1/72 inch; Y=dynamic positive integer 1–2184 px, 1px = 1/96 inch ( point (pt) and pixels (px) are the only supported unit for font size.)
 
 - font-weight : bold;
 
@@ -107,16 +107,16 @@ JSON representation of the input data:
  
 #### How to create paragraphs in document?
 
-New paragraphs can be created using `<p>` in input data
+Dynamically add new paragraphs in the document using `<p>` in the placeholder value.
 
 **Usage**
 
 ```json
 {
-    "Input_Data": "Here i am creating a sample series of test.<p>This is a part of random series of test to test DNA sequence.</p><p>We will identify useful ideas from here</p>"
+    "Input_Data": "Here is the content before starting of para.<p>This is first paragraph dynamically added.</p><p>This content belongs to second para dynamically added</p>"
 }
 ```
-![Sample for P tag](../images/p_tag_sample.png)
+![Sample for P tag](../images/sample_for_ptag.png)
 
 
 

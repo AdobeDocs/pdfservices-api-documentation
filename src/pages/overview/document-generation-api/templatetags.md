@@ -185,10 +185,9 @@ Show or hide text inside a paragraph based on conditions.
 ![Showing a text inside a paragraph based on a condition](../images/conditional_phrase.png)
 
 ## Tables
-### Creating Tables dynamically using HTML
+### Insert Tables using `<table>` HTML Element
 
-Text tags having HTML Table string as an input data can be used to insert tables in the output document.
-
+To insert tables in the document, add any text tag containing html table string as the value.
 
 Below is a json containing textTag with an HTML Table value.
 
@@ -199,19 +198,19 @@ Below is a json containing textTag with an HTML Table value.
 ```
 **Usage**
 
-Placeholder variable get replaced by a table generated from input html table string.
+Placeholder tag is replaced by the table generated using html table string provided in the placeholder tag value.
 ![Sample for HTML Table insertion](../images/html_table_sample.png)
 
 
 <InlineAlert slots="text"/>
 
-- Text Tags containing table element, in input data, should be placed in a separate paragraph.
+- Placeholder Tags containing table element, in input data, should be placed in a separate paragraph in the input docx template as shown in above usage diagram.
 
 - Only Inline Styling of Table elements is possible. i.e. using `style` attribute of `<table>`. Internal and External styling are not allowed.)
 
 
 
-### Dynamically populate table rows or columns
+### Insert Table using Placeholder Table Tag
 
 Rows of a table can be dynamically populated by repeating over an array of objects from the input data.
 
