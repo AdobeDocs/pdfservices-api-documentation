@@ -7,6 +7,8 @@ Apply styling and formatting in the generated output document using the HTML bas
 
 - Add line breaks in the text.
 
+- Add paragraphs in the document
+
 - Set color and font size of a text.
 
 - Set text as bold and italic.
@@ -26,10 +28,10 @@ JSON representation of the input data:
 ```json
 {
     "LMS Certificate": {
-                "Employee Name": "Sarah Rose",
-                "Certification Program": "Certificate in Life and Thoughts of <span style=\"font-weight: bold \">Dr. BR Ambedkar </span> ",
-                "Completion Date": "01/03/2021"
-        }
+        "Employee Name": "Sarah Rose",
+        "Certification Program": "Certificate in Life and Thoughts of <span style=\"font-weight: bold \">Dr. BR Ambedkar </span> ",
+        "Completion Date": "01/03/2021"
+    }
 }
 ```
 
@@ -39,7 +41,7 @@ JSON representation of the input data:
 
 Styling for the text tag can be provided using the json data through the HTML based constructs. The constructs follows the additional rules as listed below :
 
-- HTML tags supported are <span\>, nested span, <br\> (new line), <b\> (bold), <strong\> (strong), <em\> (emphasis), <i\> (italic), <u\> (underline).
+- HTML tags supported are <span\>, nested span, <br\> (new line), <b\> (bold), <strong\> (strong), <em\> (emphasis), <i\> (italic), <u\> (underline), <p\> (para).
 
 - Either use Inline custom css inside the span tag to style the data or use basic styling tags such as <b\> (bold), <i\> (italic) and <u\> (underline).
 
@@ -49,7 +51,7 @@ Styling for the text tag can be provided using the json data through the HTML ba
 
 ## Inline styling attributes supported
 
-- font-size : xpt ;  x=dynamic positive integer, 1pt =1/72 inch ( point (pt) is the only supported unit for font size.)
+- font-size : Xpt or Ypx ;  X=dynamic positive integer 1–1638 pt, 1pt = 1/72 inch; Y=dynamic positive integer 1–2184 px, 1px = 1/96 inch ( point (pt) and pixels (px) are the only supported unit for font size.)
 
 - font-weight : bold;
 
@@ -90,16 +92,36 @@ JSON representation of the input data:
 
 - <img\> (image)
 
+- [<p\> (para)](/overview/document-generation-api/stylingformattingtags/#how-to-create-paragraphs-in-document)
+
+
 JSON representation of the input data:
 
 ```json
 {
-  "Notes Section": "Has the Board of directors established a basic policy <span style=\"font-size: 12pt;\">regarding legal compliance <b><i>(hereinafter referred to as the Legal Compliance policy)</i></b><a href=\"http://www.samplewebsite.com/\">Board</a> in accordance to the institution's <br><u>corporate management policy</u> and disseminated it throughout the institution"
+  "Notes Section": "<p>Has the Board of directors established a basic policy</p> <span style=\"font-size: 12pt;\">regarding legal compliance <b><i>(hereinafter referred to as the Legal Compliance policy)</i></b><a href=\"http://www.samplewebsite.com/\">Board</a> in accordance to the institution's <br><u>corporate management policy</u> and disseminated it throughout the institution"
 }
 ```
-![Styling Tags Sample with style for font-size attribute added to span tag](../images/styling_tags_sample.png)
+![Styling Tags Sample with style for font-size attribute added to span tag](../images/styling_tags_sample_ptag.png)
 
-![Styling Tags output when style for font-size attribute was added to span tag](../images/styling_tags1.png)
+![Styling Tags output when style for font-size attribute was added to span tag](../images/styling_tags2.png)
+ 
+#### How to create paragraphs in document?
+
+Dynamically add new paragraphs in the document using `<p>` in the placeholder value.
+
+**Usage**
+
+```json
+{
+    "Input_Data": "Here is the content before starting of para.<p>This is first paragraph dynamically added.</p><p>This content belongs to second para dynamically added</p>"
+}
+```
+![Sample for P tag](../images/sample_for_ptag.png)
+
+
+
+
 
 
 
