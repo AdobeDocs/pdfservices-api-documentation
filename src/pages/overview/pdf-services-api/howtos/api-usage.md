@@ -1,7 +1,7 @@
 ---
 title: Using Our APIs | How Tos | PDF Services API | Adobe PDF Services
 layout: forward
-target: ../gettingstarted/
+target: https://adobedocs.github.io/pdfservices-api-documentation/overview/pdf-services-api/gettingstarted/
 ---
 # Using Our APIs
 
