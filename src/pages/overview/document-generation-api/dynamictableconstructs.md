@@ -81,7 +81,7 @@ JSON representation of the input data:
 ```
 ![Adding discard-if-empty construct with boolean false/true along with the template tag to activate discard if empty feature for the corresponding column](../images/discard_column_if_empty.png)
 
-- {{Project.Notes:**discard_if_empty(true)**}} tag lets the engine discard the particular column if every element of an array in the input json is either empty or null.
+- {{Project.Notes:**discard-if-empty(true)**}} tag lets the engine discard the particular column if every element of an array in the input json is either empty or null.
 
 **Note**: The row above the authored row will be considered as a header row. Cell from the header row will be discarded along with discarded column.
 
