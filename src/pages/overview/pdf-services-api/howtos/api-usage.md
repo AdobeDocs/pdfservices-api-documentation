@@ -1,5 +1,7 @@
 ---
 title: Using Our APIs | How Tos | PDF Services API | Adobe PDF Services
+layout: forward
+target: ../gettingstarted/
 ---
 # Using Our APIs
 
