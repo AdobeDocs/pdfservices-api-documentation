@@ -146,6 +146,44 @@ the output document.
 
 ![Image placeholder replaced by the image data](../images/image_tag_final.png)
 
+## Conditionals
+
+Show or hide content in the document based on the conditions.
+
+**How to insert Conditional Tags**
+
+<Media slots="video"/>
+
+<https://images-tv.adobe.com/mpcv3/5158/671b4819-2e8c-44a1-8667-e9dfd2556133_1615916356.854x480at800_h264.mp4#t=3>
+
+
+<InlineAlert slots="text"/>
+
+The condition must be wrapped inside *expr()*. <br/> Supported
+conditional operators are =, !=, >=, >, <=, <.
+
+JSON representation of the input data:
+
+```json
+{
+  "state": "CA"
+}
+```
+
+
+**Conditional Sections**
+
+Show or hide paragraphs based on conditions.
+
+![Showing an paragraph based on a condition](../images/conditional_section.png)
+
+
+**Conditional Phrases**
+
+Show or hide text inside a paragraph based on conditions.
+
+![Showing a text inside a paragraph based on a condition](../images/conditional_phrase.png)
+
 ## Tables
 ### Insert Tables using `<table>` HTML Element
 
@@ -229,7 +267,7 @@ over the specified array of objects.
 
 ![Table with template tags replaced with actual values in the rows](../images/table_result.png)
 
-### Dynamically expand table rows or columns
+#### Dynamically expand table rows or columns
 Specify the cell extension property inside the table cell to indicate whether to expand table rows vertically or columns horizontally.
 
 JSON representation of the input data:
@@ -269,6 +307,34 @@ Default extension is vertical. If cell-extension construct is not provided, then
     - {{subscriptions.name:**cell-extension(horizontal)**}} tag lets the engine know that cells will be extended in horizontal direction.
 
 ![Table gets horizontally extended as table columns are repeated](../images/horizontal-extension1.png)
+
+#### Add index based conditions
+Conditionals can also be added inside tables. Condition evaluation is similar to that outside table, but we provide an 
+additional construct
+*"expr-context"* to support index based evaluation.
+
+JSON representation of the input data:
+
+```json
+{
+  "company": [
+    {
+      "name": "ABC",
+      "supportsX" : "TRUE"
+    },
+    {
+      "name": "XYZ",
+      "supportsX": "FALSE"
+    }
+
+  ]
+}
+```
+
+![Index based conditional evaluation inside table](../images/ConditionsInsideTables.png)
+In the above example, the array of objects on which the condition needs to be evaluated (*company*) is provided in
+expr-context, and the expr contains the actual condition *supportsX="TRUE"*, which is evaluated separately for each entry
+of the array element.
 
 
 ## Lists
@@ -331,44 +397,6 @@ Dynamically generate a numbered or bullet list by placing it inside a repeating 
 
 ![Template tag items are replaced by numbered or bullet list](../images/simple_lists.png)
 
-
-## Conditionals
-
-Show or hide content in the document based on the conditions.
-
-**How to insert Conditional Tags**
-
-<Media slots="video"/>
-
-<https://images-tv.adobe.com/mpcv3/5158/671b4819-2e8c-44a1-8667-e9dfd2556133_1615916356.854x480at800_h264.mp4#t=3>
-
-
-<InlineAlert slots="text"/>
-
-The condition must be wrapped inside *expr()*. <br/> Supported
-conditional operators are =, !=, >=, >, <=, <.
-
-JSON representation of the input data:
-
-```json
-{
-  "state": "CA"
-}
-```
-
-
-**Conditional Sections**
-
-Show or hide paragraphs based on conditions.
-
-![Showing an paragraph based on a condition](../images/conditional_section.png)
-
-
-**Conditional Phrases**
-
-Show or hide text inside a paragraph based on conditions.
-
-![Showing a text inside a paragraph based on a condition](../images/conditional_phrase.png)
 
 ## Numerical Calculations
 
