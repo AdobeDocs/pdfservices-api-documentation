@@ -267,7 +267,7 @@ over the specified array of objects.
 
 ![Table with template tags replaced with actual values in the rows](../images/table_result.png)
 
-### Dynamically expand table rows or columns
+#### Dynamically expand table rows or columns
 Specify the cell extension property inside the table cell to indicate whether to expand table rows vertically or columns horizontally.
 
 JSON representation of the input data:
@@ -308,7 +308,7 @@ Default extension is vertical. If cell-extension construct is not provided, then
 
 ![Table gets horizontally extended as table columns are repeated](../images/horizontal-extension1.png)
 
-### Add index based conditions
+#### Add index based conditions
 Conditionals can also be added inside tables. Condition evaluation is similar to that outside table, but we provide an 
 additional construct
 *"expr-context"* to support index based evaluation.
