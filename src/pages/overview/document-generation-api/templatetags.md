@@ -185,11 +185,37 @@ Show or hide text inside a paragraph based on conditions.
 ![Showing a text inside a paragraph based on a condition](../images/conditional_phrase.png)
 
 ## Tables
+### Insert Tables using `<table>` HTML Element
 
-Rows of a table can be dynamically populated by repeating over an array
-of objects from the input data.
+To insert tables in the document, add any text tag containing html table string as the value.
 
-**How to insert Tables**
+Below is a json containing textTag with an HTML Table value.
+
+```json
+{
+  "Table_Data": "<table border='1' cellpadding='0' cellspacing='0' align='right' style='width:30%'>\n\t<tr>\n\t\t<th>Name</th>\n\t\t<th>Age</th>\n\t\t<th>Gender</th>\n\t</tr>\n\t<tr>\n\t\t<td>Sheldon</td>\n\t\t<td>29</td>\n\t\t<td>Male</td>\n\t</tr>\n\t<tr>\n\t\t<td>Leonard</td>\n\t\t<td>30</td>\n\t\t<td>Male</td>\n\t</tr>\n\t<tr>\n\t\t<td>Howard</td>\n\t\t<td>28</td>\n\t\t<td>Male</td>\n\t</tr>\n\t<tr>\n\t\t<td>Raj</td>\n\t\t<td>29</td>\n\t\t<td>Male</td>\n\t</tr>\n</table>\n"
+}
+```
+**Usage**
+
+Placeholder tag is replaced by the table generated using html table string provided in the placeholder tag value.
+![Sample for HTML Table insertion](../images/html_table_sample.png)
+
+
+<InlineAlert slots="text"/>
+
+- Placeholder Tags containing table element, in input data, should be placed in a separate paragraph in the input docx template as shown in above usage diagram.
+
+- Only Inline Styling of Table elements is possible. i.e. using `style` attribute of `<table>`. Internal and External styling are not allowed.)
+
+
+
+### Insert Table using Placeholder Table Tag
+
+Rows of a table can be dynamically populated by repeating over an array of objects from the input data.
+
+
+**How to expand Tables**
 
 <Media slots="video"/>
 
@@ -242,7 +268,6 @@ over the specified array of objects.
 ![Table with template tags replaced with actual values in the rows](../images/table_result.png)
 
 ### Dynamically expand table rows or columns
-
 Specify the cell extension property inside the table cell to indicate whether to expand table rows vertically or columns horizontally.
 
 JSON representation of the input data:
