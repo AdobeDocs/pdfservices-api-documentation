@@ -12,7 +12,7 @@ the changes below for each release.
 
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
-| Bug fix | Added fixes for Search APIs related to onResultsUpdate callback.
+| Bug fix | Fixed issue with onResultsUpdate callback in Search API.
 
 ### December, 2022
 
