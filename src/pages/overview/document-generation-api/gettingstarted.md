@@ -72,7 +72,7 @@ Alternatively, you can use our offering through [PDF Services SDK](../pdf-servic
 
 <InlineAlert slots="text"/>
 
-To get started with PDF Services SDK, refer [Quickstarts](../pdf-services-api/quickstarts).
+To get started with PDF Services SDK, refer [Quickstarts](../document-generation-api/quickstarts).
 
 <br/>
 
