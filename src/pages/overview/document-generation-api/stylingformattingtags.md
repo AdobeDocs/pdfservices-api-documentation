@@ -104,20 +104,21 @@ JSON representation of the input data:
 ```
 ![Styling Tags Sample with style for font-size attribute added to span tag](../images/styling_tags_sample_ptag.png)
 
-![Styling Tags output when style for font-size attribute was added to span tag](../images/styling_tags2.png)
+![Styling Tags output when style for font-size attribute was added to span tag](../images/styling_tags_formatted.png)
  
 #### How to create paragraphs in document?
 
 Dynamically add new paragraphs in the document using `<p>` in the placeholder value.
 
-**Usage**
+JSON representation of the input data:
 
 ```json
 {
-    "Input_Data": "Here is the content before starting of para.<p>This is first paragraph dynamically added.</p><p>This content belongs to second para dynamically added</p>"
+    "Input_Data": "Here is the content before starting of paragraph.<p>This is first paragraph dynamically added.</p><p>This content belongs to second paragraph dynamically added.</p>"
 }
 ```
-![Sample for P tag](../images/sample_for_ptag.png)
+![Sample_for_P_tag](../images/sample_for_p_tags.png)
+![Sample for P tag_output](../images/sample_for_ptag_formatted.png)
 
 
 
