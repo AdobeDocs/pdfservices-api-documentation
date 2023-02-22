@@ -8,6 +8,12 @@ the changes below for each release.
 
 ## Change history
 
+### February, 2023
+
+| Change | Description                                                            |
+| ------ | ---------------------------------------------------------------------- |
+| Bug fix | Fixed issue with onResultsUpdate callback in Search API.
+
 ### December, 2022
 
 | Change | Description                                                            |
