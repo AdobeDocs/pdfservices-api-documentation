@@ -33,7 +33,7 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
           });
       }
     } catch (err) {
-      console.error("Unable to set site section", err);
+      console.error("Unable to set  site section", err);
     }
 
     try {
