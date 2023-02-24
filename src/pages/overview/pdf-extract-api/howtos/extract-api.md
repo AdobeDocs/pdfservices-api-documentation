@@ -106,7 +106,7 @@ schema](/extractJSONOutputSchema2.json)):
 <br />
 <ul>
 <li> <b>File size:</b> Files up to a maximum of 100MB are supported.</li>
-<li><b>Number of Pages:</b> Non-scanned PDFs up to 200 pages and scanned PDFs up to 100 pages are supported, however limits may be lower for files with a large number of tables.</li>
+<li><b>Number of Pages:</b> Non-scanned PDFs have a limit of 400 pages. Scanned PDFs have a limit of 150 pages or less. Limits may be lower for files with multiple tables. For larger files or those with complex layouts, it is recommended to split the file into smaller sections before processing.</li>
 <li><b>Rate limits:</b> Keep request rate below 25 requests per minutes.</li>
 <li><b>Page Size:</b> The API supports standard page sizes not to exceed 17.5” or less than 6” in either dimension.</li>
 <li><b>Hidden Objects:</b> PDF files that contain content that is not visible on the page like javascript, OCG (optional content groups), etc are not supported. Files that contain such hidden information may fail to process. For such cases, [removing hidden content](https://helpx.adobe.com/acrobat/using/removing-sensitive-content-pdfs.html) prior to processing files again may return a successful result.</li>
