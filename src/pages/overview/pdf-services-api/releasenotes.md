@@ -144,7 +144,6 @@ Upgrading to the latest SDK should not break existing applications.
 | Change  | Language            | Description                                                                                   |
 | ------- | ------------------- | --------------------------------------------------------------------------------------------- |
 | Changed | All                 | Adding support for larger PDF document processing. The new supported limits are 400 pages for non-scanned and 150 for scanned PDF documents. |
-| Changed | All                 | Bug fixes and stability improvements. |  
 
 ### 2.3.0 (February, 2023, minor release)
 
