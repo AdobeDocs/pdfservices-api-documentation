@@ -137,11 +137,11 @@ JSON representation of the input data:
 Discard a row or set of rows in a table from the final generated document.
 
 ### Discard row if condition evaluates to true
-Tag: **discard-row-if(expr(condition),context)**
-
 Row in the table can be discarded only when the condition in the discard-row-if(expr(**condition**),**context**) evaluates to true in the provided context. Add this construct along with the template tag to activate discard row if feature for the corresponding rows in the table.
 
-For Instance: {{TABLE_CONTEXT.PROPERTY:**discard-row-if(expr(PROPERTY = "TEST_VALUE"),TABLE_CONTEXT)**}}
+Tag: **discard-row-if(expr(condition),context)**
+
+For Example: {{TABLE_CONTEXT.PROPERTY:**discard-row-if(expr(PROPERTY = "TEST_VALUE"),TABLE_CONTEXT)**}}
 
 JSON representation of the input data:
 ```json
