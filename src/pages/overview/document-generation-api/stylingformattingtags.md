@@ -90,7 +90,9 @@ JSON representation of the input data:
 
 - <u\> (underline)
 
-- <img\> (image)
+- [<img\> (image)
+
+- <p\> (para break)](/overview/document-generation-api/stylingformattingtags/#how-to-create-paragraphs-in-document)
 
 - [<p\> (para)](/overview/document-generation-api/stylingformattingtags/#how-to-create-paragraphs-in-document)
 
