@@ -132,3 +132,55 @@ JSON representation of the input data:
 
 - {{Conversion.Rate:**discard-if(expr($sum(Conversion.Rate)!= 100))**}}% tag lets the engine discard the particular column if condition provided in the **expr** construct evaluates to true.
 
+
+## Dynamic table rows
+Discard a row or set of rows in a table from the final generated document.
+
+### Discard row if condition evaluates to true
+Row in the table can be discarded only when the condition in the discard-row-if(expr(**condition**),**context**) evaluates to true in the provided context. Add this construct along with the template tag to activate discard row if feature for the corresponding rows in the table.
+
+Tag: **discard-row-if(expr(condition),context)**
+
+For Example: {{TABLE_CONTEXT.PROPERTY:**discard-row-if(expr(PROPERTY = "TEST_VALUE"),TABLE_CONTEXT)**}}
+
+JSON representation of the input data:
+```json
+{
+  "Conversion": [
+    {
+      "Month": "July, 2021",
+      "Rate": 10,
+      "Method": "Payout by Cheque"
+    },
+    {
+      "Month": "Dec, 2021",
+      "Rate": 20,
+      "Method": "Payout by Cheque"
+    },
+    {
+      "Month": "Dec, 2022",
+      "Rate": 40,
+      "Method": "Payout by Cheque"
+    },
+    {
+      "Month": "Dec, 2021",
+      "Rate": 80,
+      "Method": "Payout by Cheque"
+    },
+    {
+      "Month": "April, 2022",
+      "Rate": 100,
+      "Method": "Payout by Cash"
+    },
+    {
+      "Month": "Dec, 2022",
+      "Rate": 45,
+      "Method": "Payout by Cheque"
+    }
+  ]
+}
+```
+![Added discard-row-if(expr(condition),context) construct along with the template tag to activate discard row if feature for the corresponding rows](../images/discard_row_if_condition_true.png)
+- discard-row-if tag discard the particular row if at least one condition provided in the **expr** construct along with context evaluates to true.
+
+**Note**: In above example, the first row is considered as a header row. This header row is also discarded when all the rows are discarded and hence removing the complete table.
