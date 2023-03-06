@@ -1,14 +1,52 @@
 ---
-title: Dynamic Table Constructs | Document Generation API | Adobe PDF Services
+title: Complex Table Constructs | Document Generation API | Adobe PDF Services
 ---
-# Dynamic Table Constructs
-Add dynamic behaviour to a table using [dynamic table columns constructs](../document-generation-api/dynamictableconstructs.md#dynamic-table-columns) to discard column or set of columns at runtime.
+# Complex Table Constructs
+Add additional properties to table tags to apply advanced functionalities on table.
 
+## Dynamically expand table rows or columns
+Specify the cell extension property inside the table cell to indicate whether to expand table rows vertically or columns horizontally.
+
+JSON representation of the input data:
+
+```json
+{
+  "subscriptions": [
+    {
+      "name": "Adobe Document API",
+      "price": "99"
+    },
+    {
+      "name": "Adobe Marketing API",
+      "price": "199"
+    },
+    {
+      "name": "Adobe Design API",
+      "price": "299"
+    }
+
+  ]
+}
+```
+
+- **Repeat table rows vertically** - `{{subscriptions.name:cell-extension(vertical)}}` tag lets the engine know that cells will be extended in vertical direction.
+
+![Table gets vertically extended as table rows are repeated](../images/vertical-extension1.png)
+
+- **Repeat table columns horizontally** - *{{subscriptions.name:**cell-extension(horizontal)**}}* tag lets the engine know that cells will be extended in horizontal direction.
+
+![Table gets horizontally extended as table columns are repeated](../images/horizontal-extension1.png)
+
+
+
+<InlineAlert slots="text"/>
+
+Default extension is vertical. If cell-extension construct is not provided, then table will be extended in vertical direction.
 ## Dynamic table columns
 Discard a column or set of columns in a table from the final generated document as follows :
 
-- [Discard column if empty](../document-generation-api/dynamictableconstructs.md#discard-column-if-empty).
-- [Discard column if condition evaluates to true](../document-generation-api/dynamictableconstructs.md#discard-column-if-condition-evaluates-to-true).
+- [Discard column if empty](../document-generation-api/complextableconstructs.md#discard-column-if-empty).
+- [Discard column if condition evaluates to true](../document-generation-api/complextableconstructs.md#discard-column-if-condition-evaluates-to-true).
 
 ### Discard column if empty
 Column in a table can be discarded if every element of an array in the input json is empty or null.
@@ -130,8 +168,7 @@ JSON representation of the input data:
 
 ![Added discard-if(expr(**condition**)) construct along with the template tag to activate discard if feature for the corresponding column](../images/discard_if_condition_true.png)
 
-- {{Conversion.Rate:**discard-if(expr($sum(Conversion.Rate)!= 100))**}}% tag lets the engine discard the particular column if condition provided in the **expr** construct evaluates to true.
-
+- {{Conversion.Rate:**discard-if(expr($sum(Conversion.Rate)!= 100))**}} tag lets the engine discard the particular column if condition provided in the **expr** construct evaluates to true.
 
 ## Dynamic table rows
 Discard a row or set of rows in a table from the final generated document.
@@ -184,3 +221,31 @@ JSON representation of the input data:
 - discard-row-if tag discard the particular row if at least one condition provided in the **expr** construct along with context evaluates to true.
 
 **Note**: In above example, the first row is considered as a header row. This header row is also discarded when all the rows are discarded and hence removing the complete table.
+
+## Conditions inside tables
+An additional construct **expr-context** is introduced for conditionals inside tables, which is required while evaluating
+conditions based on fields of the table currently being expanded. The expression inside *expr-context* is an array
+of objects where each entry of object serves as context to evaluate the condition in the corresponding row of table.
+
+JSON representation of the input data:
+
+```json
+{
+  "company": [
+    {
+      "name": "ABC",
+      "supportsX" : "TRUE"
+    },
+    {
+      "name": "XYZ",
+      "supportsX": "FALSE"
+    }
+
+  ]
+}
+```
+
+![Index based conditional evaluation inside table](../images/ConditionsInsideTables.png)
+In the above example, the array of objects on which the condition needs to be evaluated (*company*) is provided in
+*expr-context*, and the expr contains the actual condition `supportsX="TRUE"`. The condition is evaluated based on each
+entry of the array and applied to the corresponding row in the output table.

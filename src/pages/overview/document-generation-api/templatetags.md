@@ -146,6 +146,11 @@ the output document.
 
 ![Image placeholder replaced by the image data](../images/image_tag_final.png)
 
+<InlineAlert slots="text"/>
+
+Image can also be inserted using the html <img/> tag. Please refer [Inline Images](../document-generation-api/inlineimages.md)
+to learn more about this.
+
 ## Conditionals
 
 Show or hide content in the document based on the conditions.
@@ -267,75 +272,10 @@ over the specified array of objects.
 
 ![Table with template tags replaced with actual values in the rows](../images/table_result.png)
 
-#### Dynamically expand table rows or columns
-Specify the cell extension property inside the table cell to indicate whether to expand table rows vertically or columns horizontally.
-
-JSON representation of the input data:
-
-```json
-{
-  "subscriptions": [
-    {
-      "name": "Adobe Document API",
-      "price": "99"
-    },
-    {
-      "name": "Adobe Marketing API",
-      "price": "199"
-    },
-    {
-      "name": "Adobe Design API",
-      "price": "299"
-    }
-
-  ]
-}
-```
-
-- *Repeat table rows vertically*
-    - {{subscriptions.name:**cell-extension(vertical)**}} tag lets the engine know that cells will be extended in vertical direction.
-
-![Table gets vertically extended as table rows are repeated](../images/vertical-extension1.png)
-
 <InlineAlert slots="text"/>
 
-Default extension is vertical. If cell-extension construct is not provided, then table will be extended in vertical direction.
-
-<br/>
-
-- *Repeat table columns horizontally*
-    - {{subscriptions.name:**cell-extension(horizontal)**}} tag lets the engine know that cells will be extended in horizontal direction.
-
-![Table gets horizontally extended as table columns are repeated](../images/horizontal-extension1.png)
-
-#### Add index based conditions
-Conditionals can also be added inside tables. Condition evaluation is similar to that outside table, but we provide an 
-additional construct
-*"expr-context"* to support index based evaluation.
-
-JSON representation of the input data:
-
-```json
-{
-  "company": [
-    {
-      "name": "ABC",
-      "supportsX" : "TRUE"
-    },
-    {
-      "name": "XYZ",
-      "supportsX": "FALSE"
-    }
-
-  ]
-}
-```
-
-![Index based conditional evaluation inside table](../images/ConditionsInsideTables.png)
-In the above example, the array of objects on which the condition needs to be evaluated (*company*) is provided in
-expr-context, and the expr contains the actual condition *supportsX="TRUE"*, which is evaluated separately for each entry
-of the array element.
-
+Please visit [Complex Table Constructs](../document-generation-api/complextableconstructs.md) to learn about advanced 
+constructs inside tables.
 
 ## Lists
 
