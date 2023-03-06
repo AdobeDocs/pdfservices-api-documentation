@@ -204,7 +204,7 @@ Placeholder tag is replaced by the table generated using html table string provi
 
 <InlineAlert slots="text"/>
 
-- Placeholder Tags containing `<table>` HTML element, in input json, should be placed in a separate paragraph in the input document.
+- Placeholder Tags containing `<table>` HTML element as value in input json data, should be placed in a separate paragraph in the input document template.
 
 - Only Inline Styling of Table elements is possible. i.e. using `style` attribute of `<table>`. Internal and External styling are not allowed.
 
