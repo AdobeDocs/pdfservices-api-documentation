@@ -105,8 +105,8 @@ schema](/extractJSONOutputSchema2.json)):
 ## API limitations
 <br />
 <ul>
-<li> <b>File size:</b> Files up to a maximum of 100MB are supported.</li>
-<li><b>Number of Pages:</b> Non-scanned PDFs up to 200 pages and scanned PDFs up to 100 pages are supported, however limits may be lower for files with a large number of tables.</li>
+<li><b>File size:</b> Files up to a maximum of 100MB are supported.</li>
+<li><b>Number of Pages:</b> Non-scanned PDFs have a limit of 400 pages. Scanned PDFs have a limit of 150 pages or less. Limits may be lower for files with multiple tables. For larger files or those with complex layouts, it is recommended to split the file into smaller sections before processing.</li>
 <li><b>Rate limits:</b> Keep request rate below 25 requests per minutes.</li>
 <li><b>Page Size:</b> The API supports standard page sizes not to exceed 17.5” or less than 6” in either dimension.</li>
 <li><b>Hidden Objects:</b> PDF files that contain content that is not visible on the page like javascript, OCG (optional content groups), etc are not supported. Files that contain such hidden information may fail to process. For such cases, [removing hidden content](https://helpx.adobe.com/acrobat/using/removing-sensitive-content-pdfs.html) prior to processing files again may return a successful result.</li>
@@ -116,7 +116,6 @@ schema](/extractJSONOutputSchema2.json)):
 <li><b>Unprotected files:</b> The API supports files that are unprotected or where security restrictions allow copying of content. Files that are secured and do not allow copying of content will not be processed.</li>
 <li><b>Annotations:</b> Content in PDF files containing annotations such as highlights and sticky notes will be processed, but annotations that obscure text could impact output quality. Text within annotations will not be included in the output.</li>
 <li><b>PDF Producers:</b> The Extract API is designed to extract content from files that contain text, table data, and figures. Files created from applications that produce other types of content like illustrations, CAD drawings or other types of vector art may not return quality results.</li>
-<li><b>PDF Collections:</b> PDFs that are made from a collection of files including PDF Portfolios are not currently supported.</li>
 </ul>
 
 ## Error codes
