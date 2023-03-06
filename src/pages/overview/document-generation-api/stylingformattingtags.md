@@ -7,17 +7,17 @@ Apply styling and formatting in the generated output document using the HTML bas
 
 - Add line breaks in the text.
 
-- Add paragraphs in the document
-
 - Set color and font size of a text.
 
 - Set text as bold and italic.
 
 - Underline text.
 
-- Create [Hyperlinks](../document-generation-api/hyperlink.md)
+- Create [Hyperlinks](../document-generation-api/hyperlink.md).
 
 - Create [Inline Images](../document-generation-api/inlineimages.md).
+
+- Create [Paragraphs](/overview/document-generation-api/stylingformattingtags/#how-to-create-paragraphs-in-document).
 
 ## How It Works
 
