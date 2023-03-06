@@ -185,28 +185,28 @@ Show or hide text inside a paragraph based on conditions.
 ![Showing a text inside a paragraph based on a condition](../images/conditional_phrase.png)
 
 ## Tables
-### Insert Tables using `<table>` HTML Element
+### Insert Table using `<table>` HTML Element
 
-To insert tables in the document, add any text tag containing html table string as the value.
+Add tables in the document through json data using `<table>` tag.
 
-Below is a json containing textTag with an HTML Table value.
+JSON representation of the input data:
 
 ```json
 {
-  "Table_Data": "<table border='1' cellpadding='0' cellspacing='0' align='right' style='width:30%'>\n\t<tr>\n\t\t<th>Name</th>\n\t\t<th>Age</th>\n\t\t<th>Gender</th>\n\t</tr>\n\t<tr>\n\t\t<td>Sheldon</td>\n\t\t<td>29</td>\n\t\t<td>Male</td>\n\t</tr>\n\t<tr>\n\t\t<td>Leonard</td>\n\t\t<td>30</td>\n\t\t<td>Male</td>\n\t</tr>\n\t<tr>\n\t\t<td>Howard</td>\n\t\t<td>28</td>\n\t\t<td>Male</td>\n\t</tr>\n\t<tr>\n\t\t<td>Raj</td>\n\t\t<td>29</td>\n\t\t<td>Male</td>\n\t</tr>\n</table>\n"
+  "Table_Data": "<table border='1' cellpadding='0' cellspacing='0' align='right' style='width:30%'><tr><th>Name</th><th>Age</th><th>Gender</th></tr><tr><td>Sheldon</td><td>29</td><td>Male</td></tr><tr><td>Leonard</td><td>30</td><td>Male</td></tr><tr><td>Howard</td><td>28</td><td>Male</td></tr><tr><td>Raj</td><td>29</td><td>Male</td></tr></table>"
 }
 ```
 **Usage**
 
 Placeholder tag is replaced by the table generated using html table string provided in the placeholder tag value.
-![Sample for HTML Table insertion](../images/html_table_sample.png)
+![Sample for HTML Table insertion](../images/html_table_output.png)
 
 
 <InlineAlert slots="text"/>
 
-- Placeholder Tags containing table element, in input data, should be placed in a separate paragraph in the input docx template as shown in above usage diagram.
+- Placeholder Tags containing `<table>` HTML element as value in input json data, should be placed in a separate paragraph in the input document template.
 
-- Only Inline Styling of Table elements is possible. i.e. using `style` attribute of `<table>`. Internal and External styling are not allowed.)
+- Only Inline Styling of Table elements is possible. i.e. using `style` attribute of `<table>`. Internal and External styling are not allowed.
 
 
 
