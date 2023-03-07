@@ -17,7 +17,7 @@ module.exports = {
     siteMetadata: {
         docs: {
             title: 'Get credentials',
-            path: '../document-services/apis/interstitial/'
+            path: 'https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html'
         },
         pages: [
             {
