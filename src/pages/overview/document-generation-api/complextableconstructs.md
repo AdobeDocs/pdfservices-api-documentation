@@ -174,9 +174,7 @@ JSON representation of the input data:
 Discard a row or set of rows in a table from the final generated document.
 
 ### Discard row if condition evaluates to true
-Row in the table can be discarded only when the condition in the discard-row-if(expr(**condition**),**context**) evaluates to true in the provided context. Add this construct along with the template tag to activate discard row if feature for the corresponding rows in the table.
-
-Tag: **discard-row-if(expr(condition),context)**
+A row in the table can be discarded only when the condition in the discard-row-if(expr(**condition**),**context**) evaluates to true in the provided context. Add this construct along with the template tag to discard the row based on the provided condition.
 
 For Example: {{TABLE_CONTEXT.PROPERTY:**discard-row-if(expr(PROPERTY = "TEST_VALUE"),TABLE_CONTEXT)**}}
 
@@ -218,9 +216,9 @@ JSON representation of the input data:
 }
 ```
 ![Added discard-row-if(expr(condition),context) construct along with the template tag to activate discard row if feature for the corresponding rows](../images/discard_row_if_condition_true.png)
-- discard-row-if tag discard the particular row if at least one condition provided in the **expr** construct along with context evaluates to true.
+- If multiple discard-row-if's are used in a row then it is discarded if at least one condition evaluates to true.
 
-**Note**: In above example, the first row is considered as a header row. This header row is also discarded when all the rows are discarded and hence removing the complete table.
+**Note**: The header row is also removed when all the rows are discarded thus removing the complete table.
 
 ## Conditions inside tables
 An additional construct **expr-context** is introduced for conditionals inside tables, which is required while evaluating
