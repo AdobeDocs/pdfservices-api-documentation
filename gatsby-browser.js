@@ -376,7 +376,7 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
         pageHeadTittle = "Document Generation API Hyperlink";
       } else if (
         window.location.pathname.indexOf(
-          "document-generation-api/dynamictableconstructs"
+          "document-generation-api/complextableconstructs"
         ) >= 0
       ) {
         pageHeadTittle = "Document Generation API Dynamic Table Constructs";

@@ -304,8 +304,8 @@ module.exports = {
                                 path: 'overview/document-generation-api/inlineimages.md'
                             },
                             {
-                                title: 'Dynamic Table Constructs ',
-                                path: 'overview/document-generation-api/dynamictableconstructs.md'
+                                title: 'Complex Table Constructs ',
+                                path: 'overview/document-generation-api/complextableconstructs.md'
                             },
                             {
                                 title: 'Word Add-in',
@@ -636,7 +636,7 @@ module.exports = {
                                     },
                                     {
                                         title: 'Dynamic Table Constructs ',
-                                        path: 'overview/3.0.0/document-generation-api/dynamictableconstructs.md'
+                                        path: 'overview/3.0.0/document-generation-api/complextableconstructs.md'
                                     },
                                     {
                                         title: 'Word Add-in',
@@ -881,7 +881,7 @@ module.exports = {
                                     },
                                     {
                                         title: 'Dynamic Table Constructs ',
-                                        path: 'overview/2.2.0/document-generation-api/dynamictableconstructs.md'
+                                        path: 'overview/2.2.0/document-generation-api/complextableconstructs.md'
                                     },
                                     {
                                         title: 'Word Add-in',

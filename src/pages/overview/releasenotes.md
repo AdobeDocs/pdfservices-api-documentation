@@ -183,6 +183,14 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### Adobe Document Generation Server Side Release (January, 2023, server side release)
+
+| Change | Language         | Description                                                                                                                 |
+|--------|------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| New    | Java,NodeJS,.NET | Adding support for [dynamic tables](../document-generation-api/templatetags.md#Tables) feature.                             |
+| New    | Java,NodeJS,.NET | Adding support for [row omission](../document-generation-api/complextableconstructs.md#conditions-inside-tables) in tables. |
+| New    | Java,NodeJS,.NET | Adding support for [conditions inside tables](../document-generation-api/complextableconstructs.md#dynamic-table-rows).     |
+
 ### 2.3.0 (February, 2023, minor release)
 
 | Change  | Language | Description                                                                                                                  |
@@ -304,10 +312,10 @@ Upgrading to the latest SDK should not break existing applications.
 
 ### Adobe Document Generation Server Side Release (14 December, 2021; server side release)
 
-| Change  | Language | Description                                                                                                                                                              |
-| ------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| New     | All      | Adding support for additional tags (<strong\> and <em\>) in [styling and formatting](../document-generation-api/stylingformattingtags.md#apply-styling-and-formatting) feature.                                                                               |
-| New     | All      | Support for [dynamic table constructs](../document-generation-api/dynamictableconstructs.md).     |
+| Change  | Language | Description                                                                                                                                                                     |
+| ------- | -------- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| New     | All      | Adding support for additional tags (<strong\> and <em\>) in [styling and formatting](../document-generation-api/stylingformattingtags.md#apply-styling-and-formatting) feature. |
+| New     | All      | Support for [dynamic table constructs](../document-generation-api/complextableconstructs.md).                                                                                   |
 
 ### Extract PDF Server Side Release (15 November, 2021; server side release)
 | Change  | Language            | Description                                                                                    |
@@ -318,11 +326,11 @@ Upgrading to the latest SDK should not break existing applications.
 
 ### Adobe Document Generation Server Side Release (20 October, 2021; server side release)
 
-| Change  | Language | Description                                                                                                                                                   |
-| ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| New     | All      | HTML [styling and formatting](../document-generation-api/stylingformattingtags.md#apply-styling-and-formatting) support in json data.                                                                               |
-| New     | All      | Support for [horizontal tables](../document-generation-api/templatetags.md#dynamically-expand-table-rows-or-columns).     |
-| New     | All      | Support for SVG images.                                                                               |
+| Change  | Language | Description                                                                                                                           |
+| ------- | -------- |---------------------------------------------------------------------------------------------------------------------------------------|
+| New     | All      | HTML [styling and formatting](../document-generation-api/stylingformattingtags.md#apply-styling-and-formatting) support in json data. |
+| New     | All      | Support for [horizontal tables](../document-generation-api/complextableconstructs.md#dynamically-expand-table-rows-or-columns).       |
+| New     | All      | Support for SVG images.                                                                                                               |
 
 ### Extract PDF Server Side Release (29 September, 2021; server side release)
 | Change  | Language            | Description|
