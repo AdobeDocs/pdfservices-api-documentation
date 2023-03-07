@@ -412,12 +412,8 @@ module.exports = {
                         path: 'overview/pdf-electronic-seal-api/index.md'
                     },
                     {
-                        title: 'Prerequisites',
-                        path: 'overview/pdf-electronic-seal-api/prerequisites.md'
-                    },
-                    {
-                        title: 'Quickstarts',
-                        path: 'overview/pdf-electronic-seal-api/quickstarts.md'
+                        title: 'Getting Started',
+                        path: 'overview/pdf-electronic-seal-api/gettingstarted.md'
                     }
                 ]
             },
@@ -429,6 +425,10 @@ module.exports = {
                     {
                         title: 'Overview',
                         path: 'overview/pdf-accessibility-auto-tag-api/index.md'
+                    },
+                    {
+                        title: 'Getting Started',
+                        path: 'overview/pdf-accessibility-auto-tag-api/gettingstarted.md'
                     },
                     {
                         title: 'Quickstarts',
@@ -456,10 +456,6 @@ module.exports = {
                     {
                         title: 'Release Notes',
                         path: 'overview/releasenotes.md'
-                    },
-                    {
-                        title: 'PDF Services API Licensing',
-                        path: 'overview/pdf-accessibility-auto-tag-api/dcserviceslicensing.md'
                     },
                     {
                         title: 'Usage Limits',
