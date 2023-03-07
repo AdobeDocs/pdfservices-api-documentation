@@ -203,7 +203,7 @@ JSON representation of the input data:
 ```
 **Usage**
 
-Placeholder tag is replaced by the table generated using html table string provided in the placeholder tag value.
+Placeholder tag is replaced by the table generated using html string provided in the placeholder tag value.
 ![Sample for HTML Table insertion](../images/html_table_output.png)
 
 
