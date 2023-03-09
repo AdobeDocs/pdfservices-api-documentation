@@ -92,12 +92,11 @@ result in an error message.
 Licensing Metrics & Free Tier
 ------------------------------
 
-The PDF Services API provides a free tier program so that you can take
-a deep dive into its cool features at zero cost. Free tier users that sign
-up directly on Adobe I/O get free credentials that enable processing of
-up to 1,000 Document Transactions per month. A Document Transaction
-is based on the initial endpoint request (i.e., API call) and the
-digital output. For detailed licensing metrics, please see the tables
+The PDF Services API has a Free Tier so that you can take a deep dive
+into its cool features at zero cost. Free Tier users get free credentials
+that enable the processing of 5,000 Document Transactions every 30 days.
+A Document Transaction is based on the initial endpoint request (i.e., API call)
+and the digital output. For detailed licensing metrics, please see the tables
 above.
 
 Processing is calculated on a per Document Transaction basis.
