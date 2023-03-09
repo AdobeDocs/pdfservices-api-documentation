@@ -84,10 +84,15 @@ There are several usage limits that apply to PDF Services API and its underlying
 
 **<i>Please [contact us](https://developer.adobe.com/document-services/pricing/contact/sales/) on RPM if interested in understanding how it can scale under your ETLA.</i>
 
-Free Trial
+Free Tier
 ------------------------------
 
-The PDF Services API provides a free trial program so that you can dive into the features at zero cost. Trial users get free credentials that enable processing of 1,000 Document Transactions for up to 6 months. A Document Transaction is based on the initial endpoint request (i.e., API call) and the digital output. For detailed licensing metrics, please see the tables above.
+The PDF Services API has a Free Tier so that you can take a deep dive
+into its cool features at zero cost. Free Tier users get free credentials
+that enable the processing of 5,000 Document Transactions every 30 days.
+A Document Transaction is based on the initial endpoint request (i.e., API call)
+and the digital output. For detailed licensing metrics, please see the tables
+above.
 
 Processing is calculated on a per Document Transaction basis.
 
