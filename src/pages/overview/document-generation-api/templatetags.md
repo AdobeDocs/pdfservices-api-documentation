@@ -148,7 +148,7 @@ the output document.
 
 <InlineAlert slots="text"/>
 
-Image can also be inserted using the html <img/> tag. 
+Image can also be inserted using the html `<img/>` tag. Please refer [Inline Images](../document-generation-api/inlineimages.md) to learn more about this.
 
 ## Conditionals
 
