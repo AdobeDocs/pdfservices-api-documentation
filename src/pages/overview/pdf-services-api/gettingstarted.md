@@ -261,7 +261,7 @@ Once you complete the [Getting Credentials](/document-services/apis/interstitial
 -   **Personalized Download**: A zip gets downloaded. The samples download zip contains an adobe-dc-pdf-services-sdk-java-samples with a preconfigured pdfservices-api-credentials.json file. After downloading the zip, you can either run the samples in the zip directly.
     ![Samples Screenshot](../images/samples-screenshot.png)
 -   **Non Personalized Download**: A json file `pdfservices-api-credentials.json` file get downloaded containing your credentials. You can replace the pdfservices-api-credentials.json in the [Java sample code](https://www.adobe.com/go/pdftoolsapi_java_samples) with the downloaded json.
-    ![Credentials Screenshot](../images/credentias.png)
+    ![Credentials Screenshot](../images/credentials.png)
     
 **Example pdfservices-api-credentials.json file**
 
