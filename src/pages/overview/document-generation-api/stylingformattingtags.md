@@ -102,7 +102,7 @@ JSON representation of the input data:
   "Notes Section": "<p>Has the Board of directors established a basic policy</p> <span style=\"font-size: 12pt;\">regarding legal compliance <b><i>(hereinafter referred to as the Legal Compliance policy)</i></b><a href=\"http://www.samplewebsite.com/\">Board</a> in accordance to the institution's <br><u>corporate management policy</u> and disseminated it throughout the institution"
 }
 ```
-![Styling Tags Sample with style for font-size attribute added to span tag](../images/styling_tags_sample_ptag.png)
+![Styling Tags Sample with style for font-size attribute added to span tag](../images/styling_tags_sample.png)
 
 ![Styling Tags output when style for font-size attribute was added to span tag](../images/styling_tags_formatted.png)
  

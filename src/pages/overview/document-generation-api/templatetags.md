@@ -197,7 +197,7 @@ JSON representation of the input data:
 
 ```json
 {
-  "Table_Data": "<table border='1' cellpadding='0' cellspacing='0' align='right' style='width:30%'><tr><th>Name</th><th>Age</th><th>Gender</th></tr><tr><td>Sheldon</td><td>29</td><td>Male</td></tr><tr><td>Leonard</td><td>30</td><td>Male</td></tr><tr><td>Howard</td><td>28</td><td>Male</td></tr><tr><td>Raj</td><td>29</td><td>Male</td></tr></table>"
+  "Table_Data": "<table border='1' cellpadding='0' cellspacing='0' style='width:30%'><tr><th>Name</th><th>Age</th><th>Gender</th></tr><tr><td>Sheldon</td><td>29</td><td>Male</td></tr><tr><td>Leonard</td><td>30</td><td>Male</td></tr><tr><td>Howard</td><td>28</td><td>Male</td></tr><tr><td>Raj</td><td>29</td><td>Male</td></tr></table>"
 }
 ```
 **Usage**
