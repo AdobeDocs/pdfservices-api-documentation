@@ -373,33 +373,44 @@ module.exports = {
                         path: 'overview/pdf-embed-api/index.md',
                     },
                     {
-                        title: 'PDF Embed API basics',
-                        path: 'overview/pdf-embed-api/howtos.md'
+                        title: 'Getting Started',
+                        path: 'overview/pdf-embed-api/gettingstarted.md',
                     },
                     {
-                        title: 'UI Customization',
-                        path: 'overview/pdf-embed-api/howtos_ui.md'
-                    },
-                    {
-                        title: 'Comments and Markup',
-                        path: 'overview/pdf-embed-api/howtos_comments.md'
-                    },
-                    {
-                        title: 'Analytics',
-                        path: 'overview/pdf-embed-api/howtodata.md'
-                    },
-                    {
-                        title: 'Handle search engine indexing',
-                        path: 'overview/pdf-embed-api/searchengineindexing.md'
-                    },
-                    {
-                        title: 'Legacy to Modern viewer',
-                        path: 'overview/pdf-embed-api/modernviewer.md'
+                        title: 'How Tos',
+                        subTitle: '',
+                        path: 'overview/pdf-embed-api/howtos',
+                        pages: [
+                            {
+                                title: 'PDF Embed API basics',
+                                path: 'overview/pdf-embed-api/howtos.md'
+                            },
+                            {
+                                title: 'UI Customization',
+                                path: 'overview/pdf-embed-api/howtos_ui.md'
+                            },
+                            {
+                                title: 'Comments and Markup',
+                                path: 'overview/pdf-embed-api/howtos_comments.md'
+                            },
+                            {
+                                title: 'Analytics',
+                                path: 'overview/pdf-embed-api/howtodata.md'
+                            },
+                            {
+                                title: 'Handle search engine indexing',
+                                path: 'overview/pdf-embed-api/searchengineindexing.md'
+                            },
+                            {
+                                title: 'Legacy to Modern viewer',
+                                path: 'overview/pdf-embed-api/modernviewer.md'
+                            }
+                        ]
                     },
                     {
                         title: 'Release Notes',
                         path: 'overview/pdf-embed-api/releasenotes.md'
-                    },
+                    }
                 ]
             },
             {
@@ -431,25 +442,25 @@ module.exports = {
                         path: 'overview/pdf-accessibility-auto-tag-api/gettingstarted.md'
                     },
                     {
-                        title: 'Quickstarts',
-                        path: 'overview/pdf-accessibility-auto-tag-api/quickstarts.md'
-                    },
-                    {
                         title: 'How Tos',
                         subTitle: '',
                         path: 'overview/pdf-accessibility-auto-tag-api/howtos',
                         pages: [
                             {
-                                title: 'Overview',
-                                path: 'overview/pdf-accessibility-auto-tag-api/howtos/index.md'
+                                title: 'API Output Format',
+                                path: 'overview/pdf-accessibility-auto-tag-api/howtos/output.md'
                             },
                             {
-                                title: 'PDF Accessibility Auto-Tag API',
-                                path: 'overview/pdf-accessibility-auto-tag-api/howtos/accessibility-auto-tag-api.md'
+                                title: 'REST API',
+                                path: 'overview/pdf-accessibility-auto-tag-api/howtos/rest.md'
                             },
                             {
-                                title: 'Using Our APIs',
-                                path: 'overview/pdf-accessibility-auto-tag-api/howtos/api-usage.md'
+                                title: 'Generate Tagged PDF',
+                                path: 'overview/pdf-accessibility-auto-tag-api/howtos/generatetaggedpdf.md'
+                            },
+                            {
+                                title: 'Generate Tagged PDF with CLI Arguments',
+                                path: 'overview/pdf-accessibility-auto-tag-api/howtos/generatetaggedpdfwithcli.md'
                             }
                         ]
                     },
@@ -1010,6 +1021,16 @@ module.exports = {
             },
         ]
     },
-    plugins: [`@adobe/gatsby-theme-aio`],
-    pathPrefix: process.env.PATH_PREFIX || '/document-services/docs/'
+    plugins: [`@adobe/gatsby-theme-aio`,
+    
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/pages`,
+        name: "pages",
+        ignore: [`**/2.2.0`,`**/3.0.0` ]
+      }
+    }
+    ],
+    pathPrefix: process.env.PATH_PREFIX || '/document-services/docs/',
 };

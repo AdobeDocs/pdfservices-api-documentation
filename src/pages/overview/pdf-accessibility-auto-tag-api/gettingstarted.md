@@ -3,7 +3,7 @@ title: Getting Started | PDF Accessibility Auto-Tag API | Adobe PDF Services
 ---
 
 <p>
-PDF Accessibility Auto-Tag API is available as SDKs to help you get up and running quickly. You can then leverage the samples in your own code
+PDF Accessibility Auto-Tag API is available as SDKs to help you get up and running quickly. You can then leverage the samples in your own code.
 </p>
 
 ## Get Early Access
