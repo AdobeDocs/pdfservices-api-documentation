@@ -94,7 +94,7 @@ Licensing Metrics & Free Tier
 
 The PDF Services API has a Free Tier so that you can take a deep dive
 into its cool features at zero cost. Free Tier users get free credentials
-that enable the processing of 5,000 Document Transactions every 30 days.
+that enable the processing of 5,000 Document Transactions per month.
 A Document Transaction is based on the initial endpoint request (i.e., API call)
 and the digital output. For detailed licensing metrics, please see the tables
 above.
