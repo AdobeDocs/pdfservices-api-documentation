@@ -51,8 +51,10 @@ public class CreatePDFFromDOCX {
         try {
 
             // Initial setup, create credentials instance. 
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json").build();
+            Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+                    .withClientId("CLIENT_ID")
+                    .withClientSecret("CLIENT_SECRET")
+                    .build();
 
             //Create an ExecutionContext using credentials and create a new operation instance.
             ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -221,9 +223,10 @@ public class CreatePDFFromDOCXWithOptions {
         try {
 
           // Initial setup, create credentials instance.
-          Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-              .fromFile("pdfservices-api-credentials.json")
-              .build();
+          Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+                    .withClientId("CLIENT_ID")
+                    .withClientSecret("CLIENT_SECRET")
+                    .build();
 
           //Create an ExecutionContext using credentials and create a new operation instance.
           ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -431,9 +434,10 @@ public class CreatePDFFromStaticHTML {
      try {
 
        // Initial setup, create credentials instance.
-       Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-           .fromFile("pdfservices-api-credentials.json")
-           .build();
+       Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+                    .withClientId("CLIENT_ID")
+                    .withClientSecret("CLIENT_SECRET")
+                    .build();
 
        //Create an ExecutionContext using credentials and create a new operation instance.
        ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -649,9 +653,10 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
       try {
 
         // Initial setup, create credentials instance.
-        Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-            .fromFile("pdfservices-api-credentials.json")
-            .build();
+        Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+                    .withClientId("CLIENT_ID")
+                    .withClientSecret("CLIENT_SECRET")
+                    .build();
 
         //Create an ExecutionContext using credentials and create a new operation instance.
         ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -867,9 +872,10 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
       try {
 
         // Initial setup, create credentials instance.
-        Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-            .fromFile("pdfservices-api-credentials.json")
-            .build();
+        Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+                    .withClientId("CLIENT_ID")
+                    .withClientSecret("CLIENT_SECRET")
+                    .build();
 
         //Create an ExecutionContext using credentials and create a new operation instance.
         ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -1098,9 +1104,10 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
      try {
 
        // Initial setup, create credentials instance.
-       Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-           .fromFile("pdfservices-api-credentials.json")
-           .build();
+       Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+                    .withClientId("CLIENT_ID")
+                    .withClientSecret("CLIENT_SECRET")
+                    .build();
 
        //Create an ExecutionContext using credentials and create a new operation instance.
        ExecutionContext executionContext = ExecutionContext.create(credentials);
