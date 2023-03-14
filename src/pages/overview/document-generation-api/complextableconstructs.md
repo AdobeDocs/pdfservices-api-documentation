@@ -216,7 +216,7 @@ JSON representation of the input data:
 }
 ```
 ![Added discard-row-if(expr(condition),context) construct along with the template tag to activate discard row if feature for the corresponding rows](../images/discard_row_if_condition_true.png)
-- If multiple discard-row-if's are used in a row then it is discarded if at least one condition evaluates to true.
+- In a row, if multiple “discard-row-if” are used, then the row will be discarded if any one of the conditions evaluates to true.
 
 **Note**: The header row is also removed when all the rows are discarded thus removing the complete table.
 
