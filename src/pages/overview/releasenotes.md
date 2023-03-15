@@ -190,11 +190,11 @@ Upgrading to the latest SDK should not break existing applications.
 
 ### Adobe Document Generation Server Side Release (March, 2023, server side release)
 
-| Change | Language         | Description                                                                                                                    |
-|--------|------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| New    | Java,NodeJS,.NET | Adding support for [dynamic tables](../document-generation-api/templatetags.md#insert-table-using-table-html-element) feature. |
-| New    | Java,NodeJS,.NET | Adding support for [row omission](../document-generation-api/complextableconstructs.md#dynamic-table-rows) in tables.          |
-| New    | Java,NodeJS,.NET | Adding support for [conditions inside tables](../document-generation-api/complextableconstructs.md#conditions-inside-tables).  |
+| Change | Language         | Description                                                                                                                         |
+|--------|------------------|-------------------------------------------------------------------------------------------------------------------------------------|
+| New    | Java,NodeJS,.NET | Adding support for [dynamic html tables](../document-generation-api/templatetags.md#insert-table-using-table-html-element) feature. |
+| New    | Java,NodeJS,.NET | Adding support for [row omission](../document-generation-api/complextableconstructs.md#dynamic-table-rows) in tables.               |
+| New    | Java,NodeJS,.NET | Adding support for [conditions inside tables](../document-generation-api/complextableconstructs.md#conditions-inside-tables).       |
 
 ### 2.3.0 (February, 2023, minor release)
 
