@@ -196,7 +196,7 @@ This code runs the document generation process and then stores the result PDF do
 
 ![Example running at the command line](./shot9.png)
 
-Here's the complete application (`export.js`):
+Here's the complete application (`documentmerge.js`):
 
 ```js
 const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
