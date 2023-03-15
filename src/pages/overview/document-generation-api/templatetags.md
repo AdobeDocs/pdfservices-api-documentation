@@ -219,7 +219,7 @@ Placeholder tag is replaced by a table generated using the html string provided 
 Rows of a table can be dynamically populated by repeating over an array of objects from the input data.
 
 
-**How to expand Tables**
+**How to insert Tables**
 
 <Media slots="video"/>
 

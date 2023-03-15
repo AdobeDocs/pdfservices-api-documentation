@@ -188,7 +188,7 @@ Upgrading to the latest SDK should not break existing applications.
 | ------- | ------------------- | --------------------------------------------------------------------------------------------- |
 | Changed | All                 | Adding support for larger PDF document processing. The new supported limits are 400 pages for non-scanned and 150 for scanned PDF documents. | 
 
-### Adobe Document Generation Server Side Release (March, 2023, server side release)
+### Adobe Document Generation Server Side Release (March, 2023; server side release)
 
 | Change | Language         | Description                                                                                                                         |
 |--------|------------------|-------------------------------------------------------------------------------------------------------------------------------------|

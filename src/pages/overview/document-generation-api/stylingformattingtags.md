@@ -65,12 +65,12 @@ JSON representation of the input data:
 
 ```json
 {
-  "Notes Section": "Has the Board of directors established a basic policy <span style=\"font-size: 12pt;\">regarding legal compliance<span style=\"font-weight: bold; font-style: italic;\"> (hereinafter referred to as the Legal Compliance policy) </span></span><a href=\"http://www.samplewebsite.com/\">Board</a>in accordance to the institution's <span style=\"text-decoration : underline; color:ff6347;\">corporate management policy</span> <span style=\"color: red;\">and disseminated it throughout the institution</span>"
+  "Notes Section": "Has the Board of directors established a basic policy <span style=\"font-size: 14pt;\">regarding legal compliance<span style=\"font-weight: bold; font-style: italic;\"> (hereinafter referred to as the Legal Compliance policy) </span></span><a href=\"http://www.samplewebsite.com/\">Board</a> in accordance to the institution's <span style=\"text-decoration : underline; color:ff6347;\">corporate management policy</span> <span style=\"color: red;\">and disseminated it throughout the institution</span>"
 }
 ```
-![Styling Tags Sample with style for font-size, font-weight and font-style attribute added to span tag](../images/styling_attributes_sample.png)
+![Styling Tags Sample with style for font-size, font-weight and font-style attribute added to span tag](../images/stylingAttributesJsonRep.png)
 
-![Styling Tags output when style for font-size, font-weight and font-style attribute was added to span tag](../images/styling_attributes1.png)
+![Styling Tags output when style for font-size, font-weight and font-style attribute was added to span tag](../images/stylingAttributesOutput.png)
 
 ## Tags Supported
 
@@ -99,12 +99,12 @@ JSON representation of the input data:
 
 ```json
 {
-  "Notes Section": "Has the Board of directors established a basic policy <span style=\"font-size: 12pt;\">regarding legal compliance <b><i>(hereinafter referred to as the Legal Compliance policy)</i></b><a href=\"http://www.samplewebsite.com/\">Board</a> in accordance to the institution's <br><u>corporate management policy</u> and disseminated it throughout the institution"
+  "Notes Section": "Has the Board of directors established a basic policy <span style=\"font-size: 14pt;\">regarding legal compliance <b><i>(hereinafter referred to as the Legal Compliance policy) </i></b></span><a href=\"http://www.samplewebsite.com/\">Board</a> in accordance to the institution's <br><u>corporate management policy</u> and disseminated it throughout the institution"
 }
 ```
-![Styling Tags Sample with style for font-size attribute added to span tag](../images/styling_tags_sample.png)
+![Styling Tags Sample with style for font-size attribute added to span tag](../images/stylingTagsJsonRep.png)
 
-![Styling Tags output when style for font-size attribute was added to span tag](../images/styling_tags1.png)
+![Styling Tags output when style for font-size attribute was added to span tag](../images/stylingTagsOutput.png)
  
 #### How to create paragraphs in document?
 
