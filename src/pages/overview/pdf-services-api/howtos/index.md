@@ -100,6 +100,7 @@ samples for details.
 ## Proxy Server Configuration
 
 The JAVA SDK enables to connect to API calls through Proxy via Client Configurations.
+Username and password based authentication is supported for the Proxy server from the SDK.
 It allows the clients to use SDK within the network where all outgoing calls have to 
 go through a proxy and allowed only if allow-listed on the proxy. Please refer the 
 following sample for details.
@@ -110,21 +111,33 @@ following sample for details.
 
 Available properties:
 
-- **proxyHost**: The proxy Server Hostname (DNS or IP Address)
-- **proxyScheme**: Default: http. Scheme of the proxy server i.e. http or https. 
-- **proxyPort**: Default: 80 for http, 443 for https. Port on which proxy server is listening.
+- **host**: The proxy Server Hostname (DNS or IP Address)
+- **scheme**: Default: http. Scheme of the proxy server i.e. http or https. 
+- **port**: Default: 80 for http, 443 for https. Port on which proxy server is listening.
+- **username**: Username for the authentication.
+- **password**: Password for the authentication.
 
-Configure the Proxy Server via a custom `ClientConfig` class:
+All these properties are wrapped within the proxyServerConfig object. Further, username and password is to be provided
+inside the nested object usernamePasswordCredentials.
+
+Set the above properties using a custom `ProxyServerConfig` class, and use `ClientConfig` class to configure proxy server.
 
 <CodeBlock slots="heading, code" repeat="1" languages="Java" />
 
 ### 
 
 ```javascript
+ProxyServerConfig proxyServerConfig = new ProxyServerConfig.Builder()
+    .withHost("PROXY_HOSTNAME")
+    .withProxyScheme(ProxyScheme.HTTP)
+    .withPort(443)
+    .withCredentials(new UsernamePasswordCredentials("USERNAME", "PASSWORD"))
+    .build();
+
 ClientConfig clientConfig = ClientConfig.builder()
-    .withProxyScheme(ClientConfig.ProxyScheme.HTTPS)
-    .withProxyHost("PROXY_HOSTNAME")
-    .withProxyPort(443)
+    .withConnectTimeout(10000)
+    .withSocketTimeout(40000)
+    .withProxyServerConfig(proxyServerConfig)
     .build();
 ```
 
