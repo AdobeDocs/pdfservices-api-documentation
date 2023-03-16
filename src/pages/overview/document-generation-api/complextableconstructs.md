@@ -119,7 +119,7 @@ JSON representation of the input data:
 ```
 ![Adding discard-if-empty construct with boolean false/true along with the template tag to activate discard if empty feature for the corresponding column](../images/discard_column_if_empty.png)
 
-- {{Project.Notes:**discard-if-empty(true)**}} tag lets the engine discard the particular column if every element of an array in the input json is either empty or null.
+{{Project.Notes:**discard-if-empty(true)**}} tag lets the engine discard the particular column if every element of an array in the input json is either empty or null.
 
 **Note**: The row above the authored row will be considered as a header row. Cell from the header row will be discarded along with discarded column.
 
@@ -168,7 +168,7 @@ JSON representation of the input data:
 
 ![Added discard-if(expr(**condition**)) construct along with the template tag to activate discard if feature for the corresponding column](../images/discard_if_condition_true.png)
 
-- {{Conversion.Rate:**discard-if(expr($sum(Conversion.Rate)!= 100))**}} tag lets the engine discard the particular column if condition provided in the **expr** construct evaluates to true.
+{{Conversion.Rate:**discard-if(expr($sum(Conversion.Rate)!= 100))**}} tag lets the engine discard the particular column if condition provided in the **expr** construct evaluates to true.
 
 ## Dynamic table rows
 Discard a row or set of rows in a table from the final generated document.
@@ -216,7 +216,7 @@ JSON representation of the input data:
 }
 ```
 ![Added discard-row-if(expr(condition),context) construct along with the template tag to activate discard row if feature for the corresponding rows](../images/discard_row_if_condition_true.png)
-- In a row, if multiple “discard-row-if” are used, then the row will be discarded if any one of the conditions evaluates to true.
+In a row, if multiple “discard-row-if” are used, then the row will be discarded if any one of the conditions evaluates to true.
 
 **Note**: The header row is also removed when all the rows are discarded thus removing the complete table.
 
