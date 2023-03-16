@@ -304,8 +304,8 @@ module.exports = {
                                 path: 'overview/document-generation-api/inlineimages.md'
                             },
                             {
-                                title: 'Dynamic Table Constructs ',
-                                path: 'overview/document-generation-api/dynamictableconstructs.md'
+                                title: 'Complex Table Constructs ',
+                                path: 'overview/document-generation-api/complextableconstructs.md'
                             },
                             {
                                 title: 'Word Add-in',
