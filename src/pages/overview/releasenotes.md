@@ -188,13 +188,13 @@ Upgrading to the latest SDK should not break existing applications.
 | ------- | ------------------- | --------------------------------------------------------------------------------------------- |
 | Changed | All                 | Adding support for larger PDF document processing. The new supported limits are 400 pages for non-scanned and 150 for scanned PDF documents. | 
 
-### Adobe Document Generation Server Side Release (January, 2023, server side release)
+### Adobe Document Generation Server Side Release (March, 2023; server side release)
 
-| Change | Language         | Description                                                                                                                 |
-|--------|------------------|-----------------------------------------------------------------------------------------------------------------------------|
-| New    | Java,NodeJS,.NET | Adding support for [dynamic tables](../document-generation-api/templatetags.md#Tables) feature.                             |
-| New    | Java,NodeJS,.NET | Adding support for [row omission](../document-generation-api/complextableconstructs.md#conditions-inside-tables) in tables. |
-| New    | Java,NodeJS,.NET | Adding support for [conditions inside tables](../document-generation-api/complextableconstructs.md#dynamic-table-rows).     |
+| Change | Language         | Description                                                                                                                         |
+|--------|------------------|-------------------------------------------------------------------------------------------------------------------------------------|
+| New    | Java,NodeJS,.NET | Adding support for [dynamic html tables](../document-generation-api/templatetags.md#insert-table-using-table-html-element) feature. |
+| New    | Java,NodeJS,.NET | Adding support for [row omission](../document-generation-api/complextableconstructs.md#dynamic-table-rows) in tables.               |
+| New    | Java,NodeJS,.NET | Adding support for [conditions inside tables](../document-generation-api/complextableconstructs.md#conditions-inside-tables).       |
 
 ### 2.3.0 (February, 2023, minor release)
 
@@ -202,7 +202,7 @@ Upgrading to the latest SDK should not break existing applications.
 |---------|----------|------------------------------------------------------------------------------------------------------------------------------|
 | Changed | NodeJS      | Fixed the response failures with `400` HTTP statusCode  and `UNKNOWN` errorCode for NodeJS SDK(s) v2.2.3 and below.               |
   
-### Adobe Document Generation Server Side Release (January, 2023, server side release)
+### Adobe Document Generation Server Side Release (January, 2023; server side release)
 
 | Change  | Language | Description                                                                                                                  |
 |---------|----------|------------------------------------------------------------------------------------------------------------------------------|
