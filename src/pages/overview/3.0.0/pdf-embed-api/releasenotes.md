@@ -12,7 +12,7 @@ the changes below for each release.
 
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
-| New | Legacy viewer end-of-life. Legacy viewer will be no longer accessible and all calls to legacy viewer will route to new modern PDF viewer.
+| New | Legacy viewer will be no longer accessible and all calls to legacy viewer will route to new modern PDF viewer.
 | Bug fix | Fixed issue with the PDF Linearization.
 
 ### February, 2023

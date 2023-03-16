@@ -3,14 +3,14 @@ title: Modern Viewer | PDF Embed API | Adobe PDF Services
 ---
 # Legacy to Modern Viewer
 
-<InlineAlert slots="text"/>
-
-As of March 2023, the legacy viewer is no longer available. All requests to it will load the new modern PDF viewer. The documentation below will be useful for developers needing to migrate to the modern viewing experience.
-
 Adobe’s new modern PDF viewer is a reimagining of the look and feel of PDF viewing 
 on web, desktop, mobile, and PDF integrations.  It introduces a new framework and 
 workflows that better map to user mental models and enables a consistent user 
 experience whether you are viewing a PDF in Adobe Acrobat or embedded on your website.
+
+<InlineAlert slots="text"/>
+
+As of March 2023, the legacy viewer is no longer available. All requests to it will load the new modern PDF viewer. The documentation below will be useful for developers needing to migrate to the modern viewing experience.
   
 ## Full window embed mode
 
