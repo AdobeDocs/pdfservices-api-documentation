@@ -13,7 +13,7 @@ the changes below for each release.
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
 | New | Legacy viewer will no longer be accessible and all calls to legacy viewer will route to new modern PDF viewer.
-| Bug fix | Fixed issue with the PDF Linearization.
+| Bug fix | Fixed issues to restore the optimised viewing of Linearized PDFs.
 
 ### February, 2023
 
