@@ -12,7 +12,7 @@ During the credential creation process you'll be asked whether you'd like a **Pe
 
 ## Step 1 : Getting the access token
 
-PDF Services API endpoints are authenticated endpoints. You can get an access token by following the steps mentioned below : 
+PDF Services API endpoints are authenticated endpoints. You can get an access token by following the steps mentioned below :
 
 1. Invoking PDF Services API requires an Adobe-provided credential. To get one, [click here](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
 
@@ -29,17 +29,17 @@ curl --location 'https://ims-na1.adobelogin.com/ims/token/v2' \
 
 Follow this link [How to retrieve Access Token?](https://developer.adobe.com/developer-console/docs/guides/authentication/OAuth/) to understand the request format to get the access_token.
 
-## Step 2 : Uploading an asset 
+## Step 2 : Uploading an asset
 
-After getting the access token, we need to upload the asset. Uploading an asset is a two-step process : 
+After getting the access token, we need to upload the asset. Uploading an asset is a two-step process :
 
 1. First you need to get an upload pre-signed URI by using the following API.
 
 You can read more about the API in detail [here](../../../apis/#operation/asset.uploadpresignedurl).
 
-<CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
+<CodeBlock slots="heading, code" repeat="1" languages="Rest API" />
 
-### Rest API 
+### Rest API
 
 ```javascript
 curl --location --request POST 'https://pdf-services.adobe.io/assets' \
@@ -53,7 +53,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/assets' \
 
 2. On getting a `200` response status from the above API, use the `uploadUri` field in the response body of the above API to upload the asset directly to the cloud provider using a PUT API call. You will also get an `assetID` field which will be used in creating the job.
 
-<CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
+<CodeBlock slots="heading, code" repeat="1" languages="Rest API" />
 
 ### Rest API
 
@@ -63,19 +63,19 @@ curl --location -g --request PUT 'https://dcplatformstorageservice-us-east-1.s3-
 --data-binary '@{{Placeholder for file path}}'
 ```
 
-## Step 3 : Creating the job 
+## Step 3 : Creating the job
 
-To create a job for the operation, please use the  `assetID` obtained in Step 2 in the API request body. On successful job submission you will get a status code of `201` and a response header `location` which will be used for polling. 
+To create a job for the operation, please use the  `assetID` obtained in Step 2 in the API request body. On successful job submission you will get a status code of `201` and a response header `location` which will be used for polling.
 
 For creating the job, please refer to the corresponding API spec for the particular [PDF Operation](../../../apis).
 
 ## Step 4 : Fetching the status
 
-Once the job is successfully created, you need to poll the at the `location` returned in response header of Step 3 by using the following API 
+Once the job is successfully created, you need to poll the at the `location` returned in response header of Step 3 by using the following API
 
 You can read more about the API in detail [here](../../../apis/#operation/pdfoperations.compresspdf.jobstatus).
 
-<CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
+<CodeBlock slots="heading, code" repeat="1" languages="Rest API" />
 
 ### Rest API
 
@@ -85,7 +85,7 @@ curl --location -g --request GET 'https://pdf-services.adobe.io/operation/compre
 --header 'x-api-key: {{Placeholder for client id}}'
 ```
 
-## Step 5 : Downloading the asset 
+## Step 5 : Downloading the asset
 
 On getting `200` response code from the poll API, you will receive a `status` field in the response body which can either be `in progress`, `done` or `failed`.
 
@@ -95,15 +95,15 @@ If the `status` field is `done` the response body will also have a download pre-
 
 You can read more about the API in detail [here](../../../apis/#operation/asset.get).
 
-<CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
+<CodeBlock slots="heading, code" repeat="1" languages="Rest API" />
 
-### Rest API 
+### Rest API
 
 ```javascript
 curl --location -g --request GET 'https://dcplatformstorageservice-us-east-1.s3-accelerate.amazonaws.com/b37fd583-1ab6-4f49-99ef-d716180b5de4?X-Amz-Security-Token={{Placeholder for X-Amz-Security-Token}}&X-Amz-Algorithm={{Placeholder for X-Amz-Algorithm}}&X-Amz-Date={{Placeholder for X-Amz-Date}}&X-Amz-SignedHeaders={{Placeholder for X-Amz-SignedHeaders}}&X-Amz-Expires={{Placeholder for X-Amz-Expires}}&X-Amz-Credential={{Placeholder for X-Amz-Credential}}&X-Amz-Signature={{Placeholder for X-Amz-Signature}}'
 ```
 
-## There you go! Your job is completed in 5 simple steps. 
+## There you go! Your job is completed in 5 simple steps.
 
 ## SDK
 
@@ -124,7 +124,7 @@ Jump start your development by bookmarking or downloading the following key reso
 
 #### Authentication
 
-Once you complete the [Getting Credentials](/document-services/apis/interstitial), a zip or json file automatically downloads depending on whether you opted to download personalized code samples. The file structures are as follows:
+Once you complete the [Getting Credentials](quickstarts/#getting-credentials), a zip file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
 
 -   **Personalized Download**: A zip gets downloaded. The samples download zip contains an adobe-dc-pdf-services-sdk-java-samples with a preconfigured pdfservices-api-credentials.json file. After downloading the zip, you can either run the samples in the zip directly.
     ![Samples Screenshot](../images/samples-java.png)
@@ -133,7 +133,7 @@ Once you complete the [Getting Credentials](/document-services/apis/interstitial
 
 **Example pdfservices-api-credentials.json file**
 
-```json 
+```json
 {
  "client_credentials": {
    "client_id": "<YOUR_CLIENT_ID>",
@@ -233,7 +233,7 @@ logger.validator.level=WARN
 logger.apache.name=org.apache
 logger.apache.level=WARN
 ```
-   
+
 
 ![Samples directory structure Java](../images/samplefilesjava.png)
 
@@ -269,16 +269,21 @@ The samples project requires the following:
 
 #### Authentication
 
-Once you complete the [Getting Credentials](/document-services/apis/interstitial), a zip or json file automatically downloads depending on whether you opted to download personalized code samples. The file structures are as follows:
+Once you complete the [Getting Credentials](quickstarts/#getting-credentials), you will receive a zip file with content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
+
+-   **Personalized Download**: The samples download zip contains a private.key file and an adobe-DC.PDFServices.SDK.NET.Samples directory. Each sample directory contains the sample code as well as a preconfigured pdfservices-api-credentials.json file.
+-   **Non Personalized Download**: The samples download zip contains the private.key file and unconfigured pdfservices-api-credentials.json file.
+
+After downloading the zip, you can either run the samples in the zip directly, or you can replace the pdfservices-api-credentials.json and private.key files in the [.Net sample code](https://www.adobe.com/go/pdftoolsapi_net_samples) with those in the zip.
 
 -   **Personalized Download**: A zip gets downloaded. The samples download zip contains an adobe-dc-pdf-services-sdk-java-samples with a preconfigured pdfservices-api-credentials.json file. After downloading the zip, you can either run the samples in the zip directly.
     ![Samples Screenshot](../images/dotnet-samples.png)
 -   **Non Personalized Download**: A json file `pdfservices-api-credentials.json` file get downloaded containing your credentials. You can replace the pdfservices-api-credentials.json in the [Java sample code](https://www.adobe.com/go/pdftoolsapi_java_samples) with the downloaded json.
     ![Credentials Screenshot](../images/credentials.png)
-    
+
 **Example pdfservices-api-credentials.json file**
 
-```json 
+```json
 {
  "client_credentials": {
    "client_id": "<YOUR_CLIENT_ID>",
@@ -290,7 +295,7 @@ Once you complete the [Getting Credentials](/document-services/apis/interstitial
  }
 }
 ```
-    
+
 
 #### Set up a NET environment
 
@@ -375,7 +380,7 @@ Jumpstart your development by bookmarking or downloading the following key resou
 
 #### Authentication
 
-Once you complete the [Getting Credentials](/document-services/apis/interstitial), a zip or json file automatically downloads depending on whether you opted to download personalized code samples. The file structures are as follows:
+Once you complete the [Getting Credentials](quickstarts/#getting-credentials), you will receive a zip file with content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
 
 -   **Personalized Download**: A zip gets downloaded. The samples download zip contains an adobe-dc-pdf-services-sdk-java-samples with a preconfigured pdfservices-api-credentials.json file. After downloading the zip, you can either run the samples in the zip directly.
     ![Samples Screenshot](../images/node-samples.png)
@@ -385,7 +390,7 @@ Once you complete the [Getting Credentials](/document-services/apis/interstitial
 
 **Example pdfservices-api-credentials.json file**
 
-```json 
+```json
 {
  "client_credentials": {
    "client_id": "<YOUR_CLIENT_ID>",
@@ -397,7 +402,7 @@ Once you complete the [Getting Credentials](/document-services/apis/interstitial
  }
 }
 ```
-    
+
 
 #### Set up a Node.js environment
 
@@ -409,7 +414,7 @@ Running any sample or custom code requires the following steps:
 
 The @adobe/pdfservices-node-sdk npm package automatically downloads when you build the sample project.
 
-``` 
+```
 npm install --save @adobe/pdfservices-node-sdk
 ```
 
@@ -469,7 +474,7 @@ The SDK uses the [log4js API](https://www.npmjs.com/package/log4js) for logging.
       "level": "info"
     }
   }
-} 
+}
 ```
 
 
@@ -484,7 +489,7 @@ While building the sample project automatically downloads the Node package, you 
 
 ## Public API
 
-PDF Services API is accessible directly via REST APIs which requires Adobe-provided credential for authentication. Once you've completed the [Getting Credentials](/document-services/apis/interstitial) workflow, a zip file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
+PDF Services API is accessible directly via REST APIs which requires Adobe-provided credential for authentication. Once you've completed the [Getting Credentials](quickstarts/#getting-credentials) workflow, a zip file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
 
 -   **Personalized Download**: A zip gets downloaded. The samples download zip contains an adobe-dc-pdf-services-sdk-java-samples with a preconfigured pdfservices-api-credentials.json file. After downloading the zip, you can either run the samples in the zip directly.
     ![Samples Screenshot](../images/samples-screenshot.png)
@@ -495,7 +500,7 @@ After downloading the credentials info in pdfservices-api-credentials.json, it c
 
 **Example pdfservices-api-credentials.json file**
 
-```json 
+```json
 {
  "client_credentials": {
    "client_id": "<YOUR_CLIENT_ID>",
