@@ -109,7 +109,7 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
       ?.setAttribute("daa-ll", "Forum");
     header
       .querySelector(
-        "a[href='https://developer.adobe.com/document-services/docs/overview/pdf-services-api/dcserviceslicensing?aio_internal']"
+        "a[href='https://developer.adobe.com/document-services/docs/overview/limits/']"
       )
       ?.setAttribute("daa-ll", "Licensing");
     header

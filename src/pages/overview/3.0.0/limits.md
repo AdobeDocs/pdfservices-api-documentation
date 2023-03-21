@@ -115,7 +115,7 @@ result in an error message.
 | Document file size                                              | 100MB       |
 | Output images per Document Transaction (export)                 | 50          |
 | Page limit (OCR)\*                                              | 100         |
-| Page limit(Non-Scanned - Extract API)\*                         | 200         |
+| Page limit(Non-Scanned - Extract API)\*                         | 400         |
 | JSON file size (Document Generation and HTML to PDF)            | 10MB        |
 | Maximum Requests Per Minute                                     | 25 RPM      |
 | Payload size (For all APIs)                                     | 100MB       |
