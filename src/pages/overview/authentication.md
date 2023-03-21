@@ -7,22 +7,15 @@ title: Authentication | Adobe PDF Services
 
 **STEP 1: Get Credentials -** Invoking PDF Services API requires an Adobe-provided credential. To get one, [click here](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
 
-**Validity term:** The certificate associated with your credential is valid for one year. However, you can simply regenerate a new credential or apply a new certificate to the current credential from the [Document Cloud Developer Console](https://developer.adobe.com/console/).
+**STEP 2: Retrieve Access Token -** The PDF Services APIs require an access_token to authorize the request. Use the "Get AccessToken" API from the Postman Collection with your client_id, client_secret and scopes (mentioned in the pdfservices-api-credentials.json file present in the Credentials zip downloaded in STEP-1) access_token.
 
-**STEP 2: Generate JWT -** Use the credential created in STEP-1 to generate a signed JSON Web Token (JWT). There are following two ways to generate JWT:
+```javascript
+curl --location 'https://ims-na1.adobelogin.com/ims/token/v2' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'grant_type=client_credentials' \
+--data-urlencode 'client_id={{Placeholder for client_id}}' \
+--data-urlencode 'client_secret={{Placeholder for client_secret}}' \
+--data-urlencode 'scope={{Placeholder for scopes}}'
+```
 
-**• Using Adobe IO Console:**
-
-Goto [Document Cloud Developer Console](https://developer.adobe.com/console/) > Select your newly created Integration > Click on "Service Account (JWT)" > Goto "Generate JWT" tab.
-
-Paste your private.key (from the Credentials zip downloaded in STEP-1) > Click on "Generate token".
-
-Save the Generated JWT and Sample cURL command to retrieve access_token in STEP-3.
-
-**• Using JWT Libraries:** The steps to generate the JWT using libraries can be referred from [here](https://developer.adobe.com/developer-console/docs/guides/authentication/JWT/Scopes/).
-
-Use [sample code](https://developer.adobe.com/developer-console/docs/guides/authentication/JWT/samples/#sample-code) in your preferred programming language to generate JWT. While generating JWT use the metascope as mentioned here.
-
-**STEP 3: Retrieve Access Token -** The PDF Services APIs require an access_token to authorize the request. Use the "Get AccessToken" API from the Postman Collection with your client_id, client_secret (mentioned in the pdfservices-api-credentials.json file present in the Credentials zip downloaded in STEP-1) and the above generated JWT to get the access_token OR directly use the saved Sample cURL command in STEP-2 to get the access_token.
-
-Follow this link [How to retrieve Access Token](https://developer.adobe.com/developer-console/docs/guides/#!AdobeDocs/adobeio-auth/master/JWT/JWT.md#exchanging-jwt-to-retrieve-an-access-token)? to understand the request format to get the access_token.
+Follow this link [How to retrieve Access Token](https://developer.adobe.com/developer-console/docs/guides/authentication/OAuth/) to understand the request format to get the access_token.
