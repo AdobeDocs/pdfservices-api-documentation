@@ -444,7 +444,7 @@ module.exports = {
                     {
                         title: 'How Tos',
                         subTitle: '',
-                        path: 'overview/pdf-accessibility-auto-tag-api/howtos/index.md',
+                        path: 'overview/pdf-accessibility-auto-tag-api/howtos',
                         pages: [
                             {
                                 title: 'API Output Format',
