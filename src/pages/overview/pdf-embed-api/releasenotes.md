@@ -13,6 +13,7 @@ the changes below for each release.
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
 | Bug fix | Fixed issues to restore the optimised viewing of Linearized PDFs.
+| Changed | PDF Embed API no longer captures anonUserUUID in browsers local storage for all users.
 
 ### February, 2023
 
