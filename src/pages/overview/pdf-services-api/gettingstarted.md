@@ -6,15 +6,28 @@ title: Getting Started | PDF Services API | Adobe PDF Services
 
 Developing with the PDF Services SDK requires an Adobe-provided credential. To get one, [click HERE](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
 
-**Validity term**: The certificate associated with your credential is valid for one year. However, you can simply regenerate a new credential or apply a new certificate to the current credentials from the Document Cloud [developer console](https://console.adobe.io/).
-
 <InlineAlert slots="text"/>
 
 During the credential creation process you'll be asked whether you'd like a **Personalized Code Sample Download**. Choosing *Personalized* preconfigures the samples with your credential and removes a few steps from your development setup process.
 
 ## Step 1 : Getting the access token
 
-PDF Services API endpoints are authenticated endpoints. You can get an access token by following the [link](../../authentication.md) to start using our APIs.
+PDF Services API endpoints are authenticated endpoints. You can get an access token by following the steps mentioned below : 
+
+1. Invoking PDF Services API requires an Adobe-provided credential. To get one, [click here](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
+
+2. The PDF Services APIs require an access_token to authorize the request. Use the "Get AccessToken" API from the Postman Collection with your client_id, client_secret and scopes (mentioned in the pdfservices-api-credentials.json file present in the Credentials zip downloaded in STEP-1) access_token.
+
+```javascript
+curl --location 'https://ims-na1.adobelogin.com/ims/token/v2' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'grant_type=client_credentials' \
+--data-urlencode 'client_id={{Placeholder for client_id}}' \
+--data-urlencode 'client_secret={{Placeholder for client_secret}}' \
+--data-urlencode 'scope={{Placeholder for scopes}}'
+```
+
+Follow this link [How to retrieve Access Token?](https://developer.adobe.com/developer-console/docs/guides/authentication/OAuth/) to understand the request format to get the access_token.
 
 ## Step 2 : Uploading an asset 
 
