@@ -99,10 +99,10 @@ samples for details.
 
 ## Proxy Server Configuration
 
-The JAVA SDK enables to connect to API calls through Proxy via Client Configurations.
-Username and password based authentication is supported for the Proxy server from the SDK.
-It allows the clients to use SDK within the network where all outgoing calls have to 
-go through a proxy and allowed only if allow-listed on the proxy. Please refer the 
+The Java SDK enables connection to API calls through Proxy via Client Configurations.
+Also, it supports username and password based authentication for the proxy server.
+It allows the clients to use SDK within the network where all outgoing calls have to
+go through a proxy and are allowed only if allow-listed on the proxy. Please refer to the
 following sample for details.
 
 -   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithProxyServer.java )
@@ -117,14 +117,36 @@ Available properties:
 - **username**: Username for the authentication.
 - **password**: Password for the authentication.
 
-All these properties are wrapped within the proxyServerConfig object. Further, username and password is to be provided
-inside the nested object usernamePasswordCredentials.
+All these properties are wrapped within the `proxyServerConfig` object. Further, `username` and `password` is to be provided
+inside the nested object `usernamePasswordCredentials`.
 
 Set the above properties using a custom `ProxyServerConfig` class, and use `ClientConfig` class to configure proxy server.
 
+**Sample showing proxy server configuration without authentication.**
+
 <CodeBlock slots="heading, code" repeat="1" languages="Java" />
 
-### 
+###
+
+```javascript
+ProxyServerConfig proxyServerConfig = new ProxyServerConfig.Builder()
+    .withHost("PROXY_HOSTNAME")
+    .withProxyScheme(ProxyScheme.HTTP)
+    .withPort(443)
+    .build();
+
+ClientConfig clientConfig = ClientConfig.builder()
+    .withConnectTimeout(10000)
+    .withSocketTimeout(40000)
+    .withProxyServerConfig(proxyServerConfig)
+    .build();
+```
+
+**Sample showing proxy server configuration with authentication.**
+
+<CodeBlock slots="heading, code" repeat="1" languages="Java" />
+
+###
 
 ```javascript
 ProxyServerConfig proxyServerConfig = new ProxyServerConfig.Builder()
