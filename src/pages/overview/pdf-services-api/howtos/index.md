@@ -105,7 +105,8 @@ It allows the clients to use SDK within the network where all outgoing calls hav
 go through a proxy and are allowed only if allow-listed on the proxy. Please refer to the
 following sample for details.
 
--   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithProxyServer.java )
+- [Java Sample for Proxy Server Config](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithProxyServer.java )
+- [Java Sample for Proxy Server Config With Basic Authentication](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithProxyServer.java )
 
 ### Java Proxy Server configuration
 
@@ -131,7 +132,7 @@ Set the above properties using a custom `ProxyServerConfig` class, and use `Clie
 ```javascript
 ProxyServerConfig proxyServerConfig = new ProxyServerConfig.Builder()
     .withHost("PROXY_HOSTNAME")
-    .withProxyScheme(ProxyScheme.HTTP)
+    .withProxyScheme(ProxyScheme.HTTPS)
     .withPort(443)
     .build();
 
@@ -151,7 +152,7 @@ ClientConfig clientConfig = ClientConfig.builder()
 ```javascript
 ProxyServerConfig proxyServerConfig = new ProxyServerConfig.Builder()
     .withHost("PROXY_HOSTNAME")
-    .withProxyScheme(ProxyScheme.HTTP)
+    .withProxyScheme(ProxyScheme.HTTPS)
     .withPort(443)
     .withCredentials(new UsernamePasswordCredentials("USERNAME", "PASSWORD"))
     .build();
