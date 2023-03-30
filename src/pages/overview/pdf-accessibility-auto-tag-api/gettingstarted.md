@@ -1,8 +1,8 @@
 ---
-title: Quickstarts | PDF Accessibility Auto-Tag API | Adobe PDF Services
+title: Getting Started | PDF Accessibility Auto-Tag API | Adobe PDF Services
 ---
-# Quickstarts
 
+# Getting Started
 <p>
 PDF Accessibility Auto-Tag API is available as SDKs to help you get up and running quickly. You can then leverage the samples in your own code
 </p>

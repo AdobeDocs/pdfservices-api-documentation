@@ -83,7 +83,7 @@
       "description": "Create electronic seal on PDF documents like invoices, agreements etc using the digital certificate issued to the user by Trust Service Provider."
     },
     {
-      "name": "Auto Tag",
+      "name": "Auto Tag PDF",
       "description": "Operation to create the tagged pdf and excel report for autotag use case."
     }
   ],
@@ -111,14 +111,14 @@
         "PDF Properties",
         "Protect PDF",
         "Remove Protection",
-        "Split PDF"
+        "Split PDF",
+        "Auto Tag PDF"
       ]
     },
     {
       "name": "PDF operations Beta",
       "tags": [
-        "Electronic Seal",
-        "Auto Tag"
+        "Electronic Seal"
       ]
     }
   ],
@@ -6336,7 +6336,7 @@
     "/operation/autotag": {
       "post": {
         "tags": [
-          "Auto Tag"
+          "Auto Tag PDF"
         ],
         "summary": "Autotag PDF Operation",
         "description": "Operation to create the tagged pdf and excel report for autotag use case. Automatic tagging provides significant quality improvements over untagged PDF files including more accurate results for heading levels, reading order, complex lists, links, references, and tables. Screen reader users also benefit significantly from the improvements to heading levels for navigation.",
@@ -6517,7 +6517,7 @@
     "/operation/autotag/{jobID}/status": {
       "get": {
         "tags": [
-          "Auto Tag"
+          "Auto Tag PDF"
         ],
         "summary": "Poll the auto tag job for completion",
         "operationId": "pdfoperations.autotag.jobstatus",

@@ -242,6 +242,10 @@ module.exports = {
                             {
                                 title: 'Get PDF Properties',
                                 path: 'overview/pdf-services-api/howtos/pdf-properties.md'
+                            },
+                            {
+                                title: 'Auto Tag PDF',
+                                path: 'overview/pdf-services-api/howtos/auto-tag-pdf.md'
                             }
                         ]
                     }
@@ -423,7 +427,6 @@ module.exports = {
             },
             {
                 title: 'PDF Accessibility Auto-Tag API',
-                subTitle: 'Early Access Program',
                 path: 'overview/pdf-accessibility-auto-tag-api/index.md',
                 pages: [
                     {
@@ -431,39 +434,41 @@ module.exports = {
                         path: 'overview/pdf-accessibility-auto-tag-api/index.md'
                     },
                     {
-                        title: 'Quickstarts',
-                        path: 'overview/pdf-accessibility-auto-tag-api/quickstarts.md'
+                        title: 'Getting Started',
+                        path: 'overview/pdf-accessibility-auto-tag-api/gettingstarted.md'
                     },
                     {
-                        title: 'How Tos',
-                        subTitle: '',
-                        path: 'overview/pdf-accessibility-auto-tag-api/howtos',
+                        title: 'Quickstarts',
+                        path: 'overview/pdf-accessibility-auto-tag-api/quickstarts',
                         pages: [
                             {
-                                title: 'Overview',
-                                path: 'overview/pdf-accessibility-auto-tag-api/howtos/index.md'
+                                title:'Node.js',
+                                path: 'overview/pdf-accessibility-auto-tag-api/quickstarts/nodejs/index.md'
                             },
                             {
-                                title: 'PDF Accessibility Auto-Tag API',
-                                path: 'overview/pdf-accessibility-auto-tag-api/howtos/accessibility-auto-tag-api.md'
+                                title:'Java',
+                                path: 'overview/pdf-accessibility-auto-tag-api/quickstarts/java/index.md'
                             },
                             {
-                                title: 'Using Our APIs',
-                                path: 'overview/pdf-accessibility-auto-tag-api/howtos/api-usage.md'
+                                title:'.NET',
+                                path: 'overview/pdf-accessibility-auto-tag-api/quickstarts/dotnet/index.md'
+                            },
+                            {
+                                title:'Python',
+                                path: 'overview/pdf-accessibility-auto-tag-api/quickstarts/python/index.md'
                             }
                         ]
                     },
                     {
-                        title: 'Release Notes',
-                        path: 'overview/releasenotes.md'
-                    },
-                    {
-                        title: 'PDF Services API Licensing',
-                        path: 'overview/pdf-accessibility-auto-tag-api/dcserviceslicensing.md'
-                    },
-                    {
-                        title: 'Usage Limits',
-                        path: 'overview/pdf-accessibility-auto-tag-api/dcserviceslicensing.md#usage-limits'
+                        title: 'How Tos',
+                        subTitle: '',
+                        path: 'overview/pdf-accessibility-auto-tag-api/howtos/index.md',
+                        pages: [
+                            {
+                                title: 'PDF Accessibility Auto-Tag API',
+                                path: 'overview/pdf-accessibility-auto-tag-api/howtos/accessibility-auto-tag-api.md'
+                            },
+                        ]
                     }
                 ]
             },
