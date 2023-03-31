@@ -17,7 +17,7 @@ module.exports = {
     siteMetadata: {
         docs: {
             title: 'Get credentials',
-            path: '../document-services/apis/interstitial/'
+            path: 'https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html'
         },
         pages: [
             {
@@ -304,8 +304,8 @@ module.exports = {
                                 path: 'overview/document-generation-api/inlineimages.md'
                             },
                             {
-                                title: 'Dynamic Table Constructs ',
-                                path: 'overview/document-generation-api/dynamictableconstructs.md'
+                                title: 'Complex Table Constructs ',
+                                path: 'overview/document-generation-api/complextableconstructs.md'
                             },
                             {
                                 title: 'Word Add-in',
@@ -1013,7 +1013,6 @@ module.exports = {
         ]
     },
     plugins: [`@adobe/gatsby-theme-aio`,
-    
     {
       resolve: `gatsby-source-filesystem`,
       options: {

@@ -188,13 +188,21 @@ Upgrading to the latest SDK should not break existing applications.
 | ------- | ------------------- | --------------------------------------------------------------------------------------------- |
 | Changed | All                 | Adding support for larger PDF document processing. The new supported limits are 400 pages for non-scanned and 150 for scanned PDF documents. | 
 
+### Adobe Document Generation Server Side Release (March, 2023; server side release)
+
+| Change | Language         | Description                                                                                                                         |
+|--------|------------------|-------------------------------------------------------------------------------------------------------------------------------------|
+| New    | Java,NodeJS,.NET | Adding support for [dynamic html tables](../document-generation-api/templatetags.md#insert-table-using-table-html-element) feature. |
+| New    | Java,NodeJS,.NET | Adding support for [row omission](../document-generation-api/complextableconstructs.md#dynamic-table-rows) in tables.               |
+| New    | Java,NodeJS,.NET | Adding support for [conditions inside tables](../document-generation-api/complextableconstructs.md#conditions-inside-tables).       |
+
 ### 2.3.0 (February, 2023, minor release)
 
 | Change  | Language | Description                                                                                                                  |
 |---------|----------|------------------------------------------------------------------------------------------------------------------------------|
 | Changed | NodeJS      | Fixed the response failures with `400` HTTP statusCode  and `UNKNOWN` errorCode for NodeJS SDK(s) v2.2.3 and below.               |
   
-### Adobe Document Generation Server Side Release (January, 2023, server side release)
+### Adobe Document Generation Server Side Release (January, 2023; server side release)
 
 | Change  | Language | Description                                                                                                                  |
 |---------|----------|------------------------------------------------------------------------------------------------------------------------------|
@@ -309,10 +317,10 @@ Upgrading to the latest SDK should not break existing applications.
 
 ### Adobe Document Generation Server Side Release (14 December, 2021; server side release)
 
-| Change  | Language | Description                                                                                                                                                              |
-| ------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| New     | All      | Adding support for additional tags (<strong\> and <em\>) in [styling and formatting](../document-generation-api/stylingformattingtags.md#apply-styling-and-formatting) feature.                                                                               |
-| New     | All      | Support for [dynamic table constructs](../document-generation-api/dynamictableconstructs.md).     |
+| Change  | Language | Description                                                                                                                                                                     |
+| ------- | -------- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| New     | All      | Adding support for additional tags (<strong\> and <em\>) in [styling and formatting](../document-generation-api/stylingformattingtags.md#apply-styling-and-formatting) feature. |
+| New     | All      | Support for [dynamic table constructs](../document-generation-api/complextableconstructs.md).                                                                                   |
 
 ### Extract PDF Server Side Release (15 November, 2021; server side release)
 | Change  | Language            | Description                                                                                    |
@@ -323,11 +331,11 @@ Upgrading to the latest SDK should not break existing applications.
 
 ### Adobe Document Generation Server Side Release (20 October, 2021; server side release)
 
-| Change  | Language | Description                                                                                                                                                   |
-| ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| New     | All      | HTML [styling and formatting](../document-generation-api/stylingformattingtags.md#apply-styling-and-formatting) support in json data.                                                                               |
-| New     | All      | Support for [horizontal tables](../document-generation-api/templatetags.md#dynamically-expand-table-rows-or-columns).     |
-| New     | All      | Support for SVG images.                                                                               |
+| Change  | Language | Description                                                                                                                           |
+| ------- | -------- |---------------------------------------------------------------------------------------------------------------------------------------|
+| New     | All      | HTML [styling and formatting](../document-generation-api/stylingformattingtags.md#apply-styling-and-formatting) support in json data. |
+| New     | All      | Support for [horizontal tables](../document-generation-api/complextableconstructs.md#dynamically-expand-table-rows-or-columns).       |
+| New     | All      | Support for SVG images.                                                                                                               |
 
 ### Extract PDF Server Side Release (29 September, 2021; server side release)
 | Change  | Language            | Description|

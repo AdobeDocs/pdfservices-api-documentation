@@ -8,6 +8,13 @@ the changes below for each release.
 
 ## Change history
 
+### March, 2023
+
+| Change | Description                                                            |
+| ------ | ---------------------------------------------------------------------- |
+| New | Legacy viewer will be no longer accessible and all calls to legacy viewer will route to new modern PDF viewer.
+| Bug fix | Fixed issue with the PDF Linearization.
+
 ### February, 2023
 
 | Change | Description                                                            |
