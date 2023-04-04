@@ -1,8 +1,8 @@
 ---
-title: Node.js | Quickstarts | PDF Accessibility Auto Tag API | Adobe PDF Services
+title: Node.js | Quickstarts | PDF Accessibility Auto-Tag API | Adobe PDF Services
 ---
 
-# Quickstart for PDF Accessibility Auto Tag API (Node.js)
+# Quickstart for PDF Accessibility Auto-Tag API (Node.js)
 
 To get started using Adobe PDF Accessibility Auto Tag API, let's walk through a simple scenario - taking an input PDF document and running PDF Accessibility Auto Tag API against it. Once the PDF has been tagged, we'll provide the document with tags and optionally, a report file. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
 
