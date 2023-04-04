@@ -5,7 +5,7 @@ title: Getting Started | PDF Accessibility Auto-Tag API | Adobe PDF Services
 # Getting Started 
 
 <p>
-PDF Accessibility Auto-Tag API is available as SDKs to help you get up and running quickly. You can then leverage the samples in your own code.
+PDF Accessibility Auto-Tag API is available to help you get up and running quickly. You can then leverage the samples in your own code
 </p>
 
 ## Get Early Access
@@ -79,7 +79,7 @@ The quickest way to get up and running is to download the personalized code samp
 2. Cd to the project directory (which contains pom.xml file) and build the sample project with Maven using this command in terminal: `mvn clean install`.
 3. You can import the samples Maven project into your preferred IDE and run the samples from there or run the below commands from terminal:
 
-###### To generate tagged PDF of version 1.7 from the sample file
+###### To generate tagged PDF from the sample file
 
 ```javascript 
 mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.autotagpdf.AutotagPDF
@@ -99,7 +99,7 @@ If you did not choose **Personalized Code Sample Download** during the credentia
 4. Cd to the project directory (which contains pom.xml file) and build the sample project with Maven using this command in terminal: `mvn clean install`.
 5. You can import the samples Maven project into your preferred IDE and run the samples from there or run the below commands from terminal:
 
-###### To generate tagged PDF of version 1.7 from the sample file
+###### To generate tagged PDF from the sample file
 
 ```javascript 
 mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.autotagpdf.AutotagPDF
@@ -160,7 +160,7 @@ The quickest way to get up and running is to download the personalized code samp
 2. Cd to the project directory (which contains requirements.txt file) and build the sample project using this command in terminal: `pip install -r requirements.txt`.
 3. You can import the samples project into your preferred IDE and run the samples from there or run the below commands from terminal:
 
-###### To generate tagged PDF of version 1.7 from the sample file
+###### To generate tagged PDF from the sample file
 
 ```javascript 
 python src/autotagpdf/autotag_pdf.py
@@ -180,7 +180,7 @@ If you did not choose **Personalized Code Sample Download** during the credentia
 4. Cd to the project directory (which contains requirements.txt file) and build the sample project using this command in terminal: `pip install -r requirements.txt`.
 5. You can import the samples into your preferred IDE and run the samples from there or run the below commands from terminal:
 
-###### To generate tagged PDF of version 1.7 from the sample file
+###### To generate tagged PDF from the sample file
 
 ```javascript 
 python src/autotagpdf/autotag_pdf.py

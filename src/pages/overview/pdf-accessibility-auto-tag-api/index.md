@@ -11,7 +11,7 @@ or other text-to-speech tool requires that the document be structured. Document 
 reading order and identify headings, paragraphs, sections, tables and other page elements. The tags structure also 
 allows for documents to be resized and reflowed for viewing at larger sizes and on mobile devices.
 
-You can learn more about PDF Accessibility in [this overview](https://www.adobe.com/accessibility/pdf/pdf-accessibility-overview.html).
+You can learn more about PDF Accessibility Auto-Tag in [this overview](https://www.adobe.com/accessibility/pdf/pdf-accessibility-overview.html).
 
 
 **What is Adobe PDF Accessibility Auto-Tag API?**
