@@ -83,8 +83,8 @@
       "description": "Create electronic seal on PDF documents like invoices, agreements etc using the digital certificate issued to the user by Trust Service Provider."
     },
     {
-      "name": "Accessibility Auto Tag PDF",
-      "description": "Operation to create the tagged pdf and excel report for accessibility auto tag use case."
+      "name": "PDF Accessibility Auto-Tag",
+      "description": "Operation to create the tagged pdf and excel report for accessibility auto-tag use case."
     }
   ],
   "x-tagGroups": [
@@ -112,7 +112,7 @@
         "Protect PDF",
         "Remove Protection",
         "Split PDF",
-        "PDF Accessibility Auto Tag"
+        "PDF Accessibility Auto-Tag"
       ]
     },
     {
@@ -6336,10 +6336,10 @@
     "/operation/autotag": {
       "post": {
         "tags": [
-          "Accessibility Auto Tag PDF"
+          "PDF Accessibility Auto Tag"
         ],
-        "summary": "Accessibility Auto Tag PDF Operation",
-        "description": "Operation to create the tagged pdf and excel report for accessibility auto tag use case. Automatic tagging provides significant quality improvements over untagged PDF files including more accurate results for heading levels, reading order, complex lists, links, references, and tables. Screen reader users also benefit significantly from the improvements to heading levels for navigation.",
+        "summary": "PDF Accessibility Auto-Tag Operation",
+        "description": "Operation to create the tagged pdf and excel report for accessibility auto-tag use case. Automatic tagging provides significant quality improvements over untagged PDF files including more accurate results for heading levels, reading order, complex lists, links, references, and tables. Screen reader users also benefit significantly from the improvements to heading levels for navigation.",
         "operationId": "pdfoperations.autotag",
         "parameters": [
           {
@@ -6362,7 +6362,7 @@
           }
         ],
         "requestBody": {
-          "description": "Input Params for Accessibility Auto Tag Operation.",
+          "description": "Input Params for Accessibility Auto-Tag Operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -6517,9 +6517,9 @@
     "/operation/autotag/{jobID}/status": {
       "get": {
         "tags": [
-          "Accessibility Auto Tag PDF"
+          "PDF Accessibility Auto Tag"
         ],
-        "summary": "Poll the accessibility auto tag job for completion",
+        "summary": "Poll the accessibility auto-tag job for completion",
         "operationId": "pdfoperations.autotag.jobstatus",
         "parameters": [
           {
@@ -8043,7 +8043,7 @@
         }
       },
       "AutoTagPDF": {
-        "description": "Parameter for Accessibility Auto Tag operation.",
+        "description": "Parameter for Accessibility Auto-Tag operation.",
         "type": "object",
         "required": [
           "assetID"
@@ -9108,7 +9108,7 @@
           },
           "report": {
             "type": "object",
-            "description": "Asset of accessibility auto tag report. Details of output asset document. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "Asset of accessibility auto-tag report. Details of output asset document. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "properties": {
               "metadata": {
                 "type": "object",
