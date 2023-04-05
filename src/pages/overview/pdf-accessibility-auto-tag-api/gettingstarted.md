@@ -5,7 +5,7 @@ title: Getting Started | PDF Accessibility Auto-Tag API | Adobe PDF Services
 # Getting Started 
 
 <p>
-PDF Accessibility Auto-Tag API is available to help you get up and running quickly. The API is accessible through SDKs which help you get up and running quickly. Once you've received your developer credential, download and set up one of the sample projects. After you're familiar with the APIs, leverage the samples in your own server-side code.
+PDF Accessibility Auto-Tag API assists in the process of improving accessibility in individual PDFs via auto-tagging, adding document structure tags to the PDF file that are used to read a document's text and presenting it in a way that makes sense to users using assistive technology. The API is accessible through SDKs which help you get up and running quickly. Once you've received your developer credential, download and set up one of the sample projects. After you're familiar with the APIs, leverage the samples in your own server-side code.
 </p>
 
 <InlineAlert slots="text"/>
