@@ -8550,7 +8550,7 @@
       },
       "PageManipulationPageRanges": {
         "title": "pageRanges",
-        "description": "Page ranges of a PDF file. Pages in a document can be can be referred in any order, either from the start or end. For e.g.: For a file containing 10 pages, page number 1 can be referred using 1 or -10, page number 10 can be referred using 10 or -1. For performing an operation on the last page, we can provide a range as -1:-1. A page range provided is relative to the input document.",
+        "description": "Page ranges of a PDF file. Pages in a document can be referred in any order, either from the start or end. For e.g.: For a file containing 10 pages, page number 1 can be referred using 1 or -10, page number 10 can be referred using 10 or -1. For performing an operation on the last page, we can provide a range as -1:-1. A page range provided is relative to the input document.",
         "type": "array",
         "items": {
           "anyOf": [
