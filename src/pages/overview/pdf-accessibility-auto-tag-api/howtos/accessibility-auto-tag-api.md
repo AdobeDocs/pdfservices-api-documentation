@@ -14,7 +14,7 @@ The output of PDF Accessibility Auto-Tag API contains the following:
 
 - **File size:** Files up to a maximum of 100 MB are supported.
 - **Number of Pages:** Non-scanned PDFs up to 200 pages and scanned PDFs up to 100 pages are supported, however limits may be lower for files with a large number of tables.
- **Rate limits:** Keep request rate below 25 requests per minute.
+- **Rate limits:** Keep request rate below 25 requests per minute.
 - **Page Size:** The API supports standard page sizes not more than 17.5” or less than 6” in either dimension.
 - **Hidden Objects:** PDF files that contain content that is not visible on the page like Javascript, OCG (optional content groups), etc are not supported. Files that contain such hidden information may fail to process. For such cases, [removing hidden content](https://helpx.adobe.com/acrobat/using/removing-sensitive-content-pdfs.html) prior to processing files again may return a successful result.
 - **Language:** The API is currently optimized for English language content. Files containing content in French, German, Spanish, Danish, Dutch, Norwegian (Bokmal), Galician, Catalan, Finnish, Italian, Swedish, Portuguese, and Romanian should return good results most of the time. Files containing content in Afrikaans, Bosnian, Croatian, Czech, Hungarian, Indonesian, Malay, Polish, Russian, Serbian, Turkish, Hindi, Marathi and other similar languages should return good results often. Non-English files may have issues with non-English punctuation. OCR is configured for English content.
