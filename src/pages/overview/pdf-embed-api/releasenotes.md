@@ -8,12 +8,15 @@ the changes below for each release.
 
 ## Change history
 
-### March, 2023
+### April, 2023
 
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
 | New | Legacy viewer will no longer be accessible and all calls to legacy viewer will route to new modern PDF viewer.
 | Bug fix | Fixed issues to restore the optimised viewing of Linearized PDFs.
+| Bug fix | Fixed issues in the Inline Embed mode where Blue Line gets displayed around PDF.
+| Bug fix | Fixed issues in the Inline Embed mode where Error message not displayed for invalid client Id.
+| Changed | PDF Embed API no longer captures anonUserUUID in browsers local storage.
 
 ### February, 2023
 
