@@ -1,5 +1,5 @@
 ---
-title: Using Our APIs | How Tos | PDF Accessibility Auto-Tag API | Adobe PDF Services
+title: Using Our APIs | How Tos | PDF Services API | Adobe PDF Services
 ---
 # Using Our APIs
 
