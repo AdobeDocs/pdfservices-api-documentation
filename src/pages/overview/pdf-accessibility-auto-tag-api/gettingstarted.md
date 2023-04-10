@@ -1,15 +1,16 @@
 ---
-title: Quickstarts | PDF Accessibility Auto-Tag API | Adobe PDF Services
+title: Getting Started | PDF Accessibility Auto-Tag API | Adobe PDF Services
 ---
-# Quickstarts
+
+# Getting Started 
 
 <p>
-PDF Accessibility Auto-Tag API is available as SDKs to help you get up and running quickly. You can then leverage the samples in your own code
+PDF Accessibility Auto-Tag API is available as SDKs to help you get up and running quickly. You can then leverage the samples in your own code.
 </p>
 
 ## Get Early Access
 
-The PDF Accessibility Auto-Tag API is currently available as Early Access. To request access, [Contact Us](https://adobe.com/go/accessibility_early_access_form). Once you receive confirmation that you’ve been given access, proceed to the next step to [Get API credentials](quickstarts/#get-api-credentials).
+The PDF Accessibility Auto-Tag API is currently available as Early Access. To request access, [Contact Us](https://adobe.com/go/accessibility_early_access_form). Once you receive confirmation that you’ve been given access, proceed to the next step to [Get API credentials](#get-api-credentials).
 
 ## Get API credentials
 
@@ -38,7 +39,7 @@ Jumpstart your development by bookmarking or downloading the following key resou
 
 #### Authentication
 
-Once you complete the [Get API credentials](quickstarts/#get-api-credentials), a zip file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
+Once you complete the [Get API credentials](#get-api-credentials), a zip file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
 
 - **Personalized Download**: The samples download zip contains a private.key file and an adobe-dc-pdf-services-sdk-java-samples with a preconfigured pdfservices-api-credentials.json file.
 - **Non Personalized Download**: The samples download zip contains the private.key file and a pdfservices-api-credentials.json file.
@@ -92,7 +93,7 @@ If you did not choose **Personalized Code Sample Download** during the credentia
 
 1. Download and extract the [Java sample project](https://github.com/adobe/pdfservices-java-sdk-samples/tree/beta).
 2. Copy the downloaded zip to the directory that you set-up for this project and unzip the files there.
-3. In the top-level directory of your samples, find and replace following files with the one present in the downloaded zip file from [Get API credentials](quickstarts/#get-api-credentials) step:
+3. In the top-level directory of your samples, find and replace following files with the one present in the downloaded zip file from [Get API credentials](#get-api-credentials) step:
    1. pdfservices-api-credentials.json
    2. private.key
 4. Cd to the project directory (which contains pom.xml file) and build the sample project with Maven using this command in terminal: `mvn clean install`.
@@ -121,7 +122,7 @@ Jumpstart your development by bookmarking or downloading the following key resou
 
 #### Authentication
 
-Once you complete the [Get API credentials](quickstarts/#get-api-credentials), a zip file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
+Once you complete the [Get API credentials](#get-api-credentials), a zip file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
 
 - **Personalized Download**: The samples download.zip contains a private.key file and an adobe-dc-pdfservices-sdk-python-samples directory. Each sample directory contains the sample code as well as a preconfigured pdfservices-api-credentials.json file.
 - **Non Personalized Download**: The samples download zip contains the private.key file and a pdfservices-api-credentials.json file.
@@ -173,7 +174,7 @@ If you did not choose **Personalized Code Sample Download** during the credentia
 
 1. Download and extract the [Python sample project](https://github.com/adobe/pdfservices-python-sdk-samples/tree/beta).
 2. Copy the downloaded zip to the directory that you set-up for this project and unzip the files there.
-3. In the top-level directory of your samples, find and replace following files with the one present in the downloaded zip file from [Get API credentials](quickstarts/#get-api-credentials) step:
+3. In the top-level directory of your samples, find and replace following files with the one present in the downloaded zip file from [Get API credentials](#get-api-credentials) step:
    1. pdfservices-api-credentials.json
    2. private.key
 4. Cd to the project directory (which contains requirements.txt file) and build the sample project using this command in terminal: `pip install -r requirements.txt`.
