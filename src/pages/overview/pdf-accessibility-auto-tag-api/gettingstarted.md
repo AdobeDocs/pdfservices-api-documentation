@@ -274,10 +274,10 @@ Jump start your development by bookmarking or downloading the following key reso
 
 Once you complete the [Get API credentials](#get-api-credentials), a zip file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
 
--   **Personalized Download**: The samples download zip contains a private.key file and an adobe-dc-pdf-services-sdk-java-samples with a preconfigured pdfservices-api-credentials.json file.
+-   **Personalized Download**: The samples download zip contains a private.key file and adobe-dc-pdfservices-sdk-python-samples directory with a preconfigured pdfservices-api-credentials.json file.
 -   **Non Personalized Download**: The samples download zip contains the private.key file and a pdfservices-api-credentials.json file.
 
-After downloading the zip, you can either run the samples in the zip directly, or you can replace the pdfservices-api-credentials.json and private.key files in the [Java sample code](https://www.adobe.com/go/pdftoolsapi_java_samples) with those in the zip.
+After downloading the zip, you can either run the samples in the zip directly, or you can replace the pdfservices-api-credentials.json and private.key files in the [Python sample code](https://github.com/adobe/pdfservices-python-sdk-samples/tree/beta) with those in the zip.
 
 **Example pdfservices-api-credentials.json file**
 
@@ -297,14 +297,14 @@ After downloading the zip, you can either run the samples in the zip directly, o
 
 #### Setup a Python environment
 
-1. Install [Python 3.7](https://www.python.org/downloads/) or higher.
+1. Install [Python 3.6](https://www.python.org/downloads/) or higher.
 2. Verify your installation by running this command: `python --version`.
 
 ##### Option 1: Personalized samples setup
 
 The quickest way to get up and running is to download the personalized code samples during the Getting Credentials workflow. These samples provide everything from ready-to-run sample code, an embedded credential json file, and pre-configured connections to dependencies.
 
-1. Download and extract the [Python sample project](http://www.adobe.com/go/pdftoolsapi_python_sample).
+1. Download and extract the [Python sample project](https://github.com/adobe/pdfservices-python-sdk-samples/tree/beta).
 2. Go to the project directory (which contains `requirements.txt` file) and build the sample project using this command in terminal: `pip install -r requirements.txt`.
 3. Test the sample code on the command line.
 4. Refer to this document for details about running samples as well as the API Reference for API details.
@@ -322,7 +322,7 @@ Note: The above commands run on the input file “autotagPdfInput.pdf” present
 
 If you did not choose **Personalized Code Sample Download** during the credential setup process:
 
-1. Download and extract the [Python sample project](http://www.adobe.com/go/pdftoolsapi_python_sample).
+1. Download and extract the [Python sample project](https://github.com/adobe/pdfservices-python-sdk-samples/tree/beta).
 2. Copy the downloaded zip to the directory that you set up for this project and unzip the files there.
 3. In the top-level directory of your samples, find and replace following files with the one present in the downloaded zip file from [Get API credentials](quickstarts/#get-api-credentials) step:
    1. `pdfservices-api-credentials.json`
