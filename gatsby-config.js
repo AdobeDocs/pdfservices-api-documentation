@@ -463,16 +463,7 @@ module.exports = {
                                 path: 'overview/pdf-accessibility-auto-tag-api/howtos/generatetaggedpdfwithcli.md'
                             }
                         ]
-                    },
-                    {
-                        title: 'Release Notes',
-                        path: 'overview/releasenotes.md'
-                    },
-                    {
-                        title: 'Usage Limits',
-                        path: 'overview/pdf-accessibility-auto-tag-api/dcserviceslicensing.md#usage-limits'
-                    }
-                ]
+                    }                ]
             },
             {
                 title: 'Usage Limits and Licensing',
@@ -1022,7 +1013,6 @@ module.exports = {
         ]
     },
     plugins: [`@adobe/gatsby-theme-aio`,
-
     {
       resolve: `gatsby-source-filesystem`,
       options: {
