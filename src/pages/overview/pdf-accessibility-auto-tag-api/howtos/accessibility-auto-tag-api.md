@@ -106,7 +106,7 @@ public class AutotagPDF {
 #### Python
 
 ```python
-# Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
+# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples/tree/beta
 # Run the sample:
 # python src/autotagpdf/autotag_pdf.py
 
@@ -272,7 +272,7 @@ public class AutotagPDFParamaterised {
 #### Python
 
 ```python
-# Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
+# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples/tree/beta
 # Run the sample:
 # python src/autotagpdf/autotag_pdf_parameterised.py --report --shift_headings --input resources/autotagPdfInput.pdf --output output/
 
