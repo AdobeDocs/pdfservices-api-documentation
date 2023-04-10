@@ -109,33 +109,33 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
       ?.setAttribute("daa-ll", "Forum");
     header
       .querySelector(
-        "a[href='https://developer.adobe.com/document-services/docs/overview/pdf-services-api/dcserviceslicensing?aio_internal']"
+        "a[href='https://developer.adobe.com/document-services/docs/overview/limits/']"
       )
       ?.setAttribute("daa-ll", "Licensing");
     header
       .querySelector(`a[href='${navLinksDocsBaseUrl}/overview/']`)
-      ?.setAttribute("daa-ll", "Documenation Overview");
+      ?.setAttribute("daa-ll", "Documentation Overview");
     header
       .querySelector(
         `a[href='${navLinksDocsBaseUrl}/overview/pdf-services-api/']`
       )
-      ?.setAttribute("daa-ll", "Documenation PDF Services API");
+      ?.setAttribute("daa-ll", "Documentation PDF Services API");
     header
       .querySelector(
         `a[href='${navLinksDocsBaseUrl}/overview/pdf-extract-api/']`
       )
-      ?.setAttribute("daa-ll", "Documenation PDF Extract API");
+      ?.setAttribute("daa-ll", "Documentation PDF Extract API");
     header
       .querySelector(
         `a[href='${navLinksDocsBaseUrl}/overview/document-generation-api/']`
       )
-      ?.setAttribute("daa-ll", "Documenation Document Generation API");
+      ?.setAttribute("daa-ll", "Documentation Document Generation API");
     header
         .querySelector(`a[href='${navLinksDocsBaseUrl}/overview/pdf-electronic-seal-api/']`)
         ?.setAttribute("daa-ll", "Documentation PDF Electronic Seal API");
     header
       .querySelector(`a[href='${navLinksDocsBaseUrl}/overview/pdf-embed-api/']`)
-      ?.setAttribute("daa-ll", "Documenation PDF Embed API");
+      ?.setAttribute("daa-ll", "Documentation PDF Embed API");
     header
       .querySelector(`a[href='${baseurl}']`)
       ?.setAttribute("daa-ll", "Get credentials");

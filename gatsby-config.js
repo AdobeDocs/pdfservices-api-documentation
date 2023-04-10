@@ -78,7 +78,7 @@ module.exports = {
                     path: 'https://community.adobe.com/t5/document-services-apis/bd-p/Document-Cloud-SDK?page=1&sort=latest_replies&filter=all'
                 }, {
                     title: 'Licensing',
-                    path: process.env.LICENSING || 'https://developer.adobe.com/document-services/docs/overview/pdf-services-api/dcserviceslicensing?aio_internal'
+                    path: process.env.LICENSING || 'https://developer.adobe.com/document-services/docs/overview/limits/'
                 },{
                     title: 'Sales FAQ',
                     path: '../document-services/faq/sales/'
