@@ -10,7 +10,7 @@ To get started using Adobe PDF Services API, let's walk through a simple scenari
 
 To complete this guide, you will need:
 
-* [Node.js](https://nodejs.org) - Node.js version 10.13.0 or higher is required. 
+* [Node.js](https://nodejs.org) - Node.js version 14.0 or higher is required. 
 * An Adobe ID. If you do not have one, the credential setup will walk you through creating one.
 * A way to edit code. No specific editor is required for this guide.
 
@@ -36,7 +36,7 @@ To complete this guide, you will need:
 
 ## Step Two: Setting up the project
 
-1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-Node.jsSamples.zip. If you unzip that archive, you will find a README file, your private key, and a folder of samples:
+1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-Node.jsSamples.zip. If you unzip that archive, you will find a README file and a folder of samples:
 
 ![alt](./shot5.png)
 
