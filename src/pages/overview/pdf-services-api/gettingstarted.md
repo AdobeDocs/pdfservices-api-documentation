@@ -8,11 +8,11 @@ Developing with the PDF Services SDK requires an Adobe-provided credential. To g
 
 ## Step 1 : Getting the access token
 
-PDF Services API endpoints are authenticated endpoints. Getting the `access_token` is a two type process : 
+PDF Services API endpoints are authenticated endpoints. Getting the `access_token` is a two step process : 
 
-**STEP 1: Get Credentials -** Invoking PDF Services API requires an Adobe-provided credential. To get one, [click here](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
+1. **Get Credentials -** Invoking PDF Services API requires an Adobe-provided credential. To get one, [click here](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
 
-**STEP 2: Retrieve Access Token -** The PDF Services APIs require an access_token to authorize the request. Use the "Get AccessToken" API from the Postman Collection with your client_id and client_secret OR directly use the saved Sample cURL command in STEP-2 to get the access_token.
+2. **Retrieve Access Token -** The PDF Services APIs require an access_token to authorize the request. Use the "Get AccessToken" API from the Postman Collection with your `client_id` and `client_secret` and `scopes` OR directly use below mentioned cURL command to get the access_token.
 
 <CodeBlock slots="heading, code" repeat="1" languages="Rest API" />
 
@@ -109,7 +109,7 @@ PDF Services API is also accessible via SDKs in popular languages such as Node.j
 
 <InlineAlert slots="text"/>
 
-Please allow-list the following hostnames before using Adobe PDF Services SDK:<ul><li>ims-na1.adobelogin.com</li><li>dcplatformstorageservice-us-east-1.s3-accelerate.amazonaws.com (for using United States region for processing documents)</li><li>dcplatformstorageservice-eu-west-1.s3-accelerate.amazonaws.com (for using Europe region to process documents)</li><li>pdf-services.adobe.io  or pdf-services-ue1.adobe.io (for versions 3.x.x and using United States region for processing documents)</li><li>pdf-services.adobe.io (for versions 3.x.x and using Europe region for processing documents)</li><li>cpf-ue1.adobe.io (for versions upto 2.x.x)</li><li>senseicore-ue1.adobe.io (for versions below 1.x.x)</li></ul>
+Please allow-list the following hostnames before using Adobe PDF Services SDK:<ul><li>ims-na1.adobelogin.com</li><li>dcplatformstorageservice-us-east-1.s3-accelerate.amazonaws.com (for using United States region for processing documents)</li><li>dcplatformstorageservice-eu-west-1.s3-accelerate.amazonaws.com (for using Europe region to process documents)</li><li>pdf-services.adobe.io  or pdf-services-ue1.adobe.io (for versions 3.x.x and using United States region for processing documents)</li><li>pdf-services-ew1.adobe.io (for versions 3.x.x and using Europe region for processing documents)</li><li>cpf-ue1.adobe.io (for versions upto 2.x.x)</li><li>senseicore-ue1.adobe.io (for versions below 1.x.x)</li></ul>
 
 ### Java
 
