@@ -130,12 +130,12 @@ Once you complete the [Getting Credentials](quickstarts/#getting-credentials), a
 After downloading the zip, you can run the samples in the zip directly by setting up the two environment variables `CLIENT_ID` and `CLIENT_SECRET` by running the following cammands :
 
 - **Windows:**
-SET CLIENT_ID=<YOU CLIENT ID>
-SET CLIENT_SECRET=<YOU CLIENT SECRET>
+  SET CLIENT_ID=<YOU CLIENT ID>
+  SET CLIENT_SECRET=<YOU CLIENT SECRET>
 
-- **Macintosh:**
-export CLIENT_ID=<YOU CLIENT ID>
-export CLIENT_SECRET=<YOU CLIENT SECRET>
+- **MacOS/linux:**
+  export CLIENT_ID=<YOU CLIENT ID>
+  export CLIENT_SECRET=<YOU CLIENT SECRET>
 
 **Example pdfservices-api-credentials.json file**
 
@@ -177,7 +177,7 @@ The quickest way to get up and running is to download the code samples during th
   SET CLIENT_ID=<YOU CLIENT ID>
   SET CLIENT_SECRET=<YOU CLIENT SECRET>
 
-- **Macintosh:**
+- **MacOS/Linux:**
   export CLIENT_ID=<YOU CLIENT ID>
   export CLIENT_SECRET=<YOU CLIENT SECRET>
 4.  Test the sample code on the command line.
@@ -283,7 +283,7 @@ After downloading the zip, you can run the samples in the zip directly by settin
   SET CLIENT_ID=<YOU CLIENT ID>
   SET CLIENT_SECRET=<YOU CLIENT SECRET>
 
-- **Macintosh:**
+- **MacOS/Linux:**
   export CLIENT_ID=<YOU CLIENT ID>
   export CLIENT_SECRET=<YOU CLIENT SECRET>
 
@@ -396,7 +396,7 @@ After downloading the zip, you can run the samples in the zip directly by settin
   SET CLIENT_ID=<YOU CLIENT ID>
   SET CLIENT_SECRET=<YOU CLIENT SECRET>
 
-- **Macintosh:**
+- **MacOS/Linux:**
   export CLIENT_ID=<YOU CLIENT ID>
   export CLIENT_SECRET=<YOU CLIENT SECRET>
 
@@ -440,7 +440,7 @@ npm install --save @adobe/pdfservices-node-sdk
   SET CLIENT_ID=<YOU CLIENT ID>
   SET CLIENT_SECRET=<YOU CLIENT SECRET>
 
-- **Macintosh:**
+- **MacOS/Linux:**
   export CLIENT_ID=<YOU CLIENT ID>
   export CLIENT_SECRET=<YOU CLIENT SECRET>
 4.  Test the sample code on the command line.

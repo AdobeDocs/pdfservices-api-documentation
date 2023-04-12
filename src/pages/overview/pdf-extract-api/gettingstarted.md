@@ -1,5 +1,5 @@
 ---
-title: Getting Started | PDF Services API | Adobe PDF Services
+title: Getting Started | PDF Extract API | Adobe PDF Services
 ---
 
 # Getting credentials
@@ -133,7 +133,7 @@ After downloading the zip, you can run the samples in the zip directly by settin
   SET CLIENT_ID=<YOU CLIENT ID>
   SET CLIENT_SECRET=<YOU CLIENT SECRET>
 
-- **Macintosh:**
+- **MacOS/linux:**
   export CLIENT_ID=<YOU CLIENT ID>
   export CLIENT_SECRET=<YOU CLIENT SECRET>
 
@@ -159,8 +159,8 @@ After downloading the zip, you can run the samples in the zip directly by settin
 2.  Run `javac -version` to verify your install.
 3.  Verify the JDK bin folder is included in the PATH variable (method varies by OS).
 4.  Install [Maven](https://maven.apache.org/install.html). You may use your preferred tool; for example:
-    - **Windows:** Example: [Chocolatey](https://chocolatey.org/packages/maven).
-    - **Macintosh:** Example: `brew install maven`.
+  - **Windows:** Example: [Chocolatey](https://chocolatey.org/packages/maven).
+  - **Macintosh:** Example: `brew install maven`.
 
 <InlineAlert slots="text" />
 
@@ -177,7 +177,7 @@ The quickest way to get up and running is to download the code samples during th
   SET CLIENT_ID=<YOU CLIENT ID>
   SET CLIENT_SECRET=<YOU CLIENT SECRET>
 
-- **Macintosh:**
+- **MacOS/Linux:**
   export CLIENT_ID=<YOU CLIENT ID>
   export CLIENT_SECRET=<YOU CLIENT SECRET>
 4.  Test the sample code on the command line.
@@ -283,7 +283,7 @@ After downloading the zip, you can run the samples in the zip directly by settin
   SET CLIENT_ID=<YOU CLIENT ID>
   SET CLIENT_SECRET=<YOU CLIENT SECRET>
 
-- **Macintosh:**
+- **MacOS/Linux:**
   export CLIENT_ID=<YOU CLIENT ID>
   export CLIENT_SECRET=<YOU CLIENT SECRET>
 
@@ -396,7 +396,7 @@ After downloading the zip, you can run the samples in the zip directly by settin
   SET CLIENT_ID=<YOU CLIENT ID>
   SET CLIENT_SECRET=<YOU CLIENT SECRET>
 
-- **Macintosh:**
+- **MacOS/Linux:**
   export CLIENT_ID=<YOU CLIENT ID>
   export CLIENT_SECRET=<YOU CLIENT SECRET>
 
@@ -440,7 +440,7 @@ npm install --save @adobe/pdfservices-node-sdk
   SET CLIENT_ID=<YOU CLIENT ID>
   SET CLIENT_SECRET=<YOU CLIENT SECRET>
 
-- **Macintosh:**
+- **MacOS/Linux:**
   export CLIENT_ID=<YOU CLIENT ID>
   export CLIENT_SECRET=<YOU CLIENT SECRET>
 4.  Test the sample code on the command line.
@@ -498,6 +498,29 @@ While building the sample project automatically downloads the Node package, you 
 
 ![Adobe PDF Services SDK on NPM JS](../images/node.png)
 
+## Public API
+
+PDF Services API is accessible directly via REST APIs which requires Adobe-provided credential for authentication. Once you've completed the [Getting Credentials](/document-services/apis/interstitial) workflow, a zip file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
+
+-   **Personalized Download**: Downloads the zip which contains `acrobat-services-sdk-java-samples` with a preconfigured `pdfservices-api-credentials.json` file.
+-   **Non Personalized Download**: Downloads the `pdfservices-api-credentials.json` with your preconfigured credentials.
+
+**Example pdfservices-api-credentials.json file**
+
+```json 
+
+{
+    "client_credentials": {
+        "client_id": "<YOUR_CLIENT_ID>",
+        "client_secret": "<YOUR_CLIENT_SECRET>"
+    },
+    "service_principal_credentials": {
+       "organization_id": "<YOUR_ORGNIZATION_ID>",
+        "scopes": "<YOUR_SCOPES>"
+    }
+}
+```
+
 ### Python
 
 Jumpstart your development by bookmarking or downloading the following key resources:
@@ -520,7 +543,7 @@ After downloading the zip, you can run the samples in the zip directly by settin
   SET CLIENT_ID=<YOU CLIENT ID>
   SET CLIENT_SECRET=<YOU CLIENT SECRET>
 
-- **Macintosh:**
+- **MacOS/Linux:**
   export CLIENT_ID=<YOU CLIENT ID>
   export CLIENT_SECRET=<YOU CLIENT SECRET>
 
@@ -563,7 +586,7 @@ pip install pdfservices-sdk
   SET CLIENT_ID=<YOU CLIENT ID>
   SET CLIENT_SECRET=<YOU CLIENT SECRET>
 
-- **Macintosh:**
+- **MacOS/Linux:**
   export CLIENT_ID=<YOU CLIENT ID>
   export CLIENT_SECRET=<YOU CLIENT SECRET>    
 4.  Test the sample code on the command line.
