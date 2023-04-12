@@ -25,19 +25,6 @@ For code examples illustrating other PDF actions including those below, see the 
 
 PDF Extract uses AI/ML technology to identify and categorize the various objects within documents – such as paragraphs, lists, headings, tables, and images – and extract the text, formatting, and associated document structural information which is then delivered in a resulting JSON file. Extracted table data can optionally be delivered within .CSV or .XLSX files, and extracted images are delivered as .PNG files. For additional information, please refer to [PDF Extract API white paper](https://adobe.sharepoint.com/:w:/s/DCPM/EQUrHgYanq5Iq9PR0XwRIfsBI6uBOu5iG1nRB0t_7amJYA?email=cfrench%40adobe.com&e=JFgscn)
 
-
-## Runtime in-memory authentication
-
-The SDK supports providing the authentication credentials at runtime.
-Doing so allows fetching the credentials from a secret server during
-runtime instead of storing them in a file. Please refer the following
-samples for details.
-
--   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithInMemoryAuthCredentials.java)
--   [.NET](https://github.com/adobe/PDFServices.NET.SDK.Samples/blob/master/CreatePDFWithInMemoryAuthCredentials/Program.cs)
--   [Node.js](https://github.com/adobe/pdfservices-node-sdk-samples/blob/master/src/customconfigurations/create-pdf-with-inmemory-auth-credentials.js)
--   [Python](https://github.com/adobe/pdfservices-python-sdk-samples/blob/master/src/extractpdf/extract_txt_from_pdf_with_in_memory_auth_credentials.py)
-
 ## Custom timeout configuration
 
 The APIs use inferred timeout properties and provide defaults. However,

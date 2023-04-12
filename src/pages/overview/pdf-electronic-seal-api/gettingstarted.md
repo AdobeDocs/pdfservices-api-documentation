@@ -218,8 +218,9 @@ public class ElectronicSeal {
         try {
 
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
+            Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+                    .withClientId("CLIENT_ID")
+                    .withClientSecret("CLIENT_SECRET")
                     .build();
 
             // Create an ExecutionContext using credentials.

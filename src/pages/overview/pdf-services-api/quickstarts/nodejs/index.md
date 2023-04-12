@@ -28,28 +28,25 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2.png)
+![Project setup](./shot2_sp.png)
 
 6) After your credentials are created, they are automatically downloaded:
 
-![alt](./shot3.png)
+![alt](./shot3_sp.png)
 
 ## Step Two: Setting up the project
 
-1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-Node.jsSamples.zip. If you unzip that archive, you will find a README file and a folder of samples:
+1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-Node.jsSamples.zip. If you unzip that archive, you will a folder of samples:
 
-![alt](./shot5.png)
+![alt](./shot_5_sp.png)
 
-2) We need two things from this download. The `private.key` file (as shown in the screenshot above, and the `pdfservices-api-credentials.json` file found in the samples directory:
+2) We need the `pdfservices-api-credentials.json` file found in the samples directory:
 
-![alt](./shot6.png)
+![alt](./shot6_sp.png)
 
 <InlineAlert slots="text" />
 
-Note that that private key is *also* found in this directory so feel free to copy them both from here.
-
-
-3) Take these two files and place them in a new directory. Remember that these credential files are important and should be stored safely.
+3) Take the `pdfservices-api-credentials.json` file and place it in a new directory. Remember that this credential file is important and should be stored safely.
 
 4) At the command line, change to the directory you created, and initialize a new Node.js project with `npm init -y`
 
@@ -95,8 +92,9 @@ These lines are hard coded but in a real application would typically be dynamic.
 
 ```js
 const credentials = PDFServicesSdk.Credentials
-		.serviceAccountCredentialsBuilder()
-		.fromFile('pdfservices-api-credentials.json')
+        .servicePrincipalsCredentialsBuilder()
+        .withClientId("CLIENT_ID")
+        .withClientSecret("CLIENT_SECRET")
 		.build();
 
 // Create an ExecutionContext using credentials
@@ -159,8 +157,9 @@ console.log(`About to export ${INPUT} to ${OUTPUT}.`);
 
 // Set up our credentials object.
 const credentials =  PDFServicesSdk.Credentials
-	.serviceAccountCredentialsBuilder()
-	.fromFile('pdfservices-api-credentials.json')
+    .servicePrincipalsCredentialsBuilder()
+    .withClientId("CLIENT_ID")
+    .withClientSecret("CLIENT_SECRET")
 	.build();
 
 // An exectuionContext object wraps our credentials

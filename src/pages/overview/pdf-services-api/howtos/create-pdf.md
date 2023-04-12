@@ -51,8 +51,10 @@ public class CreatePDFFromDOCX {
         try {
 
             // Initial setup, create credentials instance. 
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json").build();
+            Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+                    .withClientId("CLIENT_ID")
+                    .withClientSecret("CLIENT_SECRET")
+                    .build();
 
             //Create an ExecutionContext using credentials and create a new operation instance.
             ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -97,8 +99,8 @@ namespace CreatePDFFromDocx
        {
          // Initial setup, create credentials instance.
          Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                .WithClientId(Environment.GetEnvironmentVariable("CLIENT_ID"))
-                .WithClientSecret(Environment.GetEnvironmentVariable("CLIENT_SECRET"))
+                .WithClientId("CLIENT_ID")
+                .WithClientSecret("CLIENT_SECRET")
                 .Build();
 
          //Create an ExecutionContext using credentials and create a new operation instance.
@@ -143,8 +145,9 @@ const PDFservicesSdk = require('@adobe/pdfservices-node-sdk');
  try {
    // Initial setup, create credentials instance.
    const credentials =  PDFServicesSdk.Credentials
-       .serviceAccountCredentialsBuilder()
-       .fromFile("pdfservices-api-credentials.json")
+       .servicePrincipalsCredentialsBuilder()
+       .withClientId("CLIENT_ID")
+       .withClientSecret("CLIENT_SECRET")
        .build();
 
    // Create an ExecutionContext using credentials and create a new operation instance.
@@ -222,9 +225,10 @@ public class CreatePDFFromDOCXWithOptions {
         try {
 
           // Initial setup, create credentials instance.
-          Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-              .fromFile("pdfservices-api-credentials.json")
-              .build();
+          Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+                  .withClientId("CLIENT_ID")
+                  .withClientSecret("CLIENT_SECRET")
+                  .build();
 
           //Create an ExecutionContext using credentials and create a new operation instance.
           ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -282,9 +286,10 @@ namespace CreatePDFFromDocxWithOptions
        try
        {
          // Initial setup, create credentials instance.
-         Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                 .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                 .Build();
+         Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                .WithClientId("CLIENT_ID")
+                .WithClientSecret("CLIENT_SECRET")
+                .Build();
 
          //Create an ExecutionContext using credentials and create a new operation instance.
          ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -353,8 +358,9 @@ const setCustomOptions = (createPdfOperation) => {
 try {
     // Initial setup, create credentials instance.
     const credentials =  PDFServicesSdk.Credentials
-        .serviceAccountCredentialsBuilder()
-        .fromFile("pdfservices-api-credentials.json")
+        .servicePrincipalsCredentialsBuilder()
+        .withClientId("CLIENT_ID")
+        .withClientSecret("CLIENT_SECRET")
         .build();
 
     // Create an ExecutionContext using credentials and create a new operation instance.
@@ -432,9 +438,10 @@ public class CreatePDFFromStaticHTML {
      try {
 
        // Initial setup, create credentials instance.
-       Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-           .fromFile("pdfservices-api-credentials.json")
-           .build();
+       Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+               .withClientId("CLIENT_ID")
+               .withClientSecret("CLIENT_SECRET")
+                .build();
 
        //Create an ExecutionContext using credentials and create a new operation instance.
        ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -493,9 +500,10 @@ namespace CreatePDFFromStaticHtml
        try
        {
          // Initial setup, create credentials instance.
-         Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                 .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                 .Build();
+         Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                .WithClientId("CLIENT_ID")
+                .WithClientSecret("CLIENT_SECRET")
+                .Build();
 
          //Create an ExecutionContext using credentials and create a new operation instance.
          ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -570,9 +578,10 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
  try {
    // Initial setup, create credentials instance.
    const credentials =  PDFServicesSdk.Credentials
-     .serviceAccountCredentialsBuilder()
-     .fromFile("pdfservices-api-credentials.json")
-     .build();
+       .servicePrincipalsCredentialsBuilder()
+       .withClientId("CLIENT_ID")
+       .withClientSecret("CLIENT_SECRET")
+       .build();
 
    // Create an ExecutionContext using credentials and create a new operation instance.
    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
@@ -650,9 +659,10 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
       try {
 
         // Initial setup, create credentials instance.
-        Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-            .fromFile("pdfservices-api-credentials.json")
-            .build();
+        Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+                .withClientId("CLIENT_ID")
+                .withClientSecret("CLIENT_SECRET")
+                .build();
 
         //Create an ExecutionContext using credentials and create a new operation instance.
         ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -711,9 +721,10 @@ namespace CreatePDFFromHTMLWithInlineCSS
         try
         {
           // Initial setup, create credentials instance.
-          Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                  .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                  .Build();
+          Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                 .WithClientId("CLIENT_ID")
+                 .WithClientSecret("CLIENT_SECRET")
+                 .Build();
 
           //Create an ExecutionContext using credentials and create a new operation instance.
           ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -788,8 +799,9 @@ const setCustomOptions = (htmlToPDFOperation) => {
 try {
     // Initial setup, create credentials instance.
     const credentials =  PDFServicesSdk.Credentials
-        .serviceAccountCredentialsBuilder()
-        .fromFile("pdfservices-api-credentials.json")
+        .servicePrincipalsCredentialsBuilder()
+        .withClientId("CLIENT_ID")
+        .withClientSecret("CLIENT_SECRET")
         .build();
 
     // Create an ExecutionContext using credentials and create a new operation instance.
@@ -868,9 +880,10 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
       try {
 
         // Initial setup, create credentials instance.
-        Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-            .fromFile("pdfservices-api-credentials.json")
-            .build();
+        Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+                .withClientId("CLIENT_ID")
+                .withClientSecret("CLIENT_SECRET")
+                .build();
 
         //Create an ExecutionContext using credentials and create a new operation instance.
         ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -929,9 +942,10 @@ namespace CreatePDFFromURL
         try
         {
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-            .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-            .Build();
+            Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                   .WithClientId("CLIENT_ID")
+                   .WithClientSecret("CLIENT_SECRET")
+                   .Build();
 
             //Create an ExecutionContext using credentials and create a new operation instance.
             ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -1005,8 +1019,9 @@ const setCustomOptions = (htmlToPDFOperation) => {
 try {
     // Initial setup, create credentials instance.
     const credentials =  PDFServicesSdk.Credentials
-        .serviceAccountCredentialsBuilder()
-        .fromFile("pdfservices-api-credentials.json")
+        .servicePrincipalsCredentialsBuilder()
+        .withClientId("CLIENT_ID")
+        .withClientSecret("CLIENT_SECRET")
         .build();
 
     // Create an ExecutionContext using credentials and create a new operation instance.
@@ -1099,9 +1114,10 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
      try {
 
        // Initial setup, create credentials instance.
-       Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-           .fromFile("pdfservices-api-credentials.json")
-           .build();
+       Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+               .withClientId("CLIENT_ID")
+               .withClientSecret("CLIENT_SECRET")
+               .build();
 
        //Create an ExecutionContext using credentials and create a new operation instance.
        ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -1166,9 +1182,10 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
        try
        {
          // Initial setup, create credentials instance.
-         Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                 .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                 .Build();
+         Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                .WithClientId("CLIENT_ID")
+                .WithClientSecret("CLIENT_SECRET")
+                .Build();
 
          //Create an ExecutionContext using credentials and create a new operation instance.
          ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -1256,8 +1273,9 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
  try {
    // Initial setup, create credentials instance.
    const credentials =  PDFServicesSdk.Credentials
-       .serviceAccountCredentialsBuilder()
-       .fromFile("pdfservices-api-credentials.json")
+       .servicePrincipalsCredentialsBuilder()
+       .withClientId("CLIENT_ID")
+       .withClientSecret("CLIENT_SECRET")
        .build();
 
    // Create an ExecutionContext using credentials and create a new operation instance.

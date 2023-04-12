@@ -172,8 +172,9 @@ public class ExtractTextInfoFromPDF {
         try {
 
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
+            Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+                    .withClientId("CLIENT_ID")
+                    .withClientSecret("CLIENT_SECRET")
                     .build();
 
             // Create an ExecutionContext using credentials.
@@ -225,8 +226,9 @@ namespace ExtractTextInfoFromPDF
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("CLIENT_ID")
+                    .WithClientSecret("CLIENT_SECRET")
                     .Build();
 
                 //Create an ExecutionContext using credentials and create a new operation instance.
@@ -291,8 +293,9 @@ namespace ExtractTextInfoFromPDF
   try {
       // Initial setup, create credentials instance.
       const credentials =  PDFServicesSdk.Credentials
-          .serviceAccountCredentialsBuilder()
-          .fromFile("pdfservices-api-credentials.json")
+          .servicePrincipalsCredentialsBuilder()
+          .withClientId("CLIENT_ID")
+          .withClientSecret("CLIENT_SECRET")
           .build();
 
       // Create an ExecutionContext using credentials
@@ -416,8 +419,9 @@ public class ExtractTextTableInfoFromPDF {
         try {
 
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
+            Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+                    .withClientId("CLIENT_ID")
+                    .withClientSecret("CLIENT_SECRET")
                     .build();
 
             // Create an ExecutionContext using credentials.
@@ -469,8 +473,9 @@ namespace ExtractTextTableInfoFromPDF
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("CLIENT_ID")
+                    .WithClientSecret("CLIENT_SECRET")
                     .Build();
     
                 // Create an ExecutionContext using credentials and create a new operation instance.
@@ -536,8 +541,9 @@ namespace ExtractTextTableInfoFromPDF
   try {
       // Initial setup, create credentials instance.
       const credentials =  PDFServicesSdk.Credentials
-          .serviceAccountCredentialsBuilder()
-          .fromFile("pdfservices-api-credentials.json")
+          .servicePrincipalsCredentialsBuilder()
+          .withClientId("CLIENT_ID")
+          .withClientSecret("CLIENT_SECRET")
           .build();
 
       // Create an ExecutionContext using credentials
@@ -665,8 +671,9 @@ public class ExtractTextTableInfoWithRenditionsFromPDF {
         try {
 
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
+            Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+                    .withClientId("CLIENT_ID")
+                    .withClientSecret("CLIENT_SECRET")
                     .build();
 
             // Create an ExecutionContext using credentials.
@@ -718,8 +725,9 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("CLIENT_ID")
+                    .WithClientSecret("CLIENT_SECRET")
                     .Build();
 
                 // Create an ExecutionContext using credentials and create a new operation instance.
@@ -786,8 +794,9 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
   try {
       // Initial setup, create credentials instance.
       const credentials =  PDFServicesSdk.Credentials
-          .serviceAccountCredentialsBuilder()
-          .fromFile("pdfservices-api-credentials.json")
+          .servicePrincipalsCredentialsBuilder()
+          .withClientId("CLIENT_ID")
+          .withClientSecret("CLIENT_SECRET")
           .build();
 
       // Create an ExecutionContext using credentials
@@ -919,8 +928,9 @@ public class ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF {
           try {
 
               // Initial setup, create credentials instance.
-              Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                      .fromFile("pdfservices-api-credentials.json")
+              Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+                      .withClientId("CLIENT_ID")
+                      .withClientSecret("CLIENT_SECRET")
                       .build();
 
               // Create an ExecutionContext using credentials.
@@ -972,8 +982,9 @@ namespace ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("CLIENT_ID")
+                    .WithClientSecret("CLIENT_SECRET")
                     .Build();
     
                 // Create an ExecutionContext using credentials and create a new operation instance.
@@ -1040,8 +1051,9 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 try {
     // Initial setup, create credentials instance.
     const credentials =  PDFServicesSdk.Credentials
-        .serviceAccountCredentialsBuilder()
-        .fromFile("pdfservices-api-credentials.json")
+        .servicePrincipalsCredentialsBuilder()
+        .withClientId("CLIENT_ID")
+        .withClientSecret("CLIENT_SECRET")
         .build();
 
     // Create an ExecutionContext using credentials
@@ -1173,8 +1185,9 @@ public class ExtractTextTableInfoWithCharBoundsFromPDF {
         try {
 
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
+            Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+                    .withClientId("CLIENT_ID")
+                    .withClientSecret("CLIENT_SECRET")
                     .build();
 
             // Create an ExecutionContext using credentials.
@@ -1226,9 +1239,10 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                .Build();
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("CLIENT_ID")
+                    .WithClientSecret("CLIENT_SECRET")
+                    .Build();
     
                 // Create an ExecutionContext using credentials and create a new operation instance.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -1294,8 +1308,9 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
   try {
       // Initial setup, create credentials instance.
       const credentials =  PDFServicesSdk.Credentials
-          .serviceAccountCredentialsBuilder()
-          .fromFile("pdfservices-api-credentials.json")
+          .servicePrincipalsCredentialsBuilder()
+          .withClientId("CLIENT_ID")
+          .withClientSecret("CLIENT_SECRET")
           .build();
 
       // Create an ExecutionContext using credentials
@@ -1428,8 +1443,9 @@ public class ExtractTextTableInfoWithTableStructureFromPdf {
         try {
 
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
+            Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+                    .withClientId("CLIENT_ID")
+                    .withClientSecret("CLIENT_SECRET")
                     .build();
 
             // Create an ExecutionContext using credentials.
@@ -1482,8 +1498,9 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("CLIENT_ID")
+                    .WithClientSecret("CLIENT_SECRET")
                     .Build();
     
                 // Create an ExecutionContext using credentials and create a new operation instance.
@@ -1551,8 +1568,9 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
     try {
         // Initial setup, create credentials instance.
         const credentials =  PDFServicesSdk.Credentials
-            .serviceAccountCredentialsBuilder()
-            .fromFile("pdfservices-api-credentials.json")
+            .servicePrincipalsCredentialsBuilder()
+            .withClientId("CLIENT_ID")
+            .withClientSecret("CLIENT_SECRET")
             .build();
   
         // Create an ExecutionContext using credentials
@@ -1687,8 +1705,9 @@ public class ExtractTextTableInfoWithStylingFromPDF {
         try {
 
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
+            Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+                    .withClientId("CLIENT_ID")
+                    .withClientSecret("CLIENT_SECRET")
                     .build();
 
             // Create an ExecutionContext using credentials.
@@ -1740,8 +1759,9 @@ namespace ExtractTextTableInfoWithStylingFromPDF
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("CLIENT_ID")
+                    .WithClientSecret("CLIENT_SECRET")
                     .Build();
     
                 // Create an ExecutionContext using credentials and create a new operation instance.
@@ -1809,8 +1829,9 @@ namespace ExtractTextTableInfoWithStylingFromPDF
   try {
       // Initial setup, create credentials instance.
       const credentials =  PDFServicesSdk.Credentials
-          .serviceAccountCredentialsBuilder()
-          .fromFile("pdfservices-api-credentials.json")
+          .servicePrincipalsCredentialsBuilder()
+          .withClientId("CLIENT_ID")
+          .withClientSecret("CLIENT_SECRET")
           .build();
 
       // Create an ExecutionContext using credentials

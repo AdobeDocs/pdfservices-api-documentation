@@ -109,8 +109,9 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
           try {
  
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
+            Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+                    .withClientId("CLIENT_ID")
+                    .withClientSecret("CLIENT_SECRET")
                     .build();
  
             // Setup input data for the document merge process.
@@ -164,9 +165,10 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
                try
                {
                    // Initial setup, create credentials instance.
-                   Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                            .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                            .Build();
+                   Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                          .WithClientId("CLIENT_ID")
+                          .WithClientSecret("CLIENT_SECRET")
+                          .Build();
   
                    // Create an ExecutionContext using credentials.
                    ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -232,8 +234,9 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
  try {
    // Initial setup, create credentials instance.
    const credentials =  PDFServicesSdk.Credentials
-       .serviceAccountCredentialsBuilder()
-       .fromFile("pdfservices-api-credentials.json")
+       .servicePrincipalsCredentialsBuilder()
+       .withClientId("CLIENT_ID")
+       .withClientSecret("CLIENT_SECRET")
        .build();
 
    // Setup input data for the document merge process.
@@ -347,8 +350,9 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
       try {
 
           // Initial setup, create credentials instance.
-          Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                  .fromFile("pdfservices-api-credentials.json")
+          Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+                    .withClientId("CLIENT_ID")
+                    .withClientSecret("CLIENT_SECRET")
                     .build();
 
             // Setup input data for the document merge process
@@ -435,9 +439,10 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
                 try
                 {
                     // Initial setup, create credentials instance.
-                    Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                                    .Build();
+                    Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                           .WithClientId("CLIENT_ID")
+                           .WithClientSecret("CLIENT_SECRET")
+                           .Build();
     
                     // Create an ExecutionContext using credentials.
                     ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -518,8 +523,9 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
     try {
         // Initial setup, create credentials instance.
         const credentials =  PDFServicesSdk.Credentials
-            .serviceAccountCredentialsBuilder()
-            .fromFile("pdfservices-api-credentials.json")
+            .servicePrincipalsCredentialsBuilder()
+            .withClientId("CLIENT_ID")
+            .withClientSecret("CLIENT_SECRET")
             .build();
     
         // Setup input data for the document merge process
