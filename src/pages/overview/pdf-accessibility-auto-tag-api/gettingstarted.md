@@ -25,9 +25,9 @@ After getting the access token, we need to upload the asset. Uploading an asset 
 
 You can read more about the API in detail [here](../../../apis/#operation/asset.uploadpresignedurl).
 
-<CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
+<CodeBlock slots="heading, code" repeat="1" languages="REST API" /> 
 
-### Rest API 
+### REST API 
 
 ```javascript
 curl --location --request POST 'https://pdf-services.adobe.io/assets' \
@@ -41,9 +41,9 @@ curl --location --request POST 'https://pdf-services.adobe.io/assets' \
 
 2. On getting a `200` response status from the above API, use the `uploadUri` field in the response body of the above API to upload the asset directly to the cloud provider using a PUT API call. You will also get an `assetID` field which will be used in creating the job.
 
-<CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
+<CodeBlock slots="heading, code" repeat="1" languages="REST API" /> 
 
-### Rest API
+### REST API
 
 ```javascript
 curl --location -g --request PUT 'https://dcplatformstorageservice-us-east-1.s3-accelerate.amazonaws.com/b37fd583-1ab6-4f49-99ef-d716180b5de4?X-Amz-Security-Token={{Placeholder for X-Amz-Security-Token}}&X-Amz-Algorithm={{Placeholder for X-Amz-Algorithm}}&X-Amz-Date={{Placeholder for X-Amz-Date}}&X-Amz-SignedHeaders={{Placeholder for X-Amz-SignedHeaders}}&X-Amz-Expires={{Placeholder for X-Amz-Expires}}&X-Amz-Credential={{Placeholder for X-Amz-Credential}}&X-Amz-Signature={{Placeholder for X-Amz-Signature}}' \
@@ -63,9 +63,9 @@ Once the job is successfully created, you need to poll the at the `location` ret
 
 You can read more about the API in detail [here](../../../apis/#operation/pdfoperations.compresspdf.jobstatus).
 
-<CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
+<CodeBlock slots="heading, code" repeat="1" languages="REST API" /> 
 
-### Rest API
+### REST API
 
 ```javascript
 curl --location -g --request GET 'https://pdf-services.adobe.io/operation/compresspdf/{{Placeholder for job id}}/status' \
@@ -83,9 +83,9 @@ If the `status` field is `done` the response body will also have a download pre-
 
 You can read more about the API in detail [here](../../../apis/#operation/asset.get).
 
-<CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
+<CodeBlock slots="heading, code" repeat="1" languages="REST API" /> 
 
-### Rest API 
+### REST API 
 
 ```javascript
 curl --location -g --request GET 'https://dcplatformstorageservice-us-east-1.s3-accelerate.amazonaws.com/b37fd583-1ab6-4f49-99ef-d716180b5de4?X-Amz-Security-Token={{Placeholder for X-Amz-Security-Token}}&X-Amz-Algorithm={{Placeholder for X-Amz-Algorithm}}&X-Amz-Date={{Placeholder for X-Amz-Date}}&X-Amz-SignedHeaders={{Placeholder for X-Amz-SignedHeaders}}&X-Amz-Expires={{Placeholder for X-Amz-Expires}}&X-Amz-Credential={{Placeholder for X-Amz-Credential}}&X-Amz-Signature={{Placeholder for X-Amz-Signature}}'
@@ -112,7 +112,7 @@ Jump start your development by bookmarking or downloading the following key reso
 
 #### Authentication
 
-Once you complete the [Get API credentials](#get-api-credentials), a zip file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
+Once you get your credentials, a zip file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
 
 -   **Personalized Download**: The samples download zip contains a private.key file and an adobe-dc-pdf-services-sdk-java-samples with a preconfigured pdfservices-api-credentials.json file.
 -   **Non Personalized Download**: The samples download zip contains the private.key file and a pdfservices-api-credentials.json file.
@@ -272,7 +272,7 @@ Jump start your development by bookmarking or downloading the following key reso
 
 #### Authentication
 
-Once you complete the [Get API credentials](#get-api-credentials), a zip file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
+Once you get your credentials, a zip file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
 
 -   **Personalized Download**: The samples download zip contains a private.key file and adobe-dc-pdfservices-sdk-python-samples directory with a preconfigured pdfservices-api-credentials.json file.
 -   **Non Personalized Download**: The samples download zip contains the private.key file and a pdfservices-api-credentials.json file.

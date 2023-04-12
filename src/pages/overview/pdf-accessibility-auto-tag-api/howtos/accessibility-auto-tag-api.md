@@ -3,7 +3,7 @@ title: Accessibility API | How Tos | PDF Accessibility Auto-Tag API | Adobe PDF 
 ---
 # PDF Accessibility Auto-Tag API
 
-## PDF Accessibility Auto-Tag API Output Format
+## API Output Format
 
 The output of PDF Accessibility Auto-Tag API contains the following:
 
@@ -51,7 +51,7 @@ The output of PDF Accessibility Auto-Tag API contains the following:
 | Invalid input parameters	    | BAD_INPUT_PARAMS		        | Invalid input parameters                                                                       |
 | User not enrolled to allowed Atlas plans | INVALID_PLAN_CODE | Unauthorized to execute this operation. User is not enrolled to plans allowed for the service  | 
 
-## Rest API 
+## REST API 
 
 See our public API Reference for [PDF Accessibility Auto-Tag API](../../../apis/#tag/PDF-Accessibility-Auto-Tag).
 
@@ -61,7 +61,7 @@ The sample below generates tagged PDF from a PDF.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, Python, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="3" languages="Java, Python, REST API" /> 
 
 #### Java
 
@@ -146,10 +146,10 @@ except (ServiceApiException, ServiceUsageException, SdkException) as e:
     logging.exception(f'Exception encountered while executing operation: {e}')
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/PDF-Accessibility-Auto-Tag
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/autotag' \
