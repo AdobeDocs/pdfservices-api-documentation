@@ -196,52 +196,56 @@ This code runs the document generation process and then stores the result PDF do
 
 ![Example running at the command line](./shot9.png)
 
-Here's the complete application (`export.js`):
+Here's the complete application (`documentmerge.js`):
 
 ```js
 const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 const fs = require('fs');
 
-const OUTPUT = './Bodea Brochure.docx';
+const OUTPUT = './generatedReceipt.pdf';
 
 // If our output already exists, remove it so we can run the application again.
 if(fs.existsSync(OUTPUT)) fs.unlinkSync(OUTPUT);
 
-const INPUT = './Bodea Brochure.pdf';
+const INPUT = './receiptTemplate.docx';
 
+const JSON_INPUT = require('./receipt.json');
 
-console.log(`About to export ${INPUT} to ${OUTPUT}.`);
 
 // Set up our credentials object.
-const credentials =  PDFServicesSdk.Credentials
-	.serviceAccountCredentialsBuilder()
-	.fromFile('pdfservices-api-credentials.json')
-	.build();
+const credentials = PDFServicesSdk.Credentials
+    .serviceAccountCredentialsBuilder()
+    .fromFile('pdfservices-api-credentials.json')
+    .build();
 
-// An exectuionContext object wraps our credentials
+// Create an ExecutionContext using credentials
 const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
 
 // This creates an instance of the Export operation we're using, as well as specifying output type (DOCX)
-const exportPdfOperation = PDFServicesSdk.ExportPDF.Operation.createNew(PDFServicesSdk.ExportPDF.SupportedTargetFormats.DOCX);
+const documentMerge = PDFServicesSdk.DocumentMerge,
+    documentMergeOptions = documentMerge.options,
+    options = new documentMergeOptions.DocumentMergeOptions(JSON_INPUT, documentMergeOptions.OutputFormat.PDF);
 
-// Set operation input from a source file
-const inputPDF = PDFServicesSdk.FileRef.createFromLocalFile(INPUT);
-exportPdfOperation.setInput(inputPDF);
+// Create a new operation instance using the options instance.
+const documentMergeOperation = documentMerge.Operation.createNew(options);
 
-try {
+// Set operation input document template from a source file.
+const input = PDFServicesSdk.FileRef.createFromLocalFile(INPUT);
+documentMergeOperation.setInput(input);
 
-	exportPdfOperation.execute(executionContext)
-	.then(result => result.saveAsFile(OUTPUT))
-	.then(() => {
-		console.log('Export Done')
-	})
-	.catch(err => {
-		console.log('Exception encountered while executing operation', err);
-	});
 
-} catch(err) {
-	console.error('Error:', err);
-}
+// Execute the operation and Save the result to the specified location.
+documentMergeOperation.execute(executionContext)
+    .then(result => result.saveAsFile(OUTPUT))
+    .catch(err => {
+        if(err instanceof PDFServicesSdk.Error.ServiceApiError
+            || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
+            console.log('Exception encountered while executing operation', err);
+        } else {
+            console.log('Exception encountered while executing operation', err);
+        }
+    });
+
 ```
 
 ## Next Steps

@@ -7,7 +7,7 @@ Adobe’s new modern PDF viewer is a reimagining of the look and feel of PDF vie
 on web, desktop, mobile, and PDF integrations.  It introduces a new framework and 
 workflows that better map to user mental models and enables a consistent user 
 experience whether you are viewing a PDF in Adobe Acrobat or embedded on your website.
-  
+
 ## Full window embed mode
 
 ### Full window embed mode in legacy viewer
