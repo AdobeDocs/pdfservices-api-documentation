@@ -6,26 +6,23 @@ title: PDF Accessibility Auto-Tag API Output Format  | How Tos | PDF Accessibili
 
 The output of PDF Accessibility Auto-Tag API contains the following:
 
-- The version 1.7 tagged PDF file with headings shifted if the option of shift headings is set.
+- The tagged PDF file with headings shifted if the option of shift headings is set.
 - A report in XLSX format, which provides information related to tagging of the document. This will be generated if report generation is enabled.
 
 ## API limitations
 
-<br />
-<ul>
-<li> <b>File size:</b> Files up to a maximum of 100MB are supported.</li>
-<li><b>Number of Pages:</b> Non-scanned PDFs up to 200 pages and scanned PDFs up to 100 pages are supported, however limits may be lower for files with a large number of tables.</li>
-<li><b>Rate limits:</b> Keep request rate below 25 requests per minutes.</li>
-<li><b>Page Size:</b> The API supports standard page sizes not to exceed 17.5” or less than 6” in either dimension.</li>
-<li><b>Hidden Objects:</b> PDF files that contain content that is not visible on the page like javascript, OCG (optional content groups), etc are not supported. Files that contain such hidden information may fail to process. For such cases, [removing hidden content](https://helpx.adobe.com/acrobat/using/removing-sensitive-content-pdfs.html) prior to processing files again may return a successful result.</li>
-<li><b>Language:</b> The API is currently optimized for English language content. Files containing content in other Latin languages should return good results, but may have issues with non-English punctuation.</li>
-<li><b>OCR and Scan quality:</b> The quality of text extracted from scanned files is dependent on the clarity of content in the input file. Conditions like skewed pages, shadowing, obscured or overlapping fonts, and page resolution less than 200 DPI can all result in lower quality text output.</li>
-<li><b>Form fields:</b> Files containing XFA and other fillable form elements are not supported.</li>
-<li><b>Unprotected files:</b> The API supports files that are unprotected or where security restrictions allow copying of content. Files that are secured and do not allow copying of content will not be processed.</li>
-<li><b>Annotations:</b> Content in PDF files containing annotations such as highlights and sticky notes will be processed, but annotations that obscure text could impact output quality. Text within annotations will not be included in the output.</li>
-<li><b>PDF Producers:</b> The Extract API is designed to extract content from files that contain text, table data, and figures. Files created from applications that produce other types of content like illustrations, CAD drawings or other types of vector art may not return quality results.</li>
-<li><b>PDF Collections:</b> PDFs that are made from a collection of files including PDF Portfolios are not currently supported.</li>
-</ul>
+- **File size:** Files up to a maximum of 100 MB are supported.
+- **Number of Pages:** Non-scanned PDFs up to 200 pages and scanned PDFs up to 100 pages are supported, however limits may be lower for files with a large number of tables.
+- **Rate limits:** Keep request rate below 25 requests per minute.
+- **Page Size:** The API supports standard page sizes not more than 17.5” or less than 6” in either dimension.
+- **Hidden Objects:** PDF files that contain content that is not visible on the page like Javascript, OCG (optional content groups), etc are not supported. Files that contain such hidden information may fail to process. For such cases, [removing hidden content](https://helpx.adobe.com/acrobat/using/removing-sensitive-content-pdfs.html) prior to processing files again may return a successful result.
+- **Language:** The API is currently optimized for English language content. Files containing content in French, German, Spanish, Danish, Dutch, Norwegian (Bokmal), Galician, Catalan, Finnish, Italian, Swedish, Portuguese, and Romanian should return good results most of the time. Files containing content in Afrikaans, Bosnian, Croatian, Czech, Hungarian, Indonesian, Malay, Polish, Russian, Serbian, Turkish, Hindi, Marathi and other similar languages should return good results often. Non-English files may have issues with non-English punctuation. OCR is configured for English content.
+- **OCR and Scan quality:** The quality of text extracted from scanned files is dependent on the clarity of content in the input file and is currently configured for English content. Conditions like skewed pages, shadowing, obscured or overlapping fonts, and page resolution less than 200 DPI can all result in lower quality text output.
+- **Form fields:** Files containing XFA and other fillable form elements are not supported.
+- **Unprotected files:** The API supports files that are unprotected or where security restrictions allow editing of content. Files that are secured and do not allow editing of content will not be processed.
+- **Annotations:** Content in PDF files containing annotations such as highlights and sticky notes will be processed, but annotations that obscure text could impact output quality. Text within annotations will not be included in the output.
+- **PDF Producers:** The PDF Accessibility Auto-Tag API is designed to add tags to PDF to make it easier to make the file accessible. Files created from applications that produce other types of content like illustrations, CAD drawings or other types of vector art may not return high quality results.
+- **PDF Collections:** PDFs that are made from a collection of files including PDF Portfolios are not currently supported.
 
 ## Error codes
 
@@ -51,4 +48,5 @@ The output of PDF Accessibility Auto-Tag API contains the following:
 | Protected PDF	                | PROTECTED_PDF		            | PDF is encrypted or password-protected                                                                   |
 | Empty or corrupted input	    | BAD_INPUT		                | Input is corrupted or empty                                                                              |
 | Invalid input parameters	    | BAD_INPUT_PARAMS		        | Invalid input parameters                                                                                 |
+| User not enrolled to allowed Atlas plans | INVALID_PLAN_CODE | Unauthorized to execute this operation. User is not enrolled to plans allowed for the service  | 
 
