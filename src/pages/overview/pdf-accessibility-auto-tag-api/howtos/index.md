@@ -5,8 +5,7 @@ title: How Tos | PDF Accessibility Auto-Tag API | Adobe PDF Services
 
 <p>
 
-The [samples and documentation](accessibility-auto-tag-api.md/#generate-tagged-pdf-with-version-17-along-with-an-xlsx-report-and-shift-the-headings-in-the-output-pdf-file) should get you quickly up and running with PDF Accessibility Auto-Tag capabilities in the [PDFServices SDK](../../pdf-services-api/index.md) including:
-
+The [samples and documentation](accessibility-auto-tag-api.md/#generate-tagged-pdf-from-a-pdf) should get you quickly up and running with PDF Accessibility Auto-Tag capabilities in the [PDFServices SDK](../../pdf-services-api/index.md) including:
 - Improving the accessibility of PDFs
 
 For code examples illustrating other PDF actions including those below, see the [PDFServices SDK](../../pdf-services-api/index.md) :

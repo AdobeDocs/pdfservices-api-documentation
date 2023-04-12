@@ -242,6 +242,10 @@ module.exports = {
                             {
                                 title: 'Get PDF Properties',
                                 path: 'overview/pdf-services-api/howtos/pdf-properties.md'
+                            },
+                            {
+                                 title: 'PDF Accessibility Auto-Tag',
+                                 path: 'overview/pdf-services-api/howtos/pdf-accessibility-auto-tag.md'
                             }
                         ]
                     }
@@ -414,23 +418,8 @@ module.exports = {
                 ]
             },
             {
-                title: 'PDF Electronic Seal API                       ',
-                subTitle: 'Beta Program',
-                path: 'overview/pdf-electronic-seal-api/index.md',
-                pages: [
-                    {
-                        title: 'Overview',
-                        path: 'overview/pdf-electronic-seal-api/index.md'
-                    },
-                    {
-                        title: 'Getting Started',
-                        path: 'overview/pdf-electronic-seal-api/gettingstarted.md'
-                    }
-                ]
-            },
-            {
                 title: 'PDF Accessibility Auto-Tag API',
-                subTitle: 'Early Access Program',
+                subTitle: '',
                 path: 'overview/pdf-accessibility-auto-tag-api/index.md',
                 pages: [
                     {
@@ -440,6 +429,28 @@ module.exports = {
                     {
                         title: 'Getting Started',
                         path: 'overview/pdf-accessibility-auto-tag-api/gettingstarted.md'
+                    },
+                    {
+                        title: 'Quickstarts',
+                        path: 'overview/pdf-accessibility-auto-tag-api/quickstarts',
+                        pages: [
+                            {
+                                title:'Node.js',
+                                path: 'overview/pdf-accessibility-auto-tag-api/quickstarts/nodejs/index.md'
+                            },
+                            {
+                                title:'Java',
+                                path: 'overview/pdf-accessibility-auto-tag-api/quickstarts/java/index.md'
+                            },
+                            {
+                                title:'.NET',
+                                path: 'overview/pdf-accessibility-auto-tag-api/quickstarts/dotnet/index.md'
+                            },
+                            {
+                                title:'Python',
+                                path: 'overview/pdf-accessibility-auto-tag-api/quickstarts/python/index.md'
+                            }
+                        ]
                     },
                     {
                         title: 'How Tos',
@@ -463,7 +474,23 @@ module.exports = {
                                 path: 'overview/pdf-accessibility-auto-tag-api/howtos/generatetaggedpdfwithcli.md'
                             }
                         ]
-                    }                ]
+                    }
+                ]
+            },
+            {
+                title: 'PDF Electronic Seal API                       ',
+                subTitle: 'Beta Program',
+                path: 'overview/pdf-electronic-seal-api/index.md',
+                pages: [
+                    {
+                        title: 'Overview',
+                        path: 'overview/pdf-electronic-seal-api/index.md'
+                    },
+                    {
+                        title: 'Getting Started',
+                        path: 'overview/pdf-electronic-seal-api/gettingstarted.md'
+                    }
+                ]
             },
             {
                 title: 'Usage Limits and Licensing',

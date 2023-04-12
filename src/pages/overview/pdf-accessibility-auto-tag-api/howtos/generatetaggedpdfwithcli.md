@@ -112,7 +112,7 @@ public class AutotagPDFParamaterised {
 #### Python
 
 ```python
-# Get the samples from https://git.corp.adobe.com/dc/dc-cpf-python-sdk-samples/tree/beta
+# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples/tree/beta
 # Run the sample:
 # python src/autotagpdf/autotag_pdf_parameterised.py --report --shift_headings --input resources/autotagPdfInput.pdf --output output/
 
@@ -191,7 +191,7 @@ class AutotagPDFParameterised:
             autotag_pdf_operation.set_options(self.get_autotag_pdf_options())
 
             # Execute the operation.
-            autotag_output_files: AutotagPDFOutputFiles = autotag_pdf_operation.execute(execution_context)
+            autotag_pdf_output: AutotagPDFOutput = autotag_pdf_operation.execute(execution_context)
 
             input_file_name = Path(self._input_path).stem
             base_output_path = self._output_path
@@ -200,10 +200,10 @@ class AutotagPDFParameterised:
 
             # Save the result to the specified location.
             tagged_pdf_path = f'{base_output_path}/{input_file_name}-tagged.pdf'
-            autotag_output_files.save_pdf_file(tagged_pdf_path)
+            autotag_pdf_output.get_tagged_pdf().save_as(tagged_pdf_path)
             if self._generate_report:
                 report_path = f'{base_output_path}/{input_file_name}-report.xlsx'
-                autotag_output_files.save_xls_file(report_path)
+                autotag_pdf_output.get_report().save_as(report_path)
 
         except (ServiceApiException, ServiceUsageException, SdkException) as e:
             logging.exception(f'Exception encountered while executing operation: {e}')
