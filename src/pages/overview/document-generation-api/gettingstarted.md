@@ -146,7 +146,7 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
 
 ##### .NET
 
-```javascript
+```clike
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
 // cd MergeDocumentToDocx/
@@ -224,7 +224,7 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
 
 ##### Node JS
 
-```javascript
+```js
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
 // node src/documentmerge/merge-document-to-docx.js
@@ -277,7 +277,7 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
 
 #### Rest API 
 
-```javascript
+```bash
 // Please refer our Rest API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Document-Generation
 
@@ -421,7 +421,7 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
 
 ##### .NET
 
-```javascript
+```clike
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
 // cd MergeDocumentToDocx/
@@ -513,7 +513,7 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
 ```
 ##### Node JS
 
-```javascript
+```js
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
 // node src/documentmerge/merge-document-to-pdf-fragments.js
@@ -591,7 +591,7 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
 
 #### Rest API 
 
-```javascript
+```bash
 // Please refer our Rest API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Document-Generation
 

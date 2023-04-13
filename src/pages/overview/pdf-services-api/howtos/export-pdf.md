@@ -68,7 +68,7 @@ public class ExportPDFToDOCX {
 
 #### .NET
 
-```javascript
+```clike
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
 // cd ExportPDFToDocx/
@@ -123,7 +123,7 @@ public class ExportPDFToDOCX {
 
 #### Node JS
 
-```javascript
+```js
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
 // node src/exportpdf/export-pdf-to-docx.js
@@ -165,7 +165,7 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 
 #### Rest API 
 
-```javascript
+```bash
 // Please refer our Rest API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Export-PDF
 
@@ -249,7 +249,7 @@ public class ExportPDFToDOCXWithOCROption {
 
 #### .NET
 
-```javascript
+```clike
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
 // cd ExportPDFToDocx/
@@ -308,7 +308,7 @@ public class ExportPDFToDOCXWithOCROption {
 
 #### Node JS
 
-```javascript
+```js
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
 // node src/exportpdf/export-docx-to-pdf-with-ocr-options.js
@@ -354,7 +354,7 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 
 #### Rest API
 
-```javascript
+```bash
 // Please refer our Rest API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Export-PDF
 
@@ -432,7 +432,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 
 #### .NET
 
-```javascript
+```clike
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
 // cd ExportPDFToJPEG/
@@ -493,7 +493,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 
 #### Node JS
 
-```javascript
+```js
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
 // node src/exportpdftoimages/export-pdf-to-jpeg.js
@@ -541,7 +541,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 
 #### Rest API 
 
-```javascript
+```bash
 // Please refer our Rest API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/PDF-To-Images
 
@@ -613,7 +613,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 
 #### .NET
 
-```javascript
+```clike
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
 // cd ExportPDFToJPEGZip/
@@ -671,7 +671,7 @@ namespace
 
 #### Node JS
 
-```javascript
+```js
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
 // node src/exportpdftoimages/export-pdf-to-jpeg-zip.js
@@ -716,7 +716,7 @@ try {
 
 #### Rest API 
 
-```javascript
+```bash
 // Please refer our Rest API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/PDF-To-Images
 

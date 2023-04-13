@@ -208,7 +208,7 @@ public class ExtractTextInfoFromPDF {
 
 #### .NET
 
-```javascript
+```clike
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
 // cd ExtractTextInfoFromPDF/
@@ -284,7 +284,7 @@ namespace ExtractTextInfoFromPDF
 
 #### Node JS
 
-```javascript
+```js
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
 // node src/extractpdf/extract-text-info-from-pdf.js
@@ -376,7 +376,7 @@ namespace ExtractTextInfoFromPDF
 
 #### Rest API 
 
-```javascript
+```bash
 // Please refer our Rest API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
 
@@ -455,7 +455,7 @@ public class ExtractTextTableInfoFromPDF {
 
 #### .NET
 
-```javascript
+```clike
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
 // cd ExtractTextTableInfoFromPDF/
@@ -531,7 +531,7 @@ namespace ExtractTextTableInfoFromPDF
 
 #### Node JS
 
-```javascript
+```js
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
 // node src/extractpdf/extract-text-table-info-from-pdf.js
@@ -627,7 +627,7 @@ namespace ExtractTextTableInfoFromPDF
 
 #### Rest API
 
-```javascript
+```bash
 // Please refer our Rest API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
 
@@ -707,7 +707,7 @@ public class ExtractTextTableInfoWithRenditionsFromPDF {
 
 #### .NET 
 
-```javascript
+```clike
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
 // cd ExtractTextTableInfoWithRenditionsFromPDF/
@@ -785,7 +785,7 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
 
 #### Node JS
 
-```javascript
+```js
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
 // node src/extractpdf/extract-text-table-info-with-tables-renditions-from-pdf.js
@@ -881,7 +881,7 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
 
 #### Rest API 
 
-```javascript
+```bash
 // Please refer our Rest API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
 
@@ -964,7 +964,7 @@ public class ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF {
 
 #### .NET
 
-```javascript
+```clike
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
 // cd ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF/
@@ -1042,7 +1042,7 @@ namespace ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF
 
 #### Node JS
 
-```javascript
+```js
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
 // node src/extractpdf/extract-text-table-info-with-figures-tables-renditions-from-pdf.js
@@ -1137,7 +1137,7 @@ try {
 
 #### Rest API 
 
-```javascript
+```bash
 // Please refer our Rest API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
 
@@ -1221,7 +1221,7 @@ public class ExtractTextTableInfoWithCharBoundsFromPDF {
 
 #### .NET 
 
-```javascript
+```clike
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
 // cd ExtractTextTableInfoWithCharBoundsFromPDF/
@@ -1299,7 +1299,7 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
 
 #### Node JS
 
-```javascript
+```js
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
 // node src/extractpdf/extract-text-table-info-with-char-bounds-from-pdf.js
@@ -1394,7 +1394,7 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
 
 #### Rest API 
 
-```javascript
+```bash
 // Please refer our Rest API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
 
@@ -1480,7 +1480,7 @@ public class ExtractTextTableInfoWithTableStructureFromPdf {
 
 #### .NET
 
-```javascript
+```clike
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
 // cd ExtractTextTableInfoWithTableStructureFromPDF/
@@ -1559,7 +1559,7 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
 
 #### Node JS
 
-```javascript
+```js
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
 // node src/extractpdf/extract-text-table-info-with-tables-renditions-from-pdf.js
@@ -1656,7 +1656,7 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
 
 #### Rest API 
 
-```javascript
+```bash
 // Please refer our Rest API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
 
@@ -1741,7 +1741,7 @@ public class ExtractTextTableInfoWithStylingFromPDF {
 
 #### .NET 
 
-```javascript
+```clike
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
 // cd ExtractTextTableInfoWithStylingFromPDF/
@@ -1819,7 +1819,7 @@ namespace ExtractTextTableInfoWithStylingFromPDF
 
 #### Node JS
 
-```javascript
+```js
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
 // node src/extractpdf/extract-text-table-with-styling-info-from-pdf.js
@@ -1915,7 +1915,7 @@ namespace ExtractTextTableInfoWithStylingFromPDF
 
 #### Rest API 
 
-```javascript
+```bash
 // Please refer our Rest API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
 

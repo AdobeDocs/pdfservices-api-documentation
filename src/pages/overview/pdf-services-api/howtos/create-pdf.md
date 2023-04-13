@@ -80,7 +80,7 @@ public class CreatePDFFromDOCX {
 
 #### .NET
 
-```javascript
+```clike
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
 // cd CreatePDFFromDocx/
@@ -135,7 +135,7 @@ namespace CreatePDFFromDocx
 
 #### Node JS
 
-```javascript
+```js
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
 // node src/createpdf/create-pdf-from-docx.js 
@@ -176,7 +176,7 @@ const PDFservicesSdk = require('@adobe/pdfservices-node-sdk');
 
 #### Rest API
 
-```javascript
+```bash
 // Please refer our Rest API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Create-PDF
 
@@ -268,7 +268,7 @@ public class CreatePDFFromDOCXWithOptions {
 
 #### .NET
 
-```javascript
+```clike
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
 // cd CreatePDFFromDocxWithOptions/
@@ -338,7 +338,7 @@ namespace CreatePDFFromDocxWithOptions
 
 #### Node JS
 
-```javascript
+```js
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
 // node src/createpdf/create-pdf-from-docx-with-options.js
@@ -392,7 +392,7 @@ try {
 
 #### Rest API
 
-```javascript
+```bash
 // Please refer our Rest API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Create-PDF
 
@@ -482,7 +482,7 @@ public class CreatePDFFromStaticHTML {
 
 #### .NET
 
-```javascript
+```clike
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
 // cd CreatePDFFromStaticHtml/
@@ -554,7 +554,7 @@ namespace CreatePDFFromStaticHtml
 
 #### Node JS
 
-```javascript
+```js
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
 // node src/createpdf/create-pdf-from-static-html.js
@@ -612,7 +612,7 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 
 #### Rest API
 
-```javascript
+```bash
 // Please refer our Rest API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
 
@@ -703,7 +703,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 
 #### .NET
 
-```javascript
+```clike
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
 // cd CreatePDFFromHTMLWithInlineCSS/
@@ -775,7 +775,7 @@ namespace CreatePDFFromHTMLWithInlineCSS
 
 #### Node JS
 
-```javascript
+```js
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
 // node src/create-pdf-from-html-with-inline-css.js
@@ -833,7 +833,7 @@ try {
 
 #### Rest API
 
-```javascript
+```bash
 // Please refer our Rest API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
 
@@ -924,7 +924,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 
 #### .NET
 
-```javascript
+```clike
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
 // cd CreatePDFFromURL/
@@ -996,7 +996,7 @@ namespace CreatePDFFromURL
 
 #### Node JS
 
-```javascript
+```js
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
 // node src/create-pdf-from-url.js
@@ -1055,7 +1055,7 @@ try {
 
 #### Rest API
 
-```javascript
+```bash
 // Please refer our Rest API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
 
@@ -1164,7 +1164,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 
 #### .NET
 
-```javascript
+```clike
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
 // cd CreatePDFFromDynamicHtml/
@@ -1244,7 +1244,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 
 #### Node JS
 
-```javascript
+```js
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
 // node src/createpdf/create-pdf-from-dynamic-html.js
@@ -1307,7 +1307,7 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 
 #### Rest API 
 
-```javascript
+```bash
 // Please refer our Rest API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
 

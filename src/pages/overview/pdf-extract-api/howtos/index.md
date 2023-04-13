@@ -52,7 +52,7 @@ Override the timeout properties via a custom `ClientConfig` class:
 
 ### 
 
-```javascript
+```bash
 ClientConfig clientConfig = ClientConfig.builder()
     .withConnectTimeout(3000)
     .withSocketTimeout(20000)
@@ -75,7 +75,7 @@ Override the timeout properties via a custom `ClientConfig` class:
 
 ### 
 
-```javascript
+```bash
 ClientConfig clientConfig = ClientConfig.ConfigBuilder()
     .timeout(500000)
     .readWriteTimeout(15000)
@@ -97,7 +97,7 @@ Override the timeout properties via a custom `ClientConfig` class:
 
 ### 
 
-```javascript
+```bash
 const clientConfig = PDFServicesSdk.ClientConfig
   .clientConfigBuilder()
   .withConnectTimeout(15000)
@@ -121,7 +121,7 @@ Override the timeout properties via a custom `ClientConfig` class:
 
 ### 
 
-```javascript
+```bash
 client_config = ClientConfig.builder()
     .with_connect_timeout(10000)
     .with_read_timeout(40000)

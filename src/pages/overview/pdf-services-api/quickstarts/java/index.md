@@ -39,7 +39,7 @@ To complete this guide, you will need:
 
 1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-JavaSamples.zip. If you unzip that archive, you will find a folder of samples:
 
-![alt](./shot5_sp.png)
+![alt](./shot5_.png)
 
 2) We need the `pdfservices-api-credentials.json` file found in the samples directory:
 

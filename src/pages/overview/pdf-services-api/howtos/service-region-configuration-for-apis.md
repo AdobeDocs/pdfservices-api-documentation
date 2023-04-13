@@ -28,7 +28,7 @@ For invoking region specific PDF Services API endpoints, hostnames needs to be c
 
 #### Rest API
 
-```javascript
+```bash
 curl --location --request POST 'https://pdf-services-ew1.adobe.io/assets' \
 --header 'X-API-Key: {{Placeholder for client_id}}' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
@@ -44,7 +44,7 @@ curl --location --request POST 'https://pdf-services-ew1.adobe.io/assets' \
 
 #### Rest API
 
-```javascript
+```bash
 
 curl --location --request POST 'https://pdf-services-ew1.adobe.io/operation/{Placeholder for operation name}' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
@@ -62,7 +62,7 @@ curl --location --request POST 'https://pdf-services-ew1.adobe.io/operation/{Pla
 
 #### Rest API
 
-```javascript
+```bash
 
 curl --location --request GET 'https://pdf-services-ew1.adobe.io/operation/{Placeholder for operation name}' \
 --header 'x-api-key: {{Placeholder for client_id}}' \

@@ -74,7 +74,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 
 #### .NET
 
-```javascript
+```clike
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
 // cd PDFPropertiesAsJSONObject/
@@ -134,7 +134,7 @@ namespace GetPDFProperties
 
 #### Node JS
 
-```javascript
+```js
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
 // node src/exportpdf/get-pdf-properties.js
@@ -181,7 +181,7 @@ try {
 
 #### Rest API 
 
-```javascript
+```bash
 // Please refer our Rest API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/PDF-Properties
 
