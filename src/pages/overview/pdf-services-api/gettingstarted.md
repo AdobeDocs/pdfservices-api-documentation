@@ -138,7 +138,7 @@ For clients using SDK version upto 2.x :
 <ul><li>cpf-ue1.adobe.io</li></ul>
 
 For clients using SDK version upto 1.x :
-<ul><li>senseicore-ue1.adobe.io (for versions below 1.x.x)</li></ul>
+<ul><li>senseicore-ue1.adobe.io</li></ul>
 
 </div>
 
@@ -161,16 +161,12 @@ Once you complete the [Getting Credentials](quickstarts/#getting-credentials), a
 After downloading the zip, you can run the samples in the zip directly by setting up the two environment variables `CLIENT_ID` and `CLIENT_SECRET` by running the following cammands :
 
 - **Windows:**
-  <br />
-  `SET CLIENT_ID=YOUR CLIENT ID`
-  <br />
-  `SET CLIENT_SECRET=YOUR CLIENT SECRET`
+  - `SET CLIENT_ID=<YOUR CLIENT ID>`
+  - `SET CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
 - **MacOS/Linux:**
-  <br />
-  `export CLIENT_ID=YOUR CLIENT ID`
-  <br />
-  `export CLIENT_SECRET=YOUR CLIENT SECRET`
+  - `export CLIENT_ID=<YOUR CLIENT ID>`
+  - `export CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
 **Example pdfservices-api-credentials.json file**
 
