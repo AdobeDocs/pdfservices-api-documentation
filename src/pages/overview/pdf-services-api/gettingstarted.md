@@ -109,6 +109,8 @@ PDF Services API is also accessible via SDKs in popular languages such as Node.j
 
 <InlineAlert slots="text"/>
 
+<div>
+
 Please allow-list the following hostnames before using Adobe PDF Services SDK:
 <ul><li>ims-na1.adobelogin.com (Required for all the clients)</li></ul>
 
@@ -137,6 +139,8 @@ For clients using SDK version upto 2.x :
 
 For clients using SDK version upto 1.x :
 <ul><li>senseicore-ue1.adobe.io (for versions below 1.x.x)</li></ul>
+
+</div>
 
 ### Java
 
