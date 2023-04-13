@@ -157,15 +157,15 @@ Once you complete the [Getting Credentials](quickstarts/#getting-credentials), a
 After downloading the zip, you can run the samples in the zip directly by setting up the two environment variables `CLIENT_ID` and `CLIENT_SECRET` by running the following cammands :
 
 - **Windows:**
-  <br>
+  <br />
   `SET CLIENT_ID=YOUR CLIENT ID`
-  <br>
+  <br />
   `SET CLIENT_SECRET=YOUR CLIENT SECRET`
 
 - **MacOS/Linux:**
-  <br>
+  <br />
   `export CLIENT_ID=YOUR CLIENT ID`
-  <br>
+  <br />
   `export CLIENT_SECRET=YOUR CLIENT SECRET`
 
 **Example pdfservices-api-credentials.json file**
@@ -205,15 +205,15 @@ The quickest way to get up and running is to download the code samples during th
 2.  Build the sample project with Maven: `mvn clean install`.
 3.  Set the environment variables `CLIENT_ID` and `CLIET_SECRET` by running the following commands :
 - **Windows:**
-  <br>
+  <br />
   `SET CLIENT_ID=YOUR CLIENT ID`
-  <br>
+  <br />
   `SET CLIENT_SECRET=YOUR CLIENT SECRET`
 
 - **MacOS/Linux:**
-  <br>
+  <br />
   `export CLIENT_ID=YOUR CLIENT ID`
-  <br>
+  <br />
   `export CLIENT_SECRET=YOUR CLIENT SECRET`
 4.  Test the sample code on the command line.
 5.  Refer to this document for details about running samples as well as the API Reference for API details.
@@ -316,14 +316,14 @@ After downloading the zip, you can run the samples in the zip directly by settin
 
 - **Windows:**
   `SET CLIENT_ID=YOUR CLIENT ID`
-  <br>
+  <br />
   `SET CLIENT_SECRET=YOUR CLIENT SECRET`
-  <br>
+  <br />
 
 - **MacOS/Linux:**
-  <br>
+  <br />
   `export CLIENT_ID=YOUR CLIENT ID`
-  <br>
+  <br />
   `export CLIENT_SECRET=YOUR CLIENT SECRET`
 
 **Example pdfservices-api-credentials.json file**
@@ -361,15 +361,15 @@ The quickest way to get up and running is to download the personalized code samp
 2.  From the samples directory, build the sample project: `dotnet build`. 
 3.  Set the environment variables `CLIENT_ID` and `CLIET_SECRET` by running the following commands :
 - **Windows:**
-  <br>
+  <br />
   `SET CLIENT_ID=YOUR CLIENT ID`
-  <br>
+  <br />
   `SET CLIENT_SECRET=YOUR CLIENT SECRET`
 
 - **MacOS/Linux:**
-  <br>
+  <br />
   `export CLIENT_ID=YOUR CLIENT ID`
-  <br>
+  <br />
   `export CLIENT_SECRET=YOUR CLIENT SECRET`
 4.  Test the sample code on the command line.
 5.  Refer to this document for details about running samples as well as the API Reference for API details.
@@ -436,15 +436,15 @@ Once you complete the [Getting Credentials](quickstarts/#getting-credentials), y
 After downloading the zip, you can run the samples in the zip directly by setting up the two environment variables `CLIENT_ID` and `CLIENT_SECRET` by running the following cammands :
 
 - **Windows:**
-  <br>
+  <br />
   `SET CLIENT_ID=YOUR CLIENT ID`
-  <br>
+  <br />
   `SET CLIENT_SECRET=YOUR CLIENT SECRET`
 
 - **MacOS/Linux:**
-  <br>
+  <br />
   `export CLIENT_ID=YOUR CLIENT ID`
-  <br>
+  <br />
   `export CLIENT_SECRET=YOUR CLIENT SECRET`
 
 **Example pdfservices-api-credentials.json file**
@@ -484,15 +484,15 @@ npm install --save @adobe/pdfservices-node-sdk
 2.  From the samples root directory, run `npm install`.
 3.  Set the environment variables `CLIENT_ID` and `CLIET_SECRET` by running the following commands :
 - **Windows:**
-  <br>
+  <br />
   `SET CLIENT_ID=YOUR CLIENT ID`
-  <br>
+  <br />
   `SET CLIENT_SECRET=YOUR CLIENT SECRET`
 
 - **MacOS/Linux:**
-  <br>
+  <br />
   `export CLIENT_ID=YOUR CLIENT ID`
-  <br>
+  <br />
   `export CLIENT_SECRET=YOUR CLIENT SECRET`
 4.  Test the sample code on the command line.
 5.  Refer to this document for details about running samples as well as the API Reference for API details.
