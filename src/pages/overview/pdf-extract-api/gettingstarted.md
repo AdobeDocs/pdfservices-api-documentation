@@ -2,6 +2,7 @@
 title: Getting Started | PDF Extract API | Adobe PDF Services
 ---
 
+
 # Getting credentials
 
 Developing with the PDF Services SDK requires an Adobe-provided credential. To get one, [click HERE](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
@@ -109,7 +110,34 @@ PDF Services API is also accessible via SDKs in popular languages such as Node.j
 
 <InlineAlert slots="text"/>
 
-Please allow-list the following hostnames before using Adobe PDF Services SDK:<ul><li>ims-na1.adobelogin.com</li><li>dcplatformstorageservice-us-east-1.s3-accelerate.amazonaws.com (for using United States region for processing documents)</li><li>dcplatformstorageservice-eu-west-1.s3-accelerate.amazonaws.com (for using Europe region to process documents)</li><li>pdf-services.adobe.io  or pdf-services-ue1.adobe.io (for versions 3.x.x and using United States region for processing documents)</li><li>pdf-services-ew1.adobe.io (for versions 3.x.x and using Europe region for processing documents)</li><li>cpf-ue1.adobe.io (for versions upto 2.x.x)</li><li>senseicore-ue1.adobe.io (for versions below 1.x.x)</li></ul>
+Please allow-list the following hostnames before using Adobe PDF Services SDK:
+<ul><li>ims-na1.adobelogin.com (Required for all the clients)</li></ul>
+
+For clients using SDK version 3.x and above  :
+<ul>
+<li> Using United States region for processing documents :
+  <ul>
+    <li>dcplatformstorageservice-us-east-1.s3-accelerate.amazonaws.com</li>
+    <li>pdf-services-ue1.adobe.io</li>
+    <li>pdf-services.adobe.io (Default URI)</li>
+  </ul>
+</li>
+</ul>
+
+<ul>
+  <li> Using Europe region for processing documents :
+  <ul>
+    <li>dcplatformstorageservice-eu-west-1.s3-accelerate.amazonaws.com</li>
+    <li>pdf-services-ew1.adobe.io</li>
+  </ul>
+</li>
+</ul>
+
+For clients using SDK version upto 2.x :
+<ul><li>cpf-ue1.adobe.io</li></ul>
+
+For clients using SDK version upto 1.x :
+<ul><li>senseicore-ue1.adobe.io (for versions below 1.x.x)</li></ul>
 
 ### Java
 
@@ -130,11 +158,15 @@ Once you complete the [Getting Credentials](quickstarts/#getting-credentials), a
 After downloading the zip, you can run the samples in the zip directly by setting up the two environment variables `CLIENT_ID` and `CLIENT_SECRET` by running the following cammands :
 
 - **Windows:**
+  </br>
   `SET CLIENT_ID=<YOU CLIENT ID>`
+  </br>
   `SET CLIENT_SECRET=<YOU CLIENT SECRET>`
 
-- **MacOS/linux:**
+- **MacOS/Linux:**
+  </br>
   `export CLIENT_ID=<YOU CLIENT ID>`
+  </br>
   `export CLIENT_SECRET=<YOU CLIENT SECRET>`
 
 **Example pdfservices-api-credentials.json file**
@@ -174,11 +206,15 @@ The quickest way to get up and running is to download the code samples during th
 2.  Build the sample project with Maven: `mvn clean install`.
 3.  Set the environment variables `CLIENT_ID` and `CLIET_SECRET` by running the following commands :
 - **Windows:**
+  </br>
   `SET CLIENT_ID=<YOU CLIENT ID>`
+  </br>
   `SET CLIENT_SECRET=<YOU CLIENT SECRET>`
 
-- **MacOS/linux:**
+- **MacOS/Linux:**
+  </br>
   `export CLIENT_ID=<YOU CLIENT ID>`
+  </br>
   `export CLIENT_SECRET=<YOU CLIENT SECRET>`
 4.  Test the sample code on the command line.
 5.  Refer to this document for details about running samples as well as the API Reference for API details.
@@ -281,10 +317,14 @@ After downloading the zip, you can run the samples in the zip directly by settin
 
 - **Windows:**
   `SET CLIENT_ID=<YOU CLIENT ID>`
+  </br>
   `SET CLIENT_SECRET=<YOU CLIENT SECRET>`
+  </br>
 
-- **MacOS/linux:**
+- **MacOS/Linux:**
+  </br>
   `export CLIENT_ID=<YOU CLIENT ID>`
+  </br>
   `export CLIENT_SECRET=<YOU CLIENT SECRET>`
 
 **Example pdfservices-api-credentials.json file**
@@ -322,11 +362,15 @@ The quickest way to get up and running is to download the personalized code samp
 2.  From the samples directory, build the sample project: `dotnet build`.
 3.  Set the environment variables `CLIENT_ID` and `CLIET_SECRET` by running the following commands :
 - **Windows:**
+  </br>
   `SET CLIENT_ID=<YOU CLIENT ID>`
+  </br>
   `SET CLIENT_SECRET=<YOU CLIENT SECRET>`
 
-- **MacOS/linux:**
+- **MacOS/Linux:**
+  </br>
   `export CLIENT_ID=<YOU CLIENT ID>`
+  </br>
   `export CLIENT_SECRET=<YOU CLIENT SECRET>`
 4.  Test the sample code on the command line.
 5.  Refer to this document for details about running samples as well as the API Reference for API details.
@@ -393,11 +437,15 @@ Once you complete the [Getting Credentials](quickstarts/#getting-credentials), y
 After downloading the zip, you can run the samples in the zip directly by setting up the two environment variables `CLIENT_ID` and `CLIENT_SECRET` by running the following cammands :
 
 - **Windows:**
+  </br>
   `SET CLIENT_ID=<YOU CLIENT ID>`
+  </br>
   `SET CLIENT_SECRET=<YOU CLIENT SECRET>`
 
-- **MacOS/linux:**
+- **MacOS/Linux:**
+  </br>
   `export CLIENT_ID=<YOU CLIENT ID>`
+  </br>
   `export CLIENT_SECRET=<YOU CLIENT SECRET>`
 
 **Example pdfservices-api-credentials.json file**
@@ -421,7 +469,7 @@ After downloading the zip, you can run the samples in the zip directly by settin
 
 Running any sample or custom code requires the following steps:
 
-1.  Install [Node.js 10.13.0](https://nodejs.org/en/download/) or higher.
+1.  Install [Node.js 14.0](https://nodejs.org/en/download/) or higher.
 
 <InlineAlert slots="text"/>
 
@@ -437,11 +485,15 @@ npm install --save @adobe/pdfservices-node-sdk
 2.  From the samples root directory, run `npm install`.
 3.  Set the environment variables `CLIENT_ID` and `CLIET_SECRET` by running the following commands :
 - **Windows:**
+  </br>
   `SET CLIENT_ID=<YOU CLIENT ID>`
+  </br>
   `SET CLIENT_SECRET=<YOU CLIENT SECRET>`
 
-- **MacOS/linux:**
+- **MacOS/Linux:**
+  </br>
   `export CLIENT_ID=<YOU CLIENT ID>`
+  </br>
   `export CLIENT_SECRET=<YOU CLIENT SECRET>`
 4.  Test the sample code on the command line.
 5.  Refer to this document for details about running samples as well as the API Reference for API details.
@@ -498,29 +550,6 @@ While building the sample project automatically downloads the Node package, you 
 
 ![Adobe PDF Services SDK on NPM JS](../images/node.png)
 
-## Public API
-
-PDF Services API is accessible directly via REST APIs which requires Adobe-provided credential for authentication. Once you've completed the [Getting Credentials](/document-services/apis/interstitial) workflow, a zip file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
-
--   **Personalized Download**: Downloads the zip which contains `acrobat-services-sdk-java-samples` with a preconfigured `pdfservices-api-credentials.json` file.
--   **Non Personalized Download**: Downloads the `pdfservices-api-credentials.json` with your preconfigured credentials.
-
-**Example pdfservices-api-credentials.json file**
-
-```json 
-
-{
-    "client_credentials": {
-        "client_id": "<YOUR_CLIENT_ID>",
-        "client_secret": "<YOUR_CLIENT_SECRET>"
-    },
-    "service_principal_credentials": {
-       "organization_id": "<YOUR_ORGNIZATION_ID>",
-        "scopes": "<YOUR_SCOPES>"
-    }
-}
-```
-
 ### Python
 
 Jumpstart your development by bookmarking or downloading the following key resources:
@@ -540,12 +569,15 @@ Once you complete the [Getting Credentials](quickstarts/#getting-credentials), y
 After downloading the zip, you can run the samples in the zip directly by setting up the two environment variables `CLIENT_ID` and `CLIENT_SECRET` by running the following cammands :
 
 - **Windows:**
+  </br>
   `SET CLIENT_ID=<YOU CLIENT ID>`
+  </br>
   `SET CLIENT_SECRET=<YOU CLIENT SECRET>`
 
-- **MacOS/linux:**
+- **MacOS/Linux:**
+  </br>
   `export CLIENT_ID=<YOU CLIENT ID>`
-  `export CLIENT_SECRET=<YOU CLIENT SECRET>`
+  </br>
 
 **Example pdfservices-api-credentials.json file**
 
@@ -583,12 +615,15 @@ pip install pdfservices-sdk
 2.  From the samples root directory, run `pip install -r requirements.txt`.
 3.  Set the environment variables `CLIENT_ID` and `CLIET_SECRET` by running the following commands :
 - **Windows:**
+  </br>
   `SET CLIENT_ID=<YOU CLIENT ID>`
+  </br>
   `SET CLIENT_SECRET=<YOU CLIENT SECRET>`
 
-- **MacOS/linux:**
+- **MacOS/Linux:**
+  </br>
   `export CLIENT_ID=<YOU CLIENT ID>`
-  `export CLIENT_SECRET=<YOU CLIENT SECRET>`  
+  </br>
 4.  Test the sample code on the command line.
 5.  Refer to the [How Tos](../pdf-extract-api/howtos) for details about running samples. Additional details also reside in the [API documentation](https://www.adobe.com/go/pdfservices_python_docs).
 
