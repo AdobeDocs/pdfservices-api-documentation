@@ -597,7 +597,7 @@ pip install pdfservices-sdk
 - **MacOS/Linux:**
   - `export CLIENT_ID=<YOUR CLIENT ID>`
   - `export CLIENT_SECRET=<YOUR CLIENT SECRET>`
-  <br /===
+  <br />
 4.  Test the sample code on the command line.
 5.  Refer to the [How Tos](../pdf-extract-api/howtos) for details about running samples. Additional details also reside in the [API documentation](https://www.adobe.com/go/pdfservices_python_docs).
 
