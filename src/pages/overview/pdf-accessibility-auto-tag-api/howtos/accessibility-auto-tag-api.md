@@ -185,11 +185,6 @@ namespace AutotagPDF
 
 const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 
-/**
- * This sample illustrates how to generate a tagged PDF.
- * <p>
- * Refer to README.md for instructions on how to run the samples.
- */
 try {
     // Initial setup, create credentials instance.
     const credentials =  PDFServicesSdk.Credentials
@@ -300,11 +295,11 @@ Here is a sample list of command line arguments and their description:
 #### Java
 
 ```javascript 
-// Get the samples from https://git.corp.adobe.com/dc/dc-cpf-sdk-java-samples/tree/beta
+// Get the samples from https://git.corp.adobe.com/dc/dc-cpf-sdk-java-samples
 // Run the sample:
 // mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.autotagpdf.AutotagPDFParamaterised -Dexec.args="--report --shift_headings --input src/main/resources/autotagPdfInput.pdf --output output/"
 
-public class AutotagPDFParamaterised {
+public class AutotagPDFParameterised {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(AutotagPDFWithOptions.class);
 
@@ -316,8 +311,9 @@ public class AutotagPDFParamaterised {
 
         try {
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                    .withClientId("CLIENT_ID")
+                    .withClientSecret("CLIENT_SECRET")
                     .build();
 
             //Create an ExecutionContext using credentials and create a new operation instance.
@@ -333,13 +329,14 @@ public class AutotagPDFParamaterised {
             autotagPDFOperation.setOptions(autotagPDFOptions);
 
             // Execute the operation
-            AutotagOutputFiles autotagOutputFiles = autotagPDFOperation.execute(executionContext);
+            AutotagPDFOutput autotagPDFOutput = autotagPDFOperation.execute(executionContext);
 
             // Save the output files at the specified location
             String outputPath = getOutputFilePathFromCmdArgs(args);
-            autotagOutputFiles.saveTaggedPDF(outputPath + "AutotagPDFParameterised-tagged.pdf");
+            
+            autotagPDFOutput.getTaggedPDF().saveAs(outputPath + "autotagPDFInput-tagged.pdf");
             if (autotagPDFOptions != null && autotagPDFOptions.isGenerateReport())
-                autotagOutputFiles.saveReport(outputPath + "AutotagPDFParameterised-report.xlsx");
+                autotagPDFOutput.getReport().saveAs(outputPath + "autotagPDFInput-report.xlsx");
 
         } catch (ServiceApiException | IOException | ServiceUsageException e) {
             System.out.println(e);
@@ -380,16 +377,246 @@ public class AutotagPDFParamaterised {
     }
 
     private static String getOutputFilePathFromCmdArgs(String[] args) {
-        String outputFilePath = "output/";
+        String outputFilePath = "output/AutotagPDFParameterised/";
         int outputFilePathIndex = Arrays.asList(args).indexOf("--output");
         if (outputFilePathIndex >= 0 && outputFilePathIndex < args.length - 1) {
             outputFilePath = args[outputFilePathIndex + 1];
         } else
-            LOGGER.info("output path not specified, using default value : output/");
+            LOGGER.info("output path not specified, using default value : " + outputFilePath);
 
         return outputFilePath;
     }
-} 
+}
+```
+
+#### .NET
+
+```clike 
+// Get the samples from https://github.com/adobe/PDFServices.NET.SDK.Samples
+// Run the sample:
+// cd AutotagPDFParameterised/
+// dotnet run AutotagPDFParameterised.csproj
+
+namespace AutotagPDFParameterised
+{
+    class Program
+    {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
+        private static AutotagPDFOptions GetOptionsFromCmdArgs(String[] args)
+        {
+            Boolean generateReport = GetGenerateReportFromCmdArgs(args);
+            Boolean shiftHeadings = GetShiftHeadingsFromCmdArgs(args);
+
+            AutotagPDFOptions.Builder builder = AutotagPDFOptions.AutotagPDFOptionsBuilder();
+
+            if (generateReport) builder.GenerateReport();
+            if (shiftHeadings) builder.ShiftHeadings();
+
+            return builder.Build();
+        }
+
+        private static Boolean GetShiftHeadingsFromCmdArgs(String[] args)
+        {
+            return Array.Exists(args, element => element == "--shift_headings");
+        }
+
+        private static Boolean GetGenerateReportFromCmdArgs(String[] args)
+        {
+            return Array.Exists(args, element => element == "--report");
+        }
+
+        private static String GetInputFilePathFromCmdArgs(String[] args)
+        {
+            String inputFilePath = @"autotagPdfInput.pdf";
+            int inputFilePathIndex = Array.IndexOf(args, "--input");
+            if (inputFilePathIndex >= 0 && inputFilePathIndex < args.Length - 1)
+            {
+                inputFilePath = args[inputFilePathIndex + 1];
+            }
+            else
+                log.Info("input file not specified, using default value : autotagPdfInput.pdf");
+
+            return inputFilePath;
+        }
+
+        private static String GetOutputFilePathFromCmdArgs(String[] args)
+        {
+            String outputFilePath = Directory.GetCurrentDirectory() + "/output/";
+            int outputFilePathIndex = Array.IndexOf(args, "--output");
+            if (outputFilePathIndex >= 0 && outputFilePathIndex < args.Length - 1)
+            {
+                outputFilePath = args[outputFilePathIndex + 1];
+            }
+            else
+                log.Info("output path not specified, using default value : /output/");
+
+            return outputFilePath;
+        }
+
+        static void Main(string[] args)
+        {
+            //Configure the logging
+            ConfigureLogging();
+
+            log.Info("--input " + GetInputFilePathFromCmdArgs(args));
+            log.Info("--output " + GetOutputFilePathFromCmdArgs(args));
+            log.Info("--report " + GetGenerateReportFromCmdArgs(args));
+            log.Info("--shift_headings " + GetShiftHeadingsFromCmdArgs(args));
+
+            try
+            {
+                // Initial setup, create credentials instance.
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId(Environment.GetEnvironmentVariable("CLIENT_ID"))
+                    .WithClientSecret(Environment.GetEnvironmentVariable("CLIENT_SECRET"))
+                    .Build();
+
+                //Create an ExecutionContext using credentials and create a new operation instance.
+                ExecutionContext executionContext = ExecutionContext.Create(credentials);
+                AutotagPDFOperation autotagPDFOperation = AutotagPDFOperation.CreateNew();
+
+                // Provide an input FileRef for the operation
+                autotagPDFOperation.SetInput(FileRef.CreateFromLocalFile(GetInputFilePathFromCmdArgs(args)));
+
+                // Get and Build AutotagPDF options from command line args and set them into the operation
+                AutotagPDFOptions autotagPDFOptions = GetOptionsFromCmdArgs(args);
+                autotagPDFOperation.SetOptions(autotagPDFOptions);
+
+                // Execute the operation
+                AutotagPDFOutput autotagPDFOutput = autotagPDFOperation.Execute(executionContext);
+
+                // Save the output files at the specified location
+                string outputPath = GetOutputFilePathFromCmdArgs(args);
+                FileRef taggedPDF = autotagPDFOutput.GetTaggedPDF();
+                taggedPDF.SaveAs(outputPath + "autotagPDFInput-tagged.pdf");
+                if (autotagPDFOptions != null && autotagPDFOptions.IsGenerateReport)
+                    autotagPDFOutput.GetReport()
+                        .SaveAs(outputPath + "autotagPDFInput-report.xlsx");
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+        }
+
+        static void ConfigureLogging()
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
+    }
+}
+```
+
+#### Node JS
+
+```js
+// Get the samples from https://github.com/adobe/pdfservices-node-sdk-samples
+// Run the sample:
+// node src/autotagpdf/autotag-pdf-parameterised.js
+
+const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+
+const args = process.argv;
+
+try {
+    console.log("--input " + getInputFilePathFromCmdArgs(args));
+    console.log("--output " + getOutputFilePathFromCmdArgs(args));
+    console.log("--report " + getGenerateReportFromCmdArgs(args));
+    console.log("--shift_headings " + getShiftHeadingsFromCmdArgs(args));
+
+    // Initial setup, create credentials instance.
+    const credentials =  PDFServicesSdk.Credentials
+        .servicePrincipalCredentialsBuilder()
+        .withClientId("CLIENT_ID")
+        .withClientSecret("CLIENT_SECRET")
+        .build();
+
+    // Create an ExecutionContext using credentials and create a new operation instance.
+    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
+        autotagPDF = PDFServicesSdk.AutotagPDF,
+        autotagPDFOperation = autotagPDF.Operation.createNew();
+
+    // Set operation input from a source file.
+    const input = PDFServicesSdk.FileRef.createFromLocalFile(getInputFilePathFromCmdArgs(args));
+    autotagPDFOperation.setInput(input);
+
+    // Create Options
+    let autotagPDFOptionsBuilder = new PDFServicesSdk.AutotagPDF.options.AutotagPDFOptions.Builder();
+    autotagPDFOptionsBuilder = getShiftHeadingsFromCmdArgs(args) ? autotagPDFOptionsBuilder.shiftHeadings() : autotagPDFOptionsBuilder;
+    autotagPDFOptionsBuilder = getGenerateReportFromCmdArgs(args) ? autotagPDFOptionsBuilder.generateReport() : autotagPDFOptionsBuilder;
+
+    const autotagPDFOptions = autotagPDFOptionsBuilder.build();
+
+    // Set operation options
+    autotagPDFOperation.setOptions(autotagPDFOptions);
+
+    let outputPath = getOutputFilePathFromCmdArgs(args);
+    // Execute the operation and Save the result to the specified location.
+    autotagPDFOperation.execute(executionContext)
+        .then(result => {
+            result.taggedPDF.saveAsFile(outputPath + 'AutotagPDFParamerterised-tagged.pdf');
+            result.report?.saveAsFile(outputPath + 'AutotagPDFParamerterised-report.xlsx');
+        })
+        .catch(err => {
+            if(err instanceof PDFServicesSdk.Error.ServiceApiError
+                || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
+                console.log('Exception encountered while executing operation', err);
+            } else {
+                console.log('Exception encountered while executing operation', err);
+            }
+        });
+} catch (err) {
+    console.log('Exception encountered while executing operation', err);
+}
+
+
+function getInputFilePathFromCmdArgs(args) {
+    let inputFilePath = "resources/autotagPdfInput.pdf";
+    let inputFilePathIndex = args.indexOf("--input");
+    if (inputFilePathIndex >= 0 && inputFilePathIndex < args.length - 1) {
+        inputFilePath = args[inputFilePathIndex + 1];
+    }else
+        console.log("input file not specified, using default value : autotagPdfInput.pdf");
+
+    return inputFilePath;
+}
+
+function getOutputFilePathFromCmdArgs(args) {
+    let outputFilePath = "output/";
+    let outputFilePathIndex = args.indexOf("--output");
+    if (outputFilePathIndex >= 0 && outputFilePathIndex < args.length - 1) {
+        outputFilePath = args[outputFilePathIndex + 1];
+    }else
+        console.log("output path not specified, using default value : output/");
+
+    return outputFilePath;
+}
+
+function getGenerateReportFromCmdArgs(args) {
+    return args.includes("--report");
+}
+
+function getShiftHeadingsFromCmdArgs(args) {
+    return args.includes("--shift_headings");
+}
 ```
 
 #### Python

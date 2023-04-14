@@ -30,28 +30,24 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2.png)
+![Project setup](./shot2sp.png)
 
 6) After your credentials are created, they are automatically  downloaded:
 
-![alt](./shot3.png)
+![alt](./shot3_sp.png)
 
 ## Step Two: Setting up the project
 
-1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-.NetSamples.zip. If you unzip that archive, you will find a README file, your private key, and a folder of samples:
+1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-.NetSamples.zip. If you unzip that archive, you will find a folder of samples:
 
-![alt](./shot5.png)
+![alt](./shot5_sp.png)
 
-2) We need two things from this download. The `private.key` file (as shown in the screenshot above, and the `pdfservices-api-credentials.json` file. You can find this in the `adobe-DC.PDFServicesSDK.NET.Samples` folder, inside any of the sample subdirectories, so for example, the `CombinePDF` folder.
+2) We need the `pdfservices-api-credentials.json` file. You can find this in the `adobe-DC.PDFServicesSDK.NET.Samples` folder, inside any of the sample subdirectories, so for example, the `CombinePDF` folder.
 
-![alt](./shot6.png)
+![alt](./shot6_sp.png)
 
-<InlineAlert slots="text" />
-
-Note that that private key is *also* found in this directory so feel free to copy them both from here.
-
-3) Take these two files and place them in a new directory.
-
+3) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
+   
 4) In your new directory, create a new file, `ExtractTextInfoFromPDF.csproj`. This file will declare our requirements as well as help define the application we're creating.
 
 ```xml
@@ -64,14 +60,11 @@ Note that that private key is *also* found in this directory so feel free to cop
 
     <ItemGroup>
         <PackageReference Include="log4net" Version="2.0.12" />
-        <PackageReference Include="Adobe.PDFServicesSDK" Version="2.2.1" />
+        <PackageReference Include="Adobe.PDFServicesSDK" Version="3.3.0" />
     </ItemGroup>
 
     <ItemGroup>
         <None Update="pdfservices-api-credentials.json">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
-        <None Update="private.key">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
         <None Update="extractPDFInput.pdf">
@@ -146,8 +139,9 @@ This defines what our output ZIP will be and optionally deletes it if it already
 
 ```javascript
 // Initial setup, create credentials instance.
-Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-	.FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+    .WithClientId("CLIENT_ID")
+    .WithClientSecret("CLIENT_SECRET")
 	.Build();
 
 // Create an ExecutionContext using credentials and create a new operation instance.
@@ -253,8 +247,9 @@ namespace ExtractTextInfoFromPDF
                 }
 
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("CLIENT_ID")
+                    .WithClientSecret("CLIENT_SECRET")
                     .Build();
 
                 // Create an ExecutionContext using credentials and create a new operation instance.

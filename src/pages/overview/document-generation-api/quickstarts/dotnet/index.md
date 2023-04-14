@@ -48,7 +48,7 @@ To complete this guide, you will need:
 
 <InlineAlert slots="text" />
 
-3) Take these two files and place them in a new directory.
+3) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
 
 4) In your new directory, create a new file, `ExtractTextInfoFromPDF.csproj`. This file will declare our requirements as well as help define the application we're creating.
 

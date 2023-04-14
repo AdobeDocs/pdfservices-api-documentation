@@ -45,12 +45,8 @@ To complete this guide, you will need:
 
 ![alt](./shot6_sp.png)
 
-<InlineAlert slots="text" />
-
-Note that that private key is *also* found in this directory so feel free to copy them both from here.
-
-3) Take these two files and place them in a new directory.
-
+3) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
+   
 4) In this directory, create a new file named `pom.xml` and copy the following contents:
 
 ```xml

@@ -44,8 +44,8 @@ To complete this guide, you will need:
 
 ![alt](./shot6_sp.png)
 
-3) Take these two files and place them in a new directory. Remember that these credential files are important and should be stored safely.
-
+3) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
+   
 4) At the command line, change to the directory you created, and initialize a new Node.js project with `npm init -y`
 
 ![alt](shot7.png)
