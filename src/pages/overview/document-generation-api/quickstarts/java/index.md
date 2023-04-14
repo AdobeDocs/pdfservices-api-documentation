@@ -29,21 +29,21 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2.png)
+![Project setup](./shot2_sp.png)
 
 6) After your credentials are created, they are automatically downloaded:
 
-![alt](./shot3.png)
+![alt](./shot3_sp.png)
 
 ## Step Two: Setting up the project
 
-1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-JavaSamples.zip. If you unzip that archive, you will find a README file, your private key, and a folder of samples:
+1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-JavaSamples.zip. If you unzip that archive, you will find a folder of samples:
 
-![alt](./shot5.png)
+![alt](./shot_5_sp.png)
 
-2) We need two things from this download. The `private.key` file (as shown in the screenshot above, and the `pdfservices-api-credentials.json` file found in the samples directory:
+2) We need the `pdfservices-api-credentials.json` file found in the samples directory:
 
-![alt](./shot6.png)
+![alt](./shot6_sp.png)
 
 <InlineAlert slots="text" />
 
@@ -71,7 +71,7 @@ Note that that private key is *also* found in this directory so feel free to cop
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <pdfservices.sdk.version>2.2.2</pdfservices.sdk.version>
+    <pdfservices.sdk.version>3.3.0</pdfservices.sdk.version>
   </properties>
 
   <dependencies>
@@ -280,8 +280,9 @@ These lines are hard coded but in a real application would typically be dynamic.
 
 ```java
 // Initial setup, create credentials instance.
-Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-		.fromFile("pdfservices-api-credentials.json")
+Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+        .withClientId("CLIENT_ID")
+        .withClientSecret("CLIENT_SECRET")
 		.build();
 
 // Create an ExecutionContext using credentials.
@@ -360,8 +361,9 @@ public class GeneratePDF {
       		System.out.println("About to generate a PDF based on " + input_file + "\n");
 
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
+            Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+                    .withClientId("CLIENT_ID")
+                    .withClientSecret("CLIENT_SECRET")
                     .build();
 
             // Create an ExecutionContext using credentials.

@@ -63,52 +63,173 @@ The sample below generates tagged PDF from a PDF.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, Python, REST API" /> 
+<CodeBlock slots="heading, code" repeat="3" languages="Java,.NET, Node JS, Python, REST API" /> 
 
 #### Java
 
 ```javascript 
-// Get the samples from https://git.corp.adobe.com/dc/dc-cpf-sdk-java-samples/tree/beta
+// Get the samples from https://github.com/adobe/pdfservices-java-sdk-samples
 // Run the sample:
 // mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.autotagpdf.AutotagPDF
 
 public class AutotagPDF {
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(AutotagPDF.class);
+    // Initialize the logger.
+    private static final Logger LOGGER = LoggerFactory.getLogger(AutotagPDF.class);
 
     public static void main(String[] args) {
 
         try {
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                    .withClientId("CLIENT_ID")
+                    .withClientSecret("CLIENT_SECRET")
                     .build();
 
-            //Create an ExecutionContext using credentials and create a new operation instance.
+            // Create an ExecutionContext using credentials and create a new operation instance.
             ExecutionContext executionContext = ExecutionContext.create(credentials);
-
             AutotagPDFOperation autotagPDFOperation = AutotagPDFOperation.createNew();
 
-            // Provide an input FileRef for the operation
-            autotagPDFOperation.setInput(FileRef.createFromLocalFile("src/main/resources/autotagPdfInput.pdf"));
+            // Set operation input from a source file.
+            FileRef source = FileRef.createFromLocalFile("src/main/resources/autotagPDFInput.pdf");
+            autotagPDFOperation.setInput(source);
 
             // Execute the operation
-            AutotagOutputFiles autotagOutputFiles = autotagPDFOperation.execute(executionContext);
+            AutotagPDFOutput autotagPDFOutput = autotagPDFOperation.execute(executionContext);
 
-            // Save the output files at the specified location
-            autotagOutputFiles.saveTaggedPDF("output/AutotagPDF-tagged.pdf");
+            // Save the result at the specified location
+            autotagPDFOutput.getTaggedPDF().saveAs("output/AutotagPDF-tagged.pdf");
 
-        } catch (ServiceApiException | IOException | ServiceUsageException e) {
-            System.out.println(e);
+        } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
+            LOGGER.error("Exception encountered while executing operation", ex);
         }
     }
-}  
+```
+
+#### .NET
+
+```clike
+// Get the samples from https://github.com/adobe/PDFServices.NET.SDK.Samples
+// Run the sample:
+// cd AutotagPDF/
+// dotnet run AutotagPDF.csproj
+
+namespace AutotagPDF
+{
+    class Program
+    {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
+        static void Main()
+        {
+            //Configure the logging
+            ConfigureLogging();
+            try
+            {
+                // Initial setup, create credentials instance.
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("CLIENT_ID")
+                    .WithClientSecret("CLIENT_SECRET")
+                    .Build();
+
+                //Create an ExecutionContext using credentials and create a new operation instance.
+                ExecutionContext executionContext = ExecutionContext.Create(credentials);
+                AutotagPDFOperation autotagPDFOperation = AutotagPDFOperation.CreateNew();
+
+                // Provide an input FileRef for the operation
+                autotagPDFOperation.SetInput(FileRef.CreateFromLocalFile(@"autotagPdfInput.pdf"));
+
+                // Execute the operation
+                AutotagPDFOutput autotagPDFOutput = autotagPDFOperation.Execute(executionContext);
+
+                // Save the output files at the specified location
+                autotagPDFOutput.GetTaggedPDF().SaveAs("output/AutotagPDF-tagged.pdf");
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+        }
+
+        static void ConfigureLogging()
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
+    }
+}
+```
+
+#### Node JS
+
+```js
+// Get the samples from https://github.com/adobe/pdfservices-node-sdk-samples
+// Run the sample:
+// node src/autotagpdf/autotag-pdf.js
+
+const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+
+/**
+ * This sample illustrates how to generate a tagged PDF.
+ * <p>
+ * Refer to README.md for instructions on how to run the samples.
+ */
+try {
+    // Initial setup, create credentials instance.
+    const credentials =  PDFServicesSdk.Credentials
+        .servicePrincipalCredentialsBuilder()
+        .withClientId("CLIENT_ID")
+        .withClientSecret("CLIENT_SECRET")
+        .build();
+
+    // Create an ExecutionContext using credentials and create a new operation instance.
+    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
+        autotagPDF = PDFServicesSdk.AutotagPDF,
+        autotagPDFOperation = autotagPDF.Operation.createNew();
+
+    // Set operation input from a source file.
+    const input = PDFServicesSdk.FileRef.createFromLocalFile('resources/autotagPDFInput.pdf');
+    autotagPDFOperation.setInput(input);
+
+    // Execute the operation and Save the result to the specified location.
+    autotagPDFOperation.execute(executionContext)
+        .then(result => {
+            result.taggedPDF.saveAsFile("output/AutotagPDF-tagged.pdf");
+        })
+        .catch(err => {
+            if(err instanceof PDFServicesSdk.Error.ServiceApiError
+                || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
+                console.log('Exception encountered while executing operation', err);
+            } else {
+                console.log('Exception encountered while executing operation', err);
+            }
+        });
+
+} catch (err) {
+    console.log('Exception encountered while executing operation', err);
+}
 ```
 
 #### Python
 
-```python
-# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples/tree/beta
+```bash
+# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples
 # Run the sample:
 # python src/autotagpdf/autotag_pdf.py
 
@@ -150,7 +271,7 @@ except (ServiceApiException, ServiceUsageException, SdkException) as e:
 
 #### REST API 
 
-```javascript
+```bash
 // Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/PDF-Accessibility-Auto-Tag
 

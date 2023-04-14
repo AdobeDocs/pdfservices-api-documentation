@@ -2,7 +2,7 @@
 title: Getting Started | PDF Extract API | Adobe PDF Services
 ---
 
-# Getting credentials
+Getting credentials
 
 Developing with the PDF Services SDK requires an Adobe-provided credential. To get one, [click HERE](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
 
@@ -153,9 +153,9 @@ Jump start your development by bookmarking or downloading the following key reso
 
 #### Authentication
 
-Once you complete the [Getting Credentials](quickstarts/#getting-credentials), a zip or json file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples.
+Once you complete the [Getting Credentials](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api#), a zip or json file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples.
 
--   **Personalized Download**: Downloads the zip which contains `acrobat-services-sdk-java-samples` with a preconfigured `pdfservices-api-credentials.json` file.
+-   **Personalized Download**: Downloads the zip which contains `adobe-dc-pdf-services-sdk-java-samples` with a preconfigured `pdfservices-api-credentials.json` file.
 -   **Non Personalized Download**: Downloads the `pdfservices-api-credentials.json` with your preconfigured credentials.
 
 After downloading the zip, you can run the samples in the zip directly by setting up the two environment variables `CLIENT_ID` and `CLIENT_SECRET` by running the following cammands :
@@ -303,9 +303,9 @@ The samples project requires the following:
 
 #### Authentication
 
-Once you complete the [Getting Credentials](quickstarts/#getting-credentials), you will receive a zip file with content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
+Once you complete the [Getting Credentials](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api#), you will receive a zip file with content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
 
--   **Personalized Download**: Downloads the zip which contains `acrobat-services-sdk-java-samples` with a preconfigured `pdfservices-api-credentials.json` file.
+-   **Personalized Download**: Downloads the zip which contains `adobe-DC.PDFServices.SDK.NET.Samples` with a preconfigured `pdfservices-api-credentials.json` file.
 -   **Non Personalized Download**: Downloads the `pdfservices-api-credentials.json` with your preconfigured credentials.
 
 After downloading the zip, you can run the samples in the zip directly by setting up the two environment variables `CLIENT_ID` and `CLIENT_SECRET` by running the following cammands :
@@ -416,9 +416,9 @@ Jumpstart your development by bookmarking or downloading the following key resou
 
 #### Authentication
 
-Once you complete the [Getting Credentials](quickstarts/#getting-credentials), you will receive a zip file with content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
+Once you complete the [Getting Credentials](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api#), you will receive a zip file with content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
 
--   **Personalized Download**: Downloads the zip which contains `acrobat-services-sdk-java-samples` with a preconfigured `pdfservices-api-credentials.json` file.
+-   **Personalized Download**: Downloads the zip which contains `adobe-dc-pdf-services-sdk-node-samples` with a preconfigured `pdfservices-api-credentials.json` file.
 -   **Non Personalized Download**: Downloads the `pdfservices-api-credentials.json` with your preconfigured credentials.
 
 After downloading the zip, you can run the samples in the zip directly by setting up the two environment variables `CLIENT_ID` and `CLIENT_SECRET` by running the following cammands :
@@ -540,9 +540,9 @@ Jumpstart your development by bookmarking or downloading the following key resou
 
 #### Authentication
 
-Once you complete the [Getting Credentials](quickstarts/#getting-credentials), you will receive a zip file with content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
+Once you complete the [Getting Credentials](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api#), you will receive a zip file with content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
 
--   **Personalized Download**: Downloads the zip which contains `acrobat-services-sdk-java-samples` with a preconfigured `pdfservices-api-credentials.json` file.
+-   **Personalized Download**: Downloads the zip which contains `adobe-dc-pdf-services-sdk-python-samples` with a preconfigured `pdfservices-api-credentials.json` file.
 -   **Non Personalized Download**: Downloads the `pdfservices-api-credentials.json` with your preconfigured credentials.
 
 After downloading the zip, you can run the samples in the zip directly by setting up the two environment variables `CLIENT_ID` and `CLIENT_SECRET` by running the following cammands :
@@ -641,9 +641,9 @@ While building the sample project automatically downloads the Python package, yo
 
 ## Public API
 
-PDF Services API is accessible directly via REST APIs which requires Adobe-provided credential for authentication. Once you've completed the [Getting Credentials](/document-services/apis/interstitial) workflow, a zip file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
+PDF Services API is accessible directly via REST APIs which requires Adobe-provided credential for authentication. Once you've completed the [Getting Credentials](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html) workflow, a zip or json file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples. The zip or json file structures are as follows:
 
--   **Personalized Download**: Downloads the zip which contains `acrobat-services-sdk-java-samples` with a preconfigured `pdfservices-api-credentials.json` file.
+-   **Personalized Download**: Downloads the zip which contains a preconfigured `pdfservices-api-credentials.json` file.
 -   **Non Personalized Download**: Downloads the `pdfservices-api-credentials.json` with your preconfigured credentials.
 
 **Example pdfservices-api-credentials.json file**
@@ -661,3 +661,4 @@ PDF Services API is accessible directly via REST APIs which requires Adobe-provi
     }
 }
 ```
+
