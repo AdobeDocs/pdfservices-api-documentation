@@ -8059,7 +8059,7 @@
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>access_denied</td><td>field matching the authentication scheme used by the client.</td></tr><tr><td>access_denied</td><td>Service principal is no longer part of the organization.</td></tr></table>",
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>access_denied</td><td>field matching the authentication scheme used by the client.</td></tr><tr><td>access_denied</td><td>Service principal is no longer part of the organization.</td></tr><tr><td>Forbidden</td><td>The client doesn't have adequate permissions.</td></tr></table>",
                 "type": "string"
               }
             }
