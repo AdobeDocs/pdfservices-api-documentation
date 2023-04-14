@@ -15,6 +15,10 @@
   ],
   "tags": [
     {
+      "name": "Generate Token",
+      "description": "Creates an access token based on an client id, client Secret and organisation id."
+    },
+    {
       "name": "Assets",
       "description": "Upload and download assets."
     },
@@ -93,6 +97,12 @@
   ],
   "x-tagGroups": [
     {
+      "name": "Authentication",
+      "tags": [
+        "Generate Token"
+      ]
+    },
+    {
       "name": "Files",
       "tags": [
         "Assets"
@@ -128,6 +138,192 @@
     }
   ],
   "paths": {
+    "/token": {
+      "post": {
+        "tags": [
+          "Generate Token"
+        ],
+        "summary": "Generate access token to perform PDF Services operations",
+        "description": "Creates an access token based on an client id, client Secret and organisation id.",
+        "operationId": "authentication.generatetoken",
+        "requestBody": {
+          "description": "Params for Generating the access token.",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Token"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The request was successful.",
+            "headers": {
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IMS400"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the error JSON response.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IMS401"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the error JSON response.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IMS403"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource Not Found.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IMS404"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "The request could not be processed because of conflict in the request",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IMS409"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IMS500"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
     "/assets": {
       "post": {
         "tags": [
@@ -7479,6 +7675,62 @@
   },
   "components": {
     "schemas": {
+      "Token": {
+        "description": "Params for Generation Access Token.",
+        "type": "object",
+        "properties": {
+          "client_id": {
+            "description": "Contains the client ID obtained upon client registration. Even though not required in the specification if the client sends the client_id as part of another method of authentication. IMS requires this parameter in order to facilitate other cross-cutting concerns like throttling. In case other authentication mechanisms are used (e.g. BASIC authentication), then the value sent as part of them as the client_id must match this value.",
+            "type": "string"
+          },
+          "client_secret": {
+            "description": "If the client authentication is performed in the request body, this parameter is REQUIRED and contains the client secret obtained upon client registration.",
+            "type": "string"
+          },
+          "org_id": {
+            "description": "The ID of the organization in which context the client credentials access token will be issued. If the client is owned by an organization and this parameter is missing, the system will use that ORG, otherwise the caller has to specify an ORG_ID.",
+            "type": "boolean"
+          }
+        },
+        "example": {
+          "client_id": "ef9d55aec9f148bba2f9133c1ff95e9e",
+          "client_secret": "0eb54713-74a9-4ff0-8f6e-f4beeab6d392",
+          "org_id": "54A09F45D7170C70A494205@AdobeOrg"
+        },
+        "required": [
+          "client_id",
+          "client_secret"
+        ],
+        "additionalProperties": false
+      },
+      "TokenResponse": {
+        "description": "Params for Generation Access Token.",
+        "type": "object",
+        "properties": {
+          "access_token": {
+            "description": "Generated token which can be used in performing the PDF Service Operation.",
+            "type": "string"
+          },
+          "token_type": {
+            "description": "This represent how an access token is generated and presented for resource access calls",
+            "type": "string"
+          },
+          "expires_in": {
+            "description": "This represents the time for which this token is valid. After that, the client needs to regenerate it.",
+            "type": "integer"
+          }
+        },
+        "example": {
+          "client_id": "ef9d55aec9f148bba2f9133c1ff95e9e",
+          "client_secret": "0eb54713-74a9-4ff0-8f6e-f4beeab6d392",
+          "org_id": "54A09F45D7170C70A494205@AdobeOrg"
+        },
+        "required": [
+          "client_id",
+          "client_secret"
+        ],
+        "additionalProperties": false
+      },
       "documentLanguage": {
         "description": "Specifies the default language for the input non-PDF document. In absence of font info within file’s content, an appropriate font is chosen on its basis. \n\n Note : ja-JP Locale is currently not supported in EU region. ",
         "type": "string",
@@ -7739,6 +7991,144 @@
               },
               "message": {
                 "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>INTERNAL_SERVER_ERROR</td><td>There was an error processing your request.</td></tr><tr><td>UNKNOWN</td><td>Unknown error.</td></tr></table>",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "error": {
+            "code": "INTERNAL_SERVER_ERROR",
+            "message": "There was an error processing your request."
+          }
+        }
+      },
+      "IMS400": {
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+                "type": "string"
+              },
+              "message": {
+                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>invalid_client</td><td>missing client_id parameter</td></tr><tr><td>invalid_client</td><td>invalid client_id parameter</td></tr><tr><td>invalid_client</td><td>missing client_secret parameter</td></tr><tr><td>invalid_client</td><td>missing client_secret parameter</td></tr><tr><td>unauthorized_client</td><td>client is not authorized to use this grant type.</td></tr><tr><td>invalid_target_scope</td><td>None of the requested scopes is enabled in the SP binding</td></tr><tr><td>missing_separator</td><td>The guid xXx is invalid.</td></tr></table>",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "error": {
+            "code": "invalid_client",
+            "message": "missing client_id parameter"
+          }
+        }
+      },
+      "IMS401": {
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+                "type": "string"
+              },
+              "message": {
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>invalid_client</td><td>According to Section 5.2 of RFC6749 the response includes the \"WWW-Authenticate\" response header field matching the authentication scheme used by the client.</td></tr></table>",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "error": {
+            "code": "invalid_client",
+            "message": "According to Section 5.2 of RFC6749 the response includes the \"WWW-Authenticate\" response header field matching the authentication scheme used by the client."
+          }
+        }
+      },
+      "IMS403": {
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+                "type": "string"
+              },
+              "message": {
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>access_denied</td><td>field matching the authentication scheme used by the client.</td></tr><tr><td>access_denied</td><td>Service principal is no longer part of the organization.</td></tr></table>",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "error": {
+            "code": "access_denied",
+            "message": "field matching the authentication scheme used by the client."
+          }
+        }
+      },
+      "IMS404": {
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+                "type": "string"
+              },
+              "message": {
+                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>not_found</td><td>Organization with id xXX cannot be found</td></tr></table>",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "error": {
+            "code": "NOT_FOUND",
+            "message": "Asset not found."
+          }
+        }
+      },
+      "IMS409": {
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+                "type": "string"
+              },
+              "message": {
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>duplicate_binding</td><td>There are multiple bindings for this client and org.</td></tr></table>",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "error": {
+            "code": "duplicate_binding",
+            "message": "There are multiple bindings for this client and org."
+          }
+        }
+      },
+      "IMS500": {
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+                "type": "string"
+              },
+              "message": {
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>INTERNAL_SERVER_ERROR</td><td>There was an error processing your request.</td></tr></table>",
                 "type": "string"
               }
             }
