@@ -1571,8 +1571,8 @@
                   "type": "string"
                 }
               },
-              "poll-after": {
-                "description": "Duration for which client should wait before invoking the status call. The job is expected to be completed during this interval. The interval will be represented in seconds.",
+              "retry-after": {
+                "description": "The retry-after response HTTP header indicates how long the user agent should wait before making a follow-up request.",
                 "schema": {
                   "type": "integer"
                 }
@@ -1755,8 +1755,8 @@
                   "type": "string"
                 }
               },
-              "retry-interval": {
-                "description": "Duration for which client should wait before invoking the next status call. The job is expected to be completed during this interval. The interval will be represented in seconds.",
+              "retry-after": {
+                "description": "The retry-after response HTTP header indicates how long the user agent should wait before making a follow-up request.",
                 "schema": {
                   "type": "integer"
                 }
@@ -7943,24 +7943,17 @@
             "description": "PDF Standard needed for input file to be converted into.",
             "type": "string",
             "enum": [
-              "PDF/A-1"
-            ]
-          },
-          "conformanceLevel": {
-            "description": "Conformance level to which input PDF file needs to be converted.",
-            "type": "string",
-            "enum": [
-              "b"
+              "PDF/A-1b"
             ]
           }
         },
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
-          "standard": "PDF/A-1",
-          "conformanceLevel": "b"
+          "standard": "PDF/A-1b"
         },
         "required": [
-          "assetID"
+          "assetID",
+          "standard"
         ],
         "additionalProperties": false
       },
