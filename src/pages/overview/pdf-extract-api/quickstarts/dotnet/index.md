@@ -30,21 +30,21 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2sp.png)
+![Project setup](./shot2_new.png)
 
 6) After your credentials are created, they are automatically  downloaded:
 
-![alt](./shot3_sp.png)
+![alt](./shot3_new.png)
 
 ## Step Two: Setting up the project
 
 1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-.NetSamples.zip. If you unzip that archive, you will find a folder of samples:
 
-![alt](./shot5_sp.png)
+![alt](./shot5_new.png)
 
 2) We need the `pdfservices-api-credentials.json` file. You can find this in the `adobe-DC.PDFServicesSDK.NET.Samples` folder, inside any of the sample subdirectories, so for example, the `CombinePDF` folder.
 
-![alt](./shot6_sp.png)
+![alt](./shot6_new.png)
 
 3) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
    
@@ -88,7 +88,7 @@ Now you're ready to begin coding.
 
 1) We'll begin by including our required dependencies:
 
-```javascript
+```clike
 using System.Text.Json;
 using System.IO.Compression;
 using System.IO;
@@ -108,7 +108,7 @@ using Adobe.PDFServicesSDK.options.extractpdf;
 
 2) Now let's define our main class and `Main` method:
 
-```javascript
+```clike
 namespace ExtractTextInfoFromPDF
 {
     class Program
@@ -123,7 +123,7 @@ namespace ExtractTextInfoFromPDF
 
 3) Now let's define our input and output:
 
-```javascript
+```clike
 String input = "Adobe Extract API Sample.pdf";
 
 String output = "ExtractTextInfoFromPDF.zip";
@@ -135,9 +135,18 @@ if(File.Exists(Directory.GetCurrentDirectory() + output))
 
 This defines what our output ZIP will be and optionally deletes it if it already exists. Then we define what PDF will be extracted. (You can download the source we used [here](/Adobe%20Extract%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic. 
 
-4) Next, we setup the SDK to use our credentials.
+4) Set the environment variables `CLIENT_ID` and `CLIET_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+- **Windows:**
+    - `SET CLIENT_ID=<YOUR CLIENT ID>`
+    - `SET CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
-```javascript
+- **MacOS/Linux:**
+    - `export CLIENT_ID=<YOUR CLIENT ID>`
+    - `export CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+5) Next, we setup the SDK to use our credentials.
+
+```clike
 // Initial setup, create credentials instance.
 Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
     .WithClientId("CLIENT_ID")
@@ -150,9 +159,9 @@ ExecutionContext executionContext = ExecutionContext.Create(credentials);
 
 This code both points to the credentials downloaded previously as well as sets up an execution context object that will be used later.
 
-5) Now, let's create the operation:
+6) Now, let's create the operation:
 
-```javascript
+```clike
 ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
 
 // Provide an input FileRef for the operation.
@@ -168,9 +177,9 @@ extractPdfOperation .SetOptions(extractPdfOptions);
 
 This set of code defines what we're doing (an Extract operation), points to our local file and specifies the input is a PDF, and then defines options for the Extract call. PDF Extract API has a few different options, but in this example, we're simply asking for the most basic of extractions, the textual content of the document. 
 
-6) The next code block executes the operation:
+7) The next code block executes the operation:
 
-```javascript
+```clike
 // Execute the operation.
 FileRef result = extractPdfOperation.Execute(executionContext);
 
@@ -180,9 +189,9 @@ result.SaveAs(Directory.GetCurrentDirectory() + output);
 
 This code runs the Extraction process and then stores the result zip to the file system. 
 
-7) In this block, we read in the ZIP file, extract the JSON result file, and parse it: 
+8) In this block, we read in the ZIP file, extract the JSON result file, and parse it: 
 
-```javascript
+```clike
 ZipArchive archive = ZipFile.OpenRead(Directory.GetCurrentDirectory() + output);
 ZipArchiveEntry jsonEntry = archive.GetEntry("structuredData.json");
 StreamReader osr = new StreamReader(jsonEntry.Open());
@@ -191,9 +200,9 @@ String contents = osr.ReadToEnd();
 JsonElement data = JsonSerializer.Deserialize<JsonElement>(contents);
 ```
 
-8) Finally we can loop over the result and print out any found element that is an `H1`:
+9) Finally we can loop over the result and print out any found element that is an `H1`:
 
-```javascript
+```clike
 JsonElement elements = data.GetProperty("elements");
 foreach(JsonElement element in elements.EnumerateArray()) {
     JsonElement pathElement = element.GetProperty("Path");
@@ -209,7 +218,7 @@ foreach(JsonElement element in elements.EnumerateArray()) {
 
 Here's the complete application (`Program.cs`):
 
-```javascript
+```clike
 using System.Text.Json;
 using System.IO.Compression;
 using System.IO;

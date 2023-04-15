@@ -28,17 +28,17 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2_sp.png)
+![Project setup](./shot2_new.png)
 
 6) After your credentials are created, they are automatically downloaded:
 
-![alt](./shot3_sp.png)
+![alt](./shot3_new.png)
 
 ## Step Two: Setting up the project
 
 1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-Node.jsSamples.zip. If you unzip that archive, you will a folder of samples:
 
-![alt](./shot_5_sp.png)
+![alt](./shot5_new.png)
 
 2) We need the `pdfservices-api-credentials.json` file found in the samples directory:
 
@@ -88,7 +88,16 @@ const INPUT = './Bodea Brochure.pdf';
 
 These lines are hard coded but in a real application would typically be dynamic.
 
-3) Next, we setup the SDK to use our credentials.
+3) Set the environment variables `CLIENT_ID` and `CLIET_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+- **Windows:**
+    - `SET CLIENT_ID=<YOUR CLIENT ID>`
+    - `SET CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+- **MacOS/Linux:**
+    - `export CLIENT_ID=<YOUR CLIENT ID>`
+    - `export CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+4) Next, we setup the SDK to use our credentials.
 
 ```js
 const credentials = PDFServicesSdk.Credentials
@@ -103,7 +112,7 @@ const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
 
 This code both points to the credentials downloaded previously as well as sets up an execution context object that will be used later.
 
-4) Now, let's create the operation:
+5) Now, let's create the operation:
 
 ```js
 // This creates an instance of the Export operation we're using, as well as specifying output type (DOCX)
@@ -116,7 +125,7 @@ exportPdfOperation.setInput(inputPDF);
 
 This set of code defines what we're doing (an Export operation), points to our local file and specifies the input is a PDF, and then defines options for the Export call. In this example, the only option is the export format, DOCX.
 
-5) The next code block executes the operation:
+6) The next code block executes the operation:
 
 ```js
 try {

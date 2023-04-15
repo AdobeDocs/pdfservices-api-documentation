@@ -29,21 +29,21 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2_sp.png)
+![Project setup](./shot2_new.png)
 
 6) After your credentials are created, they are automatically  downloaded:
 
-![alt](./shot3_sp.png)
+![alt](./shot3_new.png)
 
 ## Step Two: Setting up the project
 
 1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-JavaSamples.zip. If you unzip that archive, you will find a folder of samples:
 
-![alt](./shot_5_sp.png)
+![alt](./shot5_new.png)
 
 2) We need the `pdfservices-api-credentials.json` file found in the samples directory:
 
-![alt](./shot6_sp.png)
+![alt](./shot6_new.png)
 
 3) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
 
@@ -215,7 +215,16 @@ String input_file = "./Adobe Extract API Sample.pdf";
 
 This defines what our output ZIP will be and optionally deletes it if it already exists. Then we define what PDF will be extracted. (You can download the source we used [here](/Adobe%20Extract%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic. 
 
-4) Next, we can create our credentials and use them:
+4) Set the environment variables `CLIENT_ID` and `CLIET_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+- **Windows:**
+    - `SET CLIENT_ID=<YOUR CLIENT ID>`
+    - `SET CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+- **MacOS/Linux:**
+    - `export CLIENT_ID=<YOUR CLIENT ID>`
+    - `export CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+5) Next, we can create our credentials and use them:
 
 ```java
 // Initial setup, create credentials instance.
@@ -228,7 +237,7 @@ Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
 ExecutionContext executionContext = ExecutionContext.create(credentials);
 ```
 
-5) Now, let's create the operation:
+6) Now, let's create the operation:
 
 ```java
 ExtractPDFOperation extractPDFOperation = ExtractPDFOperation.createNew();
@@ -247,7 +256,7 @@ extractPDFOperation.setOptions(extractPDFOptions);
 
 This set of code defines what we're doing (an Extract operation), points to our local file and specifies the input is a PDF, and then defines options for the Extract call. PDF Extract API has a few different options, but in this example, we're simply asking for the most basic of extractions, the textual content of the document. 
 
-6) The next code block executes the operation:
+7) The next code block executes the operation:
 
 ```java
 // Execute the operation
@@ -259,7 +268,7 @@ result.saveAs(zip_file);
 
 This code runs the Extraction process and then stores the result zip to the file system. 
 
-7) In this block, we read in the ZIP file, extract the JSON result file, and parse it:
+8) In this block, we read in the ZIP file, extract the JSON result file, and parse it:
 
 ```java
 ZipFile resultZip = new ZipFile(zip_file);
@@ -272,7 +281,7 @@ s.close();
 JSONObject jsonData = new JSONObject(jsonString);
 ```
 
-8) Finally we can loop over the result and print out any found element that is an `H1`:
+9) Finally we can loop over the result and print out any found element that is an `H1`:
 
 ```java
 JSONArray elements = jsonData.getJSONArray("elements");

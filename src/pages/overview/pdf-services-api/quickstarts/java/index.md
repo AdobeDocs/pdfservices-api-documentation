@@ -29,21 +29,21 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2_sp.png)
+![Project setup](./shot2_new.png)
 
 6) After your credentials are created, they are automatically downloaded:
 
-![alt](./shot3_sp.png)
+![alt](./shot3_new.png)
 
 ## Step Two: Setting up the project
 
 1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-JavaSamples.zip. If you unzip that archive, you will find a folder of samples:
 
-![alt](./shot5_.png)
+![alt](./shot5_new.png)
 
 2) We need the `pdfservices-api-credentials.json` file found in the samples directory:
 
-![alt](./shot_6_sp.png)
+![alt](./shot6_new.png)
 
 <InlineAlert slots="text" />
 
@@ -209,7 +209,16 @@ String input_file = "./Bodea Brochure.pdf";
 System.out.println("Exporting " + input_file + " to " + output_file + "\n");
 ```
 
-4) Next, we can create our credentials and use them:
+4) Set the environment variables `CLIENT_ID` and `CLIET_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+- **Windows:**
+    - `SET CLIENT_ID=<YOUR CLIENT ID>`
+    - `SET CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+- **MacOS/Linux:**
+    - `export CLIENT_ID=<YOUR CLIENT ID>`
+    - `export CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+5) Next, we can create our credentials and use them:
 
 ```javascript
 // Initial setup, create credentials instance.
@@ -222,7 +231,7 @@ Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
 ExecutionContext executionContext = ExecutionContext.create(credentials);
 ```
 
-5) Now, let's create the operation:
+6) Now, let's create the operation:
 
 ```javascript
 ExportPDFOperation exportPDFOperation = ExportPDFOperation.createNew(ExportPDFTargetFormat.DOCX);
@@ -235,7 +244,7 @@ exportPDFOperation.setInput(source);
 
 This set of code defines what we're doing (an Export operation), points to our local file and specifies the input is a PDF, and then defines options for the Export call. In this example, the only option is the export format, DOCX.
 
-6) The next code block executes the operation:
+7) The next code block executes the operation:
 
 ```javascript
 // Execute the operation

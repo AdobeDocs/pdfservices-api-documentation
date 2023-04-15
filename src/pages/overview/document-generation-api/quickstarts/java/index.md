@@ -29,21 +29,21 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2_sp.png)
+![Project setup](./shot2_new.png)
 
 6) After your credentials are created, they are automatically downloaded:
 
-![alt](./shot3_sp.png)
+![alt](./shot3_new.png)
 
 ## Step Two: Setting up the project
 
 1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-JavaSamples.zip. If you unzip that archive, you will find a folder of samples:
 
-![alt](./shot_5_sp.png)
+![alt](./shot5_new.png)
 
 2) We need the `pdfservices-api-credentials.json` file found in the samples directory:
 
-![alt](./shot6_sp.png)
+![alt](./shot6_new.png)
 
 3) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
    
@@ -271,8 +271,17 @@ JSONObject jsonDataForMerge = new JSONObject(json);
 
 These lines are hard coded but in a real application would typically be dynamic.
 
+6) Set the environment variables `CLIENT_ID` and `CLIET_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+- **Windows:**
+    - `SET CLIENT_ID=<YOUR CLIENT ID>`
+    - `SET CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
-6) Next, we can create our credentials and use them:
+- **MacOS/Linux:**
+    - `export CLIENT_ID=<YOUR CLIENT ID>`
+    - `export CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+
+7) Next, we can create our credentials and use them:
 
 ```java
 // Initial setup, create credentials instance.
@@ -285,7 +294,7 @@ Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
 ExecutionContext executionContext = ExecutionContext.create(credentials);
 ```
 
-7) Now, let's create the operation:
+8) Now, let's create the operation:
 
 ```java
 DocumentMergeOptions documentMergeOptions = new DocumentMergeOptions(jsonDataForMerge, OutputFormat.PDF);
@@ -299,7 +308,7 @@ documentMergeOperation.setInput(source);
 
 This set of code defines what we're doing (a document merge operation, the SDK's way of describing Document Generation), points to our local JSON file and specifies the output is a PDF. It also points to the Word file used as a template.
 
-8) The next code block executes the operation:
+9) The next code block executes the operation:
 
 ```java
 // Execute the operation

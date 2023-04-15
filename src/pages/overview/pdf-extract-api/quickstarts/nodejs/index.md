@@ -28,21 +28,21 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2_sp.png)
+![Project setup](./shot2_new.png)
 
 6) After your credentials are created, they are automatically downloaded:
 
-![alt](./shot_3_sp.png)
+![alt](./shot3_new.png)
 
 ## Step Two: Setting up the project
 
 1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-Node.jsSamples.zip. If you unzip that archive, you will find a folder of samples:
 
-![alt](./shot5_sp.png)
+![alt](./shot5_new.png)
 
 2) We need the `pdfservices-api-credentials.json` file found in the samples directory:
 
-![alt](./shot6_sp.png)
+![alt](./shot6_new.png)
 
 3) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
 
@@ -89,7 +89,16 @@ const INPUT_PDF = './Adobe Extract API Sample.pdf';
 
 This defines what our output ZIP will be and optionally deletes it if it already exists. Then we define what PDF will be extracted. (You can download the source we used [here](/Adobe%20Extract%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic. 
 
-3) Next, we setup the SDK to use our credentials.
+3) Set the environment variables `CLIENT_ID` and `CLIET_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+- **Windows:**
+    - `SET CLIENT_ID=<YOUR CLIENT ID>`
+    - `SET CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+- **MacOS/Linux:**
+    - `export CLIENT_ID=<YOUR CLIENT ID>`
+    - `export CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+4) Next, we setup the SDK to use our credentials.
 
 ```js
 const credentials = PDFServicesSdk.Credentials
@@ -104,7 +113,7 @@ const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
 
 This code both points to the credentials downloaded previously as well as sets up an execution context object that will be used later.
 
-4) Now, let's create the operation:
+5) Now, let's create the operation:
 
 ```js
 // Create a new operation instance.
@@ -124,7 +133,7 @@ extractPDFOperation.setOptions(options);
 
 This set of code defines what we're doing (an Extract operation), points to our local file and specifies the input is a PDF, and then defines options for the Extract call. PDF Extract API has a few different options, but in this example, we're simply asking for the most basic of extractions, the textual content of the document. 
 
-5) The next code block executes the operation:
+6) The next code block executes the operation:
 
 ```js
 // Execute the operation
@@ -138,7 +147,7 @@ extractPDFOperation.execute(executionContext)
 
 This code runs the Extraction process and then stores the result zip to the file system. 
 
-6) In this block, we read in the ZIP file, extract the JSON result file, and parse it:
+7) In this block, we read in the ZIP file, extract the JSON result file, and parse it:
 
 ```js
 let zip = new AdmZip(OUTPUT_ZIP);
@@ -146,7 +155,7 @@ let jsondata = zip.readAsText('structuredData.json');
 let data = JSON.parse(jsondata);
 ```
 
-7) Finally we can loop over the result and print out any found element that is an `H1`:
+8) Finally we can loop over the result and print out any found element that is an `H1`:
 
 ```js
 data.elements.forEach(element => {

@@ -30,27 +30,27 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2_sp.png)
+![Project setup](./shot2_new.png)
 
 6) After your credentials are created, they are automatically downloaded:
 
-![alt](./shot_3_sp.png)
+![alt](./shot3_new.png)
 
 ## Step Two: Setting up the project
 
 1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-.NetSamples.zip. If you unzip that archive, you will find a folder of samples:
 
-![alt](./shot5_sp.png)
+![alt](./shot5_new.png)
 
 2) We need the `pdfservices-api-credentials.json` file. You can find this in the `adobe-DC.PDFServicesSDK.NET.Samples` folder, inside any of the sample subdirectories, so for example, the `CombinePDF` folder.
 
-![alt](./shot6_sp.png)
+![alt](./shot6_new.png)
 
 <InlineAlert slots="text" />
 
 3) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
 
-4) In your new directory, create a new file, `ExtractTextInfoFromPDF.csproj`. This file will declare our requirements as well as help define the application we're creating.
+4) In your new directory, create a new file, `CombinePDF.csproj`. This file will declare our requirements as well as help define the application we're creating.
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -189,7 +189,16 @@ JObject data = JObject.Parse(json);
 
 These lines are hard coded but in a real application would typically be dynamic.
 
-6) Next, we setup the SDK to use our credentials.
+6) Set the environment variables `CLIENT_ID` and `CLIET_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+- **Windows:**
+    - `SET CLIENT_ID=<YOUR CLIENT ID>`
+    - `SET CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+- **MacOS/Linux:**
+    - `export CLIENT_ID=<YOUR CLIENT ID>`
+    - `export CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+7) Next, we setup the SDK to use our credentials.
 
 ```clike
 // Initial setup, create credentials instance.
@@ -204,7 +213,7 @@ ExecutionContext executionContext = ExecutionContext.Create(credentials);
 
 This code both points to the credentials downloaded previously as well as sets up an execution context object that will be used later.
 
-7) Now, let's create the operation:
+8) Now, let's create the operation:
 
 ```clike
 DocumentMergeOptions documentMergeOptions = new DocumentMergeOptions(data, OutputFormat.PDF);
@@ -217,7 +226,7 @@ documentMergeOperation.SetInput(sourceFileRef);
 
 This set of code defines what we're doing (a document merge operation, the SDK's way of describing Document Generation), points to our local JSON file and specifies the output is a PDF. It also points to the Word file used as a template.
 
-8) The next code block executes the operation:
+9) The next code block executes the operation:
 
 ```clike
 // Execute the operation.

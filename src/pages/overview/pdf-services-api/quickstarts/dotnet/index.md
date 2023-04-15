@@ -30,7 +30,7 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2_sp.png)
+![Project setup](./shot2_new.png)
 
 6) After your credentials are created, they are automatically  downloaded:
 
@@ -40,17 +40,17 @@ To complete this guide, you will need:
 
 1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-.NetSamples.zip. If you unzip that archive, you will a folder of samples:
 
-![alt](./shot5_sp.png)
+![alt](./shot5_new.png)
 
 2) We need the `pdfservices-api-credentials.json` file. You can find this in the `adobe-DC.PDFServicesSDK.NET.Samples` folder, inside any of the sample subdirectories, so for example, the `CombinePDF` folder.
 
-![alt](./shot6_sp.png)
+![alt](./shot6_new.png)
 
 <InlineAlert slots="text" />
 
 3) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
 
-4) In your new directory, create a new file, `ExportPDFToWord.csproj`. This file will declare our requirements as well as help define the application we're creating.
+4) In your new directory, create a new file, `CombinePDF.csproj`. This file will declare our requirements as well as help define the application we're creating.
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -135,7 +135,16 @@ if(File.Exists(Directory.GetCurrentDirectory() + output))
 Console.Write("Exporting "+ input + " to " + output + "\n");
 ```
 
-4) Next, we setup the SDK to use our credentials.
+4) Set the environment variables `CLIENT_ID` and `CLIET_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+- **Windows:**
+    - `SET CLIENT_ID=<YOUR CLIENT ID>`
+    - `SET CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+- **MacOS/Linux:**
+    - `export CLIENT_ID=<YOUR CLIENT ID>`
+    - `export CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+5) Next, we setup the SDK to use our credentials.
 
 ```csharp
 // Initial setup, create credentials instance.
@@ -150,7 +159,7 @@ ExecutionContext executionContext = ExecutionContext.Create(credentials);
 
 This code both points to the credentials downloaded previously as well as sets up an execution context object that will be used later.
 
-5) Now, let's create the operation:
+6) Now, let's create the operation:
 
 ```csharp
 ExportPDFOperation exportPdfOperation = ExportPDFOperation.CreateNew(ExportPDFTargetFormat.DOCX);
@@ -162,7 +171,7 @@ exportPdfOperation.SetInput(sourceFileRef);
 
 This set of code defines what we're doing (an Export operation), points to our local file and specifies the input is a PDF, and then defines options for the Export call. In this example, the only option is the export format, DOCX.
 
-6) The next code block executes the operation:
+7) The next code block executes the operation:
 
 ```csharp
 // Execute the operation.
