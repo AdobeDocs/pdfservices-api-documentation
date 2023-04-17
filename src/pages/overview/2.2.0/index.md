@@ -25,7 +25,7 @@ The [PDF Services API](pdf-services-api) offers a number of operations to progra
 
 There are also capabilities to compress or linearize document for faster web viewing, and to insert, reorder, rotate, replace, and delete pages within documents.
 
-The PDF Services API includes ready-to-use code samples for Java, Node.JS and .NET and has a [PDF Services Free Tier which includes 500 free Document Transactions per month.](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api)
+The PDF Services API includes ready-to-use code samples for Java, Node.JS and .NET and has a [Free Tier which includes 500 free Document Transactions per month.](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api)
 
 The PDF Services API is also available on [Power Automate](https://docs.microsoft.com/en-us/power-automate/) with easy to integrate Power Automate connectors.
 
@@ -33,7 +33,7 @@ The PDF Services API is also available on [Power Automate](https://docs.microsof
 
 The [Document Generation API](document-generation-api) is a cloud-based web service that allows you to produce high fidelity PDF and Word documents with dynamic data inputs. Using Document Generation API, you can merge your data(e.g. JSON file) with Word templates to create dynamic documents for contracts and agreements, invoices, proposals, reports, forms, branded marketing documents and more.
 
-Embed Document Generation API into any application using [PDFServices SDK](pdf-services-api#sdk) for Node.js, .Net, and Java. [Start with a Document Generation Free Tier which includes 500 free Document Transactions per month.](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=document-generation-api)
+Embed Document Generation API into any application using [PDFServices SDK](pdf-services-api#sdk) for Node.js, .Net, and Java. [Start with a Free Tier which includes 500 free Document Transactions per month.](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=document-generation-api)
 
 ## PDF Extract API for extracting PDF structure and information
 
@@ -49,7 +49,7 @@ The JSON output also captures document structure information, such as the natura
 
 The PDF Extract API provides a method for developers to extract and structure content for use in a number of downstream applications including content republishing, workflow automation, content analysis, and data aggregation, management, and search.
 
-The PDF Extract API can be embedded into any application using the [PDFServices SDK](./pdf-services-api/index.md#sdk) for Node.js, Python, and Java. [Start with a PDF Extract Free Tier which includes 500 free Document Transactions per month.](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api)
+The PDF Extract API can be embedded into any application using the [PDFServices SDK](./pdf-services-api/index.md#sdk) for Node.js, Python, and Java. [Start with a Free Tier which includes 500 free Document Transactions per month.](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api)
 
 ## <span align="center" style="color:red;font-size:15px;vertical-align:middle;border:1px solid;padding-left:2px;padding-right:2px;">Available under Early Access Program</span><br/> PDF Accessibility Auto-Tag API for improving accessibility in PDFs
 
