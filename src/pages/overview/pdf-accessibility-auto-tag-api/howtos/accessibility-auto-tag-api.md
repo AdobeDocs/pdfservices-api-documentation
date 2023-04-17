@@ -63,7 +63,7 @@ The sample below generates tagged PDF from a PDF.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java,.NET, Node JS, Python, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -290,7 +290,7 @@ Here is a sample list of command line arguments and their description:
 - --shift_headings { If this argument is present then the headings will be shifted in the output PDF file }
 
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java,.NET, Node JS, Python, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -722,4 +722,19 @@ class AutotagPDFParameterised:
 if __name__ == "__main__":
     autotag_pdf_parameterised = AutotagPDFParameterised()
     autotag_pdf_parameterised.execute()
+```
+
+#### REST API
+
+```bash
+// Please refer our REST API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/PDF-Accessibility-Auto-Tag
+
+curl --location --request POST 'https://pdf-services.adobe.io/operation/autotag' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
+}'
 ```
