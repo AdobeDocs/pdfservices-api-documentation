@@ -221,8 +221,8 @@ In a row, if multiple “discard-row-if” are used, then the row will be discar
 **Note**: The header row is also removed when all the rows are discarded thus removing the complete table.
 
 ## Conditions inside tables
-An additional construct **expr-context** is introduced for conditionals inside tables, which is required while evaluating
-conditions based on fields of the table currently being expanded. The expression inside **expr-context** is an array
+An additional construct **eval** is introduced for conditionals inside tables, which is required while evaluating
+conditions based on fields of the table currently being expanded. The expression inside **eval** is an array
 of objects where each entry of object serves as context to evaluate the condition in the corresponding row of table.
 
 JSON representation of the input data:
@@ -245,5 +245,5 @@ JSON representation of the input data:
 
 ![Index based conditional evaluation inside table](../images/ConditionsInsideTables.png)
 In the above example, the array of objects on which the condition needs to be evaluated (*company*) is provided in
-**expr-context**, and the expr contains the actual condition `supportsX="TRUE"`. The condition is evaluated based on each
+**eval**, and the expr contains the actual condition `supportsX="TRUE"`. The condition is evaluated based on each
 entry of the array and applied to the corresponding row in the output table.
