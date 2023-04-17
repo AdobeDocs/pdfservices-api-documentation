@@ -4,7 +4,7 @@ title: .NET | Quickstarts | PDF Accessibility Auto-Tag API | Adobe PDF Services
 
 # Quickstart for PDF Accessibility Auto-Tag API (.NET)
 
-To get started using Adobe PDF Accessibility Auto Tag API, let's walk through a simple scenario - taking an input PDF document and running PDF Accessibility Auto Tag API against it. Once the PDF has been tagged, we'll provide the document with tags and optionally, a report file. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
+To get started using Adobe PDF Accessibility Auto-Tag API, let's walk through a simple scenario - taking an input PDF document and running PDF Accessibility Auto-Tag API against it. Once the PDF has been tagged, we'll provide the document with tags and optionally, a report file. In this guide, we will walk you through the complete process for creating a program that will accomplish this task.
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2.png)
+![Project setup](./shot2_new.png)
 
 6) After your credentials are created, they are automatically  downloaded:
 
@@ -38,21 +38,17 @@ To complete this guide, you will need:
 
 ## Step Two: Setting up the project
 
-1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-.NetSamples.zip. If you unzip that archive, you will find a README file, your private key, and a folder of samples:
+1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-.NetSamples.zip. If you unzip that archive, you will find a folder of samples:
 
-![alt](./shot5.png)
+![alt](./shot5_new.png)
 
-2) We need two things from this download. The `private.key` file (as shown in the screenshot above, and the `pdfservices-api-credentials.json` file. You can find this in the `adobe-DC.PDFServicesSDK.NET.Samples` folder, inside any of the sample subdirectories, so for example, the `CombinePDF` folder.
+2) We need the `pdfservices-api-credentials.json` file. You can find this in the `adobe-DC.PDFServicesSDK.NET.Samples` folder, inside any of the sample subdirectories, so for example, the `CombinePDF` folder.
 
-![alt](./shot6.png)
+![alt](./shot6_new.png)
 
-<InlineAlert slots="text" />
+3) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
 
-Note that that private key is *also* found in this directory so feel free to copy them both from here.
-
-3) Take these two files and place them in a new directory.
-
-4) In your new directory, create a new file, `ExtractTextInfoFromPDF.csproj`. This file will declare our requirements as well as help define the application we're creating.
+4) In your new directory, create a new file, `AutotagPDF.csproj`. This file will declare our requirements as well as help define the application we're creating.
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -64,17 +60,14 @@ Note that that private key is *also* found in this directory so feel free to cop
 
     <ItemGroup>
         <PackageReference Include="log4net" Version="2.0.12" />
-        <PackageReference Include="Adobe.PDFServicesSDK" Version="2.2.1" />
+        <PackageReference Include="Adobe.PDFServicesSDK" Version="3.3.0" />
     </ItemGroup>
 
     <ItemGroup>
         <None Update="pdfservices-api-credentials.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
-        <None Update="private.key">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
-        <None Update="extractPDFInput.pdf">
+        <None Update="Adobe Accessibility Auto-Tag API Sample.pdf">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
         <None Update="log4net.config">
@@ -85,7 +78,7 @@ Note that that private key is *also* found in this directory so feel free to cop
 </Project>
 ```
 
-Our application will take a PDF, `Adobe Extract API Sample.pdf` (downloadable from [here](/Adobe%20Extract%20API%20Sample.pdf)) and extract it's contents. The results will be saved as a ZIP file, `ExtractTextInfoFromPDF.zip`. We will then parse the results from the ZIP and print out the text of any `H1` headers found in the PDF.
+Our application will take a PDF, `Adobe Accesibility Auto-Tag API Sample.pdf` (downloadable from [here](/Adobe%20Accessibility%20Auto-Tag%20API%20Sample.pdf)) and tag its contents. The results will be saved in a given directory `/output/AutotagPDF`.
 
 5) In your editor, open the directory where you previously copied the credentials and created the `csproj` file. Create a new file, `Program.cs`. 
 
@@ -95,28 +88,25 @@ Now you're ready to begin coding.
 
 1) We'll begin by including our required dependencies:
 
-```javascript
-using System.Text.Json;
-using System.IO.Compression;
-using System.IO;
+```clike
 using System;
-using System.Collections.Generic;
-using log4net.Repository;
-using log4net.Config;
+using System.IO;
 using log4net;
+using log4net.Config;
 using System.Reflection;
-using Adobe.PDFServicesSDK;
+using log4net.Repository;
 using Adobe.PDFServicesSDK.auth;
-using Adobe.PDFServicesSDK.pdfops;
 using Adobe.PDFServicesSDK.io;
 using Adobe.PDFServicesSDK.exception;
-using Adobe.PDFServicesSDK.options.extractpdf;
+using Adobe.PDFServicesSDK.io.autotag;
+using Adobe.PDFServicesSDK.pdfops;
+using ExecutionContext = Adobe.PDFServicesSDK.ExecutionContext;
 ```
 
 2) Now let's define our main class and `Main` method:
 
-```javascript
-namespace ExtractTextInfoFromPDF
+```clike
+namespace AutotagPDF
 {
     class Program
     {
@@ -130,24 +120,37 @@ namespace ExtractTextInfoFromPDF
 
 3) Now let's define our input and output:
 
-```javascript
-String input = "Adobe Extract API Sample.pdf";
+```clike
+String input = "Adobe Accesibility Auto-Tag API Sample.pdf";
 
-String output = "ExtractTextInfoFromPDF.zip";
+String output = "AutotagPDF Output.pdf;
 if(File.Exists(Directory.GetCurrentDirectory() + output))
 {
 	File.Delete(Directory.GetCurrentDirectory() + output);
 }
+
+String output = "AutotagPDFOutput.pdf";
 ```
 
-This defines what our output ZIP will be and optionally deletes it if it already exists. Then we define what PDF will be extracted. (You can download the source we used [here](/Adobe%20Extract%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic. 
+This defines what our output directory will be and optionally deletes it if it already exists. Then we define what PDF will be tagged. (You can download the source we used [here](/Adobe%20Accessibility%20Auto%20Tag%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic.
 
-4) Next, we setup the SDK to use our credentials.
+4) Set the environment variables `CLIENT_ID` and `CLIET_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+- **Windows:**
+    - `SET CLIENT_ID=<YOUR CLIENT ID>`
+    - `SET CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
-```javascript
+- **MacOS/Linux:**
+    - `export CLIENT_ID=<YOUR CLIENT ID>`
+    - `export CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+
+5) Next, we setup the SDK to use our credentials.
+
+```clike
 // Initial setup, create credentials instance.
-Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-	.FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+    .WithClientId("CLIENT_ID")
+    .WithClientSecret("CLIENT_SECRET")
 	.Build();
 
 // Create an ExecutionContext using credentials and create a new operation instance.
@@ -156,146 +159,84 @@ ExecutionContext executionContext = ExecutionContext.Create(credentials);
 
 This code both points to the credentials downloaded previously as well as sets up an execution context object that will be used later.
 
-5) Now, let's create the operation:
+6) Now, let's create the operation:
 
-```javascript
-ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
+```clike
+AutotagPDFOperation autotagPDFOperation = AutotagPDFOperation.CreateNew();
 
 // Provide an input FileRef for the operation.
-FileRef sourceFileRef = FileRef.CreateFromLocalFile(input);
-extractPdfOperation.SetInputFile(sourceFileRef);
-
-// Build ExtractPDF options and set them into the operation.
-ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPDFOptionsBuilder()
-	.AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT}))
-	.Build();
-extractPdfOperation .SetOptions(extractPdfOptions);
+autotagPDFOperation.SetInput(FileRef.CreateFromLocalFile(input));
 ```
 
-This set of code defines what we're doing (an Extract operation), points to our local file and specifies the input is a PDF, and then defines options for the Extract call. PDF Extract API has a few different options, but in this example, we're simply asking for the most basic of extractions, the textual content of the document. 
+This set of code defines what we're doing (an Auto-Tag operation), points to our local file and specifies the input is a PDF, and then defines options for the Auto-Tag call. PDF Accessibility Auto-Tag API has a few different options, but in this example, we're simply asking for a basic tagging operation, which returns the tagged PDF document.
 
-6) The next code block executes the operation:
+7) The next code block executes the operation:
 
-```javascript
-// Execute the operation.
-FileRef result = extractPdfOperation.Execute(executionContext);
+```clike
+// Execute the operation
+AutotagPDFOutput autotagPDFOutput = autotagPDFOperation.Execute(executionContext);
 
-// Save the result to the specified location.
-result.SaveAs(Directory.GetCurrentDirectory() + output);
+// Save the output files at the specified location
+autotagPDFOutput.GetTaggedPDF().SaveAs(Directory.GetCurrentDirectory() + output);
 ```
 
-This code runs the Extraction process and then stores the result zip to the file system. 
-
-7) In this block, we read in the ZIP file, extract the JSON result file, and parse it: 
-
-```javascript
-ZipArchive archive = ZipFile.OpenRead(Directory.GetCurrentDirectory() + output);
-ZipArchiveEntry jsonEntry = archive.GetEntry("structuredData.json");
-StreamReader osr = new StreamReader(jsonEntry.Open());
-String contents = osr.ReadToEnd();
-
-JsonElement data = JsonSerializer.Deserialize<JsonElement>(contents);
-```
-
-8) Finally we can loop over the result and print out any found element that is an `H1`:
-
-```javascript
-JsonElement elements = data.GetProperty("elements");
-foreach(JsonElement element in elements.EnumerateArray()) {
-    JsonElement pathElement = element.GetProperty("Path");
-    String path = pathElement.GetString();
-    if(path.EndsWith("/H1")) {
-        JsonElement textElement = element.GetProperty("Text");
-        Console.Write(textElement.GetString() +"\n");
-    }
-}
-```
+This code runs the Auto-Tagging process and then stores the result files in the provided output directory.
 
 ![Example running in the command line](./shot9.png)
 
 Here's the complete application (`Program.cs`):
 
-```javascript
-using System.Text.Json;
-using System.IO.Compression;
-using System.IO;
+```clike
 using System;
-using System.Collections.Generic;
-using log4net.Repository;
-using log4net.Config;
+using System.IO;
 using log4net;
+using log4net.Config;
 using System.Reflection;
-using Adobe.PDFServicesSDK;
+using log4net.Repository;
 using Adobe.PDFServicesSDK.auth;
-using Adobe.PDFServicesSDK.pdfops;
 using Adobe.PDFServicesSDK.io;
 using Adobe.PDFServicesSDK.exception;
-using Adobe.PDFServicesSDK.options.extractpdf;
+using Adobe.PDFServicesSDK.io.autotag;
+using Adobe.PDFServicesSDK.pdfops;
+using ExecutionContext = Adobe.PDFServicesSDK.ExecutionContext;
 
-namespace ExtractTextInfoFromPDF
+namespace AutotagPDF
 {
     class Program
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
         static void Main()
         {
-            // Configure the logging.
+            //Configure the logging
             ConfigureLogging();
             try
             {
+            
+                // Provide an input FileRef for the operation
+                String input = "Adobe Accesibility Auto-Tag API Sample.pdf";
 
-                String input = "Adobe Extract API Sample.pdf";
-
-                String output = "ExtractTextInfoFromPDF.zip";
                 if(File.Exists(Directory.GetCurrentDirectory() + output))
                 {
-                    File.Delete(Directory.GetCurrentDirectory() + output);
+                	File.Delete(Directory.GetCurrentDirectory() + output);
                 }
-
+                String output = "AutotagPDFOutput.pdf";
+                
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("CLIENT_ID")
+                    .WithClientSecret("CLIENT_SECRET")
                     .Build();
 
-                // Create an ExecutionContext using credentials and create a new operation instance.
+                //Create an ExecutionContext using credentials and create a new operation instance.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
-                ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
+                AutotagPDFOperation autotagPDFOperation = AutotagPDFOperation.CreateNew();
 
-                // Provide an input FileRef for the operation.
-                FileRef sourceFileRef = FileRef.CreateFromLocalFile(input);
-                extractPdfOperation.SetInputFile(sourceFileRef);
+                // Execute the operation
+                AutotagPDFOutput autotagPDFOutput = autotagPDFOperation.Execute(executionContext);
                 
-                // Build ExtractPDF options and set them into the operation.
-                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPDFOptionsBuilder()
-                    .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT}))
-                    .Build();
-                extractPdfOperation .SetOptions(extractPdfOptions);
-
-                // Execute the operation.
-                FileRef result = extractPdfOperation.Execute(executionContext);
-
-                // Save the result to the specified location.
-                result.SaveAs(Directory.GetCurrentDirectory() + output);
-
-        		Console.Write("Successfully extracted information from PDF. Printing H1 Headers:\n\n");
-
-                ZipArchive archive = ZipFile.OpenRead(Directory.GetCurrentDirectory() + output);
-                ZipArchiveEntry jsonEntry = archive.GetEntry("structuredData.json");
-                StreamReader osr = new StreamReader(jsonEntry.Open());
-                String contents = osr.ReadToEnd();
-                
-                JsonElement data = JsonSerializer.Deserialize<JsonElement>(contents);
-                JsonElement elements = data.GetProperty("elements");
-                foreach(JsonElement element in elements.EnumerateArray()) {
-                    JsonElement pathElement = element.GetProperty("Path");
-                    String path = pathElement.GetString();
-                    if(path.EndsWith("/H1")) {
-                        JsonElement textElement = element.GetProperty("Text");
-                        Console.Write(textElement.GetString() +"\n");
-                    }
-                }
-
-                
+                // Save the output files at the specified location
+                autotagPDFOutput.GetTaggedPDF().SaveAs(Directory.GetCurrentDirectory() + output);
             }
             catch (ServiceUsageException ex)
             {

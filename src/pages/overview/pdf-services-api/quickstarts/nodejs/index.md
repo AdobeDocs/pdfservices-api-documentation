@@ -42,7 +42,7 @@ To complete this guide, you will need:
 
 2) We need the `pdfservices-api-credentials.json` file found in the samples directory:
 
-![alt](./shot6_sp.png)
+![alt](./shot6_new.png)
 
 <InlineAlert slots="text" />
 
