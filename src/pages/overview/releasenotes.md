@@ -183,6 +183,13 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### Adobe Document Generation Server Side Release (April, 2023; server side release)
+
+| Change  | Language         | Description                                                                                                                     |
+|---------|------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| Changed | Java,NodeJS,.NET | Modified support for [conditions inside tables](../document-generation-api/complextableconstructs.md#conditions-inside-tables). |
+
+
 ### Extract PDF Server Side Release (06 March, 2023; server side release)
 | Change  | Language            | Description                                                                                   |
 | ------- | ------------------- | --------------------------------------------------------------------------------------------- |
