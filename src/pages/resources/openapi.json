@@ -8303,14 +8303,14 @@
           "documentLanguage": {
             "$ref": "#/components/schemas/documentLanguage"
           },
-          "long-await": {
+          "longAwait": {
             "description": " If you're able to wait and don't need documents to be generated immediately, and can tolerate some delay, then set this value to true. This is useful when there's a need for higher workloads from customers.",
             "type": "boolean"
           }
         },
         "default": {
           "documentLanguage": "en-US",
-          "long-await": false
+          "longAwait": false
         },
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
