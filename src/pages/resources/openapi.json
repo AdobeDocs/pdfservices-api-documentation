@@ -91,7 +91,7 @@
       "description": "Operation to create the tagged pdf and excel report for accessibility auto-tag use case."
     },
     {
-      "name": "Apply PDF Standards",
+      "name": "PDF Standards",
       "description": "PDF Standards helps in making PDF Compliant adhering to certain standards set by the International Organization for Standardization."
     }
   ],
@@ -127,7 +127,7 @@
         "Remove Protection",
         "Split PDF",
         "PDF Accessibility Auto-Tag",
-        "Apply PDF Standards"
+        "PDF Standards"
       ]
     },
     {
@@ -7301,14 +7301,14 @@
         }
       }
     },
-    "/operation/applypdfstandards": {
+    "/operation/converttopdfstandards": {
       "post": {
         "tags": [
-          "Apply PDF Standards"
+          "PDF Standards"
         ],
-        "summary": "Apply PDF Standards",
+        "summary": "PDF Standards",
         "description": "PDF Standards helps in making PDF compliant adhering to certain standards set by the International Organization for Standardization. Some of the the PDF standards are PDF/A, PDF/X, PDF/UA, etc. For making the PDF compliant, the input will be PDF and output will be compliant PDF. There will be input parameters for denoting the standard and conformance level for the standard. For now the support is for \"PDF/A-1\" standard and \"b\" as conformance level.",
-        "operationId": "pdfoperations.applypdfstandards",
+        "operationId": "pdfoperations.converttopdfstandards",
         "parameters": [
           {
             "name": "Authorization",
@@ -7330,7 +7330,7 @@
           }
         ],
         "requestBody": {
-          "description": "Input Params for Apply PDF Standards Operation.",
+          "description": "Input Params for PDF Standards Operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -7482,13 +7482,13 @@
         "x-codegen-request-body-name": "body"
       }
     },
-    "/operation/applypdfstandards/{jobID}/status": {
+    "/operation/converttopdfstandards/{jobID}/status": {
       "get": {
         "tags": [
-          "Apply PDF Standards"
+          "PDF Standards"
         ],
         "summary": "Poll the PDF Standards job for completion",
-        "operationId": "pdfoperations.applypdfstandards.jobstatus",
+        "operationId": "pdfoperations.converttopdfstandards.jobstatus",
         "parameters": [
           {
             "name": "jobID",
@@ -8059,7 +8059,7 @@
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>access_denied</td><td>field matching the authentication scheme used by the client.</td></tr><tr><td>access_denied</td><td>Service principal is no longer part of the organization.</td></tr><tr><td>Forbidden</td><td>The client doesn't have adequate permissions.</td></tr></table>",
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>access_denied</td><td>field matching the authentication scheme used by the client.</td></tr><tr><td>access_denied</td><td>Service principal is no longer part of the organization.</td></tr><tr><td>Forbidden</td><td>The client is not allowed to perform the operation.</td></tr></table>",
                 "type": "string"
               }
             }
@@ -8303,18 +8303,19 @@
           "documentLanguage": {
             "$ref": "#/components/schemas/documentLanguage"
           },
-          "isBackgroundProcessing": {
-            "description": "A flag to control whether request need to processed in background with expected latency or processed right away.",
+          "long-await": {
+            "description": " If you're able to wait and don't need documents to be generated immediately, and can tolerate some delay, then set this value to true. This is useful when there's a need for higher workloads from customers.",
             "type": "boolean"
           }
         },
         "default": {
-          "documentLanguage": "en-US"
+          "documentLanguage": "en-US",
+          "long-await": false
         },
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "documentLanguage": "en-US",
-          "isBackgroundProcessing": true
+          "long-await": false
         },
         "required": [
           "assetID"
