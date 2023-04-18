@@ -7693,9 +7693,9 @@
           }
         },
         "example": {
-          "client_id": "ef9d55aec9f148bba2f9133c1ff95e9e",
-          "client_secret": "0eb54713-74a9-4ff0-8f6e-f4beeab6d392",
-          "org_id": "54A09F45D7170C70A494205@AdobeOrg"
+          "client_id": "<client_id>",
+          "client_secret": "<client_secret>",
+          "org_id": "<org_id>"
         },
         "required": [
           "client_id",
@@ -7704,7 +7704,7 @@
         "additionalProperties": false
       },
       "TokenResponse": {
-        "description": "Params for Generation Access Token.",
+        "description": "Response of Generation Access Token.",
         "type": "object",
         "properties": {
           "access_token": {
@@ -7721,15 +7721,10 @@
           }
         },
         "example": {
-          "client_id": "ef9d55aec9f148bba2f9133c1ff95e9e",
-          "client_secret": "0eb54713-74a9-4ff0-8f6e-f4beeab6d392",
-          "org_id": "54A09F45D7170C70A494205@AdobeOrg"
-        },
-        "required": [
-          "client_id",
-          "client_secret"
-        ],
-        "additionalProperties": false
+          "access_token": "*******",
+          "token_type": "Bearer",
+          "expires_in": "86399996"
+        }
       },
       "documentLanguage": {
         "description": "Specifies the default language for the input non-PDF document. In absence of font info within file’s content, an appropriate font is chosen on its basis. \n\n Note : ja-JP Locale is currently not supported in EU region. ",
