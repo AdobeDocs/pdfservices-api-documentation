@@ -7704,7 +7704,7 @@
         "additionalProperties": false
       },
       "TokenResponse": {
-        "description": "Response of Generation Access Token.",
+        "description": "Response of Generation Access Token Operation.",
         "type": "object",
         "properties": {
           "access_token": {
