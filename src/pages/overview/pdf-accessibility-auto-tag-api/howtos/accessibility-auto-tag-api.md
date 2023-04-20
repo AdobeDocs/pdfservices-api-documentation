@@ -12,6 +12,7 @@ The output of PDF Accessibility Auto-Tag API contains the following:
 
 ## API limitations
 
+<br />
 - **File size:** Files up to a maximum of 100 MB are supported.
 - **Number of Pages:** Non-scanned PDFs up to 200 pages and scanned PDFs up to 100 pages are supported, however limits may be lower for files with a large number of tables.
 - **Rate limits:** Keep request rate below 25 requests per minute.
@@ -61,7 +62,7 @@ The sample below generates tagged PDF from a PDF.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
 
 #### Java
 
