@@ -79,12 +79,10 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
            ConfigureLogging();
            try
            {
-               // Initial setup, create credentials instance.
-               Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                    .WithClientId(Environment.GetEnvironmentVariable("CLIENT_ID"))
-                    .WithClientSecret(Environment.GetEnvironmentVariable("CLIENT_SECRET"))
+               Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
+                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
                     .Build();
-
+               
                // Create an ExecutionContext using credentials and create a new operation instance.
                ExecutionContext executionContext = ExecutionContext.Create(credentials);
                CompressPDFOperation compressPDFOperation = CompressPDFOperation.CreateNew();
@@ -251,10 +249,9 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                        .WithClientId(Environment.GetEnvironmentVariable("CLIENT_ID"))
-                        .WithClientSecret(Environment.GetEnvironmentVariable("CLIENT_SECRET"))
-                        .Build();
+                Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
+                .fromFile("pdfservices-api-credentials.json")
+                .build();
  
                 // Create an ExecutionContext using credentials and create a new operation instance.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
