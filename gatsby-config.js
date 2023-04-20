@@ -242,6 +242,10 @@ module.exports = {
                             {
                                 title: 'Get PDF Properties',
                                 path: 'overview/pdf-services-api/howtos/pdf-properties.md'
+                            },
+                            {
+                                title: 'PDF Accessibility Auto-Tag',
+                                path: 'overview/pdf-services-api/howtos/pdf-accessibility-auto-tag-pdf.md'
                             }
                         ]
                     }
@@ -430,7 +434,6 @@ module.exports = {
             },
             {
                 title: 'PDF Accessibility Auto-Tag API',
-                subTitle: 'Early Access Program',
                 path: 'overview/pdf-accessibility-auto-tag-api/index.md',
                 pages: [
                     {
@@ -442,28 +445,39 @@ module.exports = {
                         path: 'overview/pdf-accessibility-auto-tag-api/gettingstarted.md'
                     },
                     {
+                        title: 'Quickstarts',
+                        path: 'overview/pdf-accessibility-auto-tag-api/quickstarts',
+                        pages: [
+                            {
+                                title:'Node.js',
+                                path: 'overview/pdf-accessibility-auto-tag-api/quickstarts/nodejs/index.md'
+                            },
+                            {
+                                title:'Java',
+                                path: 'overview/pdf-accessibility-auto-tag-api/quickstarts/java/index.md'
+                            },
+                            {
+                                title:'.NET',
+                                path: 'overview/pdf-accessibility-auto-tag-api/quickstarts/dotnet/index.md'
+                            },
+                            {
+                                title:'Python',
+                                path: 'overview/pdf-accessibility-auto-tag-api/quickstarts/python/index.md'
+                            }
+                        ]
+                    },
+                    {
                         title: 'How Tos',
                         subTitle: '',
                         path: 'overview/pdf-accessibility-auto-tag-api/howtos/index.md',
                         pages: [
                             {
-                                title: 'API Output Format',
-                                path: 'overview/pdf-accessibility-auto-tag-api/howtos/output.md'
+                                title: 'PDF Accessibility Auto-Tag API',
+                                path: 'overview/pdf-accessibility-auto-tag-api/howtos/accessibility-auto-tag-api.md'
                             },
-                            {
-                                title: 'REST API',
-                                path: 'overview/pdf-accessibility-auto-tag-api/howtos/rest.md'
-                            },
-                            {
-                                title: 'Generate Tagged PDF',
-                                path: 'overview/pdf-accessibility-auto-tag-api/howtos/generatetaggedpdf.md'
-                            },
-                            {
-                                title: 'Generate Tagged PDF with CLI Arguments',
-                                path: 'overview/pdf-accessibility-auto-tag-api/howtos/generatetaggedpdfwithcli.md'
-                            }
                         ]
-                    }                ]
+                    }
+                ]
             },
             {
                 title: 'Usage Limits and Licensing',
