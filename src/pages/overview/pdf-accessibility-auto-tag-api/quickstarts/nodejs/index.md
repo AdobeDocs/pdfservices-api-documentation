@@ -140,7 +140,7 @@ autotagPDFOperation.execute(executionContext)
 	.catch(err => console.log(err));
 ```
 
-![Example running at the command line](./shot9.png)
+![Example running at the command line](./shot9_ga.png)
 
 Here's the complete application (`autotag-pdf.js`):
 

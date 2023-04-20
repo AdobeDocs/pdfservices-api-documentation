@@ -257,7 +257,7 @@ autotagPDFOutput.getTaggedPDF().saveAs(taggedPDF);
 autotagPDFOutput.getReport().saveAs(taggingReport);
 ```
 
-![Example running in the command line](./shot9.png)
+![Example running in the command line](./shot9_ga.png)
 
 Here's the complete application (`src/java/main/ExtractTextInfoFromPDF.java`):
 

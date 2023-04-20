@@ -186,7 +186,7 @@ result.GetReport().SaveAs(Directory.GetCurrentDirectory() + taggingReport);
 
 This code runs the Auto-Tagging process and then stores the result files in the provided output directory.
 
-![Example running in the command line](./shot9.png)
+![Example running in the command line](./shot9_ga.png)
 
 Here's the complete application (`Program.cs`):
 

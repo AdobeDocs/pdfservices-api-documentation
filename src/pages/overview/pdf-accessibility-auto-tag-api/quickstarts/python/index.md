@@ -29,11 +29,11 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2.png)
+![Project setup](./shot2_ga.png)
 
 6) After your credentials are created, they are automatically downloaded:
 
-![Credentials](./shot3.png)
+![Credentials](./shot3_ga.png)
 
 ## Step Two: Setting up the project
 
