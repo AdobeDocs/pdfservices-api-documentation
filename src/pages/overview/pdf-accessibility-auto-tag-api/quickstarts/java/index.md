@@ -4,7 +4,7 @@ title: Java | Quickstarts | PDF Accessibility Auto-Tag API | Adobe PDF Services
 
 # Quickstart for PDF Accessibility Auto-Tag API (Java)
 
-To get started using Adobe PDF Accessibility Auto Tag API, let's walk through a simple scenario - taking an input PDF document and running PDF Accessibility Auto Tag API against it. Once the PDF has been tagged, we'll provide the document with tags and optionally, a report file. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
+To get started using Adobe PDF Accessibility Auto-Tag API, let's walk through a simple scenario - taking an input PDF document and running PDF Accessibility Auto-Tag API against it. Once the PDF has been tagged, we'll provide the document with tags and optionally, a report file. In this guide, we will walk you through the complete process for creating a program that will accomplish this task.
 
 ## Prerequisites
 
@@ -17,7 +17,7 @@ To complete this guide, you will need:
 
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
+1) To begin, open your browser to <https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
 
 ![Sign in](./shot1.png)
 
@@ -29,11 +29,11 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2.png)
+![Project setup](./shot2_ga.png)
 
 6) After your credentials are created, they are automatically  downloaded:
 
-![alt](./shot3.png)
+![alt](./shot3_ga.png)
 
 ## Step Two: Setting up the project
 
@@ -62,7 +62,7 @@ Note that that private key is *also* found in this directory so feel free to cop
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.adobe.documentservices</groupId>
-  <artifactId>pdfservices-sdk-extract-guide</artifactId>
+  <artifactId>pdfservices-sdk-autotag-guide</artifactId>
   <version>1</version>
 
   <name>PDF Services Java SDK Samples</name>
@@ -71,7 +71,7 @@ Note that that private key is *also* found in this directory so feel free to cop
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <pdfservices.sdk.version>2.2.2</pdfservices.sdk.version>
+    <pdfservices.sdk.version>3.3.0</pdfservices.sdk.version>
   </properties>
 
   <dependencies>
@@ -160,9 +160,9 @@ Note that that private key is *also* found in this directory so feel free to cop
 
 This file will define what dependencies we need and how the application will be built. 
 
-Our application will take a PDF, `Adobe Extract API Sample.pdf` (downloadable from [here](/Adobe%20Extract%20API%20Sample.pdf)) and extract it's contents. The results will be saved as a ZIP file, `ExtractTextInfoFromPDF.zip`. We will then parse the results from the ZIP and print out the text of any `H1` headers found in the PDF.
+Our application will take a PDF, `Adobe Accesibility Auto-Tag API Sample.pdf` (downloadable from [here](/Adobe%20Accessibility%20Auto-Tag%20API%20Sample.pdf)) and tag its contents. The results will be saved in a given directory `/output/AutotagPDF`.
 
-5) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `ExtractTextInfoFromPDF.java`. 
+5) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `AutotagPDF.java`. 
 
 Now you're ready to begin coding.
 
@@ -177,28 +177,21 @@ import com.adobe.pdfservices.operation.exception.SdkException;
 import com.adobe.pdfservices.operation.exception.ServiceApiException;
 import com.adobe.pdfservices.operation.exception.ServiceUsageException;
 import com.adobe.pdfservices.operation.io.FileRef;
-import com.adobe.pdfservices.operation.pdfops.ExtractPDFOperation;
-import com.adobe.pdfservices.operation.pdfops.options.extractpdf.ExtractElementType;
-import com.adobe.pdfservices.operation.pdfops.options.extractpdf.ExtractPDFOptions;
+import com.adobe.pdfservices.operation.io.autotag.AutotagPDFOutput;
+import com.adobe.pdfservices.operation.pdfops.AutotagPDFOperation;
+import com.adobe.pdfservices.operation.pdfops.options.autotag.AutotagPDFOptions;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Arrays;
-
-import java.util.zip.*;
-import java.io.InputStream;
-import java.util.Scanner;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 ```
 
 2) Now let's define our main class:
 
 ```java
-public class ExtractTextInfoFromPDF {
+public class AutotagPDF {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ExtractTextInfoFromPDF.class);
 
@@ -211,13 +204,18 @@ public class ExtractTextInfoFromPDF {
 3) Now let's define our input and output:
 
 ```java
-String zip_file = "./ExtractTextInfoFromPDF.zip";
-Files.deleteIfExists(Paths.get(zip_file));
+String inputFile = "./Adobe Extract API Sample.pdf";
 
-String input_file = "./Adobe Extract API Sample.pdf";
+String outputPath = "./output/AutotagPDF/";
+Files.deleteIfExists(Paths.get(outputPath));
+
+String taggedPDF = outputPath + inputPDF +"-tagged-pdf.pdf";
+String taggingReport = outputPath + inputPDF +"-tagging-report.xlsx";
+
 ```
 
-This defines what our output ZIP will be and optionally deletes it if it already exists. Then we define what PDF will be extracted. (You can download the source we used [here](/Adobe%20Extract%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic. 
+This defines what our output directory will be and optionally deletes it if it already exists. Then we define what PDF will be tagged. (You can download the source we used [here](/Adobe%20Accessibility%20Auto%20Tag%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic.
+
 
 4) Next, we can create our credentials and use them:
 
@@ -234,18 +232,14 @@ ExecutionContext executionContext = ExecutionContext.create(credentials);
 5) Now, let's create the operation:
 
 ```java
-ExtractPDFOperation extractPDFOperation = ExtractPDFOperation.createNew();
+AutotagPDFOperation autotagPDFOperation = AutotagPDFOperation.createNew();
 
-// Provide an input FileRef for the operation
-FileRef source = FileRef.createFromLocalFile(input_file);
-extractPDFOperation.setInputFile(source);
-
-// Build ExtractPDF options and set them into the operation
-ExtractPDFOptions extractPDFOptions = ExtractPDFOptions.extractPdfOptionsBuilder()
-		.addGetStylingInfo(false)
-		.addElementsToExtract(Arrays.asList(ExtractElementType.TEXT, ExtractElementType.TABLES))
-		.build();
-extractPDFOperation.setOptions(extractPDFOptions);
+// Build AutotagPDFOptions options and set them into the operation
+AutotagPDFOptions autotagPDFOptions = AutotagPDFOptions.autotagPDFOptionsBuilder()
+        .shiftHeadings()
+        .generateReport()
+        .build();
+autotagPDFOperation.setOptions(autotagPDFOptions);
 ```
 
 This set of code defines what we're doing (an Extract operation), points to our local file and specifies the input is a PDF, and then defines options for the Extract call. PDF Extract API has a few different options, but in this example, we're simply asking for the most basic of extractions, the textual content of the document. 
@@ -254,39 +248,13 @@ This set of code defines what we're doing (an Extract operation), points to our 
 
 ```java
 // Execute the operation
-FileRef result = extractPDFOperation.execute(executionContext);
+AutotagPDFOutput result = autotagPDFOperation.execute(executionContext);
 
-// Save the result at the specified location
-result.saveAs(zip_file);
-```
+// Save the tagged PDF output at the specified location
+autotagPDFOutput.getTaggedPDF().saveAs(taggedPDF);
 
-This code runs the Extraction process and then stores the result zip to the file system. 
-
-7) In this block, we read in the ZIP file, extract the JSON result file, and parse it:
-
-```java
-ZipFile resultZip = new ZipFile(zip_file);
-ZipEntry jsonEntry = resultZip.getEntry("structuredData.json");
-InputStream is = resultZip.getInputStream(jsonEntry);
-Scanner s = new Scanner(is).useDelimiter("\\A");
-String jsonString = s.hasNext() ? s.next() : "";
-s.close();
-
-JSONObject jsonData = new JSONObject(jsonString);
-```
-
-8) Finally we can loop over the result and print out any found element that is an `H1`:
-
-```java
-JSONArray elements = jsonData.getJSONArray("elements");
-for(int i=0; i < elements.length(); i++) {
-    JSONObject element = elements.getJSONObject(i);
-    String path = element.getString("Path");
-    if(path.endsWith("/H1")) {
-        String text = element.getString("Text");
-        System.out.println(text);
-    }
-}
+// Save the tagging report output at the specified location
+autotagPDFOutput.getReport().saveAs(taggingReport);
 ```
 
 ![Example running in the command line](./shot9.png)
@@ -300,36 +268,32 @@ import com.adobe.pdfservices.operation.exception.SdkException;
 import com.adobe.pdfservices.operation.exception.ServiceApiException;
 import com.adobe.pdfservices.operation.exception.ServiceUsageException;
 import com.adobe.pdfservices.operation.io.FileRef;
-import com.adobe.pdfservices.operation.pdfops.ExtractPDFOperation;
-import com.adobe.pdfservices.operation.pdfops.options.extractpdf.ExtractElementType;
-import com.adobe.pdfservices.operation.pdfops.options.extractpdf.ExtractPDFOptions;
+import com.adobe.pdfservices.operation.io.autotag.AutotagPDFOutput;
+import com.adobe.pdfservices.operation.pdfops.AutotagPDFOperation;
+import com.adobe.pdfservices.operation.pdfops.options.autotag.AutotagPDFOptions;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Arrays;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-import java.util.zip.*;
-import java.io.InputStream;
-import java.util.Scanner;
+public class AutotagPDF {
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-public class ExtractTextInfoFromPDF {
-
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ExtractTextInfoFromPDF.class);
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(AutotagPDF.class);
 
     public static void main(String[] args) {
 
         try {
 
-            String zip_file = "./ExtractTextInfoFromPDF.zip";
-            Files.deleteIfExists(Paths.get(zip_file));
+            String inputFile = "./Adobe Extract API Sample.pdf";
 
-            String input_file = "./Adobe Extract API Sample.pdf";
+            String outputPath = "./output/AutotagPDF/";
+            Files.deleteIfExists(Paths.get(outputPath));
 
+            String taggedPDF = outputPath + inputPDF +"-tagged-pdf.pdf";
+            String taggingReport = outputPath + inputPDF +"-tagging-report.xlsx";
+            
             // Initial setup, create credentials instance.
             Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
                     .fromFile("pdfservices-api-credentials.json")
@@ -338,45 +302,26 @@ public class ExtractTextInfoFromPDF {
             // Create an ExecutionContext using credentials.
             ExecutionContext executionContext = ExecutionContext.create(credentials);
 
-            ExtractPDFOperation extractPDFOperation = ExtractPDFOperation.createNew();
+            AutotagPDFOperation autotagPDFOperation = AutotagPDFOperation.createNew();
 
-            // Provide an input FileRef for the operation
-            FileRef source = FileRef.createFromLocalFile(input_file);
-            extractPDFOperation.setInputFile(source);
-
-            // Build ExtractPDF options and set them into the operation
-            ExtractPDFOptions extractPDFOptions = ExtractPDFOptions.extractPdfOptionsBuilder()
-                    .addGetStylingInfo(false)
-                    .addElementsToExtract(Arrays.asList(ExtractElementType.TEXT, ExtractElementType.TABLES))
+            // Build AutotagPDFOptions options and set them into the operation
+            AutotagPDFOptions autotagPDFOptions = AutotagPDFOptions.autotagPDFOptionsBuilder()
+                    .shiftHeadings()
+                    .generateReport()
                     .build();
-            extractPDFOperation.setOptions(extractPDFOptions);
+            
+            autotagPDFOperation.setOptions(autotagPDFOptions);
 
             // Execute the operation
-            FileRef result = extractPDFOperation.execute(executionContext);
+            AutotagPDFOutput result = autotagPDFOperation.execute(executionContext);
 
-            // Save the result at the specified location
-            result.saveAs(zip_file);
+            // Save the tagged PDF output at the specified location
+            autotagPDFOutput.getTaggedPDF().saveAs(taggedPDF);
 
-      		System.out.println("Successfully extracted information from PDF. Printing H1 Headers:\n");
-
-            ZipFile resultZip = new ZipFile(zip_file);
-            ZipEntry jsonEntry = resultZip.getEntry("structuredData.json");
-            InputStream is = resultZip.getInputStream(jsonEntry);
-            Scanner s = new Scanner(is).useDelimiter("\\A");
-            String jsonString = s.hasNext() ? s.next() : "";
-            s.close();
-
-            JSONObject jsonData = new JSONObject(jsonString);
-            JSONArray elements = jsonData.getJSONArray("elements");
-            for(int i=0; i < elements.length(); i++) {
-                JSONObject element = elements.getJSONObject(i);
-                String path = element.getString("Path");
-                if(path.endsWith("/H1")) {
-                    String text = element.getString("Text");
-                    System.out.println(text);
-                }
-            }
+            // Save the tagging report output at the specified location
+            autotagPDFOutput.getReport().saveAs(taggingReport);
             
+            LOGGER.info("Successfully tagged information in PDF.");
 
         } catch (ServiceApiException | IOException | SdkException | ServiceUsageException e) {
             LOGGER.error("Exception encountered while executing operation", e);

@@ -4,7 +4,7 @@ title: Node.js | Quickstarts | PDF Accessibility Auto-Tag API | Adobe PDF Servic
 
 # Quickstart for PDF Accessibility Auto-Tag API (Node.js)
 
-To get started using Adobe PDF Accessibility Auto Tag API, let's walk through a simple scenario - taking an input PDF document and running PDF Accessibility Auto Tag API against it. Once the PDF has been tagged, we'll provide the document with tags and optionally, a report file. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
+To get started using Adobe PDF Accessibility Auto-Tag API, let's walk through a simple scenario - taking an input PDF document and running PDF Accessibility Auto-Tag API against it. Once the PDF has been tagged, we'll provide the document with tags and optionally, a report file. In this guide, we will walk you through the complete process for creating a program that will accomplish this task.
 
 ## Prerequisites
 
@@ -16,7 +16,7 @@ To complete this guide, you will need:
 
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
+1) To begin, open your browser to <https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
 
 ![Sign in](./shot1.png)
 
@@ -28,11 +28,11 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2.png)
+![Project setup](./shot2_ga.png)
 
 6) After your credentials are created, they are automatically downloaded:
 
-![alt](./shot3.png)
+![alt](./shot3_ga.png)
 
 ## Step Two: Setting up the project
 
@@ -62,9 +62,9 @@ Note that that private key is *also* found in this directory so feel free to cop
 
 At this point, we've installed the Node.js SDK for Adobe PDF Services API as a dependency for our project and have copied over our credentials files. 
 
-Our application will take a PDF, `Adobe Extract API Sample.pdf` (downloadable from [here](/Adobe%20Extract%20API%20Sample.pdf)) and extract it's contents. The results will be saved as a ZIP file, `ExtractTextInfoFromPDF.zip`. We will then parse the results from the ZIP and print out the text of any `H1` headers found in the PDF.
+Our application will take a PDF, `Adobe Accesibility Auto-Tag API Sample.pdf` (downloadable from [here](/Adobe%20Accessibility%20Auto-Tag%20API%20Sample.pdf)) and tag its contents. The results will be saved in a given directory `/output/AutotagPDF`.
 
-7) In your editor, open the directory where you previously copied the credentials. Create a new file, `extract.js`.
+7) In your editor, open the directory where you previously copied the credentials. Create a new file, `autotag-pdf.js`.
 
 Now you're ready to begin coding.
 
@@ -74,8 +74,6 @@ Now you're ready to begin coding.
 
 ```js
 const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
-const fs = require('fs');
-const AdmZip = require('adm-zip');
 ```
 
 The first line includes the Adobe PDF Services Node.js SDK. The second third include Node's `filesystem` package as well as the package that will work with the ZIP file returned from the API. 
@@ -83,15 +81,17 @@ The first line includes the Adobe PDF Services Node.js SDK. The second third inc
 2) Now let's define our input and output:
 
 ```js
-const OUTPUT_ZIP = './ExtractTextInfoFromPDF.zip';
+const INPUT_PDF = './Adobe Accessibility Auto-Tag API Sample.pdf';
+const OUTPUT_PATH = './output/AutotagPDF/';
 
 //Remove if the output already exists.
-if(fs.existsSync(OUTPUT_ZIP)) fs.unlinkSync(OUTPUT_ZIP);
+if(fs.existsSync(OUTPUT_PATH)) fs.unlinkSync(OUTPUT_PATH);
 
-const INPUT_PDF = './Adobe Extract API Sample.pdf';
+const TAGGED_PDF = OUTPUT_PATH + INPUT_PDF + "-tagged-pdf.pdf";
+const TAGGING_REPORT = OUTPUT_PATH + INPUT_PDF + "-tagging-report.xlsx";
 ```
 
-This defines what our output ZIP will be and optionally deletes it if it already exists. Then we define what PDF will be extracted. (You can download the source we used [here](/Adobe%20Extract%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic. 
+This defines what our output directory will be and optionally deletes it if it already exists. Then we define what PDF will be tagged. (You can download the source we used [here](/Adobe%20Accessibility%20Auto%20Tag%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic.
 
 3) Next, we setup the SDK to use our credentials.
 
@@ -111,69 +111,50 @@ This code both points to the credentials downloaded previously as well as sets u
 
 ```js
 // Create a new operation instance.
-const extractPDFOperation = PDFServicesSdk.ExtractPDF.Operation.createNew(),
-	input = PDFServicesSdk.FileRef.createFromLocalFile(
-		INPUT_PDF, 
-		PDFServicesSdk.ExtractPDF.SupportedSourceFormat.pdf
-	);
+const autotagPDFOperation = PDFServicesSdk.AutotagPDF.Operation.createNew(),
+	input = PDFServicesSdk.FileRef.createFromLocalFile(INPUT_PDF);
 
-// Build extractPDF options
-const options = new PDFServicesSdk.ExtractPDF.options.ExtractPdfOptions.Builder()
-		.addElementsToExtract(PDFServicesSdk.ExtractPDF.options.ExtractElementType.TEXT).build()
-
-extractPDFOperation.setInput(input);
-extractPDFOperation.setOptions(options);
+// Build autotagPDF options
+const autotagPDFOptions = new PDFServicesSdk.AutotagPDF.options.AutotagPDFOptions.Builder()
+    .shiftHeadings()
+    .generateReport()
+    .build();
+autotagPDFOperation.setInput(input);
+autotagPDFOperation.setOptions(options);
 ```
 
-This set of code defines what we're doing (an Extract operation), points to our local file and specifies the input is a PDF, and then defines options for the Extract call. PDF Extract API has a few different options, but in this example, we're simply asking for the most basic of extractions, the textual content of the document. 
+This set of code defines what we're doing (an Auto-Tag operation), points to our local file and specifies the input is a PDF, and then defines options for the Auto-Tag call. PDF Accessibility Auto-Tag API has a few different options, but in this example, we're simply asking for a basic tagging operation, which returns the tagged PDF document and an XLSX report of the document.
 
 5) The next code block executes the operation:
 
 ```js
 // Execute the operation
-extractPDFOperation.execute(executionContext)
-	.then(result => result.saveAsFile(OUTPUT_ZIP))
+autotagPDFOperation.execute(executionContext)
+	.then(result => {
+        result.taggedPDF.saveAsFile(TAGGED_PDF);
+        result.report.saveAsFile(TAGGING_REPORT);
+    })
 	.then(() => {
-		console.log('Successfully extracted information from PDF.');
+		console.log('Successfully tagged information in PDF.');
 	})
 	.catch(err => console.log(err));
 ```
 
-This code runs the Extraction process and then stores the result zip to the file system. 
-
-6) In this block, we read in the ZIP file, extract the JSON result file, and parse it:
-
-```js
-let zip = new AdmZip(OUTPUT_ZIP);
-let jsondata = zip.readAsText('structuredData.json');
-let data = JSON.parse(jsondata);
-```
-
-7) Finally we can loop over the result and print out any found element that is an `H1`:
-
-```js
-data.elements.forEach(element => {
-	if(element.Path.endsWith('/H1')) {
-		console.log(element.Text);
-	}
-});
-```
-
 ![Example running at the command line](./shot9.png)
 
-Here's the complete application (`extract.js`):
+Here's the complete application (`autotag-pdf.js`):
 
 ```js
 const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
-const fs = require('fs');
-const AdmZip = require('adm-zip');
 
-const OUTPUT_ZIP = './ExtractTextInfoFromPDF.zip';
+const INPUT_PDF = './Adobe Accessibility Auto-Tag API Sample.pdf';
+const OUTPUT_PATH = './output/AutotagPDF/';
 
 //Remove if the output already exists.
-if(fs.existsSync(OUTPUT_ZIP)) fs.unlinkSync(OUTPUT_ZIP);
+if(fs.existsSync(OUTPUT_PATH)) fs.unlinkSync(OUTPUT_PATH);
 
-const INPUT_PDF = './Adobe Extract API Sample.pdf';
+const TAGGED_PDF = OUTPUT_PATH + INPUT_PDF + "-tagged-pdf.pdf";
+const TAGGING_REPORT = OUTPUT_PATH + INPUT_PDF + "-tagging-report.xlsx";
 
 const credentials = PDFServicesSdk.Credentials
 		.serviceAccountCredentialsBuilder()
@@ -184,36 +165,27 @@ const credentials = PDFServicesSdk.Credentials
 const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
 
 // Create a new operation instance.
-const extractPDFOperation = PDFServicesSdk.ExtractPDF.Operation.createNew(),
-	input = PDFServicesSdk.FileRef.createFromLocalFile(
-		INPUT_PDF, 
-		PDFServicesSdk.ExtractPDF.SupportedSourceFormat.pdf
-	);
+const autotagPDFOperation = PDFServicesSdk.AutotagPDF.Operation.createNew(),
+    input = PDFServicesSdk.FileRef.createFromLocalFile(INPUT_PDF);
 
-// Build extractPDF options
-const options = new PDFServicesSdk.ExtractPDF.options.ExtractPdfOptions.Builder()
-		.addElementsToExtract(PDFServicesSdk.ExtractPDF.options.ExtractElementType.TEXT).build()
-
-
-extractPDFOperation.setInput(input);
-extractPDFOperation.setOptions(options);
+// Build autotagPDF options
+const autotagPDFOptions = new PDFServicesSdk.AutotagPDF.options.AutotagPDFOptions.Builder()
+    .shiftHeadings()
+    .generateReport()
+    .build();
+autotagPDFOperation.setInput(input);
+autotagPDFOperation.setOptions(options);
 
 // Execute the operation
-extractPDFOperation.execute(executionContext)
-	.then(result => result.saveAsFile(OUTPUT_ZIP))
-	.then(() => {
-		console.log('Successfully extracted information from PDF. Printing H1 Headers:\n');
-		let zip = new AdmZip(OUTPUT_ZIP);
-		let jsondata = zip.readAsText('structuredData.json');
-		let data = JSON.parse(jsondata);
-		data.elements.forEach(element => {
-			if(element.Path.endsWith('/H1')) {
-				console.log(element.Text);
-			}
-		});
-
-	})
-	.catch(err => console.log(err));
+autotagPDFOperation.execute(executionContext)
+    .then(result => {
+        result.taggedPDF.saveAsFile(TAGGED_PDF);
+        result.report.saveAsFile(TAGGING_REPORT);
+    })
+    .then(() => {
+        console.log('Successfully tagged information in PDF.');
+    })
+    .catch(err => console.log(err));
 ```
 
 ## Next Steps
