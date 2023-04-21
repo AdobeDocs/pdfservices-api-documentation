@@ -220,7 +220,7 @@ try {
 #### Python
 
 ```python
-# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples/tree/beta
+# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples
 # Run the sample:
 # python src/autotagpdf/autotag_pdf.py
 
@@ -617,7 +617,7 @@ function getShiftHeadingsFromCmdArgs(args) {
 #### Python
 
 ```python
-# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples/tree/beta
+# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples
 # Run the sample:
 # python src/autotagpdf/autotag_pdf_parameterised.py --report --shift_headings --input resources/autotagPdfInput.pdf --output output/
 
