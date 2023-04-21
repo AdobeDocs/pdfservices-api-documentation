@@ -95,7 +95,7 @@ curl --location -g --request GET 'https://dcplatformstorageservice-us-east-1.s3-
 
 ## SDK
 
-PDF Services API is also accessible via SDKs in popular languages such as Java and Python.
+PDF Services API is also accessible via SDKs in popular languages such as Java, .NET, Node JS and Python.
 
 <InlineAlert slots="text"/>
 
@@ -260,6 +260,239 @@ To build a custom project:
 4.  Add the [Authentication](./index.md#authentication) details as described above.
 
 ![Adobe PDF Services SDK On Maven](../images/maven.png)
+
+### .NET
+
+Jumpstart your development by bookmarking or downloading the following key resources:
+
+-   This document
+-   [Nuget package](https://www.adobe.com/go/pdftoolsapi_net_nuget)
+-   [.NET API reference](https://www.adobe.com/go/pdftoolsapi_net_docs)
+-   [.NET Sample code](https://www.adobe.com/go/pdftoolsapi_net_samples)
+-   Input/output test files reside in the their respective sample directories
+
+#### Prerequisites
+
+The samples project requires the following:
+
+-   .NET Core: version 3.1 or above
+-   A build Tool: Either Visual Studio or .NET Core CLI.
+
+#### Authentication
+
+Once you complete the [Getting Credentials](quickstarts/#getting-credentials), you will receive a zip file with content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
+
+-   **Personalized Download**: The samples download zip contains a private.key file and an adobe-DC.PDFServices.SDK.NET.Samples directory. Each sample directory contains the sample code as well as a preconfigured pdfservices-api-credentials.json file.
+-   **Non Personalized Download**: The samples download zip contains the private.key file and unconfigured pdfservices-api-credentials.json file.
+
+After downloading the zip, you can either run the samples in the zip directly, or you can replace the pdfservices-api-credentials.json and private.key files in the [.Net sample code](https://www.adobe.com/go/pdftoolsapi_net_samples) with those in the zip.
+
+**Example pdfservices-api-credentials.json file**
+
+```json 
+{
+ "client_credentials": {
+   "client_id": "<YOUR_CLIENT_ID>",
+   "client_secret": "<YOUR_CLIENT_SECRET>"
+ },
+ "service_account_credentials": {
+   "organization_id": "<YOUR_ORGANIZATION_ID>",
+   "account_id": "<YOUR_TECHNICAL_ACCOUNT_ID>",
+   "private_key_file": "<PRIVATE_KEY_FILE_PATH>"
+ }
+}
+```
+
+
+#### Set up a NET environment
+
+Running any sample or custom code requires the following:
+
+1.  Download and install the [.NET SDK](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/install).
+
+<InlineAlert slots="text"/>
+
+The Nuget package automatically downloads when you build the sample project.
+
+##### Option 1: Personalized samples setup
+
+The quickest way to get up and running is to download the personalized code samples during the Getting Credentials workflow. These samples provide everything from ready-to-run sample code, an embedded credential json file, and pre-configured connections to dependencies.
+
+1.  Extract the downloaded samples .zip.
+2.  From the samples directory, build the sample project: `dotnet build`.
+3.  Test the sample code on the command line.
+4.  Refer to this document for details about running samples as well as the API Reference for API details.
+
+##### Option 2: Generic samples setup
+
+If you did not choose **Personalized Code Sample Download** during the credential setup process:
+
+1.  Clone or download the [samples project](https://www.adobe.com/go/pdftoolsapi_net_samples).
+2.  Find and replace all occurrences of `pdfservices-api-credentials.json` and `private.key` files with the ones present in your PDFServicesSDK-Credentials.zip file.
+3.  From the samples directory, build the sample project: `dotnet build`.
+4.  Test the sample code on the command line.
+5.  Refer to this document for details about running samples as well as the API Reference for API details.
+
+#### Verifying download authenticity
+
+For security reasons you may wish to confirm the installer's authenticity. To do so,
+
+1.  After installing the Nuget package, navigate to the .nuget directory.
+2.  Find and open the .sha512 file.
+3.  Verify the hash in the downloaded file matches the value published here.
+
+```
+YNHLrVxKhihZHJtuu0m4ZbBJRyrLHEh910DbMHHszOxJ5ljEhn6kylNptqsKhgZS6IM2J/Siped6jt091J77ZQ==
+```
+
+#### Logging
+
+Refer to the API docs for error and exception details.
+
+The .NET SDK uses [LibLog](https://github.com/damianh/LibLog) as a bridge between different logging frameworks. Log4net is used as a logging provider in the sample projects and the logging configurations are provided in log4net.config. Add the configuration for your preferred provider and set up the necessary appender as required to enable logging.
+
+**log4net.config file**
+
+```html
+<log4net>
+ <root>
+   <level value="INFO" />
+   <appender-ref ref="console" />
+ </root>
+ <appender name="console" type="log4net.Appender.ConsoleAppender">
+   <layout type="log4net.Layout.PatternLayout">
+     <conversionPattern value="%date %level %logger - %message%newline" />
+   </layout>
+ </appender>
+</log4net>
+```
+
+#### Custom projects
+
+While building the sample project automatically downloads the Nuget package, you can do it manually if you wish to use your own tools and process.
+
+1.  Go to <https://www.adobe.com/go/pdftoolsapi_net_nuget>.
+2.  Download the latest package.
+
+![Adobe PDF Services SDK on Nuget](../images/nuget.png)
+
+### Node.js
+
+Jumpstart your development by bookmarking or downloading the following key resources:
+
+-   This document
+-   [Node.js API reference](https://www.adobe.com/go/pdftoolsapi_node_docs)
+-   [Node.js Sample code](http://www.adobe.com/go/pdftoolsapi_node_sample)
+-   [Node.js SDK](http://www.adobe.com/go/pdftoolsapi_node_npm)
+
+#### Authentication
+
+Once you complete the [Getting Credentials](quickstarts/#getting-credentials), you will receive a zip file with content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
+
+-   **Personalized Download**: The samples download.zip contains a private.key file and an adobe-dc-pdf-services-sdk-node-samples directory. Each sample directory contains the sample code as well as a preconfigured pdfservices-api-credentials.json file.
+-   **Non Personalized Download**: The samples download zip contains the private.key file and unconfigured pdfservices-api-credentials.json file.
+
+After downloading the zip, you can either run the samples in the zip directly, or you can replace the pdfservices-api-credentials.json and private.key files in the [Node.js sample code](http://www.adobe.com/go/pdftoolsapi_node_sample) with those in the zip.
+
+**Example pdfservices-api-credentials.json file**
+
+```json 
+{
+ "client_credentials": {
+   "client_id": "<YOUR_CLIENT_ID>",
+   "client_secret": "<YOUR_CLIENT_SECRET>"
+ },
+ "service_account_credentials": {
+   "organization_id": "<YOUR_ORGANIZATION_ID>",
+   "account_id": "<YOUR_TECHNICAL_ACCOUNT_ID>",
+   "private_key_file": "<PRIVATE_KEY_FILE_PATH>"
+ }
+}
+```
+
+
+#### Set up a Node.js environment
+
+Running any sample or custom code requires the following steps:
+
+1.  Install [Node.js 10.13.0](https://nodejs.org/en/download/) or higher.
+
+<InlineAlert slots="text"/>
+
+The @adobe/pdfservices-node-sdk npm package automatically downloads when you build the sample project.
+
+``` 
+npm install --save @adobe/pdfservices-node-sdk
+```
+
+##### Option 1: Personalized samples setup
+
+1.  Extract the downloaded samples .zip.
+2.  From the samples root directory, run `npm install`.
+3.  Test the sample code on the command line.
+4.  Refer to this document for details about running samples as well as the API Reference for API details.
+
+##### Option 2: Generic samples setup
+
+If you did not choose **Personalized Code Sample Download** during the credential setup process:
+
+1.  Download [the Node.js sample project ](http://www.adobe.com/go/pdftoolsapi_node_sample).
+2.  Find and replace all occurrences of `pdfservices-api-credentials.json` and `private.key` files with the ones present in your PDFServicesCredentials.zip file.
+3.  From the samples root directory, run `npm install`.
+4.  Test the sample code on the command line.
+5.  Refer to this document for details about running samples as well as the API Reference for API details.
+
+#### Verifying download authenticity
+
+For security reasons you may wish to confirm the installer's authenticity. To do so,
+
+1.  After installing the package, find and open package.json.
+2.  Find the "\_integrity" key.
+3.  Verify the hash in the downloaded file matches the value published here.
+
+```
+sha512-BTxm844zBHDdK+F/lZvKM0LXNIjTuEt/ia/2N5q1fV6Ks6VBqGk2tsY0vzg5gV10Alrj81OdH/IX5w5O4M279A==
+```
+
+#### Logging
+
+Refer to the API docs for error and exception details.
+
+The SDK uses the [log4js API](https://www.npmjs.com/package/log4js) for logging. During execution, the SDK searches for config/pdfservices-sdk-log4js-config.json in the working directory and reads the logging properties from there. If you do not provide a configuration file, the default logging logs INFO to the console. Customize the logging settings as needed.
+
+**log4js.properties file**
+
+```json
+{
+  "appenders": {
+    "consoleAppender": {
+      "_comment": "A sample console appender configuration, Clients can change as per their logging implementation",
+      "type": "console",
+      "layout": {
+        "type": "pattern",
+        "pattern": "%d:[%p]: %m"
+      }
+    }
+  },
+  "categories": {
+    "default": {
+      "appenders": ["consoleAppender"],
+      "_comment": "Change the logging levels as per need. info is recommended for pdfservices-node-sdk",
+      "level": "info"
+    }
+  }
+} 
+```
+
+
+#### Custom projects
+
+While building the sample project automatically downloads the Node package, you can do it manually if you wish to use your own tools and process.
+
+1.  Go to <https://www.npmjs.com/package/@adobe/pdfservices-node-sdk>
+2.  Download the latest package.
+
+![Adobe PDF Services SDK on NPM JS](../images/node.png)
 
 ### Python
 
