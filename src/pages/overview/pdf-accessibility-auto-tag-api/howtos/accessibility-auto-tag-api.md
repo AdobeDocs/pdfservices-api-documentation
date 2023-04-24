@@ -180,7 +180,7 @@ namespace AutotagPDF
 // Run the sample:
 // node src/autotagpdf/autotag-pdf.js
 
-const PDFServicesSdk = require('@dcloud/pdfservices-node-sdk');
+const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 
 try {
     // Initial setup, create credentials instance.
@@ -528,7 +528,7 @@ namespace AutotagPDFParameterised
 // Run the sample:
 // node src/autotag/autoag-pdf-parameterised.js
 
-const PDFServicesSdk = require('@dcloud/pdfservices-node-sdk');
+const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 
 const args = process.argv;
 
