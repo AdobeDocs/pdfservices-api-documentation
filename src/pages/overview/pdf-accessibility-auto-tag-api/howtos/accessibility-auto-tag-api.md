@@ -7,7 +7,7 @@ title: Accessibility API | How Tos | PDF Accessibility Auto-Tag API | Adobe PDF 
 
 The output of the PDF Accessibility Auto-Tag API contains the following:
 
-- The tagged PDF file with headings shifted if the option of shift headings is set.
+- The tagged PDF file.
 - A report in XLSX format, if the report generation was enabled. This report provides information related to the tags found in the original document, if any, and the auto-tagged document.
 
 ## API limitations
