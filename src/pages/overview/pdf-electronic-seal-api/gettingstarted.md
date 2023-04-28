@@ -191,7 +191,7 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
-// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.electronicseal.ESealWithCustomAppearanceOptions
+// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.electronicseal.ElectronicSeal
 
 package com.adobe.pdfservices.operation.samples.electronicseal;
 
@@ -435,7 +435,7 @@ public class ElectronicSeal {
 ```js
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
-// node src/documentmerge/electronic-seal.js
+// node src/electronicseal/electronic-seal.js
 
  const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 
