@@ -456,8 +456,8 @@ public class ElectronicSeal {
      //Get the input document to perform the sealing operation
      const sourceFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/sampleInvoice.pdf'),
 
-         //Get the background seal image for signature , if required.
-         sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/sampleSealImage.png');
+     //Get the background seal image for signature , if required.
+     sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/sampleSealImage.png');
 
      //Create AppearanceOptions and add the required signature appearance items
      appearanceOptions = new Options.AppearanceOptions();
