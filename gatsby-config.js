@@ -419,7 +419,7 @@ module.exports = {
             },
             {
                 title: 'PDF Electronic Seal API                       ',
-                subTitle: 'Beta Program',
+                subTitle: '',
                 path: 'overview/pdf-electronic-seal-api/index.md',
                 pages: [
                     {
