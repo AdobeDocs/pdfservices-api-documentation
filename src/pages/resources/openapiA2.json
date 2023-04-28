@@ -16,7 +16,9 @@
   "tags": [
     {
       "name": "Assets",
-      "description": "Upload and download assets."
+      "description": "Upload and download assets to adobe internal storage. \n **No need to call this API if we are using template storage solution using signed urls.**"
+
+
     },
     {
       "name": "Create PDF",
@@ -129,7 +131,7 @@
           "Assets"
         ],
         "summary": "Get upload pre-signed URI. ",
-        "description": "Get the pre-signed URI to directly upload the content to the cloud provider. \n\nOutput: Response will have the asset URI of created asset and pre-signed URI for uploading the content.",
+        "description": "Get the pre-signed URI to directly upload the content to the adobe internal transient storage. \n\nOutput: Response will have the asset URI of created asset and pre-signed URI for uploading the content.",
         "operationId": "asset.uploadpresignedurl",
         "parameters": [
           {
@@ -798,10 +800,10 @@
               "schema": {
                 "oneOf": [
                   {
-                    "$ref": "#/components/schemas/DocumentGenerationInternal"
+                    "$ref": "#/components/schemas/Internal"
                   },
                   {
-                    "$ref": "#/components/schemas/DocumentGenerationExternal"
+                    "$ref": "#/components/schemas/External"
                   }
                 ]
               }
@@ -7673,7 +7675,7 @@
         ],
         "additionalProperties": false
       },
-      "DocumentGenerationInternal": {
+      "Internal": {
         "description": "Params for Document Generation Operation",
         "type": "object",
         "properties": {
@@ -7733,80 +7735,121 @@
         ],
         "additionalProperties": false
       },
-      "DocumentGenerationExternal": {
+      "External": {
         "description": "Params for Document Generation Operation using external storage",
         "type": "object",
         "properties": {
-          "assetURI": {
-            "description": "Input file Presigned URL.",
-            "type": "string"
+          "input": {
+            "description": "Params representing input object for docgen operation",
+            "type": "object",
+            "properties": {
+              "uri": {
+              "description": "Input file Presigned URL.",
+              "type": "string"
+              },
+              "storage": {
+                "description": "Specifies the type of the external storage",
+                "type": "string",
+                "enum": [
+                  "AWS",
+                  "SHAREPOINT"
+                ],
+                "default": "SHAREPOINT"
+              }
+            },
+            "required": [
+              "uri"
+            ]
           },
-          "storageId": {
-            "description": "Specifies the name of the external storage",
-            "type": "string",
-            "enum": [
-              "internal",
-              "sharepoint",
-              "aws"
-            ],
-            "default": "internal"
+          "output": {
+            "description": "Params representing output object for docgen operation",
+            "type": "object",
+            "properties": {
+              "uri" : {
+                "description": "Output file Upload URL.",
+                "type": "string"
+              },
+              "storage": {
+                "description": "Specifies the type of the external storage",
+                "type": "string",
+                "enum": [
+                  "AWS",
+                  "SHAREPOINT"
+                ],
+                "default": "SHAREPOINT"
+              }
+            },
+            "required": [
+              "uri"
+            ]
           },
-          "outputFormat": {
-            "description": "Specifies the target format of the generated output document. Possible values are pdf and docx.",
-            "type": "string",
-            "enum": [
-              "docx",
-              "pdf"
-            ],
-            "default": "pdf"
-          },
-          "outputAssetURI" : {
-            "description": "Output file Upload URL.",
-            "type": "string"
-          },
-          "jsonDataForMerge": {
-            "description": "Specifies the JSON data to merge into the document template.",
-            "type": "object"
-          },
-          "fragments": {
-            "description": "Specifies the Fragments JSON object or a JSON array to resolve fragments in the document template. To know more about fragments use-case in document generation and document templates, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/document-generation-api/fragments/\">documentation</a>..",
-            "type": "object"
+          "params": {
+            "description": "Params for docgen processing",
+            "type": "object",
+            "properties": {
+              "outputFormat": {
+                "description": "Specifies the target format of the generated output document. Possible values are pdf and docx.",
+                "type": "string",
+                "enum": [
+                  "docx",
+                  "pdf"
+                ],
+                "default": "pdf"
+              },
+              "jsonDataForMerge": {
+                "description": "Specifies the JSON data to merge into the document template.",
+                "type": "object"
+              },
+              "fragments": {
+                "description": "Specifies the Fragments JSON object or a JSON array to resolve fragments in the document template. To know more about fragments use-case in document generation and document templates, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/document-generation-api/fragments/\">documentation</a>..",
+                "type": "object"
+              }
+            },
+            "required": [
+              "jsonDataForMerge"
+            ]
           }
         },
         "example": {
-          "assetURI": "https://dcalpine2.sharepoint.com/sites/Docgen/_layouts/15/download.aspx?UniqueId=353087f7-b1ea-4d84-91d7-0821b23e04ea&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDI5MDkiLCJleHAiOiIxNjgwNjA2NTA5IiwiZW5kcG9pbnR1cmwiOiIwU1NJNDAxdjZhUll6YUIyV2lod005VnIxOVJHNStvSUxFN280dk0yUlMwPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMTMzIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJPVEUxTlRZMFkyRXROREZpT1MwME1HSTBMVGczWVdRdFlqaGpaREprWkdNeVlXVTUiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE2OSJ9.aStWTExNZ045T3h3OGV4MHdyYURmLzZqOW9McGRhSmtZWStHOE1wM0ZaYz0&ApiVersion=2.0",
-          "storageId": "sharepoint",
-          "outputFormat": "pdf",
-          "outputAssetURI": "https://dcalpine2.sharepoint.com/sites/Docgen/_api/v2.0/drives/b!MA1899sXSkupaKT9m2CP3JIqXDMQyoBCth9h9Rn6bQRjzBEBFxsbQpN23hY-rzQT/items/01TAIM7P3ZQQ4DP4NZHFDI6FBJPIGFRCY3/uploadSession?guid='2c79b9aa-f9dc-42c8-8919-da5a9b554b81'&overwrite=True&rename=False&dc=0&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDAyOTMiLCJleHAiOiIxNjgwNjg2NjkzIiwiZW5kcG9pbnR1cmwiOiJXVWNNVHhndVdyMHR4YzhlYWxlRzMrYUV1aXg5anoxanZuRmRpMENjNHFRPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMjYxIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJaREZsTURjek5tRXRaREJtWkMwMFlXUXlMV0V5WTJNdE1HRTRPV1prTTJJNU5XTmwiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE3MCJ9.a1hxR1J1emlFSE9jSTU0SnFTcFN6TGlsRHNhWTFRaDNkT2hwT3ZPYm8waz0",
-          "jsonDataForMerge": {
-            "customerName": "Kane Miller",
-            "customerVisits": 100,
-            "itemsBought": [
-              {
-                "name": "Sprays",
-                "quantity": 50,
-                "amount": 100
-              },
-              {
-                "name": "Chemicals",
-                "quantity": 100,
-                "amount": 200
-              }
-            ],
-            "totalAmount": 300,
-            "previousBalance": 50,
-            "lastThreeBillings": [
-              100,
-              200,
-              300
-            ],
-            "photograph": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII="
+          "input": {
+            "uri": "https://dcalpine2.sharepoint.com/sites/Docgen/_layouts/15/download.aspx?UniqueId=353087f7-b1ea-4d84-91d7-0821b23e04ea&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDI5MDkiLCJleHAiOiIxNjgwNjA2NTA5IiwiZW5kcG9pbnR1cmwiOiIwU1NJNDAxdjZhUll6YUIyV2lod005VnIxOVJHNStvSUxFN280dk0yUlMwPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMTMzIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJPVEUxTlRZMFkyRXROREZpT1MwME1HSTBMVGczWVdRdFlqaGpaREprWkdNeVlXVTUiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE2OSJ9.aStWTExNZ045T3h3OGV4MHdyYURmLzZqOW9McGRhSmtZWStHOE1wM0ZaYz0&ApiVersion=2.0",
+            "storage": "SHAREPOINT"
+          },
+          "output": {
+            "uri": "https://dcalpine2.sharepoint.com/sites/Docgen/_api/v2.0/drives/b!MA1899sXSkupaKT9m2CP3JIqXDMQyoBCth9h9Rn6bQRjzBEBFxsbQpN23hY-rzQT/items/01TAIM7P3ZQQ4DP4NZHFDI6FBJPIGFRCY3/uploadSession?guid='2c79b9aa-f9dc-42c8-8919-da5a9b554b81'&overwrite=True&rename=False&dc=0&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDAyOTMiLCJleHAiOiIxNjgwNjg2NjkzIiwiZW5kcG9pbnR1cmwiOiJXVWNNVHhndVdyMHR4YzhlYWxlRzMrYUV1aXg5anoxanZuRmRpMENjNHFRPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMjYxIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJaREZsTURjek5tRXRaREJtWkMwMFlXUXlMV0V5WTJNdE1HRTRPV1prTTJJNU5XTmwiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE3MCJ9.a1hxR1J1emlFSE9jSTU0SnFTcFN6TGlsRHNhWTFRaDNkT2hwT3ZPYm8waz0",
+            "storage": "SHAREPOINT"
+          },
+          "params": {
+            "outputFormat": "pdf",
+            "jsonDataForMerge": {
+              "customerName": "Kane Miller",
+              "customerVisits": 100,
+              "itemsBought": [
+                {
+                  "name": "Sprays",
+                  "quantity": 50,
+                  "amount": 100
+                },
+                {
+                  "name": "Chemicals",
+                  "quantity": 100,
+                  "amount": 200
+                }
+              ],
+              "totalAmount": 300,
+              "previousBalance": 50,
+              "lastThreeBillings": [
+                100,
+                200,
+                300
+              ],
+              "photograph": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII="
+            }
           }
         },
         "required": [
-          "assetURI",
-          "outputAssetURI",
-          "jsonDataForMerge"
+          "input",
+          "params"
         ],
         "additionalProperties": false
       },
@@ -8463,6 +8506,16 @@
         }
       },
       "done": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/internal"
+          },
+          {
+            "$ref": "#/components/schemas/external"
+          }
+        ]
+      },
+      "internal": {
         "description": "Response in case of 'done' status",
         "type": "object",
         "properties": {
@@ -8485,8 +8538,24 @@
               "size": 200791
             },
             "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
-            "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
+            "assetID": "aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
           }
+        }
+      },
+      "external": {
+        "description": "Response in case of 'done' status using signed urls",
+        "type": "object",
+        "properties": {
+          "status": {
+            "description": "Job Status",
+            "type": "string",
+            "enum": [
+              "done"
+            ]
+          }
+        },
+        "example": {
+          "status": "done"
         }
       },
       "responseAsset": {
@@ -8505,21 +8574,11 @@
               "type": {
                 "description": "The media type of the Resource.",
                 "type": "string"
-              },
-              "storageId" : {
-                "description": "Type of storage used where output document is uploaded",
-                "type": "string",
-                "enum": [
-                  "internal",
-                  "sharepoint",
-                  "aws"
-                ],
-                "default": "internal"
               }
             }
           },
           "assetID": {
-            "description": "An asset ID identifying an asset that is globally unique and never reused. It will be null in case of external storage.",
+            "description": "An asset ID identifying an asset that is globally unique and never reused.",
             "type": "string",
             "required": false
           },
