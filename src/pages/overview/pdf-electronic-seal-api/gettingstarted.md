@@ -184,14 +184,14 @@ Use the samples below to generate a PDF with an electronic seal.
 
 Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="2" languages="Java, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, Rest API" /> 
 
 ##### Java
 
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
-// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.electronicseal.ESealWithCustomAppearanceOptions
+// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.electronicseal.ElectronicSeal
 
 package com.adobe.pdfservices.operation.samples.electronicseal;
 
@@ -435,7 +435,7 @@ public class ElectronicSeal {
 ```js
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
-// node src/documentmerge/electronic-seal.js
+// node src/electronicseal/electronic-seal.js
 
  const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 
@@ -456,8 +456,8 @@ public class ElectronicSeal {
      //Get the input document to perform the sealing operation
      const sourceFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/sampleInvoice.pdf'),
 
-         //Get the background seal image for signature , if required.
-         sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/sampleSealImage.png');
+     //Get the background seal image for signature , if required.
+     sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/sampleSealImage.png');
 
      //Create AppearanceOptions and add the required signature appearance items
      appearanceOptions = new Options.AppearanceOptions();
