@@ -4,7 +4,7 @@ title: Java | Quickstarts | PDF Electronic Seal API | Adobe PDF Services
 
 # Quickstart for Adobe PDF Electronic Seal API (Java)
 
-To get started using Adobe PDF Electronic Seal API, let's walk through a simple scenario - Performing electronic seal over invoice PDF document of an organization. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
+To get started using Adobe PDF Electronic Seal API, let's walk through a simple scenario - Applying an electronic seal on an invoice PDF document of an organization. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
 
 ## Prerequisites
 
@@ -253,7 +253,7 @@ FieldOptions fieldOptions = new FieldOptions.Builder(sealFieldName)
 ```
 
 
-6) Next, we define CSC Certificate Credential instance to be used in sealing:
+6) Next, we create a CSC Certificate Credentials instance:
 
 ```java
 //Set the name of TSP Provider being used.
@@ -280,7 +280,7 @@ CertificateCredentials certificateCredentials = CertificateCredentials.cscCreden
                                                 .build();
 ```
 
-7) Now, let's create the seal options with certificate credential and field options:
+7) Now, let's create the seal options with certificate credentials and field options:
 
 ```java
 //Create SealOptions instance with sealing parameters.
@@ -446,5 +446,5 @@ public class ElectronicSeal {
 
 ## Next Steps
 
-Now that you've successfully performed your first operation, [review the documentation](https://developer.adobe.com/document-services/docs/overview/document-generation-api/) for many other examples and reach out on our [forums](https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK) with any questions. Also remember the samples you downloaded while creating your credentials also have many demos.
+Now that you've successfully performed your first operation, [review the documentation](https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/) for many other examples and reach out on our [forums](https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK) with any questions. Also remember the samples you downloaded while creating your credentials also have many demos.
 
