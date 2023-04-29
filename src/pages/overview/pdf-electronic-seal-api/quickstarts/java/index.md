@@ -4,7 +4,7 @@ title: Java | Quickstarts | PDF Electronic Seal API | Adobe PDF Services
 
 # Quickstart for Adobe PDF Electronic Seal API (Java)
 
-To get started using Adobe PDF Electronic Seal API, let's walk through a simple scenario - {{scenario}}. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
+To get started using Adobe PDF Electronic Seal API, let's walk through a simple scenario - Performing electronic seal over invoice PDF document of an organization. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
 
 ## Prerequisites
 
@@ -17,7 +17,7 @@ To complete this guide, you will need:
 
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=document-generation-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
+1) To begin, open your browser to <https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
 
 ![Sign in](./shot1.png)
 
@@ -136,7 +136,7 @@ Note that that private key is *also* found in this directory so feel free to cop
             <manifest>
               <addClasspath>true</addClasspath>
               <classpathPrefix>lib/</classpathPrefix>
-              <mainClass>ElectronicSealOnPDF</mainClass>
+              <mainClass>ElectronicSeal</mainClass>
             </manifest>
           </archive>
         </configuration>
@@ -160,69 +160,15 @@ Note that that private key is *also* found in this directory so feel free to cop
 
 This file will define what dependencies we need and how the application will be built. 
 
-{{Request flow with input and output}}
+Our application will take an Invoice PDF document, `HallibyInvoice.pdf` (downloadable from [here](./HallibyInvoice.pdf)), and will use the sealing options with default appearance options to apply electronic seal over the PDF document by invoking Acrobat Services API and generate an electronically sealed PDF.
 
-5) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `ElectronicSealOnPDF.java`. 
+5) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `ElectronicSeal.java`. 
 
 Now you're ready to begin coding.
 
 ## Step Three: Creating the application
 
-{Change This}}
-1) Let's start by looking at the Word template. If you open the document in Microsoft Word, you'll notice multiple tokens throughout the document (called out by the use of `{{` and `}}`).
-
-![Example of tokens](./shot10.png)
-
-When the Document Generation API is used, these tokens are replaced with the JSON data sent to the API. These tokens support simple replacements, for example, `{{Customer.Name}}` will be replaced by a customer's name passed in JSON. You can also have dynamic tables. In the Word template, the table uses invoice items as a way to dynamically render whatever items were ordered. Conditions can also be used to hide or show content as you can see two conditions at the end of the document. Finally, basic math can be also be dynamically applied, as seen in the "Grand Total". 
-
-2) Next, let's look at our sample data: 
-
-```json
-{
-  "author": "Gary Lee",
-  "Company": {
-    "Name": "Projected",
-    "Address": "19718 Mandrake Way",
-    "PhoneNumber": "+1-100000098"
-  },
-  "Invoice": {
-    "Date": "January 15, 2021",
-    "Number": 123,
-    "Items": [
-      {
-        "item": "Gloves",
-        "description": "Microwave gloves",
-        "UnitPrice": 5,
-        "Quantity": 2,
-        "Total": 10
-      },
-      {
-        "item": "Bowls",
-        "description": "Microwave bowls",
-        "UnitPrice": 10,
-        "Quantity": 2,
-        "Total": 20
-      }
-    ]
-  },
-  "Customer": {
-    "Name": "Collins Candy",
-    "Address": "315 Dunning Way",
-    "PhoneNumber": "+1-200000046",
-    "Email": "cc@abcdef.co.dw"
-  },
-  "Tax": 5,
-  "Shipping": 5,
-  "clause": {
-    "overseas": "The shipment might take 5-10 more than informed."
-  },
-  "paymentMethod": "Cash"
-}
-```
-
-Notice how the tokens in the Word document match up with values in our JSON. While our example will use a hard coded set of data in a file, production applications can get their data from anywhere. Now let's get into our code.
-
-3) We'll begin by including our required dependencies:
+1) We will begin by including the required dependencies:
 
 ```java
 import com.adobe.pdfservices.operation.ExecutionContext;
@@ -231,93 +177,145 @@ import com.adobe.pdfservices.operation.exception.SdkException;
 import com.adobe.pdfservices.operation.exception.ServiceApiException;
 import com.adobe.pdfservices.operation.exception.ServiceUsageException;
 import com.adobe.pdfservices.operation.io.FileRef;
-
-import com.adobe.pdfservices.operation.pdfops.DocumentMergeOperation;
-import com.adobe.pdfservices.operation.pdfops.options.documentmerge.DocumentMergeOptions;
-import com.adobe.pdfservices.operation.pdfops.options.documentmerge.OutputFormat;
-
+import com.adobe.pdfservices.operation.pdfops.PDFElectronicSealOperation;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.FieldLocation;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.FieldOptions;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.CSCAuthContext;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.CertificateCredentials;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.SealOptions;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.SignatureFormat;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
-import org.json.JSONObject;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 ```
+ 
 
-4) Now let's define our main class:
+2) Now let's define our main class:
 
 ```java
-public class GeneratePDF {
+public class ElectronicSeal {
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(GeneratePDF.class);
+    // Initialize the logger.
+    private static final Logger LOGGER = LoggerFactory.getLogger(ElectronicSeal.class);
 
     public static void main(String[] args) {
 
-	}
-
+    }
 }
 ```
 
-5) Inside our class, we'll begin by defining our input Word, JSON and output filenames. If the output file already exists, it will be deleted:
 
-```Java
-String input_file = "./receiptTemplate.docx";
-
-String output_file = "./generatedReceipt.pdf";
-Files.deleteIfExists(Paths.get(output_file));
-
-Path jsonPath = Paths.get("./receipt.json");
-
-String json = new String(Files.readAllBytes(jsonPath));
-JSONObject jsonDataForMerge = new JSONObject(json);
-```
-
-These lines are hard coded but in a real application would typically be dynamic.
-
-
-6) Next, we can create our credentials and use them:
-
+3) Let's create credentials for pdf services and use them:
 ```java
 // Initial setup, create credentials instance.
 Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-		.fromFile("pdfservices-api-credentials.json")
-		.build();
+                                    .fromFile("pdfservices-api-credentials.json")
+                                    .build();
 
 // Create an ExecutionContext using credentials.
 ExecutionContext executionContext = ExecutionContext.create(credentials);
 ```
 
-7) Now, let's create the operation:
+4) Now let's define our input fields
 
 ```java
-DocumentMergeOptions documentMergeOptions = new DocumentMergeOptions(jsonDataForMerge, OutputFormat.PDF);
+//Get the input document to perform the sealing operation
+FileRef sourceFile = FileRef.createFromLocalFile("./HallibyInvoice.pdf");
 
-DocumentMergeOperation documentMergeOperation = DocumentMergeOperation.createNew(documentMergeOptions);
-
-// Provide an input FileRef for the operation
-FileRef source = FileRef.createFromLocalFile(input_file);
-documentMergeOperation.setInput(source);
+//Get the background seal image for signature , if required.
+FileRef sealImageFile = FileRef.createFromLocalFile("./sampleSealImage.png");
 ```
 
-This set of code defines what we're doing (a document merge operation, the SDK's way of describing Document Generation), points to our local JSON file and specifies the output is a PDF. It also points to the Word file used as a template.
-
-8) The next code block executes the operation:
+5) Inside our class we will define seal field options:
 
 ```java
-// Execute the operation
-FileRef result = documentMergeOperation.execute(executionContext);
+//Set the Seal Field Name to be created in input PDF document.
+String sealFieldName = "<SEAL_FIELD_NAME>";
 
-// Save the result at the specified location
-result.saveAs(output_file);
+//Set the page number in input document for applying seal.
+Integer sealPageNumber = 1;
+
+//Set if seal should be visible or invisible.
+Boolean sealVisible = true;
+
+//Create FieldLocation instance and set the coordinates for applying signature
+FieldLocation fieldLocation = new FieldLocation(150, 250, 350, 200);
+
+//Create FieldOptions instance with required details.
+FieldOptions fieldOptions = new FieldOptions.Builder(sealFieldName)
+                                            .setFieldLocation(fieldLocation)
+                                            .setPageNumber(sealPageNumber)
+                                            .setVisible(sealVisible)
+                                            .build();
 ```
 
-This code runs the Document Generation process and then stores the result PDF document to the file system. 
+
+6) Next, we define CSC Certificate Credential instance to be used in sealing:
+
+```java
+//Set the name of TSP Provider being used.
+String providerName = "<PROVIDER_NAME>";
+
+//Set the access token to be used to access TSP provider hosted APIs.
+String accessToken = "<ACCESS_TOKEN>";
+
+//Set the credential ID.
+String credentialID = "<CREDENTIAL_ID>";
+
+//Set the PIN generated while creating credentials.
+String pin = "<PIN>";
+
+//Create CSCAuthContext instance using access token and token type.
+CSCAuthContext cscAuthContext = new CSCAuthContext(accessToken, "Bearer");
+
+//Create CertificateCredentials instance with required certificate details.
+CertificateCredentials certificateCredentials = CertificateCredentials.cscCredentialBuilder()
+                                                .withProviderName(providerName)
+                                                .withCredentialID(credentialID)
+                                                .withPin(pin)
+                                                .withCSCAuthContext(cscAuthContext)
+                                                .build();
+```
+
+7) Now, let's create the seal options with certificate credential and field options:
+
+```java
+//Create SealOptions instance with sealing parameters.
+SealOptions sealOptions = new SealOptions.Builder(SignatureFormat.PKCS7, certificateCredentials,
+                                                    fieldOptions).build();
+```
+
+8) Now, let's create the operation:
+
+```java
+//Create the PDFElectronicSealOperation instance using the SealOptions instance
+PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.createNew(sealOptions);
+
+//Set the input source file for PDFElectronicSealOperation instance
+pdfElectronicSealOperation.setInput(sourceFile);
+
+//Set the optional input seal image for PDFElectronicSealOperation instance
+pdfElectronicSealOperation.setSealImage(sealImageFile);
+```
+This code creates a seal Operation using sealOptions, input source file and input seal image.
+ 
+9) Let's execute this seal operation:
+
+```java
+//Execute the operation
+FileRef result = pdfElectronicSealOperation.execute(executionContext);
+
+//Save the output at specified location
+String outputFilePath = createOutputFilePath();
+result.saveAs(outputFilePath);
+```
 
 ![Example running in the command line](./shot9.png)
 
-Here's the complete application (`src/main/java/GeneratePDF.java`):
+Here's the complete application (`src/main/java/ElectronicSeal.java`):
 
 ```java
 import com.adobe.pdfservices.operation.ExecutionContext;
@@ -326,40 +324,35 @@ import com.adobe.pdfservices.operation.exception.SdkException;
 import com.adobe.pdfservices.operation.exception.ServiceApiException;
 import com.adobe.pdfservices.operation.exception.ServiceUsageException;
 import com.adobe.pdfservices.operation.io.FileRef;
-
-import com.adobe.pdfservices.operation.pdfops.DocumentMergeOperation;
-import com.adobe.pdfservices.operation.pdfops.options.documentmerge.DocumentMergeOptions;
-import com.adobe.pdfservices.operation.pdfops.options.documentmerge.OutputFormat;
-
+import com.adobe.pdfservices.operation.pdfops.PDFElectronicSealOperation;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.FieldLocation;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.FieldOptions;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.CSCAuthContext;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.CertificateCredentials;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.SealOptions;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.SignatureFormat;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-import org.json.JSONObject;
+/**
+ * This sample illustrates how to apply electronic seal over the PDF document using default appearance options.
+ *
+ * <p>
+ * To know more about PDF Electronic Seal, please see the <a href="https://www.adobe.com/go/dc_eseal_overview_doc" target="_blank">documentation</a>.
+ * <p>
+ * Refer to README.md for instructions on how to run the samples.
+ */
+public class ElectronicSeal {
 
-public class GeneratePDF {
-
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(GeneratePDF.class);
+    // Initialize the logger.
+    private static final Logger LOGGER = LoggerFactory.getLogger(ElectronicSeal.class);
 
     public static void main(String[] args) {
-
         try {
-
-            String input_file = "./receiptTemplate.docx";
-
-            String output_file = "./generatedReceipt.pdf";
-            Files.deleteIfExists(Paths.get(output_file));
-
-            Path jsonPath = Paths.get("./receipt.json");
-
-            String json = new String(Files.readAllBytes(jsonPath));
-            JSONObject jsonDataForMerge = new JSONObject(json);
-
-      		System.out.println("About to generate a PDF based on " + input_file + "\n");
-
             // Initial setup, create credentials instance.
             Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
                     .fromFile("pdfservices-api-credentials.json")
@@ -368,25 +361,85 @@ public class GeneratePDF {
             // Create an ExecutionContext using credentials.
             ExecutionContext executionContext = ExecutionContext.create(credentials);
 
-            DocumentMergeOptions documentMergeOptions = new DocumentMergeOptions(jsonDataForMerge, OutputFormat.PDF);
- 
-            DocumentMergeOperation documentMergeOperation = DocumentMergeOperation.createNew(documentMergeOptions);
- 
-            // Provide an input FileRef for the operation
-            FileRef source = FileRef.createFromLocalFile(input_file);
-            documentMergeOperation.setInput(source);
+            //Get the input document to perform the sealing operation
+            FileRef sourceFile = FileRef.createFromLocalFile("./HallibyInvoice.pdf");
 
-            // Execute the operation
-            FileRef result = documentMergeOperation.execute(executionContext);
+            //Get the background seal image for signature , if required.
+            FileRef sealImageFile = FileRef.createFromLocalFile("./sampleSealImage.png");
 
-            // Save the result at the specified location
-            result.saveAs(output_file);
+            //Set the Seal Field Name to be created in input PDF document.
+            String sealFieldName = "<SEAL_FIELD_NAME>";
 
-      		System.out.println("All Done");
-            
-        } catch (ServiceApiException | IOException | SdkException | ServiceUsageException e) {
-            LOGGER.error("Exception encountered while executing operation", e);
+            //Set the page number in input document for applying seal.
+            Integer sealPageNumber = 1;
+
+            //Set if seal should be visible or invisible.
+            Boolean sealVisible = true;
+
+            //Create FieldLocation instance and set the coordinates for applying signature
+            FieldLocation fieldLocation = new FieldLocation(150, 250, 350, 200);
+
+            //Create FieldOptions instance with required details.
+            FieldOptions fieldOptions = new FieldOptions.Builder(sealFieldName)
+                    .setFieldLocation(fieldLocation)
+                    .setPageNumber(sealPageNumber)
+                    .setVisible(sealVisible)
+                    .build();
+
+            //Set the name of TSP Provider being used.
+            String providerName = "<PROVIDER_NAME>";
+
+            //Set the access token to be used to access TSP provider hosted APIs.
+            String accessToken = "<ACCESS_TOKEN>";
+
+            //Set the credential ID.
+            String credentialID = "<CREDENTIAL_ID>";
+
+            //Set the PIN generated while creating credentials.
+            String pin = "<PIN>";
+
+            //Create CSCAuthContext instance using access token and token type.
+            CSCAuthContext cscAuthContext = new CSCAuthContext(accessToken, "Bearer");
+
+            //Create CertificateCredentials instance with required certificate details.
+            CertificateCredentials certificateCredentials = CertificateCredentials.cscCredentialBuilder()
+                    .withProviderName(providerName)
+                    .withCredentialID(credentialID)
+                    .withPin(pin)
+                    .withCSCAuthContext(cscAuthContext)
+                    .build();
+
+            //Create SealOptions instance with sealing parameters.
+            SealOptions sealOptions = new SealOptions.Builder(SignatureFormat.PKCS7, certificateCredentials,
+                    fieldOptions).build();
+
+            //Create the PDFElectronicSealOperation instance using the SealOptions instance
+            PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.createNew(sealOptions);
+
+            //Set the input source file for PDFElectronicSealOperation instance
+            pdfElectronicSealOperation.setInput(sourceFile);
+
+            //Set the optional input seal image for PDFElectronicSealOperation instance
+            pdfElectronicSealOperation.setSealImage(sealImageFile);
+
+            //Execute the operation
+            FileRef result = pdfElectronicSealOperation.execute(executionContext);
+
+            //Save the output at specified location
+            String outputFilePath = createOutputFilePath();
+            result.saveAs(outputFilePath);
+
+        } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
+            LOGGER.error("Exception encountered while executing operation", ex);
         }
+    }
+
+    //Generates a string containing a directory structure and file name for the output file.
+    private static String createOutputFilePath(){
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH-mm-ss");
+        LocalDateTime now = LocalDateTime.now();
+        String timeStamp = dateTimeFormatter.format(now);
+        return("output/ElectronicSeal/sealedOutput" + timeStamp + ".pdf");
     }
 }
 ```
