@@ -4,7 +4,7 @@ title: Node.js | Quickstarts | PDF Electronic Seal API | Adobe PDF Services
 
 # Quickstart for Adobe PDF Electronic Seal API (Node.js)
 
-To get started using Adobe PDF Electronic Seal API, let's walk through a simple scenario - {{scenario}}. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
+To get started using Adobe PDF Electronic Seal API, let's walk through a simple scenario - Applying an electronic seal on an invoice PDF document of an organization. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
 
 ## Prerequisites
 
@@ -60,192 +60,274 @@ Note that that private key is *also* found in this directory so feel free to cop
 
 At this point, we've installed the Node.js SDK for Adobe PDF Services API as a dependency for our project and have copied over our credentials files. 
 
-{{Request flow with input and output}}
+Our application will take an Invoice PDF document, `HallibyInvoice.pdf` (downloadable from [here](./HallibyInvoice.pdf)), and will use the sealing options with default appearance options to apply electronic seal over the PDF document by invoking Acrobat Services API and generate an electronically sealed PDF.
 
-7) In your editor, open the directory where you previously copied the credentials. Create a new file, `generatePDF.js`.
+7) In your editor, open the directory where you previously copied the credentials. Create a new file, `electronic-seal.js`.
 
 Now you're ready to begin coding.
 
 ## Step Three: Creating the application
 
-{{Change This}}
-1) Let's start by looking at the Word template. If you open the document in Microsoft Word, you'll notice multiple tokens throughout the document (called out by the use of `{{` and `}}`).
-
-![Example of tokens](./shot10.png)
-
-When the Document Generation API is used, these tokens are replaced with the JSON data sent to the API. These tokens support simple replacements, for example, `{{Customer.Name}}` will be replaced by a customer's name passed in JSON. You can also have dynamic tables. In the Word template, the table uses invoice items as a way to dynamically render whatever items were ordered. Conditions can also be used to hide or show content as you can see two conditions at the end of the document. Finally, basic math can be also be dynamically applied, as seen in the "Grand Total". 
-
-2) Next, let's look at our sample data: 
-
-```json
-{
-  "author": "Gary Lee",
-  "Company": {
-    "Name": "Projected",
-    "Address": "19718 Mandrake Way",
-    "PhoneNumber": "+1-100000098"
-  },
-  "Invoice": {
-    "Date": "January 15, 2021",
-    "Number": 123,
-    "Items": [
-      {
-        "item": "Gloves",
-        "description": "Microwave gloves",
-        "UnitPrice": 5,
-        "Quantity": 2,
-        "Total": 10
-      },
-      {
-        "item": "Bowls",
-        "description": "Microwave bowls",
-        "UnitPrice": 10,
-        "Quantity": 2,
-        "Total": 20
-      }
-    ]
-  },
-  "Customer": {
-    "Name": "Collins Candy",
-    "Address": "315 Dunning Way",
-    "PhoneNumber": "+1-200000046",
-    "Email": "cc@abcdef.co.dw"
-  },
-  "Tax": 5,
-  "Shipping": 5,
-  "clause": {
-    "overseas": "The shipment might take 5-10 more than informed."
-  },
-  "paymentMethod": "Cash"
-}
-```
-
-Notice how the tokens in the Word document match up with values in our JSON. While our example will use a hard coded set of data in a file, production applications can get their data from anywhere. Now let's get into our code.
-
-3) We'll begin by including our required dependencies:
+1) We'll begin by including our required dependencies:
 
 ```js
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
-const fs = require('fs');
+const PDFServicesSdk = require('@dcloud/pdfservices-node-sdk');
 ```
 
-The first line includes the Adobe PDF Services Node.js SDK. The second third include Node's `filesystem` package. 
+This line includes the Adobe PDF Services Node.js SDK
 
-2) Now let's define our input and output:
-
-```js
-const OUTPUT = './generatedReceipt.pdf';
-
-// If our output already exists, remove it so we can run the application again.
-if(fs.existsSync(OUTPUT)) fs.unlinkSync(OUTPUT);
-
-const INPUT = './receiptTemplate.docx';
-
-const JSON_INPUT = require('./receipt.json');
-```
-
-These lines are hard coded but in a real application would typically be dynamic.
-
-3) Next, we setup the SDK to use our credentials.
+2) Next, we setup the SDK to use our credentials.
 
 ```js
-const credentials = PDFServicesSdk.Credentials
-		.serviceAccountCredentialsBuilder()
-		.fromFile('pdfservices-api-credentials.json')
-		.build();
-
-// Create an ExecutionContext using credentials
-const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
-```
-
-This code both points to the credentials downloaded previously as well as sets up an execution context object that will be used later.
-
-4) Now, let's create the operation:
-
-```js
-const documentMerge = PDFServicesSdk.DocumentMerge,
-       documentMergeOptions = documentMerge.options,
-       options = new documentMergeOptions.DocumentMergeOptions(JSON_INPUT, documentMergeOptions.OutputFormat.PDF);
-
-// Create a new operation instance using the options instance.
-const documentMergeOperation = documentMerge.Operation.createNew(options);
-
-// Set operation input document template from a source file.
-const input = PDFServicesSdk.FileRef.createFromLocalFile(INPUT);
-documentMergeOperation.setInput(input);
-```
-
-This set of code defines what we're doing (a document merge operation, the SDK's way of describing Document Generation), points to our local JSON file and specifies the output is a PDF. It also points to the Word file used as a template.
-
-5) The next code block executes the operation:
-
-```js
-// Execute the operation and Save the result to the specified location.
-documentMergeOperation.execute(executionContext)
-.then(result => result.saveAsFile(OUTPUT))
-.catch(err => {
-	if(err instanceof PDFServicesSdk.Error.ServiceApiError
-		|| err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-		console.log('Exception encountered while executing operation', err);
-	} else {
-		console.log('Exception encountered while executing operation', err);
-	}
-});
-```
-
-This code runs the document generation process and then stores the result PDF document to the file system. 
-
-![Example running at the command line](./shot9.png)
-
-Here's the complete application (`documentmerge.js`):
-
-```js
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
-const fs = require('fs');
-
-const OUTPUT = './generatedReceipt.pdf';
-
-// If our output already exists, remove it so we can run the application again.
-if(fs.existsSync(OUTPUT)) fs.unlinkSync(OUTPUT);
-
-const INPUT = './receiptTemplate.docx';
-
-const JSON_INPUT = require('./receipt.json');
-
-
-// Set up our credentials object.
-const credentials = PDFServicesSdk.Credentials
+// Initial setup, create credentials instance.
+const credentials =  PDFServicesSdk.Credentials
     .serviceAccountCredentialsBuilder()
-    .fromFile('pdfservices-api-credentials.json')
+    .fromFile("pdfservices-api-credentials.json")
     .build();
 
 // Create an ExecutionContext using credentials
 const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
+```
 
-// This creates an instance of the Export operation we're using, as well as specifying output type (DOCX)
-const documentMerge = PDFServicesSdk.DocumentMerge,
-    documentMergeOptions = documentMerge.options,
-    options = new documentMergeOptions.DocumentMergeOptions(JSON_INPUT, documentMergeOptions.OutputFormat.PDF);
+This code both points to the credentials downloaded previously and sets up an execution context object that will be used later.
 
-// Create a new operation instance using the options instance.
-const documentMergeOperation = documentMerge.Operation.createNew(options);
+3) Let's define the electronic seal and options object to be used later:
 
-// Set operation input document template from a source file.
-const input = PDFServicesSdk.FileRef.createFromLocalFile(INPUT);
-documentMergeOperation.setInput(input);
+```js
+const pdfElectronicSeal = PDFServicesSdk.PDFElectronicSeal,
+    options = pdfElectronicSeal.options;
+
+```
+
+4) Now, let's define our input fields
+
+```js
+//Get the input document to perform the sealing operation
+const sourceFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/HallibyInvoice.pdf'),
+
+    //Get the background seal image for signature , if required.
+    sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/sampleSealImage.png');
+
+```
+
+5) Now, we will define seal field options:
+
+```js
+// Set the Seal Field Name to be created in input PDF document.
+sealFieldName = "<SEAL_FIELD_NAME>";
+
+// Set the page number in input document for applying seal.
+sealPageNumber = 1;
+
+// Set if seal should be visible or invisible.
+sealVisible = true;
+
+//Create FieldLocation instance and set the coordinates for applying signature
+fieldLocation = new options.FieldLocation(150,250,350,200);
+
+//Create FieldOptions instance with required details.
+fieldOptions = new options.FieldOptions.Builder(sealFieldName)
+                        .setFieldLocation(fieldLocation)
+                        .setPageNumber(sealPageNumber)
+                        .setVisible(sealVisible)
+                        .build();
+```
+
+6) Next, we create a CSC Certificate Credentials instance:
+
+```js
+//Set the name of TSP Provider being used.
+providerName = "<PROVIDER_NAME>";
+
+//Set the access token to be used to access TSP provider hosted APIs.
+accessToken = "<ACCESS_TOKEN>";
+
+//Set the credential ID.
+credentialID = "<CREDENTIAL_ID>";
+
+//Set the PIN generated while creating credentials.
+pin = "<PIN>";
+
+//Create CSCAuthContext instance using access token and token type.
+cscAuthContext = new options.CSCAuthContext(accessToken, "Bearer");
+
+//Create CertificateCredentials instance with required certificate details.
+certificateCredentials = options.CertificateCredentials.cscCredentialBuilder()
+                                .withProviderName(providerName)
+                                .withCredentialID(credentialID)
+                                .withPin(pin)
+                                .withCSCAuthContext(cscAuthContext)
+                                .build();
+```
+
+7) Now, let's create the seal options with certificate credentials and field options:
+
+```js
+//Create SealOptions instance with sealing parameters.
+sealOptions = new options.SealOptions.Builder(options.SealOptions.SignatureFormat.PKCS7, certificateCredentials,
+                                            fieldOptions).build()
+
+```
 
 
+8) Now, let's create the operation:
+
+```js
+//Create the PDFElectronicSealOperation instance using the SealOptions instance
+const pdfElectronicSealOperation = pdfElectronicSeal.Operation.createNew(sealOptions);
+
+//Set the input source file for PDFElectronicSealOperation instance
+pdfElectronicSealOperation.setInput(sourceFile);
+
+//Set the optional input seal image for PDFElectronicSealOperation instance
+pdfElectronicSealOperation.setSealImage(sealImageFile);
+
+//Generating a file name
+let outputFilePath = createOutputFilePath();
+```
+This code creates a seal Operation using sealOptions, input source file and input seal image.
+
+9) Let's execute this seal operation:
+
+```js
 // Execute the operation and Save the result to the specified location.
-documentMergeOperation.execute(executionContext)
-    .then(result => result.saveAsFile(OUTPUT))
+pdfElectronicSealOperation.execute(executionContext)
+    .then(result => result.saveAsFile(outputFilePath))
     .catch(err => {
-        if(err instanceof PDFServicesSdk.Error.ServiceApiError
+        if (err instanceof PDFServicesSdk.Error.ServiceApiError
             || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
             console.log('Exception encountered while executing operation', err);
         } else {
             console.log('Exception encountered while executing operation', err);
         }
     });
+```
+![Example running at the command line](./shot9.png)
+
+Here's the complete application (`electronic-seal.js`):
+
+```js
+/*
+ * Copyright 2023 Adobe
+ * All Rights Reserved.
+ *
+ * NOTICE: Adobe permits you to use, modify, and distribute this file in
+ * accordance with the terms of the Adobe license agreement accompanying
+ * it. If you have received this file from a source other than Adobe,
+ * then your use, modification, or distribution of it requires the prior
+ * written permission of Adobe.
+ */
+
+const PDFServicesSdk = require('@dcloud/pdfservices-node-sdk');
+
+/**
+ * This sample illustrates how to apply electronic seal over the PDF document using default appearance options.
+ *
+ * <p>
+ * To know more about PDF Electronic Seal, please see the <<a href="https://www.adobe.com/go/dc_eseal_overview_doc" target="_blank">documentation</a>.
+ * <p>
+ * Refer to README.md for instructions on how to run the samples.
+ */
+try {
+    // Initial setup, create credentials instance.
+    const credentials =  PDFServicesSdk.Credentials
+        .serviceAccountCredentialsBuilder()
+        .fromFile("pdfservices-api-credentials.json")
+        .build();
+
+    // Create an ExecutionContext using credentials
+    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
+
+    const pdfElectronicSeal = PDFServicesSdk.PDFElectronicSeal,
+        options = pdfElectronicSeal.options;
+
+    //Get the input document to perform the sealing operation
+    const sourceFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/HallibyInvoice.pdf'),
+
+        //Get the background seal image for signature , if required.
+        sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/sampleSealImage.png');
+
+    // Set the Seal Field Name to be created in input PDF document.
+    sealFieldName = "<SEAL_FIELD_NAME>";
+
+    // Set the page number in input document for applying seal.
+    sealPageNumber = 1;
+
+    // Set if seal should be visible or invisible.
+    sealVisible = true;
+
+    //Create FieldLocation instance and set the coordinates for applying signature
+    fieldLocation = new options.FieldLocation(150,250,350,200);
+
+    //Create FieldOptions instance with required details.
+    fieldOptions = new options.FieldOptions.Builder(sealFieldName)
+        .setFieldLocation(fieldLocation)
+        .setPageNumber(sealPageNumber)
+        .setVisible(sealVisible)
+        .build();
+
+    //Set the name of TSP Provider being used.
+    providerName = "<PROVIDER_NAME>";
+
+    //Set the access token to be used to access TSP provider hosted APIs.
+    accessToken = "<ACCESS_TOKEN>";
+
+    //Set the credential ID.
+    credentialID = "<CREDENTIAL_ID>";
+
+    //Set the PIN generated while creating credentials.
+    pin = "<PIN>";
+
+    //Create CSCAuthContext instance using access token and token type.
+    cscAuthContext = new options.CSCAuthContext(accessToken, "Bearer");
+
+    //Create CertificateCredentials instance with required certificate details.
+    certificateCredentials = options.CertificateCredentials.cscCredentialBuilder()
+        .withProviderName(providerName)
+        .withCredentialID(credentialID)
+        .withPin(pin)
+        .withCSCAuthContext(cscAuthContext)
+        .build();
+
+    //Create SealOptions instance with sealing parameters.
+    sealOptions = new options.SealOptions.Builder(options.SealOptions.SignatureFormat.PKCS7, certificateCredentials, fieldOptions)
+        .build()
+
+    //Create the PDFElectronicSealOperation instance using the SealOptions instance
+    const pdfElectronicSealOperation = pdfElectronicSeal.Operation.createNew(sealOptions);
+
+    //Set the input source file for PDFElectronicSealOperation instance
+    pdfElectronicSealOperation.setInput(sourceFile);
+
+    //Set the optional input seal image for PDFElectronicSealOperation instance
+    pdfElectronicSealOperation.setSealImage(sealImageFile);
+
+    //Generating a file name
+    let outputFilePath = createOutputFilePath();
+
+    // Execute the operation and Save the result to the specified location.
+    pdfElectronicSealOperation.execute(executionContext)
+        .then(result => result.saveAsFile(outputFilePath))
+        .catch(err => {
+            if(err instanceof PDFServicesSdk.Error.ServiceApiError
+                || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
+                console.log('Exception encountered while executing operation', err);
+            } else {
+                console.log('Exception encountered while executing operation', err);
+            }
+        });
+
+    function createOutputFilePath() {
+        let date = new Date();
+        let dateString = date.getFullYear() + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" +
+            ("0" + date.getDate()).slice(-2) + "T" + ("0" + date.getHours()).slice(-2) + "-" +
+            ("0" + date.getMinutes()).slice(-2) + "-" + ("0" + date.getSeconds()).slice(-2);
+        return ("output/ElectronicSeal/sealedOutput" + dateString + ".pdf");
+    }
+
+} catch (err) {
+    console.log('Exception encountered while executing operation', err);
+}
 
 ```
 

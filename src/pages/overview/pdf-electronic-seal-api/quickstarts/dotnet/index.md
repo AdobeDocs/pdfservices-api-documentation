@@ -4,7 +4,7 @@ title: .NET | Quickstarts | PDF Electronic Seal API | Adobe PDF Services
 
 # Quickstart for Adobe PDF Electronic Seal API (.NET)
 
-To get started using PDF Electronic Seal API, let's walk through a simple scenario - {{scenario}}. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
+To get started using PDF Electronic Seal API, let's walk through a simple scenario - Applying an electronic seal on an invoice PDF document of an organization. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
 
 ## Prerequisites
 
@@ -52,7 +52,7 @@ Note that that private key is *also* found in this directory so feel free to cop
 
 3) Take these two files and place them in a new directory.
 
-4) In your new directory, create a new file, `ElectronicSealOnPDF.csproj`. This file will declare our requirements as well as help define the application we're creating.
+4) In your new directory, create a new file, `ElectronicSeal.csproj`. This file will declare our requirements as well as help define the application we're creating.
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -60,11 +60,12 @@ Note that that private key is *also* found in this directory so feel free to cop
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp3.1</TargetFramework>
+        <RootNamespace>ElectronicSealSample</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="log4net" Version="2.0.12" />
-        <PackageReference Include="Adobe.PDFServicesSDK" Version="2.2.1" />
+        <PackageReference Include="Adobe.PDFServicesSDK" Version="3.0.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -77,12 +78,18 @@ Note that that private key is *also* found in this directory so feel free to cop
         <None Update="log4net.config">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
+        <None Update="HallibyInvoice.pdf">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="sampleSealImage.png">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
 </Project>
 ```
 
-{{Request flow with input and output}}
+Our application will take an Invoice PDF document, `HallibyInvoice.pdf` (downloadable from [here](./HallibyInvoice.pdf)), and will use the sealing options with default appearance options to apply electronic seal over the PDF document by invoking Acrobat Services API and generate an electronically sealed PDF.
 
 5) In your editor, open the directory where you previously copied the credentials and created the `csproj` file. Create a new file, `Program.cs`. 
 
@@ -90,217 +97,255 @@ Now you're ready to begin coding.
 
 ## Step Three: Creating the application
 
-{{Change This}}
-1) Let's start by looking at the Word template. If you open the document in Microsoft Word, you'll notice multiple tokens throughout the document (called out by the use of `{{` and `}}`).
-
-![Example of tokens](./shot10.png)
-
-When the Document Generation API is used, these tokens are replaced with the JSON data sent to the API. These tokens support simple replacements, for example, `{{Customer.Name}}` will be replaced by a customer's name passed in JSON. You can also have dynamic tables. In the Word template, the table uses invoice items as a way to dynamically render whatever items were ordered. Conditions can also be used to hide or show content as you can see two conditions at the end of the document. Finally, basic math can be also be dynamically applied, as seen in the "Grand Total". 
-
-2) Next, let's look at our sample data: 
-
-```json
-{
-  "author": "Gary Lee",
-  "Company": {
-    "Name": "Projected",
-    "Address": "19718 Mandrake Way",
-    "PhoneNumber": "+1-100000098"
-  },
-  "Invoice": {
-    "Date": "January 15, 2021",
-    "Number": 123,
-    "Items": [
-      {
-        "item": "Gloves",
-        "description": "Microwave gloves",
-        "UnitPrice": 5,
-        "Quantity": 2,
-        "Total": 10
-      },
-      {
-        "item": "Bowls",
-        "description": "Microwave bowls",
-        "UnitPrice": 10,
-        "Quantity": 2,
-        "Total": 20
-      }
-    ]
-  },
-  "Customer": {
-    "Name": "Collins Candy",
-    "Address": "315 Dunning Way",
-    "PhoneNumber": "+1-200000046",
-    "Email": "cc@abcdef.co.dw"
-  },
-  "Tax": 5,
-  "Shipping": 5,
-  "clause": {
-    "overseas": "The shipment might take 5-10 more than informed."
-  },
-  "paymentMethod": "Cash"
-}
-```
-
-Notice how the tokens in the Word document match up with values in our JSON. While our example will use a hard coded set of data in a file, production applications can get their data from anywhere. Now let's get into our code.
-
-3) We'll begin by including our required dependencies:
+1) We'll begin by including our required dependencies:
 
 ```csharp
-using System.IO;
-using System;
-using System.Collections.Generic;
-using log4net.Repository;
-using log4net.Config;
-using log4net;
-using System.Reflection;
 using Adobe.PDFServicesSDK;
 using Adobe.PDFServicesSDK.auth;
-using Adobe.PDFServicesSDK.pdfops;
-using Adobe.PDFServicesSDK.io;
 using Adobe.PDFServicesSDK.exception;
-using Adobe.PDFServicesSDK.options.documentmerge;
-using Newtonsoft.Json.Linq;
-```
+using Adobe.PDFServicesSDK.io;
+using Adobe.PDFServicesSDK.options.electronicseal;
+using Adobe.PDFServicesSDK.pdfops;
+using log4net;
+using log4net.Config;
+using log4net.Repository;
+using System;
+using System.IO;
+using System.Reflection;
+``` 
 
-4) Now let's define our main class and `Main` method:
+2) Now let's define our main class and `Main` method:
 
 ```csharp
-namespace GeneratePDF
+namespace ElectronicSeal
 {
-    class Program
+    public class Program
     {
+        // Initialize the logger.
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
-        static void Main()
-        {
-		}
-	}
+        static void Main() {
+        }
+    }
 }
 ```
 
-5) Inside our class, we'll begin by defining our input Word, JSON and output filenames. If the output file already exists, it will be deleted:
+
+
+3) Let's create credentials for pdf services and use them:
 
 ```csharp
-String input = "receiptTemplate.docx";
+Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
+                        .FromFile("pdfservices-api-credentials.json")
+                        .Build();
 
-String output = "/generatedReceipt.pdf";
-if(File.Exists(Directory.GetCurrentDirectory() + output))
-{
-	File.Delete(Directory.GetCurrentDirectory() + output);
-}
+// Create an ExecutionContext using credentials.
+ExecutionContext executionContext = ExecutionContext.Create(credentials);
+```
 
-string json = File.ReadAllText("receipt.json");
-JObject data = JObject.Parse(json);
+4) Now let's define our input fields
+
+```csharp
+//Get the input document to perform the sealing operation
+FileRef sourceFile = FileRef.CreateFromLocalFile(@"HallibyInvoice.pdf");
+
+//Get the background seal image for signature , if required.
+FileRef sealImageFile = FileRef.CreateFromLocalFile(@"sampleSealImage.png");
+```
+
+5) Now, we will define seal field options:
+
+```csharp
+//Set the Seal Field Name to be created in input PDF document.
+string sealFieldName = "<SEAL_FIELD_NAME>";
+
+//Set the page number in input document for applying seal.
+int sealPageNumber = 1;
+
+//Set if seal should be visible or invisible.
+bool sealVisible = true;
+
+//Create FieldLocation instance and set the coordinates for applying signature
+FieldLocation fieldLocation = new FieldLocation(150, 250, 350, 200);
+
+//Create FieldOptions instance with required details.
+FieldOptions sealFieldOptions = new FieldOptions.Builder(sealFieldName)
+                                                .SetVisible(sealVisible)
+                                                .SetFieldLocation(fieldLocation)
+                                                .SetPageNumber(sealPageNumber)
+                                                .Build();
 ```
 
 These lines are hard coded but in a real application would typically be dynamic.
 
-6) Next, we setup the SDK to use our credentials.
+6) Next, we create a CSC Certificate Credentials instance:
 
 ```csharp
-// Initial setup, create credentials instance.
-Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-	.FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-	.Build();
+//Set the name of TSP Provider being used.
+string providerName = "<PROVIDER_NAME>";
 
-// Create an ExecutionContext using credentials and create a new operation instance.
-ExecutionContext executionContext = ExecutionContext.Create(credentials);
+//Set the access token to be used to access TSP provider hosted APIs.
+string accessToken = "<ACCESS TOKEN>";
+
+//Set the credential ID.
+string credentialID = "<CREDENTIAL_ID>";
+
+//Set the PIN generated while creating credentials.
+string pin = "<PIN>";
+
+CSCAuthContext cscAuthContext = new CSCAuthContext(accessToken, "Bearer");
+
+//Create CertificateCredentials instance with required certificate details.
+CertificateCredentials certificateCredentials = CertificateCredentials.CSCCredentialBuilder()
+                                                                    .WithProviderName(providerName)
+                                                                    .WithCredentialID(credentialID)
+                                                                    .WithPin(pin)
+                                                                    .WithCSCAuthContext(cscAuthContext)
+                                                                    .Build();
 ```
 
-This code both points to the credentials downloaded previously as well as sets up an execution context object that will be used later.
-
-7) Now, let's create the operation:
+7) Now, let's create the seal options with certificate credentials and field options:
 
 ```csharp
-DocumentMergeOptions documentMergeOptions = new DocumentMergeOptions(data, OutputFormat.PDF);
-DocumentMergeOperation documentMergeOperation = DocumentMergeOperation.CreateNew(documentMergeOptions);
-
-// Provide an input FileRef for the operation.
-FileRef sourceFileRef = FileRef.CreateFromLocalFile(input);
-documentMergeOperation.SetInput(sourceFileRef);
+//Create SealingOptions instance with all the sealing parameters.
+SealOptions sealOptions = new SealOptions.Builder(SignatureFormat.PKCS7, certificateCredentials,
+                                                    sealFieldOptions).Build();
 ```
 
-This set of code defines what we're doing (a document merge operation, the SDK's way of describing Document Generation), points to our local JSON file and specifies the output is a PDF. It also points to the Word file used as a template.
-
-8) The next code block executes the operation:
+8) Now, let's create the operation:
 
 ```csharp
-// Execute the operation.
-FileRef result = documentMergeOperation.Execute(executionContext);
+//Create the PDFElectronicSealOperation instance using the PDFElectronicSealOptions instance
+PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.CreateNew(sealOptions);
 
-// Save the result to the specified location.
-result.SaveAs(Directory.GetCurrentDirectory() + output);
+//Set the input source file for PDFElectronicSealOperation instance
+pdfElectronicSealOperation.SetInput(sourceFile);
+
+//Set the optional input seal image for PDFElectronicSealOperation instance
+pdfElectronicSealOperation.SetSealImage(sealImageFile);
 ```
+This code creates a seal Operation using sealOptions, input source file and input seal image.
 
-This code runs the document generation process and then stores the result PDF document to the file system. 
+9) Let's execute this seal operation:
+```csharp
+//Execute the operation
+FileRef result = pdfElectronicSealOperation.Execute(executionContext);
+
+//Save the output at specified location
+result.SaveAs("output/sealedOutput.pdf");
+```
 
 ![Example running at the command line](./shot9.png)
 
 Here's the complete application (`Program.cs`):
 
 ```csharp
-using System.IO;
-using System;
-using System.Collections.Generic;
-using log4net.Repository;
-using log4net.Config;
-using log4net;
-using System.Reflection;
 using Adobe.PDFServicesSDK;
 using Adobe.PDFServicesSDK.auth;
-using Adobe.PDFServicesSDK.pdfops;
-using Adobe.PDFServicesSDK.io;
 using Adobe.PDFServicesSDK.exception;
-using Adobe.PDFServicesSDK.options.documentmerge;
-using Newtonsoft.Json.Linq;
+using Adobe.PDFServicesSDK.io;
+using Adobe.PDFServicesSDK.options.electronicseal;
+using Adobe.PDFServicesSDK.pdfops;
+using log4net;
+using log4net.Config;
+using log4net.Repository;
+using System;
+using System.IO;
+using System.Reflection;
 
-namespace GeneratePDF
+/// <summary>
+/// The sample class ElectronicSeal uses the default appearance options to apply electronic seal over the PDF document.
+/// <para>
+/// To know more about PDF Electronic Seal, please see the <a href="https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/" target="_blank">documentation</a>.
+/// </para>
+/// Refer to README.md for instructions on how to run the samples.
+/// </summary>
+namespace ElectronicSeal
 {
-    class Program
+    public class Program
     {
+        // Initialize the logger.
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
-        static void Main()
+        static void Main(string[] args)
         {
-            // Configure the logging.
+            //Configure the logging
             ConfigureLogging();
+
             try
             {
-
-                String input = "receiptTemplate.docx";
-
-                String output = "/generatedReceipt.pdf";
-                if(File.Exists(Directory.GetCurrentDirectory() + output))
-                {
-                    File.Delete(Directory.GetCurrentDirectory() + output);
-                }
-
-                string json = File.ReadAllText("receipt.json");
-                JObject data = JObject.Parse(json);
-
                 // Initial setup, create credentials instance.
                 Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                    .Build();
+                        .FromFile("pdfservices-api-credentials.json")
+                        .Build();
 
-                // Create an ExecutionContext using credentials and create a new operation instance.
+                // Create an ExecutionContext using credentials.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
 
-                DocumentMergeOptions documentMergeOptions = new DocumentMergeOptions(data, OutputFormat.PDF);
-                DocumentMergeOperation documentMergeOperation = DocumentMergeOperation.CreateNew(documentMergeOptions);
- 
-                // Provide an input FileRef for the operation.
-                FileRef sourceFileRef = FileRef.CreateFromLocalFile(input);
-                documentMergeOperation.SetInput(sourceFileRef);
-                
-                // Execute the operation.
-                FileRef result = documentMergeOperation.Execute(executionContext);
+                //Get the input document to perform the sealing operation
+                FileRef sourceFile = FileRef.CreateFromLocalFile(@"HallibyInvoice.pdf");
 
-                // Save the result to the specified location.
-                result.SaveAs(Directory.GetCurrentDirectory() + output);
-                
-        		Console.Write("All Done.\n");
+                //Get the background seal image for signature , if required.
+                FileRef sealImageFile = FileRef.CreateFromLocalFile(@"sampleSealImage.png");
 
+                //Set the Seal Field Name to be created in input PDF document.
+                string sealFieldName = "<SEAL_FIELD_NAME>";
+
+                //Set the page number in input document for applying seal.
+                int sealPageNumber = 1;
+
+                //Set if seal should be visible or invisible.
+                bool sealVisible = true;
+
+                //Create FieldLocation instance and set the coordinates for applying signature
+                FieldLocation fieldLocation = new FieldLocation(150, 250, 350, 200);
+
+                //Create FieldOptions instance with required details.
+                FieldOptions sealFieldOptions = new FieldOptions.Builder(sealFieldName)
+                    .SetVisible(sealVisible)
+                    .SetFieldLocation(fieldLocation)
+                    .SetPageNumber(sealPageNumber)
+                    .Build();
+
+                //Set the name of TSP Provider being used.
+                string providerName = "<PROVIDER_NAME>";
+
+                //Set the access token to be used to access TSP provider hosted APIs.
+                string accessToken = "<ACCESS TOKEN>";
+
+                //Set the credential ID.
+                string credentialID = "<CREDENTIAL_ID>";
+
+                //Set the PIN generated while creating credentials.
+                string pin = "<PIN>";
+
+                CSCAuthContext cscAuthContext = new CSCAuthContext(accessToken, "Bearer");
+
+                //Create CertificateCredentials instance with required certificate details.
+                CertificateCredentials certificateCredentials = CertificateCredentials.CSCCredentialBuilder()
+                    .WithProviderName(providerName)
+                    .WithCredentialID(credentialID)
+                    .WithPin(pin)
+                    .WithCSCAuthContext(cscAuthContext)
+                    .Build();
                 
+                //Create SealingOptions instance with all the sealing parameters.
+                SealOptions sealOptions = new SealOptions.Builder(SignatureFormat.PKCS7, certificateCredentials,
+                        sealFieldOptions).Build();
+
+                //Create the PDFElectronicSealOperation instance using the PDFElectronicSealOptions instance
+                PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.CreateNew(sealOptions);
+
+                //Set the input source file for PDFElectronicSealOperation instance
+                pdfElectronicSealOperation.SetInput(sourceFile);
+
+                //Set the optional input seal image for PDFElectronicSealOperation instance
+                pdfElectronicSealOperation.SetSealImage(sealImageFile);
+
+                //Execute the operation
+                FileRef result = pdfElectronicSealOperation.Execute(executionContext);
+
+                //Save the output at specified location
+                result.SaveAs("output/sealedOutput.pdf");
+
             }
             catch (ServiceUsageException ex)
             {
@@ -323,7 +368,6 @@ namespace GeneratePDF
                 log.Error("Exception encountered while executing operation", ex);
             }
         }
-
         static void ConfigureLogging()
         {
             ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());

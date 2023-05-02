@@ -219,7 +219,7 @@ Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
 ExecutionContext executionContext = ExecutionContext.create(credentials);
 ```
 
-4) Now let's define our input fields
+4) Now, let's define our input fields
 
 ```java
 //Get the input document to perform the sealing operation
@@ -229,7 +229,7 @@ FileRef sourceFile = FileRef.createFromLocalFile("./HallibyInvoice.pdf");
 FileRef sealImageFile = FileRef.createFromLocalFile("./sampleSealImage.png");
 ```
 
-5) Inside our class we will define seal field options:
+5) Now, we will define seal field options:
 
 ```java
 //Set the Seal Field Name to be created in input PDF document.
