@@ -90,8 +90,8 @@ The seal field parameters are required to give information about signature field
     * **Right** (_right_)*: The right x-coordinate
     * **Top** (_top_)*: The top y-coordinate
 
-**'*'**: These are required paramters. <br>
-**'**'**: These are conditional parameters, required if signature field does not exist in the document and not required otherwise. <br>
+"*" : These are required paramters. <br/>
+"**" : These are conditional parameters, required only if signature field does not exist in the document. <br/>
 To add the signature field explicitly, see [how to place a signature field in a PDF](https://www.adobe.com/sign/hub/how-to/add-a-signature-block-to-pdf).
 
 ### Seal Appearance Parameters
