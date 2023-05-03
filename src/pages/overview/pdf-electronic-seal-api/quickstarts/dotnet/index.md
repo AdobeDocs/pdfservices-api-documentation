@@ -142,7 +142,7 @@ Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
 ExecutionContext executionContext = ExecutionContext.Create(credentials);
 ```
 
-4) Now let's define our input fields
+4) Now let's define our input fields:
 
 ```csharp
 //Get the input document to perform the sealing operation
@@ -379,4 +379,4 @@ namespace ElectronicSeal
 
 ## Next Steps
 
-Now that you've successfully performed your first operation, [review the documentation](https://developer.adobe.com/document-services/docs/overview/document-generation-api/) for many other examples and reach out on our [forums](https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK) with any questions. Also remember the samples you downloaded while creating your credentials also have many demos.
+Now that you've successfully performed your first operation, [review the documentation](https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/) for many other examples and reach out on our [forums](https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK) with any questions. Also remember the samples you downloaded while creating your credentials also have many demos.

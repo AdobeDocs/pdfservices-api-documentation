@@ -219,7 +219,7 @@ Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
 ExecutionContext executionContext = ExecutionContext.create(credentials);
 ```
 
-4) Now, let's define our input fields
+4) Now, let's define our input fields:
 
 ```java
 //Get the input document to perform the sealing operation

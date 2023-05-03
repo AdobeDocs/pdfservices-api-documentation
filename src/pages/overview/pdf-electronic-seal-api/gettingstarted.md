@@ -99,16 +99,16 @@ To add the signature field explicitly, see [how to place a signature field in a 
 Specifies signature field appearance parameters. These are an enum set of display items: NAME, DATE, DISTINGUISHED_NAME, LABELS and SEAL_IMAGE. Specifies the information to display in the signature. NAME and LABELS are the default values.
 
 * **NAME**: Specifies that the certificate holder's name should be displayed in the seal appearance.
-  ![Display Options](../images/sealName.png)
+  ![Display Options](../images/name_ss.png)
 * **DATE**: Specifies that the date/time of sealing should be displayed in the seal appearance. This option only controls whether the value of the
   time/date in the signature dictionary is displayed or not. This value should not be mistaken for a signed timestamp from a timestamp authority.
-  ![Display Options](../images/sealDate.png)
+  ![Display Options](../images/date_ss.png)
 * **DISTINGUISHED_NAME**: Specifies that the distinguished name information from the digital certificate should be displayed in the seal appearance.
-  ![Display Options](../images/sealDN.png)
+  ![Display Options](../images/dn_ss.png)
 * **LABELS**: Specifies that text labels should be displayed in the seal appearance.
-  ![Display Options](../images/sealLabel.png)
+  ![Display Options](../images/labels_ss.png)
 * **SEAL_IMAGE**: Specifies that the background seal image should be displayed in the seal appearance.
-  ![Display Options](../images/sealImage.png)
+  ![Display Options](../images/seal_image_ss.png)
   If SEAL_IMAGE is given in appearance parameters and seal image is not present in the request body, the default Acrobat trefoil image is used.
   ![Display Options](../images/sealImage_default.png)
 
