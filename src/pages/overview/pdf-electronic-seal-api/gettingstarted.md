@@ -51,63 +51,66 @@ Once the customer has all the necessary prerequisites in place, they have to cal
 
 ![Seal Workflow](../images/sealFlow.png)
 
-## API Parameters (_sealOptions_)*
+## API Parameters (_sealOptions_)<b>*</b>
 
-### Signature Format (_signatureFormat_)*
+### Signature Format (_signatureFormat_)<b>*</b>
 
 Specifies a supported digital signature format used to apply electronic seal:
 
 * PADES : This is the latest and improved signature format which is more strict, concrete, and secure. For details, see [ETSI TS 102 778-3](https://www.etsi.org/deliver/etsi_ts/102700_102799/10277803/01.02.01_60/ts_10277803v010201p.pdf)
 * PKCS7 : This signature format is less stringent than PADES since it permits more PDF changes without invalidating the digital signature. For details, see [ISO 32000-1](https://opensource.adobe.com/dc-acrobat-sdk-docs/standards/pdfstandards/pdf/PDF32000_2008.pdf)
 
-### TSP Credential Information (_cscCredentialOptions_)*
+### TSP Credential Information (_cscCredentialOptions_)<b>*</b>
 
 TSP parameters encapsulate the signer's [certificate credential](#step-1-procure-certificate-credentials) as well as the associated authentication and authorization data.
 
-* **TSP Name**  (*providerName*)*: Specifies the name of the Trust Service Provider used to generate the certificate.
-* **TSP Credential Id**  (*credentialId*)*: Specifies the Digital ID stored with the TSP that should be used for sealing.
-* **TSP Authorization Context**  (*authorizationContext*)*: Encapsulates the authorization data required to communicate with the TSPs.
+* **TSP Name**  (*providerName*)<b>*</b>: Specifies the name of the Trust Service Provider used to generate the certificate.
+* **TSP Credential Id**  (*credentialId*)<b>*</b>: Specifies the Digital ID stored with the TSP that should be used for sealing.
+* **TSP Authorization Context**  (*authorizationContext*)<b>*</b>: Encapsulates the authorization data required to communicate with the TSPs.
 
-    * **Access Token**  (*accessToken*)*: Specifies the access token used to authorize access to the CSC provider hosted APIs.
+    * **Access Token**  (*accessToken*)<b>*</b>: Specifies the access token used to authorize access to the CSC provider hosted APIs.
     * **Token Type** (_tokenType_): Specifies the type of access token. If not provided, default value is "Bearer".
 
-* **TSP Credential Authorization Parameter**  (*credentialAuthParameters*)*: Encapsulates the credential authorization information required to authorize access to their digital certificate.
+* **TSP Credential Authorization Parameter**  (*credentialAuthParameters*)<b>*</b>: Encapsulates the credential authorization information required to authorize access to their digital certificate.
 
     * **PIN**  (*pin*)*: Specifies the PIN associated with credential ID.
 
-### Seal Field Parameters   (*sealFieldOptions*)*
+### Seal Field Parameters   (*sealFieldOptions*)<b>*</b>
 
 The seal field parameters are required to give information about signature field in PDF which will be used for visualization of eSeal. Customers can either create a new signature field or sign an existing field.
 
-* **Field Name**  (*fieldName*)*: The signature field name. This must be a non-empty string. If signature field with this field name already exists, that field is used.
+* **Field Name**  (*fieldName*)<b>*</b>: The signature field name. This must be a non-empty string. If signature field with this field name already exists, that field is used.
   If it does not exist, a signature field with this name will be created.
 * **Visibility** (_visible_): Specifies whether the seal is visible or invisible. The default value of `true` creates a visible seal.
-* **Page Number** (_pageNumber_)**: Specifies the page number to which the seal should be created. Page numbers are 1-based. The page number is only **required** if the signature field does not exist in the pdf document. If page number is provided along with the existing signature field then the page number should be same on which signature field is present in the document, else error is thrown.
-* **Location** (_location_)**: Specifies the coordinates of the seal appearance's bounding box in default PDF user space units. The location is only **required** if the signature field does not exist in the pdf document. If location is provided along with the existing signature field then it is ignored.
+* **Page Number** (_pageNumber_)<b>**</b>: Specifies the page number to which the seal should be created. Page numbers are 1-based. The page number is only <b>required</b> if the signature field does not exist in the pdf document. If page number is provided along with the existing signature field then the page number should be same on which signature field is present in the document, else error is thrown.
+* **Location** (_location_)<b>**</b>: Specifies the coordinates of the seal appearance's bounding box in default PDF user space units. The location is only <b>required</b> if the signature field does not exist in the pdf document. If location is provided along with the existing signature field then it is ignored.
 
-    * **Left** (_left_)*: The left x-coordinate
-    * **Bottom** (_bottom_)*: The bottom y-coordinate
-    * **Right** (_right_)*: The right x-coordinate
-    * **Top** (_top_)*: The top y-coordinate
+    * **Left** (_left_)<b>*</b>: The left x-coordinate
+    * **Bottom** (_bottom_)<b>*</b>: The bottom y-coordinate
+    * **Right** (_right_)<b>*</b>: The right x-coordinate
+    * **Top** (_top_)<b>*</b>: The top y-coordinate
 
-"*" : These are required paramters. <br/>
-"**" : These are conditional parameters, required only if signature field does not exist in the document. <br/>
+"<b>*</b>" : These are required parameters. <br/>
+"<b>**</b>" : These are conditional parameters, required only if signature field does not exist in the document. <br/>
 To add the signature field explicitly, see [how to place a signature field in a PDF](https://www.adobe.com/sign/hub/how-to/add-a-signature-block-to-pdf).
 
-### Seal Appearance Parameters
+### Seal Appearance Parameters (_sealAppearanceOptions_)
 
-Specifies signature field appearance parameters. These are an enum set of display items: NAME, DATE, DISTINGUISHED_NAME, LABELS and SEAL_IMAGE. Specifies the information to display in the signature. NAME and LABELS are the default values.
+Specifies signature field appearance parameters. These are an enum set of display items: NAME, DATE, DISTINGUISHED_NAME, LABELS and SEAL_IMAGE. 
+* **Display Options**  (*displayOptions*): Specifies the information to display in the signature. NAME and LABELS are the default values.
 
-* **NAME**: Specifies that the certificate holder's name should be displayed in the seal appearance.
+Below is the detailed explanation of each appearance option along with a sample appearance. 
+
+1. **NAME**: Specifies that the certificate holder's name should be displayed in the seal appearance.
   ![Display Options](../images/name_ss.png)
-* **DATE**: Specifies that the date/time of sealing should be displayed in the seal appearance. This option only controls whether the value of the
+2. **DATE**: Specifies that the date/time of sealing should be displayed in the seal appearance. This option only controls whether the value of the
   time/date in the signature dictionary is displayed or not. This value should not be mistaken for a signed timestamp from a timestamp authority.
   ![Display Options](../images/date_ss.png)
-* **DISTINGUISHED_NAME**: Specifies that the distinguished name information from the digital certificate should be displayed in the seal appearance.
+3. **DISTINGUISHED_NAME**: Specifies that the distinguished name information from the digital certificate should be displayed in the seal appearance.
   ![Display Options](../images/dn_ss.png)
-* **LABELS**: Specifies that text labels should be displayed in the seal appearance.
+4. **LABELS**: Specifies that text labels should be displayed in the seal appearance.
   ![Display Options](../images/labels_ss.png)
-* **SEAL_IMAGE**: Specifies that the background seal image should be displayed in the seal appearance.
+5. **SEAL_IMAGE**: Specifies that the background seal image should be displayed in the seal appearance.
   ![Display Options](../images/seal_image_ss.png)
   If SEAL_IMAGE is given in appearance parameters and seal image is not present in the request body, the default Acrobat trefoil image is used.
   ![Display Options](../images/sealImage_default.png)
