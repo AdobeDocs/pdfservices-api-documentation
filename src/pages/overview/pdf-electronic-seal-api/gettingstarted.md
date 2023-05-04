@@ -65,7 +65,7 @@ Specifies a supported digital signature format used to apply electronic seal:
 TSP parameters encapsulate the signer's [certificate credential](#step-1-procure-certificate-credentials) as well as the associated authentication and authorization data.
 
 * **TSP Name**  (*providerName*)<b>*</b>: Specifies the name of the Trust Service Provider used to generate the certificate. Presently, only TSPs supporting the OAuth 2.0 client credential authorization flow are supported. Below table provides the provider name mapping for each supported Trust Service Provider.
-  ![TSP Name Mapping](../images/provider_name_ss.png)
+  ![TSP Name Mapping](../images/provider_name_mapping.png)
 
 * **TSP Credential Id**  (*credentialId*)<b>*</b>: Specifies the Digital ID stored with the TSP that should be used for sealing.
 * **TSP Authorization Context**  (*authorizationContext*)<b>*</b>: Encapsulates the authorization data required to communicate with the TSPs.
