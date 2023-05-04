@@ -182,8 +182,6 @@ pdfElectronicSealOperation.setInput(sourceFile);
 //Set the optional input seal image for PDFElectronicSealOperation instance
 pdfElectronicSealOperation.setSealImage(sealImageFile);
 
-//Generating a file name
-let outputFilePath = createOutputFilePath();
 ```
 This code creates a seal Operation using sealOptions, input source file and input seal image.
 
@@ -192,7 +190,7 @@ This code creates a seal Operation using sealOptions, input source file and inpu
 ```js
 // Execute the operation and Save the result to the specified location.
 pdfElectronicSealOperation.execute(executionContext)
-    .then(result => result.saveAsFile(outputFilePath))
+    .then(result => result.saveAsFile("output/sealedOutput.pdf"))
     .catch(err => {
         if (err instanceof PDFServicesSdk.Error.ServiceApiError
             || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
@@ -203,8 +201,6 @@ pdfElectronicSealOperation.execute(executionContext)
     });
 ```
 ![Example running at the command line](./shot9.png)
-
-Here's the complete application (`electronic-seal.js`):
 
 ```js
 /*
@@ -302,12 +298,9 @@ try {
     //Set the optional input seal image for PDFElectronicSealOperation instance
     pdfElectronicSealOperation.setSealImage(sealImageFile);
 
-    //Generating a file name
-    let outputFilePath = createOutputFilePath();
-
     // Execute the operation and Save the result to the specified location.
     pdfElectronicSealOperation.execute(executionContext)
-        .then(result => result.saveAsFile(outputFilePath))
+        .then(result => result.saveAsFile("output/sealedOutput.pdf"))
         .catch(err => {
             if(err instanceof PDFServicesSdk.Error.ServiceApiError
                 || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
@@ -316,15 +309,6 @@ try {
                 console.log('Exception encountered while executing operation', err);
             }
         });
-
-    function createOutputFilePath() {
-        let date = new Date();
-        let dateString = date.getFullYear() + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" +
-            ("0" + date.getDate()).slice(-2) + "T" + ("0" + date.getHours()).slice(-2) + "-" +
-            ("0" + date.getMinutes()).slice(-2) + "-" + ("0" + date.getSeconds()).slice(-2);
-        return ("output/ElectronicSeal/sealedOutput" + dateString + ".pdf");
-    }
-
 } catch (err) {
     console.log('Exception encountered while executing operation', err);
 }

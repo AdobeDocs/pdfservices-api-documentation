@@ -10,14 +10,14 @@ An Electronic Seal in PDF is the equivalent of an organisation rubber stamp on a
 PDF Electronic Seal API is a cloud based solution to apply the eSeal on the pdf documents using the digital certificates issued to Organizations to demonstrate the integrity and authenticity of official documents such as invoices, statements, agreements etc. These digital certificates are issued by a CSC compliant Trust Service Provider (TSP).
 
 Below are the benefits of applying an eSeal to a document.
-* Integrity: Trust that the document has not been altered at any point in the workflow.
-* Authenticity: Trust that the document's author is the expected person and not someone else.
-* Non-Repudiation: Trust that the issuing party cannot disown their authorship.
-* Long Term Validation: Trust that the integrity, authenticity and non-repudiation can be verified over the long term, even after the expiry of digital certificate used.
+* **Integrity**: Trust that the document has not been altered at any point in the workflow.
+* **Authenticity**: Trust that the document's author is the expected person and not someone else.
+* **Non-Repudiation**: Trust that the issuing party cannot disown their authorship.
+* **Long Term Validation**: Trust that the integrity, authenticity and non-repudiation can be verified over the long term, even after the expiry of digital certificate used.
 
 eSeal can be represented by solely an image, a text block (comprising name of entity, date and time of the seal etc.) , or a combination of both image and text. Below is the sample representation of eSeal applied on a PDF Document.
 
-![PDF Electronic Seal](../images/blue_bar.png)
+![PDF Electronic Seal](../images/seal_doc_ss.png)
 
 ## PDF Electronic Seal API Components
 

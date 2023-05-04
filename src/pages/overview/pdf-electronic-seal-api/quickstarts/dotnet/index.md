@@ -234,8 +234,6 @@ FileRef result = pdfElectronicSealOperation.Execute(executionContext);
 result.SaveAs("output/sealedOutput.pdf");
 ```
 
-![Example running at the command line](./shot9.png)
-
 Here's the complete application (`Program.cs`):
 
 ```csharp

@@ -309,11 +309,8 @@ This code creates a seal Operation using sealOptions, input source file and inpu
 FileRef result = pdfElectronicSealOperation.execute(executionContext);
 
 //Save the output at specified location
-String outputFilePath = createOutputFilePath();
-result.saveAs(outputFilePath);
+result.saveAs("output/sealedOutput.pdf");
 ```
-
-![Example running in the command line](./shot9.png)
 
 Here's the complete application (`src/main/java/ElectronicSeal.java`):
 
@@ -426,20 +423,11 @@ public class ElectronicSeal {
             FileRef result = pdfElectronicSealOperation.execute(executionContext);
 
             //Save the output at specified location
-            String outputFilePath = createOutputFilePath();
-            result.saveAs(outputFilePath);
+            result.saveAs("output/sealedOutput.pdf");
 
         } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
             LOGGER.error("Exception encountered while executing operation", ex);
         }
-    }
-
-    //Generates a string containing a directory structure and file name for the output file.
-    private static String createOutputFilePath(){
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH-mm-ss");
-        LocalDateTime now = LocalDateTime.now();
-        String timeStamp = dateTimeFormatter.format(now);
-        return("output/ElectronicSeal/sealedOutput" + timeStamp + ".pdf");
     }
 }
 ```
