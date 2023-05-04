@@ -30,8 +30,10 @@ A PDF Electronic Seal API workflow involves the following:
 
 ## Supported Trust Service Providers
 
-The PDF Electronic Seal API supports digital certificates issued and managed by the Trust Service Providers certified under the eIDAS regulation and supporting the open API standard from the Cloud Signature Consortium. These QTSPs must configure explicit authorization (based on a static PIN only), and the OAuth 2.0 client credential authorization flow.
-Currently, this requirement is only fulfilled by below TSPs : <!-- REFERENCES https://helpx.adobe.com/acrobat/kb/approved-trust-list1.html -->
+Trust Service Providers ("TSPs") are companies that offer a wide range of identity and transaction services, including certificate authority services such as providing and preserving digital certificates for creating and validating electronic seals as well as authenticating the organizations hat applied the electronic seals.
+
+The PDF Electronic Seal API supports digital certificates hosted by Qualified Trust Service Providers ("QTSPs") recognized under the eIDAS regulation and who support the open API standard from the Cloud Signature Consortium. These TSPs must support explicit authorization (based on a static PIN only), and the OAuth 2.0 client credential authorization flow.
+Seal API currently supports the following TSPs : <!-- REFERENCES https://helpx.adobe.com/acrobat/kb/approved-trust-list1.html -->
 <br/>
 
 * [Intesi Group](https://www.intesigroup.com/en/)
