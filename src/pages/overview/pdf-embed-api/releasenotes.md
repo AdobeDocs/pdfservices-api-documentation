@@ -42,7 +42,7 @@ the changes below for each release.
 
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
-| New    | PDF Embed API is also available on the new <b>documentservices.adobe.com</b> subdomain. For sample usage, see the section [sample usage](./index.md#copy-it-run-it). |
+| New    | PDF Embed API is also available on the new <b>acrobatservices.adobe.com</b> subdomain. For sample usage, see the section [sample usage](./index.md#copy-it-run-it). |
 
 
 ### August, 2022
