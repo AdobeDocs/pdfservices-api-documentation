@@ -23,9 +23,9 @@ eSeal can be represented by solely an image, a text block (comprising name of en
 
 A PDF Electronic Seal API workflow involves the following:
 
-* **PDF Document**: A PDF document as an input file for eSeal operation. The maximum size of the PDF cannot exceed 10MB.
+* **PDF Document**: A PDF document as an input file for eSeal operation. The maximum size of the PDF cannot exceed 100MB.
 * **Sealing Parameters**: Parameters  specifying the seal's format, visibility and appearance along with the digital certificate credentials information. For details, see [sealing parameters](gettingstarted#parameters).
-* **Seal Image**: The API accepts an **optional** seal image as a background image for seal appearance which overrides the default Acrobat trefoil image. The maximum size of the seal image cannot exceed 2MB. Supported image formats for seal image are JPEG or PNG only.
+* **Seal Image**: The API accepts an **optional** seal image as a background image for seal appearance which overrides the default seal image. The maximum size of the seal image cannot exceed 2MB. Supported image formats for seal image are JPEG and PNG only.
 
 
 ## Supported Trust Service Providers

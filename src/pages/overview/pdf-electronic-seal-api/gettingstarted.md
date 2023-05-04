@@ -112,10 +112,11 @@ Below is the detailed explanation of each appearance option along with a sample 
   ![Display Options](../images/dn_ss.png)
 4. **LABELS**: Specifies that text labels should be displayed in the seal appearance.
   ![Display Options](../images/labels_ss.png)
+
 5. **SEAL_IMAGE**: Specifies that the background seal image should be displayed in the seal appearance.
-  ![Display Options](../images/seal_ss.png)
+  ![Display Options](../images/seal2_ss.png)
   If SEAL_IMAGE is given in appearance parameters and seal image is not present in the request body, the default Acrobat trefoil image is used.
-  ![Display Options](../images/trefoil_ss.png)
+  ![Display Options](../images/trefoil2_ss.png)
 
 **Example JSON**
 
