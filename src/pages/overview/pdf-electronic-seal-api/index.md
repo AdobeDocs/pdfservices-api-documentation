@@ -5,7 +5,7 @@ title: PDF Electronic Seal API | Adobe PDF Services
 
 ## What is a PDF Electronic Seal API ?
 
-An Electronic Seal in PDF is the equivalent of an organization rubber stamp on a paper, but it’s much more secure. It is supported by a digital certificate issued in the name of an organization. Electronic Seal i.e. eSeal is in accordance with the global standards set by CSC and offer the utmost level of assurance of identity while handling digital documents.
+An Electronic Seal in PDF is the equivalent of an organization rubber stamp on a paper, but it’s much more secure. It is supported by a digital certificate issued in the name of an organization. Electronic Seal i.e. eSeal is in accordance with the global standards set by Cloud Signature Consortium (CSC) and offer the utmost level of assurance of identity while handling digital documents.
 
 PDF Electronic Seal API is a cloud based solution to apply the eSeal on the pdf documents using the digital certificates issued to Organizations to demonstrate the integrity and authenticity of official documents such as invoices, statements, agreements etc. These digital certificates are issued by a CSC compliant Trust Service Provider (TSP).
 
@@ -32,7 +32,7 @@ A PDF Electronic Seal API workflow involves the following:
 
 Trust Service Providers ("TSPs") are companies that offer a wide range of identity and transaction services, including certificate authority services such as providing and preserving digital certificates for creating and validating electronic seals as well as authenticating the organizations that applied the electronic seals.
 
-The PDF Electronic Seal API supports digital certificates hosted by Qualified Trust Service Providers ("QTSPs") recognized under the eIDAS regulation and who support the open API standard from the Cloud Signature Consortium. These TSPs must support explicit authorization (based on a static PIN only), and the OAuth 2.0 client credential authorization flow.
+The PDF Electronic Seal API supports digital certificates hosted by Qualified Trust Service Providers ("QTSPs") recognized under the eIDAS regulation and who support the open API standard from the Cloud Signature Consortium (CSC). These TSPs must support explicit authorization (based on a static PIN only), and the OAuth 2.0 client credential authorization flow.
 Seal API currently supports the following TSPs : <!-- REFERENCES https://helpx.adobe.com/acrobat/kb/approved-trust-list1.html -->
 <br/>
 
