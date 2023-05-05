@@ -156,7 +156,7 @@ FileRef sealImageFile = FileRef.CreateFromLocalFile(@"sampleSealImage.png");
 
 ```csharp
 //Set the Seal Field Name to be created in input PDF document.
-string sealFieldName = "<SEAL_FIELD_NAME>";
+string sealFieldName = "signature1";
 
 //Set the page number in input document for applying seal.
 int sealPageNumber = 1;
@@ -223,7 +223,7 @@ pdfElectronicSealOperation.SetInput(sourceFile);
 //Set the optional input seal image for PDFElectronicSealOperation instance
 pdfElectronicSealOperation.SetSealImage(sealImageFile);
 ```
-This code creates a seal Operation using sealOptions, input source file and input seal image.
+This code creates a seal operation using sealOptions, input source file and input seal image.
 
 9) Let's execute this seal operation:
 ```csharp
@@ -285,7 +285,7 @@ namespace ElectronicSeal
                 FileRef sealImageFile = FileRef.CreateFromLocalFile(@"sampleSealImage.png");
 
                 //Set the Seal Field Name to be created in input PDF document.
-                string sealFieldName = "<SEAL_FIELD_NAME>";
+                string sealFieldName = "signature1";
 
                 //Set the page number in input document for applying seal.
                 int sealPageNumber = 1;

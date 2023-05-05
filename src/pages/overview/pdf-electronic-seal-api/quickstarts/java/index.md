@@ -233,7 +233,7 @@ FileRef sealImageFile = FileRef.createFromLocalFile("./sampleSealImage.png");
 
 ```java
 //Set the Seal Field Name to be created in input PDF document.
-String sealFieldName = "<SEAL_FIELD_NAME>";
+String sealFieldName = "signature1";
 
 //Set the page number in input document for applying seal.
 Integer sealPageNumber = 1;
@@ -300,7 +300,7 @@ pdfElectronicSealOperation.setInput(sourceFile);
 //Set the optional input seal image for PDFElectronicSealOperation instance
 pdfElectronicSealOperation.setSealImage(sealImageFile);
 ```
-This code creates a seal Operation using sealOptions, input source file and input seal image.
+This code creates a seal operation using sealOptions, input source file and input seal image.
  
 9) Let's execute this seal operation:
 
@@ -365,7 +365,7 @@ public class ElectronicSeal {
             FileRef sealImageFile = FileRef.createFromLocalFile("./sampleSealImage.png");
 
             //Set the Seal Field Name to be created in input PDF document.
-            String sealFieldName = "<SEAL_FIELD_NAME>";
+            String sealFieldName = "signature1";
 
             //Set the page number in input document for applying seal.
             Integer sealPageNumber = 1;
