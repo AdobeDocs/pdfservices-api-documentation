@@ -57,15 +57,15 @@ Once the customer has all the necessary prerequisites in place, they have to cal
 
 Specifies a supported digital signature format used to apply electronic seal:
 
-* PADES : This is the latest and improved signature format which is more strict, concrete, and secure. For details, see [ETSI TS 102 778-3](https://www.etsi.org/deliver/etsi_ts/102700_102799/10277803/01.02.01_60/ts_10277803v010201p.pdf)
 * PKCS7 : This signature format is less stringent than PADES since it permits more PDF changes without invalidating the digital signature. For details, see [ISO 32000-1](https://opensource.adobe.com/dc-acrobat-sdk-docs/standards/pdfstandards/pdf/PDF32000_2008.pdf)
+* PADES : This is the latest and improved signature format which is more strict, concrete, and secure. This is the default signature format. For details, see [ETSI TS 102 778-3](https://www.etsi.org/deliver/etsi_ts/102700_102799/10277803/01.02.01_60/ts_10277803v010201p.pdf)
 
 ### TSP Credential Information (_cscCredentialOptions_)<b>*</b>
 
 TSP parameters encapsulate the sealer's [certificate credential](#step-1-procure-digital-certificate-credentials) as well as the associated authentication and authorization data.
 
 * **TSP Name**  (*providerName*)<b>*</b>: Specifies the name of the Trust Service Provider used to generate the certificate. Presently, only TSPs supporting the OAuth 2.0 client credential authorization flow are supported. The table below provides the provider name mapping for each supported Trust Service Provider.
-  ![TSP Name Mapping](../images/provider_name_mapping.png)
+  ![TSP Name Mapping](../images/provider_name_mapping_ss.png)
 
 * **TSP Credential Id**  (*credentialId*)<b>*</b>: Specifies the Digital ID stored with the TSP that should be used for sealing.
 * **TSP Authorization Context**  (*authorizationContext*)<b>*</b>: Encapsulates the authorization data required to communicate with the TSPs.
