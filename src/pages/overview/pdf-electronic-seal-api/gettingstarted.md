@@ -182,6 +182,7 @@ To use the PDF Services SDKs, below are the detailed steps:
     * Specify an optional file path to a logo/watermark/background image used as part of the seal's appearance. Supported formats include:
         * image/jpeg
         * image/png
+        * application/pdf
 1. The electronically sealed PDF file obtained will be saved to the specified output file path.
 
 Use the samples below to generate a PDF with an electronic seal.
