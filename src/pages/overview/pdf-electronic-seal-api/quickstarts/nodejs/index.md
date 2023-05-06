@@ -71,7 +71,7 @@ Now you're ready to begin coding.
 1) We'll begin by including our required dependencies:
 
 ```js
-const PDFServicesSdk = require('@dcloud/pdfservices-node-sdk');
+const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 ```
 
 This line includes the Adobe PDF Services Node.js SDK
@@ -105,8 +105,8 @@ const pdfElectronicSeal = PDFServicesSdk.PDFElectronicSeal,
 //Get the input document to perform the sealing operation
 const sourceFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/HallibyInvoice.pdf'),
 
-    //Get the background seal image for signature , if required.
-    sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/sampleSealImage.png');
+//Get the background seal image for signature , if required.
+sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/sampleSealImage.png');
 
 ```
 
@@ -114,7 +114,7 @@ const sourceFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/Halliby
 
 ```js
 // Set the Seal Field Name to be created in input PDF document.
-sealFieldName = "<SEAL_FIELD_NAME>";
+sealFieldName = "signature1";
 
 // Set the page number in input document for applying seal.
 sealPageNumber = 1;
@@ -183,7 +183,7 @@ pdfElectronicSealOperation.setInput(sourceFile);
 pdfElectronicSealOperation.setSealImage(sealImageFile);
 
 ```
-This code creates a seal Operation using sealOptions, input source file and input seal image.
+This code creates a seal operation using sealOptions, input source file and input seal image.
 
 9) Let's execute this seal operation:
 
@@ -244,7 +244,7 @@ try {
         sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/sampleSealImage.png');
 
     // Set the Seal Field Name to be created in input PDF document.
-    sealFieldName = "<SEAL_FIELD_NAME>";
+    sealFieldName = "signature1";
 
     // Set the page number in input document for applying seal.
     sealPageNumber = 1;

@@ -7,7 +7,7 @@ title: Getting Started | PDF Electronic Seal API | Adobe PDF Services
 
 ### Step 1: Procure Digital Certificate Credentials
 
-1. A client must register with one of our [supported Trust Service Providers](#supported-trust-service-providers) and obtain the digital certificate. Note that the supported TSPs are Cloud Signature Consortium (CSC) compliant. For more details, see [Cloud Signature Consortium Standard](https://cloudsignatureconsortium.org/wp-content/uploads/2020/01/CSC_API_V1_1.0.4.0.pdf).
+1. A client must register with a Trust Service Provider (TSP or TSPs) and obtain the digital certificate. A certificate may be purchased from any of the [supported Trust Service Providers](#supported-trust-service-providers). For more details, see [Cloud Signature Consortium Standard](https://cloudsignatureconsortium.org/wp-content/uploads/2020/01/CSC_API_V1_1.0.4.0.pdf).
 2. TSP performs remote identity verification of the client which acts as the legal owner of the digital certificate.
 3. After identity verification, the TSP issues a digital certificate to the client and provides them a `credential_id`, `client_id` and `client_secret`. These are typically protected by a static PIN. The client should securely store the credential details and PIN for later use.
 
@@ -19,7 +19,7 @@ In order to invoke the PDF Electronic Seal API, Adobe-provided credentials are r
 
 ### Step 3: Obtain your OAuth Token
 
-The client sends the `client_id` and `client_secret` to the TSP's OAuth 2.0 authorization API. The TSP responds with an access token which is passed as one of the [input parameters](#parameters) to the PDF Electronic Seal API. The purpose of this token is to access the TSP's end points for further sealing process. It is valid for a timeframe specified by the TSP.
+The client sends the `client_id` and `client_secret` to the TSP's OAuth 2.0 authorization API. The TSP responds with an access token which is passed as one of the [input parameters](#parameters) to the PDF Electronic Seal API. The purpose of this token is to access the TSP's end points for the sealing process. It is valid during a timeframe specified by the TSP.
 
 ![TSP Token Generation](../images/TSPToken.png)
 
@@ -57,15 +57,15 @@ Once the customer has all the necessary prerequisites in place, they have to cal
 
 Specifies a supported digital signature format used to apply electronic seal:
 
-* PADES : This is the latest and improved signature format which is more strict, concrete, and secure. For details, see [ETSI TS 102 778-3](https://www.etsi.org/deliver/etsi_ts/102700_102799/10277803/01.02.01_60/ts_10277803v010201p.pdf)
 * PKCS7 : This signature format is less stringent than PADES since it permits more PDF changes without invalidating the digital signature. For details, see [ISO 32000-1](https://opensource.adobe.com/dc-acrobat-sdk-docs/standards/pdfstandards/pdf/PDF32000_2008.pdf)
+* PADES : This is the latest and improved signature format which is more strict, concrete, and secure. This is the default signature format. For details, see [ETSI TS 102 778-3](https://www.etsi.org/deliver/etsi_ts/102700_102799/10277803/01.02.01_60/ts_10277803v010201p.pdf)
 
 ### TSP Credential Information (_cscCredentialOptions_)<b>*</b>
 
-TSP parameters encapsulate the signer's [certificate credential](#step-1-procure-certificate-credentials) as well as the associated authentication and authorization data.
+TSP parameters encapsulate the sealer's [certificate credential](#step-1-procure-digital-certificate-credentials) as well as the associated authentication and authorization data.
 
-* **TSP Name**  (*providerName*)<b>*</b>: Specifies the name of the Trust Service Provider used to generate the certificate. Presently, only TSPs supporting the OAuth 2.0 client credential authorization flow are supported. Below table provides the provider name mapping for each supported Trust Service Provider.
-  ![TSP Name Mapping](../images/provider_name_ss.png)
+* **TSP Name**  (*providerName*)<b>*</b>: Specifies the name of the Trust Service Provider used to generate the certificate. Presently, only TSPs supporting the OAuth 2.0 client credential authorization flow are supported. The table below provides the provider name mapping for each supported Trust Service Provider.
+  ![TSP Name Mapping](../images/provider_name_mapping_ss.png)
 
 * **TSP Credential Id**  (*credentialId*)<b>*</b>: Specifies the Digital ID stored with the TSP that should be used for sealing.
 * **TSP Authorization Context**  (*authorizationContext*)<b>*</b>: Encapsulates the authorization data required to communicate with the TSPs.
@@ -79,12 +79,12 @@ TSP parameters encapsulate the signer's [certificate credential](#step-1-procure
 
 ### Seal Field Parameters   (*sealFieldOptions*)<b>*</b>
 
-The seal field parameters are required to give information about signature field in PDF which will be used for visualization of eSeal. Customers can either create a new signature field or sign an existing field.
+The seal field parameters are required to create a new signature field or use an existing signature field to apply seal.
 
-* **Field Name**  (*fieldName*)<b>*</b>: The signature field name. This must be a non-empty string. If signature field with this field name already exists, that field is used.
+* **Field Name**  (*fieldName*)<b>*</b>: The signature field's name. This must be a non-empty string. If signature field with this field name already exists, that field is used.
   If it does not exist, a signature field with this name will be created.
-* **Visibility** (_visible_): Specifies whether the seal is visible or invisible. The default value of `true` creates a visible seal.
-* **Page Number** (_pageNumber_)<b>**</b>: Specifies the page number to which the seal should be created. Page numbers are 1-based. The page number is only <b>required</b> if the signature field does not exist in the pdf document. If page number is provided along with the existing signature field then the page number should be same on which signature field is present in the document, else error is thrown.
+* **Visibility** (_visible_): Specifies whether the signature field is visible or invisible. The default value of `true` creates a visible seal.
+* **Page Number** (_pageNumber_)<b>**</b>: Specifies the page number to which the signature field should be attached. Page numbers are 1-based. The page number is only <b>required</b> if the signature field does not exist in the pdf document. If page number is provided along with the existing signature field then the page number should be same on which signature field is present in the document, else an error is thrown.
 * **Location** (_location_)<b>**</b>: Specifies the coordinates of the seal appearance's bounding box in default PDF user space units. The location is only <b>required</b> if the signature field does not exist in the pdf document. If location is provided along with the existing signature field then it is ignored.
 
     * **Left** (_left_)<b>*</b>: The left x-coordinate
@@ -92,30 +92,27 @@ The seal field parameters are required to give information about signature field
     * **Right** (_right_)<b>*</b>: The right x-coordinate
     * **Top** (_top_)<b>*</b>: The top y-coordinate
 
-"<b>*</b>" : These are required parameters. <br/>
-"<b>**</b>" : These are conditional parameters, required only if signature field does not exist in the document. <br/>
 To add the signature field explicitly, see [how to place a signature field in a PDF](https://www.adobe.com/sign/hub/how-to/add-a-signature-block-to-pdf).
 
 ### Seal Appearance Parameters (_sealAppearanceOptions_)
 
-Specifies signature field appearance parameters. These are an enum set of display items: NAME, DATE, DISTINGUISHED_NAME, LABELS and SEAL_IMAGE. 
-* **Display Options**  (*displayOptions*): Specifies the information to display in the signature. NAME and LABELS are the default values.
+Specifies seal field appearance parameters. These are an enumerated set of display items: NAME, DATE, DISTINGUISHED_NAME, LABELS and SEAL_IMAGE. 
+* **Display Options**  (*displayOptions*): Specifies the information to display in the seal. NAME and LABELS are the default values.
 
-Below is the detailed explanation of each appearance option along with a sample appearance. 
+Below is the detailed explanation of each appearance option along with a sample seal appearance. 
 
-1. **NAME**: Specifies that the certificate holder's name should be displayed in the seal appearance.
+1. **NAME**: Specifies that the legal organization's name that should be displayed in the seal's appearance.
   ![Display Options](../images/name_ss.png)
-2. **DATE**: Specifies that the date/time of sealing should be displayed in the seal appearance. This option only controls whether the value of the
-  time/date in the signature dictionary is displayed or not. This value should not be mistaken for a signed timestamp from a timestamp authority.
+2. **DATE**: Specifies that the sealing date/time should be displayed in the seal's appearance. This value should not be mistaken for a signed timestamp from a timestamp authority.
   ![Display Options](../images/date_ss.png)
-3. **DISTINGUISHED_NAME**: Specifies that the distinguished name information from the digital certificate should be displayed in the seal appearance.
+3. **DISTINGUISHED_NAME**: Specifies that the distinguished name information from the digital certificate should be displayed in the seal's appearance.
   ![Display Options](../images/dn_ss.png)
-4. **LABELS**: Specifies that text labels should be displayed in the seal appearance.
+4. **LABELS**: Specifies that text labels should be displayed in the seal's appearance.
   ![Display Options](../images/labels_ss.png)
-5. **SEAL_IMAGE**: Specifies that the background seal image should be displayed in the seal appearance.
-  ![Display Options](../images/seal_ss.png)
-  If SEAL_IMAGE is given in appearance parameters and seal image is not present in the request body, the default Acrobat trefoil image is used.
-  ![Display Options](../images/trefoil_ss.png)
+5. **SEAL_IMAGE**: Specifies the seal image should be displayed in the seal's appearance.
+  ![Display Options](../images/seal2_ss.png)
+  If SEAL_IMAGE is given in appearance parameters and seal image is not passed in the request, the default Acrobat trefoil image is used.
+  ![Display Options](../images/trefoil2_ss.png)
 
 **Example JSON**
 
@@ -157,9 +154,7 @@ Below is the detailed explanation of each appearance option along with a sample 
 
 ## Workflows
 
-The PDF Electronic Seal API can be integrated using 2 ways:
-1) REST API 
-2) PDF Services SDKs.
+The PDF Electronic Seal API can be integrated two ways, either via our REST API or our PDF Services SDKs.
 
 ### REST API
 
@@ -169,7 +164,7 @@ To use the REST API, below are the detailed steps:
 1. Call the `/asset` API with `mediaType` in the request specifying the document upload type. For example, `application/pdf`. The API responds with an asset ID and upload URI.
 1. Request to upload the input document to the upload URI.
 1. Invoke PDF Electronic Seal API (/pdf-services/operation/electronicseal) by providing the asset IDs generated in step 1 and other required sealing parameters. In the response, the client receives the job URI in the location header. [Details](https://developer.adobe.com/document-services/docs/apis/#operation/pdfoperations.electronicseal).
-1. Use the job URI to poll the status of the submitted job (Electronic Seal operation). The response includes a job status: *In progress*, *Failed* or *Done*. If the status is done, the seal API returns an asset ID and download URI. **This download URI is valid for 24 hours.**.
+1. Use the job URI to poll the status of the submitted job (Electronic Seal operation). The response includes a job status: *In progress*, *Failed* or *Done*. If the status is done, the seal API returns an asset ID and download URI. **This download URI is valid for 24 hours.**
 1. Download the electronically sealed PDF using download URI from above step.
 
 
@@ -184,10 +179,11 @@ To use the PDF Services SDKs, below are the detailed steps:
 1. Make a call to the PDF Electronic Seal operation that includes the following:
     * The file path to an input PDF (from the local machine).
     * [Required parameters](#parameters)
-    * Specify an optional file path to a logo/watermark/background image used as part of the signature field's seal appearance. Supported formats include:
+    * Specify an optional file path to a logo/watermark/background image used as part of the seal's appearance. Supported formats include:
         * image/jpeg
         * image/png
-1. The electronically sealed PDF file obtained will be saved to specified output file path.
+        * application/pdf
+1. The electronically sealed PDF file obtained will be saved to the specified output file path.
 
 Use the samples below to generate a PDF with an electronic seal.
 
@@ -226,7 +222,7 @@ public class ElectronicSeal {
         FileRef sealImageFile = FileRef.createFromLocalFile("src/main/resources/sampleSealImage.png");
     
         //Set the Seal Field Name to be created in input PDF document.
-        String sealFieldName = "<SEAL_FIELD_NAME>";
+        String sealFieldName = "signature1";
     
         //Set the page number in input document for applying seal.
         Integer sealPageNumber = 1;
@@ -331,7 +327,7 @@ namespace ElectronicSeal
                 FileRef sealImageFile = FileRef.CreateFromLocalFile(@"sampleSealImage.png");
 
                 //Set the Seal Field Name to be created in input PDF document.
-                string sealFieldName = "<SEAL_FIELD_NAME>";
+                string sealFieldName = "signature1";
 
                 //Set the page number in input document for applying seal.
                 int sealPageNumber = 1;
@@ -450,7 +446,7 @@ try {
             sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/sampleSealImage.png');
     
         // Set the Seal Field Name to be created in input PDF document.
-        sealFieldName = "<SEAL_FIELD_NAME>";
+        sealFieldName = "signature1";
     
         // Set the page number in input document for applying seal.
         sealPageNumber = 1;
