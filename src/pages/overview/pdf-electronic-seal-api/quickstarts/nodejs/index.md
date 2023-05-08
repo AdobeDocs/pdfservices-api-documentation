@@ -200,7 +200,8 @@ pdfElectronicSealOperation.execute(executionContext)
         }
     });
 ```
-![Example running at the command line](./shot9.png)
+
+Here's the complete application (`electronic-seal.js`):
 
 ```js
 /*
