@@ -114,7 +114,7 @@ sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/sampleSeal
 
 ```js
 // Set the Seal Field Name to be created in input PDF document.
-sealFieldName = "signature1";
+sealFieldName = "Signature1";
 
 // Set the page number in input document for applying seal.
 sealPageNumber = 1;
@@ -245,7 +245,7 @@ try {
         sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/sampleSealImage.png');
 
     // Set the Seal Field Name to be created in input PDF document.
-    sealFieldName = "signature1";
+    sealFieldName = "Signature1";
 
     // Set the page number in input document for applying seal.
     sealPageNumber = 1;
