@@ -4,7 +4,7 @@ title: Node.js | Quickstarts | PDF Electronic Seal API | Adobe PDF Services
 
 # Quickstart for Adobe PDF Electronic Seal API (Node.js)
 
-To get started using Adobe PDF Electronic Seal API, let's walk through a simple scenario - Applying an electronic seal on an invoice PDF document of an organization. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
+To get started using Adobe PDF Electronic Seal API, let's walk through a simple scenario - Applying an electronic seal on an invoice PDF document. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
 
 ## Prerequisites
 
@@ -62,7 +62,7 @@ At this point, we've installed the Node.js SDK for Adobe PDF Services API as a d
 
 Our application will take an Invoice PDF document, `HallibyInvoice.pdf` (downloadable from [here](./HallibyInvoice.pdf)), and will use the sealing options with default appearance options to apply electronic seal over the PDF document by invoking Acrobat Services API and generate an electronically sealed PDF.
 
-7) In your editor, open the directory where you previously copied the credentials. Create a new file, `electronic-seal.js`.
+6) In your editor, open the directory where you previously copied the credentials. Create a new file, `electronic-seal.js`.
 
 Now you're ready to begin coding.
 

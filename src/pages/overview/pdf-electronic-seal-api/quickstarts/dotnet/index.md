@@ -4,7 +4,7 @@ title: .NET | Quickstarts | PDF Electronic Seal API | Adobe PDF Services
 
 # Quickstart for Adobe PDF Electronic Seal API (.NET)
 
-To get started using PDF Electronic Seal API, let's walk through a simple scenario - Applying an electronic seal on an invoice PDF document of an organization. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
+To get started using PDF Electronic Seal API, let's walk through a simple scenario - Applying an electronic seal on an invoice PDF document. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
 
 ## Prerequisites
 
@@ -184,7 +184,7 @@ These lines are hard coded but in a real application would typically be dynamic.
 string providerName = "<PROVIDER_NAME>";
 
 //Set the access token to be used to access TSP provider hosted APIs.
-string accessToken = "<ACCESS TOKEN>";
+string accessToken = "<ACCESS_TOKEN>";
 
 //Set the credential ID.
 string credentialID = "<CREDENTIAL_ID>";
@@ -306,7 +306,7 @@ namespace ElectronicSeal
                 string providerName = "<PROVIDER_NAME>";
 
                 //Set the access token to be used to access TSP provider hosted APIs.
-                string accessToken = "<ACCESS TOKEN>";
+                string accessToken = "<ACCESS_TOKEN>";
 
                 //Set the credential ID.
                 string credentialID = "<CREDENTIAL_ID>";
