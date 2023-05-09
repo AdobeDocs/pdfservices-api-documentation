@@ -233,7 +233,7 @@ FileRef sealImageFile = FileRef.createFromLocalFile("./sampleSealImage.png");
 
 ```java
 //Set the Seal Field Name to be created in input PDF document.
-String sealFieldName = "signature1";
+String sealFieldName = "Signature1";
 
 //Set the page number in input document for applying seal.
 Integer sealPageNumber = 1;
@@ -365,7 +365,7 @@ public class ElectronicSeal {
             FileRef sealImageFile = FileRef.createFromLocalFile("./sampleSealImage.png");
 
             //Set the Seal Field Name to be created in input PDF document.
-            String sealFieldName = "signature1";
+            String sealFieldName = "Signature1";
 
             //Set the page number in input document for applying seal.
             Integer sealPageNumber = 1;

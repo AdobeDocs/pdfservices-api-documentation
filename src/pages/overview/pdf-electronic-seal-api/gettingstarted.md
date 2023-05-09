@@ -7,7 +7,7 @@ title: Getting Started | PDF Electronic Seal API | Adobe PDF Services
 
 ### Step 1: Procure Digital Certificate Credentials
 
-1. A client must register with a Trust Service Provider (TSP or TSPs) and obtain the digital certificate. A certificate may be purchased from any of the [supported Trust Service Providers](#supported-trust-service-providers). For more details, see [Cloud Signature Consortium Standard](https://cloudsignatureconsortium.org/wp-content/uploads/2020/01/CSC_API_V1_1.0.4.0.pdf).
+1. A client must register with a Trust Service Provider (TSP or TSPs) and obtain the digital certificate. A certificate may be purchased from any of the [supported Trust Service Providers](../#supported-trust-service-providers). For more details, see [Cloud Signature Consortium Standard](https://cloudsignatureconsortium.org/wp-content/uploads/2020/01/CSC_API_V1_1.0.4.0.pdf).
 2. TSP performs remote identity verification of the client which acts as the legal owner of the digital certificate.
 3. After identity verification, the TSP issues a digital certificate to the client and provides them a `credential_id`, `client_id` and `client_secret`. These are typically protected by a static PIN. The client should securely store the credential details and PIN for later use.
 
@@ -222,7 +222,7 @@ public class ElectronicSeal {
         FileRef sealImageFile = FileRef.createFromLocalFile("src/main/resources/sampleSealImage.png");
     
         //Set the Seal Field Name to be created in input PDF document.
-        String sealFieldName = "signature1";
+        String sealFieldName = "Signature1";
     
         //Set the page number in input document for applying seal.
         Integer sealPageNumber = 1;
@@ -327,7 +327,7 @@ namespace ElectronicSeal
                 FileRef sealImageFile = FileRef.CreateFromLocalFile(@"sampleSealImage.png");
 
                 //Set the Seal Field Name to be created in input PDF document.
-                string sealFieldName = "signature1";
+                string sealFieldName = "Signature1";
 
                 //Set the page number in input document for applying seal.
                 int sealPageNumber = 1;
@@ -446,7 +446,7 @@ try {
             sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/sampleSealImage.png');
     
         // Set the Seal Field Name to be created in input PDF document.
-        sealFieldName = "signature1";
+        sealFieldName = "Signature1";
     
         // Set the page number in input document for applying seal.
         sealPageNumber = 1;

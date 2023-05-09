@@ -156,7 +156,7 @@ FileRef sealImageFile = FileRef.CreateFromLocalFile(@"sampleSealImage.png");
 
 ```csharp
 //Set the Seal Field Name to be created in input PDF document.
-string sealFieldName = "signature1";
+string sealFieldName = "Signature1";
 
 //Set the page number in input document for applying seal.
 int sealPageNumber = 1;
@@ -285,7 +285,7 @@ namespace ElectronicSeal
                 FileRef sealImageFile = FileRef.CreateFromLocalFile(@"sampleSealImage.png");
 
                 //Set the Seal Field Name to be created in input PDF document.
-                string sealFieldName = "signature1";
+                string sealFieldName = "Signature1";
 
                 //Set the page number in input document for applying seal.
                 int sealPageNumber = 1;
