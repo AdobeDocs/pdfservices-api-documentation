@@ -114,8 +114,8 @@ The following features and configuration variables are deprecated in modern view
 ## Migration Guide
 
 To migrate over Adobe's new modern PDF viewer, developers are required to use 
-[viewer.js](https://documentservices.adobe.com/view-sdk/viewer.js) script (line 11) in place of the previously used
-[main.js](https://documentservices.adobe.com/view-sdk/main.js) script. All APIs and callbacks will work as expected 
+[viewer.js](https://acrobatservices.adobe.com/view-sdk/viewer.js) script (line 11) in place of the previously used
+[main.js](https://acrobatservices.adobe.com/view-sdk/main.js) script. All APIs and callbacks will work as expected 
 with significant improvement in user experience.
 
 
@@ -132,14 +132,14 @@ with significant improvement in user experience.
 </head>
 <body style="margin: 0px">
  <div id="adobe-dc-view"></div>
- <script src="https://documentservices.adobe.com/view-sdk/viewer.js"></script>
+ <script src="https://acrobatservices.adobe.com/view-sdk/viewer.js"></script>
  <script type="text/javascript">
     document.addEventListener("adobe_dc_view_sdk.ready", function()
     {
         var adobeDCView = new AdobeDC.View({clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view"});
         adobeDCView.previewFile(
        {
-          content:   {location: {url: "https://documentservices.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
+          content:   {location: {url: "https://acrobatservices.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
           metaData: {fileName: "Bodea Brochure.pdf"}
        });
     });
