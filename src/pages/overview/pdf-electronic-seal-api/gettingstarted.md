@@ -53,11 +53,11 @@ Once the customer has all the necessary prerequisites in place, they have to cal
 
 ## API Parameters (_sealOptions_)<b>*</b>
 
-### Signature Format (_signatureFormat_)<b>*</b>
+### Signature Format (_signatureFormat_)
 
 Specifies a supported digital signature format used to apply electronic seal:
 
-* PKCS7 : This signature format is less stringent than PADES since it permits more PDF changes without invalidating the digital signature. For details, see [ISO 32000-1](https://opensource.adobe.com/dc-acrobat-sdk-docs/standards/pdfstandards/pdf/PDF32000_2008.pdf)
+* PKCS7 : This signature format is less stringent than PADES since it permits more PDF changes without invalidating the digital signature. For details, see [ISO 32000-1](https://opensource.adobe.com/dc-acrobat-sdk-docs/standards/pdfstandards/pdf/PDF32000_2008.pdf). It is the default value if signature format is not specified.
 * PADES : This is the latest and improved signature format which is more strict, concrete, and secure. This is the default signature format. For details, see [ETSI TS 102 778-3](https://www.etsi.org/deliver/etsi_ts/102700_102799/10277803/01.02.01_60/ts_10277803v010201p.pdf)
 
 ### TSP Credential Information (_cscCredentialOptions_)<b>*</b>
