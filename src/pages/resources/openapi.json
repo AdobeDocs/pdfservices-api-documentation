@@ -9118,7 +9118,7 @@
         "properties": {
           "signatureFormat": {
             "type": "string",
-            "description": "Specifies a supported digital signature format. For supported signature formats, please refer <a href = \"https://developer-stage.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#signature-format-signatureformatbb\">documentation</a>.",
+            "description": "Specifies a supported digital signature format. For supported signature formats, please refer <a href = \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#signature-format-signatureformatbb\">documentation</a>.",
             "default": "PKCS7",
             "enum": [
               "PADES",
@@ -9127,7 +9127,7 @@
           },
           "cscCredentialOptions": {
             "type": "object",
-            "description": "Specifies the parameters that encapsulates the signer's certificate credential. For more information, please see the <a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#tsp-credential-information-csccredentialoptionsbb\">documentation</a>.",
+            "description": "Specifies the parameters that encapsulates the signer's certificate credential. For more information, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#tsp-credential-information-csccredentialoptionsbb\">documentation</a>.",
             "required": [
               "providerName",
               "credentialId",
@@ -9137,7 +9137,7 @@
             "properties": {
               "providerName": {
                 "type": "string",
-                "description": "Specifies the name of the Trust Service Provider. For the list of supported TSPs, please refer <a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/#supported-trust-service-providers\">documentation</a>."
+                "description": "Specifies the name of the Trust Service Provider. For the list of supported TSPs, please refer <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/#supported-trust-service-providers\">documentation</a>."
               },
               "credentialId": {
                 "type": "string",
@@ -9178,7 +9178,7 @@
           },
           "sealFieldOptions": {
             "type": "object",
-            "description": "Specifies the parameters required to create a new signature field or use an existing field. For more details, please refer <a href= \"https://developer-stage.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#seal-field-parameters---sealfieldoptionsbb\">documentation</a>.",
+            "description": "Specifies the parameters required to create a new signature field or use an existing field. For more details, please refer <a href= \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#seal-field-parameters---sealfieldoptionsbb\">documentation</a>.",
             "required": [
               "fieldName"
             ],
@@ -9228,7 +9228,7 @@
           },
           "sealAppearanceOptions": {
             "type": "object",
-            "description": "Specifies signature field appearance parameters. For more details, please refer <a href= \"https://developer-stage.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#seal-appearance-parameters-sealappearanceoptions\">documentation</a>.",
+            "description": "Specifies signature field appearance parameters. For more details, please refer <a href= \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#seal-appearance-parameters-sealappearanceoptions\">documentation</a>.",
             "default": {
               "displayOptions": [
                 "NAME",
