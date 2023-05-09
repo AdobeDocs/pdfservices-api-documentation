@@ -284,8 +284,7 @@ CertificateCredentials certificateCredentials = CertificateCredentials.cscCreden
 
 ```java
 //Create SealOptions instance with sealing parameters.
-SealOptions sealOptions = new SealOptions.Builder(SignatureFormat.PKCS7, certificateCredentials,
-                                                    fieldOptions).build();
+SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions).build();
 ```
 
 8) Now, let's create the operation:
@@ -407,8 +406,7 @@ public class ElectronicSeal {
                     .build();
 
             //Create SealOptions instance with sealing parameters.
-            SealOptions sealOptions = new SealOptions.Builder(SignatureFormat.PKCS7, certificateCredentials,
-                    fieldOptions).build();
+            SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions).build();
 
             //Create the PDFElectronicSealOperation instance using the SealOptions instance
             PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.createNew(sealOptions);

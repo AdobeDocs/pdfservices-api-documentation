@@ -262,10 +262,9 @@ public class ElectronicSeal {
             .withPin(pin)
             .withCSCAuthContext(cscAuthContext)
             .build();
-    
+
         //Create SealOptions instance with sealing parameters.
-        SealOptions sealOptions = new SealOptions.Builder(SignatureFormat.PKCS7, certificateCredentials,
-                                                          fieldOptions).build();
+        SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions).build();
     
         //Create the PDFElectronicSealOperation instance using the SealOptions instance
         PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.createNew(sealOptions);
@@ -368,8 +367,7 @@ namespace ElectronicSeal
                     .Build();
                 
                 //Create SealingOptions instance with all the sealing parameters.
-                SealOptions sealOptions = new SealOptions.Builder(SignatureFormat.PKCS7, certificateCredentials,
-                        sealFieldOptions).Build();
+                SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, sealFieldOptions).Build();
 
                 //Create the PDFElectronicSealOperation instance using the PDFElectronicSealOptions instance
                 PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.CreateNew(sealOptions);
@@ -488,8 +486,7 @@ try {
             .build();
     
         //Create SealOptions instance with sealing parameters.
-        sealOptions = new options.SealOptions.Builder(options.SealOptions.SignatureFormat.PKCS7, certificateCredentials, fieldOptions)
-            .build()
+        sealOptions = new options.SealOptions.Builder(certificateCredentials, fieldOptions).build()
     
         //Create the PDFElectronicSealOperation instance using the SealOptions instance
         const pdfElectronicSealOperation = pdfElectronicSeal.Operation.createNew(sealOptions);

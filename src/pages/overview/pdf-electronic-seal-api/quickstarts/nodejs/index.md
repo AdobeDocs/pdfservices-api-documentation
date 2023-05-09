@@ -164,8 +164,7 @@ certificateCredentials = options.CertificateCredentials.cscCredentialBuilder()
 
 ```js
 //Create SealOptions instance with sealing parameters.
-sealOptions = new options.SealOptions.Builder(options.SealOptions.SignatureFormat.PKCS7, certificateCredentials,
-                                            fieldOptions).build()
+sealOptions = new options.SealOptions.Builder(certificateCredentials, fieldOptions).build()
 
 ```
 
@@ -287,8 +286,7 @@ try {
         .build();
 
     //Create SealOptions instance with sealing parameters.
-    sealOptions = new options.SealOptions.Builder(options.SealOptions.SignatureFormat.PKCS7, certificateCredentials, fieldOptions)
-        .build()
+    sealOptions = new options.SealOptions.Builder(certificateCredentials, fieldOptions).build()
 
     //Create the PDFElectronicSealOperation instance using the SealOptions instance
     const pdfElectronicSealOperation = pdfElectronicSeal.Operation.createNew(sealOptions);

@@ -207,8 +207,7 @@ CertificateCredentials certificateCredentials = CertificateCredentials.CSCCreden
 
 ```csharp
 //Create SealingOptions instance with all the sealing parameters.
-SealOptions sealOptions = new SealOptions.Builder(SignatureFormat.PKCS7, certificateCredentials,
-                                                    sealFieldOptions).Build();
+SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, sealFieldOptions).Build();
 ```
 
 8) Now, let's create the operation:
@@ -326,8 +325,7 @@ namespace ElectronicSeal
                     .Build();
                 
                 //Create SealingOptions instance with all the sealing parameters.
-                SealOptions sealOptions = new SealOptions.Builder(SignatureFormat.PKCS7, certificateCredentials,
-                        sealFieldOptions).Build();
+                SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, sealFieldOptions).Build();
 
                 //Create the PDFElectronicSealOperation instance using the PDFElectronicSealOptions instance
                 PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.CreateNew(sealOptions);
