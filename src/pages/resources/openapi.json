@@ -16,7 +16,9 @@
   "tags": [
     {
       "name": "Assets",
-      "description": "Upload and download assets."
+      "description": "Upload and download assets to adobe internal storage. \n **No need to call this API if we are using template storage solution using signed urls.**"
+
+
     },
     {
       "name": "Create PDF",
@@ -83,8 +85,8 @@
       "description": "Create electronic seal on PDF documents like invoices, agreements etc using the digital certificate issued to the user by Trust Service Provider."
     },
     {
-      "name": "PDF Accessibility Auto-Tag",
-      "description": "Operation to create the tagged pdf and excel report for accessibility auto-tag use case."
+      "name": "Auto Tag",
+      "description": "Operation to create the tagged pdf and excel report for autotag use case."
     }
   ],
   "x-tagGroups": [
@@ -111,14 +113,14 @@
         "PDF Properties",
         "Protect PDF",
         "Remove Protection",
-        "Split PDF",
-        "PDF Accessibility Auto-Tag"
+        "Split PDF"
       ]
     },
     {
       "name": "PDF operations Beta",
       "tags": [
-        "Electronic Seal"
+        "Electronic Seal",
+        "Auto Tag"
       ]
     }
   ],
@@ -129,7 +131,7 @@
           "Assets"
         ],
         "summary": "Get upload pre-signed URI. ",
-        "description": "Get the pre-signed URI to directly upload the content to the cloud provider. \n\nOutput: Response will have the asset URI of created asset and pre-signed URI for uploading the content.",
+        "description": "Get the pre-signed URI to directly upload the content to the adobe internal transient storage. \n\nOutput: Response will have the asset URI of created asset and pre-signed URI for uploading the content.",
         "operationId": "asset.uploadpresignedurl",
         "parameters": [
           {
@@ -796,7 +798,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DocumentGeneration"
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Internal"
+                  },
+                  {
+                    "$ref": "#/components/schemas/External"
+                  }
+                ]
               }
             }
           },
@@ -1001,30 +1010,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/JobStatus"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the status call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Status400"
                 }
               }
             }
@@ -1382,30 +1367,6 @@
               }
             }
           },
-          "400": {
-            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the status call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Status400"
-                }
-              }
-            }
-          },
           "404": {
             "description": "Resource Not Found.",
             "headers": {
@@ -1749,30 +1710,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/CreatePDFJobStatus"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the status call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Status400"
                 }
               }
             }
@@ -2124,30 +2061,6 @@
               }
             }
           },
-          "400": {
-            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the status call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Status400"
-                }
-              }
-            }
-          },
           "404": {
             "description": "Resource Not Found.",
             "headers": {
@@ -2495,30 +2408,6 @@
               }
             }
           },
-          "400": {
-            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the status call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Status400"
-                }
-              }
-            }
-          },
           "404": {
             "description": "Resource Not Found.",
             "headers": {
@@ -2862,30 +2751,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/CompressPDFJobStatus"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the status call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Status400"
                 }
               }
             }
@@ -3243,30 +3108,6 @@
               }
             }
           },
-          "400": {
-            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the status call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Status400"
-                }
-              }
-            }
-          },
           "404": {
             "description": "Resource Not Found.",
             "headers": {
@@ -3620,30 +3461,6 @@
               }
             }
           },
-          "400": {
-            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the status call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Status400"
-                }
-              }
-            }
-          },
           "404": {
             "description": "Resource Not Found.",
             "headers": {
@@ -3987,30 +3804,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/LinearizePDFJobStatus"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the status call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Status400"
                 }
               }
             }
@@ -4362,30 +4155,6 @@
               }
             }
           },
-          "400": {
-            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the status call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Status400"
-                }
-              }
-            }
-          },
           "404": {
             "description": "Resource Not Found.",
             "headers": {
@@ -4729,30 +4498,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PageManipulationJobStatus"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the status call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Status400"
                 }
               }
             }
@@ -5104,30 +4849,6 @@
               }
             }
           },
-          "400": {
-            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the status call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Status400"
-                }
-              }
-            }
-          },
           "404": {
             "description": "Resource Not Found.",
             "headers": {
@@ -5471,30 +5192,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ProtectPDFJobStatus"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the status call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Status400"
                 }
               }
             }
@@ -5846,30 +5543,6 @@
               }
             }
           },
-          "400": {
-            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the status call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Status400"
-                }
-              }
-            }
-          },
           "404": {
             "description": "Resource Not Found.",
             "headers": {
@@ -6213,30 +5886,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SplitPDFJobStatus"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the status call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Status400"
                 }
               }
             }
@@ -6588,30 +6237,6 @@
               }
             }
           },
-          "400": {
-            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the status call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Status400"
-                }
-              }
-            }
-          },
           "404": {
             "description": "Resource Not Found.",
             "headers": {
@@ -6720,10 +6345,10 @@
     "/operation/autotag": {
       "post": {
         "tags": [
-          "PDF Accessibility Auto-Tag"
+          "Auto Tag"
         ],
-        "summary": "PDF Accessibility Auto-Tag Operation",
-        "description": "Operation to create the tagged pdf and excel report for accessibility auto-tag use case. Automatic tagging provides significant quality improvements over untagged PDF files including more accurate results for heading levels, reading order, complex lists, links, references, and tables. Screen reader users also benefit significantly from the improvements to heading levels for navigation.",
+        "summary": "Autotag PDF Operation",
+        "description": "Operation to create the tagged pdf and excel report for autotag use case. Automatic tagging provides significant quality improvements over untagged PDF files including more accurate results for heading levels, reading order, complex lists, links, references, and tables. Screen reader users also benefit significantly from the improvements to heading levels for navigation.",
         "operationId": "pdfoperations.autotag",
         "parameters": [
           {
@@ -6746,7 +6371,7 @@
           }
         ],
         "requestBody": {
-          "description": "Input Params for Accessibility Auto-Tag Operation.",
+          "description": "Input Params for Autotag Operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -6901,9 +6526,9 @@
     "/operation/autotag/{jobID}/status": {
       "get": {
         "tags": [
-          "PDF Accessibility Auto-Tag"
+          "Auto Tag"
         ],
-        "summary": "Poll the accessibility auto-tag job for completion",
+        "summary": "Poll the auto tag job for completion",
         "operationId": "pdfoperations.autotag.jobstatus",
         "parameters": [
           {
@@ -6955,30 +6580,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AutoTagPDFJobStatus"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the status call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Status400"
                 }
               }
             }
@@ -7379,7 +6980,7 @@
           "message": "Too many requests"
         }
       },
-      "Status400": {
+      "Satus400": {
         "properties": {
           "error": {
             "type": "object",
@@ -7527,13 +7128,11 @@
           }
         },
         "default": {
-          "documentLanguage": "en-US",
-          "longAwait": false
+          "documentLanguage": "en-US"
         },
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
-          "documentLanguage": "en-US",
-          "long-await": false
+          "documentLanguage": "en-US"
         },
         "required": [
           "assetID"
@@ -8076,7 +7675,7 @@
         ],
         "additionalProperties": false
       },
-      "DocumentGeneration": {
+      "Internal": {
         "description": "Params for Document Generation Operation",
         "type": "object",
         "properties": {
@@ -8133,6 +7732,124 @@
         "required": [
           "assetID",
           "jsonDataForMerge"
+        ],
+        "additionalProperties": false
+      },
+      "External": {
+        "description": "Params for Document Generation Operation using external storage",
+        "type": "object",
+        "properties": {
+          "input": {
+            "description": "Params representing input object for docgen operation",
+            "type": "object",
+            "properties": {
+              "uri": {
+              "description": "Input file Presigned URL.",
+              "type": "string"
+              },
+              "storage": {
+                "description": "Specifies the type of the external storage",
+                "type": "string",
+                "enum": [
+                  "AWS",
+                  "SHAREPOINT"
+                ],
+                "default": "SHAREPOINT"
+              }
+            },
+            "required": [
+              "uri"
+            ]
+          },
+          "output": {
+            "description": "Params representing output object for docgen operation",
+            "type": "object",
+            "properties": {
+              "uri" : {
+                "description": "Output file Upload URL.",
+                "type": "string"
+              },
+              "storage": {
+                "description": "Specifies the type of the external storage",
+                "type": "string",
+                "enum": [
+                  "AWS",
+                  "SHAREPOINT"
+                ],
+                "default": "SHAREPOINT"
+              }
+            },
+            "required": [
+              "uri"
+            ]
+          },
+          "params": {
+            "description": "Params for docgen processing",
+            "type": "object",
+            "properties": {
+              "outputFormat": {
+                "description": "Specifies the target format of the generated output document. Possible values are pdf and docx.",
+                "type": "string",
+                "enum": [
+                  "docx",
+                  "pdf"
+                ],
+                "default": "pdf"
+              },
+              "jsonDataForMerge": {
+                "description": "Specifies the JSON data to merge into the document template.",
+                "type": "object"
+              },
+              "fragments": {
+                "description": "Specifies the Fragments JSON object or a JSON array to resolve fragments in the document template. To know more about fragments use-case in document generation and document templates, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/document-generation-api/fragments/\">documentation</a>..",
+                "type": "object"
+              }
+            },
+            "required": [
+              "jsonDataForMerge"
+            ]
+          }
+        },
+        "example": {
+          "input": {
+            "uri": "https://dcalpine2.sharepoint.com/sites/Docgen/_layouts/15/download.aspx?UniqueId=353087f7-b1ea-4d84-91d7-0821b23e04ea&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDI5MDkiLCJleHAiOiIxNjgwNjA2NTA5IiwiZW5kcG9pbnR1cmwiOiIwU1NJNDAxdjZhUll6YUIyV2lod005VnIxOVJHNStvSUxFN280dk0yUlMwPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMTMzIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJPVEUxTlRZMFkyRXROREZpT1MwME1HSTBMVGczWVdRdFlqaGpaREprWkdNeVlXVTUiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE2OSJ9.aStWTExNZ045T3h3OGV4MHdyYURmLzZqOW9McGRhSmtZWStHOE1wM0ZaYz0&ApiVersion=2.0",
+            "storage": "SHAREPOINT"
+          },
+          "output": {
+            "uri": "https://dcalpine2.sharepoint.com/sites/Docgen/_api/v2.0/drives/b!MA1899sXSkupaKT9m2CP3JIqXDMQyoBCth9h9Rn6bQRjzBEBFxsbQpN23hY-rzQT/items/01TAIM7P3ZQQ4DP4NZHFDI6FBJPIGFRCY3/uploadSession?guid='2c79b9aa-f9dc-42c8-8919-da5a9b554b81'&overwrite=True&rename=False&dc=0&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDAyOTMiLCJleHAiOiIxNjgwNjg2NjkzIiwiZW5kcG9pbnR1cmwiOiJXVWNNVHhndVdyMHR4YzhlYWxlRzMrYUV1aXg5anoxanZuRmRpMENjNHFRPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMjYxIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJaREZsTURjek5tRXRaREJtWkMwMFlXUXlMV0V5WTJNdE1HRTRPV1prTTJJNU5XTmwiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE3MCJ9.a1hxR1J1emlFSE9jSTU0SnFTcFN6TGlsRHNhWTFRaDNkT2hwT3ZPYm8waz0",
+            "storage": "SHAREPOINT"
+          },
+          "params": {
+            "outputFormat": "pdf",
+            "jsonDataForMerge": {
+              "customerName": "Kane Miller",
+              "customerVisits": 100,
+              "itemsBought": [
+                {
+                  "name": "Sprays",
+                  "quantity": 50,
+                  "amount": 100
+                },
+                {
+                  "name": "Chemicals",
+                  "quantity": 100,
+                  "amount": 200
+                }
+              ],
+              "totalAmount": 300,
+              "previousBalance": 50,
+              "lastThreeBillings": [
+                100,
+                200,
+                300
+              ],
+              "photograph": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII="
+            }
+          }
+        },
+        "required": [
+          "input",
+          "params"
         ],
         "additionalProperties": false
       },
@@ -8453,7 +8170,7 @@
         }
       },
       "AutoTagPDF": {
-        "description": "Parameter for Accessibility Auto-Tag operation.",
+        "description": "Parameter for Autotag operation.",
         "type": "object",
         "required": [
           "assetID"
@@ -8789,6 +8506,16 @@
         }
       },
       "done": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/internal"
+          },
+          {
+            "$ref": "#/components/schemas/external"
+          }
+        ]
+      },
+      "internal": {
         "description": "Response in case of 'done' status",
         "type": "object",
         "properties": {
@@ -8811,8 +8538,24 @@
               "size": 200791
             },
             "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
-            "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
+            "assetID": "aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
           }
+        }
+      },
+      "external": {
+        "description": "Response in case of 'done' status using signed urls",
+        "type": "object",
+        "properties": {
+          "status": {
+            "description": "Job Status",
+            "type": "string",
+            "enum": [
+              "done"
+            ]
+          }
+        },
+        "example": {
+          "status": "done"
         }
       },
       "responseAsset": {
@@ -8836,7 +8579,8 @@
           },
           "assetID": {
             "description": "An asset ID identifying an asset that is globally unique and never reused.",
-            "type": "string"
+            "type": "string",
+            "required": false
           },
           "downloadUri": {
             "description": "The URL used to download the Resource directly to the cloud provider.",
@@ -9518,7 +9262,7 @@
           },
           "report": {
             "type": "object",
-            "description": "Asset of accessibility auto-tag report. Details of output asset document. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "Asset of autotag report. Details of output asset document. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "properties": {
               "metadata": {
                 "type": "object",

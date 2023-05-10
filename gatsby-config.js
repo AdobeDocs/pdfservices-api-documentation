@@ -124,6 +124,10 @@ module.exports = {
                         title: 'PDF Accessibility Auto-Tag API',
                         path: 'overview/pdf-accessibility-auto-tag-api/index.md'
                     },
+                    {
+                        title: 'External Storage API',
+                        path: 'overview/pdf-external-storage-api/index.md'
+                    }
                 ]
             },
             {
