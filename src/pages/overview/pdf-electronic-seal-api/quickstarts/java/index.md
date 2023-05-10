@@ -4,7 +4,7 @@ title: Java | Quickstarts | PDF Electronic Seal API | Adobe PDF Services
 
 # Quickstart for Adobe PDF Electronic Seal API (Java)
 
-To get started using Adobe PDF Electronic Seal API, let's walk through a simple scenario - Applying an electronic seal on an invoice PDF document of an organization. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
+To get started using Adobe PDF Electronic Seal API, let's walk through a simple scenario - Applying an electronic seal on an invoice PDF document. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
 
 ## Prerequisites
 
@@ -284,8 +284,7 @@ CertificateCredentials certificateCredentials = CertificateCredentials.cscCreden
 
 ```java
 //Create SealOptions instance with sealing parameters.
-SealOptions sealOptions = new SealOptions.Builder(SignatureFormat.PKCS7, certificateCredentials,
-                                                    fieldOptions).build();
+SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions).build();
 ```
 
 8) Now, let's create the operation:
@@ -407,8 +406,7 @@ public class ElectronicSeal {
                     .build();
 
             //Create SealOptions instance with sealing parameters.
-            SealOptions sealOptions = new SealOptions.Builder(SignatureFormat.PKCS7, certificateCredentials,
-                    fieldOptions).build();
+            SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions).build();
 
             //Create the PDFElectronicSealOperation instance using the SealOptions instance
             PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.createNew(sealOptions);

@@ -62,7 +62,7 @@ At this point, we've installed the Node.js SDK for Adobe PDF Services API as a d
 
 Our application will take a Word document, `receiptTemplate.docx` (downloadable from [here](/receiptTemplate.docx)), and combine it with data in a JSON file, `receipt.json` (downloadable from [here](/receipt.json)), to be sent to the Acrobat Services API and generate a receipt PDF.
 
-7) In your editor, open the directory where you previously copied the credentials. Create a new file, `generatePDF.js`.
+6) In your editor, open the directory where you previously copied the credentials. Create a new file, `generatePDF.js`.
 
 Now you're ready to begin coding.
 
