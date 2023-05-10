@@ -55,7 +55,7 @@ A SharePoint document library is a container for creating, organizing, and manag
     - Sites.ReadWrite.All (This is a site wide read-write access, for limited access you can use - Sites.Selected Scope by following this [link](https://devblogs.microsoft.com/microsoft365dev/updates-on-controlling-app-specific-access-on-specific-sharepoint-sites-sites-selected/))
     - Application.ReadWrite.All 
   - Select **Add permissions**.
-  - Select **Grant admin consent for <your tenant name>** (Make sure you are tenant admin to grant app-only permissions or request tenant admin to approve your request by [Grant Admin Consent](https://learn.microsoft.com/en-us/azure/active-directory/manage-apps/grant-admin-consent?pivots=portal#grant-admin-consent-in-app-registrations) workflow). 
+  - Select **Grant admin consent for <your tenant name>** (Make sure you are tenant admin to grant app-only permissions or request tenant admin to approve your request by [Grant Admin Consent](https://learn.microsoft.com/en-us/azure/active-directory/manage-apps/grant-admin-consent?pivots=portal#grant-admin-consent-in-app-registrations) workflow. 
   - Select **Yes**. 
   - Select **Refresh**, and then verify that **Granted for ...** appears under **Status** for all the scopes.
 
@@ -64,7 +64,7 @@ A SharePoint document library is a container for creating, organizing, and manag
 - Now we will obtain an Access Token using client credentials flow.
 - ![Getting Access Token](./access-token.svg)
   - First we have to obtain the admin consent for approving app's permission to access resources. It's a one time activity for each app. To get admin consent, use this workflow. 
-  - Now we need to generate an [Access Token using Certificates](https://learn.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow#second-case-access-token-request-with-a-certificate) we created in Step 3. We will use this access token to generate Signed URLs later.
+  - Now we need to generate an [Access Token using Certificates](https://learn.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow#second-case-access-token-request-with-a-certificate) we created above. We will use this access token to generate Signed URLs later.
 
 ***Generating Signed URLs***
 
