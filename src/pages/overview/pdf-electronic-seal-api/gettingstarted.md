@@ -19,7 +19,7 @@ In order to invoke the PDF Electronic Seal API, Adobe client credentials are req
 
 ### Step 3: Obtain your OAuth Token
 
-The client sends the `client_id` and `client_secret` to the TSP's OAuth 2.0 authorization API. The TSP responds with an access token which is passed as one of the [input parameters](#parameters) to the PDF Electronic Seal API. The purpose of this token is to access the TSP's end points for the sealing process. It is valid during a timeframe specified by the TSP.
+The client sends the `client_id` and `client_secret` to the TSP's OAuth 2.0 authorization API. The TSP responds with an access token which is passed as one of the [input parameters](#api-parameters) to the PDF Electronic Seal API. The purpose of this token is to access the TSP's end points for the sealing process. It is valid during a timeframe specified by the TSP.
 
 ![TSP Token Generation](../images/TSPToken.png)
 
@@ -170,15 +170,15 @@ To use the REST API, below are the detailed steps:
 
 ### PDF Services SDKs
 
-Clients can also access the PDF Electronic Seal API via PDF Services SDKs. For additional details, see [Quickstarts](../pdf-services-api/).
+Clients can also access the PDF Electronic Seal API via PDF Services SDKs. For additional details, see [Quickstarts](./quickstarts/).
 
 To use the PDF Services SDKs, below are the detailed steps:
 
 1. Save the input PDF and seal image on the local machine. File paths must be absolute.
-1. Save the `pdfservices-api-credentials.json` file created after [generating credentials](../pdf-services-api/#authentication)
+1. Save the `pdfservices-api-credentials.json` file created after [generating credentials](./quickstarts/java/#step-one-getting-credentials)
 1. Make a call to the PDF Electronic Seal operation that includes the following:
     * The file path to an input PDF (from the local machine).
-    * [Required parameters](#parameters)
+    * [API parameters](#api-parameters)
     * Specify an optional file path to a logo/watermark/background image used as part of the seal's appearance. Supported formats include:
         * image/jpeg
         * image/png
