@@ -178,7 +178,7 @@ To use the PDF Services SDKs, below are the detailed steps:
 1. Save the `pdfservices-api-credentials.json` file created after [generating credentials](./quickstarts/java/#step-one-getting-credentials)
 1. Make a call to the PDF Electronic Seal operation that includes the following:
     * The file path to an input PDF (from the local machine).
-    * [Request parameters](#api-parameters)
+    * [API parameters](#api-parameters)
     * Specify an optional file path to a logo/watermark/background image used as part of the seal's appearance. Supported formats include:
         * image/jpeg
         * image/png
