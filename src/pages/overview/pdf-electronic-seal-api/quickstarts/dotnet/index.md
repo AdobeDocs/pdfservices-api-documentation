@@ -4,7 +4,7 @@ title: .NET | Quickstarts | PDF Electronic Seal API | Adobe PDF Services
 
 # Quickstart for Adobe PDF Electronic Seal API (.NET)
 
-To get started using PDF Electronic Seal API, let's walk through a simple scenario - Applying an electronic seal on an invoice PDF document of an organization. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
+To get started using PDF Electronic Seal API, let's walk through a simple scenario - Applying an electronic seal on an invoice PDF document. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
 
 ## Prerequisites
 
@@ -18,7 +18,7 @@ To complete this guide, you will need:
   
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=document-generation-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
+1) To begin, open your browser to <https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
 
 ![Sign in](./shot1.png)
 
@@ -156,7 +156,7 @@ FileRef sealImageFile = FileRef.CreateFromLocalFile(@"sampleSealImage.png");
 
 ```csharp
 //Set the Seal Field Name to be created in input PDF document.
-string sealFieldName = "signature1";
+string sealFieldName = "Signature1";
 
 //Set the page number in input document for applying seal.
 int sealPageNumber = 1;
@@ -184,7 +184,7 @@ These lines are hard coded but in a real application would typically be dynamic.
 string providerName = "<PROVIDER_NAME>";
 
 //Set the access token to be used to access TSP provider hosted APIs.
-string accessToken = "<ACCESS TOKEN>";
+string accessToken = "<ACCESS_TOKEN>";
 
 //Set the credential ID.
 string credentialID = "<CREDENTIAL_ID>";
@@ -207,8 +207,7 @@ CertificateCredentials certificateCredentials = CertificateCredentials.CSCCreden
 
 ```csharp
 //Create SealingOptions instance with all the sealing parameters.
-SealOptions sealOptions = new SealOptions.Builder(SignatureFormat.PKCS7, certificateCredentials,
-                                                    sealFieldOptions).Build();
+SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, sealFieldOptions).Build();
 ```
 
 8) Now, let's create the operation:
@@ -285,7 +284,7 @@ namespace ElectronicSeal
                 FileRef sealImageFile = FileRef.CreateFromLocalFile(@"sampleSealImage.png");
 
                 //Set the Seal Field Name to be created in input PDF document.
-                string sealFieldName = "signature1";
+                string sealFieldName = "Signature1";
 
                 //Set the page number in input document for applying seal.
                 int sealPageNumber = 1;
@@ -307,7 +306,7 @@ namespace ElectronicSeal
                 string providerName = "<PROVIDER_NAME>";
 
                 //Set the access token to be used to access TSP provider hosted APIs.
-                string accessToken = "<ACCESS TOKEN>";
+                string accessToken = "<ACCESS_TOKEN>";
 
                 //Set the credential ID.
                 string credentialID = "<CREDENTIAL_ID>";
@@ -326,8 +325,7 @@ namespace ElectronicSeal
                     .Build();
                 
                 //Create SealingOptions instance with all the sealing parameters.
-                SealOptions sealOptions = new SealOptions.Builder(SignatureFormat.PKCS7, certificateCredentials,
-                        sealFieldOptions).Build();
+                SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, sealFieldOptions).Build();
 
                 //Create the PDFElectronicSealOperation instance using the PDFElectronicSealOptions instance
                 PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.CreateNew(sealOptions);

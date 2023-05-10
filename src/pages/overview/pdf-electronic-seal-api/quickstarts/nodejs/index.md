@@ -4,7 +4,7 @@ title: Node.js | Quickstarts | PDF Electronic Seal API | Adobe PDF Services
 
 # Quickstart for Adobe PDF Electronic Seal API (Node.js)
 
-To get started using Adobe PDF Electronic Seal API, let's walk through a simple scenario - Applying an electronic seal on an invoice PDF document of an organization. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
+To get started using Adobe PDF Electronic Seal API, let's walk through a simple scenario - Applying an electronic seal on an invoice PDF document. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
 
 ## Prerequisites
 
@@ -16,7 +16,7 @@ To complete this guide, you will need:
 
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=document-generation-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
+1) To begin, open your browser to <https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
 
 ![Sign in](./shot1.png)
 
@@ -62,7 +62,7 @@ At this point, we've installed the Node.js SDK for Adobe PDF Services API as a d
 
 Our application will take an Invoice PDF document, `HallibyInvoice.pdf` (downloadable from [here](./HallibyInvoice.pdf)), and will use the sealing options with default appearance options to apply electronic seal over the PDF document by invoking Acrobat Services API and generate an electronically sealed PDF.
 
-7) In your editor, open the directory where you previously copied the credentials. Create a new file, `electronic-seal.js`.
+6) In your editor, open the directory where you previously copied the credentials. Create a new file, `electronic-seal.js`.
 
 Now you're ready to begin coding.
 
@@ -114,7 +114,7 @@ sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/sampleSeal
 
 ```js
 // Set the Seal Field Name to be created in input PDF document.
-sealFieldName = "signature1";
+sealFieldName = "Signature1";
 
 // Set the page number in input document for applying seal.
 sealPageNumber = 1;
@@ -164,8 +164,7 @@ certificateCredentials = options.CertificateCredentials.cscCredentialBuilder()
 
 ```js
 //Create SealOptions instance with sealing parameters.
-sealOptions = new options.SealOptions.Builder(options.SealOptions.SignatureFormat.PKCS7, certificateCredentials,
-                                            fieldOptions).build()
+sealOptions = new options.SealOptions.Builder(certificateCredentials, fieldOptions).build()
 
 ```
 
@@ -245,7 +244,7 @@ try {
         sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/sampleSealImage.png');
 
     // Set the Seal Field Name to be created in input PDF document.
-    sealFieldName = "signature1";
+    sealFieldName = "Signature1";
 
     // Set the page number in input document for applying seal.
     sealPageNumber = 1;
@@ -287,8 +286,7 @@ try {
         .build();
 
     //Create SealOptions instance with sealing parameters.
-    sealOptions = new options.SealOptions.Builder(options.SealOptions.SignatureFormat.PKCS7, certificateCredentials, fieldOptions)
-        .build()
+    sealOptions = new options.SealOptions.Builder(certificateCredentials, fieldOptions).build()
 
     //Create the PDFElectronicSealOperation instance using the SealOptions instance
     const pdfElectronicSealOperation = pdfElectronicSeal.Operation.createNew(sealOptions);
