@@ -55,7 +55,7 @@ A SharePoint document library is a container for creating, organizing, and manag
     - Sites.ReadWrite.All (This is a site wide read-write access, for limited access you can use - Sites.Selected Scope by following this [link](https://devblogs.microsoft.com/microsoft365dev/updates-on-controlling-app-specific-access-on-specific-sharepoint-sites-sites-selected/))
     - Application.ReadWrite.All 
   - Select **Add permissions**.
-  - Select **Grant admin consent for <your tenant name>** (Make sure you are tenant admin to grant app-only permissions or request tenant admin to approve your request by [Grant Admin Consent](https://learn.microsoft.com/en-us/azure/active-directory/manage-apps/grant-admin-consent?pivots=portal#grant-admin-consent-in-app-registrations) workflow. 
+  - Select **Grant admin consent for &lt;your tenant name&gt;** (Make sure you are tenant admin to grant app-only permissions or request tenant admin to approve your request by [Grant Admin Consent](https://learn.microsoft.com/en-us/azure/active-directory/manage-apps/grant-admin-consent?pivots=portal#grant-admin-consent-in-app-registrations) workflow). 
   - Select **Yes**. 
   - Select **Refresh**, and then verify that **Granted for ...** appears under **Status** for all the scopes.
 
