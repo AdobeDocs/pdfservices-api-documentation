@@ -99,7 +99,6 @@
       "tags": [
         "Document Generation",
         "Extract PDF",
-        "Electronic Seal",
         "Create PDF",
         "Html To PDF",
         "Combine PDF",
@@ -114,6 +113,12 @@
         "Remove Protection",
         "Split PDF",
         "PDF Accessibility Auto-Tag"
+      ]
+    },
+    {
+      "name": "PDF operations Beta",
+      "tags": [
+        "Electronic Seal"
       ]
     }
   ],
@@ -8309,6 +8314,7 @@
         "description": "Specifies all the sealing parameters.",
         "type": "object",
         "required": [
+          "signatureFormat",
           "cscCredentialOptions",
           "sealFieldOptions"
         ],
@@ -8387,7 +8393,7 @@
               },
               "location": {
                 "type": "object",
-                "description": "Specifies the coordinates of the signature appearance's bounding box in default PDF user space units. The location is only required if the signature field does not already exist in the PDF document.If location is provided along with the existing signature field then it is ignored.",
+                "description": "Specifies the coordinates of the signature appearance's bounding box in default PDF user space units. The location is only required if the signature field does not already exist in the PDF document. If this is specified along with the signature field then it overrides the existing signature bounding box.",
                 "required": [
                   "top",
                   "left",
@@ -8419,7 +8425,7 @@
               },
               "pageNumber": {
                 "type": "integer",
-                "description": "Specifies the page number to which the signature field should be attached. Page numbers are 1-based. The page number is only required if the signature field does not already exist in the pdf document. If page number is provided along with the existing signature field then the page number should be same on which signature field is present in the document, else an error is thrown."
+                "description": "Specifies the page number to which the signature field should be attached. Page numbers are 1-based. The page number is only required if the signature field does not already exist in the pdf document. If this is specified along with the signature field then it overrides the page on which signature field is present in the document."
               }
             }
           },
@@ -8432,16 +8438,17 @@
                 "LABELS"
               ]
             },
-            "required": [
-              "displayOptions"
-            ],
             "properties": {
               "displayOptions": {
                 "type": "array",
                 "description": "Specifies the information to display in the signature. These are an enum set of display items: NAME, DATE, DISTINGUISHED_NAME, LABELS and SEAL_IMAGE.",
                 "items": {
                   "type": "string"
-                }
+                },
+                "default": [
+                  "NAME",
+                  "LABELS"
+                ]
               }
             }
           }
