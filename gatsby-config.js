@@ -435,16 +435,8 @@ module.exports = {
                         path: 'overview/pdf-electronic-seal-api/quickstarts',
                         pages: [
                             {
-                                title:'Node.js',
-                                path: 'overview/pdf-electronic-seal-api/quickstarts/nodejs/index.md'
-                            },
-                            {
                                 title:'Java',
                                 path: 'overview/pdf-electronic-seal-api/quickstarts/java/index.md'
-                            },
-                            {
-                                title:'.NET',
-                                path: 'overview/pdf-electronic-seal-api/quickstarts/dotnet/index.md'
                             }
                         ]
 
