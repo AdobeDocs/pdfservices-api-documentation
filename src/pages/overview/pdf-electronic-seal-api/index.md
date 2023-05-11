@@ -18,7 +18,7 @@ Below are the benefits of applying an eSeal to a document.
 
 An electronic seal can be represented by solely an image, a text block (comprising name of entity, date and time of the seal etc.), or a combination of both image and text. Below is the sample representation of an electronic seal applied on a PDF document.
 
-![PDF Electronic Seal](../images/seal_doc_ss.png)
+![PDF Electronic Seal](../images/blueBar.png)
 
 ## PDF Electronic Seal API Components
 
