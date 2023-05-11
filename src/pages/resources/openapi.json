@@ -8321,7 +8321,7 @@
         "properties": {
           "signatureFormat": {
             "type": "string",
-            "description": "Specifies a supported digital signature format. For supported signature formats, please refer <a href = \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#signature-format-signatureformatbb\">documentation</a>.",
+            "description": "Specifies a supported digital signature format. For supported signature formats, please refer <a href = \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#signature-format-signatureformat--required\">documentation</a>.",
             "enum": [
               "PADES",
               "PKCS7"
@@ -8329,7 +8329,7 @@
           },
           "cscCredentialOptions": {
             "type": "object",
-            "description": "Specifies the parameters that encapsulates the signer's certificate credential. For more information, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#tsp-credential-information-csccredentialoptionsbb\">documentation</a>.",
+            "description": "Specifies the parameters that encapsulates the signer's certificate credential. For more information, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#tsp-credential-information-csccredentialoptions--required\">documentation</a>.",
             "required": [
               "providerName",
               "credentialId",
@@ -8380,7 +8380,7 @@
           },
           "sealFieldOptions": {
             "type": "object",
-            "description": "Specifies the parameters required to create a new signature field or use an existing field. For more details, please refer <a href= \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#seal-field-parameters---sealfieldoptionsbb\">documentation</a>.",
+            "description": "Specifies the parameters required to create a new signature field or use an existing field. For more details, please refer <a href= \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#seal-field-parameters---sealfieldoptions--required\">documentation</a>.",
             "required": [
               "fieldName"
             ],
