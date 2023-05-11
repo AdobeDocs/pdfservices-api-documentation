@@ -8322,7 +8322,6 @@
           "signatureFormat": {
             "type": "string",
             "description": "Specifies a supported digital signature format. For supported signature formats, please refer <a href = \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#signature-format-signatureformatbb\">documentation</a>.",
-            "default": "PKCS7",
             "enum": [
               "PADES",
               "PKCS7"
