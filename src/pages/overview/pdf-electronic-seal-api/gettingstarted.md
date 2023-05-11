@@ -294,28 +294,27 @@ public class ElectronicSeal {
 }
 
 ```
-
 ##### REST API
 
-```javascript
+```bash
 curl --location --request POST 'https://pdf-services.adobe.io/operation/electronicseal' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
 --data-raw '{
-    "inputDocumentAssetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
-    "sealImageAssetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+    "inputDocumentAssetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-xxxx-xxxx-087832fca718",
+    "sealImageAssetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-xxxx-xxxx-087832fca718",
     "sealOptions": {
         "signatureFormat": "PKCS7",
         "cscCredentialOptions": {
-            "credentialId": "[ADOBE]_xxxx_xx:35",
-            "providerName": "intxxxxxst",
+            "credentialId": "<CREDENTIAL_ID>",
+            "providerName": "<PROVIDER_NAME>",
             "authorizationContext": {
-                "tokenType": "bearer",
-                "accessToken": "b7338a1f-xxxx-xxxx-xxxx-1eec91c47c12"
+                "tokenType": "Bearer",
+                "accessToken": "<ACCESS_TOKEN>"
             },
             "credentialAuthParameters": {
-                "pin": "12xxxx65"
+                "pin": "<PIN>"
             }
         },
         "sealFieldOptions": {
@@ -325,7 +324,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/electron
                 "right": 250,
                 "bottom": 100
             },
-            "fieldName": "mytestfield",
+            "fieldName": "Signature1",
             "pageNumber": 1
         },
         "sealAppearanceOptions": {
