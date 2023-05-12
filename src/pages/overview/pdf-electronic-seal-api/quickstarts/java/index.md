@@ -21,7 +21,7 @@ To complete this guide, you will need:
 
 ![Contact us](./seal_beta_contactus.png)
 
-2) The next step is to create the credentials, open your browser to <https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user using the same email address provided in the above step. Using a personal email account is recommended and not a federated ID.
+2) The next step is to create the credentials, open your browser to <https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user using the same email address provided in the above step. Using a personal email account is recommended and not a federated ID.
 
 ![Sign in](./shot1.png)
 
