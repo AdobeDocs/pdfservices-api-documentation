@@ -19,9 +19,11 @@ To complete this guide, you will need:
 
 1) To begin, open your browser to <https://developer.adobe.com/document-services/pricing/contact/sales/seal/>. Fill the form and our team will reach out to you for getting you started. Please provide the email address which you will be using in the next step to create credentials.
 
-![Sign in](./shot1.png)
+![Contact us](./seal_beta_contactus.png)
 
 2) The next step is to create the credentials, open your browser to <https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user using the same email address provided in the above step. Using a personal email account is recommended and not a federated ID.
+
+![Sign in](./shot1.png)
 
 3) After registering or logging in, you will then be asked to name your new credentials. Use the name, "New Project". 
 
