@@ -97,6 +97,7 @@
     {
       "name": "PDF Operations",
       "tags": [
+        "PDF Accessibility Auto-Tag",
         "Document Generation",
         "Extract PDF",
         "Create PDF",
@@ -111,8 +112,7 @@
         "PDF Properties",
         "Protect PDF",
         "Remove Protection",
-        "Split PDF",
-        "PDF Accessibility Auto-Tag"
+        "Split PDF"
       ]
     },
     {
