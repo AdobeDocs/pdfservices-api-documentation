@@ -21,7 +21,7 @@ To complete this guide, you will need:
 
 ![Contact us](./seal_beta_contactus.png)
 
-2) The next step is to create the credentials, open your browser to <https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user using the same email address provided in the above step. Using a personal email account is recommended and not a federated ID.
+2) The next step is to create the credentials, open your browser to <https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user using the same email address provided in the above step. Using a personal email account is recommended and not a federated ID.
 
 ![Sign in](./shot1.png)
 
@@ -182,7 +182,13 @@ import com.adobe.pdfservices.operation.exception.ServiceApiException;
 import com.adobe.pdfservices.operation.exception.ServiceUsageException;
 import com.adobe.pdfservices.operation.io.FileRef;
 import com.adobe.pdfservices.operation.pdfops.PDFElectronicSealOperation;
-import com.adobe.pdfservices.operation.pdfops.options.electronicseal.*;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.CSCCredentialOptions;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.PDFElectronicSealOptions;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.SealCredentialOptions;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.SealFieldLocationOptions;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.SealFieldOptions;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.SealOptions;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.SignatureFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.io.IOException;
