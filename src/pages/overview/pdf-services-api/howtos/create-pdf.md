@@ -1310,25 +1310,23 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
 // https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```
 
-## Create a PDF from HTML with json merge fields
+## Create a PDF from HTML using Template Engine
 
-To support workflows with data having json fields, `CreatePDFFromHTMLWithJsonMerge`
-creates PDFs from HTML having json fields. It's a common scenario for enterprise to
-provide end users with an HTML template with form fields. This API
-allows you to capture the users unique data entries and then save it as
-PDF. Collected data is stored in a JSON file, and the source HTML file
-must include template engine library `<script src="https://unpkg.com/mustache@latest"></script>`
+
+To support workflows with template data, `CreatePDFFromHTMLWithTemplateEngine`
+creates PDFs from HTML using a template engine. It's a common scenario for enterprise to
+provide end users with an HTML template with form fields.The class requires the use of a template engine, such as Mustache or Liquid, in the client file to process the HTML templates and generate the corresponding PDF output.The client file 
+must include template engine library `<script src="https://unpkg.com/mustache@4.2.0/mustache.js"></script>`
 which uses the input data in the HTML file to manipulate the HTML DOM, thus effectively 
 updating the source HTML file and merging the json field values.
 
 Refer to the API docs for usage.
 
-The sample `CreatePDFFromHTMLWithJsonMerge` converts a zip file, containing
+The sample `CreatePDFFromHTMLWithTemplateEngine` converts a zip file, containing
 the input HTML index.html at the top
 level of the archive as well as any dependencies such as images, css
 files, and so on. 
-This mechanism can be used to provide data to the template HTML
-prior to PDF conversion.
+This mechanism can be used to creates PDFs from HTML using a template engine.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
@@ -1339,12 +1337,12 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
-// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.createpdf.CreatePDFFromHTMLWithJsonMerge
+// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.createpdf.CreatePDFFromHTMLWithTemplateEngine
 
-public class CreatePDFFromHTMLWithJsonMerge {
+public class CreatePDFFromHTMLWithTemplateEngine {
 
    // Initialize the logger.
-   private static final Logger LOGGER = LoggerFactory.getLogger(CreatePDFFromHTMLWithJsonMerge.class);
+   private static final Logger LOGGER = LoggerFactory.getLogger(CreatePDFFromHTMLWithTemplateEngine.class);
 
    public static void main(String[] args) {
 
@@ -1360,7 +1358,7 @@ public class CreatePDFFromHTMLWithJsonMerge {
        CreatePDFOperation htmlToPDFOperation = CreatePDFOperation.createNew();
 
        // Set operation input from a source file.
-       FileRef source = FileRef.createFromLocalFile("src/main/resources/createPDFFromHTMLWithJsonMergeInput.zip");
+       FileRef source = FileRef.createFromLocalFile("src/main/resources/createPDFFromHTMLWithTemplateEngineInput.zip");
        htmlToPDFOperation.setInput(source);
 
        // Provide any custom configuration options for the operation.
@@ -1370,7 +1368,7 @@ public class CreatePDFFromHTMLWithJsonMerge {
        FileRef result = htmlToPDFOperation.execute(executionContext);
 
        // Save the result to the specified location.
-       result.saveAs("output/createPDFFromHTMLWithJsonMergeOutput.pdf");
+       result.saveAs("output/createPDFFromHTMLWithTemplateEngineOutput.pdf");
 
      } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
        LOGGER.error("Exception encountered while executing operation", ex);
@@ -1397,10 +1395,10 @@ public class CreatePDFFromHTMLWithJsonMerge {
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
-// cd CreatePDFFromHTMLWithJsonMerge/
-// dotnet run CreatePDFFromHTMLWithJsonMerge.csproj
+// cd CreatePDFFromHTMLWithTemplateEngine/
+// dotnet run CreatePDFFromHTMLWithTemplateEngine.csproj
 
-namespace CreatePDFFromHTMLWithJsonMerge
+namespace CreatePDFFromHTMLWithTemplateEngine
  {
    class Program
    {
@@ -1421,7 +1419,7 @@ namespace CreatePDFFromHTMLWithJsonMerge
          CreatePDFOperation htmlToPDFOperation = CreatePDFOperation.CreateNew();
 
          // Set operation input from a source file.
-         FileRef source = FileRef.CreateFromLocalFile(@"createPDFFromHTMLWithJsonMergeInput.zip");
+         FileRef source = FileRef.CreateFromLocalFile(@"createPDFFromHTMLWithTemplateEngineInput.zip");
          htmlToPDFOperation.SetInput(source);
 
          // Provide any custom configuration options for the operation.
@@ -1431,7 +1429,7 @@ namespace CreatePDFFromHTMLWithJsonMerge
          FileRef result = htmlToPDFOperation.Execute(executionContext);
 
          // Save the result to the specified location.
-         result.SaveAs(Directory.GetCurrentDirectory() + "/output/createPDFFromHTMLWithJsonMergeOutput.pdf");
+         result.SaveAs(Directory.GetCurrentDirectory() + "/output/createPDFFromHTMLWithTemplateEngineOutput.pdf");
        }
        catch (ServiceUsageException ex)
        {
@@ -1468,7 +1466,7 @@ namespace CreatePDFFromHTMLWithJsonMerge
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
-// node src/createpdf/create-pdf-from-html-withjson-fields.js
+// node src/createpdf/create-pdf-from-html-with-fields.js
 
 const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 
@@ -1498,7 +1496,7 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
      htmlToPDFOperation = PDFServicesSdk.CreatePDF.Operation.createNew();
 
    // Set operation input from a source file.
-   const input = PDFServicesSdk.FileRef.createFromLocalFile('resources/createPDFFromHTMLWithJsonMergeInput.zip');
+   const input = PDFServicesSdk.FileRef.createFromLocalFile('resources/createPDFFromHTMLWithTemplateEngineInput.zip');
    htmlToPDFOperation.setInput(input);
 
    // Provide any custom configuration options for the operation.
@@ -1506,7 +1504,7 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 
    // Execute the operation and Save the result to the specified location.
    htmlToPDFOperation.execute(executionContext)
-     .then(result => result.saveAsFile('output/createPDFFromHTMLWithJsonMergeOutput.pdf'))
+     .then(result => result.saveAsFile('output/createPDFFromHTMLWithTemplateEngineOutput.pdf'))
      .catch(err => {
        if(err instanceof PDFServicesSdk.Error.ServiceApiError
          || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
