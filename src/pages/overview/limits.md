@@ -15,8 +15,6 @@ into a separate written agreement. To learn more, please see our
 [pricing page](/document-services/pricing/#main)
 for purchase options.
 
-Document Transactions for the Operations below resulting in a Document
-will be counted with the following page limits:
 
 <InlineAlert slots="text"/>
 
