@@ -183,6 +183,12 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### Adobe Document Generation Server Side Release (May, 2023; server side release)
+
+| Change  | Language | Description                                                                                                                                                  |
+|---------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Changed | All      | API Performance Improvements. Available in [New Rest Apis](https://developer.adobe.com/document-services/docs/apis/#tag/Document-Generation) and SDKs 3.3.0. |
+
 ### Adobe Document Generation Server Side Release (April, 2023; server side release)
 
 | Change  | Language         | Description                                                                                                                     |
