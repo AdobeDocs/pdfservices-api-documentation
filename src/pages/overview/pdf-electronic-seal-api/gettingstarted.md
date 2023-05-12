@@ -15,7 +15,7 @@ title: Getting Started | PDF Electronic Seal API | Adobe PDF Services
 
 ### Step 2: Get API Credentials
 
-In order to invoke the PDF Electronic Seal API, Adobe client credentials are required. To get one, [click here](../quickstarts/java/#step-one-fill-the-form-to-get-beta-credentials) and complete the form. Adobe team will provide with the required details to create the api credentials. The client should securely store the credential details and PIN for later use.
+In order to invoke the PDF Electronic Seal API, Adobe client credentials are required. To get one, [click here](../quickstarts/java/#step-one-getting-credentials) and complete the form. Adobe team will provide with the required details to create the api credentials. The client should securely store the credential details and PIN for later use.
 
 ### Step 3: Obtain your OAuth Token
 

@@ -15,7 +15,7 @@ To complete this guide, you will need:
 * An Adobe ID. If you do not have one, the credential setup will walk you through creating one.
 * A way to edit code. No specific editor is required for this guide.
 
-## Step One: Fill the form to get beta credentials
+## Step One: Getting credentials
 
 1) To begin, open your browser to <https://developer.adobe.com/document-services/pricing/contact/sales/seal/>. Fill the form and our team will reach out to you for getting you started. Please provide the email address which you will be using in the next step to create credentials.
 
