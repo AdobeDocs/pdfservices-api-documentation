@@ -75,7 +75,7 @@ Note that that private key is *also* found in this directory so feel free to cop
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <pdfservices.sdk.version>2.2.2</pdfservices.sdk.version>
+    <pdfservices.sdk.version>3.1.0-beta.1</pdfservices.sdk.version>
   </properties>
 
   <dependencies>
@@ -324,7 +324,13 @@ import com.adobe.pdfservices.operation.exception.ServiceApiException;
 import com.adobe.pdfservices.operation.exception.ServiceUsageException;
 import com.adobe.pdfservices.operation.io.FileRef;
 import com.adobe.pdfservices.operation.pdfops.PDFElectronicSealOperation;
-import com.adobe.pdfservices.operation.pdfops.options.electronicseal.*;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.CSCCredentialOptions;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.PDFElectronicSealOptions;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.SealCredentialOptions;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.SealFieldLocationOptions;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.SealFieldOptions;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.SealOptions;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.SignatureFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.io.IOException;
