@@ -144,7 +144,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 | Change  | Language         | Description                                                                                                                     |
 |---------|------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| New | Java,NodeJS,.NET | PDF Accessibility Auto-Tag operation is now available for all the users in PDF Services SDKs.  |
+| New | Java,NodeJS,.NET | PDF Accessibility Auto-Tag operation is now available for all the users in PDF Services SDKs and Rest APIs.  |
 | New | Java | Added the support of Basic Authentication for the Proxy Server configuration. |
 | Changed | Java,NodeJS,.NET | Upgraded third party libraries to fix recently discovered vulnerabilities. |
 
@@ -152,7 +152,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 | Change  | Language         | Description                                                                                                                     |
 |---------|------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| New | Python | PDF Accessibility Auto-Tag operation is now available for all the users in PDF Services SDKs. |
+| New | Python | PDF Accessibility Auto-Tag operation is now available for all the users in PDF Services SDKs and Rest APIs. |
 
 ### Extract PDF Server Side Release (06 March, 2023; server side release)
 | Change  | Language            | Description                                                                                   |
