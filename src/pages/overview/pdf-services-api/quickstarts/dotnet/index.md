@@ -95,7 +95,7 @@ Now you're ready to begin coding.
 
 1) We'll begin by including our required dependencies:
 
-```csharp
+```clike  
 using System.IO;
 using System;
 using System.Collections.Generic;
@@ -113,7 +113,7 @@ using Adobe.PDFServicesSDK.exception;
 
 2) Now let's define our main class and `Main` method:
 
-```csharp
+```clike
 namespace ExportPDFToWord
 {
     class Program
@@ -128,7 +128,7 @@ namespace ExportPDFToWord
 
 3) Inside our class, we'll begin by defining our input PDF and output filenames. If the output file already exists, it will be deleted:
 
-```csharp
+```clike
 String input = "./Bodea Brochure.pdf";
 
 String output = "./Bodea Brochure.docx";
@@ -142,7 +142,7 @@ Console.Write("Exporting "+ input + " to " + output + "\n");
 
 4) Next, we setup the SDK to use our credentials.
 
-```csharp
+```clike
 // Initial setup, create credentials instance.
 Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
 	.FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
@@ -156,7 +156,7 @@ This code both points to the credentials downloaded previously as well as sets u
 
 5) Now, let's create the operation:
 
-```csharp
+```clike
 ExportPDFOperation exportPdfOperation = ExportPDFOperation.CreateNew(ExportPDFTargetFormat.DOCX);
 
 // Provide an input FileRef for the operation.
@@ -168,7 +168,7 @@ This set of code defines what we're doing (an Export operation), points to our l
 
 6) The next code block executes the operation:
 
-```csharp
+```clike
 // Execute the operation.
 FileRef result = exportPdfOperation.Execute(executionContext);
 
@@ -183,7 +183,7 @@ This code runs the Extraction process and then stores the result Word document t
 
 Here's the complete application (`Program.cs`):
 
-```csharp
+```clike
 using System.IO;
 using System;
 using System.Collections.Generic;
