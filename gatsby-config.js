@@ -36,7 +36,7 @@ module.exports = {
                     {
                         title: 'PDF Accessibility Auto-Tag',
                         description: 'Auto-tag PDF content to improve accessibility',
-                        path: '../document-services/apis/pdf-accessibility-auto-tag/'
+                        path: 'apis/pdf-accessibility-auto-tag/'
                     },
                     {
                         title: 'PDF Extract',
@@ -114,10 +114,6 @@ module.exports = {
                         path: 'overview/pdf-accessibility-auto-tag-api/index.md'
                     },
                     {
-                        title: 'PDF Extract API',
-                        path: 'overview/pdf-extract-api/index.md'
-                    },
-                    {
                         title: 'Document Generation API',
                         path: 'overview/document-generation-api/index.md'
                     },
@@ -128,7 +124,7 @@ module.exports = {
                     {
                         title: 'PDF Embed API',
                         path: 'overview/pdf-embed-api/index.md'
-                    }
+                    },
                 ]
             },
             {
