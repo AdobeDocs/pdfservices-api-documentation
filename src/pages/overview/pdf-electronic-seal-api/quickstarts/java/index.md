@@ -17,7 +17,7 @@ To complete this guide, you will need:
 
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://developer.adobe.com/document-services/pricing/contact/sales/seal/>. Fill the form and our team will reach out to you for getting you started. Please provide the email address which you will be using in the next step to create credentials.
+1) To begin, open your browser to <https://developer.adobe.com/document-services/pricing/contact/sales/seal/>. Fill the form and Adobe will reach out to you for getting you started. Please provide the email address which you will be using in the next step to create credentials.
 
 ![Contact us](./seal_beta_contactus.png)
 
@@ -164,7 +164,7 @@ Note that that private key is *also* found in this directory so feel free to cop
 
 This file will define what dependencies we need and how the application will be built. 
 
-Our application will take an Invoice PDF document, `sampleInvoice.pdf` (downloadable from [here](./sampleInvoice.pdf)) and a seal image, `sampleSealImage.png` (downloadable from [here](./sampleSealImage.png))), and will use the sealing options with default appearance options to apply electronic seal over the PDF document by invoking Acrobat Services API and generate an electronically sealed PDF.
+Our application will take an Invoice PDF document, `sampleInvoice.pdf` (downloadable from [here](./sampleInvoice.pdf)) and a seal image, `sampleSealImage.png` (downloadable from [here](./sampleSealImage.png)), and will use the sealing options with default appearance options to apply electronic seal over the PDF document by invoking Acrobat Services API and generate an electronically sealed PDF.
 
 5) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `ElectronicSeal.java`. 
 
@@ -387,7 +387,7 @@ public class ElectronicSeal {
             String providerName = "<PROVIDER_NAME>";
 
             //Set the access token to be used to access TSP provider hosted APIs.
-            String accessToken = "<ACCESS TOKEN>";
+            String accessToken = "<ACCESS_TOKEN>";
 
             //Set the credential ID.
             String credentialID = "<CREDENTIAL_ID>";
