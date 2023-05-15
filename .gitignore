@@ -1,8 +1,14 @@
-# gatsby files
-.cache
-public
-node_modules
+*.log
+.idea
+.DS_Store
+target/
+PdfUtility.iml
 
-yarn-error.log
-.editorconfig
-.env
+.settings
+.project
+.classpath
+
+output/
+#idea
+*.iml
+allure-results/

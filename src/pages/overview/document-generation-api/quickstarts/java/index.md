@@ -223,7 +223,7 @@ Notice how the tokens in the Word document match up with values in our JSON. Whi
 
 3) We'll begin by including our required dependencies:
 
-```java
+```javascript
 import com.adobe.pdfservices.operation.ExecutionContext;
 import com.adobe.pdfservices.operation.auth.Credentials;
 import com.adobe.pdfservices.operation.exception.SdkException;
@@ -247,7 +247,7 @@ import org.json.JSONObject;
 
 4) Now let's define our main class:
 
-```java
+```javascript
 public class GeneratePDF {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(GeneratePDF.class);
@@ -261,7 +261,7 @@ public class GeneratePDF {
 
 5) Inside our class, we'll begin by defining our input Word, JSON and output filenames. If the output file already exists, it will be deleted:
 
-```Java
+```javascript
 String input_file = "./receiptTemplate.docx";
 
 String output_file = "./generatedReceipt.pdf";
@@ -278,7 +278,7 @@ These lines are hard coded but in a real application would typically be dynamic.
 
 6) Next, we can create our credentials and use them:
 
-```java
+```javascript
 // Initial setup, create credentials instance.
 Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
 		.fromFile("pdfservices-api-credentials.json")
@@ -290,7 +290,7 @@ ExecutionContext executionContext = ExecutionContext.create(credentials);
 
 7) Now, let's create the operation:
 
-```java
+```javascript
 DocumentMergeOptions documentMergeOptions = new DocumentMergeOptions(jsonDataForMerge, OutputFormat.PDF);
 
 DocumentMergeOperation documentMergeOperation = DocumentMergeOperation.createNew(documentMergeOptions);
@@ -304,7 +304,7 @@ This set of code defines what we're doing (a document merge operation, the SDK's
 
 8) The next code block executes the operation:
 
-```java
+```javascript
 // Execute the operation
 FileRef result = documentMergeOperation.execute(executionContext);
 
@@ -318,7 +318,7 @@ This code runs the Document Generation process and then stores the result PDF do
 
 Here's the complete application (`src/main/java/GeneratePDF.java`):
 
-```java
+```javascript
 import com.adobe.pdfservices.operation.ExecutionContext;
 import com.adobe.pdfservices.operation.auth.Credentials;
 import com.adobe.pdfservices.operation.exception.SdkException;
@@ -380,8 +380,8 @@ public class GeneratePDF {
 
             // Save the result at the specified location
             result.saveAs(output_file);
-
-      		System.out.println("All Done");
+            
+            System.out.println("All Done");
             
         } catch (ServiceApiException | IOException | SdkException | ServiceUsageException e) {
             LOGGER.error("Exception encountered while executing operation", e);

@@ -170,7 +170,7 @@ Now you're ready to begin coding.
 
 1) We'll begin by including our required dependencies:
 
-```java
+```javascript
 import com.adobe.pdfservices.operation.ExecutionContext;
 import com.adobe.pdfservices.operation.auth.Credentials;
 import com.adobe.pdfservices.operation.exception.SdkException;
@@ -190,7 +190,7 @@ import java.time.format.DateTimeFormatter;
 
 2) Now let's define our main class:
 
-```java
+```javascript
 public class AutotagPDF {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ExtractTextInfoFromPDF.class);
@@ -203,7 +203,7 @@ public class AutotagPDF {
 
 3) Now let's define our input and output:
 
-```java
+```javascript
 String inputFile = "./Adobe Extract API Sample.pdf";
 
 String outputPath = "./output/AutotagPDF/";
@@ -219,7 +219,7 @@ This defines what our output directory will be and optionally deletes it if it a
 
 4) Next, we can create our credentials and use them:
 
-```java
+```javascript
 // Initial setup, create credentials instance.
 Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
 		.fromFile("pdfservices-api-credentials.json")
@@ -231,7 +231,7 @@ ExecutionContext executionContext = ExecutionContext.create(credentials);
 
 5) Now, let's create the operation:
 
-```java
+```javascript
 AutotagPDFOperation autotagPDFOperation = AutotagPDFOperation.createNew();
 
 // Build AutotagPDFOptions options and set them into the operation
@@ -246,7 +246,7 @@ This set of code defines what we're doing (an Extract operation), points to our 
 
 6) The next code block executes the operation:
 
-```java
+```javascript
 // Execute the operation
 AutotagPDFOutput result = autotagPDFOperation.execute(executionContext);
 
@@ -261,7 +261,7 @@ autotagPDFOutput.getReport().saveAs(taggingReport);
 
 Here's the complete application (`src/java/main/ExtractTextInfoFromPDF.java`):
 
-```java
+```javascript
 import com.adobe.pdfservices.operation.ExecutionContext;
 import com.adobe.pdfservices.operation.auth.Credentials;
 import com.adobe.pdfservices.operation.exception.SdkException;
