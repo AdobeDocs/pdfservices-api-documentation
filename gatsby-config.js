@@ -31,32 +31,32 @@ module.exports = {
                     {
                         title: 'PDF Services',
                         description: 'Create, combine and export PDFs',
-                        path: 'apis/pdf-services/'
+                        path: '../document-services/pdf-services/'
                     },
                     {
                         title: 'PDF Extract',
                         description: 'Extract text, tables, images, and document structure',
-                        path: 'apis/pdf-extract/'
+                        path: '../document-services/pdf-extract/'
                     },
                     {
                         title: 'Document Generation',
                         description: 'Generate PDF and Word documents from custom Word templates',
-                        path: 'apis/doc-generation/'
+                        path: '../document-services/doc-generation/'
                     },
                     {
                         title: 'PDF Embed',
                         description: 'Embed high-fidelity PDFs in web apps with analytics',
-                        path: 'apis/pdf-embed/'
+                        path: '../document-services/pdf-embed/'
                     },
                     {
                         title: 'Sign API',
                         description: 'Integrate e-signatures into your platform or application',
-                        path: 'apis/sign-api/'
+                        path: '../document-services/sign-api/'
                     },
                     {
                         title: 'Power Automate Connector',
                         description: 'Build workflows on Microsoft Power Platform easily',
-                        path: 'apis/microsoft-pa-integration/'
+                        path: '../document-services/microsoft-pa-integration/'
                     }
                 ]
             },
