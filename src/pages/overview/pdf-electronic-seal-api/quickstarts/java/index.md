@@ -174,7 +174,7 @@ Now you're ready to begin coding.
 
 1) We will begin by including the required dependencies:
 
-```java
+```javascript
 import com.adobe.pdfservices.operation.ExecutionContext;
 import com.adobe.pdfservices.operation.auth.Credentials;
 import com.adobe.pdfservices.operation.exception.SdkException;
@@ -197,7 +197,7 @@ import java.io.IOException;
 
 2) Now let's define our main class:
 
-```java
+```javascript
 public class ElectronicSeal {
 
     // Initialize the logger.
@@ -211,7 +211,7 @@ public class ElectronicSeal {
 
 
 3) Let's create credentials for pdf services and use them:
-```java
+```javascript
 // Initial setup, create credentials instance.
 Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
                                     .fromFile("pdfservices-api-credentials.json")
@@ -223,7 +223,7 @@ ExecutionContext executionContext = ExecutionContext.create(credentials);
 
 4) Now, let's define our input fields:
 
-```java
+```javascript
 //Get the input document to perform the sealing operation
 FileRef sourceFile = FileRef.createFromLocalFile("./sampleInvoice.pdf");
 
@@ -233,7 +233,7 @@ FileRef sealImageFile = FileRef.createFromLocalFile("./sampleSealImage.png");
 
 5) Now, we will define seal field options:
 
-```java
+```javascript
 //Set the Seal Field Name to be created in input PDF document.
 String sealFieldName = "Signature1";
 
@@ -257,7 +257,7 @@ SealFieldOptions sealFieldOptions = new SealFieldOptions.Builder(sealFieldName)
 
 6) Next, we create a CSC Certificate Credentials instance:
 
-```java
+```javascript
 //Set the name of TSP Provider being used.
 String providerName = "<PROVIDER_NAME>";
 
@@ -279,20 +279,20 @@ SealCredentialOptions sealCredentialOptions = new  CSCCredentialOptions.Builder(
 
 7) Now, let's create the seal options with certificate credentials and field options:
 
-```java
+```javascript
 //Create SealingOptions instance with all the sealing parameters.
 SealOptions sealOptions = new SealOptions.Builder(SignatureFormat.PKCS7, sealCredentialOptions, sealFieldOptions).build();
 ```
 
 8) Now, let's create the PDF electronic seal options using the seal options:
-```java
+```javascript
 //Create a PDFElectronicSealOptions instance using the SealOptions instance
 PDFElectronicSealOptions pdfElectronicSealOptions = new PDFElectronicSealOptions(sealOptions);
 ```
 
 9) Now, let's create the operation:
 
-```java
+```javascript
 //Create the PDFElectronicSealOperation instance using the SealOptions instance
 PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.createNew(pdfElectronicSealOptions);
 
@@ -306,7 +306,7 @@ This code creates a seal operation using PDF electronic seal options, input sour
  
 9) Let's execute this seal operation:
 
-```java
+```javascript
 //Execute the operation
 FileRef result = pdfElectronicSealOperation.execute(executionContext);
 
@@ -316,7 +316,7 @@ result.saveAs("output/sealedOutput.pdf");
 
 Here's the complete application (`src/main/java/ElectronicSeal.java`):
 
-```java
+```javascript
 import com.adobe.pdfservices.operation.ExecutionContext;
 import com.adobe.pdfservices.operation.auth.Credentials;
 import com.adobe.pdfservices.operation.exception.SdkException;
