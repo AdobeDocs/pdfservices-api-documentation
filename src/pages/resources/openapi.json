@@ -1566,8 +1566,8 @@
                   "type": "string"
                 }
               }
-              }
-            },
+            }
+          },
           "400": {
             "description": "Bad Request. The request was invalid or cannot be otherwise served.",
             "headers": {
