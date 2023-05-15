@@ -7532,8 +7532,7 @@
         },
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
-          "documentLanguage": "en-US",
-          "long-await": false
+          "documentLanguage": "en-US"
         },
         "required": [
           "assetID"
