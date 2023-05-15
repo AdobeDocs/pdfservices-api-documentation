@@ -34,6 +34,11 @@ module.exports = {
                         path: '../document-services/apis/pdf-services/'
                     },
                     {
+                        title: 'PDF Accessibility Auto-Tag',
+                        description: 'Auto-tag PDF content to improve accessibility',
+                        path: '../document-services/apis/pdf-accessibility-auto-tag/'
+                    },
+                    {
                         title: 'PDF Extract',
                         description: 'Extract text, tables, images, and document structure',
                         path: '../document-services/apis/pdf-extract/'
