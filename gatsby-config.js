@@ -31,32 +31,32 @@ module.exports = {
                     {
                         title: 'PDF Services',
                         description: 'Create, combine and export PDFs',
-                        path: '../document-services/pdf-services/'
+                        path: '../document-services/apis/pdf-services/'
                     },
                     {
                         title: 'PDF Extract',
                         description: 'Extract text, tables, images, and document structure',
-                        path: '../document-services/pdf-extract/'
+                        path: '../document-services/apis/pdf-extract/'
                     },
                     {
                         title: 'Document Generation',
                         description: 'Generate PDF and Word documents from custom Word templates',
-                        path: '../document-services/doc-generation/'
+                        path: '../document-services/apis/doc-generation/'
                     },
                     {
                         title: 'PDF Embed',
                         description: 'Embed high-fidelity PDFs in web apps with analytics',
-                        path: '../document-services/pdf-embed/'
+                        path: '../document-services/apis/pdf-embed/'
                     },
                     {
                         title: 'Sign API',
                         description: 'Integrate e-signatures into your platform or application',
-                        path: '../document-services/sign-api/'
+                        path: '../document-services/apis/sign-api/'
                     },
                     {
                         title: 'Power Automate Connector',
                         description: 'Build workflows on Microsoft Power Platform easily',
-                        path: '../document-services/microsoft-pa-integration/'
+                        path: '../document-services/apis/microsoft-pa-integration/'
                     }
                 ]
             },
