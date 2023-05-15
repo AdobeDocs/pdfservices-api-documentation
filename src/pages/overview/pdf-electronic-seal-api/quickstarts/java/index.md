@@ -17,21 +17,25 @@ To complete this guide, you will need:
 
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
+1) To begin, open your browser to <https://developer.adobe.com/document-services/pricing/contact/sales/seal/>. Fill the form and our team will reach out to you for getting you started. Please provide the email address which you will be using in the next step to create credentials.
+
+![Contact us](./seal_beta_contactus.png)
+
+2) The next step is to create the credentials, open your browser to <https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user using the same email address provided in the above step. Using a personal email account is recommended and not a federated ID.
 
 ![Sign in](./shot1.png)
 
-2) After registering or logging in, you will then be asked to name your new credentials. Use the name, "New Project". 
+3) After registering or logging in, you will then be asked to name your new credentials. Use the name, "New Project". 
 
-3) Change the "Choose language" setting to "Java". 
+4) Change the "Choose language" setting to "Java". 
 
-4) Also note the checkbox by, "Create personalized code sample." This will include a large set of samples along with your credentials. These can be helpful for learning more later. 
+5) Also note the checkbox by, "Create personalized code sample." This will include a large set of samples along with your credentials. These can be helpful for learning more later. 
 
-5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
+6) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
 ![Project setup](./shot2_ga.png)
 
-6) After your credentials are created, they are automatically downloaded:
+7) After your credentials are created, they are automatically downloaded:
 
 ![alt](./shot3.png)
 
@@ -160,7 +164,7 @@ Note that that private key is *also* found in this directory so feel free to cop
 
 This file will define what dependencies we need and how the application will be built. 
 
-Our application will take an Invoice PDF document, `HallibyInvoice.pdf` (downloadable from [here](./HallibyInvoice.pdf)), and will use the sealing options with default appearance options to apply electronic seal over the PDF document by invoking Acrobat Services API and generate an electronically sealed PDF.
+Our application will take an Invoice PDF document, `sampleInvoice.pdf` (downloadable from [here](./sampleInvoice.pdf)) and a seal image, `sampleSealImage.png` (downloadable from [here](./sampleSealImage.png))), and will use the sealing options with default appearance options to apply electronic seal over the PDF document by invoking Acrobat Services API and generate an electronically sealed PDF.
 
 5) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `ElectronicSeal.java`. 
 
@@ -178,18 +182,10 @@ import com.adobe.pdfservices.operation.exception.ServiceApiException;
 import com.adobe.pdfservices.operation.exception.ServiceUsageException;
 import com.adobe.pdfservices.operation.io.FileRef;
 import com.adobe.pdfservices.operation.pdfops.PDFElectronicSealOperation;
-import com.adobe.pdfservices.operation.pdfops.options.electronicseal.FieldLocation;
-import com.adobe.pdfservices.operation.pdfops.options.electronicseal.FieldOptions;
-import com.adobe.pdfservices.operation.pdfops.options.electronicseal.CSCAuthContext;
-import com.adobe.pdfservices.operation.pdfops.options.electronicseal.CertificateCredentials;
-import com.adobe.pdfservices.operation.pdfops.options.electronicseal.SealOptions;
-import com.adobe.pdfservices.operation.pdfops.options.electronicseal.SignatureFormat;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 ```
  
 
@@ -223,7 +219,7 @@ ExecutionContext executionContext = ExecutionContext.create(credentials);
 
 ```java
 //Get the input document to perform the sealing operation
-FileRef sourceFile = FileRef.createFromLocalFile("./HallibyInvoice.pdf");
+FileRef sourceFile = FileRef.createFromLocalFile("./sampleInvoice.pdf");
 
 //Get the background seal image for signature , if required.
 FileRef sealImageFile = FileRef.createFromLocalFile("./sampleSealImage.png");
@@ -242,14 +238,14 @@ Integer sealPageNumber = 1;
 Boolean sealVisible = true;
 
 //Create FieldLocation instance and set the coordinates for applying signature
-FieldLocation fieldLocation = new FieldLocation(150, 250, 350, 200);
+SealFieldLocationOptions sealFieldLocationOptions = new SealFieldLocationOptions(150, 250, 350, 200);
 
 //Create FieldOptions instance with required details.
-FieldOptions fieldOptions = new FieldOptions.Builder(sealFieldName)
-                                            .setFieldLocation(fieldLocation)
-                                            .setPageNumber(sealPageNumber)
-                                            .setVisible(sealVisible)
-                                            .build();
+SealFieldOptions sealFieldOptions = new SealFieldOptions.Builder(sealFieldName)
+                                        .setSealFieldLocationOptions(sealFieldLocationOptions)
+                                        .setPageNumber(sealPageNumber)
+                                        .setVisible(sealVisible)
+                                        .build();
 ```
 
 
@@ -266,32 +262,33 @@ String accessToken = "<ACCESS_TOKEN>";
 String credentialID = "<CREDENTIAL_ID>";
 
 //Set the PIN generated while creating credentials.
-String pin = "<PIN>";
+String credentialPin = "<PIN>";
 
-//Create CSCAuthContext instance using access token and token type.
-CSCAuthContext cscAuthContext = new CSCAuthContext(accessToken, "Bearer");
+//Create SealCredentialOptions instance with required certificate details.
+SealCredentialOptions sealCredentialOptions = new  CSCCredentialOptions.Builder(providerName, credentialID, credentialPin, accessToken)
+                                                    .setTokenType("Bearer")
+                                                    .build();
 
-//Create CertificateCredentials instance with required certificate details.
-CertificateCredentials certificateCredentials = CertificateCredentials.cscCredentialBuilder()
-                                                .withProviderName(providerName)
-                                                .withCredentialID(credentialID)
-                                                .withPin(pin)
-                                                .withCSCAuthContext(cscAuthContext)
-                                                .build();
 ```
 
 7) Now, let's create the seal options with certificate credentials and field options:
 
 ```java
-//Create SealOptions instance with sealing parameters.
-SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions).build();
+//Create SealingOptions instance with all the sealing parameters.
+SealOptions sealOptions = new SealOptions.Builder(SignatureFormat.PKCS7, sealCredentialOptions, sealFieldOptions).build();
 ```
 
-8) Now, let's create the operation:
+8) Now, let's create the PDF electronic seal options using the seal options:
+```java
+//Create a PDFElectronicSealOptions instance using the SealOptions instance
+PDFElectronicSealOptions pdfElectronicSealOptions = new PDFElectronicSealOptions(sealOptions);
+```
+
+9) Now, let's create the operation:
 
 ```java
 //Create the PDFElectronicSealOperation instance using the SealOptions instance
-PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.createNew(sealOptions);
+PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.createNew(pdfElectronicSealOptions);
 
 //Set the input source file for PDFElectronicSealOperation instance
 pdfElectronicSealOperation.setInput(sourceFile);
@@ -299,7 +296,7 @@ pdfElectronicSealOperation.setInput(sourceFile);
 //Set the optional input seal image for PDFElectronicSealOperation instance
 pdfElectronicSealOperation.setSealImage(sealImageFile);
 ```
-This code creates a seal operation using sealOptions, input source file and input seal image.
+This code creates a seal operation using PDF electronic seal options, input source file and input seal image.
  
 9) Let's execute this seal operation:
 
@@ -321,24 +318,16 @@ import com.adobe.pdfservices.operation.exception.ServiceApiException;
 import com.adobe.pdfservices.operation.exception.ServiceUsageException;
 import com.adobe.pdfservices.operation.io.FileRef;
 import com.adobe.pdfservices.operation.pdfops.PDFElectronicSealOperation;
-import com.adobe.pdfservices.operation.pdfops.options.electronicseal.FieldLocation;
-import com.adobe.pdfservices.operation.pdfops.options.electronicseal.FieldOptions;
-import com.adobe.pdfservices.operation.pdfops.options.electronicseal.CSCAuthContext;
-import com.adobe.pdfservices.operation.pdfops.options.electronicseal.CertificateCredentials;
-import com.adobe.pdfservices.operation.pdfops.options.electronicseal.SealOptions;
-import com.adobe.pdfservices.operation.pdfops.options.electronicseal.SignatureFormat;
+import com.adobe.pdfservices.operation.pdfops.options.electronicseal.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 /**
- * This sample illustrates how to apply electronic seal over the PDF document using default appearance options.
+ * The sample class ElectronicSeal uses the default appearance options to apply electronic seal over the PDF document.
  *
  * <p>
- * To know more about PDF Electronic Seal, please see the <a href="https://www.adobe.com/go/dc_eseal_overview_doc" target="_blank">documentation</a>.
+ * To know more about PDF Electronic Seal, please see the <a href="https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/" target="_blank">documentation</a>.
  * <p>
  * Refer to README.md for instructions on how to run the samples.
  */
@@ -358,7 +347,7 @@ public class ElectronicSeal {
             ExecutionContext executionContext = ExecutionContext.create(credentials);
 
             //Get the input document to perform the sealing operation
-            FileRef sourceFile = FileRef.createFromLocalFile("./HallibyInvoice.pdf");
+            FileRef sourceFile = FileRef.createFromLocalFile("./sampleInvoice.pdf");
 
             //Get the background seal image for signature , if required.
             FileRef sealImageFile = FileRef.createFromLocalFile("./sampleSealImage.png");
@@ -372,12 +361,12 @@ public class ElectronicSeal {
             //Set if seal should be visible or invisible.
             Boolean sealVisible = true;
 
-            //Create FieldLocation instance and set the coordinates for applying signature
-            FieldLocation fieldLocation = new FieldLocation(150, 250, 350, 200);
+            //Create SealFieldLocationOptions instance and set the coordinates for applying signature
+            SealFieldLocationOptions sealFieldLocationOptions = new SealFieldLocationOptions(150, 250, 350, 200);
 
-            //Create FieldOptions instance with required details.
-            FieldOptions fieldOptions = new FieldOptions.Builder(sealFieldName)
-                    .setFieldLocation(fieldLocation)
+            //Create SealFieldOptions instance with required details.
+            SealFieldOptions sealFieldOptions = new SealFieldOptions.Builder(sealFieldName)
+                    .setSealFieldLocationOptions(sealFieldLocationOptions)
                     .setPageNumber(sealPageNumber)
                     .setVisible(sealVisible)
                     .build();
@@ -386,33 +375,29 @@ public class ElectronicSeal {
             String providerName = "<PROVIDER_NAME>";
 
             //Set the access token to be used to access TSP provider hosted APIs.
-            String accessToken = "<ACCESS_TOKEN>";
+            String accessToken = "<ACCESS TOKEN>";
 
             //Set the credential ID.
             String credentialID = "<CREDENTIAL_ID>";
 
             //Set the PIN generated while creating credentials.
-            String pin = "<PIN>";
+            String credentialPin = "<PIN>";
 
-            //Create CSCAuthContext instance using access token and token type.
-            CSCAuthContext cscAuthContext = new CSCAuthContext(accessToken, "Bearer");
+            //Create SealCredentialOptions instance with required certificate details.
+            SealCredentialOptions sealCredentialOptions = new  CSCCredentialOptions.Builder(providerName, credentialID, credentialPin, accessToken).setTokenType("Bearer").build();
 
-            //Create CertificateCredentials instance with required certificate details.
-            CertificateCredentials certificateCredentials = CertificateCredentials.cscCredentialBuilder()
-                    .withProviderName(providerName)
-                    .withCredentialID(credentialID)
-                    .withPin(pin)
-                    .withCSCAuthContext(cscAuthContext)
-                    .build();
+            //Create SealingOptions instance with all the sealing parameters.
+            SealOptions sealOptions = new SealOptions.Builder(SignatureFormat.PKCS7, sealCredentialOptions,
+                    sealFieldOptions).build();
 
-            //Create SealOptions instance with sealing parameters.
-            SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions).build();
+            //Create a PDFElectronicSealOptions instance using the SealOptions instance
+            PDFElectronicSealOptions pdfElectronicSealOptions = new PDFElectronicSealOptions(sealOptions);
 
-            //Create the PDFElectronicSealOperation instance using the SealOptions instance
-            PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.createNew(sealOptions);
+            //Create the PDFElectronicSealOperation instance using the PDFElectronicSealOptions instance
+            PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.createNew(pdfElectronicSealOptions);
 
             //Set the input source file for PDFElectronicSealOperation instance
-            pdfElectronicSealOperation.setInput(sourceFile);
+            pdfElectronicSealOperation.setInputDocument(sourceFile);
 
             //Set the optional input seal image for PDFElectronicSealOperation instance
             pdfElectronicSealOperation.setSealImage(sealImageFile);
@@ -422,6 +407,7 @@ public class ElectronicSeal {
 
             //Save the output at specified location
             result.saveAs("output/sealedOutput.pdf");
+
 
         } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
             LOGGER.error("Exception encountered while executing operation", ex);
