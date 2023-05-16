@@ -7,21 +7,17 @@ title: Usage Limits and Licensing
 
 Adobe PDF Services API licensing is measured per Document Transaction which is based on the initial
 endpoint request (i.e., API call) and the digital output, with each
-operation in the table described below. Content limits apply and are
-provided along with examples for clarity. These limits do not apply to PDF Embed API.
+operation in the table described below. Usage limits apply and are provided along with examples for clarity. These limits do not apply to PDF Embed API.
 
 Paid credentials enable a greater processing quota and require entering
 into a separate written agreement. To learn more, please see
 [pricing page](/document-services/pricing/#main)
-for purchase options.
-
-Document Transactions for the Operations below resulting in a Document
-will be counted with the following page limits:
+for purchase options.Document Transactions for the Operations below resulting in a Document
+will be counted with the following page limits.
 
 <InlineAlert slots="text"/>
 
-Document Transactions for the Operations below resulting in a Document
-will be counted with the following page limits:<ul><li>Extract Operation: 1 Document Transaction for up to 5 pages</li><li>Accessibility Auto-Tag Operation: 10 Document Transactions per page</li><li>All other Operations: 1 Document Transaction for up to 50 pages</li></ul>
+<ul><li>Extract Operation: 1 Document Transaction for up to 5 pages</li><li>Accessibility Auto-Tag Operation: 10 Document Transactions per page</li><li>All other Operations: 1 Document Transaction for up to 50 pages</li></ul>
 
 ###  Document Transaction Definitions
 
@@ -47,12 +43,6 @@ will be counted with the following page limits:<ul><li>Extract Operation: 1 Docu
 | Get PDF Properties  | Get XMP metadata properties of a PDF file                                                                                                                                                                                      | Document Transaction: the 50-page count does not apply|
 
 ### Examples
-
-<InlineAlert slots="text"/>
-
-The number of documents used to calculate Document Transactions is
-rounded up on a 5-page basis for Extract PDF and on a 50-page basis
-for other PDF Tools.
 
 | OPERATION                                      | EXAMPLE                                                                                                                                                                                                         | CALCULATION                                                                                                                                     |
 | ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
