@@ -8,8 +8,8 @@ Export a source PDF file into doc, docx, jpeg, png, pptx, rtf, xlsx.
 ## Rest API 
 
 See our public API Reference for : 
-- [Export PDF to Office format or text files](../../../apis/#tag/Export-PDF)
-- [Export PDF to Images](../../../apis/#tag/PDF-To-Images)
+- [Export PDF to Office format or text files](https://developer.adobe.com/document-services/docs/apis/#tag/Export-PDF)
+- [Export PDF to Images](https://developer.adobe.com/document-services/docs/apis/#tag/PDF-To-Images)
 
 ## Export a PDF
 

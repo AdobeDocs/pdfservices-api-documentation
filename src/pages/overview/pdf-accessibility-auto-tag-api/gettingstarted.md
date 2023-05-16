@@ -15,7 +15,7 @@ The SDK only supports server-based use cases where credentials are saved securel
 
 ## Step 1 : Getting the access token
 
-PDF Services API endpoints are authenticated endpoints. You can get an access token by following the [link](../../authentication.md) to start using our APIs.
+Calling the PDF Accessibility Auto-Tag API requires an Adobe-provided credential. To get one, [click here](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api) and complete the workflow. Be sure to copy and save the credential values to a secure location.
 
 ## Step 2 : Uploading an asset 
 
@@ -99,7 +99,38 @@ PDF Services API is also accessible via SDKs in popular languages such as Java, 
 
 <InlineAlert slots="text"/>
 
-Please allow-list the following hostnames before using Adobe PDF Services SDK:<ul><li>ims-na1.adobelogin.com</li><li>pdf-services.adobe.io (for versions 3.x.x)</li><li>cpf-ue1.adobe.io (for versions upto 2.x.x)</li><li>senseicore-ue1.adobe.io (for versions below 1.x.x)</li></ul>
+<div>
+
+Please allow-list the following hostnames before using Adobe PDF Services SDK:
+<ul><li>ims-na1.adobelogin.com (Required for all the clients)</li></ul>
+
+For clients using SDK version 3.x and above  :
+<ul>
+<li> Using United States region for processing documents :
+  <ul>
+    <li>dcplatformstorageservice-us-east-1.s3-accelerate.amazonaws.com</li>
+    <li>pdf-services-ue1.adobe.io</li>
+    <li>pdf-services.adobe.io (Default URI)</li>
+  </ul>
+</li>
+</ul>
+
+<ul>
+  <li> Using Europe region for processing documents :
+  <ul>
+    <li>dcplatformstorageservice-eu-west-1.s3-accelerate.amazonaws.com</li>
+    <li>pdf-services-ew1.adobe.io</li>
+  </ul>
+</li>
+</ul>
+
+For clients using SDK version upto 2.x :
+<ul><li>cpf-ue1.adobe.io</li></ul>
+
+For clients using SDK version upto 1.x :
+<ul><li>senseicore-ue1.adobe.io</li></ul>
+
+</div>
 
 ### Java
 
@@ -203,7 +234,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 4.  Verify the hash you generated matches the value in the .sha1 file.
 
 ```
-298bf24b42e543029382a624b9e2c1f0069d90a5
+e8ad2278adfa4161c3bb17e41a70282457face62
 ```
 
 #### Logging
@@ -342,7 +373,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 3.  Verify the hash in the downloaded file matches the value published here.
 
 ```
-YNHLrVxKhihZHJtuu0m4ZbBJRyrLHEh910DbMHHszOxJ5ljEhn6kylNptqsKhgZS6IM2J/Siped6jt091J77ZQ==
+jdTK6PDvEcfTai7D3N97pd0u/XrvnlEJCqTRPKDrb02zcGzaVdX/2Of3WrHOqqWUFsg7GO3yf5cKXJDFN0kdMw==
 ```
 
 #### Logging
@@ -451,7 +482,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 3.  Verify the hash in the downloaded file matches the value published here.
 
 ```
-sha512-BTxm844zBHDdK+F/lZvKM0LXNIjTuEt/ia/2N5q1fV6Ks6VBqGk2tsY0vzg5gV10Alrj81OdH/IX5w5O4M279A==
+sha512-QFwmKkeFTvZhHXrklJOUbjCx8V6FftBC+DAsMCy7Q9vy5sPXQtO47rjAt6R7nzzcA/uUPfuw4/gCFNh7yRKKRQ==
 ```
 
 #### Logging
@@ -564,6 +595,23 @@ If you did not choose **Personalized Code Sample Download** during the credentia
 5. Test the sample code on the command line.
 6. Refer to this document for details about running samples as well as the API Reference for API details.
 7. You can import the samples into your preferred IDE and run the samples from there or run the below commands from terminal:
+
+#### Verifying download authenticity
+
+For security reasons you may wish to confirm the installer's authenticity. To do so,
+
+1.  After downloading the package zip, run following command
+
+```
+pip hash <download_dir>/pdfservices-sdk-1.0.0.tar.gz
+```
+
+1.  Above command will return the hash of downloaded package.
+2.  Verify the hash matches the value published here.
+
+```
+606f08f0e525a1e0ae79567c077c29dee66971d46415dbc693b95f31597690c0
+```
 
 ###### To generate tagged PDF from the sample file
 

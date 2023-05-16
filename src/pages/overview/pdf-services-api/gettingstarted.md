@@ -4,7 +4,7 @@ title: Getting Started | PDF Services API | Adobe PDF Services
 
 # Getting credentials
 
-Developing with the PDF Services SDK requires an Adobe-provided credential. To get one, [click HERE](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
+Developing with the PDF Services SDK requires an Adobe-provided credential. To get one, [click HERE](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
 
 **Validity term**: The certificate associated with your credential is valid for one year. However, you can simply regenerate a new credential or apply a new certificate to the current credentials from the Document Cloud [developer console](https://console.adobe.io/).
 
@@ -98,7 +98,38 @@ PDF Services API is also accessible via SDKs in popular languages such as Node.j
 
 <InlineAlert slots="text"/>
 
-Please allow-list the following hostnames before using Adobe PDF Services SDK:<ul><li>ims-na1.adobelogin.com</li><li>pdf-services.adobe.io (for versions 3.x.x)</li><li>cpf-ue1.adobe.io (for versions upto 2.x.x)</li><li>senseicore-ue1.adobe.io (for versions below 1.x.x)</li></ul>
+<div>
+
+Please allow-list the following hostnames before using Adobe PDF Services SDK:
+<ul><li>ims-na1.adobelogin.com (Required for all the clients)</li></ul>
+
+For clients using SDK version 3.x and above  :
+<ul>
+<li> Using United States region for processing documents :
+  <ul>
+    <li>dcplatformstorageservice-us-east-1.s3-accelerate.amazonaws.com</li>
+    <li>pdf-services-ue1.adobe.io</li>
+    <li>pdf-services.adobe.io (Default URI)</li>
+  </ul>
+</li>
+</ul>
+
+<ul>
+  <li> Using Europe region for processing documents :
+  <ul>
+    <li>dcplatformstorageservice-eu-west-1.s3-accelerate.amazonaws.com</li>
+    <li>pdf-services-ew1.adobe.io</li>
+  </ul>
+</li>
+</ul>
+
+For clients using SDK version upto 2.x :
+<ul><li>cpf-ue1.adobe.io</li></ul>
+
+For clients using SDK version upto 1.x :
+<ul><li>senseicore-ue1.adobe.io</li></ul>
+
+</div>
 
 ### Java
 
@@ -181,7 +212,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 4.  Verify the hash you generated matches the value in the .sha1 file.
 
 ```
-c3b8c208a913ffca17f4d92d9ab7f6bbbdd032ae
+e8ad2278adfa4161c3bb17e41a70282457face62
 ```
 
 #### Logging
@@ -320,7 +351,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 3.  Verify the hash in the downloaded file matches the value published here.
 
 ```
-8bocSjsiXI+1STV1yNhwPExvJb+EcxcDjiIL76ivjGNGJn9jgIpDI2Ewm+Q+yn6X+AHSPT2zl6WZu+zg+v3NfQ==
+jdTK6PDvEcfTai7D3N97pd0u/XrvnlEJCqTRPKDrb02zcGzaVdX/2Of3WrHOqqWUFsg7GO3yf5cKXJDFN0kdMw==
 ```
 
 #### Logging
@@ -393,7 +424,7 @@ After downloading the zip, you can either run the samples in the zip directly, o
 
 Running any sample or custom code requires the following steps:
 
-1.  Install [Node.js 10.13.0](https://nodejs.org/en/download/) or higher.
+1.  Install [Node.js 14.0](https://nodejs.org/en/download/) or higher.
 
 <InlineAlert slots="text"/>
 
@@ -429,7 +460,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 3.  Verify the hash in the downloaded file matches the value published here.
 
 ```
-sha512-xPvqpEM1Bd/XHLy3ywUhSH/tMNYWpv5rkQU+69pBv4IXdD2Qz+VyOXkvF5ysdVE1wbow7LIipi6JQgTlLlFqhQ==
+sha512-QFwmKkeFTvZhHXrklJOUbjCx8V6FftBC+DAsMCy7Q9vy5sPXQtO47rjAt6R7nzzcA/uUPfuw4/gCFNh7yRKKRQ==
 ```
 
 #### Logging
