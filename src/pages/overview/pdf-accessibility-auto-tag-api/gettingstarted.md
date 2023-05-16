@@ -530,7 +530,7 @@ While building the sample project automatically downloads the Node package, you 
 Jump start your development by bookmarking or downloading the following key resources:
 
 -   This document
--   [Python API reference](https://opensource.adobe.com/pdfservices-python-sdk-samples/apidocs)
+-   [Python API reference](https://opensource.adobe.com/pdfservices-python-sdk-samples/apidocs/latest/index.html)
 -   [Python sample code](https://github.com/adobe/pdfservices-python-sdk-samples)
 -   [Python SDK](https://www.adobe.com/go/pdfservices_python_pypi)
 

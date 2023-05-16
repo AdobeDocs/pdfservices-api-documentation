@@ -35,7 +35,7 @@
       "description": "Extract content from PDF documents and output it in a structured JSON format, along with tables and figures"
     },
     {
-      "name": "HTML to PDF",
+      "name": "Html to PDF",
       "description": "Convert HTML Resources to a PDF File"
     },
     {
@@ -103,7 +103,7 @@
         "Create PDF",
         "Export PDF",
         "OCR",
-        "HTML to PDF",
+        "Html to PDF",
         "Protect PDF",
         "Combine PDF",
         "Compress PDF",
@@ -1885,7 +1885,7 @@
     "/operation/htmltopdf": {
       "post": {
         "tags": [
-          "HTML to PDF"
+          "Html to PDF"
         ],
         "summary": "Convert HTML Resources to a PDF File",
         "description": "Creates PDFs from static/dynamic HTML or HTML(with inline CSS) or just a URL. It's a common scenario for enterprise to provide end users with a HTML template with form fields. In case of dynamic HTML this API allows you to capture the users unique data entries and then save it as PDF. Collected data is stored in a JSON file, and the source HTML file must include <script src='./json.js' type='text/javascript'></script>. You can also provide the URL of the HTML page in inputUrl parameter.",
@@ -2066,9 +2066,9 @@
     "/operation/htmltopdf/{jobID}/status": {
       "get": {
         "tags": [
-          "HTML to PDF"
+          "Html to PDF"
         ],
-        "summary": "Poll the HTML to PDF job for completion",
+        "summary": "Poll the Html to PDF job for completion",
         "operationId": "pdfoperations.htmltopdf.jobstatus",
         "parameters": [
           {
