@@ -1,5 +1,5 @@
 ---
-title: Usage Limits and Licensing
+title: Licensing and Usage Limits
 ---
 
 # Licensing and Usage Limits
