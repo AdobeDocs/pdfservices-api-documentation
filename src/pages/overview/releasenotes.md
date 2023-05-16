@@ -183,6 +183,20 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### 3.3.0 (May, 2023; minor release)
+
+| Change  | Language         | Description                                                                                                                     |
+|---------|------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| New | Java,NodeJS,.NET | PDF Accessibility Auto-Tag operation is now available for all the users in PDF Services SDKs and REST APIs.  |
+| New | Java | Added the support of Basic Authentication for the Proxy Server configuration. |
+| Changed | Java,NodeJS,.NET | Upgraded third party libraries to fix recently discovered vulnerabilities. |
+
+### Python SDK 2.2.0 (May, 2023; minor release)
+
+| Change  | Language         | Description                                                                                                                     |
+|---------|------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| New | Python | PDF Accessibility Auto-Tag operation is now available for all the users in PDF Services SDKs and REST APIs. |
+
 ### Adobe Document Generation Server Side Release (April, 2023; server side release)
 
 | Change  | Language         | Description                                                                                                                     |
