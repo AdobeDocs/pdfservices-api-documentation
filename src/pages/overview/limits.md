@@ -2,7 +2,7 @@
 title: Usage Limits and Licensing
 ---
 
-# Usage Limits and Licensing
+# Licensing and Usage Limits
 
 
 Adobe PDF Services API licensing is measured per Document Transaction which is based on the initial
@@ -11,7 +11,7 @@ operation in the table described below. Content limits apply and are
 provided along with examples for clarity. These limits do not apply to PDF Embed API.
 
 Paid credentials enable a greater processing quota and require entering
-into a separate written agreement. To learn more, please see our
+into a separate written agreement. To learn more, please see
 [pricing page](/document-services/pricing/#main)
 for purchase options.
 
@@ -23,9 +23,9 @@ will be counted with the following page limits:
 Document Transactions for the Operations below resulting in a Document
 will be counted with the following page limits:<ul><li>Extract Operation: 1 Document Transaction for up to 5 pages</li><li>Accessibility Auto-Tag Operation: 10 Document Transactions per page</li><li>All other Operations: 1 Document Transaction for up to 50 pages</li></ul>
 
-### Metrics
+###  Document Transaction Definitions
 
-| Operation           | Capability                                                                                                                                                                                                                     | Metric                               |
+| OPERATION           | CAPABILITY                                                                                                                                                                                                                     | METRIC                               |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------ |
 | Accessibility Auto-Tag | Tag the content in a PDF to improve accessibility                                                                                                                           | 10 Document Transactions (per page)                 |
 | Document Generation | Create PDF and Word documents from your own authored Microsoft Word templates and JSON data                                                                                                                                    | Document Transaction                 |
@@ -54,7 +54,7 @@ The number of documents used to calculate Document Transactions is
 rounded up on a 5-page basis for Extract PDF and on a 50-page basis
 for other PDF Tools.
 
-| Operation                                      | Example                                                                                                                                                                                                         | Calculation                                                                                                                                     |
+| OPERATION                                      | EXAMPLE                                                                                                                                                                                                         | CALCULATION                                                                                                                                     |
 | ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | Document Generation                            | Generating a fifteen-page PDF Document from a two-page Microsoft Word template and 1MB JSON file consumes one Document Transaction                                                                              | 1 (Operation: Document Generation) x 1 (Document) = 1 Document Transaction                                                                      |
 | Accessibility Auto-Tag                         | Auto-tagging a five-page PDF consumes 50 Document Transactions.   | 1 (Operation: Auto-Tag) X 1 (5-page document) = 50 Document Transactions                                                                      |
@@ -71,7 +71,7 @@ for other PDF Tools.
 | Create + Combine + Protect                     | Creating a 10 page PDF document from an HTML page, then combining the PDF into four other 5 page PDF documents, and finally password protecting all four PDF documents will consume nine Document Transactions. | 1 (Operation: create) x 1 (document) + 1 (Operation: combine) x 4 (documents) + 1 (Operation: export) x 4 (documents) = 9 Document Transactions |
 
 
-Licensing Metrics & Free Trial
+Free Trial
 ------------------------------
 
 The PDF Services API provides a free trial program so that you can dive into the features at zero cost. Trial users get free credentials that enable processing of 1,000 Document Transactions for up to 6 months. A Document Transaction is based on the initial endpoint request (i.e., API call) and the digital output. For detailed licensing metrics, please see the tables above.
@@ -98,11 +98,11 @@ Paid credentials enable a greater processing quota and require entering
 into a separate written agreement. To learn more, please see our
 [pricing page](/document-services/pricing/#main) for purchase options.
 
-### Usage limits
+### Usage Limits
 
 There are several usage limits that apply to PDF Services API and its underlying Operations based on one initial endpoint request. Files submitted for processing that exceed usage limits below will fail and result in an error message.
 
-| Usage limit                                                     | Value       |
+| USAGE LIMIT                                                     | VALUE       |
 | --------------------------------------------------------------- | ----------- |
 | Document limit (combine, insert, replace, split)                | 20          |
 | File size (for all documents)                                   | 100MB       |
@@ -115,4 +115,4 @@ There are several usage limits that apply to PDF Services API and its underlying
 
 **Page limits may be lower for documents with a large number of tables.*
 
-**<i>25 RPM applies to free trial users only. Please [contact us](https://developer.adobe.com/document-services/pricing/contact/sales/) on RPM if interested in understanding how it can scale under your ETLA.</i>
+**<i>Please [contact us](https://developer.adobe.com/document-services/pricing/contact/sales/) on RPM if interested in understanding how it can scale under your ETLA.</i>
