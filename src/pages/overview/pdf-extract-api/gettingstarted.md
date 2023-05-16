@@ -212,7 +212,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 4.  Verify the hash you generated matches the value in the .sha1 file.
 
 ```
-298bf24b42e543029382a624b9e2c1f0069d90a5
+e8ad2278adfa4161c3bb17e41a70282457face62
 ```
 
 #### Logging
@@ -351,7 +351,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 3.  Verify the hash in the downloaded file matches the value published here.
 
 ```
-YNHLrVxKhihZHJtuu0m4ZbBJRyrLHEh910DbMHHszOxJ5ljEhn6kylNptqsKhgZS6IM2J/Siped6jt091J77ZQ==
+jdTK6PDvEcfTai7D3N97pd0u/XrvnlEJCqTRPKDrb02zcGzaVdX/2Of3WrHOqqWUFsg7GO3yf5cKXJDFN0kdMw==
 ```
 
 #### Logging
@@ -460,7 +460,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 3.  Verify the hash in the downloaded file matches the value published here.
 
 ```
-sha512-BTxm844zBHDdK+F/lZvKM0LXNIjTuEt/ia/2N5q1fV6Ks6VBqGk2tsY0vzg5gV10Alrj81OdH/IX5w5O4M279A==
+sha512-QFwmKkeFTvZhHXrklJOUbjCx8V6FftBC+DAsMCy7Q9vy5sPXQtO47rjAt6R7nzzcA/uUPfuw4/gCFNh7yRKKRQ==
 ```
 
 #### Logging
@@ -502,6 +502,110 @@ While building the sample project automatically downloads the Node package, you 
 2.  Download the latest package.
 
 ![Adobe PDF Services SDK on NPM JS](../images/node.png)
+
+### Python
+
+Jumpstart your development by bookmarking or downloading the following key resources:
+
+-   [Python API reference](https://www.adobe.com/go/pdfservices_python_docs)
+-   [Python Sample code](https://www.adobe.com/go/pdfservices_python_samples)
+-   [Python SDK](https://www.adobe.com/go/pdfservices_python_pypi)
+
+#### Authentication
+
+Once you complete the [Getting Credentials](quickstarts/#getting-credentials), you will receive a zip file with content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
+
+-   **Personalized Download**: The samples download.zip contains a private.key file and an adobe-dc-pdfservices-sdk-python-samples directory. Each sample directory contains the sample code as well as a preconfigured pdfservices-api-credentials.json file.
+-   **Non Personalized Download**: The samples download zip contains the private.key file and unconfigured pdfservices-api-credentials.json file.
+
+After downloading the zip, you can either run the samples in the zip directly, or you can replace the pdfservices-api-credentials.json and private.key files in the [Python sample code](http://www.adobe.com/go/pdfservices_python_samples) with those in the zip.
+
+**Example pdfservices-api-credentials.json file**
+
+```json 
+{
+  "client_credentials": {
+     "client_id": " <YOUR_CLIENT_ID> ",
+     "client_secret": " <YOUR_CLIENT_SECRET> "
+  },
+  "service_account_credentials": {
+     "organization_id": " <YOUR_ORGANIZATION_ID> ",
+     "account_id": " <YOUR_TECHINCAL_ACCOUNT_ID> ",
+     "private_key_file": "private.key"
+  }
+}
+```
+
+#### Set up a Python environment
+
+Running any sample or custom code requires the following steps:
+
+1.  Install [Python 3.6](https://www.python.org/downloads/) or higher.
+
+<InlineAlert slots="text" />
+
+The pdfservices-sdk package automatically downloads when you build the sample project.
+
+``` 
+pip install pdfservices-sdk
+```
+
+##### Option 1: Personalized samples setup
+
+1.  Extract the downloaded samples .zip.
+2.  From the samples root directory, run `pip install -r requirements.txt`.
+3.  Test the sample code on the command line.
+4.  Refer to the [How Tos](../pdf-extract-api/howtos) for details about running samples. Additional details also reside in the [API documentation](https://www.adobe.com/go/pdfservices_python_docs).
+
+##### Option 2: Generic samples setup
+
+1.  Download [the Python sample project](https://github.com/adobe/pdfservices-python-sdk-samples).
+2.  Replace `pdfservices-api-credentials.json` & `private.key` with the zipped files within ZIP sent by Adobe.
+3.  From the samples root directory, run `pip install -r requirements.txt`.
+4.  Test the sample code on the command line.
+5.  Refer to the [How Tos](../pdf-extract-api/howtos) for details about running samples. Additional details also reside in the [API documentation](https://www.adobe.com/go/pdfservices_python_docs).
+
+#### Verifying download authenticity
+
+For security reasons you may wish to confirm the installer's authenticity. To do so,
+
+1.  After downloading the package zip, run following command
+
+```
+pip hash <download_dir>/pdfservices-sdk-1.0.0.tar.gz
+```
+
+1.  Above command will return the hash of downloaded package.
+2.  Verify the hash matches the value published here.
+
+```
+606f08f0e525a1e0ae79567c077c29dee66971d46415dbc693b95f31597690c0
+```
+
+#### Logging
+
+Refer to the API docs for error and exception details.
+
+The SDK uses the Python standard logging module. Customize the logging settings as needed.
+
+**Default Logging Config**
+
+``` 
+logging.getLogger(__name__).addHandler(logging.NullHandler())
+```
+
+#### Test files
+
+Refer to each sample project's [resource directory](https://github.com/adobe/pdfservices-python-sdk-samples/tree/master/resources) for the requisite input/output files.
+
+#### Custom projects
+
+While building the sample project automatically downloads the Python package, you can do it manually if you wish to use your own tools and process.
+
+1.  Go to <https://pypi.org/project/pdfservices-sdk/>
+2.  Download the latest package.
+
+![Adobe PDF Services SDK on Pypi](../images/python2.png)
 
 ## Public API
 

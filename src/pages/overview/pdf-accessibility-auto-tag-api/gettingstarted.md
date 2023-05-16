@@ -234,7 +234,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 4.  Verify the hash you generated matches the value in the .sha1 file.
 
 ```
-298bf24b42e543029382a624b9e2c1f0069d90a5
+e8ad2278adfa4161c3bb17e41a70282457face62
 ```
 
 #### Logging
@@ -373,7 +373,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 3.  Verify the hash in the downloaded file matches the value published here.
 
 ```
-YNHLrVxKhihZHJtuu0m4ZbBJRyrLHEh910DbMHHszOxJ5ljEhn6kylNptqsKhgZS6IM2J/Siped6jt091J77ZQ==
+jdTK6PDvEcfTai7D3N97pd0u/XrvnlEJCqTRPKDrb02zcGzaVdX/2Of3WrHOqqWUFsg7GO3yf5cKXJDFN0kdMw==
 ```
 
 #### Logging
@@ -482,7 +482,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 3.  Verify the hash in the downloaded file matches the value published here.
 
 ```
-sha512-BTxm844zBHDdK+F/lZvKM0LXNIjTuEt/ia/2N5q1fV6Ks6VBqGk2tsY0vzg5gV10Alrj81OdH/IX5w5O4M279A==
+sha512-QFwmKkeFTvZhHXrklJOUbjCx8V6FftBC+DAsMCy7Q9vy5sPXQtO47rjAt6R7nzzcA/uUPfuw4/gCFNh7yRKKRQ==
 ```
 
 #### Logging
@@ -595,6 +595,23 @@ If you did not choose **Personalized Code Sample Download** during the credentia
 5. Test the sample code on the command line.
 6. Refer to this document for details about running samples as well as the API Reference for API details.
 7. You can import the samples into your preferred IDE and run the samples from there or run the below commands from terminal:
+
+#### Verifying download authenticity
+
+For security reasons you may wish to confirm the installer's authenticity. To do so,
+
+1.  After downloading the package zip, run following command
+
+```
+pip hash <download_dir>/pdfservices-sdk-1.0.0.tar.gz
+```
+
+1.  Above command will return the hash of downloaded package.
+2.  Verify the hash matches the value published here.
+
+```
+606f08f0e525a1e0ae79567c077c29dee66971d46415dbc693b95f31597690c0
+```
 
 ###### To generate tagged PDF from the sample file
 
