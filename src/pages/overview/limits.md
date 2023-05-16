@@ -16,9 +16,13 @@ for purchase options.
 
 <InlineAlert slots="text"/>
 
- Document Transactions for the Operations below resulting in a Document will be counted with the following page limits:
+<div>
+
+Document Transactions for the Operations below resulting in a Document will be counted with the following page limits:
 
 <ul><li>Extract Operation: 1 Document Transaction for up to 5 pages</li><li>Accessibility Auto-Tag Operation: 10 Document Transactions per page</li><li>All other Operations: 1 Document Transaction for up to 50 pages</li></ul>
+
+</div>
 
 ###  Document Transaction Definitions
 
@@ -73,8 +77,7 @@ There are several usage limits that apply to PDF Services API and its underlying
 | Page limit (Extract and Accessibility Auto-Tag)\*                | 400         |
 | Page limit (Scanned - Extract and Accessibility Auto-Tag)\*      | 150         |
 | JSON file size (Document Generation and HTML to PDF)            | 10MB        |
-| Maximum Requests Per Minute                                     | 100 RPM** (Enterprise)
-                                                                    25 RPM (Free Trial)  |
+| Maximum Requests Per Minute                                     | 100 RPM** (Enterprise), <br /> 25 RPM (Free Trial)|
 | Payload size (For all APIs)                                     | 100MB       |
 
 **Page limits may be lower for documents with a large number of tables.*
