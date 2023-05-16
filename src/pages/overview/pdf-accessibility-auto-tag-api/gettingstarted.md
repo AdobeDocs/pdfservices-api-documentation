@@ -15,7 +15,7 @@ The SDK only supports server-based use cases where credentials are saved securel
 
 ## Step 1 : Getting the access token
 
-PDF Services API endpoints are authenticated endpoints. You can get an access token by following the [link](../../authentication.md) to start using our APIs.
+Calling the PDF Accessibility Auto-Tag API requires an Adobe-provided credential. To get one, [click here](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api) and complete the workflow. Be sure to copy and save the credential values to a secure location.
 
 ## Step 2 : Uploading an asset 
 

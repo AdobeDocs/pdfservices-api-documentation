@@ -17,7 +17,7 @@ module.exports = {
     siteMetadata: {
         docs: {
             title: 'Get credentials',
-            path: 'https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html'
+            path: 'https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html'
         },
         pages: [
             {

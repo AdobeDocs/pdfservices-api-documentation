@@ -13,7 +13,7 @@ The PDF Accessibility Auto-Tag API is currently available as Early Access. To re
 
 ## Get API credentials
 
-Calling the PDF Accessibility Auto-Tag API requires an Adobe-provided credential. To get one, [click here](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api) and complete the workflow. Be sure to copy and save the credential values to a secure location.
+Calling the PDF Accessibility Auto-Tag API requires an Adobe-provided credential. To get one, [click here](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api) and complete the workflow. Be sure to copy and save the credential values to a secure location.
 
 <InlineAlert slots="text"/>
 
