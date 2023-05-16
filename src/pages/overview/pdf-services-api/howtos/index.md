@@ -106,7 +106,7 @@ go through a proxy and are allowed only if allow-listed on the proxy. Please ref
 following sample for details.
 
 - [Java Sample for Proxy Server Config](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithProxyServer.java )
-- [Java Sample for Proxy Server Config With Basic Authentication](https://git.corp.adobe.com/dc/dc-cpf-sdk-java-samples/blob/proxy_auth_samples/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithAuthenticatedProxyServer.java )
+- [Java Sample for Proxy Server Config With Basic Authentication](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithAuthenticatedProxyServer.java )
 
 ### Java Proxy Server configuration
 
