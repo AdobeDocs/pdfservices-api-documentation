@@ -139,7 +139,7 @@ String taggedPDF = outputPath + inputPDF +"-tagged-pdf.pdf";
 String taggingReport = outputPath + inputPDF + "-tagging-report.xlsx";
 ```
 
-This defines what our output directory will be and optionally deletes it if it already exists. Then we define what PDF will be tagged. (You can download the source we used [here](/Adobe%20Accessibility%20Auto%20Tag%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic.
+This defines what our output directory will be and optionally deletes it if it already exists. Then we define what PDF will be tagged. (You can download the source we used <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>.) In a real application, these values would be typically be dynamic.
 
 4) Next, we setup the SDK to use our credentials.
 
