@@ -61,6 +61,25 @@ for purchase options.
 | Replace + Delete + Export                      | Replacing seven pages in a single 45-page PDF document, then deleting three pages on the same PDF document, and finally exporting the PDF document to a PPT document will consume three Document Transactions.  | 1 (Operation: replace) x 1 (document) + 1 (Operation: delete) x 1 (document) + 1 (Operation: export) x 1 (document) = 3 Document Transactions   |
 | Create + Combine + Protect                     | Creating a 10-page PDF document from an HTML page, then combining the PDF into four other 5-page PDF documents, and finally password protecting all four PDF documents will consume nine Document Transactions. | 1 (Operation: create) x 1 (document) + 1 (Operation: combine) x 4 (documents) + 1 (Operation: export) x 4 (documents) = 9 Document Transactions |
 
+### Usage Limits
+
+There are several usage limits that apply to PDF Services API and its underlying Operations based on one initial endpoint request. Files submitted for processing that exceed usage limits below will fail and result in an error message.
+
+| USAGE LIMIT                                                     | VALUE       |
+| --------------------------------------------------------------- | ----------- |
+| Document limit (combine, insert, replace, split)                | 20          |
+| File size (for all documents)                                   | 100MB       |
+| Output images per Document Transaction (export)                 | 50          |
+| Page limit (Extract and Accessibility Auto-Tag)\*                | 400         |
+| Page limit (Scanned - Extract and Accessibility Auto-Tag)\*      | 150         |
+| JSON file size (Document Generation and HTML to PDF)            | 10MB        |
+| Maximum Requests Per Minute                                     | 100 RPM** (Enterprise)
+                                                                    25 RPM (Free Trial)  |
+| Payload size (For all APIs)                                     | 100MB       |
+
+**Page limits may be lower for documents with a large number of tables.*
+
+**<i>Please [contact us](https://developer.adobe.com/document-services/pricing/contact/sales/) on RPM if interested in understanding how it can scale under your ETLA.</i>
 
 Free Trial
 ------------------------------
@@ -88,23 +107,3 @@ and running with the easy-to-use APIs with little investment.
 Paid credentials enable a greater processing quota and require entering
 into a separate written agreement. To learn more, please see our
 [pricing page](/document-services/pricing/#main) for purchase options.
-
-### Usage Limits
-
-There are several usage limits that apply to PDF Services API and its underlying Operations based on one initial endpoint request. Files submitted for processing that exceed usage limits below will fail and result in an error message.
-
-| USAGE LIMIT                                                     | VALUE       |
-| --------------------------------------------------------------- | ----------- |
-| Document limit (combine, insert, replace, split)                | 20          |
-| File size (for all documents)                                   | 100MB       |
-| Output images per Document Transaction (export)                 | 50          |
-| Page limit (Extract and Accessibility Auto-Tag)\*                | 400         |
-| Page limit (Scanned - Extract and Accessibility Auto-Tag)\*      | 150         |
-| JSON file size (Document Generation and HTML to PDF)            | 10MB        |
-| Maximum Requests Per Minute                                     | 100 RPM** (Enterprise)
-                                                                    25 RPM (Free Trial)  |
-| Payload size (For all APIs)                                     | 100MB       |
-
-**Page limits may be lower for documents with a large number of tables.*
-
-**<i>Please [contact us](https://developer.adobe.com/document-services/pricing/contact/sales/) on RPM if interested in understanding how it can scale under your ETLA.</i>

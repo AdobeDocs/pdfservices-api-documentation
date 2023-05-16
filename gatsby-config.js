@@ -504,7 +504,7 @@ module.exports = {
                 ]
             },
             {
-                title: 'Usage Limits and Licensing',
+                title: 'Licensing and Usage Limits',
                 path: 'overview/limits.md'
             },
             {
