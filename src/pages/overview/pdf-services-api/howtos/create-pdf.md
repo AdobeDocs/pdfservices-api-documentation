@@ -96,9 +96,9 @@ namespace CreatePDFFromDocx
        try
        {
          // Initial setup, create credentials instance.
-         Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                 .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                 .Build();
+           Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
+                .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                .Build();
 
          //Create an ExecutionContext using credentials and create a new operation instance.
          ExecutionContext executionContext = ExecutionContext.Create(credentials);

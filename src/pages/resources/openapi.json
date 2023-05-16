@@ -35,7 +35,7 @@
       "description": "Extract content from PDF documents and output it in a structured JSON format, along with tables and figures"
     },
     {
-      "name": "Html To PDF",
+      "name": "HTML to PDF",
       "description": "Convert HTML Resources to a PDF File"
     },
     {
@@ -83,8 +83,8 @@
       "description": "Create electronic seal on PDF documents like invoices, agreements etc using the digital certificate issued to the user by Trust Service Provider."
     },
     {
-      "name": "Auto Tag",
-      "description": "Operation to create the tagged pdf and excel report for autotag use case."
+      "name": "PDF Accessibility Auto-Tag",
+      "description": "Operation to create the tagged pdf and excel report for accessibility auto-tag use case."
     }
   ],
   "x-tagGroups": [
@@ -97,19 +97,20 @@
     {
       "name": "PDF Operations",
       "tags": [
-        "Document Generation",
+        "PDF Accessibility Auto-Tag",
         "Extract PDF",
+        "Document Generation",
         "Create PDF",
-        "Html To PDF",
+        "Export PDF",
+        "OCR",
+        "HTML to PDF",
+        "Protect PDF",
         "Combine PDF",
         "Compress PDF",
-        "Export PDF",
         "PDF To Images",
         "Linearize PDF",
-        "OCR",
         "Page Manipulation",
         "PDF Properties",
-        "Protect PDF",
         "Remove Protection",
         "Split PDF"
       ]
@@ -117,8 +118,7 @@
     {
       "name": "PDF operations Beta",
       "tags": [
-        "Electronic Seal",
-        "Auto Tag"
+        "Electronic Seal"
       ]
     }
   ],
@@ -1005,6 +1005,30 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the status call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status400"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Resource Not Found.",
             "headers": {
@@ -1358,6 +1382,30 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the status call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status400"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Resource Not Found.",
             "headers": {
@@ -1705,6 +1753,30 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the status call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status400"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Resource Not Found.",
             "headers": {
@@ -1813,7 +1885,7 @@
     "/operation/htmltopdf": {
       "post": {
         "tags": [
-          "Html To PDF"
+          "HTML to PDF"
         ],
         "summary": "Convert HTML Resources to a PDF File",
         "description": "Creates PDFs from static/dynamic HTML or HTML(with inline CSS) or just a URL. It's a common scenario for enterprise to provide end users with a HTML template with form fields. In case of dynamic HTML this API allows you to capture the users unique data entries and then save it as PDF. Collected data is stored in a JSON file, and the source HTML file must include <script src='./json.js' type='text/javascript'></script>. You can also provide the URL of the HTML page in inputUrl parameter.",
@@ -1839,7 +1911,7 @@
           }
         ],
         "requestBody": {
-          "description": "Params for converting HTML To PDF Operation",
+          "description": "Params for converting HTML to PDF Operation",
           "content": {
             "application/json": {
               "schema": {
@@ -1994,9 +2066,9 @@
     "/operation/htmltopdf/{jobID}/status": {
       "get": {
         "tags": [
-          "Html To PDF"
+          "HTML to PDF"
         ],
-        "summary": "Poll the html to pdf job for completion",
+        "summary": "Poll the HTML to PDF job for completion",
         "operationId": "pdfoperations.htmltopdf.jobstatus",
         "parameters": [
           {
@@ -2048,6 +2120,30 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/HtmlToPdfJobStatus"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the status call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status400"
                 }
               }
             }
@@ -2399,6 +2495,30 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the status call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status400"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Resource Not Found.",
             "headers": {
@@ -2742,6 +2862,30 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/CompressPDFJobStatus"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the status call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status400"
                 }
               }
             }
@@ -3099,6 +3243,30 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the status call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status400"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Resource Not Found.",
             "headers": {
@@ -3452,6 +3620,30 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the status call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status400"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Resource Not Found.",
             "headers": {
@@ -3795,6 +3987,30 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/LinearizePDFJobStatus"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the status call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status400"
                 }
               }
             }
@@ -4146,6 +4362,30 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the status call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status400"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Resource Not Found.",
             "headers": {
@@ -4489,6 +4729,30 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PageManipulationJobStatus"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the status call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status400"
                 }
               }
             }
@@ -4840,6 +5104,30 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the status call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status400"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Resource Not Found.",
             "headers": {
@@ -5183,6 +5471,30 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ProtectPDFJobStatus"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the status call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status400"
                 }
               }
             }
@@ -5534,6 +5846,30 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the status call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status400"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Resource Not Found.",
             "headers": {
@@ -5877,6 +6213,30 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SplitPDFJobStatus"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the status call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status400"
                 }
               }
             }
@@ -6228,6 +6588,30 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the status call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status400"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Resource Not Found.",
             "headers": {
@@ -6336,10 +6720,10 @@
     "/operation/autotag": {
       "post": {
         "tags": [
-          "Auto Tag"
+          "PDF Accessibility Auto-Tag"
         ],
-        "summary": "Autotag PDF Operation",
-        "description": "Operation to create the tagged pdf and excel report for autotag use case. Automatic tagging provides significant quality improvements over untagged PDF files including more accurate results for heading levels, reading order, complex lists, links, references, and tables. Screen reader users also benefit significantly from the improvements to heading levels for navigation.",
+        "summary": "PDF Accessibility Auto-Tag Operation",
+        "description": "Operation to create the tagged pdf and excel report for accessibility auto-tag use case. Automatic tagging provides significant quality improvements over untagged PDF files including more accurate results for heading levels, reading order, complex lists, links, references, and tables. Screen reader users also benefit significantly from the improvements to heading levels for navigation.",
         "operationId": "pdfoperations.autotag",
         "parameters": [
           {
@@ -6362,7 +6746,7 @@
           }
         ],
         "requestBody": {
-          "description": "Input Params for Autotag Operation.",
+          "description": "Input Params for Accessibility Auto-Tag Operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -6517,9 +6901,9 @@
     "/operation/autotag/{jobID}/status": {
       "get": {
         "tags": [
-          "Auto Tag"
+          "PDF Accessibility Auto-Tag"
         ],
-        "summary": "Poll the auto tag job for completion",
+        "summary": "Poll the accessibility auto-tag job for completion",
         "operationId": "pdfoperations.autotag.jobstatus",
         "parameters": [
           {
@@ -6571,6 +6955,30 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AutoTagPDFJobStatus"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the status call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status400"
                 }
               }
             }
@@ -6971,7 +7379,7 @@
           "message": "Too many requests"
         }
       },
-      "Satus400": {
+      "Status400": {
         "properties": {
           "error": {
             "type": "object",
@@ -7119,7 +7527,8 @@
           }
         },
         "default": {
-          "documentLanguage": "en-US"
+          "documentLanguage": "en-US",
+          "longAwait": false
         },
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
@@ -7270,7 +7679,7 @@
         "additionalProperties": false
       },
       "HtmlToPdf": {
-        "description": "Params for converting HTML To PDF Operation",
+        "description": "Params for converting HTML to PDF Operation",
         "type": "object",
         "properties": {
           "assetID": {
@@ -7911,8 +8320,7 @@
         "properties": {
           "signatureFormat": {
             "type": "string",
-            "description": "Specifies a supported digital signature format. For supported signature formats, please refer <a href = \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/quickstarts/#signature-format-required\">documentation</a>.",
-            "default": "PKCS7",
+            "description": "Specifies a supported digital signature format. For supported signature formats, please refer <a href = \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#signature-format-signatureformat--required\">documentation</a>.",
             "enum": [
               "PADES",
               "PKCS7"
@@ -7920,7 +8328,7 @@
           },
           "cscCredentialOptions": {
             "type": "object",
-            "description": "Specifies the parameters that encapsulates the signer's certificate credential. For more information, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/quickstarts/#tsp-credential-information-required\">documentation</a>.",
+            "description": "Specifies the parameters that encapsulates the signer's certificate credential. For more information, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#tsp-credential-information-csccredentialoptions--required\">documentation</a>.",
             "required": [
               "providerName",
               "credentialId",
@@ -7930,7 +8338,7 @@
             "properties": {
               "providerName": {
                 "type": "string",
-                "description": "Specifies the name of the Trust Service Provider. For the list of supported TSPs, please refer <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/prerequisites/#supported-trust-service-providers\">documentation</a>."
+                "description": "Specifies the name of the Trust Service Provider. For the list of supported TSPs, please refer <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/#supported-trust-service-providers\">documentation</a>."
               },
               "credentialId": {
                 "type": "string",
@@ -7943,6 +8351,11 @@
                   "accessToken"
                 ],
                 "properties": {
+                  "tokenType": {
+                    "type": "string",
+                    "description": "Specifies the type of service access token used to authorize access to the CSC provider hosted APIs.",
+                    "default": "Bearer"
+                  },
                   "accessToken": {
                     "type": "string",
                     "description": "Specifies the service access token used to authorize access to the CSC provider hosted APIs."
@@ -7966,7 +8379,7 @@
           },
           "sealFieldOptions": {
             "type": "object",
-            "description": "Specifies the parameters required to create a new signature field or use an existing field.",
+            "description": "Specifies the parameters required to create a new signature field or use an existing field. For more details, please refer <a href= \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#seal-field-parameters---sealfieldoptions--required\">documentation</a>.",
             "required": [
               "fieldName"
             ],
@@ -8016,16 +8429,13 @@
           },
           "sealAppearanceOptions": {
             "type": "object",
-            "description": "Specifies signature field appearance parameters. For more details, please refer <a href= \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/quickstarts/#seal-appearance-parameters\">documentation</a>.",
+            "description": "Specifies signature field appearance parameters. For more details, please refer <a href= \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#seal-appearance-parameters-sealappearanceoptions\">documentation</a>.",
             "default": {
               "displayOptions": [
                 "NAME",
                 "LABELS"
               ]
             },
-            "required": [
-              "displayOptions"
-            ],
             "properties": {
               "displayOptions": {
                 "type": "array",
@@ -8043,7 +8453,7 @@
         }
       },
       "AutoTagPDF": {
-        "description": "Parameter for Autotag operation.",
+        "description": "Parameter for Accessibility Auto-Tag operation.",
         "type": "object",
         "required": [
           "assetID"
@@ -9108,7 +9518,7 @@
           },
           "report": {
             "type": "object",
-            "description": "Asset of autotag report. Details of output asset document. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "Asset of accessibility auto-tag report. Details of output asset document. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "properties": {
               "metadata": {
                 "type": "object",

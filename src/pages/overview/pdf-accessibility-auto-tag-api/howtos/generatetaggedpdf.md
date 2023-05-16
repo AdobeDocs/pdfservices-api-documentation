@@ -7,7 +7,7 @@ The sample below generates tagged PDF from a PDF.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, Python, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="3" languages="Java, Python, REST API" /> 
 
 #### Java
 
@@ -92,10 +92,10 @@ except (ServiceApiException, ServiceUsageException, SdkException) as e:
     logging.exception(f'Exception encountered while executing operation: {e}')
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Auto-Tag
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/autotag' \

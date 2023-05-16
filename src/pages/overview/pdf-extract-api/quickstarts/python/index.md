@@ -29,7 +29,7 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2.png)
+![Project setup](./shot2_ga.png)
 
 6) After your credentials are created, they are automatically  downloaded:
 
@@ -143,7 +143,7 @@ This code runs the Extraction process and then stores the result zip to the file
 6) In this block, we read in the ZIP file, extract the JSON result file, and parse it:
 
 ```python
-archive = zipfile.ZipFile(output_zip, 'r')
+archive = zipfile.ZipFile(zip_file, 'r')
 jsonentry = archive.open('structuredData.json')
 jsondata = jsonentry.read()
 data = json.loads(jsondata)
@@ -174,10 +174,10 @@ import os.path
 import zipfile
 import json
 
-output_zip = "./ExtractTextInfoFromPDF.zip"
+zip_file = "./ExtractTextInfoFromPDF.zip"
 
-if os.path.isfile(output_zip):
-	os.remove(output_zip)
+if os.path.isfile(zip_file):
+	os.remove(zip_file)
 
 input_pdf = "./Adobe Extract API Sample.pdf"
 
@@ -206,11 +206,11 @@ try:
 	result: FileRef = extract_pdf_operation.execute(execution_context)
 
 	#Save the result to the specified location.
-	result.save_as(output_zip)
+	result.save_as(zip_file)
 
 	print("Successfully extracted information from PDF. Printing H1 Headers:\n");
 
-	archive = zipfile.ZipFile(output_zip, 'r')
+	archive = zipfile.ZipFile(zip_file, 'r')
 	jsonentry = archive.open('structuredData.json')
 	jsondata = jsonentry.read()
 	data = json.loads(jsondata)

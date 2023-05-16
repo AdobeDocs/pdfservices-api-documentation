@@ -80,9 +80,9 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
        try
        {
          // Initial setup, create credentials instance.
-         Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                 .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                 .Build();
+           Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
+                .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")    
+                .Build();
 
          //Create an ExecutionContext using credentials and create a new operation instance.
          ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -285,9 +285,9 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
         {
  
           // Initial setup, create credentials instance.
-          Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                  .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                  .Build();
+            Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
+                .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                .Build();
  
           //Create an ExecutionContext using credentials and create a new operation instance.
           ExecutionContext executionContext = ExecutionContext.Create(credentials);
