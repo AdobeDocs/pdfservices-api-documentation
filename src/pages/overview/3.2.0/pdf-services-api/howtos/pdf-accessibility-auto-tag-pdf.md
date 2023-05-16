@@ -53,7 +53,7 @@ The output of PDF Accessibility Auto-Tag API contains the following:
 
 ## REST API 
 
-See our public API Reference for [PDF Accessibility Auto-Tag API](../../../apis/#tag/PDF-Accessibility-Auto-Tag).
+See our public API Reference for [PDF Accessibility Auto-Tag API](https://developer.adobe.com/document-services/docs/apis/#tag/PDF-Accessibility-Auto-Tag).
 
 ## Generate tagged PDF from a PDF
 
