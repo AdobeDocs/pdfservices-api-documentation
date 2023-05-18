@@ -12,7 +12,10 @@ the changes below for each release.
 
 | Change | Description                                                                                                                                                                   |
 | ------ |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| New    | PDF Embed API is also available on the new <b>acrobatservices.adobe.com</b> subdomain. For sample usage, see the section [sample usage](./gettingstarted.md/#copy-it-run-it). |
+| New    | PDF Embed API is also available on the new <b>acrobatservices.adobe.com</b> subdomain. For sample usage, see the section [sample usage](./gettingstarted.md/#copy-it-run-it). 
+| Changed | Enhanced the commenting experience.
+| Bug fix | Fixed issues in the Annotations API to improve the dragging and placing of text comments onto the PDF.
+| Bug fix | Fixed issues to improve the support for interactive PDFs.
 
 ### April, 2023
 
