@@ -503,6 +503,10 @@ module.exports = {
                 ]
             },
             {
+                title: 'External Storage API',
+                path: 'overview/pdf-external-storage-api/index.md'
+            },
+            {
                 title: 'Usage Limits and Licensing',
                 path: 'overview/limits.md'
             },

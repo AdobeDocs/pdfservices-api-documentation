@@ -22,7 +22,7 @@ Concept of Signed URLs is very common across various cloud storage solution for 
 
 Any other Storage solution's Signed URLs will not work with PDF Services and would fail the API operation.
 
-# SHAREPOINT
+## Sharepoint Storage
 For clients having SharePoint storage for their documents, PDF Services API will connect directly with sharepoint to download and upload the files using sharepoint Signed URLs. Generating Signed URLs for Sharepoint files can be achieved using [Sharepoint REST API V1](https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service?tabs=csom) or [Sharepoint REST API V2](https://learn.microsoft.com/en-us/sharepoint/dev/apis/sharepoint-rest-graph) or [Microsoft Graph](https://learn.microsoft.com/en-us/graph/overview). Microsoft Graph can be used to connect to SharePoint using SharePoint API in Microsoft Graph.
 
 Let's understand the Sharepoint Storage Hierarchy
