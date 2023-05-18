@@ -128,10 +128,6 @@ module.exports = {
                     {
                         title: 'PDF Embed API',
                         path: 'overview/pdf-embed-api/index.md'
-                    },
-                    {
-                        title: 'External Storage API',
-                        path: 'overview/pdf-external-storage-api/index.md'
                     }
                 ]
             },
@@ -187,6 +183,10 @@ module.exports = {
                             {
                                 title: 'Region Configs for APIs',
                                 path: 'overview/pdf-services-api/howtos/service-region-configuration-for-apis.md'
+                            },
+                            {
+                                title: 'External Storage API',
+                                path: 'overview/pdf-services-api/howtos/pdf-external-storage-api.md'
                             },
                             {
                                 title: 'Create PDF',
@@ -506,10 +506,6 @@ module.exports = {
                         path: 'overview/pdf-embed-api/releasenotes.md'
                     }
                 ]
-            },
-            {
-                title: 'External Storage API',
-                path: 'overview/pdf-external-storage-api/index.md'
             },
             {
 

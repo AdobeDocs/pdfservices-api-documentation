@@ -27,7 +27,7 @@ For clients having SharePoint storage for their documents, PDF Services API will
 
 Let's understand the Sharepoint Storage Hierarchy
 
-![Sharepoint Storage Hierarchy](./sharepoint-storage.png)
+![Sharepoint Storage Hierarchy](../../images/sharepoint-storage.png)
 
 The SharePoint sites are essentially containers for information. The way you store and organize things in SharePoint is by Sites. 
 
@@ -62,7 +62,7 @@ A SharePoint document library is a container for creating, organizing, and manag
 ***Generating Access Token***
 
 - Now we will obtain an Access Token using client credentials flow.
-- ![Getting Access Token](./access-token.svg)
+- ![Getting Access Token](../../images/access-token.svg)
   - First we have to obtain the admin consent for approving app's permission to access resources. It's a one time activity for each app. To get admin consent, use this workflow. 
   - Now we need to generate an [Access Token using Certificates](https://learn.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow#second-case-access-token-request-with-a-certificate) we created above. We will use this access token to generate Signed URLs later.
 
@@ -73,7 +73,7 @@ A SharePoint document library is a container for creating, organizing, and manag
   - Invoke Microsoft Graph [content](https://learn.microsoft.com/en-us/graph/api/driveitem-get-content?view=graph-rest-1.0&tabs=http) API to generate pre-signed download url for downloading content.
   - Invoke GET _/sites/{siteId}/drive/items/{item-id}/content_ API with access token generated above.
   - API returns a **302 Found** response redirecting to a pre-authenticated download URL for the file. Value present in "Location" header in the response represents the Signed URL of file or also known as Pre-authenticated download URL of file.
-  - ![Content API Response](./content-api-response.png)
+  - ![Content API Response](../../images/content-api-response.png)
   - Pre-authenticated download URLs are only valid for a short period of time (1 hour) and do not require an _Authorization_ header to download.
   
 - ***Signed URL for Upload***
@@ -88,7 +88,7 @@ A SharePoint document library is a container for creating, organizing, and manag
        file-name:filename
       ```
     - The response to this request will provide the details of the newly created uploadSession, which includes the URL to be used for uploading the parts of the file in response body with keyName - uploadUrl.
-    - ![Upload Session API Response](./upload-session-api-response.png)
+    - ![Upload Session API Response](../../images/upload-session-api-response.png)
     - This uploadURL represents the Signed URL for uploading the output file.
 
     - For more details for upload please refer [here](https://learn.microsoft.com/en-us/graph/api/driveitem-createuploadsession?view=graph-rest-1.0).
@@ -100,6 +100,7 @@ Amazon S3 supports pre-signed URLs for downloading and uploading object to and f
 Refer [here](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html) for more details.
 
 ## Invoking PDF Services API with Signed URLs
+
 
 - PDF Services API supports different request schema for supporting external storage solution using _Input_ and _Output_ request params. For more details click [here](../../../apis/#tag/Document-Generation).
 
