@@ -93,9 +93,15 @@ A SharePoint document library is a container for creating, organizing, and manag
 
     - For more details for upload please refer [here](https://learn.microsoft.com/en-us/graph/api/driveitem-createuploadsession?view=graph-rest-1.0).
 
-***Invoking PDF Services API with Signed URLs***
+## Amazon S3 Storage
 
-- PDF Services API supports different request schema for supporting external storage solution using _Input_ and _Output_ request params. For more details click here.
+Amazon S3 supports pre-signed URLs for downloading and uploading object to and from S3 buckets without AWS security credentials or permissions.
+
+Refer [here](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html) for more details.
+
+## Invoking PDF Services API with Signed URLs
+
+- PDF Services API supports different request schema for supporting external storage solution using _Input_ and _Output_ request params. For more details click [here](../../../apis/#tag/Document-Generation).
 
 
 
