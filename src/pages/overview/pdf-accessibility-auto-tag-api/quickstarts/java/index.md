@@ -17,7 +17,7 @@ To complete this guide, you will need:
 
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
+1) To begin, open your browser to <https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
 
 ![Sign in](./shot1.png)
 
@@ -160,7 +160,7 @@ Note that that private key is *also* found in this directory so feel free to cop
 
 This file will define what dependencies we need and how the application will be built. 
 
-Our application will take a PDF, `Adobe Accesibility Auto-Tag API Sample.pdf` (downloadable from [here](/Adobe%20Accessibility%20Auto-Tag%20API%20Sample.pdf)) and tag its contents. The results will be saved in a given directory `/output/AutotagPDF`.
+Our application will take a PDF, `Adobe Accesibility Auto-Tag API Sample.pdf` (downloadable from <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>) and tag its contents. The results will be saved in a given directory `/output/AutotagPDF`.
 
 5) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `AutotagPDF.java`. 
 
@@ -170,7 +170,7 @@ Now you're ready to begin coding.
 
 1) We'll begin by including our required dependencies:
 
-```java
+```javascript
 import com.adobe.pdfservices.operation.ExecutionContext;
 import com.adobe.pdfservices.operation.auth.Credentials;
 import com.adobe.pdfservices.operation.exception.SdkException;
@@ -190,7 +190,7 @@ import java.time.format.DateTimeFormatter;
 
 2) Now let's define our main class:
 
-```java
+```javascript
 public class AutotagPDF {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ExtractTextInfoFromPDF.class);
@@ -203,7 +203,7 @@ public class AutotagPDF {
 
 3) Now let's define our input and output:
 
-```java
+```javascript
 String inputFile = "./Adobe Extract API Sample.pdf";
 
 String outputPath = "./output/AutotagPDF/";
@@ -214,12 +214,12 @@ String taggingReport = outputPath + inputPDF +"-tagging-report.xlsx";
 
 ```
 
-This defines what our output directory will be and optionally deletes it if it already exists. Then we define what PDF will be tagged. (You can download the source we used [here](/Adobe%20Accessibility%20Auto%20Tag%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic.
+This defines what our output directory will be and optionally deletes it if it already exists. Then we define what PDF will be tagged. (You can download the source we used <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>.) In a real application, these values would be typically be dynamic.
 
 
 4) Next, we can create our credentials and use them:
 
-```java
+```javascript
 // Initial setup, create credentials instance.
 Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
 		.fromFile("pdfservices-api-credentials.json")
@@ -231,7 +231,7 @@ ExecutionContext executionContext = ExecutionContext.create(credentials);
 
 5) Now, let's create the operation:
 
-```java
+```javascript
 AutotagPDFOperation autotagPDFOperation = AutotagPDFOperation.createNew();
 
 // Build AutotagPDFOptions options and set them into the operation
@@ -246,7 +246,7 @@ This set of code defines what we're doing (an Extract operation), points to our 
 
 6) The next code block executes the operation:
 
-```java
+```javascript
 // Execute the operation
 AutotagPDFOutput result = autotagPDFOperation.execute(executionContext);
 
@@ -261,7 +261,7 @@ autotagPDFOutput.getReport().saveAs(taggingReport);
 
 Here's the complete application (`src/java/main/ExtractTextInfoFromPDF.java`):
 
-```java
+```javascript
 import com.adobe.pdfservices.operation.ExecutionContext;
 import com.adobe.pdfservices.operation.auth.Credentials;
 import com.adobe.pdfservices.operation.exception.SdkException;
