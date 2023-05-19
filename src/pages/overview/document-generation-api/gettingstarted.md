@@ -13,7 +13,7 @@ To learn more about the Document Generation, read [Overview](../document-generat
 
 ## Live Demo
 
-The [Document Generation API Demo](https://documentservices.adobe.com/dc-docgen-playground/index.html#/) demonstrates how easy it is to generate customized documents from Word-based document templates and input JSON data.
+The [Document Generation API Demo](https://acrobatservices.adobe.com/dc-docgen-playground/index.html#/) demonstrates how easy it is to generate customized documents from Word-based document templates and input JSON data.
 
 ## How It Works
 
@@ -78,7 +78,38 @@ To get started with PDF Services SDK, refer [Quickstarts](../document-generation
 
 <InlineAlert slots="text"/>
 
-Please allow-list the following hostnames before using Adobe PDF Services SDK:<ul><li>ims-na1.adobelogin.com</li><li>pdf-services.adobe.io (for versions 3.x.x)</li><li>cpf-ue1.adobe.io (for versions upto 2.x.x)</li><li>senseicore-ue1.adobe.io (for versions below 1.x.x)</li></ul>
+<div>
+
+Please allow-list the following hostnames before using Adobe PDF Services SDK:
+<ul><li>ims-na1.adobelogin.com (Required for all the clients)</li></ul>
+
+For clients using SDK version 3.x and above  :
+<ul>
+<li> Using United States region for processing documents :
+  <ul>
+    <li>dcplatformstorageservice-us-east-1.s3-accelerate.amazonaws.com</li>
+    <li>pdf-services-ue1.adobe.io</li>
+    <li>pdf-services.adobe.io (Default URI)</li>
+  </ul>
+</li>
+</ul>
+
+<ul>
+  <li> Using Europe region for processing documents :
+  <ul>
+    <li>dcplatformstorageservice-eu-west-1.s3-accelerate.amazonaws.com</li>
+    <li>pdf-services-ew1.adobe.io</li>
+  </ul>
+</li>
+</ul>
+
+For clients using SDK version upto 2.x :
+<ul><li>cpf-ue1.adobe.io</li></ul>
+
+For clients using SDK version upto 1.x :
+<ul><li>senseicore-ue1.adobe.io</li></ul>
+
+</div>
 
 <br/>
 

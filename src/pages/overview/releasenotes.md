@@ -155,6 +155,7 @@ Refer to the following for links to supported product documentation.
 
 | Item  | Public doc                                                                |
 | ----- | ------------------------------------------------------------------------- |
+| 3.2.0 | [Web page(3.0.0 docs)](../3.2.0) |
 | 3.0.0 | [Web page(3.0.0 docs)](../3.0.0) |
 | 2.2.0 | [Web page(2.2.0 docs)](../2.2.0/) |
 | 2.1.0 | [Web page(2.1.0 docs)](https://opensource.adobe.com/pdftools-sdk-docs/release/2.1.0/) |
@@ -188,6 +189,20 @@ Upgrading to the latest SDK should not break existing applications.
 | Change  | Language | Description                                                                                                                                       |
 |---------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------|
 | Changed | All      | Performance Improvements - Available in [REST API](https://developer.adobe.com/document-services/docs/apis/#tag/Document-Generation) and SDK(s) v3.0.0 and above. |
+
+### 3.3.0 (May, 2023; minor release)
+
+| Change  | Language         | Description                                                                                                                     |
+|---------|------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| New | Java,NodeJS,.NET | PDF Accessibility Auto-Tag operation is now available for all the users in PDF Services SDKs and REST APIs.  |
+| New | Java | Added the support of Basic Authentication for the Proxy Server configuration. Proxy server settings will now be specified via "proxyServerConfig" in the client config. |
+| Changed | Java,NodeJS,.NET | Upgraded third party libraries to fix recently discovered vulnerabilities. |
+
+### Python SDK 2.2.0 (May, 2023; minor release)
+
+| Change  | Language         | Description                                                                                                                     |
+|---------|------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| New | Python | PDF Accessibility Auto-Tag operation is now available for all the users in PDF Services SDKs and REST APIs. |
 
 ### Adobe Document Generation Server Side Release (April, 2023; server side release)
 

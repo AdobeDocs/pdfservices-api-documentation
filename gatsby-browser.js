@@ -58,14 +58,14 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
     }
 
     // stage
-    let baseurl = 'https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html'
+    let baseurl = 'https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html'
 
     // production
     if (
       window.location.host.indexOf("developer.adobe.com") >= 0 ||
       window.location.host.indexOf("adobe.io") >= 0
     ) {
-      baseurl = 'https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html';
+      baseurl = 'https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html';
     }
 
     let header = document.querySelector("header");

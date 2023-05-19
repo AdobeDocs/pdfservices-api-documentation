@@ -17,6 +17,6 @@ simple: a few of lines of code are all you need to get started.
 </p>
 <InlineAlert slots="text" />
 
-Check out the [online demo](https://documentservices.adobe.com/view-sdk-demo/index.html#/view/FULL_WINDOW/Bodea%20Brochure.pdf),
+Check out the [online demo](https://acrobatservices.adobe.com/view-sdk-demo/index.html#/view/FULL_WINDOW/Bodea%20Brochure.pdf),
 and view the code to see how easy it is!
 

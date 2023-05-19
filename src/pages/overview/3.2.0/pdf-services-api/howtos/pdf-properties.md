@@ -9,7 +9,7 @@ This data can be used to: check if a document is fully text searchable (OCR), un
 
 ## Rest API 
 
-See our public API Reference for [PDF Properties](../../../apis/#tag/PDF-Properties).
+See our public API Reference for [PDF Properties](https://developer.adobe.com/document-services/docs/apis/#tag/PDF-Properties).
 
 ### Fetch PDF Properties
 
