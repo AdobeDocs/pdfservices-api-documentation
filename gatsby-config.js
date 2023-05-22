@@ -185,6 +185,10 @@ module.exports = {
                                 path: 'overview/pdf-services-api/howtos/service-region-configuration-for-apis.md'
                             },
                             {
+                                title: 'External Storage API',
+                                path: 'overview/pdf-services-api/howtos/pdf-external-storage-api.md'
+                            },
+                            {
                                 title: 'Create PDF',
                                 path: 'overview/pdf-services-api/howtos/create-pdf.md'
                             },
@@ -420,7 +424,7 @@ module.exports = {
                 ]
             },
             {
-                title: 'PDF Electronic Seal API                       ',
+                title: 'PDF Electronic Seal API',
                 subTitle: 'Beta Program',
                 path: 'overview/pdf-electronic-seal-api/index.md',
                 pages: [
@@ -496,6 +500,7 @@ module.exports = {
                 ]
             },
             {
+
                 title: 'Licensing and Usage Limits',
                 path: 'overview/limits.md'
             },
