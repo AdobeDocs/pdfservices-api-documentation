@@ -10,7 +10,7 @@ To get started using Adobe PDF Extract API, let's walk through a simple scenario
 
 To complete this guide, you will need:
 
-* [.NET Core: version 2.1 or above](https://dotnet.microsoft.com/en-us/download)
+* [.NET: version 6.0 or above](https://dotnet.microsoft.com/en-us/download)
 * [.Net SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 * A build tool: Either Visual Studio or .NET Core CLI.
 * An Adobe ID. If you do not have one, the credential setup will walk you through creating one.
@@ -30,7 +30,7 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2_ga.png)
+![Project setup](./shot2_spc.png)
 
 6) After your credentials are created, they are automatically  downloaded:
 
@@ -38,11 +38,11 @@ To complete this guide, you will need:
 
 ## Step Two: Setting up the project
 
-1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-.NetSamples.zip. If you unzip that archive, you will find a README file, your private key, and a folder of samples:
+1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-.NetSamples.zip. If you unzip that archive, you will find a folder of samples:
 
-![alt](./shot5.png)
+![alt](./shot5_spc.png)
 
-2) We need two things from this download. The `private.key` file (as shown in the screenshot above, and the `pdfservices-api-credentials.json` file. You can find this in the `adobe-DC.PDFServicesSDK.NET.Samples` folder, inside any of the sample subdirectories, so for example, the `CombinePDF` folder.
+2) We need the `pdfservices-api-credentials.json` file. You can find this in the `adobe-DC.PDFServicesSDK.NET.Samples` folder, inside any of the sample subdirectories, so for example, the `CombinePDF` folder.
 
 ![alt](./shot6.png)
 

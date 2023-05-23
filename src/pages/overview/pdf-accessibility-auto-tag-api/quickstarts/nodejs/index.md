@@ -10,7 +10,7 @@ To get started using Adobe PDF Accessibility Auto-Tag API, let's walk through a 
 
 To complete this guide, you will need:
 
-* [Node.js](https://nodejs.org) - Node.js version 10.13.0 or higher is required. 
+* [Node.js](https://nodejs.org) - Node.js version 14.0 or higher is required. 
 * An Adobe ID. If you do not have one, the credential setup will walk you through creating one.
 * A way to edit code. No specific editor is required for this guide.
 
@@ -28,27 +28,23 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2_ga.png)
+![Project setup](./shot2_spc.png)
 
 6) After your credentials are created, they are automatically downloaded:
 
-![alt](./shot3_ga.png)
+![alt](./shot3_spc.png)
 
 ## Step Two: Setting up the project
 
-1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-Node.jsSamples.zip. If you unzip that archive, you will find a README file, your private key, and a folder of samples:
+1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-Node.jsSamples.zip. If you unzip that archive, you will find a folder of samples:
 
-![alt](./shot5.png)
+![alt](./shot5_spc.png)
 
-2) We need two things from this download. The `private.key` file (as shown in the screenshot above, and the `pdfservices-api-credentials.json` file found in the samples directory:
+2) We need the `pdfservices-api-credentials.json` file found in the samples directory:
 
 ![alt](./shot6.png)
 
-<InlineAlert slots="text" />
-
-Note that that private key is *also* found in this directory so feel free to copy them both from here.
-
-3) Take these two files and place them in a new directory. Remember that these credential files are important and should be stored safely.
+3) Take these the `pdfservices-api-credentials.json` and place it in a new directory. Remember that these credential files are important and should be stored safely.
 
 4) At the command line, change to the directory you created, and initialize a new Node.js project with `npm init -y`
 
@@ -96,10 +92,11 @@ This defines what our output directory will be and optionally deletes it if it a
 3) Next, we setup the SDK to use our credentials.
 
 ```js
-const credentials = PDFServicesSdk.Credentials
-		.serviceAccountCredentialsBuilder()
-		.fromFile('pdfservices-api-credentials.json')
-		.build();
+const credentials =  PDFServicesSdk.Credentials
+    .servicePrincipalsCredentialsBuilder()
+    .withClientId("CLIENT_ID")
+    .withClientSecret("CLIENT_SECRET")
+    .build();
 
 // Create an ExecutionContext using credentials
 const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
@@ -156,10 +153,11 @@ if(fs.existsSync(OUTPUT_PATH)) fs.unlinkSync(OUTPUT_PATH);
 const TAGGED_PDF = OUTPUT_PATH + INPUT_PDF + "-tagged-pdf.pdf";
 const TAGGING_REPORT = OUTPUT_PATH + INPUT_PDF + "-tagging-report.xlsx";
 
-const credentials = PDFServicesSdk.Credentials
-		.serviceAccountCredentialsBuilder()
-		.fromFile('pdfservices-api-credentials.json')
-		.build();
+const credentials =  PDFServicesSdk.Credentials
+    .servicePrincipalsCredentialsBuilder()
+    .withClientId("CLIENT_ID")
+    .withClientSecret("CLIENT_SECRET")
+    .build();
 
 // Create an ExecutionContext using credentials
 const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
