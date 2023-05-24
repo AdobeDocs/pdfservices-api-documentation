@@ -42,7 +42,7 @@ To complete this guide, you will need:
 
 2) We need the `pdfservices-api-credentials.json` file found in the samples directory:
 
-![alt](./shot6.png)
+![alt](./shot6_spc.png)
 
 3) Take these the `pdfservices-api-credentials.json` and place it in a new directory. Remember that these credential files are important and should be stored safely.
 
