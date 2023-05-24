@@ -69,7 +69,7 @@ PDF Services now support two regions for transacting and working with documents.
 
 ## PDF Services External Storage Support
 
-PDF Services Document Generation API now provide capabilities of accessing files directly from the storage solution of client. It reduces the overhead of downloading and uploading the file onto our storage. Details on how this is done can be found in [our documentation](./pdf-services-api/howtos/pdf-external-storage-api).  
+PDF Services Document Generation API now provide capabilities of accessing files directly from the storage solution of client. It reduces the overhead of downloading and uploading the file onto our storage. Details on how this is done can be found in [our documentation](./pdf-services-api/howtos/pdf-external-storage-sol).  
 
 ## Community forum and feedback
 

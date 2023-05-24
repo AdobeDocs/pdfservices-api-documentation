@@ -186,7 +186,7 @@ module.exports = {
                             },
                             {
                                 title: 'External Storage API',
-                                path: 'overview/pdf-services-api/howtos/pdf-external-storage-api.md'
+                                path: 'overview/pdf-services-api/howtos/pdf-external-storage-sol.md'
                             },
                             {
                                 title: 'Create PDF',
