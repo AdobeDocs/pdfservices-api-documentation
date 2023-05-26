@@ -60,16 +60,10 @@ To complete this guide, you will need:
 
     <ItemGroup>
         <PackageReference Include="log4net" Version="2.0.12" />
-        <PackageReference Include="Adobe.PDFServicesSDK" Version="3.3.0" />
+        <PackageReference Include="Adobe.PDFServicesSDK" Version="3.4.0" />
     </ItemGroup>
 
     <ItemGroup>
-        <None Update="pdfservices-api-credentials.json">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
-        <None Update="private.key">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
         <None Update="Adobe Accessibility Auto-Tag API Sample.pdf">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
@@ -137,22 +131,22 @@ String taggingReport = outputPath + inputPDF + "-tagging-report.xlsx";
 
 This defines what our output directory will be and optionally deletes it if it already exists. Then we define what PDF will be tagged. (You can download the source we used <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>.) In a real application, these values would be typically be dynamic.
 
-4) Set the environment variables `CLIENT_ID` and `CLIET_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+4) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
 - **Windows:**
-    - `set CLIENT_ID=<YOUR CLIENT ID>`
-    - `set CLIENT_SECRET=<YOUR CLIENT SECRET>`
+  - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+  - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
 - **MacOS/Linux:**
-    - `export CLIENT_ID=<YOUR CLIENT ID>`
-    - `export CLIENT_SECRET=<YOUR CLIENT SECRET>`
+  - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+  - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
 5) Next, we setup the SDK to use our credentials.
 
 ```javascript
 // Initial setup, create credentials instance.
 Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-        .WithClientId("CLIENT_ID")
-        .WithClientSecret("CLIENT_SECRET")
+        .WithClientId("PDF_SERVICES_CLIENT_ID")
+        .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
         .Build();
 
 // Create an ExecutionContext using credentials and create a new operation instance.
@@ -234,8 +228,8 @@ namespace AutotagPDF
 
                 // Initial setup, create credentials instance.
                 Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                    .WithClientId("CLIENT_ID")
-                    .WithClientSecret("CLIENT_SECRET")
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
                     .Build();
 
                 // Create an ExecutionContext using credentials and create a new operation instance.

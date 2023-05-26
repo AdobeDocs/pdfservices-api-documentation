@@ -29,25 +29,21 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2_ga.png)
+![Project setup](./shot2_spc.png)
 
 6) After your credentials are created, they are automatically  downloaded:
 
-![alt](./shot3.png)
+![alt](./shot3_spc.png)
 
 ## Step Two: Setting up the project
 
-1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-JavaSamples.zip. If you unzip that archive, you will find a README file, your private key, and a folder of samples:
+1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-JavaSamples.zip. If you unzip that archive, you will find a folder of samples:
 
-![alt](./shot5.png)
+![alt](./shot5_spc.png)
 
-2) We need two things from this download. The `private.key` file (as shown in the screenshot above, and the `pdfservices-api-credentials.json` file found in the samples directory:
+2) We need the `pdfservices-api-credentials.json` file found in the samples directory:
 
-![alt](./shot6.png)
-
-<InlineAlert slots="text" />
-
-Note that that private key is *also* found in this directory so feel free to copy them both from here.
+![alt](./shot6_spc.png)
 
 3) Take these two files and place them in a new directory.
 
@@ -71,7 +67,7 @@ Note that that private key is *also* found in this directory so feel free to cop
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <pdfservices.sdk.version>2.2.2</pdfservices.sdk.version>
+    <pdfservices.sdk.version>3.4.0</pdfservices.sdk.version>
   </properties>
 
   <dependencies>
@@ -170,7 +166,7 @@ Now you're ready to begin coding.
 
 1) We'll begin by including our required dependencies:
 
-```java
+```javascript
 import com.adobe.pdfservices.operation.ExecutionContext;
 import com.adobe.pdfservices.operation.auth.Credentials;
 import com.adobe.pdfservices.operation.exception.SdkException;
@@ -197,7 +193,7 @@ import org.json.JSONObject;
 
 2) Now let's define our main class:
 
-```java
+```javascript
 public class ExtractTextInfoFromPDF {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ExtractTextInfoFromPDF.class);
@@ -210,7 +206,7 @@ public class ExtractTextInfoFromPDF {
 
 3) Now let's define our input and output:
 
-```java
+```javascript
 String zip_file = "./ExtractTextInfoFromPDF.zip";
 Files.deleteIfExists(Paths.get(zip_file));
 
@@ -219,21 +215,31 @@ String input_file = "./Adobe Extract API Sample.pdf";
 
 This defines what our output ZIP will be and optionally deletes it if it already exists. Then we define what PDF will be extracted. (You can download the source we used [here](/Adobe%20Extract%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic. 
 
-4) Next, we can create our credentials and use them:
+4) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+- **Windows:**
+    - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+    - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
-```java
+- **MacOS/Linux:**
+    - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+    - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+5) Next, we can create our credentials and use them:
+
+```javascript
 // Initial setup, create credentials instance.
-Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-		.fromFile("pdfservices-api-credentials.json")
-		.build();
+Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+    .withClientId("PDF_SERVICES_CLIENT_ID")
+    .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+    .build();
 
 // Create an ExecutionContext using credentials.
 ExecutionContext executionContext = ExecutionContext.create(credentials);
 ```
 
-5) Now, let's create the operation:
+6) Now, let's create the operation:
 
-```java
+```javascript
 ExtractPDFOperation extractPDFOperation = ExtractPDFOperation.createNew();
 
 // Provide an input FileRef for the operation
@@ -250,9 +256,9 @@ extractPDFOperation.setOptions(extractPDFOptions);
 
 This set of code defines what we're doing (an Extract operation), points to our local file and specifies the input is a PDF, and then defines options for the Extract call. PDF Extract API has a few different options, but in this example, we're simply asking for the most basic of extractions, the textual content of the document. 
 
-6) The next code block executes the operation:
+7) The next code block executes the operation:
 
-```java
+```javascript
 // Execute the operation
 FileRef result = extractPDFOperation.execute(executionContext);
 
@@ -262,9 +268,9 @@ result.saveAs(zip_file);
 
 This code runs the Extraction process and then stores the result zip to the file system. 
 
-7) In this block, we read in the ZIP file, extract the JSON result file, and parse it:
+8) In this block, we read in the ZIP file, extract the JSON result file, and parse it:
 
-```java
+```javascript
 ZipFile resultZip = new ZipFile(zip_file);
 ZipEntry jsonEntry = resultZip.getEntry("structuredData.json");
 InputStream is = resultZip.getInputStream(jsonEntry);
@@ -275,9 +281,9 @@ s.close();
 JSONObject jsonData = new JSONObject(jsonString);
 ```
 
-8) Finally we can loop over the result and print out any found element that is an `H1`:
+9) Finally we can loop over the result and print out any found element that is an `H1`:
 
-```java
+```javascript
 JSONArray elements = jsonData.getJSONArray("elements");
 for(int i=0; i < elements.length(); i++) {
     JSONObject element = elements.getJSONObject(i);
@@ -293,7 +299,7 @@ for(int i=0; i < elements.length(); i++) {
 
 Here's the complete application (`src/java/main/ExtractTextInfoFromPDF.java`):
 
-```java
+```javascript
 import com.adobe.pdfservices.operation.ExecutionContext;
 import com.adobe.pdfservices.operation.auth.Credentials;
 import com.adobe.pdfservices.operation.exception.SdkException;
@@ -331,9 +337,10 @@ public class ExtractTextInfoFromPDF {
             String input_file = "./Adobe Extract API Sample.pdf";
 
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
-                    .build();
+            Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+                .withClientId("PDF_SERVICES_CLIENT_ID")
+                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .build();
 
             // Create an ExecutionContext using credentials.
             ExecutionContext executionContext = ExecutionContext.create(credentials);

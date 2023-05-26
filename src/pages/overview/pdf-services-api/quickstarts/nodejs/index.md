@@ -84,25 +84,23 @@ if(fs.existsSync(OUTPUT)) fs.unlinkSync(OUTPUT);
 const INPUT = './Bodea Brochure.pdf';
 ```
 
-3) Set the environment variables `CLIENT_ID` and `CLIET_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+3) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
 - **Windows:**
-    - `set CLIENT_ID=<YOUR CLIENT ID>`
-    - `set CLIENT_SECRET=<YOUR CLIENT SECRET>`
+  - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+  - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
 - **MacOS/Linux:**
-    - `export CLIENT_ID=<YOUR CLIENT ID>`
-    - `export CLIENT_SECRET=<YOUR CLIENT SECRET>`
-
-These lines are hard coded but in a real application would typically be dynamic.
+  - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+  - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
 4) Next, we setup the SDK to use our credentials.
 
 ```js
-const credentials = PDFServicesSdk.Credentials
+const credentials =  PDFServicesSdk.Credentials
         .servicePrincipalsCredentialsBuilder()
-        .withClientId("CLIENT_ID")
-        .withClientSecret("CLIENT_SECRET")
-		.build();
+        .withClientId("PDF_SERVICES_CLIENT_ID")
+        .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+        .build();
 
 // Create an ExecutionContext using credentials
 const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
@@ -164,10 +162,10 @@ console.log(`About to export ${INPUT} to ${OUTPUT}.`);
 
 // Set up our credentials object.
 const credentials =  PDFServicesSdk.Credentials
-    .servicePrincipalsCredentialsBuilder()
-    .withClientId("CLIENT_ID")
-    .withClientSecret("CLIENT_SECRET")
-	.build();
+        .servicePrincipalsCredentialsBuilder()
+        .withClientId("PDF_SERVICES_CLIENT_ID")
+        .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+        .build();
 
 // An exectuionContext object wraps our credentials
 const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);

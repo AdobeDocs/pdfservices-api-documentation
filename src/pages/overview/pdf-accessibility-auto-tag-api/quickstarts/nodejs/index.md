@@ -89,13 +89,22 @@ const TAGGING_REPORT = OUTPUT_PATH + INPUT_PDF + "-tagging-report.xlsx";
 
 This defines what our output directory will be and optionally deletes it if it already exists. Then we define what PDF will be tagged. (You can download the source we used <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>.) In a real application, these values would be typically be dynamic.
 
-3) Next, we setup the SDK to use our credentials.
+3) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+- **Windows:**
+    - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+    - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+- **MacOS/Linux:**
+    - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+    - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+4) Next, we setup the SDK to use our credentials.
 
 ```js
 const credentials =  PDFServicesSdk.Credentials
     .servicePrincipalsCredentialsBuilder()
-    .withClientId("CLIENT_ID")
-    .withClientSecret("CLIENT_SECRET")
+    .withClientId("PDF_SERVICES_CLIENT_ID")
+    .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
     .build();
 
 // Create an ExecutionContext using credentials
@@ -155,8 +164,8 @@ const TAGGING_REPORT = OUTPUT_PATH + INPUT_PDF + "-tagging-report.xlsx";
 
 const credentials =  PDFServicesSdk.Credentials
     .servicePrincipalsCredentialsBuilder()
-    .withClientId("CLIENT_ID")
-    .withClientSecret("CLIENT_SECRET")
+    .withClientId("PDF_SERVICES_CLIENT_ID")
+    .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
     .build();
 
 // Create an ExecutionContext using credentials

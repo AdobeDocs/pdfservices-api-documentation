@@ -67,7 +67,7 @@ To complete this guide, you will need:
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <pdfservices.sdk.version>2.2.2</pdfservices.sdk.version>
+    <pdfservices.sdk.version>3.4.0</pdfservices.sdk.version>
   </properties>
 
   <dependencies>
@@ -207,23 +207,23 @@ String input_file = "./Bodea Brochure.pdf";
 System.out.println("Exporting " + input_file + " to " + output_file + "\n");
 ```
 
-5) Set the environment variables `CLIENT_ID` and `CLIET_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+5) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
 - **Windows:**
-    - `set CLIENT_ID=<YOUR CLIENT ID>`
-    - `set CLIENT_SECRET=<YOUR CLIENT SECRET>`
+  - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+  - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
 - **MacOS/Linux:**
-    - `export CLIENT_ID=<YOUR CLIENT ID>`
-    - `export CLIENT_SECRET=<YOUR CLIENT SECRET>`
+  - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+  - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
 6) Next, we can create our credentials and use them:
 
 ```javascript
 // Initial setup, create credentials instance.
 Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
-    .withClientId("CLIENT_ID")
-    .withClientSecret("CLIENT_SECRET")
-    .build()
+        .withClientId("PDF_SERVICES_CLIENT_ID")
+        .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+        .build();
 
 // Create an ExecutionContext using credentials.
 ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -289,10 +289,10 @@ public class ExportPDFToWord {
       		System.out.println("Exporting " + input_file + " to " + output_file + "\n");
 
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
-                    .withClientId("CLIENT_ID")
-                    .withClientSecret("CLIENT_SECRET")
-                    .build();
+            Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+                .withClientId("PDF_SERVICES_CLIENT_ID")
+                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .build();
 
             // Create an ExecutionContext using credentials.
             ExecutionContext executionContext = ExecutionContext.create(credentials);

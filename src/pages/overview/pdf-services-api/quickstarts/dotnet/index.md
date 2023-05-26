@@ -60,16 +60,10 @@ To complete this guide, you will need:
 
     <ItemGroup>
         <PackageReference Include="log4net" Version="2.0.12" />
-        <PackageReference Include="Adobe.PDFServicesSDK" Version="2.2.1" />
+        <PackageReference Include="Adobe.PDFServicesSDK" Version="3.4.0" />
     </ItemGroup>
 
     <ItemGroup>
-        <None Update="pdfservices-api-credentials.json">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
-        <None Update="private.key">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
         <None Update="extractPDFInput.pdf">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
@@ -91,7 +85,7 @@ Now you're ready to begin coding.
 
 1) We'll begin by including our required dependencies:
 
-```clike  
+```javascript
 using System.IO;
 using System;
 using System.Collections.Generic;
@@ -109,7 +103,7 @@ using Adobe.PDFServicesSDK.exception;
 
 2) Now let's define our main class and `Main` method:
 
-```clike
+```javascript
 namespace ExportPDFToWord
 {
     class Program
@@ -124,7 +118,7 @@ namespace ExportPDFToWord
 
 3) Inside our class, we'll begin by defining our input PDF and output filenames. If the output file already exists, it will be deleted:
 
-```clike
+```javascript
 String input = "./Bodea Brochure.pdf";
 
 String output = "./Bodea Brochure.docx";
@@ -138,21 +132,21 @@ Console.Write("Exporting "+ input + " to " + output + "\n");
 
 4) Set the environment variables `CLIENT_ID` and `CLIET_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
 - **Windows:**
-    - `set CLIENT_ID=<YOUR CLIENT ID>`
-    - `set CLIENT_SECRET=<YOUR CLIENT SECRET>`
+    - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+    - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
 - **MacOS/Linux:**
-    - `export CLIENT_ID=<YOUR CLIENT ID>`
-    - `export CLIENT_SECRET=<YOUR CLIENT SECRET>`
+    - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+    - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
 5) Next, we setup the SDK to use our credentials.
 
-```clike
+```javascript
 // Initial setup, create credentials instance.
 Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-    .WithClientId("CLIENT_ID")
-    .WithClientSecret("CLIENT_SECRET")
-	.Build();
+        .WithClientId("PDF_SERVICES_CLIENT_ID")
+        .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+        .Build();
 
 // Create an ExecutionContext using credentials and create a new operation instance.
 ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -162,7 +156,7 @@ This code both points to the credentials downloaded previously as well as sets u
 
 6) Now, let's create the operation:
 
-```clike
+```javascript
 ExportPDFOperation exportPdfOperation = ExportPDFOperation.CreateNew(ExportPDFTargetFormat.DOCX);
 
 // Provide an input FileRef for the operation.
@@ -174,7 +168,7 @@ This set of code defines what we're doing (an Export operation), points to our l
 
 6) The next code block executes the operation:
 
-```clike
+```javascript
 // Execute the operation.
 FileRef result = exportPdfOperation.Execute(executionContext);
 
@@ -189,7 +183,7 @@ This code runs the Extraction process and then stores the result Word document t
 
 Here's the complete application (`Program.cs`):
 
-```clike
+```javascript
 using System.IO;
 using System;
 using System.Collections.Generic;
@@ -227,9 +221,9 @@ namespace ExportPDFToWord
         		Console.Write("Exporting "+ input + " to " + output + "\n");
 
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.Credentials.ServicePrincipalCredentialsBuilder()
-                    .WithClientId("CLIENT_ID")
-                    .WithClientSecret("CLIENT_SECRET")
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
                     .Build();
 
                 // Create an ExecutionContext using credentials and create a new operation instance.
