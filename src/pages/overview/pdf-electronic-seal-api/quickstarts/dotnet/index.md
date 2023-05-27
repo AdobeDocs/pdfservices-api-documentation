@@ -146,7 +146,7 @@ ExecutionContext executionContext = ExecutionContext.Create(credentials);
 
 ```csharp
 //Get the input document to perform the sealing operation
-FileRef sourceFile = FileRef.CreateFromLocalFile(@"HallibyInvoice.pdf");
+FileRef sourceFile = FileRef.CreateFromLocalFile(@"sampleInvoice.pdf");
 
 //Get the background seal image for signature , if required.
 FileRef sealImageFile = FileRef.CreateFromLocalFile(@"sampleSealImage.png");
@@ -278,7 +278,7 @@ namespace ElectronicSeal
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
 
                 //Get the input document to perform the sealing operation
-                FileRef sourceFile = FileRef.CreateFromLocalFile(@"HallibyInvoice.pdf");
+                FileRef sourceFile = FileRef.CreateFromLocalFile(@"sampleInvoice.pdf");
 
                 //Get the background seal image for signature , if required.
                 FileRef sealImageFile = FileRef.CreateFromLocalFile(@"sampleSealImage.png");

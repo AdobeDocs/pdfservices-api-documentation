@@ -17,7 +17,7 @@ To complete this guide, you will need:
 
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
+1) To begin, open your browser to <https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
 
 ![Sign in](./shot1.png)
 
@@ -71,7 +71,7 @@ Note that that private key is *also* found in this directory so feel free to cop
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <pdfservices.sdk.version>2.2.2</pdfservices.sdk.version>
+    <pdfservices.sdk.version>3.3.0</pdfservices.sdk.version>
   </properties>
 
   <dependencies>
@@ -170,7 +170,7 @@ Now you're ready to begin coding.
 
 1) We will begin by including the required dependencies:
 
-```java
+```javascript
 import com.adobe.pdfservices.operation.ExecutionContext;
 import com.adobe.pdfservices.operation.auth.Credentials;
 import com.adobe.pdfservices.operation.exception.SdkException;
@@ -195,7 +195,7 @@ import java.time.format.DateTimeFormatter;
 
 2) Now let's define our main class:
 
-```java
+```javascript
 public class ElectronicSeal {
 
     // Initialize the logger.
@@ -209,7 +209,7 @@ public class ElectronicSeal {
 
 
 3) Let's create credentials for pdf services and use them:
-```java
+```javascript
 // Initial setup, create credentials instance.
 Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
                                     .fromFile("pdfservices-api-credentials.json")
@@ -221,9 +221,9 @@ ExecutionContext executionContext = ExecutionContext.create(credentials);
 
 4) Now, let's define our input fields:
 
-```java
+```javascript
 //Get the input document to perform the sealing operation
-FileRef sourceFile = FileRef.createFromLocalFile("./HallibyInvoice.pdf");
+FileRef sourceFile = FileRef.createFromLocalFile("./sampleInvoice.pdf");
 
 //Get the background seal image for signature , if required.
 FileRef sealImageFile = FileRef.createFromLocalFile("./sampleSealImage.png");
@@ -231,7 +231,7 @@ FileRef sealImageFile = FileRef.createFromLocalFile("./sampleSealImage.png");
 
 5) Now, we will define seal field options:
 
-```java
+```javascript
 //Set the Seal Field Name to be created in input PDF document.
 String sealFieldName = "Signature1";
 
@@ -255,7 +255,7 @@ FieldOptions fieldOptions = new FieldOptions.Builder(sealFieldName)
 
 6) Next, we create a CSC Certificate Credentials instance:
 
-```java
+```javascript
 //Set the name of TSP Provider being used.
 String providerName = "<PROVIDER_NAME>";
 
@@ -282,14 +282,14 @@ CertificateCredentials certificateCredentials = CertificateCredentials.cscCreden
 
 7) Now, let's create the seal options with certificate credentials and field options:
 
-```java
+```javascript
 //Create SealOptions instance with sealing parameters.
 SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions).build();
 ```
 
 8) Now, let's create the operation:
 
-```java
+```javascript
 //Create the PDFElectronicSealOperation instance using the SealOptions instance
 PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.createNew(sealOptions);
 
@@ -303,7 +303,7 @@ This code creates a seal operation using sealOptions, input source file and inpu
  
 9) Let's execute this seal operation:
 
-```java
+```javascript
 //Execute the operation
 FileRef result = pdfElectronicSealOperation.execute(executionContext);
 
@@ -313,7 +313,7 @@ result.saveAs("output/sealedOutput.pdf");
 
 Here's the complete application (`src/main/java/ElectronicSeal.java`):
 
-```java
+```javascript
 import com.adobe.pdfservices.operation.ExecutionContext;
 import com.adobe.pdfservices.operation.auth.Credentials;
 import com.adobe.pdfservices.operation.exception.SdkException;
@@ -358,7 +358,7 @@ public class ElectronicSeal {
             ExecutionContext executionContext = ExecutionContext.create(credentials);
 
             //Get the input document to perform the sealing operation
-            FileRef sourceFile = FileRef.createFromLocalFile("./HallibyInvoice.pdf");
+            FileRef sourceFile = FileRef.createFromLocalFile("./sampleInvoice.pdf");
 
             //Get the background seal image for signature , if required.
             FileRef sealImageFile = FileRef.createFromLocalFile("./sampleSealImage.png");

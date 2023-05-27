@@ -103,10 +103,10 @@ const pdfElectronicSeal = PDFServicesSdk.PDFElectronicSeal,
 
 ```js
 //Get the input document to perform the sealing operation
-const sourceFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/HallibyInvoice.pdf'),
+const sourceFile = PDFServicesSdk.FileRef.createFromLocalFile('./sampleInvoice.pdf'),
 
 //Get the background seal image for signature , if required.
-sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/sampleSealImage.png');
+sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('./sampleSealImage.png');
 
 ```
 
