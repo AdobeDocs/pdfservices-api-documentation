@@ -44,7 +44,7 @@ To complete this guide, you will need:
 
 2) We need the `pdfservices-api-credentials.json` file. You can find this in the `adobe-DC.PDFServicesSDK.NET.Samples` folder, inside any of the sample subdirectories, so for example, the `CombinePDF` folder.
 
-![alt](./shot6.png)
+![alt](./shot6_spc.png)
 
 3) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
 
