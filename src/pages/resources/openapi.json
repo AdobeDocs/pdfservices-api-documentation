@@ -15,8 +15,14 @@
   ],
   "tags": [
     {
+      "name": "Generate Token",
+      "description": "Creates an access token based on an client id, client Secret and organisation id."
+    },
+    {
       "name": "Assets",
-      "description": "Upload and download assets."
+      "description": "Upload and download assets to adobe internal storage. \n **No need to call this API if we are using external storage solution using signed urls.**"
+
+
     },
     {
       "name": "Create PDF",
@@ -35,7 +41,7 @@
       "description": "Extract content from PDF documents and output it in a structured JSON format, along with tables and figures"
     },
     {
-      "name": "Html To PDF",
+      "name": "Html to PDF",
       "description": "Convert HTML Resources to a PDF File"
     },
     {
@@ -89,6 +95,12 @@
   ],
   "x-tagGroups": [
     {
+      "name": "Authentication",
+      "tags": [
+        "Generate Token"
+      ]
+    },
+    {
       "name": "Files",
       "tags": [
         "Assets"
@@ -97,34 +109,225 @@
     {
       "name": "PDF Operations",
       "tags": [
-        "Document Generation",
+        "PDF Accessibility Auto-Tag",
         "Extract PDF",
-        "Electronic Seal",
+        "Document Generation",
         "Create PDF",
-        "Html To PDF",
+        "Export PDF",
+        "OCR",
+        "Html to PDF",
+        "Protect PDF",
         "Combine PDF",
         "Compress PDF",
-        "Export PDF",
         "PDF To Images",
         "Linearize PDF",
-        "OCR",
         "Page Manipulation",
         "PDF Properties",
-        "Protect PDF",
         "Remove Protection",
-        "Split PDF",
-        "PDF Accessibility Auto-Tag"
+        "Split PDF"
+      ]
+    },
+    {
+      "name": "PDF operations Beta",
+      "tags": [
+        "Electronic Seal"
       ]
     }
   ],
   "paths": {
+    "/token": {
+      "post": {
+        "tags": [
+          "Generate Token"
+        ],
+        "summary": "Generate access token to perform PDF Services operations",
+        "description": "Creates an access token based on an client id, client Secret and organisation id.",
+        "operationId": "authentication.generatetoken",
+        "requestBody": {
+          "description": "Params for Generating the access token.",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Token"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The request was successful.",
+            "headers": {
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IMS400"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the error JSON response.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IMS401"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the error JSON response.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IMS403"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource Not Found.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IMS404"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "The request could not be processed because of conflict in the request",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IMS409"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the POST API call response",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IMS500"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
     "/assets": {
       "post": {
         "tags": [
           "Assets"
         ],
         "summary": "Get upload pre-signed URI. ",
-        "description": "Get the pre-signed URI to directly upload the content to the cloud provider. \n\nOutput: Response will have the asset URI of created asset and pre-signed URI for uploading the content.",
+        "description": "Get the pre-signed URI to directly upload the content to the adobe's internal cloud provider. \n\nOutput: Response will have the asset URI of created asset and pre-signed URI for uploading the content.",
         "operationId": "asset.uploadpresignedurl",
         "parameters": [
           {
@@ -791,7 +994,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DocumentGeneration"
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Internal"
+                  },
+                  {
+                    "$ref": "#/components/schemas/External"
+                  }
+                ]
               }
             }
           },
@@ -1560,6 +1770,12 @@
                 "schema": {
                   "type": "string"
                 }
+              },
+              "retry-after": {
+                "description": "The retry-after response HTTP header indicates how long the user agent should wait before making a follow-up request.",
+                "schema": {
+                  "type": "integer"
+                }
               }
             }
           },
@@ -1738,6 +1954,12 @@
                 "schema": {
                   "type": "string"
                 }
+              },
+              "retry-after": {
+                "description": "The retry-after response HTTP header indicates how long the user agent should wait before making a follow-up request.",
+                "schema": {
+                  "type": "integer"
+                }
               }
             },
             "content": {
@@ -1880,7 +2102,7 @@
     "/operation/htmltopdf": {
       "post": {
         "tags": [
-          "Html To PDF"
+          "Html to PDF"
         ],
         "summary": "Convert HTML Resources to a PDF File",
         "description": "Creates PDFs from static/dynamic HTML or HTML(with inline CSS) or just a URL. It's a common scenario for enterprise to provide end users with a HTML template with form fields. In case of dynamic HTML this API allows you to capture the users unique data entries and then save it as PDF. Collected data is stored in a JSON file, and the source HTML file must include <script src='./json.js' type='text/javascript'></script>. You can also provide the URL of the HTML page in inputUrl parameter.",
@@ -1906,7 +2128,7 @@
           }
         ],
         "requestBody": {
-          "description": "Params for converting HTML To PDF Operation",
+          "description": "Params for converting HTML to PDF Operation",
           "content": {
             "application/json": {
               "schema": {
@@ -2061,9 +2283,9 @@
     "/operation/htmltopdf/{jobID}/status": {
       "get": {
         "tags": [
-          "Html To PDF"
+          "Html to PDF"
         ],
-        "summary": "Poll the html to pdf job for completion",
+        "summary": "Poll the Html to PDF job for completion",
         "operationId": "pdfoperations.htmltopdf.jobstatus",
         "parameters": [
           {
@@ -7086,6 +7308,57 @@
   },
   "components": {
     "schemas": {
+      "Token": {
+        "description": "Params for Generation Access Token.",
+        "type": "object",
+        "properties": {
+          "client_id": {
+            "description": "Contains the client ID obtained upon client registration. Even though not required in the specification if the client sends the client_id as part of another method of authentication. IMS requires this parameter in order to facilitate other cross-cutting concerns like throttling. In case other authentication mechanisms are used (e.g. BASIC authentication), then the value sent as part of them as the client_id must match this value.",
+            "type": "string"
+          },
+          "client_secret": {
+            "description": "If the client authentication is performed in the request body, this parameter is REQUIRED and contains the client secret obtained upon client registration.",
+            "type": "string"
+          },
+          "org_id": {
+            "description": "The ID of the organization in which context the client credentials access token will be issued. If the client is owned by an organization and this parameter is missing, the system will use that ORG, otherwise the caller has to specify an ORG_ID.",
+            "type": "boolean"
+          }
+        },
+        "example": {
+          "client_id": "<client_id>",
+          "client_secret": "<client_secret>",
+          "org_id": "<org_id>"
+        },
+        "required": [
+          "client_id",
+          "client_secret"
+        ],
+        "additionalProperties": false
+      },
+      "TokenResponse": {
+        "description": "Response of Generation Access Token Operation.",
+        "type": "object",
+        "properties": {
+          "access_token": {
+            "description": "Generated token which can be used in performing the PDF Service Operation.",
+            "type": "string"
+          },
+          "token_type": {
+            "description": "This represent how an access token is generated and presented for resource access calls",
+            "type": "string"
+          },
+          "expires_in": {
+            "description": "This represents the time for which this token is valid. After that, the client needs to regenerate it.",
+            "type": "integer"
+          }
+        },
+        "example": {
+          "access_token": "*******",
+          "token_type": "Bearer",
+          "expires_in": "86399996"
+        }
+      },
       "documentLanguage": {
         "description": "Specifies the default language for the input non-PDF document. In absence of font info within file’s content, an appropriate font is chosen on its basis. \n\n Note : ja-JP Locale is currently not supported in EU region. ",
         "type": "string",
@@ -7358,6 +7631,144 @@
           }
         }
       },
+      "IMS400": {
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+                "type": "string"
+              },
+              "message": {
+                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>invalid_client</td><td>missing client_id parameter</td></tr><tr><td>invalid_client</td><td>invalid client_id parameter</td></tr><tr><td>invalid_client</td><td>missing client_secret parameter</td></tr><tr><td>invalid_client</td><td>missing client_secret parameter</td></tr><tr><td>unauthorized_client</td><td>client is not authorized to use this grant type.</td></tr><tr><td>invalid_target_scope</td><td>None of the requested scopes is enabled in the SP binding</td></tr><tr><td>missing_separator</td><td>The guid xXx is invalid.</td></tr></table>",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "error": {
+            "code": "invalid_client",
+            "message": "missing client_id parameter"
+          }
+        }
+      },
+      "IMS401": {
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+                "type": "string"
+              },
+              "message": {
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>invalid_client</td><td>According to Section 5.2 of RFC6749 the response includes the \"WWW-Authenticate\" response header field matching the authentication scheme used by the client.</td></tr></table>",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "error": {
+            "code": "invalid_client",
+            "message": "According to Section 5.2 of RFC6749 the response includes the \"WWW-Authenticate\" response header field matching the authentication scheme used by the client."
+          }
+        }
+      },
+      "IMS403": {
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+                "type": "string"
+              },
+              "message": {
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>access_denied</td><td>field matching the authentication scheme used by the client.</td></tr><tr><td>access_denied</td><td>Service principal is no longer part of the organization.</td></tr><tr><td>Forbidden</td><td>The client is not allowed to perform the operation.</td></tr></table>",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "error": {
+            "code": "access_denied",
+            "message": "field matching the authentication scheme used by the client."
+          }
+        }
+      },
+      "IMS404": {
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+                "type": "string"
+              },
+              "message": {
+                "description": "An English language string that contains more information about the error. \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>not_found</td><td>Organization with id xXX cannot be found</td></tr></table>",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "error": {
+            "code": "NOT_FOUND",
+            "message": "Asset not found."
+          }
+        }
+      },
+      "IMS409": {
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+                "type": "string"
+              },
+              "message": {
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>duplicate_binding</td><td>There are multiple bindings for this client and org.</td></tr></table>",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "error": {
+            "code": "duplicate_binding",
+            "message": "There are multiple bindings for this client and org."
+          }
+        }
+      },
+      "IMS500": {
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "The string containing the code field. code is the Mnemonic returned by service in case of any failure. The below list is extendable and going forward the error codes can become more specific.",
+                "type": "string"
+              },
+              "message": {
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>INTERNAL_SERVER_ERROR</td><td>There was an error processing your request.</td></tr></table>",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "error": {
+            "code": "INTERNAL_SERVER_ERROR",
+            "message": "There was an error processing your request."
+          }
+        }
+      },
       "Asset429": {
         "properties": {
           "error_code": {
@@ -7519,16 +7930,20 @@
           },
           "documentLanguage": {
             "$ref": "#/components/schemas/documentLanguage"
+          },
+          "isBackgroundJob": {
+            "description": " If you're able to wait and don't need documents to be generated immediately, and can tolerate some delay, then set this value to true. This is useful when there's a need for higher workloads from customers.",
+            "type": "boolean"
           }
         },
         "default": {
           "documentLanguage": "en-US",
-          "longAwait": false
+          "isBackgroundJob": false
         },
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "documentLanguage": "en-US",
-          "long-await": false
+          "isBackgroundJob": false
         },
         "required": [
           "assetID"
@@ -7675,7 +8090,7 @@
         "additionalProperties": false
       },
       "HtmlToPdf": {
-        "description": "Params for converting HTML To PDF Operation",
+        "description": "Params for converting HTML to PDF Operation",
         "type": "object",
         "properties": {
           "assetID": {
@@ -8071,7 +8486,7 @@
         ],
         "additionalProperties": false
       },
-      "DocumentGeneration": {
+      "Internal": {
         "description": "Params for Document Generation Operation",
         "type": "object",
         "properties": {
@@ -8128,6 +8543,124 @@
         "required": [
           "assetID",
           "jsonDataForMerge"
+        ],
+        "additionalProperties": false
+      },
+      "External": {
+        "description": "Params for Document Generation Operation using external storage",
+        "type": "object",
+        "properties": {
+          "input": {
+            "description": "Params representing input object for docgen operation",
+            "type": "object",
+            "properties": {
+              "uri": {
+              "description": "Input file Presigned URL.",
+              "type": "string"
+              },
+              "storage": {
+                "description": "Specifies the type of the external storage",
+                "type": "string",
+                "enum": [
+                  "AWS S3",
+                  "SHAREPOINT"
+                ],
+                "default": "SHAREPOINT"
+              }
+            },
+            "required": [
+              "uri"
+            ]
+          },
+          "output": {
+            "description": "Params representing output object for docgen operation",
+            "type": "object",
+            "properties": {
+              "uri" : {
+                "description": "Output file Upload URL.",
+                "type": "string"
+              },
+              "storage": {
+                "description": "Specifies the type of the external storage",
+                "type": "string",
+                "enum": [
+                  "AWS S3",
+                  "SHAREPOINT"
+                ],
+                "default": "SHAREPOINT"
+              }
+            },
+            "required": [
+              "uri"
+            ]
+          },
+          "params": {
+            "description": "Params for docgen processing",
+            "type": "object",
+            "properties": {
+              "outputFormat": {
+                "description": "Specifies the target format of the generated output document. Possible values are pdf and docx.",
+                "type": "string",
+                "enum": [
+                  "docx",
+                  "pdf"
+                ],
+                "default": "pdf"
+              },
+              "jsonDataForMerge": {
+                "description": "Specifies the JSON data to merge into the document template.",
+                "type": "object"
+              },
+              "fragments": {
+                "description": "Specifies the Fragments JSON object or a JSON array to resolve fragments in the document template. To know more about fragments use-case in document generation and document templates, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/document-generation-api/fragments/\">documentation</a>..",
+                "type": "object"
+              }
+            },
+            "required": [
+              "jsonDataForMerge"
+            ]
+          }
+        },
+        "example": {
+          "input": {
+            "uri": "https://dcalpine2.sharepoint.com/sites/Docgen/_layouts/15/download.aspx?UniqueId=353087f7-b1ea-4d84-91d7-0821b23e04ea&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDI5MDkiLCJleHAiOiIxNjgwNjA2NTA5IiwiZW5kcG9pbnR1cmwiOiIwU1NJNDAxdjZhUll6YUIyV2lod005VnIxOVJHNStvSUxFN280dk0yUlMwPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMTMzIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJPVEUxTlRZMFkyRXROREZpT1MwME1HSTBMVGczWVdRdFlqaGpaREprWkdNeVlXVTUiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE2OSJ9.aStWTExNZ045T3h3OGV4MHdyYURmLzZqOW9McGRhSmtZWStHOE1wM0ZaYz0&ApiVersion=2.0",
+            "storage": "SHAREPOINT"
+          },
+          "output": {
+            "uri": "https://dcalpine2.sharepoint.com/sites/Docgen/_api/v2.0/drives/b!MA1899sXSkupaKT9m2CP3JIqXDMQyoBCth9h9Rn6bQRjzBEBFxsbQpN23hY-rzQT/items/01TAIM7P3ZQQ4DP4NZHFDI6FBJPIGFRCY3/uploadSession?guid='2c79b9aa-f9dc-42c8-8919-da5a9b554b81'&overwrite=True&rename=False&dc=0&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDAyOTMiLCJleHAiOiIxNjgwNjg2NjkzIiwiZW5kcG9pbnR1cmwiOiJXVWNNVHhndVdyMHR4YzhlYWxlRzMrYUV1aXg5anoxanZuRmRpMENjNHFRPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMjYxIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJaREZsTURjek5tRXRaREJtWkMwMFlXUXlMV0V5WTJNdE1HRTRPV1prTTJJNU5XTmwiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE3MCJ9.a1hxR1J1emlFSE9jSTU0SnFTcFN6TGlsRHNhWTFRaDNkT2hwT3ZPYm8waz0",
+            "storage": "SHAREPOINT"
+          },
+          "params": {
+            "outputFormat": "pdf",
+            "jsonDataForMerge": {
+              "customerName": "Kane Miller",
+              "customerVisits": 100,
+              "itemsBought": [
+                {
+                  "name": "Sprays",
+                  "quantity": 50,
+                  "amount": 100
+                },
+                {
+                  "name": "Chemicals",
+                  "quantity": 100,
+                  "amount": 200
+                }
+              ],
+              "totalAmount": 300,
+              "previousBalance": 50,
+              "lastThreeBillings": [
+                100,
+                200,
+                300
+              ],
+              "photograph": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII="
+            }
+          }
+        },
+        "required": [
+          "input",
+          "params"
         ],
         "additionalProperties": false
       },
@@ -8309,14 +8842,14 @@
         "description": "Specifies all the sealing parameters.",
         "type": "object",
         "required": [
+          "signatureFormat",
           "cscCredentialOptions",
           "sealFieldOptions"
         ],
         "properties": {
           "signatureFormat": {
             "type": "string",
-            "description": "Specifies a supported digital signature format. For supported signature formats, please refer <a href = \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#signature-format-signatureformatbb\">documentation</a>.",
-            "default": "PKCS7",
+            "description": "Specifies a supported digital signature format. For supported signature formats, please refer <a href = \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#signature-format-signatureformat--required\">documentation</a>.",
             "enum": [
               "PADES",
               "PKCS7"
@@ -8324,7 +8857,7 @@
           },
           "cscCredentialOptions": {
             "type": "object",
-            "description": "Specifies the parameters that encapsulates the signer's certificate credential. For more information, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#tsp-credential-information-csccredentialoptionsbb\">documentation</a>.",
+            "description": "Specifies the parameters that encapsulates the signer's certificate credential. For more information, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#tsp-credential-information-csccredentialoptions--required\">documentation</a>.",
             "required": [
               "providerName",
               "credentialId",
@@ -8375,7 +8908,7 @@
           },
           "sealFieldOptions": {
             "type": "object",
-            "description": "Specifies the parameters required to create a new signature field or use an existing field. For more details, please refer <a href= \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#seal-field-parameters---sealfieldoptionsbb\">documentation</a>.",
+            "description": "Specifies the parameters required to create a new signature field or use an existing field. For more details, please refer <a href= \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#seal-field-parameters---sealfieldoptions--required\">documentation</a>.",
             "required": [
               "fieldName"
             ],
@@ -8387,7 +8920,7 @@
               },
               "location": {
                 "type": "object",
-                "description": "Specifies the coordinates of the signature appearance's bounding box in default PDF user space units. The location is only required if the signature field does not already exist in the PDF document.If location is provided along with the existing signature field then it is ignored.",
+                "description": "Specifies the coordinates of the signature appearance's bounding box in default PDF user space units. The location is only required if the signature field does not already exist in the PDF document. If this is specified along with the signature field then it overrides the existing signature bounding box.",
                 "required": [
                   "top",
                   "left",
@@ -8419,7 +8952,7 @@
               },
               "pageNumber": {
                 "type": "integer",
-                "description": "Specifies the page number to which the signature field should be attached. Page numbers are 1-based. The page number is only required if the signature field does not already exist in the pdf document. If page number is provided along with the existing signature field then the page number should be same on which signature field is present in the document, else an error is thrown."
+                "description": "Specifies the page number to which the signature field should be attached. Page numbers are 1-based. The page number is only required if the signature field does not already exist in the pdf document. If this is specified along with the signature field then it overrides the page on which signature field is present in the document."
               }
             }
           },
@@ -8432,16 +8965,17 @@
                 "LABELS"
               ]
             },
-            "required": [
-              "displayOptions"
-            ],
             "properties": {
               "displayOptions": {
                 "type": "array",
                 "description": "Specifies the information to display in the signature. These are an enum set of display items: NAME, DATE, DISTINGUISHED_NAME, LABELS and SEAL_IMAGE.",
                 "items": {
                   "type": "string"
-                }
+                },
+                "default": [
+                  "NAME",
+                  "LABELS"
+                ]
               }
             }
           }
@@ -8784,6 +9318,16 @@
         }
       },
       "done": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/internal"
+          },
+          {
+            "$ref": "#/components/schemas/external"
+          }
+        ]
+      },
+      "internal": {
         "description": "Response in case of 'done' status",
         "type": "object",
         "properties": {
@@ -8810,6 +9354,22 @@
           }
         }
       },
+      "external": {
+        "description": "Response in case of 'done' status using signed urls",
+        "type": "object",
+        "properties": {
+          "status": {
+            "description": "Job Status",
+            "type": "string",
+            "enum": [
+              "done"
+            ]
+          }
+        },
+        "example": {
+          "status": "done"
+        }
+      },
       "responseAsset": {
         "title": "asset",
         "description": "Details of output asset document. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
@@ -8831,7 +9391,8 @@
           },
           "assetID": {
             "description": "An asset ID identifying an asset that is globally unique and never reused.",
-            "type": "string"
+            "type": "string",
+            "required": false
           },
           "downloadUri": {
             "description": "The URL used to download the Resource directly to the cloud provider.",
