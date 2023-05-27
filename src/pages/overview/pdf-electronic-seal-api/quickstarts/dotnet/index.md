@@ -65,7 +65,7 @@ Note that that private key is *also* found in this directory so feel free to cop
 
     <ItemGroup>
         <PackageReference Include="log4net" Version="2.0.12" />
-        <PackageReference Include="Adobe.PDFServicesSDK" Version="3.0.0" />
+        <PackageReference Include="Adobe.PDFServicesSDK" Version="3.3.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -78,7 +78,7 @@ Note that that private key is *also* found in this directory so feel free to cop
         <None Update="log4net.config">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
-        <None Update="HallibyInvoice.pdf">
+        <None Update="sampleInvoice.pdf">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
         <None Update="sampleSealImage.png">
@@ -89,7 +89,7 @@ Note that that private key is *also* found in this directory so feel free to cop
 </Project>
 ```
 
-Our application will take an Invoice PDF document, `HallibyInvoice.pdf` (downloadable from [here](./HallibyInvoice.pdf)), and will use the sealing options with default appearance options to apply electronic seal over the PDF document by invoking Acrobat Services API and generate an electronically sealed PDF.
+Our application will take an Invoice PDF document, `sampleInvoice.pdf` (downloadable from [here](./sampleInvoice.pdf)), and will use the sealing options with default appearance options to apply electronic seal over the PDF document by invoking Acrobat Services API and generate an electronically sealed PDF.
 
 5) In your editor, open the directory where you previously copied the credentials and created the `csproj` file. Create a new file, `Program.cs`. 
 
