@@ -1315,9 +1315,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
 
 To support workflows with template data, `CreatePDFFromHTMLWithTemplateEngine`
 creates PDFs from HTML using a template engine. It's a common scenario for enterprise to
-provide end users with an HTML template with form fields.The class requires the use of a template engine, such as Mustache or Liquid, in the client file to process the HTML templates and generate the corresponding PDF output.The client file 
-must include template engine library `<script src="https://unpkg.com/mustache@4.2.0/mustache.js"></script>`
-which uses the input data in the HTML file to manipulate the HTML DOM, thus effectively 
+provide end users with an HTML template with form fields.The class requires the use of any template engine, such as Mustache or Liquid, in the client file to process the HTML templates and generate the corresponding PDF output.The client file 
+can include any template engine library(Mustache,Liquid) which uses the input data in the HTML file to manipulate the HTML DOM, thus effectively 
 updating the source HTML file and merging the json field values.
 
 Refer to the API docs for usage.
