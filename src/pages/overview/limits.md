@@ -69,16 +69,16 @@ Document Transactions for the Operations below resulting in a Document will be c
 
 There are several usage limits that apply to PDF Services API and its underlying Operations based on one initial endpoint request. Files submitted for processing that exceed usage limits below will fail and result in an error message.
 
-| USAGE LIMIT                                                     | VALUE       |
-| --------------------------------------------------------------- | ----------- |
-| Document limit (combine, insert, replace, split)                | 20          |
-| File size (for all documents)                                   | 100MB       |
-| Output images per Document Transaction (export)                 | 50          |
-| Page limit (Extract and Accessibility Auto-Tag)\*                | 400         |
-| Page limit (Scanned - Extract and Accessibility Auto-Tag)\*      | 150         |
-| JSON file size (Document Generation and HTML to PDF)            | 10MB        |
-| Maximum Requests Per Minute                                     | 100 RPM** (Enterprise), <br /> 25 RPM (Free Trial)|
-| Payload size (For all APIs)                                     | 100MB       |
+| USAGE LIMIT                                                     | VALUE                                           |
+| --------------------------------------------------------------- |-------------------------------------------------|
+| Document limit (combine, insert, replace, split)                | 20                                              |
+| File size (for all documents)                                   | 100MB                                           |
+| Output images per Document Transaction (export)                 | 50                                              |
+| Page limit (Extract and Accessibility Auto-Tag)\*                | 400                                             |
+| Page limit (Scanned - Extract and Accessibility Auto-Tag)\*      | 150                                             |
+| JSON file size (Document Generation and HTML to PDF)            | 10MB                                            |
+| Maximum Requests Per Minute                                     | 100 RPM** (Enterprise), <br /> 25 RPM (Free Tier) |
+| Payload size (For all APIs)                                     | 100MB                                           |
 
 **Page limits may be lower for documents with a large number of tables.*
 

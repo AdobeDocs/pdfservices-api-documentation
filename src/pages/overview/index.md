@@ -61,7 +61,7 @@ The output from the API is a tagged PDF, but it is not guaranteed to fully compl
 
 You can learn more about PDF Accessibility in [this overview](https://www.adobe.com/accessibility/pdf/pdf-accessibility-overview.html).
 
-The PDF Accessibility Auto-Tag API can be embedded into any application using the [PDFServices SDK](./pdf-services-api/index.md#sdk) for Java, .NET, Node.js and Python. [Start a PDF Accessibility Auto-Tag free trial that includes up to 1,000 free Document transactions or runs for 6 months, whichever occurs earlier.](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api)
+The PDF Accessibility Auto-Tag API can be embedded into any application using the [PDFServices SDK](./pdf-services-api/index.md#sdk) for Java, .NET, Node.js and Python. [Start a PDF Accessibility Auto-Tag Free Tier which includes 500 free Document Transactions per month.](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api)
 
 ## PDF Services Region Support
 
