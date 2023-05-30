@@ -144,7 +144,7 @@
         "description": "Creates an access token based on an client id, client Secret and organisation id.",
         "operationId": "authentication.generatetoken",
         "requestBody": {
-          "description": "Params for Generating the access token.",
+          "description": "Params for generating the access token.",
           "content": {
             "application/x-www-form-urlencoded": {
               "schema": {
@@ -7309,7 +7309,7 @@
   "components": {
     "schemas": {
       "Token": {
-        "description": "Params for Generation Access Token.",
+        "description": "Params for generating the Access Token.",
         "type": "object",
         "properties": {
           "client_id": {
@@ -7322,7 +7322,7 @@
           },
           "org_id": {
             "description": "The ID of the organization in which context the client credentials access token will be issued. If the client is owned by an organization and this parameter is missing, the system will use that ORG, otherwise the caller has to specify an ORG_ID.",
-            "type": "boolean"
+            "type": "string"
           }
         },
         "example": {
@@ -7337,19 +7337,19 @@
         "additionalProperties": false
       },
       "TokenResponse": {
-        "description": "Response of Generation Access Token Operation.",
+        "description": "Response of generate Access Token Operation.",
         "type": "object",
         "properties": {
           "access_token": {
-            "description": "Generated token which can be used in performing the PDF Service Operation.",
+            "description": "The token which can be used in performing the PDF Service Operation.",
             "type": "string"
           },
           "token_type": {
-            "description": "This represent how an access token is generated and presented for resource access calls",
+            "description": "The type of the token issued.",
             "type": "string"
           },
           "expires_in": {
-            "description": "This represents the time for which this token is valid. After that, the client needs to regenerate it.",
+            "description": "The lifetime in seconds of the access token.",
             "type": "integer"
           }
         },
