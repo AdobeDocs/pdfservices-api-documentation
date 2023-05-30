@@ -10,7 +10,7 @@ To get started using Adobe Document Generation API, let's walk through a simple 
 
 To complete this guide, you will need:
 
-* [.NET Core: version 2.1 or above](https://dotnet.microsoft.com/en-us/download)
+* [.NET: version 6.0 or above](https://dotnet.microsoft.com/en-us/download)
 * [.Net SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 * A build tool: Either Visual Studio or .NET Core CLI.
 * An Adobe ID. If you do not have one, the credential setup will walk you through creating one.
@@ -30,29 +30,25 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2_ga.png)
+![Project setup](./shot2_spc.png)
 
 6) After your credentials are created, they are automatically downloaded:
 
-![alt](./shot3.png)
+![alt](./shot3_spc.png)
 
 ## Step Two: Setting up the project
 
-1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-.NetSamples.zip. If you unzip that archive, you will find a README file, your private key, and a folder of samples:
+1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-.NetSamples.zip. If you unzip that archive, you will find a folder of samples:
 
-![alt](./shot5.png)
+![alt](./shot5_spc.png)
 
-2) We need two things from this download. The `private.key` file (as shown in the screenshot above, and the `pdfservices-api-credentials.json` file. You can find this in the `adobe-DC.PDFServicesSDK.NET.Samples` folder, inside any of the sample subdirectories, so for example, the `CombinePDF` folder.
+2) We need the `pdfservices-api-credentials.json` file. You can find this in the `adobe-DC.PDFServicesSDK.NET.Samples` folder, inside any of the sample subdirectories, so for example, the `CombinePDF` folder.
 
-![alt](./shot6.png)
+![alt](./shot6_spc.png)
 
-<InlineAlert slots="text" />
+3) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
 
-Note that that private key is *also* found in this directory so feel free to copy them both from here.
-
-3) Take these two files and place them in a new directory.
-
-4) In your new directory, create a new file, `ExtractTextInfoFromPDF.csproj`. This file will declare our requirements as well as help define the application we're creating.
+4) In your new directory, create a new file, `GeneratePDF.csproj`. This file will declare our requirements as well as help define the application we're creating.
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -64,16 +60,10 @@ Note that that private key is *also* found in this directory so feel free to cop
 
     <ItemGroup>
         <PackageReference Include="log4net" Version="2.0.12" />
-        <PackageReference Include="Adobe.PDFServicesSDK" Version="2.2.1" />
+        <PackageReference Include="Adobe.PDFServicesSDK" Version="3.4.0" />
     </ItemGroup>
 
     <ItemGroup>
-        <None Update="pdfservices-api-credentials.json">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
-        <None Update="private.key">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
         <None Update="log4net.config">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
@@ -145,7 +135,7 @@ Notice how the tokens in the Word document match up with values in our JSON. Whi
 
 3) We'll begin by including our required dependencies:
 
-```csharp
+```javascript
 using System.IO;
 using System;
 using System.Collections.Generic;
@@ -164,7 +154,7 @@ using Newtonsoft.Json.Linq;
 
 4) Now let's define our main class and `Main` method:
 
-```csharp
+```javascript
 namespace GeneratePDF
 {
     class Program
@@ -179,7 +169,7 @@ namespace GeneratePDF
 
 5) Inside our class, we'll begin by defining our input Word, JSON and output filenames. If the output file already exists, it will be deleted:
 
-```csharp
+```javascript
 String input = "receiptTemplate.docx";
 
 String output = "/generatedReceipt.pdf";
@@ -194,13 +184,23 @@ JObject data = JObject.Parse(json);
 
 These lines are hard coded but in a real application would typically be dynamic.
 
-6) Next, we setup the SDK to use our credentials.
+6) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+- **Windows:**
+    - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+    - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
-```csharp
+- **MacOS/Linux:**
+    - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+    - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+7) Next, we setup the SDK to use our credentials.
+
+```javascript
 // Initial setup, create credentials instance.
-Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-	.FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-	.Build();
+Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+    .WithClientId("PDF_SERVICES_CLIENT_ID")
+    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+    .Build();
 
 // Create an ExecutionContext using credentials and create a new operation instance.
 ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -208,9 +208,9 @@ ExecutionContext executionContext = ExecutionContext.Create(credentials);
 
 This code both points to the credentials downloaded previously as well as sets up an execution context object that will be used later.
 
-7) Now, let's create the operation:
+8) Now, let's create the operation:
 
-```csharp
+```javascript
 DocumentMergeOptions documentMergeOptions = new DocumentMergeOptions(data, OutputFormat.PDF);
 DocumentMergeOperation documentMergeOperation = DocumentMergeOperation.CreateNew(documentMergeOptions);
 
@@ -221,9 +221,9 @@ documentMergeOperation.SetInput(sourceFileRef);
 
 This set of code defines what we're doing (a document merge operation, the SDK's way of describing Document Generation), points to our local JSON file and specifies the output is a PDF. It also points to the Word file used as a template.
 
-8) The next code block executes the operation:
+9) The next code block executes the operation:
 
-```csharp
+```javascript
 // Execute the operation.
 FileRef result = documentMergeOperation.Execute(executionContext);
 
@@ -237,7 +237,7 @@ This code runs the document generation process and then stores the result PDF do
 
 Here's the complete application (`Program.cs`):
 
-```csharp
+```javascript
 using System.IO;
 using System;
 using System.Collections.Generic;
@@ -277,8 +277,9 @@ namespace GeneratePDF
                 JObject data = JObject.Parse(json);
 
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
                     .Build();
 
                 // Create an ExecutionContext using credentials and create a new operation instance.

@@ -67,7 +67,7 @@ Please refer to the [API usage guide](../api-usage.md) to understand how to use 
 
 #### Java
 
-```javascript 
+```javascript
 // Get the samples from https://github.com/adobe/pdfservices-java-sdk-samples
 // Run the sample:
 // mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.autotagpdf.AutotagPDF
@@ -80,9 +80,10 @@ public class AutotagPDF {
 
         try {
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
-                    .build();
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                .withClientId("PDF_SERVICES_CLIENT_ID")
+                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .build();
 
             // Create an ExecutionContext using credentials and create a new operation instance.
             ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -125,9 +126,10 @@ namespace AutotagPDF
         try
         {
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-            .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-            .Build();
+            Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                    .Build();
 
             //Create an ExecutionContext using credentials and create a new operation instance.
             ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -185,8 +187,9 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 try {
     // Initial setup, create credentials instance.
     const credentials =  PDFServicesSdk.Credentials
-        .serviceAccountCredentialsBuilder()
-        .fromFile("pdfservices-api-credentials.json")
+        .servicePrincipalsCredentialsBuilder()
+        .withClientId("PDF_SERVICES_CLIENT_ID")
+        .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
         .build();
 
     // Create an ExecutionContext using credentials and create a new operation instance.
@@ -231,8 +234,9 @@ try:
     base_path = str(Path(__file__).parents[2])
 
     # Initial setup, create credentials instance.
-    credentials = Credentials.service_account_credentials_builder() \
-        .from_file(base_path + '/pdfservices-api-credentials.json') \
+    credentials = Credentials.service_principal_credentials_builder()
+        .with_client_id(os.getenv('PDF_SERVICES_CLIENT_ID'))
+        .with_client_secret(os.getenv('PDF_SERVICES_CLIENT_SECRET'))
         .build()
 
     # Create an ExecutionContext using credentials and create a new operation instance.
@@ -307,8 +311,9 @@ public class AutotagPDFParameterised {
 
     try {
     // Initial setup, create credentials instance.
-    Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-        .fromFile("pdfservices-api-credentials.json")
+    Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+        .withClientId("PDF_SERVICES_CLIENT_ID")
+        .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
         .build();
 
     //Create an ExecutionContext using credentials and create a new operation instance.
@@ -464,9 +469,10 @@ namespace AutotagPDFParameterised
         try
         {
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-            .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-            .Build();
+            Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                    .Build();
 
             //Create an ExecutionContext using credentials and create a new operation instance.
             ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -540,8 +546,9 @@ try {
 
     // Initial setup, create credentials instance.
     const credentials =  PDFServicesSdk.Credentials
-        .serviceAccountCredentialsBuilder()
-        .fromFile("pdfservices-api-credentials.json")
+        .servicePrincipalsCredentialsBuilder()
+        .withClientId("PDF_SERVICES_CLIENT_ID")
+        .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
         .build();
 
     // Create an ExecutionContext using credentials and create a new operation instance.
@@ -680,8 +687,9 @@ class AutotagPDFParameterised:
     def autotag_pdf(self):
         try:
             # Initial setup, create credentials instance.
-            credentials = Credentials.service_account_credentials_builder() \
-                .from_file(self.base_path + '/pdfservices-api-credentials.json') \
+            credentials = Credentials.service_principal_credentials_builder()
+                .with_client_id(os.getenv('PDF_SERVICES_CLIENT_ID'))
+                .with_client_secret(os.getenv('PDF_SERVICES_CLIENT_SECRET'))
                 .build()
 
             # Create an ExecutionContext using credentials and create a new operation instance.
