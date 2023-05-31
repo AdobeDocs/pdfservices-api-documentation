@@ -1765,12 +1765,6 @@
                 "schema": {
                   "type": "string"
                 }
-              },
-              "retry-after": {
-                "description": "The retry-after response HTTP header indicates how long the user agent should wait before making a follow-up request.",
-                "schema": {
-                  "type": "integer"
-                }
               }
             }
           },
@@ -1948,12 +1942,6 @@
                 "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
                 "schema": {
                   "type": "string"
-                }
-              },
-              "retry-after": {
-                "description": "The retry-after response HTTP header indicates how long the user agent should wait before making a follow-up request.",
-                "schema": {
-                  "type": "integer"
                 }
               }
             },
@@ -7925,20 +7913,14 @@
           },
           "documentLanguage": {
             "$ref": "#/components/schemas/documentLanguage"
-          },
-          "isBackgroundJob": {
-            "description": " If you're able to wait and don't need documents to be generated immediately, and can tolerate some delay, then set this value to true. This is useful when there's a need for higher workloads from customers.",
-            "type": "boolean"
           }
         },
         "default": {
-          "documentLanguage": "en-US",
-          "isBackgroundJob": false
+          "documentLanguage": "en-US"
         },
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
-          "documentLanguage": "en-US",
-          "isBackgroundJob": false
+          "documentLanguage": "en-US"
         },
         "required": [
           "assetID"
