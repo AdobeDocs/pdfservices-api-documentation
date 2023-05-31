@@ -16,7 +16,7 @@ To complete this guide, you will need:
 
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
+1) To begin, open your browser to <https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
 
 ![Sign in](./shot1.png)
 
@@ -79,10 +79,11 @@ This line includes the Adobe PDF Services Node.js SDK
 2) Next, we setup the SDK to use our credentials.
 
 ```js
-// Initial setup, create credentials instance.
+    // Initial setup, create credentials instance.
 const credentials =  PDFServicesSdk.Credentials
-    .serviceAccountCredentialsBuilder()
-    .fromFile("pdfservices-api-credentials.json")
+    .servicePrincipalCredentialsBuilder()
+    .withClientId("PDF_SERVICES_CLIENT_ID")
+    .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
     .build();
 
 // Create an ExecutionContext using credentials
@@ -113,6 +114,14 @@ sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('./sampleSealImage.pn
 5) Now, we will define seal field options:
 
 ```js
+//Create AppearanceOptions and add the required signature appearance items
+appearanceOptions = new options.AppearanceOptions();
+appearanceOptions.addItem(options.AppearanceOptions.AppearanceItem.DATE);
+appearanceOptions.addItem(options.AppearanceOptions.AppearanceItem.SEAL_IMAGE);
+appearanceOptions.addItem(options.AppearanceOptions.AppearanceItem.NAME);
+appearanceOptions.addItem(options.AppearanceOptions.AppearanceItem.LABELS);
+appearanceOptions.addItem(options.AppearanceOptions.AppearanceItem.DISTINGUISHED_NAME);
+
 // Set the Seal Field Name to be created in input PDF document.
 sealFieldName = "Signature1";
 
@@ -127,10 +136,10 @@ fieldLocation = new options.FieldLocation(150,250,350,200);
 
 //Create FieldOptions instance with required details.
 fieldOptions = new options.FieldOptions.Builder(sealFieldName)
-                        .setFieldLocation(fieldLocation)
-                        .setPageNumber(sealPageNumber)
-                        .setVisible(sealVisible)
-                        .build();
+    .setFieldLocation(fieldLocation)
+    .setPageNumber(sealPageNumber)
+    .setVisible(sealVisible)
+    .build();
 ```
 
 6) Next, we create a CSC Certificate Credentials instance:
@@ -153,19 +162,21 @@ cscAuthContext = new options.CSCAuthContext(accessToken, "Bearer");
 
 //Create CertificateCredentials instance with required certificate details.
 certificateCredentials = options.CertificateCredentials.cscCredentialBuilder()
-                                .withProviderName(providerName)
-                                .withCredentialID(credentialID)
-                                .withPin(pin)
-                                .withCSCAuthContext(cscAuthContext)
-                                .build();
+    .withProviderName(providerName)
+    .withCredentialID(credentialID)
+    .withPin(pin)
+    .withCSCAuthContext(cscAuthContext)
+    .build();
+
 ```
 
 7) Now, let's create the seal options with certificate credentials and field options:
 
 ```js
-//Create SealOptions instance with sealing parameters.
-sealOptions = new options.SealOptions.Builder(certificateCredentials, fieldOptions).build()
-
+    //Create SealOptions instance with sealing parameters.
+sealOptions = new options.SealOptions.Builder(certificateCredentials, fieldOptions)
+    .withAppearanceOptions(appearanceOptions)
+    .build()
 ```
 
 
@@ -191,7 +202,7 @@ This code creates a seal operation using sealOptions, input source file and inpu
 pdfElectronicSealOperation.execute(executionContext)
     .then(result => result.saveAsFile("output/sealedOutput.pdf"))
     .catch(err => {
-        if (err instanceof PDFServicesSdk.Error.ServiceApiError
+        if(err instanceof PDFServicesSdk.Error.ServiceApiError
             || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
             console.log('Exception encountered while executing operation', err);
         } else {
@@ -217,7 +228,7 @@ Here's the complete application (`electronic-seal.js`):
 const PDFServicesSdk = require('@dcloud/pdfservices-node-sdk');
 
 /**
- * This sample illustrates how to apply electronic seal over the PDF document using default appearance options.
+ * This sample illustrates how to apply electronic seal over the PDF document using custom appearance options.
  *
  * <p>
  * To know more about PDF Electronic Seal, please see the <<a href="https://www.adobe.com/go/dc_eseal_overview_doc" target="_blank">documentation</a>.
@@ -227,8 +238,9 @@ const PDFServicesSdk = require('@dcloud/pdfservices-node-sdk');
 try {
     // Initial setup, create credentials instance.
     const credentials =  PDFServicesSdk.Credentials
-        .serviceAccountCredentialsBuilder()
-        .fromFile("pdfservices-api-credentials.json")
+        .servicePrincipalCredentialsBuilder()
+        .withClientId("PDF_SERVICES_CLIENT_ID")
+        .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
         .build();
 
     // Create an ExecutionContext using credentials
@@ -238,10 +250,18 @@ try {
         options = pdfElectronicSeal.options;
 
     //Get the input document to perform the sealing operation
-    const sourceFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/HallibyInvoice.pdf'),
+    const sourceFile = PDFServicesSdk.FileRef.createFromLocalFile('./sampleInvoice.pdf'),
 
         //Get the background seal image for signature , if required.
-        sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/sampleSealImage.png');
+        sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('./sampleSealImage.png');
+
+    //Create AppearanceOptions and add the required signature appearance items
+    appearanceOptions = new options.AppearanceOptions();
+    appearanceOptions.addItem(options.AppearanceOptions.AppearanceItem.DATE);
+    appearanceOptions.addItem(options.AppearanceOptions.AppearanceItem.SEAL_IMAGE);
+    appearanceOptions.addItem(options.AppearanceOptions.AppearanceItem.NAME);
+    appearanceOptions.addItem(options.AppearanceOptions.AppearanceItem.LABELS);
+    appearanceOptions.addItem(options.AppearanceOptions.AppearanceItem.DISTINGUISHED_NAME);
 
     // Set the Seal Field Name to be created in input PDF document.
     sealFieldName = "Signature1";
@@ -286,7 +306,9 @@ try {
         .build();
 
     //Create SealOptions instance with sealing parameters.
-    sealOptions = new options.SealOptions.Builder(certificateCredentials, fieldOptions).build()
+    sealOptions = new options.SealOptions.Builder(certificateCredentials, fieldOptions)
+        .withAppearanceOptions(appearanceOptions)
+        .build()
 
     //Create the PDFElectronicSealOperation instance using the SealOptions instance
     const pdfElectronicSealOperation = pdfElectronicSeal.Operation.createNew(sealOptions);
@@ -308,6 +330,7 @@ try {
                 console.log('Exception encountered while executing operation', err);
             }
         });
+
 } catch (err) {
     console.log('Exception encountered while executing operation', err);
 }

@@ -18,7 +18,7 @@ To complete this guide, you will need:
   
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
+1) To begin, open your browser to <https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
 
 ![Sign in](./shot1.png)
 
@@ -134,9 +134,11 @@ namespace ElectronicSeal
 3) Let's create credentials for pdf services and use them:
 
 ```csharp
-Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                        .FromFile("pdfservices-api-credentials.json")
-                        .Build();
+// Initial setup, create credentials instance.
+Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                    .Build();
 
 // Create an ExecutionContext using credentials.
 ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -155,6 +157,14 @@ FileRef sealImageFile = FileRef.CreateFromLocalFile(@"sampleSealImage.png");
 5) Now, we will define seal field options:
 
 ```csharp
+//Create AppearanceOptions and add the required signature appearance items
+AppearanceOptions appearanceOptions = new AppearanceOptions();
+appearanceOptions.AddItem(AppearanceItem.NAME);
+appearanceOptions.AddItem(AppearanceItem.LABELS);
+appearanceOptions.AddItem(AppearanceItem.DATE);
+appearanceOptions.AddItem(AppearanceItem.SEAL_IMAGE);
+appearanceOptions.AddItem(AppearanceItem.DISTINGUISHED_NAME);
+
 //Set the Seal Field Name to be created in input PDF document.
 string sealFieldName = "Signature1";
 
@@ -166,13 +176,14 @@ bool sealVisible = true;
 
 //Create FieldLocation instance and set the coordinates for applying signature
 FieldLocation fieldLocation = new FieldLocation(150, 250, 350, 200);
-
+                
 //Create FieldOptions instance with required details.
-FieldOptions sealFieldOptions = new FieldOptions.Builder(sealFieldName)
-                                                .SetVisible(sealVisible)
-                                                .SetFieldLocation(fieldLocation)
-                                                .SetPageNumber(sealPageNumber)
-                                                .Build();
+FieldOptions fieldOptions = new FieldOptions.Builder(sealFieldName)
+         .SetVisible(sealVisible)
+         .SetFieldLocation(fieldLocation)
+         .SetPageNumber(sealPageNumber)
+         .Build();
+
 ```
 
 These lines are hard coded but in a real application would typically be dynamic.
@@ -196,18 +207,19 @@ CSCAuthContext cscAuthContext = new CSCAuthContext(accessToken, "Bearer");
 
 //Create CertificateCredentials instance with required certificate details.
 CertificateCredentials certificateCredentials = CertificateCredentials.CSCCredentialBuilder()
-                                                                    .WithProviderName(providerName)
-                                                                    .WithCredentialID(credentialID)
-                                                                    .WithPin(pin)
-                                                                    .WithCSCAuthContext(cscAuthContext)
-                                                                    .Build();
+                    .WithProviderName(providerName)
+                    .WithCredentialID(credentialID)
+                    .WithPin(pin)
+                    .WithCSCAuthContext(cscAuthContext)
+                    .Build();
 ```
 
 7) Now, let's create the seal options with certificate credentials and field options:
 
 ```csharp
 //Create SealingOptions instance with all the sealing parameters.
-SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, sealFieldOptions).Build();
+SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions)
+                    .WithAppearanceOptions(appearanceOptions).Build();
 ```
 
 8) Now, let's create the operation:
@@ -250,7 +262,7 @@ using System.IO;
 using System.Reflection;
 
 /// <summary>
-/// The sample class ElectronicSeal uses the default appearance options to apply electronic seal over the PDF document.
+/// This sample ElectronicSeal illustrates how to apply electronic seal over the PDF document using custom appearance options.
 /// <para>
 /// To know more about PDF Electronic Seal, please see the <a href="https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/" target="_blank">documentation</a>.
 /// </para>
@@ -270,18 +282,28 @@ namespace ElectronicSeal
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                        .FromFile("pdfservices-api-credentials.json")
-                        .Build();
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                    .Build();
+
 
                 // Create an ExecutionContext using credentials.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
 
-                //Get the input document to perform the sealing operation
+                //Set the input document to perform the sealing operation
                 FileRef sourceFile = FileRef.CreateFromLocalFile(@"sampleInvoice.pdf");
 
-                //Get the background seal image for signature , if required.
+                //Set the background seal image for signature , if required.
                 FileRef sealImageFile = FileRef.CreateFromLocalFile(@"sampleSealImage.png");
+
+                //Create AppearanceOptions and add the required signature appearance items
+                AppearanceOptions appearanceOptions = new AppearanceOptions();
+                appearanceOptions.AddItem(AppearanceItem.NAME);
+                appearanceOptions.AddItem(AppearanceItem.LABELS);
+                appearanceOptions.AddItem(AppearanceItem.DATE);
+                appearanceOptions.AddItem(AppearanceItem.SEAL_IMAGE);
+                appearanceOptions.AddItem(AppearanceItem.DISTINGUISHED_NAME);
 
                 //Set the Seal Field Name to be created in input PDF document.
                 string sealFieldName = "Signature1";
@@ -294,9 +316,9 @@ namespace ElectronicSeal
 
                 //Create FieldLocation instance and set the coordinates for applying signature
                 FieldLocation fieldLocation = new FieldLocation(150, 250, 350, 200);
-
+                
                 //Create FieldOptions instance with required details.
-                FieldOptions sealFieldOptions = new FieldOptions.Builder(sealFieldName)
+                FieldOptions fieldOptions = new FieldOptions.Builder(sealFieldName)
                     .SetVisible(sealVisible)
                     .SetFieldLocation(fieldLocation)
                     .SetPageNumber(sealPageNumber)
@@ -306,7 +328,7 @@ namespace ElectronicSeal
                 string providerName = "<PROVIDER_NAME>";
 
                 //Set the access token to be used to access TSP provider hosted APIs.
-                string accessToken = "<ACCESS_TOKEN>";
+                string accessToken = "<ACCESS TOKEN>";
 
                 //Set the credential ID.
                 string credentialID = "<CREDENTIAL_ID>";
@@ -324,10 +346,12 @@ namespace ElectronicSeal
                     .WithCSCAuthContext(cscAuthContext)
                     .Build();
                 
+                
                 //Create SealingOptions instance with all the sealing parameters.
-                SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, sealFieldOptions).Build();
+                SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions)
+                    .WithAppearanceOptions(appearanceOptions).Build();
 
-                //Create the PDFElectronicSealOperation instance using the PDFElectronicSealOptions instance
+                //Create the PDFElectronicSealOperation instance using the SealOptions instance
                 PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.CreateNew(sealOptions);
 
                 //Set the input source file for PDFElectronicSealOperation instance
