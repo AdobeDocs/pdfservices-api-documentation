@@ -1,15 +1,19 @@
 ---
-title: External Storage APIs | Adobe PDF Services
+title: Adobe PDF Services APIs with External Storage | Adobe PDF Services
 ---
 # Overview
 
-## **What is External Storage Solution?**
+## **Adobe PDF Services APIs with External Storage (Supported only for Document Generation API)**
 
 Adobe PDF Services API also provides capabilities of accessing files from the external storage of the client directly. This helps to reduce the friction for the client by removing the overhead of uploading and downloading the document from our transient storage. For accessing files present on the client's storage, we are making use of Signed URLs of the file.
 
 **Signed URIs:** A signed URL is a URL that provides limited permission and time to make a request. Signed URLs contain authentication information in their query string, allowing users without credentials to perform specific actions on a resource. We can generate a download and upload the pre-signed URL of a file and share it with the required entity.
 
 PDF Services API supports the passing of signed URLs of input and output files in the request body. Please refer here for API specs with signed URLs.
+
+<InlineAlert slots="text"/>
+
+Accessing files from External Storage is presently restricted to the Document Generation API. However, we are committed to incorporating this feature across all our APIs in upcoming releases, providing you with enhanced capabilities across all of PDF Services API.
 
 ## Supported External Storage Solutions
 
