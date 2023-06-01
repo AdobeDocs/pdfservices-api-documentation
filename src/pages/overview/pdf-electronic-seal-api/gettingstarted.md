@@ -57,7 +57,7 @@ Once the customer has all the necessary prerequisites in place, they have to cal
 
 Specifies a supported digital signature format:
 
-* PADES : This is the latest and improved signature format which is more strict, concrete, and secure. This is the default signature format. For details, see [ISO 32000-2](./PDF_ISO_32000-2.pdf) and [ETSI EN 319 142-1](./ETSI_EN_319_142-1.pdf)
+* PADES : This is the latest and improved signature format which is more strict, concrete, and secure. For details, see [ISO 32000-2](./PDF_ISO_32000-2.pdf) and [ETSI EN 319 142-1](./ETSI_EN_319_142-1.pdf)
 * PKCS7 : This signature format is less stringent than PADES since it permits more PDF changes without invalidating the digital signature. This is the default signature format.For details, see [ISO 32000-1](./PDF_ISO_32000-1.pdf).
 
 ### TSP Credential Information (_cscCredentialOptions_) : **Required**
