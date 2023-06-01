@@ -105,6 +105,8 @@ It allows the clients to use SDK within the network where all outgoing calls hav
 go through a proxy and are allowed only if allow-listed on the proxy. Please refer to the
 following sample for details.
 
+- [Java Sample for Proxy Server Config](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithProxyServer.java )
+
 - [Java Sample for Proxy Server Config With Basic Authentication](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithAuthenticatedProxyServer.java )
 
 ### Java Proxy Server configuration
