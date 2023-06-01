@@ -184,6 +184,12 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### 3.4.0 (June, 2023; minor release)
+
+| Change  | Language         | Description                                                                                                                     |
+|---------|------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| New | Java,NodeJS,.NET | PDF Electronic Seal operation is now available for all the users in PDF Services SDKs and REST APIs.  |
+
 ### 3.3.0 (May, 2023; minor release)
 
 | Change  | Language         | Description                                                                                                                     |
