@@ -24,8 +24,9 @@ PDF Services API endpoints are authenticated endpoints. Getting an access token 
 ```javascript
 curl --location 'https://pdf-services.adobe.io/token' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
---data-urlencode '{{Placeholder for Client ID}}' \
---data-urlencode '{{Placeholder for Client Secret}}'
+--data-urlencode 'client_id={{Placeholder for Client ID}}' \
+--data-urlencode 'client_secret={{Placeholder for Client Secret}}' \
+--data-urlencode 'org_id={{Placeholder for Organzation ID}}'
 ```
 
 
@@ -560,3 +561,31 @@ After downloading the zip, you can run the samples in the zip directly by settin
     }
 }
 ```
+
+# Check Usage
+
+You can check your consumption for PDF Services API by following the below mentioned steps : 
+
+1. Open your browser to : <https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html>.
+
+2. Click on the `Check Usage` button as shown in the screenshot below : 
+
+![Check Usage](./shot1.png)
+
+3. A popup opens up which provides you with the option to specify the time period for which the consumption is to be checked as shown below : 
+
+![Check Usage Popup](./shot2.png)
+
+4. Select the time period for which you want to check the usage and click on `Generate Report` button :
+
+![Time period selection](./shot3.png)
+
+5. This will generate a report of all the API usage for your organisation. You can also download the report in a CSV format as shown below : 
+
+![Usage](./shot4.png)
+
+Note : If you want to check usage for a particular `client id` just click on the drop down menu below Client ID label and select your `client id` as shown below : 
+
+![All Client IDs](./shot5.png)
+
+![Client ID](./shot6.png)

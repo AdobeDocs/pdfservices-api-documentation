@@ -26,8 +26,9 @@ PDF Services API endpoints are authenticated endpoints. Getting an access token 
 ```javascript
 curl --location 'https://pdf-services.adobe.io/token' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
---data-urlencode '{{Placeholder for Client ID}}' \
---data-urlencode '{{Placeholder for Client Secret}}'
+--data-urlencode 'client_id={{Placeholder for Client ID}}' \
+--data-urlencode 'client_secret={{Placeholder for Client Secret}}' \
+--data-urlencode 'org_id={{Placeholder for Organzation ID}}'
 ```
 
 **STEP 1: Get Credentials -** Invoking PDF Services API requires an Adobe-provided credential. To get one, [click here](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
