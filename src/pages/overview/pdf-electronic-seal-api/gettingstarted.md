@@ -58,7 +58,7 @@ Once the customer has all the necessary prerequisites in place, they have to cal
 Specifies a supported digital signature format:
 
 * PADES : This is the latest and improved signature format which is more strict, concrete, and secure. For details, see [ISO 32000-2](./PDF_ISO_32000-2.pdf) and [ETSI EN 319 142-1](./ETSI_EN_319_142-1.pdf)
-* PKCS7 : This signature format is less stringent than PADES since it permits more PDF changes without invalidating the digital signature. This is the default signature format.For details, see [ISO 32000-1](./PDF_ISO_32000-1.pdf).
+* PKCS7 : This signature format is less stringent than PADES since it permits more PDF changes without invalidating the digital signature. This is the default signature format. For details, see [ISO 32000-1](./PDF_ISO_32000-1.pdf).
 
 ### TSP Credential Information (_cscCredentialOptions_) : **Required**
 
@@ -157,10 +157,10 @@ The PDF Electronic Seal API can be integrated in two ways, either via our REST A
 
 To use the REST API, below are the detailed steps:
 
-1. [Generate asset IDs for all the input documents](https://developer.adobe.com/document-services/docs/apis/#tag/Assets).
+1. [Generate asset IDs for all the input documents](../../../apis/#tag/Assets).
 1. Call the `/asset` API with `mediaType` in the request specifying the document upload type. For example, `application/pdf`. The API responds with an asset ID and upload URI.
 1. Request to upload the input document to the upload URI.
-1. Invoke PDF Electronic Seal API (/pdf-services/operation/electronicseal) by providing the asset IDs generated in step 1 and other required sealing parameters. In the response, the client receives the job URI in the location header. [Details](https://developer.adobe.com/document-services/docs/apis/#operation/pdfoperations.electronicseal).
+1. Invoke PDF Electronic Seal API (/pdf-services/operation/electronicseal) by providing the asset IDs generated in step 1 and other required sealing parameters. In the response, the client receives the job URI in the location header. [Details](../../../apis/#operation/pdfoperations.electronicseal).
 1. Use the job URI to poll the status of the submitted job (Electronic Seal operation). The response includes a job status: *In progress*, *Failed* or *Done*. If the status is done, the seal API returns an asset ID and download URI. **This download URI is valid for 24 hours.**
 1. Download the electronically sealed PDF using download URI from above step.
 
@@ -229,7 +229,7 @@ public class ElectronicSeal {
             appearanceOptions.addItem(AppearanceItem.DISTINGUISHED_NAME);
         
             //Set the Seal Field Name to be created in input PDF document.
-            String sealFieldName = "signature1";
+            String sealFieldName = "Signature1";
         
             //Set the page number in input document for applying seal.
             Integer sealPageNumber = 1;
@@ -300,7 +300,7 @@ public class ElectronicSeal {
 
 ##### .NET
 
-```csharp
+```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
 // cd ElectronicSeal/
@@ -437,7 +437,7 @@ namespace ElectronicSeal
 
 ##### Node JS
 
-```js
+```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
 // node src/electronicseal/electronic-seal.js
@@ -546,7 +546,7 @@ try {
 ```
 ##### REST API
 
-```bash
+```javascript
 curl --location --request POST 'https://pdf-services.adobe.io/operation/electronicseal' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
 --header 'Content-Type: application/json' \
