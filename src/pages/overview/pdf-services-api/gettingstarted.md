@@ -592,7 +592,7 @@ You can check your consumption for PDF Services API by following the below menti
 
 <br />
 
-<b>Note</b> : If you want to check usage for a particular `client id` just click on the drop down menu below Client ID label and select your `client id` as shown below : 
+Note : If you want to check usage for a particular `client id` just click on the drop down menu below Client ID label and select your `client id` as shown below : 
 
 ![All Client IDs](./shot5.png)
 
