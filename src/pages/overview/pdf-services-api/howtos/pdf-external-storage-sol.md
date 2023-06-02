@@ -13,7 +13,7 @@ PDF Services API supports the passing of signed URLs of input and output files i
 
 <InlineAlert slots="text"/>
 
-Accessing files from External Storage is presently restricted to the Document Generation API. However, we are committed to incorporating this feature across all our APIs in upcoming releases, providing you with enhanced capabilities across all of PDF Services API.
+Accessing files from External Storage is presently restricted to the Document Generation API. Future releases of APIs will include the support of external storage connector across all operations.
 
 ## Supported External Storage Solutions
 
