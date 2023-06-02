@@ -65,7 +65,7 @@ Note that that private key is *also* found in this directory so feel free to cop
 
     <ItemGroup>
         <PackageReference Include="log4net" Version="2.0.12" />
-        <PackageReference Include="Adobe.PDFServicesSDK" Version="3.3.0" />
+        <PackageReference Include="Adobe.PDFServicesSDK" Version="3.4.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -99,7 +99,7 @@ Now you're ready to begin coding.
 
 1) We'll begin by including our required dependencies:
 
-```csharp
+```javascript
 using Adobe.PDFServicesSDK;
 using Adobe.PDFServicesSDK.auth;
 using Adobe.PDFServicesSDK.exception;
@@ -116,7 +116,7 @@ using System.Reflection;
 
 2) Now let's define our main class and `Main` method:
 
-```csharp
+```javascript
 namespace ElectronicSeal
 {
     public class Program
@@ -133,7 +133,7 @@ namespace ElectronicSeal
 
 3) Let's create credentials for pdf services and use them:
 
-```csharp
+```javascript
 // Initial setup, create credentials instance.
 Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
                     .WithClientId("PDF_SERVICES_CLIENT_ID")
@@ -146,7 +146,7 @@ ExecutionContext executionContext = ExecutionContext.Create(credentials);
 
 4) Now let's define our input fields:
 
-```csharp
+```javascript
 //Get the input document to perform the sealing operation
 FileRef sourceFile = FileRef.CreateFromLocalFile(@"sampleInvoice.pdf");
 
@@ -156,7 +156,7 @@ FileRef sealImageFile = FileRef.CreateFromLocalFile(@"sampleSealImage.png");
 
 5) Now, we will define seal field options:
 
-```csharp
+```javascript
 //Create AppearanceOptions and add the required signature appearance items
 AppearanceOptions appearanceOptions = new AppearanceOptions();
 appearanceOptions.AddItem(AppearanceItem.NAME);
@@ -190,7 +190,7 @@ These lines are hard coded but in a real application would typically be dynamic.
 
 6) Next, we create a CSC Certificate Credentials instance:
 
-```csharp
+```javascript
 //Set the name of TSP Provider being used.
 string providerName = "<PROVIDER_NAME>";
 
@@ -216,7 +216,7 @@ CertificateCredentials certificateCredentials = CertificateCredentials.CSCCreden
 
 7) Now, let's create the seal options with certificate credentials and field options:
 
-```csharp
+```javascript
 //Create SealingOptions instance with all the sealing parameters.
 SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions)
                     .WithAppearanceOptions(appearanceOptions).Build();
@@ -224,7 +224,7 @@ SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldO
 
 8) Now, let's create the operation:
 
-```csharp
+```javascript
 //Create the PDFElectronicSealOperation instance using the PDFElectronicSealOptions instance
 PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.CreateNew(sealOptions);
 
@@ -237,7 +237,7 @@ pdfElectronicSealOperation.SetSealImage(sealImageFile);
 This code creates a seal operation using sealOptions, input source file and input seal image.
 
 9) Let's execute this seal operation:
-```csharp
+```javascript
 //Execute the operation
 FileRef result = pdfElectronicSealOperation.Execute(executionContext);
 
@@ -247,7 +247,7 @@ result.SaveAs("output/sealedOutput.pdf");
 
 Here's the complete application (`Program.cs`):
 
-```csharp
+```javascript
 using Adobe.PDFServicesSDK;
 using Adobe.PDFServicesSDK.auth;
 using Adobe.PDFServicesSDK.exception;
@@ -399,4 +399,4 @@ namespace ElectronicSeal
 
 ## Next Steps
 
-Now that you've successfully performed your first operation, [review the documentation](https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/) for many other examples and reach out on our [forums](https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK) with any questions. Also remember the samples you downloaded while creating your credentials also have many demos.
+Now that you've successfully performed your first operation, [review the documentation](../../index.md) for many other examples and reach out on our [forums](https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK) with any questions. Also remember the samples you downloaded while creating your credentials also have many demos.
