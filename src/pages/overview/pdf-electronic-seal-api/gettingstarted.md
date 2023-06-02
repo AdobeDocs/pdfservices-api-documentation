@@ -109,7 +109,7 @@ Specifies seal field appearance parameters. These are an enumerated set of displ
     * **SEAL_IMAGE**: Specifies the seal image should be displayed.
   ![Display Options](../images/seal2_ss.png)
   If SEAL_IMAGE is given in appearance parameters and seal image is not passed in the request, the default Acrobat trefoil image is used.
-  ![Display Options](../images/trefoil2_ss.png)
+  ![Display Options](../images/trefoil_ss.png)
 
 **Example JSON**
 
