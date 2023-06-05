@@ -990,7 +990,7 @@
           }
         ],
         "requestBody": {
-          "description": "Params for Document Generation Operation",
+          "description": "Params for Document Generation Operation. Refer to the External Section for using external storage with Document Generation API",
           "content": {
             "application/json": {
               "schema": {
