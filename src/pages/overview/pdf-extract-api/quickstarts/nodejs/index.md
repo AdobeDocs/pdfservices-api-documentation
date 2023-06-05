@@ -10,7 +10,7 @@ To get started using Adobe PDF Extract API, let's walk through a simple scenario
 
 To complete this guide, you will need:
 
-* [Node.js](https://nodejs.org) - Node.js version 10.13.0 or higher is required. 
+* [Node.js](https://nodejs.org) - Node.js version 14.0 or higher is required. 
 * An Adobe ID. If you do not have one, the credential setup will walk you through creating one.
 * A way to edit code. No specific editor is required for this guide.
 

@@ -10,7 +10,7 @@ To get started using Adobe Document Generation API, let's walk through a simple 
 
 To complete this guide, you will need:
 
-* [.NET Core: version 2.1 or above](https://dotnet.microsoft.com/en-us/download)
+* [.NET Core: version 6.0 or above](https://dotnet.microsoft.com/en-us/download)
 * [.Net SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 * A build tool: Either Visual Studio or .NET Core CLI.
 * An Adobe ID. If you do not have one, the credential setup will walk you through creating one.
@@ -64,7 +64,7 @@ Note that that private key is *also* found in this directory so feel free to cop
 
     <ItemGroup>
         <PackageReference Include="log4net" Version="2.0.12" />
-        <PackageReference Include="Adobe.PDFServicesSDK" Version="2.2.1" />
+        <PackageReference Include="Adobe.PDFServicesSDK" Version="3.3.0" />
     </ItemGroup>
 
     <ItemGroup>
