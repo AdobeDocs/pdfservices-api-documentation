@@ -10,7 +10,7 @@ To get started using Adobe PDF Accessibility Auto-Tag API, let's walk through a 
 
 To complete this guide, you will need:
 
-* [.NET Core: version 2.1 or above](https://dotnet.microsoft.com/en-us/download)
+* [.NET Core: version 6.0 or above](https://dotnet.microsoft.com/en-us/download)
 * [.Net SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 * A build tool: Either Visual Studio or .NET Core CLI.
 * An Adobe ID. If you do not have one, the credential setup will walk you through creating one.
