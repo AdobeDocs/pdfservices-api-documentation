@@ -8528,11 +8528,11 @@
         "type": "object",
         "properties": {
           "input": {
-            "description": "Params representing input object for docgen operation",
+            "description": "Params representing input object for document generation operation",
             "type": "object",
             "properties": {
               "uri": {
-              "description": "Input file Presigned URL.",
+              "description": "Input file Pre-signed URL.",
               "type": "string"
               },
               "storage": {
@@ -8550,11 +8550,11 @@
             ]
           },
           "output": {
-            "description": "Params representing output object for docgen operation",
+            "description": "Params representing output object for document generation operation",
             "type": "object",
             "properties": {
               "uri" : {
-                "description": "Output file Upload URL.",
+                "description": "Output file Upload Pre-signed URL.",
                 "type": "string"
               },
               "storage": {
@@ -8572,7 +8572,7 @@
             ]
           },
           "params": {
-            "description": "Params for docgen processing",
+            "description": "Params for document generation processing",
             "type": "object",
             "properties": {
               "outputFormat": {
