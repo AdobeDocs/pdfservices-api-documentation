@@ -185,7 +185,7 @@ module.exports = {
                                 path: 'overview/pdf-services-api/howtos/service-region-configuration-for-apis.md'
                             },
                             {
-                                title: 'External Storage API',
+                                title: 'External Storage for APIs',
                                 path: 'overview/pdf-services-api/howtos/pdf-external-storage-sol.md'
                             },
                             {
@@ -418,7 +418,11 @@ module.exports = {
                             {
                                 title: 'Word Add-in',
                                 path: 'overview/document-generation-api/wordaddin.md'
-                            }
+                            },
+                            {
+                                title: 'External Storage for Document Generation API',
+                                path: 'overview/pdf-services-api/howtos/pdf-external-storage-sol.md'
+                            },
                         ]
                     }
                 ]
