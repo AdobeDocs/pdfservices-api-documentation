@@ -70,7 +70,7 @@ repo as follows:
 ## Migration Guide to PDF Services SDK
 
 Refer to the following table for migrating to PDF Services SDK version
-3.2.0, you can also refer our Samples(
+3.3.0, you can also refer our Samples(
 [Java](https://www.adobe.com/go/pdftoolsapi_java_samples), [Node
 JS](https://www.adobe.com/go/pdftoolsapi_node_sample),
 [.NET](https://www.adobe.com/go/pdftoolsapi_net_samples)). for the
@@ -93,8 +93,8 @@ version.
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <pdfservices.sdk.version>3.2.0</pdfservices.sdk.version>
-    <pdfservices.sdk.samples.version>3.2.0</pdfservices.sdk.samples.version>
+    <pdfservices.sdk.version>3.3.0</pdfservices.sdk.version>
+    <pdfservices.sdk.samples.version>3.3.0</pdfservices.sdk.samples.version>
 </properties>
 
 <dependency>
@@ -116,7 +116,7 @@ import com.adobe.pdfservices.operation.ExecutionContext;
 * Update the latest SDK dependency in package.json file of your project
  
 ```
-"@adobe/pdfservices-node-sdk": "3.2.0"
+"@adobe/pdfservices-node-sdk": "3.3.0"
 ```
 
 * Require the `@adobe/pdfservices-node-sdk` in the Sample file to access the SDK interface
@@ -140,7 +140,7 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 ```
 <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.12" />
-    <PackageReference Include="Adobe.PDFServicesSDK" Version="3.2.0" />
+    <PackageReference Include="Adobe.PDFServicesSDK" Version="3.3.0" />
 </ItemGroup> 
 ```
 
