@@ -328,7 +328,7 @@ namespace ElectronicSeal
                 string providerName = "<PROVIDER_NAME>";
 
                 //Set the access token to be used to access TSP provider hosted APIs.
-                string accessToken = "<ACCESS TOKEN>";
+                string accessToken = "<ACCESS_TOKEN>";
 
                 //Set the credential ID.
                 string credentialID = "<CREDENTIAL_ID>";
