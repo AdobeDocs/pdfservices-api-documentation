@@ -21,7 +21,7 @@ The concept of Signed URLs is common across various cloud storage solutions for 
 - Sharepoint
 - Amazon S3
 
-Any other Storage solution's Signed URLs will not work with PDF Services and will fail the API operation.
+Other Storage solution Signed URLs will not work with PDF Services and will fail the API operation.
 
 ## Sharepoint
 PDF Services APIs can connect with Sharepoint storage of client to download and upload the files using SharePoint Signed URLs. Signed URLs for Sharepoint files can be created using Sharepoint REST API V1 or Sharepoint REST API V2 or Microsoft Graph.
@@ -37,10 +37,10 @@ PDF Services API can connect with Amazon S3 using pre-signed URLs for downloadin
 
 Refer [here](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html) for more details.
 
-## Invoking PDF Services API with Signed URLs
+## How to use ?
 
 
-- PDF Services API supports different request schema for supporting external storage solutions using _Input_ and _Output_ request params. For more details click [here](../../../apis/#tag/Document-Generation).
+PDF Services API supports different request schema for supporting external storage solutions using _Input_ and _Output_ request params. For more details click [here](../../../apis/#tag/Document-Generation).
 
 
 
