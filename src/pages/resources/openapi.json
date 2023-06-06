@@ -16,7 +16,7 @@
   "tags": [
     {
       "name": "Generate Token",
-      "description": "Creates an access token based on an client id, client Secret and organisation id."
+      "description": "Creates an access token using client id and client Secret."
     },
     {
       "name": "Assets",
@@ -136,7 +136,7 @@
           "Generate Token"
         ],
         "summary": "Generate access token to perform PDF Services operations",
-        "description": "Creates an access token based on an client id, client Secret and organisation id.",
+        "description": "Creates an access token using client id and client Secret.",
         "operationId": "authentication.generatetoken",
         "requestBody": {
           "description": "Params for generating the access token.",
@@ -7296,22 +7296,17 @@
         "type": "object",
         "properties": {
           "client_id": {
-            "description": "Contains the client ID obtained upon client registration. Even though not required in the specification if the client sends the client_id as part of another method of authentication. IMS requires this parameter in order to facilitate other cross-cutting concerns like throttling. In case other authentication mechanisms are used (e.g. BASIC authentication), then the value sent as part of them as the client_id must match this value.",
+            "description": "Contains the client ID obtained upon client registration.",
             "type": "string"
           },
           "client_secret": {
-            "description": "If the client authentication is performed in the request body, this parameter is REQUIRED and contains the client secret obtained upon client registration.",
-            "type": "string"
-          },
-          "org_id": {
-            "description": "The ID of the organization in which context the client credentials access token will be issued. If the client is owned by an organization and this parameter is missing, the system will use that ORG, otherwise the caller has to specify an ORG_ID.",
+            "description": "Contains the client secret obtained upon client registration.",
             "type": "string"
           }
         },
         "example": {
           "client_id": "<client_id>",
-          "client_secret": "<client_secret>",
-          "org_id": "<org_id>"
+          "client_secret": "<client_secret>"
         },
         "required": [
           "client_id",
@@ -7339,7 +7334,7 @@
         "example": {
           "access_token": "*******",
           "token_type": "Bearer",
-          "expires_in": "86399996"
+          "expires_in": "86399"
         }
       },
       "documentLanguage": {
@@ -7578,7 +7573,7 @@
                 "type": "string"
               },
               "message": {
-                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>TOO_MANY_REQUESTS</td><td>Too Many Requests.</td></tr></table>",
+                "description": "An English language string that contains more information about the error.  \n\n<table><tr><th>code</th><th>message</th></tr><tr><td>TOO_MANY_REQUESTS</td><td>Too Many Requests.</td></tr><tr><td>INSUFFICIENT_QUOTA</td><td>Either Quota for this operation is not available or Free trial quota is exhausted. Please visit (www.adobe.com/go/pdftoolsapi_home) to start using free trial quota or (www.adobe.com/go/pdftoolsapi_err_quota) to upgrade to paid credentials.</td></tr></table>",
                 "type": "string"
               }
             }
