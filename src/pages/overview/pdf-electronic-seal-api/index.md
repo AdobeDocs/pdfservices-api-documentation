@@ -3,7 +3,7 @@ title: PDF Electronic Seal API | Adobe PDF Services
 ---
 # Overview
 
-## What is an Electronic Seal and PDF Electronic Seal API ?
+## What is PDF Electronic Seal API ?
 
 An Electronic Seal in PDF is akin to an organization's rubber stamp on a paper, but it’s more secure. An organization's electronic seal applied using PDF Electronic Seal API is supported by a digital certificate issued in the name of that organization. The Electronic Seal may be applied using a certificate hosted within a [Cloud Signature Consortium (CSC)](https://cloudsignatureconsortium.org/) compliant service provider. It offers the utmost assurance of identity of the organization while handling digital documents.
 
