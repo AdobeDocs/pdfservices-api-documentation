@@ -458,6 +458,17 @@ module.exports = {
                             }
                         ]
 
+                    },
+                    {
+                        title: 'How Tos',
+                        subTitle: '',
+                        path: 'overview/pdf-electronic-seal-api/howtos/index.md',
+                        pages: [
+                            {
+                                title: 'PDF Electronic Seal API',
+                                path: 'overview/pdf-electronic-seal-api/howtos/electronic-seal-api.md'
+                            },
+                        ]
                     }
                 ]
             },
