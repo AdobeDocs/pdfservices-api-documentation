@@ -9,12 +9,12 @@ title: Electronic Seal API | How Tos | PDF Electronic Seal API | Adobe PDF Servi
 
 Specifies a supported digital signature format:
 
-* PADES : This is the latest and improved signature format which is more strict, concrete, and secure. For details, see [ISO 32000-2](./PDF_ISO_32000-2.pdf) and [ETSI EN 319 142-1](./ETSI_EN_319_142-1.pdf)
-* PKCS7 : This signature format is less stringent than PADES since it permits more PDF changes without invalidating the digital signature. This is the default signature format. For details, see [ISO 32000-1](./PDF_ISO_32000-1.pdf).
+* PADES : This is the latest and improved signature format which is more strict, concrete, and secure. For details, see [ISO 32000-2](../PDF_ISO_32000-2.pdf) and [ETSI EN 319 142-1](../ETSI_EN_319_142-1.pdf)
+* PKCS7 : This signature format is less stringent than PADES since it permits more PDF changes without invalidating the digital signature. This is the default signature format. For details, see [ISO 32000-1](../PDF_ISO_32000-1.pdf).
 
 ### TSP Credential Information (_cscCredentialOptions_) : **Required**
 
-TSP parameters encapsulate the sealer's [certificate credential](#step-1-procure-digital-certificate-credentials) as well as the associated authentication and authorization data.
+TSP parameters encapsulate the sealer's [certificate credential](../gettingstarted/#step-1-procure-digital-certificate-credentials) as well as the associated authentication and authorization data.
 
 * **TSP Name**  (*providerName*) : **Required** : Specifies the name of the Trust Service Provider used to generate the certificate. Presently, only TSPs supporting the OAuth 2.0 client credential authorization flow are supported. The table below provides the provider name mapping for each supported Trust Service Provider.
   ![TSP Name Mapping](../../images/provider_mapping_ss.png)
@@ -116,7 +116,7 @@ Specifies seal field appearance parameters. These are an enumerated set of displ
 
 ## REST API 
 
-See our public API Reference for [PDF Electronic Seal API](../../../apis/#tag/PPDF-Electronic-Seal).
+See our public API Reference for [PDF Electronic Seal API](../../../apis/#tag/PDF-Electronic-Seal).
 
 ## Apply Electronic Seal with default appearance on PDF
 
