@@ -1,23 +1,26 @@
 ---
 title: Getting Started | PDF Electronic Seal API | Adobe PDF Services
 ---
+
 # Getting Started
 
-## PDF Electronic Seal API Prerequisites
+Developing with the PDF Electronic Seal SDK requires an Adobe-provided credential. To get one, [click HERE](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
 
-### Step 1: Procure Digital Certificate Credentials
+<InlineAlert slots="text"/>
 
-1. A client must register with a Trust Service Provider (TSP or TSPs) and obtain the digital certificate. A certificate may be purchased from any of the [supported TSPs](../#supported-trust-service-providers) which are Cloud Signature Consortium (CSC) compliant. For more details, see [CSC](https://cloudsignatureconsortium.org/wp-content/uploads/2020/01/CSC_API_V1_1.0.4.0.pdf) standard.
+During the credential creation process you'll be asked whether you'd like a **Personalized Code Sample Download**. Choosing *Personalized* preconfigures the samples with your credential and removes a few steps from your development setup process.
+
+For using PDFElectronic Seal API, you will also need a digital certificate issued by one of the [supported Trust Service Provider](../#supported-trust-service-providers).
+
+## Step 1: Procure Digital Certificate Credentials
+
+1. A client must register with a Trust Service Provider (TSP) and obtain the digital certificate. A certificate may be purchased from any of the [supported TSPs](../#supported-trust-service-providers) which are Cloud Signature Consortium (CSC) compliant. For more details, see [CSC](https://cloudsignatureconsortium.org/wp-content/uploads/2020/01/CSC_API_V1_1.0.4.0.pdf) standard.
 2. TSP performs remote identity verification of the client who acts as the legal owner of the digital certificate.
 3. After identity verification, the TSP issues a digital certificate to the client with a `credential_id`, `client_id` and `client_secret`. These are typically protected by a static PIN. The client should securely store the credential details and PIN for later use.
 
 ![TSP Token Generation](../images/cert.png)
 
-### Step 2: Get API Credentials
-
-In order to invoke the PDF Electronic Seal API, Adobe client credentials are required. To get one, [click here](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api) and complete the workflow. The client should securely store the credential details for later use.
-
-### Step 3: Obtain your OAuth Token
+## Step 2: Obtain your TSP OAuth Token
 
 The client sends the `client_id` and `client_secret` to the TSP's OAuth 2.0 authorization API. The TSP responds with an access token which is passed as one of the [input parameters](#api-parameters) to the PDF Electronic Seal API. The purpose of this token is to access the TSP's end points for the sealing process. It is valid during a timeframe specified by the TSP.
 
@@ -51,541 +54,592 @@ Once the customer has all the necessary prerequisites in place, they have to cal
 
 ![Seal Workflow](../images/sealFlow.png)
 
-## API Parameters
+## Step 3 : Getting the API access token
 
-### Signature Format (_signatureFormat_)
+PDF Electronic Seal API endpoints are authenticated endpoints. Getting an access token is a two-step process :
 
-Specifies a supported digital signature format:
+1. **- Get Credentials -** Invoking PDF Services API requires an Adobe-provided credential. To get one, [click here](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
+2. **- Retrieve Access Token -** The PDF Services APIs require an access_token to authorize the request. Use the "Get AccessToken" API from the Postman Collection with your client_id, client_secret (mentioned in the pdfservices-api-credentials.json file downloaded in STEP-1) to get the access_token OR directly use the below mentioned cURL to get the access_token.
 
-* PADES : This is the latest and improved signature format which is more strict, concrete, and secure. For details, see [ISO 32000-2](./PDF_ISO_32000-2.pdf) and [ETSI EN 319 142-1](./ETSI_EN_319_142-1.pdf)
-* PKCS7 : This signature format is less stringent than PADES since it permits more PDF changes without invalidating the digital signature. This is the default signature format. For details, see [ISO 32000-1](./PDF_ISO_32000-1.pdf).
+<CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
 
-### TSP Credential Information (_cscCredentialOptions_) : **Required**
+### Rest API
 
-TSP parameters encapsulate the sealer's [certificate credential](#step-1-procure-digital-certificate-credentials) as well as the associated authentication and authorization data.
+```javascript
+curl --location 'https://pdf-services.adobe.io/token' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'client_id={{Placeholder for Client ID}}' \
+--data-urlencode 'client_secret={{Placeholder for Client Secret}}' \
+--data-urlencode 'org_id={{Placeholder for Organzation ID}}'
+```
 
-* **TSP Name**  (*providerName*) : **Required** : Specifies the name of the Trust Service Provider used to generate the certificate. Presently, only TSPs supporting the OAuth 2.0 client credential authorization flow are supported. The table below provides the provider name mapping for each supported Trust Service Provider.
-  ![TSP Name Mapping](../images/provider_mapping_ss.png)
+## Step 4 : Uploading an asset
 
-* **TSP Credential Id**  (*credentialId*) : **Required** : Specifies the Digital ID stored with the TSP that should be used for sealing.
-* **TSP Authorization Context**  (*authorizationContext*) : **Required** : Encapsulates the authorization data required to communicate with the TSPs.
+After getting the access token, we need to upload the asset. Uploading an asset is a two-step process :
 
-    * **Access Token**  (*accessToken*) : **Required** : Specifies the access token used to authorize access to the CSC provider hosted APIs.
-    * **Token Type** (_tokenType_): Specifies the type of access token. Default value is "Bearer".
+1. First you need to get an upload pre-signed URI by using the following API.
 
-* **TSP Credential Authorization Parameter**  (*credentialAuthParameters*) : **Required** : Encapsulates the credential authorization information required to authorize access to their digital certificate.
+You can read more about the API in detail [here](../../../apis/#operation/asset.uploadpresignedurl).
 
-    * **PIN**  (*pin*) : **Required** : Specifies the PIN associated with TSP provided credential ID.
+<CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
 
-### Seal Field Parameters   (*sealFieldOptions*) : **Required**
+### Rest API
 
-The seal field parameters are required to create a new signature field or use an existing signature field.
+```javascript
+curl --location --request POST 'https://pdf-services.adobe.io/assets' \
+--header 'X-API-Key: {{Placeholder for client_id}}' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "mediaType": "{{Placeholder for mediaType}}"
+}'
+```
 
-* **Field Name**  (*fieldName*) : **Required** : Specifies the signature field's name. This must be a non-empty string. If signature field with this field name already exists, that field is used. else a signature field with this name will be created.
-* **Visible** (_visible_): Specifies whether the signature field should be visible or hidden. The default value of `true` creates a visible seal.
-* **Page Number** (_pageNumber_) : **Required** : Specifies the page number to which the signature field should be attached. Page numbers are 1-based. It is only <b>required</b> if the signature field does not exist in the pdf document. If this is provided along with the signature field then the page number should be same on which signature field is present in the document, else an error is thrown.
-* **Location** (_location_) : **Required** : Specifies the coordinates of the seal appearance's bounding box in default PDF user space units. The location is only <b>required</b> if the signature field does not exist in the pdf document. If this is provided along with the existing signature field, then it is ignored.
+2. On getting a `200` response status from the above API, use the `uploadUri` field in the response body of the above API to upload the asset directly to the cloud provider using a PUT API call. You will also get an `assetID` field which will be used in creating the job.
 
-    * **Left** (_left_) : **Required** : The left x-coordinate
-    * **Bottom** (_bottom_) : **Required** : The bottom y-coordinate
-    * **Right** (_right_) : **Required** : The right x-coordinate
-    * **Top** (_top_) : **Required** : The top y-coordinate
+<CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
 
-To add the signature field explicitly, see [how to place a signature field in a PDF](https://www.adobe.com/sign/hub/how-to/add-a-signature-block-to-pdf).
+### Rest API
 
-### Seal Appearance Parameters (_sealAppearanceOptions_)
+```javascript
+curl --location -g --request PUT 'https://dcplatformstorageservice-us-east-1.s3-accelerate.amazonaws.com/b37fd583-1ab6-4f49-99ef-d716180b5de4?X-Amz-Security-Token={{Placeholder for X-Amz-Security-Token}}&X-Amz-Algorithm={{Placeholder for X-Amz-Algorithm}}&X-Amz-Date={{Placeholder for X-Amz-Date}}&X-Amz-SignedHeaders={{Placeholder for X-Amz-SignedHeaders}}&X-Amz-Expires={{Placeholder for X-Amz-Expires}}&X-Amz-Credential={{Placeholder for X-Amz-Credential}}&X-Amz-Signature={{Placeholder for X-Amz-Signature}}' \
+--header 'Content-Type: application/pdf' \
+--data-binary '@{{Placeholder for file path}}'
+```
+<InlineAlert slots="text"/>
 
-Specifies seal field appearance parameters. These are an enumerated set of display items: NAME, DATE, DISTINGUISHED_NAME, LABELS and SEAL_IMAGE.
-* **Display Options**  (*displayOptions*): Specifies the information to display in the seal. NAME and LABELS are the default values.
+For PDF Electronic Seal API, you can specify an optional seal image i.e. a logo/watermark/background image to be used as part of the seal's appearance. Step 4 can be repeated for uploading this seal image.
 
-    * **NAME**: Specifies that the certificate owner's name should be displayed.
-  ![Display Options](../images/name_ss.png)
-    * **DATE**: Specifies that the sealing date/time should be displayed. This value should not be mistaken for a signed timestamp from a timestamp authority.
-  ![Display Options](../images/date_ss.png)
-    * **DISTINGUISHED_NAME**: Specifies that the distinguished name information from the digital certificate should be displayed.
-  ![Display Options](../images/dn_ss.png)
-    * **LABELS**: Specifies that text labels should be displayed.
-  ![Display Options](../images/labels_ss.png)
-    * **SEAL_IMAGE**: Specifies the seal image should be displayed.
-  ![Display Options](../images/seal2_ss.png)
-  If SEAL_IMAGE is given in appearance parameters and seal image is not passed in the request, the default Acrobat trefoil image is used.
-  ![Display Options](../images/trefoil_ss.png)
+## Step 5 : Creating the job
 
-**Example JSON**
+To create a job for the operation, please use the  `assetID` obtained in Step 2 in the API request body. On successful job submission you will get a status code of `201` and a response header `location` which will be used for polling.
+
+For creating the job, please refer to the corresponding API spec for the particular [PDF Operation](../../../apis).
+
+## Step 6 : Fetching the status
+
+Once the job is successfully created, you need to poll the at the `location` returned in response header of Step 3 by using the following API
+
+You can read more about the API in detail [here](../../../apis/#operation/pdfoperations.compresspdf.jobstatus).
+
+<CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
+
+### Rest API
+
+```javascript
+curl --location -g --request GET 'https://pdf-services.adobe.io/operation/compresspdf/{{Placeholder for job id}}/status' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--header 'x-api-key: {{Placeholder for client id}}'
+```
+
+## Step 7 : Downloading the asset
+
+On getting `200` response code from the poll API, you will receive a `status` field in the response body which can either be `in progress`, `done` or `failed`.
+
+If the `status` field is `in progress` you need to keep polling the location until it changes to `done` or `failed`.
+
+If the `status` field is `done` the response body will also have a download pre-signed URI in the `dowloadUri` field, which will be used to download the asset directly from cloud provider by making the following API call
+
+You can read more about the API in detail [here](../../../apis/#operation/asset.get).
+
+<CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
+
+### Rest API
+
+```javascript
+curl --location -g --request GET 'https://dcplatformstorageservice-us-east-1.s3-accelerate.amazonaws.com/b37fd583-1ab6-4f49-99ef-d716180b5de4?X-Amz-Security-Token={{Placeholder for X-Amz-Security-Token}}&X-Amz-Algorithm={{Placeholder for X-Amz-Algorithm}}&X-Amz-Date={{Placeholder for X-Amz-Date}}&X-Amz-SignedHeaders={{Placeholder for X-Amz-SignedHeaders}}&X-Amz-Expires={{Placeholder for X-Amz-Expires}}&X-Amz-Credential={{Placeholder for X-Amz-Credential}}&X-Amz-Signature={{Placeholder for X-Amz-Signature}}'
+```
+
+## There you go! Your job is completed in 7 simple steps.
+
+## SDK
+
+PDF Services API is also accessible via SDKs in popular languages such as Node.js, Java and .NET.
+
+<InlineAlert slots="text"/>
+
+<div>
+
+Please allow-list the following hostnames before using Adobe PDF Services SDK:
+<ul><li>ims-na1.adobelogin.com (Required for all the clients)</li></ul>
+
+For clients using SDK version 3.x and above  :
+<ul>
+<li> Using United States (Default) region for processing documents :
+  <ul>
+    <li>dcplatformstorageservice-us-east-1.s3-accelerate.amazonaws.com</li>
+    <li>pdf-services-ue1.adobe.io</li>
+    <li>pdf-services.adobe.io (Default URI)</li>
+  </ul>
+</li>
+</ul>
+
+<ul>
+  <li> Using Europe region for processing documents :
+  <ul>
+    <li>dcplatformstorageservice-eu-west-1.s3-accelerate.amazonaws.com</li>
+    <li>pdf-services-ew1.adobe.io</li>
+  </ul>
+</li>
+</ul>
+
+For clients using SDK version upto 2.x :
+<ul><li>cpf-ue1.adobe.io</li></ul>
+
+For clients using SDK version upto 1.x :
+<ul><li>senseicore-ue1.adobe.io</li></ul>
+
+</div>
+
+### Java
+
+Jump start your development by bookmarking or downloading the following key resources:
+
+-   This document
+-   [API reference (Javadoc)](https://www.adobe.com/go/pdftoolsapi_java_docs)
+-   [Java Sample code](https://www.adobe.com/go/pdftoolsapi_java_samples)
+-   [Java library](https://www.adobe.com/go/pdftoolsapi_java_maven). The Maven project contains the .jar file.
+
+#### Authentication
+
+Once you complete the [Getting Credentials](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html), a zip or json file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples.
+
+-   **Personalized Download**: Downloads the zip which contains `adobe-dc-pdf-services-sdk-java-samples` with a preconfigured `pdfservices-api-credentials.json` file.
+-   **Non Personalized Download**: Downloads the `pdfservices-api-credentials.json` with your preconfigured credentials.
+
+After downloading the zip, you can run the samples in the zip directly by setting up the two environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following cammands :
+
+- **Windows:**
+   - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+   - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+- **MacOS/Linux:**
+   - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+   - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+**Example pdfservices-api-credentials.json file**
+
+```json 
+{
+    "client_credentials": {
+        "client_id": "<YOUR_CLIENT_ID>",
+        "client_secret": "<YOUR_CLIENT_SECRET>"
+    },
+    "service_principal_credentials": {
+       "organization_id": "<YOUR_ORGNIZATION_ID>"
+    }
+}
+```
+
+#### Setup a Java environment
+
+1.  Install [Java 8 or above](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
+2.  Run `javac -version` to verify your install.
+3.  Verify the JDK bin folder is included in the PATH variable (method varies by OS).
+4.  Install [Maven](https://maven.apache.org/install.html). You may use your preferred tool; for example:
+   - **Windows:** Example: [Chocolatey](https://chocolatey.org/packages/maven).
+   - **Macintosh:** Example: `brew install maven`.
+
+<InlineAlert slots="text" />
+
+Maven uses pom.xml to fetch pdfservices-sdk from the public Maven repository when running the project. The .jar automatically downloads when you build the sample project. Alternatively, you can download the pdfservices-sdk.jar file, and configure your own environment.
+
+##### Running the samples
+
+The quickest way to get up and running is to download the code samples during the Getting Credentials workflow. These samples provide everything from ready-to-run sample code, an embedded credential json file, and pre-configured connections to dependencies.
+
+1.  Download [the Java sample project](https://www.adobe.com/go/pdftoolsapi_java_samples).
+2.  Build the sample project with Maven: `mvn clean install`.
+3.  Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands :
+- **Windows:**
+   - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+   - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+- **MacOS/Linux:**
+   - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+   - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+4.  Test the sample code on the command line.
+5.  Refer to this document for details about running samples as well as the API Reference for API details.
+
+<InlineAlert slots="text" />
+
+Command line execution is not mandatory. You can import the samples Maven project into your preferred IDE (e.g. IntelliJ/Eclipse) and run the samples from there.
+
+#### Verifying download authenticity
+
+For security reasons you may wish to confirm the installer's authenticity. To do so,
+
+1.  After installing the package, navigate to the `.jar.sha1` file.
+2.  Calculate the hash with any 3rd party utility.
+3.  Find and open PDF Services sha1 file. Note: if you're using Maven, look in the .m2 directory.
+4.  Verify the hash you generated matches the value in the .sha1 file.
+
+```
+e8ad2278adfa4161c3bb17e41a70282457face62
+```
+
+#### Logging
+
+Refer to the API docs for error and exception details.
+
+-   For logging, use the [slf4j API](https://www.slf4j.org/) with a log4js-slf4j binding.
+-   Logging configurations are provided in src/main/resources/log4js.properties.
+-   Specify alternate bindings, if required, in pom.xml.
+
+**log4js.properties file**
+
+```properties
+name=PropertiesConfig
+appenders = console
+
+# A sample console appender configuration, Clients can change as per their logging implementation
+rootLogger.level = WARN
+rootLogger.appenderRefs = stdout
+rootLogger.appenderRef.stdout.ref = STDOUT
+
+appender.console.type = Console
+appender.console.name = STDOUT
+appender.console.layout.type = PatternLayout
+appender.console.layout.pattern = [%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
+
+loggers = pdfservicessdk,validator,apache
+
+# Change the logging levels as per need. INFO is recommended for pdfservices-sdk
+logger.pdfservicessdk.name = com.adobe.pdfservices.operation
+logger.pdfservicessdk.level = INFO
+logger.pdfservicessdk.additivity = false
+logger.pdfservicessdk.appenderRef.console.ref = STDOUT
+
+logger.validator.name=org.hibernate
+logger.validator.level=WARN
+
+logger.apache.name=org.apache
+logger.apache.level=WARN
+```
+
+
+![Samples directory structure Java](../images/samplefilesjava.png)
+
+#### Custom projects
+
+While the samples use Maven, you can use your own tools and process.
+
+To build a custom project:
+
+1.  Access the .jar in the [central Maven repository](https://www.adobe.com/go/pdftoolsapi_java_maven).
+2.  Use your preferred dependency management tool (Ivy, Gradle, Maven), to include the SDK .jar dependency.
+3.  Open the pdfservices-api-credentials.json downloaded when you created your credential.
+4.  Add the [Authentication](./index.md#authentication) details as described above.
+
+![Adobe PDF Services SDK On Maven](../images/maven.png)
+
+### .NET
+
+Jumpstart your development by bookmarking or downloading the following key resources:
+
+-   This document
+-   [Nuget package](https://www.adobe.com/go/pdftoolsapi_net_nuget)
+-   [.NET API reference](https://www.adobe.com/go/pdftoolsapi_net_docs)
+-   [.NET Sample code](https://www.adobe.com/go/pdftoolsapi_net_samples)
+-   Input/output test files reside in the their respective sample directories
+
+#### Prerequisites
+
+The samples project requires the following:
+
+-   NET: version 6.0 or above
+-   A build Tool: Either Visual Studio or .NET Core CLI.
+
+#### Authentication
+
+Once you complete the [Getting Credentials](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html), a zip or json file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples.
+
+-   **Personalized Download**: Downloads the zip which contains `adobe-dc-pdf-services-sdk-java-samples` with a preconfigured `pdfservices-api-credentials.json` file.
+-   **Non Personalized Download**: Downloads the `pdfservices-api-credentials.json` with your preconfigured credentials.
+
+After downloading the zip, you can run the samples in the zip directly by setting up the two environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following cammands :
+
+- **Windows:**
+   - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+   - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+- **MacOS/Linux:**
+   - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+   - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+**Example pdfservices-api-credentials.json file**
+
+```json 
+{
+    "client_credentials": {
+        "client_id": "<YOUR_CLIENT_ID>",
+        "client_secret": "<YOUR_CLIENT_SECRET>"
+    },
+    "service_principal_credentials": {
+       "organization_id": "<YOUR_ORGNIZATION_ID>"
+    }
+}
+```
+
+
+#### Set up a NET environment
+
+Running any sample or custom code requires the following:
+
+1.  Download and install the [.NET SDK](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/install).
+
+<InlineAlert slots="text"/>
+
+The Nuget package automatically downloads when you build the sample project.
+
+##### Option 1: Personalized samples setup
+
+The quickest way to get up and running is to download the personalized code samples during the Getting Credentials workflow. These samples provide everything from ready-to-run sample code, an embedded credential json file, and pre-configured connections to dependencies.
+
+1.  Extract the downloaded samples .zip.
+2.  From the samples directory, build the sample project: `dotnet build`.
+3.  Test the sample code on the command line.
+4.  Refer to this document for details about running samples as well as the API Reference for API details.
+
+##### Option 2: Generic samples setup
+
+If you did not choose **Personalized Code Sample Download** during the credential setup process:
+
+1.  Clone or download the [samples project](https://www.adobe.com/go/pdftoolsapi_net_samples).
+2.  Find and replace all occurrences of `pdfservices-api-credentials.json` and `private.key` files with the ones present in your PDFServicesSDK-Credentials.zip file.
+3.  From the samples directory, build the sample project: `dotnet build`.
+4.  Test the sample code on the command line.
+5.  Refer to this document for details about running samples as well as the API Reference for API details.
+
+#### Verifying download authenticity
+
+For security reasons you may wish to confirm the installer's authenticity. To do so,
+
+1.  After installing the Nuget package, navigate to the .nuget directory.
+2.  Find and open the .sha512 file.
+3.  Verify the hash in the downloaded file matches the value published here.
+
+```
+jdTK6PDvEcfTai7D3N97pd0u/XrvnlEJCqTRPKDrb02zcGzaVdX/2Of3WrHOqqWUFsg7GO3yf5cKXJDFN0kdMw==
+```
+
+#### Logging
+
+Refer to the API docs for error and exception details.
+
+The .NET SDK uses [LibLog](https://github.com/damianh/LibLog) as a bridge between different logging frameworks. Log4net is used as a logging provider in the sample projects and the logging configurations are provided in log4net.config. Add the configuration for your preferred provider and set up the necessary appender as required to enable logging.
+
+**log4net.config file**
+
+```html
+<log4net>
+ <root>
+   <level value="INFO" />
+   <appender-ref ref="console" />
+ </root>
+ <appender name="console" type="log4net.Appender.ConsoleAppender">
+   <layout type="log4net.Layout.PatternLayout">
+     <conversionPattern value="%date %level %logger - %message%newline" />
+   </layout>
+ </appender>
+</log4net>
+```
+
+#### Custom projects
+
+While building the sample project automatically downloads the Nuget package, you can do it manually if you wish to use your own tools and process.
+
+1.  Go to <https://www.adobe.com/go/pdftoolsapi_net_nuget>.
+2.  Download the latest package.
+
+![Adobe PDF Services SDK on Nuget](../images/nuget.png)
+
+### Node.js
+
+Jumpstart your development by bookmarking or downloading the following key resources:
+
+-   This document
+-   [Node.js API reference](https://www.adobe.com/go/pdftoolsapi_node_docs)
+-   [Node.js Sample code](http://www.adobe.com/go/pdftoolsapi_node_sample)
+-   [Node.js SDK](http://www.adobe.com/go/pdftoolsapi_node_npm)
+
+#### Authentication
+
+Once you complete the [Getting Credentials](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html), a zip or json file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples.
+
+-   **Personalized Download**: Downloads the zip which contains `adobe-dc-pdf-services-sdk-java-samples` with a preconfigured `pdfservices-api-credentials.json` file.
+-   **Non Personalized Download**: Downloads the `pdfservices-api-credentials.json` with your preconfigured credentials.
+
+After downloading the zip, you can run the samples in the zip directly by setting up the two environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following cammands :
+
+- **Windows:**
+   - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+   - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+- **MacOS/Linux:**
+   - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+   - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+**Example pdfservices-api-credentials.json file**
+
+```json 
+{
+    "client_credentials": {
+        "client_id": "<YOUR_CLIENT_ID>",
+        "client_secret": "<YOUR_CLIENT_SECRET>"
+    },
+    "service_principal_credentials": {
+       "organization_id": "<YOUR_ORGNIZATION_ID>"
+    }
+}
+```
+
+#### Set up a Node.js environment
+
+Running any sample or custom code requires the following steps:
+
+1.  Install [Node.js 14.0](https://nodejs.org/en/download/) or higher.
+
+<InlineAlert slots="text"/>
+
+The @adobe/pdfservices-node-sdk npm package automatically downloads when you build the sample project.
+
+``` 
+npm install --save @adobe/pdfservices-node-sdk
+```
+
+##### Option 1: Personalized samples setup
+
+1.  Extract the downloaded samples .zip.
+2.  From the samples root directory, run `npm install`.
+3.  Test the sample code on the command line.
+4.  Refer to this document for details about running samples as well as the API Reference for API details.
+
+##### Option 2: Generic samples setup
+
+If you did not choose **Personalized Code Sample Download** during the credential setup process:
+
+1.  Download [the Node.js sample project ](http://www.adobe.com/go/pdftoolsapi_node_sample).
+2.  Find and replace all occurrences of `pdfservices-api-credentials.json` and `private.key` files with the ones present in your PDFServicesCredentials.zip file.
+3.  From the samples root directory, run `npm install`.
+4.  Test the sample code on the command line.
+5.  Refer to this document for details about running samples as well as the API Reference for API details.
+
+#### Verifying download authenticity
+
+For security reasons you may wish to confirm the installer's authenticity. To do so,
+
+1.  After installing the package, find and open package.json.
+2.  Find the "\_integrity" key.
+3.  Verify the hash in the downloaded file matches the value published here.
+
+```
+sha512-QFwmKkeFTvZhHXrklJOUbjCx8V6FftBC+DAsMCy7Q9vy5sPXQtO47rjAt6R7nzzcA/uUPfuw4/gCFNh7yRKKRQ==
+```
+
+#### Logging
+
+Refer to the API docs for error and exception details.
+
+The SDK uses the [log4js API](https://www.npmjs.com/package/log4js) for logging. During execution, the SDK searches for config/pdfservices-sdk-log4js-config.json in the working directory and reads the logging properties from there. If you do not provide a configuration file, the default logging logs INFO to the console. Customize the logging settings as needed.
+
+**log4js.properties file**
 
 ```json
 {
-  "signatureFormat": "PADES",
-  "cscCredentialOptions": {
-    "authorizationContext": {
-      "accessToken": "<ACCESS_TOKEN>",
-      "tokenType": "Bearer"
-    },
-    "credentialAuthParameters": {
-      "pin": "<PIN>"
-    },
-    "providerName": "<PROVIDER_NAME>",
-    "credentialId": "<CREDENTIAL_ID>"
-  },
-  "sealFieldOptions": {
-    "pageNumber": 1,
-    "fieldName": "Signature1",
-    "visible": true,
-    "location": {
-      "top": 300,
-      "bottom": 250,
-      "left": 300,
-      "right": 500
+  "appenders": {
+    "consoleAppender": {
+      "_comment": "A sample console appender configuration, Clients can change as per their logging implementation",
+      "type": "console",
+      "layout": {
+        "type": "pattern",
+        "pattern": "%d:[%p]: %m"
+      }
     }
   },
-  "sealAppearanceOptions": {
-    "displayOptions": [
-      "DATE",
-      "DISTINGUISHED_NAME",
-      "SEAL_IMAGE"
-    ]
+  "categories": {
+    "default": {
+      "appenders": ["consoleAppender"],
+      "_comment": "Change the logging levels as per need. info is recommended for pdfservices-node-sdk",
+      "level": "info"
+    }
   }
-}
+} 
 ```
 
 
-## Workflows
+#### Custom projects
 
-The PDF Electronic Seal API can be integrated in two ways, either via our REST API or our PDF Services SDKs.
+While building the sample project automatically downloads the Node package, you can do it manually if you wish to use your own tools and process.
 
-### REST API
+1.  Go to <https://www.npmjs.com/package/@adobe/pdfservices-node-sdk>
+2.  Download the latest package.
 
-To use the REST API, below are the detailed steps:
+![Adobe PDF Services SDK on NPM JS](../images/node.png)
 
-1. [Generate asset IDs for all the input documents](../../../apis/#tag/Assets).
-1. Call the `/asset` API with `mediaType` in the request specifying the document upload type. For example, `application/pdf`. The API responds with an asset ID and upload URI.
-1. Request to upload the input document to the upload URI.
-1. Invoke PDF Electronic Seal API (/pdf-services/operation/electronicseal) by providing the asset IDs generated in step 1 and other required sealing parameters. In the response, the client receives the job URI in the location header. [Details](../../../apis/#operation/pdfoperations.electronicseal).
-1. Use the job URI to poll the status of the submitted job (Electronic Seal operation). The response includes a job status: *In progress*, *Failed* or *Done*. If the status is done, the seal API returns an asset ID and download URI. **This download URI is valid for 24 hours.**
-1. Download the electronically sealed PDF using download URI from above step.
+## Public API
 
+PDF Services API is accessible directly via REST APIs which requires Adobe-provided credential for authentication. Once you've completed the [Getting Credentials](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api) workflow, a zip file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
 
-### PDF Services SDKs
+-   **Personalized Download**: Downloads the zip which contains `adobe-dc-pdf-services-sdk-java-samples` with a preconfigured `pdfservices-api-credentials.json` file.
+-   **Non Personalized Download**: Downloads the `pdfservices-api-credentials.json` with your preconfigured credentials.
 
-Clients can also access the PDF Electronic Seal API via PDF Services SDKs. For additional details, see [Quickstarts](./quickstarts/).
+After downloading the zip, you can run the samples in the zip directly by setting up the two environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following cammands :
 
-To use the PDF Services SDKs, below are the detailed steps:
+- **Windows:**
+   - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+   - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
-1. Save the input PDF and seal image on the local machine. File paths must be absolute.
-1. Save the `pdfservices-api-credentials.json` file created after [generating credentials](./quickstarts/java/#step-one-getting-credentials)
-1. Make a call to the PDF Electronic Seal operation that includes the following:
-    * The file path to an input PDF (from the local machine).
-    * [API parameters](#api-parameters)
-    * Specify an optional file path to a logo/watermark/background image used as part of the seal's appearance. Supported formats include:
-        * image/jpeg
-        * image/png
-        * application/pdf
-1. The electronically sealed PDF file obtained will be saved to the specified output file path.
+- **MacOS/Linux:**
+   - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+   - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
-Use the samples below to generate a PDF with an electronic seal.
+**Example pdfservices-api-credentials.json file**
 
-Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to understand how to use our APIs.
-
-<CodeBlock slots="heading, code" repeat="4" languages="Java, Rest API" />
-
-##### Java
-
-```javascript
-// Get the samples from https://github.com/adobe/pdfservices-java-sdk-samples/tree/beta
-// Run the sample:
-// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.electronicseal.ElectronicSeal
-
-package com.adobe.pdfservices.operation.samples.electronicseal;
-
-public class ElectronicSeal {
-
-    // Initialize the logger.
-    private static final Logger LOGGER = LoggerFactory.getLogger(ElectronicSeal.class);
-
-    public static void main(String[] args) {
-        try {
-
-            // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-                .withClientId("PDF_SERVICES_CLIENT_ID")
-                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                .build();
-
-            // Create an ExecutionContext using credentials.
-            ExecutionContext executionContext = ExecutionContext.create(credentials);
-        
-            //Get the input document to perform the sealing operation
-            FileRef sourceFile = FileRef.createFromLocalFile("src/main/resources/sampleInvoice.pdf");
-        
-            //Get the background seal image for signature , if required.
-            FileRef sealImageFile = FileRef.createFromLocalFile("src/main/resources/sampleSealImage.png");
-        
-            //Create AppearanceOptions and add the required signature display items to it
-            AppearanceOptions appearanceOptions = new AppearanceOptions();
-            appearanceOptions.addItem(AppearanceItem.NAME);
-            appearanceOptions.addItem(AppearanceItem.LABELS);
-            appearanceOptions.addItem(AppearanceItem.DATE);
-            appearanceOptions.addItem(AppearanceItem.SEAL_IMAGE);
-            appearanceOptions.addItem(AppearanceItem.DISTINGUISHED_NAME);
-        
-            //Set the Seal Field Name to be created in input PDF document.
-            String sealFieldName = "Signature1";
-        
-            //Set the page number in input document for applying seal.
-            Integer sealPageNumber = 1;
-        
-            //Set if seal should be visible or invisible.
-            Boolean sealVisible = true;
-        
-            //Create FieldLocation instance and set the coordinates for applying signature
-            FieldLocation fieldLocation = new FieldLocation(150, 250, 350, 200);
-        
-            //Create FieldOptions instance with required details.
-            FieldOptions fieldOptions = new FieldOptions.Builder(sealFieldName)
-                .setFieldLocation(fieldLocation)
-                .setPageNumber(sealPageNumber)
-                .setVisible(sealVisible)
-                .build();
-        
-            //Set the name of TSP Provider being used.
-            String providerName = "<PROVIDER_NAME>";
-        
-            //Set the access token to be used to access TSP provider hosted APIs.
-            String accessToken = "<ACCESS_TOKEN>";
-        
-            //Set the credential ID.
-            String credentialID = "<CREDENTIAL_ID>";
-        
-            //Set the PIN generated while creating credentials.
-            String pin = "<PIN>";
-        
-            //Create CSCAuthContext instance using access token and token type.
-            CSCAuthContext cscAuthContext = new CSCAuthContext(accessToken, "Bearer");
-        
-            //Create CertificateCredentials instance with required certificate details.
-            CertificateCredentials certificateCredentials = CertificateCredentials.cscCredentialBuilder()
-                .withProviderName(providerName)
-                .withCredentialID(credentialID)
-                .withPin(pin)
-                .withCSCAuthContext(cscAuthContext)
-                .build();
-        
-            //Create SealOptions instance with all the sealing parameters.
-            SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions)
-                .withAppearanceOptions(appearanceOptions).build();
-        
-            //Create the PDFElectronicSealOperation instance using the SealOptions instance
-            PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.createNew(sealOptions);
-        
-            //Set the input source file for PDFElectronicSealOperation instance
-            pdfElectronicSealOperation.setInput(sourceFile);
-        
-            //Set the optional input seal image for PDFElectronicSealOperation instance
-            pdfElectronicSealOperation.setSealImage(sealImageFile);
-        
-            //Execute the operation
-            FileRef result = pdfElectronicSealOperation.execute(executionContext);
-    
-            //Save the output at specified location
-            result.saveAs("output/sealedOutput.pdf");
-
-
-        } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
-            LOGGER.error("Exception encountered while executing operation", ex);
-        }
-    }
-}
-
-```
-
-##### .NET
-
-```javascript
-// Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
-// Run the sample:
-// cd ElectronicSeal/
-// dotnet run ElectronicSeal.csproj
-
-namespace ElectronicSeal
+```json 
 {
-    class Program
-    {
-        // Initialize the logger.
-        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
-        static void Main()
-        {
-            //Configure the logging
-            ConfigureLogging();
-
-            try
-            {
-                // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                    .WithClientId("PDF_SERVICES_CLIENT_ID")
-                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                    .Build();
-
-
-                // Create an ExecutionContext using credentials.
-                ExecutionContext executionContext = ExecutionContext.Create(credentials);
-
-                //Set the input document to perform the sealing operation
-                FileRef sourceFile = FileRef.CreateFromLocalFile(@"SampleInvoice.pdf");
-
-                //Set the background seal image for signature , if required.
-                FileRef sealImageFile = FileRef.CreateFromLocalFile(@"sampleSealImage.png");
-
-                //Create AppearanceOptions and add the required signature appearance items
-                AppearanceOptions appearanceOptions = new AppearanceOptions();
-                appearanceOptions.AddItem(AppearanceItem.NAME);
-                appearanceOptions.AddItem(AppearanceItem.LABELS);
-                appearanceOptions.AddItem(AppearanceItem.DATE);
-                appearanceOptions.AddItem(AppearanceItem.SEAL_IMAGE);
-                appearanceOptions.AddItem(AppearanceItem.DISTINGUISHED_NAME);
-
-                //Set the Seal Field Name to be created in input PDF document.
-                string sealFieldName = "Signature1";
-
-                //Set the page number in input document for applying seal.
-                int sealPageNumber = 1;
-
-                //Set if seal should be visible or invisible.
-                bool sealVisible = true;
-
-                //Create FieldLocation instance and set the coordinates for applying signature
-                FieldLocation fieldLocation = new FieldLocation(150, 250, 350, 200);
-                
-                //Create FieldOptions instance with required details.
-                FieldOptions fieldOptions = new FieldOptions.Builder(sealFieldName)
-                    .SetVisible(sealVisible)
-                    .SetFieldLocation(fieldLocation)
-                    .SetPageNumber(sealPageNumber)
-                    .Build();
-
-                //Set the name of TSP Provider being used.
-                string providerName = "<PROVIDER_NAME>";
-
-                //Set the access token to be used to access TSP provider hosted APIs.
-                string accessToken = "<ACCESS_TOKEN>";
-
-                //Set the credential ID.
-                string credentialID = "<CREDENTIAL_ID>";
-
-                //Set the PIN generated while creating credentials.
-                string pin = "<PIN>";
-
-                CSCAuthContext cscAuthContext = new CSCAuthContext(accessToken, "Bearer");
-
-                //Create CertificateCredentials instance with required certificate details.
-                CertificateCredentials certificateCredentials = CertificateCredentials.CSCCredentialBuilder()
-                    .WithProviderName(providerName)
-                    .WithCredentialID(credentialID)
-                    .WithPin(pin)
-                    .WithCSCAuthContext(cscAuthContext)
-                    .Build();
-                
-                
-                //Create SealingOptions instance with all the sealing parameters.
-                SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions)
-                    .WithAppearanceOptions(appearanceOptions).Build();
-
-                //Create the PDFElectronicSealOperation instance using the SealOptions instance
-                PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.CreateNew(sealOptions);
-
-                //Set the input source file for PDFElectronicSealOperation instance
-                pdfElectronicSealOperation.SetInput(sourceFile);
-
-                //Set the optional input seal image for PDFElectronicSealOperation instance
-                pdfElectronicSealOperation.SetSealImage(sealImageFile);
-
-                //Execute the operation
-                FileRef result = pdfElectronicSealOperation.Execute(executionContext);
-
-                // Save the output at specified location.
-                result.SaveAs(output/sealedOutput.pdf);
-            }
-            catch (ServiceUsageException ex)
-            {
-                log.Error("Exception encountered while executing operation", ex);
-            }
-            catch (ServiceApiException ex)
-            {
-                log.Error("Exception encountered while executing operation", ex);
-            }
-            catch (SDKException ex)
-            {
-                log.Error("Exception encountered while executing operation", ex);
-            }
-            catch (IOException ex)
-            {
-                log.Error("Exception encountered while executing operation", ex);
-            }
-            catch (Exception ex)
-            {
-                log.Error("Exception encountered while executing operation", ex);
-            }
-
-        }
-        static void ConfigureLogging()
-        {
-            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-        }
+    "client_credentials": {
+        "client_id": "<YOUR_CLIENT_ID>",
+        "client_secret": "<YOUR_CLIENT_SECRET>"
+    },
+    "service_principal_credentials": {
+       "organization_id": "<YOUR_ORGNIZATION_ID>"
     }
 }
 ```
 
-##### Node JS
+## Check Usage
 
-```javascript
-// Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
-// Run the sample:
-// node src/electronicseal/electronic-seal.js
+You can check your consumption for PDF Services API by following the below mentioned steps :
 
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+1. Open your browser to : <https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html>.
 
-try {
-        // Initial setup, create credentials instance.
-        const credentials =  PDFServicesSdk.Credentials
-            .servicePrincipalCredentialsBuilder()
-            .withClientId("PDF_SERVICES_CLIENT_ID")
-            .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-            .build();
-    
-        // Create an ExecutionContext using credentials
-        const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
-    
-        const pdfElectronicSeal = PDFServicesSdk.PDFElectronicSeal,
-            options = pdfElectronicSeal.options;
-    
-        //Get the input document to perform the sealing operation
-        const sourceFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/sampleInvoice.pdf'),
-    
-            //Get the background seal image for signature , if required.
-            sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/sampleSealImage.png');
-    
-        //Create AppearanceOptions and add the required signature appearance items
-        appearanceOptions = new options.AppearanceOptions();
-        appearanceOptions.addItem(options.AppearanceOptions.AppearanceItem.DATE);
-        appearanceOptions.addItem(options.AppearanceOptions.AppearanceItem.SEAL_IMAGE);
-        appearanceOptions.addItem(options.AppearanceOptions.AppearanceItem.NAME);
-        appearanceOptions.addItem(options.AppearanceOptions.AppearanceItem.LABELS);
-        appearanceOptions.addItem(options.AppearanceOptions.AppearanceItem.DISTINGUISHED_NAME);
-    
-        // Set the Seal Field Name to be created in input PDF document.
-        sealFieldName = "Signature1";
-    
-        // Set the page number in input document for applying seal.
-        sealPageNumber = 1;
-    
-        // Set if seal should be visible or invisible.
-        sealVisible = true;
-    
-        //Create FieldLocation instance and set the coordinates for applying signature
-        fieldLocation = new options.FieldLocation(150,250,350,200);
-    
-        //Create FieldOptions instance with required details.
-        fieldOptions = new options.FieldOptions.Builder(sealFieldName)
-            .setFieldLocation(fieldLocation)
-            .setPageNumber(sealPageNumber)
-            .setVisible(sealVisible)
-            .build();
-    
-        //Set the name of TSP Provider being used.
-        providerName = "<PROVIDER_NAME>";
-    
-        //Set the access token to be used to access TSP provider hosted APIs.
-        accessToken = "<ACCESS_TOKEN>";
-    
-        //Set the credential ID.
-        credentialID = "<CREDENTIAL_ID>";
-    
-        //Set the PIN generated while creating credentials.
-        pin = "<PIN>";
-    
-        //Create CSCAuthContext instance using access token and token type.
-        cscAuthContext = new options.CSCAuthContext(accessToken, "Bearer");
-    
-        //Create CertificateCredentials instance with required certificate details.
-        certificateCredentials = options.CertificateCredentials.cscCredentialBuilder()
-            .withProviderName(providerName)
-            .withCredentialID(credentialID)
-            .withPin(pin)
-            .withCSCAuthContext(cscAuthContext)
-            .build();
-    
-        //Create SealOptions instance with sealing parameters.
-        sealOptions = new options.SealOptions.Builder(certificateCredentials, fieldOptions)
-            .withAppearanceOptions(appearanceOptions)
-            .build()
-    
-        //Create the PDFElectronicSealOperation instance using the SealOptions instance
-        const pdfElectronicSealOperation = pdfElectronicSeal.Operation.createNew(sealOptions);
-    
-        //Set the input source file for PDFElectronicSealOperation instance
-        pdfElectronicSealOperation.setInput(sourceFile);
-    
-        //Set the optional input seal image for PDFElectronicSealOperation instance
-        pdfElectronicSealOperation.setSealImage(sealImageFile);
+2. Click on the `Check Usage` button as shown in the screenshot below :
 
-        // Execute the operation and Save the result to the specified location.
-        pdfElectronicSealOperation.execute(executionContext)
-            .then(result => result.saveAsFile("output/sealedOutput.pdf"))
-            .catch(err => {
-                if(err instanceof PDFServicesSdk.Error.ServiceApiError
-                    || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-                    console.log('Exception encountered while executing operation', err);
-                } else {
-                    console.log('Exception encountered while executing operation', err);
-                }
-            });
-    
-    } catch (err) {
-    console.log('Exception encountered while executing operation', err);
-}
-```
-##### REST API
+![Check Usage](./shot1.png)
 
-```javascript
-curl --location --request POST 'https://pdf-services.adobe.io/operation/electronicseal' \
---header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Content-Type: application/json' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---data-raw '{
-    "inputDocumentAssetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-xxxx-xxxx-087832fca718",
-    "sealImageAssetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-xxxx-xxxx-087832fca718",
-    "sealOptions": {
-        "signatureFormat": "PKCS7",
-        "cscCredentialOptions": {
-            "credentialId": "<CREDENTIAL_ID>",
-            "providerName": "<PROVIDER_NAME>",
-            "authorizationContext": {
-                "tokenType": "Bearer",
-                "accessToken": "<ACCESS_TOKEN>"
-            },
-            "credentialAuthParameters": {
-                "pin": "<PIN>"
-            }
-        },
-        "sealFieldOptions": {
-            "location": {
-                "top": 300,
-                "left": 50,
-                "right": 250,
-                "bottom": 100
-            },
-            "fieldName": "Signature1",
-            "pageNumber": 1
-        },
-        "sealAppearanceOptions": {
-            "displayOptions": [
-                "NAME",
-                "DATE",
-                "DISTINGUISHED_NAME",
-                "LABELS",
-                "SEAL_IMAGE"
-            ]
-        }
-    }
-}'
-```
+<br />
+
+3. A popup opens up which provides you with the option to specify the time period for which the consumption is to be checked as shown below :
+
+![Check Usage Popup](./shot2.png)
+
+<br />
+
+4. Select the time period for which you want to check the usage and click on `Generate Report` button :
+
+![Time period selection](./shot3.png)
+
+<br />
+
+5. This will generate a report of all the API usage for your organisation. You can also download the report in a CSV format as shown below :
+
+![Usage](./shot4.png)
+
+<br />
+
+6. If you want to check usage for a particular `client id` just click on the drop down menu below Client ID label and select your `client id` as shown below :
+
+![All Client IDs](./shot5.png)
+
+![Client ID](./shot6.png)
