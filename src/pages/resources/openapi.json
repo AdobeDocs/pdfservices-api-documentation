@@ -8534,10 +8534,9 @@
                 "description": "Specifies the type of the external storage",
                 "type": "string",
                 "enum": [
-                  "AWS S3",
+                  "S3",
                   "SHAREPOINT"
-                ],
-                "default": "SHAREPOINT"
+                ]
               }
             },
             "required": [
@@ -8556,10 +8555,9 @@
                 "description": "Specifies the type of the external storage",
                 "type": "string",
                 "enum": [
-                  "AWS S3",
+                  "S3",
                   "SHAREPOINT"
-                ],
-                "default": "SHAREPOINT"
+                ]
               }
             },
             "required": [
