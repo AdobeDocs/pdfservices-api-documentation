@@ -29,21 +29,21 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2_ga.png)
+![Project setup](./shot2_spc.png)
 
 6) After your credentials are created, they are automatically  downloaded:
 
-![alt](./shot3.png)
+![alt](./shot3_spc.png)
 
 ## Step Two: Setting up the project
 
 1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-Python (Extract)Samples.zip. If you unzip that archive, you will find a README file, your private key, and a folder of samples:
 
-![alt](./shot5.png)
+![alt](./shot5_spc.png)
 
 2) We need two things from this download. The `private.key` file (as shown in the screenshot above, and the `pdfservices-api-credentials.json` file found in the samples directory:
 
-![alt](./shot6.png)
+![alt](./shot6_spc.png)
 
 <InlineAlert slots="text" />
 

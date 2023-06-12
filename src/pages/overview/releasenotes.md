@@ -116,7 +116,7 @@ import com.adobe.pdfservices.operation.ExecutionContext;
 * Update the latest SDK dependency in package.json file of your project
  
 ```
-"@adobe/pdfservices-node-sdk": "3.2.0"
+"@adobe/pdfservices-node-sdk": "3.4.0"
 ```
 
 * Require the `@adobe/pdfservices-node-sdk` in the Sample file to access the SDK interface
