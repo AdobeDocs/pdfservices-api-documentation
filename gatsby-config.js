@@ -420,7 +420,7 @@ module.exports = {
                                 path: 'overview/document-generation-api/wordaddin.md'
                             },
                             {
-                                title: 'External Storage for Document Generation API',
+                                title: 'External Storage Support',
                                 path: 'overview/pdf-services-api/howtos/pdf-external-storage-sol.md'
                             },
                         ]
