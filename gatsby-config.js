@@ -185,6 +185,10 @@ module.exports = {
                                 path: 'overview/pdf-services-api/howtos/service-region-configuration-for-apis.md'
                             },
                             {
+                                title: 'External Storage for APIs',
+                                path: 'overview/pdf-services-api/howtos/pdf-external-storage-sol.md'
+                            },
+                            {
                                 title: 'Create PDF',
                                 path: 'overview/pdf-services-api/howtos/create-pdf.md'
                             },
@@ -414,14 +418,18 @@ module.exports = {
                             {
                                 title: 'Word Add-in',
                                 path: 'overview/document-generation-api/wordaddin.md'
-                            }
+                            },
+                            {
+                                title: 'External Storage for Document Generation API',
+                                path: 'overview/pdf-services-api/howtos/pdf-external-storage-sol.md'
+                            },
                         ]
                     }
                 ]
             },
             {
-                title: 'PDF Electronic Seal API                       ',
-                subTitle: 'Beta Program',
+                title: 'PDF Electronic Seal API',
+                subTitle: '',
                 path: 'overview/pdf-electronic-seal-api/index.md',
                 pages: [
                     {
@@ -437,11 +445,30 @@ module.exports = {
                         path: 'overview/pdf-electronic-seal-api/quickstarts',
                         pages: [
                             {
+                                title:'Node.js',
+                                path: 'overview/pdf-electronic-seal-api/quickstarts/nodejs/index.md'
+                            },
+                            {
                                 title:'Java',
                                 path: 'overview/pdf-electronic-seal-api/quickstarts/java/index.md'
+                            },
+                            {
+                                title:'.NET',
+                                path: 'overview/pdf-electronic-seal-api/quickstarts/dotnet/index.md'
                             }
                         ]
 
+                    },
+                    {
+                        title: 'How Tos',
+                        subTitle: '',
+                        path: 'overview/pdf-electronic-seal-api/howtos/index.md',
+                        pages: [
+                            {
+                                title: 'PDF Electronic Seal API',
+                                path: 'overview/pdf-electronic-seal-api/howtos/electronic-seal-api.md'
+                            },
+                        ]
                     }
                 ]
             },
@@ -496,6 +523,7 @@ module.exports = {
                 ]
             },
             {
+
                 title: 'Licensing and Usage Limits',
                 path: 'overview/limits.md'
             },

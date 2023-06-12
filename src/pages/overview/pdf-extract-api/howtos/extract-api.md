@@ -158,7 +158,7 @@ Please refer the [API usage guide](./api-usage.md) to understand how to use our 
 
 #### Java
 
-```javascript 
+```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
 // mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.extractpdf.ExtractTextInfoFromPDF
@@ -172,9 +172,10 @@ public class ExtractTextInfoFromPDF {
         try {
 
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
-                    .build();
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                .withClientId("PDF_SERVICES_CLIENT_ID")
+                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .build();
 
             // Create an ExecutionContext using credentials.
             ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -225,8 +226,9 @@ namespace ExtractTextInfoFromPDF
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
                     .Build();
 
                 //Create an ExecutionContext using credentials and create a new operation instance.
@@ -291,9 +293,10 @@ namespace ExtractTextInfoFromPDF
   try {
       // Initial setup, create credentials instance.
       const credentials =  PDFServicesSdk.Credentials
-          .serviceAccountCredentialsBuilder()
-          .fromFile("pdfservices-api-credentials.json")
-          .build();
+            .servicePrincipalCredentialsBuilder()
+            .withClientId("PDF_SERVICES_CLIENT_ID")
+            .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+            .build();
 
       // Create an ExecutionContext using credentials
       const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
@@ -344,9 +347,10 @@ namespace ExtractTextInfoFromPDF
          base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
    
          #Initial setup, create credentials instance.
-         credentials = Credentials.service_account_credentials_builder()\
-             .from_file(base_path + "/pdfservices-api-credentials.json") \
-             .build()
+        credentials = Credentials.service_principal_credentials_builder()
+            .with_client_id('PDF_SERVICES_CLIENT_ID')
+            .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+            .build()
    
          #Create an ExecutionContext using credentials and create a new operation instance.
          execution_context = ExecutionContext.create(credentials)
@@ -402,7 +406,7 @@ Please refer the [API usage guide](./api-usage.md) to understand how to use our 
 
 #### Java
 
-```javascript 
+```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
 // mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.extractpdf.ExtractTextTableInfoFromPDF
@@ -416,9 +420,10 @@ public class ExtractTextTableInfoFromPDF {
         try {
 
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
-                    .build();
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                .withClientId("PDF_SERVICES_CLIENT_ID")
+                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .build();
 
             // Create an ExecutionContext using credentials.
             ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -469,8 +474,9 @@ namespace ExtractTextTableInfoFromPDF
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
                     .Build();
     
                 // Create an ExecutionContext using credentials and create a new operation instance.
@@ -536,9 +542,10 @@ namespace ExtractTextTableInfoFromPDF
   try {
       // Initial setup, create credentials instance.
       const credentials =  PDFServicesSdk.Credentials
-          .serviceAccountCredentialsBuilder()
-          .fromFile("pdfservices-api-credentials.json")
-          .build();
+            .servicePrincipalCredentialsBuilder()
+            .withClientId("PDF_SERVICES_CLIENT_ID")
+            .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+            .build();
 
       // Create an ExecutionContext using credentials
       const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
@@ -591,9 +598,10 @@ namespace ExtractTextTableInfoFromPDF
       base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
       #Initial setup, create credentials instance.
-      credentials = Credentials.service_account_credentials_builder()\
-          .from_file(base_path + "/pdfservices-api-credentials.json") \
-          .build()
+      credentials = Credentials.service_principal_credentials_builder()
+            .with_client_id(PDF_SERVICES_CLIENT_ID')
+            .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+            .build()
 
       #Create an ExecutionContext using credentials and create a new operation instance.
       execution_context = ExecutionContext.create(credentials)
@@ -651,7 +659,7 @@ Please refer the [API usage guide](./api-usage.md) to understand how to use our 
 
 #### Java
 
-```javascript 
+```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
 // mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.extractpdf.ExtractTextTableInfoWithRenditionsFromPDF
@@ -665,9 +673,10 @@ public class ExtractTextTableInfoWithRenditionsFromPDF {
         try {
 
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
-                    .build();
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                .withClientId("PDF_SERVICES_CLIENT_ID")
+                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .build();
 
             // Create an ExecutionContext using credentials.
             ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -718,8 +727,9 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
                     .Build();
 
                 // Create an ExecutionContext using credentials and create a new operation instance.
@@ -786,8 +796,9 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
   try {
       // Initial setup, create credentials instance.
       const credentials =  PDFServicesSdk.Credentials
-          .serviceAccountCredentialsBuilder()
-          .fromFile("pdfservices-api-credentials.json")
+          .servicePrincipalCredentialsBuilder()
+          .withClientId("PDF_SERVICES_CLIENT_ID")
+          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
           .build();
 
       // Create an ExecutionContext using credentials
@@ -842,9 +853,10 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
       base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
       #Initial setup, create credentials instance.
-      credentials = Credentials.service_account_credentials_builder() \
-          .from_file(base_path + "/pdfservices-api-credentials.json") \
-          .build()
+      credentials = Credentials.service_principal_credentials_builder()
+            .with_client_id('PDF_SERVICES_CLIENT_ID')
+            .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+            .build()
 
       #Create an ExecutionContext using credentials and create a new operation instance.
       execution_context = ExecutionContext.create(credentials)
@@ -905,7 +917,7 @@ Please refer the [API usage guide](./api-usage.md) to understand how to use our 
 
 #### Java
 
-```javascript 
+```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
 // mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.extractpdf.ExtractTextTableInfoWithRenditionsFromPDF
@@ -919,9 +931,10 @@ public class ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF {
           try {
 
               // Initial setup, create credentials instance.
-              Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                      .fromFile("pdfservices-api-credentials.json")
-                      .build();
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                .withClientId("PDF_SERVICES_CLIENT_ID")
+                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .build();
 
               // Create an ExecutionContext using credentials.
               ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -972,8 +985,9 @@ namespace ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
                     .Build();
     
                 // Create an ExecutionContext using credentials and create a new operation instance.
@@ -1040,8 +1054,9 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 try {
     // Initial setup, create credentials instance.
     const credentials =  PDFServicesSdk.Credentials
-        .serviceAccountCredentialsBuilder()
-        .fromFile("pdfservices-api-credentials.json")
+        .servicePrincipalCredentialsBuilder()
+        .withClientId("PDF_SERVICES_CLIENT_ID")
+        .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
         .build();
 
     // Create an ExecutionContext using credentials
@@ -1095,9 +1110,10 @@ try {
       base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
       #Initial setup, create credentials instance.
-      credentials = Credentials.service_account_credentials_builder() \
-          .from_file(base_path + "/pdfservices-api-credentials.json") \
-          .build()
+      credentials = Credentials.service_principal_credentials_builder()
+            .with_client_id('PDF_SERVICES_CLIENT_ID')
+            .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+            .build()
 
       #Create an ExecutionContext using credentials and create a new operation instance.
       execution_context = ExecutionContext.create(credentials)
@@ -1159,7 +1175,7 @@ Please refer the [API usage guide](./api-usage.md) to understand how to use our 
 
 #### Java
 
-```javascript 
+```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
 // mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.extractpdf.ExtractTextTableInfoWithCharBoundsFromPDF
@@ -1173,9 +1189,10 @@ public class ExtractTextTableInfoWithCharBoundsFromPDF {
         try {
 
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
-                    .build();
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                .withClientId("PDF_SERVICES_CLIENT_ID")
+                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .build();
 
             // Create an ExecutionContext using credentials.
             ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -1226,9 +1243,10 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                .Build();
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                    .Build();
     
                 // Create an ExecutionContext using credentials and create a new operation instance.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -1294,8 +1312,9 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
   try {
       // Initial setup, create credentials instance.
       const credentials =  PDFServicesSdk.Credentials
-          .serviceAccountCredentialsBuilder()
-          .fromFile("pdfservices-api-credentials.json")
+          .servicePrincipalCredentialsBuilder()
+          .withClientId("PDF_SERVICES_CLIENT_ID")
+          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
           .build();
 
       // Create an ExecutionContext using credentials
@@ -1349,9 +1368,10 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
       base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
       #Initial setup, create credentials instance.
-      credentials = Credentials.service_account_credentials_builder()\
-          .from_file(base_path + "/pdfservices-api-credentials.json") \
-          .build()
+      credentials = Credentials.service_principal_credentials_builder()
+            .with_client_id('PDF_SERVICES_CLIENT_ID')
+            .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+            .build()
 
       #Create an ExecutionContext using credentials and create a new operation instance.
       execution_context = ExecutionContext.create(credentials)
@@ -1414,7 +1434,7 @@ Please refer the [API usage guide](./api-usage.md) to understand how to use our 
 
 #### Java
 
-```javascript 
+```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
 // mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.extractpdf.ExtractTextTableInfoWithTableStructureFromPdf
@@ -1428,9 +1448,10 @@ public class ExtractTextTableInfoWithTableStructureFromPdf {
         try {
 
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
-                    .build();
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                .withClientId("PDF_SERVICES_CLIENT_ID")
+                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .build();
 
             // Create an ExecutionContext using credentials.
             ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -1482,8 +1503,9 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
                     .Build();
     
                 // Create an ExecutionContext using credentials and create a new operation instance.
@@ -1551,8 +1573,9 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
     try {
         // Initial setup, create credentials instance.
         const credentials =  PDFServicesSdk.Credentials
-            .serviceAccountCredentialsBuilder()
-            .fromFile("pdfservices-api-credentials.json")
+            .servicePrincipalCredentialsBuilder()
+            .withClientId("PDF_SERVICES_CLIENT_ID")
+            .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
             .build();
   
         // Create an ExecutionContext using credentials
@@ -1607,9 +1630,10 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
       base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
       #Initial setup, create credentials instance.
-      credentials = Credentials.service_account_credentials_builder() \
-          .from_file(base_path + "/pdfservices-api-credentials.json") \
-          .build()
+      credentials = Credentials.service_principal_credentials_builder()
+            .with_client_id('PDF_SERVICES_CLIENT_ID')
+            .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+            .build()
 
       #Create an ExecutionContext using credentials and create a new operation instance.
       execution_context = ExecutionContext.create(credentials)
@@ -1673,7 +1697,7 @@ Please refer the [API usage guide](./api-usage.md) to understand how to use our 
 
 #### Java
 
-```javascript 
+```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
 // mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.extractpdf.ExtractTextTableWithStylingInfoFromPdf
@@ -1687,8 +1711,9 @@ public class ExtractTextTableInfoWithStylingFromPDF {
         try {
 
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                    .withClientId("PDF_SERVICES_CLIENT_ID")
+                    .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
                     .build();
 
             // Create an ExecutionContext using credentials.
@@ -1740,9 +1765,10 @@ namespace ExtractTextTableInfoWithStylingFromPDF
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                    .Build();
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .   Build();
     
                 // Create an ExecutionContext using credentials and create a new operation instance.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -1809,8 +1835,9 @@ namespace ExtractTextTableInfoWithStylingFromPDF
   try {
       // Initial setup, create credentials instance.
       const credentials =  PDFServicesSdk.Credentials
-          .serviceAccountCredentialsBuilder()
-          .fromFile("pdfservices-api-credentials.json")
+          .servicePrincipalCredentialsBuilder()
+          .withClientId("PDF_SERVICES_CLIENT_ID")
+          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
           .build();
 
       // Create an ExecutionContext using credentials
@@ -1864,9 +1891,10 @@ namespace ExtractTextTableInfoWithStylingFromPDF
       base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
       #Initial setup, create credentials instance.
-      credentials = Credentials.service_account_credentials_builder()\
-          .from_file(base_path + "/pdfservices-api-credentials.json") \
-          .build()
+      credentials = Credentials.service_principal_credentials_builder()
+            .with_client_id('PDF_SERVICES_CLIENT_ID')
+            .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+            .build()
 
       #Create an ExecutionContext using credentials and create a new operation instance.
       execution_context = ExecutionContext.create(credentials)

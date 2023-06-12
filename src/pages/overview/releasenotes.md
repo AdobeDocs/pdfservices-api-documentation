@@ -116,7 +116,7 @@ import com.adobe.pdfservices.operation.ExecutionContext;
 * Update the latest SDK dependency in package.json file of your project
  
 ```
-"@adobe/pdfservices-node-sdk": "3.2.0"
+"@adobe/pdfservices-node-sdk": "3.4.0"
 ```
 
 * Require the `@adobe/pdfservices-node-sdk` in the Sample file to access the SDK interface
@@ -183,6 +183,12 @@ Minor and Patch releases are backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
+
+### 3.4.0 (June, 2023; minor release)
+
+| Change  | Language         | Description                                                                                                                     |
+|---------|------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| New | Java,NodeJS,.NET | PDF Electronic Seal operation is now available for all the users in PDF Services SDKs and REST APIs.  |
 
 ### 3.3.0 (May, 2023; minor release)
 
