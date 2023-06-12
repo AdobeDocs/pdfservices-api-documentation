@@ -16,8 +16,8 @@ The SDK only supports server-based use cases where credentials are saved securel
 
 PDF Services API endpoints are authenticated endpoints. Getting an access token is a two-step process :
 
-1. **- Get Credentials -** Invoking PDF Services API requires an Adobe-provided credential. To get one, [click here](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
-2. **- Retrieve Access Token -** The PDF Services APIs require an access_token to authorize the request. Use the "Get AccessToken" API from the Postman Collection with your client_id, client_secret (mentioned in the pdfservices-api-credentials.json file downloaded in STEP-1) to get the access_token OR directly use the below mentioned cURL to get the access_token.
+1. **Get Credentials** Invoking PDF Services API requires an Adobe-provided credential. To get one, [click here](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
+2. **Retrieve Access Token** The PDF Services APIs require an access_token to authorize the request. Use the "Get AccessToken" API from the Postman Collection with your client_id, client_secret (mentioned in the pdfservices-api-credentials.json file downloaded in 1) to get the access_token OR directly use the below mentioned cURL to get the access_token.
 
 <CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
 
@@ -29,18 +29,6 @@ curl --location 'https://pdf-services.adobe.io/token' \
 --data-urlencode 'client_id={{Placeholder for Client ID}}' \
 --data-urlencode 'client_secret={{Placeholder for Client Secret}}' \
 --data-urlencode 'org_id={{Placeholder for Organzation ID}}'
-```
-
-**STEP 1: Get Credentials -** Invoking PDF Services API requires an Adobe-provided credential. To get one, [click here](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
-
-**STEP 2: Retrieve Access Token -** The PDF Services APIs require an access_token to authorize the request. Use the "Get AccessToken" API from the Postman Collection with your client_id, client_secret (mentioned in the pdfservices-api-credentials.json file downloaded in STEP-1) to get the access_token OR directly use the below mentioned cURL to get the access_token.
-
-<CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
-
-### Rest API
-
-```javascript
-
 ```
 
 ## Step 2 : Uploading an asset
