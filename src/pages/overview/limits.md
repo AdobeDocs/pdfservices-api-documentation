@@ -89,7 +89,12 @@ There are several usage limits that apply to PDF Services API and its underlying
 Free Tier
 ------------------------------
 
-The PDF Services API has a Free Tier where users get free credentials that enable the processing of 500 Document Transactions per month. A Document Transaction is based on the initial endpoint request (i.e., API call) and the digital output. For detailed licensing metrics, please see the tables above.
+The PDF Services API has a Free Tier so that you can take a deep dive
+into its cool features at zero cost. Free Tier users get free credentials
+that enable the processing of 500 Document Transactions per month.
+A Document Transaction is based on the initial endpoint request (i.e., API call)
+and the digital output. For detailed licensing metrics, please see the tables
+above.
 
 Processing is calculated on a per Document Transaction basis.
 
