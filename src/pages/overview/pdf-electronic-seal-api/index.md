@@ -17,9 +17,9 @@ An electronic seal can be represented by solely an image, a text block (comprisi
 
 A PDF Electronic Seal API workflow involves the following:
 
-* **PDF Document**: A PDF document as an input file. The maximum size of the PDF cannot exceed 100MB.
-* **Sealing Parameters**: Parameters  specifying the seal's format, visibility and appearance along with the digital certificate credentials information. For details, see [sealing parameters](gettingstarted#api-parameters).
-* **Seal Image**: The API accepts an **optional** image as a background for seal appearance which overrides the default seal image. The maximum size of the seal image cannot exceed 2MB. Supported image formats are JPEG, PNG and PDF only.
+* **PDF Document**: A PDF document as an input file. The maximum size of the PDF cannot exceed 100 MB.
+* **Sealing Parameters**: Parameters  specifying the seal's format, visibility and appearance along with the digital certificate credentials information. For details, see [sealing parameters](./howtos/electronic-seal-api.md/#api-parameters).
+* **Seal Image**: The API accepts an **optional** image as a background for seal appearance which overrides the default seal image. The maximum size of the seal image cannot exceed 5 MB. Supported image formats are JPEG, PNG and PDF only.
 
 
 ## Supported Trust Service Providers
