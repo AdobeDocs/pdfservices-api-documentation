@@ -25,7 +25,7 @@ The [PDF Services API](pdf-services-api) offers a number of operations to progra
 
 There are also capabilities to compress or linearize document for faster web viewing, and to insert, reorder, rotate, replace, and delete pages within documents.
 
-The PDF Services API includes ready-to-use code samples for Java, Node.JS and .NET and has a [Free Tier which includes 500 free Document Transactions per month.](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api)
+The PDF Services API includes ready-to-use code samples for Java, Node.js and .NET and has a [Free Tier which includes 500 free Document Transactions per month.](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api)
 
 The PDF Services API is also available on [Power Automate](https://docs.microsoft.com/en-us/power-automate/) with easy to integrate Power Automate connectors.
 
