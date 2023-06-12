@@ -97,7 +97,7 @@ const INPUT = './Bodea Brochure.pdf';
 
 ```js
 const credentials =  PDFServicesSdk.Credentials
-        .servicePrincipalsCredentialsBuilder()
+        .servicePrincipalCredentialsBuilder()
         .withClientId("PDF_SERVICES_CLIENT_ID")
         .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
         .build();
@@ -162,7 +162,7 @@ console.log(`About to export ${INPUT} to ${OUTPUT}.`);
 
 // Set up our credentials object.
 const credentials =  PDFServicesSdk.Credentials
-        .servicePrincipalsCredentialsBuilder()
+        .servicePrincipalCredentialsBuilder()
         .withClientId("PDF_SERVICES_CLIENT_ID")
         .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
         .build();

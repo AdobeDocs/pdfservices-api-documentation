@@ -228,7 +228,7 @@ This defines what our output ZIP will be and optionally deletes it if it already
 
 ```javascript
 // Initial setup, create credentials instance.
-Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
     .withClientId("PDF_SERVICES_CLIENT_ID")
     .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
     .build();
@@ -337,7 +337,7 @@ public class ExtractTextInfoFromPDF {
             String input_file = "./Adobe Extract API Sample.pdf";
 
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
                 .withClientId("PDF_SERVICES_CLIENT_ID")
                 .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
                 .build();

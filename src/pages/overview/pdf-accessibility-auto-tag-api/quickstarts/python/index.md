@@ -95,9 +95,9 @@ This defines what our output directory will be and optionally deletes it if it a
 
 ```python
 # Initial setup, create credentials instance.
-credentials = Credentials.service_account_credentials_builder()
-        .with_client_id(os.getenv('CLIENT_ID'))
-        .with_client_secret(os.getenv('CLIENT_SECRET'))
+credentials = Credentials.service_principal_credentials_builder()
+        .with_client_id('PDF_SERVICES_CLIENT_ID')
+        .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
         .build();
 
 # Create an ExecutionContext using credentials and create a new operation instance.

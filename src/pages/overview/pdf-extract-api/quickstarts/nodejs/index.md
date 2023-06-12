@@ -102,7 +102,7 @@ This defines what our output ZIP will be and optionally deletes it if it already
 
 ```js
 const credentials =  PDFServicesSdk.Credentials
-    .servicePrincipalsCredentialsBuilder()
+    .servicePrincipalCredentialsBuilder()
     .withClientId("PDF_SERVICES_CLIENT_ID")
     .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
     .build();
@@ -181,10 +181,11 @@ if(fs.existsSync(OUTPUT_ZIP)) fs.unlinkSync(OUTPUT_ZIP);
 
 const INPUT_PDF = './Adobe Extract API Sample.pdf';
 
-const credentials = PDFServicesSdk.Credentials
-		.serviceAccountCredentialsBuilder()
-		.fromFile('pdfservices-api-credentials.json')
-		.build();
+const credentials =  PDFServicesSdk.Credentials
+        .servicePrincipalCredentialsBuilder()
+        .withClientId("PDF_SERVICES_CLIENT_ID")
+        .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+        .build();
 
 // Create an ExecutionContext using credentials
 const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);

@@ -225,7 +225,7 @@ This defines what our output directory will be and optionally deletes it if it a
 
 ```javascript
 // Initial setup, create credentials instance.
-Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
     .withClientId("PDF_SERVICES_CLIENT_ID")
     .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
     .build();
@@ -300,7 +300,7 @@ public class AutotagPDF {
             String taggingReport = outputPath + inputPDF +"-tagging-report.xlsx";
             
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
                 .withClientId("PDF_SERVICES_CLIENT_ID")
                 .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
                 .build();

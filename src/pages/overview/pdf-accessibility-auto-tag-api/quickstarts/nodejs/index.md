@@ -102,7 +102,7 @@ This defines what our output directory will be and optionally deletes it if it a
 
 ```js
 const credentials =  PDFServicesSdk.Credentials
-    .servicePrincipalsCredentialsBuilder()
+    .servicePrincipalCredentialsBuilder()
     .withClientId("PDF_SERVICES_CLIENT_ID")
     .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
     .build();
@@ -163,7 +163,7 @@ const TAGGED_PDF = OUTPUT_PATH + INPUT_PDF + "-tagged-pdf.pdf";
 const TAGGING_REPORT = OUTPUT_PATH + INPUT_PDF + "-tagging-report.xlsx";
 
 const credentials =  PDFServicesSdk.Credentials
-    .servicePrincipalsCredentialsBuilder()
+    .servicePrincipalCredentialsBuilder()
     .withClientId("PDF_SERVICES_CLIENT_ID")
     .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
     .build();

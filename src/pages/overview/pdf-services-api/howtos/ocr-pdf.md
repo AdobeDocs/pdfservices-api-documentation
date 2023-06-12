@@ -132,7 +132,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
  try {
    // Initial setup, create credentials instance.
      const credentials =  PDFServicesSdk.Credentials
-         .servicePrincipalsCredentialsBuilder()
+         .servicePrincipalCredentialsBuilder()
          .withClientId("PDF_SERVICES_CLIENT_ID")
          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
          .build();
@@ -327,7 +327,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
   try {
     // Initial setup, create credentials instance.
       const credentials =  PDFServicesSdk.Credentials
-          .servicePrincipalsCredentialsBuilder()
+          .servicePrincipalCredentialsBuilder()
           .withClientId("PDF_SERVICES_CLIENT_ID")
           .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
           .build();

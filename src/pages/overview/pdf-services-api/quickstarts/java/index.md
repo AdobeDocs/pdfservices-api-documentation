@@ -220,7 +220,7 @@ System.out.println("Exporting " + input_file + " to " + output_file + "\n");
 
 ```javascript
 // Initial setup, create credentials instance.
-Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
         .withClientId("PDF_SERVICES_CLIENT_ID")
         .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
         .build();
@@ -289,7 +289,7 @@ public class ExportPDFToWord {
       		System.out.println("Exporting " + input_file + " to " + output_file + "\n");
 
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.servicePrincipalsCredentialsBuilder()
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
                 .withClientId("PDF_SERVICES_CLIENT_ID")
                 .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
                 .build();

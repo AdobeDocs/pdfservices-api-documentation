@@ -187,7 +187,7 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 try {
     // Initial setup, create credentials instance.
     const credentials =  PDFServicesSdk.Credentials
-        .servicePrincipalsCredentialsBuilder()
+        .servicePrincipalCredentialsBuilder()
         .withClientId("PDF_SERVICES_CLIENT_ID")
         .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
         .build();
@@ -235,8 +235,8 @@ try:
 
     # Initial setup, create credentials instance.
     credentials = Credentials.service_principal_credentials_builder()
-        .with_client_id(os.getenv('PDF_SERVICES_CLIENT_ID'))
-        .with_client_secret(os.getenv('PDF_SERVICES_CLIENT_SECRET'))
+        .with_client_id('PDF_SERVICES_CLIENT_ID')
+        .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
         .build()
 
     # Create an ExecutionContext using credentials and create a new operation instance.
@@ -546,7 +546,7 @@ try {
 
     // Initial setup, create credentials instance.
     const credentials =  PDFServicesSdk.Credentials
-        .servicePrincipalsCredentialsBuilder()
+        .servicePrincipalCredentialsBuilder()
         .withClientId("PDF_SERVICES_CLIENT_ID")
         .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
         .build();
@@ -688,8 +688,8 @@ class AutotagPDFParameterised:
         try:
             # Initial setup, create credentials instance.
             credentials = Credentials.service_principal_credentials_builder()
-                .with_client_id(os.getenv('PDF_SERVICES_CLIENT_ID'))
-                .with_client_secret(os.getenv('PDF_SERVICES_CLIENT_SECRET'))
+                .with_client_id('PDF_SERVICES_CLIENT_ID')
+                .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
                 .build()
 
             # Create an ExecutionContext using credentials and create a new operation instance.

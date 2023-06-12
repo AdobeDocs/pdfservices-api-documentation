@@ -265,7 +265,7 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
  try {
    // Initial setup, create credentials instance.
      const credentials =  PDFServicesSdk.Credentials
-         .servicePrincipalsCredentialsBuilder()
+         .servicePrincipalCredentialsBuilder()
          .withClientId("PDF_SERVICES_CLIENT_ID")
          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
          .build();
@@ -554,7 +554,7 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
     try {
         // Initial setup, create credentials instance.
         const credentials =  PDFServicesSdk.Credentials
-            .servicePrincipalsCredentialsBuilder()
+            .servicePrincipalCredentialsBuilder()
             .withClientId("PDF_SERVICES_CLIENT_ID")
             .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
             .build();
