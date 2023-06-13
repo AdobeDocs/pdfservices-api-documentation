@@ -56,8 +56,3 @@ dynamic content based on the actual values corresponding to the data
 input.
 
 To learn more, please visit [QuickStarts](quickstarts.md)
-
-**External Storage Support**
-The Adobe Document Generation API now supports accessing client files directly from their external storage. Clients can use Signed URLs from their storage solution to conveniently access and utilize their files through the Document Generation API. 
-
-To learn more, please visit [External Storage for Adobe PDF Services APIs](https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol/).
