@@ -4,13 +4,13 @@ title: Getting Started | PDF Electronic Seal API | Adobe PDF Services
 
 # Getting Started
 
-Developing with the PDF Electronic Seal SDK requires an Adobe-provided credential. To get one, [click HERE](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
+<p>
+The API is accessible through SDKs which help you get up and running quickly. Once you've received your developer credential, download and set up one of the sample projects. After you're familiar with the APIs, leverage the samples in your own server-side code.
+</p>
 
 <InlineAlert slots="text"/>
 
-During the credential creation process you'll be asked whether you'd like a **Personalized Code Sample Download**. Choosing *Personalized* preconfigures the samples with your credential and removes a few steps from your development setup process.
-
-For using PDFElectronic Seal API, you will also need a digital certificate issued by one of the [supported Trust Service Provider](../#supported-trust-service-providers).
+The SDK only supports server-based use cases where credentials are saved securely in a safe environment. SDK credentials should not be sent to untrusted environments or end user devices.
 
 ## Step 1: Procure Digital Certificate Credentials
 
@@ -22,7 +22,7 @@ For using PDFElectronic Seal API, you will also need a digital certificate issue
 
 ## Step 2: Obtain your TSP OAuth Token
 
-The client sends the `client_id` and `client_secret` to the TSP's OAuth 2.0 authorization API. The TSP responds with an access token which is passed as one of the [input parameters](#api-parameters) to the PDF Electronic Seal API. The purpose of this token is to access the TSP's end points for the sealing process. It is valid during a timeframe specified by the TSP.
+The client sends the `client_id` and `client_secret` to the TSP's OAuth 2.0 authorization API. The TSP responds with an access token which is passed as one of the [input parameters](./howtos/electronic-seal-api.md/#api-parameters) to the PDF Electronic Seal API. The purpose of this token is to access the TSP's end points for the sealing process. It is valid during a timeframe specified by the TSP.
 
 ![TSP Token Generation](../images/TSPToken.png)
 
@@ -58,12 +58,10 @@ Once the customer has all the necessary prerequisites in place, they have to cal
 
 PDF Electronic Seal API endpoints are authenticated endpoints. Getting an access token is a two-step process :
 
-1. **- Get Credentials -** Invoking PDF Services API requires an Adobe-provided credential. To get one, [click here](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
-2. **- Retrieve Access Token -** The PDF Services APIs require an access_token to authorize the request. Use the "Get AccessToken" API from the Postman Collection with your client_id, client_secret (mentioned in the pdfservices-api-credentials.json file downloaded in STEP-1) to get the access_token OR directly use the below mentioned cURL to get the access_token.
+1. ** Get Credentials ** Invoking PDF Services API requires an Adobe-provided credential. To get one, [click here](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
+2. ** Retrieve Access Token ** The PDF Services APIs require an access_token to authorize the request. Use the "Get AccessToken" API from the Postman Collection with your client_id, client_secret (mentioned in the pdfservices-api-credentials.json file downloaded in STEP-1) to get the access_token OR directly use the below mentioned cURL to get the access_token.
 
-<CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
-
-### Rest API
+<CodeBlock slots="heading, code" repeat="1" languages="Rest API" />
 
 ```javascript
 curl --location 'https://pdf-services.adobe.io/token' \
@@ -83,8 +81,6 @@ You can read more about the API in detail [here](../../../apis/#operation/asset.
 
 <CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
 
-### Rest API
-
 ```javascript
 curl --location --request POST 'https://pdf-services.adobe.io/assets' \
 --header 'X-API-Key: {{Placeholder for client_id}}' \
@@ -97,9 +93,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/assets' \
 
 2. On getting a `200` response status from the above API, use the `uploadUri` field in the response body of the above API to upload the asset directly to the cloud provider using a PUT API call. You will also get an `assetID` field which will be used in creating the job.
 
-<CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
-
-### Rest API
+<CodeBlock slots="heading, code" repeat="1" languages="Rest API" />
 
 ```javascript
 curl --location -g --request PUT 'https://dcplatformstorageservice-us-east-1.s3-accelerate.amazonaws.com/b37fd583-1ab6-4f49-99ef-d716180b5de4?X-Amz-Security-Token={{Placeholder for X-Amz-Security-Token}}&X-Amz-Algorithm={{Placeholder for X-Amz-Algorithm}}&X-Amz-Date={{Placeholder for X-Amz-Date}}&X-Amz-SignedHeaders={{Placeholder for X-Amz-SignedHeaders}}&X-Amz-Expires={{Placeholder for X-Amz-Expires}}&X-Amz-Credential={{Placeholder for X-Amz-Credential}}&X-Amz-Signature={{Placeholder for X-Amz-Signature}}' \
@@ -122,9 +116,7 @@ Once the job is successfully created, you need to poll the at the `location` ret
 
 You can read more about the API in detail [here](../../../apis/#operation/pdfoperations.compresspdf.jobstatus).
 
-<CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
-
-### Rest API
+<CodeBlock slots="heading, code" repeat="1" languages="Rest API" />
 
 ```javascript
 curl --location -g --request GET 'https://pdf-services.adobe.io/operation/compresspdf/{{Placeholder for job id}}/status' \
@@ -142,9 +134,7 @@ If the `status` field is `done` the response body will also have a download pre-
 
 You can read more about the API in detail [here](../../../apis/#operation/asset.get).
 
-<CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
-
-### Rest API
+<CodeBlock slots="heading, code" repeat="1" languages="Rest API" />
 
 ```javascript
 curl --location -g --request GET 'https://dcplatformstorageservice-us-east-1.s3-accelerate.amazonaws.com/b37fd583-1ab6-4f49-99ef-d716180b5de4?X-Amz-Security-Token={{Placeholder for X-Amz-Security-Token}}&X-Amz-Algorithm={{Placeholder for X-Amz-Algorithm}}&X-Amz-Date={{Placeholder for X-Amz-Date}}&X-Amz-SignedHeaders={{Placeholder for X-Amz-SignedHeaders}}&X-Amz-Expires={{Placeholder for X-Amz-Expires}}&X-Amz-Credential={{Placeholder for X-Amz-Credential}}&X-Amz-Signature={{Placeholder for X-Amz-Signature}}'
