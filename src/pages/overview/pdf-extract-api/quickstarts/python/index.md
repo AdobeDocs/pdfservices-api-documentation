@@ -100,9 +100,10 @@ This defines what our output ZIP will be and optionally deletes it if it already
 
 ```python
 #Initial setup, create credentials instance.
-credentials = Credentials.service_account_credentials_builder()\
-	.from_file("./pdfservices-api-credentials.json") \
-	.build()
+credentials = Credentials.service_principal_credentials_builder()
+    .with_client_id('PDF_SERVICES_CLIENT_ID')
+    .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+    .build();
 
 #Create an ExecutionContext using credentials and create a new operation instance.
 execution_context = ExecutionContext.create(credentials)
@@ -184,9 +185,10 @@ input_pdf = "./Adobe Extract API Sample.pdf"
 try:
 
 	#Initial setup, create credentials instance.
-	credentials = Credentials.service_account_credentials_builder()\
-		.from_file("./pdfservices-api-credentials.json") \
-		.build()
+    credentials = Credentials.service_principal_credentials_builder()
+        .with_client_id('PDF_SERVICES_CLIENT_ID')
+        .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+        .build();
 
 	#Create an ExecutionContext using credentials and create a new operation instance.
 	execution_context = ExecutionContext.create(credentials)

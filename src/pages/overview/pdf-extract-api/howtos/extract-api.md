@@ -599,7 +599,7 @@ namespace ExtractTextTableInfoFromPDF
 
       #Initial setup, create credentials instance.
       credentials = Credentials.service_principal_credentials_builder()
-            .with_client_id(PDF_SERVICES_CLIENT_ID')
+            .with_client_id('PDF_SERVICES_CLIENT_ID')
             .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
             .build()
 
@@ -1768,7 +1768,7 @@ namespace ExtractTextTableInfoWithStylingFromPDF
                 Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
                     .WithClientId("PDF_SERVICES_CLIENT_ID")
                     .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                .   Build();
+                    .Build();
     
                 // Create an ExecutionContext using credentials and create a new operation instance.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);

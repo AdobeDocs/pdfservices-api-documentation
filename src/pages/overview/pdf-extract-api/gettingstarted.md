@@ -27,8 +27,7 @@ PDF Services API endpoints are authenticated endpoints. Getting an access token 
 curl --location 'https://pdf-services.adobe.io/token' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'client_id={{Placeholder for Client ID}}' \
---data-urlencode 'client_secret={{Placeholder for Client Secret}}' \
---data-urlencode 'org_id={{Placeholder for Organzation ID}}'
+--data-urlencode 'client_secret={{Placeholder for Client Secret}}'
 ```
 
 ## Step 2 : Uploading an asset
@@ -407,7 +406,7 @@ While building the sample project automatically downloads the Nuget package, you
 1.  Go to <https://www.adobe.com/go/pdftoolsapi_net_nuget>.
 2.  Download the latest package.
 
-![Adobe PDF Services SDK on Nuget](../images/nuget.png)
+![Adobe PDF Services SDK on Nuget](../images/nuget_free_tier.png)
 
 ### Node.js
 
@@ -530,7 +529,7 @@ While building the sample project automatically downloads the Node package, you 
 1.  Go to <https://www.npmjs.com/package/@adobe/pdfservices-node-sdk>
 2.  Download the latest package.
 
-![Adobe PDF Services SDK on NPM JS](../images/node.png)
+![Adobe PDF Services SDK on NPM JS](../images/node_free_tier.png)
 
 ### Python
 
