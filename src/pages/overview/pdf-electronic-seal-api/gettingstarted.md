@@ -58,10 +58,12 @@ Once the customer has all the necessary prerequisites in place, they have to cal
 
 PDF Electronic Seal API endpoints are authenticated endpoints. Getting an access token is a two-step process :
 
-1. ** Get Credentials ** Invoking PDF Services API requires an Adobe-provided credential. To get one, [click here](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
-2. ** Retrieve Access Token ** The PDF Services APIs require an access_token to authorize the request. Use the "Get AccessToken" API from the Postman Collection with your client_id, client_secret (mentioned in the pdfservices-api-credentials.json file downloaded in STEP-1) to get the access_token OR directly use the below mentioned cURL to get the access_token.
+1. ** Get Credentials ** -  Invoking PDF Services API requires an Adobe-provided credential. To get one, [click here](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
+2. ** Retrieve Access Token ** - The PDF Services APIs require an access_token to authorize the request. Use the "Get AccessToken" API from the Postman Collection with your client_id, client_secret (mentioned in the pdfservices-api-credentials.json file downloaded in STEP-1) to get the access_token OR directly use the below mentioned cURL to get the access_token.
 
 <CodeBlock slots="heading, code" repeat="1" languages="Rest API" />
+
+### Rest API
 
 ```javascript
 curl --location 'https://pdf-services.adobe.io/token' \
@@ -81,6 +83,8 @@ You can read more about the API in detail [here](../../../apis/#operation/asset.
 
 <CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
 
+### Rest API
+
 ```javascript
 curl --location --request POST 'https://pdf-services.adobe.io/assets' \
 --header 'X-API-Key: {{Placeholder for client_id}}' \
@@ -94,6 +98,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/assets' \
 2. On getting a `200` response status from the above API, use the `uploadUri` field in the response body of the above API to upload the asset directly to the cloud provider using a PUT API call. You will also get an `assetID` field which will be used in creating the job.
 
 <CodeBlock slots="heading, code" repeat="1" languages="Rest API" />
+
+### Rest API
 
 ```javascript
 curl --location -g --request PUT 'https://dcplatformstorageservice-us-east-1.s3-accelerate.amazonaws.com/b37fd583-1ab6-4f49-99ef-d716180b5de4?X-Amz-Security-Token={{Placeholder for X-Amz-Security-Token}}&X-Amz-Algorithm={{Placeholder for X-Amz-Algorithm}}&X-Amz-Date={{Placeholder for X-Amz-Date}}&X-Amz-SignedHeaders={{Placeholder for X-Amz-SignedHeaders}}&X-Amz-Expires={{Placeholder for X-Amz-Expires}}&X-Amz-Credential={{Placeholder for X-Amz-Credential}}&X-Amz-Signature={{Placeholder for X-Amz-Signature}}' \
@@ -118,6 +124,8 @@ You can read more about the API in detail [here](../../../apis/#operation/pdfope
 
 <CodeBlock slots="heading, code" repeat="1" languages="Rest API" />
 
+### Rest API
+
 ```javascript
 curl --location -g --request GET 'https://pdf-services.adobe.io/operation/electronicseal/{{Placeholder for job id}}/status' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
@@ -135,6 +143,8 @@ If the `status` field is `done` the response body will also have a download pre-
 You can read more about the API in detail [here](../../../apis/#operation/asset.get).
 
 <CodeBlock slots="heading, code" repeat="1" languages="Rest API" />
+
+### Rest API
 
 ```javascript
 curl --location -g --request GET 'https://dcplatformstorageservice-us-east-1.s3-accelerate.amazonaws.com/b37fd583-1ab6-4f49-99ef-d716180b5de4?X-Amz-Security-Token={{Placeholder for X-Amz-Security-Token}}&X-Amz-Algorithm={{Placeholder for X-Amz-Algorithm}}&X-Amz-Date={{Placeholder for X-Amz-Date}}&X-Amz-SignedHeaders={{Placeholder for X-Amz-SignedHeaders}}&X-Amz-Expires={{Placeholder for X-Amz-Expires}}&X-Amz-Credential={{Placeholder for X-Amz-Credential}}&X-Amz-Signature={{Placeholder for X-Amz-Signature}}'
