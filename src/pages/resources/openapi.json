@@ -8944,7 +8944,7 @@
                 "items": {
                   "type": "string"
                 },
-                "default": "{\"displayOptions\": [\n                \"NAME\",\n                \"LABELS\"\n              ]}"
+                "default": ["NAME","LABELS"]
               }
             }
           }
