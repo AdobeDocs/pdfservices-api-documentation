@@ -113,12 +113,12 @@ For creating the job, please refer to the corresponding API spec for the particu
 
 Once the job is successfully created, you need to poll the at the `location` returned in response header of Step 3 by using the following API
 
-You can read more about the API in detail [here](../../../apis/#operation/pdfoperations.compresspdf.jobstatus).
+You can read more about the API in detail [here](../../../apis/#operation/pdfoperations.electronicseal.jobstatus).
 
 <CodeBlock slots="heading, code" repeat="1" languages="Rest API" />
 
 ```javascript
-curl --location -g --request GET 'https://pdf-services.adobe.io/operation/compresspdf/{{Placeholder for job id}}/status' \
+curl --location -g --request GET 'https://pdf-services.adobe.io/operation/electronicseal/{{Placeholder for job id}}/status' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
 --header 'x-api-key: {{Placeholder for client id}}'
 ```
