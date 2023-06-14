@@ -4,13 +4,13 @@ title: Node.js | Quickstarts | PDF Electronic Seal API | Adobe PDF Services
 
 # Quickstart for Adobe PDF Electronic Seal API (Node.js)
 
-To get started using Adobe PDF Electronic Seal API, let's walk through a simple scenario - Applying an electronic seal on an invoice PDF document. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
+To get started using Adobe PDF Electronic Seal API, let's walk through a simple scenario - Applying an electronic seal on an invoice PDF document. In this guide, we will walk you through the complete process for creating a program that will accomplish this task.
 
 ## Prerequisites
 
 To complete this guide, you will need:
 
-* [Node.js](https://nodejs.org) - Node.js version 10.13.0 or higher is required. 
+* [Node.js](https://nodejs.org) - Node.js version 14.0 or higher is required. 
 * An Adobe ID. If you do not have one, the credential setup will walk you through creating one.
 * A way to edit code. No specific editor is required for this guide.
 
@@ -28,27 +28,23 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2_ga.png)
+![Project setup](./shot2_spc.png)
 
 6) After your credentials are created, they are automatically downloaded:
 
-![alt](./shot3.png)
+![alt](./shot3_spc.png)
 
 ## Step Two: Setting up the project
 
-1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-Node.jsSamples.zip. If you unzip that archive, you will find a README file, your private key, and a folder of samples:
+1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-Node.jsSamples.zip. If you unzip that archive, you will find a folder of samples:
 
-![alt](./shot5.png)
+![alt](./shot5_spc.png)
 
-2) We need two things from this download. The `private.key` file (as shown in the screenshot above, and the `pdfservices-api-credentials.json` file found in the samples directory:
+2) We need the `pdfservices-api-credentials.json` file found in the samples directory:
 
-![alt](./shot6.png)
+![alt](./shot6_spc.png)
 
-<InlineAlert slots="text" />
-
-Note that that private key is *also* found in this directory so feel free to copy them both from here.
-
-3) Take these two files and place them in a new directory. Remember that these credential files are important and should be stored safely.
+3) Take the `pdfservices-api-credentials.json` and place it in a new directory. Remember that these credential files are important and should be stored safely.
 
 4) At the command line, change to the directory you created, and initialize a new Node.js project with `npm init -y`
 
@@ -56,13 +52,13 @@ Note that that private key is *also* found in this directory so feel free to cop
 
 5) Install the Adobe PDF Services Node.js SDK by typing `npm install --save @adobe/pdfservices-node-sdk` at the command line.
 
-![alt](./shot8.png)
+6) Install a package to help us work with ZIP files. Type `npm install --save adm-zip`.
 
 At this point, we've installed the Node.js SDK for Adobe PDF Services API as a dependency for our project and have copied over our credentials files. 
 
 Our application will take an Invoice PDF document, `sampleInvoice.pdf` (downloadable from [here](./sampleInvoice.pdf)), and will use the sealing options with default appearance options to apply electronic seal over the PDF document by invoking Acrobat Services API and generate an electronically sealed PDF.
 
-6) In your editor, open the directory where you previously copied the credentials. Create a new file, `electronic-seal.js`.
+7) In your editor, open the directory where you previously copied the credentials. Create a new file, `electronic-seal.js`.
 
 Now you're ready to begin coding.
 
@@ -76,7 +72,18 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 
 This line includes the Adobe PDF Services Node.js SDK
 
-2) Next, we setup the SDK to use our credentials.
+
+2) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+- **Windows:**
+  - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+  - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+- **MacOS/Linux:**
+  - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+  - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+
+3) Next, we setup the SDK to use our credentials.
 
 ```javascript
     // Initial setup, create credentials instance.
@@ -92,7 +99,7 @@ const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
 
 This code both points to the credentials downloaded previously and sets up an execution context object that will be used later.
 
-3) Let's define the electronic seal and options object to be used later:
+4) Let's define the electronic seal and options object to be used later:
 
 ```javascript
 const pdfElectronicSeal = PDFServicesSdk.PDFElectronicSeal,
@@ -100,7 +107,7 @@ const pdfElectronicSeal = PDFServicesSdk.PDFElectronicSeal,
 
 ```
 
-4) Now, let's define our input fields:
+5) Now, let's define our input fields:
 
 ```javascript
 //Get the input document to perform the sealing operation
@@ -111,7 +118,7 @@ sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('./sampleSealImage.pn
 
 ```
 
-5) Now, we will define seal field options:
+6) Now, we will define seal field options:
 
 ```javascript
 //Create AppearanceOptions and add the required signature appearance items
@@ -142,7 +149,7 @@ fieldOptions = new options.FieldOptions.Builder(sealFieldName)
     .build();
 ```
 
-6) Next, we create a CSC Certificate Credentials instance:
+7) Next, we create a CSC Certificate Credentials instance:
 
 ```javascript
 //Set the name of TSP Provider being used.
@@ -170,7 +177,7 @@ certificateCredentials = options.CertificateCredentials.cscCredentialBuilder()
 
 ```
 
-7) Now, let's create the seal options with certificate credentials and field options:
+8) Now, let's create the seal options with certificate credentials and field options:
 
 ```javascript
     //Create SealOptions instance with sealing parameters.
@@ -180,7 +187,7 @@ sealOptions = new options.SealOptions.Builder(certificateCredentials, fieldOptio
 ```
 
 
-8) Now, let's create the operation:
+9) Now, let's create the operation:
 
 ```javascript
 //Create the PDFElectronicSealOperation instance using the SealOptions instance
@@ -195,7 +202,7 @@ pdfElectronicSealOperation.setSealImage(sealImageFile);
 ```
 This code creates a seal operation using sealOptions, input source file and input seal image.
 
-9) Let's execute this seal operation:
+10) Let's execute this seal operation:
 
 ```javascript
 // Execute the operation and Save the result to the specified location.

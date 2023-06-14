@@ -10,7 +10,7 @@ To get started using Adobe PDF Electronic Seal API, let's walk through a simple 
 
 To complete this guide, you will need:
 
-* [Java](http://www.oracle.com/technetwork/java/javase/downloads/index.html) - Java 8 or higher is required. 
+* [Java](http://www.oracle.com/technetwork/java/javase/downloads/index.html) - Java 8 or higher is required.
 * [Maven](https://maven.apache.org/install.html)
 * An Adobe ID. If you do not have one, the credential setup will walk you through creating one.
 * A way to edit code. No specific editor is required for this guide.
@@ -21,31 +21,35 @@ To complete this guide, you will need:
 
 ![Sign in](./shot1.png)
 
-2) After registering or logging in, you will then be asked to name your new credentials. Use the name, "New Project". 
+3) After registering or logging in, you will then be asked to name your new credentials. Use the name, "New Project".
 
-3) Change the "Choose language" setting to "Java". 
+4) Change the "Choose language" setting to "Java".
 
-4) Also note the checkbox by, "Create personalized code sample." This will include a large set of samples along with your credentials. These can be helpful for learning more later. 
+5) Also note the checkbox by, "Create personalized code sample." This will include a large set of samples along with your credentials. These can be helpful for learning more later.
 
-5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
+6) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2_spc.png)
+![Project setup](./shot2_ga.png)
 
-6) After your credentials are created, they are automatically downloaded:
+7) After your credentials are created, they are automatically downloaded:
 
-![alt](./shot3_spc.png)
+![alt](./shot3.png)
 
 ## Step Two: Setting up the project
 
-1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-JavaSamples.zip. If you unzip that archive, you will find a folder of samples:
+1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-JavaSamples.zip. If you unzip that archive, you will find a README file, your private key, and a folder of samples:
 
-![alt](./shot5_spc.png)
+![alt](./shot5.png)
 
-2) We need the `pdfservices-api-credentials.json` file found in the samples directory:
+2) We need two things from this download. The `private.key` file (as shown in the screenshot above, and the `pdfservices-api-credentials.json` file found in the samples directory:
 
-![alt](./shot6_spc.png)
+![alt](./shot6.png)
 
-3) Take the `pdfservices-api-credentials.json` and place it in a new directory.
+<InlineAlert slots="text" />
+
+Note that that private key is *also* found in this directory so feel free to copy them both from here.
+
+3) Take these two files and place them in a new directory.
 
 4) In this directory, create a new file named `pom.xml` and copy the following contents:
 
@@ -154,11 +158,11 @@ To complete this guide, you will need:
 </project>
 ```
 
-This file will define what dependencies we need and how the application will be built. 
+This file will define what dependencies we need and how the application will be built.
 
 Our application will take an Invoice PDF document, `sampleInvoice.pdf` (downloadable from [here](./sampleInvoice.pdf)), and will use the sealing options with default appearance options to apply electronic seal over the PDF document by invoking Acrobat Services API and generate an electronically sealed PDF.
 
-5) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `ElectronicSeal.java`. 
+5) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `ElectronicSeal.java`.
 
 Now you're ready to begin coding.
 
@@ -201,17 +205,9 @@ public class ElectronicSeal {
     }
 }
 ```
-3) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
-- **Windows:**
-  - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
-  - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
-
-- **MacOS/Linux:**
-  - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
-  - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
 
-4) Let's create credentials for pdf services and use them:
+3) Let's create credentials for pdf services and use them:
 ```javascript
 // Initial setup, create credentials instance.
 Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
@@ -223,7 +219,7 @@ Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
 ExecutionContext executionContext = ExecutionContext.create(credentials);
 ```
 
-5) Now, let's define our input fields:
+4) Now, let's define our input fields:
 
 ```javascript
 //Get the input document to perform the sealing operation
@@ -233,7 +229,7 @@ FileRef sourceFile = FileRef.createFromLocalFile("./sampleInvoice.pdf");
 FileRef sealImageFile = FileRef.createFromLocalFile("./sampleSealImage.png");
 ```
 
-6) Now, we will define seal field options:
+5) Now, we will define seal field options:
 
 ```javascript
 //Create AppearanceOptions and add the required signature display items to it
@@ -265,7 +261,7 @@ FieldOptions fieldOptions = new FieldOptions.Builder(sealFieldName)
 ```
 
 
-7) Next, we create a CSC Certificate Credentials instance:
+6) Next, we create a CSC Certificate Credentials instance:
 
 ```javascript
             //Set the name of TSP Provider being used.
@@ -293,7 +289,7 @@ CertificateCredentials certificateCredentials = CertificateCredentials.cscCreden
 
 ```
 
-8) Now, let's create the seal options with certificate credentials and field options:
+7) Now, let's create the seal options with certificate credentials and field options:
 
 ```javascript
 //Create SealOptions instance with all the sealing parameters.
@@ -301,13 +297,13 @@ SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldO
     .withAppearanceOptions(appearanceOptions).build();
 ```
 
-9) Now, let's create the PDF electronic seal options using the seal options:
+8) Now, let's create the PDF electronic seal options using the seal options:
 ```javascript
 //Create a PDFElectronicSealOptions instance using the SealOptions instance
 PDFElectronicSealOptions pdfElectronicSealOptions = new PDFElectronicSealOptions(sealOptions);
 ```
 
-10) Now, let's create the operation:
+9) Now, let's create the operation:
 
 ```javascript
 //Create the PDFElectronicSealOperation instance using the SealOptions instance
@@ -321,7 +317,7 @@ pdfElectronicSealOperation.setSealImage(sealImageFile);
 ```
 This code creates a seal operation using PDF electronic seal options, input source file and input seal image.
 
-11) Let's execute this seal operation:
+9) Let's execute this seal operation:
 
 ```javascript
 //Execute the operation
