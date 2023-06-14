@@ -25,19 +25,6 @@ For code examples illustrating other PDF actions including those below, see the 
 
 PDF Extract uses AI/ML technology to identify and categorize the various objects within documents – such as paragraphs, lists, headings, tables, and images – and extract the text, formatting, and associated document structural information which is then delivered in a resulting JSON file. Extracted table data can optionally be delivered within .CSV or .XLSX files, and extracted images are delivered as .PNG files. For additional information, please refer to <a href="../../../overview/pdf/Adobe_PDF_Extract_API_Technical_Brief.pdf" target="_blank">PDF Extract API white paper</a>
 
-
-## Runtime in-memory authentication
-
-The SDK supports providing the authentication credentials at runtime.
-Doing so allows fetching the credentials from a secret server during
-runtime instead of storing them in a file. Please refer the following
-samples for details.
-
--   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithInMemoryAuthCredentials.java)
--   [.NET](https://github.com/adobe/PDFServices.NET.SDK.Samples/blob/master/CreatePDFWithInMemoryAuthCredentials/Program.cs)
--   [Node.js](https://github.com/adobe/pdfservices-node-sdk-samples/blob/master/src/customconfigurations/create-pdf-with-inmemory-auth-credentials.js)
--   [Python](https://github.com/adobe/pdfservices-python-sdk-samples/blob/master/src/extractpdf/extract_txt_from_pdf_with_in_memory_auth_credentials.py)
-
 ## Custom timeout configuration
 
 The APIs use inferred timeout properties and provide defaults. However,
@@ -58,6 +45,10 @@ Available properties:
     milliseconds for creating an initial HTTPS connection.
 -   **socketTimeout**: Default: 10000. The maximum allowed time in
     milliseconds between two successive HTTP response packets.
+-   **processingTimeout**: Default: 600000. The maximum allowed time
+    in milliseconds for processing the documents. Any operation taking more time than the specified `processingTimeout` will result in an operation timeout exception.
+    - **Note :** It is advisable to set the `processingTimeout` to higher values for processing large files.
+
 
 Override the timeout properties via a custom `ClientConfig` class:
 
@@ -81,6 +72,9 @@ Available properties:
     getting a response.
 -   **readWriteTimeout**: Default: 10000. The maximum allowed time in
     milliseconds to read or write data after connection is established.
+-   **processingTimeout**: Default: 600000. The maximum allowed time
+    in milliseconds for processing the documents. Any operation taking more time than the specified `processingTimeout` will result in an operation timeout exception.
+    - **Note :** It is advisable to set the `processingTimeout` to higher values for processing large files.
 
 Override the timeout properties via a custom `ClientConfig` class:
 
@@ -103,6 +97,10 @@ Available properties:
     milliseconds for creating an initial HTTPS connection.
 -   **readTimeout**: Default: 10000. The maximum allowed time in
     milliseconds between two successive HTTP response packets.
+-   **processingTimeout**: Default: 600000. The maximum allowed time
+    in milliseconds for processing the documents. Any operation taking more time than the specified `processingTimeout` will result in an operation timeout exception.
+    - **Note :** It is advisable to set the `processingTimeout` to higher values for processing large files.
+
 
 Override the timeout properties via a custom `ClientConfig` class:
 
