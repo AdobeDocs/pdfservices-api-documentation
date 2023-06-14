@@ -16,7 +16,7 @@
   "tags": [
     {
       "name": "Generate Token",
-      "description": "Creates an access token using client id and client Secret. Click <a href=\"https://developer.adobe.com/developer-console/docs/guides/authentication/ServerToServerAuthentication/IMS/\">here</a> to refer underlying IMS authentication APIs."
+      "description": "Creates an access token using client id and client secret. Click <a href=\"https://developer.adobe.com/developer-console/docs/guides/authentication/ServerToServerAuthentication/IMS/\">here</a> to refer underlying IMS authentication APIs."
     },
     {
       "name": "Assets",
@@ -7296,7 +7296,7 @@
         "type": "object",
         "properties": {
           "client_id": {
-            "description": "Contains the client ID obtained upon client registration.",
+            "description": "Contains the client id obtained upon client registration.",
             "type": "string"
           },
           "client_secret": {
