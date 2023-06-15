@@ -18,13 +18,13 @@ Accessing files from External Storage is presently restricted to the [Document G
 ## Supported External Storage Solutions
 
 The concept of Signed URLs is common across various cloud storage solutions for downloading and uploading files. Adobe PDF Services currently supports the signed URLs generated through -
-- <a href="http://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol/#sharepoint" target="_self">Sharepoint</a>
+- <a href="http://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol/#sharepoint" target="_self">SharePoint</a>
 - <a href="http://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol/#amazon-s3" target="_self">Amazon S3</a>
 
 
-## Sharepoint
+## SharePoint
 
-PDF Services APIs can connect with the Sharepoint storage of the client to download and upload the files using SharePoint Signed URLs. Signed URLs for Sharepoint files can be created using [Sharepoint REST API V1](https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service?tabs=csom) or [Sharepoint REST API V2](https://learn.microsoft.com/en-us/sharepoint/dev/apis/sharepoint-rest-graph) or [Microsoft Graph](https://learn.microsoft.com/en-us/graph/overview).
+PDF Services APIs can connect with the SharePoint storage of the client to download and upload the files using SharePoint Signed URLs. Signed URLs for SharePoint files can be created using [SharePoint REST API V1](https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service?tabs=csom) or [SharePoint REST API V2](https://learn.microsoft.com/en-us/sharepoint/dev/apis/sharepoint-rest-graph) or [Microsoft Graph](https://learn.microsoft.com/en-us/graph/overview).
 
 ## Amazon S3
 
