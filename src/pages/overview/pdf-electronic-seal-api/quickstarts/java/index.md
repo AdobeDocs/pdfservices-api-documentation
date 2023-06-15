@@ -268,7 +268,7 @@ FieldOptions fieldOptions = new FieldOptions.Builder(sealFieldName)
 7) Next, we create a CSC Certificate Credentials instance:
 
 ```javascript
-            //Set the name of TSP Provider being used.
+//Set the name of TSP Provider being used.
 String providerName = "<PROVIDER_NAME>";
 
 //Set the access token to be used to access TSP provider hosted APIs.
@@ -300,18 +300,11 @@ CertificateCredentials certificateCredentials = CertificateCredentials.cscCreden
 SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions)
     .withAppearanceOptions(appearanceOptions).build();
 ```
-
-9) Now, let's create the PDF electronic seal options using the seal options:
-```javascript
-//Create a PDFElectronicSealOptions instance using the SealOptions instance
-PDFElectronicSealOptions pdfElectronicSealOptions = new PDFElectronicSealOptions(sealOptions);
-```
-
-10) Now, let's create the operation:
+9) Now, let's create the operation:
 
 ```javascript
 //Create the PDFElectronicSealOperation instance using the SealOptions instance
-PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.createNew(pdfElectronicSealOptions);
+PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.createNew(sealOptions);
 
 //Set the input source file for PDFElectronicSealOperation instance
 pdfElectronicSealOperation.setInput(sourceFile);
@@ -321,7 +314,7 @@ pdfElectronicSealOperation.setSealImage(sealImageFile);
 ```
 This code creates a seal operation using PDF electronic seal options, input source file and input seal image.
 
-11) Let's execute this seal operation:
+10) Let's execute this seal operation:
 
 ```javascript
 //Execute the operation
@@ -462,4 +455,4 @@ public class ElectronicSeal {
 
 ## Next Steps
 
-Now that you've successfully performed your first operation, [review the documentation](../../index.md) for many other examples and reach out on our [forums](https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK) with any questions. Also remember the samples you downloaded while creating your credentials also have many demos.
+Now that you've successfully performed your first operation, [review the documentation](https://developer.adobe.com/document-services/docs/overview/pdf-services-api/) for many other examples and reach out on our [forums](https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK) with any questions. Also remember the samples you downloaded while creating your credentials also have many demos.
