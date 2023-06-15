@@ -48,7 +48,7 @@ To complete this guide, you will need:
 
 3) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
 
-4) In your new directory, create a new file, `ExportPDFToWord.csproj`. This file will declare our requirements as well as help define the application we're creating.
+4) In your new directory, create a new file, `ElectronicSeal.csproj`. This file will declare our requirements as well as help define the application we're creating.
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -78,7 +78,7 @@ To complete this guide, you will need:
 </Project>
 ```
 
-Our application will take an Invoice PDF document, `sampleInvoice.pdf` (downloadable from [here](./sampleInvoice.pdf)), and will use the sealing options with default appearance options to apply electronic seal over the PDF document by invoking Acrobat Services API and generate an electronically sealed PDF.
+Our application will take an Invoice PDF document, `sampleInvoice.pdf` (downloadable from <a href="./sampleInvoice.pdf" target="_blank">here</a>), and will use the sealing options with default appearance options to apply electronic seal over the PDF document by invoking Acrobat Services API and generate an electronically sealed PDF.
 
 5) In your editor, open the directory where you previously copied the credentials and created the `csproj` file. Create a new file, `Program.cs`. 
 
@@ -118,7 +118,7 @@ namespace ElectronicSeal
 }
 ```
 
-3) Set the environment variables `CLIENT_ID` and `CLIET_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+3) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
 - **Windows:**
   - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
   - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
@@ -184,7 +184,6 @@ FieldOptions fieldOptions = new FieldOptions.Builder(sealFieldName)
 
 ```
 
-These lines are hard coded but in a real application would typically be dynamic.
 
 7) Next, we create a CSC Certificate Credentials instance:
 
