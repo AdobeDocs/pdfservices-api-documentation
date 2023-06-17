@@ -6552,13 +6552,13 @@
           "PDF Electronic Seal"
         ],
         "summary": "PDF Electronic Seal Operation",
-        "description": "An operation to create an electronic seal on input PDF documents using the digital certificate issued to the user by Trust Service Provider. To know more about PDF Electronic Seal, please see the <a href=\"http://www.adobe.com/go/dc_eseal_overview_doc\" target=\"_blank\">documentation</a>.",
+        "description": "An operation to create an electronic seal on input PDF documents using the digital certificate issued to the user by Trust Service Provider. To know more about PDF Electronic Seal, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/\" target=\"_blank\">documentation</a>.",
         "operationId": "pdfoperations.electronicseal",
         "parameters": [
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -8819,7 +8819,7 @@
           "signatureFormat": {
             "type": "string",
             "default": "PKCS7",
-            "description": "Specifies a supported digital signature format. For supported signature formats, please refer <a href = \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#signature-format-signatureformat--required\">documentation</a>.",
+            "description": "Specifies a supported digital signature format. For supported signature formats, please refer <a href = \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/howtos/electronic-seal-api/#signature-format-signatureformat\">documentation</a>.",
             "enum": [
               "PADES",
               "PKCS7"
@@ -8827,7 +8827,7 @@
           },
           "cscCredentialOptions": {
             "type": "object",
-            "description": "Specifies the parameters that encapsulates the signer's certificate credential. For more information, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#tsp-credential-information-csccredentialoptions--required\">documentation</a>.",
+            "description": "Specifies the parameters that encapsulates the signer's certificate credential. For more information, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/howtos/electronic-seal-api/#tsp-credential-information-csccredentialoptions--required\">documentation</a>.",
             "required": [
               "providerName",
               "credentialId",
@@ -8878,7 +8878,7 @@
           },
           "sealFieldOptions": {
             "type": "object",
-            "description": "Specifies the parameters required to create a new signature field or use an existing field. For more details, please refer <a href= \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#seal-field-parameters---sealfieldoptions--required\">documentation</a>.",
+            "description": "Specifies the parameters required to create a new signature field or use an existing field. For more details, please refer <a href= \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/howtos/electronic-seal-api/#seal-field-parameters---sealfieldoptions--required\">documentation</a>.",
             "required": [
               "fieldName"
             ],
@@ -8928,7 +8928,7 @@
           },
           "sealAppearanceOptions": {
             "type": "object",
-            "description": "Specifies signature field appearance parameters. For more details, please refer <a href= \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/gettingstarted/#seal-appearance-parameters-sealappearanceoptions\">documentation</a>.",
+            "description": "Specifies signature field appearance parameters. For more details, please refer <a href= \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/howtos/electronic-seal-api/#seal-appearance-parameters-sealappearanceoptions\">documentation</a>.",
             "default": {
               "displayOptions": [
                 "NAME",
