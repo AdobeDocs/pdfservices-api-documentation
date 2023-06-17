@@ -312,7 +312,7 @@ pdfElectronicSealOperation.setInput(sourceFile);
 //Set the optional input seal image for PDFElectronicSealOperation instance
 pdfElectronicSealOperation.setSealImage(sealImageFile);
 ```
-This code creates a seal operation using PDF electronic seal options, input source file and input seal image.
+This code creates a seal operation using seal options, input source file and input seal image.
 
 10) Let's execute this seal operation:
 
