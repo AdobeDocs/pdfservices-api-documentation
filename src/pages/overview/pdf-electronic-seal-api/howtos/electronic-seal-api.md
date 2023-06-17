@@ -9,8 +9,8 @@ title: Electronic Seal API | How Tos | PDF Electronic Seal API | Adobe PDF Servi
 
 Specifies a supported digital signature format:
 
-* PADES : This is the latest and improved signature format which is more strict, concrete, and secure. For details, see [ISO 32000-2](../PDF_ISO_32000-2.pdf) and [ETSI EN 319 142-1](../ETSI_EN_319_142-1.pdf)
-* PKCS7 : This signature format is less stringent than PADES since it permits more PDF changes without invalidating the digital signature. This is the default signature format. For details, see [ISO 32000-1](../PDF_ISO_32000-1.pdf).
+* PADES : This is the latest and improved signature format which is more strict, concrete, and secure. For details, see <a href="../PDF_ISO_32000-2.pdf" target="_blank">ISO 32000-2</a> and <a href="../ETSI_EN_319_142-1.pdf" target="_blank">ETSI EN 319 142-1</a>.
+* PKCS7 : This signature format is less stringent than PADES since it permits more PDF changes without invalidating the digital signature. This is the default signature format. For details, see <a href="../PDF_ISO_32000-1.pdf" target="_blank">ISO 32000-1</a>.
 
 ### TSP Credential Information (_cscCredentialOptions_) : **Required**
 
@@ -129,7 +129,7 @@ Please refer to the [API usage guide](../api-usage.md) to understand how to use 
 #### Java
 
 ```javascript
-// Get the samples from https://github.com/adobe/pdfservices-java-sdk-samples/tree/beta
+// Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
 // mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.electronicseal.ElectronicSeal
 
