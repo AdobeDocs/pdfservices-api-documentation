@@ -67,14 +67,7 @@ You can use our cloud based [REST API](../../../apis/#tag/Document-Generation) t
 
 Before you begin with the REST API, refer [How To Get Started](../pdf-services-api/howtos/api-usage.md) to learn more about generating the required credentials and invoking the APIs.
 
-**3.2. REST API with External Storage** <br/>
-
-The Adobe Document Generation API now supports accessing client files directly from their external storage. Clients can use Signed URLs from their storage solution to conveniently access and utilize their files through the Document Generation API.
-
-To learn more, please visit [External Storage for Adobe PDF Services APIs](https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol/).
-
-
-**3.3. PDF Services SDK** <br/>
+**3.2. PDF Services SDK** <br/>
 Alternatively, you can use our offering through [PDF Services SDK](../pdf-services-api/gettingstarted#sdk).
 
 <InlineAlert slots="text"/>
