@@ -20,8 +20,7 @@
     },
     {
       "name": "Assets",
-      "description": "Upload and download assets to adobe internal storage. \n **No need to call this API if we are using external storage solution using signed urls.**"
-
+      "description": "Upload and download assets."
 
     },
     {
@@ -322,7 +321,7 @@
           "Assets"
         ],
         "summary": "Get upload pre-signed URI. ",
-        "description": "Get the pre-signed URI to directly upload the content to the adobe's internal cloud provider. \n\nOutput: Response will have the asset URI of created asset and pre-signed URI for uploading the content.",
+        "description": "Get the pre-signed URI to directly upload the content to the cloud provider. \n\nOutput: Response will have the asset URI of created asset and pre-signed URI for uploading the content.",
         "operationId": "asset.uploadpresignedurl",
         "parameters": [
           {
@@ -985,18 +984,11 @@
           }
         ],
         "requestBody": {
-          "description": "Params for Document Generation Operation. Refer to the External Section for using external storage with Document Generation API",
+          "description": "Params for Document Generation Operation",
           "content": {
             "application/json": {
               "schema": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/Internal"
-                  },
-                  {
-                    "$ref": "#/components/schemas/External"
-                  }
-                ]
+                "$ref": "#/components/schemas/DocumentGeneration"
               }
             }
           },
@@ -8458,7 +8450,7 @@
         ],
         "additionalProperties": false
       },
-      "Internal": {
+      "DocumentGeneration": {
         "description": "Params for Document Generation Operation",
         "type": "object",
         "properties": {
@@ -8515,122 +8507,6 @@
         "required": [
           "assetID",
           "jsonDataForMerge"
-        ],
-        "additionalProperties": false
-      },
-      "External": {
-        "description": "Params for Document Generation Operation using external storage",
-        "type": "object",
-        "properties": {
-          "input": {
-            "description": "Params representing input object for document generation operation",
-            "type": "object",
-            "properties": {
-              "uri": {
-              "description": "Input file Pre-signed URL.",
-              "type": "string"
-              },
-              "storage": {
-                "description": "Specifies the type of the external storage",
-                "type": "string",
-                "enum": [
-                  "S3",
-                  "SHAREPOINT"
-                ]
-              }
-            },
-            "required": [
-              "uri"
-            ]
-          },
-          "output": {
-            "description": "Params representing output object for document generation operation",
-            "type": "object",
-            "properties": {
-              "uri" : {
-                "description": "Output file Upload Pre-signed URL.",
-                "type": "string"
-              },
-              "storage": {
-                "description": "Specifies the type of the external storage",
-                "type": "string",
-                "enum": [
-                  "S3",
-                  "SHAREPOINT"
-                ]
-              }
-            },
-            "required": [
-              "uri"
-            ]
-          },
-          "params": {
-            "description": "Params for document generation processing",
-            "type": "object",
-            "properties": {
-              "outputFormat": {
-                "description": "Specifies the target format of the generated output document. Possible values are pdf and docx.",
-                "type": "string",
-                "enum": [
-                  "docx",
-                  "pdf"
-                ],
-                "default": "pdf"
-              },
-              "jsonDataForMerge": {
-                "description": "Specifies the JSON data to merge into the document template.",
-                "type": "object"
-              },
-              "fragments": {
-                "description": "Specifies the Fragments JSON object or a JSON array to resolve fragments in the document template. To know more about fragments use-case in document generation and document templates, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/document-generation-api/fragments/\">documentation</a>..",
-                "type": "object"
-              }
-            },
-            "required": [
-              "jsonDataForMerge"
-            ]
-          }
-        },
-        "example": {
-          "input": {
-            "uri": "https://dcalpine2.sharepoint.com/sites/Docgen/_layouts/15/download.aspx?UniqueId=353087f7-b1ea-4d84-91d7-0821b23e04ea&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDI5MDkiLCJleHAiOiIxNjgwNjA2NTA5IiwiZW5kcG9pbnR1cmwiOiIwU1NJNDAxdjZhUll6YUIyV2lod005VnIxOVJHNStvSUxFN280dk0yUlMwPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMTMzIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJPVEUxTlRZMFkyRXROREZpT1MwME1HSTBMVGczWVdRdFlqaGpaREprWkdNeVlXVTUiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE2OSJ9.aStWTExNZ045T3h3OGV4MHdyYURmLzZqOW9McGRhSmtZWStHOE1wM0ZaYz0&ApiVersion=2.0",
-            "storage": "SHAREPOINT"
-          },
-          "output": {
-            "uri": "https://dcalpine2.sharepoint.com/sites/Docgen/_api/v2.0/drives/b!MA1899sXSkupaKT9m2CP3JIqXDMQyoBCth9h9Rn6bQRjzBEBFxsbQpN23hY-rzQT/items/01TAIM7P3ZQQ4DP4NZHFDI6FBJPIGFRCY3/uploadSession?guid='2c79b9aa-f9dc-42c8-8919-da5a9b554b81'&overwrite=True&rename=False&dc=0&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDAyOTMiLCJleHAiOiIxNjgwNjg2NjkzIiwiZW5kcG9pbnR1cmwiOiJXVWNNVHhndVdyMHR4YzhlYWxlRzMrYUV1aXg5anoxanZuRmRpMENjNHFRPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMjYxIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJaREZsTURjek5tRXRaREJtWkMwMFlXUXlMV0V5WTJNdE1HRTRPV1prTTJJNU5XTmwiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE3MCJ9.a1hxR1J1emlFSE9jSTU0SnFTcFN6TGlsRHNhWTFRaDNkT2hwT3ZPYm8waz0",
-            "storage": "SHAREPOINT"
-          },
-          "params": {
-            "outputFormat": "pdf",
-            "jsonDataForMerge": {
-              "customerName": "Kane Miller",
-              "customerVisits": 100,
-              "itemsBought": [
-                {
-                  "name": "Sprays",
-                  "quantity": 50,
-                  "amount": 100
-                },
-                {
-                  "name": "Chemicals",
-                  "quantity": 100,
-                  "amount": 200
-                }
-              ],
-              "totalAmount": 300,
-              "previousBalance": 50,
-              "lastThreeBillings": [
-                100,
-                200,
-                300
-              ],
-              "photograph": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII="
-            }
-          }
-        },
-        "required": [
-          "input",
-          "params"
         ],
         "additionalProperties": false
       },
@@ -9284,17 +9160,7 @@
           "status": "in progress"
         }
       },
-      "done": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/internal"
-          },
-          {
-            "$ref": "#/components/schemas/external"
-          }
-        ]
-      },
-      "internal": {
+      "done":  {
         "description": "Response in case of 'done' status",
         "type": "object",
         "properties": {
@@ -9321,22 +9187,6 @@
           }
         }
       },
-      "external": {
-        "description": "Response in case of 'done' status using signed urls",
-        "type": "object",
-        "properties": {
-          "status": {
-            "description": "Job Status",
-            "type": "string",
-            "enum": [
-              "done"
-            ]
-          }
-        },
-        "example": {
-          "status": "done"
-        }
-      },
       "responseAsset": {
         "title": "asset",
         "description": "Details of output asset document. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
@@ -9358,8 +9208,7 @@
           },
           "assetID": {
             "description": "An asset ID identifying an asset that is globally unique and never reused.",
-            "type": "string",
-            "required": false
+            "type": "string"
           },
           "downloadUri": {
             "description": "The URL used to download the Resource directly to the cloud provider.",
