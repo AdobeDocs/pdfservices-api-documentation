@@ -606,39 +606,3 @@ After downloading the zip, you can run the samples in the zip directly by settin
     }
 }
 ```
-
-## Check Usage
-
-You can check your consumption for PDF Services API by following the below mentioned steps :
-
-1. Open your browser to : <https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html>.
-
-2. Click on the `Check Usage` button as shown in the screenshot below :
-
-![Check Usage](./shot1.png)
-
-<br />
-
-3. A popup opens up which provides you with the option to specify the time period for which the consumption is to be checked as shown below :
-
-![Check Usage Popup](./shot2.png)
-
-<br />
-
-4. Select the time period for which you want to check the usage and click on `Generate Report` button :
-
-![Time period selection](./shot3.png)
-
-<br />
-
-5. This will generate a report of all the API usage for your organisation. You can also download the report in a CSV format as shown below :
-
-![Usage](./shot4.png)
-
-<br />
-
-6. If you want to check usage for a particular `client id` just click on the drop down menu below Client ID label and select your `client id` as shown below :
-
-![All Client IDs](./shot5.png)
-
-![Client ID](./shot6.png)
