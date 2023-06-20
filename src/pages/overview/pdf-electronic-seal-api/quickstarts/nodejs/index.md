@@ -232,7 +232,7 @@ Here's the complete application (`electronic-seal.js`):
  * written permission of Adobe.
  */
 
-const PDFServicesSdk = require('@dcloud/pdfservices-node-sdk');
+const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 
 /**
  * This sample illustrates how to apply electronic seal over the PDF document using custom appearance options.
