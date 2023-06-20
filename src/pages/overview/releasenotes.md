@@ -185,11 +185,19 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### Python SDK 2.3.0 (June, 2023; minor release)
+
+| Change  | Language         | Description                                                                                                                     |
+|---------|------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| New | Python | Added support for OAuth based Server to Server credentials in Adobe PDF Services SDKs. As part of this release, JWT based credentials have been deprecated. |
+
+
 ### 3.4.0 (June, 2023; minor release)
 
 | Change  | Language         | Description                                                                                                                     |
 |---------|------------------|---------------------------------------------------------------------------------------------------------------------------------|
 | New | Java,NodeJS,.NET | PDF Electronic Seal operation is now available for all the users in PDF Services SDKs and REST APIs.  |
+| New | Java,NodeJS,.NET | Added support for OAuth based Server to Server credentials in Adobe PDF Services SDKs. As part of this release, JWT based credentials have been deprecated. |
 
 ### 3.3.0 (May, 2023; minor release)
 
