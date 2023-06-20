@@ -17,7 +17,7 @@ Accessing files from External Storage is presently restricted to the [Document G
 
 ## Supported External Storage Solutions
 
-The concept of Signed URLs is common across various cloud storage solutions for downloading and uploading files. Adobe PDF Services currently supports the signed URLs generated through -
+The concept of Signed URLs is common across various cloud storage solutions for downloading and uploading files. Adobe PDF Services APIs currently supports the signed URLs generated through -
 - <a href="http://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol/#sharepoint" target="_self">SharePoint</a>
 - <a href="http://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol/#amazon-s3" target="_self">Amazon S3</a>
 
