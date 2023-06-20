@@ -255,6 +255,10 @@ module.exports = {
                             {
                                 title: 'PDF Accessibility Auto-Tag',
                                 path: 'overview/pdf-services-api/howtos/pdf-accessibility-auto-tag-pdf.md'
+                            },
+                            {
+                                title: 'PDF Electronic Seal',
+                                path: 'overview/pdf-services-api/howtos/electronic-seal-api.md'
                             }
                         ]
                     }
