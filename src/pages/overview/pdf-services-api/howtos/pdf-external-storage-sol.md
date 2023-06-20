@@ -9,7 +9,7 @@ Adobe PDF Services APIs have added support for accessing files from the external
 
 A **Signed URL** temporarily provides access to a resource. Signed URLs contain user/authentication information, allowing users without credentials to access the given resource.
 
-PDF Services APIs supports the signed URLs of input and output files in the request body. Please refer to the **External Section** in Request Body of [Document Generation API](http://developer-stage.adobe.com/document-services/docs/apis/#tag/Document-Generation) for more details.
+PDF Services APIs supports the signed URLs of input and output files in the request body. Please refer to the **External Section** in Request Body of [Document Generation API](http://developer.adobe.com/document-services/docs/apis/#tag/Document-Generation) for more details.
 
 <InlineAlert slots="text"/>
 
@@ -18,8 +18,8 @@ Accessing files from External Storage is presently restricted to the [Document G
 ## Supported External Storage Solutions
 
 The concept of Signed URLs is common across various cloud storage solutions for downloading and uploading files. Adobe PDF Services APIs currently supports the signed URLs generated through -
-- <a href="http://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol/#sharepoint" target="_self">SharePoint</a>
-- <a href="http://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol/#amazon-s3" target="_self">Amazon S3</a>
+- <a href="http://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol/#sharepoint" target="_self">SharePoint</a>
+- <a href="http://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol/#amazon-s3" target="_self">Amazon S3</a>
 
 
 ## SharePoint
