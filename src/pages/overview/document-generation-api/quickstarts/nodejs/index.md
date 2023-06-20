@@ -36,21 +36,17 @@ To complete this guide, you will need:
 
 ## Step Two: Setting up the project
 
-1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-Node.jsSamples.zip. If you unzip that archive, you will find a folder of samples:
+1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-Node.jsSamples.zip. If you unzip that archive, you will find a folder of samples and the `pdfservices-api-credentials.json` file.
 
 ![alt](./shot5_spc.png)
 
-2) We need the `pdfservices-api-credentials.json` file found in the samples directory:
+2) Take the `pdfservices-api-credentials.json` file and place it in a new directory. Remember that these credential files are important and should be stored safely.
 
-![alt](./shot6_spc.png)
-
-3) Take the `pdfservices-api-credentials.json` file and place it in a new directory. Remember that these credential files are important and should be stored safely.
-
-4) At the command line, change to the directory you created, and initialize a new Node.js project with `npm init -y`
+3) At the command line, change to the directory you created, and initialize a new Node.js project with `npm init -y`
 
 ![alt](shot7.png)
 
-5) Install the Adobe PDF Services Node.js SDK by typing `npm install --save @adobe/pdfservices-node-sdk` at the command line.
+4) Install the Adobe PDF Services Node.js SDK by typing `npm install --save @adobe/pdfservices-node-sdk` at the command line.
 
 ![alt](./shot8.png)
 
@@ -58,7 +54,7 @@ At this point, we've installed the Node.js SDK for Adobe PDF Services API as a d
 
 Our application will take a Word document, `receiptTemplate.docx` (downloadable from [here](/receiptTemplate.docx)), and combine it with data in a JSON file, `receipt.json` (downloadable from [here](/receipt.json)), to be sent to the Acrobat Services API and generate a receipt PDF.
 
-6) In your editor, open the directory where you previously copied the credentials. Create a new file, `generatePDF.js`.
+5) In your editor, open the directory where you previously copied the credentials. Create a new file, `generatePDF.js`
 
 Now you're ready to begin coding.
 

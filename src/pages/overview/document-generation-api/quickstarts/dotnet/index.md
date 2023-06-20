@@ -38,17 +38,13 @@ To complete this guide, you will need:
 
 ## Step Two: Setting up the project
 
-1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-.NetSamples.zip. If you unzip that archive, you will find a folder of samples:
+1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-.NetSamples.zip. If you unzip that archive, you will find a folder of samples and the `pdfservices-api-credentials.json` file.
 
 ![alt](./shot5_spc.png)
 
-2) We need the `pdfservices-api-credentials.json` file. You can find this in the `adobe-DC.PDFServicesSDK.NET.Samples` folder, inside any of the sample subdirectories, so for example, the `CombinePDF` folder.
+2) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
 
-![alt](./shot6_spc.png)
-
-3) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
-
-4) In your new directory, create a new file, `GeneratePDF.csproj`. This file will declare our requirements as well as help define the application we're creating.
+3) In your new directory, create a new file, `GeneratePDF.csproj`. This file will declare our requirements as well as help define the application we're creating.
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -74,7 +70,7 @@ To complete this guide, you will need:
 
 Our application will take a Word document, `receiptTemplate.docx` (downloadable from [here](/receiptTemplate.docx)), and combine it with data in a JSON file, `receipt.json` (downloadable from [here](/receipt.json)), to be sent to the Acrobat Services API and generate a receipt PDF.
 
-5) In your editor, open the directory where you previously copied the credentials and created the `csproj` file. Create a new file, `Program.cs`. 
+4) In your editor, open the directory where you previously copied the credentials and created the `csproj` file. Create a new file, `Program.cs`. 
 
 Now you're ready to begin coding.
 
