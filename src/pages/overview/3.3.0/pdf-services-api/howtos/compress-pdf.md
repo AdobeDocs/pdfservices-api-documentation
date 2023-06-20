@@ -9,7 +9,7 @@ Support for multiple compression levels to retain the quality of images and grap
 
 ## Rest API
 
-See our public API Reference for [Compress PDF](../../../apis/#tag/Compress-PDF)
+See our public API Reference for [Compress PDF](https://developer.adobe.com/document-services/docs/apis/#tag/Compress-PDF)
 
 ## Compress PDFs
 

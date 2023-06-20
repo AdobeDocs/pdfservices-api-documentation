@@ -7,7 +7,7 @@ Replace one or more pages with another page in an existing document
 
 ## Rest API 
 
-See our public API Reference for [Replace Pages](../../../apis/#tag/Combine-PDF)
+See our public API Reference for [Replace Pages](https://developer.adobe.com/document-services/docs/apis/#tag/Combine-PDF)
 
 ## Replace Pages in PDF
 
