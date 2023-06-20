@@ -8508,7 +8508,7 @@
             "type": "object"
           },
           "fragments": {
-            "description": "Specifies the Fragments JSON object or a JSON array to resolve fragments in the document template. To know more about fragments use-case in document generation and document templates, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/document-generation-api/fragments/\">documentation</a>..",
+            "description": "Specifies the Fragments JSON object or a JSON array to resolve fragments in the document template. To know more about fragments use-case in document generation and document templates, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/document-generation-api/fragments/\">documentation</a>.",
             "type": "object"
           }
         },
@@ -8555,7 +8555,7 @@
             "type": "object",
             "properties": {
               "uri": {
-              "description": "Input file Pre-signed URL.",
+              "description": "Input file Download Pre-signed URL.",
               "type": "string"
               },
               "storage": {
@@ -8610,7 +8610,7 @@
                 "type": "object"
               },
               "fragments": {
-                "description": "Specifies the Fragments JSON object or a JSON array to resolve fragments in the document template. To know more about fragments use-case in document generation and document templates, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/document-generation-api/fragments/\">documentation</a>..",
+                "description": "Specifies the Fragments JSON object or a JSON array to resolve fragments in the document template. To know more about fragments use-case in document generation and document templates, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/document-generation-api/fragments/\">documentation</a>.",
                 "type": "object"
               }
             },
