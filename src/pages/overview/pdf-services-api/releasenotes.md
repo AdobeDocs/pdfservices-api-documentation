@@ -27,7 +27,7 @@ repo as follows:
 ## Migration Guide to PDF Services SDK
 
 Refer to the following table for migrating to PDF Services SDK version
-3.2.0, you can also refer our Samples(
+3.4.0, you can also refer our Samples(
 [Java](https://www.adobe.com/go/pdftoolsapi_java_samples), [Node
 JS](https://www.adobe.com/go/pdftoolsapi_node_sample),
 [.NET](https://www.adobe.com/go/pdftoolsapi_net_samples)). for the
@@ -50,8 +50,8 @@ version.
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <pdfservices.sdk.version>3.2.0</pdfservices.sdk.version>
-    <pdfservices.sdk.samples.version>3.2.0</pdfservices.sdk.samples.version>
+    <pdfservices.sdk.version>3.4.0</pdfservices.sdk.version>
+    <pdfservices.sdk.samples.version>3.4.0</pdfservices.sdk.samples.version>
 </properties>
 
 <dependency>
@@ -73,7 +73,7 @@ import com.adobe.pdfservices.operation.ExecutionContext;
 * Update the latest SDK dependency in package.json file of your project
  
 ```
-"@adobe/pdfservices-node-sdk": "3.2.0"
+"@adobe/pdfservices-node-sdk": "3.4.0"
 ```
 
 * Require the `@adobe/pdfservices-node-sdk` in the Sample file to access the SDK interface
@@ -97,7 +97,7 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 ```
 <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.12" />
-    <PackageReference Include="Adobe.PDFServicesSDK" Version="3.2.0" />
+    <PackageReference Include="Adobe.PDFServicesSDK" Version="3.4.0" />
 </ItemGroup> 
 ```
 
@@ -112,6 +112,7 @@ Refer to the following for links to supported product documentation.
 
 | Item  | Public doc                                                                |
 | ----- | ------------------------------------------------------------------------- |
+| 3.3.0 | [Web page(3.0.0 docs)](../3.3.0/) |
 | 3.2.0 | [Web page(3.0.0 docs)](../3.2.0/) |
 | 3.0.0 | [Web page(3.0.0 docs)](../3.0.0/) |
 | 2.2.0 | [Web page(2.2.0 docs)](../2.2.0/) |
@@ -140,6 +141,19 @@ Minor and Patch releases are backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
+
+### 3.4.0 (June, 2023; minor release)
+
+| Change  | Language         | Description                                                                                                                     |
+|---------|------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| New | Java,NodeJS,.NET | PDF Electronic Seal operation is now available for all the users in PDF Services SDKs and REST APIs.  |
+| New | Java,NodeJS,.NET | Added support for OAuth based Server to Server credentials in Adobe PDF Services SDKs. JWT based service account credentials are now deprecated. |
+
+### Python SDK 2.3.0 (June, 2023; minor release)
+
+| Change  | Language         | Description                                                                                                                     |
+|---------|------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| New | Python | Added support for OAuth based Server to Server credentials in Adobe PDF Services SDKs. JWT based service account credentials are now deprecated. |
 
 ### 3.3.0 (May, 2023; minor release)
 
@@ -181,7 +195,7 @@ Upgrading to the latest SDK should not break existing applications.
 | Changed| Python               | Upgraded libraries to fix recently discovered vulnerability. |
 
 
-### 3.2.0 (January, 2023; minor release)
+### 3.4.0 (January, 2023; minor release)
 | Change  | Language            | Description                                                                                   |
 | ------- | ------------------- | --------------------------------------------------------------------------------------------- |
 | New     | Java,NodeJS,.NET                 | Added configuration for SDKs to process the documents in the specified region.                |
