@@ -189,7 +189,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 | Change | Language | Description                                                                                                              |
 |--------|----------|--------------------------------------------------------------------------------------------------------------------------|
-| New    | ALL      | Added support for [External Storage](../pdf-services-api/howtos/pdf-external-storage-sol/) in Document Generation API.   |  
+| New    | API      | Added support for [External Storage](../pdf-services-api/howtos/pdf-external-storage-sol/) in Document Generation API.   |  
 
 ### 3.4.0 (June, 2023; minor release)
 
