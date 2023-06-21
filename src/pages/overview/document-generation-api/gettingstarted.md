@@ -133,7 +133,7 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
-// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.documentmerge.MergeDocumentToDOCX
+// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.documentmerge.MergeDocumentToPDF
  
    package com.adobe.pdfservices.operation.samples.documentmerge;
  
@@ -187,8 +187,8 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
-// cd MergeDocumentToDocx/
-// dotnet run MergeDocumentToDOCX.csproj
+// cd MergeDocumentToPDF/
+// dotnet run MergeDocumentToPDF.csproj
 
   namespace MergeDocumentToPDF
    {
@@ -265,7 +265,7 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
-// node src/documentmerge/merge-document-to-docx.js
+// node src/documentmerge/merge-document-to-pdf.js
 
  const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 

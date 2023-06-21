@@ -37,17 +37,13 @@ To complete this guide, you will need:
 
 ## Step Two: Setting up the project
 
-1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-Python (Extract, Auto-tag)Samples.zip. If you unzip that archive, you will find a folder of samples:
+1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-Python (Extract, Auto-tag)Samples.zip. If you unzip that archive, you will find a folder of samples and the `pdfservices-api-credentials.json` file.
 
 ![Samples](./shot5_spc.png)
 
-2) We need the `pdfservices-api-credentials.json` file found in the samples directory:
+2) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
 
-![Private key](./shot6_spc.png)
-
-3) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
-
-4) At the command line, change to the directory you created, and run the following command to install the Python SDK: `pip install pdfservices-sdk`.
+3) At the command line, change to the directory you created, and run the following command to install the Python SDK: `pip install pdfservices-sdk`.
 
 ![alt](shot7.png)
 
@@ -55,7 +51,7 @@ At this point, we've installed the Python SDK for Adobe PDF Services API as a de
 
 Our application will take a PDF, `Adobe Accesibility Auto-Tag API Sample.pdf` (downloadable from <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>) and tag its contents. The results will be saved in a given directory `/output/AutotagPDF`. 
 
-6) In your editor, open the directory where you previously copied the credentials. Create a new file, `autotag.py`.
+4) In your editor, open the directory where you previously copied the credentials. Create a new file, `autotag.py`.
 
 Now you're ready to begin coding.
 

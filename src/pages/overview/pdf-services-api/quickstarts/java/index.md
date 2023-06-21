@@ -37,17 +37,13 @@ To complete this guide, you will need:
 
 ## Step Two: Setting up the project
 
-1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-JavaSamples.zip. If you unzip that archive, you will find a folder of samples:
+1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-JavaSamples.zip. If you unzip that archive, you will find a folder of samples and the `pdfservices-api-credentials.json` file.
 
 ![alt](./shot5_spc.png)
 
-2) We need the `pdfservices-api-credentials.json` file found in the samples directory:
+2) Take the `pdfservices-api-credentials.json` and place it in a new directory.
 
-![alt](./shot6_spc.png)
-
-3) Take the `pdfservices-api-credentials.json` and place it in a new directory.
-
-4) In this directory, create a new file named `pom.xml` and copy the following contents:
+3) In this directory, create a new file named `pom.xml` and copy the following contents:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -158,7 +154,7 @@ This file will define what dependencies we need and how the application will be 
 
 Our application will take a PDF, `Bodea Brochure.pdf` (downloadable from <a href="https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf">here</a>) and convert it to a Microsoft Word document, `Bodea Brochure.docx`.
 
-5) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `ExportPDFToWord.java`. 
+4) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `ExportPDFToWord.java`. 
 
 Now you're ready to begin coding.
 
