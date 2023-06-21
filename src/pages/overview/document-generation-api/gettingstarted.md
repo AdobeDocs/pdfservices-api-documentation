@@ -126,7 +126,7 @@ The sample below generates the output document in the **PDF** format. Similarly,
 
 Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Rest API, REST API with External Storage" /> 
 
 ##### Java
 
@@ -420,7 +420,7 @@ The sample below shows the use of **Fragments** in the word template and generat
 
 Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" />
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Rest API, Rest API with External Storage"/>
 
 ##### Java
 
