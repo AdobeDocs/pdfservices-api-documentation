@@ -356,6 +356,58 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/document
 // https://documentcloud.adobe.com/document-services/index.html#post-documentGeneration
 ```
 
+
+#### Rest API with External Storage
+
+```javascript
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Document-Generation
+
+curl --location --request POST 'https://pdf-services.adobe.io/operation/documentgeneration' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "input": {
+        "uri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/dc-platformService-automation_dc-platformService-automation%40AdobeID/49b1d57e-23bf-4b82-a541-ba56d9b97011?X-Amz-Security-Token=FwoGZXIvYXdzEFkaDFswafxir9Mr713TUCLTAfNWbys2go%2Fmzni%2BRJvHz2rKFVfBpo%2B0R%2BowBf0Dc4TIqDAtRp%2FozbJn9qvJRkK75mSCTSWKxqGGEFowKFBQB3L2mCGDINh41F%2F0%2FQR6OswJX%2FJ4IGZPl7PrBUVv1bfNQpadx8MLfYMuJVNjGoU7MIsBMpIpDyHcRjM%2BpetRbLFtSUaD6dDCo%2BborzDaNfE%2BqFFkrwqJIe1YJkJcrABN5zYOiJPHts49YSS32jwe2%2B9awi9hesOeNSDCpoVfHi819qMCh%2FUvrKOao4MK0%2BfuPCzSEPootaLFpAYyLaqOMBNjLcQMegek%2B35KHxza2ow0U9DHrSVsxhpue53SzBU4UcOkDHBDTA7cTQ%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230620T072137Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47KCSF4JF5%2F20230620%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=bc06223d01162803cc43bd8f21bddceb9377a3fab29e31ecd5c52778b528b66e",
+        "storage": "S3"
+    },
+    "output": {
+        "uri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/dc-platformService-automation_dc-platformService-automation%40AdobeID/304625c6-f467-4c1b-bbd4-2411ad3bef06?X-Amz-Security-Token=FwoGZXIvYXdzEFkaDGn9S98klYSKO2WCGCLTAa0xfP3yS7Pz%2BaCkG8OcFbQOKSiFCSKzUbr4P%2FxMc5s3Mhd2k75p0KlBthAkrKU%2BUmbs9xZgBbDfoPeagO3sNEcbI9L1hkT%2Fgq5yoUOtekldoIHPTCrqCwrqAeV6lsGO5MnxRPFxfFVPvUfeVVL0OfmYdqKwFPe%2FJn3B4iGoJr%2B5%2BZ1JgNLXqjd1cbmCliNmOldNCdcqK2xlaqgmiFdK3wXm9cd97EnLT3UYL30MrnNjgAYu%2BTDSGFhEDO%2FmdUWQQ7RWsEq1LM5deOjWsX27tl6pxSgoj6XFpAYyLRlGz%2FpXXNuAO%2FBUkMMjIJ6NHVNTpJ0tJQcbq88Ti%2Bp5a4iu82ojskR5ehfT0g%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230620T072142Z&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47L6LJD4VQ%2F20230620%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=63c7394449c51588a5bd33e2d680647c1b28f88ea5d783d75649edf96477454b",
+        "storage": "S3"
+    },
+    "params": {
+        "jsonDataForMerge": {
+            "customerName": "Kane Miller",
+            "customerVisits": 100,
+            "itemsBought": [
+                {
+                    "name": "Sprays",
+                    "quantity": 50,
+                    "amount": 100
+                },
+                {
+                    "name": "Chemicals",
+                    "quantity": 100,
+                    "amount": 200
+                }
+            ],
+            "totalAmount": 300,
+            "previousBalance": 50,
+            "lastThreeBillings": [
+            100,
+            200,
+            300
+            ],
+            "photograph": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII="
+        }
+    }
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-documentGeneration
+```
+
 As a result of the Document Generation API, template tags are replaced
 with the input JSON data.
 
@@ -672,6 +724,66 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/document
             "customerDetails": "{{customerName}}, Visits: {{customerVisits}}"
         }
     ]
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-documentGeneration
+```
+
+
+#### Rest API with External Storage
+
+```javascript
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Document-Generation
+
+curl --location --request POST 'https://pdf-services.adobe.io/operation/documentgeneration' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "input": {
+        "uri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/dc-platformService-automation_dc-platformService-automation%40AdobeID/49b1d57e-23bf-4b82-a541-ba56d9b97011?X-Amz-Security-Token=FwoGZXIvYXdzEFkaDFswafxir9Mr713TUCLTAfNWbys2go%2Fmzni%2BRJvHz2rKFVfBpo%2B0R%2BowBf0Dc4TIqDAtRp%2FozbJn9qvJRkK75mSCTSWKxqGGEFowKFBQB3L2mCGDINh41F%2F0%2FQR6OswJX%2FJ4IGZPl7PrBUVv1bfNQpadx8MLfYMuJVNjGoU7MIsBMpIpDyHcRjM%2BpetRbLFtSUaD6dDCo%2BborzDaNfE%2BqFFkrwqJIe1YJkJcrABN5zYOiJPHts49YSS32jwe2%2B9awi9hesOeNSDCpoVfHi819qMCh%2FUvrKOao4MK0%2BfuPCzSEPootaLFpAYyLaqOMBNjLcQMegek%2B35KHxza2ow0U9DHrSVsxhpue53SzBU4UcOkDHBDTA7cTQ%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230620T072137Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47KCSF4JF5%2F20230620%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=bc06223d01162803cc43bd8f21bddceb9377a3fab29e31ecd5c52778b528b66e",
+        "storage": "S3"
+    },
+    "output": {
+        "uri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/dc-platformService-automation_dc-platformService-automation%40AdobeID/304625c6-f467-4c1b-bbd4-2411ad3bef06?X-Amz-Security-Token=FwoGZXIvYXdzEFkaDGn9S98klYSKO2WCGCLTAa0xfP3yS7Pz%2BaCkG8OcFbQOKSiFCSKzUbr4P%2FxMc5s3Mhd2k75p0KlBthAkrKU%2BUmbs9xZgBbDfoPeagO3sNEcbI9L1hkT%2Fgq5yoUOtekldoIHPTCrqCwrqAeV6lsGO5MnxRPFxfFVPvUfeVVL0OfmYdqKwFPe%2FJn3B4iGoJr%2B5%2BZ1JgNLXqjd1cbmCliNmOldNCdcqK2xlaqgmiFdK3wXm9cd97EnLT3UYL30MrnNjgAYu%2BTDSGFhEDO%2FmdUWQQ7RWsEq1LM5deOjWsX27tl6pxSgoj6XFpAYyLRlGz%2FpXXNuAO%2FBUkMMjIJ6NHVNTpJ0tJQcbq88Ti%2Bp5a4iu82ojskR5ehfT0g%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230620T072142Z&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47L6LJD4VQ%2F20230620%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=63c7394449c51588a5bd33e2d680647c1b28f88ea5d783d75649edf96477454b",
+        "storage": "S3"
+    },
+    "params": {
+        "jsonDataForMerge": {
+            "customerName": "Kane Miller",
+            "customerVisits": 100,
+            "itemsBought": [
+                {
+                    "name": "Sprays",
+                    "quantity": 50,
+                    "amount": 100
+                },
+                {
+                    "name": "Chemicals",
+                    "quantity": 100,
+                    "amount": 200
+                }
+            ],
+            "totalAmount": 300,
+            "previousBalance": 50,
+            "lastThreeBillings": [
+            100,
+            200,
+            300
+            ],
+            "photograph": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII="
+        },
+        "fragments": [
+            {
+                "orderDetails": "<b>Quantity</b>:{{quantity}}, <b>Description</b>:{{description}}, <b>Amount</b>:{{amount}}"
+            },
+            {
+                "customerDetails": "{{customerName}}, Visits: {{customerVisits}}"
+            }
+        ]
+    }
 }'
 
 // Legacy API can be found here 
