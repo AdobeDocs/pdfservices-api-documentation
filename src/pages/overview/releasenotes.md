@@ -185,18 +185,14 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
-### Adobe Document Generation Server Side Release (June, 2023; server side release)
-
-| Change | Language | Description                                                                                                              |
-|--------|----------|--------------------------------------------------------------------------------------------------------------------------|
-| New    | API      | Added support for [External Storage](../pdf-services-api/howtos/pdf-external-storage-sol/) in Document Generation API.   |  
-
 ### 3.4.0 (June, 2023; minor release)
 
-| Change  | Language         | Description                                                                                                                     |
-|---------|------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| New | Java,NodeJS,.NET | PDF Electronic Seal operation is now available for all the users in PDF Services SDKs and REST APIs.  |
-| New | Java,NodeJS,.NET | Added support for OAuth based Server to Server credentials in Adobe PDF Services SDKs. JWT based service account credentials are now deprecated. |
+| Change | Language         | Description                                                                                                                                      |
+|--------|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| New    | Java,NodeJS,.NET | PDF Electronic Seal operation is now available for all the users in PDF Services SDKs and REST APIs.                                             |
+| New    | Java,NodeJS,.NET | Added support for OAuth based Server to Server credentials in Adobe PDF Services SDKs. JWT based service account credentials are now deprecated. |
+| New    | API              | Added support for [External Storage](../pdf-services-api/howtos/pdf-external-storage-sol/) in Document Generation API.                           |
+
 
 ### Python SDK 2.3.0 (June, 2023; minor release)
 
