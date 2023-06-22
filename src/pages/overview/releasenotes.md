@@ -190,15 +190,21 @@ Upgrading to the latest SDK should not break existing applications.
 | Change | Language         | Description                                                                                                                                      |
 |--------|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
 | New    | Java,NodeJS,.NET | PDF Electronic Seal operation is now available for all the users in PDF Services SDKs and REST APIs.                                             |
-| New    | Java,NodeJS,.NET | Added support for OAuth based Server to Server credentials in Adobe PDF Services SDKs. JWT based service account credentials are now deprecated. |
-| New    | API              | Added support for [External Storage](../pdf-services-api/howtos/pdf-external-storage-sol/) in Document Generation API.                           |
-
+| New    | Java,NodeJS,.NET | Added support for OAuth based Server to Server credentials in PDF Services SDKs. |
+| Changed | Java,NodeJS,.NET | JWT based service account credentials and corresponding SDK interfaces are now deprecated. |
 
 ### Python SDK 2.3.0 (June, 2023; minor release)
 
 | Change  | Language         | Description                                                                                                                     |
 |---------|------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| New | Python | Added support for OAuth based Server to Server credentials in Adobe PDF Services SDKs. JWT based service account credentials are now deprecated. |
+| New | Python | Added support for OAuth based Server to Server credentials in PDF Services SDKs. |
+| Changed | Python | JWT based service account credentials and corresponding SDK interfaces are now deprecated. |
+
+### Adobe Document Generation Server Side Release (June, 2023; server side release)
+
+| Change | Language | Description                                                                                                              |
+|--------|----------|--------------------------------------------------------------------------------------------------------------------------|
+| New    | API     | Added support for [External Storage](../pdf-services-api/howtos/pdf-external-storage-sol/) in Document Generation API.   |
 
 ### 3.3.0 (May, 2023; minor release)
 
