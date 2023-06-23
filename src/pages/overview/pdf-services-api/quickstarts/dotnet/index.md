@@ -10,7 +10,7 @@ To get started using Adobe PDF Services API, let's walk through a simple scenari
 
 To complete this guide, you will need:
 
-* [.NET Core: version 6.0 or above](https://dotnet.microsoft.com/en-us/download)
+* [.NET: version 6.0 or above](https://dotnet.microsoft.com/en-us/download)
 * [.Net SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 * A build tool: Either Visual Studio or .NET Core CLI.
 * An Adobe ID. If you do not have one, the credential setup will walk you through creating one.
@@ -30,29 +30,21 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2_ga.png)
+![Project setup](./shot2_spc.png)
 
 6) After your credentials are created, they are automatically  downloaded:
 
-![alt](./shot3.png)
+![alt](./shot3_spc.png)
 
 ## Step Two: Setting up the project
 
-1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-.NetSamples.zip. If you unzip that archive, you will find a README file, your private key, and a folder of samples:
+1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-.NetSamples.zip. If you unzip that archive, you will find a folder of samples and the `pdfservices-api-credentials.json` file.
 
-![alt](./shot5.png)
+![alt](./shot5_spc.png)
 
-2) We need two things from this download. The `private.key` file (as shown in the screenshot above, and the `pdfservices-api-credentials.json` file. You can find this in the `adobe-DC.PDFServicesSDK.NET.Samples` folder, inside any of the sample subdirectories, so for example, the `CombinePDF` folder.
+2) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
 
-![alt](./shot6.png)
-
-<InlineAlert slots="text" />
-
-Note that that private key is *also* found in this directory so feel free to copy them both from here.
-
-3) Take these two files and place them in a new directory.
-
-4) In your new directory, create a new file, `ExportPDFToWord.csproj`. This file will declare our requirements as well as help define the application we're creating.
+3) In your new directory, create a new file, `ExportPDFToWord.csproj`. This file will declare our requirements as well as help define the application we're creating.
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -64,16 +56,10 @@ Note that that private key is *also* found in this directory so feel free to cop
 
     <ItemGroup>
         <PackageReference Include="log4net" Version="2.0.12" />
-        <PackageReference Include="Adobe.PDFServicesSDK" Version="3.3.0" />
+        <PackageReference Include="Adobe.PDFServicesSDK" Version="3.4.0" />
     </ItemGroup>
 
     <ItemGroup>
-        <None Update="pdfservices-api-credentials.json">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
-        <None Update="private.key">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
         <None Update="extractPDFInput.pdf">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
@@ -87,7 +73,7 @@ Note that that private key is *also* found in this directory so feel free to cop
 
 Our application will take a PDF, `Bodea Brochure.pdf` (downloadable from <a href="https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf">here</a>) and convert it to a Microsoft Word document, `Bodea Brochure.docx`.
 
-5) In your editor, open the directory where you previously copied the credentials and created the `csproj` file. Create a new file, `Program.cs`. 
+4) In your editor, open the directory where you previously copied the credentials and created the `csproj` file. Create a new file, `Program.cs`. 
 
 Now you're ready to begin coding.
 
@@ -95,7 +81,7 @@ Now you're ready to begin coding.
 
 1) We'll begin by including our required dependencies:
 
-```clike  
+```javascript
 using System.IO;
 using System;
 using System.Collections.Generic;
@@ -113,7 +99,7 @@ using Adobe.PDFServicesSDK.exception;
 
 2) Now let's define our main class and `Main` method:
 
-```clike
+```javascript
 namespace ExportPDFToWord
 {
     class Program
@@ -128,7 +114,7 @@ namespace ExportPDFToWord
 
 3) Inside our class, we'll begin by defining our input PDF and output filenames. If the output file already exists, it will be deleted:
 
-```clike
+```javascript
 String input = "./Bodea Brochure.pdf";
 
 String output = "./Bodea Brochure.docx";
@@ -140,13 +126,23 @@ if(File.Exists(Directory.GetCurrentDirectory() + output))
 Console.Write("Exporting "+ input + " to " + output + "\n");
 ```
 
-4) Next, we setup the SDK to use our credentials.
+4) Set the environment variables `CLIENT_ID` and `CLIET_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+- **Windows:**
+    - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+    - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
-```clike
+- **MacOS/Linux:**
+    - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+    - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+5) Next, we setup the SDK to use our credentials.
+
+```javascript
 // Initial setup, create credentials instance.
-Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-	.FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-	.Build();
+Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+        .WithClientId("PDF_SERVICES_CLIENT_ID")
+        .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+        .Build();
 
 // Create an ExecutionContext using credentials and create a new operation instance.
 ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -154,9 +150,9 @@ ExecutionContext executionContext = ExecutionContext.Create(credentials);
 
 This code both points to the credentials downloaded previously as well as sets up an execution context object that will be used later.
 
-5) Now, let's create the operation:
+6) Now, let's create the operation:
 
-```clike
+```javascript
 ExportPDFOperation exportPdfOperation = ExportPDFOperation.CreateNew(ExportPDFTargetFormat.DOCX);
 
 // Provide an input FileRef for the operation.
@@ -168,7 +164,7 @@ This set of code defines what we're doing (an Export operation), points to our l
 
 6) The next code block executes the operation:
 
-```clike
+```javascript
 // Execute the operation.
 FileRef result = exportPdfOperation.Execute(executionContext);
 
@@ -183,7 +179,7 @@ This code runs the Extraction process and then stores the result Word document t
 
 Here's the complete application (`Program.cs`):
 
-```clike
+```javascript
 using System.IO;
 using System;
 using System.Collections.Generic;
@@ -221,8 +217,9 @@ namespace ExportPDFToWord
         		Console.Write("Exporting "+ input + " to " + output + "\n");
 
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
                     .Build();
 
                 // Create an ExecutionContext using credentials and create a new operation instance.

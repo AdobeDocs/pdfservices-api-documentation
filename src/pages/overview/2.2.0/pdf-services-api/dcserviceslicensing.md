@@ -89,15 +89,14 @@ result in an error message.
 
 **Page limits may be lower for documents with a large number of tables.*
 
-Licensing Metrics & Free Trial
+Licensing Metrics & Free Tier
 ------------------------------
 
-The PDF Services API provides a free trial program so that you can take
-a deep dive into its cool features at zero cost. Trial users that sign
-up directly on Adobe I/O get free credentials that enable processing of
-1,000 Document Transactions for up to 6 months. A Document Transaction
-is based on the initial endpoint request (i.e., API call) and the
-digital output. For detailed licensing metrics, please see the tables
+The PDF Services API has a Free Tier so that you can take a deep dive 
+into its cool features at zero cost. Free Tier users get free credentials 
+that enable the processing of 500 Document Transactions per month. 
+A Document Transaction is based on the initial endpoint request (i.e., API call) 
+and the digital output. For detailed licensing metrics, please see the tables 
 above.
 
 Processing is calculated on a per Document Transaction basis.

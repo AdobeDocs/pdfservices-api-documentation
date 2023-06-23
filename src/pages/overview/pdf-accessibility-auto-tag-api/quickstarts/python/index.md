@@ -29,29 +29,21 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2_ga.png)
+![Project setup](./shot2_spc.png)
 
 6) After your credentials are created, they are automatically downloaded:
 
-![Credentials](./shot3_ga.png)
+![Credentials](./shot3_spc.png)
 
 ## Step Two: Setting up the project
 
-1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-Python (Extract, Auto-tag)Samples.zip. If you unzip that archive, you will find a README file, your private key, and a folder of samples:
+1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-Python (Extract, Auto-tag)Samples.zip. If you unzip that archive, you will find a folder of samples and the `pdfservices-api-credentials.json` file.
 
-![Samples](./shot5.png)
+![Samples](./shot5_spc.png)
 
-2) We need two things from this download. The `private.key` file (as shown in the screenshot above, and the `pdfservices-api-credentials.json` file found in the samples directory:
+2) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
 
-![Private key](./shot6.png)
-
-<InlineAlert slots="text" />
-
-Note that that private key is *also* found in this directory so feel free to copy them both from here.
-
-3) Take these two files and place them in a new directory.
-
-4) At the command line, change to the directory you created, and run the following command to install the Python SDK: `pip install pdfservices-sdk`.
+3) At the command line, change to the directory you created, and run the following command to install the Python SDK: `pip install pdfservices-sdk`.
 
 ![alt](shot7.png)
 
@@ -59,7 +51,7 @@ At this point, we've installed the Python SDK for Adobe PDF Services API as a de
 
 Our application will take a PDF, `Adobe Accesibility Auto-Tag API Sample.pdf` (downloadable from <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>) and tag its contents. The results will be saved in a given directory `/output/AutotagPDF`. 
 
-6) In your editor, open the directory where you previously copied the credentials. Create a new file, `autotag.py`.
+4) In your editor, open the directory where you previously copied the credentials. Create a new file, `autotag.py`.
 
 Now you're ready to begin coding.
 
@@ -99,9 +91,10 @@ This defines what our output directory will be and optionally deletes it if it a
 
 ```python
 # Initial setup, create credentials instance.
-credentials = Credentials.service_account_credentials_builder()\
-	.from_file("./pdfservices-api-credentials.json") \
-	.build()
+credentials = Credentials.service_principal_credentials_builder()
+        .with_client_id('PDF_SERVICES_CLIENT_ID')
+        .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+        .build();
 
 # Create an ExecutionContext using credentials and create a new operation instance.
 execution_context = ExecutionContext.create(credentials)
@@ -166,9 +159,10 @@ report_path = f'{output_path}{input_pdf}-report.xlsx'
 try:
 
 	# Initial setup, create credentials instance.
-	credentials = Credentials.service_account_credentials_builder()\
-		.from_file("./pdfservices-api-credentials.json") \
-		.build()
+    credentials = Credentials.service_principal_credentials_builder()
+        .with_client_id('PDF_SERVICES_CLIENT_ID')
+        .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+        .build();
 
 	# Create an ExecutionContext using credentials and create a new operation instance.
 	execution_context = ExecutionContext.create(credentials)
