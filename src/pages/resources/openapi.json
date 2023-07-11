@@ -5810,7 +5810,7 @@
           "Remove Protection"
         ],
         "summary": "Remove password protection from a PDF File",
-        "description": "Remove security from a PDF document. If the PDF is protected by owner password then the owner password is required in the field:contentAnalyzerRequests.params.cpf:inline:password to remove security otherwise user password is required.",
+        "description": "Remove security from a PDF document. If the PDF is protected by owner password then the owner password is required in the field password to remove security otherwise user password is required.",
         "operationId": "pdfoperations.removeprotection",
         "parameters": [
           {
