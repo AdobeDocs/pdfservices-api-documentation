@@ -10,8 +10,8 @@ the changes below for each release.
 
 ### July, 2023
 
-| Change | Description                                                                                                                                                                   |
-| ------ |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Change | Description                                                            |
+| ------ | ---------------------------------------------------------------------- |
 | Bug fix | Added fix for the issue with vanishing form fields text when the PDF is scrolled.
 | Bug fix | Added fix for the issue with visibility of the page number in the scrollbar for sized container embed mode.
 
