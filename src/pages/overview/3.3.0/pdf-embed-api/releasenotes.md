@@ -19,7 +19,7 @@ the changes below for each release.
 
 | Change | Description                                                                                                                                                                   |
 | ------ |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| New    | PDF Embed API is also available on the new <b>acrobatservices.adobe.com</b> subdomain. For sample usage, see the section [sample usage](./gettingstarted.md/#copy-it-run-it). 
+| New    | PDF Embed API is also available on the new <b>acrobatservices.adobe.com</b> subdomain. For sample usage, see the section [sample usage](./gettingstarted.md/#copy-it-run-it).
 | Changed | Enhanced the commenting experience.
 | Bug fix | Fixed issues in the Annotations API to improve the dragging and placing of text comments onto the PDF.
 | Bug fix | Fixed issues to improve the support for interactive PDFs.
@@ -46,7 +46,6 @@ the changes below for each release.
 | ------ | ---------------------------------------------------------------------- |
 | Bug fix | Fixed issues with the Annotations API to address few failure cases related to adding annotations.
 
-
 ### November, 2022
 
 | Change | Description                                                            |
@@ -59,7 +58,6 @@ the changes below for each release.
 | Change | Description                                                                                                                                                                     |
 | ------ |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | New    | PDF Embed API is also available on the new <b>documentservices.adobe.com</b> subdomain. For sample usage, see the section  [sample usage](./gettingstarted.md/#copy-it-run-it). |
-
 
 ### August, 2022
 
@@ -85,13 +83,11 @@ the changes below for each release.
 | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | New | PDF Embed API will end support for Internet Explorer 11 and Microsoft Edge Legacy after September, 2021. A warning message will be displayed when the PDF is rendered on these browsers till the end of September, 2021, notifying users to use any other supported browser. Beginning October 1, 2021, PDF rendering will stop working on these browsers. To know about the list of supported browsers, see the section [Supported browsers](../#supported-browsers)|
 
-
 ### July, 2021
 
 | Change  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Changed | Previously, the PDF always used to take focus on rendering, irrespective of the embed mode. Now the default behaviour has been changed and the PDF will take focus only when rendered in full window and lightbox embed modes. Website developers can override this default behaviour using the preview configuration ``focusOnRendering``. For more details, see the section [Focus on PDF rendering](./howtos.md#focus-on-pdf-rendering).                 |
-
 
 ### June, 2021
 
