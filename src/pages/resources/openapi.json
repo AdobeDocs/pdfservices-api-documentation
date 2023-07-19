@@ -8043,11 +8043,6 @@
                 "figures"
               ]
             }
-          },
-          "extractArtifacts": {
-            "description": "Enable artifact extraction from header and footer, adding their text contents to the structured JSON. To extract figures artifacts, simply specify them in the 'renditionsToExtract' field.",
-            "type": "boolean",
-            "default": false
           }
         },
         "example": {
@@ -8062,8 +8057,7 @@
           "renditionsToExtract": [
             "tables",
             "figures"
-          ],
-          "extractArtifacts" : false
+          ]
         },
         "additionalProperties": false
       },
