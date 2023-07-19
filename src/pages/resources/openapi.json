@@ -8488,6 +8488,37 @@
           "fragments": {
             "description": "Specifies the Fragments JSON object or a JSON array to resolve fragments in the document template. To know more about fragments use-case in document generation and document templates, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/document-generation-api/fragments/\">documentation</a>.",
             "type": "object"
+          },
+          "notifier": {
+            "description": "Specifies the information (such as https url and headers) required to notify about the job completion",
+            "type": "object",
+            "required": [
+              "type",
+              "data"
+            ],
+            "properties": {
+              "type": {
+                "description": "Specifies the notifier type. Currently supported value is \"callback\" only",
+                "type": "string"
+              },
+              "data": {
+                "description": "Specifies the the API details that will be called to notify about job completion",
+                "type": "object",
+                "required": [
+                  "url"
+                ],
+                "properties": {
+                  "url": {
+                    "description": "Specifies the url required for HTTPS call",
+                    "type": "string"
+                  },
+                  "headers": {
+                    "description": "Specifies the headers required for HTTPS call",
+                    "type": "map"
+                  }
+                }
+              }
+            }
           }
         },
         "example": {
@@ -8516,6 +8547,16 @@
               300
             ],
             "photograph": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII="
+          },
+          "notifier": {
+            "type": "callback",
+            "data": {
+              "url": "https://client-webhook-url.com",
+              "headers": {
+                "Authorization": "Beared token",
+                "traceID": "trace ID"
+              }
+            }
           }
         },
         "required": [
@@ -8595,6 +8636,37 @@
             "required": [
               "jsonDataForMerge"
             ]
+          },
+          "notifier": {
+            "description": "Specifies the information (such as https url and headers) required to notify about the job completion",
+            "type": "object",
+            "required": [
+              "type",
+              "data"
+            ],
+            "properties": {
+              "type": {
+                "description": "Specifies the notifier type. Currently supported value is \"callback\" only",
+                "type": "string"
+              },
+              "data": {
+                "description": "Specifies the the API details that will be called to notify about job completion",
+                "type": "object",
+                "required": [
+                  "url"
+                ],
+                "properties": {
+                  "url": {
+                    "description": "Specifies the url required for HTTPS call",
+                    "type": "string"
+                  },
+                  "headers": {
+                    "description": "Specifies the headers required for HTTPS call",
+                    "type": "map"
+                  }
+                }
+              }
+            }
           }
         },
         "example": {
@@ -8631,6 +8703,16 @@
                 300
               ],
               "photograph": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII="
+            }
+          },
+          "notifier": {
+            "type": "callback",
+            "data": {
+              "url": "https://client-webhook-url.com",
+              "headers": {
+                "Authorization": "Beared token",
+                "traceID": "trace ID"
+              }
             }
           }
         },
@@ -10138,3 +10220,4 @@
     }
   }
 }
+
