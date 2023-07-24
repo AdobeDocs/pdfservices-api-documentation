@@ -9211,16 +9211,12 @@
         "example": {
           "inputs": [
             {
-              "input": {
-                "uri": "https://dcalpine2.sharepoint.com/sites/Docgen/_layouts/15/download.aspx?UniqueId=353087f7-b1ea-4d84-91d7-0821b23e04ea&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDI5MDkiLCJleHAiOiIxNjgwNjA2NTA5IiwiZW5kcG9pbnR1cmwiOiIwU1NJNDAxdjZhUll6YUIyV2lod005VnIxOVJHNStvSUxFN280dk0yUlMwPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMTMzIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJPVEUxTlRZMFkyRXROREZpT1MwME1HSTBMVGczWVdRdFlqaGpaREprWkdNeVlXVTUiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE2OSJ9.aStWTExNZ045T3h3OGV4MHdyYURmLzZqOW9McGRhSmtZWStHOE1wM0ZaYz0&ApiVersion=2.0",
-                "storage": "SHAREPOINT"
-              }
+              "uri": "https://dcalpine2.sharepoint.com/sites/Docgen/_layouts/15/download.aspx?UniqueId=353087f7-b1ea-4d84-91d7-0821b23e04ea&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDI5MDkiLCJleHAiOiIxNjgwNjA2NTA5IiwiZW5kcG9pbnR1cmwiOiIwU1NJNDAxdjZhUll6YUIyV2lod005VnIxOVJHNStvSUxFN280dk0yUlMwPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMTMzIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJPVEUxTlRZMFkyRXROREZpT1MwME1HSTBMVGczWVdRdFlqaGpaREprWkdNeVlXVTUiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE2OSJ9.aStWTExNZ045T3h3OGV4MHdyYURmLzZqOW9McGRhSmtZWStHOE1wM0ZaYz0&ApiVersion=2.0",
+              "storage": "SHAREPOINT"
             },
             {
-              "input": {
-                "uri": "https://dcalpine2.sharepoint.com/sites/Docgen/_layouts/15/download.aspx?UniqueId=353087f7-b1ea-4d84-91d7-0821b23e04ea&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDI5MDkiLCJleHAiOiIxNjgwNjA2NTA5IiwiZW5kcG9pbnR1cmwiOiIwU1NJNDAxdjZhUll6YUIyV2lod005VnIxOVJHNStvSUxFN280dk0yUlMwPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMTMzIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJPVEUxTlRZMFkyRXROREZpT1MwME1HSTBMVGczWVdRdFlqaGpaREprWkdNeVlXVTUiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE2OSJ9.aStWTExNZ045T3h3OGV4MHdyYURmLzZqOW9McGRhSmtZWStHOE1wM0ZaYz0&ApiVersion=2.0",
-                "storage": "SHAREPOINT"
-              }
+              "uri": "https://dcalpine2.sharepoint.com/sites/Docgen/_layouts/15/download.aspx?UniqueId=353087f7-b1ea-4d84-91d7-0821b23e04ea&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDI5MDkiLCJleHAiOiIxNjgwNjA2NTA5IiwiZW5kcG9pbnR1cmwiOiIwU1NJNDAxdjZhUll6YUIyV2lod005VnIxOVJHNStvSUxFN280dk0yUlMwPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMTMzIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJPVEUxTlRZMFkyRXROREZpT1MwME1HSTBMVGczWVdRdFlqaGpaREprWkdNeVlXVTUiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE2OSJ9.aStWTExNZ045T3h3OGV4MHdyYURmLzZqOW9McGRhSmtZWStHOE1wM0ZaYz0&ApiVersion=2.0",
+              "storage": "SHAREPOINT"
             }
           ],
           "output": {
@@ -9281,23 +9277,17 @@
         "description": "Array of input object for electronic seal operation containing input doc and seal image uris respectively.",
         "type": "object",
         "properties": {
-          "input": {
-            "title": "input object containing doc and image details",
-            "type": "object",
-            "properties": {
-              "uri": {
-                "description": "Input file Download Pre-signed URL.",
-                "type": "string"
-              },
-              "storage": {
-                "description": "Specifies the type of the external storage",
-                "type": "string",
-                "enum": [
-                  "S3",
-                  "SHAREPOINT"
-                ]
-              }
-            }
+          "uri": {
+            "description": "Input file Download Pre-signed URL.",
+            "type": "string"
+          },
+          "storage": {
+            "description": "Specifies the type of the external storage",
+            "type": "string",
+            "enum": [
+              "S3",
+              "SHAREPOINT"
+            ]
           }
         }
       },
