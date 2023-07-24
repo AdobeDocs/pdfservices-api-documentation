@@ -9009,11 +9009,13 @@
         "type": "object",
         "properties": {
           "inputs": {
-            "description": "Params representing input array for electronic seal operation. It contains 2 elements always. First array element represents the input doc and second represents the seal image.",
+            "description": "Params representing input array for electronic seal operation. It contains 2 elements. First array element represents the input document which is a required element and second element represents the seal image which is an optional element.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/sealInputs"
-            }
+            },
+            "minItems": 1,
+            "maxItems": 2
           },
           "output": {
             "description": "Params representing output object for electronic seal operation",
