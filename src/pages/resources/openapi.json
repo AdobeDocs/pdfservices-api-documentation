@@ -6575,11 +6575,18 @@
           }
         ],
         "requestBody": {
-          "description": "Params to specify the options required for applying electronic seal.",
+          "description": "Params to specify the options required for applying electronic seal.Refer to the External Section for using external storage with Electronic Seal API.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ElectronicSeal"
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/ElectronicSealInternal"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ElectronicSealExternal"
+                  }
+                ]
               }
             }
           },
@@ -8837,7 +8844,7 @@
           ]
         }
       },
-      "ElectronicSeal": {
+      "ElectronicSealInternal": {
         "description": "Params to specify the options required for applying digital seal.",
         "type": "object",
         "required": [
@@ -8894,6 +8901,291 @@
           }
         },
         "additionalProperties": false
+      },
+      "ElectronicSealExternal": {
+        "description": "Params for Electronic Seal Operation using external storage",
+        "type": "object",
+        "properties": {
+          "inputs": {
+            "description": "Params representing input array for electronic seal operation. It contains 2 elements always. First array element represents the input doc and second represents the seal image.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/sealInputs"
+            },
+            "required": [
+              "inputs"
+            ]
+          },
+          "output": {
+            "description": "Params representing output object for electronic seal operation",
+            "type": "object",
+            "properties": {
+              "uri" : {
+                "description": "Output file Upload Pre-signed URL.",
+                "type": "string"
+              },
+              "storage": {
+                "description": "Specifies the type of the external storage",
+                "type": "string",
+                "enum": [
+                  "S3",
+                  "SHAREPOINT"
+                ]
+              }
+            },
+            "required": [
+              "uri"
+            ]
+          },
+          "params": {
+            "description": "Params for electronic seal processing",
+            "type": "object",
+            "properties": {
+              "signatureFormat": {
+                "type": "string",
+                "default": "PKCS7",
+                "description": "Specifies a supported digital signature format. For supported signature formats, please refer <a href = \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/howtos/electronic-seal-api/#signature-format-signatureformat\">documentation</a>.",
+                "enum": [
+                  "PADES",
+                  "PKCS7"
+                ]
+              },
+              "cscCredentialOptions": {
+                "type": "object",
+                "description": "Specifies the parameters that encapsulates the signer's certificate credential. For more information, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/howtos/electronic-seal-api/#tsp-credential-information-csccredentialoptions--required\">documentation</a>.",
+                "required": [
+                  "providerName",
+                  "credentialId",
+                  "authorizationContext",
+                  "credentialAuthParameters"
+                ],
+                "properties": {
+                  "providerName": {
+                    "type": "string",
+                    "description": "Specifies the name of the Trust Service Provider. For the list of supported TSPs, please refer <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/#supported-trust-service-providers\">documentation</a>."
+                  },
+                  "credentialId": {
+                    "type": "string",
+                    "description": "Specifies the credential ID stored with the TSP."
+                  },
+                  "authorizationContext": {
+                    "type": "object",
+                    "description": "Specifies the service authorization data required to communicate with the TSP.",
+                    "required": [
+                      "accessToken"
+                    ],
+                    "properties": {
+                      "tokenType": {
+                        "type": "string",
+                        "description": "Specifies the type of service access token used to authorize access to the CSC provider hosted APIs.",
+                        "default": "Bearer"
+                      },
+                      "accessToken": {
+                        "type": "string",
+                        "description": "Specifies the service access token used to authorize access to the CSC provider hosted APIs."
+                      }
+                    }
+                  },
+                  "credentialAuthParameters": {
+                    "type": "object",
+                    "description": "Specifies the credentials authorization information required to authorize the access to their certificate.",
+                    "required": [
+                      "pin"
+                    ],
+                    "properties": {
+                      "pin": {
+                        "type": "string",
+                        "description": "Specifies the PIN associated with credential ID."
+                      }
+                    }
+                  }
+                }
+              },
+              "sealFieldOptions": {
+                "type": "object",
+                "description": "Specifies the parameters required to create a new signature field or use an existing field. For more details, please refer <a href= \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/howtos/electronic-seal-api/#seal-field-parameters---sealfieldoptions--required\">documentation</a>.",
+                "required": [
+                  "fieldName"
+                ],
+                "properties": {
+                  "visible": {
+                    "type": "boolean",
+                    "description": "Specified whether the seal field is visible or not.",
+                    "default": true
+                  },
+                  "location": {
+                    "type": "object",
+                    "description": "Specifies the coordinates of the signature appearance's bounding box in default PDF user space units. The location is only required if the signature field does not already exist in the PDF document.If location is provided along with the existing signature field then it is ignored.",
+                    "required": [
+                      "top",
+                      "left",
+                      "right",
+                      "bottom"
+                    ],
+                    "properties": {
+                      "top": {
+                        "type": "integer",
+                        "description": "Specifies the top-most y-coordinate of the seal appearance's bounding box in default PDF user space units."
+                      },
+                      "left": {
+                        "type": "integer",
+                        "description": "Specifies the left-most x-coordinate of the seal appearance's bounding box in default PDF user space units."
+                      },
+                      "right": {
+                        "type": "integer",
+                        "description": "Specifies the right-most x-coordinate of the seal appearance's bounding box in default PDF user space units."
+                      },
+                      "bottom": {
+                        "type": "integer",
+                        "description": "Specifies the bottom-most y-coordinate of the seal appearance's bounding box in default PDF user space units."
+                      }
+                    }
+                  },
+                  "fieldName": {
+                    "type": "string",
+                    "description": "The signature field's name. This must be a non-empty string. If signature field with this field name already exist, that field will be used. If it does not exist, a signature field with this field name will be created."
+                  },
+                  "pageNumber": {
+                    "type": "integer",
+                    "description": "Specifies the page number to which the signature field should be attached. Page numbers are 1-based. The page number is only required if the signature field does not already exist in the pdf document. If page number is provided along with the existing signature field then the page number should be same on which signature field is present in the document, else an error is thrown."
+                  }
+                }
+              },
+              "sealAppearanceOptions": {
+                "type": "object",
+                "description": "Specifies signature field appearance parameters. For more details, please refer <a href= \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/howtos/electronic-seal-api/#seal-appearance-parameters-sealappearanceoptions\">documentation</a>.",
+                "default": {
+                  "displayOptions": [
+                    "NAME",
+                    "LABELS"
+                  ]
+                },
+                "properties": {
+                  "displayOptions": {
+                    "type": "array",
+                    "description": "Specifies the information to display in the signature. These are an enum set of display items: NAME, DATE, DISTINGUISHED_NAME, LABELS and SEAL_IMAGE.",
+                    "items": {
+                      "type": "string"
+                    },
+                    "default": ["NAME","LABELS"]
+                  }
+                }
+              }
+            },
+            "required": [
+              "cscCredentialOptions",
+              "sealFieldOptions"
+            ]
+          },
+          "notifier": {
+            "description": "Specifies the information (such as https url and headers) required to notify about the job completion",
+            "type": "object",
+            "required": [
+              "type",
+              "data"
+            ],
+            "properties": {
+              "type": {
+                "description": "Specifies the notifier type. Currently supported value is \"callback\" only",
+                "type": "string"
+              },
+              "data": {
+                "description": "Specifies the the API details that will be called to notify about job completion",
+                "type": "object",
+                "required": [
+                  "url"
+                ],
+                "properties": {
+                  "url": {
+                    "description": "Specifies the url required for HTTPS call",
+                    "type": "string"
+                  },
+                  "headers": {
+                    "description": "Specifies the headers required for HTTPS call",
+                    "type": "map"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "example": {
+          "input": {
+            "uri": "https://dcalpine2.sharepoint.com/sites/Docgen/_layouts/15/download.aspx?UniqueId=353087f7-b1ea-4d84-91d7-0821b23e04ea&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDI5MDkiLCJleHAiOiIxNjgwNjA2NTA5IiwiZW5kcG9pbnR1cmwiOiIwU1NJNDAxdjZhUll6YUIyV2lod005VnIxOVJHNStvSUxFN280dk0yUlMwPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMTMzIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJPVEUxTlRZMFkyRXROREZpT1MwME1HSTBMVGczWVdRdFlqaGpaREprWkdNeVlXVTUiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE2OSJ9.aStWTExNZ045T3h3OGV4MHdyYURmLzZqOW9McGRhSmtZWStHOE1wM0ZaYz0&ApiVersion=2.0",
+            "storage": "SHAREPOINT"
+          },
+          "output": {
+            "uri": "https://dcalpine2.sharepoint.com/sites/Docgen/_api/v2.0/drives/b!MA1899sXSkupaKT9m2CP3JIqXDMQyoBCth9h9Rn6bQRjzBEBFxsbQpN23hY-rzQT/items/01TAIM7P3ZQQ4DP4NZHFDI6FBJPIGFRCY3/uploadSession?guid='2c79b9aa-f9dc-42c8-8919-da5a9b554b81'&overwrite=True&rename=False&dc=0&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDAyOTMiLCJleHAiOiIxNjgwNjg2NjkzIiwiZW5kcG9pbnR1cmwiOiJXVWNNVHhndVdyMHR4YzhlYWxlRzMrYUV1aXg5anoxanZuRmRpMENjNHFRPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMjYxIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJaREZsTURjek5tRXRaREJtWkMwMFlXUXlMV0V5WTJNdE1HRTRPV1prTTJJNU5XTmwiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE3MCJ9.a1hxR1J1emlFSE9jSTU0SnFTcFN6TGlsRHNhWTFRaDNkT2hwT3ZPYm8waz0",
+            "storage": "SHAREPOINT"
+          },
+          "params": {
+            "outputFormat": "pdf",
+            "jsonDataForMerge": {
+              "customerName": "Kane Miller",
+              "customerVisits": 100,
+              "itemsBought": [
+                {
+                  "name": "Sprays",
+                  "quantity": 50,
+                  "amount": 100
+                },
+                {
+                  "name": "Chemicals",
+                  "quantity": 100,
+                  "amount": 200
+                }
+              ],
+              "totalAmount": 300,
+              "previousBalance": 50,
+              "lastThreeBillings": [
+                100,
+                200,
+                300
+              ],
+              "photograph": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII="
+            }
+          },
+          "notifier": {
+            "type": "callback",
+            "data": {
+              "url": "https://client-webhook-url.com",
+              "headers": {
+                "Authorization": "Beared token",
+                "traceID": "trace ID"
+              }
+            }
+          }
+        },
+        "required": [
+          "input",
+          "params"
+        ],
+        "additionalProperties": false
+      },
+      "sealInputs" : {
+        "title": "inputs",
+        "description": "Array of input object for electronic seal operation containing input doc and seal image uris respectively.",
+        "type": "object",
+        "properties": {
+          "input": {
+            "title": "input object containing doc and image details",
+            "type": "object",
+            "properties": {
+              "uri": {
+                "description": "Input file Download Pre-signed URL.",
+                "type": "string"
+              },
+              "storage": {
+                "description": "Specifies the type of the external storage",
+                "type": "string",
+                "enum": [
+                  "S3",
+                  "SHAREPOINT"
+                ]
+              }
+            }
+          }
+        }
       },
       "sealOptions": {
         "title": "sealOptions",
