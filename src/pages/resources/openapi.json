@@ -991,10 +991,10 @@
               "schema": {
                 "oneOf": [
                   {
-                    "$ref": "#/components/schemas/Internal"
+                    "$ref": "#/components/schemas/DocumentGenerationInternal"
                   },
                   {
-                    "$ref": "#/components/schemas/External"
+                    "$ref": "#/components/schemas/DocumentGenerationExternal"
                   }
                 ]
               }
@@ -2482,11 +2482,18 @@
           }
         ],
         "requestBody": {
-          "description": "Params for Combine PDF Operation",
+          "description": "Params for Combine PDF Operation. Refer to the External Section for using external storage with Combine PDF API",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CombinePDF"
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinePDFInternal"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CombinePDFExternal"
+                  }
+                ]
               }
             }
           },
@@ -8122,7 +8129,8 @@
         },
         "additionalProperties": false
       },
-      "CombinePDF": {
+      "CombinePDFInternal": {
+        "title": "Internal",
         "description": "Params for Combine PDF Operation",
         "type": "object",
         "properties": {
@@ -8167,6 +8175,102 @@
         },
         "required": [
           "assets"
+        ],
+        "additionalProperties": false
+      },
+      "CombinePDFExternal": {
+        "title": "External",
+        "description": "Params for Combine PDF Operation",
+        "type": "object",
+        "properties": {
+          "inputs": {
+            "description": "The array of inputs with the required PageRanges to include in the output PDF document.",
+            "type": "array",
+            "items": {
+              "properties": {
+                "input": {
+                  "description": "Params representing input object for combine pdf operation",
+                  "type": "object",
+                  "properties": {
+                    "uri": {
+                      "description": "Input file Download Pre-signed URL.",
+                      "type": "string"
+                    },
+                    "storage": {
+                      "description": "Specifies the type of the external storage",
+                      "type": "string",
+                      "enum": [
+                        "S3",
+                        "SHAREPOINT"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "uri"
+                  ]
+                },
+                "pageRanges": {
+                  "$ref": "#/components/schemas/CombinePageRanges"
+                }
+              },
+              "required": [
+                "inputs"
+              ]
+            }
+          },
+          "output": {
+            "description": "Params representing output object for combine PDF operation",
+            "type": "object",
+            "properties": {
+              "uri": {
+                "description": "Output file Upload Pre-signed URL.",
+                "type": "string"
+              },
+              "storage": {
+                "description": "Specifies the type of the external storage",
+                "type": "string",
+                "enum": [
+                  "S3",
+                  "SHAREPOINT"
+                ]
+              }
+            }
+          }
+        },
+        "example": {
+          "inputs": [
+            {
+              "input": {
+                "uri": "https://dcalpine2.sharepoint.com/sites/Docgen/_layouts/15/download.aspx?UniqueId=353087f7-b1ea-4d84-91d7-0821b23e04ea&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDI5MDkiLCJleHAiOiIxNjgwNjA2NTA5IiwiZW5kcG9pbnR1cmwiOiIwU1NJNDAxdjZhUll6YUIyV2lod005VnIxOVJHNStvSUxFN280dk0yUlMwPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMTMzIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJPVEUxTlRZMFkyRXROREZpT1MwME1HSTBMVGczWVdRdFlqaGpaREprWkdNeVlXVTUiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE2OSJ9.aStWTExNZ045T3h3OGV4MHdyYURmLzZqOW9McGRhSmtZWStHOE1wM0ZaYz0&ApiVersion=2.0",
+                "storage": "SHAREPOINT"
+              },
+              "pageRanges": [
+                {
+                  "start": 1,
+                  "end": 2
+                }
+              ]
+            },
+            {
+              "input": {
+                "uri": "https://dcalpine2.sharepoint.com/sites/Docgen/_layouts/15/download.aspx?UniqueId=353087f7-b1ea-4d84-91d7-0821b23e04ea&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDI5MDkiLCJleHAiOiIxNjgwNjA2NTA5IiwiZW5kcG9pbnR1cmwiOiIwU1NJNDAxdjZhUll6YUIyV2lod005VnIxOVJHNStvSUxFN280dk0yUlMwPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMTMzIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJPVEUxTlRZMFkyRXROREZpT1MwME1HSTBMVGczWVdRdFlqaGpaREprWkdNeVlXVTUiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE2OSJ9.aStWTExNZ045T3h3OGV4MHdyYURmLzZqOW9McGRhSmtZWStHOE1wM0ZaYz0&ApiVersion=2.0",
+                "storage": "SHAREPOINT"
+              },
+              "pageRanges": [
+                {
+                  "start": 1,
+                  "end": 2
+                }
+              ]
+            }
+          ],
+          "output": {
+            "uri": "https://dcalpine2.sharepoint.com/sites/Docgen/_api/v2.0/drives/b!MA1899sXSkupaKT9m2CP3JIqXDMQyoBCth9h9Rn6bQRjzBEBFxsbQpN23hY-rzQT/items/01TAIM7P3ZQQ4DP4NZHFDI6FBJPIGFRCY3/uploadSession?guid='2c79b9aa-f9dc-42c8-8919-da5a9b554b81'&overwrite=True&rename=False&dc=0&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDAyOTMiLCJleHAiOiIxNjgwNjg2NjkzIiwiZW5kcG9pbnR1cmwiOiJXVWNNVHhndVdyMHR4YzhlYWxlRzMrYUV1aXg5anoxanZuRmRpMENjNHFRPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMjYxIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJaREZsTURjek5tRXRaREJtWkMwMFlXUXlMV0V5WTJNdE1HRTRPV1prTTJJNU5XTmwiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE3MCJ9.a1hxR1J1emlFSE9jSTU0SnFTcFN6TGlsRHNhWTFRaDNkT2hwT3ZPYm8waz0",
+            "storage": "SHAREPOINT"
+          }
+        },
+        "required": [
+          "inputs"
         ],
         "additionalProperties": false
       },
@@ -8465,7 +8569,8 @@
         ],
         "additionalProperties": false
       },
-      "Internal": {
+      "DocumentGenerationInternal": {
+        "title": "Internal",
         "description": "Params for Document Generation Operation",
         "type": "object",
         "properties": {
@@ -8566,7 +8671,8 @@
         ],
         "additionalProperties": false
       },
-      "External": {
+      "DocumentGenerationExternal": {
+        "title": "External",
         "description": "Params for Document Generation Operation using external storage",
         "type": "object",
         "properties": {
@@ -8839,6 +8945,7 @@
         }
       },
       "ElectronicSealInternal": {
+        "title": "Internal",
         "description": "Params to specify the options required for applying digital seal.",
         "type": "object",
         "required": [
@@ -8897,6 +9004,7 @@
         "additionalProperties": false
       },
       "ElectronicSealExternal": {
+        "title": "External",
         "description": "Params for Electronic Seal Operation using external storage",
         "type": "object",
         "properties": {
@@ -8905,10 +9013,7 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/sealInputs"
-            },
-            "required": [
-              "inputs"
-            ]
+            }
           },
           "output": {
             "description": "Params representing output object for electronic seal operation",
@@ -9104,39 +9209,54 @@
           }
         },
         "example": {
-          "input": {
-            "uri": "https://dcalpine2.sharepoint.com/sites/Docgen/_layouts/15/download.aspx?UniqueId=353087f7-b1ea-4d84-91d7-0821b23e04ea&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDI5MDkiLCJleHAiOiIxNjgwNjA2NTA5IiwiZW5kcG9pbnR1cmwiOiIwU1NJNDAxdjZhUll6YUIyV2lod005VnIxOVJHNStvSUxFN280dk0yUlMwPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMTMzIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJPVEUxTlRZMFkyRXROREZpT1MwME1HSTBMVGczWVdRdFlqaGpaREprWkdNeVlXVTUiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE2OSJ9.aStWTExNZ045T3h3OGV4MHdyYURmLzZqOW9McGRhSmtZWStHOE1wM0ZaYz0&ApiVersion=2.0",
-            "storage": "SHAREPOINT"
-          },
+          "inputs": [
+            {
+              "input": {
+                "uri": "https://dcalpine2.sharepoint.com/sites/Docgen/_layouts/15/download.aspx?UniqueId=353087f7-b1ea-4d84-91d7-0821b23e04ea&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDI5MDkiLCJleHAiOiIxNjgwNjA2NTA5IiwiZW5kcG9pbnR1cmwiOiIwU1NJNDAxdjZhUll6YUIyV2lod005VnIxOVJHNStvSUxFN280dk0yUlMwPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMTMzIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJPVEUxTlRZMFkyRXROREZpT1MwME1HSTBMVGczWVdRdFlqaGpaREprWkdNeVlXVTUiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE2OSJ9.aStWTExNZ045T3h3OGV4MHdyYURmLzZqOW9McGRhSmtZWStHOE1wM0ZaYz0&ApiVersion=2.0",
+                "storage": "SHAREPOINT"
+              }
+            },
+            {
+              "input": {
+                "uri": "https://dcalpine2.sharepoint.com/sites/Docgen/_layouts/15/download.aspx?UniqueId=353087f7-b1ea-4d84-91d7-0821b23e04ea&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDI5MDkiLCJleHAiOiIxNjgwNjA2NTA5IiwiZW5kcG9pbnR1cmwiOiIwU1NJNDAxdjZhUll6YUIyV2lod005VnIxOVJHNStvSUxFN280dk0yUlMwPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMTMzIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJPVEUxTlRZMFkyRXROREZpT1MwME1HSTBMVGczWVdRdFlqaGpaREprWkdNeVlXVTUiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE2OSJ9.aStWTExNZ045T3h3OGV4MHdyYURmLzZqOW9McGRhSmtZWStHOE1wM0ZaYz0&ApiVersion=2.0",
+                "storage": "SHAREPOINT"
+              }
+            }
+          ],
           "output": {
             "uri": "https://dcalpine2.sharepoint.com/sites/Docgen/_api/v2.0/drives/b!MA1899sXSkupaKT9m2CP3JIqXDMQyoBCth9h9Rn6bQRjzBEBFxsbQpN23hY-rzQT/items/01TAIM7P3ZQQ4DP4NZHFDI6FBJPIGFRCY3/uploadSession?guid='2c79b9aa-f9dc-42c8-8919-da5a9b554b81'&overwrite=True&rename=False&dc=0&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDAyOTMiLCJleHAiOiIxNjgwNjg2NjkzIiwiZW5kcG9pbnR1cmwiOiJXVWNNVHhndVdyMHR4YzhlYWxlRzMrYUV1aXg5anoxanZuRmRpMENjNHFRPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMjYxIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJaREZsTURjek5tRXRaREJtWkMwMFlXUXlMV0V5WTJNdE1HRTRPV1prTTJJNU5XTmwiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE3MCJ9.a1hxR1J1emlFSE9jSTU0SnFTcFN6TGlsRHNhWTFRaDNkT2hwT3ZPYm8waz0",
             "storage": "SHAREPOINT"
           },
           "params": {
-            "outputFormat": "pdf",
-            "jsonDataForMerge": {
-              "customerName": "Kane Miller",
-              "customerVisits": 100,
-              "itemsBought": [
-                {
-                  "name": "Sprays",
-                  "quantity": 50,
-                  "amount": 100
-                },
-                {
-                  "name": "Chemicals",
-                  "quantity": 100,
-                  "amount": 200
-                }
-              ],
-              "totalAmount": 300,
-              "previousBalance": 50,
-              "lastThreeBillings": [
-                100,
-                200,
-                300
-              ],
-              "photograph": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII="
+            "signatureFormat": "PKCS7",
+            "cscCredentialOptions": {
+              "credentialId": "[ADOBE]_xxxx_xx:35",
+              "providerName": "intxxxxxst",
+              "authorizationContext": {
+                "accessToken": "b7338a1f-xxxx-xxxx-xxxx-1eec91c47c12"
+              },
+              "credentialAuthParameters": {
+                "pin": "12xxxx65"
+              }
+            },
+            "sealFieldOptions": {
+              "location": {
+                "top": 300,
+                "left": 50,
+                "right": 250,
+                "bottom": 100
+              },
+              "fieldName": "Signature1",
+              "pageNumber": 1
+            },
+            "sealAppearanceOptions": {
+              "displayOptions": [
+                "NAME",
+                "DATE",
+                "DISTINGUISHED_NAME",
+                "LABELS",
+                "SEAL_IMAGE"
+              ]
             }
           },
           "notifier": {
@@ -9151,7 +9271,7 @@
           }
         },
         "required": [
-          "input",
+          "inputs",
           "params"
         ],
         "additionalProperties": false
@@ -9518,7 +9638,7 @@
             "$ref": "#/components/schemas/inprogress"
           },
           {
-            "$ref": "#/components/schemas/done"
+            "$ref": "#/components/schemas/CombinePDFDone"
           },
           {
             "$ref": "#/components/schemas/failed"
@@ -9635,7 +9755,7 @@
             "$ref": "#/components/schemas/inprogress"
           },
           {
-            "$ref": "#/components/schemas/done"
+            "$ref": "#/components/schemas/ElectronicSealDone"
           },
           {
             "$ref": "#/components/schemas/failed"
@@ -9699,6 +9819,28 @@
         }
       },
       "DocumentGenerationDone": {
+        "title": "done",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/internal"
+          },
+          {
+            "$ref": "#/components/schemas/external"
+          }
+        ]
+      },
+      "ElectronicSealDone": {
+        "title": "done",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/internal"
+          },
+          {
+            "$ref": "#/components/schemas/external"
+          }
+        ]
+      },
+      "CombinePDFDone": {
         "title": "done",
         "oneOf": [
           {
