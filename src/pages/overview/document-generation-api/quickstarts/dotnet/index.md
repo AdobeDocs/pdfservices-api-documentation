@@ -194,8 +194,8 @@ These lines are hard coded but in a real application would typically be dynamic.
 ```javascript
 // Initial setup, create credentials instance.
 Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-    .WithClientId("PDF_SERVICES_CLIENT_ID")
-    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+    .WithClientId(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"))
+    .WithClientSecret(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"))
     .Build();
 
 // Create an ExecutionContext using credentials and create a new operation instance.
@@ -274,8 +274,8 @@ namespace GeneratePDF
 
                 // Initial setup, create credentials instance.
                 Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                    .WithClientId("PDF_SERVICES_CLIENT_ID")
-                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                    .WithClientId(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"))
+                    .WithClientSecret(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"))
                     .Build();
 
                 // Create an ExecutionContext using credentials and create a new operation instance.

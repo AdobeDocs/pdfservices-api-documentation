@@ -141,8 +141,8 @@ This defines what our output directory will be and optionally deletes it if it a
 ```javascript
 // Initial setup, create credentials instance.
 Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-        .WithClientId("PDF_SERVICES_CLIENT_ID")
-        .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+        .WithClientId(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"))
+        .WithClientSecret(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"))
         .Build();
 
 // Create an ExecutionContext using credentials and create a new operation instance.
@@ -224,8 +224,8 @@ namespace AutotagPDF
 
                 // Initial setup, create credentials instance.
                 Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                    .WithClientId("PDF_SERVICES_CLIENT_ID")
-                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                    .WithClientId(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"))
+                    .WithClientSecret(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"))
                     .Build();
 
                 // Create an ExecutionContext using credentials and create a new operation instance.
