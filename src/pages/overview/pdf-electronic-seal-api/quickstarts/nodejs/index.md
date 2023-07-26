@@ -85,8 +85,8 @@ This line includes the Adobe PDF Services Node.js SDK
     // Initial setup, create credentials instance.
 const credentials =  PDFServicesSdk.Credentials
     .servicePrincipalCredentialsBuilder()
-    .withClientId("PDF_SERVICES_CLIENT_ID")
-    .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+    .withClientId(process.env.PDF_SERVICES_CLIENT_ID)
+    .withClientSecret(process.env.PDF_SERVICES_CLIENT_SECRET)
     .build();
 
 // Create an ExecutionContext using credentials
@@ -242,8 +242,8 @@ try {
     // Initial setup, create credentials instance.
     const credentials =  PDFServicesSdk.Credentials
         .servicePrincipalCredentialsBuilder()
-        .withClientId("PDF_SERVICES_CLIENT_ID")
-        .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+        .withClientId(process.env.PDF_SERVICES_CLIENT_ID)
+        .withClientSecret(process.env.PDF_SERVICES_CLIENT_SECRET)
         .build();
 
     // Create an ExecutionContext using credentials

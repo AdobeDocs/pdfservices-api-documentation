@@ -94,8 +94,8 @@ const INPUT = './Bodea Brochure.pdf';
 ```js
 const credentials =  PDFServicesSdk.Credentials
         .servicePrincipalCredentialsBuilder()
-        .withClientId("PDF_SERVICES_CLIENT_ID")
-        .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+        .withClientId(process.env.PDF_SERVICES_CLIENT_ID)
+        .withClientSecret(process.env.PDF_SERVICES_CLIENT_SECRET)
         .build();
 
 // Create an ExecutionContext using credentials
@@ -159,8 +159,8 @@ console.log(`About to export ${INPUT} to ${OUTPUT}.`);
 // Set up our credentials object.
 const credentials =  PDFServicesSdk.Credentials
         .servicePrincipalCredentialsBuilder()
-        .withClientId("PDF_SERVICES_CLIENT_ID")
-        .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+        .withClientId(process.env.PDF_SERVICES_CLIENT_ID)
+        .withClientSecret(process.env.PDF_SERVICES_CLIENT_SECRET)
         .build();
 
 // An exectuionContext object wraps our credentials

@@ -130,8 +130,8 @@ namespace ElectronicSeal
 ```javascript
 // Initial setup, create credentials instance.
 Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                    .WithClientId("PDF_SERVICES_CLIENT_ID")
-                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                    .WithClientId(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"))
+                    .WithClientSecret(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"))
                     .Build();
 
 // Create an ExecutionContext using credentials.
@@ -276,8 +276,8 @@ namespace ElectronicSeal
 {
   // Initial setup, create credentials instance.
   Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-        .WithClientId("PDF_SERVICES_CLIENT_ID")
-        .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+        .WithClientId(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"))
+        .WithClientSecret(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"))
         .Build();
 
 
