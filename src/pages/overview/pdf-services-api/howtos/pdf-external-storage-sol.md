@@ -9,11 +9,11 @@ Adobe PDF Services APIs have added support for accessing files from the external
 
 A **Signed URL** temporarily provides access to a resource. Signed URLs contain user/authentication information, allowing users without credentials to access the given resource.
 
-PDF Services APIs supports the signed URLs of input and output files in the request body. Please refer to the **External Section** in Request Body of [Document Generation API](../../../apis/#tag/Document-Generation) for more details.
+PDF Services APIs supports the signed URLs of input and output files in the request body. Please refer to the **External Section** in Request Body of each API for more details.
 
 <InlineAlert slots="text"/>
 
-Accessing files from External Storage is presently restricted to the [Document Generation API](../../../apis/#tag/Document-Generation). Future releases will include the support of external storage across all PDF Services operations.
+Accessing files from External Storage is presently not supported in [Extract PDF](../../../apis/#tag/Extract-PDF) and [Split PDF](../../../apis/#tag/Split-PDF) API, as multi-output APIs are not allowed in External Storage Solution.
 
 ## Supported External Storage Solutions
 
@@ -33,6 +33,18 @@ Signed URLs for SharePoint files can be created using [Microsoft Graph](https://
 PDF Services APIs can connect with the Amazon S3 using pre-signed URLs for downloading and uploading the files to and from S3 buckets without AWS security credentials or permissions.
 
 Please refer [here](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html) for more details.
+
+## DROPBOX
+
+PDF Services APIs can connect with the DROPBOX using pre-signed URLs for downloading and uploading the files to and from Dropbox location without the need for any credentials or access tokens.
+
+Please refer here for [downloading](https://www.dropbox.com/developers/documentation/http/documentation#files-get_temporary_link) and [uploading](https://www.dropbox.com/developers/documentation/http/documentation#files-get_temporary_upload_link) files from dropbox.
+
+## Azure Blob
+
+PDF Services APIs can connect with the Azure Blob using pre-signed URLs or [SAS Urls](https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview) for downloading and uploading the files to and from Azure Blob without the need for any credentials or access tokens. Use [Best Practices](https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview#best-practices-when-using-sas) when using SAS URLs.
+
+Please refer [here](https://learn.microsoft.com/en-us/azure/ai-services/translator/document-translation/how-to-guides/create-sas-tokens?tabs=Containers#create-sas-tokens-with-azure-storage-explorer) for more details. Make sure you have appropriate permissions added to your SAS tokens before generating them.
 
 
 
