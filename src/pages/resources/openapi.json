@@ -93,7 +93,7 @@
       "description": "Operation to create the tagged pdf and excel report for accessibility auto-tag use case."
     },
     {
-      "name": "PDF Accessibility Check",
+      "name": "PDF Accessibility Checker",
       "description": "Operation to verify whether the document conforms to accessibility standards, such as PDF/UA and WCAG 2.0."
     }
   ],
@@ -114,7 +114,7 @@
       "name": "PDF Operations",
       "tags": [
         "PDF Accessibility Auto-Tag",
-        "PDF Accessibility Check",
+        "PDF Accessibility Checker",
         "Extract PDF",
         "Document Generation",
         "PDF Electronic Seal",
@@ -7296,9 +7296,9 @@
     "/operation/checkaccessibility": {
       "post": {
         "tags": [
-          "PDF Accessibility Check"
+          "PDF Accessibility Checker"
         ],
-        "summary": "PDF Accessibility Check Operation",
+        "summary": "PDF Accessibility Checker API Operation",
         "description": "Operation to verify whether the document conforms to accessibility standards, such as PDF/UA and WCAG 2.0.  It will generate a report that summarises the findings of the accessibility check. It contains links to documentation that assist in fixing problems.",
         "operationId": "pdfoperations.checkaccessibility",
         "parameters": [
@@ -7322,7 +7322,7 @@
           }
         ],
         "requestBody": {
-          "description": "Input Params for Accessibility Check Operation.",
+          "description": "Input Params for PDF Accessibility Checker API Operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -7477,9 +7477,9 @@
     "/operation/checkaccessibility/{jobID}/status": {
       "get": {
         "tags": [
-          "PDF Accessibility Check"
+          "PDF Accessibility Checker"
         ],
-        "summary": "Poll the accessibility check job for completion",
+        "summary": "Poll the PDF Accessibility Checker API job for completion",
         "operationId": "pdfoperations.checkaccessibility.jobstatus",
         "parameters": [
           {
@@ -9354,7 +9354,7 @@
         "additionalProperties": false
       },
       "CheckAccessibility": {
-        "description": "Parameter for Accessibility Check operation.",
+        "description": "Parameter for PDF Accessibility Checker API operation.",
         "type": "object",
         "required": [
           "assetID"
