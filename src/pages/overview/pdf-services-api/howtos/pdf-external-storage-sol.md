@@ -13,13 +13,15 @@ PDF Services APIs supports the signed URLs of input and output files in the requ
 
 <InlineAlert slots="text"/>
 
-Accessing files from External Storage is presently not supported in [Extract PDF](../../../apis/#tag/Extract-PDF) and [Split PDF](../../../apis/#tag/Split-PDF) API, as multi-output APIs are not allowed in External Storage Solution.
+Accessing files from External Storage is presently **not** supported in [Extract PDF](../../../apis/#tag/Extract-PDF) and [Split PDF](../../../apis/#tag/Split-PDF) API, as multi-output APIs are not allowed in External Storage Solution.
 
 ## Supported External Storage Solutions
 
 The concept of Signed URLs is common across various cloud storage solutions for downloading and uploading files. Adobe PDF Services APIs currently supports the signed URLs generated through -
 - [SharePoint](#sharepoint)
 - [Amazon S3](#amazon-s3)
+- [DropBox](#dropbox)
+- [Azure Blob](#azure-blob)
 
 
 ## SharePoint

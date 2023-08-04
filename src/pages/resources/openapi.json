@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "PDF Services API",
-    "description": "<p><ul>\n\t<li>Learn more about using \n\t<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/api-usage/\"> Adobe PDF Services API.</a>\n\t</li>\n\t<li> Invoking PDF Services API requires an Adobe-provided credential, <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">learn more about authentication.</a>\n\t</li>\n<li><a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/#sdk\">Downloadable SDKs</a></li>\n<li><a href=\"https://raw.githubusercontent.com/AdobeDocs/pdfservices-api-documentation/develop/src/pages/resources/Platform%20PDF%20Services%20Postman%20Collection.zip\" download>Click here</a> to download sample Postman collection</li>\n<li><a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/service-region-configuration-for-apis/\">Click here</a> to know more about <b>multi-region support</b> for PDF Services API</li><li><a href=\"https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK\">Support Forum</a></li><li>First released on 26th September, 2022</li></ul></p>",
+    "description": "<p><ul>\n\t<li>Learn more about using \n\t<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/api-usage/\"> Adobe PDF Services API.</a>\n\t</li>\n\t<li> Invoking PDF Services API requires an Adobe-provided credential, <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">learn more about authentication.</a>\n\t</li>\n<li><a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/#sdk\">Downloadable SDKs</a></li>\n<li><a href=\"https://raw.githubusercontent.com/AdobeDocs/pdfservices-api-documentation/develop/src/pages/resources/Platform%20PDF%20Services%20Postman%20Collection.zip\" download>Click here</a> to download sample Postman collection</li>\n<li><a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/service-region-configuration-for-apis/\">Click here</a> to know more about <b>multi-region support</b> for PDF Services API</li><li><a href=\"https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK\">Support Forum</a></li><li>First released on 26th September, 2022</li><li>To use your custom external storage, click <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol\">here</a>.</li></ul></p>",
     "version": ""
   },
   "servers": [
@@ -20,9 +20,7 @@
     },
     {
       "name": "Assets",
-      "description": "Upload and download assets to adobe internal storage. \n **No need to call this API if we are using external storage solution using signed urls.**"
-
-
+      "description": "Upload and download assets to adobe internal storage. <br> **Uploading and downloading of assets is not required when using custom <a href = \"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol\">external storage solution</a> with signed URLs.**"
     },
     {
       "name": "Create PDF",
@@ -985,7 +983,7 @@
           }
         ],
         "requestBody": {
-          "description": "Params for Document Generation Operation. Refer to the External Section for using external storage with Document Generation API",
+          "description": "Params for Document Generation Operation. Refer to the External Section below for using external storage with Document Generation API",
           "content": {
             "application/json": {
               "schema": {
@@ -1740,7 +1738,7 @@
           }
         ],
         "requestBody": {
-          "description": "Params for Create PDF Operation",
+          "description": "Params for Create PDF Operation. Refer to the External Section below for using external storage with Create PDF Operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -2095,7 +2093,7 @@
           "Html to PDF"
         ],
         "summary": "Convert HTML Resources to a PDF File",
-        "description": "Creates PDFs from static/dynamic HTML or HTML(with inline CSS) or just a URL. It's a common scenario for enterprise to provide end users with a HTML template with form fields. In case of dynamic HTML this API allows you to capture the users unique data entries and then save it as PDF. Collected data is stored in a JSON file, and the source HTML file must include <script src='./json.js' type='text/javascript'></script>. You can also provide the URL of the HTML page in inputUrl parameter. <b>Although, creating PDF from URL is not supported in External Storage flow.</b>",
+        "description": "Creates PDFs from static/dynamic HTML or HTML(with inline CSS) or just a URL. It's a common scenario for enterprise to provide end users with a HTML template with form fields. In case of dynamic HTML this API allows you to capture the users unique data entries and then save it as PDF. Collected data is stored in a JSON file, and the source HTML file must include <script src='./json.js' type='text/javascript'></script>. You can also provide the URL of the HTML page in inputUrl parameter. <b>However, creating PDF from URL is not supported in External Storage flow.</b>",
         "operationId": "pdfoperations.htmltopdf",
         "parameters": [
           {
@@ -2118,7 +2116,7 @@
           }
         ],
         "requestBody": {
-          "description": "Params for converting HTML to PDF Operation",
+          "description": "Params for converting HTML to PDF Operation. Refer to the External Section below for using external storage with HTML to PDF Operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -2496,7 +2494,7 @@
           }
         ],
         "requestBody": {
-          "description": "Params for Combine PDF Operation. Refer to the External Section for using external storage with Combine PDF API",
+          "description": "Params for Combine PDF Operation. Refer to the External Section below for using external storage with Combine PDF operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -2874,7 +2872,7 @@
           }
         ],
         "requestBody": {
-          "description": "Params for Compress PDF Operation. Refer to the External Section for using external storage with Compress PDF API",
+          "description": "Params for Compress PDF Operation. Refer to the External Section below for using external storage with Compress PDF operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -3252,7 +3250,7 @@
           }
         ],
         "requestBody": {
-          "description": "Parameter to specify output document target format",
+          "description": "Parameter to specify output document target format. Refer to the External Section below for using external storage with Export PDF Operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -3636,7 +3634,7 @@
           }
         ],
         "requestBody": {
-          "description": "Parameter to specify output document target format. With External Storage, supported Output type is `zipOfPageImages` only.",
+          "description": "Parameter to specify output document target format. Refer to the External Section below for using external storage with PDF to Images Operation. With External Storage, supported Output type is `zipOfPageImages` only.",
           "content": {
             "application/json": {
               "schema": {
@@ -3997,7 +3995,7 @@
           "Linearize PDF"
         ],
         "summary": "Convert a PDF File to a Linearized or Web Optimized PDF File",
-        "description": "Linearize a PDF Document to create a web-optimized PDF Document which supports incremental access in network environments..",
+        "description": "Linearize a PDF Document to create a web-optimized PDF Document which supports incremental access in network environments. Refer to the External Section below for using external storage with Linearize PDF Operation.",
         "operationId": "pdfoperations.linearizepdf",
         "parameters": [
           {
@@ -4020,7 +4018,7 @@
           }
         ],
         "requestBody": {
-          "description": "Params for Linearize PDF Operation",
+          "description": "Params for Linearize PDF Operation. Refer to the External Section below for using external storage with Linearize PDF Operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -4398,7 +4396,7 @@
           }
         ],
         "requestBody": {
-          "description": "Params for OCR PDF Operation",
+          "description": "Params for OCR PDF Operation. Refer to the External Section below for using external storage with OCR PDF Operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -4776,7 +4774,7 @@
           }
         ],
         "requestBody": {
-          "description": "Params for Page Manipulation PDF Operation",
+          "description": "Params for Page Manipulation PDF Operation. Refer to the External Section below for using external storage with Page Manipulation Operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -5154,7 +5152,7 @@
           }
         ],
         "requestBody": {
-          "description": "Params for Pdf Properties Operation",
+          "description": "Params for Pdf Properties Operation. Refer to the External Section below for using external storage with PDF Properties Operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -5532,7 +5530,7 @@
           }
         ],
         "requestBody": {
-          "description": "Params for Protect PDF Operation",
+          "description": "Params for Protect PDF Operation. Refer to the External Section below for using external storage with Protect PDF Operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -5910,7 +5908,7 @@
           }
         ],
         "requestBody": {
-          "description": "Params for Remove Protection PDF Operation",
+          "description": "Params for Remove Protection PDF Operation. Refer to the External Section below for using external storage with Remove Protection Operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -6659,7 +6657,7 @@
           }
         ],
         "requestBody": {
-          "description": "Params to specify the options required for applying electronic seal. Refer to the External Section for using external storage with Electronic Seal API.",
+          "description": "Params to specify the options required for applying electronic seal. Refer to the External Section below for using external storage with Electronic Seal PDF Operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -7041,14 +7039,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/AutoTagPDFInternal"
-                  },
-                  {
-                    "$ref": "#/components/schemas/AutoTagPDFExternal"
-                  }
-                ]
+                "$ref": "#/components/schemas/AutoTagPDF"
               }
             }
           },
@@ -9270,37 +9261,6 @@
           "fragments": {
             "description": "Specifies the Fragments JSON object or a JSON array to resolve fragments in the document template. To know more about fragments use-case in document generation and document templates, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/document-generation-api/fragments/\">documentation</a>.",
             "type": "object"
-          },
-          "notifier": {
-            "description": "Specifies the information (such as https url and headers) required to notify about the job completion",
-            "type": "object",
-            "required": [
-              "type",
-              "data"
-            ],
-            "properties": {
-              "type": {
-                "description": "Specifies the notifier type. Currently supported value is \"callback\" only",
-                "type": "string"
-              },
-              "data": {
-                "description": "Specifies the the API details that will be called to notify about job completion",
-                "type": "object",
-                "required": [
-                  "url"
-                ],
-                "properties": {
-                  "url": {
-                    "description": "Specifies the url required for HTTPS call",
-                    "type": "string"
-                  },
-                  "headers": {
-                    "description": "Specifies the headers required for HTTPS call",
-                    "type": "map"
-                  }
-                }
-              }
-            }
           }
         },
         "example": {
@@ -9329,16 +9289,6 @@
               300
             ],
             "photograph": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII="
-          },
-          "notifier": {
-            "type": "callback",
-            "data": {
-              "url": "https://client-webhook-url.com",
-              "headers": {
-                "Authorization": "Beared token",
-                "traceID": "trace ID"
-              }
-            }
           }
         },
         "required": [
@@ -9383,37 +9333,6 @@
             "required": [
               "jsonDataForMerge"
             ]
-          },
-          "notifier": {
-            "description": "Specifies the information (such as https url and headers) required to notify about the job completion",
-            "type": "object",
-            "required": [
-              "type",
-              "data"
-            ],
-            "properties": {
-              "type": {
-                "description": "Specifies the notifier type. Currently supported value is \"callback\" only",
-                "type": "string"
-              },
-              "data": {
-                "description": "Specifies the the API details that will be called to notify about job completion",
-                "type": "object",
-                "required": [
-                  "url"
-                ],
-                "properties": {
-                  "url": {
-                    "description": "Specifies the url required for HTTPS call",
-                    "type": "string"
-                  },
-                  "headers": {
-                    "description": "Specifies the headers required for HTTPS call",
-                    "type": "map"
-                  }
-                }
-              }
-            }
           }
         },
         "example": {
@@ -9450,16 +9369,6 @@
                 300
               ],
               "photograph": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII="
-            }
-          },
-          "notifier": {
-            "type": "callback",
-            "data": {
-              "url": "https://client-webhook-url.com",
-              "headers": {
-                "Authorization": "Beared token",
-                "traceID": "trace ID"
-              }
             }
           }
         },
@@ -9862,37 +9771,6 @@
               "cscCredentialOptions",
               "sealFieldOptions"
             ]
-          },
-          "notifier": {
-            "description": "Specifies the information (such as https url and headers) required to notify about the job completion",
-            "type": "object",
-            "required": [
-              "type",
-              "data"
-            ],
-            "properties": {
-              "type": {
-                "description": "Specifies the notifier type. Currently supported value is \"callback\" only",
-                "type": "string"
-              },
-              "data": {
-                "description": "Specifies the the API details that will be called to notify about job completion",
-                "type": "object",
-                "required": [
-                  "url"
-                ],
-                "properties": {
-                  "url": {
-                    "description": "Specifies the url required for HTTPS call",
-                    "type": "string"
-                  },
-                  "headers": {
-                    "description": "Specifies the headers required for HTTPS call",
-                    "type": "map"
-                  }
-                }
-              }
-            }
           }
         },
         "example": {
@@ -9940,16 +9818,6 @@
                 "LABELS",
                 "SEAL_IMAGE"
               ]
-            }
-          },
-          "notifier": {
-            "type": "callback",
-            "data": {
-              "url": "https://client-webhook-url.com",
-              "headers": {
-                "Authorization": "Beared token",
-                "traceID": "trace ID"
-              }
             }
           }
         },
@@ -10119,7 +9987,7 @@
           }
         }
       },
-      "AutoTagPDFInternal": {
+      "AutoTagPDF": {
         "title": "Internal",
         "description": "Parameter for Accessibility Auto-Tag operation.",
         "type": "object",
@@ -10146,53 +10014,6 @@
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "shiftHeadings": false,
           "generateReport": false
-        },
-        "additionalProperties": false
-      },
-      "AutoTagPDFExternal": {
-        "title": "External",
-        "description": "Parameter for Accessibility Auto-Tag operation.",
-        "type": "object",
-        "required": [
-          "input"
-        ],
-        "properties": {
-          "input": {
-            "$ref": "#/components/schemas/ExternalStorageInput"
-          },
-          "output": {
-            "$ref": "#/components/schemas/ExternalStorageOutput"
-          },
-          "params": {
-            "description": "Params for auto tag pdf processing",
-            "type": "object",
-            "properties": {
-              "shiftHeadings": {
-                "description": "Boolean specifying whether to shift headings.",
-                "type": "boolean",
-                "default": false
-              },
-              "generateReport": {
-                "description": "Boolean specifying whether to generate excel report.",
-                "type": "boolean",
-                "default": false
-              }
-            }
-          }
-        },
-        "example": {
-          "input": {
-            "uri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/e0983a2df4d647a8818e2c5e06f85169_097819C664A2BBC20A49421A%40techacct.adobe.com/543833a8-9467-4f62-a382-11d52d3cbced?X-Amz-Security-Token=FwoGZXIvYXdzEKX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDDTPgDrLKMcd41%2BpKyLTAV7kfv1UVPt7Sa0SM5r7TIHztxH1mhtfWvEkjVk9QGIDksCsmoQZV9D9vLbmWJiyURuKXlOov8Iu4DCZ3ojidX%2BGhaCK8naQl46ZpH9Qz4B0Ign0yu8HtbK7NqIWH1TLopl%2Fxj3Nq69AYxAjctStT7Kw1tFTyDvKl4S%2Btf7NU4hbG9C43wguHlcJU42Vtks%2FS4xU8Xih%2BSzUPXE029FhxYH7kf0%2FzL9SPcokOKRjzdSomGStcZuRujTSfYqNd9wjNAGcXJnz4tSbwJdfhpV9kG3JDmUo6eb%2BpQYyLf9SC0VpyMwt%2FC9%2F4r2kyso3J%2F115yRDjNVjJnEfdJdQERFQ%2BmfSPXoW%2F1XoIA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230725T113539Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3599&X-Amz-Credential=ASIAU5PA7W47MC323YPD%2F20230725%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=2828a283496de0006207ba121f7ecbb96ffafcdae731f5221dbe76d96a90d7c3",
-            "storage": "S3"
-          },
-          "output": {
-            "uri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/dc-platformService-automation_dc-platformService-automation%40AdobeID/f02f9927-4971-4589-8fdf-41ff56c2d520?X-Amz-Security-Token=FwoGZXIvYXdzEBkaDK%2By2wxl94khIbkxzCLTAQn6n6Wo0vFSul%2FpXW66aFX4T%2BPxtuOy%2Bz8eTxrnexeJRvMreBHNQm1myLwp20MkE%2Bb0H%2BwYgOhFaepi9AMml1aLNxXn1UPnEWJ7y8llhvsrXHimEfWvb3TMAkZddgUIDBue8oGUYqm4f2s0sMvPWBCxI45zM0%2F37EK%2B4JnIo1SlrKNm0GSZ44AEiOAhXupQ8ih6KoUbUciD3Biile6CwTMVIhME3mJiRSgVK6W91EaDn8%2Ba3mU%2BVvU1K9sgDSPZ%2F81DOpj25pvMW%2B1cMuCtUNsu9KUo7dHvpAYyLYiy%2FPGEmO9EquKjfMPRr17PAjeunD1QdgbRss4ysG%2B6XF2Has8zsGqX1sQalA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230628T081559Z&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47IMX73XEA%2F20230628%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=4f765277eb6e36bd5f7bf9d42be24244440092b5a705eadf178c78a9a9fb5d71",
-            "storage": "S3"
-          },
-          "params": {
-            "shiftHeadings": false,
-            "generateReport": false
-          }
         },
         "additionalProperties": false
       },
