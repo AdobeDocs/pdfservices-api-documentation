@@ -20,7 +20,7 @@ Accessing files from External Storage is presently **not** supported in [Extract
 The concept of Signed URLs is common across various cloud storage solutions for downloading and uploading files. Adobe PDF Services APIs currently supports the signed URLs generated through -
 - [SharePoint](#sharepoint)
 - [Amazon S3](#amazon-s3)
-- [DropBox](#dropbox)
+- [Dropbox](#dropbox)
 - [Azure Blob](#azure-blob)
 
 
@@ -36,9 +36,9 @@ PDF Services APIs can connect with the Amazon S3 using pre-signed URLs for downl
 
 Please refer [here](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html) for more details.
 
-## DROPBOX
+## Dropbox
 
-PDF Services APIs can connect with the DROPBOX using pre-signed URLs for downloading and uploading the files to and from Dropbox location without the need for any credentials or access tokens.
+PDF Services APIs can connect with the Dropbox using pre-signed URLs for downloading and uploading the files to and from Dropbox location without the need for any credentials or access tokens.
 
 Please refer here for [downloading](https://www.dropbox.com/developers/documentation/http/documentation#files-get_temporary_link) and [uploading](https://www.dropbox.com/developers/documentation/http/documentation#files-get_temporary_upload_link) files from dropbox.
 
