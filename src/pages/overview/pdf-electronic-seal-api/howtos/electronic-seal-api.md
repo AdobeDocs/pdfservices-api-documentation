@@ -127,7 +127,7 @@ Specifies seal field appearance parameters. These are an enumerated set of displ
 
 <InlineAlert slots="text"/>
 
-Addition of Trusted Timestamping (via `tsaCredentialOptions`) and modifying Document Level Permission (via `documentLevelPermission`) are not available with current version of SDKs. Currently, these parameters are only supported by REST APIs.
+The current versions of the SDKs do not support the inclusion of Trusted Timestamping (using `tsaCredentialOptions`) or the alteration of Document Level Permission (using `documentLevelPermission`). Presently, these parameters are only functional with REST APIs.
 
 ## API limitations
 
