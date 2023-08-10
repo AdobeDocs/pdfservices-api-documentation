@@ -20,7 +20,13 @@ The SDK only supports server-based use cases where credentials are saved securel
 
 ![TSP Token Generation](../images/cert.png)
 
-## Step 2: Obtain your TSP OAuth Token
+## Step 2: Procure Timestamping URL and Credentials
+
+1. Optionally, client can choose to enroll with a Timestamping Authority (TSA) for utilizing their URL for trusted timestamping while Electronic Sealing. Once the client's registration with the TSA is confirmed, they will be provided with the timestamping URL and associated credentials.
+2. During the onboarding process, if the TSA is not already on the allowlist, the client should initiate a request for allowlisting the TSA URL. For more details, check [supported TSAs](../#supported-timestamping-authorities).
+3. Once the TSA has been successfully verified and added to the allowlist, the client becomes eligible to utilize the provided timestamping URL and credentials for trusted timestamping.
+
+## Step 3: Obtain your TSP OAuth Token
 
 The client sends the `client_id` and `client_secret` to the TSP's OAuth 2.0 authorization API. The TSP responds with an access token which is passed as one of the [input parameters](./howtos/electronic-seal-api.md/#api-parameters) to the PDF Electronic Seal API. The purpose of this token is to access the TSP's end points for the sealing process. It is valid during a timeframe specified by the TSP.
 
@@ -54,7 +60,7 @@ Once the customer has all the necessary prerequisites in place, they have to cal
 
 ![Seal Workflow](../images/sealFlow.png)
 
-## Step 3 : Getting the API access token
+## Step 4 : Getting the API access token
 
 PDF Electronic Seal API endpoints are authenticated endpoints. Getting an access token is a two-step process :
 
@@ -72,7 +78,7 @@ curl --location 'https://pdf-services.adobe.io/token' \
 --data-urlencode 'client_secret={{Placeholder for Client Secret}}' 
 ```
 
-## Step 4 : Uploading an asset
+## Step 5 : Uploading an asset
 
 After getting the access token, we need to upload the asset. Uploading an asset is a two-step process :
 
@@ -109,13 +115,13 @@ curl --location -g --request PUT 'https://dcplatformstorageservice-us-east-1.s3-
 
 For PDF Electronic Seal API, you can specify an optional seal image i.e. a logo/watermark/background image to be used as part of the seal's appearance. Step 4 can be repeated for uploading this seal image.
 
-## Step 5 : Creating the job
+## Step 6 : Creating the job
 
 To create a job for the operation, please use the  `assetID` obtained in Step 2 in the API request body. On successful job submission you will get a status code of `201` and a response header `location` which will be used for polling.
 
 For creating the job, please refer to the corresponding API spec for the particular [PDF Operation](../../../apis).
 
-## Step 6 : Fetching the status
+## Step 7 : Fetching the status
 
 Once the job is successfully created, you need to poll the at the `location` returned in response header of Step 3 by using the following API
 
@@ -131,7 +137,7 @@ curl --location -g --request GET 'https://pdf-services.adobe.io/operation/electr
 --header 'x-api-key: {{Placeholder for client id}}'
 ```
 
-## Step 7 : Downloading the asset
+## Step 8 : Downloading the asset
 
 On getting `200` response code from the poll API, you will receive a `status` field in the response body which can either be `in progress`, `done` or `failed`.
 
