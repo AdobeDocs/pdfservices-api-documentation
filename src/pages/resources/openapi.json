@@ -9201,6 +9201,16 @@
               "PKCS7"
             ]
           },
+          "documentLevelPermission": {
+            "type": "string",
+            "default": "FORM_FILLING",
+            "description": "Specifies the document level permissions for changes allowed after sealing. For more details, please refer <>",
+            "enum": [
+              "NO_CHANGES_ALLOWED",
+              "FORM_FILLING",
+              "FORM_FILLING_AND_ANNOTATIONS"
+            ]
+          },
           "cscCredentialOptions": {
             "type": "object",
             "description": "Specifies the parameters that encapsulates the signer's certificate credential. For more information, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/howtos/electronic-seal-api/#tsp-credential-information-csccredentialoptions--required\">documentation</a>.",
@@ -9252,6 +9262,25 @@
               }
             }
           },
+          "tsaCredentialOptions":{
+            "type": "object",
+            "description": "Specifies the TSA Credentials as per <a href=\"https://www.ietf.org/rfc/rfc3161.txt\">RFC3161</a> standards.",
+            "properties": {
+              "url":   {
+                "type": "string",
+                "description": "Specifies the URL to get timestamp token. The provided URL should be allowlisted to use."
+              },
+              "username": {
+                "type": "string",
+                "description": "Specifies the optional username required to get timestamp token."
+              },
+              "password": {
+                "type": "string",
+                "description": "Specifies the optional password required to get timestamp token."
+              }
+            },
+            "required": [ "url" ]
+          },
           "sealFieldOptions": {
             "type": "object",
             "description": "Specifies the parameters required to create a new signature field or use an existing field. For more details, please refer <a href= \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/howtos/electronic-seal-api/#seal-field-parameters---sealfieldoptions--required\">documentation</a>.",
@@ -9266,7 +9295,7 @@
               },
               "location": {
                 "type": "object",
-                "description": "Specifies the coordinates of the signature appearance's bounding box in default PDF user space units. The location is only required if the signature field does not already exist in the PDF document.If location is provided along with the existing signature field then it is ignored.",
+                "description": "Specifies the coordinates of the signature appearance's bounding box in default PDF user space units. The location is only required for visible signatures if the signature field does not already exist in the PDF document.If location is provided along with the existing signature field then it is ignored.",
                 "required": [
                   "top",
                   "left",
@@ -9298,7 +9327,7 @@
               },
               "pageNumber": {
                 "type": "integer",
-                "description": "Specifies the page number to which the signature field should be attached. Page numbers are 1-based. The page number is only required if the signature field does not already exist in the pdf document. If page number is provided along with the existing signature field then the page number should be same on which signature field is present in the document, else an error is thrown."
+                "description": "Specifies the page number to which the signature field should be attached. Page numbers are 1-based. The page number is only required for visible signatures if the signature field does not already exist in the pdf document. If page number is provided along with the existing signature field then the page number should be same on which signature field is present in the document, else an error is thrown."
               }
             }
           },
