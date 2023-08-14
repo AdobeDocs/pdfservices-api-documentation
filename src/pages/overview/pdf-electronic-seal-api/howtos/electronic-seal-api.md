@@ -12,6 +12,15 @@ Specifies a supported digital signature format:
 * PADES : This is the latest and improved signature format which is more strict, concrete, and secure. For details, see <a href="../PDF_ISO_32000-2.pdf" target="_blank">ISO 32000-2</a> and <a href="../ETSI_EN_319_142-1.pdf" target="_blank">ETSI EN 319 142-1</a>.
 * PKCS7 : This signature format is less stringent than PADES since it permits more PDF changes without invalidating the digital signature. This is the default signature format. For details, see <a href="../PDF_ISO_32000-1.pdf" target="_blank">ISO 32000-1</a>.
 
+
+### Document Level Permission (_documentLevelPermission_)
+
+Specifies the DocMDP (i.e. Document Modification Detection and Prevention) permissions. These permissions specify the allowed changes to the sealed document. It can have three values:
+
+* NO_CHANGES_ALLOWED : No changes to the document are permitted. Any change to the document will invalidate the signature.
+* FORM_FILLING : Allowed changes are filling in forms, instantiating page templates, and performing approval signatures. This is also the default document level permission, if not specified by the user.
+* FORM_FILLING_AND_ANNOTATIONS : In addition to above, annotation creation, deletion, and modification are also allowed.
+
 ### TSP Credential Information (_cscCredentialOptions_) : **Required**
 
 TSP parameters encapsulate the sealer's [certificate credential](../gettingstarted/#step-1-procure-digital-certificate-credentials) as well as the associated authentication and authorization data.
@@ -29,14 +38,22 @@ TSP parameters encapsulate the sealer's [certificate credential](../gettingstart
 
     * **PIN**  (*pin*) : **Required** : Specifies the PIN associated with TSP provided credential ID.
 
+### TSA Credential Information (_tsaCredentialOptions_) :
+
+TSA parameters encapsulate the [timestamping URL and credentials](../gettingstarted/#step-2-procure-timestamping-url-and-credentials).
+
+* **Timestamping URL**  (*url*) : **Required** : Specifies the TSA URL to be used for getting timestamp token.
+* **TSA Username**  (*username*) : Specifies the client's username associated with timestamping URL if it is an authenticated endpoint.
+* **TSA Password**  (*password*) : Specifies the client's password associated with timestamping URL if it is an authenticated endpoint.
+
 ### Seal Field Parameters   (*sealFieldOptions*) : **Required**
 
 The seal field parameters are required to create a new signature field or use an existing signature field.
 
 * **Field Name**  (*fieldName*) : **Required** : Specifies the signature field's name. This must be a non-empty string. If signature field with this field name already exists, that field is used. else a signature field with this name will be created.
 * **Visible** (_visible_): Specifies whether the signature field should be visible or hidden. The default value of `true` creates a visible seal.
-* **Page Number** (_pageNumber_) : **Required** : Specifies the page number to which the signature field should be attached. Page numbers are 1-based. It is only <b>required</b> if the signature field does not exist in the pdf document. If this is provided along with the signature field then the page number should be same on which signature field is present in the document, else an error is thrown.
-* **Location** (_location_) : **Required** : Specifies the coordinates of the seal appearance's bounding box in default PDF user space units. The location is only <b>required</b> if the signature field does not exist in the pdf document. If this is provided along with the existing signature field, then it is ignored.
+* **Page Number** (_pageNumber_) : **Required** : Specifies the page number to which the signature field should be attached. Page numbers are 1-based. It is only <b>required</b> if the signature field needs to be visible and, it does not exist in the pdf document. If this is provided along with the signature field then the page number should be same on which signature field is present in the document, else an error is thrown. This parameter will be ignored in case of invisible signature field.
+* **Location** (_location_) : **Required** : Specifies the coordinates of the seal appearance's bounding box in default PDF user space units. The location is only <b>required</b> if the signature field does not exist in the pdf document. If this is provided along with the existing signature field, then it is ignored. This parameter will also be ignored for invisible signature field.
 
     * **Left** (_left_) : **Required** : The left x-coordinate
     * **Bottom** (_bottom_) : **Required** : The bottom y-coordinate
@@ -68,6 +85,7 @@ Specifies seal field appearance parameters. These are an enumerated set of displ
 ```json
 {
   "signatureFormat": "PADES",
+  "documentLevelPermission": "FORM_FILLING",
   "cscCredentialOptions": {
     "authorizationContext": {
       "accessToken": "<ACCESS_TOKEN>",
@@ -78,6 +96,11 @@ Specifies seal field appearance parameters. These are an enumerated set of displ
     },
     "providerName": "<PROVIDER_NAME>",
     "credentialId": "<CREDENTIAL_ID>"
+  },
+  "tsaCredentialOptions": {
+    "url": "<TIMESTAMPING_URL>",
+    "username": "<USERNAME>",
+    "password": "<PASSWORD>"
   },
   "sealFieldOptions": {
     "pageNumber": 1,
@@ -102,6 +125,10 @@ Specifies seal field appearance parameters. These are an enumerated set of displ
 }
 ```
 
+<InlineAlert slots="text"/>
+
+The current versions of the SDKs do not support the inclusion of Trusted Timestamping (using `tsaCredentialOptions`) or the alteration of Document Level Permission (using `documentLevelPermission`). Presently, these parameters are only functional with REST APIs.
+
 ## API limitations
 
 <br />
@@ -113,6 +140,7 @@ Specifies seal field appearance parameters. These are an enumerated set of displ
 - **Signed/Sealed Files:** Any PDF which is already signed, certified or sealed cannot be used for applying electronic seal.
 - **Input PDF version:** Input PDF with version less than 1.3 are not supported.
 - **Usage Rights File:** Input PDF having usage rights are not supported.
+- **Timestamping Certificate Validation Information:** For cases in which the document-level permission is set to "NO_CHANGES_ALLOWED" and the user intends to utilize trusted timestamping by providing `tsaCredentialOptions`, the validation information (such as certificate chain and revocation information) for timestamping certificates are not included within the PDF. However, for the other two document-level permissions, these details are included in the PDF.
 
 ## REST API 
 
@@ -379,8 +407,8 @@ try {
         //Get the input document to perform the sealing operation
         const sourceFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/sampleInvoice.pdf'),
     
-            //Get the background seal image for signature , if required.
-            sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/sampleSealImage.png');
+        //Get the background seal image for signature , if required.
+        sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/sampleSealImage.png');
     
         // Set the Seal Field Name to be created in input PDF document.
         sealFieldName = "Signature1";
@@ -465,6 +493,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/electron
     "sealImageAssetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-xxxx-xxxx-087832fca718",
     "sealOptions": {
         "signatureFormat": "PKCS7",
+        "documentLevelPermission": "FORM_FILLING",
         "cscCredentialOptions": {
             "credentialId": "<CREDENTIAL_ID>",
             "providerName": "<PROVIDER_NAME>",
@@ -475,6 +504,11 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/electron
             "credentialAuthParameters": {
                 "pin": "<PIN>"
             }
+        },
+        "tsaCredentialOptions": {
+            "url": "<TIMESTAMPING_URL>",
+            "username": "<USERNAME>",
+            "password": "<PASSWORD>"
         },
         "sealFieldOptions": {
             "location": {
