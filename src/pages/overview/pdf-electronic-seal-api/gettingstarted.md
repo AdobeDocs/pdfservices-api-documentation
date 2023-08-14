@@ -78,8 +78,10 @@ curl --location 'https://pdf-services.adobe.io/token' \
 --data-urlencode 'client_secret={{Placeholder for Client Secret}}' 
 ```
 
-## Step 5 : Uploading an asset
+## Step 5 : Assets
+Adobe PDF Services provide options for using [Adobe Storage](#step-41-using-adobe-storage-for-assets) for accessing assets or using your own custom [external storage](#step-42-using-custom-external-storage).
 
+### Step 5.1 Using Adobe Storage for Assets
 After getting the access token, we need to upload the asset. Uploading an asset is a two-step process :
 
 1. First you need to get an upload pre-signed URI by using the following API.
@@ -114,6 +116,12 @@ curl --location -g --request PUT 'https://dcplatformstorageservice-us-east-1.s3-
 <InlineAlert slots="text"/>
 
 For PDF Electronic Seal API, you can specify an optional seal image i.e. a logo/watermark/background image to be used as part of the seal's appearance. Step 4 can be repeated for uploading this seal image.
+
+### Step 5.2 Using Custom External Storage
+
+The PDF Electronic Seal API now supports accessing client files directly from their external storage. Clients can use Signed URLs from their storage solution to conveniently access and utilize their files through the Electronic Seal PDF API.
+
+To learn more, please visit [External Storage for Adobe PDF Services APIs](../pdf-services-api/howtos/pdf-external-storage-sol).
 
 ## Step 6 : Creating the job
 
