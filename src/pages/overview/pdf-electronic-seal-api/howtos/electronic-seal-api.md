@@ -140,6 +140,7 @@ The current versions of the SDKs do not support the inclusion of Trusted Timesta
 - **Signed/Sealed Files:** Any PDF which is already signed, certified or sealed cannot be used for applying electronic seal.
 - **Input PDF version:** Input PDF with version less than 1.3 are not supported.
 - **Usage Rights File:** Input PDF having usage rights are not supported.
+- **Timestamping Certificate Validation Information:** For cases in which the document-level permission is set to "NO_CHANGES_ALLOWED" and the user intends to utilize trusted timestamping by providing `tsaCredentialOptions`, the validation information (such as certificate chain and revocation information) for timestamping certificates are not included within the PDF. However, for the other two document-level permissions, these details are included in the PDF.
 
 ## REST API 
 
