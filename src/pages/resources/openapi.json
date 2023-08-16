@@ -10762,6 +10762,19 @@
           "status": "in progress"
         }
       },
+      "JobStatus": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/inprogress"
+          },
+          {
+            "$ref": "#/components/schemas/doneOld"
+          },
+          {
+            "$ref": "#/components/schemas/failed"
+          }
+        ]
+      },
       "doneOld": {
         "description": "Response in case of 'done' status",
         "type": "object",
