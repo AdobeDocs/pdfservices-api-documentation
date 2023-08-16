@@ -116,7 +116,7 @@ import com.adobe.pdfservices.operation.ExecutionContext;
 * Update the latest SDK dependency in package.json file of your project
  
 ```
-"@adobe/pdfservices-node-sdk": "3.4.0"
+"@adobe/pdfservices-node-sdk": "3.4.2"
 ```
 
 * Require the `@adobe/pdfservices-node-sdk` in the Sample file to access the SDK interface
@@ -184,6 +184,18 @@ Minor and Patch releases are backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
+
+### 3.4.2 (August, 2023, minor release)
+
+| Change  | Language | Description                       |
+|---------|----------|-----------------------------------|
+| Changed | NodeJS      | Removed redundant files from SDK. |
+
+### 3.4.1 (July, 2023, minor release)
+
+| Change  | Language | Description                    |
+|---------|----------|--------------------------------|
+| Changed | NodeJS      | Fixed links in README.md file. |
 
 ### 3.4.0 (June, 2023; minor release)
 
