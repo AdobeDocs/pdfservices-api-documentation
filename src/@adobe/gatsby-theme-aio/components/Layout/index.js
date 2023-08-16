@@ -41,10 +41,10 @@ import '@adobe/focus-ring-polyfill';
 import { Provider } from '@adobe/gatsby-theme-aio/src/components/Context';
 import { Search } from '@adobe/gatsby-theme-aio/src/components/Search';
 import { SideNav } from '../SideNav';
-import { GlobalHeader } from '../GlobalHeader';
 import { SEO } from '../SEO';
 import { ProgressCircle } from '@adobe/gatsby-theme-aio/src/components/ProgressCircle';
 import nextId from 'react-id-generator';
+import {GlobalHeader} from "@adobe/gatsby-theme-aio/src/components/GlobalHeader";
 
 // GATSBY_ALGOLIA_APPLICATION_ID=...
 // GATSBY_ALGOLIA_SEARCH_API_KEY=...
