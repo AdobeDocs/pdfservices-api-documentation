@@ -6666,14 +6666,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/ElectronicSealInternal"
-                  },
-                  {
-                    "$ref": "#/components/schemas/ElectronicSealExternal"
-                  }
-                ]
+                "$ref": "#/components/schemas/ElectronicSeal"
               }
             }
           },
@@ -9914,8 +9907,7 @@
           ]
         }
       },
-      "ElectronicSealInternal": {
-        "title": "Internal",
+      "ElectronicSeal": {
         "description": "Params to specify the options required for applying digital seal.",
         "type": "object",
         "required": [
@@ -9973,236 +9965,6 @@
         },
         "additionalProperties": false
       },
-      "ElectronicSealExternal": {
-        "title": "External",
-        "description": "Params for Electronic Seal Operation using external storage",
-        "type": "object",
-        "properties": {
-          "inputs": {
-            "description": "Params representing input array for electronic seal operation. It consists of maximum 2 input elements, representing input document and seal image respectively. Seal Image input element is optional.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/sealInputs"
-            },
-            "minItems": 1,
-            "maxItems": 2
-          },
-          "output": {
-            "description": "Params representing output object for electronic seal operation",
-            "type": "object",
-            "properties": {
-              "uri" : {
-                "description": "Output file Upload Pre-signed URL.",
-                "type": "string"
-              },
-              "storage": {
-                "description": "Specifies the type of the external storage",
-                "type": "string",
-                "enum": [
-                  "S3",
-                  "SHAREPOINT"
-                ]
-              }
-            },
-            "required": [
-              "uri"
-            ]
-          },
-          "params": {
-            "description": "Params for electronic seal processing",
-            "type": "object",
-            "properties": {
-              "signatureFormat": {
-                "type": "string",
-                "default": "PKCS7",
-                "description": "Specifies a supported digital signature format. For supported signature formats, please refer <a href = \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/howtos/electronic-seal-api/#signature-format-signatureformat\">documentation</a>.",
-                "enum": [
-                  "PADES",
-                  "PKCS7"
-                ]
-              },
-              "cscCredentialOptions": {
-                "type": "object",
-                "description": "Specifies the parameters that encapsulates the signer's certificate credential. For more information, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/howtos/electronic-seal-api/#tsp-credential-information-csccredentialoptions--required\">documentation</a>.",
-                "required": [
-                  "providerName",
-                  "credentialId",
-                  "authorizationContext",
-                  "credentialAuthParameters"
-                ],
-                "properties": {
-                  "providerName": {
-                    "type": "string",
-                    "description": "Specifies the name of the Trust Service Provider. For the list of supported TSPs, please refer <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/#supported-trust-service-providers\">documentation</a>."
-                  },
-                  "credentialId": {
-                    "type": "string",
-                    "description": "Specifies the credential ID stored with the TSP."
-                  },
-                  "authorizationContext": {
-                    "type": "object",
-                    "description": "Specifies the service authorization data required to communicate with the TSP.",
-                    "required": [
-                      "accessToken"
-                    ],
-                    "properties": {
-                      "tokenType": {
-                        "type": "string",
-                        "description": "Specifies the type of service access token used to authorize access to the CSC provider hosted APIs.",
-                        "default": "Bearer"
-                      },
-                      "accessToken": {
-                        "type": "string",
-                        "description": "Specifies the service access token used to authorize access to the CSC provider hosted APIs."
-                      }
-                    }
-                  },
-                  "credentialAuthParameters": {
-                    "type": "object",
-                    "description": "Specifies the credentials authorization information required to authorize the access to their certificate.",
-                    "required": [
-                      "pin"
-                    ],
-                    "properties": {
-                      "pin": {
-                        "type": "string",
-                        "description": "Specifies the PIN associated with credential ID."
-                      }
-                    }
-                  }
-                }
-              },
-              "sealFieldOptions": {
-                "type": "object",
-                "description": "Specifies the parameters required to create a new signature field or use an existing field. For more details, please refer <a href= \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/howtos/electronic-seal-api/#seal-field-parameters---sealfieldoptions--required\">documentation</a>.",
-                "required": [
-                  "fieldName"
-                ],
-                "properties": {
-                  "visible": {
-                    "type": "boolean",
-                    "description": "Specified whether the seal field is visible or not.",
-                    "default": true
-                  },
-                  "location": {
-                    "type": "object",
-                    "description": "Specifies the coordinates of the signature appearance's bounding box in default PDF user space units. The location is only required if the signature field does not already exist in the PDF document.If location is provided along with the existing signature field then it is ignored.",
-                    "required": [
-                      "top",
-                      "left",
-                      "right",
-                      "bottom"
-                    ],
-                    "properties": {
-                      "top": {
-                        "type": "integer",
-                        "description": "Specifies the top-most y-coordinate of the seal appearance's bounding box in default PDF user space units."
-                      },
-                      "left": {
-                        "type": "integer",
-                        "description": "Specifies the left-most x-coordinate of the seal appearance's bounding box in default PDF user space units."
-                      },
-                      "right": {
-                        "type": "integer",
-                        "description": "Specifies the right-most x-coordinate of the seal appearance's bounding box in default PDF user space units."
-                      },
-                      "bottom": {
-                        "type": "integer",
-                        "description": "Specifies the bottom-most y-coordinate of the seal appearance's bounding box in default PDF user space units."
-                      }
-                    }
-                  },
-                  "fieldName": {
-                    "type": "string",
-                    "description": "The signature field's name. This must be a non-empty string. If signature field with this field name already exist, that field will be used. If it does not exist, a signature field with this field name will be created."
-                  },
-                  "pageNumber": {
-                    "type": "integer",
-                    "description": "Specifies the page number to which the signature field should be attached. Page numbers are 1-based. The page number is only required if the signature field does not already exist in the pdf document. If page number is provided along with the existing signature field then the page number should be same on which signature field is present in the document, else an error is thrown."
-                  }
-                }
-              },
-              "sealAppearanceOptions": {
-                "type": "object",
-                "description": "Specifies signature field appearance parameters. For more details, please refer <a href= \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/howtos/electronic-seal-api/#seal-appearance-parameters-sealappearanceoptions\">documentation</a>.",
-                "default": {
-                  "displayOptions": [
-                    "NAME",
-                    "LABELS"
-                  ]
-                },
-                "properties": {
-                  "displayOptions": {
-                    "type": "array",
-                    "description": "Specifies the information to display in the signature. These are an enum set of display items: NAME, DATE, DISTINGUISHED_NAME, LABELS and SEAL_IMAGE.",
-                    "items": {
-                      "type": "string"
-                    },
-                    "default": ["NAME","LABELS"]
-                  }
-                }
-              }
-            },
-            "required": [
-              "cscCredentialOptions",
-              "sealFieldOptions"
-            ]
-          }
-        },
-        "example": {
-          "inputs": [
-            {
-              "uri": "https://dcalpine2.sharepoint.com/sites/Docgen/_layouts/15/download.aspx?UniqueId=353087f7-b1ea-4d84-91d7-0821b23e04ea&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDI5MDkiLCJleHAiOiIxNjgwNjA2NTA5IiwiZW5kcG9pbnR1cmwiOiIwU1NJNDAxdjZhUll6YUIyV2lod005VnIxOVJHNStvSUxFN280dk0yUlMwPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMTMzIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJPVEUxTlRZMFkyRXROREZpT1MwME1HSTBMVGczWVdRdFlqaGpaREprWkdNeVlXVTUiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE2OSJ9.aStWTExNZ045T3h3OGV4MHdyYURmLzZqOW9McGRhSmtZWStHOE1wM0ZaYz0&ApiVersion=2.0",
-              "storage": "SHAREPOINT"
-            },
-            {
-              "uri": "https://dcalpine2.sharepoint.com/sites/Docgen/_layouts/15/download.aspx?UniqueId=353087f7-b1ea-4d84-91d7-0821b23e04ea&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDI5MDkiLCJleHAiOiIxNjgwNjA2NTA5IiwiZW5kcG9pbnR1cmwiOiIwU1NJNDAxdjZhUll6YUIyV2lod005VnIxOVJHNStvSUxFN280dk0yUlMwPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMTMzIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJPVEUxTlRZMFkyRXROREZpT1MwME1HSTBMVGczWVdRdFlqaGpaREprWkdNeVlXVTUiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE2OSJ9.aStWTExNZ045T3h3OGV4MHdyYURmLzZqOW9McGRhSmtZWStHOE1wM0ZaYz0&ApiVersion=2.0",
-              "storage": "SHAREPOINT"
-            }
-          ],
-          "output": {
-            "uri": "https://dcalpine2.sharepoint.com/sites/Docgen/_api/v2.0/drives/b!MA1899sXSkupaKT9m2CP3JIqXDMQyoBCth9h9Rn6bQRjzBEBFxsbQpN23hY-rzQT/items/01TAIM7P3ZQQ4DP4NZHFDI6FBJPIGFRCY3/uploadSession?guid='2c79b9aa-f9dc-42c8-8919-da5a9b554b81'&overwrite=True&rename=False&dc=0&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDAyOTMiLCJleHAiOiIxNjgwNjg2NjkzIiwiZW5kcG9pbnR1cmwiOiJXVWNNVHhndVdyMHR4YzhlYWxlRzMrYUV1aXg5anoxanZuRmRpMENjNHFRPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMjYxIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJaREZsTURjek5tRXRaREJtWkMwMFlXUXlMV0V5WTJNdE1HRTRPV1prTTJJNU5XTmwiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE3MCJ9.a1hxR1J1emlFSE9jSTU0SnFTcFN6TGlsRHNhWTFRaDNkT2hwT3ZPYm8waz0",
-            "storage": "SHAREPOINT"
-          },
-          "params": {
-            "signatureFormat": "PKCS7",
-            "cscCredentialOptions": {
-              "credentialId": "[ADOBE]_xxxx_xx:35",
-              "providerName": "intxxxxxst",
-              "authorizationContext": {
-                "accessToken": "b7338a1f-xxxx-xxxx-xxxx-1eec91c47c12"
-              },
-              "credentialAuthParameters": {
-                "pin": "12xxxx65"
-              }
-            },
-            "sealFieldOptions": {
-              "location": {
-                "top": 300,
-                "left": 50,
-                "right": 250,
-                "bottom": 100
-              },
-              "fieldName": "Signature1",
-              "pageNumber": 1
-            },
-            "sealAppearanceOptions": {
-              "displayOptions": [
-                "NAME",
-                "DATE",
-                "DISTINGUISHED_NAME",
-                "LABELS",
-                "SEAL_IMAGE"
-              ]
-            }
-          }
-        },
-        "required": [
-          "inputs",
-          "params"
-        ],
-        "additionalProperties": false
-      },
       "sealInputs" : {
         "title": "inputs",
         "description": "Array of input object for electronic seal operation containing input doc and seal image uris respectively.",
@@ -10217,7 +9979,9 @@
             "type": "string",
             "enum": [
               "S3",
-              "SHAREPOINT"
+              "SHAREPOINT",
+              "DROPBOX",
+              "BLOB"
             ]
           }
         }
@@ -10726,7 +10490,7 @@
             "$ref": "#/components/schemas/inprogress"
           },
           {
-            "$ref": "#/components/schemas/done"
+            "$ref": "#/components/schemas/ElectronicSealPDFDone"
           },
           {
             "$ref": "#/components/schemas/failed"
@@ -11622,6 +11386,34 @@
             "assetID": "urn:aaid:AS:UE1:23c30ee0-2c6d-46d6-87f2-087832fca718"
           }
         }
+      },
+      "ElectronicSealPDFDone" : {
+          "title": "done",
+          "description": "Response in case of 'done' status",
+          "type": "object",
+          "properties": {
+            "status": {
+              "description": "Job Status",
+              "type": "string",
+              "enum": [
+                "done"
+              ]
+            },
+            "asset": {
+              "$ref": "#/components/schemas/responseAsset"
+            }
+          },
+          "example": {
+            "status": "done",
+            "asset": {
+              "metadata": {
+                "type": "application/pdf",
+                "size": 200791
+              },
+              "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+              "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
+            }
+          }
       },
       "failed": {
         "description": "Response in case of 'failed' status",
