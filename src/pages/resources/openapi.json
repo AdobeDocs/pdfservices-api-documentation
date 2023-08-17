@@ -3639,7 +3639,7 @@
           }
         ],
         "requestBody": {
-          "description": "Parameter to specify output document target format. Refer to the External Section below for using external storage with PDF to Images Operation. With External Storage, supported Output type is `zipOfPageImages` only.",
+          "description": "Parameter to specify output document target format. Refer to the External Section below for using external storage with PDF to Images Operation. With External Storage, supported output type is `zipOfPageImages` only.",
           "content": {
             "application/json": {
               "schema": {
@@ -8577,18 +8577,10 @@
                   "jpeg",
                   "png"
                 ]
-              },
-              "outputType": {
-                "description": "Supported Output type for external storage is zipOfPageImages only. The response will be provided as a zip file of images.",
-                "type": "string",
-                "enum": [
-                  "zipOfPageImages"
-                ]
               }
             },
             "required": [
-              "targetFormat",
-              "outputType"
+              "targetFormat"
             ]
           }
         },
@@ -8602,8 +8594,7 @@
             "storage": "S3"
           },
           "params": {
-            "targetFormat":"jpeg",
-            "outputType":"zipOfPageImages"
+            "targetFormat":"jpeg"
           }
         },
         "additionalProperties": false
