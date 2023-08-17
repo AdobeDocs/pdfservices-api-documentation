@@ -6662,7 +6662,7 @@
           }
         ],
         "requestBody": {
-          "description": "Params to specify the options required for applying electronic seal. Refer to the External Section below for using external storage with Electronic Seal PDF Operation.",
+          "description": "Params to specify the options required for applying electronic seal.",
           "content": {
             "application/json": {
               "schema": {
