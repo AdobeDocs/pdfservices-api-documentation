@@ -9287,11 +9287,17 @@
             "description": "To get page level properties of the PDF.",
             "type": "boolean",
             "default": false
+          },
+          "signMetadata": {
+            "description": "To get the sign metadata from PDF document if present.",
+            "type": "boolean",
+            "default": false
           }
         },
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
-          "pageLevel": false
+          "pageLevel": false,
+          "signMetadata": false
         },
         "required": [
           "assetID"
@@ -9314,6 +9320,11 @@
                 "description": "To get page level properties of the PDF.",
                 "type": "boolean",
                 "default": false
+              },
+              "signMetadata": {
+                "description": "To get the sign metadata from PDF document if present.",
+                "type": "boolean",
+                "default": false
               }
             }
           }
@@ -9324,7 +9335,8 @@
             "storage": "S3"
           },
           "params": {
-            "pageLevel": false
+            "pageLevel": false,
+            "signMetadata": false
           }
         },
         "required": [
@@ -11237,6 +11249,50 @@
                         "type": "string"
                       }
                     }
+                  },
+                  "signature_details": {
+                    "type": "array",
+                    "description": "This describe the digital signature info",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "signee_name": {
+                          "type": "string",
+                          "description": "The full name of the signee"
+                        },
+                        "signing_date_time": {
+                          "type": "string",
+                          "description": "Date and time of the signature"
+                        },
+                        "signature_type": {
+                          "type": "string",
+                          "description": "Type of signature i.e. SES/AES/QES"
+                        },
+                        "cert_info": {
+                          "type": "object",
+                          "description": "Certificate info of the signature",
+                          "properties": {
+                            "valid_from": {
+                              "type": "string",
+                              "description": "Start date of the certificate"
+                            },
+                            "valid_upto": {
+                              "type": "string",
+                              "description": "End date of the certificate"
+                            },
+                            "cert_status": {
+                              "type": "string",
+                              "description": "Validity of the certificate"
+                            },
+                            "trust_sources": {
+                              "type": "array",
+                              "description": "List of trust sources"
+                            }
+                          }
+                        }
+                      },
+                      "additionalProperties": false
+                    }
                   }
                 }
               },
@@ -11427,7 +11483,62 @@
               "pdfx_compliance_level": "",
               "pdfua_compliance_level": "",
               "XMP": null,
-              "page_count": 101
+              "page_count": 101,
+              "signature_details": [
+                {
+                  "signee_name": "Signed by Simon Haringa",
+                  "signing_date_time": "Jul 18, 2023 11:31:33 +0000",
+                  "signature_type": "UNKNOWN",
+                  "cert_info": {
+                    "valid_from": "Apr 26, 2019 18:00:25 +0000",
+                    "valid_upto": "Apr 24, 2024 18:00:25 +0000",
+                    "cert_status": "UNKNOWN",
+                    "trust_sources": [
+                      "UNKNOWN"
+                    ]
+                  }
+                },
+                {
+                  "signee_name": "Signed by Simon Alex Haringa",
+                  "signing_date_time": "Jul 18, 2023 11:32:38 +0000",
+                  "signature_type": "QES",
+                  "cert_info": {
+                    "valid_from": "Nov 15, 2022 11:50:02 +0000",
+                    "valid_upto": "Nov 15, 2023 11:50:02 +0000",
+                    "cert_status": "VALID",
+                    "trust_sources": [
+                      "AATL",
+                      "EUTL"
+                    ]
+                  }
+                },
+                {
+                  "signee_name": "Certified by Adobe Acrobat Sign",
+                  "signing_date_time": "Jul 21, 2023 08:14:50 +0000",
+                  "signature_type": "UNKNOWN",
+                  "cert_info": {
+                    "valid_from": "Dec 20, 2022 00:00:00 +0000",
+                    "valid_upto": "Dec 19, 2025 23:59:59 +0000",
+                    "cert_status": "UNKNOWN",
+                    "trust_sources": [
+                      "UNKNOWN"
+                    ]
+                  }
+                },
+                {
+                  "signee_name": "Signed by Adobe Acrobat Sign",
+                  "signing_date_time": "Jul 21, 2023 08:14:51 +0000",
+                  "signature_type": "UNKNOWN",
+                  "cert_info": {
+                    "valid_from": "Dec 20, 2022 00:00:00 +0000",
+                    "valid_upto": "Dec 19, 2025 23:59:59 +0000",
+                    "cert_status": "UNKNOWN",
+                    "trust_sources": [
+                      "UNKNOWN"
+                    ]
+                  }
+                }
+              ]
             },
             "permissions": null
           }
