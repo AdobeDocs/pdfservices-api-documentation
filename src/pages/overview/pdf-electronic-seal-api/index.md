@@ -7,7 +7,7 @@ title: PDF Electronic Seal API | Adobe PDF Services
 
 An Electronic Seal in PDF is akin to an organization's rubber stamp on a paper, but it’s more secure. An organization's electronic seal applied using PDF Electronic Seal API is supported by a digital certificate issued in the name of that organization. The Electronic Seal may be applied using a certificate hosted within a [Cloud Signature Consortium (CSC)](https://cloudsignatureconsortium.org/) compliant service provider. It offers the utmost assurance of identity of the organization while handling digital documents.
 
-PDF Electronic Seal API is a cloud based solution to apply an electronic seal on PDF documents using the digital certificates issued to organizations to demonstrate the integrity and authenticity of official documents such as invoices, statements etc. These digital certificates are issued by a CSC compliant Trust Service Provider (TSP). To enhance non-repudiation for sealed documents, a trusted timestamp from any of the supported Timestamping Authorities can be utilized.
+PDF Electronic Seal API is a cloud based solution to apply an electronic seal on PDF documents using the digital certificates issued to organizations to demonstrate the integrity and authenticity of official documents such as invoices, statements etc. These digital certificates are issued by a CSC compliant Trust Service Provider (TSP).
 
 An electronic seal can be represented by solely an image, a text block (comprising name of entity, date and time of the seal etc.), or a combination of both image and text. Below is the sample representation of an electronic seal applied on a PDF document.
 
@@ -39,6 +39,17 @@ PDF Electronic Seal API currently supports the following TSPs : <!-- REFERENCES 
 
 A Timestamping Authority (TSA) is a trusted entity that employs the [RFC3161](https://www.ietf.org/rfc/rfc3161.txt) protocol to generate and attach cryptographic timestamps to digital data, certifying its existence at a specific time, thus enhancing data integrity and legal validity.
 
-The PDF Electronic Seal API supports this trusted timestamping while sealing the document using one of the supported TSA. Many popular TSAs like Intesi Group, DigiCert, GlobalSign, Seiko Timestamp Service, InfoCert Qualified TSA etc. are supported. Adobe Qualified Timestamp Service is also allow-listed to use with Electronic Seal Service. If the use of an additional TSA is required beyond the ones already supported, it can be facilitated during the customer onboarding process. <!-- REFERENCES https://helpx.adobe.com/in/sign/using/custom-time-stamp-providers.html -->
+The PDF Electronic Seal API supports trusted timestamping while sealing the document using one of the supported TSA. Supported TSAs are:
+
+* [Adobe Qualified Timestamp](https://helpx.adobe.com/in/acrobat/kb/trust-services.html#:~:text=EUTL%20trusted%20services.-,Adobe%20Qualified%20Timestamp%20Service,-A%20qualified%20time)
+* [Intesi Group](https://www.intesigroup.com/en/)
+* [DigiCert Timestamp](https://www.digicert.com/)
+* [GlobalSign Timestamp](https://www.globalsign.com/en-in)
+* [InfoCert Qualified TSA](https://infocert.digital/consumer/timestamps/)
+* [Namirial Qualified TSA](https://support.namirial.com/en/docs/docs-tsp-qualified-signature-timestamp/)
+* [QuoVadis](https://www.quovadisglobal.com/)
+* [Seiko Timestamp Service](https://www.seikotrust.jp/product/time-stamp/)
+
+If support for any other TSA is required, reach out to us through customer support. <!-- REFERENCES https://helpx.adobe.com/in/sign/using/custom-time-stamp-providers.html -->
 
 
