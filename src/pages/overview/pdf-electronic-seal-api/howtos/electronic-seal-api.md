@@ -15,11 +15,15 @@ Specifies a supported digital signature format:
 
 ### Document Level Permission (_documentLevelPermission_)
 
-Specifies the DocMDP (i.e. Document Modification Detection and Prevention) permissions. These permissions specify the allowed changes to the sealed document. It can have three values:
+Specifies the DocMDP (i.e. Document Modification Detection and Prevention) permissions. These permissions are applied to the output electronically sealed document.
 
 * NO_CHANGES_ALLOWED : No changes to the document are permitted. Any change to the document will invalidate the signature.
 * FORM_FILLING : Allowed changes are filling in forms, instantiating page templates, and performing approval signatures. This is also the default document level permission, if not specified by the user.
 * FORM_FILLING_AND_ANNOTATIONS : In addition to above, annotation creation, deletion, and modification are also allowed.
+
+<InlineAlert slots="text"/>
+
+Long Term Validation (LTV) information of Timestamp Certificates (if using Trusted Timestamping) is embedded in the PDF document only if Document Level Permission is set as FORM_FILLING or FORM_FILLING_AND_ANNOTATIONS.
 
 ### TSP Credential Information (_cscCredentialOptions_) : **Required**
 
@@ -42,9 +46,14 @@ TSP parameters encapsulate the sealer's [certificate credential](../gettingstart
 
 TSA parameters encapsulate the [timestamping URL and credentials](../gettingstarted/#step-2-procure-timestamping-url-and-credentials).
 
-* **Timestamping URL**  (*url*) : **Required** : Specifies the TSA URL to be used for getting timestamp token.
-* **TSA Username**  (*username*) : Specifies the client's username associated with timestamping URL if it is an authenticated endpoint.
-* **TSA Password**  (*password*) : Specifies the client's password associated with timestamping URL if it is an authenticated endpoint.
+* **TSA URL**  (*url*) : **Required** : Specifies the TSA URL to be used for getting timestamp token.
+* **TSA Username**  (*username*) : Specify the username for authenticating TSA URL.
+* **TSA Password**  (*password*) : Specify the password for authenticating TSA URL.
+* **TSA Credential Authorization Parameter**  (*credentialAuthParameters*) : Encapsulates the credential information required to authenticate the TSA URL.
+
+    * **TSA Username**  (*username*) : Specify the username for authenticating TSA URL.
+    * **TSA Password**  (*password*) : Specify the password for authenticating TSA URL.
+
 
 ### Seal Field Parameters   (*sealFieldOptions*) : **Required**
 
@@ -98,7 +107,7 @@ Specifies seal field appearance parameters. These are an enumerated set of displ
     "credentialId": "<CREDENTIAL_ID>"
   },
   "tsaCredentialOptions": {
-    "url": "<TIMESTAMPING_URL>",
+    "url": "<TSA_URL>",
     "username": "<USERNAME>",
     "password": "<PASSWORD>"
   },
@@ -127,7 +136,7 @@ Specifies seal field appearance parameters. These are an enumerated set of displ
 
 <InlineAlert slots="text"/>
 
-The current versions of the SDKs do not support the inclusion of Trusted Timestamping (using `tsaCredentialOptions`) or the alteration of Document Level Permission (using `documentLevelPermission`). Presently, these parameters are only functional with REST APIs.
+Support of Trusted Timestamping and Document Level Permissions is only available using REST APIs. Future version of SDKs will support these features.
 
 ## API limitations
 
@@ -140,7 +149,6 @@ The current versions of the SDKs do not support the inclusion of Trusted Timesta
 - **Signed/Sealed Files:** Any PDF which is already signed, certified or sealed cannot be used for applying electronic seal.
 - **Input PDF version:** Input PDF with version less than 1.3 are not supported.
 - **Usage Rights File:** Input PDF having usage rights are not supported.
-- **Timestamping Certificate Validation Information:** For cases in which the document-level permission is set to "NO_CHANGES_ALLOWED" and the user intends to utilize trusted timestamping by providing `tsaCredentialOptions`, the validation information (such as certificate chain and revocation information) for timestamping certificates are not included within the PDF. However, for the other two document-level permissions, these details are included in the PDF.
 
 ## REST API 
 

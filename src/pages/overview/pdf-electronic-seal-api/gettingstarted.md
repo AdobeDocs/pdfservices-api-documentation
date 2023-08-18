@@ -20,11 +20,10 @@ The SDK only supports server-based use cases where credentials are saved securel
 
 ![TSP Token Generation](../images/cert.png)
 
-## Step 2: Procure Timestamping URL and Credentials
+## Step 2: (OPTIONAL) Procure Timestamping URL and Credentials
 
-1. Optionally, client can choose to enroll with a Timestamping Authority (TSA) for utilizing their URL for trusted timestamping while Electronic Sealing. Once the client's registration with the TSA is confirmed, they will be provided with the timestamping URL and associated credentials.
-2. During the onboarding process, if the TSA is not already on the allowlist, the client should initiate a request for allowlisting the TSA URL. For more details, check [supported TSAs](../#supported-timestamping-authorities).
-3. Once the TSA has been successfully verified and added to the allowlist, the client becomes eligible to utilize the provided timestamping URL and credentials for trusted timestamping.
+1. Client can register themselves with a Timestamping Authority (TSA) of their choice to include a trusted timestamp while performing eSeal operation on a document. Client will need the TSA URL along with optional username and password to use this feature.
+2. The supported TSAs are listed [here]((../#supported-timestamping-authorities)). If support for any other TSA is required, reach out to us through customer support.
 
 ## Step 3: Obtain your TSP OAuth Token
 
