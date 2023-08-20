@@ -9935,6 +9935,7 @@
           "sealImageAssetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
           "sealOptions": {
             "signatureFormat": "PKCS7",
+            "documentLevelPermission": "FORM_FILLING_AND_ANNOTATIONS",
             "cscCredentialOptions": {
               "credentialId": "[ADOBE]_xxxx_xx:35",
               "providerName": "intxxxxxst",
@@ -9943,6 +9944,13 @@
               },
               "credentialAuthParameters": {
                 "pin": "12xxxx65"
+              }
+            },
+            "tsaOptions": {
+              "url": "https://time-xxxxxx-abc.com/tsa",
+              "credentialAuthParameters": {
+                "username": "abcxxxxxx123",
+                "Password": "32@xxxx67"
               }
             },
             "sealFieldOptions": {
@@ -10010,7 +10018,7 @@
           "documentLevelPermission": {
             "type": "string",
             "default": "FORM_FILLING",
-            "description": "Specifies the document level permissions for changes allowed after sealing. For more details, please refer <>",
+            "description": "Specifies the document level permissions for changes allowed after sealing. For more details, please refer <a href = \"https://developer-stage.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/howtos/electronic-seal-api/#document-level-permission-documentlevelpermission\">documentation</a>.",
             "enum": [
               "NO_CHANGES_ALLOWED",
               "FORM_FILLING",

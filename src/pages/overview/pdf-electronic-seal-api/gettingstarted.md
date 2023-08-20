@@ -23,7 +23,7 @@ The SDK only supports server-based use cases where credentials are saved securel
 ## Step 2: (OPTIONAL) Procure Timestamping URL and Credentials
 
 1. Client can register themselves with a Timestamping Authority (TSA) of their choice to include a trusted timestamp while performing eSeal operation on a document. Client will need the TSA URL along with optional username and password to use this feature.
-2. The supported TSAs are listed [here]((../#supported-timestamping-authorities)). If support for any other TSA is required, reach out to us through customer support.
+2. The supported TSAs are listed [here](../#supported-timestamping-authorities). If support for any other TSA is required, reach out to us through customer support.
 
 ## Step 3: Obtain your TSP OAuth Token
 
@@ -153,7 +153,7 @@ You can read more about the API in detail [here](../../../apis/#operation/asset.
 curl --location -g --request GET 'https://dcplatformstorageservice-us-east-1.s3-accelerate.amazonaws.com/b37fd583-1ab6-4f49-99ef-d716180b5de4?X-Amz-Security-Token={{Placeholder for X-Amz-Security-Token}}&X-Amz-Algorithm={{Placeholder for X-Amz-Algorithm}}&X-Amz-Date={{Placeholder for X-Amz-Date}}&X-Amz-SignedHeaders={{Placeholder for X-Amz-SignedHeaders}}&X-Amz-Expires={{Placeholder for X-Amz-Expires}}&X-Amz-Credential={{Placeholder for X-Amz-Credential}}&X-Amz-Signature={{Placeholder for X-Amz-Signature}}'
 ```
 
-## There you go! Your job is completed in 7 simple steps.
+## There you go! Your job is completed in 8 simple steps.
 
 ## SDK
 
