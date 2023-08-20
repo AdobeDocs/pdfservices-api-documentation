@@ -44,11 +44,9 @@ TSP parameters encapsulate the sealer's [certificate credential](../gettingstart
 
 ### TSA Credential Information (_tsaCredentialOptions_) :
 
-TSA parameters encapsulate the [timestamping URL and credentials](../gettingstarted/#step-2-procure-timestamping-url-and-credentials).
+TSA parameters encapsulate the [timestamping URL and credentials](../gettingstarted/#step-2-optional-procure-timestamping-url-and-credentials).
 
 * **TSA URL**  (*url*) : **Required** : Specifies the TSA URL to be used for getting timestamp token.
-* **TSA Username**  (*username*) : Specify the username for authenticating TSA URL.
-* **TSA Password**  (*password*) : Specify the password for authenticating TSA URL.
 * **TSA Credential Authorization Parameter**  (*credentialAuthParameters*) : Encapsulates the credential information required to authenticate the TSA URL.
 
     * **TSA Username**  (*username*) : Specify the username for authenticating TSA URL.
@@ -106,10 +104,12 @@ Specifies seal field appearance parameters. These are an enumerated set of displ
     "providerName": "<PROVIDER_NAME>",
     "credentialId": "<CREDENTIAL_ID>"
   },
-  "tsaCredentialOptions": {
+  "tsaOptions": {
     "url": "<TSA_URL>",
-    "username": "<USERNAME>",
-    "password": "<PASSWORD>"
+    "credentialAuthParameters": {
+      "username": "<USERNAME>",
+      "password": "<PASSWORD>"
+    }
   },
   "sealFieldOptions": {
     "pageNumber": 1,
