@@ -8415,7 +8415,6 @@
             "storage": "S3"
           },
           "params": {
-            "createTaggedPDF": true,
             "documentLanguage": "en-US"
           }
         },
