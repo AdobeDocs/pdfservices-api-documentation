@@ -15,7 +15,6 @@ PDF Services APIs supports the signed URLs of input and output files in the requ
 
 <div>
 Accessing files from External Storage is currently <b>not</b> supported in the following APIs
-<br>
 <ul>
     <li> <a href="../../../apis/#tag/PDF-Accessibility-Auto-Tag">PDF Accessibility Auto Tag</a> </li>
     <li><a href="../../../apis/#tag/Extract-PDF">Extract PDF</a></li>
