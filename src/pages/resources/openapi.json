@@ -9375,9 +9375,7 @@
             "type": "string",
             "enum": [
               "S3",
-              "SHAREPOINT",
-              "DROPBOX",
-              "BLOB"
+              "SHAREPOINT"
             ]
           }
         },
@@ -9399,9 +9397,7 @@
             "type": "string",
             "enum": [
               "S3",
-              "SHAREPOINT",
-              "DROPBOX",
-              "BLOB"
+              "SHAREPOINT"
             ]
           }
         }
@@ -9601,9 +9597,7 @@
             "type": "string",
             "enum": [
               "S3",
-              "SHAREPOINT",
-              "DROPBOX",
-              "BLOB"
+              "SHAREPOINT"
             ]
           }
         }
