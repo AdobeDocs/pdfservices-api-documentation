@@ -140,8 +140,8 @@ Console.Write("Exporting "+ input + " to " + output + "\n");
 ```javascript
 // Initial setup, create credentials instance.
 Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-        .WithClientId("PDF_SERVICES_CLIENT_ID")
-        .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+        .WithClientId(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"))
+        .WithClientSecret(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"))
         .Build();
 
 // Create an ExecutionContext using credentials and create a new operation instance.
@@ -218,8 +218,8 @@ namespace ExportPDFToWord
 
                 // Initial setup, create credentials instance.
                 Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                    .WithClientId("PDF_SERVICES_CLIENT_ID")
-                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                    .WithClientId(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"))
+                    .WithClientSecret(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"))
                     .Build();
 
                 // Create an ExecutionContext using credentials and create a new operation instance.

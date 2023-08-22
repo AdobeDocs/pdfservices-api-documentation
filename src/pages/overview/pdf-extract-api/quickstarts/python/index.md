@@ -93,8 +93,8 @@ This defines what our output ZIP will be and optionally deletes it if it already
 ```python
 #Initial setup, create credentials instance.
 credentials = Credentials.service_principal_credentials_builder()
-    .with_client_id('PDF_SERVICES_CLIENT_ID')
-    .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+    .with_client_id(os.getenv('PDF_SERVICES_CLIENT_ID'))
+    .with_client_secret(os.getenv('PDF_SERVICES_CLIENT_SECRET'))
     .build();
 
 #Create an ExecutionContext using credentials and create a new operation instance.
@@ -178,8 +178,8 @@ try:
 
 	#Initial setup, create credentials instance.
     credentials = Credentials.service_principal_credentials_builder()
-        .with_client_id('PDF_SERVICES_CLIENT_ID')
-        .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+        .with_client_id(os.getenv('PDF_SERVICES_CLIENT_ID'))
+        .with_client_secret(os.getenv('PDF_SERVICES_CLIENT_SECRET'))
         .build();
 
 	#Create an ExecutionContext using credentials and create a new operation instance.

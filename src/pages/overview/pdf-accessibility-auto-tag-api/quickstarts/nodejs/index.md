@@ -99,8 +99,8 @@ This defines what our output directory will be and optionally deletes it if it a
 ```js
 const credentials =  PDFServicesSdk.Credentials
     .servicePrincipalCredentialsBuilder()
-    .withClientId("PDF_SERVICES_CLIENT_ID")
-    .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+    .withClientId(process.env.PDF_SERVICES_CLIENT_ID)
+    .withClientSecret(process.env.PDF_SERVICES_CLIENT_SECRET)
     .build();
 
 // Create an ExecutionContext using credentials
@@ -160,8 +160,8 @@ const TAGGING_REPORT = OUTPUT_PATH + INPUT_PDF + "-tagging-report.xlsx";
 
 const credentials =  PDFServicesSdk.Credentials
     .servicePrincipalCredentialsBuilder()
-    .withClientId("PDF_SERVICES_CLIENT_ID")
-    .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+    .withClientId(process.env.PDF_SERVICES_CLIENT_ID)
+    .withClientSecret(process.env.PDF_SERVICES_CLIENT_SECRET)
     .build();
 
 // Create an ExecutionContext using credentials
