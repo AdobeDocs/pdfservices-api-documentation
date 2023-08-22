@@ -22,6 +22,10 @@ A PDF Electronic Seal API workflow involves the following:
 * **Seal Image**: The API accepts an **optional** image as a background for seal appearance which overrides the default seal image. The maximum size of the seal image cannot exceed 5 MB. Supported image formats are JPEG, PNG and PDF only.
 
 
+## Live Demo
+
+Ready to see the PDF Electronic Seal API in action? The [Live Demo](https://acrobatservices.adobe.com/dc-eseal-playground/index.html) demonstrates how easy it is to apply electronic seal over PDF documents using digital certificate credentials and other configurable parameters.
+
 ## Supported Trust Service Providers
 
 TSPs are companies that offer a wide range of identity and transaction services, including certificate authority services such as providing and preserving digital certificates for creating and validating electronic seals as well as authenticating the organizations that applied the electronic seals.
