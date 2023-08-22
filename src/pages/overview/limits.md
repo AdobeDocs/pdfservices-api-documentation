@@ -80,11 +80,10 @@ There are several usage limits that apply to PDF Services API and its underlying
 | Page limit (Scanned - Extract and Accessibility Auto-Tag)*      | 150         |
 | JSON file size (Document Generation and HTML to PDF)            | 10MB        |
 | Maximum Requests Per Minute                                     | 100 RPM** (Enterprise), <br /> 25 RPM (Free Tier)|
-| Payload size (For all APIs)                                     | 100MB       |
 
 *Page limits may be lower for documents with a large number of tables.*
 
-**<i>Please [contact us](https://developer.adobe.com/document-services/pricing/contact/sales/) on RPM if interested in understanding how it can scale under your ETLA.</i>
+**<i>Please [contact us](https://developer.adobe.com/document-services/pricing/contact/sales/) on RPM or file size if interested in understanding how it can scale under your ETLA.</i>
 
 Free Tier
 ------------------------------
