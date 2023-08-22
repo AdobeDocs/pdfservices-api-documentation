@@ -7443,7 +7443,7 @@
           "ht-HU",
           "it-IT",
           "ja-JP",
-          "kr-KR",
+          "ko-KR",
           "nb-NO",
           "nl-NL",
           "pl-PL",
@@ -7457,7 +7457,21 @@
           "tr-TR",
           "uk-UA",
           "zh-CN",
-          "zh-TW"
+          "zh-TW",
+          "lt-LT",
+          "el-GR",
+          "zh-HK",
+          "hu-HU",
+          "et-EE",
+          "lv-LV",
+          "bg-BG",
+          "mt-MT",
+          "sr-SR",
+          "ca-CA",
+          "mk-MK",
+          "de-CH",
+          "no-NO",
+          "iw-IL"
         ]
       },
       "ocrLang": {
