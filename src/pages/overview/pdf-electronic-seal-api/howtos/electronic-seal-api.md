@@ -42,7 +42,7 @@ TSP parameters encapsulate the sealer's [certificate credential](../gettingstart
 
     * **PIN**  (*pin*) : **Required** : Specifies the PIN associated with TSP provided credential ID.
 
-### TSA Credential Information (_tsaCredentialOptions_) :
+### TSA Information (_tsaOptions_) :
 
 TSA parameters encapsulate the [timestamping URL and credentials](../gettingstarted/#step-2-optional-procure-timestamping-url-and-credentials).
 
