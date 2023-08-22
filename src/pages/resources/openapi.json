@@ -89,10 +89,6 @@
     {
       "name": "PDF Accessibility Auto-Tag",
       "description": "Operation to create the tagged pdf and excel report for accessibility auto-tag use case."
-    },
-    {
-      "name": "PDF Accessibility Checker",
-      "description": "Operation to verify whether the document conforms to accessibility standards, such as PDF/UA and WCAG 2.0."
     }
   ],
   "x-tagGroups": [
@@ -112,7 +108,6 @@
       "name": "PDF Operations",
       "tags": [
         "PDF Accessibility Auto-Tag",
-        "PDF Accessibility Checker",
         "Extract PDF",
         "Document Generation",
         "PDF Electronic Seal",
@@ -7374,377 +7369,6 @@
           }
         }
       }
-    },
-    "/operation/checkaccessibility": {
-      "post": {
-        "tags": [
-          "PDF Accessibility Checker"
-        ],
-        "summary": "PDF Accessibility Checker API Operation",
-        "description": "Operation to verify whether the document conforms to accessibility standards, such as PDF/UA and WCAG 2.0.  It will generate a report that summarises the findings of the accessibility check. It contains links to documentation that assist in fixing problems.",
-        "operationId": "pdfoperations.checkaccessibility",
-        "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-api-key",
-            "in": "header",
-            "description": "The clientId from the generated credentials",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "Input Params for PDF Accessibility Checker API Operation.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CheckAccessibility"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "Request creation for the operation and status uri generated, which can be found in the 'location' header.",
-            "headers": {
-              "location": {
-                "description": "Job status URI for polling the results",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/400"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource Not Found.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/404"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the error JSON response.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/401"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Caller doesn't have sufficient quota for this operation.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/429"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/500"
-                }
-              }
-            }
-          }
-        },
-        "x-codegen-request-body-name": "body"
-      }
-    },
-    "/operation/checkaccessibility/{jobID}/status": {
-      "get": {
-        "tags": [
-          "PDF Accessibility Checker"
-        ],
-        "summary": "Poll the PDF Accessibility Checker API job for completion",
-        "operationId": "pdfoperations.checkaccessibility.jobstatus",
-        "parameters": [
-          {
-            "name": "jobID",
-            "in": "path",
-            "description": "Job ID of the request",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-api-key",
-            "in": "header",
-            "description": "The clientId from the generated credentials",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A response with job information.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the status call response.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/JobStatus"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request. The request was invalid or cannot be otherwise served.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the status call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Status400"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource Not Found.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus404"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-server": {
-                "description": "The name and version of the server.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus401"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Caller doesn't have sufficient quota for this operation.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus429"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error. The server has encountered an error and is unable to process your request at this time.",
-            "headers": {
-              "content-type": {
-                "description": "The content type of the POST API call response",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "x-request-id": {
-                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Satus500"
-                }
-              }
-            }
-          }
-        }
-      }
     }
   },
   "components": {
@@ -9270,17 +8894,11 @@
             "description": "To get page level properties of the PDF.",
             "type": "boolean",
             "default": false
-          },
-          "signMetadata": {
-            "description": "To get the sign metadata from PDF document if present.",
-            "type": "boolean",
-            "default": false
           }
         },
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
-          "pageLevel": false,
-          "signMetadata": false
+          "pageLevel": false
         },
         "required": [
           "assetID"
@@ -9303,11 +8921,6 @@
                 "description": "To get page level properties of the PDF.",
                 "type": "boolean",
                 "default": false
-              },
-              "signMetadata": {
-                "description": "To get the sign metadata from PDF document if present.",
-                "type": "boolean",
-                "default": false
               }
             }
           }
@@ -9318,8 +8931,7 @@
             "storage": "S3"
           },
           "params": {
-            "pageLevel": false,
-            "signMetadata": false
+            "pageLevel": false
           }
         },
         "required": [
@@ -10206,39 +9818,6 @@
         },
         "additionalProperties": false
       },
-      "CheckAccessibility": {
-        "description": "Parameter for PDF Accessibility Checker API operation.",
-        "type": "object",
-        "required": [
-          "assetID"
-        ],
-        "properties": {
-          "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
-            "type": "string"
-          },
-          "attachReport": {
-            "description": "Responsible for attaching an HTML report to a PDF. If this field is set to true, then the accessibility report will be attached to the input PDF and returned in the output. Otherwise, an HTML report will be returned in the output.",
-            "type": "boolean",
-            "default": false
-          },
-          "pageStart": {
-            "description": "It implies the starting page for accessibility checks on the PDF. It should be greater than equal to 1.",
-            "type": "number"
-          },
-          "pageEnd": {
-            "description": "It implies the end page for accessibility checks on the PDF. It should be greater than equal to 1.",
-            "type": "number"
-          }
-        },
-        "example": {
-          "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
-          "attachReport": false,
-          "pageStart": 1,
-          "pageEnd": 5
-        },
-        "additionalProperties": false
-      },
       "GetUploadPresignedUrlAsset": {
         "type": "object",
         "properties": {
@@ -11020,50 +10599,6 @@
                         "description": "Title of PDF if there.",
                         "type": "string"
                       }
-                    }
-                  },
-                  "signature_details": {
-                    "type": "array",
-                    "description": "This describe the digital signature info",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "signee_name": {
-                          "type": "string",
-                          "description": "The full name of the signee"
-                        },
-                        "signing_date_time": {
-                          "type": "string",
-                          "description": "Date and time of the signature"
-                        },
-                        "signature_type": {
-                          "type": "string",
-                          "description": "Type of signature i.e. SES/AES/QES"
-                        },
-                        "cert_info": {
-                          "type": "object",
-                          "description": "Certificate info of the signature",
-                          "properties": {
-                            "valid_from": {
-                              "type": "string",
-                              "description": "Start date of the certificate"
-                            },
-                            "valid_upto": {
-                              "type": "string",
-                              "description": "End date of the certificate"
-                            },
-                            "cert_status": {
-                              "type": "string",
-                              "description": "Validity of the certificate"
-                            },
-                            "trust_sources": {
-                              "type": "array",
-                              "description": "List of trust sources"
-                            }
-                          }
-                        }
-                      },
-                      "additionalProperties": false
                     }
                   }
                 }
