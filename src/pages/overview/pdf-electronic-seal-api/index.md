@@ -11,7 +11,7 @@ PDF Electronic Seal API is a cloud based solution to apply an electronic seal on
 
 An electronic seal can be represented by solely an image, a text block (comprising name of entity, date and time of the seal etc.), or a combination of both image and text. Below is the sample representation of an electronic seal applied on a PDF document.
 
-![PDF Electronic Seal](../images/seal_opdoc_ss.png)
+![PDF Electronic Seal](../images/seal_op_ss.jpg)
 
 ## PDF Electronic Seal API Components
 
