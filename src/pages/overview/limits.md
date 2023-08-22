@@ -74,10 +74,10 @@ There are several usage limits that apply to PDF Services API and its underlying
 | USAGE LIMIT                                                     | VALUE       |
 | --------------------------------------------------------------- | ----------- |
 | Document limit (combine, insert, replace, split)                | 20          |
-| File size (for all documents)                                   | 100MB       |
+| File size (for all documents)**                                 | 100MB       |
 | Output images per Document Transaction (Export)                 | 50          |
-| Page limit (Extract and Accessibility Auto-Tag)\*                | 400         |
-| Page limit (Scanned - Extract and Accessibility Auto-Tag)\*      | 150         |
+| Page limit (Extract and Accessibility Auto-Tag)\*               | 400         |
+| Page limit (Scanned - Extract and Accessibility Auto-Tag)\*     | 150         |
 | JSON file size (Document Generation and HTML to PDF)            | 10MB        |
 | Maximum Requests Per Minute                                     | 100 RPM** (Enterprise), <br /> 25 RPM (Free Tier)|
 
