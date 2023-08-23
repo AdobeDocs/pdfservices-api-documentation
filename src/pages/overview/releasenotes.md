@@ -185,6 +185,13 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### Server Side Release (August, 2023; server side release)
+
+| Change | Language | Description                                                                                                              |
+|--------|----------|--------------------------------------------------------------------------------------------------------------------------|
+| New    | API     | Added support for document level permissions and trusted timestamping (using [supported TSAs](../pdf-electronic-seal-api/#supported-timestamping-authorities)) in [PDF Electronic Seal API](../pdf-electronic-seal-api/).   |
+| New    | API     | Added support for [External Storage](../pdf-services-api/howtos/pdf-external-storage-sol/) in all the operations **except** Extract PDF, Split PDF, PDF Electronic Seal and Auto-Tag PDF. |
+
 ### 3.4.2 (August, 2023, minor release)
 
 | Change  | Language | Description                       |

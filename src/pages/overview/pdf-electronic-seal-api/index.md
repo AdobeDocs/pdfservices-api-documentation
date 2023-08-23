@@ -11,7 +11,7 @@ PDF Electronic Seal API is a cloud based solution to apply an electronic seal on
 
 An electronic seal can be represented by solely an image, a text block (comprising name of entity, date and time of the seal etc.), or a combination of both image and text. Below is the sample representation of an electronic seal applied on a PDF document.
 
-![PDF Electronic Seal](../images/seal_doc_ss.png)
+![PDF Electronic Seal](../images/seal_op_ss.jpg)
 
 ## PDF Electronic Seal API Components
 
@@ -21,6 +21,10 @@ A PDF Electronic Seal API workflow involves the following:
 * **Sealing Parameters**: Parameters  specifying the seal's format, visibility and appearance along with the digital certificate credentials information. For details, see [sealing parameters](./howtos/electronic-seal-api.md/#api-parameters).
 * **Seal Image**: The API accepts an **optional** image as a background for seal appearance which overrides the default seal image. The maximum size of the seal image cannot exceed 5 MB. Supported image formats are JPEG, PNG and PDF only.
 
+
+## Live Demo
+
+Ready to see the PDF Electronic Seal API in action? The [Live Demo](https://acrobatservices.adobe.com/dc-eseal-playground/index.html) demonstrates how easy it is to apply electronic seal over PDF documents using digital certificate credentials and other configurable parameters.
 
 ## Supported Trust Service Providers
 
@@ -34,3 +38,22 @@ PDF Electronic Seal API currently supports the following TSPs : <!-- REFERENCES 
 * [Entrust](https://www.entrust.com/pdf-signing-certificates/)
 * [GlobalSign](https://www.globalsign.com/en/digital-signatures)
 * [TrustPro](https://www.trustpro.eu/)
+
+## Supported Timestamping Authorities
+
+A Timestamping Authority (TSA) is a trusted entity that employs the [RFC3161](https://www.ietf.org/rfc/rfc3161.txt) protocol to generate and attach cryptographic timestamps to digital data, certifying its existence at a specific time, thus enhancing data integrity and legal validity.
+
+The PDF Electronic Seal API supports trusted timestamping while sealing the document using one of the supported TSA. Supported TSAs are:
+
+* [Adobe Qualified Timestamp](https://helpx.adobe.com/in/acrobat/kb/trust-services.html#:~:text=EUTL%20trusted%20services.-,Adobe%20Qualified%20Timestamp%20Service,-A%20qualified%20time)
+* [Intesi Group](https://www.intesigroup.com/en/)
+* [DigiCert Timestamp](https://www.digicert.com/)
+* [GlobalSign Timestamp](https://www.globalsign.com/en-in)
+* [InfoCert Qualified TSA](https://infocert.digital/consumer/timestamps/)
+* [Namirial Qualified TSA](https://support.namirial.com/en/docs/docs-tsp-qualified-signature-timestamp/)
+* [QuoVadis](https://www.quovadisglobal.com/)
+* [Seiko Timestamp Service](https://www.seikotrust.jp/product/time-stamp/)
+
+If support for any other TSA is required, reach out to us through customer support. <!-- REFERENCES https://helpx.adobe.com/in/sign/using/custom-time-stamp-providers.html -->
+
+
