@@ -8480,7 +8480,7 @@
                   "type": "object",
                   "properties": {
                     "uri": {
-                      "description": "Input file Download Pre-signed URL.",
+                      "description": "Input file Download Signed URI.",
                       "type": "string"
                     },
                     "storage": {
