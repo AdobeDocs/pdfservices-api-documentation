@@ -326,7 +326,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -492,7 +492,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -651,7 +651,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -805,7 +805,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -966,7 +966,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -1162,7 +1162,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -1344,7 +1344,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -1539,7 +1539,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -1721,7 +1721,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -1917,7 +1917,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -2099,7 +2099,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -2295,7 +2295,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -2477,7 +2477,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -2673,7 +2673,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -2855,7 +2855,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -3051,7 +3051,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -3233,7 +3233,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -3435,7 +3435,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -3617,7 +3617,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -3819,7 +3819,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -4001,7 +4001,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -4197,7 +4197,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -4379,7 +4379,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -4575,7 +4575,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -4757,7 +4757,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -4953,7 +4953,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -5135,7 +5135,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -5331,7 +5331,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -5513,7 +5513,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -5709,7 +5709,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -5891,7 +5891,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -6087,7 +6087,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -6269,7 +6269,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -6458,7 +6458,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -6829,7 +6829,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -7011,7 +7011,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -7200,7 +7200,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/authentication\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
