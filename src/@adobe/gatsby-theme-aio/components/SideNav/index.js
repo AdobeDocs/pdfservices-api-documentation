@@ -21,7 +21,7 @@ import nextId from 'react-id-generator';
 
 const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
   const [expandedPages, setExpandedPages] = useState([]);
-  console.log('selectedSubPages',selectedSubPages,selectedPages);
+  // console.log('selectedSubPages',selectedSubPages,selectedPages);
   // If one page has header enabled, use header navigation type for all navigation items
   const hasHeader = selectedSubPages.some((page) => page.header);
   const isMultiLevel = selectedSubPages.some((page) => page?.pages?.length > 0);
