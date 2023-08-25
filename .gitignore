@@ -1,14 +1,33 @@
-*.log
+.editorconfig
 .idea
 .DS_Store
-target/
-PdfUtility.iml
+.vscode/*
 
-.settings
-.project
-.classpath
+# npm yarn
+node_modules
+package.lock
+yarn-error.log
+.pnp.*
+.yarn/*
 
-output/
-#idea
-*.iml
-allure-results/
+# keep in repo
+!.gitignore
+!.yarn.lock
+!.yarnrc.yml
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# gatsby files
+.env
+.cache
+public
+
+# cypress
+cypress/videos
+cypress/screenshots
+
+# lerna
+lerna-debug.log
