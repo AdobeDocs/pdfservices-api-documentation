@@ -33,7 +33,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@adobe/gatsby-theme-aio@npm:^4.10.0":
+"@adobe/gatsby-theme-aio@npm:^4.9.7":
   version: 4.10.5
   resolution: "@adobe/gatsby-theme-aio@npm:4.10.5"
   dependencies:
@@ -7766,7 +7766,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "dev-site-documentation-template@workspace:."
   dependencies:
-    "@adobe/gatsby-theme-aio": ^4.10.0
+    "@adobe/gatsby-theme-aio": ^4.9.7
     gatsby: 4.22.0
     react: ^17.0.2
     react-dom: ^17.0.2
