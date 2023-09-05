@@ -403,12 +403,12 @@ Here is the list of [supported aggregation functions](https://docs.jsonata.org/a
 aggregate numerical calculation can only be applied to a list of
 numbers.
 
-## Adobe Sign
+## Acrobat Sign
 
-Adobe Sign text tags can be placed anywhere within the contents of the document template.
+Acrobat Sign text tags can be placed anywhere within the contents of the document template.
 
-These tags are converted into Adobe Sign form fields when the final document is sent for a signature using Adobe Sign.
+These tags are converted into Acrobat Sign form fields when the final document is sent for a signature using Acrobat Sign.
 
 <InlineAlert slots="text"/>
 
-Please visit [Adobe Sign Text Tag Guide](https://helpx.adobe.com/in/sign/using/text-tag.html) to learn about different Adobe Sign text tags.
+Please visit [Acrobat Sign Text Tag Guide](https://helpx.adobe.com/in/sign/using/text-tag.html) to learn about different Acrobat Sign text tags.
