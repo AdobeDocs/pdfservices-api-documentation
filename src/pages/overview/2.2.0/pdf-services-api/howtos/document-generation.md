@@ -1,1 +1,0 @@
-../../document-generation-api/quickstarts.md

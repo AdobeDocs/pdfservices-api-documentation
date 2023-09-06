@@ -10,12 +10,12 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { createElement, useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet';
-import { css, Global } from '@emotion/react';
-import loadable from '@loadable/component';
-import algoliaSearch from 'algoliasearch';
-import { graphql, useStaticQuery } from 'gatsby';
+import React, { createElement, useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
+import { css, Global } from "@emotion/react";
+import loadable from "@loadable/component";
+import algoliaSearch from "algoliasearch";
+import { graphql, useStaticQuery } from "gatsby";
 import {
   DESKTOP_SCREEN_WIDTH,
   findSelectedPages,
@@ -26,37 +26,43 @@ import {
   rootFixPages,
   SEARCH_PARAMS,
   SIDENAV_WIDTH,
-  trailingSlashFix
-} from '@adobe/gatsby-theme-aio/src/utils';
-import { adobeIndexes } from '@adobe/gatsby-theme-aio/algolia/helpers/get-products-indexes.js';
-import '@spectrum-css/vars/dist/spectrum-global.css';
-import '@spectrum-css/vars/dist/spectrum-medium.css';
-import '@spectrum-css/vars/dist/spectrum-large.css';
-import '@spectrum-css/vars/dist/spectrum-light.css';
-import '@spectrum-css/vars/dist/spectrum-dark.css';
-import '@spectrum-css/vars/dist/spectrum-lightest.css';
-import '@spectrum-css/vars/dist/spectrum-darkest.css';
-import '@spectrum-css/sidenav';
-import '@adobe/focus-ring-polyfill';
-import { Provider } from '@adobe/gatsby-theme-aio/src/components/Context';
-import { Search } from '@adobe/gatsby-theme-aio/src/components/Search';
-import { SideNav } from '../SideNav';
-import { SEO } from '../SEO';
-import { ProgressCircle } from '@adobe/gatsby-theme-aio/src/components/ProgressCircle';
-import nextId from 'react-id-generator';
-import {GlobalHeader} from "@adobe/gatsby-theme-aio/src/components/GlobalHeader";
+  trailingSlashFix,
+} from "@adobe/gatsby-theme-aio/src/utils";
+import { adobeIndexes } from "@adobe/gatsby-theme-aio/algolia/helpers/get-products-indexes.js";
+import "@spectrum-css/vars/dist/spectrum-global.css";
+import "@spectrum-css/vars/dist/spectrum-medium.css";
+import "@spectrum-css/vars/dist/spectrum-large.css";
+import "@spectrum-css/vars/dist/spectrum-light.css";
+import "@spectrum-css/vars/dist/spectrum-dark.css";
+import "@spectrum-css/vars/dist/spectrum-lightest.css";
+import "@spectrum-css/vars/dist/spectrum-darkest.css";
+import "@spectrum-css/sidenav";
+import "@adobe/focus-ring-polyfill";
+import { Provider } from "@adobe/gatsby-theme-aio/src/components/Context";
+import { Search } from "@adobe/gatsby-theme-aio/src/components/Search";
+import { SideNav } from "../SideNav";
+import { SEO } from "../SEO";
+import { ProgressCircle } from "@adobe/gatsby-theme-aio/src/components/ProgressCircle";
+import nextId from "react-id-generator";
+import { GlobalHeader } from "@adobe/gatsby-theme-aio/src/components/GlobalHeader";
 
 // GATSBY_ALGOLIA_APPLICATION_ID=...
 // GATSBY_ALGOLIA_SEARCH_API_KEY=...
 // GATSBY_ALGOLIA_SEARCH_INDEX=[{"index": "index label"}, {"all": "All Results"}]
 // GATSBY_ALGOLIA_INDEX_ALL=["index1", "index2", ...]
-const hasSearch = !!(process.env.GATSBY_ALGOLIA_APPLICATION_ID && process.env.GATSBY_ALGOLIA_SEARCH_API_KEY);
+const hasSearch = !!(
+  process.env.GATSBY_ALGOLIA_APPLICATION_ID &&
+  process.env.GATSBY_ALGOLIA_SEARCH_API_KEY
+);
 
 let algolia = null;
 if (hasSearch) {
-  algolia = algoliaSearch(process.env.GATSBY_ALGOLIA_APPLICATION_ID, process.env.GATSBY_ALGOLIA_SEARCH_API_KEY);
+  algolia = algoliaSearch(
+    process.env.GATSBY_ALGOLIA_APPLICATION_ID,
+    process.env.GATSBY_ALGOLIA_SEARCH_API_KEY
+  );
 } else {
-  console.warn('AIO: Algolia config missing.');
+  console.warn("AIO: Algolia config missing.");
 }
 
 // GATSBY_IMS_CONFIG={"client_id": "...","scope": "..."}
@@ -68,13 +74,13 @@ const pageSrc = {
   openAPI: {
     src: null,
     block: null,
-    frontMatter: 'openAPISpec'
+    frontMatter: "openAPISpec",
   },
   frame: {
     src: null,
     block: null,
-    frontMatter: 'frameSrc'
-  }
+    frontMatter: "frameSrc",
+  },
 };
 
 const toggleSideNav = (setShowSideNav) => {
@@ -83,7 +89,7 @@ const toggleSideNav = (setShowSideNav) => {
 
 const addScript = (url) =>
   new Promise((resolve, reject) => {
-    const script = document.createElement('script');
+    const script = document.createElement("script");
     script.src = url;
     script.onload = (val) => resolve(val);
     script.onerror = (err) => reject(err);
@@ -96,17 +102,21 @@ const updatePageSrc = (type, frontMatter, setIsLoading) => {
   const page = pageSrc[type];
 
   page.has = frontMatter?.[page.frontMatter];
-  if (typeof page.has !== 'undefined' && page.src !== page.has) {
+  if (typeof page.has !== "undefined" && page.src !== page.has) {
     page.src = page.has;
   }
 
   if (page.src && !page.block) {
     setIsLoading(true);
     // Import statements have to be hardcoded
-    if (type === 'openAPI') {
-      page.block = loadable(() => import('@adobe/gatsby-theme-aio/src/components/OpenAPIBlock'));
-    } else if (type === 'frame') {
-      page.block = loadable(() => import('@adobe/gatsby-theme-aio/src/components/Frame'));
+    if (type === "openAPI") {
+      page.block = loadable(() =>
+        import("@adobe/gatsby-theme-aio/src/components/OpenAPIBlock")
+      );
+    } else if (type === "frame") {
+      page.block = loadable(() =>
+        import("@adobe/gatsby-theme-aio/src/components/Frame")
+      );
     }
 
     page.block.load().then(() => {
@@ -143,7 +153,7 @@ export default ({ children, pageContext, location }) => {
         }
       })();
     } else {
-      console.warn('AIO: IMS config missing.');
+      console.warn("AIO: IMS config missing.");
       setIsLoadingIms(false);
     }
   }, []);
@@ -331,18 +341,22 @@ export default ({ children, pageContext, location }) => {
   const pathWithRootFix = rootFix(location.pathname);
   const pagesWithRootFix = rootFixPages(pages);
   const sideNavSelectedPages = findSelectedPages(pathWithRootFix, subPages);
-  const sideNavSelectedSubPages = findSubPages(pathWithRootFix, pagesWithRootFix, subPages);
+  const sideNavSelectedSubPages = findSubPages(
+    pathWithRootFix,
+    pagesWithRootFix,
+    subPages
+  );
   const hasSideNav = sideNavSelectedSubPages.length > 0;
 
   const frontMatter = pageContext?.frontmatter;
 
   const layoutId = nextId();
   const sideNavId = nextId();
-  const searchButtonId = 'aio-Search-close';
+  const searchButtonId = "aio-Search-close";
 
   // Update OpenAPI spec and Frame src
-  updatePageSrc('openAPI', frontMatter, setIsLoading);
-  updatePageSrc('frame', frontMatter, setIsLoading);
+  updatePageSrc("openAPI", frontMatter, setIsLoading);
+  updatePageSrc("frame", frontMatter, setIsLoading);
 
   if (pathPrefix === "/search-frame") {
     return (
@@ -367,96 +381,97 @@ export default ({ children, pageContext, location }) => {
 
         <Global
           styles={css`
-          @font-face {
-            font-family: 'adobe-clean';
-            src: url('https://use.typekit.net/af/cb695f/000000000000000000017701/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
-                format('woff2'),
-              url('https://use.typekit.net/af/cb695f/000000000000000000017701/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
-                format('woff'),
-              url('https://use.typekit.net/af/cb695f/000000000000000000017701/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
-                format('opentype');
-            font-display: swap;
-            font-style: normal;
-            font-weight: 400;
-          }
+            @font-face {
+              font-family: "adobe-clean";
+              src: url("https://use.typekit.net/af/cb695f/000000000000000000017701/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
+                  format("woff2"),
+                url("https://use.typekit.net/af/cb695f/000000000000000000017701/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
+                  format("woff"),
+                url("https://use.typekit.net/af/cb695f/000000000000000000017701/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
+                  format("opentype");
+              font-display: swap;
+              font-style: normal;
+              font-weight: 400;
+            }
 
-          @font-face {
-            font-family: 'adobe-clean';
-            src: url('https://use.typekit.net/af/74ffb1/000000000000000000017702/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
-                format('woff2'),
-              url('https://use.typekit.net/af/74ffb1/000000000000000000017702/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
-                format('woff'),
-              url('https://use.typekit.net/af/74ffb1/000000000000000000017702/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
-                format('opentype');
-            font-display: swap;
-            font-style: italic;
-            font-weight: 400;
-          }
+            @font-face {
+              font-family: "adobe-clean";
+              src: url("https://use.typekit.net/af/74ffb1/000000000000000000017702/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3")
+                  format("woff2"),
+                url("https://use.typekit.net/af/74ffb1/000000000000000000017702/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3")
+                  format("woff"),
+                url("https://use.typekit.net/af/74ffb1/000000000000000000017702/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3")
+                  format("opentype");
+              font-display: swap;
+              font-style: italic;
+              font-weight: 400;
+            }
 
-          @font-face {
-            font-family: 'adobe-clean';
-            src: url('https://use.typekit.net/af/eaf09c/000000000000000000017703/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
-                format('woff2'),
-              url('https://use.typekit.net/af/eaf09c/000000000000000000017703/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
-                format('woff'),
-              url('https://use.typekit.net/af/eaf09c/000000000000000000017703/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
-                format('opentype');
-            font-display: swap;
-            font-style: normal;
-            font-weight: 700;
-          }
+            @font-face {
+              font-family: "adobe-clean";
+              src: url("https://use.typekit.net/af/eaf09c/000000000000000000017703/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
+                  format("woff2"),
+                url("https://use.typekit.net/af/eaf09c/000000000000000000017703/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
+                  format("woff"),
+                url("https://use.typekit.net/af/eaf09c/000000000000000000017703/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
+                  format("opentype");
+              font-display: swap;
+              font-style: normal;
+              font-weight: 700;
+            }
 
-          @font-face {
-            font-family: 'adobe-clean';
-            src: url('https://use.typekit.net/af/40207f/0000000000000000000176ff/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
-                format('woff2'),
-              url('https://use.typekit.net/af/40207f/0000000000000000000176ff/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
-                format('woff'),
-              url('https://use.typekit.net/af/40207f/0000000000000000000176ff/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
-                format('opentype');
-            font-display: swap;
-            font-style: normal;
-            font-weight: 300;
-          }
+            @font-face {
+              font-family: "adobe-clean";
+              src: url("https://use.typekit.net/af/40207f/0000000000000000000176ff/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3")
+                  format("woff2"),
+                url("https://use.typekit.net/af/40207f/0000000000000000000176ff/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3")
+                  format("woff"),
+                url("https://use.typekit.net/af/40207f/0000000000000000000176ff/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3")
+                  format("opentype");
+              font-display: swap;
+              font-style: normal;
+              font-weight: 300;
+            }
 
-          @font-face {
-            font-family: 'adobe-clean-serif';
-            src: url('https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3')
-                format('woff2'),
-              url('https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3')
-                format('woff'),
-              url('https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3')
-                format('opentype');
-            font-display: swap;
-            font-style: normal;
-            font-weight: 900;
-          }
+            @font-face {
+              font-family: "adobe-clean-serif";
+              src: url("https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3")
+                  format("woff2"),
+                url("https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3")
+                  format("woff"),
+                url("https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3")
+                  format("opentype");
+              font-display: swap;
+              font-style: normal;
+              font-weight: 900;
+            }
 
-          html,
-          body {
-            margin: 0;
-            text-size-adjust: none;
-            overscroll-behavior: auto contain;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            background-color: transparent;
+            html,
+            body {
+              margin: 0;
+              text-size-adjust: none;
+              overscroll-behavior: auto contain;
+              -webkit-font-smoothing: antialiased;
+              -moz-osx-font-smoothing: grayscale;
+              background-color: transparent;
 
-            ${showSearch && 'overflow: hidden;'}
-          }
+              ${showSearch && "overflow: hidden;"}
+            }
 
-          *[hidden] {
-            display: none !important;
-          }
-        `}
+            *[hidden] {
+              display: none !important;
+            }
+          `}
         />
         <div
           dir="ltr"
           className="spectrum spectrum--medium spectrum--large spectrum--light"
           color-scheme="light"
           css={css`
-          min-height: 100vh;
-          background-color: transparent;
-        `}>
+            min-height: 100vh;
+            background-color: transparent;
+          `}
+        >
           <Search
             algolia={algolia}
             searchIndex={JSON.parse(process.env.GATSBY_ALGOLIA_SEARCH_INDEX)}
@@ -494,65 +509,65 @@ export default ({ children, pageContext, location }) => {
       <Global
         styles={css`
           @font-face {
-            font-family: 'adobe-clean';
-            src: url('https://use.typekit.net/af/cb695f/000000000000000000017701/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
-                format('woff2'),
-              url('https://use.typekit.net/af/cb695f/000000000000000000017701/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
-                format('woff'),
-              url('https://use.typekit.net/af/cb695f/000000000000000000017701/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
-                format('opentype');
+            font-family: "adobe-clean";
+            src: url("https://use.typekit.net/af/cb695f/000000000000000000017701/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
+                format("woff2"),
+              url("https://use.typekit.net/af/cb695f/000000000000000000017701/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
+                format("woff"),
+              url("https://use.typekit.net/af/cb695f/000000000000000000017701/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
+                format("opentype");
             font-display: swap;
             font-style: normal;
             font-weight: 400;
           }
 
           @font-face {
-            font-family: 'adobe-clean';
-            src: url('https://use.typekit.net/af/74ffb1/000000000000000000017702/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
-                format('woff2'),
-              url('https://use.typekit.net/af/74ffb1/000000000000000000017702/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
-                format('woff'),
-              url('https://use.typekit.net/af/74ffb1/000000000000000000017702/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
-                format('opentype');
+            font-family: "adobe-clean";
+            src: url("https://use.typekit.net/af/74ffb1/000000000000000000017702/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3")
+                format("woff2"),
+              url("https://use.typekit.net/af/74ffb1/000000000000000000017702/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3")
+                format("woff"),
+              url("https://use.typekit.net/af/74ffb1/000000000000000000017702/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3")
+                format("opentype");
             font-display: swap;
             font-style: italic;
             font-weight: 400;
           }
 
           @font-face {
-            font-family: 'adobe-clean';
-            src: url('https://use.typekit.net/af/eaf09c/000000000000000000017703/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
-                format('woff2'),
-              url('https://use.typekit.net/af/eaf09c/000000000000000000017703/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
-                format('woff'),
-              url('https://use.typekit.net/af/eaf09c/000000000000000000017703/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
-                format('opentype');
+            font-family: "adobe-clean";
+            src: url("https://use.typekit.net/af/eaf09c/000000000000000000017703/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
+                format("woff2"),
+              url("https://use.typekit.net/af/eaf09c/000000000000000000017703/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
+                format("woff"),
+              url("https://use.typekit.net/af/eaf09c/000000000000000000017703/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
+                format("opentype");
             font-display: swap;
             font-style: normal;
             font-weight: 700;
           }
 
           @font-face {
-            font-family: 'adobe-clean';
-            src: url('https://use.typekit.net/af/40207f/0000000000000000000176ff/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
-                format('woff2'),
-              url('https://use.typekit.net/af/40207f/0000000000000000000176ff/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
-                format('woff'),
-              url('https://use.typekit.net/af/40207f/0000000000000000000176ff/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
-                format('opentype');
+            font-family: "adobe-clean";
+            src: url("https://use.typekit.net/af/40207f/0000000000000000000176ff/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3")
+                format("woff2"),
+              url("https://use.typekit.net/af/40207f/0000000000000000000176ff/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3")
+                format("woff"),
+              url("https://use.typekit.net/af/40207f/0000000000000000000176ff/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3")
+                format("opentype");
             font-display: swap;
             font-style: normal;
             font-weight: 300;
           }
 
           @font-face {
-            font-family: 'adobe-clean-serif';
-            src: url('https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3')
-                format('woff2'),
-              url('https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3')
-                format('woff'),
-              url('https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3')
-                format('opentype');
+            font-family: "adobe-clean-serif";
+            src: url("https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3")
+                format("woff2"),
+              url("https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3")
+                format("woff"),
+              url("https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3")
+                format("opentype");
             font-display: swap;
             font-style: normal;
             font-weight: 900;
@@ -566,7 +581,7 @@ export default ({ children, pageContext, location }) => {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
 
-            ${showSearch && 'overflow: hidden;'}
+            ${showSearch && "overflow: hidden;"}
           }
 
           *[hidden] {
@@ -586,9 +601,14 @@ export default ({ children, pageContext, location }) => {
           allSitePage,
           allMdx,
           allGithub,
-          allGithubContributors
-        }}>
-        <SEO title={frontMatter?.title} description={frontMatter?.description} keywords={frontMatter?.keywords} />
+          allGithubContributors,
+        }}
+      >
+        <SEO
+          title={frontMatter?.title}
+          description={frontMatter?.description}
+          keywords={frontMatter?.keywords}
+        />
         <div
           dir="ltr"
           className="spectrum spectrum--medium spectrum--large spectrum--light"
@@ -596,24 +616,30 @@ export default ({ children, pageContext, location }) => {
           css={css`
             min-height: 100vh;
             background-color: var(--spectrum-global-color-gray-50);
-          `}>
+          `}
+        >
           <>
             <div
               id={layoutId}
               css={css`
                 display: grid;
-                grid-template-areas: 'header header' 'sidenav main';
+                grid-template-areas: "header header" "sidenav main";
                 grid-template-rows: var(--spectrum-global-dimension-size-800);
-                grid-template-columns: ${hasSideNav ? `${SIDENAV_WIDTH} auto` : '0 auto'};
+                grid-template-columns: ${hasSideNav
+                  ? `${SIDENAV_WIDTH} auto`
+                  : "0 auto"};
 
                 @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                   grid-template-columns: 0 auto;
                 }
 
                 @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
-                  grid-template-rows: var(--spectrum-global-dimension-size-1200);
+                  grid-template-rows: var(
+                    --spectrum-global-dimension-size-1200
+                  );
                 }
-              `}>
+              `}
+            >
               <div
                 css={css`
                   grid-area: header;
@@ -627,7 +653,8 @@ export default ({ children, pageContext, location }) => {
                   @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
                     height: var(--spectrum-global-dimension-size-600);
                   }
-                `}>
+                `}
+              >
                 <GlobalHeader
                   hasIMS={hasIMS}
                   ims={ims}
@@ -659,10 +686,12 @@ export default ({ children, pageContext, location }) => {
                   background-color: var(--spectrum-global-color-gray-75);
 
                   @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
-                    transition: transform var(--spectrum-global-animation-duration-200) ease-in-out;
-                    transform: translateX(${showSideNav ? '0' : '-100%'});
+                    transition: transform
+                      var(--spectrum-global-animation-duration-200) ease-in-out;
+                    transform: translateX(${showSideNav ? "0" : "-100%"});
                   }
-                `}>
+                `}
+              >
                 {hasSideNav && (
                   <SideNav
                     selectedPages={sideNavSelectedPages}
@@ -674,31 +703,36 @@ export default ({ children, pageContext, location }) => {
               <div
                 css={css`
                   grid-area: main;
-                `}>
-                <main hidden={!pageSrc['openAPI'].has}>
-                  {pageSrc['openAPI'].src &&
-                    pageSrc['openAPI'].block &&
-                    createElement(pageSrc['openAPI'].block, { src: pageSrc['openAPI'].src })}
-                </main>
-
-                <main hidden={!pageSrc['frame'].has}>
-                  {pageSrc['frame'].src &&
-                    pageSrc['frame'].block &&
-                    createElement(pageSrc['frame'].block, {
-                      src: pageSrc['frame'].src,
-                      height: frontMatter?.frameHeight,
-                      location
+                `}
+              >
+                <main hidden={!pageSrc["openAPI"].has}>
+                  {pageSrc["openAPI"].src &&
+                    pageSrc["openAPI"].block &&
+                    createElement(pageSrc["openAPI"].block, {
+                      src: pageSrc["openAPI"].src,
                     })}
                 </main>
 
-                {!pageSrc['openAPI'].has && !pageSrc['frame'].has && children}
+                <main hidden={!pageSrc["frame"].has}>
+                  {pageSrc["frame"].src &&
+                    pageSrc["frame"].block &&
+                    createElement(pageSrc["frame"].block, {
+                      src: pageSrc["frame"].src,
+                      height: frontMatter?.frameHeight,
+                      location,
+                    })}
+                </main>
+
+                {!pageSrc["openAPI"].has && !pageSrc["frame"].has && children}
               </div>
             </div>
 
             {hasSearch && showSearch && indexAll && (
               <Search
                 algolia={algolia}
-                searchIndex={JSON.parse(process.env.GATSBY_ALGOLIA_SEARCH_INDEX)}
+                searchIndex={JSON.parse(
+                  process.env.GATSBY_ALGOLIA_SEARCH_INDEX
+                )}
                 indexAll={indexAll}
                 showSearch={showSearch}
                 setShowSearch={setShowSearch}
@@ -713,9 +747,10 @@ export default ({ children, pageContext, location }) => {
                 left: 0;
                 right: 0;
                 bottom: 0;
-                display: ${isLoading ? 'grid' : 'none'};
+                display: ${isLoading ? "grid" : "none"};
                 place-items: center center;
-              `}>
+              `}
+            >
               <ProgressCircle size="L" />
             </div>
 
@@ -737,7 +772,7 @@ export default ({ children, pageContext, location }) => {
                     width: 100%;
 
                     ${showSideNav &&
-                  `
+                    `
                     pointer-events: auto;
                     opacity: 1;
                   `}
