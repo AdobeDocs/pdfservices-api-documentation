@@ -38,7 +38,7 @@ PDF Services APIs can connect with SharePoint using Signed URIs for downloading 
 
 #### Supported URL Prefixes
 
-- `https://<companyname>.sharepoint.com`
+- `https://<tenant-name>.sharepoint.com`
 
 Please refer [here](https://learn.microsoft.com/en-us/graph/overview) for more details.
 
@@ -75,7 +75,7 @@ PDF Services APIs can connect with Azure Blob using Signed URIs or [SAS Urls](ht
 
 #### Supported URL Prefixes
 
-- `https://<tenant-name>.blob.core.windows.net`
+- `https://<account-name>.blob.core.windows.net`
 
 Please refer [here](https://learn.microsoft.com/en-us/azure/ai-services/translator/document-translation/how-to-guides/create-sas-tokens?tabs=Containers#create-sas-tokens-with-azure-storage-explorer) for more details. 
 
