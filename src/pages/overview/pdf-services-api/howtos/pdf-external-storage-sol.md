@@ -63,7 +63,7 @@ PDF Services APIs can connect with Dropbox using Signed URIs for downloading and
 
 #### Supported URL Prefixes:
 
-- `https://<uid of item>.dl.dropboxusercontent.com`
+- `https://<item-id>.dl.dropboxusercontent.com`
 - `https://content.dropboxapi.com/`
 
 
@@ -75,7 +75,7 @@ PDF Services APIs can connect with Azure Blob using Signed URIs or [SAS Urls](ht
 
 #### Supported URL Prefixes
 
-- `https://<account-name>.blob.core.windows.net`
+- `https://<tenant-name>.blob.core.windows.net`
 
 Please refer [here](https://learn.microsoft.com/en-us/azure/ai-services/translator/document-translation/how-to-guides/create-sas-tokens?tabs=Containers#create-sas-tokens-with-azure-storage-explorer) for more details. 
 
