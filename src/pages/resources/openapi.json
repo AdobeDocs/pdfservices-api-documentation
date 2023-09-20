@@ -8286,16 +8286,6 @@
                 "figures"
               ]
             }
-          },
-          "tagEncapsulatedText": {
-            "description": "List of elements from which to extract encapsulated text contents. Possible value is Figure.",
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "Figure"
-              ]
-            }
           }
         },
         "example": {
@@ -8310,8 +8300,7 @@
           "renditionsToExtract": [
             "tables",
             "figures"
-          ],
-          "tagEncapsulatedText": ["Figure"]
+          ]
         },
         "additionalProperties": false
       },
