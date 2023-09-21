@@ -273,10 +273,14 @@ over the specified array of objects.
 
 
 
-### Insert table using table markers
+### Insert Table using table markers
 
 There are 2 new markers introduced for inserting tables in a document
-table start and table end. The content between these markers is repeated
+
+- table start
+- table end 
+
+The content between these markers is repeated
 by iterating over the array tag mentioned in the table start marker.
 
 JSON representation of the input data:
