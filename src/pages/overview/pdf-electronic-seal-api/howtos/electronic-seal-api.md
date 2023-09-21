@@ -193,6 +193,9 @@ public class ElectronicSeal {
         
             //Get the background seal image for signature , if required.
             FileRef sealImageFile = FileRef.createFromLocalFile("src/main/resources/sampleSealImage.png");
+
+            // Set the document level permission to be applied for output document
+            DocumentLevelPermission documentLevelPermission = DocumentLevelPermission.NO_CHANGES_ALLOWED;
         
             //Set the Seal Field Name to be created in input PDF document.
             String sealFieldName = "Signature1";
@@ -237,7 +240,8 @@ public class ElectronicSeal {
                 .build();
         
             //Create SealOptions instance with sealing parameters.
-            SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions).build();
+            SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions).
+                        withDocumentLevelPermission(documentLevelPermission).build();
         
             //Create the PDFElectronicSealOperation instance using the SealOptions instance
             PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.createNew(sealOptions);
@@ -299,6 +303,9 @@ namespace ElectronicSeal
                 //Set the background seal image for signature , if required.
                 FileRef sealImageFile = FileRef.CreateFromLocalFile(@"sampleSealImage.png");
 
+                // Set the document level permission to be applied for output document
+                DocumentLevelPermission documentLevelPermission = DocumentLevelPermission.NO_CHANGES_ALLOWED;
+
                 //Set the Seal Field Name to be created in input PDF document.
                 string sealFieldName = "Signature1";
 
@@ -341,7 +348,8 @@ namespace ElectronicSeal
                 .Build();
 
                 //Create SealingOptions instance with all the sealing parameters.
-                SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, sealFieldOptions).Build();
+                SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions).
+            withDocumentLevelPermission(documentLevelPermission).build();
 
                 //Create the PDFElectronicSealOperation instance using the PDFElectronicSealOptions instance
                 PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.CreateNew(sealOptions);
