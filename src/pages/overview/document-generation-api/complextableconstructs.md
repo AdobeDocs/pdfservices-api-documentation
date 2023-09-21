@@ -240,7 +240,7 @@ In a row, if multiple “discard-row-if” are used, then the row will be discar
 
 **Using Discard row if with table markers**
 
-Discard row if construct can also be used with table markers. With table markers there is no need to mention context 
+Discard row if construct can also be used with table markers. With table markers, there is no need to mention the context 
 inside discard row if.
 
 ![Discard row if with table markers](../images/discard_row_if_table_markers.png)
