@@ -37,8 +37,14 @@ JSON representation of the input data:
 
 ![Table gets horizontally extended as table columns are repeated](../images/horizontal-extension1.png)
 
+- **Repeat table rows vertically with table markers** - To use vertical extension with table markers, add
+  *cell-extension(vertical)* to a tag.
+
+![Vertical extension with table markers](../images/table_markers_vertical_extension.png)
+
+
 - **Repeat table columns horizontally with table markers** - To use horizontal extension with table markers, add 
-*cell-extension(horizontal)* to a tag and place the table start and end marker at the beginning and end of the column 
+*cell-extension(horizontal)* to a tag and place the table start and end markers at the beginning and end of the column 
 instead of row.
 
 ![Horizontal extension with table markers](../images/horizontal_extension_table_markers.png)
