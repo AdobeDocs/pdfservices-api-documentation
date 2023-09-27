@@ -195,7 +195,7 @@ public class ElectronicSeal {
             FileRef sealImageFile = FileRef.createFromLocalFile("src/main/resources/sampleSealImage.png");
 
             // Set the document level permission to be applied for output document
-            DocumentLevelPermission documentLevelPermission = DocumentLevelPermission.NO_CHANGES_ALLOWED;
+            DocumentLevelPermission documentLevelPermission = DocumentLevelPermission.FORM_FILLING;
         
             //Set the Seal Field Name to be created in input PDF document.
             String sealFieldName = "Signature1";
@@ -303,9 +303,6 @@ namespace ElectronicSeal
                 //Set the background seal image for signature , if required.
                 FileRef sealImageFile = FileRef.CreateFromLocalFile(@"sampleSealImage.png");
 
-                // Set the document level permission to be applied for output document
-                DocumentLevelPermission documentLevelPermission = DocumentLevelPermission.NO_CHANGES_ALLOWED;
-
                 //Set the Seal Field Name to be created in input PDF document.
                 string sealFieldName = "Signature1";
 
@@ -348,8 +345,7 @@ namespace ElectronicSeal
                 .Build();
 
                 //Create SealingOptions instance with all the sealing parameters.
-                SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions).
-            withDocumentLevelPermission(documentLevelPermission).build();
+                SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions).build();
 
                 //Create the PDFElectronicSealOperation instance using the PDFElectronicSealOptions instance
                 PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.CreateNew(sealOptions);
@@ -521,11 +517,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/electron
                 "pin": "<PIN>"
             }
         },
-        "tsaCredentialOptions": {
-            "url": "<TIMESTAMPING_URL>",
-            "username": "<USERNAME>",
-            "password": "<PASSWORD>"
-        },
         "sealFieldOptions": {
             "location": {
                 "top": 300,
@@ -578,6 +569,9 @@ public class ElectronicSealWithAppearanceOptions {
         
             //Get the background seal image for signature , if required.
             FileRef sealImageFile = FileRef.createFromLocalFile("src/main/resources/sampleSealImage.png");
+
+            // Set the document level permission to be applied for output document
+            DocumentLevelPermission documentLevelPermission = DocumentLevelPermission.FORM_FILLING;
         
             //Create AppearanceOptions and add the required signature display items to it
             AppearanceOptions appearanceOptions = new AppearanceOptions();
@@ -631,7 +625,8 @@ public class ElectronicSealWithAppearanceOptions {
         
             //Create SealOptions instance with all the sealing parameters.
             SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions)
-                .withAppearanceOptions(appearanceOptions).build();
+                    .withDocumentLevelPermission(documentLevelPermission)
+                    .withAppearanceOptions(appearanceOptions).build();
         
             //Create the PDFElectronicSealOperation instance using the SealOptions instance
             PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.createNew(sealOptions);
@@ -915,6 +910,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/electron
     "sealImageAssetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-xxxx-xxxx-087832fca718",
     "sealOptions": {
         "signatureFormat": "PKCS7",
+        "documentLevelPermission": "FORM_FILLING",
         "cscCredentialOptions": {
             "credentialId": "<CREDENTIAL_ID>",
             "providerName": "<PROVIDER_NAME>",
@@ -925,6 +921,170 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/electron
             "credentialAuthParameters": {
                 "pin": "<PIN>"
             }
+        },
+        "sealFieldOptions": {
+            "location": {
+                "top": 300,
+                "left": 50,
+                "right": 250,
+                "bottom": 100
+            },
+            "fieldName": "Signature1",
+            "pageNumber": 1
+        },
+        "sealAppearanceOptions": {
+            "displayOptions": [
+                "NAME",
+                "DATE",
+                "DISTINGUISHED_NAME",
+                "LABELS",
+                "SEAL_IMAGE"
+            ]
+        }
+    }
+}'
+```
+## Apply Electronic Seal with trusted timestamp on PDF
+The sample below performs electronic seal operation with a trusted timestamp on given PDF.
+
+Please refer to the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="2" languages="Java, Rest API" />
+
+#### Java
+
+```javascript
+// Get the samples from https://github.com/adobe/pdfservices-java-sdk-samples/tree/beta
+// Run the sample:
+// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.electronicseal.ElectronicSealWithAppearanceOptions
+
+package com.adobe.pdfservices.operation.samples.electronicseal;
+
+public class ElectronicSealWithAppearanceOptions {
+
+    // Initialize the logger.
+    private static final Logger LOGGER = LoggerFactory.getLogger(ElectronicSeal.class);
+
+    public static void main(String[] args) {
+        try {
+
+            // Initial setup, create credentials instance.
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                .withClientId("PDF_SERVICES_CLIENT_ID")
+                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .build();
+
+            // Create an ExecutionContext using credentials.
+            ExecutionContext executionContext = ExecutionContext.create(credentials);
+        
+            //Get the input document to perform the sealing operation
+            FileRef sourceFile = FileRef.createFromLocalFile("src/main/resources/sampleInvoice.pdf");
+        
+            //Get the background seal image for signature , if required.
+            FileRef sealImageFile = FileRef.createFromLocalFile("src/main/resources/sampleSealImage.png");
+
+            // Set the document level permission to be applied for output document
+            DocumentLevelPermission documentLevelPermission = DocumentLevelPermission.FORM_FILLING;
+        
+            //Set the Seal Field Name to be created in input PDF document.
+            String sealFieldName = "Signature1";
+        
+            //Set the page number in input document for applying seal.
+            Integer sealPageNumber = 1;
+        
+            //Set if seal should be visible or invisible.
+            Boolean sealVisible = true;
+        
+            //Create FieldLocation instance and set the coordinates for applying signature
+            FieldLocation fieldLocation = new FieldLocation(150, 250, 350, 200);
+        
+            //Create FieldOptions instance with required details.
+            FieldOptions fieldOptions = new FieldOptions.Builder(sealFieldName)
+                .setFieldLocation(fieldLocation)
+                .setPageNumber(sealPageNumber)
+                .setVisible(sealVisible)
+                .build();
+        
+            //Set the name of TSP Provider being used.
+            String providerName = "<PROVIDER_NAME>";
+        
+            //Set the access token to be used to access TSP provider hosted APIs.
+            String accessToken = "<ACCESS_TOKEN>";
+        
+            //Set the credential ID.
+            String credentialID = "<CREDENTIAL_ID>";
+        
+            //Set the PIN generated while creating credentials.
+            String pin = "<PIN>";
+        
+            //Create CSCAuthContext instance using access token and token type.
+            CSCAuthContext cscAuthContext = new CSCAuthContext(accessToken, "Bearer");
+        
+            //Create CertificateCredentials instance with required certificate details.
+            CertificateCredentials certificateCredentials = CertificateCredentials.cscCredentialBuilder()
+                .withProviderName(providerName)
+                .withCredentialID(credentialID)
+                .withPin(pin)
+                .withCSCAuthContext(cscAuthContext)
+                .build();
+
+            //Set the Time Stamp Authority url to be used
+            TSAOptions tsaOptions = new TSAOptions("http://timestamp.digicert.com/");
+        
+            //Create SealOptions instance with all the sealing parameters.
+            SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions)
+                .withDocumentLevelPermission(documentLevelPermission)
+                .withTSAOptions(tsaOptions).build();
+        
+            //Create the PDFElectronicSealOperation instance using the SealOptions instance
+            PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.createNew(sealOptions);
+        
+            //Set the input source file for PDFElectronicSealOperation instance
+            pdfElectronicSealOperation.setInput(sourceFile);
+        
+            //Set the optional input seal image for PDFElectronicSealOperation instance
+            pdfElectronicSealOperation.setSealImage(sealImageFile);
+        
+            //Execute the operation
+            FileRef result = pdfElectronicSealOperation.execute(executionContext);
+    
+            //Save the output at specified location
+            result.saveAs("output/sealedOutput.pdf");
+
+
+        } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
+            LOGGER.error("Exception encountered while executing operation", ex);
+        }
+    }
+}
+
+```
+
+#### Rest API
+```javascript
+curl --location --request POST 'https://pdf-services.adobe.io/operation/electronicseal' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "inputDocumentAssetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-xxxx-xxxx-087832fca718",
+    "sealImageAssetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-xxxx-xxxx-087832fca718",
+    "sealOptions": {
+        "signatureFormat": "PKCS7",
+        "documentLevelPermission": "FORM_FILLING",
+        "cscCredentialOptions": {
+            "credentialId": "<CREDENTIAL_ID>",
+            "providerName": "<PROVIDER_NAME>",
+            "authorizationContext": {
+                "tokenType": "Bearer",
+                "accessToken": "<ACCESS_TOKEN>"
+            },
+            "credentialAuthParameters": {
+                "pin": "<PIN>"
+            }
+        },
+        "tsaOptions": {
+            "url" : "http://timestamp.digicert.com/",
         },
         "sealFieldOptions": {
             "location": {
