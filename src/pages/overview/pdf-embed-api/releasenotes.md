@@ -13,8 +13,7 @@ the changes below for each release.
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
 | Bug fix | Fixed PREVIEW_RENDERING_FAILED error for large PDF files.
-| Bug fix | Fixed Search button accessibility issue. 
-
+| Bug fix | Fixed Search button accessibility issue.
 
 ### July, 2023
 
