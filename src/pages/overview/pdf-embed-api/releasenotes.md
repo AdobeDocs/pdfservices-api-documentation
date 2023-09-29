@@ -12,8 +12,8 @@ the changes below for each release.
 
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
-| Changed | Increased file rendering timeout from 6 seconds to 1 minute.
-| Bug fix | Accessibility issues in PDF Embed API.
+| Bug fix | Fixed PREVIEW_RENDERING_FAILED error for large PDF files.
+| Bug fix | Fixed Search button accessibility issue. 
 
 
 ### July, 2023
