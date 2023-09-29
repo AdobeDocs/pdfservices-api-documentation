@@ -8,6 +8,14 @@ the changes below for each release.
 
 ## Change history
 
+### September, 2023
+
+| Change | Description                                                            |
+| ------ | ---------------------------------------------------------------------- |
+| Changed | Increased file rendering timeout from 6 seconds to 1 minute.
+| Bug fix | Accessibility issues in PDF Embed API.
+
+
 ### July, 2023
 
 | Change | Description                                                            |
