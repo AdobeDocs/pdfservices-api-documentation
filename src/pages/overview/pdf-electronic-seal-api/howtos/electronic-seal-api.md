@@ -550,7 +550,7 @@ package com.adobe.pdfservices.operation.samples.electronicseal;
 public class ElectronicSealWithAppearanceOptions {
 
     // Initialize the logger.
-    private static final Logger LOGGER = LoggerFactory.getLogger(ElectronicSeal.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ElectronicSealWithAppearanceOptions.class);
 
     public static void main(String[] args) {
         try {
@@ -960,10 +960,10 @@ Please refer to the [API usage guide](../api-usage.md) to understand how to use 
 
 package com.adobe.pdfservices.operation.samples.electronicseal;
 
-public class ElectronicSealWithAppearanceOptions {
+public class ElectronicSealWithTimeStampAuthority {
 
     // Initialize the logger.
-    private static final Logger LOGGER = LoggerFactory.getLogger(ElectronicSeal.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ElectronicSealWithTimeStampAuthority.class);
 
     public static void main(String[] args) {
         try {
