@@ -115,7 +115,7 @@ Refer to the following for links to supported product documentation.
 | 3.3.0 | [Web page(3.0.0 docs)](../3.3.0/) |
 | 3.2.0 | [Web page(3.0.0 docs)](../3.2.0/) |
 | 3.0.0 | [Web page(3.0.0 docs)](../3.0.0/) |
-| 2.2.0 | [Web page(2.2.0 docs)](../2.2.0/) |
+| 2.2.0 | [Web page(2.2.0 docs)](../v2/) |
 | 2.1.0 | [Web page(2.1.0 docs)](https://opensource.adobe.com/pdftools-sdk-docs/release/2.1.0/) |
 | 2.0.0 | [Web page(2.0.0 docs)](https://opensource.adobe.com/pdftools-sdk-docs/release/2.0.0/) |
 | 1.3.0 | [Web page(1.3.0 docs)](https://opensource.adobe.com/pdftools-sdk-docs/release/1.3.0/) |
