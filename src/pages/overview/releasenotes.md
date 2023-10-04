@@ -153,9 +153,9 @@ using Adobe.PDFServicesSDK;
 
 Refer to the following for links to supported product documentation.
 
-| Item | Public doc                  |
-|------|-----------------------------|
-| v2   | [Web page(v2 docs)](../v2/) |
+| Item                | Public doc                  |
+|---------------------|-----------------------------|
+| Acrobat Services v2 | [Web page(v2 docs)](../v2/) |
 
 ## Change types
 

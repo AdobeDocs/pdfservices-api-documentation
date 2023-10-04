@@ -558,7 +558,7 @@ module.exports = {
                         path: 'overview/policies.md',
                     },
                     {
-                        title: 'v2',
+                        title: 'Acrobat Services v2',
                         path: 'overview/v2/',
                         pages: [
                             {
