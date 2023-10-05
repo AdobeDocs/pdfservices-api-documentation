@@ -274,52 +274,7 @@ over the specified array of objects.
 
 
 ### Insert Table using table markers
-
-There are 2 new markers introduced for inserting tables in a document
-
-- table start
-- table end 
-
-The content between these markers is repeated
-by iterating over the array tag mentioned in the table start marker.
-
-JSON representation of the input data:
-
-```json
-{
-  "school": [
-    {
-      "name": "ABC Public School",
-      "strength": "128",
-      "address": "New Delhi"
-    },
-    {
-      "name": "DEF Public School",
-      "strength": "83",
-      "address": "Hyderabad"
-    },
-    {
-      "name": "XYZ Public School",
-      "strength": "165",
-      "address": "Mumbai"
-    }
-  ]
-}
-
-```
-**Usage**
-
-Create a table with requisite column headers. Add a row to the table and
-place the table start marker in the first cell of the row. 
-Add a template tag corresponding to each property of array in the respective
-column. End the row with a table end construct in the last cell of the row.
-
-![Table created with table start and end constructs](../images/tableWithConstructTemplate.png)
-
-In the above example, **school** serves as the array object over which the table repeats.
-A new row is created for each school and data is populated accordingly.
-
-![Table replaced with actual values in the rows](../images/tableWithConstructOutput.png)
+Table tags can also inserted in a document using table markers. Please refer [Table Tag with Markers](../document-generation-api/tablewithmarkers.md) to learn more about table markers. 
 
 
 <InlineAlert slots="text"/>
