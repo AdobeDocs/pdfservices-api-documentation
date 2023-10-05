@@ -176,6 +176,21 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### Adobe Document Generation Server Side Release (October, 2023; server side release)
+
+| Change  | Language         | Description                                                                                  |
+|---------|------------------|----------------------------------------------------------------------------------------------|
+| Changed | Java,NodeJS,.NET | Added support for [Table Tag with markers](../document-generation-api/tablewithmarkers.md#). |
+
+### 3.5.0 (October, 2023: minor release)
+
+
+| Change  | Language | Description                                                                                                                                                                                                                            |
+|---------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Changed | Java     | Added support for document level permissions and trusted timestamping (using [supported TSAs](../pdf-electronic-seal-api/#supported-timestamping-authorities)) in java sdk for [PDF Electronic Seal API](../pdf-electronic-seal-api/). |
+
+
+
 ### Server Side Release (August, 2023; server side release)
 
 | Change | Language | Description                                                                                                              |
