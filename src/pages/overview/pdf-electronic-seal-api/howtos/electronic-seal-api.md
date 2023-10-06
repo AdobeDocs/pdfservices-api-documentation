@@ -519,9 +519,9 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/electron
         },
         "sealFieldOptions": {
             "location": {
-                "top": 350,
                 "left": 150,
-                "right": 250,
+                "top": 250,
+                "right": 350,
                 "bottom": 200
             },
             "fieldName": "Signature1",
@@ -924,9 +924,9 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/electron
         },
         "sealFieldOptions": {
             "location": {
-                "top": 350,
                 "left": 150,
-                "right": 250,
+                "top": 250,
+                "right": 350,
                 "bottom": 200
             },
             "fieldName": "Signature1",
@@ -1088,9 +1088,9 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/electron
         },
         "sealFieldOptions": {
             "location": {
-                "top": 350,
                 "left": 150,
-                "right": 250,
+                "top": 250,
+                "right": 350,
                 "bottom": 200
             },
             "fieldName": "Signature1",
