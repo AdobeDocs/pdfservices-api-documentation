@@ -149,13 +149,10 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 using Adobe.PDFServicesSDK;
 ```  
 
-## Documentation library
+## Archived Documentation
 
-Refer to the following for links to supported product documentation.
+The last major version of our documentation may be found [here](../legacy-documentation/).
 
-| Item                | Public doc                  |
-|---------------------|-----------------------------|
-| Acrobat Services v2 | [Web page(v2 docs)](../v2/) |
 
 ## Change types
 

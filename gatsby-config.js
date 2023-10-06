@@ -553,256 +553,246 @@ module.exports = {
                 path: 'overview/status.md'
             },
             {
-                title: 'Archives',
+                title: 'Legacy Documentation',
                 subTitle: '',
-                path: 'overview/policies.md',
+                path: 'overview/legacy-documentation/index.md',
                 pages: [
                     {
-                        title: 'Version Support Policy',
-                        path: 'overview/policies.md',
+                        title: 'Introduction',
+                        path: 'overview/legacy-documentation/index.md'
                     },
                     {
-                        title: 'Acrobat Services v2',
-                        path: 'overview/v2/',
+                        title: 'PDF Services API',
+                        subTitle: '',
+                        path: 'overview/legacy-documentation/pdf-services-api/index.md',
                         pages: [
                             {
-                                title: 'Introduction',
-                                path: 'overview/v2/index.md'
+                                title: 'Overview',
+                                path: 'overview/legacy-documentation/pdf-services-api/index.md'
                             },
                             {
-                                title: 'PDF Services API',
+                                title: 'How Tos',
+                                path: 'overview/legacy-documentation/pdf-services-api/howtos',
+                                pages: [
+                                    {
+                                        title: 'Overview',
+                                        path: 'overview/legacy-documentation/pdf-services-api/howtos/index.md'
+                                    },
+                                    {
+                                        title: 'Create PDF',
+                                        path: 'overview/legacy-documentation/pdf-services-api/howtos/create-pdf.md'
+                                    },
+                                    {
+                                        title: 'Export PDF',
+                                        path: 'overview/legacy-documentation/pdf-services-api/howtos/export-pdf.md'
+                                    },
+                                    {
+                                        title: 'Combine PDF Files',
+                                        path: 'overview/legacy-documentation/pdf-services-api/howtos/combine-pdf.md'
+                                    },
+                                    {
+                                        title: 'OCR PDF',
+                                        path: 'overview/legacy-documentation/pdf-services-api/howtos/ocr-pdf.md'
+                                    },
+                                    {
+                                        title: 'Compress PDFs',
+                                        path: 'overview/legacy-documentation/pdf-services-api/howtos/compress-pdf.md'
+                                    },
+                                    {
+                                        title: 'Linearize PDF',
+                                        path: 'overview/legacy-documentation/pdf-services-api/howtos/linearize-pdf.md'
+                                    },
+                                    {
+                                        title: 'Protect PDF',
+                                        path: 'overview/legacy-documentation/pdf-services-api/howtos/protect-pdf.md'
+                                    },
+                                    {
+                                        title: 'Remove Protection',
+                                        path: 'overview/legacy-documentation/pdf-services-api/howtos/remove-protection.md'
+                                    },
+                                    {
+                                        title: 'Insert Pages',
+                                        path: 'overview/legacy-documentation/pdf-services-api/howtos/insert-pages.md'
+                                    },
+                                    {
+                                        title: 'Replace Pages',
+                                        path: 'overview/legacy-documentation/pdf-services-api/howtos/replace-pages.md'
+                                    },
+                                    {
+                                        title: 'Delete Pages',
+                                        path: 'overview/legacy-documentation/pdf-services-api/howtos/delete-pages.md'
+                                    },
+                                    {
+                                        title: 'Reorder Pages',
+                                        path: 'overview/legacy-documentation/pdf-services-api/howtos/reorder-pages.md'
+                                    },
+                                    {
+                                        title: 'Rotate Pages',
+                                        path: 'overview/legacy-documentation/pdf-services-api/howtos/rotate-pages.md'
+                                    },
+                                    {
+                                        title: 'Split PDF',
+                                        path: 'overview/legacy-documentation/pdf-services-api/howtos/split-pdf.md'
+                                    },
+                                    {
+                                        title: 'Extract PDF',
+                                        path: 'overview/legacy-documentation/pdf-services-api/howtos/extract-pdf.md'
+                                    },
+                                    {
+                                        title: 'Get PDF Properties',
+                                        path: 'overview/legacy-documentation/pdf-services-api/howtos/pdf-properties.md'
+                                    }
+                                ]
+                            },
+                            {
+                                title: 'Version - Support policy',
+                                path: 'overview/legacy-documentation/pdf-services-api/policies.md'
+                            },
+                            {
+                                title: 'Release notes',
+                                path: 'overview/legacy-documentation/pdf-services-api/releasenotes.md'
+                            },
+                            {
+                                title: 'PDF Services API Licensing',
+                                path: 'overview/legacy-documentation/pdf-services-api/dcserviceslicensing.md'
+                            },
+                            {
+                                title: 'Usage Limits',
+                                path: 'overview/legacy-documentation/pdf-services-api/dcserviceslicensing.md#usage-limits'
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Document Generation API',
+                        subTitle: '',
+                        path: 'overview/legacy-documentation/document-generation-api/index.md',
+                        pages: [
+                            {
+                                title: 'Overview',
+                                path: 'overview/legacy-documentation/document-generation-api/index.md'
+                            },
+                            {
+                                title: 'Quickstarts',
+                                path: 'overview/legacy-documentation/document-generation-api/quickstarts.md'
+                            },
+                            {
+                                title: 'Template Tags',
+                                path: 'overview/legacy-documentation/document-generation-api/templatetags.md'
+                            },
+                            {
+                                title: 'Fragments',
+                                path: 'overview/legacy-documentation/document-generation-api/fragments.md'
+                            },
+                            {
+                                title: 'Apply styling and formatting',
+                                path: 'overview/legacy-documentation/document-generation-api/stylingformattingtags.md'
+                            },
+                            {
+                                title: 'Hyperlink',
+                                path: 'overview/legacy-documentation/document-generation-api/hyperlink.md'
+                            },
+                            {
+                                title: 'Dynamic Table Constructs ',
+                                path: 'overview/legacy-documentation/document-generation-api/dynamictableconstructs.md'
+                            },
+                            {
+                                title: 'Word Add-in',
+                                path: 'overview/legacy-documentation/document-generation-api/wordaddin.md'
+                            },
+                            {
+                                title: 'Release Notes',
+                                path: 'overview/legacy-documentation/pdf-services-api/releasenotes.md'
+                            },
+                            {
+                                title: 'PDF Services API Licensing',
+                                path: 'overview/legacy-documentation/document-generation-api/dcserviceslicensing.md'
+                            },
+                            {
+                                title: 'Usage Limits',
+                                path: 'overview/legacy-documentation/document-generation-api/dcserviceslicensing.md#usage-limits'
+                            }
+                        ]
+                    },
+                    {
+                        title: 'PDF Extract API',
+                        subTitle: '',
+                        path: 'overview/legacy-documentation/pdf-extract-api/index.md',
+                        pages: [
+                            {
+                                title: 'Overview',
+                                path: 'overview/legacy-documentation/pdf-extract-api/index.md'
+                            },
+                            {
+                                title: 'Quickstarts',
+                                path: 'overview/legacy-documentation/pdf-extract-api/quickstarts.md'
+                            },
+                            {
+                                title: 'How Tos',
                                 subTitle: '',
-                                path: 'overview/v2/pdf-services-api/index.md',
+                                path: 'overview/legacy-documentation/pdf-extract-api/howtos',
                                 pages: [
                                     {
                                         title: 'Overview',
-                                        path: 'overview/v2/pdf-services-api/index.md'
+                                        path: 'overview/legacy-documentation/pdf-extract-api/howtos/index.md'
                                     },
                                     {
-                                        title: 'How Tos',
-                                        path: 'overview/v2/pdf-services-api/howtos',
-                                        pages: [
-                                            {
-                                                title: 'Overview',
-                                                path: 'overview/v2/pdf-services-api/howtos/index.md'
-                                            },
-                                            {
-                                                title: 'Create PDF',
-                                                path: 'overview/v2/pdf-services-api/howtos/create-pdf.md'
-                                            },
-                                            {
-                                                title: 'Export PDF',
-                                                path: 'overview/v2/pdf-services-api/howtos/export-pdf.md'
-                                            },
-                                            {
-                                                title: 'Combine PDF Files',
-                                                path: 'overview/v2/pdf-services-api/howtos/combine-pdf.md'
-                                            },
-                                            {
-                                                title: 'OCR PDF',
-                                                path: 'overview/v2/pdf-services-api/howtos/ocr-pdf.md'
-                                            },
-                                            {
-                                                title: 'Compress PDFs',
-                                                path: 'overview/v2/pdf-services-api/howtos/compress-pdf.md'
-                                            },
-                                            {
-                                                title: 'Linearize PDF',
-                                                path: 'overview/v2/pdf-services-api/howtos/linearize-pdf.md'
-                                            },
-                                            {
-                                                title: 'Protect PDF',
-                                                path: 'overview/v2/pdf-services-api/howtos/protect-pdf.md'
-                                            },
-                                            {
-                                                title: 'Remove Protection',
-                                                path: 'overview/v2/pdf-services-api/howtos/remove-protection.md'
-                                            },
-                                            {
-                                                title: 'Insert Pages',
-                                                path: 'overview/v2/pdf-services-api/howtos/insert-pages.md'
-                                            },
-                                            {
-                                                title: 'Replace Pages',
-                                                path: 'overview/v2/pdf-services-api/howtos/replace-pages.md'
-                                            },
-                                            {
-                                                title: 'Delete Pages',
-                                                path: 'overview/v2/pdf-services-api/howtos/delete-pages.md'
-                                            },
-                                            {
-                                                title: 'Reorder Pages',
-                                                path: 'overview/v2/pdf-services-api/howtos/reorder-pages.md'
-                                            },
-                                            {
-                                                title: 'Rotate Pages',
-                                                path: 'overview/v2/pdf-services-api/howtos/rotate-pages.md'
-                                            },
-                                            {
-                                                title: 'Split PDF',
-                                                path: 'overview/v2/pdf-services-api/howtos/split-pdf.md'
-                                            },
-                                            {
-                                                title: 'Extract PDF',
-                                                path: 'overview/v2/pdf-services-api/howtos/extract-pdf.md'
-                                            },
-                                            {
-                                                title: 'Get PDF Properties',
-                                                path: 'overview/v2/pdf-services-api/howtos/pdf-properties.md'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        title: 'Version - Support policy',
-                                        path: 'overview/v2/pdf-services-api/policies.md'
-                                    },
-                                    {
-                                        title: 'Release notes',
-                                        path: 'overview/v2/pdf-services-api/releasenotes.md'
-                                    },
-                                    {
-                                        title: 'PDF Services API Licensing',
-                                        path: 'overview/v2/pdf-services-api/dcserviceslicensing.md'
-                                    },
-                                    {
-                                        title: 'Usage Limits',
-                                        path: 'overview/v2/pdf-services-api/dcserviceslicensing.md#usage-limits'
+                                        title: 'PDF Extract API',
+                                        path: 'overview/legacy-documentation/pdf-extract-api/howtos/extract-api.md'
                                     }
                                 ]
                             },
                             {
-                                title: 'Document Generation API',
+                                title: 'Release Notes',
+                                path: 'overview/legacy-documentation/pdf-services-api/releasenotes.md'
+                            },
+                            {
+                                title: 'PDF Services API Licensing',
+                                path: 'overview/legacy-documentation/pdf-extract-api/dcserviceslicensing.md'
+                            },
+                            {
+                                title: 'Usage Limits',
+                                path: 'overview/legacy-documentation/pdf-extract-api/dcserviceslicensing.md#usage-limits'
+                            }
+                        ]
+                    },
+                    {
+                        title: 'PDF Accessibility Auto-Tag API',
+                        path: 'overview/legacy-documentation/pdf-accessibility-auto-tag-api/index.md',
+                        pages: [
+                            {
+                                title: 'Overview',
+                                path: 'overview/legacy-documentation/pdf-accessibility-auto-tag-api/index.md'
+                            },
+                            {
+                                title: 'Quickstarts',
+                                path: 'overview/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts.md'
+                            },
+                            {
+                                title: 'How Tos',
                                 subTitle: '',
-                                path: 'overview/v2/document-generation-api/index.md',
+                                path: 'overview/legacy-documentation/pdf-accessibility-auto-tag-api/howtos',
                                 pages: [
                                     {
                                         title: 'Overview',
-                                        path: 'overview/v2/document-generation-api/index.md'
+                                        path: 'overview/legacy-documentation/pdf-accessibility-auto-tag-api/howtos/index.md'
                                     },
                                     {
-                                        title: 'Quickstarts',
-                                        path: 'overview/v2/document-generation-api/quickstarts.md'
-                                    },
-                                    {
-                                        title: 'Template Tags',
-                                        path: 'overview/v2/document-generation-api/templatetags.md'
-                                    },
-                                    {
-                                        title: 'Fragments',
-                                        path: 'overview/v2/document-generation-api/fragments.md'
-                                    },
-                                    {
-                                        title: 'Apply styling and formatting',
-                                        path: 'overview/v2/document-generation-api/stylingformattingtags.md'
-                                    },
-                                    {
-                                        title: 'Hyperlink',
-                                        path: 'overview/v2/document-generation-api/hyperlink.md'
-                                    },
-                                    {
-                                        title: 'Dynamic Table Constructs ',
-                                        path: 'overview/v2/document-generation-api/dynamictableconstructs.md'
-                                    },
-                                    {
-                                        title: 'Word Add-in',
-                                        path: 'overview/v2/document-generation-api/wordaddin.md'
-                                    },
-                                    {
-                                        title: 'Release Notes',
-                                        path: 'overview/v2/pdf-services-api/releasenotes.md'
-                                    },
-                                    {
-                                        title: 'PDF Services API Licensing',
-                                        path: 'overview/v2/document-generation-api/dcserviceslicensing.md'
-                                    },
-                                    {
-                                        title: 'Usage Limits',
-                                        path: 'overview/v2/document-generation-api/dcserviceslicensing.md#usage-limits'
+                                        title: 'PDF Accessibility Auto-Tag API',
+                                        path: 'overview/legacy-documentation/pdf-accessibility-auto-tag-api/howtos/accessibility-auto-tag-api.md'
                                     }
                                 ]
                             },
                             {
-                                title: 'PDF Extract API',
-                                subTitle: '',
-                                path: 'overview/v2/pdf-extract-api/index.md',
-                                pages: [
-                                    {
-                                        title: 'Overview',
-                                        path: 'overview/v2/pdf-extract-api/index.md'
-                                    },
-                                    {
-                                        title: 'Quickstarts',
-                                        path: 'overview/v2/pdf-extract-api/quickstarts.md'
-                                    },
-                                    {
-                                        title: 'How Tos',
-                                        subTitle: '',
-                                        path: 'overview/v2/pdf-extract-api/howtos',
-                                        pages: [
-                                            {
-                                                title: 'Overview',
-                                                path: 'overview/v2/pdf-extract-api/howtos/index.md'
-                                            },
-                                            {
-                                                title: 'PDF Extract API',
-                                                path: 'overview/v2/pdf-extract-api/howtos/extract-api.md'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        title: 'Release Notes',
-                                        path: 'overview/v2/pdf-services-api/releasenotes.md'
-                                    },
-                                    {
-                                        title: 'PDF Services API Licensing',
-                                        path: 'overview/v2/pdf-extract-api/dcserviceslicensing.md'
-                                    },
-                                    {
-                                        title: 'Usage Limits',
-                                        path: 'overview/v2/pdf-extract-api/dcserviceslicensing.md#usage-limits'
-                                    }
-                                ]
+                                title: 'Release Notes',
+                                path: 'overview/legacy-documentation/pdf-services-api/releasenotes.md'
                             },
                             {
-                                title: 'PDF Accessibility Auto-Tag API',
-                                path: 'overview/v2/pdf-accessibility-auto-tag-api/index.md',
-                                pages: [
-                                    {
-                                        title: 'Overview',
-                                        path: 'overview/v2/pdf-accessibility-auto-tag-api/index.md'
-                                    },
-                                    {
-                                        title: 'Quickstarts',
-                                        path: 'overview/v2/pdf-accessibility-auto-tag-api/quickstarts.md'
-                                    },
-                                    {
-                                        title: 'How Tos',
-                                        subTitle: '',
-                                        path: 'overview/v2/pdf-accessibility-auto-tag-api/howtos',
-                                        pages: [
-                                            {
-                                                title: 'Overview',
-                                                path: 'overview/v2/pdf-accessibility-auto-tag-api/howtos/index.md'
-                                            },
-                                            {
-                                                title: 'PDF Accessibility Auto-Tag API',
-                                                path: 'overview/v2/pdf-accessibility-auto-tag-api/howtos/accessibility-auto-tag-api.md'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        title: 'Release Notes',
-                                        path: 'overview/v2/pdf-services-api/releasenotes.md'
-                                    },
-                                    {
-                                        title: 'PDF Services API Licensing',
-                                        path: 'overview/v2/pdf-accessibility-auto-tag-api/dcserviceslicensing.md'
-                                    },
-                                    {
-                                        title: 'Usage Limits',
-                                        path: 'overview/v2/pdf-accessibility-auto-tag-api/dcserviceslicensing.md#usage-limits'
-                                    }
-                                ]
+                                title: 'PDF Services API Licensing',
+                                path: 'overview/legacy-documentation/pdf-accessibility-auto-tag-api/dcserviceslicensing.md'
+                            },
+                            {
+                                title: 'Usage Limits',
+                                path: 'overview/legacy-documentation/pdf-accessibility-auto-tag-api/dcserviceslicensing.md#usage-limits'
                             }
                         ]
                     }
@@ -816,7 +806,7 @@ module.exports = {
       options: {
         path: `${__dirname}/src/pages`,
         name: "pages",
-        ignore: [`**/v2`]
+        ignore: [`**/legacy-documentation`]
       }
     }
     ],

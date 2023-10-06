@@ -106,18 +106,9 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 using Adobe.PDFServicesSDK;
 ```  
 
-## Documentation library
+## Archived Documentation
 
-Refer to the following for links to supported product documentation.
-
-| Item  | Public doc                                                                |
-| ----- | ------------------------------------------------------------------------- |
-| 2.1.0 | [Web page(2.1.0 docs)](https://opensource.adobe.com/pdftools-sdk-docs/release/2.1.0/) |
-| 2.0.0 | [Web page(2.0.0 docs)](https://opensource.adobe.com/pdftools-sdk-docs/release/2.0.0/) |
-| 1.3.0 | [Web page(1.3.0 docs)](https://opensource.adobe.com/pdftools-sdk-docs/release/1.3.0/) |
-| 1.2.0 | [Web page(1.2.0 docs)](https://opensource.adobe.com/pdftools-sdk-docs/release/1.2.0/) |
-| 1.1.0 | [Web page(1.1.0 docs)](https://opensource.adobe.com/pdftools-sdk-docs/release/1.1.0/) |
-| 1.0.0 | [Web page(1.0.0 docs)](https://opensource.adobe.com/pdftools-sdk-docs/release/1.0.0/) |
+The last major version of our documentation may be found [here](../legacy-documentation/).
 
 ## Change types
 
