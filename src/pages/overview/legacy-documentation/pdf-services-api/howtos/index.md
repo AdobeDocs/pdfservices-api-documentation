@@ -26,18 +26,6 @@ PDF actions using the SDK, including:
 
 </p>
 
-## Runtime in-memory authentication
-
-The SDK supports providing the authentication credentials at runtime.
-Doing so allows fetching the credentials from a secret server during
-runtime instead of storing them in a file. Please refer the following
-samples for details.
-
--   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithInMemoryAuthCredentials.java)
--   [.NET](https://github.com/adobe/PDFServices.NET.SDK.Samples/blob/master/CreatePDFWithInMemoryAuthCredentials/Program.cs)
--   [Node.js](https://github.com/adobe/pdfservices-node-sdk-samples/blob/master/src/customconfigurations/create-pdf-with-inmemory-auth-credentials.js)
--   [Python](https://github.com/adobe/pdfservices-python-sdk-samples/blob/master/src/extractpdf/extract_txt_from_pdf_with_in_memory_auth_credentials.py)
-
 ## Proxy Server Configuration
 
 The JAVA SDK enables to connect to API calls through Proxy via Client Configurations.
