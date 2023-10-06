@@ -519,10 +519,10 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/electron
         },
         "sealFieldOptions": {
             "location": {
-                "top": 300,
-                "left": 50,
+                "top": 350,
+                "left": 150,
                 "right": 250,
-                "bottom": 100
+                "bottom": 200
             },
             "fieldName": "Signature1",
             "pageNumber": 1
@@ -924,10 +924,10 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/electron
         },
         "sealFieldOptions": {
             "location": {
-                "top": 300,
-                "left": 50,
+                "top": 350,
+                "left": 150,
                 "right": 250,
-                "bottom": 100
+                "bottom": 200
             },
             "fieldName": "Signature1",
             "pageNumber": 1
@@ -1029,7 +1029,7 @@ public class ElectronicSealWithTimeStampAuthority {
                 .build();
 
             //Set the Time Stamp Authority url to be used
-            TSAOptions tsaOptions = new TSAOptions("http://timestamp.digicert.com/");
+            TSAOptions tsaOptions = new TSAOptions("<TIMESTAMP_URL>");
         
             //Create SealOptions instance with all the sealing parameters.
             SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions)
@@ -1084,14 +1084,14 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/electron
             }
         },
         "tsaOptions": {
-            "url" : "http://timestamp.digicert.com/",
+            "url" : "<TIMESTAMP_URL>",
         },
         "sealFieldOptions": {
             "location": {
-                "top": 300,
-                "left": 50,
+                "top": 350,
+                "left": 150,
                 "right": 250,
-                "bottom": 100
+                "bottom": 200
             },
             "fieldName": "Signature1",
             "pageNumber": 1
