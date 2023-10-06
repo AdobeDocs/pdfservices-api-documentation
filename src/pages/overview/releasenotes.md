@@ -151,7 +151,7 @@ using Adobe.PDFServicesSDK;
 
 ## Archived Documentation
 
-The last major version of our documentation may be found [here](../v2/).
+The last major version of our documentation may be found [here](../legacy-documentation/).
 
 
 ## Change types

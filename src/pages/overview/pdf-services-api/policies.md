@@ -101,7 +101,7 @@ Once a version reaches its end of life, functionality may be deprecated and stop
 ## Deprecated docs - past versions
 
 Only the latest documentation is typically available online. Refer to
-the [Documentation Library](./releasenotes.md#documentation-library) for links.
+the [Documentation Library](./releasenotes.md#archived-documentation) for links.
 
 <InlineAlert slots="text" />
 
