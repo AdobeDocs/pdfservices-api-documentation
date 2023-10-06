@@ -98,11 +98,6 @@ whole or in part, at any time.
 
 Once a version reaches its end of life, functionality may be deprecated and stop working.
 
-## Deprecated docs - past versions
-
-Only the latest documentation is typically available online. Refer to
-the [Documentation Library](./releasenotes.md#archived-documentation) for links.
-
 <InlineAlert slots="text" />
 
 Legacy docs for all past releases are not maintained. Some links may be broken and content may be outdated.
