@@ -180,7 +180,7 @@ For clients using SDK version 3.x and above  :
 <ul>
   <li> Using Europe region for processing documents :
   <ul>
-    <li>dcplatformstorageservice-eu-west-1.s3.amazonaws.com</li>
+    <li>dcplatformstorageservice-eu-west-1-prod.s3.amazonaws.com</li>
     <li>pdf-services-ew1.adobe.io</li>
   </ul>
 </li>
@@ -188,9 +188,6 @@ For clients using SDK version 3.x and above  :
 
 For clients using SDK version upto 2.x :
 <ul><li>cpf-ue1.adobe.io</li></ul>
-
-For clients using SDK version upto 1.x :
-<ul><li>senseicore-ue1.adobe.io</li></ul>
 
 </div>
 
