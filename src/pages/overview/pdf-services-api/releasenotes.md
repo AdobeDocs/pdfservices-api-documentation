@@ -50,8 +50,8 @@ version.
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <pdfservices.sdk.version>3.4.0</pdfservices.sdk.version>
-    <pdfservices.sdk.samples.version>3.4.0</pdfservices.sdk.samples.version>
+    <pdfservices.sdk.version>3.5.0</pdfservices.sdk.version>
+    <pdfservices.sdk.samples.version>3.5.0</pdfservices.sdk.samples.version>
 </properties>
 
 <dependency>

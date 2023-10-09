@@ -116,10 +116,10 @@ Specifies seal field appearance parameters. These are an enumerated set of displ
     "fieldName": "Signature1",
     "visible": true,
     "location": {
-      "top": 300,
-      "bottom": 250,
-      "left": 300,
-      "right": 500
+      "left" : 150,
+      "top": 250,
+      "bottom": 350,
+      "right": 200
     }
   },
   "sealAppearanceOptions": {
