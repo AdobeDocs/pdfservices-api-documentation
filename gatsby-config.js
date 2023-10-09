@@ -194,6 +194,10 @@ module.exports = {
                                 path: 'overview/pdf-services-api/howtos/pdf-external-storage-sol.md'
                             },
                             {
+                                title: 'Webhook Notification for APIs',
+                                path: 'overview/pdf-services-api/howtos/webhook-notification.md'
+                            },
+                            {
                                 title: 'Create PDF',
                                 path: 'overview/pdf-services-api/howtos/create-pdf.md'
                             },

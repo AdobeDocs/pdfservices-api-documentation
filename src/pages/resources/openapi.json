@@ -9258,6 +9258,23 @@
           "fragments": {
             "description": "Specifies the Fragments JSON object or a JSON array to resolve fragments in the document template. To know more about fragments use-case in document generation and document templates, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/document-generation-api/fragments/\">documentation</a>.",
             "type": "object"
+          },
+          "notifier": {
+            "description": "Specifies the array of notifier related information.",
+            "type": "array",
+            "items": {
+              "properties": {
+                "type": {
+                  "description": "Specifies the notifier type. Currently supported value is \"callback\" only",
+                  "type": "string"
+                },
+                "data": {
+                  "description": "Specifies the webhook notification related information which is required to notify about the job completion.",
+                  "type": "object"
+                }
+              },
+              "required": ["type", "data"]
+            }
           }
         },
         "example": {
@@ -9286,7 +9303,19 @@
               300
             ],
             "photograph": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII="
-          }
+          },
+          "notifier": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "assetID",
@@ -9330,6 +9359,23 @@
             "required": [
               "jsonDataForMerge"
             ]
+          },
+          "notifier": {
+            "description": "Specifies the array of notifier related information.",
+            "type": "array",
+            "items": {
+              "properties": {
+                "type": {
+                  "description": "Specifies the notifier type. Currently supported value is \"callback\" only",
+                  "type": "string"
+                },
+                "data": {
+                  "description": "Specifies the webhook notification related information which is required to notify about the job completion.",
+                  "type": "object"
+                }
+              },
+              "required": ["type", "data"]
+            }
           }
         },
         "example": {
@@ -9367,7 +9413,19 @@
               ],
               "photograph": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII="
             }
-          }
+          },
+          "notifier": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "input",
