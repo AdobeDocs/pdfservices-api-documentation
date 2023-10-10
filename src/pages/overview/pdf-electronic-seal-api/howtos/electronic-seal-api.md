@@ -1029,7 +1029,7 @@ public class ElectronicSealWithTimeStampAuthority {
                 .build();
 
             //Set the Time Stamp Authority url to be used
-            TSAOptions tsaOptions = new TSABasicAuthOptions("<TIMESTAMP_URL>");;
+            TSAOptions tsaOptions = new RFC3161TSAOptions("<TIMESTAMP_URL>");;
         
             //Create SealOptions instance with all the sealing parameters.
             SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions)
