@@ -6,10 +6,12 @@ Use Table markers to insert table tags in a document
 
 There are 2 new markers introduced for inserting tables in a document
 
-- table start
-- table end
+- table start `{% table-start **ARRAY_TAG** %}`
+- table end   `{% table-end %}`
 
-The content between these markers is repeated by iterating over the array tag mentioned in the table start marker.
+In the table row that needs to be dynamically expanded, place the table start marker in the first cell followed by table 
+end marker in the last cell of the row. The content between these markers is then dynamically populated by iterating over 
+the array of objects corresponding to the tag(ARRAY_TAG) mentioned in the table start marker.
 
 JSON representation of the input data:
 
@@ -35,19 +37,11 @@ JSON representation of the input data:
 }
 
 ```
-**Usage**
 
-Create a table with requisite column headers. Add a row to the table and
-place the table start marker in the first cell of the row.
-Add a template tag corresponding to each property of array in the respective
-column. End the row with a table end construct in the last cell of the row.
+![Table created with table start and end constructs](../images/table_tag_with_markers.png)
 
-![Table created with table start and end constructs](../images/tableWithConstructTemplate.png)
-
-In the above example, **school** serves as the array object over which the table repeats.
-A new row is created for each school and data is populated accordingly.
-
-![Table replaced with actual values in the rows](../images/tableWithConstructOutput.png)
+In the above example, **school** serves as the ARRAY_TAG over whose data the table repeats. A new row is created for each 
+school and data is populated accordingly.
 
 ## Complex Table Constructs with Table markers
 
@@ -81,6 +75,7 @@ vertically or columns horizontally.
 - **Repeat table rows vertically with table markers** - To use vertical extension with table markers, add
   *cell-extension(vertical)* to a tag.
 
+
 ![Vertical extension with table markers](../images/table_markers_vertical_extension.png)
 
 
@@ -88,7 +83,7 @@ vertically or columns horizontally.
   *cell-extension(horizontal)* to a tag and place the table start and end markers at the beginning and end of the column
   instead of row.
 
-![Horizontal extension with table markers](../images/horizontal_extension_table_markers.png)
+![Horizontal extension with table markers](../images/table_markers_horizontal_extension.png)
 
 ## Dynamic table columns
 Discard a column or set of columns in a table from the final generated document using table markers as follows:
@@ -252,7 +247,7 @@ JSON representation of the input data:
 
 ### Usage
 
-![Conditions inside tables with markers](../images/conditions_in_tables_markers.png)
+![Conditions inside tables with markers](../images/conditions_inside_tables_table_markers.png)
 
 ## Nested Tables
 Table tags with markers can also be used inside another table.
