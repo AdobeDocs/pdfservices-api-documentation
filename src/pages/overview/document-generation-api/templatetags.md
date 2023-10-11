@@ -274,7 +274,8 @@ over the specified array of objects.
 
 
 ### Insert Table using table markers
-Table tags can also inserted in a document using table markers. Please refer [Table Tag with Markers](../document-generation-api/tablewithmarkers.md) to learn more about table markers. 
+Table tags can also inserted in a document using table markers. Please refer [Table Tag with Markers](../document-generation-api/tablewithmarkers.md) 
+to learn more about the usage of table markers. 
 
 
 <InlineAlert slots="text"/>
