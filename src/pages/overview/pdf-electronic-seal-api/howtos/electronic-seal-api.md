@@ -136,7 +136,8 @@ Specifies seal field appearance parameters. These are an enumerated set of displ
 
 <InlineAlert slots="text"/>
 
-Support of Trusted Timestamping and Document Level Permissions is only available using REST APIs. Future version of SDKs will support these features.
+Support of Trusted Timestamping and Document Level Permissions is only available through REST APIs and Java SDK.
+Other SDKs will support these features in future versions.
 
 ## API limitations
 
