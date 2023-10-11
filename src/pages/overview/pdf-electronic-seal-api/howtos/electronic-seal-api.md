@@ -1090,8 +1090,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/electron
         "tsaOptions": {
             "url" : "<TIMESTAMP_URL>",
             "credentialAuthParameters": {
-            "username" : "<USERNAME>",
-            "password" : "<PASSWORD>"
+                "username" : "<USERNAME>",
+                "password" : "<PASSWORD>"
         },
         "sealFieldOptions": {
             "location": {

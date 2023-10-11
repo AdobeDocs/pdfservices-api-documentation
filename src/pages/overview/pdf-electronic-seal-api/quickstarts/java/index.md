@@ -434,7 +434,8 @@ public class ElectronicSeal {
         
             //Create SealOptions instance with all the sealing parameters.
             SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions)
-                .withAppearanceOptions(appearanceOptions).build();
+                    .withDocumentLevelPermission(documentLevelPermission)
+                    .withAppearanceOptions(appearanceOptions).build();
         
             //Create the PDFElectronicSealOperation instance using the SealOptions instance
             PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.createNew(sealOptions);
