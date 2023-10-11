@@ -27,7 +27,7 @@ Long Term Validation (LTV) information of Timestamp Certificates (if using Trust
 
 ### TSP Credential Information (_cscCredentialOptions_) : **Required**
 
-TSP parameters encapsulate the sealer's [certificate credential](../gettingstarted/#step-1-procure-digital-certificate-credentials) as well as the associated authentication and authorization data.
+TSP parameters encapsulate the sealer's [certificate credential](../../pdf-electronic-seal-api/gettingstarted/#step-1-procure-digital-certificate-credentials) as well as the associated authentication and authorization data.
 
 * **TSP Name**  (*providerName*) : **Required** : Specifies the name of the Trust Service Provider used to generate the certificate. Presently, only TSPs supporting the OAuth 2.0 client credential authorization flow are supported. The table below provides the provider name mapping for each supported Trust Service Provider.
   ![TSP Name Mapping](../../images/provider_mapping_ss.png)
@@ -44,7 +44,7 @@ TSP parameters encapsulate the sealer's [certificate credential](../gettingstart
 
 ### TSA Information (_tsaOptions_) :
 
-TSA parameters encapsulate the [timestamping URL and credentials](../gettingstarted/#step-2-optional-procure-timestamping-url-and-credentials).
+TSA parameters encapsulate the [timestamping URL and credentials](../../pdf-electronic-seal-api/gettingstarted/#step-2-optional-procure-timestamping-url-and-credentials).
 
 * **TSA URL**  (*url*) : **Required** : Specifies the TSA URL to be used for getting timestamp token.
 * **TSA Credential Authorization Parameter**  (*credentialAuthParameters*) : Encapsulates the credential information required to authenticate the TSA URL.
@@ -105,7 +105,7 @@ Specifies seal field appearance parameters. These are an enumerated set of displ
     "credentialId": "<CREDENTIAL_ID>"
   },
   "tsaOptions": {
-    "url": "<TSA_URL>",
+    "url": "<TIMESTAMP_URL>",
     "credentialAuthParameters": {
       "username": "<USERNAME>",
       "password": "<PASSWORD>"
@@ -1029,8 +1029,11 @@ public class ElectronicSealWithTimeStampAuthority {
                 .withCSCAuthContext(cscAuthContext)
                 .build();
 
-            //Set the Time Stamp Authority url to be used
-            TSAOptions tsaOptions = new RFC3161TSAOptions("<TIMESTAMP_URL>");;
+            //Create TSABasicAuthCredentials using username and password
+            TSABasicAuthCredentials tsaBasicAuthCredentials = new TSABasicAuthCredentials("<USERNAME>", "<PASSWORD>");
+
+            //Set the Time Stamp Authority Options using url and TSA Auth credentials
+            TSAOptions tsaOptions = new RFC3161TSAOptions("<TIMESTAMP_URL>", tsaBasicAuthCredentials);
         
             //Create SealOptions instance with all the sealing parameters.
             SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions)
@@ -1086,6 +1089,9 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/electron
         },
         "tsaOptions": {
             "url" : "<TIMESTAMP_URL>",
+            "credentialAuthParameters": {
+            "username" : "<USERNAME>",
+            "password" : "<PASSWORD>"
         },
         "sealFieldOptions": {
             "location": {
