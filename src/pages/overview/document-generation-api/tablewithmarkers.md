@@ -6,7 +6,7 @@ Use Table markers to insert table tags in a document
 
 There are 2 new markers introduced for inserting tables in a document
 
-- table start `{% table-start **ARRAY_TAG** %}`
+- table start `{% table-start ARRAY_TAG %}`
 - table end   `{% table-end %}`
 
 In the table row that needs to be dynamically expanded, place the table start marker in the first cell followed by table 
