@@ -4,12 +4,12 @@ title: Table Tag with markers | Document Generation API | Adobe PDF Services
 # Table Tag with markers
 Use Table markers to insert table tags in a document
 
-There are 2 new markers introduced for inserting tables in a document
+There are 2 new markers introduced for inserting tables in a document:
 
 - table start `{% table-start ARRAY_TAG %}`
 - table end   `{% table-end %}`
 
-In the table row that needs to be dynamically expanded, place the table start marker in the first cell followed by table 
+In the table row that needs to be dynamically expanded, place the table start marker in the first cell and table 
 end marker in the last cell of the row. The content between these markers is then dynamically populated by iterating over 
 the array of objects corresponding to the tag(ARRAY_TAG) mentioned in the table start marker.
 
@@ -40,12 +40,12 @@ JSON representation of the input data:
 
 ![Table created with table start and end constructs](../images/table_tag_with_markers.png)
 
-In the above example, **school** serves as the ARRAY_TAG over whose data the table repeats. A new row is created for each 
-school and data is populated accordingly.
+In the above example, **school** serves as the ARRAY_TAG over whose data the table is populated. A new row is created for each 
+school and data is filled in accordingly.
 
 ## Complex Table Constructs with Table markers
 
-All the complex constructs can also be used along with table markers
+All the complex table constructs can also be used along with table markers.
 
 ## Dynamically expand table rows or columns
 Specify the cell extension property in at least one tag inside the table cell to indicate whether to expand table rows 
@@ -72,16 +72,14 @@ vertically or columns horizontally.
 ```
 
 
-- **Repeat table rows vertically with table markers** - To use vertical extension with table markers, add
-  *cell-extension(vertical)* to a tag.
+- **Repeat table rows vertically with table markers** - To use vertical extension with table markers, add *cell-extension(vertical)* to a tag.
 
 
 ![Vertical extension with table markers](../images/table_markers_vertical_extension.png)
 
 
-- **Repeat table columns horizontally with table markers** - To use horizontal extension with table markers, add
-  *cell-extension(horizontal)* to a tag and place the table start and end markers at the beginning and end of the column
-  instead of row.
+- **Repeat table columns horizontally with table markers** - To use horizontal extension with table markers, add *cell-extension(horizontal)* 
+  to a tag and place the table start and end markers at the beginning and end of the column instead of row.
 
 ![Horizontal extension with table markers](../images/table_markers_horizontal_extension.png)
 
@@ -256,9 +254,18 @@ JSON representation of the input data:
 
 ```json
 {
+  "Board" : "CBSE",
   "school": [
     {
+      
       "name": "ABC Public School",
+      "Details": {
+        "Address": "New Delhi",
+        "Transport": true,
+        "Faculty": {
+          "Teacher": 30,
+          "Staff": 20
+        },
       "class": [
         {
           "name" : "XI",
@@ -272,6 +279,13 @@ JSON representation of the input data:
     },
     {
       "name": "DEF Public School",
+      "Details": {
+        "Address": "Hyderabad",
+        "Transport": true,
+        "Faculty": {
+          "Teacher": 24,
+          "Staff": 17
+        },
       "class": [
         {
           "name" : "XI",
@@ -285,6 +299,13 @@ JSON representation of the input data:
     },
     {
       "name": "XYZ Public School",
+      "Details": {
+        "Address": "Mumbai",
+        "Transport": true,
+        "Faculty": {
+          "Teacher": 21,
+          "Staff": 12
+        },
       "class": [
         {
           "name" : "X",
@@ -309,3 +330,17 @@ JSON representation of the input data:
 Create both tables with their respective table markers. In the above example, the **school** tag acts as the array
 upon which the outer table is expanded. For each school, the inner table is expanded on its respective **class**,
 which is mentioned as the array tag in the inner table marker.
+
+If you need to use data outside the current table being expanded, mention the context in which the data is present using 
+**eval** construct along with the tag. Similarly, if a condition needs to be evaluated on data outside the current table,
+add the context for same using the **eval** construct.
+
+![Table Markers With different context](../images/table_markers_context_input.png)
+
+- In the above example, we've used the **eval** construct with ``Board`` tag. Here **$** indicates that the input json will
+be used as the context to evaluate this tag. So, as mentioned in the input json, tag will be replaced by its value **CBSE**.
+
+- We've also used the **eval** construct with conditions. So both the conditions will be evaluated in the context of 
+corresponding `School`.
+
+![Table Markers with different context output](../images/table_markers_context_output.png)
