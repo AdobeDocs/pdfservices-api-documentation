@@ -6,7 +6,7 @@ Use Table markers to insert table tags in a document
 
 There are 2 new markers introduced for inserting tables in a document:
 
-- table start `{% table-start ARRAY_TAG %}`
+- table start ```{% table-start ARRAY_TAG %}```
 - table end   `{% table-end %}`
 
 In the table row that needs to be dynamically expanded, place the table start marker in the first cell and table 
@@ -48,7 +48,7 @@ school and data is filled in accordingly.
 All the complex table constructs can also be used along with table markers.
 
 ## Dynamically expand table rows or columns
-Specify the cell extension property in at least one tag inside the table cell to indicate whether to expand table rows 
+Specify the cell extension property in any tag inside the table cell to indicate whether to expand table rows 
 vertically or columns horizontally.
 
 ```json
@@ -125,12 +125,18 @@ JSON representation of the input data:
 }
 ```
 
-### Usage
 
 ![Discard if empty with table markers](../images/discard_if_empty_table_markers.png)
 
 ### Discard column if condition evaluates to true
-Column in the table can be discarded If condition provided in the discard-if(expr(**condition**)) evaluates to true. Add discard-if(expr(**condition**)) construct along with the template tag to activate discard if feature for the corresponding column.
+Column in a table can be discarded if condition provided in the discard-if(expr(**condition**)) evaluates to true for 
+any entry in the array of objects. 
+
+**How to use** <br/>
+Add discard-if(expr(**condition**)) construct along with the template tag to activate discard if feature for the corresponding column.
+
+**Note:** discard-if construct can also take a context input as discard-if(expr(**condition**),**context_tag**). In this case the `condition`
+will be evaluated in the context of to `context_tag`.
 
 JSON representation of the input data:
 
@@ -166,9 +172,11 @@ JSON representation of the input data:
 }
 ```
 
-### Usage
 
 ![Discard if with table markers](../images/discard_if_table_markers.png)
+
+In the above example we've used discard-if along with context **$**($ here indicates that the context is the input json itself). 
+So, in this case the conditions will be evaluated in the context of input json.
 
 ## Dynamic table rows
 Discard a row or set of rows in a table from the final generated document.
@@ -177,7 +185,9 @@ Discard a row or set of rows in a table from the final generated document.
 A row in the table can be discarded only when the condition in the discard-row-if(expr(**condition**)) evaluates
 to true in the provided context. Add this construct along with the template tag to discard the row based on the provided condition.
 
-For Example: {{TABLE_CONTEXT.PROPERTY:**discard-row-if(expr(PROPERTY = "TEST_VALUE"))**}}
+For Example: {{PROPERTY:**discard-row-if(expr(condition))**}}
+
+**Note:** We can also use context in a similar way to discard-if, as {{PROPERTY:**discard-row-if(expr(condition),context_tag)**}}  .
 
 JSON representation of the input data:
 ```json
@@ -217,13 +227,11 @@ JSON representation of the input data:
 }
 ```
 
-### Usage
 
 ![Discard row if with table markers](../images/discard_row_if_table_markers.png)
 
 ## Conditions inside tables
-Conditions can be used inside tables with table markers. If the condition is based on a field not in the current array 
-being expanded, the context needs to be specified for the field.
+Conditions can be used inside tables with table markers.
 
 JSON representation of the input data:
 
@@ -243,8 +251,6 @@ JSON representation of the input data:
 }
 ```
 
-### Usage
-
 ![Conditions inside tables with markers](../images/conditions_inside_tables_table_markers.png)
 
 ## Nested Tables
@@ -257,7 +263,7 @@ JSON representation of the input data:
   "Board" : "CBSE",
   "school": [
     {
-      
+
       "name": "ABC Public School",
       "Details": {
         "Address": "New Delhi",
@@ -265,7 +271,8 @@ JSON representation of the input data:
         "Faculty": {
           "Teacher": 30,
           "Staff": 20
-        },
+        }
+      },
       "class": [
         {
           "name" : "XI",
@@ -278,26 +285,6 @@ JSON representation of the input data:
       ]
     },
     {
-      "name": "DEF Public School",
-      "Details": {
-        "Address": "Hyderabad",
-        "Transport": true,
-        "Faculty": {
-          "Teacher": 24,
-          "Staff": 17
-        },
-      "class": [
-        {
-          "name" : "XI",
-          "strength": 52
-        },
-        {
-          "name" : "XII",
-          "strength": 31
-        }
-      ]
-    },
-    {
       "name": "XYZ Public School",
       "Details": {
         "Address": "Mumbai",
@@ -305,7 +292,8 @@ JSON representation of the input data:
         "Faculty": {
           "Teacher": 21,
           "Staff": 12
-        },
+        }
+      },
       "class": [
         {
           "name" : "X",
@@ -337,10 +325,11 @@ add the context for same using the **eval** construct.
 
 ![Table Markers With different context](../images/table_markers_context_input.png)
 
-- In the above example, we've used the **eval** construct with ``Board`` tag. Here **$** indicates that the input json will
-be used as the context to evaluate this tag. So, as mentioned in the input json, tag will be replaced by its value **CBSE**.
+- In the above example, we've used the **eval** construct with ``Board`` tag. Here **$** inside eval indicates that 
+the input json will be used as the context to evaluate this tag. So, as mentioned in the input json, tag will be replaced 
+by its value **CBSE**.
 
-- We've also used the **eval** construct with conditions. So both the conditions will be evaluated in the context of 
-corresponding `School`.
+- We've also used the **eval** construct with conditions. In the above examples, both the conditions indicated have `school` 
+as context. So the conditional expressions will be evaluated in the context of corresponding `school`.
 
 ![Table Markers with different context output](../images/table_markers_context_output.png)
