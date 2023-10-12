@@ -68,6 +68,11 @@ viewer.
 <!--Get the samples from https://www.adobe.com/go/pdfembedapi_samples-->
 ```
 
+<InlineAlert slots="text"/>
+
+There is a file rendering timeout of 60 seconds. If the file is not
+rendered within this time, the `previewFile` API call fails.
+
 ## Passing file content
 
 As shown above, you pass PDF data via the `content` field either as a
@@ -80,11 +85,6 @@ adobeDCView.previewFile({
   metaData: {fileName (always required) + optional fields }
 })
 ```
-
-<InlineAlert slots="text"/>
-
-If you pass both a file URL and file promise, the promise is used and
-the URL value is ignored.
 
 <InlineAlert slots="text"/>
 
