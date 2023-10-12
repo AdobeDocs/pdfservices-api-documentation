@@ -1,17 +1,19 @@
 ---
-title: Table Tag with markers | Document Generation API | Adobe PDF Services
+title: Table Tag with Markers | Document Generation API | Adobe PDF Services
 ---
-# Table Tag with markers
+# Table Tag with Markers
 Use Table markers to insert table tags in a document
 
-There are 2 new markers introduced for inserting tables in a document:
+There are two new constructs introduced called **Table Markers**. Table Markers will be used to create the table tags inside the document.
 
-- table start ```{% table-start ARRAY_TAG %}```
-- table end   `{% table-end %}`
+- table-start `{% table-start ARRAY_TAG %}`
+- table-end   `{% table-end %}`
 
-In the table row that needs to be dynamically expanded, place the table start marker in the first cell and table 
-end marker in the last cell of the row. The content between these markers is then dynamically populated by iterating over 
-the array of objects corresponding to the tag(ARRAY_TAG) mentioned in the table start marker.
+**How to use** <br/>
+- In the table row that needs to be dynamically expanded, place the `table-start` marker in the first cell and `table-end` marker in the last cell of the row. 
+- The `table-start` marker requires an array field, which will be used to create the rows/columns in the table depending on the orientation specified.
+- The content between these markers is then dynamically populated by iterating over 
+the array of objects corresponding to the tag(ARRAY_TAG) mentioned in the `table-start` marker.
 
 JSON representation of the input data:
 
@@ -45,7 +47,7 @@ school and data is filled in accordingly.
 
 ## Complex Table Constructs with Table markers
 
-All the complex table constructs can also be used along with table markers.
+Complex table constructs can also be used along with table markers. Below are the examples of using Complex Table constructs along with Table Markers (`table-start`, `table-end`).
 
 ## Dynamically expand table rows or columns
 Specify the cell extension property in any tag inside the table cell to indicate whether to expand table rows 
@@ -254,7 +256,7 @@ JSON representation of the input data:
 ![Conditions inside tables with markers](../images/conditions_inside_tables_table_markers.png)
 
 ## Nested Tables
-Table tags with markers can also be used inside another table.
+Table tags with markers can also be used inside another table to create nested tables.
 
 JSON representation of the input data:
 
@@ -318,6 +320,11 @@ JSON representation of the input data:
 Create both tables with their respective table markers. In the above example, the **school** tag acts as the array
 upon which the outer table is expanded. For each school, the inner table is expanded on its respective **class**,
 which is mentioned as the array tag in the inner table marker.
+
+<InlineAlert slots="text"/>
+
+- Nested Tables are only supported using the `Table Markers`.
+- Array Field of `table-start` in the inner table should be the nested Array field used with `table-start` in the outer table.
 
 If you need to use data outside the current table being expanded, mention the context in which the data is present using 
 **eval** construct along with the tag. Similarly, if a condition needs to be evaluated on data outside the current table,
