@@ -405,7 +405,7 @@ module.exports = {
                                 path: 'overview/document-generation-api/templatetags.md'
                             },
                             {
-                                title: 'Table Tag with markers',
+                                title: 'Table Tag with Markers',
                                 path: "overview/document-generation-api/tablewithmarkers.md"
                             },
                             {
