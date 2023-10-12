@@ -86,6 +86,11 @@ adobeDCView.previewFile({
 If you pass both a file URL and file promise, the promise is used and
 the URL value is ignored.
 
+<InlineAlert slots="text"/>
+
+If you pass both a file URL and file promise, the promise is used and
+the URL value is ignored.
+
 ### File URL
 
 Passing PDF data via a URL is self-explanatory, but note that some
