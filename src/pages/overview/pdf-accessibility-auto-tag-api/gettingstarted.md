@@ -59,7 +59,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/assets' \
 ### REST API
 
 ```javascript
-curl --location -g --request PUT 'https://dcplatformstorageservice-us-east-1.s3-accelerate.amazonaws.com/b37fd583-1ab6-4f49-99ef-d716180b5de4?X-Amz-Security-Token={{Placeholder for X-Amz-Security-Token}}&X-Amz-Algorithm={{Placeholder for X-Amz-Algorithm}}&X-Amz-Date={{Placeholder for X-Amz-Date}}&X-Amz-SignedHeaders={{Placeholder for X-Amz-SignedHeaders}}&X-Amz-Expires={{Placeholder for X-Amz-Expires}}&X-Amz-Credential={{Placeholder for X-Amz-Credential}}&X-Amz-Signature={{Placeholder for X-Amz-Signature}}' \
+curl --location -g --request PUT 'https://dcplatformstorageservice-us-east-1-prod.s3-accelerate.amazonaws.com/b37fd583-1ab6-4f49-99ef-d716180b5de4?X-Amz-Security-Token={{Placeholder for X-Amz-Security-Token}}&X-Amz-Algorithm={{Placeholder for X-Amz-Algorithm}}&X-Amz-Date={{Placeholder for X-Amz-Date}}&X-Amz-SignedHeaders={{Placeholder for X-Amz-SignedHeaders}}&X-Amz-Expires={{Placeholder for X-Amz-Expires}}&X-Amz-Credential={{Placeholder for X-Amz-Credential}}&X-Amz-Signature={{Placeholder for X-Amz-Signature}}' \
 --header 'Content-Type: application/pdf' \
 --data-binary '@{{Placeholder for file path}}'
 ```
@@ -101,7 +101,7 @@ You can read more about the API in detail [here](../../../apis/#operation/asset.
 ### REST API 
 
 ```javascript
-curl --location -g --request GET 'https://dcplatformstorageservice-us-east-1.s3-accelerate.amazonaws.com/b37fd583-1ab6-4f49-99ef-d716180b5de4?X-Amz-Security-Token={{Placeholder for X-Amz-Security-Token}}&X-Amz-Algorithm={{Placeholder for X-Amz-Algorithm}}&X-Amz-Date={{Placeholder for X-Amz-Date}}&X-Amz-SignedHeaders={{Placeholder for X-Amz-SignedHeaders}}&X-Amz-Expires={{Placeholder for X-Amz-Expires}}&X-Amz-Credential={{Placeholder for X-Amz-Credential}}&X-Amz-Signature={{Placeholder for X-Amz-Signature}}'
+curl --location -g --request GET 'https://dcplatformstorageservice-us-east-1-prod.s3-accelerate.amazonaws.com/b37fd583-1ab6-4f49-99ef-d716180b5de4?X-Amz-Security-Token={{Placeholder for X-Amz-Security-Token}}&X-Amz-Algorithm={{Placeholder for X-Amz-Algorithm}}&X-Amz-Date={{Placeholder for X-Amz-Date}}&X-Amz-SignedHeaders={{Placeholder for X-Amz-SignedHeaders}}&X-Amz-Expires={{Placeholder for X-Amz-Expires}}&X-Amz-Credential={{Placeholder for X-Amz-Credential}}&X-Amz-Signature={{Placeholder for X-Amz-Signature}}'
 ```
 
 ## There you go! Your job is completed in 5 simple steps. 
@@ -121,7 +121,7 @@ For clients using SDK version 3.x and above  :
 <ul>
 <li> Using United States region for processing documents :
   <ul>
-    <li>dcplatformstorageservice-us-east-1.s3-accelerate.amazonaws.com</li>
+    <li>dcplatformstorageservice-us-east-1-prod.s3-accelerate.amazonaws.com</li>
     <li>pdf-services-ue1.adobe.io</li>
     <li>pdf-services.adobe.io (Default URI)</li>
   </ul>
@@ -131,7 +131,7 @@ For clients using SDK version 3.x and above  :
 <ul>
   <li> Using Europe region for processing documents :
   <ul>
-    <li>dcplatformstorageservice-eu-west-1.s3.amazonaws.com</li>
+    <li>dcplatformstorageservice-eu-west-1-prod.s3.amazonaws.com</li>
     <li>pdf-services-ew1.adobe.io</li>
   </ul>
 </li>
@@ -139,9 +139,6 @@ For clients using SDK version 3.x and above  :
 
 For clients using SDK version upto 2.x :
 <ul><li>cpf-ue1.adobe.io</li></ul>
-
-For clients using SDK version upto 1.x :
-<ul><li>senseicore-ue1.adobe.io</li></ul>
 
 </div>
 
@@ -346,24 +343,22 @@ Running any sample or custom code requires the following:
 
 The Nuget package automatically downloads when you build the sample project.
 
-##### Option 1: Personalized samples setup
+##### Running the samples
 
-The quickest way to get up and running is to download the personalized code samples during the Getting Credentials workflow. These samples provide everything from ready-to-run sample code, an embedded credential json file, and pre-configured connections to dependencies.
+The quickest way to get up and running is to download the code samples during the Getting Credentials workflow. These samples provide everything from ready-to-run sample code, an embedded credential json file, and pre-configured connections to dependencies.
 
-1.  Extract the downloaded samples .zip.
-2.  From the samples directory, build the sample project: `dotnet build`.
-3.  Test the sample code on the command line.
-4.  Refer to this document for details about running samples as well as the API Reference for API details.
+1. Clone or download the [samples project](https://www.adobe.com/go/pdftoolsapi_net_samples).
+2. From the samples directory, build the sample project: `dotnet build`.
+3. Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands :
+- **Windows:**
+  - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+  - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
-##### Option 2: Generic samples setup
-
-If you did not choose **Personalized Code Sample Download** during the credential setup process:
-
-1.  Clone or download the [samples project](https://www.adobe.com/go/pdftoolsapi_net_samples).
-2.  Find and replace all occurrences of `pdfservices-api-credentials.json` and `private.key` files with the ones present in your PDFServicesSDK-Credentials.zip file.
-3.  From the samples directory, build the sample project: `dotnet build`.
-4.  Test the sample code on the command line.
-5.  Refer to this document for details about running samples as well as the API Reference for API details.
+- **MacOS/Linux:**
+  - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+  - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+4. Test the sample code on the command line.
+5. Refer to this document for details about running samples as well as the API Reference for API details.
 
 #### Verifying download authenticity
 
@@ -462,22 +457,22 @@ The @adobe/pdfservices-node-sdk npm package automatically downloads when you bui
 npm install --save @adobe/pdfservices-node-sdk
 ```
 
-##### Option 1: Personalized samples setup
+##### Running the samples
 
-1.  Extract the downloaded samples .zip.
-2.  From the samples root directory, run `npm install`.
-3.  Test the sample code on the command line.
-4.  Refer to this document for details about running samples as well as the API Reference for API details.
+The quickest way to get up and running is to download the code samples during the Getting Credentials workflow. These samples provide everything from ready-to-run sample code, an embedded credential json file, and pre-configured connections to dependencies.
 
-##### Option 2: Generic samples setup
+1. Download [the Node.js sample project ](http://www.adobe.com/go/pdftoolsapi_node_sample).
+2. From the samples root directory, run `npm install`.
+3. Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands :
+- **Windows:**
+  - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+  - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
-If you did not choose **Personalized Code Sample Download** during the credential setup process:
-
-1.  Download [the Node.js sample project ](http://www.adobe.com/go/pdftoolsapi_node_sample).
-2.  Find and replace all occurrences of `pdfservices-api-credentials.json` and `private.key` files with the ones present in your PDFServicesCredentials.zip file.
-3.  From the samples root directory, run `npm install`.
-4.  Test the sample code on the command line.
-5.  Refer to this document for details about running samples as well as the API Reference for API details.
+- **MacOS/Linux:**
+  - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+  - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+4. Test the sample code on the command line.
+5. Refer to this document for details about running samples as well as the API Reference for API details.
 
 #### Verifying download authenticity
 
@@ -576,27 +571,9 @@ After downloading the zip, you can run the samples in the zip directly by settin
 1. Install [Python 3.6](https://www.python.org/downloads/) or higher.
 2. Verify your installation by running this command: `python --version`.
 
-##### Option 1: Personalized samples setup
+##### Running the samples
 
-The quickest way to get up and running is to download the personalized code samples during the Getting Credentials workflow. These samples provide everything from ready-to-run sample code, an embedded credential json file, and pre-configured connections to dependencies.
-
-1. Download and extract the [Python sample project](https://github.com/adobe/pdfservices-python-sdk-samples).
-2. Go to the project directory (which contains `requirements.txt` file) and build the sample project using this command in terminal: `pip install -r requirements.txt`.
-3. Test the sample code on the command line.
-4. Refer to this document for details about running samples as well as the API Reference for API details.
-5. You can import the samples project into your preferred IDE and run the samples from there or run the below commands from terminal:
-
-###### To generate tagged PDF from the sample file
-
-```javascript 
-python src/autotagpdf/autotag_pdf.py
-```
-
-Note: The above commands run on the input file “autotagPdfInput.pdf” present in “src/main/resources” directory and generate result in “output” directory inside the project. If the output files already exist, the commands will report an error.
-
-##### Option 2: Generic samples setup
-
-If you did not choose **Personalized Code Sample Download** during the credential setup process:
+The quickest way to get up and running is to download the code samples during the Getting Credentials workflow. These samples provide everything from ready-to-run sample code, an embedded credential json file, and pre-configured connections to dependencies.
 
 1. Download and extract the [Python sample project](https://github.com/adobe/pdfservices-python-sdk-samples).
 2. Copy the downloaded zip to the directory that you set up for this project and unzip the files there.
@@ -620,7 +597,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 1.  After downloading the package zip, run following command
 
 ```
-pip hash <download_dir>/pdfservices-sdk-1.0.0.tar.gz
+pip hash <download_dir>/pdfservices-sdk-2.0.0.tar.gz
 ```
 
 1.  Above command will return the hash of downloaded package.

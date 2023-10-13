@@ -19,7 +19,7 @@ A placeholder(text tags) gets replaced by the actual input data.
 
 **How to insert Placeholder Variables**
 
-<Media slots="video"/>
+<Media slots="video" width="750" height="500"/>
 
 <https://images-tv.adobe.com/mpcv3/5158/aa393134-7cf7-4ebb-bfd0-1ced95237d20_1615916599.854x480at800_h264.mp4#t=3>
 

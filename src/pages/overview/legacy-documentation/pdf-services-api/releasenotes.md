@@ -27,7 +27,7 @@ repo as follows:
 ## Migration Guide to PDF Services SDK
 
 Refer to the following table for migrating to PDF Services SDK version
-3.4.0, you can also refer our Samples(
+2.1.0, you can also refer our Samples(
 [Java](https://www.adobe.com/go/pdftoolsapi_java_samples), [Node
 JS](https://www.adobe.com/go/pdftoolsapi_node_sample),
 [.NET](https://www.adobe.com/go/pdftoolsapi_net_samples)). for the
@@ -50,8 +50,8 @@ version.
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <pdfservices.sdk.version>3.4.0</pdfservices.sdk.version>
-    <pdfservices.sdk.samples.version>3.4.0</pdfservices.sdk.samples.version>
+    <pdfservices.sdk.version>2.1.0</pdfservices.sdk.version>
+    <pdfservices.sdk.samples.version>2.1.0</pdfservices.sdk.samples.version>
 </properties>
 
 <dependency>
@@ -73,7 +73,7 @@ import com.adobe.pdfservices.operation.ExecutionContext;
 * Update the latest SDK dependency in package.json file of your project
  
 ```
-"@adobe/pdfservices-node-sdk": "3.4.2"
+"@adobe/pdfservices-node-sdk": "2.1.0"
 ```
 
 * Require the `@adobe/pdfservices-node-sdk` in the Sample file to access the SDK interface
@@ -97,7 +97,7 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 ```
 <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.12" />
-    <PackageReference Include="Adobe.PDFServicesSDK" Version="3.4.0" />
+    <PackageReference Include="Adobe.PDFServicesSDK" Version="2.1.0" />
 </ItemGroup> 
 ```
 
@@ -117,112 +117,17 @@ Change types include the following:
 -   **New**: Features or implementation changes added in the current
  release.
 -   **Changed**: Modified code that changes a feature or implementation
- detail.x
+ detail.
 -   **Security**: A patch or bug fixed released in an out-of-band patch.
 -   **Deprecated**: Existing functionality for which support is ending
  (or ended).
 
 <InlineAlert slots="text" />
 
-Minor and Patch releases are backward compatible with the previous release.
+The new release is backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
-
-### 3.4.2 (August, 2023, minor release)
-
-| Change  | Language | Description                 |
-|---------|----------|-----------------------------|
-| Changed | NodeJS      | Restructured the internals for improved organization. |
-
-### 3.4.1 (July, 2023, minor release)
-
-| Change  | Language | Description                                                         |
-|---------|----------|---------------------------------------------------------------------|
-| Changed | NodeJS      | Fixed links in README.md file. |
-
-### 3.4.0 (June, 2023; minor release)
-
-| Change | Language         | Description                                                                                                                                      |
-|--------|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
-| New    | Java,NodeJS,.NET | PDF Electronic Seal operation is now available for all the users in PDF Services SDKs and REST APIs.                                             |
-| New    | Java,NodeJS,.NET | Added support for OAuth based Server to Server credentials in PDF Services SDKs. |
-| Changed | Java,NodeJS,.NET | JWT based service account credentials and corresponding SDK interfaces are now deprecated. |
-
-### Python SDK 2.3.0 (June, 2023; minor release)
-
-| Change  | Language         | Description                                                                                                                     |
-|---------|------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| New | Python | Added support for OAuth based Server to Server credentials in PDF Services SDKs. |
-| Changed | Python | JWT based service account credentials and corresponding SDK interfaces are now deprecated. |
-
-### Adobe Document Generation Server Side Release (June, 2023; server side release)
-
-| Change | Language | Description                                                                                                              |
-|--------|----------|--------------------------------------------------------------------------------------------------------------------------|
-| New    | API     | Added support for [External Storage](../pdf-services-api/howtos/pdf-external-storage-sol/) in Document Generation API.   |
-
-### 3.3.0 (May, 2023; minor release)
-
-| Change  | Language         | Description                                                                                                                     |
-|---------|------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| New | Java,NodeJS,.NET | PDF Accessibility Auto-Tag operation is now available for all the users in PDF Services SDKs and REST APIs.  |
-| New | Java | Added the support of Basic Authentication for the Proxy Server configuration. Proxy server settings will now be specified via "proxyServerConfig" in the client config. |
-| Changed | Java,NodeJS,.NET | Upgraded third party libraries to fix recently discovered vulnerabilities. |
-
-### Python SDK 2.2.0 (May, 2023; minor release)
-
-| Change  | Language         | Description                                                                                                                     |
-|---------|------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| New | Python | PDF Accessibility Auto-Tag operation is now available for all the users in PDF Services SDKs and REST APIs. |
-
-### Extract PDF Server Side Release (06 March, 2023; server side release)
-| Change  | Language            | Description                                                                                   |
-| ------- | ------------------- | --------------------------------------------------------------------------------------------- |
-| Changed | All                 | Adding support for larger PDF document processing. The new supported limits are 400 pages for non-scanned and 150 for scanned PDF documents. |
-
-### 2.3.0 (February, 2023, minor release)
-
-| Change  | Language | Description                                                                                                                  |
-|---------|----------|------------------------------------------------------------------------------------------------------------------------------|
-| Changed | NodeJS      | Fixed the response failures with `400` HTTP statusCode  and `UNKNOWN` errorCode for NodeJS SDK(s) v2.2.3 and below.               |
-
-### Adobe Document Generation Server Side Release (January, 2023, server side release)
-
-| Change  | Language | Description                                                                                                                  |
-|---------|----------|------------------------------------------------------------------------------------------------------------------------------|
-| New     | Java,NodeJS,.NET      | Adding support for [inline images](../document-generation-api/inlineimages.md#) feature.                                     |
-| New     | Java,NodeJS,.NET      | Adding support for additional constructs in [fragments](../document-generation-api/fragments.md#Other-supported-constructs). |
-| Changed | Java,NodeJS,.NET      | Adding support for prefix in [text tags](../document-generation-api/templatetags.md#Placeholder-Variables).                  |
-
-### Python SDK 2.1.2 (January, 2023, minor release)
-| Change  | Language            | Description                                                                                   |
-| ------- | ------------------- | --------------------------------------------------------------------------------------------- |
-| New | Python                 | Added configuration for SDKs to process the documents in the specified region.|
-| Changed| Python               | Upgraded libraries to fix recently discovered vulnerability. |
-
-
-### 3.4.0 (January, 2023; minor release)
-| Change  | Language            | Description                                                                                   |
-| ------- | ------------------- | --------------------------------------------------------------------------------------------- |
-| New     | Java,NodeJS,.NET                 | Added configuration for SDKs to process the documents in the specified region.                |
-| Changed     | NodeJS                | Upgraded libraries to fix recently discovered vulnerability..                          |
-
-### Python SDK 2.0.0 (December, 2022, major release)
-| Change  | Language            | Description                                                                                   |
-| ------- | ------------------- | --------------------------------------------------------------------------------------------- |
-| Changed | Python                 | Released SDK v2.0.0 for Python, based out of the new PDF Services APIs.                                       |
-
-
-### 3.0.0 (September, 2022; major release)
-| Change  | Language            | Description                                                                                   |
-| ------- | ------------------- | --------------------------------------------------------------------------------------------- |
-| Changed | Java,NodeJS,.NET    | Released SDK v3.0.0, based out of the new PDF Services APIs.|
-| Changed | Java,NodeJS,.NET    | Added the support of OCR locale for Export PDF operation. |
-| Changed | Java,NodeJS,.NET    | Updated PDF Properties operation to return PDFProperties object. Discontinued the support of returning FileRef and JSON Object.|
-| Changed | Java,NodeJS,.NET    | Image formats(JPEG and PNG) for Export PDF have been moved from Export PDF operation to ExportPDFToImages operation.|
-| New     | Java                | PDF Electronic Seal operation is now available in Beta PDF Services SDKs.|
-
 
 ### 2.2.3 (July, 2022; patch release)
 | Change  | Language            | Description                                                                                   |
@@ -230,9 +135,9 @@ Upgrading to the latest SDK should not break existing applications.
 | Changed | NodeJS              | Fixed the issue of sending UNKNOWN error code for extract operation.
 
 ### PDF Accessibility Auto-Tag Release - Available under Early Access Program (21 June, 2022)
-| Change  | Language            | Description                                                                     |
-| ------- | ------------------- |---------------------------------------------------------------------------------|
-| New     | Java, Python        | PDF Accessibility Auto-Tag operation is now available in Beta PDF Services SDKs |
+| Change  | Language            | Description                                                                                   |
+| ------- | ------------------- | --------------------------------------------------------------------------------------------- |
+| New     | Java, Python        | PDF Accessibility Auto-Tag operation is now available in Beta PDF Services SDKs                                |
 
 ### Extract PDF Server Side Release (21 June, 2022; server side release)
 | Change  | Language            | Description                                                                                   |
@@ -306,7 +211,7 @@ Upgrading to the latest SDK should not break existing applications.
 | Change  | Language | Description                                                                                                                                                              |
 | ------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | New     | All      | Adding support for additional tags (<strong\> and <em\>) in [styling and formatting](../document-generation-api/stylingformattingtags.md#apply-styling-and-formatting) feature.                                                                               |
-| New     | All      | Support for [dynamic table constructs](../document-generation-api/complextableconstructs.md).     |
+| New     | All      | Support for [dynamic table constructs](../document-generation-api/dynamictableconstructs.md).     |
 
 ### Extract PDF Server Side Release (15 November, 2021; server side release)
 | Change  | Language            | Description                                                                                    |

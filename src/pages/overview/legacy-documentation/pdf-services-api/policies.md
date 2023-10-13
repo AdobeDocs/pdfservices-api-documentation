@@ -66,7 +66,7 @@ Release](../images/support1.png)
 ### Versioning
 
 As mentioned on [Public API
-Docs](../../apis),
+Docs](https://documentcloud.adobe.com/document-services/index.html),
 each operation has a unique assetId which is passed in Form Parameters.
 Generally, APIs will be enhanced while keeping them backward compatible.
 If its functionality can't be enhanced without breaking changes, then
