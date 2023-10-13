@@ -175,9 +175,9 @@ Upgrading to the latest SDK should not break existing applications.
 
 ### Adobe Document Generation Server Side Release (October, 2023; server side release)
 
-| Change  | Language         | Description                                                                                  |
-|---------|------------------|----------------------------------------------------------------------------------------------|
-| Changed | Java,NodeJS,.NET | Added support for [Table Tag with markers](../document-generation-api/tablewithmarkers.md#). |
+| Change  | Language | Description                                                                                                       |
+|---------|----------|-------------------------------------------------------------------------------------------------------------------|
+| Changed | All      | Performance Improvements - Available in [REST API](../apis/#tag/Document-Generation) and SDK(s) v3.0.0 and above. |
 
 ### 3.5.0 (October, 2023: minor release)
 

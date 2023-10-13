@@ -271,13 +271,6 @@ over the specified array of objects.
 
 ![Table with template tags replaced with actual values in the rows](../images/table_result.png)
 
-
-
-### Insert Table using table markers
-Table tags can also inserted in a document using table markers. Please refer [Table Tag with Markers](../document-generation-api/tablewithmarkers.md) 
-to learn more about the usage of table markers. 
-
-
 <InlineAlert slots="text"/>
 
 Please visit [Complex Table Constructs](../document-generation-api/complextableconstructs.md) to learn about advanced

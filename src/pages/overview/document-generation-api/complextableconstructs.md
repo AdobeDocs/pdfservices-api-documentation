@@ -172,8 +172,7 @@ JSON representation of the input data:
 Discard a row or set of rows in a table from the final generated document.
 
 ### Discard row if condition evaluates to true
-A row in the table can be discarded only when the condition in the discard-row-if(expr(**condition**),**context**) evaluates 
-to true in the provided context. Add this construct along with the template tag to discard the row based on the provided condition.
+A row in the table can be discarded only when the condition in the discard-row-if(expr(**condition**),**context**) evaluates to true in the provided context. Add this construct along with the template tag to discard the row based on the provided condition.
 
 For Example: {{TABLE_CONTEXT.PROPERTY:**discard-row-if(expr(PROPERTY = "TEST_VALUE"),TABLE_CONTEXT)**}}
 
@@ -241,7 +240,6 @@ JSON representation of the input data:
   ]
 }
 ```
-
 
 ![Index based conditional evaluation inside table](../images/ConditionsInsideTables.png)
 In the above example, the array of objects on which the condition needs to be evaluated (*company*) is provided in
