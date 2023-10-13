@@ -37,6 +37,8 @@ JSON representation of the input data:
 
 ![Table gets horizontally extended as table columns are repeated](../images/horizontal-extension1.png)
 
+
+
 <InlineAlert slots="text"/>
 
 Default extension is vertical. If cell-extension construct is not provided, then table will be extended in vertical direction.
