@@ -107,3 +107,15 @@ In case of failed job completion, the following **callback payload** will be sen
 }
 ```
 
+## Expected response from client
+The client should return following response payload with HTTP status code as 200 (OK):
+```json
+{
+  "ack": "done"
+}
+```
+<InlineAlert slots="text"/>
+<div>
+If the response code is not 200(OK) or expected payload is not received, then it is considered as error response. If there are 50 error response in 10 minutes then webhook notification support is blocked for that client for next 20 minutes.
+</div>
+
