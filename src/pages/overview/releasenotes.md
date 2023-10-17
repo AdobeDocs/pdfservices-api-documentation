@@ -93,8 +93,8 @@ version.
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <pdfservices.sdk.version>3.4.0</pdfservices.sdk.version>
-    <pdfservices.sdk.samples.version>3.4.0</pdfservices.sdk.samples.version>
+    <pdfservices.sdk.version>3.5.0</pdfservices.sdk.version>
+    <pdfservices.sdk.samples.version>3.5.0</pdfservices.sdk.samples.version>
 </properties>
 
 <dependency>
@@ -172,6 +172,18 @@ Minor and Patch releases are backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
+
+### 3.5.0 (October, 2023: minor release)
+
+| Change  | Language | Description                                                                                                                                                                                                                            |
+|---------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Changed | Java     | Added support for document level permissions and trusted timestamping (using [supported TSAs](../pdf-electronic-seal-api/#supported-timestamping-authorities)) in java sdk for [PDF Electronic Seal API](../pdf-electronic-seal-api/). |
+
+### Adobe Document Generation Server Side Release (October, 2023; server side release)
+
+| Change  | Language | Description                                                                                                       |
+|---------|----------|-------------------------------------------------------------------------------------------------------------------|
+| Changed | All      | Performance Improvements - Available in [REST API](../apis/#tag/Document-Generation) and SDK(s) v3.0.0 and above. |
 
 ### Server Side Release (August, 2023; server side release)
 
