@@ -8,6 +8,12 @@ the changes below for each release.
 
 ## Change history
 
+### October, 2023
+
+| Change | Description                                                            |
+| ------ | ---------------------------------------------------------------------- |
+| Bug fix | Fixed PDF rendering issue when third party cookies are disabled.             |
+
 ### September, 2023
 
 | Change | Description                                                            |
