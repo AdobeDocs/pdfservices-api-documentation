@@ -124,8 +124,7 @@ in the **class** table, so we add the **school** tag in the eval construct of th
 - The possible arguments for the eval construct are the values of the **ARRAY_FIELD** of the outer tables. **$** is also a supported
   argument, in which case the tag will be evaluated in the context of input json.
 
-Similarly, if a condition needs to be evaluated on data outside the current table,
-add the context for the same using the **eval** construct.
+Similarly, if a condition needs to be evaluated on data outside the current table, add the context for the same using the **eval** construct.
 
 ![Table Markers With different context](../images/table_markers_context_input.png)
 
@@ -137,6 +136,10 @@ add the context for the same using the **eval** construct.
 
 ![Table Markers with different context output](../images/table_markers_context_output.png)
 
+<InlineAlert slots="text"/>
+
+- If **eval** construct is not used with a condition, it is evaluated in the context of current table being expanded.
+- **eval** construct for conditions also supports the same arguments as that of text tags.
 
 ## Complex Table Constructs with Table markers
 
@@ -325,99 +328,3 @@ JSON representation of the input data:
 
 ![Discard row if with table markers](../images/discard_row_if_table_markers.png)
 
-## Conditions inside tables
-Conditions can be used inside tables with table markers.
-
-JSON representation of the input data:
-
-```json
-{
-  "company": [
-    {
-      "name": "ABC",
-      "supportsX" : "TRUE"
-    },
-    {
-      "name": "XYZ",
-      "supportsX": "FALSE"
-    }
-
-  ]
-}
-```
-
-![Conditions inside tables with markers](../images/conditions_inside_tables_table_markers.png)
-
-## Nested Tables
-Table tags with markers can also be used inside another table to create nested tables.
-
-JSON representation of the input data:
-
-```json
-{
-  "Board" : "CBSE",
-  "school": [
-    {
-
-      "name": "ABC Public School",
-      "Details": {
-        "Address": "New Delhi",
-        "Transport": true,
-        "Faculty": {
-          "Teacher": 30,
-          "Staff": 20
-        }
-      },
-      "class": [
-        {
-          "name" : "XI",
-          "strength": 65
-        },
-        {
-          "name" : "XII",
-          "strength": 40
-        }
-      ]
-    },
-    {
-      "name": "XYZ Public School",
-      "Details": {
-        "Address": "Mumbai",
-        "Transport": true,
-        "Faculty": {
-          "Teacher": 21,
-          "Staff": 12
-        }
-      },
-      "class": [
-        {
-          "name" : "X",
-          "strength": 45
-        },
-        {
-          "name" : "XI",
-          "strength": 38
-        },
-        {
-          "name" : "XII",
-          "strength": 82
-        }
-      ]
-    }
-  ]
-}
-```
-
-![Nested tables with table markers](../images/nested_tables.png)
-
-Create both tables with their respective table markers. In the above example, the **school** tag acts as the array
-upon which the outer table is expanded. For each school, the inner table is expanded on its respective **class** tag,
-which is mentioned as the array field in the inner table marker.
-
-<InlineAlert slots="text"/>
-
-- Nested Tables are only supported using the `Table Markers`.
-- Array Field of `table-start` in the inner table should be the nested field of the array field used in the `table-start` marker of the outer table.
-
-If you need to use data outside the current table being expanded, mention the context in which the data is present using
-**eval** construct along with the tag. 
