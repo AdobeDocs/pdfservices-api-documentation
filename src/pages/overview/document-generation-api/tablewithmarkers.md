@@ -121,8 +121,7 @@ in the **class** table, so we add the **school** tag in the eval construct of th
 
 - Nested Tables are only supported using the `Table Markers`.
 - Array Field of `table-start` in the inner table should be the nested field of the array field used in the `table-start` marker of the outer table.
-- The possible arguments for the eval construct are the values of the **ARRAY_FIELD** of the outer tables. **$** is also a supported
-  argument, in which case the tag will be evaluated in the context of input json.
+- The eval construct can take the values of the **ARRAY_FIELD** of the outer tables as arguments, or it can take the special argument **$**, in which case the tag will be evaluated in the context of the input JSON.
 
 Similarly, if a condition needs to be evaluated on data outside the current table, add the context for the same using the **eval** construct.
 
@@ -138,7 +137,7 @@ Similarly, if a condition needs to be evaluated on data outside the current tabl
 
 <InlineAlert slots="text"/>
 
-- If **eval** construct is not used with a condition, it is evaluated in the context of current table being expanded.
+- If **eval** construct is not used with a condition, it is evaluated in the context of the current table being expanded.
 - **eval** construct for conditions also supports the same arguments as that of text tags.
 
 ## Complex Table Constructs with Table markers
@@ -182,7 +181,7 @@ vertically or columns horizontally.
 ![Horizontal extension with table markers](../images/table_markers_horizontal_extension.png)
 
 ## Dynamic table columns
-Discard a column or set of columns in a table from the final generated document using table markers as follows:
+Discard a column or set of columns in a table from the final generated document using table markers.
 
 ### Discard column if empty
 Columns in a table can be discarded if every element of an array in the input json is empty or null.
