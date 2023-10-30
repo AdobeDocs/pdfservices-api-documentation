@@ -79,27 +79,33 @@ public class AutotagPDF {
     public static void main(String[] args) {
 
         try {
-            // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-                .withClientId("PDF_SERVICES_CLIENT_ID")
-                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                .build();
-
-            // Create an ExecutionContext using credentials and create a new operation instance.
-            ExecutionContext executionContext = ExecutionContext.create(credentials);
-            AutotagPDFOperation autotagPDFOperation = AutotagPDFOperation.createNew();
-
-            // Set operation input from a source file.
-            FileRef source = FileRef.createFromLocalFile("autotagPDFInput.pdf");
-            autotagPDFOperation.setInput(source);
-
-            // Execute the operation
-            AutotagPDFOutput autotagPDFOutput = autotagPDFOperation.execute(executionContext);
-
-            // Save the tagged PDF output at the specified location
-            autotagPDFOutput.getTaggedPDF().saveAs("autotagPDFOutput.pdf");
-
-        } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
+            // Initial setup, create credentials instance
+            Credentials credentials = new ServicePrincipalCredentials(
+                System.getenv("PDF_SERVICES_CLIENT_ID"),
+                System.getenv("PDF_SERVICES_CLIENT_SECRET"));
+        
+            // Creates a PDF Services instance
+            PDFServices pdfServices = new PDFServices(credentials);
+        
+            // Creates an asset from source file and upload
+            InputStream inputStream = Files.newInputStream(new File("src/main/resources/autotagPDFInput.pdf").toPath());
+            Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
+        
+            // Creates a new job instance
+            AutotagPDFJob autotagPDFJob = new AutotagPDFJob(asset);
+        
+            // Submits the job and gets the job result
+            String location = pdfServices.submit(autotagPDFJob);
+            PDFServicesResponse<AutotagPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, AutotagPDFResult.class);
+        
+            // Get content from the resulting asset(s)
+            Asset resultAsset = pdfServicesResponse.getResult().getTaggedPDF();
+            StreamAsset streamAsset = pdfServices.getContent(resultAsset);
+        
+            // Creates an output stream and copy stream asset's content to it
+            OutputStream outputStream = Files.newOutputStream(new File("output/autotagPDFOutput.pdf").toPath());
+            IOUtils.copy(streamAsset.getInputStream(), outputStream);
+        } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
             LOGGER.error("Exception encountered while executing operation", ex);
         }
     }
@@ -304,88 +310,97 @@ public class AutotagPDFParameterised {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(AutotagPDFParameterised.class);
 
     public static void main(String[] args) {
-    LOGGER.info("--input " + getInputFilePathFromCmdArgs(args));
-    LOGGER.info("--output " + getOutputFilePathFromCmdArgs(args));
-    LOGGER.info("--report " + getGenerateReportFromCmdArgs(args));
-    LOGGER.info("--shift_headings " + getShiftHeadingsFromCmdArgs(args));
-
-    try {
-    // Initial setup, create credentials instance.
-    Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-        .withClientId("PDF_SERVICES_CLIENT_ID")
-        .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-        .build();
-
-    //Create an ExecutionContext using credentials and create a new operation instance.
-    ExecutionContext executionContext = ExecutionContext.create(credentials);
-
-    AutotagPDFOperation autotagPDFOperation = AutotagPDFOperation.createNew();
-
-    // Set input for operation from command line args
-    autotagPDFOperation.setInput(FileRef.createFromLocalFile(getInputFilePathFromCmdArgs(args)));
-
-    // Get and Build AutotagPDF options from command line args and set them into the operation
-    AutotagPDFOptions autotagPDFOptions = getOptionsFromCmdArgs(args);
-    autotagPDFOperation.setOptions(autotagPDFOptions);
-
-    // Execute the operation
-    AutotagPDFOutput autotagPDFOutput = autotagPDFOperation.execute(executionContext);
-
-    // Save the output files at the specified location
-    String outputPath = getOutputFilePathFromCmdArgs(args);
-    autotagPDFOutput.getTaggedPDF().saveAs(outputPath + "autotagPDFInput-tagged.pdf");
-    if (autotagPDFOptions != null && autotagPDFOptions.isGenerateReport())
-    autotagPDFOutput.getReport().saveAs(outputPath + "autotagPDFInput-report.xlsx");
-
-    }
-    catch (ServiceApiException | IOException | ServiceUsageException e) {
-        System.out.println(e);
-    }
-    }
-
-private static AutotagPDFOptions getOptionsFromCmdArgs(String[] args) {
-    Boolean generateReport = getGenerateReportFromCmdArgs(args);
-    Boolean shiftHeadings = getShiftHeadingsFromCmdArgs(args);
-
-    AutotagPDFOptions.Builder builder = AutotagPDFOptions.autotagPDFOptionsBuilder();
-
-    if (generateReport)
-        builder.generateReport();
-    if (shiftHeadings)
-        builder.shiftHeadings();
-
-    return builder.build();
+        LOGGER.info("--input " + getInputFilePathFromCmdArgs(args));
+        LOGGER.info("--output " + getOutputFilePathFromCmdArgs(args));
+        LOGGER.info("--report " + getGenerateReportFromCmdArgs(args));
+        LOGGER.info("--shift_headings " + getShiftHeadingsFromCmdArgs(args));
+        
+        try {
+            // Initial setup, create credentials instance
+            Credentials credentials = new ServicePrincipalCredentials(
+                System.getenv("PDF_SERVICES_CLIENT_ID"),
+                System.getenv("PDF_SERVICES_CLIENT_SECRET"));
+        
+            // Creates a PDF Services instance
+            PDFServices pdfServices = new PDFServices(credentials);
+        
+            // Creates an asset from source file and upload
+            InputStream inputStream = Files.newInputStream(new File(getInputFilePathFromCmdArgs(args)).toPath());
+            Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
+        
+            // Create parameters for the job
+            AutotagPDFParams autotagPDFParams = getOptionsFromCmdArgs(args);
+        
+            // Creates a new job instance
+            AutotagPDFJob autotagPDFJob = new AutotagPDFJob(asset)
+                .setParams(autotagPDFParams);
+        
+            // Submits the job and gets the job result
+            String location = pdfServices.submit(autotagPDFJob);
+            PDFServicesResponse<AutotagPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, AutotagPDFResult.class);
+        
+            // Get content from the resulting asset(s)
+            Asset resultAsset = pdfServicesResponse.getResult().getTaggedPDF();
+            Asset resultAssetReport = pdfServicesResponse.getResult().getReport();
+            StreamAsset streamAsset = pdfServices.getContent(resultAsset);
+            StreamAsset streamAssetReport = (autotagPDFParams != null && autotagPDFParams.isGenerateReport()) ?
+                pdfServices.getContent(resultAssetReport) : null;
+        
+            // Creating output streams and copying stream assets' content to it
+            String outputPath = getOutputFilePathFromCmdArgs(args);
+            OutputStream outputStream = Files.newOutputStream(new File(outputPath + "autotagPDFInput-tagged.pdf").toPath());
+            IOUtils.copy(streamAsset.getInputStream(), outputStream);
+            if(streamAssetReport != null) {
+                OutputStream outputStreamReport = Files.newOutputStream(new File(outputPath + "autotagPDFInput-report.xlsx").toPath());
+                IOUtils.copy(streamAssetReport.getInputStream(), outputStreamReport);
+            }
+        } catch (ServiceApiException | IOException | SDKException | ServiceUsageException e) {
+            LOGGER.error("Exception encountered while executing operation", e);
+        }
     }
 
-private static Boolean getShiftHeadingsFromCmdArgs(String[] args) {
-    return Arrays.asList(args).contains("--shift_headings");
-}
-
-private static Boolean getGenerateReportFromCmdArgs(String[] args) {
-    return Arrays.asList(args).contains("--report");
-}
-
-private static String getInputFilePathFromCmdArgs(String[] args) {
-    String inputFilePath = "src/main/resources/autotagPDFInput.pdf";
-    int inputFilePathIndex = Arrays.asList(args).indexOf("--input");
-    if (inputFilePathIndex >= 0 && inputFilePathIndex < args.length - 1) {
-        inputFilePath = args[inputFilePathIndex + 1];
-    } else
-        LOGGER.info("input file not specified, using default value : autotagPdfInput.pdf");
-
-    return inputFilePath;
-}
-
-private static String getOutputFilePathFromCmdArgs(String[] args) {
-    String outputFilePath = "output/AutotagPDFParameterised/";
-    int outputFilePathIndex = Arrays.asList(args).indexOf("--output");
-    if (outputFilePathIndex >= 0 && outputFilePathIndex < args.length - 1) {
-        outputFilePath = args[outputFilePathIndex + 1];
-    } else
-        LOGGER.info("output path not specified, using default value : " + outputFilePath);
-
-    return outputFilePath;
-}
+    private static AutotagPDFParams getOptionsFromCmdArgs(String[] args) {
+        Boolean generateReport = getGenerateReportFromCmdArgs(args);
+        Boolean shiftHeadings = getShiftHeadingsFromCmdArgs(args);
+        AutotagPDFParams.Builder autotagPDFParamsBuilder = AutotagPDFParams.autotagPDFParamsBuilder();
+    
+        if (generateReport)
+            autotagPDFParamsBuilder.generateReport();
+        if (shiftHeadings)
+            autotagPDFParamsBuilder.shiftHeadings();
+    
+        return autotagPDFParamsBuilder.build();
+    }
+    
+    private static Boolean getShiftHeadingsFromCmdArgs(String[] args) {
+        return Arrays.asList(args).contains("--shift_headings");
+    }
+    
+    private static Boolean getGenerateReportFromCmdArgs(String[] args) {
+        return Arrays.asList(args).contains("--report");
+    }
+    
+    private static String getInputFilePathFromCmdArgs(String[] args) {
+        String inputFilePath = "src/main/resources/autotagPDFInput.pdf";
+        int inputFilePathIndex = Arrays.asList(args).indexOf("--input");
+        if (inputFilePathIndex >= 0 && inputFilePathIndex < args.length - 1) {
+            inputFilePath = args[inputFilePathIndex + 1];
+        } else
+            LOGGER.info("input file not specified, using default value : autotagPDFInput.pdf");
+    
+        return inputFilePath;
+    }
+    
+    private static String getOutputFilePathFromCmdArgs(String[] args) {
+        String outputFilePath = "output/AutotagPDFParameterised/";
+        int outputFilePathIndex = Arrays.asList(args).indexOf("--output");
+        if (outputFilePathIndex >= 0 && outputFilePathIndex < args.length - 1) {
+            outputFilePath = args[outputFilePathIndex + 1];
+        } else
+            LOGGER.info("output path not specified, using default value : " + outputFilePath);
+    
+        return outputFilePath;
+    }
 }
 
 ```

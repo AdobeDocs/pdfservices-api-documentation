@@ -32,58 +32,66 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
  
     public static void main(String[] args) {
         try {
-            // Initial setup, create credentials instance.
-           Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-                    .withClientId("PDF_SERVICES_CLIENT_ID")
-                    .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                    .build();
- 
-            // Create an ExecutionContext using credentials and create a new operation instance.
-            ExecutionContext executionContext = ExecutionContext.create(credentials);
-            RotatePagesOperation rotatePagesOperation = RotatePagesOperation.createNew();
- 
-            // Set operation input from a source file.
-            FileRef source = FileRef.createFromLocalFile("src/main/resources/rotatePagesInput.pdf");
-            rotatePagesOperation.setInput(source);
- 
-            // Sets angle by 90 degrees (in clockwise direction) for rotating the specified pages of
-            // the input PDF file.
+            // Initial setup, create credentials instance
+            Credentials credentials = new ServicePrincipalCredentials(
+                    System.getenv("PDF_SERVICES_CLIENT_ID"),
+                    System.getenv("PDF_SERVICES_CLIENT_SECRET"));
+
+            // Creates a PDF Services instance
+            PDFServices pdfServices = new PDFServices(credentials);
+
+            // Creates an asset from source file and upload
+            InputStream inputStream = Files.newInputStream(new File("src/main/resources/rotatePagesInput.pdf").toPath());
+            Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
+
+            // First set of page ranges for rotating the specified pages of the input PDF file.
             PageRanges firstPageRange = getFirstPageRangeForRotation();
-            rotatePagesOperation.setAngleToRotatePagesBy(Angle._90, firstPageRange);
- 
-            // Sets angle by 180 degrees (in clockwise direction) for rotating the specified pages of
-            // the input PDF file.
+
+            // Second set of page ranges for rotating the specified pages of the input PDF file.
             PageRanges secondPageRange = getSecondPageRangeForRotation();
-            rotatePagesOperation.setAngleToRotatePagesBy(Angle._180, secondPageRange);
- 
-            // Execute the operation.
-            FileRef result = rotatePagesOperation.execute(executionContext);
- 
-            // Save the result to the specified location.
-            result.saveAs("output/rotatePagesOutput.pdf");
- 
-        } catch (IOException | ServiceApiException | SdkException | ServiceUsageException e) {
+
+            // Create parameters for the job
+            RotatePagesParams rotatePagesParams = RotatePagesParams.rotatePagesParamsBuilder()
+                    .withAngleToRotatePagesBy(Angle._90, firstPageRange)
+                    .withAngleToRotatePagesBy(Angle._180, secondPageRange)
+                    .build();
+
+            // Creates a new job instance
+            RotatePagesJob rotatePagesJob = new RotatePagesJob(asset, rotatePagesParams);
+
+            // Submits the job and gets the job result
+            String location = pdfServices.submit(rotatePagesJob);
+            PDFServicesResponse<RotatePagesResult> pdfServicesResponse = pdfServices.getJobResult(location, RotatePagesResult.class);
+
+            // Get content from the resulting asset(s)
+            Asset resultAsset = pdfServicesResponse.getResult().getAsset();
+            StreamAsset streamAsset = pdfServices.getContent(resultAsset);
+
+            // Creates an output stream and copy stream asset's content to it
+            OutputStream outputStream = Files.newOutputStream(new File("output/rotatePagesOutput.pdf").toPath());
+            IOUtils.copy(streamAsset.getInputStream(), outputStream);
+        } catch (IOException | ServiceApiException | SDKException | ServiceUsageException e) {
             LOGGER.error("Exception encountered while executing operation", e);
         }
     }
  
     private static PageRanges getFirstPageRangeForRotation() {
-        // Specify pages for rotation.
+        // Specify pages for rotation
         PageRanges firstPageRange = new PageRanges();
-        // Add page 1.
+        // Add page 1
         firstPageRange.addSinglePage(1);
- 
-        // Add pages 3 to 4.
+
+        // Add pages 3 to 4
         firstPageRange.addRange(3, 4);
         return firstPageRange;
     }
  
     private static PageRanges getSecondPageRangeForRotation() {
-        // Specify pages for rotation.
+        // Specify pages for rotation
         PageRanges secondPageRange = new PageRanges();
-        // Add page 2.
+        // Add page 2
         secondPageRange.addSinglePage(2);
- 
+
         return secondPageRange;
     }
   }

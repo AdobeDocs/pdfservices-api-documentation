@@ -34,38 +34,39 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
     public static void main(String[] args) {
 
       try {
+        // Initial setup, create credentials instance
+        Credentials credentials = new ServicePrincipalCredentials(
+                System.getenv("PDF_SERVICES_CLIENT_ID"),
+                System.getenv("PDF_SERVICES_CLIENT_SECRET"));
 
-        // Initial setup, create credentials instance.
-        Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-           .withClientId("PDF_SERVICES_CLIENT_ID")
-           .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-           .build();
+        // Creates a PDF Services instance
+        PDFServices pdfServices = new PDFServices(credentials);
 
-        //Create an ExecutionContext using credentials and create a new operation instance.
-        ExecutionContext executionContext = ExecutionContext.create(credentials);
-        PDFPropertiesOperation pdfPropertiesOperation = PDFPropertiesOperation.createNew();
+        // Creates an asset from source file and upload
+        InputStream inputStream = Files.newInputStream(new File("src/main/resources/pdfPropertiesInput.pdf").toPath());
+        Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
 
-        // Provide an input FileRef for the operation
-        FileRef source = FileRef.createFromLocalFile("src/main/resources/pdfPropertiesInput.pdf");
-        pdfPropertiesOperation.setInputFile(source);
+        // Create parameters for the job
+        PDFPropertiesParams pdfPropertiesParams = PDFPropertiesParams.pdfPropertiesParamsBuilder()
+                .includePageLevelProperties()
+                .build();
 
-        // Build PDF Properties options to include page level properties and set them into the operation
-        PDFPropertiesOptions pdfPropertiesOptions = PDFPropertiesOptions.PDFPropertiesOptionsBuilder()
-              .includePageLevelProperties(true)
-              .build();
-        pdfPropertiesOperation.setOptions(pdfPropertiesOptions);
+        // Creates a new job instance
+        PDFPropertiesJob pdfPropertiesJob = new PDFPropertiesJob(asset)
+                .setParams(pdfPropertiesParams);
 
-        // Execute the operation ang get properties of the PDF in PDFProperties object.
-        PDFProperties result = pdfPropertiesOperation.execute(executionContext);
-            
-        // Get properties of the PDF
-        LOGGER.info("The Page level properties of the PDF: {}", result.getDocument().getPageCount());
-        LOGGER.info("The Fonts used in the PDF: ");
-        for(Font font: result.getDocument().getFonts()) {
-            LOGGER.info(font.getName());
-        }
+        // Submits the job and gets the job result
+        String location = pdfServices.submit(pdfPropertiesJob);
+        PDFServicesResponse<PDFPropertiesResult> pdfServicesResponse = pdfServices.getJobResult(location, PDFPropertiesResult.class);
 
-      } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
+        PDFProperties pdfProperties = pdfServicesResponse.getResult().getPdfProperties();
+        
+        // Fetch the requisite properties of the specified PDF.
+        LOGGER.info("Size of the specified PDF file: {}", pdfProperties.getDocument().getFileSize());
+        LOGGER.info("Version of the specified PDF file: {}", pdfProperties.getDocument().getPDFVersion());
+        LOGGER.info("Page count of the specified PDF file: {}", pdfProperties.getDocument().getPageCount());
+
+      } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
         LOGGER.error("Exception encountered while executing operation", ex);
       }
     }

@@ -10,7 +10,7 @@ To get started using Adobe Document Generation API, let's walk through a simple 
 
 To complete this guide, you will need:
 
-* [Java](http://www.oracle.com/technetwork/java/javase/downloads/index.html) - Java 8 or higher is required. 
+* [Java](http://www.oracle.com/technetwork/java/javase/downloads/index.html) - Java 11 or higher is required. 
 * [Maven](https://maven.apache.org/install.html)
 * An Adobe ID. If you do not have one, the credential setup will walk you through creating one.
 * A way to edit code. No specific editor is required for this guide.
@@ -54,16 +54,17 @@ To complete this guide, you will need:
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.adobe.documentservices</groupId>
-  <artifactId>pdfservices-sdk-documentgeneration-guide</artifactId>
-  <version>1</version>
+  <artifactId>pdfservices-sdk-samples</artifactId>
+  <version>${pdfservices.sdk.samples.version}</version>
 
   <name>PDF Services Java SDK Samples</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <pdfservices.sdk.version>3.5.1</pdfservices.sdk.version>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <pdfservices.sdk.version>4.0.0_beta</pdfservices.sdk.version>
+    <pdfservices.sdk.samples.version>4.0.0</pdfservices.sdk.samples.version>
   </properties>
 
   <dependencies>
@@ -79,7 +80,7 @@ To complete this guide, you will need:
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-slf4j-impl</artifactId>
-      <version>2.17.1</version>
+      <version>2.21.1</version>
     </dependency>
   </dependencies>
 
@@ -92,45 +93,6 @@ To complete this guide, you will need:
         <configuration>
           <source>${maven.compiler.source}</source>
           <target>${maven.compiler.target}</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>3.2.4</version>
-        <configuration>
-          <filters>
-            <filter>
-              <artifact>*:*</artifact>
-              <excludes>
-                <exclude>META-INF/*.SF</exclude>
-                <exclude>META-INF/*.DSA</exclude>
-                <exclude>META-INF/*.RSA</exclude>
-              </excludes>
-            </filter>
-          </filters>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.0.2</version>
-        <configuration>
-          <archive>
-            <manifest>
-              <addClasspath>true</addClasspath>
-              <classpathPrefix>lib/</classpathPrefix>
-              <mainClass>GeneratePDF</mainClass>
-            </manifest>
-          </archive>
         </configuration>
       </plugin>
       <plugin>
@@ -216,25 +178,31 @@ Notice how the tokens in the Word document match up with values in our JSON. Whi
 3) We'll begin by including our required dependencies:
 
 ```javascript
-import com.adobe.pdfservices.operation.ExecutionContext;
+import com.adobe.pdfservices.operation.PDFServices;
+import com.adobe.pdfservices.operation.PDFServicesMediaType;
+import com.adobe.pdfservices.operation.PDFServicesResponse;
 import com.adobe.pdfservices.operation.auth.Credentials;
-import com.adobe.pdfservices.operation.exception.SdkException;
+import com.adobe.pdfservices.operation.auth.ServicePrincipalCredentials;
+import com.adobe.pdfservices.operation.exception.SDKException;
 import com.adobe.pdfservices.operation.exception.ServiceApiException;
 import com.adobe.pdfservices.operation.exception.ServiceUsageException;
-import com.adobe.pdfservices.operation.io.FileRef;
-
-import com.adobe.pdfservices.operation.pdfops.DocumentMergeOperation;
-import com.adobe.pdfservices.operation.pdfops.options.documentmerge.DocumentMergeOptions;
-import com.adobe.pdfservices.operation.pdfops.options.documentmerge.OutputFormat;
-
+import com.adobe.pdfservices.operation.io.Asset;
+import com.adobe.pdfservices.operation.io.StreamAsset;
+import com.adobe.pdfservices.operation.pdfjobs.jobs.DocumentMergeJob;
+import com.adobe.pdfservices.operation.pdfjobs.params.documentmerge.DocumentMergeParams;
+import com.adobe.pdfservices.operation.pdfjobs.params.documentmerge.OutputFormat;
+import com.adobe.pdfservices.operation.pdfjobs.result.DocumentMergeResult;
+import org.apache.commons.io.IOUtils;
+import org.json.JSONObject;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-
-import org.json.JSONObject;
 ```
 
 4) Now let's define our main class:
@@ -251,23 +219,9 @@ public class GeneratePDF {
 }
 ```
 
-5) Inside our class, we'll begin by defining our input Word, JSON and output filenames. If the output file already exists, it will be deleted:
-
-```javascript
-String input_file = "./receiptTemplate.docx";
-
-String output_file = "./generatedReceipt.pdf";
-Files.deleteIfExists(Paths.get(output_file));
-
-Path jsonPath = Paths.get("./receipt.json");
-
-String json = new String(Files.readAllBytes(jsonPath));
-JSONObject jsonDataForMerge = new JSONObject(json);
-```
-
 These lines are hard coded but in a real application would typically be dynamic.
 
-6) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+5) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
 - **Windows:**
   - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
   - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
@@ -277,41 +231,62 @@ These lines are hard coded but in a real application would typically be dynamic.
   - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
 
-7) Next, we can create our credentials and use them:
+6) Next, we can create our credentials and use them to create our PDF Services instance
 
 ```javascript
-// Initial setup, create credentials instance.
-Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-    .withClientId(System.getenv("PDF_SERVICES_CLIENT_ID"))
-    .withClientSecret(System.getenv("PDF_SERVICES_CLIENT_SECRET"))
-    .build();
+// Initial setup, create credentials instance
+Credentials credentials = new ServicePrincipalCredentials(
+        System.getenv("PDF_SERVICES_CLIENT_ID"), System.getenv("PDF_SERVICES_CLIENT_SECRET"));
 
-// Create an ExecutionContext using credentials.
-ExecutionContext executionContext = ExecutionContext.create(credentials);
+// Create PDF Services instance
+PDFServices pdfServices = new PDFServices(credentials);
 ```
 
-8) Now, let's create the operation:
+7) Now, let's create the input asset and JSON data for merge:
 
 ```javascript
-DocumentMergeOptions documentMergeOptions = new DocumentMergeOptions(jsonDataForMerge, OutputFormat.PDF);
+InputStream inputStream = Files.newInputStream(new File("./receiptTemplate.docx").toPath());
+Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.DOCX.getMediaType());
 
-DocumentMergeOperation documentMergeOperation = DocumentMergeOperation.createNew(documentMergeOptions);
+Path jsonPath = Paths.get("./receipt.json");
+String json = new String(Files.readAllBytes(jsonPath));
+JSONObject jsonDataForMerge = new JSONObject(json);
+```
 
-// Provide an input FileRef for the operation
-FileRef source = FileRef.createFromLocalFile(input_file);
-documentMergeOperation.setInput(source);
+8) Now, let's create the parameters and the job:
+
+```javascript
+// Create parameters for the job
+DocumentMergeParams documentMergeParams = DocumentMergeParams.documentMergeParamsBuilder()
+        .withJsonDataForMerge(jsonDataForMerge)
+        .withOutputFormat(OutputFormat.PDF)
+        .build();
+
+// Creates a new job instance
+DocumentMergeJob documentMergeJob = new DocumentMergeJob(asset, documentMergeParams);
 ```
 
 This set of code defines what we're doing (a document merge operation, the SDK's way of describing Document Generation), points to our local JSON file and specifies the output is a PDF. It also points to the Word file used as a template.
 
-9) The next code block executes the operation:
+9) The next code block submits the job and get the result:
 
 ```javascript
-// Execute the operation
-FileRef result = documentMergeOperation.execute(executionContext);
+// Submit the job and get the job result
+String location = pdfServices.submit(documentMergeJob);
+PDFServicesResponse<DocumentMergeResult> pdfServicesResponse = pdfServices.getJobResult(location, DocumentMergeResult.class);
 
-// Save the result at the specified location
-result.saveAs(output_file);
+// Get content from the resulting asset(s)
+Asset resultAsset = pdfServicesResponse.getResult().getAsset();
+StreamAsset streamAsset = pdfServices.getContent(resultAsset);
+```
+
+10) The next code block saves the result at the specified location:
+
+```javascript
+// Creating an output stream and copying stream asset's content to it
+String outputFilePath = createOutputFilePath();
+OutputStream outputStream = Files.newOutputStream(new File(outputFilePath).toPath());
+IOUtils.copy(streamAsset.getInputStream(), outputStream);
 ```
 
 This code runs the Document Generation process and then stores the result PDF document to the file system. 
@@ -321,25 +296,31 @@ This code runs the Document Generation process and then stores the result PDF do
 Here's the complete application (`src/main/java/GeneratePDF.java`):
 
 ```javascript
-import com.adobe.pdfservices.operation.ExecutionContext;
+import com.adobe.pdfservices.operation.PDFServices;
+import com.adobe.pdfservices.operation.PDFServicesMediaType;
+import com.adobe.pdfservices.operation.PDFServicesResponse;
 import com.adobe.pdfservices.operation.auth.Credentials;
-import com.adobe.pdfservices.operation.exception.SdkException;
+import com.adobe.pdfservices.operation.auth.ServicePrincipalCredentials;
+import com.adobe.pdfservices.operation.exception.SDKException;
 import com.adobe.pdfservices.operation.exception.ServiceApiException;
 import com.adobe.pdfservices.operation.exception.ServiceUsageException;
-import com.adobe.pdfservices.operation.io.FileRef;
-
-import com.adobe.pdfservices.operation.pdfops.DocumentMergeOperation;
-import com.adobe.pdfservices.operation.pdfops.options.documentmerge.DocumentMergeOptions;
-import com.adobe.pdfservices.operation.pdfops.options.documentmerge.OutputFormat;
-
+import com.adobe.pdfservices.operation.io.Asset;
+import com.adobe.pdfservices.operation.io.StreamAsset;
+import com.adobe.pdfservices.operation.pdfjobs.jobs.DocumentMergeJob;
+import com.adobe.pdfservices.operation.pdfjobs.params.documentmerge.DocumentMergeParams;
+import com.adobe.pdfservices.operation.pdfjobs.params.documentmerge.OutputFormat;
+import com.adobe.pdfservices.operation.pdfjobs.result.DocumentMergeResult;
+import org.apache.commons.io.IOUtils;
+import org.json.JSONObject;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-
-import org.json.JSONObject;
 
 public class GeneratePDF {
 
@@ -348,45 +329,44 @@ public class GeneratePDF {
     public static void main(String[] args) {
 
         try {
-
-            String input_file = "./receiptTemplate.docx";
-
-            String output_file = "./generatedReceipt.pdf";
-            Files.deleteIfExists(Paths.get(output_file));
-
+            // Initial setup, create credentials instance
+            Credentials credentials = new ServicePrincipalCredentials(
+                    System.getenv("PDF_SERVICES_CLIENT_ID"),
+                    System.getenv("PDF_SERVICES_CLIENT_SECRET"));
+          
+            // Creates a PDF Services instance
+            PDFServices pdfServices = new PDFServices(credentials);
+          
+            // Creates an asset from source file and upload
+            InputStream inputStream = Files.newInputStream(new File("./receiptTemplate.docx").toPath());
+            Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.DOCX.getMediaType());
+          
+            // Setup input data for the document merge process
             Path jsonPath = Paths.get("./receipt.json");
-
             String json = new String(Files.readAllBytes(jsonPath));
             JSONObject jsonDataForMerge = new JSONObject(json);
-
-      		System.out.println("About to generate a PDF based on " + input_file + "\n");
-
-            // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-                .withClientId(System.getenv("PDF_SERVICES_CLIENT_ID"))
-                .withClientSecret(System.getenv("PDF_SERVICES_CLIENT_SECRET"))
-                .build();
-
-            // Create an ExecutionContext using credentials.
-            ExecutionContext executionContext = ExecutionContext.create(credentials);
-
-            DocumentMergeOptions documentMergeOptions = new DocumentMergeOptions(jsonDataForMerge, OutputFormat.PDF);
- 
-            DocumentMergeOperation documentMergeOperation = DocumentMergeOperation.createNew(documentMergeOptions);
- 
-            // Provide an input FileRef for the operation
-            FileRef source = FileRef.createFromLocalFile(input_file);
-            documentMergeOperation.setInput(source);
-
-            // Execute the operation
-            FileRef result = documentMergeOperation.execute(executionContext);
-
-            // Save the result at the specified location
-            result.saveAs(output_file);
-            
-            System.out.println("All Done");
-            
-        } catch (ServiceApiException | IOException | SdkException | ServiceUsageException e) {
+          
+            // Create parameters for the job
+            DocumentMergeParams documentMergeParams = DocumentMergeParams.documentMergeParamsBuilder()
+                    .withJsonDataForMerge(jsonDataForMerge)
+                    .withOutputFormat(OutputFormat.PDF)
+                    .build();
+          
+            // Creates a new job instance
+            DocumentMergeJob documentMergeJob = new DocumentMergeJob(asset, documentMergeParams);
+          
+            // Submits the job and gets the job result
+            String location = pdfServices.submit(documentMergeJob);
+            PDFServicesResponse<DocumentMergeResult> pdfServicesResponse = pdfServices.getJobResult(location, DocumentMergeResult.class);
+          
+            // Get content from the resulting asset(s)
+            Asset resultAsset = pdfServicesResponse.getResult().getAsset();
+            StreamAsset streamAsset = pdfServices.getContent(resultAsset);
+          
+            // Creates an output stream and copy stream asset's content to it
+            OutputStream outputStream = Files.newOutputStream(new File("./generatedReceipt.pdf").toPath());
+            IOUtils.copy(streamAsset.getInputStream(), outputStream);
+        } catch (ServiceApiException | IOException | SDKException | ServiceUsageException e) {
             LOGGER.error("Exception encountered while executing operation", e);
         }
     }
