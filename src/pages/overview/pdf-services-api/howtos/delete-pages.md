@@ -32,45 +32,53 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 
    public static void main(String[] args) {
        try {
-           // Initial setup, create credentials instance.
-           Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-                .withClientId("PDF_SERVICES_CLIENT_ID")
-                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                .build();
+            // Initial setup, create credentials instance
+            Credentials credentials = new ServicePrincipalCredentials(
+                    System.getenv("PDF_SERVICES_CLIENT_ID"),
+                    System.getenv("PDF_SERVICES_CLIENT_SECRET"));
 
-           // Create an ExecutionContext using credentials and create a new operation instance.
-           ExecutionContext executionContext = ExecutionContext.create(credentials);
-           DeletePagesOperation deletePagesOperation = DeletePagesOperation.createNew();
+            // Creates a PDF Services instance
+            PDFServices pdfServices = new PDFServices(credentials);
 
-           // Set operation input from a source file.
-           FileRef source = FileRef.createFromLocalFile("src/main/resources/deletePagesInput.pdf");
-           deletePagesOperation.setInput(source);
+            // Creates an asset from source file and upload
+            InputStream inputStream = Files.newInputStream(new File("src/main/resources/deletePagesInput.pdf").toPath());
+            Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
 
-           // Delete pages of the document (as specified by PageRanges).
-           PageRanges pageRangeForDeletion = getPageRangeForDeletion();
-           deletePagesOperation.setPageRanges(pageRangeForDeletion);
+            // Delete pages of the document (as specified by PageRanges).
+            PageRanges pageRangeForDeletion = getPageRangeForDeletion();
 
-           // Execute the operation.
-           FileRef result = deletePagesOperation.execute(executionContext);
+            // Create parameters for the job
+            DeletePagesParams deletePagesParams = new DeletePagesParams(pageRangeForDeletion);
 
-           // Save the result to the specified location.
-           result.saveAs("output/deletePagesOutput.pdf");
+            // Creates a new job instance
+            DeletePagesJob deletePagesJob = new DeletePagesJob(asset, deletePagesParams);
 
-       } catch (IOException | ServiceApiException | SdkException | ServiceUsageException e) {
+            // Submits the job and gets the job result
+            String location = pdfServices.submit(deletePagesJob);
+            PDFServicesResponse<DeletePagesResult> pdfServicesResponse = pdfServices.getJobResult(location, DeletePagesResult.class);
+
+            // Get content from the resulting asset(s)
+            Asset resultAsset = pdfServicesResponse.getResult().getAsset();
+            StreamAsset streamAsset = pdfServices.getContent(resultAsset);
+
+            // Creates an output stream and copy stream asset's content to it
+            OutputStream outputStream = Files.newOutputStream(new File("output/deletePagesOutput.pdf").toPath());
+            IOUtils.copy(streamAsset.getInputStream(), outputStream);
+       } catch (IOException | ServiceApiException | SDKException | ServiceUsageException e) {
            LOGGER.error("Exception encountered while executing operation", e);
        }
    }
 
-   private static PageRanges getPageRangeForDeletion() {
-       // Specify pages for deletion.
-       PageRanges pageRangeForDeletion = new PageRanges();
-       // Add page 1.
-       pageRangeForDeletion.addSinglePage(1);
+    private static PageRanges getPageRangeForDeletion() {
+        // Specify pages for deletion
+        PageRanges pageRangeForDeletion = new PageRanges();
+        // Add page 1
+        pageRangeForDeletion.addSinglePage(1);
 
-       // Add pages 3 to 4.
-       pageRangeForDeletion.addRange(3, 4);
-       return pageRangeForDeletion;
-   }
+        // Add pages 3 to 4
+        pageRangeForDeletion.addRange(3, 4);
+        return pageRangeForDeletion;
+    }
  }
 ```
 

@@ -31,29 +31,43 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 
    public static void main(String[] args) {
      try {
-       // Initial setup, create credentials instance.
-        Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-            .withClientId("PDF_SERVICES_CLIENT_ID")
-            .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+        // Initial setup, create credentials instance
+        Credentials credentials = new ServicePrincipalCredentials(
+            System.getenv("PDF_SERVICES_CLIENT_ID"),
+            System.getenv("PDF_SERVICES_CLIENT_SECRET"));
+    
+        // Creates a PDF Services instance
+        PDFServices pdfServices = new PDFServices(credentials);
+    
+        // Creates an asset from source file and upload
+        InputStream inputStream1 = Files.newInputStream(new File("src/main/resources/combineFilesInput1.pdf").toPath());
+        InputStream inputStream2 = Files.newInputStream(new File("src/main/resources/combineFilesInput2.pdf").toPath());
+        List<StreamAsset> streamAssets = new ArrayList<>();
+        streamAssets.add(new StreamAsset(inputStream1, PDFServicesMediaType.PDF.getMediaType()));
+        streamAssets.add(new StreamAsset(inputStream2, PDFServicesMediaType.PDF.getMediaType()));
+        List<Asset> assets = pdfServices.uploadAssets(streamAssets);
+    
+        // Create parameters for the job
+        CombinePDFParams combinePDFParams = CombinePDFParams.combinePDFParamsBuilder()
+            .addAsset(assets.get(0))
+            .addAsset(assets.get(1))
             .build();
-
-       //Create an ExecutionContext using credentials and create a new operation instance.
-       ExecutionContext executionContext = ExecutionContext.create(credentials);
-       CombineFilesOperation combineFilesOperation = CombineFilesOperation.createNew();
-
-       // Add operation input from source files.
-       FileRef combineSource1 = FileRef.createFromLocalFile("src/main/resources/combineFilesInput1.pdf");
-       FileRef combineSource2 = FileRef.createFromLocalFile("src/main/resources/combineFilesInput2.pdf");
-       combineFilesOperation.addInput(combineSource1);
-       combineFilesOperation.addInput(combineSource2);
-
-       // Execute the operation.
-       FileRef result = combineFilesOperation.execute(executionContext);
-
-       // Save the result to the specified location.
-       result.saveAs("output/combineFilesOutput.pdf");
-
-     } catch (IOException | ServiceApiException | SdkException | ServiceUsageException e) {
+    
+        // Creates a new job instance
+        CombinePDFJob combinePDFJob = new CombinePDFJob(combinePDFParams);
+    
+        // Submits the job and gets the job result
+        String location = pdfServices.submit(combinePDFJob);
+        PDFServicesResponse<CombinePDFResult> pdfServicesResponse = pdfServices.getJobResult(location, CombinePDFResult.class);
+    
+        // Get content from the resulting asset(s)
+        Asset resultAsset = pdfServicesResponse.getResult().getAsset();
+        StreamAsset streamAsset = pdfServices.getContent(resultAsset);
+    
+        // Creates an output stream and copy stream asset's content to it
+        OutputStream outputStream = Files.newOutputStream(new File("output/combineFilesOutput.pdf").toPath());
+        IOUtils.copy(streamAsset.getInputStream(), outputStream);
+     } catch (IOException | ServiceApiException | SDKException | ServiceUsageException e) {
        LOGGER.error("Exception encountered while executing operation", e);
      }
    }
@@ -211,59 +225,69 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
  
     public static void main(String[] args) {
  
-      try {
- 
-        // Initial setup, create credentials instance.
-        Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-            .withClientId("PDF_SERVICES_CLIENT_ID")
-            .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-            .build();
- 
-        //Create an ExecutionContext using credentials and create a new operation instance.
-        ExecutionContext executionContext = ExecutionContext.create(credentials);
-        CombineFilesOperation combineFilesOperation = CombineFilesOperation.createNew();
- 
-        // Create a FileRef instance from a local file.
-        FileRef firstFileToCombine = FileRef.createFromLocalFile("src/main/resources/combineFileWithPageRangeInput1.pdf");
+      try { 
+         // Initial setup, create credentials instance
+        Credentials credentials = new ServicePrincipalCredentials(
+                System.getenv("PDF_SERVICES_CLIENT_ID"),
+                System.getenv("PDF_SERVICES_CLIENT_SECRET"));
+
+        // Creates a PDF Services instance
+        PDFServices pdfServices = new PDFServices(credentials);
+
+        // Creates an asset from source file and upload
+        InputStream inputStream1 = Files.newInputStream(new File("src/main/resources/combineFileWithPageRangeInput1.pdf").toPath());
+        InputStream inputStream2 = Files.newInputStream(new File("src/main/resources/combineFileWithPageRangeInput2.pdf").toPath());
+        List<StreamAsset> streamAssets = new ArrayList<>();
+        streamAssets.add(new StreamAsset(inputStream1, PDFServicesMediaType.PDF.getMediaType()));
+        streamAssets.add(new StreamAsset(inputStream2, PDFServicesMediaType.PDF.getMediaType()));
+        List<Asset> assets = pdfServices.uploadAssets(streamAssets);
+
         PageRanges pageRangesForFirstFile = getPageRangeForFirstFile();
-        // Add the first file as input to the operation, along with its page range.
-        combineFilesOperation.addInput(firstFileToCombine, pageRangesForFirstFile);
- 
-        // Create a second FileRef instance using a local file.
-        FileRef secondFileToCombine = FileRef.createFromLocalFile("src/main/resources/combineFileWithPageRangeInput2.pdf");
         PageRanges pageRangesForSecondFile = getPageRangeForSecondFile();
-        // Add the second file as input to the operation, along with its page range.
-        combineFilesOperation.addInput(secondFileToCombine, pageRangesForSecondFile);
- 
-        // Execute the operation.
-        FileRef result = combineFilesOperation.execute(executionContext);
- 
-        // Save the result to the specified location.
-        result.saveAs("output/combineFilesWithPageOptionsOutput.pdf");
- 
-      } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
+
+        // Create parameters for the job
+        CombinePDFParams combinePDFParams = CombinePDFParams.combinePDFParamsBuilder()
+                .addAsset(assets.get(0), pageRangesForFirstFile) // Add the first asset as input to the params, along with its page ranges
+                .addAsset(assets.get(1), pageRangesForSecondFile) // Add the second asset as input to the params, along with its page ranges
+                .build();
+
+        // Creates a new job instance
+        CombinePDFJob combinePDFJob = new CombinePDFJob(combinePDFParams);
+
+        // Submits the job and gets the job result
+        String location = pdfServices.submit(combinePDFJob);
+        PDFServicesResponse<CombinePDFResult> pdfServicesResponse = pdfServices.getJobResult(location, CombinePDFResult.class);
+
+        // Get content from the resulting asset(s)
+        Asset resultAsset = pdfServicesResponse.getResult().getAsset();
+        StreamAsset streamAsset = pdfServices.getContent(resultAsset);
+
+        // Creates an output stream and copy stream asset's content to it
+        OutputStream outputStream = Files.newOutputStream(new File("output/combineFilesWithPageOptionsOutput.pdf").toPath());
+        IOUtils.copy(streamAsset.getInputStream(), outputStream);
+      } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
         LOGGER.error("Exception encountered while executing operation", ex);
       }
     }
  
-    private static PageRanges getPageRangeForSecondFile() {
-      // Specify which pages of the second file are to be included in the combined file.
-      PageRanges pageRangesForSecondFile = new PageRanges();
-      // Add all pages including and after page 3.
-      pageRangesForSecondFile.addAllFrom(3);
-      return pageRangesForSecondFile;
+     private static PageRanges getPageRangeForSecondFile() {
+        // Specify which pages of the second file are to be included in the combined file
+        PageRanges pageRangesForSecondFile = new PageRanges();
+        // Add all pages including and after page 3
+        pageRangesForSecondFile.addAllFrom(3);
+        return pageRangesForSecondFile;
     }
- 
+    
     private static PageRanges getPageRangeForFirstFile() {
-      // Specify which pages of the first file are to be included in the combined file.
-      PageRanges pageRangesForFirstFile = new PageRanges();
-      // Add page 1.
-      pageRangesForFirstFile.addSinglePage(1);
-      // Add page 2.
-      pageRangesForFirstFile.addSinglePage(2);
-      // Add pages 3 to 4.
-      pageRangesForFirstFile.addRange(3, 4);
-      return pageRangesForFirstFile;
+        // Specify which pages of the first file are to be included in the combined file
+        PageRanges pageRangesForFirstFile = new PageRanges();
+        // Add page 1
+        pageRangesForFirstFile.addSinglePage(1);
+        // Add page 2
+        pageRangesForFirstFile.addSinglePage(2);
+        // Add pages 3 to 4
+        pageRangesForFirstFile.addRange(3, 4);
+        return pageRangesForFirstFile;
     }
   }
 ```

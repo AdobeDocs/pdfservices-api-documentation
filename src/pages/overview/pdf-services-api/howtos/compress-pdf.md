@@ -33,28 +33,35 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
   
      public static void main(String[] args) {
   
-         try {
-             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-                .withClientId("PDF_SERVICES_CLIENT_ID")
-                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                .build();
+        try {
+            // Initial setup, create credentials instance
+            Credentials credentials = new ServicePrincipalCredentials(
+                    System.getenv("PDF_SERVICES_CLIENT_ID"),
+                    System.getenv("PDF_SERVICES_CLIENT_SECRET"));
+
+            // Creates a PDF Services instance
+            PDFServices pdfServices = new PDFServices(credentials);
+
+            // Creates an asset from source file and upload
+            InputStream inputStream = Files.newInputStream(new File("src/main/resources/compressPDFInput.pdf").toPath());
+            Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
+
+            // Creates a new job instance
+            CompressPDFJob compressPDFJob = new CompressPDFJob(asset);
+
+            // Submits the job and gets the job result
+            String location = pdfServices.submit(compressPDFJob);
+            PDFServicesResponse<CompressPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, CompressPDFResult.class);
+
+            // Get content from the resulting asset(s)
+            Asset resultAsset = pdfServicesResponse.getResult().getAsset();
+            StreamAsset streamAsset = pdfServices.getContent(resultAsset);
+
+            // Creating an output stream and copying stream asset content to it
+            OutputStream outputStream = Files.newOutputStream(new File("output/compressPDFOutput.pdf").toPath());
+            IOUtils.copy(streamAsset.getInputStream(), outputStream);
   
-             // Create an ExecutionContext using credentials and create a new operation instance.
-             ExecutionContext executionContext = ExecutionContext.create(credentials);
-             CompressPDFOperation compressPDFOperation = CompressPDFOperation.createNew();
-  
-             // Set operation input from a source file.
-             FileRef source = FileRef.createFromLocalFile("src/main/resources/compressPDFInput.pdf");
-             compressPDFOperation.setInput(source);
-  
-             // Execute the operation
-             FileRef result = compressPDFOperation.execute(executionContext);
-  
-             // Save the result at the specified location
-             result.saveAs("output/compressPDFOutput.pdf");
-  
-         } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
+         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
              LOGGER.error("Exception encountered while executing operation", ex);
          }
      }
@@ -201,33 +208,39 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
       public static void main(String[] args) {
    
           try {
-              // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-                .withClientId("PDF_SERVICES_CLIENT_ID")
-                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                .build();
-   
-              // Create an ExecutionContext using credentials and create a new operation instance.
-              ExecutionContext executionContext = ExecutionContext.create(credentials);
-              CompressPDFOperation compressPDFOperation = CompressPDFOperation.createNew();
-   
-              // Set operation input from a source file.
-              FileRef source = FileRef.createFromLocalFile("src/main/resources/compressPDFInput.pdf");
-              compressPDFOperation.setInput(source);
-   
-              // Build CompressPDF options from supported compression levels and set them into the operation
-              CompressPDFOptions compressPDFOptions = CompressPDFOptions.compressPDFOptionsBuilder()
-                      .withCompressionLevel(CompressionLevel.LOW)
-                      .build();
-              compressPDFOperation.setOptions(compressPDFOptions);
-   
-              // Execute the operation
-              FileRef result = compressPDFOperation.execute(executionContext);
-   
-              // Save the result at the specified location
-              result.saveAs("output/compressPDFWithOptionsOutput.pdf");
-   
-          } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
+            // Initial setup, create credentials instance
+            Credentials credentials = new ServicePrincipalCredentials(
+                    System.getenv("PDF_SERVICES_CLIENT_ID"),
+                    System.getenv("PDF_SERVICES_CLIENT_SECRET"));
+
+            // Creates a PDF Services instance
+            PDFServices pdfServices = new PDFServices(credentials);
+
+            // Creates an asset from source file and upload
+            InputStream inputStream = Files.newInputStream(new File("src/main/resources/compressPDFInput.pdf").toPath());
+            Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
+
+            // Create parameters for the job
+            CompressPDFParams compressPDFParams = CompressPDFParams.compressPDFParamsBuilder()
+                    .withCompressionLevel(CompressionLevel.LOW)
+                    .build();
+
+            // Creates a new job instance
+            CompressPDFJob compressPDFJob = new CompressPDFJob(asset)
+                    .setParams(compressPDFParams);
+
+            // Submits the job and gets the job result
+            String location = pdfServices.submit(compressPDFJob);
+            PDFServicesResponse<CompressPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, CompressPDFResult.class);
+
+            // Get content from the resulting asset(s)
+            Asset resultAsset = pdfServicesResponse.getResult().getAsset();
+            StreamAsset streamAsset = pdfServices.getContent(resultAsset);
+
+            // Creating an output stream and copying stream asset content to it
+            OutputStream outputStream = Files.newOutputStream(new File("output/compressPDFWithOptionsOutput.pdf").toPath());
+            IOUtils.copy(streamAsset.getInputStream(), outputStream);
+          } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
               LOGGER.error("Exception encountered while executing operation", ex);
           }
       }

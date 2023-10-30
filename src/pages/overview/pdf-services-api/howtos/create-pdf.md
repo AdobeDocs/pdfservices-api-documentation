@@ -49,30 +49,34 @@ public class CreatePDFFromDOCX {
     public static void main(String[] args) {
 
         try {
+            // Initial setup, create credentials instance
+            Credentials credentials = new ServicePrincipalCredentials(
+                    System.getenv("PDF_SERVICES_CLIENT_ID"),
+                    System.getenv("PDF_SERVICES_CLIENT_SECRET"));
 
-            // Initial setup, create credentials instance. 
-            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-                .withClientId("PDF_SERVICES_CLIENT_ID")
-                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                .build();
+            // Creates a PDF Services instance
+            PDFServices pdfServices = new PDFServices(credentials);
 
-            //Create an ExecutionContext using credentials and create a new operation instance.
-            ExecutionContext executionContext = ExecutionContext.create(credentials);
-            CreatePDFOperation createPdfOperation = CreatePDFOperation.createNew();
+            // Creates an asset from source file and upload
+            InputStream inputStream = Files.newInputStream(new File("src/main/resources/createPDFInput.docx").toPath());
+            Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.DOCX.getMediaType());
 
-            // Set operation input from a source file. 
-            FileRef source = FileRef.createFromLocalFile("src/main/resources/createPDFInput.docx");
-            createPdfOperation.setInput(source);
+            // Creates a new job instance
+            CreatePDFJob createPDFJob = new CreatePDFJob(asset);
 
-            // Execute the operation. 
-            FileRef result = createPdfOperation.execute(executionContext);
+            // Submits the job and gets the job result
+            String location = pdfServices.submit(createPDFJob);
+            PDFServicesResponse<CreatePDFResult> pdfServicesResponse = pdfServices.getJobResult(location, CreatePDFResult.class);
 
-            // Save the result to the specified location.
-            result.saveAs("output/createPDFFromDOCX.pdf");
+            // Get content from the resulting asset(s)
+            Asset resultAsset = pdfServicesResponse.getResult().getAsset();
+            StreamAsset streamAsset = pdfServices.getContent(resultAsset);
 
-        } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
-            LOGGER.error("Exception encountered while executing
-                    operation", ex);
+            // Creates an output stream and copy stream asset's content to it
+            OutputStream outputStream = Files.newOutputStream(new File("output/createPDFFromDOCX.pdf").toPath());
+            IOUtils.copy(streamAsset.getInputStream(), outputStream);
+        } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
+            LOGGER.error("Exception encountered while executing the operation", ex);
         }
     }
 }
@@ -223,31 +227,39 @@ public class CreatePDFFromDOCXWithOptions {
       public static void main(String[] args) {
 
         try {
-
-          // Initial setup, create credentials instance.
-          Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-            .withClientId("PDF_SERVICES_CLIENT_ID")
-            .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-            .build();
-
-          //Create an ExecutionContext using credentials and create a new operation instance.
-          ExecutionContext executionContext = ExecutionContext.create(credentials);
-          CreatePDFOperation createPdfOperation = CreatePDFOperation.createNew();
-
-          // Set operation input from a source file.
-          FileRef source = FileRef.createFromLocalFile("src/main/resources/createPDFInput.docx");
-          createPdfOperation.setInput(source);
-
-          // Provide any custom configuration options for the operation.
-          setCustomOptions(createPdfOperation);
-
-          // Execute the operation.
-          FileRef result = createPdfOperation.execute(executionContext);
-
-          // Save the result to the specified location.
-          result.saveAs("output/createPDFFromDOCXWithOptionsOutput.pdf");
-
-        } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
+            // Initial setup, create credentials instance
+            Credentials credentials = new ServicePrincipalCredentials(
+                    System.getenv("PDF_SERVICES_CLIENT_ID"),
+                    System.getenv("PDF_SERVICES_CLIENT_SECRET"));
+    
+            // Creates a PDF Services instance
+            PDFServices pdfServices = new PDFServices(credentials);
+    
+            // Creates an asset from source file and upload
+            InputStream inputStream = Files.newInputStream(new File("src/main/resources/createPDFInput.docx").toPath());
+            Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.DOCX.getMediaType());
+    
+            // Create parameters for the job
+            CreatePDFParams createPDFWordParams = CreatePDFParams.wordParamsBuilder().
+                    withDocumentLanguage(DocumentLanguage.EN_US).
+                    build();
+    
+            // Creates a new job instance
+            CreatePDFJob createPDFJob = new CreatePDFJob(asset)
+                    .setParams(createPDFWordParams);
+    
+            // Submits the job and gets the job result
+            String location = pdfServices.submit(createPDFJob);
+            PDFServicesResponse<CreatePDFResult> pdfServicesResponse = pdfServices.getJobResult(location, CreatePDFResult.class);
+    
+            // Get content from the resulting asset(s)
+            Asset resultAsset = pdfServicesResponse.getResult().getAsset();
+            StreamAsset streamAsset = pdfServices.getContent(resultAsset);
+    
+            // Creates an output stream and copy stream asset's content to it
+            OutputStream outputStream = Files.newOutputStream(new File("output/createPDFFromDOCXWithOptionsOutput.pdf").toPath());
+            IOUtils.copy(streamAsset.getInputStream(), outputStream);
+        } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
           LOGGER.error("Exception encountered while executing operation", ex);
         }
       }
@@ -426,58 +438,61 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
-// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.createpdf.CreatePDFFromStaticHTML
+// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.htmltopdf.StaticHTMLToPDF
 
-public class CreatePDFFromStaticHTML {
+public class StaticHTMLToPDF {
 
-   // Initialize the logger.
-   private static final Logger LOGGER = LoggerFactory.getLogger(CreatePDFFromStaticHTML.class);
+  // Initialize the logger.
+  private static final Logger LOGGER = LoggerFactory.getLogger(StaticHTMLToPDF.class);
 
-   public static void main(String[] args) {
+  public static void main(String[] args) {
 
-     try {
+    try {
+       // Initial setup, create credentials instance
+       Credentials credentials = new ServicePrincipalCredentials(
+               System.getenv("PDF_SERVICES_CLIENT_ID"),
+               System.getenv("PDF_SERVICES_CLIENT_SECRET"));
 
-       // Initial setup, create credentials instance.
-       Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-          .withClientId("PDF_SERVICES_CLIENT_ID")
-          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-          .build();
+       // Creates a PDF Services instance
+       PDFServices pdfServices = new PDFServices(credentials);
 
-       //Create an ExecutionContext using credentials and create a new operation instance.
-       ExecutionContext executionContext = ExecutionContext.create(credentials);
-       CreatePDFOperation htmlToPDFOperation = CreatePDFOperation.createNew();
+       // Creates an asset from source file and upload
+       InputStream inputStream = Files.newInputStream(new File("src/main/resources/createPDFFromStaticHtmlInput.zip").toPath());
+       Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.ZIP.getMediaType());
 
-       // Set operation input from a source file.
-       FileRef source = FileRef.createFromLocalFile("src/main/resources/createPDFFromStaticHtmlInput.zip");
-       htmlToPDFOperation.setInput(source);
+       // Create parameters for the job
+       HTMLToPDFParams htmlToPDFParams = getHTMLToPDFParams();
 
-       // Provide any custom configuration options for the operation.
-       setCustomOptions(htmlToPDFOperation);
+       // Creates a new job instance
+       HTMLToPDFJob htmLtoPDFJob = new HTMLToPDFJob(asset)
+               .setParams(htmlToPDFParams);
 
-       // Execute the operation.
-       FileRef result = htmlToPDFOperation.execute(executionContext);
+       // Submits the job and gets the job result
+       String location = pdfServices.submit(htmLtoPDFJob);
+       PDFServicesResponse<HTMLToPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, HTMLToPDFResult.class);
 
-       // Save the result to the specified location.
-       result.saveAs("output/createPDFFromStaticHtmlOutput.pdf");
+       // Get content from the resulting asset(s)
+       Asset resultAsset = pdfServicesResponse.getResult().getAsset();
+       StreamAsset streamAsset = pdfServices.getContent(resultAsset);
 
-     } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
+       // Creates an output stream and copy stream asset's content to it
+       OutputStream outputStream = Files.newOutputStream(new File("output/staticHTMLToPDFOutput.pdf").toPath());
+       IOUtils.copy(streamAsset.getInputStream(), outputStream);
+
+    } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
        LOGGER.error("Exception encountered while executing operation", ex);
-     }
-   }
+    }
+  }
+   private static HTMLToPDFParams getHTMLToPDFParams() {
+       // Define the page layout, in this case an 8 x 11.5 inch page (effectively portrait orientation)
+       PageLayout pageLayout = new PageLayout();
+       pageLayout.setPageSize(8, 11.5);
 
-   private static void setCustomOptions(CreatePDFOperation htmlToPDFOperation) {
-     // Define the page layout, in this case an 8 x 11.5 inch page (effectively portrait orientation).
-     PageLayout pageLayout = new PageLayout();
-     pageLayout.setPageSize(8, 11.5);
-
-     // Set the desired HTML-to-PDF conversion options.
-     CreatePDFOptions htmlToPdfOptions = CreatePDFOptions.htmlOptionsBuilder()
-         .includeHeaderFooter(true)
-         .withPageLayout(pageLayout)
-         .build();
-     htmlToPDFOperation.setOptions(htmlToPdfOptions);
+       return new HTMLToPDFParams.Builder()
+           .includeHeaderFooter(true).withPageLayout(pageLayout)
+           .build();
    }
- }
+}
 ```
 
 #### .NET
@@ -647,58 +662,60 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
-// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.createpdf.CreatePDFFromHTMLWithInlineCSS
+// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.htmltopdf.HTMLWithInlineCSSToPDF
 
-   public class CreatePDFFromHTMLWithInlineCSS {
+   public class HTMLWithInlineCSSToPDF {
 
     // Initialize the logger.
-    private static final Logger LOGGER = LoggerFactory.getLogger(CreatePDFFromStaticHTML.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(HTMLWithInlineCSSToPDF.class);
 
     public static void main(String[] args) {
-
       try {
+        // Initial setup, create credentials instance
+        Credentials credentials = new ServicePrincipalCredentials(
+                System.getenv("PDF_SERVICES_CLIENT_ID"),
+                System.getenv("PDF_SERVICES_CLIENT_SECRET"));
 
-        // Initial setup, create credentials instance.
-       Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-          .withClientId("PDF_SERVICES_CLIENT_ID")
-          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-          .build();
+        // Creates a PDF Services instance
+        PDFServices pdfServices = new PDFServices(credentials);
 
-        //Create an ExecutionContext using credentials and create a new operation instance.
-        ExecutionContext executionContext = ExecutionContext.create(credentials);
-        CreatePDFOperation htmlToPDFOperation = CreatePDFOperation.createNew();
+        // Creates an asset from source file and upload
+        InputStream inputStream = Files.newInputStream(new File("src/main/resources/createPDFFromHTMLWithInlineCSSInput.html").toPath());
+        Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.HTML.getMediaType());
 
-        // Set operation input from a source file.
-        FileRef source = FileRef.createFromLocalFile("src/main/resources/createPDFFromHTMLWithInlineCSSInput.html");
-        htmlToPDFOperation.setInput(source);
+        // Create parameters for the job
+        HTMLToPDFParams htmlToPDFParams = getHTMLToPDFParams();
 
-        // Provide any custom configuration options for the operation.
-        setCustomOptions(htmlToPDFOperation);
+        // Creates a new job instance
+        HTMLToPDFJob htmLtoPDFJob = new HTMLToPDFJob(asset)
+                .setParams(htmlToPDFParams);
 
-        // Execute the operation.
-        FileRef result = htmlToPDFOperation.execute(executionContext);
+        // Submits the job and gets the job result
+        String location = pdfServices.submit(htmLtoPDFJob);
+        PDFServicesResponse<HTMLToPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, HTMLToPDFResult.class);
 
-        // Save the result to the specified location.
-        result.saveAs("output/createPDFFromHTMLWithInlineCSSOutput.pdf");
+        // Get content from the resulting asset(s)
+        Asset resultAsset = pdfServicesResponse.getResult().getAsset();
+        StreamAsset streamAsset = pdfServices.getContent(resultAsset);
 
-      } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
+        // Creates an output stream and copy stream asset's content to it
+        OutputStream outputStream = Files.newOutputStream(new File("output/htmlWithInlineCSSToPDFOutput.pdf").toPath());
+        IOUtils.copy(streamAsset.getInputStream(), outputStream);
+      } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
         LOGGER.error("Exception encountered while executing operation", ex);
       }
     }
 
-    private static void setCustomOptions(CreatePDFOperation htmlToPDFOperation) {
-      // Define the page layout, in this case an 20 x 25 inch page (effectively portrait orientation).
+    private static HTMLToPDFParams getHTMLToPDFParams() {
+      // Define the page layout, in this case an 8 x 11.5 inch page (effectively portrait orientation)
       PageLayout pageLayout = new PageLayout();
       pageLayout.setPageSize(20, 25);
 
-      // Set the desired HTML-to-PDF conversion options.
-      CreatePDFOptions htmlToPdfOptions = CreatePDFOptions.htmlOptionsBuilder()
-          .includeHeaderFooter(true)
-          .withPageLayout(pageLayout)
+      return new HTMLToPDFParams.Builder()
+          .includeHeaderFooter(true).withPageLayout(pageLayout)
           .build();
-      htmlToPDFOperation.setOptions(htmlToPdfOptions);
     }
-  }
+}
 ```
 
 #### .NET
@@ -868,58 +885,59 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
-// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.createpdf.CreatePDFFromURL
+// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.htmltopdf.HTMLToPDFFromURL
 
-  public class CreatePDFFromURL {
+  public class HTMLToPDFFromURL {
 
     // Initialize the logger.
-    private static final Logger LOGGER = LoggerFactory.getLogger(CreatePDFFromStaticHTML.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(HTMLToPDFFromURL.class);
 
     public static void main(String[] args) {
 
       try {
+        // Initial setup, create credentials instance
+        Credentials credentials = new ServicePrincipalCredentials(
+                System.getenv("PDF_SERVICES_CLIENT_ID"),
+                System.getenv("PDF_SERVICES_CLIENT_SECRET"));
 
-        // Initial setup, create credentials instance.
-       Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-          .withClientId("PDF_SERVICES_CLIENT_ID")
-          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-          .build();
+        // Creates a PDF Services instance
+        PDFServices pdfServices = new PDFServices(credentials);
 
-        //Create an ExecutionContext using credentials and create a new operation instance.
-        ExecutionContext executionContext = ExecutionContext.create(credentials);
-        CreatePDFOperation htmlToPDFOperation = CreatePDFOperation.createNew();
+        String htmlURL = "<HTML URL>";
 
-        // Set operation input from a source URL.
-        FileRef source = FileRef.createFromURL(new URL("https://www.adobe.io"));
-        htmlToPDFOperation.setInput(source);
+        // Create parameters for the job
+        HTMLToPDFParams htmlToPDFParams = getHTMLToPDFParams();
 
-        // Provide any custom configuration options for the operation.
-        setCustomOptions(htmlToPDFOperation);
+        // Creates a new job instance
+        HTMLToPDFJob htmLtoPDFJob = new HTMLToPDFJob(htmlURL)
+                .setParams(htmlToPDFParams);
 
-        // Execute the operation.
-        FileRef result = htmlToPDFOperation.execute(executionContext);
+        // Submits the job and gets the job result
+        String location = pdfServices.submit(htmLtoPDFJob);
+        PDFServicesResponse<HTMLToPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, HTMLToPDFResult.class);
 
-        // Save the result to the specified location.
-        result.saveAs("output/createPDFFromURLOutput.pdf");
+        // Get content from the resulting asset(s)
+        Asset resultAsset = pdfServicesResponse.getResult().getAsset();
+        StreamAsset streamAsset = pdfServices.getContent(resultAsset);
 
-      } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
+        // Creates an output stream and copy stream asset's content to it
+        OutputStream outputStream = Files.newOutputStream(new File("output/htmlToPDFFromURLOutput.pdf").toPath());
+        IOUtils.copy(streamAsset.getInputStream(), outputStream);
+      } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
         LOGGER.error("Exception encountered while executing operation", ex);
       }
     }
 
-    private static void setCustomOptions(CreatePDFOperation htmlToPDFOperation) {
-      // Define the page layout, in this case an 20 x 25 inch page (effectively portrait orientation).
+    private static HTMLToPDFParams getHTMLToPDFParams() {
+      // Define the page layout, in this case an 8 x 11.5 inch page (effectively portrait orientation)
       PageLayout pageLayout = new PageLayout();
       pageLayout.setPageSize(20, 25);
 
-      // Set the desired HTML-to-PDF conversion options.
-      CreatePDFOptions htmlToPdfOptions = CreatePDFOptions.htmlOptionsBuilder()
-          .includeHeaderFooter(true)
-          .withPageLayout(pageLayout)
-          .build();
-      htmlToPDFOperation.setOptions(htmlToPdfOptions);
+      return new HTMLToPDFParams.Builder()
+              .includeHeaderFooter(true).withPageLayout(pageLayout)
+              .build();
     }
-  }
+}
 ```
 
 #### .NET
@@ -1079,7 +1097,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
 
 ## Create a PDF from dynamic HTML
 
-To support workflows with dynamic data, `CreatePDFFromDynamicHTML`
+To support workflows with dynamic data, `DynamicHTMLToPDF`
 creates PDFs from dynamic HTML. It's a common scenario for enterprise to
 provide end users with an HTML template with form fields. This API
 allows you to capture the users unique data entries and then save it as
@@ -1087,7 +1105,7 @@ PDF. Collected data is stored in a JSON file, and the source HTML file
 must include `<script src='./json.js' type='text/javascript'></script>`.
 Refer to the API docs for usage.
 
-The sample `CreatePDFFromDynamicHTML` converts a zip file, containing
+The sample `DynamicHTMLToPDF` converts a zip file, containing
 the input HTML file and its resources, along with the input data to a
 PDF file. The input data is used by the JavaScript in the HTML file to
 manipulate the HTML DOM, thus effectively updating the source HTML file.
@@ -1103,63 +1121,65 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
-// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.createpdf.CreatePDFFromDynamicHTML
- public class CreatePDFFromDynamicHTML {
+// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.htmltopdf.DynamicHTMLToPDF
+ public class DynamicHTMLToPDF {
 
    // Initialize the logger.
-   private static final Logger LOGGER = LoggerFactory.getLogger(CreatePDFFromDynamicHTML.class);
+   private static final Logger LOGGER = LoggerFactory.getLogger(DynamicHTMLToPDF.class);
 
    public static void main(String[] args) {
 
      try {
+        // Initial setup, create credentials instance
+        Credentials credentials = new ServicePrincipalCredentials(
+                System.getenv("PDF_SERVICES_CLIENT_ID"),
+                System.getenv("PDF_SERVICES_CLIENT_SECRET"));
 
-       // Initial setup, create credentials instance.
-       Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-          .withClientId("PDF_SERVICES_CLIENT_ID")
-          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-          .build();
+        // Creates a PDF Services instance
+        PDFServices pdfServices = new PDFServices(credentials);
 
-       //Create an ExecutionContext using credentials and create a new operation instance.
-       ExecutionContext executionContext = ExecutionContext.create(credentials);
-       CreatePDFOperation htmlToPDFOperation = CreatePDFOperation.createNew();
+        // Creates an asset from source file and upload
+        InputStream inputStream = Files.newInputStream(new File("src/main/resources/createPDFFromDynamicHtmlInput.zip").toPath());
+        Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.ZIP.getMediaType());
 
-       // Set operation input from a source file.
-       FileRef source = FileRef.createFromLocalFile("src/main/resources/createPDFFromDynamicHtmlInput.zip");
-       htmlToPDFOperation.setInput(source);
+        // Create parameters for the job
+        HTMLToPDFParams htmlToPDFParams = getHTMLToPDFParams();
 
-       // Provide any custom configuration options for the operation.
-       setCustomOptions(htmlToPDFOperation);
+        // Creates a new job instance
+        HTMLToPDFJob htmLtoPDFJob = new HTMLToPDFJob(asset)
+                .setParams(htmlToPDFParams);
 
-       // Execute the operation.
-       FileRef result = htmlToPDFOperation.execute(executionContext);
+        // Submits the job and gets the job result
+        String location = pdfServices.submit(htmLtoPDFJob);
+        PDFServicesResponse<HTMLToPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, HTMLToPDFResult.class);
 
-       // Save the result to the specified location.
-       result.saveAs("output/createPDFFromDynamicHtmlOutput.pdf");
+        // Get content from the resulting asset(s)
+        Asset resultAsset = pdfServicesResponse.getResult().getAsset();
+        StreamAsset streamAsset = pdfServices.getContent(resultAsset);
 
-     } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
+        // Creates an output stream and copy stream asset's content to it
+        OutputStream outputStream = Files.newOutputStream(new File("output/dynamicHTMLToPDFOutput.pdf").toPath());
+        IOUtils.copy(streamAsset.getInputStream(), outputStream);
+     } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
        LOGGER.error("Exception encountered while executing operation", ex);
      }
    }
-
-   private static void setCustomOptions(CreatePDFOperation htmlToPDFOperation) {
-     // Define the page layout, in this case an 8 x 11.5 inch page (effectively portrait orientation).
+   
+   private static HTMLToPDFParams getHTMLToPDFParams() {
+     // Define the page layout, in this case an 8 x 11.5 inch page (effectively portrait orientation)
      PageLayout pageLayout = new PageLayout();
      pageLayout.setPageSize(8, 11.5);
 
-     //Set the dataToMerge field that needs to be populated in the HTML before its conversion
+     // Sets the dataToMerge field that needs to be populated in the HTML before its conversion
      JSONObject dataToMerge = new JSONObject();
      dataToMerge.put("title","Create, Convert PDFs and More!");
      dataToMerge.put("sub_title","Easily integrate PDF actions within your document workflows.");
 
-     // Set the desired HTML-to-PDF conversion options.
-     CreatePDFOptions htmlToPdfOptions = CreatePDFOptions.htmlOptionsBuilder()
-         .includeHeaderFooter(true)
-         .withPageLayout(pageLayout)
-         .withDataToMerge(dataToMerge)
-         .build();
-     htmlToPDFOperation.setOptions(htmlToPdfOptions);
+     return new HTMLToPDFParams.Builder()
+             .includeHeaderFooter(true).withPageLayout(pageLayout).withDataToMerge(dataToMerge)
+             .build();
    }
- }
+}
 ```
 
 #### .NET

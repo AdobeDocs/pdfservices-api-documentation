@@ -39,26 +39,37 @@ public class ExportPDFToDOCX {
    public static void main(String[] args) {
 
      try {
-       // Initial setup, create credentials instance.
-       Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-          .withClientId("PDF_SERVICES_CLIENT_ID")
-          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-          .build();
-       //Create an ExecutionContext using credentials and create a new operation instance.
-       ExecutionContext executionContext = ExecutionContext.create(credentials);
-       ExportPDFOperation exportPdfOperation = ExportPDFOperation.createNew(ExportPDFTargetFormat.DOCX);
+        // Initial setup, create credentials instance
+        Credentials credentials = new ServicePrincipalCredentials(
+                System.getenv("PDF_SERVICES_CLIENT_ID"),
+                System.getenv("PDF_SERVICES_CLIENT_SECRET"));
 
-       // Set operation input from a local PDF file
-       FileRef sourceFileRef = FileRef.createFromLocalFile("src/main/resources/exportPDFInput.pdf");
-       exportPdfOperation.setInput(sourceFileRef);
+        // Creates a PDF Services instance
+        PDFServices pdfServices = new PDFServices(credentials);
 
-       // Execute the operation.
-       FileRef result = exportPdfOperation.execute(executionContext);
+        // Creates an asset from source file and upload
+        InputStream inputStream = Files.newInputStream(new File("src/main/resources/exportPDFInput.pdf").toPath());
+        Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
 
-       // Save the result to the specified location.
-       result.saveAs("output/exportPdfOutput.docx");
+        // Create parameters for the job
+        ExportPDFParams exportPDFParams = ExportPDFParams.exportPDFParamsBuilder(ExportPDFTargetFormat.DOCX)
+                .build();
 
-     } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
+        // Creates a new job instance
+        ExportPDFJob exportPDFJob = new ExportPDFJob(asset, exportPDFParams);
+
+        // Submits the job and gets the job result
+        String location = pdfServices.submit(exportPDFJob);
+        PDFServicesResponse<ExportPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, ExportPDFResult.class);
+
+        // Get content from the resulting asset(s)
+        Asset resultAsset = pdfServicesResponse.getResult().getAsset();
+        StreamAsset streamAsset = pdfServices.getContent(resultAsset);
+
+        // Creates an output stream and copy stream asset's content to it
+        OutputStream outputStream = Files.newOutputStream(new File("output/exportPdfOutput.docx").toPath());
+        IOUtils.copy(streamAsset.getInputStream(), outputStream);
+     } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
        LOGGER.error("Exception encountered while executing operation", ex);
      }
    }
@@ -212,35 +223,38 @@ public class ExportPDFToDOCXWithOCROption {
     public static void main(String[] args) {
 
         try {
+            // Initial setup, create credentials instance
+            Credentials credentials = new ServicePrincipalCredentials(
+                    System.getenv("PDF_SERVICES_CLIENT_ID"),
+                    System.getenv("PDF_SERVICES_CLIENT_SECRET"));
 
-            // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-                .withClientId("PDF_SERVICES_CLIENT_ID")
-                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                .build();
-            //Create an ExecutionContext using credentials and create a new operation instance.
-            ExecutionContext executionContext = ExecutionContext.create(credentials);
-            ExportPDFOperation exportPDFOperation = ExportPDFOperation.createNew(ExportPDFTargetFormat.DOCX);
+            // Creates a PDF Services instance
+            PDFServices pdfServices = new PDFServices(credentials);
 
-            // Set operation input from a source file.
-            FileRef sourceFileRef = FileRef.createFromLocalFile("src/main/resources/exportPDFInput.pdf");
-            exportPDFOperation.setInput(sourceFileRef);
+            // Creates an asset from source file and upload
+            InputStream inputStream = Files.newInputStream(new File("src/main/resources/exportPDFInput.pdf").toPath());
+            Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
 
-            // Create a new ExportPDFOptions instance from the specified OCR locale and set it into the operation.
-            ExportPDFOptions exportPDFOptions = new ExportPDFOptions(ExportOCRLocale.EN_US);
-            exportPDFOperation.setOptions(exportPDFOptions);
-            
-            // Create a new ExportPDFOptions instance from the specified OCR locale and set it into the operation.
-            ExportPDFOptions exportPDFOptions = new ExportPDFOptions(ExportOCRLocale.EN_US);
-            exportPDFOperation.setOptions(exportPDFOptions);
+            // Create parameters for the job
+            ExportPDFParams exportPDFParams = ExportPDFParams.exportPDFParamsBuilder(ExportPDFTargetFormat.DOCX)
+                    .withExportOCRLocale(ExportOCRLocale.EN_US)
+                    .build();
 
-            // Execute the operation.
-            FileRef result = exportPDFOperation.execute(executionContext);
+            // Creates a new job instance
+            ExportPDFJob exportPDFJob = new ExportPDFJob(asset, exportPDFParams);
 
-            // Save the result to the specified location.
-            result.saveAs("output/exportPDFWithOCROptionsOutput.docx");
+            // Submits the job and gets the job result
+            String location = pdfServices.submit(exportPDFJob);
+            PDFServicesResponse<ExportPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, ExportPDFResult.class);
 
-        } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
+            // Get content from the resulting asset(s)
+            Asset resultAsset = pdfServicesResponse.getResult().getAsset();
+            StreamAsset streamAsset = pdfServices.getContent(resultAsset);
+
+            // Creates an output stream and copy stream asset's content to it
+            OutputStream outputStream = Files.newOutputStream(new File("output/exportPDFWithOCROptionsOutput.docx").toPath());
+            IOUtils.copy(streamAsset.getInputStream(), outputStream);
+        } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
             LOGGER.error("Exception encountered while executing operation", ex);
         }
     }
@@ -397,32 +411,42 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 
    public static void main(String[] args) {
      try {
+        // Initial setup, create credentials instance
+        Credentials credentials = new ServicePrincipalCredentials(
+                System.getenv("PDF_SERVICES_CLIENT_ID"),
+                System.getenv("PDF_SERVICES_CLIENT_SECRET"));
 
-       // Initial setup, create credentials instance.
-       Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-          .withClientId("PDF_SERVICES_CLIENT_ID")
-          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-          .build();
+        // Creates a PDF Services instance
+        PDFServices pdfServices = new PDFServices(credentials);
 
-       // Create an ExecutionContext using credentials and create a new operation instance.
-       ExecutionContext executionContext = ExecutionContext.create(credentials);
-       ExportPDFOperation exportPdfOperation = ExportPDFOperation.createNew(ExportPDFTargetFormat.JPEG);
+        // Creates an asset from source file and upload
+        InputStream inputStream = Files.newInputStream(new File("src/main/resources/exportPDFToImageInput.pdf").toPath());
+        Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
 
-       // Set operation input from a source file.
-       FileRef sourceFileRef = FileRef.createFromLocalFile("src/main/resources/exportPDFToImageInput.pdf");
-       exportPdfOperation.setInput(sourceFileRef);
+        // Create parameters for the job
+        ExportPDFToImagesParams exportPDFToImagesParams = ExportPDFToImagesParams.exportPDFToImagesParamsBuilder(
+                        ExportPDFToImagesTargetFormat.JPEG, ExportPDFToImagesOutputType.LIST_OF_PAGE_IMAGES).build();
 
-       // Execute the operation.
-       List<FileRef> results = exportPDFToImagesOperation.execute(executionContext);
+        // Creates a new job instance
+        ExportPDFToImagesJob exportPDFToImagesJob = new ExportPDFToImagesJob(asset, exportPDFToImagesParams);
 
-       // Save the result to the specified location.
-       int index = 0;
-       for(FileRef result : results) {
-           result.saveAs("output/exportPDFToImagesOutput_" + index + ".jpeg");
-           index++;
-       }
+        // Submits the job and gets the job result
+        String location = pdfServices.submit(exportPDFToImagesJob);
+        PDFServicesResponse<ExportPDFToImagesResult> pdfServicesResponse = pdfServices.getJobResult(location, ExportPDFToImagesResult.class);
 
-     } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
+        // Get content from the resulting asset(s)
+        List<Asset> resultAssets = pdfServicesResponse.getResult().getAssets();
+        
+        int index = 0;
+        for(Asset resultAsset : resultAssets) {
+            StreamAsset streamAsset = pdfServices.getContent(resultAsset);
+
+            // Creates an output stream and copy stream asset's content to it
+            OutputStream outputStream = Files.newOutputStream(new File("output/exportPDFToImagesOutput_" + index + ".jpeg").toPath());
+            IOUtils.copy(streamAsset.getInputStream(), outputStream);
+            index++;
+        }
+     } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
        LOGGER.error("Exception encountered while executing operation", ex);
      }
    }
@@ -581,30 +605,39 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 
     public static void main(String[] args) {
       try {
+        // Initial setup, create credentials instance
+        Credentials credentials = new ServicePrincipalCredentials(
+                System.getenv("PDF_SERVICES_CLIENT_ID"),
+                System.getenv("PDF_SERVICES_CLIENT_SECRET"));
 
-        // Initial setup, create credentials instance.
-       Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-          .withClientId("PDF_SERVICES_CLIENT_ID")
-          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-          .build();
+        // Creates a PDF Services instance
+        PDFServices pdfServices = new PDFServices(credentials);
 
-        //Create an ExecutionContext using credentials and create a new operation instance.
-        ExecutionContext executionContext = ExecutionContext.create(credentials);
-        ExportPDFToImagesOperation exportPDFToImagesOperation = ExportPDFToImagesOperation.createNew(ExportPDFToImagesTargetFormat.JPEG);
+        // Creates an asset from source file and upload
+        InputStream inputStream = Files.newInputStream(new File("src/main/resources/exportPDFToImagesInput.pdf").toPath());
+        Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
 
-        // Set operation input from a source file.
-        FileRef sourceFileRef = FileRef.createFromLocalFile("src/main/resources/exportPDFToImageInput.pdf");
-        exportPDFToImagesOperation.setInput(sourceFileRef);
-        
-        // Set the output type to create zip of images.
-        exportPDFToImagesOperation.setOutputType(OutputType.ZIP_OF_PAGE_IMAGES);
+        // Create parameters for the job
+        ExportPDFToImagesParams exportPDFToImagesParams = ExportPDFToImagesParams.exportPDFToImagesParamsBuilder(
+                        ExportPDFToImagesTargetFormat.JPEG, ExportPDFToImagesOutputType.ZIP_OF_PAGE_IMAGES).build();
 
-        // Execute the operation.
-        List<FileRef> results = exportPDFToImagesOperation.execute(executionContext);
+        // Creates a new job instance
+        ExportPDFToImagesJob exportPDFToImagesJob = new ExportPDFToImagesJob(asset, exportPDFToImagesParams);
 
-        // Save the result to the specified location.
-        results.get(0).saveAs("output/exportPDFToJPEGOutput.zip");
-      } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
+        // Submits the job and gets the job result
+        String location = pdfServices.submit(exportPDFToImagesJob);
+        PDFServicesResponse<ExportPDFToImagesResult> pdfServicesResponse = pdfServices.getJobResult(location, ExportPDFToImagesResult.class);
+
+        // Get content from the resulting asset(s)
+        List<Asset> resultAssets = pdfServicesResponse.getResult().getAssets();
+        StreamAsset streamAsset = pdfServices.getContent(resultAssets.get(0));
+
+        LOGGER.info("Media type of the received asset is "+ streamAsset.getMimeType());
+
+        // Creates an output stream and copy stream asset's content to it
+        OutputStream outputStream = Files.newOutputStream(new File("output/exportPDFToJPEGOutput.zip").toPath());
+        IOUtils.copy(streamAsset.getInputStream(), outputStream);
+      } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
         LOGGER.error("Exception encountered while executing operation", ex);
       }
     }
