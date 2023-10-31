@@ -42,7 +42,7 @@ JSON representation of the input data:
 ![Table created with table start and end constructs](../images/table_tag_with_markers.png)
 
 In the above example, **school** serves as the ARRAY_FIELD over whose data the table is populated. A new row is created for each
-school and data are filled in accordingly.
+school, and data is filled in accordingly.
 
 ## Nested Tables
 Table tags with markers can also be used inside another table to create nested tables.
@@ -51,19 +51,15 @@ JSON representation of the input data:
 
 ```json
 {
-  "Board" : "CBSE",
+  "board" : "CBSE",
   "school": [
     {
 
       "name": "ABC Public School",
-      "Details": {
-        "Contact" : "9XXXXXXXX8",
-        "Address": "New Delhi",
-        "Transport": true,
-        "Faculty": {
-          "Teacher": 30,
-          "Staff": 20
-        }
+      "details": {
+        "contact" : "9XXXXXXXX8",
+        "address": "New Delhi",
+        "sportsAvailable": "No"
       },
       "class": [
         {
@@ -78,14 +74,10 @@ JSON representation of the input data:
     },
     {
       "name": "XYZ Public School",
-      "Details": {
-        "Contact" : "7XXXXXXXX5",
-        "Address": "Mumbai",
-        "Transport": true,
-        "Faculty": {
-          "Teacher": 21,
-          "Staff": 12
-        }
+      "details": {
+        "contact" : "7XXXXXXXX5",
+        "address": "Mumbai",
+        "sportsAvailable": "Yes"
       },
       "class": [
         {
@@ -127,11 +119,10 @@ Similarly, if a condition needs to be evaluated on data outside the current tabl
 
 ![Table Markers With different context](../images/table_markers_context_input.png)
 
-- In the above example, we've used the **eval** construct with the `Board` tag. As specified earlier $ indicates that the context is input json itself. So, as mentioned in the input json, the tag will be replaced
+- In the above example, we've used the **eval** construct with the `Board` tag. As specified earlier, $ indicates that the context is input json itself. So, as mentioned in the input json, the tag will be replaced
   by its value **CBSE**.
 
-- We've also used the **eval** construct with conditions. In the above examples, both the conditions indicated have `school`
-  as context. So the conditional expressions will be evaluated in the context of the corresponding `school`.
+- We've also used the eval construct with conditions. In the above examples, both the conditions indicated have school as context. So, the conditional expressions are evaluated in the context of the corresponding school.
 
 ![Table Markers with different context output](../images/table_markers_context_output.png)
 
@@ -193,30 +184,30 @@ JSON representation of the input data:
 
 ```json
 {
-  "Project": [
+  "project": [
     {
-      "Name": "ABC Infra",
-      "Milestone": "First Milestone",
-      "DateComplete": "24/06/2021",
-      "Notes": ""
+      "name": "ABC Infra",
+      "milestone": "First Milestone",
+      "dateComplete": "24/06/2021",
+      "notes": ""
     },
     {
-      "Name": "ABC Infra",
-      "Milestone": "Second Milestone",
-      "DateComplete": "24/06/2022",
-      "Notes": ""
+      "name": "ABC Infra",
+      "milestone": "Second Milestone",
+      "dateComplete": "24/06/2022",
+      "notes": ""
     },
     {
-      "Name": "DEF Computer Labs",
-      "Milestone": "First Milestone",
-      "DateComplete": "12/12/2021",
-      "Notes": ""
+      "name": "DEF Computer Labs",
+      "milestone": "First Milestone",
+      "dateComplete": "12/12/2021",
+      "notes": ""
     },
     {
-      "Name": "DEF Computer Labs",
-      "Milestone": "Second Milestone",
-      "DateComplete": "12/12/2021",
-      "Notes": ""
+      "name": "DEF Computer Labs",
+      "milestone": "Second Milestone",
+      "dateComplete": "12/12/2021",
+      "notes": ""
     }
   ]
 }
@@ -239,31 +230,31 @@ JSON representation of the input data:
 
 ```json
 {
-  "Conversion": [
+  "conversion": [
     {
-      "Month": "July, 2021",
-      "Rate": 10,
-      "Method": "Payout by Cheque"
+      "month": "July, 2021",
+      "rate": 10,
+      "method": "Payout by Cheque"
     },
     {
-      "Month": "September, 2021",
-      "Rate": 30,
-      "Method": "Payout by Cheque"
+      "month": "September, 2021",
+      "rate": 30,
+      "method": "Payout by Cheque"
     },
     {
-      "Month": "Dec, 2021",
-      "Rate": 20,
-      "Method": "Payout by Cheque"
+      "month": "Dec, 2021",
+      "rate": 20,
+      "method": "Payout by Cheque"
     },
     {
-      "Month": "April, 2022",
-      "Rate": 20,
-      "Method": "Payout by Cheque"
+      "month": "April, 2022",
+      "rate": 20,
+      "method": "Payout by Cheque"
     },
     {
-      "Month": "Dec, 2022",
-      "Rate": 30,
-      "Method": "Payout by Cheque"
+      "month": "Dec, 2022",
+      "rate": 30,
+      "method": "Payout by Cheque"
     }
   ]
 }
@@ -289,36 +280,36 @@ For Example: {{PROPERTY:**discard-row-if(expr(condition))**}}
 JSON representation of the input data:
 ```json
 {
-  "Conversion": [
+  "conversion": [
     {
-      "Month": "July, 2021",
-      "Rate": 10,
-      "Method": "Payout by Cheque"
+      "month": "July, 2021",
+      "rate": 10,
+      "method": "Payout by Cheque"
     },
     {
-      "Month": "Dec, 2021",
-      "Rate": 20,
-      "Method": "Payout by Cheque"
+      "month": "Dec, 2021",
+      "rate": 20,
+      "method": "Payout by Cheque"
     },
     {
-      "Month": "Dec, 2022",
-      "Rate": 40,
-      "Method": "Payout by Cheque"
+      "month": "Dec, 2022",
+      "rate": 40,
+      "method": "Payout by Cheque"
     },
     {
-      "Month": "Dec, 2021",
-      "Rate": 80,
-      "Method": "Payout by Cheque"
+      "month": "Dec, 2021",
+      "rate": 80,
+      "method": "Payout by Cheque"
     },
     {
-      "Month": "April, 2022",
-      "Rate": 100,
-      "Method": "Payout by Cash"
+      "month": "April, 2022",
+      "rate": 100,
+      "method": "Payout by Cash"
     },
     {
-      "Month": "Dec, 2022",
-      "Rate": 45,
-      "Method": "Payout by Cheque"
+      "month": "Dec, 2022",
+      "rate": 45,
+      "method": "Payout by Cheque"
     }
   ]
 }
