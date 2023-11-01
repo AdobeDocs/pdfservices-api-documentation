@@ -10225,7 +10225,7 @@
             "type": "string"
           },
           "pageStart": {
-            "description": "This param specifies whether an HTML report is attached to a PDF. If the param is set to true, the accessibility report will be attached to the input PDF and returned in the output. Otherwise, an HTML report will be returned in the output.",
+            "description": "The parameter allows for the specification of the starting page for the accessibility check. If \"pageStart\" is not provided, the first page is considered the default startPage. It should be greater than equal to 1.",
             "type": "number"
           },
           "pageEnd": {
