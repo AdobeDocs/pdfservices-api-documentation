@@ -11492,7 +11492,7 @@
           },
           "asset": {
             "type": "object",
-            "description": "Input asset with attached html report. Details of output asset document. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "Input PDF file with an attached HTML report detailing the results of the accessibility check. Details of output asset document. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "properties": {
               "metadata": {
                 "type": "object",
@@ -11523,7 +11523,7 @@
           },
           "report": {
             "type": "object",
-            "description": "Asset of json file containig accessibility checker operation report. Details of output asset document. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "JSON file containing detailed information and findings from the accessibility evaluation. Details of output asset document. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "properties": {
               "metadata": {
                 "type": "object",
