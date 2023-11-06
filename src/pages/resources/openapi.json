@@ -7386,7 +7386,7 @@
           "PDF Accessibility Checker"
         ],
         "summary": "PDF Accessibility Checker Operation",
-        "description": "A document is considered accessible if it can be used by specially-abled people. Accessibility Checker API verifies whether the document conforms to accessibility standards, such as PDF/UA and WCAG 2.0.  It will generate a report that summarises the findings of the accessibility check. It contains links to documentation that assist in fixing problems.",
+        "description": "A document is considered accessible if it can be used by specially-abled people. Accessibility Checker API verifies whether the document conforms to accessibility standards, such as PDF/UA and WCAG 2.0.  It will generate a report that summarizes the findings of the accessibility check. It contains links to documentation that assist in fixing problems.",
         "operationId": "pdfoperations.accessibilitychecker",
         "parameters": [
           {
@@ -7409,7 +7409,7 @@
           }
         ],
         "requestBody": {
-          "description": "Input Params for Accessibility Auto-Tag Operation.",
+          "description": "Input Params for Accessibility Checker Operation.",
           "content": {
             "application/json": {
               "schema": {
