@@ -105,7 +105,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/assets' \
 ### Rest API
 
 ```javascript
-curl --location -g --request PUT 'https://dcplatformstorageservice-us-east-1-prod.s3-accelerate.amazonaws.com/b37fd583-1ab6-4f49-99ef-d716180b5de4?X-Amz-Security-Token={{Placeholder for X-Amz-Security-Token}}&X-Amz-Algorithm={{Placeholder for X-Amz-Algorithm}}&X-Amz-Date={{Placeholder for X-Amz-Date}}&X-Amz-SignedHeaders={{Placeholder for X-Amz-SignedHeaders}}&X-Amz-Expires={{Placeholder for X-Amz-Expires}}&X-Amz-Credential={{Placeholder for X-Amz-Credential}}&X-Amz-Signature={{Placeholder for X-Amz-Signature}}' \
+curl --location -g --request PUT 'https://dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com/b37fd583-1ab6-4f49-99ef-d716180b5de4?X-Amz-Security-Token={{Placeholder for X-Amz-Security-Token}}&X-Amz-Algorithm={{Placeholder for X-Amz-Algorithm}}&X-Amz-Date={{Placeholder for X-Amz-Date}}&X-Amz-SignedHeaders={{Placeholder for X-Amz-SignedHeaders}}&X-Amz-Expires={{Placeholder for X-Amz-Expires}}&X-Amz-Credential={{Placeholder for X-Amz-Credential}}&X-Amz-Signature={{Placeholder for X-Amz-Signature}}' \
 --header 'Content-Type: application/pdf' \
 --data-binary '@{{Placeholder for file path}}'
 ```
@@ -150,7 +150,7 @@ You can read more about the API in detail [here](../../../apis/#operation/asset.
 ### Rest API
 
 ```javascript
-curl --location -g --request GET 'https://dcplatformstorageservice-us-east-1-prod.s3-accelerate.amazonaws.com/b37fd583-1ab6-4f49-99ef-d716180b5de4?X-Amz-Security-Token={{Placeholder for X-Amz-Security-Token}}&X-Amz-Algorithm={{Placeholder for X-Amz-Algorithm}}&X-Amz-Date={{Placeholder for X-Amz-Date}}&X-Amz-SignedHeaders={{Placeholder for X-Amz-SignedHeaders}}&X-Amz-Expires={{Placeholder for X-Amz-Expires}}&X-Amz-Credential={{Placeholder for X-Amz-Credential}}&X-Amz-Signature={{Placeholder for X-Amz-Signature}}'
+curl --location -g --request GET 'https://dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com/b37fd583-1ab6-4f49-99ef-d716180b5de4?X-Amz-Security-Token={{Placeholder for X-Amz-Security-Token}}&X-Amz-Algorithm={{Placeholder for X-Amz-Algorithm}}&X-Amz-Date={{Placeholder for X-Amz-Date}}&X-Amz-SignedHeaders={{Placeholder for X-Amz-SignedHeaders}}&X-Amz-Expires={{Placeholder for X-Amz-Expires}}&X-Amz-Credential={{Placeholder for X-Amz-Credential}}&X-Amz-Signature={{Placeholder for X-Amz-Signature}}'
 ```
 
 ## There you go! Your job is completed in 8 simple steps.
@@ -170,7 +170,7 @@ For clients using SDK version 3.x and above  :
 <ul>
 <li> Using United States (Default) region for processing documents :
   <ul>
-    <li>dcplatformstorageservice-us-east-1-prod.s3-accelerate.amazonaws.com</li>
+    <li>dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com</li>
     <li>pdf-services-ue1.adobe.io</li>
     <li>pdf-services.adobe.io (Default URI)</li>
   </ul>
@@ -180,7 +180,7 @@ For clients using SDK version 3.x and above  :
 <ul>
   <li> Using Europe region for processing documents :
   <ul>
-    <li>dcplatformstorageservice-eu-west-1-prod.s3.amazonaws.com</li>
+    <li>dcplatformstorageservice-prod-eu-west-1.s3.amazonaws.com</li>
     <li>pdf-services-ew1.adobe.io</li>
   </ul>
 </li>
