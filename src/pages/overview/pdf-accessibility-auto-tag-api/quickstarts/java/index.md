@@ -114,7 +114,7 @@ To complete this guide, you will need:
 
 This file will define what dependencies we need and how the application will be built. 
 
-Our application will take a PDF, `Adobe Accesibility Auto-Tag API Sample.pdf` (downloadable from <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>) and tag its contents. The results will be saved in a given directory `/output/AutotagPDF`.
+Our application will take a PDF, `Adobe_Accessibility_Auto_Tag_API_Sample.pdf` (downloadable from <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>) and tag its contents. The results will be saved in a given directory `/output/AutotagPDF`.
 
 4) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `AutotagPDF.java`. 
 
@@ -153,7 +153,7 @@ import java.nio.file.Files;
 ```javascript
 public class AutotagPDF {
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(AutotagPDF.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AutotagPDF.class);
 
     public static void main(String[] args) {
 
@@ -186,11 +186,12 @@ PDFServices pdfServices = new PDFServices(credentials);
 5) Now, let's create the input asset:
 
 ```javascript
-InputStream inputStream = Files.newInputStream(new File("src/main/resources/autotagPDFInput.pdf").toPath());
+InputStream inputStream = Files.newInputStream(new File("src/main/resources/Adobe_Accessibility_Auto_Tag_API_Sample.pdf").toPath());
 Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
 ```
 
 We define input stream for the PDF that will be tagged. (You can download the source we used <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>.) In a real application, these values would be typically be dynamic.
+Then we upload the content of input stream and specify the input media type as PDF.
 
 
 6) Now, let's create the job and parameters:
@@ -203,7 +204,8 @@ AutotagPDFParams autotagPDFParams = AutotagPDFParams.autotagPDFParamsBuilder().g
 AutotagPDFJob autotagPDFJob = new AutotagPDFJob(asset).setParams(autotagPDFParams);
 ```
 
-This set of code defines what we're doing (an Autotag operation), uploads local file and specifies the input media type as PDF, and then defines options for the Extract call. PDF Extract API has a few different options, but in this example, we're simply asking for the most basic of extractions, the textual content of the document. 
+This set of code defines what we're doing (an Autotag operation),
+it defines parameters for the Autotag job. PDF Autotag API has a few different options, in this example we will be genrating report along with tagged PDF and shift heading as well.
 
 7) The next code block submits the job and get the result:
 
@@ -223,10 +225,8 @@ StreamAsset streamAssetReport = pdfServices.getContent(resultAssetReport);
 
 ```javascript
 // Creating output streams and copying stream assets' content to it
-String outputFilePath = "output/AutotagPDFWithOptions/autotag-tagged.pdf";
-String outputFilePathReport = "output/AutotagPDFWithOptions/autotag-report.xlsx";
-OutputStream outputStream = Files.newOutputStream(new File(outputFilePath).toPath());
-OutputStream outputStreamReport = Files.newOutputStream(new File(outputFilePathReport).toPath());
+OutputStream outputStream = Files.newOutputStream(new File("output/autotag-tagged.pdf").toPath());
+OutputStream outputStreamReport = Files.newOutputStream(new File("output/autotag-report.xlsx").toPath());
 IOUtils.copy(streamAsset.getInputStream(), outputStream);
 IOUtils.copy(streamAssetReport.getInputStream(), outputStreamReport);
 ```
@@ -259,9 +259,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
 
-public class AutotagPDFWithOptions {
+public class AutotagPDF {
   // Initialize the logger
-  private static final Logger LOGGER = LoggerFactory.getLogger(AutotagPDFWithOptions.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(AutotagPDF.class);
 
   public static void main(String[] args) {
     try {
@@ -274,7 +274,7 @@ public class AutotagPDFWithOptions {
       PDFServices pdfServices = new PDFServices(credentials);
     
       // Creates an asset from source file and upload
-      InputStream inputStream = Files.newInputStream(new File("src/main/resources/autotagPDFInput.pdf").toPath());
+      InputStream inputStream = Files.newInputStream(new File("src/main/resources/Adobe_Accessibility_Auto_Tag_API_Sample.pdf").toPath());
       Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
     
       // Create parameters for the job
@@ -294,10 +294,8 @@ public class AutotagPDFWithOptions {
       StreamAsset streamAssetReport = pdfServices.getContent(resultAssetReport);
       
       // Creating output streams and copying stream assets' content to it
-      String outputFilePath = "output/AutotagPDFWithOptions/autotag-tagged.pdf";
-      String outputFilePathReport = "output/AutotagPDFWithOptions/autotag-report.xlsx";
-      OutputStream outputStream = Files.newOutputStream(new File(outputFilePath).toPath());
-      OutputStream outputStreamReport = Files.newOutputStream(new File(outputFilePathReport).toPath());
+      OutputStream outputStream = Files.newOutputStream(new File("output/autotag-tagged.pdf").toPath());
+      OutputStream outputStreamReport = Files.newOutputStream(new File("output/autotag-report.xlsx").toPath());
       IOUtils.copy(streamAsset.getInputStream(), outputStream);
       IOUtils.copy(streamAssetReport.getInputStream(), outputStreamReport);
     } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {

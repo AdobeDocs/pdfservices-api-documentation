@@ -130,7 +130,7 @@ import com.adobe.pdfservices.operation.PDFServicesMediaType;
 import com.adobe.pdfservices.operation.PDFServicesResponse;
 import com.adobe.pdfservices.operation.auth.Credentials;
 import com.adobe.pdfservices.operation.auth.ServicePrincipalCredentials;
-import com.adobe.pdfservices.operation.exception.SdkException;
+import com.adobe.pdfservices.operation.exception.SDKException;
 import com.adobe.pdfservices.operation.exception.ServiceApiException;
 import com.adobe.pdfservices.operation.exception.ServiceUsageException;
 import com.adobe.pdfservices.operation.io.Asset;
@@ -140,6 +140,9 @@ import com.adobe.pdfservices.operation.pdfjobs.params.extractpdf.ExtractElementT
 import com.adobe.pdfservices.operation.pdfjobs.params.extractpdf.ExtractPDFParams;
 import com.adobe.pdfservices.operation.pdfjobs.result.ExtractPDFResult;
 import org.apache.commons.io.IOUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
@@ -148,6 +151,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.util.Arrays;
+import java.util.Scanner;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 ```
 
 2) Now let's define our main class:
@@ -175,9 +181,10 @@ public class ExtractTextInfoFromPDF {
 4) Next, we can create our credentials and use them to create our PDF Services instance
 
 ```javascript
-// Initial setup, create credentials instance.
+// Initial setup, create credentials instance
 Credentials credentials = new ServicePrincipalCredentials(
-        System.getenv("PDF_SERVICES_CLIENT_ID"), System.getenv("PDF_SERVICES_CLIENT_SECRET"));
+        System.getenv("PDF_SERVICES_CLIENT_ID"),
+        System.getenv("PDF_SERVICES_CLIENT_SECRET"));
 
 // Create PDF Services instance
 PDFServices pdfServices = new PDFServices(credentials);
@@ -187,7 +194,7 @@ PDFServices pdfServices = new PDFServices(credentials);
 
 ```javascript
 // Creates an asset from source file and upload
-InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath());
+InputStream inputStream = Files.newInputStream(new File("src/main/resources/Adobe Extract API Sample.pdf").toPath());
 Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
 ```
 
@@ -225,8 +232,9 @@ This code runs the Extraction process, get the content of the result zip in stre
 8) The next code block saves the result at the specified location:
 
 ```javascript
-// Copy the reuslt in output stream
-OutputStream outputStream = Files.newOutputStream(new File("./ExtractTextInfoFromPDF.zip").toPath());
+// Creates an output stream and copy stream asset's content to it
+String zipFileOutputPath = "output/ExtractTextInfoFromPDF.zip";
+OutputStream outputStream = Files.newOutputStream(new File(zipFileOutputPath).toPath());
 IOUtils.copy(streamAsset.getInputStream(), outputStream);
 ```
 
@@ -234,7 +242,7 @@ IOUtils.copy(streamAsset.getInputStream(), outputStream);
 9) In this block, we read in the ZIP file, extract the JSON result file, and parse it:
 
 ```javascript
-ZipFile resultZip = new ZipFile("./ExtractTextInfoFromPDF.zip");
+ZipFile resultZip = new ZipFile(zipFileOutputPath);
 ZipEntry jsonEntry = resultZip.getEntry("structuredData.json");
 InputStream is = resultZip.getInputStream(jsonEntry);
 Scanner s = new Scanner(is).useDelimiter("\\A");
@@ -278,6 +286,9 @@ import com.adobe.pdfservices.operation.pdfjobs.params.extractpdf.ExtractElementT
 import com.adobe.pdfservices.operation.pdfjobs.params.extractpdf.ExtractPDFParams;
 import com.adobe.pdfservices.operation.pdfjobs.result.ExtractPDFResult;
 import org.apache.commons.io.IOUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
@@ -286,10 +297,13 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.util.Arrays;
+import java.util.Scanner;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 public class ExtractTextInfoFromPDF {
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ExtractTextInfoFromPDF.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExtractTextInfoFromPDF.class);
 
     public static void main(String[] args) {
 
@@ -303,11 +317,11 @@ public class ExtractTextInfoFromPDF {
             PDFServices pdfServices = new PDFServices(credentials);
           
             // Creates an asset from source file and upload
-            InputStream inputStream = Files.newInputStream(new File("./AdobeExtractAPISample.pdf").toPath());
+            InputStream inputStream = Files.newInputStream(new File("src/main/resources/Adobe Extract API Sample.pdf").toPath());
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
           
             // Create parameters for the job
-            ExtractPDFParams extractPDFParams = ExtractPDFParams.extractPdfParamsBuilder()
+            ExtractPDFParams extractPDFParams = ExtractPDFParams.extractPDFParamsBuilder()
                     .addElementsToExtract(Arrays.asList(ExtractElementType.TEXT)).build();
           
             // Creates a new job instance
@@ -323,10 +337,11 @@ public class ExtractTextInfoFromPDF {
             StreamAsset streamAsset = pdfServices.getContent(resultAsset);
           
             // Creates an output stream and copy stream asset's content to it
-            OutputStream outputStream = Files.newOutputStream(new File("./ExtractTextInfoFromPDF.zip").toPath());
+            String zipFileOutputPath = "output/ExtractTextInfoFromPDF.zip";
+            OutputStream outputStream = Files.newOutputStream(new File(zipFileOutputPath).toPath());
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
 
-            ZipFile resultZip = new ZipFile(zip_file);
+            ZipFile resultZip = new ZipFile(zipFileOutputPath);
             ZipEntry jsonEntry = resultZip.getEntry("structuredData.json");
             InputStream is = resultZip.getInputStream(jsonEntry);
             Scanner s = new Scanner(is).useDelimiter("\\A");
@@ -343,7 +358,7 @@ public class ExtractTextInfoFromPDF {
                     System.out.println(text);
                 }
             }
-        } catch (ServiceApiException | IOException | SdkException | ServiceUsageException e) {
+        } catch (ServiceApiException | IOException | SDKException | ServiceUsageException e) {
             LOGGER.error("Exception encountered while executing operation", e);
         }
     }

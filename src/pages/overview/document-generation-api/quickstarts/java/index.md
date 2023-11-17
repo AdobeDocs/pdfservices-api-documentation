@@ -202,6 +202,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 ```
 
@@ -210,7 +211,7 @@ import java.nio.file.Paths;
 ```javascript
 public class GeneratePDF {
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(GeneratePDF.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(GeneratePDF.class);
 
     public static void main(String[] args) {
 
@@ -236,7 +237,8 @@ These lines are hard coded but in a real application would typically be dynamic.
 ```javascript
 // Initial setup, create credentials instance
 Credentials credentials = new ServicePrincipalCredentials(
-        System.getenv("PDF_SERVICES_CLIENT_ID"), System.getenv("PDF_SERVICES_CLIENT_SECRET"));
+        System.getenv("PDF_SERVICES_CLIENT_ID"),
+        System.getenv("PDF_SERVICES_CLIENT_SECRET"));
 
 // Create PDF Services instance
 PDFServices pdfServices = new PDFServices(credentials);
@@ -245,10 +247,10 @@ PDFServices pdfServices = new PDFServices(credentials);
 7) Now, let's create the input asset and JSON data for merge:
 
 ```javascript
-InputStream inputStream = Files.newInputStream(new File("./receiptTemplate.docx").toPath());
+InputStream inputStream = Files.newInputStream(new File("src/main/resources/receiptTemplate.docx").toPath());
 Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.DOCX.getMediaType());
 
-Path jsonPath = Paths.get("./receipt.json");
+Path jsonPath = Paths.get("src/main/resources/receipt.json");
 String json = new String(Files.readAllBytes(jsonPath));
 JSONObject jsonDataForMerge = new JSONObject(json);
 ```
@@ -284,8 +286,7 @@ StreamAsset streamAsset = pdfServices.getContent(resultAsset);
 
 ```javascript
 // Creating an output stream and copying stream asset's content to it
-String outputFilePath = createOutputFilePath();
-OutputStream outputStream = Files.newOutputStream(new File(outputFilePath).toPath());
+OutputStream outputStream = Files.newOutputStream(new File("output/generatePDFOutput").toPath());
 IOUtils.copy(streamAsset.getInputStream(), outputStream);
 ```
 
@@ -320,11 +321,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class GeneratePDF {
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(GeneratePDF.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(GeneratePDF.class);
 
     public static void main(String[] args) {
 
@@ -338,11 +340,11 @@ public class GeneratePDF {
             PDFServices pdfServices = new PDFServices(credentials);
           
             // Creates an asset from source file and upload
-            InputStream inputStream = Files.newInputStream(new File("./receiptTemplate.docx").toPath());
+            InputStream inputStream = Files.newInputStream(new File("src/main/resources/receiptTemplate.docx").toPath());
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.DOCX.getMediaType());
           
             // Setup input data for the document merge process
-            Path jsonPath = Paths.get("./receipt.json");
+            Path jsonPath = Paths.get("src/main/resources/receipt.json");
             String json = new String(Files.readAllBytes(jsonPath));
             JSONObject jsonDataForMerge = new JSONObject(json);
           
@@ -364,7 +366,7 @@ public class GeneratePDF {
             StreamAsset streamAsset = pdfServices.getContent(resultAsset);
           
             // Creates an output stream and copy stream asset's content to it
-            OutputStream outputStream = Files.newOutputStream(new File("./generatedReceipt.pdf").toPath());
+            OutputStream outputStream = Files.newOutputStream(new File("output/generatePDFOutput.pdf").toPath());
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException e) {
             LOGGER.error("Exception encountered while executing operation", e);

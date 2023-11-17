@@ -130,7 +130,7 @@ import com.adobe.pdfservices.operation.PDFServicesMediaType;
 import com.adobe.pdfservices.operation.PDFServicesResponse;
 import com.adobe.pdfservices.operation.auth.Credentials;
 import com.adobe.pdfservices.operation.auth.ServicePrincipalCredentials;
-import com.adobe.pdfservices.operation.exception.SdkException;
+import com.adobe.pdfservices.operation.exception.SDKException;
 import com.adobe.pdfservices.operation.exception.ServiceApiException;
 import com.adobe.pdfservices.operation.exception.ServiceUsageException;
 import com.adobe.pdfservices.operation.io.Asset;
@@ -148,9 +148,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 ```
 
 2) Now let's define our main class:
@@ -191,7 +188,7 @@ PDFServices pdfServices = new PDFServices(credentials);
 6) Now, let's create the input asset:
 
 ```javascript
-InputStream inputStream = Files.newInputStream(new File("./Bodea Brochure.pdf").toPath());
+InputStream inputStream = Files.newInputStream(new File("src/main/resources/Bodea Brochure.pdf").toPath());
 Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
 ```
 
@@ -205,7 +202,7 @@ ExportPDFParams exportPDFParams = ExportPDFParams.exportPDFParamsBuilder(ExportP
 ExportPDFJob exportPDFJob = new ExportPDFJob(asset, exportPDFParams);
 ```
 
-This set of code defines what we're doing (an Export operation), points to our local file and specifies the input is a PDF, and then defines options for the Export call. In this example, the only option is the export format, DOCX.
+This set of code defines what we're doing (an Export operation), it defines parameter for the Export job. In this example, the only parameter is the export format, DOCX.
 
 8) The next code block submits the job and get the result:
 
@@ -234,7 +231,6 @@ This code runs the Export process and then stores the result Word document to th
 Here's the complete application (`src/main/java/ExportPDFToWord.java`):
 
 ```javascript
-
 import com.adobe.pdfservices.operation.PDFServices;
 import com.adobe.pdfservices.operation.PDFServicesMediaType;
 import com.adobe.pdfservices.operation.PDFServicesResponse;
@@ -258,11 +254,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 
 public class ExportPDFToWord {
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ExportPDFToWord.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExportPDFToWord.class);
 
     public static void main(String[] args) {
 
@@ -276,7 +271,7 @@ public class ExportPDFToWord {
             PDFServices pdfServices = new PDFServices(credentials);
           
             // Creates an asset from source file and upload
-            InputStream inputStream = Files.newInputStream(new File("./Bodea Brochure.docx").toPath());
+            InputStream inputStream = Files.newInputStream(new File("src/main/resources/Bodea Brochure.pdf").toPath());
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
           
             // Create parameters for the job
@@ -295,7 +290,7 @@ public class ExportPDFToWord {
             StreamAsset streamAsset = pdfServices.getContent(resultAsset);
           
             // Creates an output stream and copy stream asset's content to it
-            OutputStream outputStream = Files.newOutputStream(new File("./Bodea Brochure.pdf").toPath());
+            OutputStream outputStream = Files.newOutputStream(new File("output/Bodea Brochure.docx").toPath());
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException e) {
             LOGGER.error("Exception encountered while executing operation", e);
