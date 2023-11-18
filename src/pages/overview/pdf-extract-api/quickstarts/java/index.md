@@ -10,7 +10,7 @@ To get started using Adobe PDF Extract API, let's walk through a simple scenario
 
 To complete this guide, you will need:
 
-* [Java](http://www.oracle.com/technetwork/java/javase/downloads/index.html) - Java 8 or higher is required. 
+* [Java](http://www.oracle.com/technetwork/java/javase/downloads/index.html) - Java 11 or higher is required. 
 * [Maven](https://maven.apache.org/install.html)
 * An Adobe ID. If you do not have one, the credential setup will walk you through creating one.
 * A way to edit code. No specific editor is required for this guide.
