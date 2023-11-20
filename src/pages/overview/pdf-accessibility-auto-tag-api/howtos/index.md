@@ -42,9 +42,6 @@ Available properties:
     milliseconds for creating an initial HTTPS connection.
 -   **socketTimeout**: Default: 10000. The maximum allowed time in
     milliseconds between two successive HTTP response packets.
--   **processingTimeout**: Default: 600000. The maximum allowed time
-    in milliseconds for processing the documents. Any operation taking more time than the specified `processingTimeout` will result in an operation timeout exception.
-    - **Note :** It is advisable to set the `processingTimeout` to higher values for processing large files.
 
 
 Override the timeout properties via a custom `ClientConfig` class:
