@@ -350,15 +350,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "x-request-id",
-            "in": "header",
-            "description": "The request identifier used to trace the request in logs.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "requestBody": {
@@ -516,15 +507,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "x-request-id",
-            "in": "header",
-            "description": "The request identifier used to trace the request in logs.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -675,15 +657,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "x-request-id",
-            "in": "header",
-            "description": "The request identifier used to trace the request in logs.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -826,15 +799,6 @@
             "in": "header",
             "description": "The clientId from the generated credentials",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-request-id",
-            "in": "header",
-            "description": "The request identifier used to trace the request in logs.",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -8704,7 +8668,7 @@
             "default": null
           },
           "includeHeaderFooter": {
-            "description": "Determine whether to add default headers and footers to the output pages. The default header includes a short date and the contents of document.title. The default footer includes a file name and a page n/m reference.",
+            "description": "Determine whether to add default headers and footers to the output pages. The default header includes a short date and the contents of document title. The default footer includes a file name and a page n/m reference.",
             "type": "boolean",
             "default": false
           },
@@ -8761,7 +8725,7 @@
                 "default": null
               },
               "includeHeaderFooter": {
-                "description": "Determine whether to add default headers and footers to the output pages. The default header includes a short date and the contents of document.title. The default footer includes a file name and a page n/m reference.",
+                "description": "Determine whether to add default headers and footers to the output pages. The default header includes a short date and the contents of document title. The default footer includes a file name and a page n/m reference.",
                 "type": "boolean",
                 "default": false
               },
