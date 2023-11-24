@@ -7,7 +7,7 @@ Adobe PDF Service APIs now integrate Webhook notifications, introducing a stream
 
 To harness the capabilities of webhooks, clients must incorporate the **notifiers** key in the request body when utilizing the **Submit Job** API. The **notifiers** key serves as a receptacle for a list of objects, each corresponding to a distinct webhook. Within each notifier object, two crucial fields, **type** and **data** play a pivotal role:
 
-1. **type**: This field specifies the type of notifier to be invoked. Currently, the only supported notifier type is [CALLBACK](#callback-notifier).
+1. **type**: This field specifies the type of notifier to be invoked. Currently, the only supported notifier type is [CALLBACK](#callback-webhook-usage).
 2. **data**: This field contains the data required for the webhook. The specific data may vary depending on the type of notifier in use.
 
 ### Sample Request Body
