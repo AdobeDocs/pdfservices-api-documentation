@@ -1,15 +1,14 @@
 ---
 title: Webhook Notification support for Adobe PDF Services APIs | Adobe PDF Services
 ---
-# **Webhook Notification support for Adobe PDF Services APIs**
+# **Webhook Notification Support for Adobe PDF Services APIs**
 
-Webhooks are now supported in Adobe PDF Service APIs. Webhooks are the plugins which help in getting the notification of job completion. Clients will not be required to invoke the GET Status API to get the job completion status and result, instead, they will be automatically notified with the job status and result.
+Adobe PDF Service APIs now integrate Webhook notifications, introducing a streamlined process for receiving job completion updates. This innovative feature eliminates the manual invocation of the GET Status API by clients to obtain job status and results. Instead, clients will automatically receive notifications containing comprehensive information about job status and results.
 
-To use webhooks, client needs to pass **notifiers** key in the request body while invoking the Submit Job API. 
-**notifiers key** expects the list of objects where each object corresponds to one webhook. Each notifier object consists of **type** and **data** fields. Below are the details of these fields and sample request :
+To harness the capabilities of webhooks, clients must incorporate the **notifiers** key in the request body when utilizing the **Submit Job** API. The **notifiers** key serves as a receptacle for a list of objects, each corresponding to a distinct webhook. Within each notifier object, two crucial fields, **type** and **data** play a pivotal role:
 
-1. **type**: Type of notifier needs to be invoked. Currently supported notifier type is [CALLBACK](#callback-notifier).
-2. **data**: This contains the data needed for the webhook. It varies depending on the type of notifier.
+1. **type**: This field specifies the type of notifier to be invoked. Currently, the only supported notifier type is [CALLBACK](#callback-notifier).
+2. **data**: This field contains the data required for the webhook. The specific data may vary depending on the type of notifier in use.
 
 ### Sample Request Body
 ```json
@@ -36,14 +35,15 @@ To use webhooks, client needs to pass **notifiers** key in the request body whil
 Webhook notification support is only available in REST APIs. It is currently <b>not</b> supported in SDKs.
 </div>
 
-## **CALLBACK Webhook**
-The callback webhook allows client to get the job completion notification on the https url. Client needs to create a HTTPS POST URL, and share that URL and related headers information in the request. Once the job completes, we create a notification payload containing the job status and output asset details and invoke the HTTP POST call on the url provided by the client.
+## **Callback Webhook Usage**
+The callback webhook feature facilitates the clients to receive real-time notifications on job completion through a designated HTTPS URL. To use this feature, clients must establish an HTTPS POST URL, sharing it alongside essential header information in their request. Upon successful job completion, a notification payload is dynamically generated, encompassing comprehensive details about the job status and output assets. This payload is then transmitted via an HTTP POST request to the client-specified URL.
 
-Below are the parameters to be passed in notifier object:
-1. **type** _(Required)_: It should be ***CALLBACK***.
-2. **data** _(Required)_: The data keys requires below key:
-   * ***url*** _(Required)_: HTTPS POST URL created by the user.
-   * ***headers*** _(Optional)_: It is map of key value pair and represent headers related information required to call the URL.
+### Parameters for the Notifier Object
+When implementing the callback webhook, the notifier object necessitates the inclusion of specific parameters:
+1. **type** _(Required)_: This field should always be set to ***CALLBACK***.
+2. **data** _(Required)_: The "data" field contains the following keys:
+   * ***url*** _(Required)_: The user-crafted HTTPS POST URL.
+   * ***headers*** _(Optional)_: This optional field, a map of key-value pairs, encompasses header-related information vital for the URL call. While not obligatory, it offers the flexibility to provide additional context or authentication for the callback.
 
 ### Sample Notifier Object
 
@@ -108,7 +108,7 @@ In case of failed job completion, the following **callback payload** will be sen
 ```
 
 ## Expected response from client
-The client should return following response payload with HTTP status code as 200 (OK):
+The client is expected to return the following response payload with an HTTP status code of 200 (OK):
 ```json
 {
   "ack": "done"
@@ -116,6 +116,6 @@ The client should return following response payload with HTTP status code as 200
 ```
 <InlineAlert slots="text"/>
 <div>
-If the response code is not 200(OK) or expected payload is not received, then it is considered as error response. If there are 50 error response in 10 minutes then webhook notification support is blocked for that client for next 20 minutes.
+If the response code is not 200 (OK) or the expected payload is not received, it will be considered an error response. In the event of 50 error responses within a 10-minute period, webhook notification support will be temporarily blocked for that client for the next 20 minutes.
 </div>
 
