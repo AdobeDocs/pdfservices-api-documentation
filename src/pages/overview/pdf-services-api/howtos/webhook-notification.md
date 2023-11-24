@@ -32,7 +32,7 @@ To harness the capabilities of webhooks, clients must incorporate the **notifier
 
 <InlineAlert slots="text"/>
 <div>
-Webhook notification support is only available in REST APIs. It is currently <b>not</b> supported in SDKs.
+Webhook notification support is only available in REST APIs except PDF Properties and external storage. It is currently <b>not</b> supported in SDKs.
 </div>
 
 ## **Callback Webhook Usage**
