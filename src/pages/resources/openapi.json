@@ -9605,7 +9605,7 @@
             "type": "object"
           },
           "notifiers": {
-            "description": "Specifies the array of notifier related information. To know more about notifier related use-case, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/webhook-notification/\">documentation</a>.",
+            "description": "Specifies the array of notifier related information. To know more about notifier related use-case, please see the <a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/howtos/webhook-notification/\">documentation</a>.",
             "type": "array",
             "items": {
               "properties": {
