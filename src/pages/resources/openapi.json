@@ -8350,6 +8350,9 @@
           },
           "documentLanguage": {
             "$ref": "#/components/schemas/documentLanguage"
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "default": {
@@ -8357,7 +8360,19 @@
         },
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
-          "documentLanguage": "en-US"
+          "documentLanguage": "en-US",
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "assetID"
@@ -8432,12 +8447,27 @@
           },
           "ocrLang": {
             "$ref": "#/components/schemas/exportOCRLang"
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "targetFormat": "docx",
-          "ocrLang": "en-US"
+          "ocrLang": "en-US",
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "additionalProperties": false
       },
@@ -8524,12 +8554,27 @@
               "listOfPageImages",
               "zipOfPageImages"
             ]
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "targetFormat": "jpeg",
-          "outputType": "listOfPageImages"
+          "outputType": "listOfPageImages",
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "additionalProperties": false
       },
@@ -8631,6 +8676,9 @@
                 "figures"
               ]
             }
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -8645,6 +8693,18 @@
           "renditionsToExtract": [
             "tables",
             "figures"
+          ],
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
           ]
         },
         "additionalProperties": false
@@ -8691,6 +8751,9 @@
                 ]
               }
             }
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -8700,7 +8763,19 @@
           "pageLayout": {
             "pageWidth": 11,
             "pageHeight": 8.5
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "additionalProperties": false
       },
@@ -8795,6 +8870,9 @@
               },
               "required": ["assetID"]
             }
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -8816,6 +8894,18 @@
                   "end": 2
                 }
               ]
+            }
+          ],
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
             }
           ]
         },
@@ -8922,11 +9012,26 @@
               "MEDIUM",
               "HIGH"
             ]
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
-          "compressionLevel": "LOW"
+          "compressionLevel": "LOW",
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "assetID"
@@ -8986,10 +9091,25 @@
           "assetID": {
             "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
-          "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
+          "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "assetID"
@@ -9043,12 +9163,27 @@
               "searchable_image",
               "searchable_image_exact"
             ]
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "ocrLang": "en-US",
-          "ocrType": "searchable_image"
+          "ocrType": "searchable_image",
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "assetID"
@@ -9128,6 +9263,9 @@
                 ]
               }
             ]
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -9152,6 +9290,18 @@
                     "end": 2
                   }
                 ]
+              }
+            }
+          ],
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
               }
             }
           ]
@@ -9351,6 +9501,9 @@
                 "COPY_CONTENT"
               ]
             }
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -9363,6 +9516,18 @@
           "permissions": [
             "PRINT_HIGH_QUALITY",
             "EDIT_CONTENT"
+          ],
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
           ]
         },
         "required": [
@@ -9478,11 +9643,26 @@
           "password": {
             "description": "Password required for removing security/permissions from the PDF document.",
             "type": "string"
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
-          "password": "XXXXX"
+          "password": "XXXXX",
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "assetID",
@@ -9559,6 +9739,9 @@
                 "$ref": "#/components/schemas/pageRanges"
               }
             ]
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -9570,7 +9753,19 @@
                 "end": 10
               }
             ]
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "assetID",
@@ -9605,21 +9800,7 @@
             "type": "object"
           },
           "notifiers": {
-            "description": "Specifies the array of notifier related information. To know more about notifier related use-case, please see the <a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/howtos/webhook-notification/\">documentation</a>.",
-            "type": "array",
-            "items": {
-              "properties": {
-                "type": {
-                  "description": "Specifies the notifier type. Currently supported value is \"callback\" only.",
-                  "type": "string"
-                },
-                "data": {
-                  "description": "Specifies the webhook notification related information which is required to notify about the job completion.",
-                  "type": "object"
-                }
-              },
-              "required": ["type", "data"]
-            }
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -9927,6 +10108,9 @@
           },
           "sealOptions": {
             "$ref": "#/components/schemas/sealOptions"
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -9971,7 +10155,19 @@
                 "SEAL_IMAGE"
               ]
             }
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "additionalProperties": false
       },
@@ -10176,6 +10372,23 @@
           }
         }
       },
+      "notifiers": {
+        "description": "Specifies the notifiers to be invoked on the completion of job. To know more about notifiers, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/webhook-notification/\">documentation</a>.",
+        "type": "array",
+        "items": {
+          "properties": {
+            "type": {
+              "description": "Specifies the notifier type. Currently supported value is \"CALLBACK\" only.",
+              "type": "string"
+            },
+            "data": {
+              "description": "Specifies the data needed to invoke the notifier.",
+              "type": "object"
+            }
+          },
+          "required": ["type", "data"]
+        }
+      },
       "AutoTagPDF": {
         "title": "Internal",
         "description": "Parameter for Accessibility Auto-Tag operation.",
@@ -10197,12 +10410,27 @@
             "description": "Boolean specifying whether to generate excel report.",
             "type": "boolean",
             "default": false
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "shiftHeadings": false,
-          "generateReport": false
+          "generateReport": false,
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "additionalProperties": false
       },
