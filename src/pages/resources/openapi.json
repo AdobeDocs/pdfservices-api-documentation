@@ -9605,7 +9605,7 @@
             "type": "object"
           },
           "notifiers": {
-            "description": "Specifies the array of notifier related information. To know more about notifier related use-case, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/webhook-notification/\">documentation</a>.",
+            "description": "Specifies the notifiers to be invoked on the completion of job. To know more about notifiers, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/webhook-notification/\">documentation</a>.",
             "type": "array",
             "items": {
               "properties": {
@@ -9614,7 +9614,7 @@
                   "type": "string"
                 },
                 "data": {
-                  "description": "Specifies the webhook notification related information which is required to notify about the job completion.",
+                  "description": "Specifies the data needed to invoke the notifier.",
                   "type": "object"
                 }
               },
