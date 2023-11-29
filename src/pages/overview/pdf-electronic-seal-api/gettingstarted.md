@@ -135,6 +135,11 @@ curl --location -g --request GET 'https://pdf-services.adobe.io/operation/electr
 --header 'x-api-key: {{Placeholder for client id}}'
 ```
 
+<InlineAlert slots="text"/>
+<div>
+Instead of fetching the status, if you wish to receive the job completion notification, then please see the <a href="../../pdf-services-api/howtos/webhook-notification/">documentation</a>.
+</div>
+
 ## Step 8 : Downloading the asset
 
 On getting `200` response code from the poll API, you will receive a `status` field in the response body which can either be `in progress`, `done` or `failed`.

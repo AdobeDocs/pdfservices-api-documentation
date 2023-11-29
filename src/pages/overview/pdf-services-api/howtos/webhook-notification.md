@@ -15,7 +15,7 @@ For more information on the **CALLBACK** notifier, please refer to the [Callback
 ### Sample Request Body
 ```json
 {
-  "assetID": "{{assetID}}",
+  "assetID": "<ASSET ID>",
   ....,
   ///REST API Operation related details
   ....
@@ -46,7 +46,7 @@ When utilizing the callback webhook, the following parameters need to be include
 
 ```json
 {
-  "assetID": "{{assetID}}",
+  "assetID": "<ASSET ID>",
   ....,
   ///REST API Operation related details
   ....
@@ -81,8 +81,8 @@ In case of successful job completion, the following **callback payload** will be
         "type": "application/pdf",
         "size": 318974
       },
-      "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/d2276912a0b243e696f124ff456be9b1_C9851F6663033A610A494128%40techacct.adobe.com/d515e6cc-4f4b-4b28-953a-7a08391df783?X-Amz-Security-Token=FwoGZXIvYXdzELz%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDJJ5weJV7WO8%2FQF1HSLTAbfoqPU3TaJWlIXdHRqqFd30LHw3r6eWyLQMpESoer%2Bf%2BArqHQXr41qlrhXlocuiateFjV3wDRWxrATCXOM3Sd%2BzG4xOdPqWTlqSS4kdichFW6YxZGQWAX%2BYG4UkmsRMhqiNb0YJzibgraDjEwEdqcS%2B4jh5eVaS3FxkjbsP6IfqxUylwElwgAkplhhwv0bXel%2BoJOMcNKY0RKpjacmd5WO3heHycxTikl22H7nkN2lbgoKvD9%2Bch%2FXyaZJ16GRxUsLsJYkHMseSel3yBZa3dVNCWu4ouL%2BNqQYyLeQUtRlODiJdMXRktx%2FbQ56xDgJKRbxD%2BKTZlfH44GeCwh%2B9GJCmchbyW54NbA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231009T021610Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3599&X-Amz-Credential=ASIAU5PA7W47EACOK46J%2F20231009%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=44e6060ca6bb1e70ec30b150737b4ee196acb5842efc5dd7adf05e9d1ad84074",
-      "assetID": "urn:aaid:AS:UE1:786e4ea5-a720-4d0a-af6d-cb450719989c"
+      "downloadUri": "<DOWNLOAD URI",
+      "assetID": "<ASSET ID>"
     }
   }
 }
@@ -96,8 +96,8 @@ In case of failed job completion, the following **callback payload** will be sen
   "statusResponse": {
     "status": "failed",
     "error": {
-      "code": "INVALID_PROVIDER_NAME",
-      "message": "Provider with name csctest not supported.; transactionId=c0uyOOfEtj04aWSeLiesgA6TQ4WoLc2b",
+      "code": "<ERROR CODE>",
+      "message": "<ERROR MESSAGE>",
       "status": 400
     }
   }
