@@ -43,7 +43,7 @@ To complete this guide, you will need:
 
 2) Take the `pdfservices-api-credentials.json` and place it in a new directory.
 
-3) In this directory, create a new file named `pom.xml` and copy the following contents:
+3) In this directory, create a new file named `pom.xml` and copy the following content:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

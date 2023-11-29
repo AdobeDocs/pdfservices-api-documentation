@@ -43,7 +43,7 @@ To complete this guide, you will need:
 
 2) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
 
-3) In this directory, create a new file named `pom.xml` and copy the following contents:
+3) In this directory, create a new file named `pom.xml` and copy the following content:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -227,7 +227,7 @@ Asset resultAsset = pdfServicesResponse.getResult().getResource();
 StreamAsset streamAsset = pdfServices.getContent(resultAsset);
 ```
 
-This code runs the Extraction process, get the content of the result zip in stream asset. 
+This code runs the Extraction process, gets the content of the result zip in stream asset. 
 
 8) The next code block saves the result at the specified location:
 

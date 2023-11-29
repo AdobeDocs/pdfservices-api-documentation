@@ -43,7 +43,7 @@ To complete this guide, you will need:
 
 2) Take `pdfservices-api-credentials.json` file and place it in a new directory.
 
-3) In this directory, create a new file named `pom.xml` and copy the following contents:
+3) In this directory, create a new file named `pom.xml` and copy the following content:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -114,7 +114,7 @@ To complete this guide, you will need:
 
 This file will define what dependencies we need and how the application will be built. 
 
-Our application will take a PDF, `Adobe_Accessibility_Auto_Tag_API_Sample.pdf` (downloadable from <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>) and tag its contents. The results will be saved in a given directory `/output/AutotagPDF`.
+Our application will take a PDF, `Adobe_Accessibility_Auto_Tag_API_Sample.pdf` (downloadable from <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>) and tag its contents. The results will be saved in the directory `/output`.
 
 4) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `AutotagPDF.java`. 
 
@@ -171,7 +171,7 @@ public class AutotagPDF {
   - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
   - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
-4) Next, we can create our credentials and PDF Services instance:
+4) Next, we can create our credentials and PDFServices instance:
 
 ```javascript
 // Initial setup, create credentials instance
@@ -205,7 +205,7 @@ AutotagPDFJob autotagPDFJob = new AutotagPDFJob(asset).setParams(autotagPDFParam
 ```
 
 This set of code defines what we're doing (an Autotag operation),
-it defines parameters for the Autotag job. PDF Autotag API has a few different options, in this example we will be genrating report along with tagged PDF and shift heading as well.
+it defines parameters for the Autotag job. PDF Autotag API has a few different options, in this example we will be generating report along with tagged PDF and shift heading as well.
 
 7) The next code block submits the job and gets the result:
 

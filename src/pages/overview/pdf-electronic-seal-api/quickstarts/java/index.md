@@ -43,7 +43,7 @@ To complete this guide, you will need:
 
 2) Take the `pdfservices-api-credentials.json` and place it in a new directory.
 
-3) In this directory, create a new file named `pom.xml` and copy the following contents:
+3) In this directory, create a new file named `pom.xml` and copy the following content:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -179,7 +179,7 @@ public class ElectronicSeal {
   - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
 
-4) Next, we can create our credentials and PDF Services instance:
+4) Next, we can create our credentials and PDFServices instance:
 ```javascript
 // Initial setup, create credentials instance
 Credentials credentials = new ServicePrincipalCredentials(
