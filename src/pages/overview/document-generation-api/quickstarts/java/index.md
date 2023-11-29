@@ -270,7 +270,7 @@ DocumentMergeJob documentMergeJob = new DocumentMergeJob(asset, documentMergePar
 
 This set of code defines what we're doing (a document merge operation, the SDK's way of describing Document Generation), points to our local JSON file and specifies the output is a PDF. It also points to the Word file used as a template.
 
-9) The next code block submits the job and get the result:
+9) The next code block submits the job and gets the result:
 
 ```javascript
 // Submit the job and get the job result
@@ -290,7 +290,7 @@ OutputStream outputStream = Files.newOutputStream(new File("output/generatePDFOu
 IOUtils.copy(streamAsset.getInputStream(), outputStream);
 ```
 
-This code runs the Document Generation process and then stores the result PDF document to the file system. 
+This code runs the Document Generation process and then stores the resulting PDF document to the file system. 
 
 ![Example running in the command line](./shot9.png)
 
