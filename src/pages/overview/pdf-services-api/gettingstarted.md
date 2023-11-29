@@ -87,7 +87,7 @@ curl --location -g --request GET 'https://pdf-services.adobe.io/operation/compre
 
 <InlineAlert slots="text"/>
 <div>
-Instead of fetching the status, if you wish to receive the job completion notification, then please see the <a href="../howtos/webhook-notification/">documentation</a>.
+Instead of using the status API to check the job status, you have the option to receive job completion notifications through Webhook. For more information, please refer the <a href="../howtos/webhook-notification/">documentation</a>.
 </div>
 
 ## Step 5 : Downloading the asset
