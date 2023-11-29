@@ -80,7 +80,7 @@ To complete this guide, you will need:
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-slf4j-impl</artifactId>
-      <version>2.17.1</version>
+      <version>2.21.1</version>
     </dependency>
   </dependencies>
 
@@ -207,7 +207,7 @@ AutotagPDFJob autotagPDFJob = new AutotagPDFJob(asset).setParams(autotagPDFParam
 This set of code defines what we're doing (an Autotag operation),
 it defines parameters for the Autotag job. PDF Autotag API has a few different options, in this example we will be genrating report along with tagged PDF and shift heading as well.
 
-7) The next code block submits the job and get the result:
+7) The next code block submits the job and gets the result:
 
 ```javascript
 // Submit the job and get the job result

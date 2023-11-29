@@ -80,7 +80,7 @@ To complete this guide, you will need:
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-slf4j-impl</artifactId>
-      <version>2.17.1</version>
+      <version>2.21.1</version>
     </dependency>
   </dependencies>
 
@@ -216,7 +216,7 @@ ExtractPDFJob extractPDFJob = new ExtractPDFJob(asset)
 This set of code defines what we're doing (an Extract operation),
 it defines parameters for the Extract job. PDF Extract API has a few different options, but in this example, we're simply asking for the most basic of extractions, the textual content of the document. 
 
-7) The next code block submits the job and get the result:
+7) The next code block submits the job and gets the result:
 
 ```javascript
 // Submit the job and get the job result

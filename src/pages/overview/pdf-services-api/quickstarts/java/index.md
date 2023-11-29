@@ -204,7 +204,7 @@ ExportPDFJob exportPDFJob = new ExportPDFJob(asset, exportPDFParams);
 
 This set of code defines what we're doing (an Export operation), it defines parameter for the Export job. In this example, the only parameter is the export format, DOCX.
 
-8) The next code block submits the job and get the result:
+8) The next code block submits the job and gets the result:
 
 ```javascript
 // Submit the job and get the job result

@@ -80,7 +80,7 @@ To complete this guide, you will need:
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-slf4j-impl</artifactId>
-      <version>2.17.1</version>
+      <version>2.21.1</version>
     </dependency>
   </dependencies>
 
@@ -284,7 +284,7 @@ pdfElectronicSealJob.setSealImageAsset(sealImageAsset);
 This set of code defines what we're doing (an Electronic Seal operation),
 it defines parameters for the seal job and sets input seal image asset.
 
-10) The next code block submits the job and get the result:
+9) The next code block submits the job and gets the result:
 
 ```javascript
 // Submits the job and gets the job result
