@@ -63,7 +63,7 @@ To complete this guide, you will need:
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
-    <pdfservices.sdk.version>4.0.0_beta</pdfservices.sdk.version>
+    <pdfservices.sdk.version>4.0.0</pdfservices.sdk.version>
     <pdfservices.sdk.samples.version>4.0.0</pdfservices.sdk.samples.version>
   </properties>
 
@@ -118,6 +118,8 @@ Our application will take a PDF, `Bodea Brochure.pdf` (downloadable from <a href
 
 4) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `ExportPDFToWord.java`. 
 
+5) In your editor, open the directory where you previously copied the credentials, and create a new directory, `output`. This directory will hold the results of the operation.
+
 Now you're ready to begin coding.
 
 ## Step Three: Creating the application
@@ -164,7 +166,7 @@ public class ExportPDFToWord {
 }
 ```
 
-4) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+3) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
 - **Windows:**
   - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
   - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
@@ -173,7 +175,7 @@ public class ExportPDFToWord {
   - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
   - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
-5) Next, we can create our credentials and use them:
+4) Next, we can create our credentials and use them:
 
 ```javascript
 // Initial setup, create credentials instance
@@ -185,14 +187,14 @@ Credentials credentials = new ServicePrincipalCredentials(
 PDFServices pdfServices = new PDFServices(credentials);
 ```
 
-6) Now, let's create the input asset:
+5) Now, let's upload the asset:
 
 ```javascript
 InputStream inputStream = Files.newInputStream(new File("src/main/resources/Bodea Brochure.pdf").toPath());
 Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
 ```
 
-7) Now, let's create the parameters and the job:
+6) Now, let's create the parameters and the job:
 
 ```javascript
 // Create parameters for the job
@@ -204,7 +206,7 @@ ExportPDFJob exportPDFJob = new ExportPDFJob(asset, exportPDFParams);
 
 This set of code defines what we're doing (an Export operation), it defines parameter for the Export job. In this example, the only parameter is the export format, DOCX.
 
-8) The next code block submits the job and gets the result:
+7) The next code block submits the job and gets the job result:
 
 ```javascript
 // Submit the job and get the job result
@@ -216,7 +218,7 @@ Asset resultAsset = pdfServicesResponse.getResult().getAsset();
 StreamAsset streamAsset = pdfServices.getContent(resultAsset);
 ```
 
-9) The next code block saves the result at the specified location:
+8) The next code block saves the result at the specified location:
 
 ```javascript
 // Creates an output stream and copy stream asset's content to it

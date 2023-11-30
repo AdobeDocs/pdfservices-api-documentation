@@ -63,7 +63,7 @@ To complete this guide, you will need:
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
-    <pdfservices.sdk.version>4.0.0_beta</pdfservices.sdk.version>
+    <pdfservices.sdk.version>4.0.0</pdfservices.sdk.version>
     <pdfservices.sdk.samples.version>4.0.0</pdfservices.sdk.samples.version>
   </properties>
 
@@ -117,6 +117,8 @@ This file will define what dependencies we need and how the application will be 
 Our application will take an Invoice PDF document, `sampleInvoice.pdf` (downloadable from <a href="./sampleInvoice.pdf" target="_blank">here</a>), and will use the sealing options with default appearance options to apply electronic seal over the PDF document by invoking Acrobat Services API and generate an electronically sealed PDF.
 
 4) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `ElectronicSeal.java`. 
+
+5) In your editor, open the directory where you previously copied the credentials, and create a new directory, `output`. This directory will hold the results of the operation.
 
 Now you're ready to begin coding.
 
@@ -190,7 +192,7 @@ Credentials credentials = new ServicePrincipalCredentials(
 PDFServices pdfServices = new PDFServices(credentials);
 ```
 
-5) Now, let's create the input asset:
+5) Now, let's upload the asset:
 ```javascript
 // Creates an asset from source file and upload
 InputStream inputStream = Files.newInputStream(new File("src/main/resources/sampleInvoice.pdf").toPath());
@@ -284,7 +286,7 @@ pdfElectronicSealJob.setSealImageAsset(sealImageAsset);
 This set of code defines what we're doing (an Electronic Seal operation),
 it defines parameters for the seal job and sets input seal image asset.
 
-9) The next code block submits the job and gets the result:
+9) The next code block submits the job and gets the job result:
 
 ```javascript
 // Submits the job and gets the job result

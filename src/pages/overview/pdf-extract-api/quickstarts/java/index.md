@@ -63,7 +63,7 @@ To complete this guide, you will need:
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
-    <pdfservices.sdk.version>4.0.0_beta</pdfservices.sdk.version>
+    <pdfservices.sdk.version>4.0.0</pdfservices.sdk.version>
     <pdfservices.sdk.samples.version>4.0.0</pdfservices.sdk.samples.version>
   </properties>
 
@@ -117,6 +117,8 @@ This file will define what dependencies we need and how the application will be 
 Our application will take a PDF, `Adobe Extract API Sample.pdf` (downloadable from [here](/Adobe%20Extract%20API%20Sample.pdf)) and extract it's contents. The results will be saved as a ZIP file, `ExtractTextInfoFromPDF.zip`. We will then parse the results from the ZIP and print out the text of any `H1` headers found in the PDF.
 
 4) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `ExtractTextInfoFromPDF.java`. 
+
+5) In your editor, open the directory where you previously copied the credentials, and create a new directory, `output`. This directory will hold the results of the operation.
 
 Now you're ready to begin coding.
 
@@ -190,7 +192,7 @@ Credentials credentials = new ServicePrincipalCredentials(
 PDFServices pdfServices = new PDFServices(credentials);
 ```
 
-5) Now, let's create the input asset:
+5) Now, let's upload the asset:
 
 ```javascript
 // Creates an asset from source file and upload
@@ -216,7 +218,7 @@ ExtractPDFJob extractPDFJob = new ExtractPDFJob(asset)
 This set of code defines what we're doing (an Extract operation),
 it defines parameters for the Extract job. PDF Extract API has a few different options, but in this example, we're simply asking for the most basic of extractions, the textual content of the document. 
 
-7) The next code block submits the job and gets the result:
+7) The next code block submits the job and gets the job result:
 
 ```javascript
 // Submit the job and get the job result
@@ -268,7 +270,7 @@ for(int i=0; i < elements.length(); i++) {
 
 ![Example running in the command line](./shot9.png)
 
-Here's the complete application (`src/java/main/ExtractTextInfoFromPDF.java`):
+Here's the complete application (`src/main/java/ExtractTextInfoFromPDF.java`):
 
 ```javascript
 import com.adobe.pdfservices.operation.PDFServices;
