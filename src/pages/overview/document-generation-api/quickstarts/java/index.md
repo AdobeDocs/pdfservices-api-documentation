@@ -63,7 +63,7 @@ To complete this guide, you will need:
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
-    <pdfservices.sdk.version>4.0.0_beta</pdfservices.sdk.version>
+    <pdfservices.sdk.version>4.0.0</pdfservices.sdk.version>
     <pdfservices.sdk.samples.version>4.0.0</pdfservices.sdk.samples.version>
   </properties>
 
@@ -117,6 +117,8 @@ This file will define what dependencies we need and how the application will be 
 Our application will take a Word document, `receiptTemplate.docx` (downloadable from [here](/receiptTemplate.docx)), and combine it with data in a JSON file, `receipt.json` (downloadable from [here](/receipt.json)), to be sent to the Acrobat Services API and generate a receipt PDF.
 
 4) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `GeneratePDF.java`. 
+
+5) In your editor, open the directory where you previously copied the credentials, and create a new directory, `output`. This directory will hold the results of the operation.
 
 Now you're ready to begin coding.
 
@@ -244,7 +246,7 @@ Credentials credentials = new ServicePrincipalCredentials(
 PDFServices pdfServices = new PDFServices(credentials);
 ```
 
-7) Now, let's create the input asset and JSON data for merge:
+7) Now, let's upload the asset and create JSON data for merge:
 
 ```javascript
 InputStream inputStream = Files.newInputStream(new File("src/main/resources/receiptTemplate.docx").toPath());
@@ -270,7 +272,7 @@ DocumentMergeJob documentMergeJob = new DocumentMergeJob(asset, documentMergePar
 
 This set of code defines what we're doing (a document merge operation, the SDK's way of describing Document Generation), points to our local JSON file and specifies the output is a PDF. It also points to the Word file used as a template.
 
-9) The next code block submits the job and gets the result:
+9) The next code block submits the job and gets the job result:
 
 ```javascript
 // Submit the job and get the job result

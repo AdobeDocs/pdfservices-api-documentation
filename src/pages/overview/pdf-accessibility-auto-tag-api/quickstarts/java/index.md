@@ -63,7 +63,7 @@ To complete this guide, you will need:
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
-    <pdfservices.sdk.version>4.0.0_beta</pdfservices.sdk.version>
+    <pdfservices.sdk.version>4.0.0</pdfservices.sdk.version>
     <pdfservices.sdk.samples.version>4.0.0</pdfservices.sdk.samples.version>
   </properties>
 
@@ -117,6 +117,8 @@ This file will define what dependencies we need and how the application will be 
 Our application will take a PDF, `Adobe_Accessibility_Auto_Tag_API_Sample.pdf` (downloadable from <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>) and tag its contents. The results will be saved in the directory `/output`.
 
 4) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `AutotagPDF.java`. 
+
+5) In your editor, open the directory where you previously copied the credentials, and create a new directory, `output`. This directory will hold the results of the operation.
 
 Now you're ready to begin coding.
 
@@ -183,7 +185,7 @@ Credentials credentials = new ServicePrincipalCredentials(
 PDFServices pdfServices = new PDFServices(credentials);
 ```
 
-5) Now, let's create the input asset:
+5) Now, let's upload the asset:
 
 ```javascript
 InputStream inputStream = Files.newInputStream(new File("src/main/resources/Adobe_Accessibility_Auto_Tag_API_Sample.pdf").toPath());
@@ -207,7 +209,7 @@ AutotagPDFJob autotagPDFJob = new AutotagPDFJob(asset).setParams(autotagPDFParam
 This set of code defines what we're doing (an Autotag operation),
 it defines parameters for the Autotag job. PDF Autotag API has a few different options, in this example we will be generating report along with tagged PDF and shift heading as well.
 
-7) The next code block submits the job and gets the result:
+7) The next code block submits the job and gets the job result:
 
 ```javascript
 // Submit the job and get the job result
@@ -233,7 +235,7 @@ IOUtils.copy(streamAssetReport.getInputStream(), outputStreamReport);
 
 ![Example running in the command line](./shot9_ga.png)
 
-Here's the complete application (`src/java/main/AutotagPDF.java`):
+Here's the complete application (`src/main/java/AutotagPDF.java`):
 
 ```javascript
 import com.adobe.pdfservices.operation.PDFServices;
