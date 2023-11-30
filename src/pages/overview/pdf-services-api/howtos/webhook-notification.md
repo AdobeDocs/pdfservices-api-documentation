@@ -3,7 +3,7 @@ title: Webhook Notification support for Adobe PDF Services APIs | Adobe PDF Serv
 ---
 # **Webhook Notification Support for Adobe PDF Services APIs**
 
-Adobe PDF Service APIs now offer support for Webhook notifications. Webhooks are plugins designed to facilitate the receipt of job completion notifications. This new feature eliminates the need for clients to manually invoke the [GET Status API](https://developer.adobe.com/document-services/docs/apis/#tag/Create-PDF/operation/pdfoperations.jobstatus) to obtain job completion status and results. Instead, they will receive automatic notifications containing the job status and result.
+Adobe PDF Service APIs now offer support for Webhook notifications. Webhooks are designed to facilitate the receipt of job completion notifications. This new feature eliminates the need for clients to manually invoke the [GET Status API](https://developer.adobe.com/document-services/docs/apis/#tag/Create-PDF/operation/pdfoperations.jobstatus) to obtain job completion status and results. Instead, they will receive automatic notifications containing the job status and result.
 
 To leverage the power of webhooks, clients are required to include the **notifiers** key in the request body when making a call to the **[Submit Job](https://developer.adobe.com/document-services/docs/apis/#tag/Create-PDF/operation/pdfoperations.createpdf)** API. The **notifiers** key is designed to receive a list of objects, with each object corresponding to a specific webhook. Each notifier object is composed of two essential fields: **type** and **data**. Here, we provide detailed information about these fields and offer a sample request:
 
@@ -117,7 +117,7 @@ If the response code is not 200 (OK) or the expected payload is not received, it
 </div>
 
 ## Limitations
-1. Webhook notification support is not available for [external storage](https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol/) based APIs.
-2. It is not available for [PDFProperties](https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-properties/) and PDF Accessbility Checker operation.
+1. Webhook notification support is not available for [external storage](https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol/) based APIs.
+2. It is not available for [PDFProperties](https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-properties/) operation.
 2. It is currently not available in SDKs (v3.5.0 and below). Future versions of SDK will include the support of notifiers.
 

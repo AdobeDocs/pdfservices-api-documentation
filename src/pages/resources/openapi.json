@@ -10452,12 +10452,27 @@
           "pageEnd": {
             "description": "The parameter allows for the specification of the ending page for the accessibility check. If \"pageEnd\" is not provided, the last page is considered the default pageEnd. It should be greater than equal to 1.",
             "type": "number"
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "pageStart": 1,
-          "pageEnd": 5
+          "pageEnd": 5,
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "additionalProperties": false
       },
