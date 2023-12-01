@@ -188,7 +188,6 @@ PDFServices pdfServices = new PDFServices(credentials);
 5) Now, let's upload the asset:
 
 ```javascript
-InputStream inputStream = Files.newInputStream(new File("src/main/resources/Adobe_Accessibility_Auto_Tag_API_Sample.pdf").toPath());
 Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
 ```
 
@@ -266,7 +265,7 @@ public class AutotagPDF {
   private static final Logger LOGGER = LoggerFactory.getLogger(AutotagPDF.class);
 
   public static void main(String[] args) {
-    try {
+    try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/Adobe_Accessibility_Auto_Tag_API_Sample.pdf").toPath())) {
       // Initial setup, create credentials instance
       Credentials credentials = new ServicePrincipalCredentials(
               System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -276,7 +275,6 @@ public class AutotagPDF {
       PDFServices pdfServices = new PDFServices(credentials);
     
       // Creates an asset from source file and upload
-      InputStream inputStream = Files.newInputStream(new File("src/main/resources/Adobe_Accessibility_Auto_Tag_API_Sample.pdf").toPath());
       Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
     
       // Create parameters for the job
