@@ -190,7 +190,6 @@ PDFServices pdfServices = new PDFServices(credentials);
 5) Now, let's upload the asset:
 
 ```javascript
-InputStream inputStream = Files.newInputStream(new File("src/main/resources/Bodea Brochure.pdf").toPath());
 Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
 ```
 
@@ -263,7 +262,7 @@ public class ExportPDFToWord {
 
     public static void main(String[] args) {
 
-        try {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/Bodea Brochure.pdf").toPath())) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                     System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -273,7 +272,6 @@ public class ExportPDFToWord {
             PDFServices pdfServices = new PDFServices(credentials);
           
             // Creates an asset from source file and upload
-            InputStream inputStream = Files.newInputStream(new File("src/main/resources/Bodea Brochure.pdf").toPath());
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
           
             // Create parameters for the job

@@ -31,7 +31,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
    private static final Logger LOGGER = LoggerFactory.getLogger(DeletePDFPages.class);
 
    public static void main(String[] args) {
-       try {
+       try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/deletePagesInput.pdf").toPath())) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                     System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -41,7 +41,6 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             PDFServices pdfServices = new PDFServices(credentials);
 
             // Creates an asset from source file and upload
-            InputStream inputStream = Files.newInputStream(new File("src/main/resources/deletePagesInput.pdf").toPath());
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
 
             // Delete pages of the document (as specified by PageRanges).

@@ -33,7 +33,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
   
      public static void main(String[] args) {
   
-        try {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/compressPDFInput.pdf").toPath())) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                     System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -43,7 +43,6 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             PDFServices pdfServices = new PDFServices(credentials);
 
             // Creates an asset from source file and upload
-            InputStream inputStream = Files.newInputStream(new File("src/main/resources/compressPDFInput.pdf").toPath());
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
 
             // Creates a new job instance
@@ -207,7 +206,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
    
       public static void main(String[] args) {
    
-          try {
+          try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/compressPDFInput.pdf").toPath())) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                     System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -217,7 +216,6 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             PDFServices pdfServices = new PDFServices(credentials);
 
             // Creates an asset from source file and upload
-            InputStream inputStream = Files.newInputStream(new File("src/main/resources/compressPDFInput.pdf").toPath());
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
 
             // Create parameters for the job

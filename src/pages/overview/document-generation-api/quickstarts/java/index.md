@@ -249,7 +249,6 @@ PDFServices pdfServices = new PDFServices(credentials);
 7) Now, let's upload the asset and create JSON data for merge:
 
 ```javascript
-InputStream inputStream = Files.newInputStream(new File("src/main/resources/receiptTemplate.docx").toPath());
 Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.DOCX.getMediaType());
 
 Path jsonPath = Paths.get("src/main/resources/receipt.json");
@@ -332,7 +331,7 @@ public class GeneratePDF {
 
     public static void main(String[] args) {
 
-        try {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/receiptTemplate.docx").toPath())) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                     System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -342,7 +341,6 @@ public class GeneratePDF {
             PDFServices pdfServices = new PDFServices(credentials);
           
             // Creates an asset from source file and upload
-            InputStream inputStream = Files.newInputStream(new File("src/main/resources/receiptTemplate.docx").toPath());
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.DOCX.getMediaType());
           
             // Setup input data for the document merge process
@@ -370,6 +368,7 @@ public class GeneratePDF {
             // Creates an output stream and copy stream asset's content to it
             OutputStream outputStream = Files.newOutputStream(new File("output/generatePDFOutput.pdf").toPath());
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
+            outputStream.close();
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException e) {
             LOGGER.error("Exception encountered while executing operation", e);
         }
