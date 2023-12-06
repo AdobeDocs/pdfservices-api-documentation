@@ -405,6 +405,10 @@ module.exports = {
                                 path: 'overview/document-generation-api/templatetags.md'
                             },
                             {
+                                title: 'Table Tag with Markers',
+                                path: "overview/document-generation-api/tablewithmarkers.md"
+                            },
+                            {
                                 title: 'Fragments',
                                 path: 'overview/document-generation-api/fragments.md'
                             },
