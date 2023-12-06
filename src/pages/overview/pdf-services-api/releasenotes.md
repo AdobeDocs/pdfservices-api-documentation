@@ -50,8 +50,8 @@ version.
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <pdfservices.sdk.version>3.5.0</pdfservices.sdk.version>
-    <pdfservices.sdk.samples.version>3.5.0</pdfservices.sdk.samples.version>
+    <pdfservices.sdk.version>3.5.1</pdfservices.sdk.version>
+    <pdfservices.sdk.samples.version>3.5.1</pdfservices.sdk.samples.version>
 </properties>
 
 <dependency>
@@ -128,6 +128,12 @@ Minor and Patch releases are backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
+
+### 3.5.1 (December, 2023: patch release)
+
+| Change  | Language | Description                                                                      |
+|---------|----------|----------------------------------------------------------------------------------|
+| Changed | Java     | Dependent library upgrades and fixed compatibility issues with Spring Boot v3.x. |
 
 ### 3.5.0 (October, 2023: minor release)
 
