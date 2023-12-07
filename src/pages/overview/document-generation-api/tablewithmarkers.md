@@ -120,7 +120,7 @@ Similarly, if a condition needs to be evaluated on data outside the current tabl
 ![Table Markers With different context](../images/table_markers_context_input.png)
 
 - In the above example, we've used the **eval** construct with the `Board` tag. As specified earlier, $ indicates that the context is input json itself. So, as mentioned in the input json, the tag will be replaced
-  by its value **CBSE**.
+  by its value **CBSE**. 
 
 - We've also used the eval construct with conditions. In the above examples, both the conditions indicated have school as context. So, the conditional expressions are evaluated in the context of the corresponding school.
 
