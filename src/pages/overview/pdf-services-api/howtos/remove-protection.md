@@ -30,7 +30,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
     private static final Logger LOGGER = LoggerFactory.getLogger(RemoveProtection.class);
  
     public static void main(String[] args) {
-        try {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/removeProtectionInput.pdf").toPath());) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                     System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -40,7 +40,6 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             PDFServices pdfServices = new PDFServices(credentials);
 
             // Creates an asset from source file and upload
-            InputStream inputStream = Files.newInputStream(new File("src/main/resources/removeProtectionInput.pdf").toPath());
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
 
             // Create parameters for the job
@@ -60,6 +59,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             // Creates an output stream and copy stream asset's content to it
             OutputStream outputStream = Files.newOutputStream(new File("output/removeProtectionOutput.pdf").toPath());
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
+            outputStream.close();
         } catch (IOException | ServiceApiException | SDKException | ServiceUsageException e) {
             LOGGER.error("Exception encountered while executing operation", e);
         }

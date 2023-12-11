@@ -31,7 +31,9 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
      private static final Logger LOGGER = LoggerFactory.getLogger(InsertPDFPages.class);
   
      public static void main(String[] args) {
-         try {
+         try (InputStream baseInputStream = Files.newInputStream(new File("src/main/resources/baseInput.pdf").toPath());
+              InputStream firstInputStreamToInsert = Files.newInputStream(new File("src/main/resources/firstFileToInsertInput.pdf").toPath());
+              InputStream secondInputStreamToInsert = Files.newInputStream(new File("src/main/resources/secondFileToInsertInput.pdf").toPath());) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                     System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -41,9 +43,6 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             PDFServices pdfServices = new PDFServices(credentials);
 
             // Creates an asset from source file and upload
-            InputStream baseInputStream = Files.newInputStream(new File("src/main/resources/baseInput.pdf").toPath());
-            InputStream firstInputStreamToInsert = Files.newInputStream(new File("src/main/resources/firstFileToInsertInput.pdf").toPath());
-            InputStream secondInputStreamToInsert = Files.newInputStream(new File("src/main/resources/secondFileToInsertInput.pdf").toPath());
             Asset baseAsset = pdfServices.upload(baseInputStream, PDFServicesMediaType.PDF.getMediaType());
             Asset firstAssetToInsert = pdfServices.upload(firstInputStreamToInsert, PDFServicesMediaType.PDF.getMediaType());
             Asset secondAssetToInsert = pdfServices.upload(secondInputStreamToInsert, PDFServicesMediaType.PDF.getMediaType());
@@ -70,6 +69,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             // Creates an output stream and copy stream asset's content to it
             OutputStream outputStream = Files.newOutputStream(new File("output/insertPagesOutput.pdf").toPath());
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
+            outputStream.close();
          } catch (IOException | ServiceApiException | SDKException | ServiceUsageException e) {
              LOGGER.error("Exception encountered while executing operation", e);
          }

@@ -32,7 +32,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
      private static final Logger LOGGER = LoggerFactory.getLogger(SplitPDFByNumberOfPages.class);
   
      public static void main(String[] args) {
-         try {
+         try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/splitPDFInput.pdf").toPath());) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                     System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -42,7 +42,6 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             PDFServices pdfServices = new PDFServices(credentials);
 
             // Creates an asset from source file and upload
-            InputStream inputStream = Files.newInputStream(new File("src/main/resources/splitPDFInput.pdf").toPath());
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
 
             // Create parameters for the job
@@ -67,6 +66,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
                 // Creates an output stream and copy stream asset's content to it
                 OutputStream outputStream = Files.newOutputStream(new File("output/SplitPDFByNumberOfPagesOutput_" + index + ".pdf").toPath());
                 IOUtils.copy(streamAsset.getInputStream(), outputStream);
+                outputStream.close();
                 index++;
             }
          } catch (IOException| ServiceApiException | SDKException | ServiceUsageException e) {
@@ -242,7 +242,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
       private static final Logger LOGGER = LoggerFactory.getLogger(SplitPDFByPageRanges.class);
    
       public static void main(String[] args) {
-          try {
+          try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/splitPDFInput.pdf").toPath());) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                     System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -252,7 +252,6 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             PDFServices pdfServices = new PDFServices(credentials);
 
             // Creates an asset from source file and upload
-            InputStream inputStream = Files.newInputStream(new File("src/main/resources/splitPDFInput.pdf").toPath());
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
 
             // Specify page ranges to split PDF
@@ -280,6 +279,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
                 // Creates an output stream and copy stream asset's content to it
                 OutputStream outputStream = Files.newOutputStream(new File("output/SplitPDFByPageRangesOutput_" + index + ".pdf").toPath());
                 IOUtils.copy(streamAsset.getInputStream(), outputStream);
+                outputStream.close();
                 index++;
             }
           } catch (IOException | ServiceApiException | SDKException | ServiceUsageException e) {
@@ -500,7 +500,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
        private static final Logger LOGGER = LoggerFactory.getLogger(SplitPDFIntoNumberOfFiles.class);
     
        public static void main(String[] args) {
-           try {
+           try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/splitPDFInput.pdf").toPath());) {
                 // Initial setup, create credentials instance
                 Credentials credentials = new ServicePrincipalCredentials(
                         System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -510,7 +510,6 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
                 PDFServices pdfServices = new PDFServices(credentials);
     
                 // Creates an asset from source file and upload
-                InputStream inputStream = Files.newInputStream(new File("src/main/resources/splitPDFInput.pdf").toPath());
                 Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
     
                 // Create parameters for the job
@@ -535,6 +534,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
                     // Creates an output stream and copy stream asset's content to it
                     OutputStream outputStream = Files.newOutputStream(new File("output/SplitPDFIntoNumberOfFilesOutput_" + index + ".pdf").toPath());
                     IOUtils.copy(streamAsset.getInputStream(), outputStream);
+                    outputStream.close();
                     index++;
                 }
            } catch (IOException | ServiceApiException | SDKException | ServiceUsageException e) {

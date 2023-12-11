@@ -298,6 +298,8 @@ public class AutotagPDF {
       OutputStream outputStreamReport = Files.newOutputStream(new File("output/autotag-report.xlsx").toPath());
       IOUtils.copy(streamAsset.getInputStream(), outputStream);
       IOUtils.copy(streamAssetReport.getInputStream(), outputStreamReport);
+      outputStream.close();
+      outputStreamReport.close();
     } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
       LOGGER.error("Exception encountered while executing operation", ex);
     }

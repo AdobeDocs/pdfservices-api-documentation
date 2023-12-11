@@ -31,7 +31,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
    private static final Logger LOGGER = LoggerFactory.getLogger(DeletePDFPages.class);
 
    public static void main(String[] args) {
-       try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/deletePagesInput.pdf").toPath())) {
+       try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/deletePagesInput.pdf").toPath());) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                     System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -63,6 +63,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             // Creates an output stream and copy stream asset's content to it
             OutputStream outputStream = Files.newOutputStream(new File("output/deletePagesOutput.pdf").toPath());
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
+            outputStream.close();
        } catch (IOException | ServiceApiException | SDKException | ServiceUsageException e) {
            LOGGER.error("Exception encountered while executing operation", e);
        }

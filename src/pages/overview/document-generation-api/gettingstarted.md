@@ -141,7 +141,7 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
  
       public static void main(String[] args) {
  
-          try {
+          try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/documentMergeTemplate.docx").toPath());) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                     System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -154,7 +154,6 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
             JSONObject jsonDataForMerge = new JSONObject("{\"customerName\": \"Kane Miller\",\"customerVisits\": 100}");
  
             // Creates an asset from source file and upload
-            InputStream inputStream = Files.newInputStream(new File("src/main/resources/documentMergeTemplate.docx").toPath());
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.DOCX.getMediaType());
 
             // Create parameters for the job
@@ -177,6 +176,7 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
             // Creates an output stream and copy stream asset's content to it
             OutputStream outputStream = Files.newOutputStream(new File("output/documentMergeOutput.pdf").toPath());
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
+            outputStream.close();
           } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
               LOGGER.error("Exception encountered while executing operation", ex);
           }
@@ -440,7 +440,7 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
 
   public static void main(String[] args) {
 
-      try {
+      try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/documentMergeFragmentsTemplate.docx").toPath());) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                     System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -450,7 +450,6 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
             PDFServices pdfServices = new PDFServices(credentials);
 
             // Creates an asset from source file and upload
-            InputStream inputStream = Files.newInputStream(new File("src/main/resources/documentMergeFragmentsTemplate.docx").toPath());
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.DOCX.getMediaType());
 
             // Setup input data for the document merge process
@@ -514,6 +513,7 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
             // Creates an output stream and copy stream asset's content to it
             OutputStream outputStream = Files.newOutputStream(new File("output/documentMergeFragmentsOutput.pdf").toPath());
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
+            outputStream.close();
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
             LOGGER.error("Exception encountered while executing operation", ex);
         }

@@ -30,7 +30,8 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
    private static final Logger LOGGER = LoggerFactory.getLogger(CombinePDF.class);
 
    public static void main(String[] args) {
-     try {
+     try (InputStream inputStream1 = Files.newInputStream(new File("src/main/resources/combineFilesInput1.pdf").toPath());
+          InputStream inputStream2 = Files.newInputStream(new File("src/main/resources/combineFilesInput2.pdf").toPath());) {
         // Initial setup, create credentials instance
         Credentials credentials = new ServicePrincipalCredentials(
             System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -40,8 +41,6 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
         PDFServices pdfServices = new PDFServices(credentials);
     
         // Creates an asset from source file and upload
-        InputStream inputStream1 = Files.newInputStream(new File("src/main/resources/combineFilesInput1.pdf").toPath());
-        InputStream inputStream2 = Files.newInputStream(new File("src/main/resources/combineFilesInput2.pdf").toPath());
         List<StreamAsset> streamAssets = new ArrayList<>();
         streamAssets.add(new StreamAsset(inputStream1, PDFServicesMediaType.PDF.getMediaType()));
         streamAssets.add(new StreamAsset(inputStream2, PDFServicesMediaType.PDF.getMediaType()));
@@ -67,6 +66,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
         // Creates an output stream and copy stream asset's content to it
         OutputStream outputStream = Files.newOutputStream(new File("output/combineFilesOutput.pdf").toPath());
         IOUtils.copy(streamAsset.getInputStream(), outputStream);
+        outputStream.close();
      } catch (IOException | ServiceApiException | SDKException | ServiceUsageException e) {
        LOGGER.error("Exception encountered while executing operation", e);
      }
@@ -225,7 +225,8 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
  
     public static void main(String[] args) {
  
-      try { 
+      try (InputStream inputStream1 = Files.newInputStream(new File("src/main/resources/combineFileWithPageRangeInput1.pdf").toPath());
+           InputStream inputStream2 = Files.newInputStream(new File("src/main/resources/combineFileWithPageRangeInput2.pdf").toPath());) { 
          // Initial setup, create credentials instance
         Credentials credentials = new ServicePrincipalCredentials(
                 System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -235,8 +236,6 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
         PDFServices pdfServices = new PDFServices(credentials);
 
         // Creates an asset from source file and upload
-        InputStream inputStream1 = Files.newInputStream(new File("src/main/resources/combineFileWithPageRangeInput1.pdf").toPath());
-        InputStream inputStream2 = Files.newInputStream(new File("src/main/resources/combineFileWithPageRangeInput2.pdf").toPath());
         List<StreamAsset> streamAssets = new ArrayList<>();
         streamAssets.add(new StreamAsset(inputStream1, PDFServicesMediaType.PDF.getMediaType()));
         streamAssets.add(new StreamAsset(inputStream2, PDFServicesMediaType.PDF.getMediaType()));
@@ -265,6 +264,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
         // Creates an output stream and copy stream asset's content to it
         OutputStream outputStream = Files.newOutputStream(new File("output/combineFilesWithPageOptionsOutput.pdf").toPath());
         IOUtils.copy(streamAsset.getInputStream(), outputStream);
+        outputStream.close();
       } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
         LOGGER.error("Exception encountered while executing operation", ex);
       }

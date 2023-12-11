@@ -33,7 +33,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
   
      public static void main(String[] args) {
   
-        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/compressPDFInput.pdf").toPath())) {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/compressPDFInput.pdf").toPath());) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                     System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -59,7 +59,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             // Creating an output stream and copying stream asset content to it
             OutputStream outputStream = Files.newOutputStream(new File("output/compressPDFOutput.pdf").toPath());
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
-  
+            outputStream.close();
          } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
              LOGGER.error("Exception encountered while executing operation", ex);
          }
@@ -206,7 +206,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
    
       public static void main(String[] args) {
    
-          try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/compressPDFInput.pdf").toPath())) {
+          try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/compressPDFInput.pdf").toPath());) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                     System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -238,6 +238,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             // Creating an output stream and copying stream asset content to it
             OutputStream outputStream = Files.newOutputStream(new File("output/compressPDFWithOptionsOutput.pdf").toPath());
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
+            outputStream.close();
           } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
               LOGGER.error("Exception encountered while executing operation", ex);
           }

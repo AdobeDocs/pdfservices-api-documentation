@@ -340,6 +340,7 @@ public class ExtractTextInfoFromPDF {
             String zipFileOutputPath = "output/ExtractTextInfoFromPDF.zip";
             OutputStream outputStream = Files.newOutputStream(new File(zipFileOutputPath).toPath());
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
+            outputStream.close();
 
             ZipFile resultZip = new ZipFile(zipFileOutputPath);
             ZipEntry jsonEntry = resultZip.getEntry("structuredData.json");
