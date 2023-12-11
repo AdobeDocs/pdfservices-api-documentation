@@ -63,7 +63,7 @@ To complete this guide, you will need:
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <pdfservices.sdk.version>3.4.0</pdfservices.sdk.version>
+    <pdfservices.sdk.version>3.5.1</pdfservices.sdk.version>
   </properties>
 
   <dependencies>
@@ -228,8 +228,14 @@ FileRef sourceFile = FileRef.createFromLocalFile("./sampleInvoice.pdf");
 //Get the background seal image for signature , if required.
 FileRef sealImageFile = FileRef.createFromLocalFile("./sampleSealImage.png");
 ```
+6) Now, we will define the document level permission:
 
-6) Now, we will define seal field options:
+```javascript
+// Set the document level permission to be applied for output document
+DocumentLevelPermission documentLevelPermission = DocumentLevelPermission.FORM_FILLING;
+```
+
+7) Now, we will define seal field options:
 
 ```javascript
 //Create AppearanceOptions and add the required signature display items to it
@@ -261,7 +267,7 @@ FieldOptions fieldOptions = new FieldOptions.Builder(sealFieldName)
 ```
 
 
-7) Next, we create a CSC Certificate Credentials instance:
+8) Next, we create a CSC Certificate Credentials instance:
 
 ```javascript
 //Set the name of TSP Provider being used.
@@ -289,14 +295,15 @@ CertificateCredentials certificateCredentials = CertificateCredentials.cscCreden
 
 ```
 
-8) Now, let's create the seal options with certificate credentials and field options:
+9) Now, let's create the seal options with certificate credentials and field options:
 
 ```javascript
 //Create SealOptions instance with all the sealing parameters.
 SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions)
-    .withAppearanceOptions(appearanceOptions).build();
+        .withDocumentLevelPermission(documentLevelPermission)
+        .withAppearanceOptions(appearanceOptions).build();
 ```
-9) Now, let's create the operation:
+10) Now, let's create the operation:
 
 ```javascript
 //Create the PDFElectronicSealOperation instance using the SealOptions instance
@@ -310,7 +317,7 @@ pdfElectronicSealOperation.setSealImage(sealImageFile);
 ```
 This code creates a seal operation using seal options, input source file and input seal image.
 
-10) Let's execute this seal operation:
+11) Let's execute this seal operation:
 
 ```javascript
 //Execute the operation
@@ -371,6 +378,9 @@ public class ElectronicSeal {
         
             //Get the background seal image for signature , if required.
             FileRef sealImageFile = FileRef.createFromLocalFile("./sampleSealImage.png");
+
+            // Set the document level permission to be applied for output document
+            DocumentLevelPermission documentLevelPermission = DocumentLevelPermission.FORM_FILLING;
         
             //Create AppearanceOptions and add the required signature display items to it
             AppearanceOptions appearanceOptions = new AppearanceOptions();
@@ -424,7 +434,8 @@ public class ElectronicSeal {
         
             //Create SealOptions instance with all the sealing parameters.
             SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions)
-                .withAppearanceOptions(appearanceOptions).build();
+                    .withDocumentLevelPermission(documentLevelPermission)
+                    .withAppearanceOptions(appearanceOptions).build();
         
             //Create the PDFElectronicSealOperation instance using the SealOptions instance
             PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.createNew(sealOptions);
