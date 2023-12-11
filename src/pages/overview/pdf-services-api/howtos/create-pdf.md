@@ -48,7 +48,7 @@ public class CreatePDFFromDOCX {
 
     public static void main(String[] args) {
 
-        try {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/createPDFInput.docx").toPath());) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                     System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -58,7 +58,6 @@ public class CreatePDFFromDOCX {
             PDFServices pdfServices = new PDFServices(credentials);
 
             // Creates an asset from source file and upload
-            InputStream inputStream = Files.newInputStream(new File("src/main/resources/createPDFInput.docx").toPath());
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.DOCX.getMediaType());
 
             // Creates a new job instance
@@ -75,6 +74,7 @@ public class CreatePDFFromDOCX {
             // Creates an output stream and copy stream asset's content to it
             OutputStream outputStream = Files.newOutputStream(new File("output/createPDFFromDOCX.pdf").toPath());
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
+            outputStream.close();
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
             LOGGER.error("Exception encountered while executing the operation", ex);
         }
@@ -226,7 +226,7 @@ public class CreatePDFFromDOCXWithOptions {
 
       public static void main(String[] args) {
 
-        try {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/createPDFInput.docx").toPath());) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                     System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -236,7 +236,6 @@ public class CreatePDFFromDOCXWithOptions {
             PDFServices pdfServices = new PDFServices(credentials);
     
             // Creates an asset from source file and upload
-            InputStream inputStream = Files.newInputStream(new File("src/main/resources/createPDFInput.docx").toPath());
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.DOCX.getMediaType());
     
             // Create parameters for the job
@@ -259,6 +258,7 @@ public class CreatePDFFromDOCXWithOptions {
             // Creates an output stream and copy stream asset's content to it
             OutputStream outputStream = Files.newOutputStream(new File("output/createPDFFromDOCXWithOptionsOutput.pdf").toPath());
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
+            outputStream.close();
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
           LOGGER.error("Exception encountered while executing operation", ex);
         }
@@ -447,7 +447,7 @@ public class StaticHTMLToPDF {
 
   public static void main(String[] args) {
 
-    try {
+    try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/createPDFFromStaticHtmlInput.zip").toPath());) {
        // Initial setup, create credentials instance
        Credentials credentials = new ServicePrincipalCredentials(
                System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -457,7 +457,6 @@ public class StaticHTMLToPDF {
        PDFServices pdfServices = new PDFServices(credentials);
 
        // Creates an asset from source file and upload
-       InputStream inputStream = Files.newInputStream(new File("src/main/resources/createPDFFromStaticHtmlInput.zip").toPath());
        Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.ZIP.getMediaType());
 
        // Create parameters for the job
@@ -478,7 +477,7 @@ public class StaticHTMLToPDF {
        // Creates an output stream and copy stream asset's content to it
        OutputStream outputStream = Files.newOutputStream(new File("output/staticHTMLToPDFOutput.pdf").toPath());
        IOUtils.copy(streamAsset.getInputStream(), outputStream);
-
+       outputStream.close();
     } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
        LOGGER.error("Exception encountered while executing operation", ex);
     }
@@ -670,7 +669,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
     private static final Logger LOGGER = LoggerFactory.getLogger(HTMLWithInlineCSSToPDF.class);
 
     public static void main(String[] args) {
-      try {
+      try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/createPDFFromHTMLWithInlineCSSInput.html").toPath());) {
         // Initial setup, create credentials instance
         Credentials credentials = new ServicePrincipalCredentials(
                 System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -680,7 +679,6 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
         PDFServices pdfServices = new PDFServices(credentials);
 
         // Creates an asset from source file and upload
-        InputStream inputStream = Files.newInputStream(new File("src/main/resources/createPDFFromHTMLWithInlineCSSInput.html").toPath());
         Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.HTML.getMediaType());
 
         // Create parameters for the job
@@ -701,6 +699,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
         // Creates an output stream and copy stream asset's content to it
         OutputStream outputStream = Files.newOutputStream(new File("output/htmlWithInlineCSSToPDFOutput.pdf").toPath());
         IOUtils.copy(streamAsset.getInputStream(), outputStream);
+        outputStream.close();
       } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
         LOGGER.error("Exception encountered while executing operation", ex);
       }
@@ -1129,7 +1128,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 
    public static void main(String[] args) {
 
-     try {
+     try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/createPDFFromDynamicHtmlInput.zip").toPath());) {
         // Initial setup, create credentials instance
         Credentials credentials = new ServicePrincipalCredentials(
                 System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -1139,7 +1138,6 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
         PDFServices pdfServices = new PDFServices(credentials);
 
         // Creates an asset from source file and upload
-        InputStream inputStream = Files.newInputStream(new File("src/main/resources/createPDFFromDynamicHtmlInput.zip").toPath());
         Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.ZIP.getMediaType());
 
         // Create parameters for the job
@@ -1160,6 +1158,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
         // Creates an output stream and copy stream asset's content to it
         OutputStream outputStream = Files.newOutputStream(new File("output/dynamicHTMLToPDFOutput.pdf").toPath());
         IOUtils.copy(streamAsset.getInputStream(), outputStream);
+        outputStream.close();
      } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
        LOGGER.error("Exception encountered while executing operation", ex);
      }

@@ -32,7 +32,9 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
     
        public static void main(String[] args) {
     
-           try {
+           try (InputStream baseInputStream = Files.newInputStream(new File("src/main/resources/baseInput.pdf").toPath());
+                InputStream inputStream1 = Files.newInputStream(new File("src/main/resources/replacePagesInput1.pdf").toPath());
+                InputStream inputStream2 = Files.newInputStream(new File("src/main/resources/replacePagesInput2.pdf").toPath());) {
                 // Initial setup, create credentials instance
                 Credentials credentials = new ServicePrincipalCredentials(
                         System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -42,9 +44,6 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
                 PDFServices pdfServices = new PDFServices(credentials);
     
                 // Creates an asset from source file and upload
-                InputStream baseInputStream = Files.newInputStream(new File("src/main/resources/baseInput.pdf").toPath());
-                InputStream inputStream1 = Files.newInputStream(new File("src/main/resources/replacePagesInput1.pdf").toPath());
-                InputStream inputStream2 = Files.newInputStream(new File("src/main/resources/replacePagesInput2.pdf").toPath());
                 Asset baseAsset = pdfServices.upload(baseInputStream, PDFServicesMediaType.PDF.getMediaType());
                 Asset asset1 = pdfServices.upload(inputStream1, PDFServicesMediaType.PDF.getMediaType());
                 Asset asset2 = pdfServices.upload(inputStream2, PDFServicesMediaType.PDF.getMediaType());
@@ -71,6 +70,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
                 // Creates an output stream and copy stream asset's content to it
                 OutputStream outputStream = Files.newOutputStream(new File("output/replacePagesOutput.pdf").toPath());
                 IOUtils.copy(streamAsset.getInputStream(), outputStream);
+                outputStream.close();
            } catch (IOException | ServiceApiException | SDKException | ServiceUsageException e) {
                LOGGER.error("Exception encountered while executing operation", e);
            }

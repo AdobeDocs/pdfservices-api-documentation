@@ -441,6 +441,7 @@ public class ElectronicSeal {
             // Creates an output stream and copy stream asset's content to it
             OutputStream outputStream = Files.newOutputStream(new File("output/sealedOutput.pdf").toPath());
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
+            outputStream.close();
         } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
             LOGGER.error("Exception encountered while executing operation", ex);
         }

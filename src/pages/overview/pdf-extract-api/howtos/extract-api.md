@@ -169,7 +169,7 @@ public class ExtractTextInfoFromPDF {
 
     public static void main(String[] args) {
 
-        try {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath());) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                 System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -179,7 +179,6 @@ public class ExtractTextInfoFromPDF {
             PDFServices pdfServices = new PDFServices(credentials);
         
             // Creates an asset from source file and upload
-            InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath());
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
         
             // Create parameters for the job
@@ -201,6 +200,7 @@ public class ExtractTextInfoFromPDF {
             // Creates an output stream and copy stream asset's content to it
             OutputStream outputStream = Files.newOutputStream(new File("output/ExtractTextInfoFromPDF.zip").toPath());
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
+            outputStream.close();
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException e) {
             LOGGER.error("Exception encountered while executing operation", e);
         }
@@ -420,7 +420,7 @@ public class ExtractTextTableInfoFromPDF {
 
     public static void main(String[] args) {
 
-        try {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath());) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                 System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -430,7 +430,6 @@ public class ExtractTextTableInfoFromPDF {
             PDFServices pdfServices = new PDFServices(credentials);
         
             // Creates an asset from source file and upload
-            InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath());
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
         
             // Create parameters for the job
@@ -453,7 +452,7 @@ public class ExtractTextTableInfoFromPDF {
             // Creates an output stream and copy stream asset's content to it
             OutputStream outputStream = Files.newOutputStream(new File("output/ExtractTextTableInfoFromPDF.zip").toPath());
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
-
+            outputStream.close();
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException e) {
             LOGGER.error("Exception encountered while executing operation", e);
         }
@@ -678,7 +677,7 @@ public class ExtractTextTableInfoWithRenditionsFromPDF {
 
     public static void main(String[] args) {
 
-        try {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath());) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                 System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -688,7 +687,6 @@ public class ExtractTextTableInfoWithRenditionsFromPDF {
             PDFServices pdfServices = new PDFServices(credentials);
         
             // Creates an asset from source file and upload
-            InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath());
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
         
             // Create parameters for the job
@@ -712,6 +710,7 @@ public class ExtractTextTableInfoWithRenditionsFromPDF {
             // Creates an output stream and copy stream asset's content to it
             OutputStream outputStream = Files.newOutputStream(new File("output/ExtractTextTableInfoWithRenditionsFromPDF.zip").toPath());
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
+            outputStream.close();
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException e) {
             LOGGER.error("Exception encountered while executing operation", e);
         }
@@ -940,7 +939,7 @@ public class ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF {
     
     public static void main(String[] args) {
     
-        try {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath());) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                 System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -950,7 +949,6 @@ public class ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF {
             PDFServices pdfServices = new PDFServices(credentials);
         
             // Creates an asset from source file and upload
-            InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath());
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
         
             // Create parameters for the job
@@ -974,6 +972,7 @@ public class ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF {
             // Creates an output stream and copy stream asset's content to it
             OutputStream outputStream = Files.newOutputStream(new File("output/ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF.zip").toPath());
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
+            outputStream.close();
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException e) {
             LOGGER.error("Exception encountered while executing operation", e);
         }
@@ -1202,7 +1201,7 @@ public class ExtractTextTableInfoWithCharBoundsFromPDF {
 
     public static void main(String[] args) {
 
-        try {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath());) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                 System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -1212,7 +1211,6 @@ public class ExtractTextTableInfoWithCharBoundsFromPDF {
             PDFServices pdfServices = new PDFServices(credentials);
         
             // Creates an asset from source file and upload
-            InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath());
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
         
             // Create parameters for the job
@@ -1236,6 +1234,7 @@ public class ExtractTextTableInfoWithCharBoundsFromPDF {
             // Creates an output stream and copy stream asset's content to it
             OutputStream outputStream = Files.newOutputStream(new File("output/ExtractTextTableInfoWithCharBoundsFromPDF.zip").toPath());
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
+            outputStream.close();
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException e) {
             LOGGER.error("Exception encountered while executing operation", e);
         }
@@ -1465,7 +1464,7 @@ public class ExtractTextTableInfoWithTableStructureFromPdf {
 
     public static void main(String[] args) {
 
-        try {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath());) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                 System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -1475,7 +1474,6 @@ public class ExtractTextTableInfoWithTableStructureFromPdf {
             PDFServices pdfServices = new PDFServices(credentials);
         
             // Creates an asset from source file and upload
-            InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath());
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
         
             // Create parameters for the job
@@ -1500,6 +1498,7 @@ public class ExtractTextTableInfoWithTableStructureFromPdf {
             // Creates an output stream and copy stream asset's content to it
             OutputStream outputStream = Files.newOutputStream(new File("output/ExtractTextTableInfoWithTableStructureFromPdf.zip").toPath());
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
+            outputStream.close();
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException e) {
             LOGGER.error("Exception encountered while executing operation", e);
         }
@@ -1732,7 +1731,7 @@ public class ExtractTextTableInfoWithStylingFromPDF {
 
     public static void main(String[] args) {
 
-        try {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath());) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                 System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -1742,7 +1741,6 @@ public class ExtractTextTableInfoWithStylingFromPDF {
             PDFServices pdfServices = new PDFServices(credentials);
         
             // Creates an asset from source file and upload
-            InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath());
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
         
             // Create parameters for the job
@@ -1766,6 +1764,7 @@ public class ExtractTextTableInfoWithStylingFromPDF {
             // Creates an output stream and copy stream asset's content to it
             OutputStream outputStream = Files.newOutputStream(new File("output/ExtractTextTableInfoWithStylingFromPDF.zip").toPath());
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
+            outputStream.close();
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException e) {
             LOGGER.error("Exception encountered while executing operation", e);
         }
