@@ -139,6 +139,10 @@ module.exports = {
             {
                 title: "REST APIs",
                 path: 'apis/index.md'
+            },
+            {
+                title: "AI Assistant",
+                path: "www.google.com"
             }
         ],
         subPages: [
