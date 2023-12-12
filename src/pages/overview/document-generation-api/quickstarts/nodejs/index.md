@@ -194,7 +194,7 @@ documentMergeOperation.execute(executionContext)
 });
 ```
 
-This code runs the document generation process and then stores the resulting PDF document to the file system. 
+This code runs the document generation process and then stores the result PDF document to the file system. 
 
 ![Example running at the command line](./shot9.png)
 
