@@ -53,7 +53,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             // Creates a new job instance
             ReorderPagesPDFJob reorderPagesPDFJob = new ReorderPagesPDFJob(reorderPagesParams);
 
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(reorderPagesPDFJob);
             PDFServicesResponse<ReorderPagesResult> pdfServicesResponse = pdfServices.getJobResult(location, ReorderPagesResult.class);
 

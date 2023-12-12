@@ -54,7 +54,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
                 // Creates a new job instance
                 ProtectPDFJob protectPDFJob = new ProtectPDFJob(asset, protectPDFParams);
     
-                // Submits the job and gets the job result
+                // Submit the job and gets the job result
                 String location = pdfServices.submit(protectPDFJob);
                 PDFServicesResponse<ProtectPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, ProtectPDFResult.class);
     
@@ -266,7 +266,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             // Creates a new job instance
             ProtectPDFJob protectPDFJob = new ProtectPDFJob(asset, protectPDFParams);
 
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(protectPDFJob);
             PDFServicesResponse<ProtectPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, ProtectPDFResult.class);
 

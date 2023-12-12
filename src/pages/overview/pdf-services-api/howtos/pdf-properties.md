@@ -54,7 +54,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
         PDFPropertiesJob pdfPropertiesJob = new PDFPropertiesJob(asset)
                 .setParams(pdfPropertiesParams);
 
-        // Submits the job and gets the job result
+        // Submit the job and gets the job result
         String location = pdfServices.submit(pdfPropertiesJob);
         PDFServicesResponse<PDFPropertiesResult> pdfServicesResponse = pdfServices.getJobResult(location, PDFPropertiesResult.class);
 

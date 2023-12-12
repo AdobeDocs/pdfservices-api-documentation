@@ -281,7 +281,7 @@ public class ExportPDFToWord {
             // Creates a new job instance
             ExportPDFJob exportPDFJob = new ExportPDFJob(asset, exportPDFParams);
           
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(exportPDFJob);
             PDFServicesResponse<ExportPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, ExportPDFResult.class);
           

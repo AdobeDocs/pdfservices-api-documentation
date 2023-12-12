@@ -63,7 +63,7 @@ public class CreatePDFFromDOCX {
             // Creates a new job instance
             CreatePDFJob createPDFJob = new CreatePDFJob(asset);
 
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(createPDFJob);
             PDFServicesResponse<CreatePDFResult> pdfServicesResponse = pdfServices.getJobResult(location, CreatePDFResult.class);
 
@@ -247,7 +247,7 @@ public class CreatePDFFromDOCXWithOptions {
             CreatePDFJob createPDFJob = new CreatePDFJob(asset)
                     .setParams(createPDFWordParams);
     
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(createPDFJob);
             PDFServicesResponse<CreatePDFResult> pdfServicesResponse = pdfServices.getJobResult(location, CreatePDFResult.class);
     
@@ -466,7 +466,7 @@ public class StaticHTMLToPDF {
        HTMLToPDFJob htmLtoPDFJob = new HTMLToPDFJob(asset)
                .setParams(htmlToPDFParams);
 
-       // Submits the job and gets the job result
+       // Submit the job and gets the job result
        String location = pdfServices.submit(htmLtoPDFJob);
        PDFServicesResponse<HTMLToPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, HTMLToPDFResult.class);
 
@@ -688,7 +688,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
         HTMLToPDFJob htmLtoPDFJob = new HTMLToPDFJob(asset)
                 .setParams(htmlToPDFParams);
 
-        // Submits the job and gets the job result
+        // Submit the job and gets the job result
         String location = pdfServices.submit(htmLtoPDFJob);
         PDFServicesResponse<HTMLToPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, HTMLToPDFResult.class);
 
@@ -911,7 +911,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
         HTMLToPDFJob htmLtoPDFJob = new HTMLToPDFJob(htmlURL)
                 .setParams(htmlToPDFParams);
 
-        // Submits the job and gets the job result
+        // Submit the job and gets the job result
         String location = pdfServices.submit(htmLtoPDFJob);
         PDFServicesResponse<HTMLToPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, HTMLToPDFResult.class);
 
@@ -1147,7 +1147,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
         HTMLToPDFJob htmLtoPDFJob = new HTMLToPDFJob(asset)
                 .setParams(htmlToPDFParams);
 
-        // Submits the job and gets the job result
+        // Submit the job and gets the job result
         String location = pdfServices.submit(htmLtoPDFJob);
         PDFServicesResponse<HTMLToPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, HTMLToPDFResult.class);
 

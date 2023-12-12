@@ -165,7 +165,7 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
             // Creates a new job instance
             DocumentMergeJob documentMergeJob = new DocumentMergeJob(asset, documentMergeParams);
 
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(documentMergeJob);
             PDFServicesResponse<DocumentMergeResult> pdfServicesResponse = pdfServices.getJobResult(location, DocumentMergeResult.class);
 
@@ -502,7 +502,7 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
             // Creates a new job instance
             DocumentMergeJob documentMergeJob = new DocumentMergeJob(asset, documentMergeParams);
 
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(documentMergeJob);
             PDFServicesResponse<DocumentMergeResult> pdfServicesResponse = pdfServices.getJobResult(location, DocumentMergeResult.class);
 

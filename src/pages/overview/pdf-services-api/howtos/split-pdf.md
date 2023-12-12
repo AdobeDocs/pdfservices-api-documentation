@@ -52,7 +52,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             // Creates a new job instance
             SplitPDFJob splitPDFJob = new SplitPDFJob(asset, splitPDFParams);
 
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(splitPDFJob);
             PDFServicesResponse<SplitPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, SplitPDFResult.class);
 
@@ -265,7 +265,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             // Creates a new job instance
             SplitPDFJob splitPDFJob = new SplitPDFJob(asset, splitPDFParams);
 
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(splitPDFJob);
             PDFServicesResponse<SplitPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, SplitPDFResult.class);
 
@@ -520,7 +520,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
                 // Creates a new job instance
                 SplitPDFJob splitPDFJob = new SplitPDFJob(asset, splitPDFParams);
     
-                // Submits the job and gets the job result
+                // Submit the job and gets the job result
                 String location = pdfServices.submit(splitPDFJob);
                 PDFServicesResponse<SplitPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, SplitPDFResult.class);
     

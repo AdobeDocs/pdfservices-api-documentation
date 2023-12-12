@@ -50,7 +50,7 @@ public class OcrPDF {
             // Creates a new job instance
             OCRJob ocrJob = new OCRJob(asset);
 
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(ocrJob);
             PDFServicesResponse<OCRResult> pdfServicesResponse = pdfServices.getJobResult(location, OCRResult.class);
 
@@ -242,7 +242,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             // Creates a new job instance
             OCRJob ocrJob = new OCRJob(asset).setParams(ocrParams);
 
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(ocrJob);
             PDFServicesResponse<OCRResult> pdfServicesResponse = pdfServices.getJobResult(location, OCRResult.class);
 

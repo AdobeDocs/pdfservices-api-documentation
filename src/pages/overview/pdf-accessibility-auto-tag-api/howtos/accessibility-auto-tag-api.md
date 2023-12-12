@@ -93,7 +93,7 @@ public class AutotagPDF {
             // Creates a new job instance
             AutotagPDFJob autotagPDFJob = new AutotagPDFJob(asset);
         
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(autotagPDFJob);
             PDFServicesResponse<AutotagPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, AutotagPDFResult.class);
         
@@ -334,7 +334,7 @@ public class AutotagPDFParameterised {
             AutotagPDFJob autotagPDFJob = new AutotagPDFJob(asset)
                 .setParams(autotagPDFParams);
         
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(autotagPDFJob);
             PDFServicesResponse<AutotagPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, AutotagPDFResult.class);
         

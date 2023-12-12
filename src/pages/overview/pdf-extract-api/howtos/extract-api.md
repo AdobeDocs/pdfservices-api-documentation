@@ -189,7 +189,7 @@ public class ExtractTextInfoFromPDF {
             ExtractPDFJob extractPDFJob = new ExtractPDFJob(asset)
                 .setParams(extractPDFParams);
         
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(extractPDFJob);
             PDFServicesResponse<ExtractPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, ExtractPDFResult.class);
         
@@ -441,7 +441,7 @@ public class ExtractTextTableInfoFromPDF {
             ExtractPDFJob extractPDFJob = new ExtractPDFJob(asset)
                 .setParams(extractPDFParams);
         
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(extractPDFJob);
             PDFServicesResponse<ExtractPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, ExtractPDFResult.class);
         
@@ -699,7 +699,7 @@ public class ExtractTextTableInfoWithRenditionsFromPDF {
             ExtractPDFJob extractPDFJob = new ExtractPDFJob(asset)
                 .setParams(extractPDFParams);
         
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(extractPDFJob);
             PDFServicesResponse<ExtractPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, ExtractPDFResult.class);
         
@@ -961,7 +961,7 @@ public class ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF {
             ExtractPDFJob extractPDFJob = new ExtractPDFJob(asset)
                 .setParams(extractPDFParams);
         
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(extractPDFJob);
             PDFServicesResponse<ExtractPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, ExtractPDFResult.class);
         
@@ -1223,7 +1223,7 @@ public class ExtractTextTableInfoWithCharBoundsFromPDF {
             ExtractPDFJob extractPDFJob = new ExtractPDFJob(asset)
                 .setParams(extractPDFParams);
         
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(extractPDFJob);
             PDFServicesResponse<ExtractPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, ExtractPDFResult.class);
         
@@ -1487,7 +1487,7 @@ public class ExtractTextTableInfoWithTableStructureFromPdf {
             ExtractPDFJob extractPDFJob = new ExtractPDFJob(asset)
                 .setParams(extractPDFParams);
         
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(extractPDFJob);
             PDFServicesResponse<ExtractPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, ExtractPDFResult.class);
         
@@ -1753,7 +1753,7 @@ public class ExtractTextTableInfoWithStylingFromPDF {
             ExtractPDFJob extractPDFJob = new ExtractPDFJob(asset)
                 .setParams(extractPDFParams);
         
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(extractPDFJob);
             PDFServicesResponse<ExtractPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, ExtractPDFResult.class);
         

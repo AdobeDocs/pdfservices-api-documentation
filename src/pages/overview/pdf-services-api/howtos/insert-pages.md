@@ -58,7 +58,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             // Creates a new job instance
             InsertPagesPDFJob insertPagesJob = new InsertPagesPDFJob(insertPagesParams);
 
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(insertPagesJob);
             PDFServicesResponse<InsertPagesResult> pdfServicesResponse = pdfServices.getJobResult(location, InsertPagesResult.class);
 

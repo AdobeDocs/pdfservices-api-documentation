@@ -357,7 +357,7 @@ public class GeneratePDF {
             // Creates a new job instance
             DocumentMergeJob documentMergeJob = new DocumentMergeJob(asset, documentMergeParams);
           
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(documentMergeJob);
             PDFServicesResponse<DocumentMergeResult> pdfServicesResponse = pdfServices.getJobResult(location, DocumentMergeResult.class);
           

@@ -57,7 +57,7 @@ public class ExportPDFToDOCX {
         // Creates a new job instance
         ExportPDFJob exportPDFJob = new ExportPDFJob(asset, exportPDFParams);
 
-        // Submits the job and gets the job result
+        // Submit the job and gets the job result
         String location = pdfServices.submit(exportPDFJob);
         PDFServicesResponse<ExportPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, ExportPDFResult.class);
 
@@ -241,7 +241,7 @@ public class ExportPDFToDOCXWithOCROption {
             // Creates a new job instance
             ExportPDFJob exportPDFJob = new ExportPDFJob(asset, exportPDFParams);
 
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(exportPDFJob);
             PDFServicesResponse<ExportPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, ExportPDFResult.class);
 
@@ -427,7 +427,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
         // Creates a new job instance
         ExportPDFToImagesJob exportPDFToImagesJob = new ExportPDFToImagesJob(asset, exportPDFToImagesParams);
 
-        // Submits the job and gets the job result
+        // Submit the job and gets the job result
         String location = pdfServices.submit(exportPDFToImagesJob);
         PDFServicesResponse<ExportPDFToImagesResult> pdfServicesResponse = pdfServices.getJobResult(location, ExportPDFToImagesResult.class);
 
@@ -620,7 +620,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
         // Creates a new job instance
         ExportPDFToImagesJob exportPDFToImagesJob = new ExportPDFToImagesJob(asset, exportPDFToImagesParams);
 
-        // Submits the job and gets the job result
+        // Submit the job and gets the job result
         String location = pdfServices.submit(exportPDFToImagesJob);
         PDFServicesResponse<ExportPDFToImagesResult> pdfServicesResponse = pdfServices.getJobResult(location, ExportPDFToImagesResult.class);
 

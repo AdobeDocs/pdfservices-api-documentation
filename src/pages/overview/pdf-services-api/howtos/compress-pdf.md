@@ -48,7 +48,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             // Creates a new job instance
             CompressPDFJob compressPDFJob = new CompressPDFJob(asset);
 
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(compressPDFJob);
             PDFServicesResponse<CompressPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, CompressPDFResult.class);
 
@@ -227,7 +227,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             CompressPDFJob compressPDFJob = new CompressPDFJob(asset)
                     .setParams(compressPDFParams);
 
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(compressPDFJob);
             PDFServicesResponse<CompressPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, CompressPDFResult.class);
 
