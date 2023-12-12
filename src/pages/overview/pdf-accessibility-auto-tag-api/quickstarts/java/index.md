@@ -205,8 +205,8 @@ AutotagPDFParams autotagPDFParams = AutotagPDFParams.autotagPDFParamsBuilder().g
 AutotagPDFJob autotagPDFJob = new AutotagPDFJob(asset).setParams(autotagPDFParams);
 ```
 
-This set of code defines what we're doing (an Autotag operation),
-it defines parameters for the Autotag job. PDF Autotag API has a few different options, in this example we will be generating report along with tagged PDF and shift heading as well.
+This set of code defines what we're doing (an Auto-Tag operation),
+it defines parameters for the Auto-Tag job. PDF Accessibility Auto-Tag API has a few different options, but in this example, we're simply asking for a basic tagging operation, which returns the tagged PDF document and an XLSX report of the document.
 
 7) The next code block submits the job and gets the job result:
 
