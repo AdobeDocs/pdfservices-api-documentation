@@ -284,7 +284,7 @@ pdfElectronicSealJob.setSealImageAsset(sealImageAsset);
 This set of code defines what we're doing (an Electronic Seal operation),
 it defines parameters for the seal job and sets input seal image asset.
 
-9) The next code block submits the job and gets the job result:
+10) The next code block submits the job and gets the job result:
 
 ```javascript
 // Submit the job and gets the job result
