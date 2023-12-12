@@ -331,7 +331,7 @@ public class GeneratePDF {
 
     public static void main(String[] args) {
 
-        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/receiptTemplate.docx").toPath())) {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/receiptTemplate.docx").toPath());) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                     System.getenv("PDF_SERVICES_CLIENT_ID"),
