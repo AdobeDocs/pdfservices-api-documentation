@@ -55,7 +55,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
         // Creates a new job instance
         CombinePDFJob combinePDFJob = new CombinePDFJob(combinePDFParams);
     
-        // Submits the job and gets the job result
+        // Submit the job and gets the job result
         String location = pdfServices.submit(combinePDFJob);
         PDFServicesResponse<CombinePDFResult> pdfServicesResponse = pdfServices.getJobResult(location, CombinePDFResult.class);
     
@@ -253,7 +253,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
         // Creates a new job instance
         CombinePDFJob combinePDFJob = new CombinePDFJob(combinePDFParams);
 
-        // Submits the job and gets the job result
+        // Submit the job and gets the job result
         String location = pdfServices.submit(combinePDFJob);
         PDFServicesResponse<CombinePDFResult> pdfServicesResponse = pdfServices.getJobResult(location, CombinePDFResult.class);
 

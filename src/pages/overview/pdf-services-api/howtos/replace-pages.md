@@ -59,7 +59,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
                 // Creates a new job instance
                 ReplacePagesPDFJob replacePagesPDFJob = new ReplacePagesPDFJob(replacePagesParams);
     
-                // Submits the job and gets the job result
+                // Submit the job and gets the job result
                 String location = pdfServices.submit(replacePagesPDFJob);
                 PDFServicesResponse<ReplacePagesResult> pdfServicesResponse = pdfServices.getJobResult(location, ReplacePagesResult.class);
     

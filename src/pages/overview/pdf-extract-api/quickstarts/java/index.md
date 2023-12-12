@@ -328,7 +328,7 @@ public class ExtractTextInfoFromPDF {
             ExtractPDFJob extractPDFJob = new ExtractPDFJob(asset)
                     .setParams(extractPDFParams);
           
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(extractPDFJob);
             PDFServicesResponse<ExtractPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, ExtractPDFResult.class);
           

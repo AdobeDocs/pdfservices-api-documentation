@@ -46,7 +46,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
                 // Creates a new job instance
                 LinearizePDFJob linearizePDFJob = new LinearizePDFJob(asset);
     
-                // Submits the job and gets the job result
+                // Submit the job and gets the job result
                 String location = pdfServices.submit(linearizePDFJob);
                 PDFServicesResponse<LinearizePDFResult> pdfServicesResponse = pdfServices.getJobResult(location, LinearizePDFResult.class);
     

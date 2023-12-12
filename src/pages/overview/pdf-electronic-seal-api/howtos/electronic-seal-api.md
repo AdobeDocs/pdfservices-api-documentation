@@ -249,7 +249,7 @@ public class ElectronicSeal {
             // Sets the optional input seal image for PDFElectronicSealOperation instance
             pdfElectronicSealJob.setSealImageAsset(sealImageAsset);
         
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(pdfElectronicSealJob);
             PDFServicesResponse<PDFElectronicSealResult> pdfServicesResponse = pdfServices.getJobResult(location, PDFElectronicSealResult.class);
         
@@ -634,7 +634,7 @@ public class ElectronicSealWithAppearanceOptions {
             PDFElectronicSealJob pdfElectronicSealJob = new PDFElectronicSealJob(asset, pdfElectronicSealParams);
             pdfElectronicSealJob.setSealImageAsset(sealImageAsset);
         
-            // Submits the job and gets the job result
+            // Submit the job and gets the job result
             String location = pdfServices.submit(pdfElectronicSealJob);
             PDFServicesResponse<PDFElectronicSealResult> pdfServicesResponse = pdfServices.getJobResult(location, PDFElectronicSealResult.class);
         
