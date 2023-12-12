@@ -203,7 +203,7 @@ ExportPDFParams exportPDFParams = ExportPDFParams.exportPDFParamsBuilder(ExportP
 ExportPDFJob exportPDFJob = new ExportPDFJob(asset, exportPDFParams);
 ```
 
-This set of code defines what we're doing (an Export operation), it defines parameter for the Export job. In this example, the only parameter is the export format, DOCX.
+This set of code defines what we're doing (an Export operation), and sets parameter for the Export PDF job. In this example, the only parameter is the export format ,ie, DOCX.
 
 7) The next code block submits the job and gets the job result:
 
