@@ -340,7 +340,7 @@ public class GeneratePDF {
             // Creates a PDF Services instance
             PDFServices pdfServices = new PDFServices(credentials);
           
-            // Creates an asset from source file and upload
+            // Creates an asset(s) from source file(s) and upload
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.DOCX.getMediaType());
           
             // Setup input data for the document merge process

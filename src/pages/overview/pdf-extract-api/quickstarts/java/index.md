@@ -195,7 +195,7 @@ PDFServices pdfServices = new PDFServices(credentials);
 5) Now, let's upload the asset:
 
 ```javascript
-// Creates an asset from source file and upload
+// Creates an asset(s) from source file(s) and upload
 Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
 ```
 
@@ -317,7 +317,7 @@ public class ExtractTextInfoFromPDF {
             // Creates a PDF Services instance
             PDFServices pdfServices = new PDFServices(credentials);
           
-            // Creates an asset from source file and upload
+            // Creates an asset(s) from source file(s) and upload
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
           
             // Create parameters for the job

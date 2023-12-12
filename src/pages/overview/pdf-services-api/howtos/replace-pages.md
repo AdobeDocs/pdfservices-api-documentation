@@ -43,7 +43,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
                 // Creates a PDF Services instance
                 PDFServices pdfServices = new PDFServices(credentials);
     
-                // Creates an asset from source file and upload
+                // Creates an asset(s) from source file(s) and upload
                 Asset baseAsset = pdfServices.upload(baseInputStream, PDFServicesMediaType.PDF.getMediaType());
                 Asset asset1 = pdfServices.upload(inputStream1, PDFServicesMediaType.PDF.getMediaType());
                 Asset asset2 = pdfServices.upload(inputStream2, PDFServicesMediaType.PDF.getMediaType());

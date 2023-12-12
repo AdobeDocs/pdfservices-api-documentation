@@ -153,7 +153,7 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
             // Setup input data for the document merge process.
             JSONObject jsonDataForMerge = new JSONObject("{\"customerName\": \"Kane Miller\",\"customerVisits\": 100}");
  
-            // Creates an asset from source file and upload
+            // Creates an asset(s) from source file(s) and upload
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.DOCX.getMediaType());
 
             // Create parameters for the job
@@ -449,7 +449,7 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
             // Creates a PDF Services instance
             PDFServices pdfServices = new PDFServices(credentials);
 
-            // Creates an asset from source file and upload
+            // Creates an asset(s) from source file(s) and upload
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.DOCX.getMediaType());
 
             // Setup input data for the document merge process

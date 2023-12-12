@@ -271,7 +271,7 @@ public class ExportPDFToWord {
             // Creates a PDF Services instance
             PDFServices pdfServices = new PDFServices(credentials);
           
-            // Creates an asset from source file and upload
+            // Creates an asset(s) from source file(s) and upload
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
           
             // Create parameters for the job

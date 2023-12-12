@@ -40,7 +40,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
         // Creates a PDF Services instance
         PDFServices pdfServices = new PDFServices(credentials);
     
-        // Creates an asset from source file and upload
+        // Creates an asset(s) from source file(s) and upload
         List<StreamAsset> streamAssets = new ArrayList<>();
         streamAssets.add(new StreamAsset(inputStream1, PDFServicesMediaType.PDF.getMediaType()));
         streamAssets.add(new StreamAsset(inputStream2, PDFServicesMediaType.PDF.getMediaType()));
@@ -235,7 +235,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
         // Creates a PDF Services instance
         PDFServices pdfServices = new PDFServices(credentials);
 
-        // Creates an asset from source file and upload
+        // Creates an asset(s) from source file(s) and upload
         List<StreamAsset> streamAssets = new ArrayList<>();
         streamAssets.add(new StreamAsset(inputStream1, PDFServicesMediaType.PDF.getMediaType()));
         streamAssets.add(new StreamAsset(inputStream2, PDFServicesMediaType.PDF.getMediaType()));

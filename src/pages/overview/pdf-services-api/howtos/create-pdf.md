@@ -57,7 +57,7 @@ public class CreatePDFFromDOCX {
             // Creates a PDF Services instance
             PDFServices pdfServices = new PDFServices(credentials);
 
-            // Creates an asset from source file and upload
+            // Creates an asset(s) from source file(s) and upload
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.DOCX.getMediaType());
 
             // Creates a new job instance
@@ -235,7 +235,7 @@ public class CreatePDFFromDOCXWithOptions {
             // Creates a PDF Services instance
             PDFServices pdfServices = new PDFServices(credentials);
     
-            // Creates an asset from source file and upload
+            // Creates an asset(s) from source file(s) and upload
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.DOCX.getMediaType());
     
             // Create parameters for the job
@@ -456,7 +456,7 @@ public class StaticHTMLToPDF {
        // Creates a PDF Services instance
        PDFServices pdfServices = new PDFServices(credentials);
 
-       // Creates an asset from source file and upload
+       // Creates an asset(s) from source file(s) and upload
        Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.ZIP.getMediaType());
 
        // Create parameters for the job
@@ -678,7 +678,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
         // Creates a PDF Services instance
         PDFServices pdfServices = new PDFServices(credentials);
 
-        // Creates an asset from source file and upload
+        // Creates an asset(s) from source file(s) and upload
         Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.HTML.getMediaType());
 
         // Create parameters for the job
@@ -1137,7 +1137,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
         // Creates a PDF Services instance
         PDFServices pdfServices = new PDFServices(credentials);
 
-        // Creates an asset from source file and upload
+        // Creates an asset(s) from source file(s) and upload
         Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.ZIP.getMediaType());
 
         // Create parameters for the job
