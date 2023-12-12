@@ -188,7 +188,7 @@ public class ElectronicSeal {
             // Creates a PDF Services instance
             PDFServices pdfServices = new PDFServices(credentials);
             
-            // Creates an asset from source file and upload
+            // Creates an asset(s) from source file(s) and upload
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
             Asset sealImageAsset = pdfServices.upload(inputStreamSealImage, PDFServicesMediaType.PNG.getMediaType());
         
@@ -565,7 +565,7 @@ public class ElectronicSealWithAppearanceOptions {
             // Creates a PDF Services instance
             PDFServices pdfServices = new PDFServices(credentials);
        
-            // Creates an asset from source file and upload
+            // Creates an asset(s) from source file(s) and upload
             Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
             Asset sealImageAsset = pdfServices.upload(inputStreamSealImage, PDFServicesMediaType.PNG.getMediaType());
 
