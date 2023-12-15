@@ -225,7 +225,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 4.  Verify the hash you generated matches the value in the .sha1 file.
 
 ```
-deedd2b91d988fd2300fee47a90069ccc4c51012
+c0bc2ec0eb15dd43d014bd885b3833539f103cf2
 ```
 
 #### Logging
