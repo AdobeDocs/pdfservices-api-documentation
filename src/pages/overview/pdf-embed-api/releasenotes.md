@@ -11,7 +11,6 @@ the changes below for each release.
 ### December, 2023
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
-| Bug fix | Fixed file preview error message due to invalid client id.             |
 | Bug fix | Fixed XSS vulnerability in the GO_TO_LOCATION event listener.          |
 
 ### October, 2023
