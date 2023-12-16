@@ -17,6 +17,10 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
+  "resolutions": {
+    "sharp": "0.33.0",
+    "gatsby-sharp": "1.12.0"
+  },
   "scripts": {
     "start": "gatsby build && gatsby serve",
     "start:prefix": "gatsby build --prefix-paths && gatsby serve --prefix-paths",
@@ -34,7 +38,7 @@
       "remark-validate-links"
     ]
   },
-  "packageManager": "yarn@3.2.1",
+  "packageManager": "yarn@1.22.21",
   "devDependencies": {
     "remark-cli": "^11.0.0",
     "remark-validate-links": "^12.1.0"
