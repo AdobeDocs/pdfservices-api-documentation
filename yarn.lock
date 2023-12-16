@@ -24,10 +24,10 @@
     globby "^11.0.1"
     graphql-fetch "^1.0.1"
 
-"@adobe/gatsby-theme-aio@4.9.12":
-  version "4.9.12"
-  resolved "https://registry.yarnpkg.com/@adobe/gatsby-theme-aio/-/gatsby-theme-aio-4.9.12.tgz#d9d66473c1542c16dcc5c48d45ebf1bb74368fda"
-  integrity sha512-TjNBdFM/KGHWlbXRw+19BUpJvdvWzDEkXCfEMGxeaSFs4RlSeAfahMJRvrYl40CdcN1mZXbuiGDIZFj9raBfNQ==
+"@adobe/gatsby-theme-aio@4.11.0":
+  version "4.11.0"
+  resolved "https://registry.yarnpkg.com/@adobe/gatsby-theme-aio/-/gatsby-theme-aio-4.11.0.tgz#901352c1fafc02bdecb9a9b8bcafffd22404e1a5"
+  integrity sha512-bXKdnqyfhzFSrsaJpz61EC14EPK4aiSZ8hJoSD4l+G0DHDyYfKyeYYHG7Mins2yQmRfcMsIrR5xjtzj8Q4G5hQ==
   dependencies:
     "@adobe/focus-ring-polyfill" "^0.1.5"
     "@adobe/gatsby-source-github-file-contributors" "^0.3.1"
@@ -45,6 +45,7 @@
     "@spectrum-css/button" "6.0.13"
     "@spectrum-css/card" "5.0.0"
     "@spectrum-css/checkbox" "3.1.3"
+    "@spectrum-css/contextualhelp" "^2.0.35"
     "@spectrum-css/dialog" "6.0.15"
     "@spectrum-css/divider" "1.0.27"
     "@spectrum-css/icon" "3.0.23"
@@ -71,6 +72,7 @@
     builtin-status-codes "^3.0.0"
     classnames "^2.3.2"
     core-js "^3.25.1"
+    file-saver "^2.0.5"
     gatsby-plugin-algolia "^0.26.0"
     gatsby-plugin-emotion "^7.23.0"
     gatsby-plugin-layout "^3.23.0"
@@ -87,6 +89,8 @@
     gatsby-transformer-sharp "4.23.0"
     https-browserify "^1.0.0"
     jsdom "^20.0.0"
+    jszip "^3.10.1"
+    jszip-utils "^0.1.0"
     lottie-web "^5.9.6"
     mdx-embed "^1.0.0"
     mobx "^6.6.2"
@@ -105,13 +109,15 @@
     redoc-cli "^0.13.20"
     rehype-slug-custom-id "^1.1.0"
     request "^2.88.2"
-    sharp "^0.31.0"
+    resize-observer-polyfill "^1.5.1"
+    sharp "0.33.0"
     stream-http "^3.2.0"
     styled-components "^5.3.5"
     swiper "^8.3.2"
     to-arraybuffer "^1.0.1"
     tty-browserify "^0.0.1"
     unist-util-select "3.0.4"
+    use-debounce "^9.0.4"
     uuid "^9.0.0"
 
 "@adobe/prism-adobe@^1.0.3":
@@ -2872,6 +2878,11 @@
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/@spectrum-css/checkbox/-/checkbox-3.1.3.tgz#584cdea28a4e7e203314bfeccf69d6d1ab3799af"
   integrity sha512-c1l8jQCj/CniHNNvZR/wr/PM8C/EuwhFyWXwzfr2npkgnWqdbcooIa0QfDRYtVy9U5/N8MM2IDLiZ8kPf7LKqQ==
+
+"@spectrum-css/contextualhelp@^2.0.35":
+  version "2.0.45"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/contextualhelp/-/contextualhelp-2.0.45.tgz#f0640f4b6bfbfbc763874a1aff55bb140226340d"
+  integrity sha512-obnV0P0yJKfaBbGJF7mhVdb+IgBo/v8rHliOuZUWnjwGMikcD7kY94A1CHKsT86b7XGvTt2Nglm/SUd+t66Afg==
 
 "@spectrum-css/dialog@6.0.15":
   version "6.0.15"
@@ -6864,6 +6875,11 @@ file-loader@^6.2.0:
     loader-utils "^2.0.0"
     schema-utils "^3.0.0"
 
+file-saver@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/file-saver/-/file-saver-2.0.5.tgz#d61cfe2ce059f414d899e9dd6d4107ee25670c38"
+  integrity sha512-P9bmyZ3h/PRG+Nzga+rbdI4OEpNDzAVyy74uVO9ATgzLK6VtAsYybF/+TOCvrc0MO793d6+42lLyZTw7/ArVzA==
+
 file-type@^16.5.3, file-type@^16.5.4:
   version "16.5.4"
   resolved "https://registry.yarnpkg.com/file-type/-/file-type-16.5.4.tgz#474fb4f704bee427681f98dd390058a172a6c2fd"
@@ -8498,6 +8514,11 @@ image-q@^4.0.0:
   dependencies:
     "@types/node" "16.9.1"
 
+immediate@~3.0.5:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/immediate/-/immediate-3.0.6.tgz#9db1dbd0faf8de6fbe0f5dd5e56bb606280de69b"
+  integrity sha512-XXOFtyqDjNDAQxVfYxuF7g9Il/IbWmmlQg2MYKOH8ExIT1qg6xc4zyS3HaEEATgs1btfzxq15ciUiY7gjSXRGQ==
+
 immer@^9.0.7:
   version "9.0.21"
   resolved "https://registry.yarnpkg.com/immer/-/immer-9.0.21.tgz#1e025ea31a40f24fb064f1fef23e931496330176"
@@ -9354,6 +9375,21 @@ jsprim@^1.2.2:
     array-includes "^3.1.5"
     object.assign "^4.1.3"
 
+jszip-utils@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/jszip-utils/-/jszip-utils-0.1.0.tgz#8c04cdedcdb291e83f055f5b261b3a3188ceca0b"
+  integrity sha512-tBNe0o3HAf8vo0BrOYnLPnXNo5A3KsRMnkBFYjh20Y3GPYGfgyoclEMgvVchx0nnL+mherPi74yLPIusHUQpZg==
+
+jszip@^3.10.1:
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/jszip/-/jszip-3.10.1.tgz#34aee70eb18ea1faec2f589208a157d1feb091c2"
+  integrity sha512-xXDvecyTpGLrqFrvkrUSoxxfJI5AH7U8zxxtVclpsUtMCq4JQ290LY8AW5c7Ggnr/Y/oK+bQMbqK2qmtk3pN4g==
+  dependencies:
+    lie "~3.3.0"
+    pako "~1.0.2"
+    readable-stream "~2.3.6"
+    setimmediate "^1.0.5"
+
 keypather@^1.10.2:
   version "1.10.2"
   resolved "https://registry.yarnpkg.com/keypather/-/keypather-1.10.2.tgz#e0449632d4b3e516f21cc014ce7c5644fddce614"
@@ -9439,6 +9475,13 @@ levn@~0.3.0:
   dependencies:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
+
+lie@~3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/lie/-/lie-3.3.0.tgz#dcf82dee545f46074daf200c7c1c5a08e0f40f6a"
+  integrity sha512-UaiMJzeWRlEujzAuw5LokY1L5ecNQYZKfmyZ9L7wDHb/p5etKaxXhohBcrw0EYby+G/NA52vRSN4N39dxHAIwQ==
+  dependencies:
+    immediate "~3.0.5"
 
 lilconfig@^2.0.3:
   version "2.1.0"
@@ -11226,7 +11269,7 @@ package-json@^6.3.0:
     registry-url "^5.0.0"
     semver "^6.2.0"
 
-pako@^1.0.5, pako@~1.0.5:
+pako@^1.0.5, pako@~1.0.2, pako@~1.0.5:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.11.tgz#6c9599d340d54dfd3946380252a35705a6b992bf"
   integrity sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw==
@@ -12343,7 +12386,7 @@ read@^1.0.7:
   dependencies:
     mute-stream "~0.0.4"
 
-readable-stream@^2.0.2, readable-stream@^2.2.2, readable-stream@^2.3.3, readable-stream@^2.3.6:
+readable-stream@^2.0.2, readable-stream@^2.2.2, readable-stream@^2.3.3, readable-stream@^2.3.6, readable-stream@~2.3.6:
   version "2.3.8"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.3.8.tgz#91125e8042bba1b9887f49345f6277027ce8be9b"
   integrity sha512-8p0AUk4XODgIewSi0l8Epjs+EVnWiK7NoDIEGU0HhE7+ZyY8D1IMY7odu5lRrFXGg71L15KG8QrPmum45RTtdA==
@@ -12844,6 +12887,11 @@ requires-port@^1.0.0:
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==
 
+resize-observer-polyfill@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
+  integrity sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==
+
 resolve-alpn@^1.0.0:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/resolve-alpn/-/resolve-alpn-1.2.1.tgz#b7adbdac3546aaaec20b45e7d8265927072726f9"
@@ -13197,7 +13245,7 @@ shallowequal@^1.1.0:
   resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
   integrity sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==
 
-sharp@0.33.0, sharp@^0.30.7, sharp@^0.31.0, sharp@^0.32.1:
+sharp@0.33.0, sharp@^0.30.7, sharp@^0.32.1:
   version "0.33.0"
   resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.33.0.tgz#95f77cda3684522e210ab55a167dad6cb5fbfe4f"
   integrity sha512-99DZKudjm/Rmz+M0/26t4DKpXyywAOJaayGS9boEn7FvgtG0RYBi46uPE2c+obcJRtA3AZa0QwJot63gJQ1F0Q==
@@ -14782,6 +14830,11 @@ url@^0.11.0:
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
+
+use-debounce@^9.0.4:
+  version "9.0.4"
+  resolved "https://registry.yarnpkg.com/use-debounce/-/use-debounce-9.0.4.tgz#51d25d856fbdfeb537553972ce3943b897f1ac85"
+  integrity sha512-6X8H/mikbrt0XE8e+JXRtZ8yYVvKkdYRfmIhWZYsP8rcNs9hk3APV8Ua2mFkKRLcJKVdnX2/Vwrmg2GWKUQEaQ==
 
 utif@^2.0.1:
   version "2.0.1"
