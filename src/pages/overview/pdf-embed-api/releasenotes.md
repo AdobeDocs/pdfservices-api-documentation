@@ -11,7 +11,7 @@ the changes below for each release.
 ### December, 2023
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
-| Bug fix | Fixed XSS vulnerability in the GO_TO_LOCATION event listener.          |
+| Bug fix | Added fixes for enhanced security.         |
 
 ### October, 2023
 
