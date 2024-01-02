@@ -54,8 +54,8 @@ To complete this guide, you will need:
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.adobe.documentservices</groupId>
-  <artifactId>pdfservices-sdk-samples</artifactId>
-  <version>${pdfservices.sdk.samples.version}</version>
+  <artifactId>pdfservices-sdk-autotag-guide</artifactId>
+  <version>1</version>
 
   <name>PDF Services Java SDK Samples</name>
 
@@ -64,7 +64,6 @@ To complete this guide, you will need:
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <pdfservices.sdk.version>4.0.0</pdfservices.sdk.version>
-    <pdfservices.sdk.samples.version>4.0.0</pdfservices.sdk.samples.version>
   </properties>
 
   <dependencies>
@@ -118,8 +117,6 @@ Our application will take a PDF, `Adobe_Accessibility_Auto_Tag_API_Sample.pdf` (
 
 4) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `AutotagPDF.java`. 
 
-5) In your editor, open the directory where you previously copied the credentials, and create a new directory, `output`. This directory will hold the results of the operation.
-
 Now you're ready to begin coding.
 
 ## Step Three: Creating the application
@@ -148,6 +145,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 ```
 
 2) Now let's define our main class:
@@ -259,6 +257,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class AutotagPDF {
   // Initialize the logger
@@ -294,8 +293,11 @@ public class AutotagPDF {
       StreamAsset streamAssetReport = pdfServices.getContent(resultAssetReport);
       
       // Creating output streams and copying stream assets' content to it
+      Files.createDirectories(Paths.get("output/"));
       OutputStream outputStream = Files.newOutputStream(new File("output/autotag-tagged.pdf").toPath());
       OutputStream outputStreamReport = Files.newOutputStream(new File("output/autotag-report.xlsx").toPath());
+      LOGGER.info("Saving asset at output/autotag-tagged.pdf");
+      LOGGER.info("Saving asset at output/autotag-report.xlsx");
       IOUtils.copy(streamAsset.getInputStream(), outputStream);
       IOUtils.copy(streamAssetReport.getInputStream(), outputStreamReport);
       outputStream.close();

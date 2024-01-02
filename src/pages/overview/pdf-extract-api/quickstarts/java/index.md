@@ -54,8 +54,8 @@ To complete this guide, you will need:
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.adobe.documentservices</groupId>
-  <artifactId>pdfservices-sdk-samples</artifactId>
-  <version>${pdfservices.sdk.samples.version}</version>
+  <artifactId>pdfservices-sdk-extract-guide</artifactId>
+  <version>1</version>
 
   <name>PDF Services Java SDK Samples</name>
 
@@ -64,7 +64,6 @@ To complete this guide, you will need:
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <pdfservices.sdk.version>4.0.0</pdfservices.sdk.version>
-    <pdfservices.sdk.samples.version>4.0.0</pdfservices.sdk.samples.version>
   </properties>
 
   <dependencies>
@@ -118,8 +117,6 @@ Our application will take a PDF, `Adobe Extract API Sample.pdf` (downloadable fr
 
 4) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `ExtractTextInfoFromPDF.java`. 
 
-5) In your editor, open the directory where you previously copied the credentials, and create a new directory, `output`. This directory will hold the results of the operation.
-
 Now you're ready to begin coding.
 
 ## Step Three: Creating the application
@@ -152,6 +149,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.zip.ZipEntry;
@@ -297,6 +295,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.zip.ZipEntry;
@@ -337,8 +336,10 @@ public class ExtractTextInfoFromPDF {
             StreamAsset streamAsset = pdfServices.getContent(resultAsset);
           
             // Creates an output stream and copy stream asset's content to it
+            Files.createDirectories(Paths.get("output/"));
             String zipFileOutputPath = "output/ExtractTextInfoFromPDF.zip";
             OutputStream outputStream = Files.newOutputStream(new File(zipFileOutputPath).toPath());
+            LOGGER.info("Saving asset at output/ExtractTextInfoFromPDF.pdf");
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
             outputStream.close();
 

@@ -54,8 +54,8 @@ To complete this guide, you will need:
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.adobe.documentservices</groupId>
-  <artifactId>pdfservices-sdk-samples</artifactId>
-  <version>${pdfservices.sdk.samples.version}</version>
+  <artifactId>pdfservices-sdk-documentgeneration-guide</artifactId>
+  <version>1</version>
 
   <name>PDF Services Java SDK Samples</name>
 
@@ -64,7 +64,6 @@ To complete this guide, you will need:
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <pdfservices.sdk.version>4.0.0</pdfservices.sdk.version>
-    <pdfservices.sdk.samples.version>4.0.0</pdfservices.sdk.samples.version>
   </properties>
 
   <dependencies>
@@ -117,8 +116,6 @@ This file will define what dependencies we need and how the application will be 
 Our application will take a Word document, `receiptTemplate.docx` (downloadable from [here](/receiptTemplate.docx)), and combine it with data in a JSON file, `receipt.json` (downloadable from [here](/receipt.json)), to be sent to the Acrobat Services API and generate a receipt PDF.
 
 4) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `GeneratePDF.java`. 
-
-5) In your editor, open the directory where you previously copied the credentials, and create a new directory, `output`. This directory will hold the results of the operation.
 
 Now you're ready to begin coding.
 
@@ -366,7 +363,9 @@ public class GeneratePDF {
             StreamAsset streamAsset = pdfServices.getContent(resultAsset);
           
             // Creates an output stream and copy stream asset's content to it
+            Files.createDirectories(Paths.get("output/"));
             OutputStream outputStream = Files.newOutputStream(new File("output/generatePDFOutput.pdf").toPath());
+            LOGGER.info("Saving asset at output/generatePDFOutput.pdf");
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
             outputStream.close();
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException e) {
