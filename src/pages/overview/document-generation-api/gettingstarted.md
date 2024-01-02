@@ -141,7 +141,7 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
  
       public static void main(String[] args) {
  
-          try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/documentMergeTemplate.docx").toPath());) {
+          try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/documentMergeTemplate.docx").toPath())) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                     System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -440,7 +440,7 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
 
   public static void main(String[] args) {
 
-      try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/documentMergeFragmentsTemplate.docx").toPath());) {
+      try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/documentMergeFragmentsTemplate.docx").toPath())) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                     System.getenv("PDF_SERVICES_CLIENT_ID"),

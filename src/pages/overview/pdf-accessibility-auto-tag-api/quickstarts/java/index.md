@@ -265,7 +265,7 @@ public class AutotagPDF {
   private static final Logger LOGGER = LoggerFactory.getLogger(AutotagPDF.class);
 
   public static void main(String[] args) {
-    try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/Adobe_Accessibility_Auto_Tag_API_Sample.pdf").toPath());) {
+    try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/Adobe_Accessibility_Auto_Tag_API_Sample.pdf").toPath())) {
       // Initial setup, create credentials instance
       Credentials credentials = new ServicePrincipalCredentials(
               System.getenv("PDF_SERVICES_CLIENT_ID"),

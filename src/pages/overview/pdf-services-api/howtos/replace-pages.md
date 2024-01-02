@@ -34,7 +34,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
     
            try (InputStream baseInputStream = Files.newInputStream(new File("src/main/resources/baseInput.pdf").toPath());
                 InputStream inputStream1 = Files.newInputStream(new File("src/main/resources/replacePagesInput1.pdf").toPath());
-                InputStream inputStream2 = Files.newInputStream(new File("src/main/resources/replacePagesInput2.pdf").toPath());) {
+                InputStream inputStream2 = Files.newInputStream(new File("src/main/resources/replacePagesInput2.pdf").toPath())) {
                 // Initial setup, create credentials instance
                 Credentials credentials = new ServicePrincipalCredentials(
                         System.getenv("PDF_SERVICES_CLIENT_ID"),

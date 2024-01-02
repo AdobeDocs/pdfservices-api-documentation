@@ -31,7 +31,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 
    public static void main(String[] args) {
      try (InputStream inputStream1 = Files.newInputStream(new File("src/main/resources/combineFilesInput1.pdf").toPath());
-          InputStream inputStream2 = Files.newInputStream(new File("src/main/resources/combineFilesInput2.pdf").toPath());) {
+          InputStream inputStream2 = Files.newInputStream(new File("src/main/resources/combineFilesInput2.pdf").toPath())) {
         // Initial setup, create credentials instance
         Credentials credentials = new ServicePrincipalCredentials(
             System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -226,7 +226,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
     public static void main(String[] args) {
  
       try (InputStream inputStream1 = Files.newInputStream(new File("src/main/resources/combineFileWithPageRangeInput1.pdf").toPath());
-           InputStream inputStream2 = Files.newInputStream(new File("src/main/resources/combineFileWithPageRangeInput2.pdf").toPath());) { 
+           InputStream inputStream2 = Files.newInputStream(new File("src/main/resources/combineFileWithPageRangeInput2.pdf").toPath())) { 
          // Initial setup, create credentials instance
         Credentials credentials = new ServicePrincipalCredentials(
                 System.getenv("PDF_SERVICES_CLIENT_ID"),
