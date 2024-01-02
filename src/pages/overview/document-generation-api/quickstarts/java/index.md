@@ -234,7 +234,7 @@ These lines are hard coded but in a real application would typically be dynamic.
   - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
 
-6) Next, we can create our credentials and use them to create our PDF Services instance
+6) Next, we can create our credentials and use them to create a PDF Services instance
 
 ```javascript
 // Initial setup, create credentials instance
