@@ -66,7 +66,9 @@ public class ExportPDFToDOCX {
         StreamAsset streamAsset = pdfServices.getContent(resultAsset);
 
         // Creates an output stream and copy stream asset's content to it
+        Files.createDirectories(Paths.get("output/"));
         OutputStream outputStream = Files.newOutputStream(new File("output/exportPdfOutput.docx").toPath());
+        LOGGER.info("Saving asset at output/exportPdfOutput.docx");
         IOUtils.copy(streamAsset.getInputStream(), outputStream);
      } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
        LOGGER.error("Exception encountered while executing operation", ex);
@@ -250,7 +252,9 @@ public class ExportPDFToDOCXWithOCROption {
             StreamAsset streamAsset = pdfServices.getContent(resultAsset);
 
             // Creates an output stream and copy stream asset's content to it
+            Files.createDirectories(Paths.get("output/"));
             OutputStream outputStream = Files.newOutputStream(new File("output/exportPDFWithOCROptionsOutput.docx").toPath());
+            LOGGER.info("Saving asset at output/exportPDFWithOCROptionsOutput.docx");
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
             LOGGER.error("Exception encountered while executing operation", ex);
@@ -434,12 +438,14 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
         // Get content from the resulting asset(s)
         List<Asset> resultAssets = pdfServicesResponse.getResult().getAssets();
         
+        Files.createDirectories(Paths.get("output/"));
         int index = 0;
         for(Asset resultAsset : resultAssets) {
             StreamAsset streamAsset = pdfServices.getContent(resultAsset);
 
             // Creates an output stream and copy stream asset's content to it
             OutputStream outputStream = Files.newOutputStream(new File("output/exportPDFToImagesOutput_" + index + ".jpeg").toPath());
+            LOGGER.info("Saving asset at output/exportPDFToImagesOutput_" + index + ".jpeg");
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
             index++;
         }
@@ -631,7 +637,9 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
         LOGGER.info("Media type of the received asset is "+ streamAsset.getMimeType());
 
         // Creates an output stream and copy stream asset's content to it
+        Files.createDirectories(Paths.get("output/"));
         OutputStream outputStream = Files.newOutputStream(new File("output/exportPDFToJPEGOutput.zip").toPath());
+        LOGGER.info("Saving asset at output/exportPDFToJPEGOutput.zip");
         IOUtils.copy(streamAsset.getInputStream(), outputStream);
       } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
         LOGGER.error("Exception encountered while executing operation", ex);

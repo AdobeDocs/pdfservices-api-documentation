@@ -72,7 +72,9 @@ public class CreatePDFFromDOCX {
             StreamAsset streamAsset = pdfServices.getContent(resultAsset);
 
             // Creates an output stream and copy stream asset's content to it
+            File.createDirectories(Paths.get("output/"));
             OutputStream outputStream = Files.newOutputStream(new File("output/createPDFFromDOCX.pdf").toPath());
+            LOGGER.info("Saving asset at output/createPDFFromDOCX.pdf");
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
             outputStream.close();
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
@@ -256,7 +258,9 @@ public class CreatePDFFromDOCXWithOptions {
             StreamAsset streamAsset = pdfServices.getContent(resultAsset);
     
             // Creates an output stream and copy stream asset's content to it
+            File.createDirectories(Paths.get("output/"));
             OutputStream outputStream = Files.newOutputStream(new File("output/createPDFFromDOCXWithOptionsOutput.pdf").toPath());
+            LOGGER.info("Saving asset at output/createPDFFromDOCXWithOptionsOutput.pdf");
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
             outputStream.close();
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
@@ -475,7 +479,9 @@ public class StaticHTMLToPDF {
        StreamAsset streamAsset = pdfServices.getContent(resultAsset);
 
        // Creates an output stream and copy stream asset's content to it
+       File.createDirectories(Paths.get("output/"));
        OutputStream outputStream = Files.newOutputStream(new File("output/staticHTMLToPDFOutput.pdf").toPath());
+       LOGGER.info("Saving asset at output/staticHTMLToPDFOutput.pdf");
        IOUtils.copy(streamAsset.getInputStream(), outputStream);
        outputStream.close();
     } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
@@ -697,7 +703,9 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
         StreamAsset streamAsset = pdfServices.getContent(resultAsset);
 
         // Creates an output stream and copy stream asset's content to it
+        File.createDirectories(Paths.get("output/"));
         OutputStream outputStream = Files.newOutputStream(new File("output/htmlWithInlineCSSToPDFOutput.pdf").toPath());
+        LOGGER.info("Saving asset at output/htmlWithInlineCSSToPDFOutput.pdf");
         IOUtils.copy(streamAsset.getInputStream(), outputStream);
         outputStream.close();
       } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
@@ -920,7 +928,9 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
         StreamAsset streamAsset = pdfServices.getContent(resultAsset);
 
         // Creates an output stream and copy stream asset's content to it
+        File.createDirectories(Paths.get("output/"));
         OutputStream outputStream = Files.newOutputStream(new File("output/htmlToPDFFromURLOutput.pdf").toPath());
+        LOGGER.info("Saving asset at output/htmlToPDFFromURLOutput.pdf");
         IOUtils.copy(streamAsset.getInputStream(), outputStream);
       } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
         LOGGER.error("Exception encountered while executing operation", ex);
@@ -1156,7 +1166,9 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
         StreamAsset streamAsset = pdfServices.getContent(resultAsset);
 
         // Creates an output stream and copy stream asset's content to it
+        File.createDirectories(Paths.get("output/"));
         OutputStream outputStream = Files.newOutputStream(new File("output/dynamicHTMLToPDFOutput.pdf").toPath());
+        LOGGER.info("Saving asset at output/dynamicHTMLToPDFOutput.pdf");
         IOUtils.copy(streamAsset.getInputStream(), outputStream);
         outputStream.close();
      } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {

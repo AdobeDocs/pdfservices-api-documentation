@@ -59,12 +59,14 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             // Get content from the resulting asset(s)
             List<Asset> resultAssets = pdfServicesResponse.getResult().getAssets();
             
+            Files.createDirectories(Paths.get("output/"));
             int index = 0;
             for (Asset resultAsset : resultAssets) {
                 StreamAsset streamAsset = pdfServices.getContent(resultAsset);
 
                 // Creates an output stream and copy stream asset's content to it
                 OutputStream outputStream = Files.newOutputStream(new File("output/SplitPDFByNumberOfPagesOutput_" + index + ".pdf").toPath());
+                LOGGER.info("Saving asset at output/SplitPDFByNumberOfPagesOutput_" + index + ".pdf");
                 IOUtils.copy(streamAsset.getInputStream(), outputStream);
                 outputStream.close();
                 index++;
@@ -272,12 +274,14 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             // Get content from the resulting asset(s)
             List<Asset> resultAssets = pdfServicesResponse.getResult().getAssets();
             
+            Files.createDirectories(Paths.get("output/"));
             int index = 0;
             for (Asset resultAsset : resultAssets) {
                 StreamAsset streamAsset = pdfServices.getContent(resultAsset);
 
                 // Creates an output stream and copy stream asset's content to it
                 OutputStream outputStream = Files.newOutputStream(new File("output/SplitPDFByPageRangesOutput_" + index + ".pdf").toPath());
+                LOGGER.info("Saving asset at output/SplitPDFByPageRangesOutput_" + index + ".pdf");
                 IOUtils.copy(streamAsset.getInputStream(), outputStream);
                 outputStream.close();
                 index++;
@@ -527,12 +531,14 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
                 // Get content from the resulting asset(s)
                 List<Asset> resultAssets = pdfServicesResponse.getResult().getAssets();
                 
+                Files.createDirectories(Paths.get("output/"));
                 int index = 0;
                 for (Asset resultAsset : resultAssets) {
                     StreamAsset streamAsset = pdfServices.getContent(resultAsset);
     
                     // Creates an output stream and copy stream asset's content to it
                     OutputStream outputStream = Files.newOutputStream(new File("output/SplitPDFIntoNumberOfFilesOutput_" + index + ".pdf").toPath());
+                    LOGGER.info("Saving asset at output/SplitPDFIntoNumberOfFilesOutput_" + index + ".pdf");
                     IOUtils.copy(streamAsset.getInputStream(), outputStream);
                     outputStream.close();
                     index++;

@@ -57,7 +57,9 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             StreamAsset streamAsset = pdfServices.getContent(resultAsset);
 
             // Creates an output stream and copy stream asset's content to it
+            Files.createDirectories(Paths.get("output/"));
             OutputStream outputStream = Files.newOutputStream(new File("output/removeProtectionOutput.pdf").toPath());
+            LOGGER.info("Saving asset at output/removeProtectionOutput.pdf");
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
             outputStream.close();
         } catch (IOException | ServiceApiException | SDKException | ServiceUsageException e) {
