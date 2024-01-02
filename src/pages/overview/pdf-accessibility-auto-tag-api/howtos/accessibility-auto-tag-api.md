@@ -102,7 +102,9 @@ public class AutotagPDF {
             StreamAsset streamAsset = pdfServices.getContent(resultAsset);
         
             // Creates an output stream and copy stream asset's content to it
+            Files.createDirectories(Paths.get("output/"));
             OutputStream outputStream = Files.newOutputStream(new File("output/autotagPDFOutput.pdf").toPath());
+            LOGGER.info("Saving asset at output/autotagPDFOutput.pdf");
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
             outputStream.close();
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
@@ -346,11 +348,14 @@ public class AutotagPDFParameterised {
                 pdfServices.getContent(resultAssetReport) : null;
         
             // Creating output streams and copying stream assets' content to it
+            Files.createDirectories(Paths.get("output/"));
             String outputPath = getOutputFilePathFromCmdArgs(args);
             OutputStream outputStream = Files.newOutputStream(new File(outputPath + "autotagPDFInput-tagged.pdf").toPath());
+            LOGGER.info("Saving asset at " + outputPath + "autotagPDFInput-tagged.pdf");
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
             if(streamAssetReport != null) {
                 OutputStream outputStreamReport = Files.newOutputStream(new File(outputPath + "autotagPDFInput-report.xlsx").toPath());
+                LOGGER.info("Saving asset at " + outputPath + "autotagPDFInput-report.xlsx");
                 IOUtils.copy(streamAssetReport.getInputStream(), outputStreamReport);
                 outputStreamReport.close();
             }

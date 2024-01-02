@@ -57,7 +57,9 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             StreamAsset streamAsset = pdfServices.getContent(resultAsset);
 
             // Creating an output stream and copying stream asset content to it
+            Files.createDirectories(Paths.get("output/"));
             OutputStream outputStream = Files.newOutputStream(new File("output/compressPDFOutput.pdf").toPath());
+            LOGGER.info("Saving asset at output/compressPDFOutput.pdf");
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
             outputStream.close();
          } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
@@ -236,7 +238,9 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             StreamAsset streamAsset = pdfServices.getContent(resultAsset);
 
             // Creating an output stream and copying stream asset content to it
+            Files.createDirectories(Paths.get("output/"));
             OutputStream outputStream = Files.newOutputStream(new File("output/compressPDFWithOptionsOutput.pdf").toPath());
+            LOGGER.info("Saving asset at output/compressPDFWithOptionsOutput.pdf");
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
             outputStream.close();
           } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {

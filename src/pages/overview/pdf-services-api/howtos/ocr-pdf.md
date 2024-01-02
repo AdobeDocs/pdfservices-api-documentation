@@ -59,7 +59,9 @@ public class OcrPDF {
             StreamAsset streamAsset = pdfServices.getContent(resultAsset);
 
             // Creates an output stream and copy stream asset's content to it
+            Files.createDirectories(Paths.get("output/"));
             OutputStream outputStream = Files.newOutputStream(new File("output/ocrOutput.pdf").toPath());
+            LOGGER.info("Saving asset at output/ocrOutput.pdf");
             IOUtils.copy(streamAsset.getInputStream(), outputStream); 
             outputStream.close();
        } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
@@ -251,7 +253,9 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             StreamAsset streamAsset = pdfServices.getContent(resultAsset);
 
             // Creates an output stream and copy stream asset's content to it
+            Files.createDirectories(Paths.get("output/"));
             OutputStream outputStream = Files.newOutputStream(new File("output/ocrWithOptionsOutput.pdf").toPath());
+            LOGGER.info("Saving asset at output/ocrWithOptionsOutput.pdf");
             IOUtils.copy(streamAsset.getInputStream(), outputStream); 
             outputStream.close();
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {

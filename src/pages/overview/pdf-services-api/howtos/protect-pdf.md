@@ -63,7 +63,9 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
                 StreamAsset streamAsset = pdfServices.getContent(resultAsset);
     
                 // Creates an output stream and copy stream asset's content to it
+                Files.createDirectories(Paths.get("output/"));
                 OutputStream outputStream = Files.newOutputStream(new File("output/protectPDFOutput.pdf").toPath());
+                LOGGER.info("Saving asset at output/protectPDFOutput.pdf");
                 IOUtils.copy(streamAsset.getInputStream(), outputStream);
                 outputStream.close();
             } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
@@ -275,7 +277,9 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             StreamAsset streamAsset = pdfServices.getContent(resultAsset);
 
             // Creates an output stream and copy stream asset's content to it
+            Files.createDirectories(Paths.get("output/"));
             OutputStream outputStream = Files.newOutputStream(new File("output/protectPDFWithOwnerPasswordOutput.pdf").toPath());
+            LOGGER.info("Saving asset at output/protectPDFWithOwnerPasswordOutput.pdf");
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
             outputStream.close();
        } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {

@@ -258,7 +258,9 @@ public class ElectronicSeal {
             StreamAsset streamAsset = pdfServices.getContent(resultAsset);
         
             // Creates an output stream and copy stream asset's content to it
+            Files.createDirectories(Paths.get("output/"));
             OutputStream outputStream = Files.newOutputStream(new File("output/sealedOutput.pdf").toPath());
+            LOGGER.info("Saving asset at output/sealedOutput.pdf");
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
             outputStream.close();
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
@@ -643,7 +645,9 @@ public class ElectronicSealWithAppearanceOptions {
             StreamAsset streamAsset = pdfServices.getContent(resultAsset);
         
             // Creates an output stream and copy stream asset's content to it
+            Files.createDirectories(Paths.get("output/"));
             OutputStream outputStream = Files.newOutputStream(new File("output/sealedOutput.pdf").toPath());
+            LOGGER.info("Saving asset at output/sealedOutput.pdf");
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
             outputStream.close();
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {

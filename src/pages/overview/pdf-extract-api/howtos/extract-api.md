@@ -198,7 +198,9 @@ public class ExtractTextInfoFromPDF {
             StreamAsset streamAsset = pdfServices.getContent(resultAsset);
         
             // Creates an output stream and copy stream asset's content to it
+            Files.createDirectories(Paths.get("output/"));
             OutputStream outputStream = Files.newOutputStream(new File("output/ExtractTextInfoFromPDF.zip").toPath());
+            LOGGER.info("Saving asset at output/ExtractTextInfoFromPDF.zip");
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
             outputStream.close();
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException e) {
@@ -450,7 +452,9 @@ public class ExtractTextTableInfoFromPDF {
             StreamAsset streamAsset = pdfServices.getContent(resultAsset);
         
             // Creates an output stream and copy stream asset's content to it
+            Files.createDirectories(Paths.get("output/"));
             OutputStream outputStream = Files.newOutputStream(new File("output/ExtractTextTableInfoFromPDF.zip").toPath());
+            LOGGER.info("Saving asset at output/ExtractTextTableInfoFromPDF.zip");
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
             outputStream.close();
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException e) {
@@ -708,7 +712,9 @@ public class ExtractTextTableInfoWithRenditionsFromPDF {
             StreamAsset streamAsset = pdfServices.getContent(resultAsset);
         
             // Creates an output stream and copy stream asset's content to it
+            Files.createDirectories(Paths.get("output/"));
             OutputStream outputStream = Files.newOutputStream(new File("output/ExtractTextTableInfoWithRenditionsFromPDF.zip").toPath());
+            LOGGER.info("Saving asset at output/ExtractTextTableInfoWithRenditionsFromPDF.zip");
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
             outputStream.close();
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException e) {
@@ -970,7 +976,9 @@ public class ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF {
             StreamAsset streamAsset = pdfServices.getContent(resultAsset);
         
             // Creates an output stream and copy stream asset's content to it
+            Files.createDirectories(Paths.get("output/"));
             OutputStream outputStream = Files.newOutputStream(new File("output/ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF.zip").toPath());
+            LOGGER.info("Saving asset at output/ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF.zip");
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
             outputStream.close();
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException e) {
@@ -1232,7 +1240,9 @@ public class ExtractTextTableInfoWithCharBoundsFromPDF {
             StreamAsset streamAsset = pdfServices.getContent(resultAsset);
         
             // Creates an output stream and copy stream asset's content to it
+            Files.createDirectories(Paths.get("output/"));
             OutputStream outputStream = Files.newOutputStream(new File("output/ExtractTextTableInfoWithCharBoundsFromPDF.zip").toPath());
+            LOGGER.info("Saving asset at output/ExtractTextTableInfoWithCharBoundsFromPDF.zip");
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
             outputStream.close();
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException e) {
@@ -1496,7 +1506,9 @@ public class ExtractTextTableInfoWithTableStructureFromPdf {
             StreamAsset streamAsset = pdfServices.getContent(resultAsset);
         
             // Creates an output stream and copy stream asset's content to it
+            Files.createDirectories(Paths.get("output/"));
             OutputStream outputStream = Files.newOutputStream(new File("output/ExtractTextTableInfoWithTableStructureFromPdf.zip").toPath());
+            LOGGER.info("Saving asset at output/ExtractTextTableInfoWithTableStructureFromPdf.zip");
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
             outputStream.close();
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException e) {
@@ -1762,7 +1774,9 @@ public class ExtractTextTableInfoWithStylingFromPDF {
             StreamAsset streamAsset = pdfServices.getContent(resultAsset);
         
             // Creates an output stream and copy stream asset's content to it
+            Files.createDirectories(Paths.get("output/"));
             OutputStream outputStream = Files.newOutputStream(new File("output/ExtractTextTableInfoWithStylingFromPDF.zip").toPath());
+            LOGGER.info("Saving asset at output/ExtractTextTableInfoWithStylingFromPDF.zip");
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
             outputStream.close();
         } catch (ServiceApiException | IOException | SDKException | ServiceUsageException e) {
