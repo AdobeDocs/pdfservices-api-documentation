@@ -180,7 +180,7 @@ public class ExtractTextInfoFromPDF {
     - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
     - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
-4) Next, we can create our credentials and use them to create our PDF Services instance
+4) Next, we can create our credentials and use them to create a PDF Services instance
 
 ```javascript
 // Initial setup, create credentials instance
