@@ -322,6 +322,7 @@ import com.adobe.pdfservices.operation.pdfjobs.params.electronicseal.AppearanceI
 import com.adobe.pdfservices.operation.pdfjobs.params.electronicseal.AppearanceOptions;
 import com.adobe.pdfservices.operation.pdfjobs.params.electronicseal.CSCAuthContext;
 import com.adobe.pdfservices.operation.pdfjobs.params.electronicseal.CertificateCredentials;
+import com.adobe.pdfservices.operation.pdfjobs.params.electronicseal.DocumentLevelPermission;
 import com.adobe.pdfservices.operation.pdfjobs.params.electronicseal.FieldLocation;
 import com.adobe.pdfservices.operation.pdfjobs.params.electronicseal.FieldOptions;
 import com.adobe.pdfservices.operation.pdfjobs.params.electronicseal.PDFElectronicSealParams;
@@ -409,17 +410,11 @@ public class ElectronicSeal {
                     .withPin(pin)
                     .withCSCAuthContext(cscAuthContext)
                     .build();
-          
-            // Create SealOptions instance with sealing parameters.
-            PDFElectronicSealParams pdfElectronicSealParams = PDFElectronicSealParams
-                    .pdfElectronicSealParamsBuilder(certificateCredentials, fieldOptions)
-                    .withDocumentLevelPermission(documentLevelPermission)
-                    .withAppearanceOptions(appearanceOptions)
-                    .build();
-
+            
             // Create parameters for the job
             PDFElectronicSealParams pdfElectronicSealParams = PDFElectronicSealParams
                     .pdfElectronicSealParamsBuilder(certificateCredentials, fieldOptions)
+                    .withDocumentLevelPermission(documentLevelPermission)
                     .withAppearanceOptions(appearanceOptions)
                     .build();
           
@@ -443,7 +438,7 @@ public class ElectronicSeal {
             LOGGER.info("Saving asset at output/sealedOutput.pdf");
             IOUtils.copy(streamAsset.getInputStream(), outputStream);
             outputStream.close();
-        } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
+        } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
             LOGGER.error("Exception encountered while executing operation", ex);
         }
     }
