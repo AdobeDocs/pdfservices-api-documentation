@@ -38,7 +38,7 @@ public class ExportPDFToDOCX {
 
    public static void main(String[] args) {
 
-     try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/exportPDFInput.pdf").toPath());) {
+     try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/exportPDFInput.pdf").toPath())) {
         // Initial setup, create credentials instance
         Credentials credentials = new ServicePrincipalCredentials(
                 System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -221,7 +221,7 @@ public class ExportPDFToDOCXWithOCROption {
 
     public static void main(String[] args) {
 
-        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/exportPDFInput.pdf").toPath());) {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/exportPDFInput.pdf").toPath())) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                     System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -408,7 +408,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
    private static final Logger LOGGER = LoggerFactory.getLogger(ExportPDFToJPEG.class);
 
    public static void main(String[] args) {
-     try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/exportPDFToImageInput.pdf").toPath());) {
+     try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/exportPDFToImageInput.pdf").toPath())) {
         // Initial setup, create credentials instance
         Credentials credentials = new ServicePrincipalCredentials(
                 System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -601,7 +601,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
     private static final Logger LOGGER = LoggerFactory.getLogger(ExportPDFToJPEGZip.class);
 
     public static void main(String[] args) {
-      try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/exportPDFToImagesInput.pdf").toPath());) {
+      try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/exportPDFToImagesInput.pdf").toPath())) {
         // Initial setup, create credentials instance
         Credentials credentials = new ServicePrincipalCredentials(
                 System.getenv("PDF_SERVICES_CLIENT_ID"),

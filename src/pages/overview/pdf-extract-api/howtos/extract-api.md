@@ -169,7 +169,7 @@ public class ExtractTextInfoFromPDF {
 
     public static void main(String[] args) {
 
-        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath());) {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath())) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                 System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -420,7 +420,7 @@ public class ExtractTextTableInfoFromPDF {
 
     public static void main(String[] args) {
 
-        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath());) {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath())) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                 System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -677,7 +677,7 @@ public class ExtractTextTableInfoWithRenditionsFromPDF {
 
     public static void main(String[] args) {
 
-        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath());) {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath())) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                 System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -939,7 +939,7 @@ public class ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF {
     
     public static void main(String[] args) {
     
-        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath());) {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath())) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                 System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -1201,7 +1201,7 @@ public class ExtractTextTableInfoWithCharBoundsFromPDF {
 
     public static void main(String[] args) {
 
-        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath());) {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath())) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                 System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -1464,7 +1464,7 @@ public class ExtractTextTableInfoWithTableStructureFromPdf {
 
     public static void main(String[] args) {
 
-        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath());) {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath())) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                 System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -1731,7 +1731,7 @@ public class ExtractTextTableInfoWithStylingFromPDF {
 
     public static void main(String[] args) {
 
-        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath());) {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/extractPdfInput.pdf").toPath())) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                 System.getenv("PDF_SERVICES_CLIENT_ID"),

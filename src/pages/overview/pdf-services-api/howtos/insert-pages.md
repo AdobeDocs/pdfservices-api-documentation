@@ -33,7 +33,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
      public static void main(String[] args) {
          try (InputStream baseInputStream = Files.newInputStream(new File("src/main/resources/baseInput.pdf").toPath());
               InputStream firstInputStreamToInsert = Files.newInputStream(new File("src/main/resources/firstFileToInsertInput.pdf").toPath());
-              InputStream secondInputStreamToInsert = Files.newInputStream(new File("src/main/resources/secondFileToInsertInput.pdf").toPath());) {
+              InputStream secondInputStreamToInsert = Files.newInputStream(new File("src/main/resources/secondFileToInsertInput.pdf").toPath())) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                     System.getenv("PDF_SERVICES_CLIENT_ID"),

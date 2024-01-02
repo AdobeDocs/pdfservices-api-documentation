@@ -48,7 +48,7 @@ public class CreatePDFFromDOCX {
 
     public static void main(String[] args) {
 
-        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/createPDFInput.docx").toPath());) {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/createPDFInput.docx").toPath())) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                     System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -226,7 +226,7 @@ public class CreatePDFFromDOCXWithOptions {
 
       public static void main(String[] args) {
 
-        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/createPDFInput.docx").toPath());) {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/createPDFInput.docx").toPath())) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                     System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -447,7 +447,7 @@ public class StaticHTMLToPDF {
 
   public static void main(String[] args) {
 
-    try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/createPDFFromStaticHtmlInput.zip").toPath());) {
+    try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/createPDFFromStaticHtmlInput.zip").toPath())) {
        // Initial setup, create credentials instance
        Credentials credentials = new ServicePrincipalCredentials(
                System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -669,7 +669,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
     private static final Logger LOGGER = LoggerFactory.getLogger(HTMLWithInlineCSSToPDF.class);
 
     public static void main(String[] args) {
-      try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/createPDFFromHTMLWithInlineCSSInput.html").toPath());) {
+      try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/createPDFFromHTMLWithInlineCSSInput.html").toPath())) {
         // Initial setup, create credentials instance
         Credentials credentials = new ServicePrincipalCredentials(
                 System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -1128,7 +1128,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 
    public static void main(String[] args) {
 
-     try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/createPDFFromDynamicHtmlInput.zip").toPath());) {
+     try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/createPDFFromDynamicHtmlInput.zip").toPath())) {
         // Initial setup, create credentials instance
         Credentials credentials = new ServicePrincipalCredentials(
                 System.getenv("PDF_SERVICES_CLIENT_ID"),

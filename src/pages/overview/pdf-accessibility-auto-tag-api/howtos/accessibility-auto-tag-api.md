@@ -78,7 +78,7 @@ public class AutotagPDF {
 
     public static void main(String[] args) {
 
-        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/autotagPDFInput.pdf").toPath());) {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/autotagPDFInput.pdf").toPath())) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                 System.getenv("PDF_SERVICES_CLIENT_ID"),
@@ -315,7 +315,7 @@ public class AutotagPDFParameterised {
         LOGGER.info("--report " + getGenerateReportFromCmdArgs(args));
         LOGGER.info("--shift_headings " + getShiftHeadingsFromCmdArgs(args));
         
-        try (InputStream inputStream = Files.newInputStream(new File(getInputFilePathFromCmdArgs(args)).toPath());) {
+        try (InputStream inputStream = Files.newInputStream(new File(getInputFilePathFromCmdArgs(args)).toPath())) {
             // Initial setup, create credentials instance
             Credentials credentials = new ServicePrincipalCredentials(
                 System.getenv("PDF_SERVICES_CLIENT_ID"),
