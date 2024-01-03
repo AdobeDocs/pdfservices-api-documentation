@@ -116,11 +116,11 @@ PDF Services API is also accessible via SDKs in popular languages such as Node.j
 Please allow-list the following hostnames before using Adobe PDF Services SDK:
 <ul><li>ims-na1.adobelogin.com (Required for all the clients)</li></ul>
 
-For clients using SDK version 4.x and above, and not using external storage for both input and output :
+For clients using SDK version 4.x and above :
 <ul>
 <li> Using United States (Default) region for processing documents :
   <ul>
-    <li>dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com</li>
+    <li>dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com (Not required, if using external storage for both input and output)</li>
     <li>pdf-services-ue1.adobe.io</li>
     <li>pdf-services.adobe.io (Default URI)</li>
   </ul>
@@ -130,7 +130,7 @@ For clients using SDK version 4.x and above, and not using external storage for 
 <ul>
   <li> Using Europe region for processing documents :
   <ul>
-    <li>dcplatformstorageservice-prod-eu-west-1.s3.amazonaws.com</li>
+    <li>dcplatformstorageservice-prod-eu-west-1.s3.amazonaws.com (Not required, if using external storage for both input and output)</li>
     <li>pdf-services-ew1.adobe.io</li>
   </ul>
 </li>
