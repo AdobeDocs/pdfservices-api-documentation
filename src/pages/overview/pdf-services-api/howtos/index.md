@@ -183,7 +183,6 @@ Override the timeout properties via a custom `ClientConfig` class:
 ClientConfig clientConfig = ClientConfig.builder()
     .withConnectTimeout(3000)
     .withSocketTimeout(20000)
-    .withProcessingTimeout(900000)
     .build();
 ```
 
