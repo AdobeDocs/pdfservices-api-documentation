@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "PDF Services API",
-    "description": "<p><ul>\n\t<li>Learn more about using \n\t<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/howtos/api-usage/\"> Adobe PDF Services API.</a>\n\t</li>\n\t<li> Invoking PDF Services API requires an Adobe-provided credential, <a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">learn more about authentication.</a>\n\t</li>\n<li><a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/#sdk\">Downloadable SDKs</a></li>\n<li><a href=\"https://raw.githubusercontent.com/AdobeDocs/pdfservices-api-documentation/develop/src/pages/resources/Platform%20PDF%20Services%20Postman%20Collection.zip\" download>Click here</a> to download sample Postman collection</li>\n<li><a href=\"https://raw.githubusercontent.com/AdobeDocs/pdfservices-api-documentation/94239142db50f506b5672c282e70c88be0fb2753/src/pages/resources/Platform%20PDF%20Services%20with%20External%20Storage%20Postman%20Collection.zip\">Click here</a> to download sample Postman collection with External Storage</li><li><a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/howtos/service-region-configuration-for-apis/\">Click here</a> to know more about <b>multi-region support</b> for PDF Services API</li><li><a href=\"https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK\">Support Forum</a></li><li>First released on 26th September, 2022</li><li>To use your custom external storage, click <a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol\">here</a>.</li></ul></p>",
+    "description": "<p><ul>\n\t<li>Learn more about using \n\t<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/api-usage/\"> Adobe PDF Services API.</a>\n\t</li>\n\t<li> Invoking PDF Services API requires an Adobe-provided credential, <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">learn more about authentication.</a>\n\t</li>\n<li><a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/#sdk\">Downloadable SDKs</a></li>\n<li><a href=\"https://raw.githubusercontent.com/AdobeDocs/pdfservices-api-documentation/main/src/pages/resources/Platform%20PDF%20Services%20Postman%20Collection.zip\" download>Click here</a> to download sample Postman collection</li>\n<li><a href=\"https://raw.githubusercontent.com/AdobeDocs/pdfservices-api-documentation/main/src/pages/resources/Platform%20PDF%20Services%20with%20External%20Storage%20Postman%20Collection.zip\">Click here</a> to download sample Postman collection with External Storage</li><li><a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/service-region-configuration-for-apis/\">Click here</a> to know more about <b>multi-region support</b> for PDF Services API</li><li><a href=\"https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK\">Support Forum</a></li><li>First released on 26th September, 2022</li><li>To use your custom external storage, click <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol\">here</a>.</li></ul></p>",
     "version": ""
   },
   "servers": [
@@ -16,11 +16,11 @@
   "tags": [
     {
       "name": "Generate Token",
-      "description": "Creates an access token using client id and client secret. Click <a href=\"https://developer-stage.adobe.com/developer-console/docs/guides/authentication/ServerToServerAuthentication/IMS/\">here</a> to refer underlying IMS authentication APIs."
+      "description": "Creates an access token using client id and client secret. Click <a href=\"https://developer.adobe.com/developer-console/docs/guides/authentication/ServerToServerAuthentication/IMS/\">here</a> to refer underlying IMS authentication APIs."
     },
     {
       "name": "Assets",
-      "description": "Upload and download assets to Adobe internal storage. <br> Uploading and downloading of assets is not required when using a custom <a href = \"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol\">external storage solution</a> with signed URLs."
+      "description": "Upload and download assets to Adobe internal storage. <br> Uploading and downloading of assets is not required when using a custom <a href = \"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol\">external storage solution</a> with signed URLs."
     },
     {
       "name": "Create PDF",
@@ -336,7 +336,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -493,7 +493,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -643,7 +643,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -788,7 +788,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -934,13 +934,13 @@
           "Document Generation"
         ],
         "summary": "Merge Word based templates with input JSON data to create Word and PDF documents",
-        "description": "Merges the input JSON data with Word based templates to create dynamic documents. To learn more about document generation and document templates, please see the <a href=\"https://developer-stage.adobe.com/document-services/docs/overview/document-generation-api/\">documentation</a>.",
+        "description": "Merges the input JSON data with Word based templates to create dynamic documents. To learn more about document generation and document templates, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/document-generation-api/\">documentation</a>.",
         "operationId": "pdfoperations.documentgeneration",
         "parameters": [
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -1136,7 +1136,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -1318,7 +1318,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -1513,7 +1513,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -1695,7 +1695,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -1891,7 +1891,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -2073,7 +2073,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -2269,7 +2269,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -2451,7 +2451,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -2647,7 +2647,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -2829,7 +2829,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -3025,7 +3025,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -3207,7 +3207,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -3409,7 +3409,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -3591,7 +3591,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -3793,7 +3793,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -3975,7 +3975,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -4171,7 +4171,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -4353,7 +4353,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -4549,7 +4549,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -4731,7 +4731,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -4927,7 +4927,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -5109,7 +5109,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -5305,7 +5305,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -5487,7 +5487,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -5683,7 +5683,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -5865,7 +5865,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -6061,7 +6061,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -6243,7 +6243,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -6432,7 +6432,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -6608,13 +6608,13 @@
           "PDF Electronic Seal"
         ],
         "summary": "PDF Electronic Seal Operation",
-        "description": "An operation to create an electronic seal on input PDF documents using the digital certificate issued to the user by Trust Service Provider. To know more about PDF Electronic Seal, please see the <a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/\" target=\"_blank\">documentation</a>.",
+        "description": "An operation to create an electronic seal on input PDF documents using the digital certificate issued to the user by Trust Service Provider. To know more about PDF Electronic Seal, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/\" target=\"_blank\">documentation</a>.",
         "operationId": "pdfoperations.electronicseal",
         "parameters": [
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -6803,7 +6803,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -6985,7 +6985,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -7174,7 +7174,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -7356,7 +7356,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -7545,7 +7545,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer + Token (<a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
             "required": true,
             "schema": {
               "type": "string"
@@ -8345,7 +8345,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID. Supported file formats are bmp, doc, docx, gif, jpeg, jpg, png, ppt, pptx, rtf, tif, tiff, txt, xls and xlsx. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. Supported file formats are bmp, doc, docx, gif, jpeg, jpg, png, ppt, pptx, rtf, tif, tiff, txt, xls and xlsx. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "documentLanguage": {
@@ -8431,7 +8431,7 @@
         ],
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "targetFormat": {
@@ -8536,7 +8536,7 @@
         ],
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "targetFormat": {
@@ -8634,7 +8634,7 @@
         ],
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "getCharBounds": {
@@ -8715,7 +8715,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "inputUrl": {
@@ -8861,7 +8861,7 @@
             "items": {
               "properties": {
                 "assetID": {
-                  "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+                  "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
                   "type": "string"
                 },
                 "pageRanges": {
@@ -9001,7 +9001,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "compressionLevel": {
@@ -9089,7 +9089,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "notifiers": {
@@ -9149,7 +9149,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "ocrLang": {
@@ -9245,7 +9245,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "pageActions": {
@@ -9396,7 +9396,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "pageLevel": {
@@ -9454,7 +9454,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "passwordProtection": {
@@ -9637,7 +9637,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "password": {
@@ -9719,7 +9719,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "splitoption": {
@@ -9779,7 +9779,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "outputFormat": {
@@ -9796,7 +9796,7 @@
             "type": "object"
           },
           "fragments": {
-            "description": "Specifies the Fragments JSON object or a JSON array to resolve fragments in the document template. To know more about fragments use-case in document generation and document templates, please see the <a href=\"https://developer-stage.adobe.com/document-services/docs/overview/document-generation-api/fragments/\">documentation</a>.",
+            "description": "Specifies the Fragments JSON object or a JSON array to resolve fragments in the document template. To know more about fragments use-case in document generation and document templates, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/document-generation-api/fragments/\">documentation</a>.",
             "type": "object"
           },
           "notifiers": {
@@ -9878,7 +9878,7 @@
                 "type": "object"
               },
               "fragments": {
-                "description": "Specifies the Fragments JSON object or a JSON array to resolve fragments in the document template. To know more about fragments use-case in document generation and document templates, please see the <a href=\"https://developer-stage.adobe.com/document-services/docs/overview/document-generation-api/fragments/\">documentation</a>.",
+                "description": "Specifies the Fragments JSON object or a JSON array to resolve fragments in the document template. To know more about fragments use-case in document generation and document templates, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/document-generation-api/fragments/\">documentation</a>.",
                 "type": "object"
               }
             },
@@ -10099,11 +10099,11 @@
         ],
         "properties": {
           "inputDocumentAssetID": {
-            "description": "A file assetID of a PDF document to which a seal has to be applied. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID of a PDF document to which a seal has to be applied. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "sealImageAssetID": {
-            "description": " A file assetID of the logo/watermark/background image to be used as part of the appearance of the seal field. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>. The asset format should be one of the below format \n 1. application/pdf \n2. image/jpeg \n3. image/png.",
+            "description": " A file assetID of the logo/watermark/background image to be used as part of the appearance of the seal field. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>. The asset format should be one of the below format \n 1. application/pdf \n2. image/jpeg \n3. image/png.",
             "type": "string"
           },
           "sealOptions": {
@@ -10204,7 +10204,7 @@
           "signatureFormat": {
             "type": "string",
             "default": "PKCS7",
-            "description": "Specifies a supported digital signature format. For supported signature formats, please refer <a href = \"https://developer-stage.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/howtos/electronic-seal-api/#signature-format-signatureformat\">documentation</a>.",
+            "description": "Specifies a supported digital signature format. For supported signature formats, please refer <a href = \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/howtos/electronic-seal-api/#signature-format-signatureformat\">documentation</a>.",
             "enum": [
               "PADES",
               "PKCS7"
@@ -10222,7 +10222,7 @@
           },
           "cscCredentialOptions": {
             "type": "object",
-            "description": "Specifies the parameters that encapsulates the signer's certificate credential. For more information, please see the <a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/howtos/electronic-seal-api/#tsp-credential-information-csccredentialoptions--required\">documentation</a>.",
+            "description": "Specifies the parameters that encapsulates the signer's certificate credential. For more information, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/howtos/electronic-seal-api/#tsp-credential-information-csccredentialoptions--required\">documentation</a>.",
             "required": [
               "providerName",
               "credentialId",
@@ -10232,7 +10232,7 @@
             "properties": {
               "providerName": {
                 "type": "string",
-                "description": "Specifies the name of the Trust Service Provider. For the list of supported TSPs, please refer <a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/#supported-trust-service-providers\">documentation</a>."
+                "description": "Specifies the name of the Trust Service Provider. For the list of supported TSPs, please refer <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/#supported-trust-service-providers\">documentation</a>."
               },
               "credentialId": {
                 "type": "string",
@@ -10302,7 +10302,7 @@
           },
           "sealFieldOptions": {
             "type": "object",
-            "description": "Specifies the parameters required to create a new signature field or use an existing field. For more details, please refer <a href= \"https://developer-stage.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/howtos/electronic-seal-api/#seal-field-parameters---sealfieldoptions--required\">documentation</a>.",
+            "description": "Specifies the parameters required to create a new signature field or use an existing field. For more details, please refer <a href= \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/howtos/electronic-seal-api/#seal-field-parameters---sealfieldoptions--required\">documentation</a>.",
             "required": [
               "fieldName"
             ],
@@ -10352,7 +10352,7 @@
           },
           "sealAppearanceOptions": {
             "type": "object",
-            "description": "Specifies signature field appearance parameters. For more details, please refer <a href= \"https://developer-stage.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/howtos/electronic-seal-api/#seal-appearance-parameters-sealappearanceoptions\">documentation</a>.",
+            "description": "Specifies signature field appearance parameters. For more details, please refer <a href= \"https://developer.adobe.com/document-services/docs/overview/pdf-electronic-seal-api/howtos/electronic-seal-api/#seal-appearance-parameters-sealappearanceoptions\">documentation</a>.",
             "default": {
               "displayOptions": [
                 "NAME",
@@ -10373,7 +10373,7 @@
         }
       },
       "notifiers": {
-        "description": "Specifies the notifiers to be invoked on the completion of job. To know more about notifiers, please see the <a href=\"https://developer-stage.adobe.com/document-services/docs/overview/pdf-services-api/howtos/webhook-notification/\">documentation</a>.",
+        "description": "Specifies the notifiers to be invoked on the completion of job. To know more about notifiers, please see the <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/webhook-notification/\">documentation</a>.",
         "type": "array",
         "items": {
           "properties": {
@@ -10398,7 +10398,7 @@
         ],
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "shiftHeadings": {
@@ -10442,7 +10442,7 @@
         ],
         "properties": {
           "assetID": {
-            "description": "A file assetID. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "pageStart": {
@@ -10899,7 +10899,7 @@
       },
       "responseAsset": {
         "title": "asset",
-        "description": "Details of output asset document. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+        "description": "Details of output asset document. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
         "type": "object",
         "properties": {
           "metadata": {
@@ -10951,7 +10951,7 @@
             ]
           },
           "assetList": {
-            "description": "List of assets. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "List of assets. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "array",
             "items": [
               {
@@ -10995,7 +10995,7 @@
             ]
           },
           "assetList": {
-            "description": "List of assets. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "List of assets. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "array",
             "items": {
               "type": "object",
@@ -11072,7 +11072,7 @@
             ]
           },
           "assetList": {
-            "description": "List of assets. Details of output asset document. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "List of assets. Details of output asset document. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "array",
             "items": {
               "type": "object",
@@ -11541,7 +11541,7 @@
           },
           "content": {
             "type": "object",
-            "description": "Asset of json file containig extracted content of pdf file. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "Asset of json file containig extracted content of pdf file. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "properties": {
               "metadata": {
                 "type": "object",
@@ -11572,7 +11572,7 @@
           },
           "resource": {
             "type": "object",
-            "description": "Asset of zip file containg generated resources from extract operation. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "Asset of zip file containg generated resources from extract operation. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "properties": {
               "metadata": {
                 "type": "object",
@@ -11636,7 +11636,7 @@
           },
           "tagged-pdf": {
             "type": "object",
-            "description": "Asset of tagged pdf file. Details of output asset document. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "Asset of tagged pdf file. Details of output asset document. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "properties": {
               "metadata": {
                 "type": "object",
@@ -11667,7 +11667,7 @@
           },
           "report": {
             "type": "object",
-            "description": "Asset of accessibility auto-tag report. Details of output asset document. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "Asset of accessibility auto-tag report. Details of output asset document. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "properties": {
               "metadata": {
                 "type": "object",
@@ -11731,7 +11731,7 @@
           },
           "asset": {
             "type": "object",
-            "description": "Input PDF file with an attached HTML report detailing the results of the accessibility check. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "Input PDF file with an attached HTML report detailing the results of the accessibility check. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "properties": {
               "metadata": {
                 "type": "object",
@@ -11762,7 +11762,7 @@
           },
           "report": {
             "type": "object",
-            "description": "JSON file containing detailed information and findings from the accessibility evaluation. For more details <a href = 'https://developer-stage.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "JSON file containing detailed information and findings from the accessibility evaluation. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "properties": {
               "metadata": {
                 "type": "object",
