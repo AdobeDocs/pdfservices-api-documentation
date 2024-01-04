@@ -93,8 +93,8 @@ version.
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <pdfservices.sdk.version>3.4.0</pdfservices.sdk.version>
-    <pdfservices.sdk.samples.version>3.4.0</pdfservices.sdk.samples.version>
+    <pdfservices.sdk.version>3.5.1</pdfservices.sdk.version>
+    <pdfservices.sdk.samples.version>3.5.1</pdfservices.sdk.samples.version>
 </properties>
 
 <dependency>
@@ -173,11 +173,24 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
-### Server Side Release (December, 2023; server side release)
+### 3.5.1 (December, 2023: patch release)
 
-| Change | Language | Description                                                                                                                                                           |
-|--------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| New    | API     | Added support for [Webhook Notification](../pdf-services-api/howtos/webhook-notification/) in all the operations **except** PDF Properties API, Accessibility Checker API and External Storage based APIs. |
+| Change  | Language | Description                                                                      |
+|---------|----------|----------------------------------------------------------------------------------|
+| Changed | Java     | Dependent library upgrades and fixed compatibility issues with Spring Boot v3.x. |
+
+
+### 3.5.0 (October, 2023: minor release)
+
+| Change  | Language | Description                                                                                                                                                                                                                            |
+|---------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Changed | Java     | Added support for document level permissions and trusted timestamping (using [supported TSAs](../pdf-electronic-seal-api/#supported-timestamping-authorities)) in java sdk for [PDF Electronic Seal API](../pdf-electronic-seal-api/). |
+
+### Adobe Document Generation Server Side Release (October, 2023; server side release)
+
+| Change  | Language | Description                                                                                                       |
+|---------|----------|-------------------------------------------------------------------------------------------------------------------|
+| Changed | All      | Performance Improvements - Available in [REST API](../apis/#tag/Document-Generation) and SDK(s) v3.0.0 and above. |
 
 ### Server Side Release (August, 2023; server side release)
 
