@@ -91,10 +91,10 @@ version.
 ```
 <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <pdfservices.sdk.version>3.5.1</pdfservices.sdk.version>
-    <pdfservices.sdk.samples.version>3.5.1</pdfservices.sdk.samples.version>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <pdfservices.sdk.version>4.0.0</pdfservices.sdk.version>
+    <pdfservices.sdk.samples.version>4.0.0</pdfservices.sdk.samples.version>
 </properties>
 
 <dependency>

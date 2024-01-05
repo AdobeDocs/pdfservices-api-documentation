@@ -267,18 +267,6 @@ public class CreatePDFFromDOCXWithOptions {
           LOGGER.error("Exception encountered while executing operation", ex);
         }
       }
-
-      private static void setCustomOptions(CreatePDFOperation createPdfOperation) {
-        // Select the documentLanguage for input file.
-        SupportedDocumentLanguage documentLanguage = SupportedDocumentLanguage.EN_US;
-
-        // Set the desired Word-to-PDF conversion options.
-        CreatePDFOptions wordOptions = CreatePDFOptions.wordOptionsBuilder().
-        withDocumentLanguage(documentLanguage).
-        build();
-
-        createPdfOperation.setOptions(wordOptions);
-   }
  }
 ```
 

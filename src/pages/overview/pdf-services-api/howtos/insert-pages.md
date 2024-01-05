@@ -52,7 +52,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
             // Create parameters for the job
             InsertPagesParams insertPagesParams = InsertPagesParams.insertPagesParamsBuilder(baseAsset)
                     .addPagesToInsertAt(firstAssetToInsert, pageRanges, 2) // Add the first asset as input to the params, along with its page ranges and base page
-                    .addPagesToInsertAt(secondAssetToInsert, 3) // Add the first asset as input to the params, along with its page ranges
+                    .addPagesToInsertAt(secondAssetToInsert, 3) // Add the seccond asset as input to the params, along with base page
                     .build();
 
             // Creates a new job instance
