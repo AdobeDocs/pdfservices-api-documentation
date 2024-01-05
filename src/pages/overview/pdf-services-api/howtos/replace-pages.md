@@ -53,7 +53,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
                 // Create parameters for the job
                 ReplacePagesParams replacePagesParams = ReplacePagesParams.replacePagesParamsBuilder(baseAsset)
                         .addPagesForReplace(asset1, pageRanges, 1) // Add the first asset as input to the params, along with its page ranges and base page
-                        .addPagesForReplace(asset2, 3) // Add the first asset as input to the params, along with its page ranges
+                        .addPagesForReplace(asset2, 3) // Add the second asset as input to the params, along with base page
                         .build();
     
                 // Creates a new job instance
