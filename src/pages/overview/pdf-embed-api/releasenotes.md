@@ -8,6 +8,11 @@ the changes below for each release.
 
 ## Change history
 
+### December, 2023
+| Change | Description                                                            |
+| ------ | ---------------------------------------------------------------------- |
+| Bug fix | Added fixes for enhanced security.         |
+
 ### October, 2023
 
 | Change | Description                                                            |
