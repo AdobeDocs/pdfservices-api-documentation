@@ -173,7 +173,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
-### Adobe Document Generation Server Side Release (November, 2023; server side release)
+### Adobe Document Generation Server Side Release (January, 2024: server side release)
 
 | Change  | Language | Description                                                                                                                  |
 |---------|----------|------------------------------------------------------------------------------------------------------------------------------|
@@ -185,12 +185,6 @@ Upgrading to the latest SDK should not break existing applications.
 |---------|----------|----------------------------------------------------------------------------------|
 | Changed | Java     | Dependent library upgrades and fixed compatibility issues with Spring Boot v3.x. |
 
-
-### Adobe Document Generation Server Side Release (November, 2023; server side release)
-
-| Change  | Language | Description                                                                                                                  |
-|---------|----------|------------------------------------------------------------------------------------------------------------------------------|
-| Changed | All      | Added support for [Table Tag with Markers](../document-generation-api/complextableconstructs.md) in Document Generation API. |
 
 ### 3.5.0 (October, 2023: minor release)
 
