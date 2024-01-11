@@ -17,22 +17,22 @@ The Adobe Privacy Policy describes the privacy practices of Adobe's Services and
 Our [open, flexible framework](https://www.adobe.com/trust/compliance/adobe-ccf.html) adapts to constantly changing standards and regulations to help provide ongoing compliance across all our products and services. To learn more, please visit this [link](https://www.adobe.com/trust/compliance/compliance-list.html). 
 
 
-## Adobe PDF Embed API
+### Adobe PDF Embed API
 Adobe PDF Embed API allows you to embed a PDF viewer in your web applications with only a few lines of code. With options for controlling how a PDF appears and functions, your applications can deliver the rich and compelling digital document experiences to your customers expect and need.
 
-## Adobe Commitment to Accessibility
+### Adobe Commitment to Accessibility
 [Adobe Accessibility Principles](https://blog.adobe.com/en/publish/2023/09/26/announcing-adobes-new-accessibility-principles) align with our core values and form the foundation for what we believe — everyone should be able to create, interact, and engage with digital experiences. These principles will serve as our guideposts as we build thoughtful and inclusive technology that makes a difference in people’s lives.
 
 The Adobe Accessibility Board has been created to set the strategy, review progress and oversee our commitment to supporting people with disabilities.
 
 
-## Conformance Statement
-### Adobe Embed API
+### Conformance Statement
+#### Adobe Embed API
 Adobe PDF Embed API is partially conformant with the Web Content Accessibility Guide (WCAG) 2.1 level AA. Adobe internally assessed the accessibility of Adobe Embed PDF using:
 * Automated testing using 3<sup>rd</sup> party accessibility tools.
 * Manual testing covering keyboard interactions and color contrast.
 
-### PDF Viewer
+#### PDF Viewer
 Adobe PDF Viewer is partially conformant with WCAG 2.1 level AA. It is notable that accessible PDF documents are fully supported for viewing with assistive technologies in the Adobe PDF Viewer.
 
 The Adobe PDF Viewer was fully evaluated against:
