@@ -68,6 +68,10 @@ viewer.
 <!--Get the samples from https://www.adobe.com/go/pdfembedapi_samples-->
 ```
 
+<InlineAlert slots="text"/>
+
+The timeout for file rendering is 60 seconds. If the file exceeds this limit there will be a `Preview Rendering Failed` error.
+
 ## Passing file content
 
 As shown above, you pass PDF data via the `content` field either as a
