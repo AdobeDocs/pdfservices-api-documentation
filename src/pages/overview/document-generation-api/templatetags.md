@@ -19,7 +19,7 @@ A placeholder(text tags) gets replaced by the actual input data.
 
 **How to insert Placeholder Variables**
 
-<Media slots="video" width="750" height="500"/>
+<Media slots="video"/>
 
 <https://images-tv.adobe.com/mpcv3/5158/aa393134-7cf7-4ebb-bfd0-1ced95237d20_1615916599.854x480at800_h264.mp4#t=3>
 
@@ -212,9 +212,20 @@ Placeholder tag is replaced by a table generated using the html string provided 
 
 - Only Inline Styling of Table elements is possible. i.e. using `style` attribute of `<table>`. Internal and External styling are not allowed.
 
+### Insert Table using table markers
+Table tags can also inserted in a document using table markers. Please refer [Table Tag with Markers](../document-generation-api/tablewithmarkers.md)
+to learn more about the usage of table markers.
 
 
-### Insert Table using Placeholder Table Tag
+<InlineAlert slots="text"/>
+
+Please visit [Complex Table Constructs](../document-generation-api/complextableconstructs.md) to learn about advanced
+constructs inside tables.
+
+
+### Insert Table using Placeholder Table Tag 
+
+**<span style="color: red; ">DEPRECATED</span>**
 
 Rows of a table can be dynamically populated by repeating over an array of objects from the input data.
 
@@ -270,11 +281,6 @@ Table rows are dynamically populated in the output document by repeating
 over the specified array of objects.
 
 ![Table with template tags replaced with actual values in the rows](../images/table_result.png)
-
-<InlineAlert slots="text"/>
-
-Please visit [Complex Table Constructs](../document-generation-api/complextableconstructs.md) to learn about advanced
-constructs inside tables.
 
 ## Lists
 

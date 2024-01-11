@@ -4,6 +4,7 @@ title: Complex Table Constructs | Document Generation API | Adobe PDF Services
 # Complex Table Constructs
 Add additional properties to table tags to apply advanced functionalities on table.
 
+This section is <span style="color:red">DEPRECATED</span>. To continue using complex table constructs, please refer to [Complex Table Constructs with Table markers](../document-generation-api/tablewithmarkers.md#complex-table-constructs-with-table-markers).
 ## Dynamically expand table rows or columns
 Specify the cell extension property inside the table cell to indicate whether to expand table rows vertically or columns horizontally.
 
