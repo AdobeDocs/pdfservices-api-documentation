@@ -91,10 +91,10 @@ version.
 ```
 <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <pdfservices.sdk.version>3.5.1</pdfservices.sdk.version>
-    <pdfservices.sdk.samples.version>3.5.1</pdfservices.sdk.samples.version>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <pdfservices.sdk.version>4.0.0</pdfservices.sdk.version>
+    <pdfservices.sdk.samples.version>4.0.0</pdfservices.sdk.samples.version>
 </properties>
 
 <dependency>
@@ -172,6 +172,12 @@ Minor and Patch releases are backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
+
+### Server Side Release (January, 2024; server side release)
+
+| Change | Language | Description                                                                                                                                                           |
+|--------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| New    | API     | Added support for [Webhook Notification](../pdf-services-api/howtos/webhook-notification/) in all the operations **except** PDF Properties and Accessibility Checker. |
 
 ### Adobe Document Generation Server Side Release (January, 2024: server side release)
 

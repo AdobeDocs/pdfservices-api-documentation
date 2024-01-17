@@ -135,6 +135,11 @@ curl --location -g --request GET 'https://pdf-services.adobe.io/operation/electr
 --header 'x-api-key: {{Placeholder for client id}}'
 ```
 
+<InlineAlert slots="text"/>
+<div>
+Instead of using the status API to check the job status, you have the option to receive job completion notifications through Webhook. For more information, please refer the <a href="../../pdf-services-api/howtos/webhook-notification/">documentation</a>.
+</div>
+
 ## Step 8 : Downloading the asset
 
 On getting `200` response code from the poll API, you will receive a `status` field in the response body which can either be `in progress`, `done` or `failed`.
@@ -165,6 +170,26 @@ PDF Services API is also accessible via SDKs in popular languages such as Node.j
 
 Please allow-list the following hostnames before using Adobe PDF Services SDK:
 <ul><li>ims-na1.adobelogin.com (Required for all the clients)</li></ul>
+
+For clients using SDK version 4.x and above :
+<ul>
+<li> Using United States (Default) region for processing documents :
+  <ul>
+    <li>dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com (Not required, if using external storage for both input and output)</li>
+    <li>pdf-services-ue1.adobe.io</li>
+    <li>pdf-services.adobe.io (Default URI)</li>
+  </ul>
+</li>
+</ul>
+
+<ul>
+  <li> Using Europe region for processing documents :
+  <ul>
+    <li>dcplatformstorageservice-prod-eu-west-1.s3.amazonaws.com (Not required, if using external storage for both input and output)</li>
+    <li>pdf-services-ew1.adobe.io</li>
+  </ul>
+</li>
+</ul>
 
 For clients using SDK version 3.x and above  :
 <ul>
@@ -233,7 +258,7 @@ After downloading the zip, you can run the samples in the zip directly by settin
 
 #### Setup a Java environment
 
-1.  Install [Java 8 or above](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
+1.  Install [Java 11 or above](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 2.  Run `javac -version` to verify your install.
 3.  Verify the JDK bin folder is included in the PATH variable (method varies by OS).
 4.  Install [Maven](https://maven.apache.org/install.html). You may use your preferred tool; for example:
