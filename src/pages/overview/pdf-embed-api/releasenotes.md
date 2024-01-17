@@ -8,6 +8,12 @@ the changes below for each release.
 
 ## Change history
 
+### January, 2024
+| Change | Description                                                            |
+| ------ | ---------------------------------------------------------------------- |
+| Changed | New UI experience         |
+| Bug fix | Fixed wrong/missing client ID error dialog.            |
+
 ### December, 2023
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
