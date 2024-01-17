@@ -8,6 +8,12 @@ the changes below for each release.
 
 ## Change history
 
+### January, 2024
+| Change | Description                                                            |
+| ------ | ---------------------------------------------------------------------- |
+| Changed | Essential library upgrades         |
+| Bug fix | Addressed issues with the error dialog that appears when an invalid Client ID is provided to the PDF Embed API.         |
+
 ### December, 2023
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
