@@ -15,9 +15,6 @@ module.exports = {
         DEV_SSR: false
     },
     siteMetadata: {
-        githubIssue: {
-            removeLogIssue: true,
-        },
         docs: {
             title: 'Get credentials',
             path: 'https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html'
