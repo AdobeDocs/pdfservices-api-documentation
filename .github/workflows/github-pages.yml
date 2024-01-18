@@ -12,7 +12,7 @@ jobs:
         uses: borales/actions-yarn@v3
       - name: Build
         run: |
-          npm run build
+          yarn build
         env:
           PREFIX_PATHS: true # works like --prefix-paths flag for 'gatsby build'
           PATH_PREFIX: ${{ github.event.repository.name }}
