@@ -1339,7 +1339,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ExtractPDF"
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/ExtractPDFInternal"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ExtractPDFExternal"
+                  }
+                ]
               }
             }
           },
@@ -8671,7 +8678,8 @@
         },
         "additionalProperties": false
       },
-      "ExtractPDF": {
+      "ExtractPDFInternal": {
+        "title": "Internal",
         "description": "Params for Extract PDF Operation",
         "type": "object",
         "required": [
@@ -8739,6 +8747,107 @@
             "tables",
             "figures"
           ],
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
+        },
+        "additionalProperties": false
+      },
+      "ExtractPDFExternal": {
+        "title": "External",
+        "description": "Params for Extract PDF Operation using external storage.",
+        "type": "object",
+        "required": [
+          "assetID"
+        ],
+        "properties": {
+          "input": {
+            "$ref": "#/components/schemas/ExternalStorageInput"
+          },
+          "output": {
+            "$ref": "#/components/schemas/ExternalStorageOutput"
+          },
+          "params": {
+            "description": "Params for Extract PDF processing",
+            "type": "object",
+            "properties": {
+              "getCharBounds": {
+                "description": "Extract bounding boxes for characters present in text blocks(paragraphs, list, headings)",
+                "type": "boolean",
+                "default": false
+              },
+              "includeStyling": {
+                "description": "Boolean specifying whether to add styling information to json output",
+                "type": "boolean",
+                "default": false
+              },
+              "elementsToExtract": {
+                "description": "List of elements that should be extracted as json. Possible values are text and tables.",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "text",
+                    "tables"
+                  ]
+                },
+                "default": [
+                  "text"
+                ]
+              },
+              "tableOutputFormat": {
+                "description": "Specifies the format of table contents output. Possible values are csv and xlsx.",
+                "type": "string",
+                "default": "xlsx"
+              },
+              "renditionsToExtract": {
+                "description": "List of elements whose renditions should be generated. Possible values are figures and tables.",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "tables",
+                    "figures"
+                  ]
+                }
+              }
+            }
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
+          }
+        },
+        "example": {
+          "input": {
+            "uri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/dc-platformService-automation_dc-platformService-automation%40AdobeID/1c4f4674-ce8d-4b21-a69d-60aeae35bf43?X-Amz-Security-Token=FwoGZXIvYXdzEBkaDK%2By2wxl94khIbkxzCLTAQn6n6Wo0vFSul%2FpXW66aFX4T%2BPxtuOy%2Bz8eTxrnexeJRvMreBHNQm1myLwp20MkE%2Bb0H%2BwYgOhFaepi9AMml1aLNxXn1UPnEWJ7y8llhvsrXHimEfWvb3TMAkZddgUIDBue8oGUYqm4f2s0sMvPWBCxI45zM0%2F37EK%2B4JnIo1SlrKNm0GSZ44AEiOAhXupQ8ih6KoUbUciD3Biile6CwTMVIhME3mJiRSgVK6W91EaDn8%2Ba3mU%2BVvU1K9sgDSPZ%2F81DOpj25pvMW%2B1cMuCtUNsu9KUo7dHvpAYyLYiy%2FPGEmO9EquKjfMPRr17PAjeunD1QdgbRss4ysG%2B6XF2Has8zsGqX1sQalA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230628T081557Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3599&X-Amz-Credential=ASIAU5PA7W47IMX73XEA%2F20230628%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=ac6998566dbbde22509b128fe94d1cb5d3146cd3fb8ba78d7068e10d61302ec2",
+            "storage": "S3"
+          },
+          "output": {
+            "uri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/dc-platformService-automation_dc-platformService-automation%40AdobeID/f02f9927-4971-4589-8fdf-41ff56c2d520?X-Amz-Security-Token=FwoGZXIvYXdzEBkaDK%2By2wxl94khIbkxzCLTAQn6n6Wo0vFSul%2FpXW66aFX4T%2BPxtuOy%2Bz8eTxrnexeJRvMreBHNQm1myLwp20MkE%2Bb0H%2BwYgOhFaepi9AMml1aLNxXn1UPnEWJ7y8llhvsrXHimEfWvb3TMAkZddgUIDBue8oGUYqm4f2s0sMvPWBCxI45zM0%2F37EK%2B4JnIo1SlrKNm0GSZ44AEiOAhXupQ8ih6KoUbUciD3Biile6CwTMVIhME3mJiRSgVK6W91EaDn8%2Ba3mU%2BVvU1K9sgDSPZ%2F81DOpj25pvMW%2B1cMuCtUNsu9KUo7dHvpAYyLYiy%2FPGEmO9EquKjfMPRr17PAjeunD1QdgbRss4ysG%2B6XF2Has8zsGqX1sQalA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230628T081559Z&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47IMX73XEA%2F20230628%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=4f765277eb6e36bd5f7bf9d42be24244440092b5a705eadf178c78a9a9fb5d71",
+            "storage": "S3"
+          },
+          "params":  {
+            "getCharBounds": false,
+            "includeStyling": false,
+            "elementsToExtract": [
+              "text",
+              "tables"
+            ],
+            "tableOutputFormat": "xlsx",
+            "renditionsToExtract": [
+              "tables",
+              "figures"
+            ]
+          },
           "notifiers": [
             {
               "type": "CALLBACK",
