@@ -8398,6 +8398,9 @@
                 "$ref": "#/components/schemas/documentLanguage"
               }
             }
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "default": {
@@ -8414,7 +8417,19 @@
           },
           "params": {
             "documentLanguage": "en-US"
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "input"
@@ -8507,6 +8522,9 @@
             "required": [
               "targetFormat"
             ]
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -8521,7 +8539,19 @@
           "params": {
             "targetFormat": "docx",
             "ocrLang": "en-US"
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "additionalProperties": false
       },
@@ -8609,6 +8639,9 @@
             "required": [
               "targetFormat"
             ]
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -8622,7 +8655,19 @@
           },
           "params": {
             "targetFormat":"jpeg"
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "additionalProperties": false
       },
@@ -8825,6 +8870,9 @@
                 }
               }
             }
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -8843,7 +8891,19 @@
               "pageWidth": 8.5,
               "pageHeight": 11
             }
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "input"
@@ -8956,6 +9016,9 @@
           },
           "output": {
             "$ref": "#/components/schemas/ExternalStorageOutput"
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -8988,7 +9051,19 @@
           "output": {
             "uri": "https://dcalpine2.sharepoint.com/sites/Docgen/_api/v2.0/drives/b!MA1899sXSkupaKT9m2CP3JIqXDMQyoBCth9h9Rn6bQRjzBEBFxsbQpN23hY-rzQT/items/01TAIM7P3ZQQ4DP4NZHFDI6FBJPIGFRCY3/uploadSession?guid='2c79b9aa-f9dc-42c8-8919-da5a9b554b81'&overwrite=True&rename=False&dc=0&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDAyOTMiLCJleHAiOiIxNjgwNjg2NjkzIiwiZW5kcG9pbnR1cmwiOiJXVWNNVHhndVdyMHR4YzhlYWxlRzMrYUV1aXg5anoxanZuRmRpMENjNHFRPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMjYxIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJaREZsTURjek5tRXRaREJtWkMwMFlXUXlMV0V5WTJNdE1HRTRPV1prTTJJNU5XTmwiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE3MCJ9.a1hxR1J1emlFSE9jSTU0SnFTcFN6TGlsRHNhWTFRaDNkT2hwT3ZPYm8waz0",
             "storage": "SHAREPOINT"
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "inputs"
@@ -9063,6 +9138,9 @@
                 ]
               }
             }
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -9076,7 +9154,19 @@
           },
           "params": {
             "compressionLevel": "LOW"
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "input"
@@ -9126,6 +9216,9 @@
           },
           "output": {
             "$ref": "#/components/schemas/ExternalStorageOutput"
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -9136,7 +9229,19 @@
           "output": {
             "uri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/e0983a2df4d647a8818e2c5e06f85169_097819C664A2BBC20A49421A%40techacct.adobe.com/c436259c-9b5a-4cb6-90ee-896977a8cf79?X-Amz-Security-Token=FwoGZXIvYXdzEKj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDNPDTAjFnx2YzhSfIiLTAb0JPLRZf87ktkyvbfqLFQmyqQCJmKY53nwWJ3WsR%2BdaU5Xthi1sE00GVatWYOZ%2FFAwtSnPH3rASwRP1oM%2Fav%2FXtTuIi344QCbTFi1lAfzU1%2BxZjcpk2z8e%2B7tww8ArkaXRkbXfL%2Bn0eZIY0dwSgb89wJgsY4mfA7v8Yj%2FEkLcZuYEGkQnvqfyLTvZw6OqiDcRnyfzEFbx7ZZ41hSZrHA7wM%2BVYZDnijFUlTl4BJI1fV3NvLUTesfMML%2BmsZZzw3Jn1BuEwlAWVbTw4RlFiqAVdHVUAouP6OpQYyLdQSDw%2F0CFdJsNjUQG2Jt%2F%2Bii7Z3DLwdFd7cboI%2F5Op8GJuvDjBkOH1Q3oPy%2FQ%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230704T064436Z&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Expires=3599&X-Amz-Credential=ASIAU5PA7W47D54AZ57L%2F20230704%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=0f86cf401c565d141aa8c24c0a4e4855431f71f9f1bad736b8590a455077da10",
             "storage": "S3"
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "input"
@@ -9218,6 +9323,9 @@
                 ]
               }
             }
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -9232,7 +9340,19 @@
           "params": {
             "ocrLang": "en-US",
             "ocrType": "searchable_image"
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "input"
@@ -9347,6 +9467,9 @@
             "required": [
               "pageActions"
             ]
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -9382,7 +9505,19 @@
                 }
               }
             ]
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "input",
@@ -9403,11 +9538,26 @@
             "description": "To get page level properties of the PDF.",
             "type": "boolean",
             "default": false
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
-          "pageLevel": false
+          "pageLevel": false,
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "assetID"
@@ -9432,6 +9582,9 @@
                 "default": false
               }
             }
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -9441,7 +9594,19 @@
           },
           "params": {
             "pageLevel": false
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "input"
@@ -9602,6 +9767,9 @@
               "passwordProtection",
               "encryptionAlgorithm"
             ]
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -9621,7 +9789,19 @@
             "encryptionAlgorithm": "AES_256",
             "contentToEncrypt": "ALL_CONTENT",
             "permissions": ["PRINT_LOW_QUALITY", "PRINT_HIGH_QUALITY", "EDIT_CONTENT", "EDIT_FILL_AND_SIGN_FORM_FIELDS", "EDIT_ANNOTATIONS", "EDIT_DOCUMENT_ASSEMBLY", "COPY_CONTENT"]
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "input",
@@ -9693,6 +9873,9 @@
             "required": [
               "password"
             ]
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -9706,7 +9889,19 @@
           },
           "params": {
             "password": "XXXX"
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "input",
@@ -9885,6 +10080,9 @@
             "required": [
               "jsonDataForMerge"
             ]
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -9922,7 +10120,19 @@
               ],
               "photograph": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII="
             }
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "input",
