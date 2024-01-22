@@ -179,7 +179,7 @@ Upgrading to the latest SDK should not break existing applications.
 | Changed | Java     | Released Adobe PDF Services Java SDK v4.0.0, introducing new interfaces fully leveraging power of new PDF Services rest APIs. |
 | Changed | Java     | Updated PDF Properties operation to return PDFProperties object along with JSON string.                                       |
 | Changed | Java     | Updated Extract PDF operation to return content and resourse asset along with content JSON object.                            |
-| New     | Java     | Added Support for delete asset, refresh download URI, webhook notifiers.                                                      |
+| New     | Java     | Added support for delete asset, refresh download URI, webhook notifiers.                                                      |
 | New     | Java     | Eliminated need of storage to save intermediate result by removed dependency on temporary storage.                            |
 
 
