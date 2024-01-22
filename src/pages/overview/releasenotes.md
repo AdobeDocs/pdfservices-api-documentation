@@ -177,7 +177,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 | Change | Language | Description                                                                                                                                                                                                                           |
 |--------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| New    | All     | Added support for [Webhook Notification](../pdf-services-api/howtos/webhook-notification/) in all the operations **except** PDF Properties - Available in [REST API](../apis/#tag/Document-Generation) and SDK(s) v4.0.0 and above. . |
+| New    | API     | Added support for [Webhook Notification](../pdf-services-api/howtos/webhook-notification/) in all the operations **except** PDF Properties. |
 
 ### Adobe Document Generation Server Side Release (January, 2024: server side release)
 
