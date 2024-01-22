@@ -184,6 +184,12 @@ Upgrading to the latest SDK should not break existing applications.
 | Changed | Java     | Updated Extract PDF operation to return content and resourse asset along with content JSON object.                            |
 
 
+### Server Side Release (January, 2024; server side release)
+
+| Change | Language | Description                                                                                                                                                                                                                           |
+|--------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| New    | API     | Added support for [Webhook Notification](../pdf-services-api/howtos/webhook-notification/) in all the operations **except** PDF Properties. |
+
 ### Adobe Document Generation Server Side Release (January, 2024: server side release)
 
 | Change  | Language | Description                                                                                            |
