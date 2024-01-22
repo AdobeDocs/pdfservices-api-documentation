@@ -12014,6 +12014,17 @@
       },
       "ExtractPDFDone": {
         "title": "done",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ExtractPDFDoneInternal"
+          },
+          {
+            "$ref": "#/components/schemas/external"
+          }
+        ]
+      },
+      "ExtractPDFDoneInternal": {
+        "title": "Internal",
         "description": "Response in case of 'done' status",
         "type": "object",
         "properties": {
@@ -12297,8 +12308,19 @@
           }
         }
       },
-      "ElectronicSealPDFDone" : {
+      "ElectronicSealPDFDone": {
         "title": "done",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ElectronicSealPDFDoneInternal"
+          },
+          {
+            "$ref": "#/components/schemas/external"
+          }
+        ]
+      },
+      "ElectronicSealPDFDoneInternal" : {
+        "title": "Internal",
         "description": "Response in case of 'done' status",
         "type": "object",
         "properties": {
