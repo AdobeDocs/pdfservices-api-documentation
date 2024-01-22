@@ -173,6 +173,17 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### 4.0.0 (January, 2024; major release)
+| Change  | Language | Description                                                                                                                   |
+|---------|----------|-------------------------------------------------------------------------------------------------------------------------------|
+| New     | Java     | Added support for delete asset, refresh download URI, webhook notifiers.                                                      |
+| New     | Java     | Eliminated need of storage to save intermediate result by removed dependency on temporary storage.                            |
+| New     | Java     | Extended I/O capabilities by introducing external storage for a majority of PDF Services operations.                                                                |
+| Changed | Java     | Released Adobe PDF Services Java SDK v4.0.0, introducing new interfaces fully leveraging power of new PDF Services rest APIs. |
+| Changed | Java     | Updated PDF Properties operation to return PDFProperties object along with JSON string.                                       |
+| Changed | Java     | Updated Extract PDF operation to return content and resourse asset along with content JSON object.                            |
+
+
 ### Adobe Document Generation Server Side Release (January, 2024: server side release)
 
 | Change  | Language | Description                                                                                            |
