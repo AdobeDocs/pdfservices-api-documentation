@@ -7398,7 +7398,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AccessibilityChecker"
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/AccessibilityCheckerInternal"
+                  },
+                  {
+                    "$ref": "#/components/schemas/AccessibilityCheckerExternal"
+                  }
+                ]
               }
             }
           },
@@ -10135,14 +10142,23 @@
           }
         },
         "example": {
-          "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
-          "splitoption": {
-            "pageRanges": [
-              {
-                "start": 1,
-                "end": 10
-              }
-            ]
+          "input": {
+            "uri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/e0983a2df4d647a8818e2c5e06f85169_097819C664A2BBC20A49421A%40techacct.adobe.com/834084d9-e902-46a0-bfdb-11c9d81cb82d?X-Amz-Security-Token=FwoGZXIvYXdzEPf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDBXjqT4C%2F7joNmRVSCLTAQazARqHHw1uYicsoXFeqvQ8jnZhcxcJkDY3DDIVi1f5%2Bgi5a0Lz%2FRV7yZGkhQ5cK03D7QwWZikWu%2FPlmVWuOMzqCpQk9cF8oRDUfSoKGmkNIbcYchZUfSD3v%2Bk7F82cgRybsBpehOQsZxY67rcoaR4fSHej9UIJLrUaeVERkDcHBVa2Pl0d%2FwF2Wn3zKGP%2BNrDnn2uK51i9Mtq0clCgTfTBCc4Mt6oZYyYXWRQWHqss9bZmW0cOEno2d4e2YwFINolenhOYjVNV6pYOAbidQqkTYcwogKWgpQYyLWivFRFSt91vrkc%2Ba24l55sim59RhLYxeN1c5vKiPuJzzz8Lq4whh6crixrwDg%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230707T133502Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3599&X-Amz-Credential=ASIAU5PA7W47LYI26DU3%2F20230707%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=aac63e7f2a7baef8a07a821fb5b5d7820e1c8287bd75f3ed8604dcb57386e8be",
+            "storage": "S3"
+          },
+          "output": {
+            "uri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/e0983a2df4d647a8818e2c5e06f85169_097819C664A2BBC20A49421A%40techacct.adobe.com/cd8ba077-98aa-4f88-b63c-78ef5a18e1b8?X-Amz-Security-Token=FwoGZXIvYXdzEPf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDFO%2Fye5bzll%2B8gzn4SLTAXEbkG1qef0EhWfnj%2FrBwcek9ConiBxFQ5Xya89H2u9g4h7Y%2F%2FgbvkwvdwCp0Bh%2BPRiGgapO%2BvhPJmpD2knaa%2FmOFle9l11ya41PjORZca%2FkOCESIbEmrRJ%2FJUIkCwLYfaJ0hQl6JghQW08EsxW0%2BYfKcG%2Bf9f0Dan3p9TgeD2eoJoZXqFfuw5JxaKVU4%2BCHtDxFbUplXOhcskMhjf%2FlY4tXJ%2F3o8a%2BEgkOQLC8U%2BPmjmdiWLWOxI13EbWa3NENaiOfw1WzK%2B%2FNgiBIhM78xPQpkNqwoz6WgpQYyLUc%2FqLVbWpz%2FoQVmuvbSaaRu9vAdowKmLvv%2BjE3nrpyQ7UbqL%2Ftw67ZZgp5R0Q%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230707T133505Z&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Expires=3599&X-Amz-Credential=ASIAU5PA7W47F7OL2ZQZ%2F20230707%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=0ecf516a833436083067fc4b5f8ac3f154e214a74e94c893d106f952401e577a",
+            "storage": "S3"
+          },
+          "params": {
+            "splitoption": {
+              "pageRanges": [
+                {
+                  "start": 1,
+                  "end": 10
+                }
+              ]
+            }
           },
           "notifiers": [
             {
@@ -10998,7 +11014,8 @@
         },
         "additionalProperties": false
       },
-      "AccessibilityChecker": {
+      "AccessibilityCheckerInternal": {
+        "title": "Internal",
         "description": "Parameter for PDF Accessibility Checker API operation.",
         "type": "object",
         "required": [
@@ -11025,6 +11042,66 @@
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "pageStart": 1,
           "pageEnd": 5,
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
+        },
+        "additionalProperties": false
+      },
+      "AccessibilityCheckerExternal": {
+        "title": "External",
+        "description": "Parameter for PDF Accessibility Checker API operation.",
+        "type": "object",
+        "required": [
+          "input"
+        ],
+        "properties": {
+          "input": {
+            "$ref": "#/components/schemas/ExternalStorageInput"
+          },
+          "output": {
+            "$ref": "#/components/schemas/ExternalStorageOutput"
+          },
+          "params": {
+            "description": "Params for PDF accessibility checker processing.",
+            "type": "object",
+            "properties": {
+              "pageStart": {
+                "description": "The parameter allows for the specification of the starting page for the accessibility check. If \"pageStart\" is not provided, the first page is considered the default startPage. It should be greater than equal to 1.",
+                "type": "number"
+              },
+              "pageEnd": {
+                "description": "The parameter allows for the specification of the ending page for the accessibility check. If \"pageEnd\" is not provided, the last page is considered the default pageEnd. It should be greater than equal to 1.",
+                "type": "number"
+              }
+            }
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
+          }
+        },
+        "example": {
+          "input": {
+            "uri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/dc-platformService-automation_dc-platformService-automation%40AdobeID/1c4f4674-ce8d-4b21-a69d-60aeae35bf43?X-Amz-Security-Token=FwoGZXIvYXdzEBkaDK%2By2wxl94khIbkxzCLTAQn6n6Wo0vFSul%2FpXW66aFX4T%2BPxtuOy%2Bz8eTxrnexeJRvMreBHNQm1myLwp20MkE%2Bb0H%2BwYgOhFaepi9AMml1aLNxXn1UPnEWJ7y8llhvsrXHimEfWvb3TMAkZddgUIDBue8oGUYqm4f2s0sMvPWBCxI45zM0%2F37EK%2B4JnIo1SlrKNm0GSZ44AEiOAhXupQ8ih6KoUbUciD3Biile6CwTMVIhME3mJiRSgVK6W91EaDn8%2Ba3mU%2BVvU1K9sgDSPZ%2F81DOpj25pvMW%2B1cMuCtUNsu9KUo7dHvpAYyLYiy%2FPGEmO9EquKjfMPRr17PAjeunD1QdgbRss4ysG%2B6XF2Has8zsGqX1sQalA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230628T081557Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3599&X-Amz-Credential=ASIAU5PA7W47IMX73XEA%2F20230628%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=ac6998566dbbde22509b128fe94d1cb5d3146cd3fb8ba78d7068e10d61302ec2",
+            "storage": "S3"
+          },
+          "output": {
+            "uri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/dc-platformService-automation_dc-platformService-automation%40AdobeID/f02f9927-4971-4589-8fdf-41ff56c2d520?X-Amz-Security-Token=FwoGZXIvYXdzEBkaDK%2By2wxl94khIbkxzCLTAQn6n6Wo0vFSul%2FpXW66aFX4T%2BPxtuOy%2Bz8eTxrnexeJRvMreBHNQm1myLwp20MkE%2Bb0H%2BwYgOhFaepi9AMml1aLNxXn1UPnEWJ7y8llhvsrXHimEfWvb3TMAkZddgUIDBue8oGUYqm4f2s0sMvPWBCxI45zM0%2F37EK%2B4JnIo1SlrKNm0GSZ44AEiOAhXupQ8ih6KoUbUciD3Biile6CwTMVIhME3mJiRSgVK6W91EaDn8%2Ba3mU%2BVvU1K9sgDSPZ%2F81DOpj25pvMW%2B1cMuCtUNsu9KUo7dHvpAYyLYiy%2FPGEmO9EquKjfMPRr17PAjeunD1QdgbRss4ysG%2B6XF2Has8zsGqX1sQalA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230628T081559Z&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47IMX73XEA%2F20230628%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=4f765277eb6e36bd5f7bf9d42be24244440092b5a705eadf178c78a9a9fb5d71",
+            "storage": "S3"
+          },
+          "params":  {
+            "pageStart": 1,
+            "pageEnd": 5
+          },
           "notifiers": [
             {
               "type": "CALLBACK",
@@ -12305,6 +12382,17 @@
       },
       "AccessibilityCheckerDone": {
         "title": "done",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/AccessibilityCheckerDoneInternal"
+          },
+          {
+            "$ref": "#/components/schemas/external"
+          }
+        ]
+      },
+      "AccessibilityCheckerDoneInternal": {
+        "title": "Internal",
         "description": "Response in case of 'done' status",
         "type": "object",
         "properties": {
