@@ -6271,7 +6271,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/SplitPDF"
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/SplitPDFInternal"
+                  },
+                  {
+                    "$ref": "#/components/schemas/SplitPDFExternal"
+                  }
+                ]
               }
             }
           },
@@ -10025,7 +10032,8 @@
         ],
         "additionalProperties": false
       },
-      "SplitPDF": {
+      "SplitPDFInternal": {
+        "title": "Internal",
         "description": "Params for Split PDF Operation.",
         "type": "object",
         "properties": {
@@ -10081,6 +10089,77 @@
         "required": [
           "assetID",
           "splitoption"
+        ],
+        "additionalProperties": false
+      },
+      "SplitPDFExternal": {
+        "title": "External",
+        "description": "Params for Split PDF Operation using external storage.",
+        "type": "object",
+        "properties": {
+          "input": {
+            "$ref": "#/components/schemas/ExternalStorageInput"
+          },
+          "output": {
+            "$ref": "#/components/schemas/ExternalStorageOutput"
+          },
+          "params": {
+            "description": "Params for split PDF processing",
+            "type": "object",
+            "properties": {
+              "splitoption": {
+                "description": "Provide option to split the PDF document. Different options for splitting PDF document are mutually exclusive.",
+                "oneOf": [
+                  {
+                    "title": "fileCount",
+                    "description": "The number of documents to split the input PDF file into.",
+                    "type": "number"
+                  },
+                  {
+                    "title": "pageCount",
+                    "description": "The maximum number of pages each of the output files can have.",
+                    "type": "number"
+                  },
+                  {
+                    "$ref": "#/components/schemas/pageRanges"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "splitoption"
+            ]
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
+          }
+        },
+        "example": {
+          "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
+          "splitoption": {
+            "pageRanges": [
+              {
+                "start": 1,
+                "end": 10
+              }
+            ]
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
+        },
+        "required": [
+          "input",
+          "params"
         ],
         "additionalProperties": false
       },
@@ -11469,6 +11548,17 @@
       },
       "splitpdfdone": {
         "title": "done",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/splitpdfdoneInternal"
+          },
+          {
+            "$ref": "#/components/schemas/external"
+          }
+        ]
+      },
+      "splitpdfdoneInternal": {
+        "title": "Internal",
         "description": "Response in case of 'done' status",
         "type": "object",
         "properties": {
