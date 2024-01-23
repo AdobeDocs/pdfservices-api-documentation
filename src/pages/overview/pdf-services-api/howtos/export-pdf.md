@@ -14,7 +14,7 @@ See our public API Reference for :
 ## Export a PDF
 
 The sample below converts a PDF file into a number of [supported
-formats](https://opensource.adobe.com/pdfservices-java-sdk-samples/apidocs/latest/com/adobe/pdfservices/operation/pdfops/options/exportpdf/ExportPDFTargetFormat.html)
+formats](https://developer.adobe.com/document-services/docs/apis/#tag/Export-PDF)
 such as:
 
 -   Microsoft Office file formats
@@ -197,7 +197,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/exportpd
 ## Export a PDF file to a DOCX file (apply OCR on the PDF file)
 
 The sample below converts a PDF file into a number of [supported
-formats](https://opensource.adobe.com/pdfservices-java-sdk-samples/apidocs/latest/com/adobe/pdfservices/operation/pdfops/options/exportpdf/ExportPDFTargetFormat.html)
+formats](https://developer.adobe.com/document-services/docs/apis/#tag/Export-PDF)
 such as:
 
 -   Microsoft Office file formats

@@ -15,7 +15,7 @@ See our public API Reference for :
 
 Use the sample below to create PDFs from Microsoft Office documents
 (Word, Excel and PowerPoint) and other [supported file
-formats](https://opensource.adobe.com/pdfservices-java-sdk-samples/apidocs/latest/com/adobe/pdfservices/operation/pdfops/CreatePDFOperation.SupportedSourceFormat.html).
+formats](https://developer.adobe.com/document-services/docs/apis/#tag/Create-PDF).
 While the example shows .docx file conversion, the SDK supports the
 following formats:
 
@@ -44,7 +44,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 public class CreatePDFFromDOCX {
 
     // Initialize the logger. 
-    private static final Logger LOGGER = LoggerFactory.getLogger(CreatePDFFromDOCX .class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CreatePDFFromDOCX.class);
 
     public static void main(String[] args) {
 
