@@ -181,7 +181,7 @@ Upgrading to the latest SDK should not break existing applications.
 | New     | Java     | Eliminated need of storage to save intermediate result by removed dependency on temporary storage.                            |
 | New     | Java     | Extended I/O capabilities by introducing external storage for a majority of PDF Services operations.                          |
 | Changed | Java     | Updated PDF Properties operation to return PDFProperties object along with JSON string.                                       |
-| Changed | Java     | Updated Extract PDF operation to return content and resources asset along with content JSON object.                           |
+| Changed | Java     | Updated Extract PDF operation to return content and resource asset along with content JSON object.                           |
 
 
 ### Adobe Document Generation Server Side Release (January, 2024: server side release)
