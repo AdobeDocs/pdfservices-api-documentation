@@ -30,31 +30,39 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
     private static final Logger LOGGER = LoggerFactory.getLogger(RemoveProtection.class);
  
     public static void main(String[] args) {
-        try {
-            // Initial setup, create credentials instance.
-           Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-                    .withClientId("PDF_SERVICES_CLIENT_ID")
-                    .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                    .build();
- 
-            // Create an ExecutionContext using credentials and create a new operation instance.
-            ExecutionContext executionContext = ExecutionContext.create(credentials);
-            RemoveProtectionOperation removeProtectionOperation = RemoveProtectionOperation.createNew();
- 
-            // Set operation input from a source file.
-            FileRef source = FileRef.createFromLocalFile("src/main/resources/removeProtectionInput.pdf");
-            removeProtectionOperation.setInput(source);
- 
-            // Set the password for removing security from a PDF document.
-            removeProtectionOperation.setPassword("password");
- 
-            // Execute the operation.
-            FileRef result = removeProtectionOperation.execute(executionContext);
- 
-            // Save the result to the specified location.
-            result.saveAs("output/removeProtectionOutput.pdf");
- 
-        } catch (IOException | ServiceApiException | SdkException | ServiceUsageException e) {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/removeProtectionInput.pdf").toPath())) {
+            // Initial setup, create credentials instance
+            Credentials credentials = new ServicePrincipalCredentials(
+                    System.getenv("PDF_SERVICES_CLIENT_ID"),
+                    System.getenv("PDF_SERVICES_CLIENT_SECRET"));
+
+            // Creates a PDF Services instance
+            PDFServices pdfServices = new PDFServices(credentials);
+
+            // Creates an asset(s) from source file(s) and upload
+            Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
+
+            // Create parameters for the job
+            RemoveProtectionParams removeProtectionParams = new RemoveProtectionParams("password");
+
+            // Creates a new job instance
+            RemoveProtectionJob removeProtectionJob = new RemoveProtectionJob(asset, removeProtectionParams);
+
+            // Submit the job and gets the job result
+            String location = pdfServices.submit(removeProtectionJob);
+            PDFServicesResponse<RemoveProtectionResult> pdfServicesResponse = pdfServices.getJobResult(location, RemoveProtectionResult.class);
+
+            // Get content from the resulting asset(s)
+            Asset resultAsset = pdfServicesResponse.getResult().getAsset();
+            StreamAsset streamAsset = pdfServices.getContent(resultAsset);
+
+            // Creates an output stream and copy stream asset's content to it
+            Files.createDirectories(Paths.get("output/"));
+            OutputStream outputStream = Files.newOutputStream(new File("output/removeProtectionOutput.pdf").toPath());
+            LOGGER.info("Saving asset at output/removeProtectionOutput.pdf");
+            IOUtils.copy(streamAsset.getInputStream(), outputStream);
+            outputStream.close();
+        } catch (IOException | ServiceApiException | SDKException | ServiceUsageException e) {
             LOGGER.error("Exception encountered while executing operation", e);
         }
     }

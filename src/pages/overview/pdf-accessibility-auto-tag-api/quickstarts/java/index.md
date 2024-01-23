@@ -10,7 +10,7 @@ To get started using Adobe PDF Accessibility Auto-Tag API, let's walk through a 
 
 To complete this guide, you will need:
 
-* [Java](http://www.oracle.com/technetwork/java/javase/downloads/index.html) - Java 8 or higher is required. 
+* [Java](http://www.oracle.com/technetwork/java/javase/downloads/index.html) - Java 11 or higher is required. 
 * [Maven](https://maven.apache.org/install.html)
 * An Adobe ID. If you do not have one, the credential setup will walk you through creating one.
 * A way to edit code. No specific editor is required for this guide.
@@ -43,7 +43,7 @@ To complete this guide, you will need:
 
 2) Take `pdfservices-api-credentials.json` file and place it in a new directory.
 
-3) In this directory, create a new file named `pom.xml` and copy the following contents:
+3) In this directory, create a new file named `pom.xml` and copy the following content:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -61,9 +61,9 @@ To complete this guide, you will need:
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <pdfservices.sdk.version>3.5.1</pdfservices.sdk.version>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <pdfservices.sdk.version>4.0.0</pdfservices.sdk.version>
   </properties>
 
   <dependencies>
@@ -79,7 +79,7 @@ To complete this guide, you will need:
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-slf4j-impl</artifactId>
-      <version>2.17.1</version>
+      <version>2.21.1</version>
     </dependency>
   </dependencies>
 
@@ -92,45 +92,6 @@ To complete this guide, you will need:
         <configuration>
           <source>${maven.compiler.source}</source>
           <target>${maven.compiler.target}</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>3.2.4</version>
-        <configuration>
-          <filters>
-            <filter>
-              <artifact>*:*</artifact>
-              <excludes>
-                <exclude>META-INF/*.SF</exclude>
-                <exclude>META-INF/*.DSA</exclude>
-                <exclude>META-INF/*.RSA</exclude>
-              </excludes>
-            </filter>
-          </filters>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.0.2</version>
-        <configuration>
-          <archive>
-            <manifest>
-              <addClasspath>true</addClasspath>
-              <classpathPrefix>lib/</classpathPrefix>
-              <mainClass>ExtractTextInfoFromPDF</mainClass>
-            </manifest>
-          </archive>
         </configuration>
       </plugin>
       <plugin>
@@ -152,7 +113,7 @@ To complete this guide, you will need:
 
 This file will define what dependencies we need and how the application will be built. 
 
-Our application will take a PDF, `Adobe Accesibility Auto-Tag API Sample.pdf` (downloadable from <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>) and tag its contents. The results will be saved in a given directory `/output/AutotagPDF`.
+Our application will take a PDF, `Adobe_Accessibility_Auto_Tag_API_Sample.pdf` (downloadable from <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>) and tag its contents. The results will be saved in the directory `/output`.
 
 4) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `AutotagPDF.java`. 
 
@@ -163,21 +124,28 @@ Now you're ready to begin coding.
 1) We'll begin by including our required dependencies:
 
 ```javascript
-import com.adobe.pdfservices.operation.ExecutionContext;
+import com.adobe.pdfservices.operation.PDFServices;
+import com.adobe.pdfservices.operation.PDFServicesMediaType;
+import com.adobe.pdfservices.operation.PDFServicesResponse;
 import com.adobe.pdfservices.operation.auth.Credentials;
+import com.adobe.pdfservices.operation.auth.ServicePrincipalCredentials;
 import com.adobe.pdfservices.operation.exception.SdkException;
 import com.adobe.pdfservices.operation.exception.ServiceApiException;
 import com.adobe.pdfservices.operation.exception.ServiceUsageException;
-import com.adobe.pdfservices.operation.io.FileRef;
-import com.adobe.pdfservices.operation.io.autotag.AutotagPDFOutput;
-import com.adobe.pdfservices.operation.pdfops.AutotagPDFOperation;
-import com.adobe.pdfservices.operation.pdfops.options.autotag.AutotagPDFOptions;
+import com.adobe.pdfservices.operation.io.Asset;
+import com.adobe.pdfservices.operation.io.StreamAsset;
+import com.adobe.pdfservices.operation.pdfjobs.jobs.AutotagPDFJob;
+import com.adobe.pdfservices.operation.pdfjobs.result.AutotagPDFResult;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 ```
 
 2) Now let's define our main class:
@@ -185,7 +153,7 @@ import java.time.format.DateTimeFormatter;
 ```javascript
 public class AutotagPDF {
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ExtractTextInfoFromPDF.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AutotagPDF.class);
 
     public static void main(String[] args) {
 
@@ -193,22 +161,8 @@ public class AutotagPDF {
 }
 ```
 
-3) Now let's define our input and output:
 
-```javascript
-String inputFile = "./Adobe Extract API Sample.pdf";
-
-String outputPath = "./output/AutotagPDF/";
-Files.deleteIfExists(Paths.get(outputPath));
-
-String taggedPDF = outputPath + inputPDF +"-tagged-pdf.pdf";
-String taggingReport = outputPath + inputPDF +"-tagging-report.xlsx";
-
-```
-
-This defines what our output directory will be and optionally deletes it if it already exists. Then we define what PDF will be tagged. (You can download the source we used <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>.) In a real application, these values would be typically be dynamic.
-
-4) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+3) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
 - **Windows:**
   - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
   - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
@@ -217,118 +171,141 @@ This defines what our output directory will be and optionally deletes it if it a
   - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
   - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
-5) Next, we can create our credentials and use them:
+4) Next, we can create our credentials and PDFServices instance:
 
 ```javascript
-// Initial setup, create credentials instance.
-Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-    .withClientId(System.getenv("PDF_SERVICES_CLIENT_ID"))
-    .withClientSecret(System.getenv("PDF_SERVICES_CLIENT_SECRET"))
-    .build();
+// Initial setup, create credentials instance
+Credentials credentials = new ServicePrincipalCredentials(
+        System.getenv("PDF_SERVICES_CLIENT_ID"),
+        System.getenv("PDF_SERVICES_CLIENT_SECRET"));
 
-// Create an ExecutionContext using credentials.
-ExecutionContext executionContext = ExecutionContext.create(credentials);
+// Creates a PDF Services instance
+PDFServices pdfServices = new PDFServices(credentials);
 ```
 
-6) Now, let's create the operation:
+5) Now, let's upload the asset:
 
 ```javascript
-AutotagPDFOperation autotagPDFOperation = AutotagPDFOperation.createNew();
-
-// Build AutotagPDFOptions options and set them into the operation
-AutotagPDFOptions autotagPDFOptions = AutotagPDFOptions.autotagPDFOptionsBuilder()
-        .shiftHeadings()
-        .generateReport()
-        .build();
-autotagPDFOperation.setOptions(autotagPDFOptions);
+Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
 ```
 
-This set of code defines what we're doing (an Extract operation), points to our local file and specifies the input is a PDF, and then defines options for the Extract call. PDF Extract API has a few different options, but in this example, we're simply asking for the most basic of extractions, the textual content of the document. 
+We define input stream for the PDF that will be tagged. (You can download the source we used <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>.) In a real application, these values would be typically be dynamic.
+Then we upload the content of input stream and specify the input media type as PDF.
 
-7) The next code block executes the operation:
+
+6) Now, let's create the job and parameters:
 
 ```javascript
-// Execute the operation
-AutotagPDFOutput result = autotagPDFOperation.execute(executionContext);
+// Create parameters for the job
+AutotagPDFParams autotagPDFParams = AutotagPDFParams.autotagPDFParamsBuilder().generateReport().shiftHeadings().build();
 
-// Save the tagged PDF output at the specified location
-autotagPDFOutput.getTaggedPDF().saveAs(taggedPDF);
+// Creates a new job instance
+AutotagPDFJob autotagPDFJob = new AutotagPDFJob(asset).setParams(autotagPDFParams);
+```
 
-// Save the tagging report output at the specified location
-autotagPDFOutput.getReport().saveAs(taggingReport);
+This set of code defines what we're doing (an Auto-Tag operation),
+it defines parameters for the Auto-Tag job. PDF Accessibility Auto-Tag API has a few different options, but in this example, we're simply asking for a basic tagging operation, which returns the tagged PDF document and an XLSX report of the document.
+
+7) The next code block submits the job and gets the job result:
+
+```javascript
+// Submit the job and get the job result
+String location = pdfServices.submit(autotagPDFJob);
+PDFServicesResponse<AutotagPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, AutotagPDFResult.class);
+
+// Get content from the resulting asset(s)
+Asset resultAsset = pdfServicesResponse.getResult().getTaggedPDF();
+Asset resultAssetReport = pdfServicesResponse.getResult().getReport();
+StreamAsset streamAsset = pdfServices.getContent(resultAsset);
+StreamAsset streamAssetReport = pdfServices.getContent(resultAssetReport);
+```
+
+8) The next code block saves the result at the specified location:
+
+```javascript
+// Creating output streams and copying stream assets' content to it
+OutputStream outputStream = Files.newOutputStream(new File("output/autotag-tagged.pdf").toPath());
+OutputStream outputStreamReport = Files.newOutputStream(new File("output/autotag-report.xlsx").toPath());
+IOUtils.copy(streamAsset.getInputStream(), outputStream);
+IOUtils.copy(streamAssetReport.getInputStream(), outputStreamReport);
 ```
 
 ![Example running in the command line](./shot9_ga.png)
 
-Here's the complete application (`src/java/main/ExtractTextInfoFromPDF.java`):
+Here's the complete application (`src/main/java/AutotagPDF.java`):
 
 ```javascript
-import com.adobe.pdfservices.operation.ExecutionContext;
+import com.adobe.pdfservices.operation.PDFServices;
+import com.adobe.pdfservices.operation.PDFServicesMediaType;
+import com.adobe.pdfservices.operation.PDFServicesResponse;
 import com.adobe.pdfservices.operation.auth.Credentials;
-import com.adobe.pdfservices.operation.exception.SdkException;
+import com.adobe.pdfservices.operation.auth.ServicePrincipalCredentials;
+import com.adobe.pdfservices.operation.exception.SDKException;
 import com.adobe.pdfservices.operation.exception.ServiceApiException;
 import com.adobe.pdfservices.operation.exception.ServiceUsageException;
-import com.adobe.pdfservices.operation.io.FileRef;
-import com.adobe.pdfservices.operation.io.autotag.AutotagPDFOutput;
-import com.adobe.pdfservices.operation.pdfops.AutotagPDFOperation;
-import com.adobe.pdfservices.operation.pdfops.options.autotag.AutotagPDFOptions;
+import com.adobe.pdfservices.operation.io.Asset;
+import com.adobe.pdfservices.operation.io.StreamAsset;
+import com.adobe.pdfservices.operation.pdfjobs.jobs.AutotagPDFJob;
+import com.adobe.pdfservices.operation.pdfjobs.params.autotag.AutotagPDFParams;
+import com.adobe.pdfservices.operation.pdfjobs.result.AutotagPDFResult;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class AutotagPDF {
+  // Initialize the logger
+  private static final Logger LOGGER = LoggerFactory.getLogger(AutotagPDF.class);
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(AutotagPDF.class);
-
-    public static void main(String[] args) {
-
-        try {
-
-            String inputFile = "./Adobe Extract API Sample.pdf";
-
-            String outputPath = "./output/AutotagPDF/";
-            Files.deleteIfExists(Paths.get(outputPath));
-
-            String taggedPDF = outputPath + inputPDF +"-tagged-pdf.pdf";
-            String taggingReport = outputPath + inputPDF +"-tagging-report.xlsx";
-            
-            // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-                .withClientId(System.getenv("PDF_SERVICES_CLIENT_ID"))
-                .withClientSecret(System.getenv("PDF_SERVICES_CLIENT_SECRET"))
-                .build();
-
-            // Create an ExecutionContext using credentials.
-            ExecutionContext executionContext = ExecutionContext.create(credentials);
-
-            AutotagPDFOperation autotagPDFOperation = AutotagPDFOperation.createNew();
-
-            // Build AutotagPDFOptions options and set them into the operation
-            AutotagPDFOptions autotagPDFOptions = AutotagPDFOptions.autotagPDFOptionsBuilder()
-                    .shiftHeadings()
-                    .generateReport()
-                    .build();
-            
-            autotagPDFOperation.setOptions(autotagPDFOptions);
-
-            // Execute the operation
-            AutotagPDFOutput result = autotagPDFOperation.execute(executionContext);
-
-            // Save the tagged PDF output at the specified location
-            autotagPDFOutput.getTaggedPDF().saveAs(taggedPDF);
-
-            // Save the tagging report output at the specified location
-            autotagPDFOutput.getReport().saveAs(taggingReport);
-            
-            LOGGER.info("Successfully tagged information in PDF.");
-
-        } catch (ServiceApiException | IOException | SdkException | ServiceUsageException e) {
-            LOGGER.error("Exception encountered while executing operation", e);
-        }
+  public static void main(String[] args) {
+    try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/Adobe_Accessibility_Auto_Tag_API_Sample.pdf").toPath())) {
+      // Initial setup, create credentials instance
+      Credentials credentials = new ServicePrincipalCredentials(
+              System.getenv("PDF_SERVICES_CLIENT_ID"),
+              System.getenv("PDF_SERVICES_CLIENT_SECRET"));
+    
+      // Creates a PDF Services instance
+      PDFServices pdfServices = new PDFServices(credentials);
+    
+      // Creates an asset(s) from source file(s) and upload
+      Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
+    
+      // Create parameters for the job
+      AutotagPDFParams autotagPDFParams = AutotagPDFParams.autotagPDFParamsBuilder().generateReport().shiftHeadings().build();
+    
+      // Creates a new job instance
+      AutotagPDFJob autotagPDFJob = new AutotagPDFJob(asset).setParams(autotagPDFParams);
+    
+      // Submit the job and gets the job result
+      String location = pdfServices.submit(autotagPDFJob);
+      PDFServicesResponse<AutotagPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, AutotagPDFResult.class);
+    
+      // Get content from the resulting asset(s)
+      Asset resultAsset = pdfServicesResponse.getResult().getTaggedPDF();
+      Asset resultAssetReport = pdfServicesResponse.getResult().getReport();
+      StreamAsset streamAsset = pdfServices.getContent(resultAsset);
+      StreamAsset streamAssetReport = pdfServices.getContent(resultAssetReport);
+      
+      // Creating output streams and copying stream assets' content to it
+      Files.createDirectories(Paths.get("output/"));
+      OutputStream outputStream = Files.newOutputStream(new File("output/autotag-tagged.pdf").toPath());
+      OutputStream outputStreamReport = Files.newOutputStream(new File("output/autotag-report.xlsx").toPath());
+      LOGGER.info("Saving asset at output/autotag-tagged.pdf");
+      LOGGER.info("Saving asset at output/autotag-report.xlsx");
+      IOUtils.copy(streamAsset.getInputStream(), outputStream);
+      IOUtils.copy(streamAssetReport.getInputStream(), outputStreamReport);
+      outputStream.close();
+      outputStreamReport.close();
+    } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
+      LOGGER.error("Exception encountered while executing operation", ex);
     }
+  }
 }
 ```
 
