@@ -44,7 +44,7 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 public class CreatePDFFromDOCX {
 
     // Initialize the logger. 
-    private static final Logger LOGGER = LoggerFactory.getLogger(CreatePDFFromDOCX .class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CreatePDFFromDOCX.class);
 
     public static void main(String[] args) {
 
