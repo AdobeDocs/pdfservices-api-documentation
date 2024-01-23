@@ -300,7 +300,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 4.  Verify the hash you generated matches the value in the .sha1 file.
 
 ```
-c0bc2ec0eb15dd43d014bd885b3833539f103cf2
+40a6d2a59a86849dd78e3c5b7983129fc7715907
 ```
 
 #### Logging
