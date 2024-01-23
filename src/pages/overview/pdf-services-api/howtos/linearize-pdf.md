@@ -31,28 +31,36 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
     
        public static void main(String[] args) {
     
-           try {
-               // Initial setup, create credentials instance.
-               Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-                    .withClientId("PDF_SERVICES_CLIENT_ID")
-                    .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                    .build();
+           try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/linearizePDFInput.pdf").toPath())) {
+                // Initial setup, create credentials instance
+                Credentials credentials = new ServicePrincipalCredentials(
+                        System.getenv("PDF_SERVICES_CLIENT_ID"),
+                        System.getenv("PDF_SERVICES_CLIENT_SECRET"));
     
-               // Create an ExecutionContext using credentials and create a new operation instance.
-               ExecutionContext executionContext = ExecutionContext.create(credentials);
-               LinearizePDFOperation linearizePDFOperation = LinearizePDFOperation.createNew();
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
     
-               // Set operation input from a source file.
-               FileRef source = FileRef.createFromLocalFile("src/main/resources/linearizePDFInput.pdf");
-               linearizePDFOperation.setInput(source);
+                // Creates an asset(s) from source file(s) and upload
+                Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
     
-               // Execute the operation
-               FileRef result = linearizePDFOperation.execute(executionContext);
+                // Creates a new job instance
+                LinearizePDFJob linearizePDFJob = new LinearizePDFJob(asset);
     
-               // Save the result at the specified location
-               result.saveAs("output/linearizePDFOutput.pdf");
+                // Submit the job and gets the job result
+                String location = pdfServices.submit(linearizePDFJob);
+                PDFServicesResponse<LinearizePDFResult> pdfServicesResponse = pdfServices.getJobResult(location, LinearizePDFResult.class);
     
-           } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
+                // Get content from the resulting asset(s)
+                Asset resultAsset = pdfServicesResponse.getResult().getAsset();
+                StreamAsset streamAsset = pdfServices.getContent(resultAsset);
+    
+                // Creates an output stream and copy stream asset's content to it
+                Files.createDirectories(Paths.get("output/"));
+                OutputStream outputStream = Files.newOutputStream(new File("output/linearizePDFOutput.pdf").toPath());
+                LOGGER.info("Saving asset at output/linearizePDFOutput.pdf");
+                IOUtils.copy(streamAsset.getInputStream(), outputStream);
+                outputStream.close();
+           } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
                LOGGER.error("Exception encountered while executing operation", ex);
            }
        }

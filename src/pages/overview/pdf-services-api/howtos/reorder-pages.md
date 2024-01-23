@@ -31,45 +31,57 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
    private static final Logger LOGGER = LoggerFactory.getLogger(ReorderPDFPages.class);
 
    public static void main(String[] args) {
-       try {
-           // Initial setup, create credentials instance.
-           Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-                    .withClientId("PDF_SERVICES_CLIENT_ID")
-                    .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+       try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/reorderPagesInput.pdf").toPath())) {
+            // Initial setup, create credentials instance
+            Credentials credentials = new ServicePrincipalCredentials(
+                    System.getenv("PDF_SERVICES_CLIENT_ID"),
+                    System.getenv("PDF_SERVICES_CLIENT_SECRET"));
+
+            // Creates a PDF Services instance
+            PDFServices pdfServices = new PDFServices(credentials);
+
+            // Creates an asset(s) from source file(s) and upload
+            Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
+
+            PageRanges pagesToReorder = getPageRangeForReorder();
+
+            // Create parameters for the job
+            ReorderPagesParams reorderPagesParams = ReorderPagesParams
+                    .reorderPagesParamsBuilder(asset, pagesToReorder) // Add the asset as input to the params, along with its page order
                     .build();
 
-           // Create an ExecutionContext using credentials and create a new operation instance.
-           ExecutionContext executionContext = ExecutionContext.create(credentials);
-           ReorderPagesOperation reorderPagesOperation = ReorderPagesOperation.createNew();
+            // Creates a new job instance
+            ReorderPagesPDFJob reorderPagesPDFJob = new ReorderPagesPDFJob(reorderPagesParams);
 
-           // Set operation input from a source file, along with specifying the order of the pages for
-           // rearranging the pages in a PDF file.
-           FileRef source = FileRef.createFromLocalFile("src/main/resources/reorderPagesInput.pdf");
-           PageRanges pageRanges = getPageRangeForReorder();
-           reorderPagesOperation.setInput(source);
-           reorderPagesOperation.setPagesOrder(pageRanges);
+            // Submit the job and gets the job result
+            String location = pdfServices.submit(reorderPagesPDFJob);
+            PDFServicesResponse<ReorderPagesResult> pdfServicesResponse = pdfServices.getJobResult(location, ReorderPagesResult.class);
 
-           // Execute the operation.
-           FileRef result = reorderPagesOperation.execute(executionContext);
+            // Get content from the resulting asset(s)
+            Asset resultAsset = pdfServicesResponse.getResult().getAsset();
+            StreamAsset streamAsset = pdfServices.getContent(resultAsset);
 
-           // Save the result to the specified location.
-           result.saveAs("output/reorderPagesOutput.pdf");
-
-       } catch (IOException | ServiceApiException | SdkException | ServiceUsageException e) {
+            // Creates an output stream and copy stream asset's content to it
+            Files.createDirectories(Paths.get("output/"));
+            OutputStream outputStream = Files.newOutputStream(new File("output/reorderPagesOutput.pdf").toPath());
+            LOGGER.info("Saving asset at output/reorderPagesOutput.pdf");
+            IOUtils.copy(streamAsset.getInputStream(), outputStream);
+            outputStream.close();
+       } catch (IOException | ServiceApiException | SDKException | ServiceUsageException e) {
            LOGGER.error("Exception encountered while executing operation", e);
        }
    }
 
    private static PageRanges getPageRangeForReorder() {
-       // Specify order of the pages for an output document.
-       PageRanges pageRanges = new PageRanges();
-       // Add pages 3 to 4.
-       pageRanges.addRange(3, 4);
+       // Specify order of the pages for an output document
+        PageRanges pageRanges = new PageRanges();
+        // Add pages 3 to 4
+        pageRanges.addRange(3, 4);
 
-       // Add page 1.
-       pageRanges.addSinglePage(1);
+        // Add page 1
+        pageRanges.addSinglePage(1);
 
-       return pageRanges;
+        return pageRanges;
    }
  }
 ```

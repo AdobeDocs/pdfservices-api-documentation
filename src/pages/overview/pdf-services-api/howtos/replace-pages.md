@@ -32,56 +32,62 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
     
        public static void main(String[] args) {
     
-           try {
-               // Initial setup, create credentials instance.
-               Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-                    .withClientId("PDF_SERVICES_CLIENT_ID")
-                    .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                    .build();
+           try (InputStream baseInputStream = Files.newInputStream(new File("src/main/resources/baseInput.pdf").toPath());
+                InputStream inputStream1 = Files.newInputStream(new File("src/main/resources/replacePagesInput1.pdf").toPath());
+                InputStream inputStream2 = Files.newInputStream(new File("src/main/resources/replacePagesInput2.pdf").toPath())) {
+                // Initial setup, create credentials instance
+                Credentials credentials = new ServicePrincipalCredentials(
+                        System.getenv("PDF_SERVICES_CLIENT_ID"),
+                        System.getenv("PDF_SERVICES_CLIENT_SECRET"));
     
-               // Create an ExecutionContext using credentials and create a new operation instance.
-               ExecutionContext executionContext = ExecutionContext.create(credentials);
-               ReplacePagesOperation replacePagesOperation = ReplacePagesOperation.createNew();
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
     
-               // Set operation base input from a source file.
-               FileRef baseSourceFile = FileRef.createFromLocalFile("src/main/resources/baseInput.pdf");
-               replacePagesOperation.setBaseInput(baseSourceFile);
+                // Creates an asset(s) from source file(s) and upload
+                Asset baseAsset = pdfServices.upload(baseInputStream, PDFServicesMediaType.PDF.getMediaType());
+                Asset asset1 = pdfServices.upload(inputStream1, PDFServicesMediaType.PDF.getMediaType());
+                Asset asset2 = pdfServices.upload(inputStream2, PDFServicesMediaType.PDF.getMediaType());
     
-               // Create a FileRef instance using a local file.
-               FileRef firstInputFile = FileRef.createFromLocalFile("src/main/resources/replacePagesInput1.pdf");
-               PageRanges pageRanges = getPageRangeForFirstFile();
+                PageRanges pageRanges = getPageRangeForFirstFile();
     
-               // Adds the pages (specified by the page ranges) of the input PDF file for replacing the
-               // page of the base PDF file.
-               replacePagesOperation.addPagesForReplace(firstInputFile, pageRanges, 1);
+                // Create parameters for the job
+                ReplacePagesParams replacePagesParams = ReplacePagesParams.replacePagesParamsBuilder(baseAsset)
+                        .addPagesForReplace(asset1, pageRanges, 1) // Add the first asset as input to the params, along with its page ranges and base page
+                        .addPagesForReplace(asset2, 3) // Add the second asset as input to the params, along with base page
+                        .build();
     
+                // Creates a new job instance
+                ReplacePagesPDFJob replacePagesPDFJob = new ReplacePagesPDFJob(replacePagesParams);
     
-               // Create a FileRef instance using a local file.
-               FileRef secondInputFile = FileRef.createFromLocalFile("src/main/resources/replacePagesInput2.pdf");
+                // Submit the job and gets the job result
+                String location = pdfServices.submit(replacePagesPDFJob);
+                PDFServicesResponse<ReplacePagesResult> pdfServicesResponse = pdfServices.getJobResult(location, ReplacePagesResult.class);
     
-               // Adds all the pages of the input PDF file for replacing the page of the base PDF file.
-               replacePagesOperation.addPagesForReplace(secondInputFile, 3);
+                // Get content from the resulting asset(s)
+                Asset resultAsset = pdfServicesResponse.getResult().getAsset();
+                StreamAsset streamAsset = pdfServices.getContent(resultAsset);
     
-               // Execute the operation
-               FileRef result = replacePagesOperation.execute(executionContext);
-    
-               // Save the result at the specified location
-               result.saveAs("output/replacePagesOutput.pdf");
-           } catch (IOException | ServiceApiException | SdkException | ServiceUsageException e) {
+                // Creates an output stream and copy stream asset's content to it
+                Files.createDirectories(Paths.get("output/"));
+                OutputStream outputStream = Files.newOutputStream(new File("output/replacePagesOutput.pdf").toPath());
+                LOGGER.info("Saving asset at output/replacePagesOutput.pdf");
+                IOUtils.copy(streamAsset.getInputStream(), outputStream);
+                outputStream.close();
+           } catch (IOException | ServiceApiException | SDKException | ServiceUsageException e) {
                LOGGER.error("Exception encountered while executing operation", e);
            }
        }
     
        private static PageRanges getPageRangeForFirstFile() {
-           // Specify pages of the first file for replacing the page of base PDF file.
-           PageRanges pageRanges = new PageRanges();
-           // Add pages 1 to 3.
-           pageRanges.addRange(1, 3);
+            // Specify pages of the first file for replacing the page of base PDF file
+            PageRanges pageRanges = new PageRanges();
+            // Add pages 1 to 3
+            pageRanges.addRange(1, 3);
     
-           // Add page 4.
-           pageRanges.addSinglePage(4);
+            // Add page 4
+            pageRanges.addSinglePage(4);
     
-           return pageRanges;
+            return pageRanges;
        }
      }
 ```
