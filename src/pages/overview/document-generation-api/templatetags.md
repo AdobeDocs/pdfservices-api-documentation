@@ -430,6 +430,7 @@ Depth property can be specified with table of contents tag. It represents the le
 - Table of contents tag's paragraph should be a part of main body of the document, not nested within other elements or sections.
 - Table of Contents Section which is already present in the template document won't be automatically updated in final output document.
 
+
 ## Adobe Sign
 Adobe Sign text tags can be placed anywhere within the contents of the document template.
 
