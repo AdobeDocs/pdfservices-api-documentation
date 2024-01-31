@@ -10,7 +10,7 @@ To get started using Adobe PDF Extract API, let's walk through a simple scenario
 
 To complete this guide, you will need:
 
-* [Java](http://www.oracle.com/technetwork/java/javase/downloads/index.html) - Java 8 or higher is required. 
+* [Java](http://www.oracle.com/technetwork/java/javase/downloads/index.html) - Java 11 or higher is required. 
 * [Maven](https://maven.apache.org/install.html)
 * An Adobe ID. If you do not have one, the credential setup will walk you through creating one.
 * A way to edit code. No specific editor is required for this guide.
@@ -43,7 +43,7 @@ To complete this guide, you will need:
 
 2) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
 
-3) In this directory, create a new file named `pom.xml` and copy the following contents:
+3) In this directory, create a new file named `pom.xml` and copy the following content:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -61,9 +61,9 @@ To complete this guide, you will need:
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <pdfservices.sdk.version>3.5.1</pdfservices.sdk.version>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <pdfservices.sdk.version>4.0.0</pdfservices.sdk.version>
   </properties>
 
   <dependencies>
@@ -79,7 +79,7 @@ To complete this guide, you will need:
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-slf4j-impl</artifactId>
-      <version>2.17.1</version>
+      <version>2.21.1</version>
     </dependency>
   </dependencies>
 
@@ -92,45 +92,6 @@ To complete this guide, you will need:
         <configuration>
           <source>${maven.compiler.source}</source>
           <target>${maven.compiler.target}</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>3.2.4</version>
-        <configuration>
-          <filters>
-            <filter>
-              <artifact>*:*</artifact>
-              <excludes>
-                <exclude>META-INF/*.SF</exclude>
-                <exclude>META-INF/*.DSA</exclude>
-                <exclude>META-INF/*.RSA</exclude>
-              </excludes>
-            </filter>
-          </filters>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.0.2</version>
-        <configuration>
-          <archive>
-            <manifest>
-              <addClasspath>true</addClasspath>
-              <classpathPrefix>lib/</classpathPrefix>
-              <mainClass>ExtractTextInfoFromPDF</mainClass>
-            </manifest>
-          </archive>
         </configuration>
       </plugin>
       <plugin>
@@ -163,28 +124,36 @@ Now you're ready to begin coding.
 1) We'll begin by including our required dependencies:
 
 ```javascript
-import com.adobe.pdfservices.operation.ExecutionContext;
+import com.adobe.pdfservices.operation.PDFServices;
+import com.adobe.pdfservices.operation.PDFServicesMediaType;
+import com.adobe.pdfservices.operation.PDFServicesResponse;
 import com.adobe.pdfservices.operation.auth.Credentials;
-import com.adobe.pdfservices.operation.exception.SdkException;
+import com.adobe.pdfservices.operation.auth.ServicePrincipalCredentials;
+import com.adobe.pdfservices.operation.exception.SDKException;
 import com.adobe.pdfservices.operation.exception.ServiceApiException;
 import com.adobe.pdfservices.operation.exception.ServiceUsageException;
-import com.adobe.pdfservices.operation.io.FileRef;
-import com.adobe.pdfservices.operation.pdfops.ExtractPDFOperation;
-import com.adobe.pdfservices.operation.pdfops.options.extractpdf.ExtractElementType;
-import com.adobe.pdfservices.operation.pdfops.options.extractpdf.ExtractPDFOptions;
+import com.adobe.pdfservices.operation.io.Asset;
+import com.adobe.pdfservices.operation.io.StreamAsset;
+import com.adobe.pdfservices.operation.pdfjobs.jobs.ExtractPDFJob;
+import com.adobe.pdfservices.operation.pdfjobs.params.extractpdf.ExtractElementType;
+import com.adobe.pdfservices.operation.pdfjobs.params.extractpdf.ExtractPDFParams;
+import com.adobe.pdfservices.operation.pdfjobs.result.ExtractPDFResult;
+import org.apache.commons.io.IOUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
-
-import java.util.zip.*;
-import java.io.InputStream;
 import java.util.Scanner;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 ```
 
 2) Now let's define our main class:
@@ -200,18 +169,7 @@ public class ExtractTextInfoFromPDF {
 }
 ```
 
-3) Now let's define our input and output:
-
-```javascript
-String zip_file = "./ExtractTextInfoFromPDF.zip";
-Files.deleteIfExists(Paths.get(zip_file));
-
-String input_file = "./Adobe Extract API Sample.pdf";
-```
-
-This defines what our output ZIP will be and optionally deletes it if it already exists. Then we define what PDF will be extracted. (You can download the source we used [here](/Adobe%20Extract%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic. 
-
-4) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+3) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
 - **Windows:**
     - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
     - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
@@ -220,54 +178,70 @@ This defines what our output ZIP will be and optionally deletes it if it already
     - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
     - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
-5) Next, we can create our credentials and use them:
+4) Next, we can create our credentials and use them to create a PDF Services instance
 
 ```javascript
-// Initial setup, create credentials instance.
-Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-    .withClientId(System.getenv("PDF_SERVICES_CLIENT_ID"))
-    .withClientSecret(System.getenv("PDF_SERVICES_CLIENT_SECRET"))
-    .build();
+// Initial setup, create credentials instance
+Credentials credentials = new ServicePrincipalCredentials(
+        System.getenv("PDF_SERVICES_CLIENT_ID"),
+        System.getenv("PDF_SERVICES_CLIENT_SECRET"));
 
-// Create an ExecutionContext using credentials.
-ExecutionContext executionContext = ExecutionContext.create(credentials);
+// Create PDF Services instance
+PDFServices pdfServices = new PDFServices(credentials);
 ```
 
-6) Now, let's create the operation:
+5) Now, let's upload the asset:
 
 ```javascript
-ExtractPDFOperation extractPDFOperation = ExtractPDFOperation.createNew();
+// Creates an asset(s) from source file(s) and upload
+Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
+```
 
-// Provide an input FileRef for the operation
-FileRef source = FileRef.createFromLocalFile(input_file);
-extractPDFOperation.setInputFile(source);
+we define what PDF will be extracted. (You can download the source we used [here](/Adobe%20Extract%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic.
 
+6) Now, let's create the job:
+
+```javascript
 // Build ExtractPDF options and set them into the operation
-ExtractPDFOptions extractPDFOptions = ExtractPDFOptions.extractPdfOptionsBuilder()
-		.addGetStylingInfo(false)
-		.addElementsToExtract(Arrays.asList(ExtractElementType.TEXT, ExtractElementType.TABLES))
-		.build();
-extractPDFOperation.setOptions(extractPDFOptions);
+ExtractPDFParams extractPDFParams = ExtractPDFParams.extractPdfParamsBuilder()
+        .addGetStylingInfo(false)
+        .addElementsToExtract(Arrays.asList(ExtractElementType.TEXT))
+        .build();
+
+ExtractPDFJob extractPDFJob = new ExtractPDFJob(asset)
+        .setParams(extractPDFParams);
 ```
 
-This set of code defines what we're doing (an Extract operation), points to our local file and specifies the input is a PDF, and then defines options for the Extract call. PDF Extract API has a few different options, but in this example, we're simply asking for the most basic of extractions, the textual content of the document. 
+This set of code defines what we're doing (an Extract operation),
+it defines parameters for the Extract job. PDF Extract API has a few different options, but in this example, we're simply asking for the most basic of extractions, the textual content of the document. 
 
-7) The next code block executes the operation:
+7) The next code block submits the job and gets the job result:
 
 ```javascript
-// Execute the operation
-FileRef result = extractPDFOperation.execute(executionContext);
+// Submit the job and get the job result
+String location = pdfServices.submit(extractPDFJob);
+PDFServicesResponse<ExtractPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, ExtractPDFResult.class);
 
-// Save the result at the specified location
-result.saveAs(zip_file);
+Asset resultAsset = pdfServicesResponse.getResult().getResource();
+StreamAsset streamAsset = pdfServices.getContent(resultAsset);
 ```
 
-This code runs the Extraction process and then stores the result zip to the file system. 
+This code runs the Extraction process, gets the content of the result zip in stream asset. 
 
-8) In this block, we read in the ZIP file, extract the JSON result file, and parse it:
+8) The next code block saves the result at the specified location:
 
 ```javascript
-ZipFile resultZip = new ZipFile(zip_file);
+// Creates an output stream and copy stream asset's content to it
+String zipFileOutputPath = "output/ExtractTextInfoFromPDF.zip";
+OutputStream outputStream = Files.newOutputStream(new File(zipFileOutputPath).toPath());
+IOUtils.copy(streamAsset.getInputStream(), outputStream);
+```
+
+
+9) In this block, we read in the ZIP file, extract the JSON result file, and parse it:
+
+```javascript
+ZipFile resultZip = new ZipFile(zipFileOutputPath);
 ZipEntry jsonEntry = resultZip.getEntry("structuredData.json");
 InputStream is = resultZip.getInputStream(jsonEntry);
 Scanner s = new Scanner(is).useDelimiter("\\A");
@@ -277,7 +251,7 @@ s.close();
 JSONObject jsonData = new JSONObject(jsonString);
 ```
 
-9) Finally we can loop over the result and print out any found element that is an `H1`:
+10) Finally we can loop over the result and print out any found element that is an `H1`:
 
 ```javascript
 JSONArray elements = jsonData.getJSONArray("elements");
@@ -293,76 +267,83 @@ for(int i=0; i < elements.length(); i++) {
 
 ![Example running in the command line](./shot9.png)
 
-Here's the complete application (`src/java/main/ExtractTextInfoFromPDF.java`):
+Here's the complete application (`src/main/java/ExtractTextInfoFromPDF.java`):
 
 ```javascript
-import com.adobe.pdfservices.operation.ExecutionContext;
+import com.adobe.pdfservices.operation.PDFServices;
+import com.adobe.pdfservices.operation.PDFServicesMediaType;
+import com.adobe.pdfservices.operation.PDFServicesResponse;
 import com.adobe.pdfservices.operation.auth.Credentials;
-import com.adobe.pdfservices.operation.exception.SdkException;
+import com.adobe.pdfservices.operation.auth.ServicePrincipalCredentials;
+import com.adobe.pdfservices.operation.exception.SDKException;
 import com.adobe.pdfservices.operation.exception.ServiceApiException;
 import com.adobe.pdfservices.operation.exception.ServiceUsageException;
-import com.adobe.pdfservices.operation.io.FileRef;
-import com.adobe.pdfservices.operation.pdfops.ExtractPDFOperation;
-import com.adobe.pdfservices.operation.pdfops.options.extractpdf.ExtractElementType;
-import com.adobe.pdfservices.operation.pdfops.options.extractpdf.ExtractPDFOptions;
+import com.adobe.pdfservices.operation.io.Asset;
+import com.adobe.pdfservices.operation.io.StreamAsset;
+import com.adobe.pdfservices.operation.pdfjobs.jobs.ExtractPDFJob;
+import com.adobe.pdfservices.operation.pdfjobs.params.extractpdf.ExtractElementType;
+import com.adobe.pdfservices.operation.pdfjobs.params.extractpdf.ExtractPDFParams;
+import com.adobe.pdfservices.operation.pdfjobs.result.ExtractPDFResult;
+import org.apache.commons.io.IOUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
-
-import java.util.zip.*;
-import java.io.InputStream;
 import java.util.Scanner;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 public class ExtractTextInfoFromPDF {
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ExtractTextInfoFromPDF.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExtractTextInfoFromPDF.class);
 
     public static void main(String[] args) {
 
-        try {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/Adobe Extract API Sample.pdf").toPath())) {
+            // Initial setup, create credentials instance
+            Credentials credentials = new ServicePrincipalCredentials(
+                    System.getenv("PDF_SERVICES_CLIENT_ID"),
+                    System.getenv("PDF_SERVICES_CLIENT_SECRET"));
+          
+            // Creates a PDF Services instance
+            PDFServices pdfServices = new PDFServices(credentials);
+          
+            // Creates an asset(s) from source file(s) and upload
+            Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
+          
+            // Create parameters for the job
+            ExtractPDFParams extractPDFParams = ExtractPDFParams.extractPDFParamsBuilder()
+                    .addElementsToExtract(Arrays.asList(ExtractElementType.TEXT)).build();
+          
+            // Creates a new job instance
+            ExtractPDFJob extractPDFJob = new ExtractPDFJob(asset)
+                    .setParams(extractPDFParams);
+          
+            // Submit the job and gets the job result
+            String location = pdfServices.submit(extractPDFJob);
+            PDFServicesResponse<ExtractPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, ExtractPDFResult.class);
+          
+            // Get content from the resulting asset(s)
+            Asset resultAsset = pdfServicesResponse.getResult().getResource();
+            StreamAsset streamAsset = pdfServices.getContent(resultAsset);
+          
+            // Creates an output stream and copy stream asset's content to it
+            Files.createDirectories(Paths.get("output/"));
+            String zipFileOutputPath = "output/ExtractTextInfoFromPDF.zip";
+            OutputStream outputStream = Files.newOutputStream(new File(zipFileOutputPath).toPath());
+            LOGGER.info("Saving asset at output/ExtractTextInfoFromPDF.pdf");
+            IOUtils.copy(streamAsset.getInputStream(), outputStream);
+            outputStream.close();
 
-            String zip_file = "./ExtractTextInfoFromPDF.zip";
-            Files.deleteIfExists(Paths.get(zip_file));
-
-            String input_file = "./Adobe Extract API Sample.pdf";
-
-            // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-                .withClientId(System.getenv("PDF_SERVICES_CLIENT_ID"))
-                .withClientSecret(System.getenv("PDF_SERVICES_CLIENT_SECRET"))
-                .build();
-
-            // Create an ExecutionContext using credentials.
-            ExecutionContext executionContext = ExecutionContext.create(credentials);
-
-            ExtractPDFOperation extractPDFOperation = ExtractPDFOperation.createNew();
-
-            // Provide an input FileRef for the operation
-            FileRef source = FileRef.createFromLocalFile(input_file);
-            extractPDFOperation.setInputFile(source);
-
-            // Build ExtractPDF options and set them into the operation
-            ExtractPDFOptions extractPDFOptions = ExtractPDFOptions.extractPdfOptionsBuilder()
-                    .addGetStylingInfo(false)
-                    .addElementsToExtract(Arrays.asList(ExtractElementType.TEXT, ExtractElementType.TABLES))
-                    .build();
-            extractPDFOperation.setOptions(extractPDFOptions);
-
-            // Execute the operation
-            FileRef result = extractPDFOperation.execute(executionContext);
-
-            // Save the result at the specified location
-            result.saveAs(zip_file);
-
-      		System.out.println("Successfully extracted information from PDF. Printing H1 Headers:\n");
-
-            ZipFile resultZip = new ZipFile(zip_file);
+            ZipFile resultZip = new ZipFile(zipFileOutputPath);
             ZipEntry jsonEntry = resultZip.getEntry("structuredData.json");
             InputStream is = resultZip.getInputStream(jsonEntry);
             Scanner s = new Scanner(is).useDelimiter("\\A");
@@ -379,9 +360,7 @@ public class ExtractTextInfoFromPDF {
                     System.out.println(text);
                 }
             }
-            
-
-        } catch (ServiceApiException | IOException | SdkException | ServiceUsageException e) {
+        } catch (ServiceApiException | IOException | SDKException | ServiceUsageException e) {
             LOGGER.error("Exception encountered while executing operation", e);
         }
     }

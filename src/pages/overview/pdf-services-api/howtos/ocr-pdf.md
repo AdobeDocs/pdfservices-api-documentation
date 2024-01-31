@@ -29,40 +29,46 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // Run the sample:
 // mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.ocrpdf.OcrPDF
  
- public class OcrPDF {
+public class OcrPDF {
  
   // Initialize the logger.
   private static final Logger LOGGER = LoggerFactory.getLogger(OcrPDF.class);
  
   public static void main(String[] args) {
- 
-   try {
- 
-    // Initial setup, create credentials instance.
-    Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-        .withClientId("PDF_SERVICES_CLIENT_ID")
-        .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-        .build();
- 
-    //Create an ExecutionContext using credentials and create a new operation instance.
-    ExecutionContext executionContext = ExecutionContext.create(credentials);
-    OCROperation ocrOperation = OCROperation.createNew();
- 
-    // Set operation input from a source file.
-    FileRef source = FileRef.createFromLocalFile("src/main/resources/ocrInput.pdf");
-    ocrOperation.setInput(source);
- 
-    // Execute the operation
-    FileRef result = ocrOperation.execute(executionContext);
- 
-    // Save the result at the specified location
-    result.saveAs("output/ocrOutput.pdf");
- 
-   } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
-    LOGGER.error("Exception encountered while executing operation", ex);
-   }
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/ocrInput.pdf").toPath())) {
+             // Initial setup, create credentials instance
+            Credentials credentials = new ServicePrincipalCredentials(
+                    System.getenv("PDF_SERVICES_CLIENT_ID"),
+                    System.getenv("PDF_SERVICES_CLIENT_SECRET"));
+
+            // Creates a PDF Services instance
+            PDFServices pdfServices = new PDFServices(credentials);
+
+            // Creates an asset(s) from source file(s) and upload
+            Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
+
+            // Creates a new job instance
+            OCRJob ocrJob = new OCRJob(asset);
+
+            // Submit the job and gets the job result
+            String location = pdfServices.submit(ocrJob);
+            PDFServicesResponse<OCRResult> pdfServicesResponse = pdfServices.getJobResult(location, OCRResult.class);
+
+            // Get content from the resulting asset(s)
+            Asset resultAsset = pdfServicesResponse.getResult().getAsset();
+            StreamAsset streamAsset = pdfServices.getContent(resultAsset);
+
+            // Creates an output stream and copy stream asset's content to it
+            Files.createDirectories(Paths.get("output/"));
+            OutputStream outputStream = Files.newOutputStream(new File("output/ocrOutput.pdf").toPath());
+            LOGGER.info("Saving asset at output/ocrOutput.pdf");
+            IOUtils.copy(streamAsset.getInputStream(), outputStream); 
+            outputStream.close();
+       } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
+        LOGGER.error("Exception encountered while executing operation", ex);
+       }
   }
- }
+}
 ```
 
 #### .NET
@@ -212,42 +218,47 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // mvn -f pom.xml exec:java Dexec.mainClass=com.adobe.pdfservices.operation.samples.ocrpdf.OcrPDFWithOptions
  
   public class OcrPDFWithOptions {
- 
     // Initialize the logger.
     private static final Logger LOGGER = LoggerFactory.getLogger(OcrPDFWithOptions.class);
  
     public static void main(String[] args) {
  
-        try {
- 
-            // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-                .withClientId("PDF_SERVICES_CLIENT_ID")
-                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                .build();
- 
-            //Create an ExecutionContext using credentials and create a new operation instance.
-            ExecutionContext executionContext = ExecutionContext.create(credentials);
-            OCROperation ocrOperation = OCROperation.createNew();
- 
-            // Set operation input from a source file.
-            FileRef source = FileRef.createFromLocalFile("src/main/resources/ocrInput.pdf");
-            ocrOperation.setInput(source);
- 
-            // Build OCR options from supported locales and OCR-types and set them into the operation
-            OCROptions ocrOptions = OCROptions.ocrOptionsBuilder()
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/ocrInput.pdf").toPath())) {
+            // Initial setup, create credentials instance
+            Credentials credentials = new ServicePrincipalCredentials(
+                    System.getenv("PDF_SERVICES_CLIENT_ID"),
+                    System.getenv("PDF_SERVICES_CLIENT_SECRET"));
+
+            // Creates a PDF Services instance
+            PDFServices pdfServices = new PDFServices(credentials);
+
+            // Creates an asset(s) from source file(s) and upload
+            Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
+
+            // Create parameters for the job
+            OCRParams ocrParams = OCRParams.ocrParamsBuilder()
                     .withOCRLocale(OCRSupportedLocale.EN_US)
                     .withOCRType(OCRSupportedType.SEARCHABLE_IMAGE_EXACT)
                     .build();
-            ocrOperation.setOptions(ocrOptions);
- 
-            // Execute the operation
-            FileRef result = ocrOperation.execute(executionContext);
- 
-            // Save the result at the specified location
-            result.saveAs("output/ocrWithOptionsOutput.pdf");
- 
-        } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
+
+            // Creates a new job instance
+            OCRJob ocrJob = new OCRJob(asset).setParams(ocrParams);
+
+            // Submit the job and gets the job result
+            String location = pdfServices.submit(ocrJob);
+            PDFServicesResponse<OCRResult> pdfServicesResponse = pdfServices.getJobResult(location, OCRResult.class);
+
+            // Get content from the resulting asset(s)
+            Asset resultAsset = pdfServicesResponse.getResult().getAsset();
+            StreamAsset streamAsset = pdfServices.getContent(resultAsset);
+
+            // Creates an output stream and copy stream asset's content to it
+            Files.createDirectories(Paths.get("output/"));
+            OutputStream outputStream = Files.newOutputStream(new File("output/ocrWithOptionsOutput.pdf").toPath());
+            LOGGER.info("Saving asset at output/ocrWithOptionsOutput.pdf");
+            IOUtils.copy(streamAsset.getInputStream(), outputStream); 
+            outputStream.close();
+        } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
             LOGGER.error("Exception encountered while executing operation", ex);
         }
     }

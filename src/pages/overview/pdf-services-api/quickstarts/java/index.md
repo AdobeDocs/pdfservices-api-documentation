@@ -10,7 +10,7 @@ To get started using Adobe PDF Services API, let's walk through a simple scenari
 
 To complete this guide, you will need:
 
-* [Java](http://www.oracle.com/technetwork/java/javase/downloads/index.html) - Java 8 or higher is required. 
+* [Java](http://www.oracle.com/technetwork/java/javase/downloads/index.html) - Java 11 or higher is required. 
 * [Maven](https://maven.apache.org/install.html)
 * An Adobe ID. If you do not have one, the credential setup will walk you through creating one.
 * A way to edit code. No specific editor is required for this guide.
@@ -43,7 +43,7 @@ To complete this guide, you will need:
 
 2) Take the `pdfservices-api-credentials.json` and place it in a new directory.
 
-3) In this directory, create a new file named `pom.xml` and copy the following contents:
+3) In this directory, create a new file named `pom.xml` and copy the following content:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -54,16 +54,16 @@ To complete this guide, you will need:
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.adobe.documentservices</groupId>
-  <artifactId>pdfservices-sdk-pds-guide</artifactId>
+  <artifactId>pdfservices-sdk-pdf-guide</artifactId>
   <version>1</version>
 
   <name>PDF Services Java SDK Samples</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <pdfservices.sdk.version>3.5.1</pdfservices.sdk.version>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <pdfservices.sdk.version>4.0.0</pdfservices.sdk.version>
   </properties>
 
   <dependencies>
@@ -79,7 +79,7 @@ To complete this guide, you will need:
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-slf4j-impl</artifactId>
-      <version>2.17.1</version>
+      <version>2.21.1</version>
     </dependency>
   </dependencies>
 
@@ -92,45 +92,6 @@ To complete this guide, you will need:
         <configuration>
           <source>${maven.compiler.source}</source>
           <target>${maven.compiler.target}</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>3.2.4</version>
-        <configuration>
-          <filters>
-            <filter>
-              <artifact>*:*</artifact>
-              <excludes>
-                <exclude>META-INF/*.SF</exclude>
-                <exclude>META-INF/*.DSA</exclude>
-                <exclude>META-INF/*.RSA</exclude>
-              </excludes>
-            </filter>
-          </filters>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.0.2</version>
-        <configuration>
-          <archive>
-            <manifest>
-              <addClasspath>true</addClasspath>
-              <classpathPrefix>lib/</classpathPrefix>
-              <mainClass>ExportPDFToWord</mainClass>
-            </manifest>
-          </archive>
         </configuration>
       </plugin>
       <plugin>
@@ -163,17 +124,28 @@ Now you're ready to begin coding.
 1) We'll begin by including our required dependencies:
 
 ```javascript
-import com.adobe.pdfservices.operation.ExecutionContext;
+import com.adobe.pdfservices.operation.PDFServices;
+import com.adobe.pdfservices.operation.PDFServicesMediaType;
+import com.adobe.pdfservices.operation.PDFServicesResponse;
 import com.adobe.pdfservices.operation.auth.Credentials;
-import com.adobe.pdfservices.operation.exception.SdkException;
+import com.adobe.pdfservices.operation.auth.ServicePrincipalCredentials;
+import com.adobe.pdfservices.operation.exception.SDKException;
 import com.adobe.pdfservices.operation.exception.ServiceApiException;
 import com.adobe.pdfservices.operation.exception.ServiceUsageException;
-import com.adobe.pdfservices.operation.io.FileRef;
-import com.adobe.pdfservices.operation.pdfops.ExportPDFOperation;
-import com.adobe.pdfservices.operation.pdfops.options.exportpdf.ExportPDFTargetFormat;
+import com.adobe.pdfservices.operation.io.Asset;
+import com.adobe.pdfservices.operation.io.StreamAsset;
+import com.adobe.pdfservices.operation.pdfjobs.jobs.ExportPDFJob;
+import com.adobe.pdfservices.operation.pdfjobs.params.exportpdf.ExportPDFParams;
+import com.adobe.pdfservices.operation.pdfjobs.params.exportpdf.ExportPDFTargetFormat;
+import com.adobe.pdfservices.operation.pdfjobs.result.ExportPDFResult;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 ```
@@ -192,18 +164,7 @@ public class ExportPDFToWord {
 }
 ```
 
-3) Inside our class, we'll begin by defining our input PDF and output filenames. If the output file already exists, it will be deleted:
-
-```javascript
-String output_file = "./Bodea Brochure.docx";
-Files.deleteIfExists(Paths.get(output_file));
-
-String input_file = "./Bodea Brochure.pdf";
-
-System.out.println("Exporting " + input_file + " to " + output_file + "\n");
-```
-
-5) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+3) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
 - **Windows:**
   - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
   - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
@@ -212,40 +173,54 @@ System.out.println("Exporting " + input_file + " to " + output_file + "\n");
   - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
   - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
-6) Next, we can create our credentials and use them:
+4) Next, we can create our credentials and use them:
 
 ```javascript
-// Initial setup, create credentials instance.
-Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-        .withClientId(System.getenv("PDF_SERVICES_CLIENT_ID"))
-        .withClientSecret(System.getenv("PDF_SERVICES_CLIENT_SECRET"))
-        .build();
+// Initial setup, create credentials instance
+Credentials credentials = new ServicePrincipalCredentials(
+        System.getenv("PDF_SERVICES_CLIENT_ID"),
+        System.getenv("PDF_SERVICES_CLIENT_SECRET"));
 
-// Create an ExecutionContext using credentials.
-ExecutionContext executionContext = ExecutionContext.create(credentials);
+// Creates a PDF Services instance
+PDFServices pdfServices = new PDFServices(credentials);
 ```
 
-7) Now, let's create the operation:
+5) Now, let's upload the asset:
 
 ```javascript
-ExportPDFOperation exportPDFOperation = ExportPDFOperation.createNew(ExportPDFTargetFormat.DOCX);
-
-// Provide an input FileRef for the operation
-FileRef source = FileRef.createFromLocalFile(input_file);
-exportPDFOperation.setInput(source);
-
+Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
 ```
 
-This set of code defines what we're doing (an Export operation), points to our local file and specifies the input is a PDF, and then defines options for the Export call. In this example, the only option is the export format, DOCX.
-
-8) The next code block executes the operation:
+6) Now, let's create the parameters and the job:
 
 ```javascript
-// Execute the operation
-FileRef result = exportPDFOperation.execute(executionContext);
+// Create parameters for the job
+ExportPDFParams exportPDFParams = ExportPDFParams.exportPDFParamsBuilder(ExportPDFTargetFormat.DOCX).build();
 
-// Save the result at the specified location
-result.saveAs(output_file);
+// Creates a new job instance
+ExportPDFJob exportPDFJob = new ExportPDFJob(asset, exportPDFParams);
+```
+
+This set of code defines what we're doing (an Export operation), and sets parameter for the Export PDF job. In this example, the only parameter is the export format ,ie, DOCX.
+
+7) The next code block submits the job and gets the job result:
+
+```javascript
+// Submit the job and get the job result
+String location = pdfServices.submit(exportPDFJob);
+PDFServicesResponse<ExportPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, ExportPDFResult.class);
+
+// Get content from the resulting asset(s)
+Asset resultAsset = pdfServicesResponse.getResult().getAsset();
+StreamAsset streamAsset = pdfServices.getContent(resultAsset);
+```
+
+8) The next code block saves the result at the specified location:
+
+```javascript
+// Creates an output stream and copy stream asset's content to it
+OutputStream outputStream = Files.newOutputStream(new File("./Bodea Brochure.docx").toPath());
+IOUtils.copy(streamAsset.getInputStream(), outputStream);
 ```
 
 This code runs the Export process and then stores the result Word document to the file system. 
@@ -255,60 +230,70 @@ This code runs the Export process and then stores the result Word document to th
 Here's the complete application (`src/main/java/ExportPDFToWord.java`):
 
 ```javascript
-import com.adobe.pdfservices.operation.ExecutionContext;
+import com.adobe.pdfservices.operation.PDFServices;
+import com.adobe.pdfservices.operation.PDFServicesMediaType;
+import com.adobe.pdfservices.operation.PDFServicesResponse;
 import com.adobe.pdfservices.operation.auth.Credentials;
-import com.adobe.pdfservices.operation.exception.SdkException;
+import com.adobe.pdfservices.operation.auth.ServicePrincipalCredentials;
+import com.adobe.pdfservices.operation.exception.SDKException;
 import com.adobe.pdfservices.operation.exception.ServiceApiException;
 import com.adobe.pdfservices.operation.exception.ServiceUsageException;
-import com.adobe.pdfservices.operation.io.FileRef;
-import com.adobe.pdfservices.operation.pdfops.ExportPDFOperation;
-import com.adobe.pdfservices.operation.pdfops.options.exportpdf.ExportPDFTargetFormat;
+import com.adobe.pdfservices.operation.io.Asset;
+import com.adobe.pdfservices.operation.io.StreamAsset;
+import com.adobe.pdfservices.operation.pdfjobs.jobs.ExportPDFJob;
+import com.adobe.pdfservices.operation.pdfjobs.params.exportpdf.ExportPDFParams;
+import com.adobe.pdfservices.operation.pdfjobs.params.exportpdf.ExportPDFTargetFormat;
+import com.adobe.pdfservices.operation.pdfjobs.result.ExportPDFResult;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class ExportPDFToWord {
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ExportPDFToWord.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExportPDFToWord.class);
 
     public static void main(String[] args) {
 
-        try {
-
-            String output_file = "./Bodea Brochure.docx";
-            Files.deleteIfExists(Paths.get(output_file));
-
-            String input_file = "./Bodea Brochure.pdf";
-
-      		System.out.println("Exporting " + input_file + " to " + output_file + "\n");
-
-            // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
-                .withClientId(System.getenv("PDF_SERVICES_CLIENT_ID"))
-                .withClientSecret(System.getenv("PDF_SERVICES_CLIENT_SECRET"))
-                .build();
-
-            // Create an ExecutionContext using credentials.
-            ExecutionContext executionContext = ExecutionContext.create(credentials);
-
-            ExportPDFOperation exportPDFOperation = ExportPDFOperation.createNew(ExportPDFTargetFormat.DOCX);
-
-            // Provide an input FileRef for the operation
-            FileRef source = FileRef.createFromLocalFile(input_file);
-            exportPDFOperation.setInput(source);
-
-            // Execute the operation
-            FileRef result = exportPDFOperation.execute(executionContext);
-
-            // Save the result at the specified location
-            result.saveAs(output_file);
-
-      		System.out.println("All Done");
-            
-
-        } catch (ServiceApiException | IOException | SdkException | ServiceUsageException e) {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/Bodea Brochure.pdf").toPath())) {
+            // Initial setup, create credentials instance
+            Credentials credentials = new ServicePrincipalCredentials(
+                    System.getenv("PDF_SERVICES_CLIENT_ID"),
+                    System.getenv("PDF_SERVICES_CLIENT_SECRET"));
+          
+            // Creates a PDF Services instance
+            PDFServices pdfServices = new PDFServices(credentials);
+          
+            // Creates an asset(s) from source file(s) and upload
+            Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
+          
+            // Create parameters for the job
+            ExportPDFParams exportPDFParams = ExportPDFParams.exportPDFParamsBuilder(ExportPDFTargetFormat.DOCX)
+                    .build();
+          
+            // Creates a new job instance
+            ExportPDFJob exportPDFJob = new ExportPDFJob(asset, exportPDFParams);
+          
+            // Submit the job and gets the job result
+            String location = pdfServices.submit(exportPDFJob);
+            PDFServicesResponse<ExportPDFResult> pdfServicesResponse = pdfServices.getJobResult(location, ExportPDFResult.class);
+          
+            // Get content from the resulting asset(s)
+            Asset resultAsset = pdfServicesResponse.getResult().getAsset();
+            StreamAsset streamAsset = pdfServices.getContent(resultAsset);
+          
+            // Creates an output stream and copy stream asset's content to it
+            Files.createDirectories(Paths.get("output/"));
+            OutputStream outputStream = Files.newOutputStream(new File("output/Bodea Brochure.docx").toPath());
+            LOGGER.info("Saving asset at output/Bodea Brochure.docx");
+            IOUtils.copy(streamAsset.getInputStream(), outputStream);
+        } catch (ServiceApiException | IOException | SDKException | ServiceUsageException e) {
             LOGGER.error("Exception encountered while executing operation", e);
         }
     }
