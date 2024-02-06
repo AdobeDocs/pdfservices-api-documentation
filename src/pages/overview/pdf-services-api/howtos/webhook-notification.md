@@ -117,7 +117,3 @@ If the response code is not 200 (OK) or the expected payload is not received, it
 
 
 **Note**: The webhook notification support is only available in SDKs version 4.0.0 and above.
-
-## Limitations
-1. Webhook notification support is not available for [external storage](https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol/) based APIs.
-2. It is not available for [PDFProperties](https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-properties/) operation.
