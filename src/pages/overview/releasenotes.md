@@ -173,6 +173,13 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### 3.5.0 (February, 2024: patch release)
+
+| Change  | Language | Description                                                                     |
+|---------|----------|---------------------------------------------------------------------------------|
+| Changed | .NET     | Dependent library upgrades and fixed compatibility issues with RestSharp v110+. |
+
+
 ### 4.0.0 (January, 2024; major release)
 | Change  | Language | Description                                                                                                                   |
 |---------|----------|-------------------------------------------------------------------------------------------------------------------------------|
