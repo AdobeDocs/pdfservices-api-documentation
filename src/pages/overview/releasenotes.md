@@ -173,7 +173,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
-### 3.5.0 (February, 2024: patch release)
+### 3.4.1 (February, 2024: patch release)
 
 | Change  | Language | Description                                                                     |
 |---------|----------|---------------------------------------------------------------------------------|
