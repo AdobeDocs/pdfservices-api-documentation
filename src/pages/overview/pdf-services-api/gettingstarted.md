@@ -393,7 +393,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 3.  Verify the hash in the downloaded file matches the value published here.
 
 ```
-jdTK6PDvEcfTai7D3N97pd0u/XrvnlEJCqTRPKDrb02zcGzaVdX/2Of3WrHOqqWUFsg7GO3yf5cKXJDFN0kdMw==
+RlwLjpqBl5/4GYc/bR3FjRroGJZ6VM7HtsuxdhJkhtJdyxT4tmLlg02l8iyRVU0EV3ZvfjeULTGV4qxiagvNOw==
 ```
 
 #### Logging

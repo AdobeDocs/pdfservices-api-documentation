@@ -140,7 +140,7 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 ```
 <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.12" />
-    <PackageReference Include="Adobe.PDFServicesSDK" Version="3.4.0" />
+    <PackageReference Include="Adobe.PDFServicesSDK" Version="3.4.1" />
 </ItemGroup> 
 ```
 
@@ -172,6 +172,13 @@ Minor and Patch releases are backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
+
+### 3.4.1 (February, 2024: patch release)
+
+| Change  | Language | Description                                                                     |
+|---------|----------|---------------------------------------------------------------------------------|
+| Changed | .NET     | Dependent library upgrades and fixed compatibility issues with RestSharp v110+. |
+
 
 ### 4.0.0 (January, 2024; major release)
 | Change  | Language | Description                                                                                                                   |
