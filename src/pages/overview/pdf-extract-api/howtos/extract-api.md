@@ -345,39 +345,39 @@ namespace ExtractTextInfoFromPDF
 # Run the sample:
 # python src/extractpdf/extract_txt_from_pdf.py
 
-     logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
-   
-     try:
-         #get base path.
-         base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-   
-         #Initial setup, create credentials instance.
-        credentials = Credentials.service_principal_credentials_builder()
-            .with_client_id('PDF_SERVICES_CLIENT_ID')
-            .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+    logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
+
+    try:
+        # get base path.
+        base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+        # Initial setup, create credentials instance.
+        credentials = Credentials.service_principal_credentials_builder() \
+        .with_client_id('PDF_SERVICES_CLIENT_ID') \
+        .with_client_secret('PDF_SERVICES_CLIENT_SECRET') \
+        .build()
+
+        # Create an ExecutionContext using credentials and create a new operation instance.
+        execution_context = ExecutionContext.create(credentials)
+        extract_pdf_operation = ExtractPDFOperation.create_new()
+
+        # Set operation input from a source file.
+        source = FileRef.create_from_local_file(base_path + "/resources/extractPdfInput.pdf")
+        extract_pdf_operation.set_input(source)
+
+        # Build ExtractPDF options and set them into the operation
+        extract_pdf_options: ExtractPDFOptions = ExtractPDFOptions.builder() \
+            .with_element_to_extract(ExtractElementType.TEXT) \
             .build()
-   
-         #Create an ExecutionContext using credentials and create a new operation instance.
-         execution_context = ExecutionContext.create(credentials)
-         extract_pdf_operation = ExtractPDFOperation.create_new()
-   
-         #Set operation input from a source file.
-         source = FileRef.create_from_local_file(base_path + "/resources/extractPdfInput.pdf")
-         extract_pdf_operation.set_input(source)
-   
-         #Build ExtractPDF options and set them into the operation
-         extract_pdf_options: ExtractPDFOptions = ExtractPDFOptions.builder() \
-             .with_element_to_extract(ExtractElementType.TEXT) \
-             .build()
-         extract_pdf_operation.set_options(extract_pdf_options)
-   
-         #Execute the operation.
-         result: FileRef = extract_pdf_operation.execute(execution_context)
-   
-         #Save the result to the specified location.
-         result.save_as(base_path + "/output/ExtractTextInfoFromPDF.zip")
-     except (ServiceApiException, ServiceUsageException, SdkException):
-         logging.exception("Exception encountered while executing operation")
+        extract_pdf_operation.set_options(extract_pdf_options)
+
+        # Execute the operation.
+        result: FileRef = extract_pdf_operation.execute(execution_context)
+
+        # Save the result to the specified location.
+        result.save_as(base_path + "/output/ExtractTextInfoFromPDF.zip")
+    except (ServiceApiException, ServiceUsageException, SdkException):
+        logging.exception("Exception encountered while executing operation")
 ```
 
 #### Rest API 
@@ -602,40 +602,40 @@ namespace ExtractTextTableInfoFromPDF
 # Run the sample:
 # python src/extractpdf/extract_txt_table_info_from_pdf.py
 
-  logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
+    logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 
-  try:
-      #get base path.
-      base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    try:
+        #get base path.
+        base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-      #Initial setup, create credentials instance.
-      credentials = Credentials.service_principal_credentials_builder()
-            .with_client_id('PDF_SERVICES_CLIENT_ID')
-            .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+        #Initial setup, create credentials instance.
+        credentials = Credentials.service_principal_credentials_builder() \
+            .with_client_id('PDF_SERVICES_CLIENT_ID') \
+            .with_client_secret('PDF_SERVICES_CLIENT_SECRET') \
             .build()
 
-      #Create an ExecutionContext using credentials and create a new operation instance.
-      execution_context = ExecutionContext.create(credentials)
-      extract_pdf_operation = ExtractPDFOperation.create_new()
+        #Create an ExecutionContext using credentials and create a new operation instance.
+        execution_context = ExecutionContext.create(credentials)
+        extract_pdf_operation = ExtractPDFOperation.create_new()
 
-      #Set operation input from a source file.
-      source = FileRef.create_from_local_file(base_path + "/resources/extractPdfInput.pdf")
-      extract_pdf_operation.set_input(source)
+        #Set operation input from a source file.
+        source = FileRef.create_from_local_file(base_path + "/resources/extractPdfInput.pdf")
+        extract_pdf_operation.set_input(source)
 
-      #Build ExtractPDF options and set them into the operation
-      extract_pdf_options: ExtractPDFOptions = ExtractPDFOptions.builder() \
+        #Build ExtractPDF options and set them into the operation
+        extract_pdf_options: ExtractPDFOptions = ExtractPDFOptions.builder() \
           .with_element_to_extract(ExtractElementType.TEXT) \
           .with_element_to_extract(ExtractElementType.TABLES) \
           .build()
-      extract_pdf_operation.set_options(extract_pdf_options)
+        extract_pdf_operation.set_options(extract_pdf_options)
 
-      #Execute the operation.
-      result: FileRef = extract_pdf_operation.execute(execution_context)
+        #Execute the operation.
+        result: FileRef = extract_pdf_operation.execute(execution_context)
 
-      #Save the result to the specified location.
-      result.save_as(base_path + "/output/ExtractTextTableInfoFromPDF.zip")
-  except (ServiceApiException, ServiceUsageException, SdkException):
-      logging.exception("Exception encountered while executing operation")
+        #Save the result to the specified location.
+        result.save_as(base_path + "/output/ExtractTextTableInfoFromPDF.zip")
+    except (ServiceApiException, ServiceUsageException, SdkException):
+        logging.exception("Exception encountered while executing operation")
 ```
 
 #### Rest API
@@ -863,40 +863,40 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
 # Run the sample:
 # python src/extractpdf/extract_txt_table_info_with_rendition_from_pdf.py
 
-  logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
+    logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 
-  try:
-      #get base path.
-      base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    try:
+        #get base path.
+        base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-      #Initial setup, create credentials instance.
-      credentials = Credentials.service_principal_credentials_builder()
-            .with_client_id('PDF_SERVICES_CLIENT_ID')
-            .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+        #Initial setup, create credentials instance.
+        credentials = Credentials.service_principal_credentials_builder() \
+            .with_client_id('PDF_SERVICES_CLIENT_ID') \
+            .with_client_secret('PDF_SERVICES_CLIENT_SECRET') \
             .build()
 
-      #Create an ExecutionContext using credentials and create a new operation instance.
-      execution_context = ExecutionContext.create(credentials)
-      extract_pdf_operation = ExtractPDFOperation.create_new()
+        #Create an ExecutionContext using credentials and create a new operation instance.
+        execution_context = ExecutionContext.create(credentials)
+        extract_pdf_operation = ExtractPDFOperation.create_new()
 
-      #Set operation input from a source file.
-      source = FileRef.create_from_local_file(base_path + "/resources/extractPdfInput.pdf")
-      extract_pdf_operation.set_input(source)
+        #Set operation input from a source file.
+        source = FileRef.create_from_local_file(base_path + "/resources/extractPdfInput.pdf")
+        extract_pdf_operation.set_input(source)
 
-      #Build ExtractPDF options and set them into the operation
-      extract_pdf_options: ExtractPDFOptions = ExtractPDFOptions.builder() \
+        #Build ExtractPDF options and set them into the operation
+        extract_pdf_options: ExtractPDFOptions = ExtractPDFOptions.builder() \
           .with_elements_to_extract([ExtractElementType.TEXT, ExtractElementType.TABLES]) \
           .with_element_to_extract_renditions(ExtractRenditionsElementType.TABLES) \
           .build()
-      extract_pdf_operation.set_options(extract_pdf_options)
+        extract_pdf_operation.set_options(extract_pdf_options)
 
-      #Execute the operation.
-      result: FileRef = extract_pdf_operation.execute(execution_context)
+        #Execute the operation.
+        result: FileRef = extract_pdf_operation.execute(execution_context)
 
-      #Save the result to the specified location.
-      result.save_as(base_path + "/output/ExtractTextTableWithTableRendition.zip")
-  except (ServiceApiException, ServiceUsageException, SdkException):
-      logging.exception("Exception encountered while executing operation")
+        #Save the result to the specified location.
+        result.save_as(base_path + "/output/ExtractTextTableWithTableRendition.zip")
+    except (ServiceApiException, ServiceUsageException, SdkException):
+        logging.exception("Exception encountered while executing operation")
 ```
 
 #### Rest API 
@@ -1126,39 +1126,39 @@ try {
 # Run the sample:
 # python src/extractpdf/extract_txt_table_info_with_figure_tables_rendition_from_pdf.py
 
-  logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
+    logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 
-  try:
-      #get base path.
-      base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    try:
+        #get base path.
+        base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-      #Initial setup, create credentials instance.
-      credentials = Credentials.service_principal_credentials_builder()
-            .with_client_id('PDF_SERVICES_CLIENT_ID')
-            .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+        #Initial setup, create credentials instance.
+        credentials = Credentials.service_principal_credentials_builder() \
+            .with_client_id('PDF_SERVICES_CLIENT_ID') \
+            .with_client_secret('PDF_SERVICES_CLIENT_SECRET') \
             .build()
 
-      #Create an ExecutionContext using credentials and create a new operation instance.
-      execution_context = ExecutionContext.create(credentials)
-      extract_pdf_operation = ExtractPDFOperation.create_new()
+        #Create an ExecutionContext using credentials and create a new operation instance.
+        execution_context = ExecutionContext.create(credentials)
+        extract_pdf_operation = ExtractPDFOperation.create_new()
 
-      #Set operation input from a source file.
-      source = FileRef.create_from_local_file(base_path + "/resources/extractPdfInput.pdf")
-      extract_pdf_operation.set_input(source)
+        #Set operation input from a source file.
+        source = FileRef.create_from_local_file(base_path + "/resources/extractPdfInput.pdf")
+        extract_pdf_operation.set_input(source)
 
-      #Build ExtractPDF options and set them into the operation
-      extract_pdf_options: ExtractPDFOptions = ExtractPDFOptions.builder() \
+        #Build ExtractPDF options and set them into the operation
+        extract_pdf_options: ExtractPDFOptions = ExtractPDFOptions.builder() \
           .with_elements_to_extract([ExtractElementType.TEXT, ExtractElementType.TABLES]) \
-          .with_element_to_extract_renditions(ExtractRenditionsElementType.TABLES,ExtractRenditionsElementType.FIGURES]) \
+          .with_element_to_extract_renditions([ExtractRenditionsElementType.TABLES,ExtractRenditionsElementType.FIGURES]) \
           .build()
-      extract_pdf_operation.set_options(extract_pdf_options)
+        extract_pdf_operation.set_options(extract_pdf_options)
 
-      #Execute the operation.
-      result: FileRef = extract_pdf_operation.execute(execution_context)
+        #Execute the operation.
+        result: FileRef = extract_pdf_operation.execute(execution_context)
 
-      #Save the result to the specified location.
-      result.save_as(base_path + "/output/ExtractTextTableWithTableRendition.zip")
-  except (ServiceApiException, ServiceUsageException, SdkException):
+        #Save the result to the specified location.
+        result.save_as(base_path + "/output/ExtractTextTableWithTableRendition.zip")
+    except (ServiceApiException, ServiceUsageException, SdkException):
       logging.exception("Exception encountered while executing operation")
 ```
 
@@ -1390,40 +1390,40 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
 # Run the sample:
 # python src/extractpdf/extract_txt_table_info_with_char_bounds_from_pdf.py
 
-  logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
+    logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 
-  try:
-      #get base path.
-      base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    try:
+        #get base path.
+        base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-      #Initial setup, create credentials instance.
-      credentials = Credentials.service_principal_credentials_builder()
-            .with_client_id('PDF_SERVICES_CLIENT_ID')
-            .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+        #Initial setup, create credentials instance.
+        credentials = Credentials.service_principal_credentials_builder() \
+            .with_client_id('PDF_SERVICES_CLIENT_ID') \
+            .with_client_secret('PDF_SERVICES_CLIENT_SECRET') \
             .build()
 
-      #Create an ExecutionContext using credentials and create a new operation instance.
-      execution_context = ExecutionContext.create(credentials)
-      extract_pdf_operation = ExtractPDFOperation.create_new()
+        #Create an ExecutionContext using credentials and create a new operation instance.
+        execution_context = ExecutionContext.create(credentials)
+        extract_pdf_operation = ExtractPDFOperation.create_new()
 
-      #Set operation input from a source file.
-      source = FileRef.create_from_local_file(base_path + "/resources/extractPdfInput.pdf")
-      extract_pdf_operation.set_input(source)
+        #Set operation input from a source file.
+        source = FileRef.create_from_local_file(base_path + "/resources/extractPdfInput.pdf")
+        extract_pdf_operation.set_input(source)
 
-      #Build ExtractPDF options and set them into the operation
-      extract_pdf_options: ExtractPDFOptions = ExtractPDFOptions.builder() \
+        #Build ExtractPDF options and set them into the operation
+        extract_pdf_options: ExtractPDFOptions = ExtractPDFOptions.builder() \
           .with_element_to_extract(ExtractElementType.TEXT) \
           .with_get_char_info(True) \
           .build()
-      extract_pdf_operation.set_options(extract_pdf_options)
+        extract_pdf_operation.set_options(extract_pdf_options)
 
-      #Execute the operation.
-      result: FileRef = extract_pdf_operation.execute(execution_context)
+        #Execute the operation.
+        result: FileRef = extract_pdf_operation.execute(execution_context)
 
-      #Save the result to the specified location.
-      result.save_as(base_path + "/output/ExtractTextInfoWithCharBoundsFromPDF.zip")
-  except (ServiceApiException, ServiceUsageException, SdkException):
-      logging.exception("Exception encountered while executing operation")
+        #Save the result to the specified location.
+        result.save_as(base_path + "/output/ExtractTextInfoWithCharBoundsFromPDF.zip")
+    except (ServiceApiException, ServiceUsageException, SdkException):
+        logging.exception("Exception encountered while executing operation")
 ```
 
 #### Rest API 
@@ -1658,40 +1658,40 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
 # Run the sample:
 # python src/extractpdf/extract_txt_table_info_with_table_structure_from_pdf.py
 
-  logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
+    logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 
-  try:
-      #get base path.
-      base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    try:
+        #get base path.
+        base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-      #Initial setup, create credentials instance.
-      credentials = Credentials.service_principal_credentials_builder()
-            .with_client_id('PDF_SERVICES_CLIENT_ID')
-            .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+        #Initial setup, create credentials instance.
+        credentials = Credentials.service_principal_credentials_builder() \
+            .with_client_id('PDF_SERVICES_CLIENT_ID') \
+            .with_client_secret('PDF_SERVICES_CLIENT_SECRET') \
             .build()
 
-      #Create an ExecutionContext using credentials and create a new operation instance.
-      execution_context = ExecutionContext.create(credentials)
-      extract_pdf_operation = ExtractPDFOperation.create_new()
+        #Create an ExecutionContext using credentials and create a new operation instance.
+        execution_context = ExecutionContext.create(credentials)
+        extract_pdf_operation = ExtractPDFOperation.create_new()
 
-      #Set operation input from a source file.
-      source = FileRef.create_from_local_file(base_path + "/resources/extractPdfInput.pdf")
-      extract_pdf_operation.set_input(source)
+        #Set operation input from a source file.
+        source = FileRef.create_from_local_file(base_path + "/resources/extractPdfInput.pdf")
+        extract_pdf_operation.set_input(source)
 
-      #Build ExtractPDF options and set them into the operation
-      extract_pdf_options: ExtractPDFOptions = ExtractPDFOptions.builder() \
+        #Build ExtractPDF options and set them into the operation
+        extract_pdf_options: ExtractPDFOptions = ExtractPDFOptions.builder() \
           .with_elements_to_extract([ExtractElementType.TEXT, ExtractElementType.TABLES]) \
           .with_element_to_extract_renditions(ExtractRenditionsElementType.TABLES) \
           .with_table_structure_format(TableStructureType.CSV) \
           .build()
-      extract_pdf_operation.set_options(extract_pdf_options)
+        extract_pdf_operation.set_options(extract_pdf_options)
 
-      #Execute the operation.
-      result: FileRef = extract_pdf_operation.execute(execution_context)
+        #Execute the operation.
+        result: FileRef = extract_pdf_operation.execute(execution_context)
 
-      #Save the result to the specified location.
-      result.save_as(base_path + "/output/ExtractTextTableWithTableStructure.zip")
-  except (ServiceApiException, ServiceUsageException, SdkException):
+        #Save the result to the specified location.
+        result.save_as(base_path + "/output/ExtractTextTableWithTableStructure.zip")
+    except (ServiceApiException, ServiceUsageException, SdkException):
       logging.exception("Exception encountered while executing operation")
 ```
 
@@ -1925,39 +1925,39 @@ namespace ExtractTextTableInfoWithStylingFromPDF
 # Run the sample:
 # python src/extractpdf/extract_txt_table_with_styling_info_from_pdf.py
 
-  logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
+    logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 
-  try:
-      #get base path.
-      base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    try:
+        #get base path.
+        base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-      #Initial setup, create credentials instance.
-      credentials = Credentials.service_principal_credentials_builder()
-            .with_client_id('PDF_SERVICES_CLIENT_ID')
-            .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+        #Initial setup, create credentials instance.
+        credentials = Credentials.service_principal_credentials_builder() \
+            .with_client_id('PDF_SERVICES_CLIENT_ID') \
+            .with_client_secret('PDF_SERVICES_CLIENT_SECRET') \
             .build()
 
-      #Create an ExecutionContext using credentials and create a new operation instance.
-      execution_context = ExecutionContext.create(credentials)
-      extract_pdf_operation = ExtractPDFOperation.create_new()
+        #Create an ExecutionContext using credentials and create a new operation instance.
+        execution_context = ExecutionContext.create(credentials)
+        extract_pdf_operation = ExtractPDFOperation.create_new()
 
-      #Set operation input from a source file.
-      source = FileRef.create_from_local_file(base_path + "/resources/extractPdfInput.pdf")
-      extract_pdf_operation.set_input(source)
+        #Set operation input from a source file.
+        source = FileRef.create_from_local_file(base_path + "/resources/extractPdfInput.pdf")
+        extract_pdf_operation.set_input(source)
 
-      #Build ExtractPDF options and set them into the operation
-      extract_pdf_options: ExtractPDFOptions = ExtractPDFOptions.builder() \
+        #Build ExtractPDF options and set them into the operation
+        extract_pdf_options: ExtractPDFOptions = ExtractPDFOptions.builder() \
           .with_element_to_extract(ExtractElementType.TEXT) \
           .with_include_styling_info(True) \
           .build()
-      extract_pdf_operation.set_options(extract_pdf_options)
+        extract_pdf_operation.set_options(extract_pdf_options)
 
-      #Execute the operation.
-      result: FileRef = extract_pdf_operation.execute(execution_context)
+        #Execute the operation.
+        result: FileRef = extract_pdf_operation.execute(execution_context)
 
-      #Save the result to the specified location.
-      result.save_as(base_path + "/output/ExtractTextInfoWithStylingInfoFromPDF.zip")
-  except (ServiceApiException, ServiceUsageException, SdkException):
+        #Save the result to the specified location.
+        result.save_as(base_path + "/output/ExtractTextInfoWithStylingInfoFromPDF.zip")
+    except (ServiceApiException, ServiceUsageException, SdkException):
       logging.exception("Exception encountered while executing operation")
 ```
 
