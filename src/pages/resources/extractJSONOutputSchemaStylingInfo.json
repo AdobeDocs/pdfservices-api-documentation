@@ -705,7 +705,7 @@
                     "description": "Document contains AcroForms or not",
                     "type": "boolean"
                 },
-                "is_digitally_signed": {
+                "is_signed": {
                     "description": "Document is digitally signed or not",
                     "type": "boolean"
                 },

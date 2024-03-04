@@ -65,7 +65,7 @@
         "has_acroform": {
           "type": "boolean"
         },
-        "is_digitally_signed": {
+        "is_signed": {
           "type": "boolean"
         },
         "pdfua_compliance_level": {
