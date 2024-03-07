@@ -137,5 +137,6 @@ Override the timeout properties via a custom `ClientConfig` class:
 client_config = ClientConfig.builder()
     .with_connect_timeout(10000)
     .with_read_timeout(40000)
+    .with_processing_timeout(900000)
     .build()
 ```
