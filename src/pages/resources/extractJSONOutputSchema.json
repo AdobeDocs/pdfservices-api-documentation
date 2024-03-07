@@ -100,7 +100,7 @@
         "has_embedded_files",
         "is_XFA",
         "is_certified",
-        "is_digitally_signed",
+        "is_signed",
         "is_encrypted",
         "language",
         "page_count",
