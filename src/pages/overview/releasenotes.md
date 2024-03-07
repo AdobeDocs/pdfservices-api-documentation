@@ -173,6 +173,12 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### Python SDK 2.3.1 (March, 2024; minor release)
+
+| Change  | Language         | Description                                                                                                                     |
+|---------|------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| New | Python | PDF operations now support configurable timeouts. |
+
 ### 3.4.1 (February, 2024: patch release)
 
 | Change  | Language | Description                                                                     |

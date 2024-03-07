@@ -133,7 +133,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 | Change  | Language         | Description                                                                                                                     |
 |---------|------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| New | Python | Added support for configurable processing timeout for PDF operations. |
+| New | Python | PDF operations now support configurable timeouts. |
 
 ### 3.5.1 (December, 2023: patch release)
 
