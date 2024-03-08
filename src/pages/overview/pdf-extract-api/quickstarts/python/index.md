@@ -92,10 +92,10 @@ This defines what our output ZIP will be and optionally deletes it if it already
 
 ```python
 #Initial setup, create credentials instance.
-credentials = Credentials.service_principal_credentials_builder()
-    .with_client_id(os.getenv('PDF_SERVICES_CLIENT_ID'))
-    .with_client_secret(os.getenv('PDF_SERVICES_CLIENT_SECRET'))
-    .build();
+credentials = Credentials.service_principal_credentials_builder() \
+    .with_client_id(os.getenv('PDF_SERVICES_CLIENT_ID')) \
+    .with_client_secret(os.getenv('PDF_SERVICES_CLIENT_SECRET')) \
+    .build()
 
 #Create an ExecutionContext using credentials and create a new operation instance.
 execution_context = ExecutionContext.create(credentials)
@@ -146,8 +146,8 @@ data = json.loads(jsondata)
 
 ```python
 for element in data["elements"]:
-	if(element["Path"].endswith("/H1")):
-		print(element["Text"])
+    if element["Path"].endswith("/H1"):
+        print(element["Text"])
 ```
 
 ![Example running at the command line](./shot9.png)
@@ -170,50 +170,50 @@ import json
 zip_file = "./ExtractTextInfoFromPDF.zip"
 
 if os.path.isfile(zip_file):
-	os.remove(zip_file)
+    os.remove(zip_file)
 
 input_pdf = "./Adobe Extract API Sample.pdf"
 
 try:
 
-	#Initial setup, create credentials instance.
-    credentials = Credentials.service_principal_credentials_builder()
-        .with_client_id(os.getenv('PDF_SERVICES_CLIENT_ID'))
-        .with_client_secret(os.getenv('PDF_SERVICES_CLIENT_SECRET'))
-        .build();
+    # Initial setup, create credentials instance.
+    credentials = Credentials.service_principal_credentials_builder() \
+        .with_client_id(os.getenv('PDF_SERVICES_CLIENT_ID')) \
+        .with_client_secret(os.getenv('PDF_SERVICES_CLIENT_SECRET')) \
+        .build()
 
-	#Create an ExecutionContext using credentials and create a new operation instance.
-	execution_context = ExecutionContext.create(credentials)
-	extract_pdf_operation = ExtractPDFOperation.create_new()
+    # Create an ExecutionContext using credentials and create a new operation instance.
+    execution_context = ExecutionContext.create(credentials)
+    extract_pdf_operation = ExtractPDFOperation.create_new()
 
-	#Set operation input from a source file.
-	source = FileRef.create_from_local_file(input_pdf)
-	extract_pdf_operation.set_input(source)
+    # Set operation input from a source file.
+    source = FileRef.create_from_local_file(input_pdf)
+    extract_pdf_operation.set_input(source)
 
-	#Build ExtractPDF options and set them into the operation
-	extract_pdf_options: ExtractPDFOptions = ExtractPDFOptions.builder() \
-		.with_element_to_extract(ExtractElementType.TEXT) \
-		.build()
-	extract_pdf_operation.set_options(extract_pdf_options)
+    # Build ExtractPDF options and set them into the operation
+    extract_pdf_options: ExtractPDFOptions = ExtractPDFOptions.builder() \
+        .with_element_to_extract(ExtractElementType.TEXT) \
+        .build()
+    extract_pdf_operation.set_options(extract_pdf_options)
 
-	#Execute the operation.
-	result: FileRef = extract_pdf_operation.execute(execution_context)
+    # Execute the operation.
+    result: FileRef = extract_pdf_operation.execute(execution_context)
 
-	#Save the result to the specified location.
-	result.save_as(zip_file)
+    # Save the result to the specified location.
+    result.save_as(zip_file)
 
-	print("Successfully extracted information from PDF. Printing H1 Headers:\n");
+    print("Successfully extracted information from PDF. Printing H1 Headers:\n");
 
-	archive = zipfile.ZipFile(zip_file, 'r')
-	jsonentry = archive.open('structuredData.json')
-	jsondata = jsonentry.read()
-	data = json.loads(jsondata)
-	for element in data["elements"]:
-		if(element["Path"].endswith("/H1")):
-			print(element["Text"])
+    archive = zipfile.ZipFile(zip_file, 'r')
+    jsonentry = archive.open('structuredData.json')
+    jsondata = jsonentry.read()
+    data = json.loads(jsondata)
+    for element in data["elements"]:
+        if (element["Path"].endswith("/H1")):
+            print(element["Text"])
 
 except (ServiceApiException, ServiceUsageException, SdkException):
-	logging.exception("Exception encountered while executing operation")
+    logging.exception("Exception encountered while executing operation")
 ```
 
 ## Next Steps

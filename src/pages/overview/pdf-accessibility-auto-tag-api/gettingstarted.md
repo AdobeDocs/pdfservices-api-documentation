@@ -622,14 +622,14 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 1.  After downloading the package zip, run following command
 
 ```
-pip hash <download_dir>/pdfservices-sdk-2.0.0.tar.gz
+pip hash <download_dir>/pdfservices-sdk-2.3.1.tar.gz
 ```
 
 1.  Above command will return the hash of downloaded package.
 2.  Verify the hash matches the value published here.
 
 ```
-606f08f0e525a1e0ae79567c077c29dee66971d46415dbc693b95f31597690c0
+08d1c40995658e380c7e5d2fec4cebfbfc22b246582719c5451ae708a28b6a09
 ```
 
 ###### To generate tagged PDF from the sample file

@@ -242,9 +242,9 @@ try:
     base_path = str(Path(__file__).parents[2])
 
     # Initial setup, create credentials instance.
-    credentials = Credentials.service_principal_credentials_builder()
-        .with_client_id('PDF_SERVICES_CLIENT_ID')
-        .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+    credentials = Credentials.service_principal_credentials_builder() \
+        .with_client_id('PDF_SERVICES_CLIENT_ID') \
+        .with_client_secret('PDF_SERVICES_CLIENT_SECRET') \
         .build()
 
     # Create an ExecutionContext using credentials and create a new operation instance.
@@ -707,9 +707,9 @@ class AutotagPDFParameterised:
     def autotag_pdf(self):
         try:
             # Initial setup, create credentials instance.
-            credentials = Credentials.service_principal_credentials_builder()
-                .with_client_id('PDF_SERVICES_CLIENT_ID')
-                .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+            credentials = Credentials.service_principal_credentials_builder() \
+                .with_client_id('PDF_SERVICES_CLIENT_ID') \
+                .with_client_secret('PDF_SERVICES_CLIENT_SECRET') \
                 .build()
 
             # Create an ExecutionContext using credentials and create a new operation instance.
