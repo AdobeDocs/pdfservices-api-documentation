@@ -129,6 +129,12 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### 2.3.1 (March, 2024; patch release)
+
+| Change  | Language         | Description                                                                                                                     |
+|---------|------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| New | Python | PDF operations now support configurable timeouts. |
+
 ### 3.5.1 (December, 2023: patch release)
 
 | Change  | Language | Description                                                                      |
