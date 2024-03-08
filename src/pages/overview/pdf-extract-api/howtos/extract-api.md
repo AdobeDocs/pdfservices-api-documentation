@@ -139,7 +139,6 @@ schema](/extractJSONOutputSchema2.json)):
 | Protected PDF     | PROTECTED_PDF                                                                   | Unable to extract content. File is password protected.                 |
 | Empty or corrupted input   | BAD_INPUT                                                              |	Input is corrupted or empty.                      |
 | Invalid input parameters    | BAD_INPUT_PARAMS                                                       | Invalid input parameters.                         |
-
 | Timeout           | TIMEOUT                                                                                             | Processing timeout. Please try splitting the file into multiple files with fewer pages.                 |
 | Unknown error / failure               | ERROR                                                                                                                                                                                | Unable to extract content - Internal error.                 |
 
