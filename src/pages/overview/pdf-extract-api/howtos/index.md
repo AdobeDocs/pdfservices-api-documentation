@@ -117,11 +117,15 @@ const clientConfig = PDFServicesSdk.ClientConfig
 
 Available properties:
 
--   **connectTimeout**: Default: 4000. The number of milliseconds
+- **connectTimeout**: Default: 4000. The number of milliseconds
     Requests will wait for the client to establish a connection to
     Server.
--   **readTimeout**: Default: 10000. The number of milliseconds the
+- **readTimeout**: Default: 10000. The number of milliseconds the
     client will wait for the server to send a response.
+- **processingTimeout**: Default: 600000. The maximum allowed time
+      in milliseconds for processing the documents. Any operation taking more time than the specified `processingTimeout` will result in an operation timeout exception.
+  - **Note :** It is advisable to set the `processingTimeout` to higher values for processing large files.
+
 
 Override the timeout properties via a custom `ClientConfig` class:
 
@@ -133,5 +137,6 @@ Override the timeout properties via a custom `ClientConfig` class:
 client_config = ClientConfig.builder()
     .with_connect_timeout(10000)
     .with_read_timeout(40000)
+    .with_processing_timeout(900000)
     .build()
 ```
