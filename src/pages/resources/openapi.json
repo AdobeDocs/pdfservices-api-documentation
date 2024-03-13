@@ -11813,7 +11813,7 @@
         ]
       },
       "splitpdfdoneWithoutOutput" : {
-        "title": "External Without Output URI in request",
+        "title": "External without output uri in request",
         "description": "Response in case of 'done' status when ouput uri is not passed in the rquest",
         "type": "object",
         "properties": {
@@ -11929,7 +11929,7 @@
         ]
       },
       "PDFTOImageDoneExternalWithoutOutput" : {
-        "title": "External Without Output URI in request",
+        "title": "External without output uri in request",
         "description": "Response in case of 'done' status when ouput uri is not passed in the rquest",
         "type": "object",
         "properties": {
@@ -12476,7 +12476,7 @@
         ]
       },
       "ExtractPDFDoneExternalWithoutOutput" : {
-        "title": "External Without Output URI in request",
+        "title": "External without output uri in request",
         "description": "Response in case of 'done' status when ouput uri is not passed in the rquest",
         "type": "object",
         "properties": {
@@ -12621,7 +12621,7 @@
         ]
       },
       "AutoTagPDFDoneExternalWithoutOutput" : {
-        "title": "External Without Output URI in request",
+        "title": "External without output uri in request",
         "description": "Response in case of 'done' status when ouput uri is not passed in the rquest",
         "type": "object",
         "properties": {
