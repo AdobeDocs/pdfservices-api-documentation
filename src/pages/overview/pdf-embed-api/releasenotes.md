@@ -8,10 +8,9 @@ the changes below for each release.
 
 ## Change history
 
-### February, 2024
+### March, 2024
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
-| Bug fix | Fixed the issue with slow rendering of PDF file pages.                        |
 | Bug fix | Fixed the issue with opening word based password protected PDF files.         |
 
 ### January, 2024
