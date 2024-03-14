@@ -300,26 +300,40 @@ Placeholder tag is replaced by a list generated using the html string provided i
 
 ![Sample for HTML Table insertion](../images/List_Example_1.png)
 
-**Mixed Lists**
+**Nested Lists**
 
 JSON representation of the input data:
 ```json
 {
-"List_Data": "<ol><li>Coffee</li><li>Tea<ul><li>Green Tea</li><li>Black Tea</li></ul></li><li>Milk</li></ul></ol>"
+"List_Data": "<ol><li>Level 1</li><li>Level 1<ol><li>Level 2</li><li>Level 2<ol><li>Level 3</li><li>Level 3</li></ol></li></ol></li></ol>"
 }
 ```
 
 Placeholder tag is replaced by a list generated using the html string provided in the input json.
 
-![Sample for HTML Table insertion](../images/List_Example_2.png)
+![Sample for HTML Table insertion](../images/Nested_Numbered_Lists_Example.png)
 
 <InlineAlert slots="text"/>
 
 - Placeholder Tags containing `<ul>` or `<ol>` HTML elements as values in input JSON data should be placed in a separate paragraph in the input document template.
 
-- Inline styling of list elements is supported. Only Inline Styling of List elements is possible. i.e. using style attribute of `<ol>` & `<ul>`. Internal and External styling are not allowed.
+- Only Inline Styling of List elements is possible. i.e. using style attribute of `<ol>` & `<ul>`. Internal and External styling are not allowed.
 
 - The `list-style-type` property allows customization of the appearance of list markers. It supports various options such as disc, circle, square, decimal, decimal-leading-zero, lower-roman, upper-roman, lower-alpha, and upper-alpha.
+
+**Example of list marker customization**
+
+JSON representation of the input data:
+```json
+{
+"List_Data": "<ol style = \" list-style-type : upper-roman; \"><li>Coffee</li><li>Tea</li><li>Milk</li></ol>"
+}
+```
+
+Placeholder tag is replaced by a list generated using the html string provided in the input json.
+
+![Sample for HTML Table insertion](../images/Upper_Roman_List_Example.png)
+
 
 ### Insert Lists using Repeating Sections
 
