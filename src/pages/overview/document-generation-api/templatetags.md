@@ -284,6 +284,45 @@ over the specified array of objects.
 
 ## Lists
 
+### Insert List using `<ul>` and `<ol>` HTML Elements
+Add lists in the document through JSON data using `<ul>` (unordered list) and `<ol>` (ordered list) tags.
+
+**Simple Lists**
+
+JSON representation of the input data:
+```json
+{
+  "List_Data": "<ul><li>Coffee</li><li>Tea</li><li>Milk</li></ul>"
+}
+```
+
+Placeholder tag is replaced by a list generated using the html string provided in the input json.
+
+![Sample for HTML Table insertion](../images/List_Example_1.png)
+
+**Mixed Lists**
+
+JSON representation of the input data:
+```json
+{
+"List_Data": "<ol><li>Coffee</li><li>Tea<ul><li>Green Tea</li><li>Black Tea</li></ul></li><li>Milk</li></ul></ol>"
+}
+```
+
+Placeholder tag is replaced by a list generated using the html string provided in the input json.
+
+![Sample for HTML Table insertion](../images/List_Example_2.png)
+
+<InlineAlert slots="text"/>
+
+- Placeholder Tags containing `<ul>` or `<ol>` HTML elements as values in input JSON data should be placed in a separate paragraph in the input document template.
+
+- Inline styling of list elements is supported. Only Inline Styling of List elements is possible. i.e. using style attribute of `<ol>` & `<ul>`. Internal and External styling are not allowed.
+
+- The `list-style-type` property allows customization of the appearance of list markers. It supports various options such as disc, circle, square, decimal, decimal-leading-zero, lower-roman, upper-roman, lower-alpha, and upper-alpha.
+
+### Insert Lists using Repeating Sections
+
 Dynamically generate numbered or bullet lists by repeating over a list.
 
 **How to insert Lists**
