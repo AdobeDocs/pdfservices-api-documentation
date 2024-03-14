@@ -10,7 +10,7 @@ To get started using Adobe PDF Services API, let's walk through a simple scenari
 
 To complete this guide, you will need:
 
-* [Node.js](https://nodejs.org) - Node.js version 14.0 or higher is required. 
+* [Node.js](https://nodejs.org) - Node.js version 18.0 or higher is required. 
 * An Adobe ID. If you do not have one, the credential setup will walk you through creating one.
 * A way to edit code. No specific editor is required for this guide.
 
@@ -63,24 +63,19 @@ Now you're ready to begin coding.
 1) We'll begin by including our required dependencies:
 
 ```js
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
-const fs = require('fs');
+const {
+  ServicePrincipalCredentials,
+  PDFServices,
+  MimeType,
+  ExportPDFParams,
+  ExportPDFTargetFormat,
+  ExportPDFJob,
+  ExportPDFResult
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 ```
 
-The first line includes the Adobe PDF Services Node.js SDK. The second third include Node's `filesystem` package. 
-
-2) Now let's define our input and output:
-
-```js
-const OUTPUT = './Bodea Brochure.docx';
-
-// If our output already exists, remove it so we can run the application again.
-if(fs.existsSync(OUTPUT)) fs.unlinkSync(OUTPUT);
-
-const INPUT = './Bodea Brochure.pdf';
-```
-
-3) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+2) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
 - **Windows:**
   - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
   - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
@@ -89,51 +84,64 @@ const INPUT = './Bodea Brochure.pdf';
   - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
   - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
-4) Next, we setup the SDK to use our credentials.
+3) Next, we can create our credentials and use them:
 
 ```js
-const credentials =  PDFServicesSdk.Credentials
-        .servicePrincipalCredentialsBuilder()
-        .withClientId(process.env.PDF_SERVICES_CLIENT_ID)
-        .withClientSecret(process.env.PDF_SERVICES_CLIENT_SECRET)
-        .build();
+// Initial setup, create credentials instance
+const credentials = new ServicePrincipalCredentials({
+  clientId: process.env.PDF_SERVICES_CLIENT_ID,
+  clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+});
 
-// Create an ExecutionContext using credentials
-const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
+// Creates a PDF Services instance
+const pdfServices = new PDFServices({credentials});
 ```
 
-This code both points to the credentials downloaded previously as well as sets up an execution context object that will be used later.
-
-5) Now, let's create the operation:
+4) Now, let's upload the asset:
 
 ```js
-// This creates an instance of the Export operation we're using, as well as specifying output type (DOCX)
-const exportPdfOperation = PDFServicesSdk.ExportPDF.Operation.createNew(PDFServicesSdk.ExportPDF.SupportedTargetFormats.DOCX);
-
-// Set operation input from a source file
-const inputPDF = PDFServicesSdk.FileRef.createFromLocalFile(INPUT);
-exportPdfOperation.setInput(inputPDF);
+const inputAsset = await pdfServices.upload({
+  readStream,
+  mimeType: MimeType.PDF
+});
 ```
 
-This set of code defines what we're doing (an Export operation), points to our local file and specifies the input is a PDF, and then defines options for the Export call. In this example, the only option is the export format, DOCX.
-
-6) The next code block executes the operation:
+5) Now, let's create the parameters and the job:
 
 ```js
-try {
+// Create parameters for the job
+const params = new ExportPDFParams({
+  targetFormat: ExportPDFTargetFormat.DOCX
+});
 
-	exportPdfOperation.execute(executionContext)
-	.then(result => result.saveAsFile(OUTPUT))
-	.then(() => {
-		console.log('Export Done')
-	})
-	.catch(err => {
-		console.log('Exception encountered while executing operation', err);
-	});
+// Creates a new job instance
+const job = new ExportPDFJob({inputAsset, params});
+```
 
-} catch(err) {
-	console.error('Error:', err);
-}
+This set of code defines what we're doing (an Export operation), and sets parameter for the Export PDF job. 
+In this example, the only parameter is the export format ,ie, DOCX.
+
+6) The next code block submits the job and gets the job result:
+
+```js
+// Submit the job and get the job result
+const pollingURL = await pdfServices.submit({job});
+const pdfServicesResponse = await pdfServices.getJobResult({
+  pollingURL,
+  resultType: ExportPDFResult
+});
+
+// Get content from the resulting asset(s)
+const resultAsset = pdfServicesResponse.result.asset;
+const streamAsset = await pdfServices.getContent({asset: resultAsset});
+```
+
+7) The next code block saves the result at the specified location:
+
+```js
+// Creates an output stream and copy stream asset's content to it
+const outputStream = fs.createWriteStream("./Bodea Brochure.docx");
+streamAsset.readStream.pipe(outputStream);
 ```
 
 This code runs the Export process and then stores the result Word document to the file system. 
@@ -143,50 +151,66 @@ This code runs the Export process and then stores the result Word document to th
 Here's the complete application (`export.js`):
 
 ```js
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
-const fs = require('fs');
+const {
+  ServicePrincipalCredentials,
+  PDFServices,
+  MimeType,
+  ExportPDFParams,
+  ExportPDFTargetFormat,
+  ExportPDFJob,
+  ExportPDFResult
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 
-const OUTPUT = './Bodea Brochure.docx';
+(async () => {
+  let readStream;
+  try {
+    // Initial setup, create credentials instance
+    const credentials = new ServicePrincipalCredentials({
+      clientId: process.env.PDF_SERVICES_CLIENT_ID,
+      clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+    });
 
-// If our output already exists, remove it so we can run the application again.
-if(fs.existsSync(OUTPUT)) fs.unlinkSync(OUTPUT);
+    // Creates a PDF Services instance
+    const pdfServices = new PDFServices({credentials});
 
-const INPUT = './Bodea Brochure.pdf';
+    // Creates an asset(s) from source file(s) and upload
+    readStream = fs.createReadStream("./Bodea Brochure.pdf");
+    const inputAsset = await pdfServices.upload({
+      readStream,
+      mimeType: MimeType.PDF
+    });
 
+    // Create parameters for the job
+    const params = new ExportPDFParams({
+      targetFormat: ExportPDFTargetFormat.DOCX
+    });
 
-console.log(`About to export ${INPUT} to ${OUTPUT}.`);
+    // Creates a new job instance
+    const job = new ExportPDFJob({inputAsset, params});
 
-// Set up our credentials object.
-const credentials =  PDFServicesSdk.Credentials
-        .servicePrincipalCredentialsBuilder()
-        .withClientId(process.env.PDF_SERVICES_CLIENT_ID)
-        .withClientSecret(process.env.PDF_SERVICES_CLIENT_SECRET)
-        .build();
+    // Submit the job and get the job result
+    const pollingURL = await pdfServices.submit({job});
+    const pdfServicesResponse = await pdfServices.getJobResult({
+      pollingURL,
+      resultType: ExportPDFResult
+    });
 
-// An exectuionContext object wraps our credentials
-const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
+    // Get content from the resulting asset(s)
+    const resultAsset = pdfServicesResponse.result.asset;
+    const streamAsset = await pdfServices.getContent({asset: resultAsset});
 
-// This creates an instance of the Export operation we're using, as well as specifying output type (DOCX)
-const exportPdfOperation = PDFServicesSdk.ExportPDF.Operation.createNew(PDFServicesSdk.ExportPDF.SupportedTargetFormats.DOCX);
-
-// Set operation input from a source file
-const inputPDF = PDFServicesSdk.FileRef.createFromLocalFile(INPUT);
-exportPdfOperation.setInput(inputPDF);
-
-try {
-
-	exportPdfOperation.execute(executionContext)
-	.then(result => result.saveAsFile(OUTPUT))
-	.then(() => {
-		console.log('Export Done')
-	})
-	.catch(err => {
-		console.log('Exception encountered while executing operation', err);
-	});
-
-} catch(err) {
-	console.error('Error:', err);
-}
+    // Creates an output stream and copy stream asset's content to it
+    const outputFilePath = "./Bodea Brochure.docx";
+    console.log(`Saving asset at ${outputFilePath}`);
+    const outputStream = fs.createWriteStream(outputFilePath);
+    streamAsset.readStream.pipe(outputStream);
+  } catch (err) {
+    console.log("Exception encountered while executing operation", err);
+  } finally {
+    readStream?.destroy();
+  }
+})();
 ```
 
 ## Next Steps
