@@ -293,48 +293,74 @@ namespace ExtractTextInfoFromPDF
 // Run the sample:
 // node src/extractpdf/extract-text-info-from-pdf.js
 
-  const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
-  try {
-      // Initial setup, create credentials instance.
-      const credentials =  PDFServicesSdk.Credentials
-            .servicePrincipalCredentialsBuilder()
-            .withClientId("PDF_SERVICES_CLIENT_ID")
-            .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-            .build();
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    ExtractPDFParams,
+    ExtractElementType,
+    ExtractPDFJob,
+    ExtractPDFResult,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 
-      // Create an ExecutionContext using credentials
-      const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
+(async () => {
+    let readStream;
+    try {
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+        });
 
-      // Build extractPDF options
-      const options = new PDFServicesSdk.ExtractPDF.options.ExtractPdfOptions.Builder()
-          .addElementsToExtract(PDFServicesSdk.ExtractPDF.options.ExtractElementType.TEXT).build();
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
 
-      // Create a new operation instance.
-      const extractPDFOperation = PDFServicesSdk.ExtractPDF.Operation.createNew(),
-          input = PDFServicesSdk.FileRef.createFromLocalFile(
-              'resources/extractPDFInput.pdf',
-              PDFServicesSdk.ExtractPDF.SupportedSourceFormat.pdf
-          );
+        // Creates an asset(s) from source file(s) and upload
+        readStream = fs.createReadStream("./extractPDFInput.pdf");
+        const inputAsset = await pdfServices.upload({
+            readStream,
+            mimeType: MimeType.PDF
+        });
 
-      // Set operation input from a source file.
-      extractPDFOperation.setInput(input);
+        // Create parameters for the job
+        const params = new ExtractPDFParams({
+            elementsToExtract: [ExtractElementType.TEXT]
+        });
 
-      // Set options
-      extractPDFOperation.setOptions(options);
+        // Creates a new job instance
+        const job = new ExtractPDFJob({inputAsset, params});
 
-      extractPDFOperation.execute(executionContext)
-          .then(result => result.saveAsFile('output/ExtractTextInfoFromPDF.zip'))
-          .catch(err => {
-              if(err instanceof PDFServicesSdk.Error.ServiceApiError
-                  || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-                  console.log('Exception encountered while executing operation', err);
-              } else {
-                  console.log('Exception encountered while executing operation', err);
-              }
-          });
-  } catch (err) {
-      console.log('Exception encountered while executing operation', err);
-  }
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: ExtractPDFResult
+        });
+
+        // Get content from the resulting asset(s)
+        const resultAsset = pdfServicesResponse.result.resource;
+        const streamAsset = await pdfServices.getContent({asset: resultAsset});
+
+        // Creates a write stream and copy stream asset's content to it
+        const outputFilePath = "./ExtractTextInfoFromPDF.zip";
+        console.log(`Saving asset at ${outputFilePath}`);
+
+        const writeStream = fs.createWriteStream(outputFilePath);
+        streamAsset.readStream.pipe(writeStream);
+    } catch (err) {
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        readStream?.destroy();
+    }
+})();
 ```
 
 #### Python
@@ -547,51 +573,74 @@ namespace ExtractTextTableInfoFromPDF
 // Run the sample:
 // node src/extractpdf/extract-text-table-info-from-pdf.js
 
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    ExtractPDFParams,
+    ExtractElementType,
+    ExtractPDFJob,
+    ExtractPDFResult,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 
-  const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
-  try {
-      // Initial setup, create credentials instance.
-      const credentials =  PDFServicesSdk.Credentials
-            .servicePrincipalCredentialsBuilder()
-            .withClientId("PDF_SERVICES_CLIENT_ID")
-            .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-            .build();
+(async () => {
+    let readStream;
+    try {
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+        });
 
-      // Create an ExecutionContext using credentials
-      const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
 
-      // Build extractPDF options
-      const options = new PDFServicesSdk.ExtractPDF.options.ExtractPdfOptions.Builder()
-          .addElementsToExtract(PDFServicesSdk.ExtractPDF.options.ExtractElementType.TEXT, PDFServicesSdk.ExtractPDF.options.ExtractElementType.TABLES)
-          .build();
+        // Creates an asset(s) from source file(s) and upload
+        readStream = fs.createReadStream("./extractPDFInput.pdf");
+        const inputAsset = await pdfServices.upload({
+            readStream,
+            mimeType: MimeType.PDF
+        });
 
-      // Create a new operation instance.
-      const extractPDFOperation = PDFServicesSdk.ExtractPDF.Operation.createNew(),
-          input = PDFServicesSdk.FileRef.createFromLocalFile(
-              'resources/extractPDFInput.pdf',
-              PDFServicesSdk.ExtractPDF.SupportedSourceFormat.pdf
-          );
+        // Create parameters for the job
+        const params = new ExtractPDFParams({
+            elementsToExtract: [ExtractElementType.TEXT, ExtractElementType.TABLES]
+        });
 
-      // Set operation input from a source file.
-      extractPDFOperation.setInput(input);
+        // Creates a new job instance
+        const job = new ExtractPDFJob({inputAsset, params});
 
-      // Set options
-      extractPDFOperation.setOptions(options);
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: ExtractPDFResult
+        });
 
-      extractPDFOperation.execute(executionContext)
-          .then(result => result.saveAsFile('output/ExtractTextTableInfoFromPDF.zip'))
-          .catch(err => {
-              if(err instanceof PDFServicesSdk.Error.ServiceApiError
-                  || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-                  console.log('Exception encountered while executing operation', err);
-              } else {
-                  console.log('Exception encountered while executing operation', err);
-              }
-          });
-  } catch (err) {
-      console.log('Exception encountered while executing operation', err);
-  }
+        // Get content from the resulting asset(s)
+        const resultAsset = pdfServicesResponse.result.resource;
+        const streamAsset = await pdfServices.getContent({asset: resultAsset});
 
+        // Creates a write stream and copy stream asset's content to it
+        const outputFilePath = "./ExtractTextTableInfoFromPDF.zip";
+        console.log(`Saving asset at ${outputFilePath}`);
+
+        const writeStream = fs.createWriteStream(outputFilePath);
+        streamAsset.readStream.pipe(writeStream);
+    } catch (err) {
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        readStream?.destroy();
+    }
+})();
 ```
 
 #### Python
@@ -808,51 +857,76 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
 // Run the sample:
 // node src/extractpdf/extract-text-table-info-with-tables-renditions-from-pdf.js
 
-  const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
-  try {
-      // Initial setup, create credentials instance.
-      const credentials =  PDFServicesSdk.Credentials
-          .servicePrincipalCredentialsBuilder()
-          .withClientId("PDF_SERVICES_CLIENT_ID")
-          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-          .build();
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    ExtractPDFParams,
+    ExtractElementType,
+    ExtractPDFJob,
+    ExtractPDFResult,
+    ExtractRenditionsElementType,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 
-      // Create an ExecutionContext using credentials
-      const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
+(async () => {
+    let readStream;
+    try {
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+        });
 
-      // Build extractPDF options
-      const options = new PDFServicesSdk.ExtractPDF.options.ExtractPdfOptions.Builder()
-          .addElementsToExtract(PDFServicesSdk.ExtractPDF.options.ExtractElementType.TEXT, PDFServicesSdk.ExtractPDF.options.ExtractElementType.TABLES)
-          .addElementsToExtractRenditions(PDFServicesSdk.ExtractPDF.options.ExtractRenditionsElementType.TABLES)
-          .build();
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
 
-      // Create a new operation instance.
-      const extractPDFOperation = PDFServicesSdk.ExtractPDF.Operation.createNew(),
-          input = PDFServicesSdk.FileRef.createFromLocalFile(
-              'resources/extractPDFInput.pdf',
-              PDFServicesSdk.ExtractPDF.SupportedSourceFormat.pdf
-          );
+        // Creates an asset(s) from source file(s) and upload
+        readStream = fs.createReadStream("./extractPDFInput.pdf");
+        const inputAsset = await pdfServices.upload({
+            readStream,
+            mimeType: MimeType.PDF
+        });
 
-      // Set operation input from a source file
-      extractPDFOperation.setInput(input);
+        // Create parameters for the job
+        const params = new ExtractPDFParams({
+            elementsToExtract: [ExtractElementType.TEXT, ExtractElementType.TABLES],
+            elementsToExtractRenditions: [ExtractRenditionsElementType.TABLES]
+        });
 
-      // Set options
-      extractPDFOperation.setOptions(options);
+        // Creates a new job instance
+        const job = new ExtractPDFJob({inputAsset, params});
 
-      extractPDFOperation.execute(executionContext)
-          .then(result => result.saveAsFile('output/ExtractTextTableInfoWithTablesRenditionsFromPDF.zip'))
-          .catch(err => {
-              if(err instanceof PDFServicesSdk.Error.ServiceApiError
-                  || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-                  console.log('Exception encountered while executing operation', err);
-              } else {
-                  console.log('Exception encountered while executing operation', err);
-              }
-          });
-  } catch (err) {
-      console.log('Exception encountered while executing operation', err);
-  }
-   
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: ExtractPDFResult
+        });
+
+        // Get content from the resulting asset(s)
+        const resultAsset = pdfServicesResponse.result.resource;
+        const streamAsset = await pdfServices.getContent({asset: resultAsset});
+
+        // Creates a write stream and copy stream asset's content to it
+        const outputFilePath = "./ExtractTextTableInfoWithRenditionsFromPDF.zip";
+        console.log(`Saving asset at ${outputFilePath}`);
+
+        const writeStream = fs.createWriteStream(outputFilePath);
+        streamAsset.readStream.pipe(writeStream);
+    } catch (err) {
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        readStream?.destroy();
+    }
+})();
 ```
 
 #### Python
@@ -1072,50 +1146,76 @@ namespace ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF
 // Run the sample:
 // node src/extractpdf/extract-text-table-info-with-figures-tables-renditions-from-pdf.js
 
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
-try {
-    // Initial setup, create credentials instance.
-    const credentials =  PDFServicesSdk.Credentials
-        .servicePrincipalCredentialsBuilder()
-        .withClientId("PDF_SERVICES_CLIENT_ID")
-        .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-        .build();
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    ExtractPDFParams,
+    ExtractElementType,
+    ExtractPDFJob,
+    ExtractPDFResult,
+    ExtractRenditionsElementType,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 
-    // Create an ExecutionContext using credentials
-    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
-
-    // Build extractPDF options
-    const options = new PDFServicesSdk.ExtractPDF.options.ExtractPdfOptions.Builder()
-        .addElementsToExtract(PDFServicesSdk.ExtractPDF.options.ExtractElementType.TEXT, PDFServicesSdk.ExtractPDF.options.ExtractElementType.TABLES)
-        .addElementsToExtractRenditions(PDFServicesSdk.ExtractPDF.options.ExtractRenditionsElementType.FIGURES, PDFServicesSdk.ExtractPDF.options.ExtractRenditionsElementType.TABLES)
-        .build();
-
-    // Create a new operation instance.
-    const extractPDFOperation = PDFServicesSdk.ExtractPDF.Operation.createNew(),
-        input = PDFServicesSdk.FileRef.createFromLocalFile(
-            'resources/extractPDFInput.pdf',
-            PDFServicesSdk.ExtractPDF.SupportedSourceFormat.pdf
-        );
-
-    // Set operation input from a source file
-    extractPDFOperation.setInput(input);
-
-    // Set options
-    extractPDFOperation.setOptions(options);
-
-    extractPDFOperation.execute(executionContext)
-        .then(result => result.saveAsFile('output/ExtractTextTableWithFigureTableRendition.zip'))
-        .catch(err => {
-            if(err instanceof PDFServicesSdk.Error.ServiceApiError
-                || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-                console.log('Exception encountered while executing operation', err);
-            } else {
-                console.log('Exception encountered while executing operation', err);
-            }
+(async () => {
+    let readStream;
+    try {
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
         });
-} catch (err) {
-    console.log('Exception encountered while executing operation', err);
-}   
+
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
+
+        // Creates an asset(s) from source file(s) and upload
+        readStream = fs.createReadStream("./extractPDFInput.pdf");
+        const inputAsset = await pdfServices.upload({
+            readStream,
+            mimeType: MimeType.PDF
+        });
+
+        // Create parameters for the job
+        const params = new ExtractPDFParams({
+            elementsToExtract: [ExtractElementType.TEXT, ExtractElementType.TABLES],
+            elementsToExtractRenditions: [ExtractRenditionsElementType.FIGURES, ExtractRenditionsElementType.TABLES]
+        });
+
+        // Creates a new job instance
+        const job = new ExtractPDFJob({inputAsset, params});
+
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: ExtractPDFResult
+        });
+
+        // Get content from the resulting asset(s)
+        const resultAsset = pdfServicesResponse.result.resource;
+        const streamAsset = await pdfServices.getContent({asset: resultAsset});
+
+        // Creates a write stream and copy stream asset's content to it
+        const outputFilePath = "./ExtractTextTableWithFigureTableRendition.zip";
+        console.log(`Saving asset at ${outputFilePath}`);
+
+        const writeStream = fs.createWriteStream(outputFilePath);
+        streamAsset.readStream.pipe(writeStream);
+    } catch (err) {
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        readStream?.destroy();
+    }
+})(); 
 ```
 
 #### Python
@@ -1336,50 +1436,75 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
 // Run the sample:
 // node src/extractpdf/extract-text-table-info-with-char-bounds-from-pdf.js
 
-  const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
-  try {
-      // Initial setup, create credentials instance.
-      const credentials =  PDFServicesSdk.Credentials
-          .servicePrincipalCredentialsBuilder()
-          .withClientId("PDF_SERVICES_CLIENT_ID")
-          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-          .build();
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    ExtractPDFParams,
+    ExtractElementType,
+    ExtractPDFJob,
+    ExtractPDFResult,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 
-      // Create an ExecutionContext using credentials
-      const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
+(async () => {
+    let readStream;
+    try {
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+        });
 
-      // Build extractPDF options
-      const options = new PDFServicesSdk.ExtractPDF.options.ExtractPdfOptions.Builder()
-          .addElementsToExtract(PDFServicesSdk.ExtractPDF.options.ExtractElementType.TEXT, PDFServicesSdk.ExtractPDF.options.ExtractElementType.TABLES)
-          .addCharInfo(true)
-          .build();
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
 
-      // Create a new operation instance.
-      const extractPDFOperation = PDFServicesSdk.ExtractPDF.Operation.createNew(),
-          input = PDFServicesSdk.FileRef.createFromLocalFile(
-              'resources/extractPDFInput.pdf',
-              PDFServicesSdk.ExtractPDF.SupportedSourceFormat.pdf
-          );
+        // Creates an asset(s) from source file(s) and upload
+        readStream = fs.createReadStream("./extractPDFInput.pdf");
+        const inputAsset = await pdfServices.upload({
+            readStream,
+            mimeType: MimeType.PDF
+        });
 
-      // Set operation input from a source file.
-      extractPDFOperation.setInput(input);
+        // Create parameters for the job
+        const params = new ExtractPDFParams({
+            elementsToExtract: [ExtractElementType.TEXT, ExtractElementType.TABLES],
+            addCharInfo: true
+        });
 
-      // Set options
-      extractPDFOperation.setOptions(options);
+        // Creates a new job instance
+        const job = new ExtractPDFJob({inputAsset, params});
 
-      extractPDFOperation.execute(executionContext)
-          .then(result => result.saveAsFile('output/ExtractTextTableInfoWithCharBoundsFromPDF.zip'))
-          .catch(err => {
-              if(err instanceof PDFServicesSdk.Error.ServiceApiError
-                  || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-                  console.log('Exception encountered while executing operation', err);
-              } else {
-                  console.log('Exception encountered while executing operation', err);
-              }
-          });
-  } catch (err) {
-      console.log('Exception encountered while executing operation', err);
-  }
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: ExtractPDFResult
+        });
+
+        // Get content from the resulting asset(s)
+        const resultAsset = pdfServicesResponse.result.resource;
+        const streamAsset = await pdfServices.getContent({asset: resultAsset});
+
+        // Creates a write stream and copy stream asset's content to it
+        const outputFilePath = "./ExtractTextTableInfoWithCharBoundsFromPDF.zip";
+        console.log(`Saving asset at ${outputFilePath}`);
+
+        const writeStream = fs.createWriteStream(outputFilePath);
+        streamAsset.readStream.pipe(writeStream);
+    } catch (err) {
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        readStream?.destroy();
+    }
+})();
 ```
 
 #### Python
@@ -1601,53 +1726,80 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
-// node src/extractpdf/extract-text-table-info-with-tables-renditions-from-pdf.js
+// node src/extractpdf/extract-text-table-info-with-tables-structure-from-pdf.js
 
-    const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    ExtractPDFParams,
+    ExtractElementType,
+    ExtractPDFJob,
+    ExtractPDFResult,
+    ExtractRenditionsElementType,
+    TableStructureType,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
+
+(async () => {
+    let readStream;
     try {
-        // Initial setup, create credentials instance.
-        const credentials =  PDFServicesSdk.Credentials
-            .servicePrincipalCredentialsBuilder()
-            .withClientId("PDF_SERVICES_CLIENT_ID")
-            .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-            .build();
-  
-        // Create an ExecutionContext using credentials
-        const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
-  
-        // Build extractPDF options
-        const options = new PDFServicesSdk.ExtractPDF.options.ExtractPdfOptions.Builder()
-            .addElementsToExtract(PDFServicesSdk.ExtractPDF.options.ExtractElementType.TEXT, PDFServicesSdk.ExtractPDF.options.ExtractElementType.TABLES)
-            .addElementsToExtractRenditions(PDFServicesSdk.ExtractPDF.options.ExtractRenditionsElementType.TABLES)
-            .addTableStructureFormat(PDFServicesSdk.ExtractPDF.options.TableStructureType.CSV)
-            .build();
-  
-        // Create a new operation instance.
-        const extractPDFOperation = PDFServicesSdk.ExtractPDF.Operation.createNew(),
-            input = PDFServicesSdk.FileRef.createFromLocalFile(
-                'resources/extractPDFInput.pdf',
-                PDFServicesSdk.ExtractPDF.SupportedSourceFormat.pdf
-            );
-  
-        // Set operation input from a source file.
-        extractPDFOperation.setInput(input);
-  
-        // Set options
-        extractPDFOperation.setOptions(options);
-  
-        extractPDFOperation.execute(executionContext)
-            .then(result => result.saveAsFile('output/ExtractTextTableWithTableStructure.zip'))
-            .catch(err => {
-                if(err instanceof PDFServicesSdk.Error.ServiceApiError
-                    || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-                    console.log('Exception encountered while executing operation', err);
-                } else {
-                    console.log('Exception encountered while executing operation', err);
-                }
-            });
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+        });
+
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
+
+        // Creates an asset(s) from source file(s) and upload
+        readStream = fs.createReadStream("./extractPDFInput.pdf");
+        const inputAsset = await pdfServices.upload({
+            readStream,
+            mimeType: MimeType.PDF
+        });
+
+        // Create parameters for the job
+        const params = new ExtractPDFParams({
+            elementsToExtract: [ExtractElementType.TEXT, ExtractElementType.TABLES],
+            elementsToExtractRenditions: [ExtractRenditionsElementType.TABLES],
+            tableStructureType: TableStructureType.CSV
+        });
+
+        // Creates a new job instance
+        const job = new ExtractPDFJob({inputAsset, params});
+
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: ExtractPDFResult
+        });
+
+        // Get content from the resulting asset(s)
+        const resultAsset = pdfServicesResponse.result.resource;
+        const streamAsset = await pdfServices.getContent({asset: resultAsset});
+
+        // Creates a write stream and copy stream asset's content to it
+        const outputFilePath = "./ExtractTextTableWithTableStructure.zip";
+        console.log(`Saving asset at ${outputFilePath}`);
+
+        const writeStream = fs.createWriteStream(outputFilePath);
+        streamAsset.readStream.pipe(writeStream);
     } catch (err) {
-        console.log('Exception encountered while executing operation', err);
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        readStream?.destroy();
     }
+})();
 ```
 
 #### Python 
@@ -1870,51 +2022,75 @@ namespace ExtractTextTableInfoWithStylingFromPDF
 // Run the sample:
 // node src/extractpdf/extract-text-table-with-styling-info-from-pdf.js
 
-    
-  const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
-  try {
-      // Initial setup, create credentials instance.
-      const credentials =  PDFServicesSdk.Credentials
-          .servicePrincipalCredentialsBuilder()
-          .withClientId("PDF_SERVICES_CLIENT_ID")
-          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-          .build();
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    ExtractPDFParams,
+    ExtractElementType,
+    ExtractPDFJob,
+    ExtractPDFResult,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 
-      // Create an ExecutionContext using credentials
-      const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
+(async () => {
+    let readStream;
+    try {
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+        });
 
-      // Build extractPDF options
-      const options = new PDFServicesSdk.ExtractPDF.options.ExtractPdfOptions.Builder()
-          .addElementsToExtract(PDFServicesSdk.ExtractPDF.options.ExtractElementType.TEXT, PDFServicesSdk.ExtractPDF.options.ExtractElementType.TABLES)
-          .getStylingInfo(true)
-          .build();
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
 
-      // Create a new operation instance.
-      const extractPDFOperation = PDFServicesSdk.ExtractPDF.Operation.createNew(),
-          input = PDFServicesSdk.FileRef.createFromLocalFile(
-              'resources/extractPDFInput.pdf',
-              PDFServicesSdk.ExtractPDF.SupportedSourceFormat.pdf
-          );
+        // Creates an asset(s) from source file(s) and upload
+        readStream = fs.createReadStream("./extractPDFInput.pdf");
+        const inputAsset = await pdfServices.upload({
+            readStream,
+            mimeType: MimeType.PDF
+        });
 
-      // Set operation input from a source file.
-      extractPDFOperation.setInput(input);
+        // Create parameters for the job
+        const params = new ExtractPDFParams({
+            elementsToExtract: [ExtractElementType.TEXT, ExtractElementType.TABLES],
+            getStylingInfo: true,
+        });
 
-      // Set options
-      extractPDFOperation.setOptions(options);
+        // Creates a new job instance
+        const job = new ExtractPDFJob({inputAsset, params});
 
-      extractPDFOperation.execute(executionContext)
-          .then(result => result.saveAsFile('output/ExtractTextTableInfoWithStylingInfoFromPDF.zip'))
-          .catch(err => {
-              if(err instanceof PDFServicesSdk.Error.ServiceApiError
-                  || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-                  console.log('Exception encountered while executing operation', err);
-              } else {
-                  console.log('Exception encountered while executing operation', err);
-              }
-          });
-  } catch (err) {
-      console.log('Exception encountered while executing operation', err);
-  }
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: ExtractPDFResult
+        });
+
+        // Get content from the resulting asset(s)
+        const resultAsset = pdfServicesResponse.result.resource;
+        const streamAsset = await pdfServices.getContent({asset: resultAsset});
+
+        // Creates a write stream and copy stream asset's content to it
+        const outputFilePath = "./ExtractTextTableInfoWithStylingInfoFromPDF.zip";
+        console.log(`Saving asset at ${outputFilePath}`);
+
+        const writeStream = fs.createWriteStream(outputFilePath);
+        streamAsset.readStream.pipe(writeStream);
+    } catch (err) {
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        readStream?.destroy();
+    }
+})();
 ```
 
 #### Python
