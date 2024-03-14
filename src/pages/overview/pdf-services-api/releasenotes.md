@@ -130,6 +130,7 @@ Upgrading to the latest SDK should not break existing applications.
 ## Change history
 
 ### 4.0.0 (April, 2024; major release)
+
 | Change  | Language | Description                                                                                                                    |
 |---------|----------|--------------------------------------------------------------------------------------------------------------------------------|
 | New     | NodeJS   | Released Adobe PDF Services Node SDK v4.0.0, introducing new interfaces fully leveraging power of new PDF Services rest APIs.  |
