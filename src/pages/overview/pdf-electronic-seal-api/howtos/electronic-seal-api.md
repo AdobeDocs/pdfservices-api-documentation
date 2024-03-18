@@ -1056,7 +1056,7 @@ The sample below performs electronic seal operation with a trusted timestamp on 
 
 Please refer to the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="2" languages="Java, Rest API" />
+<CodeBlock slots="heading, code" repeat="3" languages="Java, Node JS, Rest API" />
 
 #### Java
 
