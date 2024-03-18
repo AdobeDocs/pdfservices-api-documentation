@@ -162,7 +162,7 @@ const clientConfig = new ClientConfig({
 
 **Sample showing proxy server configuration with authentication.**
 
-<CodeBlock slots="heading, code" repeat="1" languages="Java" />
+<CodeBlock slots="heading, code" repeat="2" languages="Java, Node JS" />
 
 ### Java
 
