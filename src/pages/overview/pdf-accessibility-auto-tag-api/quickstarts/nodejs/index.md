@@ -10,7 +10,7 @@ To get started using Adobe PDF Accessibility Auto-Tag API, let's walk through a 
 
 To complete this guide, you will need:
 
-* [Node.js](https://nodejs.org) - Node.js version 14.0 or higher is required. 
+* [Node.js](https://nodejs.org) - Node.js version 18.0 or higher is required. 
 * An Adobe ID. If you do not have one, the credential setup will walk you through creating one.
 * A way to edit code. No specific editor is required for this guide.
 
@@ -40,7 +40,7 @@ To complete this guide, you will need:
 
 ![alt](./shot5_spc.png)
 
-2) Take these the `pdfservices-api-credentials.json` and place it in a new directory. Remember that these credential files are important and should be stored safely.
+2) Take the `pdfservices-api-credentials.json` and place it in a new directory. Remember that these credential files are important and should be stored safely.
 
 3) At the command line, change to the directory you created, and initialize a new Node.js project with `npm init -y`
 
@@ -65,27 +65,18 @@ Now you're ready to begin coding.
 1) We'll begin by including our required dependencies:
 
 ```js
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+const {
+  ServicePrincipalCredentials,
+  PDFServices,
+  MimeType,
+  AutotagPDFParams,
+  AutotagPDFJob,
+  AutotagPDFResult,
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 ```
 
-The first line includes the Adobe PDF Services Node.js SDK. The second third include Node's `filesystem` package as well as the package that will work with the ZIP file returned from the API. 
-
-2) Now let's define our input and output:
-
-```js
-const INPUT_PDF = './Adobe Accessibility Auto-Tag API Sample.pdf';
-const OUTPUT_PATH = './output/AutotagPDF/';
-
-//Remove if the output already exists.
-if(fs.existsSync(OUTPUT_PATH)) fs.unlinkSync(OUTPUT_PATH);
-
-const TAGGED_PDF = OUTPUT_PATH + INPUT_PDF + "-tagged-pdf.pdf";
-const TAGGING_REPORT = OUTPUT_PATH + INPUT_PDF + "-tagging-report.xlsx";
-```
-
-This defines what our output directory will be and optionally deletes it if it already exists. Then we define what PDF will be tagged. (You can download the source we used <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>.) In a real application, these values would be typically be dynamic.
-
-3) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+2) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
 - **Windows:**
     - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
     - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
@@ -94,52 +85,74 @@ This defines what our output directory will be and optionally deletes it if it a
     - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
     - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
-4) Next, we setup the SDK to use our credentials.
+3) Next, we can create our credentials and use them:
 
 ```js
-const credentials =  PDFServicesSdk.Credentials
-    .servicePrincipalCredentialsBuilder()
-    .withClientId(process.env.PDF_SERVICES_CLIENT_ID)
-    .withClientSecret(process.env.PDF_SERVICES_CLIENT_SECRET)
-    .build();
+// Initial setup, create credentials instance
+const credentials = new ServicePrincipalCredentials({
+  clientId: process.env.PDF_SERVICES_CLIENT_ID,
+  clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+});
 
-// Create an ExecutionContext using credentials
-const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
+// Creates a PDF Services instance
+const pdfServices = new PDFServices({credentials});
 ```
 
-This code both points to the credentials downloaded previously as well as sets up an execution context object that will be used later.
-
-4) Now, let's create the operation:
+4) Now, let's upload the asset:
 
 ```js
-// Create a new operation instance.
-const autotagPDFOperation = PDFServicesSdk.AutotagPDF.Operation.createNew(),
-	input = PDFServicesSdk.FileRef.createFromLocalFile(INPUT_PDF);
-
-// Build autotagPDF options
-const autotagPDFOptions = new PDFServicesSdk.AutotagPDF.options.AutotagPDFOptions.Builder()
-    .shiftHeadings()
-    .generateReport()
-    .build();
-autotagPDFOperation.setInput(input);
-autotagPDFOperation.setOptions(options);
+const inputAsset = await pdfServices.upload({
+  readStream,
+  mimeType: MimeType.PDF
+});
 ```
 
-This set of code defines what we're doing (an Auto-Tag operation), points to our local file and specifies the input is a PDF, and then defines options for the Auto-Tag call. PDF Accessibility Auto-Tag API has a few different options, but in this example, we're simply asking for a basic tagging operation, which returns the tagged PDF document and an XLSX report of the document.
-
-5) The next code block executes the operation:
+5) Now, let's create the parameters and the job:
 
 ```js
-// Execute the operation
-autotagPDFOperation.execute(executionContext)
-	.then(result => {
-        result.taggedPDF.saveAsFile(TAGGED_PDF);
-        result.report.saveAsFile(TAGGING_REPORT);
-    })
-	.then(() => {
-		console.log('Successfully tagged information in PDF.');
-	})
-	.catch(err => console.log(err));
+// Create parameters for the job
+const params = new AutotagPDFParams({
+  generateReport: true,
+  shiftHeadings: true
+});
+
+// Creates a new job instance
+const job = new AutotagPDFJob({inputAsset, params});
+```
+
+This set of code defines what we're doing (an Auto-Tag operation),
+it defines parameters for the Auto-Tag job. PDF Accessibility Auto-Tag API has a few different options, but in this example, we're simply asking for a basic tagging operation, which returns the tagged PDF document and an XLSX report of the document.
+
+6) The next code block submits the job and gets the job result:
+
+```js
+// Submit the job and get the job result
+const pollingURL = await pdfServices.submit({job});
+const pdfServicesResponse = await pdfServices.getJobResult({
+  pollingURL,
+  resultType: AutotagPDFResult
+});
+
+// Get content from the resulting asset(s)
+const resultAsset = pdfServicesResponse.result.taggedPDF;
+const resultAssetReport = pdfServicesResponse.result.report;
+const streamAsset = await pdfServices.getContent({asset: resultAsset});
+const streamAssetReport = await pdfServices.getContent({asset: resultAssetReport});
+```
+
+7) The next code block saves the result at the specified location:
+
+```js
+// Creates an output stream and copy stream asset's content to it
+const outputFilePath = "./autotag-tagged.pdf";
+const outputFilePathReport = "./autotag-report.xlsx";
+console.log(`Saving asset at ${outputFilePath}`);
+console.log(`Saving asset at ${outputFilePathReport}`);
+
+let writeStream = fs.createWriteStream(outputFilePath);
+streamAsset.readStream.pipe(writeStream);
+writeStream = fs.createWriteStream(outputFilePathReport);
+streamAssetReport.readStream.pipe(writeStream);
 ```
 
 ![Example running at the command line](./shot9_ga.png)
@@ -147,48 +160,73 @@ autotagPDFOperation.execute(executionContext)
 Here's the complete application (`autotag-pdf.js`):
 
 ```js
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+const {
+  ServicePrincipalCredentials,
+  PDFServices,
+  MimeType,
+  AutotagPDFParams,
+  AutotagPDFJob,
+  AutotagPDFResult,
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 
-const INPUT_PDF = './Adobe Accessibility Auto-Tag API Sample.pdf';
-const OUTPUT_PATH = './output/AutotagPDF/';
+(async () => {
+  let readStream;
+  try {
+    // Initial setup, create credentials instance
+    const credentials = new ServicePrincipalCredentials({
+      clientId: process.env.PDF_SERVICES_CLIENT_ID,
+      clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+    });
 
-//Remove if the output already exists.
-if(fs.existsSync(OUTPUT_PATH)) fs.unlinkSync(OUTPUT_PATH);
+    // Creates a PDF Services instance
+    const pdfServices = new PDFServices({credentials});
 
-const TAGGED_PDF = OUTPUT_PATH + INPUT_PDF + "-tagged-pdf.pdf";
-const TAGGING_REPORT = OUTPUT_PATH + INPUT_PDF + "-tagging-report.xlsx";
+    // Creates an asset(s) from source file(s) and upload
+    readStream = fs.createReadStream("./Adobe_Accessibility_Auto_Tag_API_Sample.pdf");
+    const inputAsset = await pdfServices.upload({
+      readStream,
+      mimeType: MimeType.PDF
+    });
 
-const credentials =  PDFServicesSdk.Credentials
-    .servicePrincipalCredentialsBuilder()
-    .withClientId(process.env.PDF_SERVICES_CLIENT_ID)
-    .withClientSecret(process.env.PDF_SERVICES_CLIENT_SECRET)
-    .build();
+    // Create parameters for the job
+    const params = new AutotagPDFParams({
+      generateReport: true,
+      shiftHeadings: true
+    });
 
-// Create an ExecutionContext using credentials
-const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
+    // Creates a new job instance
+    const job = new AutotagPDFJob({inputAsset, params});
 
-// Create a new operation instance.
-const autotagPDFOperation = PDFServicesSdk.AutotagPDF.Operation.createNew(),
-    input = PDFServicesSdk.FileRef.createFromLocalFile(INPUT_PDF);
+    // Submit the job and get the job result
+    const pollingURL = await pdfServices.submit({job});
+    const pdfServicesResponse = await pdfServices.getJobResult({
+      pollingURL,
+      resultType: AutotagPDFResult
+    });
 
-// Build autotagPDF options
-const autotagPDFOptions = new PDFServicesSdk.AutotagPDF.options.AutotagPDFOptions.Builder()
-    .shiftHeadings()
-    .generateReport()
-    .build();
-autotagPDFOperation.setInput(input);
-autotagPDFOperation.setOptions(options);
+    // Get content from the resulting asset(s)
+    const resultAsset = pdfServicesResponse.result.taggedPDF;
+    const resultAssetReport = pdfServicesResponse.result.report;
+    const streamAsset = await pdfServices.getContent({asset: resultAsset});
+    const streamAssetReport = await pdfServices.getContent({asset: resultAssetReport});
 
-// Execute the operation
-autotagPDFOperation.execute(executionContext)
-    .then(result => {
-        result.taggedPDF.saveAsFile(TAGGED_PDF);
-        result.report.saveAsFile(TAGGING_REPORT);
-    })
-    .then(() => {
-        console.log('Successfully tagged information in PDF.');
-    })
-    .catch(err => console.log(err));
+    // Creates an output stream and copy stream asset's content to it
+    const outputFilePath = "./autotag-tagged.pdf";
+    const outputFilePathReport = "./autotag-report.xlsx";
+    console.log(`Saving asset at ${outputFilePath}`);
+    console.log(`Saving asset at ${outputFilePathReport}`);
+
+    let writeStream = fs.createWriteStream(outputFilePath);
+    streamAsset.readStream.pipe(writeStream);
+    writeStream = fs.createWriteStream(outputFilePathReport);
+    streamAssetReport.readStream.pipe(writeStream);
+  } catch (err) {
+    console.log("Exception encountered while executing operation", err);
+  } finally {
+    readStream?.destroy();
+  }
+})();
 ```
 
 ## Next Steps
