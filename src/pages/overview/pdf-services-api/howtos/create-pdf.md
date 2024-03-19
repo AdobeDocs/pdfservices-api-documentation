@@ -1511,3 +1511,235 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
 // Legacy API can be found here 
 // https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```
+
+## Create a PDF from HTML using Template Engine
+
+
+To support workflows with template data, `CreatePDFFromHTMLWithTemplateEngine`
+creates PDFs from HTML using a template engine. It's a common scenario for enterprise to
+provide end users with an HTML template with form fields.The class requires the use of any template engine, such as Mustache or Liquid, in the client file to process the HTML templates and generate the corresponding PDF output.The client file 
+can include any template engine library(Mustache,Liquid) which uses the input data in the HTML file to manipulate the HTML DOM, thus effectively 
+updating the source HTML file and merging the json field values.
+
+Refer to the API docs for usage.
+
+The sample `CreatePDFFromHTMLWithTemplateEngine` converts a zip file, containing
+the input HTML index.html at the top
+level of the archive as well as any dependencies such as images, css
+files, and so on. 
+This mechanism can be used to creates PDFs from HTML using a template engine.
+
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+
+#### Java
+
+```javascript 
+// Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
+// Run the sample:
+// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.createpdf.CreatePDFFromHTMLWithTemplateEngine
+
+public class CreatePDFFromHTMLWithTemplateEngine {
+
+   // Initialize the logger.
+   private static final Logger LOGGER = LoggerFactory.getLogger(CreatePDFFromHTMLWithTemplateEngine.class);
+
+   public static void main(String[] args) {
+
+     try {
+
+       // Initial setup, create credentials instance.
+       Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
+           .fromFile("pdfservices-api-credentials.json")
+           .build();
+
+       //Create an ExecutionContext using credentials and create a new operation instance.
+       ExecutionContext executionContext = ExecutionContext.create(credentials);
+       CreatePDFOperation htmlToPDFOperation = CreatePDFOperation.createNew();
+
+       // Set operation input from a source file.
+       FileRef source = FileRef.createFromLocalFile("src/main/resources/createPDFFromHTMLWithTemplateEngineInput.zip");
+       htmlToPDFOperation.setInput(source);
+
+       // Provide any custom configuration options for the operation.
+       setCustomOptions(htmlToPDFOperation);
+
+       // Execute the operation.
+       FileRef result = htmlToPDFOperation.execute(executionContext);
+
+       // Save the result to the specified location.
+       result.saveAs("output/createPDFFromHTMLWithTemplateEngineOutput.pdf");
+
+     } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
+       LOGGER.error("Exception encountered while executing operation", ex);
+     }
+   }
+
+   private static void setCustomOptions(CreatePDFOperation htmlToPDFOperation) {
+     // Define the page layout, in this case an 8 x 11.5 inch page (effectively portrait orientation).
+     PageLayout pageLayout = new PageLayout();
+     pageLayout.setPageSize(8, 11.5);
+
+     // Set the desired HTML-to-PDF conversion options.
+     CreatePDFOptions htmlToPdfOptions = CreatePDFOptions.htmlOptionsBuilder()
+         .includeHeaderFooter(true)
+         .withPageLayout(pageLayout)
+         .build();
+     htmlToPDFOperation.setOptions(htmlToPdfOptions);
+   }
+ }
+```
+
+#### .NET
+
+```javascript
+// Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
+// Run the sample:
+// cd CreatePDFFromHTMLWithTemplateEngine/
+// dotnet run CreatePDFFromHTMLWithTemplateEngine.csproj
+
+namespace CreatePDFFromHTMLWithTemplateEngine
+ {
+   class Program
+   {
+     private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+     static void Main()
+     {
+       //Configure the logging
+       ConfigureLogging();
+       try
+       {
+         // Initial setup, create credentials instance.
+         Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
+                 .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                 .Build();
+
+         //Create an ExecutionContext using credentials and create a new operation instance.
+         ExecutionContext executionContext = ExecutionContext.Create(credentials);
+         CreatePDFOperation htmlToPDFOperation = CreatePDFOperation.CreateNew();
+
+         // Set operation input from a source file.
+         FileRef source = FileRef.CreateFromLocalFile(@"createPDFFromHTMLWithTemplateEngineInput.zip");
+         htmlToPDFOperation.SetInput(source);
+
+         // Provide any custom configuration options for the operation.
+         SetCustomOptions(htmlToPDFOperation);
+
+         // Execute the operation.
+         FileRef result = htmlToPDFOperation.Execute(executionContext);
+
+         // Save the result to the specified location.
+         result.SaveAs(Directory.GetCurrentDirectory() + "/output/createPDFFromHTMLWithTemplateEngineOutput.pdf");
+       }
+       catch (ServiceUsageException ex)
+       {
+         log.Error("Exception encountered while executing operation", ex);
+       }
+        // Catch more errors here. . .
+     }
+
+     private static void SetCustomOptions(CreatePDFOperation htmlToPDFOperation)
+     {
+       // Define the page layout, in this case an 8 x 11.5 inch page (effectively portrait orientation).
+       PageLayout pageLayout = new PageLayout();
+       pageLayout.SetPageSize(8, 11.5);
+
+       // Set the desired HTML-to-PDF conversion options.
+       CreatePDFOptions htmlToPdfOptions = CreatePDFOptions.HtmlOptionsBuilder()
+           .IncludeHeaderFooter(true)
+           .WithPageLayout(pageLayout)
+           . Build();
+       htmlToPDFOperation.SetOptions(htmlToPdfOptions);
+     }
+
+     static void ConfigureLogging()
+     {
+       ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+       XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+     }
+   }
+ }
+```
+
+#### Node JS
+
+```javascript
+// Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
+// Run the sample:
+// node src/createpdf/create-pdf-from-html-with-fields.js
+
+const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+
+ const setCustomOptions = (htmlToPDFOperation) => {
+   // Define the page layout, in this case an 8 x 11.5 inch page (effectively portrait orientation).
+   const pageLayout = new PDFServicesSdk.CreatePDF.options.PageLayout();
+   pageLayout.setPageSize(8, 11.5);
+
+   // Set the desired HTML-to-PDF conversion options.
+   const htmlToPdfOptions = new PDFServicesSdk.CreatePDF.options.html.CreatePDFFromHtmlOptions.Builder()
+     .includesHeaderFooter(true)
+     .withPageLayout(pageLayout)
+     .build();
+   htmlToPDFOperation.setOptions(htmlToPdfOptions);
+ };
+
+
+ try {
+   // Initial setup, create credentials instance.
+   const credentials =  PDFServicesSdk.Credentials
+     .serviceAccountCredentialsBuilder()
+     .fromFile("pdfservices-api-credentials.json")
+     .build();
+
+   // Create an ExecutionContext using credentials and create a new operation instance.
+   const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
+     htmlToPDFOperation = PDFServicesSdk.CreatePDF.Operation.createNew();
+
+   // Set operation input from a source file.
+   const input = PDFServicesSdk.FileRef.createFromLocalFile('resources/createPDFFromHTMLWithTemplateEngineInput.zip');
+   htmlToPDFOperation.setInput(input);
+
+   // Provide any custom configuration options for the operation.
+   setCustomOptions(htmlToPDFOperation);
+
+   // Execute the operation and Save the result to the specified location.
+   htmlToPDFOperation.execute(executionContext)
+     .then(result => result.saveAsFile('output/createPDFFromHTMLWithTemplateEngineOutput.pdf'))
+     .catch(err => {
+       if(err instanceof PDFServicesSdk.Error.ServiceApiError
+         || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
+         console.log('Exception encountered while executing operation', err);
+       } else {
+         console.log('Exception encountered while executing operation', err);
+       }
+     });
+ } catch (err) {
+   console.log('Exception encountered while executing operation', err);
+ }
+```
+
+#### Rest API
+
+```javascript
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
+
+curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopdf' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+    "json": "{}",
+    "includeHeaderFooter": true,
+    "pageLayout": {
+        "pageWidth": 11,
+        "pageHeight": 8.5
+    }
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
+```
+
