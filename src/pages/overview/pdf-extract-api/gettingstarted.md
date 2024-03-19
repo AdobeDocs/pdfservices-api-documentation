@@ -5,7 +5,7 @@ title: Getting Started | PDF Accessibility Auto-Tag API | Adobe PDF Services
 # Getting Started
 
 <p>
-PDF Accessibility Auto-Tag API assists in the process of improving accessibility in individual PDFs via auto-tagging, adding document structure tags to the PDF file that are used to read a document's text and presenting it in a way that makes sense to users using assistive technology. The API is accessible through SDKs which help you get up and running quickly. Once you've received your developer credential, download and set up one of the sample projects. After you're familiar with the APIs, leverage the samples in your own server-side code.
+The PDF Extract API provides modern cloud-based capabilities for automatically extracting contents from PDF. The API is accessible through SDKs which help you get up and running quickly. Once you've received your developer credential, download and set up one of the sample projects. After you're familiar with the APIs, leverage the samples in your own server-side code.
 </p>
 
 <InlineAlert slots="text"/>
@@ -472,7 +472,7 @@ After downloading the zip, you can run the samples in the zip directly by settin
 
 Running any sample or custom code requires the following steps:
 
-1.  Install [Node.js 14.0](https://nodejs.org/en/download/) or higher.
+1.  Install [Node.js 18.0](https://nodejs.org/en/download/) or higher.
 
 <InlineAlert slots="text"/>
 
@@ -623,14 +623,14 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 1.  After downloading the package zip, run following command
 
 ```
-pip hash <download_dir>/pdfservices-sdk-2.0.0.tar.gz
+pip hash <download_dir>/pdfservices-sdk-2.3.1.tar.gz
 ```
 
 1.  Above command will return the hash of downloaded package.
 2.  Verify the hash matches the value published here.
 
 ```
-606f08f0e525a1e0ae79567c077c29dee66971d46415dbc693b95f31597690c0
+08d1c40995658e380c7e5d2fec4cebfbfc22b246582719c5451ae708a28b6a09
 ```
 
 ###### To generate tagged PDF from the sample file

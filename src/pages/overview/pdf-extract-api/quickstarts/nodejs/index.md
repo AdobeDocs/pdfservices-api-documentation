@@ -10,7 +10,7 @@ To get started using Adobe PDF Extract API, let's walk through a simple scenario
 
 To complete this guide, you will need:
 
-* [Node.js](https://nodejs.org) - Node.js version 14.0 or higher is required. 
+* [Node.js](https://nodejs.org) - Node.js version 18.0 or higher is required. 
 * An Adobe ID. If you do not have one, the credential setup will walk you through creating one.
 * A way to edit code. No specific editor is required for this guide.
 
@@ -65,27 +65,20 @@ Now you're ready to begin coding.
 1) We'll begin by including our required dependencies:
 
 ```js
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
-const fs = require('fs');
+const {
+  ServicePrincipalCredentials,
+  PDFServices,
+  MimeType,
+  ExtractPDFParams,
+  ExtractElementType,
+  ExtractPDFJob,
+  ExtractPDFResult
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 const AdmZip = require('adm-zip');
 ```
 
-The first line includes the Adobe PDF Services Node.js SDK. The second third include Node's `filesystem` package as well as the package that will work with the ZIP file returned from the API. 
-
-2) Now let's define our input and output:
-
-```js
-const OUTPUT_ZIP = './ExtractTextInfoFromPDF.zip';
-
-//Remove if the output already exists.
-if(fs.existsSync(OUTPUT_ZIP)) fs.unlinkSync(OUTPUT_ZIP);
-
-const INPUT_PDF = './Adobe Extract API Sample.pdf';
-```
-
-This defines what our output ZIP will be and optionally deletes it if it already exists. Then we define what PDF will be extracted. (You can download the source we used [here](/Adobe%20Extract%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic. 
-
-3) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+2) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
 - **Windows:**
     - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
     - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
@@ -94,70 +87,87 @@ This defines what our output ZIP will be and optionally deletes it if it already
     - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
     - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
-4) Next, we setup the SDK to use our credentials.
+3) Next, we setup the SDK to use our credentials.
 
 ```js
-const credentials =  PDFServicesSdk.Credentials
-    .servicePrincipalCredentialsBuilder()
-    .withClientId(process.env.PDF_SERVICES_CLIENT_ID)
-    .withClientSecret(process.env.PDF_SERVICES_CLIENT_SECRET)
-    .build();
+// Initial setup, create credentials instance
+const credentials = new ServicePrincipalCredentials({
+  clientId: process.env.PDF_SERVICES_CLIENT_ID,
+  clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+});
 
-// Create an ExecutionContext using credentials
-const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
+// Creates a PDF Services instance
+const pdfServices = new PDFServices({credentials});
 ```
 
-This code both points to the credentials downloaded previously as well as sets up an execution context object that will be used later.
-
-5) Now, let's create the operation:
+4) Now, let's upload the asset:
 
 ```js
-// Create a new operation instance.
-const extractPDFOperation = PDFServicesSdk.ExtractPDF.Operation.createNew(),
-	input = PDFServicesSdk.FileRef.createFromLocalFile(
-		INPUT_PDF, 
-		PDFServicesSdk.ExtractPDF.SupportedSourceFormat.pdf
-	);
+const inputAsset = await pdfServices.upload({
+  readStream,
+  mimeType: MimeType.PDF
+});
+```
+We define what PDF will be extracted. (You can download the source we used [here](/Adobe%20Extract%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic.
 
-// Build extractPDF options
-const options = new PDFServicesSdk.ExtractPDF.options.ExtractPdfOptions.Builder()
-		.addElementsToExtract(PDFServicesSdk.ExtractPDF.options.ExtractElementType.TEXT).build()
+5) Now, let's create the parameters and the job:
 
-extractPDFOperation.setInput(input);
-extractPDFOperation.setOptions(options);
+```js
+// Create parameters for the job
+const params = new ExtractPDFParams({
+  elementsToExtract: [ExtractElementType.TEXT]
+});
+
+// Creates a new job instance
+const job = new ExtractPDFJob({inputAsset, params});
 ```
 
-This set of code defines what we're doing (an Extract operation), points to our local file and specifies the input is a PDF, and then defines options for the Extract call. PDF Extract API has a few different options, but in this example, we're simply asking for the most basic of extractions, the textual content of the document. 
+This set of code defines what we're doing (an Extract operation),
+it defines parameters for the Extract job. PDF Extract API has a few different options, but in this example, we're simply asking for the most basic of extractions, the textual content of the document.
 
-6) The next code block executes the operation:
-
+6) The next code block submits the job and gets the job result:
 ```js
-// Execute the operation
-extractPDFOperation.execute(executionContext)
-	.then(result => result.saveAsFile(OUTPUT_ZIP))
-	.then(() => {
-		console.log('Successfully extracted information from PDF.');
-	})
-	.catch(err => console.log(err));
+// Submit the job and get the job result
+const pollingURL = await pdfServices.submit({job});
+const pdfServicesResponse = await pdfServices.getJobResult({
+  pollingURL,
+  resultType: ExtractPDFResult
+});
+
+// Get content from the resulting asset(s)
+const resultAsset = pdfServicesResponse.result.resource;
+const streamAsset = await pdfServices.getContent({asset: resultAsset});
 ```
 
-This code runs the Extraction process and then stores the result zip to the file system. 
+This code runs the Extraction process, gets the content of the result zip in stream asset.
 
-7) In this block, we read in the ZIP file, extract the JSON result file, and parse it:
+7) The next code block saves the result at the specified location:
 
 ```js
-let zip = new AdmZip(OUTPUT_ZIP);
+// Creates a write stream and copy stream asset's content to it
+const outputFilePath = "./ExtractTextInfoFromPDF.zip";
+console.log(`Saving asset at ${outputFilePath}`);
+
+const writeStream = fs.createWriteStream(outputFilePath);
+streamAsset.readStream.pipe(writeStream);
+```
+
+Here's the complete application (`extract.js`):
+
+8) In this block, we read in the ZIP file, extract the JSON result file, and parse it:
+
+```js
+let zip = new AdmZip(outputFilePath);
 let jsondata = zip.readAsText('structuredData.json');
 let data = JSON.parse(jsondata);
 ```
-
-8) Finally we can loop over the result and print out any found element that is an `H1`:
+9) Finally, we can loop over the result and print out any found element that is an `H1`:
 
 ```js
 data.elements.forEach(element => {
-	if(element.Path.endsWith('/H1')) {
-		console.log(element.Text);
-	}
+  if(element.Path.endsWith('/H1')) {
+    console.log(element.Text);
+  }
 });
 ```
 
@@ -166,57 +176,77 @@ data.elements.forEach(element => {
 Here's the complete application (`extract.js`):
 
 ```js
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
-const fs = require('fs');
+const {
+  ServicePrincipalCredentials,
+  PDFServices,
+  MimeType,
+  ExtractPDFParams,
+  ExtractElementType,
+  ExtractPDFJob,
+  ExtractPDFResult
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 const AdmZip = require('adm-zip');
 
-const OUTPUT_ZIP = './ExtractTextInfoFromPDF.zip';
+(async () => {
+  let readStream;
+  try {
+    // Initial setup, create credentials instance
+    const credentials = new ServicePrincipalCredentials({
+      clientId: process.env.PDF_SERVICES_CLIENT_ID,
+      clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+    });
 
-//Remove if the output already exists.
-if(fs.existsSync(OUTPUT_ZIP)) fs.unlinkSync(OUTPUT_ZIP);
+    // Creates a PDF Services instance
+    const pdfServices = new PDFServices({credentials});
 
-const INPUT_PDF = './Adobe Extract API Sample.pdf';
+    // Creates an asset(s) from source file(s) and upload
+    readStream = fs.createReadStream("./Adobe Extract API Sample.pdf");
+    const inputAsset = await pdfServices.upload({
+      readStream,
+      mimeType: MimeType.PDF
+    });
 
-const credentials =  PDFServicesSdk.Credentials
-        .servicePrincipalCredentialsBuilder()
-        .withClientId(process.env.PDF_SERVICES_CLIENT_ID)
-        .withClientSecret(process.env.PDF_SERVICES_CLIENT_SECRET)
-        .build();
+    // Create parameters for the job
+    const params = new ExtractPDFParams({
+      elementsToExtract: [ExtractElementType.TEXT]
+    });
 
-// Create an ExecutionContext using credentials
-const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
+    // Creates a new job instance
+    const job = new ExtractPDFJob({inputAsset, params});
 
-// Create a new operation instance.
-const extractPDFOperation = PDFServicesSdk.ExtractPDF.Operation.createNew(),
-	input = PDFServicesSdk.FileRef.createFromLocalFile(
-		INPUT_PDF, 
-		PDFServicesSdk.ExtractPDF.SupportedSourceFormat.pdf
-	);
+    // Submit the job and get the job result
+    const pollingURL = await pdfServices.submit({job});
+    const pdfServicesResponse = await pdfServices.getJobResult({
+      pollingURL,
+      resultType: ExtractPDFResult
+    });
 
-// Build extractPDF options
-const options = new PDFServicesSdk.ExtractPDF.options.ExtractPdfOptions.Builder()
-		.addElementsToExtract(PDFServicesSdk.ExtractPDF.options.ExtractElementType.TEXT).build()
+    // Get content from the resulting asset(s)
+    const resultAsset = pdfServicesResponse.result.resource;
+    const streamAsset = await pdfServices.getContent({asset: resultAsset});
 
+    // Creates a write stream and copy stream asset's content to it
+    const outputFilePath = "./ExtractTextInfoFromPDF.zip";
+    console.log(`Saving asset at ${outputFilePath}`);
 
-extractPDFOperation.setInput(input);
-extractPDFOperation.setOptions(options);
+    const writeStream = fs.createWriteStream(outputFilePath);
+    streamAsset.readStream.pipe(writeStream);
 
-// Execute the operation
-extractPDFOperation.execute(executionContext)
-	.then(result => result.saveAsFile(OUTPUT_ZIP))
-	.then(() => {
-		console.log('Successfully extracted information from PDF. Printing H1 Headers:\n');
-		let zip = new AdmZip(OUTPUT_ZIP);
-		let jsondata = zip.readAsText('structuredData.json');
-		let data = JSON.parse(jsondata);
-		data.elements.forEach(element => {
-			if(element.Path.endsWith('/H1')) {
-				console.log(element.Text);
-			}
-		});
-
-	})
-	.catch(err => console.log(err));
+    let zip = new AdmZip(outputFilePath);
+    let jsondata = zip.readAsText('structuredData.json');
+    let data = JSON.parse(jsondata);
+    data.elements.forEach(element => {
+      if(element.Path.endsWith('/H1')) {
+        console.log(element.Text);
+      }
+    });
+  } catch (err) {
+    console.log("Exception encountered while executing operation", err);
+  } finally {
+    readStream?.destroy();
+  }
+})();
 ```
 
 ## Next Steps

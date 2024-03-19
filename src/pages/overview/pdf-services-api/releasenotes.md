@@ -73,7 +73,7 @@ import com.adobe.pdfservices.operation.ExecutionContext;
 * Update the latest SDK dependency in package.json file of your project
  
 ```
-"@adobe/pdfservices-node-sdk": "3.4.2"
+"@adobe/pdfservices-node-sdk": "4.0.0"
 ```
 
 * Require the `@adobe/pdfservices-node-sdk` in the Sample file to access the SDK interface
@@ -128,6 +128,21 @@ Minor and Patch releases are backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
+
+### 4.0.0 (April, 2024; major release)
+| Change  | Language | Description                                                                                                                    |
+|---------|----------|--------------------------------------------------------------------------------------------------------------------------------|
+| New     | NodeJS     | Released Adobe PDF Services Node SDK v4.0.0, introducing new interfaces fully leveraging power of new PDF Services rest APIs.  |
+| New     | NodeJS     | Added support for delete asset, refresh download URI, webhook notifiers.                                                       |
+| New     | NodeJS     | Eliminated need of storage to save intermediate result by removed dependency on temporary storage.                             |
+| New     | NodeJS     | Extended I/O capabilities by introducing external storage for a majority of PDF Services operations.                           |
+| Changed | NodeJS     | Updated Extract PDF operation to return content and resource asset along with content JSON object.                             |
+
+### 2.3.1 (March, 2024; patch release)
+
+| Change  | Language         | Description                                                                                                                     |
+|---------|------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| New | Python | PDF operations now support configurable timeouts. |
 
 ### 3.5.1 (December, 2023: patch release)
 

@@ -90,14 +90,8 @@ ClientConfig clientConfig = ClientConfig.ConfigBuilder()
 
 Available properties:
 
--   **connectTimeout**: Default: 10000. The maximum allowed time in
-    milliseconds for creating an initial HTTPS connection.
--   **readTimeout**: Default: 10000. The maximum allowed time in
-    milliseconds between two successive HTTP response packets.
--   **processingTimeout**: Default: 600000. The maximum allowed time
-    in milliseconds for processing the documents. Any operation taking more time than the specified `processingTimeout` will result in an operation timeout exception.
-    - **Note :** It is advisable to set the `processingTimeout` to higher values for processing large files.
-
+-   **timeout**: Default: 10000. The maximum allowed time in milliseconds before the request times out. If the request
+    takes longer than `timeout`, the request will be aborted.
 
 Override the timeout properties via a custom `ClientConfig` class:
 
@@ -106,22 +100,24 @@ Override the timeout properties via a custom `ClientConfig` class:
 ### 
 
 ```javascript
-const clientConfig = PDFServicesSdk.ClientConfig
-  .clientConfigBuilder()
-  .withConnectTimeout(15000)
-  .withReadTimeout(15000)
-  .build();
+const clientConfig = new ClientConfig({
+    timeout: 15000
+})
 ```  
 
 ### Python timeout configuration
 
 Available properties:
 
--   **connectTimeout**: Default: 4000. The number of milliseconds
+- **connectTimeout**: Default: 4000. The number of milliseconds
     Requests will wait for the client to establish a connection to
     Server.
--   **readTimeout**: Default: 10000. The number of milliseconds the
+- **readTimeout**: Default: 10000. The number of milliseconds the
     client will wait for the server to send a response.
+- **processingTimeout**: Default: 600000. The maximum allowed time
+      in milliseconds for processing the documents. Any operation taking more time than the specified `processingTimeout` will result in an operation timeout exception.
+  - **Note :** It is advisable to set the `processingTimeout` to higher values for processing large files.
+
 
 Override the timeout properties via a custom `ClientConfig` class:
 
@@ -133,5 +129,6 @@ Override the timeout properties via a custom `ClientConfig` class:
 client_config = ClientConfig.builder()
     .with_connect_timeout(10000)
     .with_read_timeout(40000)
+    .with_processing_timeout(900000)
     .build()
 ```
