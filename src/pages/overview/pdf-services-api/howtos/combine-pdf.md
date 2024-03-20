@@ -169,8 +169,8 @@ const fs = require("fs");
         const pdfServices = new PDFServices({credentials});
 
         // Creates an asset(s) from source file(s) and upload
-        readStream1 = fs.createReadStream("resources/combineFilesInput1.pdf");
-        readStream2 = fs.createReadStream("resources/combineFilesInput2.pdf");
+        readStream1 = fs.createReadStream("./combineFilesInput1.pdf");
+        readStream2 = fs.createReadStream("./combineFilesInput2.pdf");
         const [inputAsset1, inputAsset2] = await pdfServices.uploadAssets({
             streamAssets: [{
                 readStream: readStream1,
@@ -459,8 +459,8 @@ const fs = require("fs");
         const pdfServices = new PDFServices({credentials});
 
         // Creates an asset(s) from source file(s) and upload
-        readStream1 = fs.createReadStream("resources/combineFilesInput1.pdf");
-        readStream2 = fs.createReadStream("resources/combineFilesInput2.pdf");
+        readStream1 = fs.createReadStream("./combineFilesInput1.pdf");
+        readStream2 = fs.createReadStream("./combineFilesInput2.pdf");
         const [inputAsset1, inputAsset2] = await pdfServices.uploadAssets({
             streamAssets: [{
                 readStream: readStream1,
