@@ -10040,6 +10040,7 @@
         "additionalProperties": false
       },
       "SplitPDFInternal": {
+        "title": "Internal",
         "description": "Params for Split PDF Operation.",
         "type": "object",
         "properties": {
