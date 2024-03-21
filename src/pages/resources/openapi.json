@@ -7023,7 +7023,7 @@
           }
         ],
         "requestBody": {
-          "description": "Input Params for Accessibility Auto-Tag Operation.",
+          "description": "Input Params for Accessibility Auto-Tag Operation. Refer to the External Section below for using external storage with Accessibility Auto-Tag Operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -8419,7 +8419,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for document generation processing",
+            "description": "Params for create pdf processing",
             "type": "object",
             "properties": {
               "documentLanguage": {
@@ -10041,7 +10041,7 @@
       },
       "SplitPDFInternal": {
         "title": "Internal",
-        "description": "Params for Split PDF Operation.",
+        "description": "Params for Split PDF Operation. Refer to the External Section below for using external storage with Split PDF Operation.",
         "type": "object",
         "properties": {
           "assetID": {
@@ -11941,13 +11941,13 @@
               "done"
             ]
           },
-          "asset": {
+          "assetList": {
             "$ref": "#/components/schemas/responseAssetZip"
           }
         },
         "example": {
           "status": "done",
-          "asset": {
+          "assetList": {
             "metadata": {
               "type": "application/pdf",
               "size": 200791
@@ -12488,13 +12488,13 @@
               "done"
             ]
           },
-          "asset": {
+          "resource": {
             "$ref": "#/components/schemas/responseAssetZip"
           }
         },
         "example": {
           "status": "done",
-          "asset": {
+          "resource": {
             "metadata": {
               "type": "application/pdf",
               "size": 200791
@@ -12623,7 +12623,7 @@
       },
       "AutoTagPDFDoneExternalWithoutOutput" : {
         "title": "External without output uri in request",
-        "description": "Response in case of 'done' status when ouput uri is not passed in the rquest",
+        "description": "Response in case of 'done' status when ouput uri is not passed in the request",
         "type": "object",
         "properties": {
           "status": {
@@ -12633,13 +12633,13 @@
               "done"
             ]
           },
-          "asset": {
+          "resource": {
             "$ref": "#/components/schemas/responseAssetZip"
           }
         },
         "example": {
           "status": "done",
-          "asset": {
+          "resource": {
             "metadata": {
               "type": "application/pdf",
               "size": 200791
