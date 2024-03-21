@@ -23,7 +23,6 @@ A placeholder(text tags) gets replaced by the actual input data.
 
 <https://images-tv.adobe.com/mpcv3/5158/aa393134-7cf7-4ebb-bfd0-1ced95237d20_1615916599.854x480at800_h264.mp4#t=3>
 
-
 <InlineAlert slots="text"/>
 
 A placeholder variable can only be applied to an input field of type
@@ -53,7 +52,6 @@ Placeholder variables get replaced with the actual input data.
 
 ![Placeholder tags being replaced by values](../images/placeholder_basic.png)
 
-
 **Default Value**
 
 A default value can be specified for the placeholder variable. In case
@@ -61,7 +59,6 @@ the specified tag is not present in the input json data, the placeholder
 gets replaced with the default value.
 
 ![Placeholder tags with default value set](../images/placeholder_default.png)
-
 
 **Optional**
 
@@ -87,7 +84,6 @@ placeholder and edit the alt text as per the defined format:
 <Media slots="video"/>
 
 <https://images-tv.adobe.com/mpcv3/5158/43cb78ad-e98d-4deb-bdca-cf32edd0df95_1615916490.854x480at800_h264.mp4#t=3>
-
 
 ```json
 {
@@ -122,6 +118,7 @@ Image data can be provided either in the form of the base64 encoded string or in
   "logo": "data:image/png;base64,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"
 }
 ```
+
 <p style="text-align:center;">OR</p>
 
 ```json
@@ -129,6 +126,7 @@ Image data can be provided either in the form of the base64 encoded string or in
   "logo": "https://documentcloud.adobe.com/dc-docgen-app/assets/dc_icon.png"
 }
 ```
+
 <InlineAlert slots="text"/>
 
 Only https image urls with an image size of less than 20 MB are allowed.
@@ -160,7 +158,6 @@ Show or hide content in the document based on the conditions.
 
 <https://images-tv.adobe.com/mpcv3/5158/671b4819-2e8c-44a1-8667-e9dfd2556133_1615916356.854x480at800_h264.mp4#t=3>
 
-
 <InlineAlert slots="text"/>
 
 The condition must be wrapped inside *expr()*. <br/> Supported
@@ -174,13 +171,11 @@ JSON representation of the input data:
 }
 ```
 
-
 **Conditional Sections**
 
 Show or hide paragraphs based on conditions.
 
 ![Showing an paragraph based on a condition](../images/conditional_section.png)
-
 
 **Conditional Phrases**
 
@@ -200,11 +195,11 @@ JSON representation of the input data:
   "Table_Data": "<table border='1' cellpadding='0' cellspacing='0' style='width:30%'><tr><th>Name</th><th>Age</th><th>Gender</th></tr><tr><td>Sheldon</td><td>29</td><td>Male</td></tr><tr><td>Leonard</td><td>30</td><td>Male</td></tr><tr><td>Howard</td><td>28</td><td>Male</td></tr><tr><td>Raj</td><td>29</td><td>Male</td></tr></table>"
 }
 ```
+
 **Usage**
 
 Placeholder tag is replaced by a table generated using the html string provided in the input json.
 ![Sample for HTML Table insertion](../images/html_table_output.png)
-
 
 <InlineAlert slots="text"/>
 
@@ -216,12 +211,10 @@ Placeholder tag is replaced by a table generated using the html string provided 
 Table tags can also inserted in a document using table markers. Please refer [Table Tag with Markers](../document-generation-api/tablewithmarkers.md)
 to learn more about the usage of table markers.
 
-
 <InlineAlert slots="text"/>
 
 Please visit [Complex Table Constructs](../document-generation-api/complextableconstructs.md) to learn about advanced
 constructs inside tables.
-
 
 ### Insert Table using Placeholder Table Tag 
 
@@ -229,13 +222,11 @@ constructs inside tables.
 
 Rows of a table can be dynamically populated by repeating over an array of objects from the input data.
 
-
 **How to insert Tables**
 
 <Media slots="video"/>
 
 <https://images-tv.adobe.com/mpcv3/5158/d58772af-7a62-49fa-a098-12b11a27fb71_1615917048.854x480at800_h264.mp4#t=3>
-
 
 <InlineAlert slots="text"/>
 
@@ -284,6 +275,61 @@ over the specified array of objects.
 
 ## Lists
 
+### Insert List using `<ul>` and `<ol>` HTML Elements
+Add lists in the document through JSON data using `<ul>` (unordered list) and `<ol>` (ordered list) tags.
+
+**Simple Lists**
+
+JSON representation of the input data:
+
+```json
+{
+  "List_Data": "<ul><li>Coffee</li><li>Tea</li><li>Milk</li></ul>"
+}
+```
+
+Placeholder tag is replaced by a list generated using the html string provided in the input json.
+
+![Sample for HTML Table insertion](../images/List_Example_1.png)
+
+**Nested Lists**
+
+JSON representation of the input data:
+
+```json
+{
+  "List_Data": "<ol><li>Level 1</li><li>Level 1<ol><li>Level 2</li><li>Level 2<ol><li>Level 3</li><li>Level 3</li></ol></li></ol></li></ol>"
+}
+```
+
+Placeholder tag is replaced by a list generated using the html string provided in the input json.
+
+![Sample for HTML Table insertion](../images/Nested_Numbered_Lists_Example.png)
+
+<InlineAlert slots="text"/>
+
+- Placeholder Tags containing `<ul>` or `<ol>` HTML elements as values in input JSON data should be placed in a separate paragraph in the input document template.
+
+- Only Inline Styling of List elements is possible. i.e. using style attribute of `<ol>` & `<ul>`. Internal and External styling are not allowed.
+
+- The `list-style-type` property allows customization of the appearance of list markers. It supports various options such as disc, circle, square, decimal, decimal-leading-zero, lower-roman, upper-roman, lower-alpha, and upper-alpha.
+
+**Example of list marker customization**
+
+JSON representation of the input data:
+
+```json
+{
+  "List_Data": "<ol style = \" list-style-type : upper-roman; \"><li>Coffee</li><li>Tea</li><li>Milk</li></ol>"
+}
+```
+
+Placeholder tag is replaced by a list generated using the html string provided in the input json.
+
+![Sample for HTML Table insertion](../images/Upper_Roman_List_Example.png)
+
+### Insert Lists using Repeating Sections
+
 Dynamically generate numbered or bullet lists by repeating over a list.
 
 **How to insert Lists**
@@ -291,7 +337,6 @@ Dynamically generate numbered or bullet lists by repeating over a list.
 <Media slots="video"/>
 
 <https://images-tv.adobe.com/mpcv3/5158/d58772af-7a62-49fa-a098-12b11a27fb71_1615917048.854x480at800_h264.mp4#t=3>
-
 
 JSON representation of the input data:
 
@@ -311,7 +356,6 @@ JSON representation of the input data:
 }
 ```
 
-
 **Numbered Lists**
 
 Dynamically generate a numbered list by placing it inside a repeating
@@ -325,8 +369,6 @@ Dynamically generate a bullet list by placing it inside a repeating
 section.
 
 ![Template tag items are replaced by bullet list](../images/bullet_list.png)
-
-
 
 **Simple Lists**
 
@@ -342,7 +384,6 @@ Dynamically generate a numbered or bullet list by placing it inside a repeating 
 
 ![Template tag items are replaced by numbered or bullet list](../images/simple_lists.png)
 
-
 ## Numerical Calculations
 
 Performing numerical calculations on the input data.
@@ -352,7 +393,6 @@ Performing numerical calculations on the input data.
 <Media slots="video"/>
 
 <https://images-tv.adobe.com/mpcv3/5158/e5e5e7c6-a63c-45cf-8a17-b60291068626_1615916868.854x480at800_h264.mp4#t=3>
-
 
 All calculations supported are [JSONata compliant](https://docs.jsonata.org/overview.html).
 
@@ -383,7 +423,6 @@ JSON representation of the input data:
 }
 ```
 
-
 **Arithmetic**
 
 Performs simple arithmetic operations.
@@ -395,7 +434,6 @@ Performs simple arithmetic operations.
 Supported arithmetic operations are +, -, \*, /, % . <br/> An
 arithmetic numerical calculation can only be applied to input fields
 that corresponds to a number.
-
 
 **Aggregation**
 

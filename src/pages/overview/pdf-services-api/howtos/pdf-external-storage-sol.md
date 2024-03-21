@@ -11,18 +11,6 @@ A **Signed URL** temporarily provides access to a resource. Signed URLs contain 
 
 PDF Services APIs supports the signed URLs of input and output files in the request body. Please refer to the **External Section** in Request Body of each API for more details.
 
-<InlineAlert slots="text"/>
-
-<div>
-Accessing files from External Storage is currently <b>not</b> supported in the following APIs
-<ul>
-    <li> <a href="../../../apis/#tag/PDF-Accessibility-Auto-Tag">PDF Accessibility Auto Tag</a> </li>
-    <li><a href="../../../apis/#tag/Extract-PDF">Extract PDF</a></li>
-    <li><a href="../../../apis/#tag/PDF-Electronic-Seal">PDF Electronic Seal</a> </li>
-    <li><a href="../../../apis/#tag/Split-PDF">Split PDF</a> </li>
-</ul>
-</div>
-
 ## Supported External Storage Solutions
 
 The concept of Signed URLs is common across various cloud storage solutions for downloading and uploading files. Adobe PDF Services APIs currently supports the signed URLs generated through -
