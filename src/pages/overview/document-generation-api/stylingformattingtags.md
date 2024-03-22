@@ -19,6 +19,8 @@ Apply styling and formatting in the generated output document using the HTML bas
 
 - Create [Paragraphs](/overview/document-generation-api/stylingformattingtags/#how-to-create-paragraphs-in-document).
 
+- Create [Lists](/overview/document-generation-api/templatetags/#insert-list-using-ul-and-ol-html-elements).
+
 ## How It Works
 
 Basic styling for the text tags can be provided from the input json data.
@@ -94,6 +96,7 @@ JSON representation of the input data:
 
 - [<p\> (para)](/overview/document-generation-api/stylingformattingtags/#how-to-create-paragraphs-in-document)
 
+- [<ol\> & <ul\> (ordered lists and unordered lists)](/overview/document-generation-api/templatetags/#insert-list-using-ul-and-ol-html-elements)
 
 JSON representation of the input data:
 
@@ -119,6 +122,10 @@ JSON representation of the input data:
 ```
 ![Sample_for_P_tag](../images/sample_for_p_tags.png)
 ![Sample for P tag_output](../images/sample_for_ptag_formatted.png)
+
+<InlineAlert slots="text"/>
+
+- `&nbsp` HTML entity is not supported in JSON for representing non-breaking space characters.
 
 
 
