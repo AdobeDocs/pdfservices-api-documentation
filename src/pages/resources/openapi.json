@@ -1883,7 +1883,7 @@
         "tags": [
           "Create PDF"
         ],
-        "summary": "Poll the create pdf job for completion",
+        "summary": "Poll the create PDF job for completion",
         "operationId": "pdfoperations.jobstatus",
         "parameters": [
           {
@@ -3017,7 +3017,7 @@
         "tags": [
           "Compress PDF"
         ],
-        "summary": "Poll the compress pdf job for completion",
+        "summary": "Poll the compress PDF job for completion",
         "operationId": "pdfoperations.compresspdf.jobstatus",
         "parameters": [
           {
@@ -3401,7 +3401,7 @@
         "tags": [
           "Export PDF"
         ],
-        "summary": "Poll the export pdf job for completion",
+        "summary": "Poll the export PDF job for completion",
         "operationId": "pdfoperations.exportpdf.jobstatus",
         "parameters": [
           {
@@ -5297,7 +5297,7 @@
         "tags": [
           "PDF Properties"
         ],
-        "summary": "Poll the pdf properties job for completion",
+        "summary": "Poll the PDF properties job for completion",
         "operationId": "pdfoperations.pdfproperties.jobstatus",
         "parameters": [
           {
@@ -8652,7 +8652,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutputZip"
           },
           "params": {
-            "description": "Params for PDF2Images processing",
+            "description": "Params for PDF to Images processing",
             "type": "object",
             "properties": {
               "targetFormat": {
@@ -8966,7 +8966,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for HTML2PDF processing",
+            "description": "Params for HTML to PDF processing",
             "type": "object",
             "properties": {
               "json": {
@@ -10681,7 +10681,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for Extract PDF processing",
+            "description": "Params for Electronic Seal processing",
             "type": "object",
             "properties": {
               "sealOptions": {
@@ -11049,10 +11049,6 @@
             "description": "Params for Auto Tag PDF processing",
             "type": "object",
             "properties": {
-              "assetID": {
-                "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
-                "type": "string"
-              },
               "shiftHeadings": {
                 "description": "Boolean specifying whether to shift headings.",
                 "type": "boolean",
