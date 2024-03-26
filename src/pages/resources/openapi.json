@@ -8419,7 +8419,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for create pdf processing",
+            "description": "Params for Create PDF processing",
             "type": "object",
             "properties": {
               "documentLanguage": {
@@ -8529,7 +8529,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for export pdf processing",
+            "description": "Params for Export PDF processing",
             "type": "object",
             "properties": {
               "targetFormat": {
@@ -9255,7 +9255,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for compress PDF processing",
+            "description": "Params for Compress PDF processing",
             "type": "object",
             "properties": {
               "compressionLevel": {
@@ -9437,7 +9437,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for ocr pdf processing",
+            "description": "Params for OCR PDF processing",
             "type": "object",
             "properties": {
               "ocrLang": {
@@ -9574,7 +9574,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for page manipulation processing",
+            "description": "Params for Page Manipulation processing",
             "type": "object",
             "properties": {
               "pageActions": {
@@ -9703,7 +9703,7 @@
             "$ref": "#/components/schemas/ExternalStorageInput"
           },
           "params": {
-            "description": "Params for pdf properties processing",
+            "description": "Params for PDF Properties processing",
             "type": "object",
             "properties": {
               "pageLevel": {
@@ -9844,7 +9844,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for protect pdf processing",
+            "description": "Params for Protect PDF processing",
             "type": "object",
             "properties": {
               "passwordProtection": {
@@ -9992,7 +9992,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for remove protection processing.",
+            "description": "Params for Remove Protection processing.",
             "type": "object",
             "properties": {
               "password": {
@@ -10263,7 +10263,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for document generation processing",
+            "description": "Params for Document Generation processing",
             "type": "object",
             "properties": {
               "outputFormat": {
@@ -11551,7 +11551,7 @@
         ]
       },
       "externaldonewithoutoutput": {
-        "title": "External Without Ouput URI in request",
+        "title": "External without an output URI in the request",
         "description": "Response in case of 'done' status",
         "type": "object",
         "properties": {
@@ -11579,7 +11579,7 @@
         }
       },
       "external": {
-        "title": "External with output uri passed in request",
+        "title": "External with an output URI in the request",
         "description": "Response in case of 'done' status using signed urls",
         "type": "object",
         "properties": {
@@ -11810,7 +11810,7 @@
         ]
       },
       "splitpdfdoneWithoutOutput" : {
-        "title": "External without output uri in request",
+        "title": "External without an output URI in the request",
         "description": "Response in case of 'done' status when ouput uri is not passed in the rquest",
         "type": "object",
         "properties": {
@@ -11926,7 +11926,7 @@
         ]
       },
       "PDFTOImageDoneExternalWithoutOutput" : {
-        "title": "External without output uri in request",
+        "title": "External without an output URI in the request",
         "description": "Response in case of 'done' status when ouput uri is not passed in the rquest",
         "type": "object",
         "properties": {
@@ -12473,7 +12473,7 @@
         ]
       },
       "ExtractPDFDoneExternalWithoutOutput" : {
-        "title": "External without output uri in request",
+        "title": "External without an output URI in the request",
         "description": "Response in case of 'done' status when ouput uri is not passed in the rquest",
         "type": "object",
         "properties": {
@@ -12618,7 +12618,7 @@
         ]
       },
       "AutoTagPDFDoneExternalWithoutOutput" : {
-        "title": "External without output uri in request",
+        "title": "External without an output URI in the request",
         "description": "Response in case of 'done' status when ouput uri is not passed in the request",
         "type": "object",
         "properties": {
@@ -12791,7 +12791,7 @@
         ]
       },
       "ElectronicSealPDFDoneExternalWithoutOutput" : {
-        "title": "External without output uri in request",
+        "title": "External without an output URI in the request",
         "description": "Response in case of 'done' status",
         "type": "object",
         "properties": {
