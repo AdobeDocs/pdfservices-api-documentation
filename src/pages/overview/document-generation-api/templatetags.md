@@ -298,7 +298,7 @@ JSON representation of the input data:
 
 ```json
 {
-"List_Data": "<ol><li>Level 1</li><li>Level 1<ol><li>Level 2</li><li>Level 2<ol><li>Level 3</li><li>Level 3</li></ol></li></ol></li></ol>"
+  "List_Data": "<ol><li>Level 1</li><li>Level 1<ol><li>Level 2</li><li>Level 2<ol><li>Level 3</li><li>Level 3</li></ol></li></ol></li></ol>"
 }
 ```
 
@@ -310,7 +310,7 @@ Placeholder tag is replaced by a list generated using the html string provided i
 
 - Placeholder Tags containing `<ul>` or `<ol>` HTML elements as values in input JSON data should be placed in a separate paragraph in the input document template.
 
-- Only Inline Styling of List elements is possible. i.e. using style attribute of `<ol>` & `<ul>`. Internal and External styling are not allowed.
+- Only Inline Styling of List elements is allowed. i.e. using style attribute of `<ol>` & `<ul>`.
 
 - The `list-style-type` property allows customization of the appearance of list markers. It supports various options such as disc, circle, square, decimal, decimal-leading-zero, lower-roman, upper-roman, lower-alpha, and upper-alpha.
 
@@ -320,7 +320,7 @@ JSON representation of the input data:
 
 ```json
 {
-"List_Data": "<ol style = \" list-style-type : upper-roman; \"><li>Coffee</li><li>Tea</li><li>Milk</li></ol>"
+  "List_Data": "<ol style = \" list-style-type : upper-roman; \"><li>Coffee</li><li>Tea</li><li>Milk</li></ol>"
 }
 ```
 
