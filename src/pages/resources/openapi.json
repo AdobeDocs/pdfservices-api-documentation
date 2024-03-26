@@ -1335,7 +1335,7 @@
           }
         ],
         "requestBody": {
-          "description": "Params for Extract PDF Operation",
+          "description": "Params for Extract PDF Operation. Refer to the External Section below for using external storage with Extract PDF Operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -6267,7 +6267,7 @@
           }
         ],
         "requestBody": {
-          "description": "Params for Split PDF Operation",
+          "description": "Params for Split PDF Operation. Refer to the External Section below for using external storage with Split PDF Operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -6645,7 +6645,7 @@
           }
         ],
         "requestBody": {
-          "description": "Params to specify the options required for applying electronic seal.",
+          "description": "Params to specify the options required for applying Electronic Seal. Refer to the External Section below for using external storage with Electronic Seal Operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -10041,7 +10041,7 @@
       },
       "SplitPDFInternal": {
         "title": "Internal",
-        "description": "Params for Split PDF Operation. Refer to the External Section below for using external storage with Split PDF Operation.",
+        "description": "Params for Split PDF Operation.",
         "type": "object",
         "properties": {
           "assetID": {
