@@ -7,7 +7,7 @@ Reduce the size of PDF files by compressing to smaller sizes for lower bandwidth
 
 Support for multiple compression levels to retain the quality of images and graphics
 
-## Rest API
+## REST API
 
 See our public API Reference for [Compress PDF](../../../apis/#tag/Compress-PDF)
 
@@ -18,7 +18,7 @@ operations that use bandwidth or memory.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" />
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" />
 
 #### Java
 
@@ -194,10 +194,10 @@ const fs = require("fs");
 })();
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Compress-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/compresspdf' \
@@ -208,8 +208,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/compress
     "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
 }'
 
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-compressPDF
 ```
 
 ## Compress PDFs with Compression Level
@@ -221,7 +219,7 @@ list of supported compression levels.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -416,10 +414,10 @@ const fs = require("fs");
 })();
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Compress-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/compresspdf' \
@@ -430,7 +428,4 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/compress
     "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
     "compressionLevel": "MEDIUM"
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-compressPDF
 ```

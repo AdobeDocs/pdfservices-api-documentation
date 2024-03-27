@@ -63,7 +63,7 @@ The sample below generates a tagged PDF from a PDF.
 
 Please refer to the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -323,7 +323,7 @@ Here is a sample list of command line arguments and their description:
 - --shift_headings { If this argument is present then the headings will be shifted in the output PDF file }
 
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 

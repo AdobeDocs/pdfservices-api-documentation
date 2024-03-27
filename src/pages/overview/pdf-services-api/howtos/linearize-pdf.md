@@ -5,7 +5,7 @@ title: Linearize PDF | How Tos | PDF Services API | Adobe PDF Services
 
 Optimize PDFs for quick viewing on the web, especially for mobile clients. Linearization allows your end users to view large PDF documents incrementally so that they can view pages much faster in lower bandwidth conditions.
 
-## Rest API 
+## REST API 
 
 See our public API Reference for [Linearize PDF](../../../apis/#tag/Linearize-PDF)
 
@@ -16,7 +16,7 @@ incremental access in network environments.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -192,10 +192,10 @@ const fs = require("fs");
 })();
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Linearize-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/linearizepdf' \
@@ -205,7 +205,4 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/lineariz
 --data-raw '{
     "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-linearizePDF
 ```

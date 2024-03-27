@@ -5,7 +5,7 @@ title: Rotate Pages | How Tos | PDF Services API | Adobe PDF Services
 
 Rotate a page in an existing document.
 
-## Rest API
+## REST API
 
 See our public API Reference for [Rotate Pages.](../../../apis/#tag/Page-Manipulation)
 
@@ -16,7 +16,7 @@ example, you can change portrait view to landscape view.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -290,10 +290,10 @@ function getSecondPageRangeForRotation() {
 }
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Page-Manipulation
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/pagemanipulation' \
@@ -326,7 +326,4 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/pagemani
         }
     ]
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-pageManipulation
 ```

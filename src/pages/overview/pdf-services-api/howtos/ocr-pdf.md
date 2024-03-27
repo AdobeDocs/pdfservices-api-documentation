@@ -5,7 +5,7 @@ title: OCR PDF | How Tos | PDF Services API | Adobe PDF Services
 
 Use built-in optical character recognition (OCR) to convert images to text and enable fully text searchable documents for archiving and creation of searchable indexes.
 
-## Rest API 
+## REST API 
 
 See our public API Reference for [OCR PDF](../../../apis/#tag/OCR)
 
@@ -20,7 +20,7 @@ This sample defaults to the en-us locale. For other languages, see [OCR with exp
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -196,10 +196,10 @@ const fs = require("fs");
 })();
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Ocr
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/ocr' \
@@ -209,9 +209,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/ocr' \
 --data-raw '{
     "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-ocr
 ```
 
 ## OCR with explicit language
@@ -237,7 +234,7 @@ are two types which produce a different result:
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -434,10 +431,10 @@ const fs = require("fs");
 })();
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Ocr
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/ocr' \
@@ -448,7 +445,4 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/ocr' \
     "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
     "ocrLang": "en-US"
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-ocr
 ```
