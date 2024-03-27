@@ -19,9 +19,9 @@ PDF Services API endpoints are authenticated endpoints. Getting an access token 
 1. **Get Credentials** Invoking PDF Services API requires an Adobe-provided credential. To get one, [click here](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
 2. **Retrieve Access Token** The PDF Services APIs require an access_token to authorize the request. Use the "Get AccessToken" API from the Postman Collection with your client_id, client_secret (mentioned in the pdfservices-api-credentials.json file downloaded in 1) to get the access_token OR directly use the below mentioned cURL to get the access_token.
 
-<CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
+<CodeBlock slots="heading, code" repeat="1" languages="REST API" /> 
 
-### Rest API
+### REST API
 
 ```javascript
 curl --location 'https://pdf-services.adobe.io/token' \

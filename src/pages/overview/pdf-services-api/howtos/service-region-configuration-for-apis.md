@@ -24,9 +24,9 @@ For invoking region specific PDF Services API endpoints, hostnames needs to be c
 
 ### Assets API 
 
-<CodeBlock slots="heading, code" repeat="1" languages="Rest API" />
+<CodeBlock slots="heading, code" repeat="1" languages="REST API" />
 
-#### Rest API
+#### REST API
 
 ```javascript
 curl --location --request POST 'https://pdf-services-ew1.adobe.io/assets' \
@@ -40,9 +40,9 @@ curl --location --request POST 'https://pdf-services-ew1.adobe.io/assets' \
 
 ### Create Job API
 
-<CodeBlock slots="heading, code" repeat="1" languages="Rest API" />
+<CodeBlock slots="heading, code" repeat="1" languages="REST API" />
 
-#### Rest API
+#### REST API
 
 ```javascript
 
@@ -58,9 +58,9 @@ curl --location --request POST 'https://pdf-services-ew1.adobe.io/operation/{Pla
 
 ### Poll Job API
 
-<CodeBlock slots="heading, code" repeat="1" languages="Rest API" />
+<CodeBlock slots="heading, code" repeat="1" languages="REST API" />
 
-#### Rest API
+#### REST API
 
 ```javascript
 

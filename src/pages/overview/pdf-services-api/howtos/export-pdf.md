@@ -5,7 +5,7 @@ title: Export PDF | How Tos | PDF Services API | Adobe PDF Services
 
 Export a source PDF file into doc, docx, jpeg, png, pptx, rtf, xlsx.
 
-## Rest API 
+## REST API 
 
 See our public API Reference for : 
 - [Export PDF to Office format or text files](../../../apis/#tag/Export-PDF)
@@ -22,7 +22,7 @@ such as:
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -210,10 +210,10 @@ const fs = require("fs");
 })();
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Export-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/exportpdf' \
@@ -224,9 +224,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/exportpd
     "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
     "targetFormat": "docx"
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
 ```
 
 ## Export a PDF file to a DOCX file (apply OCR on the PDF file)
@@ -242,7 +239,7 @@ OCR processing is also performed on the input PDF file to extract text from imag
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -434,10 +431,10 @@ const fs = require("fs");
 })();
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Export-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/exportpdf' \
@@ -449,9 +446,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/exportpd
     "targetFormat": "docx",
     "ocrLang": "en-US"
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
 ```
 
 ## Export a PDF to images
@@ -463,7 +457,7 @@ pages will generate 15 image files. The first file's name ends with
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -666,10 +660,10 @@ const fs = require("fs");
 })();
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/PDF-To-Images
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/pdftoimages' \
@@ -681,9 +675,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/pdftoima
     "targetFormat": "jpeg",
     "outputType": "listOfPageImages"
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
 ```
 
 ## Export a PDF to zip of page images
@@ -692,7 +683,7 @@ The sample below converts a PDF file to one or more jpeg or png images. The resu
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -885,10 +876,10 @@ const fs = require("fs");
 })();
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/PDF-To-Images
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/pdftoimages' \
@@ -900,7 +891,4 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/pdftoima
     "targetFormat": "jpeg",
     "outputType": "zipOfPageImages"
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
 ```
