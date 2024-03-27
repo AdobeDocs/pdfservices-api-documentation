@@ -22,7 +22,7 @@ following formats:
 If a Microsoft Word/PowerPoint input file has an embedded TrueType font, the output pdf will also contain the same embedded TrueType font.
 For more information, refer [Benefits of embedding custom fonts](https://support.microsoft.com/en-us/office/benefits-of-embedding-custom-fonts-cb3982aa-ea76-4323-b008-86670f222dbc#OfficeVersion=Windows).
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -160,10 +160,10 @@ const PDFservicesSdk = require('@adobe/pdfservices-node-sdk');
  }
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information
+// Please refer our REST API docs for more information
 // https://documentcloud.adobe.com/document-services/index.html#post-createPDF
 
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
@@ -205,7 +205,7 @@ file, the SDK supports the following formats:
 
 
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -386,10 +386,10 @@ try {
 }
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information
+// Please refer our REST API docs for more information
 // https://documentcloud.adobe.com/document-services/index.html#post-createPDF
 
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
@@ -432,7 +432,7 @@ the input file must be a zip file containing an index.html at the top
 level of the archive as well as any dependencies such as images, css
 files, and so on.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -620,10 +620,10 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
  }
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information
+// Please refer our REST API docs for more information
 // https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
@@ -667,7 +667,7 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
 
 The sample below creates a PDF file from a static HTML file with inline CSS. The file must be local.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -855,10 +855,10 @@ try {
 }
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information
+// Please refer our REST API docs for more information
 // https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
@@ -902,7 +902,7 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
 
 The sample below creates a PDF file from a HTML file specified via URL.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -1091,10 +1091,10 @@ try {
 }
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information
+// Please refer our REST API docs for more information
 // https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
@@ -1147,7 +1147,7 @@ manipulate the HTML DOM, thus effectively updating the source HTML file.
 This mechanism can be used to provide data to the template HTML
 dynamically prior to PDF conversion.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -1353,10 +1353,10 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
  }
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information
+// Please refer our REST API docs for more information
 // https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \

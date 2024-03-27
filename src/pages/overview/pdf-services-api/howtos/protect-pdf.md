@@ -7,7 +7,7 @@ Secure a PDF file with a password encrypt the document. Set an owner password an
 
 Support for AES-128 and AES-256 encryption on PDF files, with granular permissions for high and low quality printing and fill and sign form field restrictions.
 
-## Rest API 
+## REST API 
 
 See our public API Reference for [Protect PDF](../../../apis/#tag/Protect-PDF)
 
@@ -18,7 +18,7 @@ password can open the file.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -217,10 +217,10 @@ const fs = require("fs");
 })();
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Protect-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/protectpdf' \
@@ -234,9 +234,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/protectp
     "encryptionAlgorithm": "AES_128",
     "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-protectPDF
 ```
 
 ## Protect PDFs with owner password
@@ -249,7 +246,7 @@ of document permissions.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -482,10 +479,10 @@ const fs = require("fs");
 })();
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Protect-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/protectpdf' \
@@ -499,7 +496,4 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/protectp
   "encryptionAlgorithm": "AES_256",
   "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-protectPDF
 ```

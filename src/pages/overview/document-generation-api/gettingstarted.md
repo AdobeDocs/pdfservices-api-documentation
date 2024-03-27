@@ -143,7 +143,7 @@ The sample below generates the output document in the **PDF** format. Similarly,
 
 Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Rest API, REST API with External Storage" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, REST API, REST API with External Storage" /> 
 
 ##### Java
 
@@ -367,10 +367,10 @@ const fs = require("fs");
 })();
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Document-Generation
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/documentgeneration' \
@@ -405,16 +405,13 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/document
         "photograph": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII="
     }
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-documentGeneration
 ```
 
 
-#### Rest API with External Storage
+#### REST API with External Storage
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Document-Generation
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/documentgeneration' \
@@ -457,9 +454,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/document
         }
     }
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-documentGeneration
 ```
 
 As a result of the Document Generation API, template tags are replaced
@@ -474,7 +468,7 @@ The sample below shows the use of **Fragments** in the word template and generat
 
 Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Rest API, Rest API with External Storage"/>
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, REST API, REST API with External Storage"/>
 
 ##### Java
 
@@ -773,10 +767,10 @@ const fs = require("fs");
 })();
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Document-Generation
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/documentgeneration' \
@@ -819,16 +813,13 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/document
         }
     ]
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-documentGeneration
 ```
 
 
-#### Rest API with External Storage
+#### REST API with External Storage
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Document-Generation
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/documentgeneration' \
@@ -879,7 +870,4 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/document
         ]
     }
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-documentGeneration
 ```

@@ -5,7 +5,7 @@ title: Split PDF | How Tos | PDF Services API | Adobe PDF Services
 
 Split a PDF document into multiple smaller documents by simply specifying either the number of files, pages per file, or page ranges.
 
-## Rest API 
+## REST API 
 
 See our public API Reference for [Split PDF](../../../apis/#tag/Split-PDF).
 
@@ -17,7 +17,7 @@ file.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -224,10 +224,10 @@ const fs = require("fs");
 })();
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Split-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf' \
@@ -240,9 +240,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf
         "pageCount": 9
     }
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
 ```
 
 ## Split PDF by page ranges
@@ -253,7 +250,7 @@ ranges where each page range corresponds to a single output file.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -500,10 +497,10 @@ const getPageRanges = () => {
 };
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Split-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf' \
@@ -525,9 +522,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf
         ]
     }
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
 ```
 
 ## Split PDF into number of files
@@ -539,7 +533,7 @@ an identical number of pages (if possible).
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -748,10 +742,10 @@ const fs = require("fs");
 })();
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Split-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf' \
@@ -764,7 +758,4 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf
         "fileCount": 3
     }
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
 ```

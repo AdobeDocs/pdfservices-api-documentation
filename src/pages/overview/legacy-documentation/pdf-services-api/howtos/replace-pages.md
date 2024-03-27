@@ -8,7 +8,7 @@ title: Replace Pages | How Tos | PDF Services API | Adobe PDF Services
 The replace pages operation replaces pages in a PDF with pages from
 other PDF files.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -225,10 +225,10 @@ other PDF files.
      }
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information
+// Please refer our REST API docs for more information
 // https://documentcloud.adobe.com/document-services/index.html#post-combinePDF
 
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \

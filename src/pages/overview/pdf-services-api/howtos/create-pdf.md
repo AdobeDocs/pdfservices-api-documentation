@@ -5,7 +5,7 @@ title: Create PDF | How Tos | PDF Services API | Adobe PDF Services
 
 Create PDFs from a variety of formats, including static and dynamic HTML; Microsoft Word, PowerPoint, and Excel; as well as text, image, Zip, and URL. Support for HTML to PDF, DOC to PDF, DOCX to PDF, PPT to PDF, PPTX to PDF, XLS to PDF, XLSX to PDF, TXT to PDF, RTF to PDF, BMP to PDF, JPEG to PDF, GIF to PDF, TIFF to PDF, PNG to PDF
 
-## Rest API
+## REST API
 
 See our public API Reference for :
 - [Create PDF from Office formats](../../../apis/#tag/Create-PDF)
@@ -32,7 +32,7 @@ For more information, refer [Benefits of embedding custom fonts](https://support
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -209,10 +209,10 @@ const fs = require("fs");
 })();
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Create-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/createpdf' \
@@ -222,9 +222,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/createpd
 --data-raw '{
     "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-createPDF
 ```
 
 ## Create PDF with DocumentLanguage
@@ -241,7 +238,7 @@ file, the SDK supports the following formats:
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -446,10 +443,10 @@ const fs = require("fs");
 })();
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Create-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/createpdf' \
@@ -460,9 +457,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/createpd
     "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
     "documentLanguage": "en-US"
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-createPDF
 ```
 
 ## Create a PDF from static HTML
@@ -475,7 +469,7 @@ files, and so on.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -700,10 +694,10 @@ function getHTMLToPDFParams() {
 }
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopdf' \
@@ -719,9 +713,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
         "pageHeight": 8.5
     }
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```
 
 ## Create a PDF from static HTML with inline CSS
@@ -730,7 +721,7 @@ The sample below creates a PDF file from a static HTML file with inline CSS. The
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -955,10 +946,10 @@ function getHTMLToPDFParams() {
 }
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopdf' \
@@ -974,9 +965,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
         "pageHeight": 8.5
     }
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```
 
 ## Create a PDF File From HTML specified via URL
@@ -985,7 +973,7 @@ The sample below creates a PDF file from a HTML file specified via URL.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -1200,10 +1188,10 @@ function getHTMLToPDFParams() {
 }
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopdf' \
@@ -1219,9 +1207,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
         "pageHeight": 8.5
     }
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```
 
 ## Create a PDF from dynamic HTML
@@ -1243,7 +1228,7 @@ dynamically prior to PDF conversion.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -1488,10 +1473,10 @@ function getHTMLToPDFParams() {
 }
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopdf' \
@@ -1507,7 +1492,4 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
         "pageHeight": 8.5
     }
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```

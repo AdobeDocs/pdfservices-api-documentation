@@ -13,7 +13,7 @@ such as:
 -   Text files
 -   Images
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -151,10 +151,10 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
  }
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information
+// Please refer our REST API docs for more information
 // https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
 
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
@@ -196,7 +196,7 @@ page. Each image file name ends with
 pages will generate 15 image files. The first file's name ends with
 "\_1" and the last file's name ends with "\_15".
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -335,10 +335,10 @@ pages will generate 15 image files. The first file's name ends with
  }
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information
+// Please refer our REST API docs for more information
 // https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
 
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
@@ -375,7 +375,7 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
 
 The sample below converts a PDF file to one or more jpeg or png images.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -527,10 +527,10 @@ try {
 }
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information
+// Please refer our REST API docs for more information
 // https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
 
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \

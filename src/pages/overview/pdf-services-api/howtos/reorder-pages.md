@@ -5,7 +5,7 @@ title: Reorder Pages | How Tos | PDF Services API | Adobe PDF Services
 
 Reorder the pages of a PDF file to reorganize.
 
-## Rest API
+## REST API
 
 See our public API Reference for [Reorder Pages](../../../apis/#tag/Combine-PDF)
 
@@ -16,7 +16,7 @@ a PDF file.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -248,10 +248,10 @@ function getPageRangeForReorder() {
 }
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Combine-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/combinepdf' \
@@ -279,7 +279,4 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/combinep
         }
     ]
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-combinePDF
 ```
