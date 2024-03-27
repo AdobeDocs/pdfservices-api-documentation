@@ -7,7 +7,7 @@ title: PDF Properties | How Tos | PDF Services API | Adobe PDF Services
 
 The sample below fetches the properties of an input PDF, as a JSON file.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -147,10 +147,10 @@ try {
 }
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information
+// Please refer our REST API docs for more information
 // https://documentcloud.adobe.com/document-services/index.html#post-pdfProperties
 
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
@@ -187,7 +187,7 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
 
 The sample below fetches the properties of an input PDF, as a JSON object.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -340,10 +340,10 @@ try {
 }
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information
+// Please refer our REST API docs for more information
 // https://documentcloud.adobe.com/document-services/index.html#post-pdfProperties
 
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \

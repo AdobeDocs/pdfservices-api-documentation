@@ -161,7 +161,7 @@ The sample below performs electronic seal operation with default appearance on a
 
 Please refer to the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -588,7 +588,7 @@ The sample below performs electronic seal operation with customized appearance o
 
 Please refer to the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -1056,7 +1056,7 @@ The sample below performs electronic seal operation with a trusted timestamp on 
 
 Please refer to the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, Node JS, Rest API" />
+<CodeBlock slots="heading, code" repeat="3" languages="Java, Node JS, REST API" />
 
 #### Java
 
@@ -1338,7 +1338,7 @@ const fs = require("fs");
 })();
 ```
 
-#### Rest API
+#### REST API
 ```javascript
 curl --location --request POST 'https://pdf-services.adobe.io/operation/electronicseal' \
 --header 'x-api-key: {{Placeholder for client_id}}' \

@@ -5,7 +5,7 @@ title: Remove Protection | How Tos | PDF Services API | Adobe PDF Services
 
 Remove password security from a PDF document. This can only be accomplished with the owner password of the document which must be passed in the operation.
 
-## Rest API 
+## REST API 
 
 See our public API Reference for [Remove Protection](../../../apis/#tag/Remove-Protection)
 
@@ -15,7 +15,7 @@ Use the below sample to remove security from a PDF document.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -206,10 +206,10 @@ const fs = require("fs");
 })();
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Remove-Protection
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/removeprotection' \
@@ -220,7 +220,4 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/removepr
     "password": "mypassword",
     "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-removeProtection
 ```

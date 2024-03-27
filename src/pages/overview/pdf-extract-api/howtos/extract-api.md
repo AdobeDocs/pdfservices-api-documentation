@@ -143,7 +143,7 @@ schema](/extractJSONOutputSchema2.json)):
 | Unknown error / failure               | ERROR                                                                                                                                                                                | Unable to extract content - Internal error.                 |
 
 
-## Rest API 
+## REST API 
 
 See our public API Reference for [Extract PDF](../../../apis/#tag/Extract-PDF).
 
@@ -153,7 +153,7 @@ The sample below extracts text element information from a PDF document and retur
 
 Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -405,10 +405,10 @@ except (ServiceApiException, ServiceUsageException, SdkException):
     logging.exception("Exception encountered while executing operation")
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
@@ -421,9 +421,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
         "text"
     ]
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables
@@ -432,7 +429,7 @@ The sample below extracts text and table element information from a PDF document
 
 Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java,.NET, Node JS, Python, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java,.NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -686,10 +683,10 @@ except (ServiceApiException, ServiceUsageException, SdkException):
     logging.exception("Exception encountered while executing operation")
 ```
 
-#### Rest API
+#### REST API
 
-```javascript
-// Please refer our Rest API docs for more information 
+```curl
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
@@ -703,9 +700,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
         "tables"
     ]
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables (w/ Tables Renditions)
@@ -714,7 +708,7 @@ The sample below extracts text and table element information as well as table re
 
 Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -972,10 +966,10 @@ except (ServiceApiException, ServiceUsageException, SdkException):
     logging.exception("Exception encountered while executing operation")
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
@@ -992,9 +986,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
         "tables"
     ],
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables (w/ Tables and Figures Renditions)
@@ -1003,7 +994,7 @@ The sample below extracts text and table elements information as well as table a
 
 Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -1261,10 +1252,10 @@ except (ServiceApiException, ServiceUsageException, SdkException):
     logging.exception("Exception encountered while executing operation")
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
@@ -1282,9 +1273,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
         "tables"
     ]
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables and Character Bounding Boxes (w/ Renditions)
@@ -1293,7 +1281,7 @@ The sample below extracts table renditions and bounding boxes for characters pre
 
 Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -1550,10 +1538,10 @@ except (ServiceApiException, ServiceUsageException, SdkException):
     logging.exception("Exception encountered while executing operation")
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
@@ -1572,9 +1560,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
     ],
     "getCharBounds": true
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables and Table Structure as CSV (w/ Renditions)
@@ -1583,7 +1568,7 @@ The sample below adds option to get CSV output for tables in addition to extract
 
 Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -1846,10 +1831,10 @@ except (ServiceApiException, ServiceUsageException, SdkException):
     logging.exception("Exception encountered while executing operation")
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
@@ -1867,9 +1852,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
     ],
     "tableOutputFormat": "csv"
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables and Styling Info
@@ -1879,7 +1861,7 @@ schema](/extractJSONOutputSchemaStylingInfo.json) for reference.
 
 Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java,.NET, Node JS, Python, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java,.NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -2136,10 +2118,10 @@ except (ServiceApiException, ServiceUsageException, SdkException):
     logging.exception("Exception encountered while executing operation")
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
@@ -2154,7 +2136,4 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
     ],
     "includeStyling": true
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```

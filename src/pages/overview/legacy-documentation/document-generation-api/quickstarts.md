@@ -84,7 +84,7 @@ Please allow-list the following hostnames before using Adobe PDF Services SDK:<u
 
 The sample below generates the output document in the **PDF** format. Similarly, you can specify **DOCX** as the **OutputFormat** to generate Word documents.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 ##### Java
 
@@ -268,7 +268,7 @@ The sample below generates the output document in the **PDF** format. Similarly,
  }
 ```
 
-##### Rest API
+##### REST API
 
 ```javascript
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
@@ -331,7 +331,7 @@ with the input JSON data.
 
 The sample below shows the use of **Fragments** in the word template and generates the output document in the **PDF** format.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" />
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" />
 
 ##### Java
 
@@ -587,7 +587,7 @@ The sample below shows the use of **Fragments** in the word template and generat
 
 ```
 
-##### Rest API
+##### REST API
 
 ```javascript
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \

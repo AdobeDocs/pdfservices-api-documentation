@@ -143,7 +143,7 @@ schema](/extractJSONOutputSchema2.json)):
 
 The sample below extracts text element information from a PDF document and returns a JSON file.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -360,7 +360,7 @@ namespace ExtractTextInfoFromPDF
          logging.exception("Exception encountered while executing operation")
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
@@ -404,7 +404,7 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
 The sample below extracts text and table element information from a PDF document and returns a JSON file along with table data in XLSX format.
 
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java,.NET, Node JS, Python, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java,.NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -625,7 +625,7 @@ namespace ExtractTextTableInfoFromPDF
       logging.exception("Exception encountered while executing operation")
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
@@ -668,7 +668,7 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
 
 The sample below extracts text and table element information as well as table renditions from a PDF Document. Note that the output is a zip containing the structured information in a JSON file along with table renditions in PNG and XLSX format.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -891,7 +891,7 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
       logging.exception("Exception encountered while executing operation")
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
@@ -935,7 +935,7 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
 
 The sample below extracts text and table elements information as well as table and figure renditions from a PDF Document. Note that the output is a zip containing the structured information in a JSON file along with figure renditions as PNGs and table renditions in PNG and XLSX format.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -1157,7 +1157,7 @@ try {
       logging.exception("Exception encountered while executing operation")
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
@@ -1202,7 +1202,7 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
 The sample below extracts table renditions and bounding boxes for characters present in text blocks (paragraphs, list, headings), in addition to text and table element information from a PDF Document. Note that the output is a zip containing the structured information along with table renditions in PNG and XLSX format.
 
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -1424,7 +1424,7 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
       logging.exception("Exception encountered while executing operation")
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
@@ -1469,7 +1469,7 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
 The sample below adds option to get CSV output for tables in addition to extracting text and table element information as well as table renditions from a PDF Document. Note that the output is a zip containing the structured information along with table renditions in PNG and CSV format.
 
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -1696,7 +1696,7 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
 
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
@@ -1741,7 +1741,7 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
 The sample below adds an option to get styling information for each text element( Bold / Italics / Superscript etc) in addition to extracting text and table element information. Note that the output is a zip containing the structured information along with table renditions in PNG and XLSX format. Please see the [Styling JSON
 schema](/extractJSONOutputSchemaStylingInfo.json) for reference.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java,.NET, Node JS, Python, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java,.NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -1964,7 +1964,7 @@ namespace ExtractTextTableInfoWithStylingFromPDF
       logging.exception("Exception encountered while executing operation")
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
