@@ -136,46 +136,71 @@ namespace GetPDFProperties
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
-// node src/exportpdf/get-pdf-properties.js
+// node src/pdfproperties/get-pdf-properties.js
 
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    PDFPropertiesParams,
+    PDFPropertiesJob,
+    PDFPropertiesResult,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 
-try {
-    // Initial setup, create credentials instance.
-    const credentials =  PDFServicesSdk.Credentials
-        .servicePrincipalCredentialsBuilder()
-        .withClientId("PDF_SERVICES_CLIENT_ID")
-        .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-        .build();
-
-    //Create an ExecutionContext using credentials and create a new operation instance.
-    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
-        pdfPropertiesOperation = PDFServicesSdk.PDFProperties.Operation.createNew();
-
-    // Set operation input from a source file.
-    const input = PDFServicesSdk.FileRef.createFromLocalFile('resources/pdfPropertiesInput.pdf');
-    pdfPropertiesOperation.setInput(input);
-
-    // Provide any custom configuration options for the operation.
-    const options = new PDFServicesSdk.PDFProperties.options.PDFPropertiesOptions.Builder()
-        .includePageLevelProperties(true)
-        .build();
-    pdfPropertiesOperation.setOptions(options);
-
-    // Execute the operation ang get properties of the PDF in PDFProperties object.
-    pdfPropertiesOperation.execute(executionContext)
-        .then(result => console.log("The resultant json object is : " + JSON.stringify(result, null, 4)))
-        .catch(err => {
-            if(err instanceof PDFServicesSdk.Error.ServiceApiError
-                || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-                console.log('Exception encountered while executing operation', err);
-            } else {
-                console.log('Exception encountered while executing operation', err);
-            }
+(async () => {
+    let readStream;
+    try {
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
         });
-} catch (err) {
-    console.log('Exception encountered while executing operation', err);
-}
+
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
+
+        // Creates an asset(s) from source file(s) and upload
+        readStream = fs.createReadStream("./pdfPropertiesInput.pdf");
+        const inputAsset = await pdfServices.upload({
+            readStream,
+            mimeType: MimeType.PDF
+        });
+
+        // Create parameters for the job
+        const params = new PDFPropertiesParams({
+            includePageLevelProperties: true
+        });
+
+        // Creates a new job instance
+        const job = new PDFPropertiesJob({inputAsset, params});
+
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: PDFPropertiesResult
+        });
+
+        const pdfProperties = pdfServicesResponse.result.pdfProperties;
+
+        // Fetch the requisite properties of the specified PDF.
+        console.log(`Size of the specified PDF file: ${pdfProperties.document.fileSize}`);
+        console.log(`Version of the specified PDF file: ${pdfProperties.document.pdfVersion}`);
+        console.log(`Page count of the specified PDF file: ${pdfProperties.document.pageCount}`);
+    } catch (err) {
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        readStream?.destroy();
+    }
+})();
 ```
 
 #### Rest API 

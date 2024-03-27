@@ -129,39 +129,67 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // Run the sample:
 // node src/linearizepdf/linearize-pdf.js
 
-   const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
-  
-   try {
-     // Initial setup, create credentials instance.
-       const credentials =  PDFServicesSdk.Credentials
-           .servicePrincipalCredentialsBuilder()
-           .withClientId("PDF_SERVICES_CLIENT_ID")
-           .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-           .build();
-  
-     // Create an ExecutionContext using credentials and create a new operation instance.
-     const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
-         linearizePDF = PDFServicesSdk.LinearizePDF,
-         linearizePDFOperation = linearizePDF.Operation.createNew();
-  
-     // Set operation input from a source file.
-     const input = PDFServicesSdk.FileRef.createFromLocalFile('resources/linearizePDFInput.pdf');
-     linearizePDFOperation.setInput(input);
-  
-     // Execute the operation and Save the result to the specified location.
-     linearizePDFOperation.execute(executionContext)
-         .then(result => result.saveAsFile('output/linearizePDFOutput.pdf'))
-         .catch(err => {
-             if(err instanceof PDFServicesSdk.Error.ServiceApiError
-                 || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-                 console.log('Exception encountered while executing operation', err);
-             } else {
-                 console.log('Exception encountered while executing operation', err);
-             }
-         });
-   } catch (err) {
-     console.log('Exception encountered while executing operation', err);
-   }
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    LinearizePDFJob,
+    LinearizePDFResult,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@dcloud/pdfservices-node-sdk");
+const fs = require("fs");
+
+(async () => {
+    let readStream;
+    try {
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+        });
+
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
+
+        // Creates an asset(s) from source file(s) and upload
+        readStream = fs.createReadStream("./linearizePDFInput.pdf");
+        const inputAsset = await pdfServices.upload({
+            readStream,
+            mimeType: MimeType.PDF
+        });
+
+        // Creates a new job instance
+        const job = new LinearizePDFJob({inputAsset});
+
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: LinearizePDFResult
+        });
+
+        // Get content from the resulting asset(s)
+        const resultAsset = pdfServicesResponse.result.asset;
+        const streamAsset = await pdfServices.getContent({asset: resultAsset});
+
+        // Creates an output stream and copy stream asset's content to it
+        const outputFilePath = "./linearizePDFOutput.pdf";
+        console.log(`Saving asset at ${outputFilePath}`);
+
+        const outputStream = fs.createWriteStream(outputFilePath);
+        streamAsset.readStream.pipe(outputStream);
+    } catch (err) {
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        readStream?.destroy();
+    }
+})();
 ```
 
 #### Rest API 

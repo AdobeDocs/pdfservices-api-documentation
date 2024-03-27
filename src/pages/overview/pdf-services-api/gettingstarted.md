@@ -471,7 +471,7 @@ After downloading the zip, you can run the samples in the zip directly by settin
 
 Running any sample or custom code requires the following steps:
 
-1.  Install [Node.js 14.0](https://nodejs.org/en/download/) or higher.
+1.  Install [Node.js 18.0](https://nodejs.org/en/download/) or higher.
 
 <InlineAlert slots="text"/>
 

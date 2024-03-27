@@ -182,64 +182,107 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // Run the sample:
 // node src/replacepages/replace-pdf-pages.js
 
-     const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
-    
-     const getPageRangesForFirstFile = () => {
-       // Specify pages of the first file for replacing the page of base PDF file.
-       const pageRangesForFirstFile = new PDFServicesSdk.PageRanges();
-       // Add pages 1 to 3.
-       pageRangesForFirstFile.addPageRange(1, 3);
-    
-       // Add page 4.
-       pageRangesForFirstFile.addSinglePage(4);
-    
-       return pageRangesForFirstFile;
-     };
-    
-     try {
-       // Initial setup, create credentials instance.
-         const credentials =  PDFServicesSdk.Credentials
-             .servicePrincipalCredentialsBuilder()
-             .withClientId("PDF_SERVICES_CLIENT_ID")
-             .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-             .build();
-    
-       // Create an ExecutionContext using credentials and create a new operation instance.
-       const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
-           replacePagesOperation = PDFServicesSdk.ReplacePages.Operation.createNew();
-    
-       // Set operation base input from a source file.
-       const baseInputFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/baseInput.pdf');
-       replacePagesOperation.setBaseInput(baseInputFile);
-    
-       // Create a FileRef instance using a local file.
-       const firstInputFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/replacePagesInput1.pdf'),
-           pageRanges = getPageRangesForFirstFile();
-    
-       // Adds the pages (specified by the page ranges) of the input PDF file for replacing the
-       // page of the base PDF file.
-       replacePagesOperation.addPagesForReplace(1, firstInputFile, pageRanges);
-    
-       // Create a FileRef instance using a local file.
-       const secondInputFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/replacePagesInput2.pdf');
-    
-       // Adds all the pages of the input PDF file for replacing the page of the base PDF file.
-       replacePagesOperation.addPagesForReplace(3, secondInputFile);
-    
-       // Execute the operation and Save the result to the specified location.
-       replacePagesOperation.execute(executionContext)
-           .then(result => result.saveAsFile('output/replacePagesOutput.pdf'))
-           .catch(err => {
-               if (err instanceof PDFServicesSdk.Error.ServiceApiError
-                   || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-                   console.log('Exception encountered while executing operation', err);
-               } else {
-                   console.log('Exception encountered while executing operation', err);
-               }
-           });
-     } catch (err) {
-       console.log('Exception encountered while executing operation', err);
-     }
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    PageRanges,
+    InsertPagesResult,
+    ReplacePagesJob,
+    ReplacePagesParams,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
+
+(async () => {
+    let baseReadStream;
+    let readStream1;
+    let readStream2;
+    try {
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+        });
+
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
+
+        // Creates an asset(s) from source file(s) and upload
+        baseReadStream = fs.createReadStream("./baseInput.pdf");
+        readStream1 = fs.createReadStream("./replacePagesInput1.pdf");
+        readStream2 = fs.createReadStream("./replacePagesInput2.pdf");
+        const [baseAsset, asset1, asset2] = await pdfServices.uploadAssets({
+            streamAssets: [{
+                readStream: baseReadStream,
+                mimeType: MimeType.PDF
+            }, {
+                readStream: readStream1,
+                mimeType: MimeType.PDF
+            }, {
+                readStream: readStream2,
+                mimeType: MimeType.PDF
+            }]
+        });
+
+        // Create parameters for the job
+        const params = new ReplacePagesParams(baseAsset)
+            // Add the first asset as input to the params, along with its page ranges and base page
+            .addPagesForReplace({
+                asset: asset1,
+                pageRanges: getPageRangesForFirstFile(),
+                basePage: 1
+            })
+            // Add the second asset as input to the params, along with base page
+            .addPagesForReplace({
+                asset: asset2,
+                basePage: 3
+            });
+
+        // Create a new job instance
+        const job = new ReplacePagesJob({params});
+
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: InsertPagesResult
+        });
+
+        // Get content from the resulting asset(s)
+        const resultAsset = pdfServicesResponse.result.asset;
+        const streamAsset = await pdfServices.getContent({asset: resultAsset});
+
+        // Creates an output stream and copy result asset's content to it
+        const outputFilePath = "./replacePagesOutput.pdf";
+        console.log(`Saving asset at ${outputFilePath}`);
+
+        const outputStream = fs.createWriteStream(outputFilePath);
+        streamAsset.readStream.pipe(outputStream);
+    } catch (err) {
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        baseReadStream?.destroy();
+        readStream1?.destroy();
+        readStream2?.destroy();
+    }
+})();
+
+function getPageRangesForFirstFile() {
+    // Specify pages of the first file for replacing the page of base PDF file
+    const pageRanges = new PageRanges();
+    // Add pages 1 to 3
+    pageRanges.addRange(1, 3);
+    // Add page 4
+    pageRanges.addSinglePage(4);
+    return pageRanges;
+}
 ```
 
 #### Rest API 

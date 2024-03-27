@@ -146,48 +146,75 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // Run the sample:
 // node src/protectpdf/protect-pdf.js
 
-    const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
-   
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    ProtectPDFParams,
+    EncryptionAlgorithm,
+    ProtectPDFJob,
+    ProtectPDFResult,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
+
+(async () => {
+    let readStream;
     try {
-      // Initial setup, create credentials instance.
-        const credentials =  PDFServicesSdk.Credentials
-            .servicePrincipalCredentialsBuilder()
-            .withClientId("PDF_SERVICES_CLIENT_ID")
-            .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-            .build();
-   
-      // Create an ExecutionContext using credentials
-      const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
-   
-      // Build ProtectPDF options by setting a User Password and Encryption
-      // Algorithm (used for encrypting the PDF file).
-      const protectPDF = PDFServicesSdk.ProtectPDF,
-          options = new protectPDF.options.PasswordProtectOptions.Builder()
-              .setUserPassword("encryptPassword")
-              .setEncryptionAlgorithm(PDFServicesSdk.ProtectPDF.options.EncryptionAlgorithm.AES_256)
-              .build();
-   
-      // Create a new operation instance.
-      const protectPDFOperation = protectPDF.Operation.createNew(options);
-   
-      // Set operation input from a source file.
-      const input = PDFServicesSdk.FileRef.createFromLocalFile('resources/protectPDFInput.pdf');
-      protectPDFOperation.setInput(input);
-   
-      // Execute the operation and Save the result to the specified location.
-      protectPDFOperation.execute(executionContext)
-          .then(result => result.saveAsFile('output/protectPDFOutput.pdf'))
-          .catch(err => {
-              if(err instanceof PDFServicesSdk.Error.ServiceApiError
-                  || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-                  console.log('Exception encountered while executing operation', err);
-              } else {
-                  console.log('Exception encountered while executing operation', err);
-              }
-          });
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+        });
+
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
+
+        // Creates an asset(s) from source file(s) and upload
+        readStream = fs.createReadStream("./protectPDFInput.pdf")
+        const inputAsset = await pdfServices.upload({
+            readStream,
+            mimeType: MimeType.PDF
+        });
+
+        // Create parameters for the job
+        const params = new ProtectPDFParams({
+            userPassword: "password",
+            encryptionAlgorithm: EncryptionAlgorithm.AES_256
+        });
+
+        // Create a new job instance
+        const job = new ProtectPDFJob({inputAsset, params});
+
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: ProtectPDFResult
+        });
+
+        // Get content from the resulting asset(s)
+        const resultAsset = pdfServicesResponse.result.asset;
+        const streamAsset = await pdfServices.getContent({asset: resultAsset});
+
+        // Creates an output stream and copy stream asset's content to it
+        const outputFilePath = "./protectPDFOutput.pdf";
+        console.log(`Saving asset at ${outputFilePath}`);
+
+        const outputStream = fs.createWriteStream(outputFilePath);
+        streamAsset.readStream.pipe(outputStream);
     } catch (err) {
-      console.log('Exception encountered while executing operation', err);
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        readStream?.destroy();
     }
+})();
 ```
 
 #### Rest API 
@@ -370,57 +397,89 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // Run the sample:
 // node src/protectpdf/protect-pdf-with-owner-password.js
 
-  const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
- 
-  try {
-    // Initial setup, create credentials instance.
-      const credentials =  PDFServicesSdk.Credentials
-          .servicePrincipalCredentialsBuilder()
-          .withClientId("PDF_SERVICES_CLIENT_ID")
-          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-          .build();
- 
-    // Create an ExecutionContext using credentials
-    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
- 
-    // Create new permissions instance and add the required permissions
-    const protectPDF = PDFServicesSdk.ProtectPDF,
-        protectPDFOptions = protectPDF.options,
-        permissions = protectPDFOptions.Permissions.createNew();
-    permissions.addPermission(protectPDFOptions.Permission.PRINT_LOW_QUALITY);
-    permissions.addPermission(protectPDFOptions.Permission.EDIT_DOCUMENT_ASSEMBLY);
-    permissions.addPermission(protectPDFOptions.Permission.COPY_CONTENT);
- 
-    // Build ProtectPDF options by setting an Owner/Permissions Password, Permissions,
-    // Encryption Algorithm (used for encrypting the PDF file) and specifying the type of content to encrypt.
-    const options = new protectPDFOptions.PasswordProtectOptions.Builder()
-            .setOwnerPassword("password")
-            .setPermissions(permissions)
-            .setEncryptionAlgorithm(protectPDFOptions.EncryptionAlgorithm.AES_256)
-            .setContentEncryption(protectPDFOptions.ContentEncryption.ALL_CONTENT_EXCEPT_METADATA)
-            .build();
- 
-    // Create a new operation instance.
-    const protectPDFOperation = protectPDF.Operation.createNew(options);
- 
-    // Set operation input from a source file.
-    const input = PDFServicesSdk.FileRef.createFromLocalFile('resources/protectPDFInput.pdf');
-    protectPDFOperation.setInput(input);
- 
-    // Execute the operation and Save the result to the specified location.
-    protectPDFOperation.execute(executionContext)
-        .then(result => result.saveAsFile('output/protectPDFWithOwnerPasswordOutput.pdf'))
-        .catch(err => {
-            if(err instanceof PDFServicesSdk.Error.ServiceApiError
-                || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-                console.log('Exception encountered while executing operation', err);
-            } else {
-                console.log('Exception encountered while executing operation', err);
-            }
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    ProtectPDFParams,
+    EncryptionAlgorithm,
+    ProtectPDFJob,
+    ProtectPDFResult,
+    ContentEncryption,
+    Permissions,
+    Permission,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
+
+(async () => {
+    let readStream;
+    try {
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
         });
-  } catch (err) {
-    console.log('Exception encountered while executing operation', err);
-  }
+
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
+
+        // Creates an asset(s) from source file(s) and upload
+        readStream = fs.createReadStream("./protectPDFInput.pdf")
+        const inputAsset = await pdfServices.upload({
+            readStream,
+            mimeType: MimeType.PDF
+        });
+
+        // Create new permissions instance and add the required permissions
+        const permissions = new Permissions({
+            permissions: [
+                Permission.PRINT_LOW_QUALITY,
+                Permission.EDIT_DOCUMENT_ASSEMBLY,
+                Permission.COPY_CONTENT
+            ]
+        });
+
+        // Create parameters for the job
+        const params = new ProtectPDFParams({
+            ownerPassword: "password",
+            permissions: permissions,
+            encryptionAlgorithm: EncryptionAlgorithm.AES_256,
+            contentEncryption: ContentEncryption.ALL_CONTENT_EXCEPT_METADATA,
+        });
+
+        // Create a new job instance
+        const job = new ProtectPDFJob({inputAsset, params});
+
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: ProtectPDFResult
+        });
+
+        // Get content from the resulting asset(s)
+        const resultAsset = pdfServicesResponse.result.asset;
+        const streamAsset = await pdfServices.getContent({asset: resultAsset});
+
+        // Creates an output stream and copy stream asset's content to it
+        const outputFilePath = "./protectPDFWithOwnerPasswordOutput.pdf";
+        console.log(`Saving asset at ${outputFilePath}`);
+
+        const outputStream = fs.createWriteStream(outputFilePath);
+        streamAsset.readStream.pipe(outputStream);
+    } catch (err) {
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        readStream?.destroy();
+    }
+})();
 ```
 
 #### Rest API 

@@ -10,7 +10,7 @@ To get started using Adobe PDF Electronic Seal API, let's walk through a simple 
 
 To complete this guide, you will need:
 
-* [Node.js](https://nodejs.org) - Node.js version 14.0 or higher is required. 
+* [Node.js](https://nodejs.org) - Node.js version 18.0 or higher is required. 
 * An Adobe ID. If you do not have one, the credential setup will walk you through creating one.
 * A way to edit code. No specific editor is required for this guide.
 
@@ -63,11 +63,25 @@ Now you're ready to begin coding.
 1) We'll begin by including our required dependencies:
 
 ```javascript
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+const {
+  ServicePrincipalCredentials,
+  PDFServices,
+  MimeType,
+  FieldLocation,
+  FieldOptions,
+  CSCAuthContext,
+  CSCCredential,
+  PDFElectronicSealParams,
+  PDFElectronicSealJob,
+  PDFElectronicSealResult,
+  AppearanceOptions,
+  AppearanceItem,
+  SDKError,
+  ServiceUsageError,
+  ServiceApiError, DocumentLevelPermission
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 ```
-
-This line includes the Adobe PDF Services Node.js SDK
-
 
 2) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
 - **Windows:**
@@ -82,262 +96,312 @@ This line includes the Adobe PDF Services Node.js SDK
 3) Next, we setup the SDK to use our credentials.
 
 ```javascript
-    // Initial setup, create credentials instance.
-const credentials =  PDFServicesSdk.Credentials
-    .servicePrincipalCredentialsBuilder()
-    .withClientId(process.env.PDF_SERVICES_CLIENT_ID)
-    .withClientSecret(process.env.PDF_SERVICES_CLIENT_SECRET)
-    .build();
+// Initial setup, create credentials instance
+const credentials = new ServicePrincipalCredentials({
+  clientId: process.env.PDF_SERVICES_CLIENT_ID,
+  clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+});
 
-// Create an ExecutionContext using credentials
-const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
+// Creates a PDF Services instance
+const pdfServices = new PDFServices({credentials});
 ```
 
-This code both points to the credentials downloaded previously and sets up an execution context object that will be used later.
-
-4) Let's define the electronic seal and options object to be used later:
+4) Now, let's upload the assets:
 
 ```javascript
-const pdfElectronicSeal = PDFServicesSdk.PDFElectronicSeal,
-    options = pdfElectronicSeal.options;
-
+const [sourceFileAsset, sealImageAsset] = await pdfServices.uploadAssets({
+  streamAssets: [{
+    readStream: sourceFileReadStream,
+    mimeType: MimeType.PDF
+  }, {
+    readStream: sealImageReadStream,
+    mimeType: MimeType.PNG
+  }]
+});
 ```
 
-5) Now, let's define our input fields:
+5) Now, we will define the document level permission:
 
 ```javascript
-//Get the input document to perform the sealing operation
-const sourceFile = PDFServicesSdk.FileRef.createFromLocalFile('./sampleInvoice.pdf'),
-
-//Get the background seal image for signature , if required.
-sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('./sampleSealImage.png');
-
+// Set the document level permission to be applied for output document
+const documentLevelPermission = DocumentLevelPermission.FORM_FILLING;
 ```
 
 6) Now, we will define seal field options:
 
 ```javascript
-//Create AppearanceOptions and add the required signature appearance items
-appearanceOptions = new options.AppearanceOptions();
-appearanceOptions.addItem(options.AppearanceOptions.AppearanceItem.DATE);
-appearanceOptions.addItem(options.AppearanceOptions.AppearanceItem.SEAL_IMAGE);
-appearanceOptions.addItem(options.AppearanceOptions.AppearanceItem.NAME);
-appearanceOptions.addItem(options.AppearanceOptions.AppearanceItem.LABELS);
-appearanceOptions.addItem(options.AppearanceOptions.AppearanceItem.DISTINGUISHED_NAME);
+// Create AppearanceOptions and add the required signature appearance items
+const sealAppearanceOptions = new AppearanceOptions({
+  items: [
+    AppearanceItem.DATE,
+    AppearanceItem.SEAL_IMAGE,
+    AppearanceItem.NAME,
+    AppearanceItem.LABELS,
+    AppearanceItem.DISTINGUISHED_NAME
+  ]
+});
 
-// Set the Seal Field Name to be created in input PDF document.
-sealFieldName = "Signature1";
+// Set the Seal Field Name to be created in input PDF document
+const sealFieldName = "Signature1";
 
-// Set the page number in input document for applying seal.
-sealPageNumber = 1;
+// Set the page number in input document for applying seal
+const sealPageNumber = 1;
 
-// Set if seal should be visible or invisible.
-sealVisible = true;
+// Set if seal should be visible or invisible
+const sealVisible = true;
 
-//Create FieldLocation instance and set the coordinates for applying signature
-fieldLocation = new options.FieldLocation(150,250,350,200);
+// Create FieldLocation instance and set the coordinates for applying signature
+const fieldLocation = new FieldLocation({
+  left: 150,
+  top: 250,
+  right: 350,
+  bottom: 200
+});
 
-//Create FieldOptions instance with required details.
-fieldOptions = new options.FieldOptions.Builder(sealFieldName)
-    .setFieldLocation(fieldLocation)
-    .setPageNumber(sealPageNumber)
-    .setVisible(sealVisible)
-    .build();
+// Create FieldOptions instance with required details
+const sealFieldOptions = new FieldOptions({
+  visible: sealVisible,
+  location: fieldLocation,
+  fieldName: sealFieldName,
+  pageNumber: sealPageNumber,
+});
 ```
 
 7) Next, we create a CSC Certificate Credentials instance:
 
 ```javascript
-//Set the name of TSP Provider being used.
-providerName = "<PROVIDER_NAME>";
+// Set the name of TSP Provider being used
+const providerName = "<PROVIDER_NAME>";
 
-//Set the access token to be used to access TSP provider hosted APIs.
-accessToken = "<ACCESS_TOKEN>";
+// Set the access token to be used to access TSP provider hosted APIs
+const accessToken = "<ACCESS_TOKEN>";
 
-//Set the credential ID.
-credentialID = "<CREDENTIAL_ID>";
+// Set the credential ID
+const credentialId = "<CREDENTIAL_ID>";
 
-//Set the PIN generated while creating credentials.
-pin = "<PIN>";
+// Set the PIN generated while creating credentials
+const pin = "<PIN>";
 
-//Create CSCAuthContext instance using access token and token type.
-cscAuthContext = new options.CSCAuthContext(accessToken, "Bearer");
+// Create CSCAuthContext instance using access token and token type
+const authorizationContext = new CSCAuthContext({
+  accessToken,
+  tokenType: "Bearer"
+});
 
-//Create CertificateCredentials instance with required certificate details.
-certificateCredentials = options.CertificateCredentials.cscCredentialBuilder()
-    .withProviderName(providerName)
-    .withCredentialID(credentialID)
-    .withPin(pin)
-    .withCSCAuthContext(cscAuthContext)
-    .build();
-
+// Create CertificateCredentials instance with required certificate details
+const certificateCredentials = new CSCCredential({
+  providerName,
+  credentialId,
+  pin,
+  authorizationContext,
+});
 ```
 
-8) Now, let's create the seal options with certificate credentials and field options:
+8) Now, let's create the job with seal parameters using certificate credentials and field options and set the seal image asset:
 
 ```javascript
-    //Create SealOptions instance with sealing parameters.
-sealOptions = new options.SealOptions.Builder(certificateCredentials, fieldOptions)
-    .withAppearanceOptions(appearanceOptions)
-    .build()
+// Create parameters for the job
+const params = new PDFElectronicSealParams({
+  documentLevelPermission
+  certificateCredentials,
+  sealFieldOptions,
+  sealAppearanceOptions
+});
+
+// Creates a new job instance
+const job = new PDFElectronicSealJob({
+  inputAsset: sourceFileAsset,
+  sealImageAsset,
+  params,
+});
 ```
 
+This set of code defines what we're doing (an Electronic Seal operation),
+it defines parameters for the seal job and sets input seal image asset.
 
-9) Now, let's create the operation:
+9) The next code block submits the job and gets the job result:
 
 ```javascript
-//Create the PDFElectronicSealOperation instance using the SealOptions instance
-const pdfElectronicSealOperation = pdfElectronicSeal.Operation.createNew(sealOptions);
+// Submit the job and get the job result
+const pollingURL = await pdfServices.submit({job});
+const pdfServicesResponse = await pdfServices.getJobResult({
+  pollingURL,
+  resultType: PDFElectronicSealResult
+});
 
-//Set the input source file for PDFElectronicSealOperation instance
-pdfElectronicSealOperation.setInput(sourceFile);
-
-//Set the optional input seal image for PDFElectronicSealOperation instance
-pdfElectronicSealOperation.setSealImage(sealImageFile);
-
+// Get content from the resulting asset(s)
+const resultAsset = pdfServicesResponse.result.asset;
+const streamAsset = await pdfServices.getContent({asset: resultAsset});
 ```
-This code creates a seal operation using sealOptions, input source file and input seal image.
 
-10) Let's execute this seal operation:
+10) The next code block saves the result at the specified location:
 
 ```javascript
-// Execute the operation and Save the result to the specified location.
-pdfElectronicSealOperation.execute(executionContext)
-    .then(result => result.saveAsFile("output/sealedOutput.pdf"))
-    .catch(err => {
-        if(err instanceof PDFServicesSdk.Error.ServiceApiError
-            || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-            console.log('Exception encountered while executing operation', err);
-        } else {
-            console.log('Exception encountered while executing operation', err);
-        }
-    });
+// Creates a write stream and copy stream asset's content to it
+const outputFilePath = "./sealedOutput.pdf";
+console.log(`Saving asset at ${outputFilePath}`);
+
+const writeStream = fs.createWriteStream(outputFilePath);
+streamAsset.readStream.pipe(writeStream);
 ```
 
 Here's the complete application (`electronic-seal.js`):
 
 ```javascript
-/*
- * Copyright 2023 Adobe
- * All Rights Reserved.
- *
- * NOTICE: Adobe permits you to use, modify, and distribute this file in
- * accordance with the terms of the Adobe license agreement accompanying
- * it. If you have received this file from a source other than Adobe,
- * then your use, modification, or distribution of it requires the prior
- * written permission of Adobe.
- */
+const {
+  ServicePrincipalCredentials,
+  PDFServices,
+  MimeType,
+  FieldLocation,
+  FieldOptions,
+  CSCAuthContext,
+  CSCCredential,
+  PDFElectronicSealParams,
+  PDFElectronicSealJob,
+  PDFElectronicSealResult,
+  AppearanceOptions,
+  AppearanceItem,
+  SDKError,
+  ServiceUsageError,
+  ServiceApiError, DocumentLevelPermission
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+(async () => {
 
-/**
- * This sample illustrates how to apply electronic seal over the PDF document using custom appearance options.
- *
- * <p>
- * To know more about PDF Electronic Seal, please see the <<a href="https://www.adobe.com/go/dc_eseal_overview_doc" target="_blank">documentation</a>.
- * <p>
- * Refer to README.md for instructions on how to run the samples.
- */
-try {
-    // Initial setup, create credentials instance.
-    const credentials =  PDFServicesSdk.Credentials
-        .servicePrincipalCredentialsBuilder()
-        .withClientId(process.env.PDF_SERVICES_CLIENT_ID)
-        .withClientSecret(process.env.PDF_SERVICES_CLIENT_SECRET)
-        .build();
+  let sourceFileReadStream;
+  let sealImageReadStream;
+  try {
+    // Initial setup, create credentials instance
+    const credentials = new ServicePrincipalCredentials({
+      clientId: process.env.PDF_SERVICES_CLIENT_ID,
+      clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+    });
 
-    // Create an ExecutionContext using credentials
-    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
+    // Creates a PDF Services instance
+    const pdfServices = new PDFServices({credentials});
 
-    const pdfElectronicSeal = PDFServicesSdk.PDFElectronicSeal,
-        options = pdfElectronicSeal.options;
+    // Creates an asset(s) from source file(s) and upload
+    sourceFileReadStream = fs.createReadStream("./sampleInvoice.pdf")
+    sealImageReadStream = fs.createReadStream("./sampleSealImage.png");
+    const [sourceFileAsset, sealImageAsset] = await pdfServices.uploadAssets({
+      streamAssets: [{
+        readStream: sourceFileReadStream,
+        mimeType: MimeType.PDF
+      }, {
+        readStream: sealImageReadStream,
+        mimeType: MimeType.PNG
+      }]
+    });
 
-    //Get the input document to perform the sealing operation
-    const sourceFile = PDFServicesSdk.FileRef.createFromLocalFile('./sampleInvoice.pdf'),
+    // Set the document level permission to be applied for output document
+    const documentLevelPermission = DocumentLevelPermission.FORM_FILLING;
 
-        //Get the background seal image for signature , if required.
-        sealImageFile = PDFServicesSdk.FileRef.createFromLocalFile('./sampleSealImage.png');
+    // Create AppearanceOptions and add the required signature appearance items
+    const sealAppearanceOptions = new AppearanceOptions({
+      items: [
+        AppearanceItem.DATE,
+        AppearanceItem.SEAL_IMAGE,
+        AppearanceItem.NAME,
+        AppearanceItem.LABELS,
+        AppearanceItem.DISTINGUISHED_NAME
+      ]
+    });
 
-    //Create AppearanceOptions and add the required signature appearance items
-    appearanceOptions = new options.AppearanceOptions();
-    appearanceOptions.addItem(options.AppearanceOptions.AppearanceItem.DATE);
-    appearanceOptions.addItem(options.AppearanceOptions.AppearanceItem.SEAL_IMAGE);
-    appearanceOptions.addItem(options.AppearanceOptions.AppearanceItem.NAME);
-    appearanceOptions.addItem(options.AppearanceOptions.AppearanceItem.LABELS);
-    appearanceOptions.addItem(options.AppearanceOptions.AppearanceItem.DISTINGUISHED_NAME);
+    // Set the Seal Field Name to be created in input PDF document
+    const sealFieldName = "Signature1";
 
-    // Set the Seal Field Name to be created in input PDF document.
-    sealFieldName = "Signature1";
+    // Set the page number in input document for applying seal
+    const sealPageNumber = 1;
 
-    // Set the page number in input document for applying seal.
-    sealPageNumber = 1;
+    // Set if seal should be visible or invisible
+    const sealVisible = true;
 
-    // Set if seal should be visible or invisible.
-    sealVisible = true;
+    // Create FieldLocation instance and set the coordinates for applying signature
+    const fieldLocation = new FieldLocation({
+      left: 150,
+      top: 250,
+      right: 350,
+      bottom: 200
+    });
 
-    //Create FieldLocation instance and set the coordinates for applying signature
-    fieldLocation = new options.FieldLocation(150,250,350,200);
+    // Create FieldOptions instance with required details
+    const sealFieldOptions = new FieldOptions({
+      visible: sealVisible,
+      location: fieldLocation,
+      fieldName: sealFieldName,
+      pageNumber: sealPageNumber,
+    });
 
-    //Create FieldOptions instance with required details.
-    fieldOptions = new options.FieldOptions.Builder(sealFieldName)
-        .setFieldLocation(fieldLocation)
-        .setPageNumber(sealPageNumber)
-        .setVisible(sealVisible)
-        .build();
+    // Set the name of TSP Provider being used
+    const providerName = "<PROVIDER_NAME>";
 
-    //Set the name of TSP Provider being used.
-    providerName = "<PROVIDER_NAME>";
+    // Set the access token to be used to access TSP provider hosted APIs
+    const accessToken = "<ACCESS_TOKEN>";
 
-    //Set the access token to be used to access TSP provider hosted APIs.
-    accessToken = "<ACCESS_TOKEN>";
+    // Set the credential ID
+    const credentialId = "<CREDENTIAL_ID>";
 
-    //Set the credential ID.
-    credentialID = "<CREDENTIAL_ID>";
+    // Set the PIN generated while creating credentials
+    const pin = "<PIN>";
 
-    //Set the PIN generated while creating credentials.
-    pin = "<PIN>";
+    // Create CSCAuthContext instance using access token and token type
+    const authorizationContext = new CSCAuthContext({
+      accessToken,
+      tokenType: "Bearer"
+    });
 
-    //Create CSCAuthContext instance using access token and token type.
-    cscAuthContext = new options.CSCAuthContext(accessToken, "Bearer");
+    // Create CertificateCredentials instance with required certificate details
+    const certificateCredentials = new CSCCredential({
+      providerName,
+      credentialId,
+      pin,
+      authorizationContext,
+    });
 
-    //Create CertificateCredentials instance with required certificate details.
-    certificateCredentials = options.CertificateCredentials.cscCredentialBuilder()
-        .withProviderName(providerName)
-        .withCredentialID(credentialID)
-        .withPin(pin)
-        .withCSCAuthContext(cscAuthContext)
-        .build();
+    // Create parameters for the job
+    const params = new PDFElectronicSealParams({
+      documentLevelPermission
+      certificateCredentials,
+      sealFieldOptions,
+      sealAppearanceOptions
+    });
 
-    //Create SealOptions instance with sealing parameters.
-    sealOptions = new options.SealOptions.Builder(certificateCredentials, fieldOptions)
-        .withAppearanceOptions(appearanceOptions)
-        .build()
+    // Creates a new job instance
+    const job = new PDFElectronicSealJob({
+      inputAsset: sourceFileAsset,
+      sealImageAsset,
+      params,
+    });
 
-    //Create the PDFElectronicSealOperation instance using the SealOptions instance
-    const pdfElectronicSealOperation = pdfElectronicSeal.Operation.createNew(sealOptions);
+    // Submit the job and get the job result
+    const pollingURL = await pdfServices.submit({job});
+    const pdfServicesResponse = await pdfServices.getJobResult({
+      pollingURL,
+      resultType: PDFElectronicSealResult
+    });
 
-    //Set the input source file for PDFElectronicSealOperation instance
-    pdfElectronicSealOperation.setInput(sourceFile);
+    // Get content from the resulting asset(s)
+    const resultAsset = pdfServicesResponse.result.asset;
+    const streamAsset = await pdfServices.getContent({asset: resultAsset});
 
-    //Set the optional input seal image for PDFElectronicSealOperation instance
-    pdfElectronicSealOperation.setSealImage(sealImageFile);
+    // Creates a write stream and copy stream asset's content to it
+    const outputFilePath = "./sealedOutput.pdf";
+    console.log(`Saving asset at ${outputFilePath}`);
 
-    // Execute the operation and Save the result to the specified location.
-    pdfElectronicSealOperation.execute(executionContext)
-        .then(result => result.saveAsFile("output/sealedOutput.pdf"))
-        .catch(err => {
-            if(err instanceof PDFServicesSdk.Error.ServiceApiError
-                || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-                console.log('Exception encountered while executing operation', err);
-            } else {
-                console.log('Exception encountered while executing operation', err);
-            }
-        });
-
-} catch (err) {
-    console.log('Exception encountered while executing operation', err);
-}
-
+    const writeStream = fs.createWriteStream(outputFilePath);
+    streamAsset.readStream.pipe(writeStream);
+  } catch (err) {
+    if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+      console.log("Exception encountered while executing operation", err);
+    } else {
+      console.log("Exception encountered while executing operation", err);
+    }
+  } finally {
+    sourceFileReadStream?.destroy();
+    sealImageReadStream?.destroy();
+  }
+})();
 ```
 
 ## Next Steps

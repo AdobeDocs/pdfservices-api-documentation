@@ -87,13 +87,8 @@ ClientConfig clientConfig = ClientConfig.ConfigBuilder()
 
 Available properties:
 
--   **connectTimeout**: Default: 10000. The maximum allowed time in
-    milliseconds for creating an initial HTTPS connection.
--   **readTimeout**: Default: 10000. The maximum allowed time in
-    milliseconds between two successive HTTP response packets.
--   **processingTimeout**: Default: 600000. The maximum allowed time
-    in milliseconds for processing the documents. Any operation taking more time than the specified `processingTimeout` will result in an operation timeout exception.
-    - **Note :** It is advisable to set the `processingTimeout` to higher values for processing large files.
+-   **timeout**: Default: 10000. The maximum allowed time in milliseconds before the request times out. If the request 
+    takes longer than `timeout`, the request will be aborted.
 
 Override the timeout properties via a custom `ClientConfig` class:
 
@@ -102,11 +97,9 @@ Override the timeout properties via a custom `ClientConfig` class:
 ### 
 
 ```javascript
-const clientConfig = PDFServicesSdk.ClientConfig
-  .clientConfigBuilder()
-  .withConnectTimeout(15000)
-  .withReadTimeout(15000)
-  .build();
+const clientConfig = new ClientConfig({
+    timeout: 15000
+})
 ```  
 
 ### Python timeout configuration
