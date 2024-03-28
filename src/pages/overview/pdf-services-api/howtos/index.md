@@ -98,8 +98,8 @@ following sample for details.
 - [Java Sample for Proxy Server Config With Basic Authentication](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithAuthenticatedProxyServer.java )
 
 ### Node.js
-- [Node Sample for Proxy Server Config](https://git.corp.adobe.com/mahour/dc-cpf-sdk-node-samples/blob/v4_samples/src/customconfigurations/create-pdf-with-proxy-server.js)
-- [Node Sample for Proxy Server Config With Basic Authentication](https://git.corp.adobe.com/mahour/dc-cpf-sdk-node-samples/blob/v4_samples/src/customconfigurations/create-pdf-with-authenticated-proxy-server.js)
+- [Node Sample for Proxy Server Config](https://github.com/adobe/pdfservices-node-sdk-samples/blob/master/src/customconfigurations/create-pdf-with-proxy-server.js)
+- [Node Sample for Proxy Server Config With Basic Authentication](https://github.com/adobe/pdfservices-node-sdk-samples/blob/master/src/customconfigurations/create-pdf-with-authenticated-proxy-server.js)
 
 ### Java Proxy Server configuration
 

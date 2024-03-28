@@ -1335,11 +1335,18 @@
           }
         ],
         "requestBody": {
-          "description": "Params for Extract PDF Operation",
+          "description": "Params for Extract PDF Operation. Refer to the External Section below for using external storage with Extract PDF Operation.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ExtractPDF"
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/ExtractPDFInternal"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ExtractPDFExternal"
+                  }
+                ]
               }
             }
           },
@@ -1876,7 +1883,7 @@
         "tags": [
           "Create PDF"
         ],
-        "summary": "Poll the create pdf job for completion",
+        "summary": "Poll the create PDF job for completion",
         "operationId": "pdfoperations.jobstatus",
         "parameters": [
           {
@@ -3010,7 +3017,7 @@
         "tags": [
           "Compress PDF"
         ],
-        "summary": "Poll the compress pdf job for completion",
+        "summary": "Poll the compress PDF job for completion",
         "operationId": "pdfoperations.compresspdf.jobstatus",
         "parameters": [
           {
@@ -3394,7 +3401,7 @@
         "tags": [
           "Export PDF"
         ],
-        "summary": "Poll the export pdf job for completion",
+        "summary": "Poll the export PDF job for completion",
         "operationId": "pdfoperations.exportpdf.jobstatus",
         "parameters": [
           {
@@ -5290,7 +5297,7 @@
         "tags": [
           "PDF Properties"
         ],
-        "summary": "Poll the pdf properties job for completion",
+        "summary": "Poll the PDF properties job for completion",
         "operationId": "pdfoperations.pdfproperties.jobstatus",
         "parameters": [
           {
@@ -6260,11 +6267,18 @@
           }
         ],
         "requestBody": {
-          "description": "Params for Split PDF Operation",
+          "description": "Params for Split PDF Operation. Refer to the External Section below for using external storage with Split PDF Operation.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/SplitPDF"
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/SplitPDFInternal"
+                  },
+                  {
+                    "$ref": "#/components/schemas/SplitPDFExternal"
+                  }
+                ]
               }
             }
           },
@@ -6631,11 +6645,18 @@
           }
         ],
         "requestBody": {
-          "description": "Params to specify the options required for applying electronic seal.",
+          "description": "Params to specify the options required for applying Electronic Seal. Refer to the External Section below for using external storage with Electronic Seal Operation.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ElectronicSeal"
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/ElectronicSealInternal"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ElectronicSealExternal"
+                  }
+                ]
               }
             }
           },
@@ -7002,11 +7023,18 @@
           }
         ],
         "requestBody": {
-          "description": "Input Params for Accessibility Auto-Tag Operation.",
+          "description": "Input Params for Accessibility Auto-Tag Operation. Refer to the External Section below for using external storage with Accessibility Auto-Tag Operation.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AutoTagPDF"
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/AutoTagPDFInternal"
+                  },
+                  {
+                    "$ref": "#/components/schemas/AutoTagPDFExternal"
+                  }
+                ]
               }
             }
           },
@@ -8391,13 +8419,16 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for document generation processing",
+            "description": "Params for Create PDF processing",
             "type": "object",
             "properties": {
               "documentLanguage": {
                 "$ref": "#/components/schemas/documentLanguage"
               }
             }
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "default": {
@@ -8414,7 +8445,19 @@
           },
           "params": {
             "documentLanguage": "en-US"
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "input"
@@ -8486,7 +8529,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for export pdf processing",
+            "description": "Params for Export PDF processing",
             "type": "object",
             "properties": {
               "targetFormat": {
@@ -8507,6 +8550,9 @@
             "required": [
               "targetFormat"
             ]
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -8521,7 +8567,19 @@
           "params": {
             "targetFormat": "docx",
             "ocrLang": "en-US"
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "additionalProperties": false
       },
@@ -8591,10 +8649,10 @@
             "$ref": "#/components/schemas/ExternalStorageInput"
           },
           "output": {
-            "$ref": "#/components/schemas/ExternalStorageOutput"
+            "$ref": "#/components/schemas/ExternalStorageOutputZip"
           },
           "params": {
-            "description": "Params for PDF2Images processing",
+            "description": "Params for PDF to Images processing",
             "type": "object",
             "properties": {
               "targetFormat": {
@@ -8609,6 +8667,9 @@
             "required": [
               "targetFormat"
             ]
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -8622,11 +8683,24 @@
           },
           "params": {
             "targetFormat":"jpeg"
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "additionalProperties": false
       },
-      "ExtractPDF": {
+      "ExtractPDFInternal": {
+        "title": "Internal",
         "description": "Params for Extract PDF Operation",
         "type": "object",
         "required": [
@@ -8694,6 +8768,107 @@
             "tables",
             "figures"
           ],
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
+        },
+        "additionalProperties": false
+      },
+      "ExtractPDFExternal": {
+        "title": "External",
+        "description": "Params for Extract PDF Operation using external storage.",
+        "type": "object",
+        "required": [
+          "input"
+        ],
+        "properties": {
+          "input": {
+            "$ref": "#/components/schemas/ExternalStorageInput"
+          },
+          "output": {
+            "$ref": "#/components/schemas/ExternalStorageOutputZip"
+          },
+          "params": {
+            "description": "Params for Extract PDF processing",
+            "type": "object",
+            "properties": {
+              "getCharBounds": {
+                "description": "Extract bounding boxes for characters present in text blocks(paragraphs, list, headings)",
+                "type": "boolean",
+                "default": false
+              },
+              "includeStyling": {
+                "description": "Boolean specifying whether to add styling information to json output",
+                "type": "boolean",
+                "default": false
+              },
+              "elementsToExtract": {
+                "description": "List of elements that should be extracted as json. Possible values are text and tables.",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "text",
+                    "tables"
+                  ]
+                },
+                "default": [
+                  "text"
+                ]
+              },
+              "tableOutputFormat": {
+                "description": "Specifies the format of table contents output. Possible values are csv and xlsx.",
+                "type": "string",
+                "default": "xlsx"
+              },
+              "renditionsToExtract": {
+                "description": "List of elements whose renditions should be generated. Possible values are figures and tables.",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "tables",
+                    "figures"
+                  ]
+                }
+              }
+            }
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
+          }
+        },
+        "example": {
+          "input": {
+            "uri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/dc-platformService-automation_dc-platformService-automation%40AdobeID/1c4f4674-ce8d-4b21-a69d-60aeae35bf43?X-Amz-Security-Token=FwoGZXIvYXdzEBkaDK%2By2wxl94khIbkxzCLTAQn6n6Wo0vFSul%2FpXW66aFX4T%2BPxtuOy%2Bz8eTxrnexeJRvMreBHNQm1myLwp20MkE%2Bb0H%2BwYgOhFaepi9AMml1aLNxXn1UPnEWJ7y8llhvsrXHimEfWvb3TMAkZddgUIDBue8oGUYqm4f2s0sMvPWBCxI45zM0%2F37EK%2B4JnIo1SlrKNm0GSZ44AEiOAhXupQ8ih6KoUbUciD3Biile6CwTMVIhME3mJiRSgVK6W91EaDn8%2Ba3mU%2BVvU1K9sgDSPZ%2F81DOpj25pvMW%2B1cMuCtUNsu9KUo7dHvpAYyLYiy%2FPGEmO9EquKjfMPRr17PAjeunD1QdgbRss4ysG%2B6XF2Has8zsGqX1sQalA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230628T081557Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3599&X-Amz-Credential=ASIAU5PA7W47IMX73XEA%2F20230628%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=ac6998566dbbde22509b128fe94d1cb5d3146cd3fb8ba78d7068e10d61302ec2",
+            "storage": "S3"
+          },
+          "output": {
+            "uri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/dc-platformService-automation_dc-platformService-automation%40AdobeID/f02f9927-4971-4589-8fdf-41ff56c2d520?X-Amz-Security-Token=FwoGZXIvYXdzEBkaDK%2By2wxl94khIbkxzCLTAQn6n6Wo0vFSul%2FpXW66aFX4T%2BPxtuOy%2Bz8eTxrnexeJRvMreBHNQm1myLwp20MkE%2Bb0H%2BwYgOhFaepi9AMml1aLNxXn1UPnEWJ7y8llhvsrXHimEfWvb3TMAkZddgUIDBue8oGUYqm4f2s0sMvPWBCxI45zM0%2F37EK%2B4JnIo1SlrKNm0GSZ44AEiOAhXupQ8ih6KoUbUciD3Biile6CwTMVIhME3mJiRSgVK6W91EaDn8%2Ba3mU%2BVvU1K9sgDSPZ%2F81DOpj25pvMW%2B1cMuCtUNsu9KUo7dHvpAYyLYiy%2FPGEmO9EquKjfMPRr17PAjeunD1QdgbRss4ysG%2B6XF2Has8zsGqX1sQalA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230628T081559Z&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47IMX73XEA%2F20230628%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=4f765277eb6e36bd5f7bf9d42be24244440092b5a705eadf178c78a9a9fb5d71",
+            "storage": "S3"
+          },
+          "params":  {
+            "getCharBounds": false,
+            "includeStyling": false,
+            "elementsToExtract": [
+              "text",
+              "tables"
+            ],
+            "tableOutputFormat": "xlsx",
+            "renditionsToExtract": [
+              "tables",
+              "figures"
+            ]
+          },
           "notifiers": [
             {
               "type": "CALLBACK",
@@ -8791,7 +8966,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for HTML2PDF processing",
+            "description": "Params for HTML to PDF processing",
             "type": "object",
             "properties": {
               "json": {
@@ -8825,6 +9000,9 @@
                 }
               }
             }
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -8843,7 +9021,19 @@
               "pageWidth": 8.5,
               "pageHeight": 11
             }
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "input"
@@ -8956,6 +9146,9 @@
           },
           "output": {
             "$ref": "#/components/schemas/ExternalStorageOutput"
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -8988,7 +9181,19 @@
           "output": {
             "uri": "https://dcalpine2.sharepoint.com/sites/Docgen/_api/v2.0/drives/b!MA1899sXSkupaKT9m2CP3JIqXDMQyoBCth9h9Rn6bQRjzBEBFxsbQpN23hY-rzQT/items/01TAIM7P3ZQQ4DP4NZHFDI6FBJPIGFRCY3/uploadSession?guid='2c79b9aa-f9dc-42c8-8919-da5a9b554b81'&overwrite=True&rename=False&dc=0&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvZGNhbHBpbmUyLnNoYXJlcG9pbnQuY29tQGIxYzY2OGZhLTU3YzQtNDBjYy1iZTgyLTg4OWJiYzkxNmM1NiIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2ODA2MDAyOTMiLCJleHAiOiIxNjgwNjg2NjkzIiwiZW5kcG9pbnR1cmwiOiJXVWNNVHhndVdyMHR4YzhlYWxlRzMrYUV1aXg5anoxanZuRmRpMENjNHFRPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMjYxIiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJaREZsTURjek5tRXRaREJtWkMwMFlXUXlMV0V5WTJNdE1HRTRPV1prTTJJNU5XTmwiLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiWmpjM1l6QmtNekF0TVRka1lpMDBZalJoTFdFNU5qZ3RZVFJtWkRsaU5qQTRabVJqIiwiYXBwX2Rpc3BsYXluYW1lIjoiU2hhcmVwb2ludC1QT0MiLCJuYW1laWQiOiIyYmVmMjRkNy04OTRlLTQ4MzQtYWQxOC00OGZkNDRiNzk0ZTNAYjFjNjY4ZmEtNTdjNC00MGNjLWJlODItODg5YmJjOTE2YzU2Iiwicm9sZXMiOiJhbGxzaXRlcy5yZWFkIGFsbHNpdGVzLndyaXRlIGFsbGZpbGVzLndyaXRlIGFsbGZpbGVzLnJlYWQiLCJ0dCI6IjEiLCJ1c2VQZXJzaXN0ZW50Q29va2llIjpudWxsLCJpcGFkZHIiOiIyMC4xOTAuMTQ1LjE3MCJ9.a1hxR1J1emlFSE9jSTU0SnFTcFN6TGlsRHNhWTFRaDNkT2hwT3ZPYm8waz0",
             "storage": "SHAREPOINT"
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "inputs"
@@ -9050,7 +9255,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for compress PDF processing",
+            "description": "Params for Compress PDF processing",
             "type": "object",
             "properties": {
               "compressionLevel": {
@@ -9063,6 +9268,9 @@
                 ]
               }
             }
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -9076,7 +9284,19 @@
           },
           "params": {
             "compressionLevel": "LOW"
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "input"
@@ -9126,6 +9346,9 @@
           },
           "output": {
             "$ref": "#/components/schemas/ExternalStorageOutput"
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -9136,7 +9359,19 @@
           "output": {
             "uri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/e0983a2df4d647a8818e2c5e06f85169_097819C664A2BBC20A49421A%40techacct.adobe.com/c436259c-9b5a-4cb6-90ee-896977a8cf79?X-Amz-Security-Token=FwoGZXIvYXdzEKj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDNPDTAjFnx2YzhSfIiLTAb0JPLRZf87ktkyvbfqLFQmyqQCJmKY53nwWJ3WsR%2BdaU5Xthi1sE00GVatWYOZ%2FFAwtSnPH3rASwRP1oM%2Fav%2FXtTuIi344QCbTFi1lAfzU1%2BxZjcpk2z8e%2B7tww8ArkaXRkbXfL%2Bn0eZIY0dwSgb89wJgsY4mfA7v8Yj%2FEkLcZuYEGkQnvqfyLTvZw6OqiDcRnyfzEFbx7ZZ41hSZrHA7wM%2BVYZDnijFUlTl4BJI1fV3NvLUTesfMML%2BmsZZzw3Jn1BuEwlAWVbTw4RlFiqAVdHVUAouP6OpQYyLdQSDw%2F0CFdJsNjUQG2Jt%2F%2Bii7Z3DLwdFd7cboI%2F5Op8GJuvDjBkOH1Q3oPy%2FQ%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230704T064436Z&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Expires=3599&X-Amz-Credential=ASIAU5PA7W47D54AZ57L%2F20230704%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=0f86cf401c565d141aa8c24c0a4e4855431f71f9f1bad736b8590a455077da10",
             "storage": "S3"
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "input"
@@ -9202,7 +9437,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for ocr pdf processing",
+            "description": "Params for OCR PDF processing",
             "type": "object",
             "properties": {
               "ocrLang": {
@@ -9218,6 +9453,9 @@
                 ]
               }
             }
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -9232,7 +9470,19 @@
           "params": {
             "ocrLang": "en-US",
             "ocrType": "searchable_image"
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "input"
@@ -9324,7 +9574,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for page manipulation processing",
+            "description": "Params for Page Manipulation processing",
             "type": "object",
             "properties": {
               "pageActions": {
@@ -9347,6 +9597,9 @@
             "required": [
               "pageActions"
             ]
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -9382,7 +9635,19 @@
                 }
               }
             ]
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "input",
@@ -9403,11 +9668,26 @@
             "description": "To get page level properties of the PDF.",
             "type": "boolean",
             "default": false
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
-          "pageLevel": false
+          "pageLevel": false,
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "assetID"
@@ -9423,7 +9703,7 @@
             "$ref": "#/components/schemas/ExternalStorageInput"
           },
           "params": {
-            "description": "Params for pdf properties processing",
+            "description": "Params for PDF Properties processing",
             "type": "object",
             "properties": {
               "pageLevel": {
@@ -9432,6 +9712,9 @@
                 "default": false
               }
             }
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -9441,7 +9724,19 @@
           },
           "params": {
             "pageLevel": false
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "input"
@@ -9549,7 +9844,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for protect pdf processing",
+            "description": "Params for Protect PDF processing",
             "type": "object",
             "properties": {
               "passwordProtection": {
@@ -9602,6 +9897,9 @@
               "passwordProtection",
               "encryptionAlgorithm"
             ]
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -9621,7 +9919,19 @@
             "encryptionAlgorithm": "AES_256",
             "contentToEncrypt": "ALL_CONTENT",
             "permissions": ["PRINT_LOW_QUALITY", "PRINT_HIGH_QUALITY", "EDIT_CONTENT", "EDIT_FILL_AND_SIGN_FORM_FIELDS", "EDIT_ANNOTATIONS", "EDIT_DOCUMENT_ASSEMBLY", "COPY_CONTENT"]
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "input",
@@ -9682,7 +9992,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for remove protection processing.",
+            "description": "Params for Remove Protection processing.",
             "type": "object",
             "properties": {
               "password": {
@@ -9693,6 +10003,9 @@
             "required": [
               "password"
             ]
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -9706,7 +10019,19 @@
           },
           "params": {
             "password": "XXXX"
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "input",
@@ -9714,7 +10039,8 @@
         ],
         "additionalProperties": false
       },
-      "SplitPDF": {
+      "SplitPDFInternal": {
+        "title": "Internal",
         "description": "Params for Split PDF Operation.",
         "type": "object",
         "properties": {
@@ -9771,6 +10097,82 @@
           "assetID",
           "splitoption"
         ],
+        "additionalProperties": false
+      },
+      "SplitPDFExternal": {
+        "title": "External",
+        "description": "Params for Split PDF Operation using external storage.",
+        "type": "object",
+        "required": [
+          "input"
+        ],
+        "properties": {
+          "input": {
+            "$ref": "#/components/schemas/ExternalStorageInput"
+          },
+          "output": {
+            "$ref": "#/components/schemas/ExternalStorageOutputZip"
+          },
+          "params": {
+            "description": "Params for Split PDF processing",
+            "type": "object",
+            "properties": {
+              "splitoption": {
+                "description": "Provide option to split the PDF document. Different options for splitting PDF document are mutually exclusive.",
+                "oneOf": [
+                  {
+                    "title": "fileCount",
+                    "description": "The number of documents to split the input PDF file into.",
+                    "type": "number"
+                  },
+                  {
+                    "title": "pageCount",
+                    "description": "The maximum number of pages each of the output files can have.",
+                    "type": "number"
+                  },
+                  {
+                    "$ref": "#/components/schemas/pageRanges"
+                  }
+                ]
+              }
+            }
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
+          }
+        },
+        "example": {
+          "input": {
+            "uri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/dc-platformService-automation_dc-platformService-automation%40AdobeID/1c4f4674-ce8d-4b21-a69d-60aeae35bf43?X-Amz-Security-Token=FwoGZXIvYXdzEBkaDK%2By2wxl94khIbkxzCLTAQn6n6Wo0vFSul%2FpXW66aFX4T%2BPxtuOy%2Bz8eTxrnexeJRvMreBHNQm1myLwp20MkE%2Bb0H%2BwYgOhFaepi9AMml1aLNxXn1UPnEWJ7y8llhvsrXHimEfWvb3TMAkZddgUIDBue8oGUYqm4f2s0sMvPWBCxI45zM0%2F37EK%2B4JnIo1SlrKNm0GSZ44AEiOAhXupQ8ih6KoUbUciD3Biile6CwTMVIhME3mJiRSgVK6W91EaDn8%2Ba3mU%2BVvU1K9sgDSPZ%2F81DOpj25pvMW%2B1cMuCtUNsu9KUo7dHvpAYyLYiy%2FPGEmO9EquKjfMPRr17PAjeunD1QdgbRss4ysG%2B6XF2Has8zsGqX1sQalA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230628T081557Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3599&X-Amz-Credential=ASIAU5PA7W47IMX73XEA%2F20230628%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=ac6998566dbbde22509b128fe94d1cb5d3146cd3fb8ba78d7068e10d61302ec2",
+            "storage": "S3"
+          },
+          "output": {
+            "uri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/dc-platformService-automation_dc-platformService-automation%40AdobeID/f02f9927-4971-4589-8fdf-41ff56c2d520?X-Amz-Security-Token=FwoGZXIvYXdzEBkaDK%2By2wxl94khIbkxzCLTAQn6n6Wo0vFSul%2FpXW66aFX4T%2BPxtuOy%2Bz8eTxrnexeJRvMreBHNQm1myLwp20MkE%2Bb0H%2BwYgOhFaepi9AMml1aLNxXn1UPnEWJ7y8llhvsrXHimEfWvb3TMAkZddgUIDBue8oGUYqm4f2s0sMvPWBCxI45zM0%2F37EK%2B4JnIo1SlrKNm0GSZ44AEiOAhXupQ8ih6KoUbUciD3Biile6CwTMVIhME3mJiRSgVK6W91EaDn8%2Ba3mU%2BVvU1K9sgDSPZ%2F81DOpj25pvMW%2B1cMuCtUNsu9KUo7dHvpAYyLYiy%2FPGEmO9EquKjfMPRr17PAjeunD1QdgbRss4ysG%2B6XF2Has8zsGqX1sQalA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230628T081559Z&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47IMX73XEA%2F20230628%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=4f765277eb6e36bd5f7bf9d42be24244440092b5a705eadf178c78a9a9fb5d71",
+            "storage": "S3"
+          },
+          "params":  {
+            "splitoption": {
+              "pageRanges": [
+                {
+                  "start": 1,
+                  "end": 10
+                }
+              ]
+            }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
+        },
         "additionalProperties": false
       },
       "DocumentGenerationInternal": {
@@ -9861,7 +10263,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for document generation processing",
+            "description": "Params for Document Generation processing",
             "type": "object",
             "properties": {
               "outputFormat": {
@@ -9885,6 +10287,9 @@
             "required": [
               "jsonDataForMerge"
             ]
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
           }
         },
         "example": {
@@ -9922,7 +10327,19 @@
               ],
               "photograph": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP88h8AAu0B9XNPCQQAAAAASUVORK5CYII="
             }
-          }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
         },
         "required": [
           "input",
@@ -9961,6 +10378,27 @@
         "properties": {
           "uri": {
             "description": "Output file Upload Signed URI.",
+            "type": "string"
+          },
+          "storage": {
+            "description": "Specifies the type of the external storage",
+            "type": "string",
+            "enum": [
+              "S3",
+              "SHAREPOINT",
+              "DROPBOX",
+              "BLOB"
+            ]
+          }
+        }
+      },
+      "ExternalStorageOutputZip": {
+        "title": "Output",
+        "description": "Params representing output object",
+        "type": "object",
+        "properties": {
+          "uri": {
+            "description": "Output file Upload Signed URI. It should be of format zip only in case of external storage.",
             "type": "string"
           },
           "storage": {
@@ -10090,7 +10528,8 @@
           ]
         }
       },
-      "ElectronicSeal": {
+      "ElectronicSealInternal": {
+        "title": "Internal",
         "description": "Params to specify the options required for applying digital seal.",
         "type": "object",
         "required": [
@@ -10154,6 +10593,164 @@
                 "LABELS",
                 "SEAL_IMAGE"
               ]
+            }
+          },
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
+        },
+        "additionalProperties": false
+      },
+      "ElectronicSealExternal": {
+        "title": "External",
+        "description": "Params to specify the options required for applying digital seal for external storage.",
+        "type": "object",
+        "required": [
+          "inputs",
+          "params"
+        ],
+        "properties": {
+          "inputs": {
+            "title": "inputs",
+            "description": "Electronic seal operation object containing input doc and seal image uris respectively.",
+            "type": "object",
+            "properties": {
+              "document": {
+                "title": "document",
+                "description": "Params representing input document object.",
+                "type": "object",
+                "properties": {
+                  "uri": {
+                    "description": "Input file Download Signed URI.",
+                    "type": "string"
+                  },
+                  "storage": {
+                    "description": "Specifies the type of the external storage",
+                    "type": "string",
+                    "enum": [
+                      "S3",
+                      "SHAREPOINT",
+                      "DROPBOX",
+                      "BLOB"
+                    ]
+                  }
+                },
+                "required": [
+                  "uri"
+                ]
+              },
+              "sealImage": {
+                "title": "sealImage",
+                "description": "Params representing input seal image object.",
+                "type": "object",
+                "properties": {
+                  "uri": {
+                    "description": "Input file Download Signed URI.",
+                    "type": "string"
+                  },
+                  "storage": {
+                    "description": "Specifies the type of the external storage",
+                    "type": "string",
+                    "enum": [
+                      "S3",
+                      "SHAREPOINT",
+                      "DROPBOX",
+                      "BLOB"
+                    ]
+                  }
+                },
+                "required": [
+                  "uri"
+                ]
+              }
+            },
+            "required": [
+              "document"
+            ]
+          },
+          "output": {
+            "$ref": "#/components/schemas/ExternalStorageOutput"
+          },
+          "params": {
+            "description": "Params for Electronic Seal processing",
+            "type": "object",
+            "properties": {
+              "sealOptions": {
+                "$ref": "#/components/schemas/sealOptions"
+              }
+            },
+            "required": [
+              "sealOptions"
+            ]
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
+          }
+        },
+        "example": {
+          "inputs": {
+            "document": {
+              "uri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/dc-platformService-automation_dc-platformService-automation%40AdobeID/1c4f4674-ce8d-4b21-a69d-60aeae35bf43?X-Amz-Security-Token=FwoGZXIvYXdzEBkaDK%2By2wxl94khIbkxzCLTAQn6n6Wo0vFSul%2FpXW66aFX4T%2BPxtuOy%2Bz8eTxrnexeJRvMreBHNQm1myLwp20MkE%2Bb0H%2BwYgOhFaepi9AMml1aLNxXn1UPnEWJ7y8llhvsrXHimEfWvb3TMAkZddgUIDBue8oGUYqm4f2s0sMvPWBCxI45zM0%2F37EK%2B4JnIo1SlrKNm0GSZ44AEiOAhXupQ8ih6KoUbUciD3Biile6CwTMVIhME3mJiRSgVK6W91EaDn8%2Ba3mU%2BVvU1K9sgDSPZ%2F81DOpj25pvMW%2B1cMuCtUNsu9KUo7dHvpAYyLYiy%2FPGEmO9EquKjfMPRr17PAjeunD1QdgbRss4ysG%2B6XF2Has8zsGqX1sQalA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230628T081557Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3599&X-Amz-Credential=ASIAU5PA7W47IMX73XEA%2F20230628%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=ac6998566dbbde22509b128fe94d1cb5d3146cd3fb8ba78d7068e10d61302ec2",
+              "storage": "S3"
+            },
+            "sealImage": {
+              "uri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/dc-platformService-automation_dc-platformService-automation%40AdobeID/1c4f4674-ce8d-4b21-a69d-60aeae35bf43?X-Amz-Security-Token=FwoGZXIvYXdzEBkaDK%2By2wxl94khIbkxzCLTAQn6n6Wo0vFSul%2FpXW66aFX4T%2BPxtuOy%2Bz8eTxrnexeJRvMreBHNQm1myLwp20MkE%2Bb0H%2BwYgOhFaepi9AMml1aLNxXn1UPnEWJ7y8llhvsrXHimEfWvb3TMAkZddgUIDBue8oGUYqm4f2s0sMvPWBCxI45zM0%2F37EK%2B4JnIo1SlrKNm0GSZ44AEiOAhXupQ8ih6KoUbUciD3Biile6CwTMVIhME3mJiRSgVK6W91EaDn8%2Ba3mU%2BVvU1K9sgDSPZ%2F81DOpj25pvMW%2B1cMuCtUNsu9KUo7dHvpAYyLYiy%2FPGEmO9EquKjfMPRr17PAjeunD1QdgbRss4ysG%2B6XF2Has8zsGqX1sQalA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230628T081557Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3599&X-Amz-Credential=ASIAU5PA7W47IMX73XEA%2F20230628%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=ac6998566dbbde22509b128fe94d1cb5d3146cd3fb8ba78d7068e10d61302ec2",
+              "storage": "S3"
+            }
+          },
+          "output": {
+            "uri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/dc-platformService-automation_dc-platformService-automation%40AdobeID/f02f9927-4971-4589-8fdf-41ff56c2d520?X-Amz-Security-Token=FwoGZXIvYXdzEBkaDK%2By2wxl94khIbkxzCLTAQn6n6Wo0vFSul%2FpXW66aFX4T%2BPxtuOy%2Bz8eTxrnexeJRvMreBHNQm1myLwp20MkE%2Bb0H%2BwYgOhFaepi9AMml1aLNxXn1UPnEWJ7y8llhvsrXHimEfWvb3TMAkZddgUIDBue8oGUYqm4f2s0sMvPWBCxI45zM0%2F37EK%2B4JnIo1SlrKNm0GSZ44AEiOAhXupQ8ih6KoUbUciD3Biile6CwTMVIhME3mJiRSgVK6W91EaDn8%2Ba3mU%2BVvU1K9sgDSPZ%2F81DOpj25pvMW%2B1cMuCtUNsu9KUo7dHvpAYyLYiy%2FPGEmO9EquKjfMPRr17PAjeunD1QdgbRss4ysG%2B6XF2Has8zsGqX1sQalA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230628T081559Z&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47IMX73XEA%2F20230628%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=4f765277eb6e36bd5f7bf9d42be24244440092b5a705eadf178c78a9a9fb5d71",
+            "storage": "S3"
+          },
+          "params":  {
+            "sealOptions": {
+              "signatureFormat": "PKCS7",
+              "documentLevelPermission": "FORM_FILLING_AND_ANNOTATIONS",
+              "cscCredentialOptions": {
+                "credentialId": "[ADOBE]_xxxx_xx:35",
+                "providerName": "intxxxxxst",
+                "authorizationContext": {
+                  "accessToken": "b7338a1f-xxxx-xxxx-xxxx-1eec91c47c12"
+                },
+                "credentialAuthParameters": {
+                  "pin": "12xxxx65"
+                }
+              },
+              "tsaOptions": {
+                "url": "https://time-xxxxxx-abc.com/tsa",
+                "credentialAuthParameters": {
+                  "username": "abcxxxxxx123",
+                  "Password": "32@xxxx67"
+                }
+              },
+              "sealFieldOptions": {
+                "location": {
+                  "top": 300,
+                  "left": 50,
+                  "right": 250,
+                  "bottom": 100
+                },
+                "fieldName": "Signature1",
+                "pageNumber": 1
+              },
+              "sealAppearanceOptions": {
+                "displayOptions": [
+                  "NAME",
+                  "DATE",
+                  "DISTINGUISHED_NAME",
+                  "LABELS",
+                  "SEAL_IMAGE"
+                ]
+              }
             }
           },
           "notifiers": [
@@ -10389,7 +10986,7 @@
           "required": ["type", "data"]
         }
       },
-      "AutoTagPDF": {
+      "AutoTagPDFInternal": {
         "title": "Internal",
         "description": "Parameter for Accessibility Auto-Tag operation.",
         "type": "object",
@@ -10419,6 +11016,68 @@
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "shiftHeadings": false,
           "generateReport": false,
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
+        },
+        "additionalProperties": false
+      },
+      "AutoTagPDFExternal": {
+        "title": "External",
+        "description": "Params for Auto Tag PDF Operation using external storage.",
+        "type": "object",
+        "required": [
+          "input"
+        ],
+        "properties": {
+          "input": {
+            "$ref": "#/components/schemas/ExternalStorageInput"
+          },
+          "output": {
+            "$ref": "#/components/schemas/ExternalStorageOutputZip"
+          },
+          "params": {
+            "description": "Params for Auto Tag PDF processing",
+            "type": "object",
+            "properties": {
+              "shiftHeadings": {
+                "description": "Boolean specifying whether to shift headings.",
+                "type": "boolean",
+                "default": false
+              },
+              "generateReport": {
+                "description": "Boolean specifying whether to generate excel report.",
+                "type": "boolean",
+                "default": false
+              }
+            }
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
+          }
+        },
+        "example": {
+          "input": {
+            "uri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/dc-platformService-automation_dc-platformService-automation%40AdobeID/1c4f4674-ce8d-4b21-a69d-60aeae35bf43?X-Amz-Security-Token=FwoGZXIvYXdzEBkaDK%2By2wxl94khIbkxzCLTAQn6n6Wo0vFSul%2FpXW66aFX4T%2BPxtuOy%2Bz8eTxrnexeJRvMreBHNQm1myLwp20MkE%2Bb0H%2BwYgOhFaepi9AMml1aLNxXn1UPnEWJ7y8llhvsrXHimEfWvb3TMAkZddgUIDBue8oGUYqm4f2s0sMvPWBCxI45zM0%2F37EK%2B4JnIo1SlrKNm0GSZ44AEiOAhXupQ8ih6KoUbUciD3Biile6CwTMVIhME3mJiRSgVK6W91EaDn8%2Ba3mU%2BVvU1K9sgDSPZ%2F81DOpj25pvMW%2B1cMuCtUNsu9KUo7dHvpAYyLYiy%2FPGEmO9EquKjfMPRr17PAjeunD1QdgbRss4ysG%2B6XF2Has8zsGqX1sQalA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230628T081557Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3599&X-Amz-Credential=ASIAU5PA7W47IMX73XEA%2F20230628%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=ac6998566dbbde22509b128fe94d1cb5d3146cd3fb8ba78d7068e10d61302ec2",
+            "storage": "S3"
+          },
+          "output": {
+            "uri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/dc-platformService-automation_dc-platformService-automation%40AdobeID/f02f9927-4971-4589-8fdf-41ff56c2d520?X-Amz-Security-Token=FwoGZXIvYXdzEBkaDK%2By2wxl94khIbkxzCLTAQn6n6Wo0vFSul%2FpXW66aFX4T%2BPxtuOy%2Bz8eTxrnexeJRvMreBHNQm1myLwp20MkE%2Bb0H%2BwYgOhFaepi9AMml1aLNxXn1UPnEWJ7y8llhvsrXHimEfWvb3TMAkZddgUIDBue8oGUYqm4f2s0sMvPWBCxI45zM0%2F37EK%2B4JnIo1SlrKNm0GSZ44AEiOAhXupQ8ih6KoUbUciD3Biile6CwTMVIhME3mJiRSgVK6W91EaDn8%2Ba3mU%2BVvU1K9sgDSPZ%2F81DOpj25pvMW%2B1cMuCtUNsu9KUo7dHvpAYyLYiy%2FPGEmO9EquKjfMPRr17PAjeunD1QdgbRss4ysG%2B6XF2Has8zsGqX1sQalA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230628T081559Z&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47IMX73XEA%2F20230628%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=4f765277eb6e36bd5f7bf9d42be24244440092b5a705eadf178c78a9a9fb5d71",
+            "storage": "S3"
+          },
+          "params":  {
+            "shiftHeadings": false,
+            "generateReport": false
+          },
           "notifiers": [
             {
               "type": "CALLBACK",
@@ -10848,7 +11507,7 @@
             "$ref": "#/components/schemas/internal"
           },
           {
-            "$ref": "#/components/schemas/external"
+            "$ref": "#/components/schemas/externalstatus"
           }
         ]
       },
@@ -10880,8 +11539,47 @@
           }
         }
       },
-      "external": {
+      "externalstatus": {
         "title": "External",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/externaldonewithoutoutput"
+          },
+          {
+            "$ref": "#/components/schemas/external"
+          }
+        ]
+      },
+      "externaldonewithoutoutput": {
+        "title": "External without an output URI in the request",
+        "description": "Response in case of 'done' status",
+        "type": "object",
+        "properties": {
+          "status": {
+            "description": "Job Status",
+            "type": "string",
+            "enum": [
+              "done"
+            ]
+          },
+          "asset": {
+            "$ref": "#/components/schemas/responseAsset"
+          }
+        },
+        "example": {
+          "status": "done",
+          "asset": {
+            "metadata": {
+              "type": "application/pdf",
+              "size": 200791
+            },
+            "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+            "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
+          }
+        }
+      },
+      "external": {
+        "title": "External with an output URI in the request",
         "description": "Response in case of 'done' status using signed urls",
         "type": "object",
         "properties": {
@@ -10900,6 +11598,47 @@
       "responseAsset": {
         "title": "asset",
         "description": "Details of output asset document. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+        "type": "object",
+        "properties": {
+          "metadata": {
+            "type": "object",
+            "description": "metadata details of output asset.",
+            "properties": {
+              "size": {
+                "description": "The size of the Resource in bytes. This value helps in making range requests.",
+                "type": "integer"
+              },
+              "type": {
+                "description": "The media type of the Resource.",
+                "type": "string"
+              }
+            }
+          },
+          "assetID": {
+            "description": "An asset ID identifying an asset that is globally unique and never reused.",
+            "type": "string",
+            "required": false
+          },
+          "downloadUri": {
+            "description": "The URL used to download the Resource directly to the cloud provider.",
+            "type": "string"
+          }
+        },
+        "example": {
+          "status": "done",
+          "asset": {
+            "metadata": {
+              "type": "application/pdf",
+              "size": 200791
+            },
+            "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+            "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
+          }
+        }
+      },
+      "responseAssetZip": {
+        "title": "asset",
+        "description": "Details of output asset document in zip format. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
         "type": "object",
         "properties": {
           "metadata": {
@@ -10984,6 +11723,17 @@
       },
       "splitpdfdone": {
         "title": "done",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/splitpdfdoneInternal"
+          },
+          {
+            "$ref": "#/components/schemas/splitpdfdoneExternal"
+          }
+        ]
+      },
+      "splitpdfdoneInternal": {
+        "title": "Internal",
         "description": "Response in case of 'done' status",
         "type": "object",
         "properties": {
@@ -11048,6 +11798,45 @@
           ]
         }
       },
+      "splitpdfdoneExternal": {
+        "title": "External",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/splitpdfdoneWithoutOutput"
+          },
+          {
+            "$ref": "#/components/schemas/external"
+          }
+        ]
+      },
+      "splitpdfdoneWithoutOutput" : {
+        "title": "External without an output URI in the request",
+        "description": "Response in case of 'done' status when ouput uri is not passed in the rquest",
+        "type": "object",
+        "properties": {
+          "status": {
+            "description": "Job Status",
+            "type": "string",
+            "enum": [
+              "done"
+            ]
+          },
+          "asset": {
+            "$ref": "#/components/schemas/responseAssetZip"
+          }
+        },
+        "example": {
+          "status": "done",
+          "asset": {
+            "metadata": {
+              "type": "application/pdf",
+              "size": 200791
+            },
+            "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+            "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
+          }
+        }
+      },
       "PDFToImageDone": {
         "title": "done",
         "oneOf": [
@@ -11055,7 +11844,7 @@
             "$ref": "#/components/schemas/PDFTOImageDoneInternal"
           },
           {
-            "$ref": "#/components/schemas/external"
+            "$ref": "#/components/schemas/PDFTOImageDoneExternal"
           }
         ]
       },
@@ -11123,6 +11912,45 @@
               "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-97d3-87f2-087832fca718"
             }
           ]
+        }
+      },
+      "PDFTOImageDoneExternal": {
+        "title": "External",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/PDFTOImageDoneExternalWithoutOutput"
+          },
+          {
+            "$ref": "#/components/schemas/external"
+          }
+        ]
+      },
+      "PDFTOImageDoneExternalWithoutOutput" : {
+        "title": "External without an output URI in the request",
+        "description": "Response in case of 'done' status when ouput uri is not passed in the rquest",
+        "type": "object",
+        "properties": {
+          "status": {
+            "description": "Job Status",
+            "type": "string",
+            "enum": [
+              "done"
+            ]
+          },
+          "assetList": {
+            "$ref": "#/components/schemas/responseAssetZip"
+          }
+        },
+        "example": {
+          "status": "done",
+          "assetList": {
+            "metadata": {
+              "type": "application/pdf",
+              "size": 200791
+            },
+            "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+            "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
+          }
         }
       },
       "PDFPropertiesDone": {
@@ -11529,6 +12357,17 @@
       },
       "ExtractPDFDone": {
         "title": "done",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ExtractPDFDoneInternal"
+          },
+          {
+            "$ref": "#/components/schemas/ExtractPDFDoneExternal"
+          }
+        ]
+      },
+      "ExtractPDFDoneInternal": {
+        "title": "Internal",
         "description": "Response in case of 'done' status",
         "type": "object",
         "properties": {
@@ -11622,8 +12461,58 @@
           }
         }
       },
+      "ExtractPDFDoneExternal": {
+        "title": "External",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ExtractPDFDoneExternalWithoutOutput"
+          },
+          {
+            "$ref": "#/components/schemas/external"
+          }
+        ]
+      },
+      "ExtractPDFDoneExternalWithoutOutput" : {
+        "title": "External without an output URI in the request",
+        "description": "Response in case of 'done' status when ouput uri is not passed in the rquest",
+        "type": "object",
+        "properties": {
+          "status": {
+            "description": "Job Status",
+            "type": "string",
+            "enum": [
+              "done"
+            ]
+          },
+          "resource": {
+            "$ref": "#/components/schemas/responseAssetZip"
+          }
+        },
+        "example": {
+          "status": "done",
+          "resource": {
+            "metadata": {
+              "type": "application/pdf",
+              "size": 200791
+            },
+            "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+            "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
+          }
+        }
+      },
       "AutoTagPDFDone": {
         "title": "done",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/AutoTagPDFDoneInternal"
+          },
+          {
+            "$ref": "#/components/schemas/AutoTagPDFDoneExternal"
+          }
+        ]
+      },
+      "AutoTagPDFDoneInternal": {
+        "title": "Internal",
         "description": "Response in case of 'done' status",
         "type": "object",
         "properties": {
@@ -11714,6 +12603,45 @@
             },
             "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
             "assetID": "urn:aaid:AS:UE1:23c30ee0-2c6d-46d6-87f2-087832fca718"
+          }
+        }
+      },
+      "AutoTagPDFDoneExternal": {
+        "title": "External",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/AutoTagPDFDoneExternalWithoutOutput"
+          },
+          {
+            "$ref": "#/components/schemas/external"
+          }
+        ]
+      },
+      "AutoTagPDFDoneExternalWithoutOutput" : {
+        "title": "External without an output URI in the request",
+        "description": "Response in case of 'done' status when ouput uri is not passed in the request",
+        "type": "object",
+        "properties": {
+          "status": {
+            "description": "Job Status",
+            "type": "string",
+            "enum": [
+              "done"
+            ]
+          },
+          "resource": {
+            "$ref": "#/components/schemas/responseAssetZip"
+          }
+        },
+        "example": {
+          "status": "done",
+          "resource": {
+            "metadata": {
+              "type": "application/pdf",
+              "size": 200791
+            },
+            "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+            "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
           }
         }
       },
@@ -11812,8 +12740,58 @@
           }
         }
       },
-      "ElectronicSealPDFDone" : {
+      "ElectronicSealPDFDone": {
         "title": "done",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ElectronicSealPDFDoneInternal"
+          },
+          {
+            "$ref": "#/components/schemas/ElectronicSealPDFDoneExternal"
+          }
+        ]
+      },
+      "ElectronicSealPDFDoneInternal" : {
+        "title": "Internal",
+        "description": "Response in case of 'done' status",
+        "type": "object",
+        "properties": {
+          "status": {
+            "description": "Job Status",
+            "type": "string",
+            "enum": [
+              "done"
+            ]
+          },
+          "asset": {
+            "$ref": "#/components/schemas/responseAsset"
+          }
+        },
+        "example": {
+          "status": "done",
+          "asset": {
+            "metadata": {
+              "type": "application/pdf",
+              "size": 200791
+            },
+            "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
+            "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
+          }
+        }
+      },
+      "ElectronicSealPDFDoneExternal": {
+        "title": "External",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ElectronicSealPDFDoneExternalWithoutOutput"
+          },
+          {
+            "$ref": "#/components/schemas/external"
+          }
+        ]
+      },
+      "ElectronicSealPDFDoneExternalWithoutOutput" : {
+        "title": "External without an output URI in the request",
         "description": "Response in case of 'done' status",
         "type": "object",
         "properties": {

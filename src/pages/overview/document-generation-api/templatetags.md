@@ -298,7 +298,7 @@ JSON representation of the input data:
 
 ```json
 {
-"List_Data": "<ol><li>Level 1</li><li>Level 1<ol><li>Level 2</li><li>Level 2<ol><li>Level 3</li><li>Level 3</li></ol></li></ol></li></ol>"
+  "List_Data": "<ol><li>Level 1</li><li>Level 1<ol><li>Level 2</li><li>Level 2<ol><li>Level 3</li><li>Level 3</li></ol></li></ol></li></ol>"
 }
 ```
 
@@ -320,7 +320,7 @@ JSON representation of the input data:
 
 ```json
 {
-"List_Data": "<ol style = \" list-style-type : upper-roman; \"><li>Coffee</li><li>Tea</li><li>Milk</li></ol>"
+  "List_Data": "<ol style = \" list-style-type : upper-roman; \"><li>Coffee</li><li>Tea</li><li>Milk</li></ol>"
 }
 ```
 

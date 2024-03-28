@@ -196,6 +196,9 @@ const {
     MimeType,
     AutotagPDFJob,
     AutotagPDFResult,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError,
 } = require("@adobe/pdfservices-node-sdk");
 const fs = require("fs");
 

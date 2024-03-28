@@ -116,8 +116,4 @@ The client is expected to return the following response payload with an HTTP sta
 If the response code is not 200 (OK) or the expected payload is not received, it will be considered an error response. In the event of 50 error responses within a 10-minute period, webhook notification support will be temporarily blocked for that client for the next 20 minutes.
 
 
-**Note**: The webhook notification support is only available in SDKs version 4.0.0 and above.
-
-## Limitations
-1. Webhook notification support is not available for [external storage](https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol/) based APIs.
-2. It is not available for [PDFProperties](https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-properties/) operation.
+**Note**: The webhook notification support is only available in SDKs version 4.x.x and the REST APIs.
