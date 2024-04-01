@@ -174,6 +174,7 @@ Upgrading to the latest SDK should not break existing applications.
 ## Change history
 
 ### 4.0.0 (April, 2024; major release)
+
 | Change  | Language | Description                                                                                                                    |
 |---------|----------|--------------------------------------------------------------------------------------------------------------------------------|
 | New     | NodeJS   | Released Adobe PDF Services Node SDK v4.0.0, introducing new interfaces fully leveraging power of new PDF Services rest APIs.  |
@@ -183,6 +184,13 @@ Upgrading to the latest SDK should not break existing applications.
 | Changed | NodeJS   | Updated PDF Properties operation to return PDFProperties object along with JSON string.                                        |
 | Changed | NodeJS   | Updated Extract PDF operation to return content and resource asset along with content JSON object.                             |
 
+### Server Side Release (April, 2024; server side release)
+
+| Change | Language | Description                                                                                                                                                 |
+|--------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| New    | API     | Added support for [Webhook Notification](../pdf-services-api/howtos/webhook-notification/) in PDF Properties.                                               |
+| New    | API     | Added support for [External Storage](../pdf-services-api/howtos/pdf-external-storage-sol/) in Extract PDF, Split PDF, PDF Electronic Seal and Auto-Tag PDF. |
+| New    | API     | Added support for [Webhook Notification](../pdf-services-api/howtos/webhook-notification/) for external storage operations.                                 |
 
 ### 2.3.1 (March, 2024; patch release)
 

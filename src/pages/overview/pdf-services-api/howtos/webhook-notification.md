@@ -15,20 +15,20 @@ For more information on the **CALLBACK** notifier, please refer to the [Callback
 ### Sample Request Body
 ```json
 {
-  "assetID": "<ASSET ID>",
-  ....,
-  ///REST API Operation related details
-  ....
-  
-  "notifiers": [
-    {
-      "type": "<NOTIFIER_TYPE>",
-      "data": {
-          //<NOTIFICATION_DATA>
-        }
+   "assetID": "<ASSET ID>",
+   ....,
+   ///REST API Operation related details
+   ....
+
+   "notifiers": [
+      {
+         "type": "<NOTIFIER_TYPE>",
+         "data": {
+            //<NOTIFICATION_DATA>
+         }
       }
-    }
-  ]
+      }
+   ]
 }
 ```
 
@@ -39,30 +39,30 @@ The callback webhook feature allows the client to receive notifications regardin
 When utilizing the callback webhook, the following parameters need to be included within the notifier object:
 1. **type** _(Required)_: This field should always be set to ***CALLBACK***.
 2. **data** _(Required)_: The "data" field contains the following keys:
-    * ***url*** _(Required)_: This is the HTTPS POST URL created by the user to receive the callback.
-    * ***headers*** _(Optional)_: This is a map of key-value pairs and represents header-related information required to make the URL call. This field is optional but can be used to provide additional context or authentication for the callback.
+   * ***url*** _(Required)_: This is the HTTPS POST URL created by the user to receive the callback.
+   * ***headers*** _(Optional)_: This is a map of key-value pairs and represents header-related information required to make the URL call. This field is optional but can be used to provide additional context or authentication for the callback.
 
 ### Sample Notifier Object
 
 ```json
 {
-  "assetID": "<ASSET ID>",
-  ....,
-  ///REST API Operation related details
-  ....
-  
-  "notifiers": [
-    {
-      "type": "CALLBACK",
-      "data": {
-        "url": "https://dummy.callback.org/",
-        "headers": {
-          "x-api-key": "dummykey",
-          "access-token": "dummytoken"
-        }
+   "assetID": "<ASSET ID>",
+   ....,
+   ///REST API Operation related details
+   ....
+
+   "notifiers": [
+      {
+         "type": "CALLBACK",
+         "data": {
+            "url": "https://dummy.callback.org/",
+            "headers": {
+               "x-api-key": "dummykey",
+               "access-token": "dummytoken"
+            }
+         }
       }
-    }
-  ]
+   ]
 }
 ```
 
@@ -73,18 +73,18 @@ The notification payload sent to CALLBACK URL is same as that of **GET STATUS** 
 In case of successful job completion, the following **callback payload** will be sent to callback url:
 ```json
 {
-  "jobID": "<JOB ID>",
-  "statusResponse": {
-    "status": "done",
-    "asset": {
-      "metadata": {
-        "type": "application/pdf",
-        "size": 318974
-      },
-      "downloadUri": "<DOWNLOAD URI",
-      "assetID": "<ASSET ID>"
-    }
-  }
+   "jobID": "<JOB ID>",
+   "statusResponse": {
+      "status": "done",
+      "asset": {
+         "metadata": {
+            "type": "application/pdf",
+            "size": 318974
+         },
+         "downloadUri": "<DOWNLOAD URI",
+         "assetID": "<ASSET ID>"
+      }
+   }
 }
 ```
 
@@ -92,15 +92,15 @@ In case of successful job completion, the following **callback payload** will be
 In case of failed job completion, the following **callback payload** will be sent to callback url:
 ```json
 {
-  "jobID": "<JOB ID>",
-  "statusResponse": {
-    "status": "failed",
-    "error": {
-      "code": "<ERROR CODE>",
-      "message": "<ERROR MESSAGE>",
-      "status": 400
-    }
-  }
+   "jobID": "<JOB ID>",
+   "statusResponse": {
+      "status": "failed",
+      "error": {
+         "code": "<ERROR CODE>",
+         "message": "<ERROR MESSAGE>",
+         "status": 400
+      }
+   }
 }
 ```
 
@@ -108,7 +108,7 @@ In case of failed job completion, the following **callback payload** will be sen
 The client is expected to return the following response payload with an HTTP status code of 200 (OK):
 ```json
 {
-  "ack": "done"
+   "ack": "done"
 }
 ```
 <InlineAlert slots="text"/>
@@ -116,8 +116,4 @@ The client is expected to return the following response payload with an HTTP sta
 If the response code is not 200 (OK) or the expected payload is not received, it will be considered an error response. In the event of 50 error responses within a 10-minute period, webhook notification support will be temporarily blocked for that client for the next 20 minutes.
 
 
-**Note**: The webhook notification support is only available in SDKs version 4.0.0 and above.
-
-## Limitations
-1. Webhook notification support is not available for [external storage](https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol/) based APIs.
-2. It is not available for [PDFProperties](https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-properties/) operation.
+**Note**: The webhook notification support is only available in SDKs version 4.x.x and the REST APIs.
