@@ -11,18 +11,6 @@ A **Signed URL** temporarily provides access to a resource. Signed URLs contain 
 
 PDF Services APIs supports the signed URLs of input and output files in the request body. Please refer to the **External Section** in Request Body of each API for more details.
 
-<InlineAlert slots="text"/>
-
-<div>
-Accessing files from External Storage is currently <b>not</b> supported in the following APIs
-<ul>
-    <li> <a href="../../../apis/#tag/PDF-Accessibility-Auto-Tag">PDF Accessibility Auto Tag</a> </li>
-    <li><a href="../../../apis/#tag/Extract-PDF">Extract PDF</a></li>
-    <li><a href="../../../apis/#tag/PDF-Electronic-Seal">PDF Electronic Seal</a> </li>
-    <li><a href="../../../apis/#tag/Split-PDF">Split PDF</a> </li>
-</ul>
-</div>
-
 ## Supported External Storage Solutions
 
 The concept of Signed URLs is common across various cloud storage solutions for downloading and uploading files. Adobe PDF Services APIs currently supports the signed URLs generated through -
@@ -34,7 +22,7 @@ The concept of Signed URLs is common across various cloud storage solutions for 
 
 ### SharePoint
 
-PDF Services APIs can connect with SharePoint using Signed URIs for downloading and uploading the files from SharePoint site. 
+PDF Services APIs can connect with SharePoint using Signed URIs for downloading and uploading the files from SharePoint site.
 
 #### Supported URL Prefixes
 
@@ -77,12 +65,8 @@ PDF Services APIs can connect with Azure Blob using Signed URIs or [SAS Urls](ht
 
 - `https://<account-name>.blob.core.windows.net`
 
-Please refer [here](https://learn.microsoft.com/en-us/azure/ai-services/translator/document-translation/how-to-guides/create-sas-tokens?tabs=Containers#create-sas-tokens-with-azure-storage-explorer) for more details. 
+Please refer [here](https://learn.microsoft.com/en-us/azure/ai-services/translator/document-translation/how-to-guides/create-sas-tokens?tabs=Containers#create-sas-tokens-with-azure-storage-explorer) for more details.
 
 ## Limitation
 - Redirection is not allowed with signed URIs.
 - Only HTTPS based signed URIs are supported.
-
-
-
-
