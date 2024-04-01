@@ -188,9 +188,8 @@ Upgrading to the latest SDK should not break existing applications.
 
 | Change | Language | Description                                                                                                                                                 |
 |--------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| New    | API     | Added support for [Webhook Notification](../pdf-services-api/howtos/webhook-notification/) in PDF Properties.                                               |
+| New    | API     | Added support for [Webhook Notification](../pdf-services-api/howtos/webhook-notification/) in PDF Properties and External Storage operations.                                          |
 | New    | API     | Added support for [External Storage](../pdf-services-api/howtos/pdf-external-storage-sol/) in Extract PDF, Split PDF, PDF Electronic Seal and Auto-Tag PDF. |
-| New    | API     | Added support for [Webhook Notification](../pdf-services-api/howtos/webhook-notification/) for external storage operations.                                 |
 
 ### 2.3.1 (March, 2024; patch release)
 
