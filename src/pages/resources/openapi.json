@@ -1335,7 +1335,7 @@
           }
         ],
         "requestBody": {
-          "description": "Params for Extract PDF Operation",
+          "description": "Params for Extract PDF Operation. Refer to the External Section below for using external storage with Extract PDF Operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -1883,7 +1883,7 @@
         "tags": [
           "Create PDF"
         ],
-        "summary": "Poll the create pdf job for completion",
+        "summary": "Poll the create PDF job for completion",
         "operationId": "pdfoperations.jobstatus",
         "parameters": [
           {
@@ -3017,7 +3017,7 @@
         "tags": [
           "Compress PDF"
         ],
-        "summary": "Poll the compress pdf job for completion",
+        "summary": "Poll the compress PDF job for completion",
         "operationId": "pdfoperations.compresspdf.jobstatus",
         "parameters": [
           {
@@ -3401,7 +3401,7 @@
         "tags": [
           "Export PDF"
         ],
-        "summary": "Poll the export pdf job for completion",
+        "summary": "Poll the export PDF job for completion",
         "operationId": "pdfoperations.exportpdf.jobstatus",
         "parameters": [
           {
@@ -5297,7 +5297,7 @@
         "tags": [
           "PDF Properties"
         ],
-        "summary": "Poll the pdf properties job for completion",
+        "summary": "Poll the PDF properties job for completion",
         "operationId": "pdfoperations.pdfproperties.jobstatus",
         "parameters": [
           {
@@ -6267,7 +6267,7 @@
           }
         ],
         "requestBody": {
-          "description": "Params for Split PDF Operation",
+          "description": "Params for Split PDF Operation. Refer to the External Section below for using external storage with Split PDF Operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -6645,7 +6645,7 @@
           }
         ],
         "requestBody": {
-          "description": "Params to specify the options required for applying electronic seal.",
+          "description": "Params to specify the options required for applying Electronic Seal. Refer to the External Section below for using external storage with Electronic Seal Operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -7023,7 +7023,7 @@
           }
         ],
         "requestBody": {
-          "description": "Input Params for Accessibility Auto-Tag Operation.",
+          "description": "Input Params for Accessibility Auto-Tag Operation. Refer to the External Section below for using external storage with Accessibility Auto-Tag Operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -8419,7 +8419,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for document generation processing",
+            "description": "Params for Create PDF processing",
             "type": "object",
             "properties": {
               "documentLanguage": {
@@ -8529,7 +8529,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for export pdf processing",
+            "description": "Params for Export PDF processing",
             "type": "object",
             "properties": {
               "targetFormat": {
@@ -8652,7 +8652,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutputZip"
           },
           "params": {
-            "description": "Params for PDF2Images processing",
+            "description": "Params for PDF to Images processing",
             "type": "object",
             "properties": {
               "targetFormat": {
@@ -8966,7 +8966,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for HTML2PDF processing",
+            "description": "Params for HTML to PDF processing",
             "type": "object",
             "properties": {
               "json": {
@@ -9255,7 +9255,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for compress PDF processing",
+            "description": "Params for Compress PDF processing",
             "type": "object",
             "properties": {
               "compressionLevel": {
@@ -9437,7 +9437,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for ocr pdf processing",
+            "description": "Params for OCR PDF processing",
             "type": "object",
             "properties": {
               "ocrLang": {
@@ -9574,7 +9574,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for page manipulation processing",
+            "description": "Params for Page Manipulation processing",
             "type": "object",
             "properties": {
               "pageActions": {
@@ -9703,7 +9703,7 @@
             "$ref": "#/components/schemas/ExternalStorageInput"
           },
           "params": {
-            "description": "Params for pdf properties processing",
+            "description": "Params for PDF Properties processing",
             "type": "object",
             "properties": {
               "pageLevel": {
@@ -9844,7 +9844,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for protect pdf processing",
+            "description": "Params for Protect PDF processing",
             "type": "object",
             "properties": {
               "passwordProtection": {
@@ -9992,7 +9992,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for remove protection processing.",
+            "description": "Params for Remove Protection processing.",
             "type": "object",
             "properties": {
               "password": {
@@ -10263,7 +10263,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for document generation processing",
+            "description": "Params for Document Generation processing",
             "type": "object",
             "properties": {
               "outputFormat": {
@@ -10681,7 +10681,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for Extract PDF processing",
+            "description": "Params for Electronic Seal processing",
             "type": "object",
             "properties": {
               "sealOptions": {
@@ -11049,10 +11049,6 @@
             "description": "Params for Auto Tag PDF processing",
             "type": "object",
             "properties": {
-              "assetID": {
-                "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
-                "type": "string"
-              },
               "shiftHeadings": {
                 "description": "Boolean specifying whether to shift headings.",
                 "type": "boolean",
@@ -11555,7 +11551,7 @@
         ]
       },
       "externaldonewithoutoutput": {
-        "title": "External Without Ouput URI in request",
+        "title": "External without an output URI in the request",
         "description": "Response in case of 'done' status",
         "type": "object",
         "properties": {
@@ -11583,7 +11579,7 @@
         }
       },
       "external": {
-        "title": "External with output uri passed in request",
+        "title": "External with an output URI in the request",
         "description": "Response in case of 'done' status using signed urls",
         "type": "object",
         "properties": {
@@ -11814,7 +11810,7 @@
         ]
       },
       "splitpdfdoneWithoutOutput" : {
-        "title": "External without output uri in request",
+        "title": "External without an output URI in the request",
         "description": "Response in case of 'done' status when ouput uri is not passed in the rquest",
         "type": "object",
         "properties": {
@@ -11930,7 +11926,7 @@
         ]
       },
       "PDFTOImageDoneExternalWithoutOutput" : {
-        "title": "External without output uri in request",
+        "title": "External without an output URI in the request",
         "description": "Response in case of 'done' status when ouput uri is not passed in the rquest",
         "type": "object",
         "properties": {
@@ -11941,13 +11937,13 @@
               "done"
             ]
           },
-          "asset": {
+          "assetList": {
             "$ref": "#/components/schemas/responseAssetZip"
           }
         },
         "example": {
           "status": "done",
-          "asset": {
+          "assetList": {
             "metadata": {
               "type": "application/pdf",
               "size": 200791
@@ -12477,7 +12473,7 @@
         ]
       },
       "ExtractPDFDoneExternalWithoutOutput" : {
-        "title": "External without output uri in request",
+        "title": "External without an output URI in the request",
         "description": "Response in case of 'done' status when ouput uri is not passed in the rquest",
         "type": "object",
         "properties": {
@@ -12488,13 +12484,13 @@
               "done"
             ]
           },
-          "asset": {
+          "resource": {
             "$ref": "#/components/schemas/responseAssetZip"
           }
         },
         "example": {
           "status": "done",
-          "asset": {
+          "resource": {
             "metadata": {
               "type": "application/pdf",
               "size": 200791
@@ -12622,8 +12618,8 @@
         ]
       },
       "AutoTagPDFDoneExternalWithoutOutput" : {
-        "title": "External without output uri in request",
-        "description": "Response in case of 'done' status when ouput uri is not passed in the rquest",
+        "title": "External without an output URI in the request",
+        "description": "Response in case of 'done' status when ouput uri is not passed in the request",
         "type": "object",
         "properties": {
           "status": {
@@ -12633,13 +12629,13 @@
               "done"
             ]
           },
-          "asset": {
+          "resource": {
             "$ref": "#/components/schemas/responseAssetZip"
           }
         },
         "example": {
           "status": "done",
-          "asset": {
+          "resource": {
             "metadata": {
               "type": "application/pdf",
               "size": 200791
@@ -12795,7 +12791,7 @@
         ]
       },
       "ElectronicSealPDFDoneExternalWithoutOutput" : {
-        "title": "External without output uri in request",
+        "title": "External without an output URI in the request",
         "description": "Response in case of 'done' status",
         "type": "object",
         "properties": {
