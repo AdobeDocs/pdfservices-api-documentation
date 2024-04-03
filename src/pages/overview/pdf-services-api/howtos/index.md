@@ -97,10 +97,6 @@ following sample for details.
 - [Java Sample for Proxy Server Config](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithProxyServer.java )
 - [Java Sample for Proxy Server Config With Basic Authentication](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithAuthenticatedProxyServer.java )
 
-### Node.js
-- [Node Sample for Proxy Server Config](https://github.com/adobe/pdfservices-node-sdk-samples/blob/master/src/customconfigurations/create-pdf-with-proxy-server.js)
-- [Node Sample for Proxy Server Config With Basic Authentication](https://github.com/adobe/pdfservices-node-sdk-samples/blob/master/src/customconfigurations/create-pdf-with-authenticated-proxy-server.js)
-
 ### Java Proxy Server configuration
 
 Available properties:
@@ -110,6 +106,10 @@ Available properties:
 - **port**: Default: 80 for http, 443 for https. Port on which proxy server is listening.
 - **username**: Username for the authentication.
 - **password**: Password for the authentication.
+
+### Node.js
+- [Node Sample for Proxy Server Config](https://github.com/adobe/pdfservices-node-sdk-samples/blob/master/src/customconfigurations/create-pdf-with-proxy-server.js)
+- [Node Sample for Proxy Server Config With Basic Authentication](https://github.com/adobe/pdfservices-node-sdk-samples/blob/master/src/customconfigurations/create-pdf-with-authenticated-proxy-server.js)
 
 ### Node Proxy Server configuration
 
