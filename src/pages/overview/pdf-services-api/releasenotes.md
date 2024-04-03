@@ -131,14 +131,14 @@ Upgrading to the latest SDK should not break existing applications.
 
 ### 4.0.0 (April, 2024; major release)
 
-| Change  | Language | Description                                                                                                                   |
-|---------|----------|-------------------------------------------------------------------------------------------------------------------------------|
+| Change  | Language | Description                                                                                                                  |
+|---------|----------|------------------------------------------------------------------------------------------------------------------------------|
 | New     | NodeJS   | Released Adobe PDF Services Node SDK v4.0.0, introducing new interfaces fully leveraging power of new PDF Services rest APIs. |
-| New     | NodeJS   | Added support for delete asset, refresh download URI, webhook notifiers.                                                      |
-| New     | NodeJS   | Eliminated need of storage to save intermediate result by removed dependency on temporary storage.                            |
-| New     | NodeJS   | Extended I/O capabilities by introducing external storage for PDF Services operations.                           |
-| Changed | NodeJS   | Updated PDF Properties operation to return PDFProperties object along with JSON string.                                       |
-| Changed | NodeJS   | Updated Extract PDF operation to return content and resource asset along with content JSON object.                            |
+| New     | NodeJS   | Added support for delete asset and webhook notifiers.                                                                        |
+| New     | NodeJS   | Eliminated need of storage to save intermediate result by removed dependency on temporary storage.                           |
+| New     | NodeJS   | Extended I/O capabilities by introducing external storage for PDF Services operations.                                       |
+| Changed | NodeJS   | Updated PDF Properties operation to return PDFProperties object along with JSON string.                                      |
+| Changed | NodeJS   | Updated Extract PDF operation to return content and resource asset along with content JSON object.                           |
 
 ### 2.3.1 (March, 2024; patch release)
 
