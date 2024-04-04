@@ -79,7 +79,7 @@ import com.adobe.pdfservices.operation.ExecutionContext;
 * Require the `@adobe/pdfservices-node-sdk` in the Sample file to access the SDK interface
 
 ```
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk'); 
+const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');  
 ```
 
 	
