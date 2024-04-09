@@ -5,7 +5,7 @@ title: Split PDF | How Tos | PDF Services API | Adobe PDF Services
 
 Split a PDF document into multiple smaller documents by simply specifying either the number of files, pages per file, or page ranges.
 
-## Rest API 
+## REST API 
 
 See our public API Reference for [Split PDF](../../../apis/#tag/Split-PDF).
 
@@ -17,7 +17,7 @@ file.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -152,58 +152,82 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // Run the sample:
 // node src/splitpdf/split-pdf-by-number-of-pages.js
 
- const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    SplitPDFParams,
+    SplitPDFJob,
+    SplitPDFResult,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 
- try {
-   // Initial setup, create credentials instance.
-     const credentials =  PDFServicesSdk.Credentials
-         .servicePrincipalCredentialsBuilder()
-         .withClientId("PDF_SERVICES_CLIENT_ID")
-         .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-         .build();
+(async () => {
+    let readStream;
+    try {
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+        });
 
-   // Create an ExecutionContext using credentials
-   const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
 
-   // Create a new operation instance.
-   const splitPDFOperation = PDFServicesSdk.SplitPDF.Operation.createNew(),
-       input = PDFServicesSdk.FileRef.createFromLocalFile(
-           'resources/splitPDFInput.pdf',
-           PDFServicesSdk.SplitPDF.SupportedSourceFormat.pdf
-       );
-   // Set operation input from a source file.
-   splitPDFOperation.setInput(input);
+        // Creates an asset(s) from source file(s) and upload
+        readStream = fs.createReadStream("./splitPDFInput.pdf")
+        const inputAsset = await pdfServices.upload({
+            readStream,
+            mimeType: MimeType.PDF
+        });
 
-   // Set the maximum number of pages each of the output files can have.
-   splitPDFOperation.setPageCount(2);
+        // Create parameters for the job
+        const params = new SplitPDFParams({
+            pageCount: 2
+        });
 
-   // Execute the operation and Save the result to the specified location.
-   splitPDFOperation.execute(executionContext)
-       .then(result => {
-           let saveFilesPromises = [];
-           for(let i = 0; i < result.length; i++){
-               saveFilesPromises.push(result[i].saveAsFile(`output/SplitPDFByNumberOfPagesOutput_${i}.pdf`));
-           }
-           return Promise.all(saveFilesPromises);
-       })
-       .catch(err => {
-           if(err instanceof PDFServicesSdk.Error.ServiceApiError
-               || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-               console.log('Exception encountered while executing operation', err);
-           } else {
-               console.log('Exception encountered while executing operation', err);
-           }
-       });
- } catch (err) {
-   console.log('Exception encountered while executing operation', err);
- }
-     
+        // Creates a new job instance
+        const job = new SplitPDFJob({inputAsset, params});
+
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: SplitPDFResult
+        });
+
+        // Get content from the resulting asset(s)
+        const resultAssets = pdfServicesResponse.result.assets;
+
+        for (let i = 0; i < resultAssets.length; i++) {
+            const streamAsset = await pdfServices.getContent({asset: resultAssets[i]});
+
+            // Creates an output stream and copy stream asset's content to it
+            const _outputFilePath = "./SplitPDFByNumberOfPagesOutput_" + i + ".pdf";
+            console.log(`Saving asset at ${_outputFilePath}`);
+
+            const writeStream = fs.createWriteStream(_outputFilePath);
+            streamAsset.readStream.pipe(writeStream);
+        }
+    } catch (err) {
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        readStream?.destroy();
+    }
+})();
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Split-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf' \
@@ -216,9 +240,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf
         "pageCount": 9
     }
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
 ```
 
 ## Split PDF by page ranges
@@ -229,7 +250,7 @@ ranges where each page range corresponds to a single output file.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -392,68 +413,94 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // Run the sample:
 // node src/splitpdf/split-pdf-by-page-ranges.js
 
-  const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    SplitPDFParams,
+    SplitPDFJob,
+    SplitPDFResult,
+    PageRanges,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 
-  const getPageRanges = () => {
+(async () => {
+    let readStream;
+    try {
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+        });
+
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
+
+        // Creates an asset(s) from source file(s) and upload
+        readStream = fs.createReadStream("./splitPDFInput.pdf")
+        const inputAsset = await pdfServices.upload({
+            readStream,
+            mimeType: MimeType.PDF
+        });
+
+        // Create the page ranges where each page range corresponds to a single output file
+        const pageRanges = getPageRanges();
+
+        // Create parameters for the job
+        const params = new SplitPDFParams({pageRanges});
+
+        // Creates a new job instance
+        const job = new SplitPDFJob({inputAsset, params});
+
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: SplitPDFResult
+        });
+
+        // Get content from the resulting asset(s)
+        const resultAssets = pdfServicesResponse.result.assets;
+
+        for (let i = 0; i < resultAssets.length; i++) {
+            const streamAsset = await pdfServices.getContent({asset: resultAssets[i]});
+
+            // Creates an output stream and copy stream asset's content to it
+            const _outputFilePath = "./SplitPDFByPageRangesOutput_" + i + ".pdf";
+            console.log(`Saving asset at ${_outputFilePath}`);
+
+            const writeStream = fs.createWriteStream(_outputFilePath);
+            streamAsset.readStream.pipe(writeStream);
+        }
+    } catch (err) {
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        readStream?.destroy();
+    }
+})();
+
+const getPageRanges = () => {
     // Specify pages ranges.
-    const pageRanges = new PDFServicesSdk.PageRanges();
+    const pageRanges = new PageRanges();
     // Add page 1.
     pageRanges.addSinglePage(1);
- 
     // Add pages 3 to 4.
-    pageRanges.addPageRange(3, 4);
+    pageRanges.addRange(3, 4);
     return pageRanges;
-  };
-  try {
-    // Initial setup, create credentials instance.
-      const credentials =  PDFServicesSdk.Credentials
-          .servicePrincipalCredentialsBuilder()
-          .withClientId("PDF_SERVICES_CLIENT_ID")
-          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-          .build();
- 
-    // Create an ExecutionContext using credentials
-    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
- 
-    // Create a new operation instance.
-    const splitPDFOperation = PDFServicesSdk.SplitPDF.Operation.createNew(),
-        input = PDFServicesSdk.FileRef.createFromLocalFile(
-            'resources/splitPDFInput.pdf',
-            PDFServicesSdk.SplitPDF.SupportedSourceFormat.pdf
-        );
-    // Set operation input from a source file.
-    splitPDFOperation.setInput(input);
- 
-    // Set the page ranges where each page range corresponds to a single output file.
-    const pageRanges = getPageRanges();
-    splitPDFOperation.setPageRanges(pageRanges);
- 
-    // Execute the operation and Save the result to the specified location.
-    splitPDFOperation.execute(executionContext)
-        .then(result => {
-            let saveFilesPromises = [];
-            for(let i = 0; i < result.length; i++){
-                saveFilesPromises.push(result[i].saveAsFile(`output/SplitPDFByPageRangesOutput_${i}.pdf`));
-            }
-            return Promise.all(saveFilesPromises);
-        })
-        .catch(err => {
-            if(err instanceof PDFServicesSdk.Error.ServiceApiError
-                || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-                console.log('Exception encountered while executing operation', err);
-            } else {
-                console.log('Exception encountered while executing operation', err);
-            }
-        });
-  } catch (err) {
-    console.log('Exception encountered while executing operation', err);
-  }
+};
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Split-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf' \
@@ -475,9 +522,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf
         ]
     }
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
 ```
 
 ## Split PDF into number of files
@@ -489,7 +533,7 @@ an identical number of pages (if possible).
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -626,57 +670,82 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // Run the sample:
 // node src/splitpdf/split-pdf-into-number-of-files.js
 
-   const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
-  
-   try {
-     // Initial setup, create credentials instance.
-       const credentials =  PDFServicesSdk.Credentials
-           .servicePrincipalCredentialsBuilder()
-           .withClientId("PDF_SERVICES_CLIENT_ID")
-           .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-           .build();
-  
-     // Create an ExecutionContext using credentials
-     const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
-  
-     // Create a new operation instance.
-     const splitPDFOperation = PDFServicesSdk.SplitPDF.Operation.createNew(),
-         input = PDFServicesSdk.FileRef.createFromLocalFile(
-             'resources/splitPDFInput.pdf',
-             PDFServicesSdk.SplitPDF.SupportedSourceFormat.pdf
-         );
-     // Set operation input from a source file.
-     splitPDFOperation.setInput(input);
-  
-     // Set the number of documents to split the input PDF file into.
-     splitPDFOperation.setFileCount(2);
-  
-     // Execute the operation and Save the result to the specified location.
-     splitPDFOperation.execute(executionContext)
-         .then(result => {
-             let saveFilesPromises = [];
-             for(let i = 0; i < result.length; i++){
-                 saveFilesPromises.push(result[i].saveAsFile(`output/SplitPDFIntoNumberOfFilesOutput_${i}.pdf`));
-             }
-             return Promise.all(saveFilesPromises);
-         })
-         .catch(err => {
-             if(err instanceof PDFServicesSdk.Error.ServiceApiError
-                 || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-                 console.log('Exception encountered while executing operation', err);
-             } else {
-                 console.log('Exception encountered while executing operation', err);
-             }
-         });
-   } catch (err) {
-     console.log('Exception encountered while executing operation', err);
-   }
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    SplitPDFParams,
+    SplitPDFJob,
+    SplitPDFResult,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
+
+(async () => {
+    let readStream;
+    try {
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+        });
+
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
+
+        // Creates an asset(s) from source file(s) and upload
+        readStream = fs.createReadStream("./splitPDFInput.pdf")
+        const inputAsset = await pdfServices.upload({
+            readStream,
+            mimeType: MimeType.PDF
+        });
+
+        // Create parameters for the job
+        const params = new SplitPDFParams({
+            fileCount: 2
+        });
+
+        // Creates a new job instance
+        const job = new SplitPDFJob({inputAsset, params});
+
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: SplitPDFResult
+        });
+
+        // Get content from the resulting asset(s)
+        const resultAssets = pdfServicesResponse.result.assets;
+
+        for (let i = 0; i < resultAssets.length; i++) {
+            const streamAsset = await pdfServices.getContent({asset: resultAssets[i]});
+
+            // Creates an output stream and copy stream asset's content to it
+            const _outputFilePath = "./SplitPDFIntoNumberOfFilesOutput_" + i + ".pdf";
+            console.log(`Saving asset at ${_outputFilePath}`);
+
+            const writeStream = fs.createWriteStream(_outputFilePath);
+            streamAsset.readStream.pipe(writeStream);
+        }
+    } catch (err) {
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        readStream?.destroy();
+    }
+})();
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Split-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf' \
@@ -689,7 +758,4 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf
         "fileCount": 3
     }
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
 ```

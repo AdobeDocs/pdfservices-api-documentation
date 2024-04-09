@@ -5,7 +5,7 @@ title: Create PDF | How Tos | PDF Services API | Adobe PDF Services
 
 Create PDFs from a variety of formats, including static and dynamic HTML; Microsoft Word, PowerPoint, and Excel; as well as text, image, Zip, and URL. Support for HTML to PDF, DOC to PDF, DOCX to PDF, PPT to PDF, PPTX to PDF, XLS to PDF, XLSX to PDF, TXT to PDF, RTF to PDF, BMP to PDF, JPEG to PDF, GIF to PDF, TIFF to PDF, PNG to PDF
 
-## Rest API
+## REST API
 
 See our public API Reference for :
 - [Create PDF from Office formats](../../../apis/#tag/Create-PDF)
@@ -32,7 +32,7 @@ For more information, refer [Benefits of embedding custom fonts](https://support
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -146,44 +146,73 @@ namespace CreatePDFFromDocx
 // Run the sample:
 // node src/createpdf/create-pdf-from-docx.js 
 
-const PDFservicesSdk = require('@adobe/pdfservices-node-sdk');
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    CreatePDFJob,
+    CreatePDFResult,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 
- try {
-   // Initial setup, create credentials instance.
-     const credentials =  PDFServicesSdk.Credentials
-         .servicePrincipalCredentialsBuilder()
-         .withClientId("PDF_SERVICES_CLIENT_ID")
-         .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-         .build();
+(async () => {
+    let readStream;
+    try {
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+        });
 
-   // Create an ExecutionContext using credentials and create a new operation instance.
-   const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
-       createPdfOperation = PDFServicesSdk.CreatePDF.Operation.createNew();
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
 
-   // Set operation input from a source file.
-   const input = PDFServicesSdk.FileRef.createFromLocalFile('resources/createPDFInput.docx');
-   createPdfOperation.setInput(input);
+        // Creates an asset(s) from source file(s) and upload
+        readStream = fs.createReadStream("./createPDFInput.docx");
+        const inputAsset = await pdfServices.upload({
+            readStream,
+            mimeType: MimeType.DOCX
+        });
 
-   // Execute the operation and Save the result to the specified location.
-   createPdfOperation.execute(executionContext)
-       .then(result => result.saveAsFile('output/createPDFFromDOCX.pdf'))
-       .catch(err => {
-           if(err instanceof PDFServicesSdk.Error.ServiceApiError
-               || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-               console.log('Exception encountered while executing operation', err);
-           } else {
-               console.log('Exception encountered while executing operation', err);
-           }
-       });
- } catch (err) {
-   console.log('Exception encountered while executing operation', err);
- }
+        // Creates a new job instance
+        const job = new CreatePDFJob({inputAsset});
+
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: CreatePDFResult
+        });
+
+        // Get content from the resulting asset(s)
+        const resultAsset = pdfServicesResponse.result.asset;
+        const streamAsset = await pdfServices.getContent({asset: resultAsset});
+
+        // Creates an output stream and copy result asset's content to it
+        const outputFilePath = "./createPDFFromDOCX.pdf";
+        console.log(`Saving asset at ${outputFilePath}`);
+
+        const outputStream = fs.createWriteStream(outputFilePath);
+        streamAsset.readStream.pipe(outputStream);
+    } catch (err) {
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        readStream?.destroy();
+    }
+})();
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Create-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/createpdf' \
@@ -193,9 +222,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/createpd
 --data-raw '{
     "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-createPDF
 ```
 
 ## Create PDF with DocumentLanguage
@@ -212,7 +238,7 @@ file, the SDK supports the following formats:
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -347,57 +373,80 @@ namespace CreatePDFFromDocxWithOptions
 // Run the sample:
 // node src/createpdf/create-pdf-from-docx-with-options.js
 
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    CreatePDFJob,
+    CreatePDFParams,
+    CreatePDFResult,
+    DocumentLanguage,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 
-const setCustomOptions = (createPdfOperation) => {
-    // Select the documentLanguage for input file.
-    const documentLanguage = PDFServicesSdk.CreatePDF.options.word.SupportedDocumentLanguage.EN_US;
-
-    // Set the desired WORD-to-PDF conversion options with documentLanguage.
-    const createPdfOptions = new PDFServicesSdk.CreatePDF.options.word.CreatePDFFromWordOptions.Builder()
-        .withDocumentLanguage(documentLanguage).build();
-    createPdfOperation.setOptions(createPdfOptions);
-};
-
-try {
-    // Initial setup, create credentials instance.
-    const credentials =  PDFServicesSdk.Credentials
-        .servicePrincipalCredentialsBuilder()
-        .withClientId("PDF_SERVICES_CLIENT_ID")
-        .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-        .build();
-
-    // Create an ExecutionContext using credentials and create a new operation instance.
-    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
-        createPdfOperation = PDFServicesSdk.CreatePDF.Operation.createNew();
-
-    // Set operation input from a source file.
-        const input = PDFServicesSdk.FileRef.createFromLocalFile('resources/createPDFInput.docx');
-    createPdfOperation.setInput(input);
-
-    // Provide any custom configuration options for the operation.
-    setCustomOptions(createPdfOperation);
-
-    // Execute the operation and Save the result to the specified location.
-    createPdfOperation.execute(executionContext)
-        .then(result => result.saveAsFile('output/createPDFFromDOCXWithOptionsOutput.pdf'))
-        .catch(err => {
-            if(err instanceof PDFServicesSdk.Error.ServiceApiError
-                || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-                console.log('Exception encountered while executing operation', err);
-            } else {
-                console.log('Exception encountered while executing operation', err);
-            }
+(async () => {
+    let readStream;
+    try {
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
         });
-} catch (err) {
-    console.log('Exception encountered while executing operation', err);
-}
+
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
+
+        // Creates an asset(s) from source file(s) and upload
+        readStream = fs.createReadStream("./createPDFInput.docx");
+        const inputAsset = await pdfServices.upload({
+            readStream,
+            mimeType: MimeType.DOCX
+        });
+
+        // Create parameters for the job
+        const params = new CreatePDFParams({
+            documentLanguage: DocumentLanguage.EN_US
+        });
+
+        // Creates a new job instance
+        const job = new CreatePDFJob({inputAsset, params});
+
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: CreatePDFResult
+        });
+
+        // Get content from the resulting asset(s)
+        const resultAsset = pdfServicesResponse.result.asset;
+        const streamAsset = await pdfServices.getContent({asset: resultAsset});
+
+        // Creates an output stream and copy result asset's content to it
+        const outputFilePath = "./createPDFFromDOCXWithOptionsOutput.pdf";
+        console.log(`Saving asset at ${outputFilePath}`);
+
+        const outputStream = fs.createWriteStream(outputFilePath);
+        streamAsset.readStream.pipe(outputStream);
+    } catch (err) {
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        readStream?.destroy();
+    }
+})();
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Create-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/createpdf' \
@@ -408,9 +457,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/createpd
     "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
     "documentLanguage": "en-US"
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-createPDF
 ```
 
 ## Create a PDF from static HTML
@@ -423,7 +469,7 @@ files, and so on.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -565,63 +611,93 @@ namespace CreatePDFFromStaticHtml
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
-// node src/createpdf/create-pdf-from-static-html.js
+// node src/htmltopdf/static-html-to-pdf.js
 
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    PageLayout,
+    HTMLToPDFParams,
+    HTMLToPDFResult,
+    HTMLToPDFJob,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 
- const setCustomOptions = (htmlToPDFOperation) => {
-   // Define the page layout, in this case an 8 x 11.5 inch page (effectively portrait orientation).
-   const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
-   pageLayout.setPageSize(8, 11.5);
+(async () => {
+    let readStream;
+    try {
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+        });
 
-   // Set the desired HTML-to-PDF conversion options.
-   const htmlToPdfOptions = new PDFServicesSdk.CreatePDF.options.html.CreatePDFFromHtmlOptions.Builder()
-     .includesHeaderFooter(true)
-     .withPageLayout(pageLayout)
-     .build();
-   htmlToPDFOperation.setOptions(htmlToPdfOptions);
- };
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
 
+        // Creates an asset(s) from source file(s) and upload
+        readStream = fs.createReadStream("./createPDFFromStaticHtmlInput.zip");
+        const inputAsset = await pdfServices.upload({
+            readStream,
+            mimeType: MimeType.ZIP
+        });
 
- try {
-   // Initial setup, create credentials instance.
-     const credentials =  PDFServicesSdk.Credentials
-         .servicePrincipalCredentialsBuilder()
-         .withClientId("PDF_SERVICES_CLIENT_ID")
-         .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-         .build();
+        // Create parameters for the job
+        const params = getHTMLToPDFParams();
 
-   // Create an ExecutionContext using credentials and create a new operation instance.
-   const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
-     htmlToPDFOperation = PDFServicesSdk.CreatePDF.Operation.createNew();
+        // Creates a new job instance
+        const job = new HTMLToPDFJob({inputAsset, params});
 
-   // Set operation input from a source file.
-   const input = PDFServicesSdk.FileRef.createFromLocalFile('resources/createPDFFromStaticHtmlInput.zip');
-   htmlToPDFOperation.setInput(input);
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: HTMLToPDFResult
+        });
 
-   // Provide any custom configuration options for the operation.
-   setCustomOptions(htmlToPDFOperation);
+        // Get content from the resulting asset(s)
+        const resultAsset = pdfServicesResponse.result.asset;
+        const streamAsset = await pdfServices.getContent({asset: resultAsset});
 
-   // Execute the operation and Save the result to the specified location.
-   htmlToPDFOperation.execute(executionContext)
-     .then(result => result.saveAsFile('output/createPdfFromStaticHtmlOutput.pdf'))
-     .catch(err => {
-       if(err instanceof PDFServicesSdk.Error.ServiceApiError
-         || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-         console.log('Exception encountered while executing operation', err);
-       } else {
-         console.log('Exception encountered while executing operation', err);
-       }
-     });
- } catch (err) {
-   console.log('Exception encountered while executing operation', err);
- }
+        // Creates an output stream and copy result asset's content to it
+        const outputFilePath = "createPdfFromStaticHtmlOutput.pdf";
+        console.log(`Saving asset at ${outputFilePath}`);
+
+        const outputStream = fs.createWriteStream(outputFilePath);
+        streamAsset.readStream.pipe(outputStream);
+    } catch (err) {
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        readStream?.destroy();
+    }
+})();
+
+function getHTMLToPDFParams() {
+    // Define the page layout, in this case an 8 x 11.5 inch page (effectively portrait orientation)
+    const pageLayout = new PageLayout({
+        pageHeight: 11.5,
+        pageWidth: 8
+    });
+
+    return new HTMLToPDFParams({
+        pageLayout,
+        includeHeaderFooter: true,
+    });
+}
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopdf' \
@@ -637,9 +713,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
         "pageHeight": 8.5
     }
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```
 
 ## Create a PDF from static HTML with inline CSS
@@ -648,7 +721,7 @@ The sample below creates a PDF file from a static HTML file with inline CSS. The
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -790,63 +863,93 @@ namespace CreatePDFFromHTMLWithInlineCSS
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
-// node src/create-pdf-from-html-with-inline-css.js
+// node src/htmltopdf/html-with-inline-css-to-pdf.js
 
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    HTMLToPDFJob,
+    HTMLToPDFResult,
+    PageLayout,
+    HTMLToPDFParams,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 
-const setCustomOptions = (htmlToPDFOperation) => {
-    // Define the page layout, in this case an 20 x 25 inch page (effectively portrait orientation).
-    const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
-    pageLayout.setPageSize(20, 25);
-
-    // Set the desired HTML-to-PDF conversion options.
-    const htmlToPdfOptions = new PDFServicesSdk.CreatePDF.options.html.CreatePDFFromHtmlOptions.Builder()
-        .includesHeaderFooter(true)
-        .withPageLayout(pageLayout)
-        .build();
-    htmlToPDFOperation.setOptions(htmlToPdfOptions);
-};
-
-
-try {
-    // Initial setup, create credentials instance.
-    const credentials =  PDFServicesSdk.Credentials
-        .servicePrincipalCredentialsBuilder()
-        .withClientId("PDF_SERVICES_CLIENT_ID")
-        .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-        .build();
-
-    // Create an ExecutionContext using credentials and create a new operation instance.
-    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
-        htmlToPDFOperation = PDFServicesSdk.CreatePDF.Operation.createNew();
-
-    // Set operation input from a source file.
-    const input = PDFServicesSdk.FileRef.createFromLocalFile('resources/createPDFFromHTMLWithInlineCSSInput.html');
-    htmlToPDFOperation.setInput(input);
-
-    // Provide any custom configuration options for the operation.
-    setCustomOptions(htmlToPDFOperation);
-
-    // Execute the operation and Save the result to the specified location.
-    htmlToPDFOperation.execute(executionContext)
-        .then(result => result.saveAsFile('output/createPDFFromHTMLWithInlineCSSOutput.pdf'))
-        .catch(err => {
-            if(err instanceof PDFServicesSdk.Error.ServiceApiError
-                || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-                console.log('Exception encountered while executing operation', err);
-            } else {
-                console.log('Exception encountered while executing operation', err);
-            }
+(async () => {
+    let readStream;
+    try {
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
         });
-} catch (err) {
-    console.log('Exception encountered while executing operation', err);
+
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
+
+        // Creates an asset(s) from source file(s) and upload
+        readStream = fs.createReadStream("./createPDFFromHTMLWithInlineCSSInput.html");
+        const inputAsset = await pdfServices.upload({
+            readStream,
+            mimeType: MimeType.HTML
+        });
+
+        // Create parameters for the job
+        const params = getHTMLToPDFParams();
+
+        // Creates a new job instance
+        const job = new HTMLToPDFJob({inputAsset, params});
+
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: HTMLToPDFResult
+        });
+
+        // Get content from the resulting asset(s)
+        const resultAsset = pdfServicesResponse.result.asset;
+        const streamAsset = await pdfServices.getContent({asset: resultAsset});
+
+        // Creates an output stream and copy result asset's content to it
+        const outputFilePath = "./createPDFFromHTMLWithInlineCSSOutput.pdf";
+        console.log(`Saving asset at ${outputFilePath}`);
+
+        const outputStream = fs.createWriteStream(outputFilePath);
+        streamAsset.readStream.pipe(outputStream);
+    } catch (err) {
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        readStream?.destroy();
+    }
+})();
+
+function getHTMLToPDFParams() {
+    // Define the page layout, in this case an 20 x 25 inch page (effectively portrait orientation)
+    const pageLayout = new PageLayout({
+        pageHeight: 25,
+        pageWidth: 20
+    });
+
+    return new HTMLToPDFParams({
+        pageLayout,
+        includeHeaderFooter: true,
+    });
 }
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopdf' \
@@ -862,9 +965,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
         "pageHeight": 8.5
     }
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```
 
 ## Create a PDF File From HTML specified via URL
@@ -873,7 +973,7 @@ The sample below creates a PDF file from a HTML file specified via URL.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -1014,64 +1114,84 @@ namespace CreatePDFFromURL
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
-// node src/create-pdf-from-url.js
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+// node src/htmltopdf/html-to-pdf-from-url.js
 
-const setCustomOptions = (htmlToPDFOperation) => {
-    // Define the page layout, in this case an 20 x 25 inch page (effectively portrait orientation).
-    const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
-    pageLayout.setPageSize(20, 25);
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    PageLayout,
+    HTMLToPDFParams,
+    HTMLToPDFResult,
+    HTMLToPDFJob,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 
-    // Set the desired HTML-to-PDF conversion options.
-    const htmlToPdfOptions = new PDFServicesSdk.CreatePDF.options.html.CreatePDFFromHtmlOptions.Builder()
-        .includesHeaderFooter(true)
-        .withPageLayout(pageLayout)
-        .build();
-    htmlToPDFOperation.setOptions(htmlToPdfOptions);
-};
-
-
-try {
-    // Initial setup, create credentials instance.
-    const credentials =  PDFServicesSdk.Credentials
-        .servicePrincipalCredentialsBuilder()
-        .withClientId("PDF_SERVICES_CLIENT_ID")
-        .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-        .build();
-
-    // Create an ExecutionContext using credentials and create a new operation instance.
-    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
-        htmlToPDFOperation = PDFServicesSdk.CreatePDF.Operation.createNew();
-
-    // Set operation input from a source file.
-    const input = PDFServicesSdk.FileRef.createFromURL(
-        "https://www.adobe.io"
-    );
-    htmlToPDFOperation.setInput(input);
-
-    // Provide any custom configuration options for the operation.
-    setCustomOptions(htmlToPDFOperation);
-
-    // Execute the operation and Save the result to the specified location.
-    htmlToPDFOperation.execute(executionContext)
-        .then(result => result.saveAsFile('output/createPdfFromURLOutput.pdf'))
-        .catch(err => {
-            if(err instanceof PDFServicesSdk.Error.ServiceApiError
-                || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-                console.log('Exception encountered while executing operation', err);
-            } else {
-                console.log('Exception encountered while executing operation', err);
-            }
+(async () => {
+    try {
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
         });
-} catch (err) {
-    console.log('Exception encountered while executing operation', err);
+
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
+
+        const inputURL = "<HTML_URL>";
+
+        // Create parameters for the job
+        const params = getHTMLToPDFParams();
+
+        // Creates a new job instance
+        const job = new HTMLToPDFJob({inputURL, params});
+
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: HTMLToPDFResult
+        });
+
+        // Get content from the resulting asset(s)
+        const resultAsset = pdfServicesResponse.result.asset;
+        const streamAsset = await pdfServices.getContent({asset: resultAsset});
+
+        // Creates an output stream and copy result asset's content to it
+        const outputFilePath = "./createPDFFromHTMLURL.pdf";
+        console.log(`Saving asset at ${outputFilePath}`);
+
+        const outputStream = fs.createWriteStream(outputFilePath);
+        streamAsset.readStream.pipe(outputStream);
+    } catch (err) {
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    }
+})();
+
+function getHTMLToPDFParams() {
+    // Define the page layout, in this case an 8 x 11.5 inch page (effectively portrait orientation)
+    const pageLayout = new PageLayout({
+        pageHeight: 11.5,
+        pageWidth: 8
+    });
+
+    return new HTMLToPDFParams({
+        includeHeaderFooter: true,
+        pageLayout
+    });
 }
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopdf' \
@@ -1087,9 +1207,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
         "pageHeight": 8.5
     }
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```
 
 ## Create a PDF from dynamic HTML
@@ -1111,7 +1228,7 @@ dynamically prior to PDF conversion.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -1266,68 +1383,100 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
-// node src/createpdf/create-pdf-from-dynamic-html.js
+// node src/htmltopdf/dynamic-html-to-pdf.js
 
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    PageLayout,
+    HTMLToPDFParams,
+    HTMLToPDFResult,
+    HTMLToPDFJob,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 
- const setCustomOptions = (htmlToPDFOperation) => {
-   // Define the page layout, in this case an 8 x 11.5 inch page (effectively portrait orientation).
-   const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
-   pageLayout.setPageSize(8, 11.5);
-   //Set the dataToMerge field that needs to be populated in the HTML before its conversion.
-   const dataToMerge = {
-       "title":"Create, Convert PDFs and More!",
-       "sub_title": "Easily integrate PDF actions within your document workflows."
-   };
-   // Set the desired HTML-to-PDF conversion options.
-   const htmlToPdfOptions = new PDFServicesSdk.CreatePDF.options.html.CreatePDFFromHtmlOptions.Builder()
-       .includesHeaderFooter(true)
-       .withPageLayout(pageLayout)
-       .withDataToMerge(dataToMerge)
-       .build();
-   htmlToPDFOperation.setOptions(htmlToPdfOptions);
- };
+(async () => {
+    let readStream;
+    try {
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+        });
 
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
 
- try {
-   // Initial setup, create credentials instance.
-     const credentials =  PDFServicesSdk.Credentials
-         .servicePrincipalCredentialsBuilder()
-         .withClientId("PDF_SERVICES_CLIENT_ID")
-         .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-         .build();
+        // Creates an asset(s) from source file(s) and upload
+        readStream = fs.createReadStream("./createPDFFromDynamicHtmlInput.zip");
+        const inputAsset = await pdfServices.upload({
+            readStream,
+            mimeType: MimeType.ZIP
+        });
 
-   // Create an ExecutionContext using credentials and create a new operation instance.
-   const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
-       htmlToPDFOperation = PDFServicesSdk.CreatePDF.Operation.createNew();
+        // Create parameters for the job
+        const params = getHTMLToPDFParams();
 
-   // Set operation input from a source file.
-   const input = PDFServicesSdk.FileRef.createFromLocalFile('resources/createPDFFromDynamicHtmlInput.zip');
-   htmlToPDFOperation.setInput(input);
+        // Creates a new job instance
+        const job = new HTMLToPDFJob({inputAsset, params});
 
-   // Provide any custom configuration options for the operation.
-   setCustomOptions(htmlToPDFOperation);
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: HTMLToPDFResult
+        });
 
-   // Execute the operation and Save the result to the specified location.
-   htmlToPDFOperation.execute(executionContext)
-       .then(result => result.saveAsFile('output/createPdfFromDynamicHtmlOutput.pdf'))
-       .catch(err => {
-           if(err instanceof PDFServicesSdk.Error.ServiceApiError
-               || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-               console.log('Exception encountered while executing operation', err);
-           } else {
-               console.log('Exception encountered while executing operation', err);
-           }
-       });
- } catch (err) {
-   console.log('Exception encountered while executing operation', err);
- }
+        // Get content from the resulting asset(s)
+        const resultAsset = pdfServicesResponse.result.asset;
+        const streamAsset = await pdfServices.getContent({asset: resultAsset});
+
+        // Creates an output stream and copy result asset's content to it
+        const outputFilePath = "./createPDFFromDynamicHtmlOutput.pdf";
+        console.log(`Saving asset at ${outputFilePath}`);
+
+        const outputStream = fs.createWriteStream(outputFilePath);
+        streamAsset.readStream.pipe(outputStream);
+    } catch (err) {
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        readStream?.destroy();
+    }
+})();
+
+function getHTMLToPDFParams() {
+    // Define the page layout, in this case an 8 x 11.5 inch page (effectively portrait orientation)
+    const pageLayout = new PageLayout({
+        pageHeight: 11.5,
+        pageWidth: 8
+    });
+
+    // Set the dataToMerge field that needs to be populated in the HTML before its conversion
+    const dataToMerge = {
+        "title": "Create, Convert PDFs and More!",
+        "sub_title": "Easily integrate PDF actions within your document workflows."
+    };
+
+    return new HTMLToPDFParams({
+        pageLayout,
+        dataToMerge,
+        includeHeaderFooter: true,
+    });
+}
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopdf' \
@@ -1343,7 +1492,4 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
         "pageHeight": 8.5
     }
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```

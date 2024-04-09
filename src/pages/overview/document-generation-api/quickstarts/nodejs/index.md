@@ -10,7 +10,7 @@ To get started using Adobe Document Generation API, let's walk through a simple 
 
 To complete this guide, you will need:
 
-* [Node.js](https://nodejs.org) - Node.js version 14.0 or higher is required. 
+* [Node.js](https://nodejs.org) - Node.js version 18.0 or higher is required. 
 * An Adobe ID. If you do not have one, the credential setup will walk you through creating one.
 * A way to edit code. No specific editor is required for this guide.
 
@@ -116,28 +116,22 @@ Notice how the tokens in the Word document match up with values in our JSON. Whi
 3) We'll begin by including our required dependencies:
 
 ```js
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
-const fs = require('fs');
+const {
+  ServicePrincipalCredentials,
+  PDFServices,
+  MimeType,
+  DocumentMergeParams,
+  OutputFormat,
+  DocumentMergeJob,
+  DocumentMergeResult,
+  SDKError,
+  ServiceUsageError,
+  ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 ```
 
-The first line includes the Adobe PDF Services Node.js SDK. The second third include Node's `filesystem` package. 
-
-2) Now let's define our input and output:
-
-```js
-const OUTPUT = './generatedReceipt.pdf';
-
-// If our output already exists, remove it so we can run the application again.
-if(fs.existsSync(OUTPUT)) fs.unlinkSync(OUTPUT);
-
-const INPUT = './receiptTemplate.docx';
-
-const JSON_INPUT = require('./receipt.json');
-```
-
-These lines are hard coded but in a real application would typically be dynamic.
-
-3) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+4) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
 - **Windows:**
   - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
   - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
@@ -146,109 +140,153 @@ These lines are hard coded but in a real application would typically be dynamic.
   - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
   - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
-4) Next, we setup the SDK to use our credentials.
+5) Next, we setup the SDK to use our credentials.
 
 ```js
-const credentials =  PDFServicesSdk.Credentials
-    .servicePrincipalCredentialsBuilder()
-    .withClientId(process.env.PDF_SERVICES_CLIENT_ID)
-    .withClientSecret(process.env.PDF_SERVICES_CLIENT_SECRET)
-    .build();
+// Initial setup, create credentials instance
+const credentials = new ServicePrincipalCredentials({
+  clientId: process.env.PDF_SERVICES_CLIENT_ID,
+  clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+});
 
-// Create an ExecutionContext using credentials
-const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
+// Creates a PDF Services instance
+const pdfServices = new PDFServices({credentials});
 ```
 
-This code both points to the credentials downloaded previously as well as sets up an execution context object that will be used later.
-
-5) Now, let's create the operation:
+6) Now, let's upload the asset and create JSON data for merge:
 
 ```js
-const documentMerge = PDFServicesSdk.DocumentMerge,
-       documentMergeOptions = documentMerge.options,
-       options = new documentMergeOptions.DocumentMergeOptions(JSON_INPUT, documentMergeOptions.OutputFormat.PDF);
+// Creates an asset(s) from source file(s) and upload
+readStream = fs.createReadStream("./receiptTemplate.docx");
+const inputAsset = await pdfServices.upload({
+  readStream,
+  mimeType: MimeType.DOCX
+});
 
-// Create a new operation instance using the options instance.
-const documentMergeOperation = documentMerge.Operation.createNew(options);
+// Setup input data for the document merge process
+const jsonDataForMerge = JSON.parse(fs.readFileSync('./receipt.json', 'utf-8'));
+```
 
-// Set operation input document template from a source file.
-const input = PDFServicesSdk.FileRef.createFromLocalFile(INPUT);
-documentMergeOperation.setInput(input);
+7) Now, let's create the parameters and the job:
+
+```js
+// Create parameters for the job
+const params = new DocumentMergeParams({
+  jsonDataForMerge,
+  outputFormat: OutputFormat.PDF
+});
+
+// Creates a new job instance
+const job = new DocumentMergeJob({inputAsset, params});
 ```
 
 This set of code defines what we're doing (a document merge operation, the SDK's way of describing Document Generation), points to our local JSON file and specifies the output is a PDF. It also points to the Word file used as a template.
 
-6) The next code block executes the operation:
+8) The next code block submits the job and gets the job result:
 
 ```js
-// Execute the operation and Save the result to the specified location.
-documentMergeOperation.execute(executionContext)
-.then(result => result.saveAsFile(OUTPUT))
-.catch(err => {
-	if(err instanceof PDFServicesSdk.Error.ServiceApiError
-		|| err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-		console.log('Exception encountered while executing operation', err);
-	} else {
-		console.log('Exception encountered while executing operation', err);
-	}
+// Submit the job and get the job result
+const pollingURL = await pdfServices.submit({job});
+const pdfServicesResponse = await pdfServices.getJobResult({
+    pollingURL,
+    resultType: DocumentMergeResult
 });
+
+// Get content from the resulting asset(s)
+const resultAsset = pdfServicesResponse.result.asset;
+const streamAsset = await pdfServices.getContent({asset: resultAsset});
 ```
 
-This code runs the document generation process and then stores the result PDF document to the file system. 
+9) The next code block saves the result at the specified location:
+
+```js
+// Creates a write stream and copy stream asset's content to it
+const outputFilePath = "./generatePDFOutput.pdf";
+console.log(`Saving asset at ${outputFilePath}`);
+
+const writeStream = fs.createWriteStream(outputFilePath);
+streamAsset.readStream.pipe(writeStream);
+```
+
+This code runs the Document Generation process and then stores the resulting PDF document to the file system.
 
 ![Example running at the command line](./shot9.png)
 
 Here's the complete application (`documentmerge.js`):
 
 ```js
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
-const fs = require('fs');
+const {
+  ServicePrincipalCredentials,
+  PDFServices,
+  MimeType,
+  DocumentMergeParams,
+  OutputFormat,
+  DocumentMergeJob,
+  DocumentMergeResult,
+  SDKError,
+  ServiceUsageError,
+  ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 
-const OUTPUT = './generatedReceipt.pdf';
-
-// If our output already exists, remove it so we can run the application again.
-if(fs.existsSync(OUTPUT)) fs.unlinkSync(OUTPUT);
-
-const INPUT = './receiptTemplate.docx';
-
-const JSON_INPUT = require('./receipt.json');
-
-
-// Set up our credentials object.
-const credentials =  PDFServicesSdk.Credentials
-        .servicePrincipalCredentialsBuilder()
-        .withClientId(process.env.PDF_SERVICES_CLIENT_ID)
-        .withClientSecret(process.env.PDF_SERVICES_CLIENT_SECRET)
-        .build();
-
-// Create an ExecutionContext using credentials
-const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
-
-// This creates an instance of the Export operation we're using, as well as specifying output type (DOCX)
-const documentMerge = PDFServicesSdk.DocumentMerge,
-    documentMergeOptions = documentMerge.options,
-    options = new documentMergeOptions.DocumentMergeOptions(JSON_INPUT, documentMergeOptions.OutputFormat.PDF);
-
-// Create a new operation instance using the options instance.
-const documentMergeOperation = documentMerge.Operation.createNew(options);
-
-// Set operation input document template from a source file.
-const input = PDFServicesSdk.FileRef.createFromLocalFile(INPUT);
-documentMergeOperation.setInput(input);
-
-
-// Execute the operation and Save the result to the specified location.
-documentMergeOperation.execute(executionContext)
-    .then(result => result.saveAsFile(OUTPUT))
-    .catch(err => {
-        if(err instanceof PDFServicesSdk.Error.ServiceApiError
-            || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-            console.log('Exception encountered while executing operation', err);
-        } else {
-            console.log('Exception encountered while executing operation', err);
-        }
+(async () => {
+  let readStream;
+  try {
+    // Initial setup, create credentials instance
+    const credentials = new ServicePrincipalCredentials({
+      clientId: process.env.PDF_SERVICES_CLIENT_ID,
+      clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
     });
 
+    // Creates a PDF Services instance
+    const pdfServices = new PDFServices({credentials});
+
+    // Creates an asset(s) from source file(s) and upload
+    readStream = fs.createReadStream("./receiptTemplate.docx");
+    const inputAsset = await pdfServices.upload({
+      readStream,
+      mimeType: MimeType.DOCX
+    });
+
+    // Setup input data for the document merge process
+    const jsonDataForMerge = JSON.parse(fs.readFileSync('./receipt.json', 'utf-8'));
+
+    // Create parameters for the job
+    const params = new DocumentMergeParams({
+      jsonDataForMerge,
+      outputFormat: OutputFormat.PDF
+    });
+
+    // Creates a new job instance
+    const job = new DocumentMergeJob({inputAsset, params});
+
+    // Submit the job and get the job result
+    const pollingURL = await pdfServices.submit({job});
+    const pdfServicesResponse = await pdfServices.getJobResult({
+      pollingURL,
+      resultType: DocumentMergeResult
+    });
+
+    // Get content from the resulting asset(s)
+    const resultAsset = pdfServicesResponse.result.asset;
+    const streamAsset = await pdfServices.getContent({asset: resultAsset});
+
+    // Creates a write stream and copy stream asset's content to it
+    const outputFilePath = "./generatePDFOutput.pdf";
+    console.log(`Saving asset at ${outputFilePath}`);
+
+    const writeStream = fs.createWriteStream(outputFilePath);
+    streamAsset.readStream.pipe(writeStream);
+  } catch (err) {
+    if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+      console.log("Exception encountered while executing operation", err);
+    } else {
+      console.log("Exception encountered while executing operation", err);
+    }
+  } finally {
+    readStream?.destroy();
+  }
+})();
 ```
 
 ## Next Steps

@@ -5,7 +5,7 @@ title: Insert Pages | How Tos | PDF Services API | Adobe PDF Services
 
 Insert one or more pages into an existing document
 
-## Rest API 
+## REST API 
 
 See our public API Reference for [Insert Pages](../../../apis/#tag/Combine-PDF)
 
@@ -16,7 +16,7 @@ an existing PDF.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -182,71 +182,103 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // Run the sample:
 // node src/insertpages/insert-pdf-pages.js
 
-    const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
-   
-    const getPageRangesForFirstFile = () => {
-      // Specify which pages of the first file are to be inserted in the base file.
-      const pageRangesForFirstFile = new PDFServicesSdk.PageRanges();
-      // Add pages 1 to 3.
-      pageRangesForFirstFile.addPageRange(1, 3);
-   
-      // Add page 4.
-      pageRangesForFirstFile.addSinglePage(4);
-   
-      return pageRangesForFirstFile;
-    };
-   
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    PageRanges,
+    InsertPagesParams,
+    InsertPagesJob,
+    InsertPagesResult,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
+
+(async () => {
+    let baseReadStream;
+    let firstReadStreamToInsert;
+    let secondReadStreamToInsert;
     try {
-      // Initial setup, create credentials instance.
-        const credentials =  PDFServicesSdk.Credentials
-            .servicePrincipalCredentialsBuilder()
-            .withClientId("PDF_SERVICES_CLIENT_ID")
-            .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-            .build();
-   
-      // Create an ExecutionContext using credentials and create a new operation instance.
-      const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
-          insertPagesOperation = PDFServicesSdk.InsertPages.Operation.createNew();
-   
-      // Set operation base input from a source file.
-      const baseInputFile = PDFServicesSdk.FileRef.createFromLocalFile('resources/baseInput.pdf');
-      insertPagesOperation.setBaseInput(baseInputFile);
-   
-      // Create a FileRef instance using a local file.
-      const firstFileToInsert = PDFServicesSdk.FileRef.createFromLocalFile('resources/firstFileToInsertInput.pdf'),
-          pageRanges = getPageRangesForFirstFile();
-   
-      // Adds the pages (specified by the page ranges) of the input PDF file to be inserted at
-      // the specified page of the base PDF file.
-      insertPagesOperation.addPagesToInsertAt(2, firstFileToInsert, pageRanges);
-   
-      // Create a FileRef instance using a local file.
-      const secondFileToInsert = PDFServicesSdk.FileRef.createFromLocalFile('resources/secondFileToInsertInput.pdf');
-   
-      // Adds all the pages of the input PDF file to be inserted at the specified page of the
-      // base PDF file.
-      insertPagesOperation.addPagesToInsertAt(3, secondFileToInsert);
-   
-      // Execute the operation and Save the result to the specified location.
-      insertPagesOperation.execute(executionContext)
-          .then(result => result.saveAsFile('output/insertPagesOutput.pdf'))
-          .catch(err => {
-              if (err instanceof PDFServicesSdk.Error.ServiceApiError
-                  || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-                  console.log('Exception encountered while executing operation', err);
-              } else {
-                  console.log('Exception encountered while executing operation', err);
-              }
-          });
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+        });
+
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
+
+        // Creates an asset(s) from source file(s) and upload
+        baseReadStream = fs.createReadStream("./baseInput.pdf");
+        firstReadStreamToInsert = fs.createReadStream("./firstFileToInsertInput.pdf");
+        secondReadStreamToInsert = fs.createReadStream("./secondFileToInsertInput.pdf");
+        const [baseAsset, firstAssetToInsert, secondAssetToInsert] = await pdfServices.uploadAssets({
+            streamAssets: [{
+                readStream: baseReadStream,
+                mimeType: MimeType.PDF
+            }, {
+                readStream: firstReadStreamToInsert,
+                mimeType: MimeType.PDF
+            }, {
+                readStream: secondReadStreamToInsert,
+                mimeType: MimeType.PDF
+            }]
+        });
+
+        // Create parameters for the job
+        const params = new InsertPagesParams(baseAsset)
+            // Add the first asset as input to the params, along with its page ranges and base page
+            .addPagesToInsertAt({
+                inputAsset: firstAssetToInsert,
+                pageRanges: getPageRangesForFirstFile(),
+                basePage: 2
+            })
+            // Add the second asset as input to the params, along with base page
+            .addPagesToInsertAt({
+                inputAsset: secondAssetToInsert,
+                basePage: 3
+            });
+
+        // Create a new job instance
+        const job = new InsertPagesJob({params});
+
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: InsertPagesResult
+        });
+
+        // Get content from the resulting asset(s)
+        const resultAsset = pdfServicesResponse.result.asset;
+        const streamAsset = await pdfServices.getContent({asset: resultAsset});
+
+        // Creates an output stream and copy result asset's content to it
+        const outputFilePath = "./insertPagesOutput.pdf";
+        console.log(`Saving asset at ${outputFilePath}`);
+
+        const outputStream = fs.createWriteStream(outputFilePath);
+        streamAsset.readStream.pipe(outputStream);
     } catch (err) {
-      console.log('Exception encountered while executing operation', err);
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        baseReadStream?.destroy();
+        firstReadStreamToInsert?.destroy();
+        secondReadStreamToInsert?.destroy();
     }
+})();
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Combine-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/combinepdf' \
@@ -290,7 +322,4 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/combinep
         }
     ]
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-combinePDF
 ```

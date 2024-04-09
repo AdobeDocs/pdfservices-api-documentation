@@ -5,7 +5,7 @@ title: Export PDF | How Tos | PDF Services API | Adobe PDF Services
 
 Export a source PDF file into doc, docx, jpeg, png, pptx, rtf, xlsx.
 
-## Rest API 
+## REST API 
 
 See our public API Reference for : 
 - [Export PDF to Office format or text files](../../../apis/#tag/Export-PDF)
@@ -22,7 +22,7 @@ such as:
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -140,45 +140,80 @@ public class ExportPDFToDOCX {
 // Run the sample:
 // node src/exportpdf/export-pdf-to-docx.js
 
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    ExportPDFJob,
+    ExportPDFParams,
+    ExportPDFTargetFormat,
+    ExportPDFResult,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 
- try {
-   // Initial setup, create credentials instance.
-     const credentials =  PDFServicesSdk.Credentials
-         .servicePrincipalCredentialsBuilder()
-         .withClientId("PDF_SERVICES_CLIENT_ID")
-         .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-         .build();
+(async () => {
+    let readStream;
+    try {
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+        });
 
-   //Create an ExecutionContext using credentials and create a new operation instance.
-   const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
-       exportPDF = PDFServicesSdk.ExportPDF,
-       exportPdfOperation = exportPDF.Operation.createNew(exportPDF.SupportedTargetFormats.DOCX);
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
 
-   // Set operation input from a source file
-   const input = PDFServicesSdk.FileRef.createFromLocalFile('resources/exportPDFInput.pdf');
-   exportPdfOperation.setInput(input);
+        // Creates an asset(s) from source file(s) and upload
+        readStream = fs.createReadStream("./exportPDFInput.pdf");
+        const inputAsset = await pdfServices.upload({
+            readStream,
+            mimeType: MimeType.PDF
+        });
 
-   // Execute the operation and Save the result to the specified location.
-   exportPdfOperation.execute(executionContext)
-       .then(result => result.saveAsFile('output/exportPdfOutput.docx'))
-       .catch(err => {
-           if(err instanceof PDFServicesSdk.Error.ServiceApiError
-               || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-               console.log('Exception encountered while executing operation', err);
-           } else {
-               console.log('Exception encountered while executing operation', err);
-           }
-       });
- } catch (err) {
-   console.log('Exception encountered while executing operation', err);
- }
+        // Create parameters for the job
+        const params = new ExportPDFParams({
+            targetFormat: ExportPDFTargetFormat.DOCX
+        });
+
+        // Creates a new job instance
+        const job = new ExportPDFJob({inputAsset, params});
+
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: ExportPDFResult
+        });
+
+        // Get content from the resulting asset(s)
+        const resultAsset = pdfServicesResponse.result.asset;
+        const streamAsset = await pdfServices.getContent({asset: resultAsset});
+
+        // Creates an output stream and copy stream asset's content to it
+        const outputFilePath = "./exportPDFToDOCXOutput.docx";
+        console.log(`Saving asset at ${outputFilePath}`);
+
+        const outputStream = fs.createWriteStream(outputFilePath);
+        streamAsset.readStream.pipe(outputStream);
+    } catch (err) {
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        readStream?.destroy();
+    }
+})();
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Export-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/exportpdf' \
@@ -189,9 +224,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/exportpd
     "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
     "targetFormat": "docx"
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
 ```
 
 ## Export a PDF file to a DOCX file (apply OCR on the PDF file)
@@ -207,7 +239,7 @@ OCR processing is also performed on the input PDF file to extract text from imag
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -329,49 +361,80 @@ public class ExportPDFToDOCXWithOCROption {
 // Run the sample:
 // node src/exportpdf/export-docx-to-pdf-with-ocr-options.js
 
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    ExportPDFParams,
+    ExportPDFTargetFormat,
+    ExportOCRLocale,
+    ExportPDFJob,
+    ExportPDFResult,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 
- try {
-   // Initial setup, create credentials instance.
-     const credentials =  PDFServicesSdk.Credentials
-         .servicePrincipalCredentialsBuilder()
-         .withClientId("PDF_SERVICES_CLIENT_ID")
-         .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-         .build();
+(async () => {
+    let readStream;
+    try {
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+        });
 
-   //Create an ExecutionContext using credentials and create a new operation instance.
-   const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
-       exportPDF = PDFServicesSdk.ExportPDF,
-       exportPdfOperation = exportPDF.Operation.createNew(exportPDF.SupportedTargetFormats.DOCX);
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
 
-   // Set operation input from a source file
-   const input = PDFServicesSdk.FileRef.createFromLocalFile('resources/exportPDFInput.pdf');
-   exportPdfOperation.setInput(input);
+        // Creates an asset(s) from source file(s) and upload
+        readStream = fs.createReadStream("./exportPDFInput.pdf");
+        const inputAsset = await pdfServices.upload({
+            readStream,
+            mimeType: MimeType.PDF
+        });
 
-   // Create a new ExportPDFOptions instance from the specified OCR locale and set it into the operation.
-   const options = new exportPDF.options.ExportPDFOptions(exportPDF.options.ExportPDFOptions.OCRSupportedLocale.EN_US);
-   exportPdfOperation.setOptions(options);
-   
-   // Execute the operation and Save the result to the specified location.
-   exportPdfOperation.execute(executionContext)
-       .then(result => result.saveAsFile('output/exportPdfWithOCROptionsOutput.docx'))
-       .catch(err => {
-           if(err instanceof PDFServicesSdk.Error.ServiceApiError
-               || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-               console.log('Exception encountered while executing operation', err);
-           } else {
-               console.log('Exception encountered while executing operation', err);
-           }
-       });
- } catch (err) {
-   console.log('Exception encountered while executing operation', err);
- }
+        // Create parameters for the job
+        const params = new ExportPDFParams({
+            targetFormat: ExportPDFTargetFormat.DOCX,
+            ocrLocale: ExportOCRLocale.EN_US
+        });
+
+        // Creates a new job instance
+        const job = new ExportPDFJob({inputAsset, params});
+
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: ExportPDFResult
+        });
+
+        // Get content from the resulting asset(s)
+        const resultAsset = pdfServicesResponse.result.asset;
+        const streamAsset = await pdfServices.getContent({asset: resultAsset});
+
+        // Creates an output stream and copy stream asset's content to it
+        const outputFilePath = "./ExportPDFToDOCXWithOCROption.docx";
+        console.log(`Saving asset at ${outputFilePath}`);
+
+        const outputStream = fs.createWriteStream(outputFilePath);
+        streamAsset.readStream.pipe(outputStream);
+    } catch (err) {
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    }
+})();
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Export-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/exportpdf' \
@@ -383,9 +446,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/exportpd
     "targetFormat": "docx",
     "ocrLang": "en-US"
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
 ```
 
 ## Export a PDF to images
@@ -397,7 +457,7 @@ pages will generate 15 image files. The first file's name ends with
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -525,51 +585,85 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // Run the sample:
 // node src/exportpdftoimages/export-pdf-to-jpeg.js
 
- const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
- try {
-    // Initial setup, create credentials instance.
-     const credentials =  PDFServicesSdk.Credentials
-         .servicePrincipalCredentialsBuilder()
-         .withClientId("PDF_SERVICES_CLIENT_ID")
-         .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-         .build();
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    ExportPDFToImagesJob,
+    ExportPDFToImagesTargetFormat,
+    ExportPDFToImagesOutputType,
+    ExportPDFToImagesParams,
+    ExportPDFToImagesResult,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 
-    // Create an ExecutionContext using credentials and create a new operation instance.
-    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
-        exportPDFToImages = PDFServicesSdk.ExportPDFToImages,
-        exportPDFToImagesOperation = exportPDFToImages.Operation.createNew(exportPDFToImages.SupportedTargetFormats.JPEG);
-
-    // Set operation input from a source file.
-    const input = PDFServicesSdk.FileRef.createFromLocalFile('resources/exportPDFToImageInput.pdf');
-    exportPDFToImagesOperation.setInput(input);
-
-    // Execute the operation and Save the result to the specified location.
-    exportPDFToImagesOperation.execute(executionContext)
-        .then(result => {
-            let saveFilesPromises = [];
-            for(let i = 0; i < result.length; i++){
-                saveFilesPromises.push(result[i].saveAsFile(`output/exportPDFToImagesOutput_${i}.jpeg`));
-            }
-            return Promise.all(saveFilesPromises);
-        })
-        .catch(err => {
-            if(err instanceof PDFServicesSdk.Error.ServiceApiError
-                || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-                console.log('Exception encountered while executing operation', err);
-            } else {
-                console.log('Exception encountered while executing operation', err);
-            }
+(async () => {
+    let readStream;
+    try {
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
         });
-} catch (err) {
-    console.log('Exception encountered while executing operation', err);
-}
 
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
+
+        // Creates an asset(s) from source file(s) and upload
+        readStream = fs.createReadStream("./exportPDFToImageInput.pdf");
+        const inputAsset = await pdfServices.upload({
+            readStream,
+            mimeType: MimeType.PDF
+        });
+
+        // Create parameters for the job
+        const params = new ExportPDFToImagesParams({
+            targetFormat: ExportPDFToImagesTargetFormat.JPEG,
+            outputType: ExportPDFToImagesOutputType.LIST_OF_PAGE_IMAGES
+        });
+
+        // Creates a new job instance
+        const job = new ExportPDFToImagesJob({inputAsset, params});
+
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: ExportPDFToImagesResult
+        });
+
+        // Get content from the resulting asset(s)
+        const resultAssets = pdfServicesResponse.result.assets;
+
+        for (let i = 0; i < resultAssets.length; i++) {
+            const _outputFilePath = "./exportPDFToImageOutput_${i}.jpeg";
+            console.log(`Saving asset at ${_outputFilePath}`);
+
+            const streamAsset = await pdfServices.getContent({asset: resultAssets[i]});
+
+            // Creates an output stream and copy stream asset's content to it
+            const outputStream = fs.createWriteStream(_outputFilePath);
+            streamAsset.readStream.pipe(outputStream);
+        }
+    } catch (err) {
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        readStream?.destroy();
+    }
+})();
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/PDF-To-Images
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/pdftoimages' \
@@ -581,9 +675,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/pdftoima
     "targetFormat": "jpeg",
     "outputType": "listOfPageImages"
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
 ```
 
 ## Export a PDF to zip of page images
@@ -592,7 +683,7 @@ The sample below converts a PDF file to one or more jpeg or png images. The resu
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -713,48 +804,82 @@ namespace
 // Run the sample:
 // node src/exportpdftoimages/export-pdf-to-jpeg-zip.js
 
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    ExportPDFToImagesParams,
+    ExportPDFToImagesTargetFormat,
+    ExportPDFToImagesOutputType,
+    ExportPDFToImagesJob,
+    ExportPDFToImagesResult,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
 
-try {
-    // Initial setup, create credentials instance.
-    const credentials =  PDFServicesSdk.Credentials
-        .servicePrincipalCredentialsBuilder()
-        .withClientId("PDF_SERVICES_CLIENT_ID")
-        .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-        .build();
-
-    //Create an ExecutionContext using credentials and create a new operation instance.
-    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
-        exportPDF = PDFServicesSdk.ExportPDF,
-        exportPdfToImagesOperation = exportPDFToImages.Operation.createNew(exportPDFToImages.SupportedTargetFormats.JPEG);
-
-    // Set the output type to create zip of images.
-    exportPDFToImagesOperation.setOutputType(exportPDFToImages.OutputType.ZIP_OF_PAGE_IMAGES);
-
-    // Set operation input from a source file
-    const input = PDFServicesSdk.FileRef.createFromLocalFile('resources/exportPDFToImageInput.pdf');
-    exportPdfToImagesOperation.setInput(input);
-
-    // Execute the operation and Save the result to the specified location.
-    exportPdfToImagesOperation.execute(executionContext)
-        .then(result => result[0].saveAsFile('output/exportPDFToJPEG.zip'))
-        .catch(err => {
-            if(err instanceof PDFServicesSdk.Error.ServiceApiError
-                || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-                console.log('Exception encountered while executing operation', err);
-            } else {
-                console.log('Exception encountered while executing operation', err);
-            }
+(async () => {
+    let readStream;
+    try {
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
         });
-} catch (err) {
-    console.log('Exception encountered while executing operation', err);
-}
+
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
+
+        // Creates an asset(s) from source file(s) and upload
+        readStream = fs.createReadStream("./exportPDFToImageInput.pdf");
+        const inputAsset = await pdfServices.upload({
+            readStream,
+            mimeType: MimeType.PDF
+        });
+
+        // Create parameters for the job
+        const params = new ExportPDFToImagesParams({
+            targetFormat: ExportPDFToImagesTargetFormat.JPEG,
+            outputType: ExportPDFToImagesOutputType.ZIP_OF_PAGE_IMAGES
+        });
+
+        // Creates a new job instance
+        const job = new ExportPDFToImagesJob({inputAsset, params});
+
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: ExportPDFToImagesResult
+        });
+
+        // Get content from the resulting asset(s)
+        const resultAsset = pdfServicesResponse.result.assets;
+        const streamAsset = await pdfServices.getContent({asset: resultAsset[0]});
+
+        // Creates an output stream and copy stream asset's content to it
+        const outputFilePath = "./exportPDFToJPEGOutput.zip";
+        console.log(`Saving asset at ${outputFilePath}`);
+
+        const outputStream = fs.createWriteStream(outputFilePath);
+        streamAsset.readStream.pipe(outputStream);
+    } catch (err) {
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        readStream?.destroy();
+    }
+})();
 ```
 
-#### Rest API 
+#### REST API 
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/PDF-To-Images
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/pdftoimages' \
@@ -766,7 +891,4 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/pdftoima
     "targetFormat": "jpeg",
     "outputType": "zipOfPageImages"
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
 ```

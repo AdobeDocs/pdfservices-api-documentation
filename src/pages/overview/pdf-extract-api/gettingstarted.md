@@ -5,7 +5,7 @@ title: Getting Started | PDF Accessibility Auto-Tag API | Adobe PDF Services
 # Getting Started
 
 <p>
-PDF Accessibility Auto-Tag API assists in the process of improving accessibility in individual PDFs via auto-tagging, adding document structure tags to the PDF file that are used to read a document's text and presenting it in a way that makes sense to users using assistive technology. The API is accessible through SDKs which help you get up and running quickly. Once you've received your developer credential, download and set up one of the sample projects. After you're familiar with the APIs, leverage the samples in your own server-side code.
+The PDF Extract API provides modern cloud-based capabilities for automatically extracting contents from PDF. The API is accessible through SDKs which help you get up and running quickly. Once you've received your developer credential, download and set up one of the sample projects. After you're familiar with the APIs, leverage the samples in your own server-side code.
 </p>
 
 <InlineAlert slots="text"/>
@@ -19,9 +19,9 @@ PDF Services API endpoints are authenticated endpoints. Getting an access token 
 1. **Get Credentials** Invoking PDF Services API requires an Adobe-provided credential. To get one, [click here](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
 2. **Retrieve Access Token** The PDF Services APIs require an access_token to authorize the request. Use the "Get AccessToken" API from the Postman Collection with your client_id, client_secret (mentioned in the pdfservices-api-credentials.json file downloaded in 1) to get the access_token OR directly use the below mentioned cURL to get the access_token.
 
-<CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
+<CodeBlock slots="heading, code" repeat="1" languages="REST API" /> 
 
-### Rest API
+### REST API
 
 ```javascript
 curl --location 'https://pdf-services.adobe.io/token' \
@@ -472,7 +472,7 @@ After downloading the zip, you can run the samples in the zip directly by settin
 
 Running any sample or custom code requires the following steps:
 
-1.  Install [Node.js 14.0](https://nodejs.org/en/download/) or higher.
+1.  Install [Node.js 18.0](https://nodejs.org/en/download/) or higher.
 
 <InlineAlert slots="text"/>
 
@@ -508,7 +508,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 3.  Verify the hash in the downloaded file matches the value published here.
 
 ```
-sha512-QFwmKkeFTvZhHXrklJOUbjCx8V6FftBC+DAsMCy7Q9vy5sPXQtO47rjAt6R7nzzcA/uUPfuw4/gCFNh7yRKKRQ==
+sha512-rDe5Er+pss0RJWt+ZUTCRw2sS9mwiD7mqPj0k0YGLzDdm8uZeGx3D7q4OfVoCZKR7ESBn8DlzDekXQM4P4WqhA==
 ```
 
 #### Logging

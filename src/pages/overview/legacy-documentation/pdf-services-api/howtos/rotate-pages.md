@@ -8,7 +8,7 @@ title: Rotate Pages | How Tos | PDF Services API | Adobe PDF Services
 The rotate pages operation selectively rotates pages in PDF file. For
 example, you can change portrait view to landscape view.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -239,10 +239,10 @@ example, you can change portrait view to landscape view.
   }
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information
+// Please refer our REST API docs for more information
 // https://documentcloud.adobe.com/document-services/index.html#post-pageManipulation
 
 curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \

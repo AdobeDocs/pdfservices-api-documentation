@@ -5,7 +5,7 @@ title: Combine PDF | How Tos | PDF Services API | Adobe PDF Services
 
 Combine two or more documents into a single PDF file
 
-## Rest API
+## REST API
 
 See our public API Reference for [Combine PDF](../../../apis/#tag/Combine-PDF)
 
@@ -15,7 +15,7 @@ This sample combines up to 20 PDF files into a single PDF file.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -142,46 +142,87 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // Run the sample:
 // node src/combinepdf/combine-pdf.js
 
- const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
- 
-  try {
-    // Initial setup, create credentials instance.
-      const credentials =  PDFServicesSdk.Credentials
-          .servicePrincipalCredentialsBuilder()
-          .withClientId("PDF_SERVICES_CLIENT_ID")
-          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-          .build();
- 
-    // Create an ExecutionContext using credentials and create a new operation instance.
-    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
-        combineFilesOperation = PDFServicesSdk.CombineFiles.Operation.createNew();
- 
-    // Set operation input from a source file.
-    const combineSource1 = PDFServicesSdk.FileRef.createFromLocalFile('resources/combineFilesInput1.pdf'),
-        combineSource2 = PDFServicesSdk.FileRef.createFromLocalFile('resources/combineFilesInput2.pdf');
-    combineFilesOperation.addInput(combineSource1);
-    combineFilesOperation.addInput(combineSource2);
- 
-    // Execute the operation and Save the result to the specified location.
-    combineFilesOperation.execute(executionContext)
-        .then(result => result.saveAsFile('output/combineFilesOutput.pdf'))
-        .catch(err => {
-            if (err instanceof PDFServicesSdk.Error.ServiceApiError
-                || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-                console.log('Exception encountered while executing operation', err);
-            } else {
-                console.log('Exception encountered while executing operation', err);
-            }
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    CombinePDFJob,
+    CombinePDFParams,
+    CombinePDFResult,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
+
+(async () => {
+    let readStream1;
+    let readStream2;
+    try {
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
         });
-  } catch (err) {
-    console.log('Exception encountered while executing operation', err);
-  }
+
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
+
+        // Creates an asset(s) from source file(s) and upload
+        readStream1 = fs.createReadStream("./combineFilesInput1.pdf");
+        readStream2 = fs.createReadStream("./combineFilesInput2.pdf");
+        const [inputAsset1, inputAsset2] = await pdfServices.uploadAssets({
+            streamAssets: [{
+                readStream: readStream1,
+                mimeType: MimeType.PDF
+            }, {
+                readStream: readStream2,
+                mimeType: MimeType.PDF
+            }]
+        });
+
+        // Create parameters for the job
+        const params = new CombinePDFParams()
+            .addAsset(inputAsset1)
+            .addAsset(inputAsset2);
+
+        // Create a new job instance
+        const job = new CombinePDFJob({params});
+
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: CombinePDFResult
+        });
+
+        // Get content from the resulting asset(s)
+        const resultAsset = pdfServicesResponse.result.asset;
+        const streamAsset = await pdfServices.getContent({asset: resultAsset});
+
+        // Creates an output stream and copy result asset's content to it
+        const outputFilePath = "./combineFilesOutput.pdf";
+        console.log(`Saving asset at ${outputFilePath}`);
+
+        const outputStream = fs.createWriteStream(outputFilePath);
+        streamAsset.readStream.pipe(outputStream);
+    } catch (err) {
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        readStream1?.destroy();
+        readStream2?.destroy();
+    }
+})();
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Combine-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/combinepdf' \
@@ -198,9 +239,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/combinep
         }
     ]
 }'
-
-// Legacy API can be found here
-// https://documentcloud.adobe.com/document-services/index.html#post-combinePDF
 ```
 
 ## Combine pages from multiple files
@@ -211,7 +249,7 @@ ranges for each file to combine in the output file.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -390,72 +428,108 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // Run the sample:
 // node src/combinepdf/combine-pdf-with-page-ranges.js
 
-  const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
- 
-  const getPageRangesForFirstFile = () => {
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    CombinePDFParams,
+    CombinePDFJob,
+    CombinePDFResult,
+    PageRanges,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
+
+(async () => {
+    let readStream1;
+    let readStream2;
+    try {
+        // Initial setup, create credentials instance
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+        });
+
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
+
+        // Creates an asset(s) from source file(s) and upload
+        readStream1 = fs.createReadStream("./combineFilesInput1.pdf");
+        readStream2 = fs.createReadStream("./combineFilesInput2.pdf");
+        const [inputAsset1, inputAsset2] = await pdfServices.uploadAssets({
+            streamAssets: [{
+                readStream: readStream1,
+                mimeType: MimeType.PDF
+            }, {
+                readStream: readStream2,
+                mimeType: MimeType.PDF
+            }]
+        });
+
+        // Create a CombinePDFParams instance
+        const params = new CombinePDFParams()
+            .addAsset(inputAsset1, getPageRangesForFirstFile())
+            .addAsset(inputAsset2, getPageRangesForSecondFile());
+
+        // Create a new job instance
+        const job = new CombinePDFJob({params});
+
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: CombinePDFResult
+        });
+
+        // Get content from the resulting asset(s)
+        const resultAsset = pdfServicesResponse.result.asset;
+        const streamAsset = await pdfServices.getContent({asset: resultAsset});
+
+        // Creates an output stream and copy result asset's content to it
+        const outputFilePath = "./combineFilesOutput.pdf";
+        console.log(`Saving asset at ${outputFilePath}`);
+
+        const outputStream = fs.createWriteStream(outputFilePath);
+        streamAsset.readStream.pipe(outputStream);
+    } catch (err) {
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        readStream1?.destroy();
+        readStream2?.destroy();
+    }
+})();
+
+const getPageRangesForFirstFile = () => {
     // Specify which pages of the first file are to be included in the combined file.
-    const pageRangesForFirstFile = new PDFServicesSdk.PageRanges();
+    const pageRangesForFirstFile = new PageRanges();
     // Add page 1.
     pageRangesForFirstFile.addSinglePage(1);
     // Add page 2.
     pageRangesForFirstFile.addSinglePage(2);
     // Add pages 3 to 4.
-    pageRangesForFirstFile.addPageRange(3, 4);
+    pageRangesForFirstFile.addRange(3, 4);
     return pageRangesForFirstFile;
-  };
- 
-  const getPageRangesForSecondFile = () => {
+};
+
+const getPageRangesForSecondFile = () => {
     // Specify which pages of the second file are to be included in the combined file.
-    const pageRangesForSecondFile = new PDFServicesSdk.PageRanges();
+    const pageRangesForSecondFile = new PageRanges();
     // Add all pages including and after page 3.
     pageRangesForSecondFile.addAllFrom(3);
     return pageRangesForSecondFile;
-  };
- 
-  try {
-    // Initial setup, create credentials instance.
-      const credentials =  PDFServicesSdk.Credentials
-          .servicePrincipalCredentialsBuilder()
-          .withClientId("PDF_SERVICES_CLIENT_ID")
-          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-          .build();
- 
-    // Create an ExecutionContext using credentials and create a new operation instance.
-    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
-        combineFilesOperation = PDFServicesSdk.CombineFiles.Operation.createNew();
- 
-    // Create a FileRef instance from a local file.
-    const combineSource1 = PDFServicesSdk.FileRef.createFromLocalFile('resources/combineFilesInput1.pdf'),
-        pageRangesForFirstFile = getPageRangesForFirstFile();
-    // Add the first file as input to the operation, along with its page range.
-    combineFilesOperation.addInput(combineSource1, pageRangesForFirstFile);
- 
-    // Create a second FileRef instance using a local file.
-    const combineSource2 = PDFServicesSdk.FileRef.createFromLocalFile('resources/combineFilesInput2.pdf'),
-        pageRangesForSecondFile = getPageRangesForSecondFile();
-    // Add the second file as input to the operation, along with its page range.
-    combineFilesOperation.addInput(combineSource2, pageRangesForSecondFile);
- 
-    // Execute the operation and Save the result to the specified location.
-    combineFilesOperation.execute(executionContext)
-        .then(result => result.saveAsFile('output/combineFilesWithPageRangesOutput.pdf'))
-        .catch(err => {
-            if(err instanceof PDFServicesSdk.Error.ServiceApiError
-                || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-                console.log('Exception encountered while executing operation', err);
-            } else {
-                console.log('Exception encountered while executing operation', err);
-            }
-        });
-  } catch (err) {
-    console.log('Exception encountered while executing operation', err);
-  }
+};
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Combine-PDF
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/combinepdf' \
@@ -484,7 +558,4 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/combinep
         }
     ]
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-combinePDF
 ```

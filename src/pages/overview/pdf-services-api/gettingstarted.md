@@ -17,9 +17,9 @@ PDF Services API endpoints are authenticated endpoints. Getting an access token 
 1. **Get Credentials** Invoking PDF Services API requires an Adobe-provided credential. To get one, [click here](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow. Be sure to copy and save the credential values to a secure location.
 2. **Retrieve Access Token** The PDF Services APIs require an access_token to authorize the request. Use the "Get AccessToken" API from the Postman Collection with your client_id, client_secret (mentioned in the pdfservices-api-credentials.json file downloaded in 1) to get the access_token OR directly use the below mentioned cURL to get the access_token.
 
-<CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
+<CodeBlock slots="heading, code" repeat="1" languages="REST API" /> 
 
-### Rest API
+### REST API
 
 ```javascript
 curl --location 'https://pdf-services.adobe.io/token' \
@@ -37,9 +37,9 @@ After getting the access token, we need to upload the asset. Uploading an asset 
 
 You can read more about the API in detail [here](../../../apis/#operation/asset.uploadpresignedurl).
 
-<CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
+<CodeBlock slots="heading, code" repeat="1" languages="REST API" /> 
 
-### Rest API
+### REST API
 
 ```javascript
 curl --location --request POST 'https://pdf-services.adobe.io/assets' \
@@ -53,9 +53,9 @@ curl --location --request POST 'https://pdf-services.adobe.io/assets' \
 
 2. On getting a `200` response status from the above API, use the `uploadUri` field in the response body of the above API to upload the asset directly to the cloud provider using a PUT API call. You will also get an `assetID` field which will be used in creating the job.
 
-<CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
+<CodeBlock slots="heading, code" repeat="1" languages="REST API" /> 
 
-### Rest API
+### REST API
 
 ```javascript
 curl --location -g --request PUT 'https://dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com/b37fd583-1ab6-4f49-99ef-d716180b5de4?X-Amz-Security-Token={{Placeholder for X-Amz-Security-Token}}&X-Amz-Algorithm={{Placeholder for X-Amz-Algorithm}}&X-Amz-Date={{Placeholder for X-Amz-Date}}&X-Amz-SignedHeaders={{Placeholder for X-Amz-SignedHeaders}}&X-Amz-Expires={{Placeholder for X-Amz-Expires}}&X-Amz-Credential={{Placeholder for X-Amz-Credential}}&X-Amz-Signature={{Placeholder for X-Amz-Signature}}' \
@@ -75,9 +75,9 @@ Once the job is successfully created, you need to poll the at the `location` ret
 
 You can read more about the API in detail [here](../../../apis/#operation/pdfoperations.compresspdf.jobstatus).
 
-<CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
+<CodeBlock slots="heading, code" repeat="1" languages="REST API" /> 
 
-### Rest API
+### REST API
 
 ```javascript
 curl --location -g --request GET 'https://pdf-services.adobe.io/operation/compresspdf/{{Placeholder for job id}}/status' \
@@ -100,9 +100,9 @@ If the `status` field is `done` the response body will also have a download pre-
 
 You can read more about the API in detail [here](../../../apis/#operation/asset.get).
 
-<CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
+<CodeBlock slots="heading, code" repeat="1" languages="REST API" /> 
 
-### Rest API
+### REST API
 
 ```javascript
 curl --location -g --request GET 'https://dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com/b37fd583-1ab6-4f49-99ef-d716180b5de4?X-Amz-Security-Token={{Placeholder for X-Amz-Security-Token}}&X-Amz-Algorithm={{Placeholder for X-Amz-Algorithm}}&X-Amz-Date={{Placeholder for X-Amz-Date}}&X-Amz-SignedHeaders={{Placeholder for X-Amz-SignedHeaders}}&X-Amz-Expires={{Placeholder for X-Amz-Expires}}&X-Amz-Credential={{Placeholder for X-Amz-Credential}}&X-Amz-Signature={{Placeholder for X-Amz-Signature}}'
@@ -471,7 +471,7 @@ After downloading the zip, you can run the samples in the zip directly by settin
 
 Running any sample or custom code requires the following steps:
 
-1.  Install [Node.js 14.0](https://nodejs.org/en/download/) or higher.
+1.  Install [Node.js 18.0](https://nodejs.org/en/download/) or higher.
 
 <InlineAlert slots="text"/>
 
@@ -507,7 +507,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 3.  Verify the hash in the downloaded file matches the value published here.
 
 ```
-sha512-QFwmKkeFTvZhHXrklJOUbjCx8V6FftBC+DAsMCy7Q9vy5sPXQtO47rjAt6R7nzzcA/uUPfuw4/gCFNh7yRKKRQ==
+sha512-rDe5Er+pss0RJWt+ZUTCRw2sS9mwiD7mqPj0k0YGLzDdm8uZeGx3D7q4OfVoCZKR7ESBn8DlzDekXQM4P4WqhA==
 ```
 
 #### Logging

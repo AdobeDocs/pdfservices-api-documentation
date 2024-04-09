@@ -5,7 +5,7 @@ title: Remove Protection | How Tos | PDF Services API | Adobe PDF Services
 
 Remove password security from a PDF document. This can only be accomplished with the owner password of the document which must be passed in the operation.
 
-## Rest API 
+## REST API 
 
 See our public API Reference for [Remove Protection](../../../apis/#tag/Remove-Protection)
 
@@ -15,7 +15,7 @@ Use the below sample to remove security from a PDF document.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
 #### Java
 
@@ -137,51 +137,79 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // Run the sample:
 // node src/removeprotection/remove-protection.js
 
-   const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
-  
-   try {
-     // Initial setup, create credentials instance.
-       const credentials =  PDFServicesSdk.Credentials
-           .servicePrincipalCredentialsBuilder()
-           .withClientId("PDF_SERVICES_CLIENT_ID")
-           .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
-           .build();
-  
-     // Create an ExecutionContext using credentials
-     const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
-  
-     // Create a new operation instance.
-     const removeProtectionOperation = PDFServicesSdk.RemoveProtection.Operation.createNew(),
-         input = PDFServicesSdk.FileRef.createFromLocalFile(
-             'resources/removeProtectionInput.pdf',
-             PDFServicesSdk.RemoveProtection.SupportedSourceFormat.pdf
-         );
-     // Set operation input from a source file.
-     removeProtectionOperation.setInput(input);
-  
-     // Set the password for removing security from a PDF document.
-     removeProtectionOperation.setPassword("password");
-  
-     // Execute the operation and Save the result to the specified location.
-     removeProtectionOperation.execute(executionContext)
-         .then(result => result.saveAsFile('output/removeProtectionOutput.pdf'))
-         .catch(err => {
-             if(err instanceof PDFServicesSdk.Error.ServiceApiError
-                 || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
-                 console.log('Exception encountered while executing operation', err);
-             } else {
-                 console.log('Exception encountered while executing operation', err);
-             }
-         });
-   } catch (err) {
-     console.log('Exception encountered while executing operation', err);
-   }
+const {
+    ServicePrincipalCredentials,
+    PDFServices,
+    MimeType,
+    RemoveProtectionParams,
+    RemoveProtectionJob,
+    RemoveProtectionResult,
+    SDKError,
+    ServiceUsageError,
+    ServiceApiError
+} = require("@adobe/pdfservices-node-sdk");
+const fs = require("fs");
+
+(async () => {
+    let readStream;
+    try {
+        // Initial setup, create credentials instance.
+        const credentials = new ServicePrincipalCredentials({
+            clientId: process.env.PDF_SERVICES_CLIENT_ID,
+            clientSecret: process.env.PDF_SERVICES_CLIENT_SECRET
+        });
+
+        // Creates a PDF Services instance
+        const pdfServices = new PDFServices({credentials});
+
+        // Creates an asset(s) from source file(s) and upload
+        readStream = fs.createReadStream("./removeProtectionInput.pdf")
+        const inputAsset = await pdfServices.upload({
+            readStream,
+            mimeType: MimeType.PDF
+        });
+
+        // Create parameters for the job
+        const params = new RemoveProtectionParams({
+            password: "password"
+        });
+
+        // Creates a new job instance
+        const job = new RemoveProtectionJob({inputAsset, params});
+
+        // Submit the job and get the job result
+        const pollingURL = await pdfServices.submit({job});
+        const pdfServicesResponse = await pdfServices.getJobResult({
+            pollingURL,
+            resultType: RemoveProtectionResult
+        });
+
+        // Get content from the resulting asset(s)
+        const resultAsset = pdfServicesResponse.result.asset;
+        const streamAsset = await pdfServices.getContent({asset: resultAsset});
+
+        // Creates an output stream and copy stream asset's content to it
+        const outputFilePath = "./removeProtectionOutput.pdf";
+        console.log(`Saving asset at ${outputFilePath}`);
+
+        const outputStream = fs.createWriteStream(outputFilePath);
+        streamAsset.readStream.pipe(outputStream);
+    } catch (err) {
+        if (err instanceof SDKError || err instanceof ServiceUsageError || err instanceof ServiceApiError) {
+            console.log("Exception encountered while executing operation", err);
+        } else {
+            console.log("Exception encountered while executing operation", err);
+        }
+    } finally {
+        readStream?.destroy();
+    }
+})();
 ```
 
-#### Rest API
+#### REST API
 
 ```javascript
-// Please refer our Rest API docs for more information 
+// Please refer our REST API docs for more information 
 // https://developer.adobe.com/document-services/docs/apis/#tag/Remove-Protection
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/removeprotection' \
@@ -192,7 +220,4 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/removepr
     "password": "mypassword",
     "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
 }'
-
-// Legacy API can be found here 
-// https://documentcloud.adobe.com/document-services/index.html#post-removeProtection
 ```
