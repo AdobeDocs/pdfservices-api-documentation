@@ -507,7 +507,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 3.  Verify the hash in the downloaded file matches the value published here.
 
 ```
-sha512-QFwmKkeFTvZhHXrklJOUbjCx8V6FftBC+DAsMCy7Q9vy5sPXQtO47rjAt6R7nzzcA/uUPfuw4/gCFNh7yRKKRQ==
+sha512-rDe5Er+pss0RJWt+ZUTCRw2sS9mwiD7mqPj0k0YGLzDdm8uZeGx3D7q4OfVoCZKR7ESBn8DlzDekXQM4P4WqhA==
 ```
 
 #### Logging
