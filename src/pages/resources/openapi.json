@@ -8125,7 +8125,7 @@
           }
         }
       }
-    },
+    }
   },
   "components": {
     "schemas": {
@@ -10748,8 +10748,8 @@
             "type": "string"
           },
           "pageRanges": {
-            "$ref": "#/components/schemas/pageRanges"
-          }
+            "$ref": "#/components/schemas/pageRangesWatermark"
+          },
           "appearOnForeground": {
             "description": "location of watermark on the page. Watermark will be either foreground or background on the page. Default is background.",
             "type": "boolean",
@@ -10860,13 +10860,13 @@
             "type": "object",
             "properties": {
               "pageRanges": {
-                "$ref": "#/components/schemas/pageRanges"
-              }
+                "$ref": "#/components/schemas/pageRangesWatermark"
+              },
               "appearOnForeground": {
                 "description": "location of watermark on the page. Watermark will be either foreground or background on the page. Default is background.",
                 "type": "boolean",
                 "default": false
-              },
+              }
             }
           },
           "notifiers": {
@@ -10899,7 +10899,7 @@
                 "end": 15
               }
             ],
-            "appearOnForeground": true,
+            "appearOnForeground": true
           },
           "notifiers": [
             {
@@ -11035,6 +11035,22 @@
       },
       "pageRanges": {
         "description": "Page ranges on the basis of which to split the input PDF file. Each page range corresponds to a single output file having the pages specified in the page range. The page ranges may not overlap.",
+        "type": "array",
+        "items": {
+          "properties": {
+            "start": {
+              "description": "Start page of this page range. Page numbers are indexed from 1 to N.",
+              "type": "number"
+            },
+            "end": {
+              "description": "End page of this page range. Page numbers are indexed from 1 to N.",
+              "type": "number"
+            }
+          }
+        }
+      },
+      "pageRangesWatermark": {
+        "description": "Specifies the page ranges on which watermark has to be applied in the input PDF file.",
         "type": "array",
         "items": {
           "properties": {
