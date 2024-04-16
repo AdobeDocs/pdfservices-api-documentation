@@ -10861,6 +10861,7 @@
         }
       },
       "pageRangesWatermark": {
+        "title": "pageRanges",
         "description": "Specifies the page ranges on which watermark has to be applied in the input PDF file.",
         "type": "array",
         "items": {
