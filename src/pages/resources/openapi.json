@@ -7383,7 +7383,7 @@
           "Watermark"
         ],
         "summary": "Add a watermark in PDF document",
-        "description": "Watermark operation will add a watermark on specified pages of PDF document. Watermark will be provided through a PDF document which already have the watermark added. This provided PDF will be used as watermark to apply on input PDF document.",
+        "description": "Watermark operation will add a watermark on specified pages of PDF document using a source watermark PDF. The first page of source watermark PDF will be added as a watermark on input PDF document.",
         "operationId": "pdfoperations.watermark",
         "parameters": [
           {
@@ -11400,16 +11400,21 @@
             "type": "string"
           },
           "watermarkDocumentAssetID": {
-            "description": "A file assetID of a PDF document having watermark on its pages. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID of a PDF document whose first page will be used as watermark. The output generated will retain the content and watermark of the first page. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "pageRanges": {
             "$ref": "#/components/schemas/pageRangesWatermark"
           },
           "appearOnForeground": {
-            "description": "location of watermark on the page. Watermark will be either foreground or background on the page. Default is background.",
+            "description": "Placement of watermark on the page. Watermark will be either foreground or background on the page. Default is background.",
             "type": "boolean",
             "default": false
+          },
+          "opacity": {
+            "description": "Percentage value specifying watermark opacity. Specified as an Integer value from 0 to 100.",
+            "type": "number",
+            "default": 100
           },
           "notifiers": {
             "$ref": "#/components/schemas/notifiers"
@@ -11429,6 +11434,7 @@
             }
           ],
           "appearOnForeground": true,
+          "opacity": 50,
           "notifiers": [
             {
               "type": "CALLBACK",
@@ -11519,9 +11525,14 @@
                 "$ref": "#/components/schemas/pageRangesWatermark"
               },
               "appearOnForeground": {
-                "description": "location of watermark on the page. Watermark will be either foreground or background on the page. Default is background.",
+                "description": "Placement of watermark on the page. Watermark will be either foreground or background on the page. Default is background.",
                 "type": "boolean",
                 "default": false
+              },
+              "opacity": {
+                "description": "Percentage value specifying watermark opacity. Specified as an Integer value from 0 to 100.",
+                "type": "number",
+                "default": 100
               }
             }
           },
@@ -11555,7 +11566,8 @@
                 "end": 15
               }
             ],
-            "appearOnForeground": true
+            "appearOnForeground": true,
+            "opacity": 50
           },
           "notifiers": [
             {
