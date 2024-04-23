@@ -132,7 +132,7 @@
         "PDF Properties",
         "Remove Protection",
         "Split PDF",
-        "Watermark"
+        "PDF Watermark"
       ]
     },
     {
@@ -7380,7 +7380,7 @@
     "/operation/watermark": {
       "post": {
         "tags": [
-          "Watermark"
+          "PDF Watermark"
         ],
         "summary": "Add a watermark in PDF document",
         "description": "Watermark operation will add a watermark on specified pages of PDF document using a source watermark PDF. The first page of source watermark PDF will be added as a watermark on input PDF document.",
@@ -7568,7 +7568,7 @@
     "/operation/watermark/{jobID}/status": {
       "get": {
         "tags": [
-          "Watermark"
+          "PDF Watermark"
         ],
         "summary": "Poll the watermark job for completion",
         "operationId": "pdfoperations.watermark.jobstatus",
