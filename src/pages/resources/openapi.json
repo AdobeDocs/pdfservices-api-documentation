@@ -95,7 +95,7 @@
       "description": "Accessibility Checker API will check PDF files to see if they meet the machine-verifiable requirements of PDF/UA and WCAG 2.0."
     },
     {
-      "name": "Watermark",
+      "name": "PDF Watermark",
       "description": "Add a watermark in PDF document."
     }
   ],
