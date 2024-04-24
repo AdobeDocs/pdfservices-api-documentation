@@ -7382,8 +7382,8 @@
         "tags": [
           "PDF Watermark"
         ],
-        "summary": "Add a watermark in PDF document",
-        "description": "Watermark operation will add a watermark on specified pages of PDF document using a source watermark PDF. The first page of source watermark PDF will be added as a watermark on input PDF document.",
+        "summary": "PDF Watermark Operation",
+        "description": "PDF Watermark API will add a watermark on specified pages of PDF document using a source watermark PDF. The first page of source watermark PDF will be added as a watermark on input PDF document.",
         "operationId": "pdfoperations.watermark",
         "parameters": [
           {
@@ -7406,7 +7406,7 @@
           }
         ],
         "requestBody": {
-          "description": "Params for Watermark Operation. Refer to the External Section below for using external storage with Watermark API",
+          "description": "Params for PDF Watermark Operation. Refer to the External Section below for using external storage with PDF Watermark API",
           "content": {
             "application/json": {
               "schema": {
@@ -7570,7 +7570,7 @@
         "tags": [
           "PDF Watermark"
         ],
-        "summary": "Poll the watermark job for completion",
+        "summary": "Poll PDF watermark job for completion",
         "operationId": "pdfoperations.watermark.jobstatus",
         "parameters": [
           {
