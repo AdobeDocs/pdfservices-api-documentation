@@ -16,7 +16,7 @@ and your users can fully interact with the PDF file. After performing
 OCR, the PDF may be fully editable and searchable. The input format must
 be `application/pdf`.
 
-This sample defaults to the en-us locale. For other languages, see [OCR with explicit language.](#ocr-with-explicit-language)
+This sample defaults to the en-us locale. For other languages, see [OCR with specific language.](#ocr-with-specific-language)
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
@@ -211,7 +211,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/ocr' \
 }'
 ```
 
-## OCR with explicit language
+## OCR with specific language
 
 You can perform OCR on files in other languages, including German,
 French, Danish, and other languages. Refer to `OCRSupportedLocale` and
