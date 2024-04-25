@@ -318,3 +318,48 @@ JSON representation of the input data:
 
 ![Discard row if with table markers](../images/discard_row_if_table_markers.png)
 
+### Discard the row in horizontal table if the condition evaluates to true
+A row in the horizontal table can be discarded only when the condition in the discard-row-if(expr(**condition**)) evaluates
+to true in the provided context. Add this construct along with the template tag to discard the row based on the provided condition.
+
+For Example: {{PROPERTY:**discard-row-if(expr(condition))**}}
+JSON representation of the input data:
+```json
+{
+  "conversion": [
+    {
+      "month": "July, 2021",
+      "rate": 10,
+      "method": "Payout by Cheque"
+    },
+    {
+      "month": "Dec, 2021",
+      "rate": 20,
+      "method": "Payout by Cheque"
+    },
+    {
+      "month": "Dec, 2022",
+      "rate": 40,
+      "method": "Payout by Cheque"
+    },
+    {
+      "month": "Dec, 2021",
+      "rate": 80,
+      "method": "Payout by Cheque"
+    },
+    {
+      "month": "April, 2022",
+      "rate": 100,
+      "method": "Payout by Cash"
+    },
+    {
+      "month": "Dec, 2022",
+      "rate": 45,
+      "method": "Payout by Cheque"
+    }
+  ]
+}
+```
+
+
+![Discard row if with table markers](../images/discard_row_in_horizontal_table.png)
