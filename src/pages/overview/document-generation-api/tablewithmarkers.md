@@ -322,8 +322,7 @@ JSON representation of the input data:
 A row in the horizontal table can be discarded only when the condition in the discard-row-if(expr(**condition**)) evaluates
 to true in the provided context. Add this construct along with the template tag to discard the row based on the provided condition.
 
-For Example: {{PROPERTY:**discard-row-if(expr(condition))**}}
-<br/>
+For Example: {{PROPERTY:**discard-row-if(expr(condition))**}} <br/>
 JSON representation of the input data:
 ```json
 {
