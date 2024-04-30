@@ -10,7 +10,7 @@ and your users can fully interact with the PDF file. After performing
 OCR, the PDF may be fully editable and searchable. The input format must
 be `application/pdf`.
 
-This sample defaults to the en-us locale. For other languages, see [OCR with explicit language.](#ocr-with-explicit-language)
+This sample defaults to the en-us locale. For other languages, see [OCR with specific language.](#ocr-with-specific-language)
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
 
@@ -181,7 +181,7 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
 --form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
 ```
 
-## OCR with explicit language
+## OCR with specific language
 
 You can perform OCR on files in other languages, including German,
 French, Danish, and other languages. Refer to `OCRSupportedLocale` and
