@@ -173,6 +173,12 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### Adobe Document Generation Server Side Release (April 30, 2024: server side release)
+
+| Change  | Language | Description                                                                                                                                                                                                  |
+|---------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| New | All      | Added support for [discard the row in a horizontal table](../document-generation-api/tablewithmarkers/#discard-the-row-in-a-horizontal-table-if-the-condition-evaluates-to-true) in Document Generation API. |
+
 ### 4.0.0 (April, 2024; major release)
 
 | Change  | Language | Description                                                                                                                        |
