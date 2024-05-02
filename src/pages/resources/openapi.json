@@ -96,7 +96,7 @@
     },
     {
       "name": "PDF Watermark",
-      "description": "Add a watermark in PDF document."
+      "description": "PDF Watermark API will add a watermark in PDF document."
     }
   ],
   "x-tagGroups": [
@@ -7377,14 +7377,14 @@
         }
       }
     },
-    "/operation/watermark": {
+    "/operation/addwatermark": {
       "post": {
         "tags": [
           "PDF Watermark"
         ],
-        "summary": "PDF Watermark Operation",
-        "description": "PDF Watermark API will add a watermark on specified pages of PDF document using a source watermark PDF. The first page of source watermark PDF will be added as a watermark on input PDF document.",
-        "operationId": "pdfoperations.watermark",
+        "summary": "Add Watermark in PDF Document",
+        "description": "PDF Watermark API will add a watermark on specified pages of PDF document using a source watermark PDF. The first page of source watermark PDF will be added as a watermark in input PDF document.",
+        "operationId": "pdfoperations.addwatermark",
         "parameters": [
           {
             "name": "Authorization",
@@ -7406,16 +7406,16 @@
           }
         ],
         "requestBody": {
-          "description": "Params for PDF Watermark Operation. Refer to the External Section below for using external storage with PDF Watermark API",
+          "description": "Params for Add Watermark Operation. Refer to the External Section below for using external storage with PDF Watermark API",
           "content": {
             "application/json": {
               "schema": {
                 "oneOf": [
                   {
-                    "$ref": "#/components/schemas/WatermarkInternal"
+                    "$ref": "#/components/schemas/AddWatermarkInternal"
                   },
                   {
-                    "$ref": "#/components/schemas/WatermarkExternal"
+                    "$ref": "#/components/schemas/AddWatermarkExternal"
                   }
                 ]
               }
@@ -7565,13 +7565,13 @@
         "x-codegen-request-body-name": "body"
       }
     },
-    "/operation/watermark/{jobID}/status": {
+    "/operation/addwatermark/{jobID}/status": {
       "get": {
         "tags": [
           "PDF Watermark"
         ],
-        "summary": "Poll PDF watermark job for completion",
-        "operationId": "pdfoperations.watermark.jobstatus",
+        "summary": "Poll the add watermark job for completion",
+        "operationId": "pdfoperations.addwatermark.jobstatus",
         "parameters": [
           {
             "name": "jobID",
@@ -7621,7 +7621,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/WatermarkJobStatus"
+                  "$ref": "#/components/schemas/AddWatermarkJobStatus"
                 }
               }
             }
@@ -11386,7 +11386,24 @@
           "required": ["type", "data"]
         }
       },
-      "WatermarkInternal": {
+      "watermarkappearance": {
+        "title": "appearance",
+        "type": "object",
+        "description": "Specifies the appearance parameters for watermark.",
+        "properties": {
+          "appearOnForeground": {
+            "description": "Placement of watermark on the page. Watermark will be either foreground or background on the page. Default is background.",
+            "type": "boolean",
+            "default": false
+          },
+          "opacity": {
+            "description": "Percentage value specifying watermark opacity. Specified as an Integer value from 0 to 100.",
+            "type": "number",
+            "default": 100
+          }
+        }
+      },
+      "AddWatermarkInternal": {
         "title": "Internal",
         "description": "Params for Watermark Operation",
         "type": "object",
@@ -11406,15 +11423,8 @@
           "pageRanges": {
             "$ref": "#/components/schemas/pageRangesWatermark"
           },
-          "appearOnForeground": {
-            "description": "Placement of watermark on the page. Watermark will be either foreground or background on the page. Default is background.",
-            "type": "boolean",
-            "default": false
-          },
-          "opacity": {
-            "description": "Percentage value specifying watermark opacity. Specified as an Integer value from 0 to 100.",
-            "type": "number",
-            "default": 100
+          "appearance": {
+            "$ref": "#/components/schemas/watermarkappearance"
           },
           "notifiers": {
             "$ref": "#/components/schemas/notifiers"
@@ -11433,8 +11443,10 @@
               "end": 15
             }
           ],
-          "appearOnForeground": true,
-          "opacity": 50,
+          "appearance": {
+            "appearOnForeground": true,
+            "opacity": 50
+          },
           "notifiers": [
             {
               "type": "CALLBACK",
@@ -11450,14 +11462,14 @@
         },
         "additionalProperties": false
       },
-      "WatermarkExternal": {
+      "AddWatermarkExternal": {
         "title": "External",
-        "description": "Params for Watermark Operation using external storage",
+        "description": "Params for Add Watermark Operation using external storage",
         "type": "object",
         "properties": {
           "inputs": {
             "title": "inputs",
-            "description": "Watermark operation object containing input document and watermark document uris respectively.",
+            "description": "Add Watermark operation object containing input document and watermark document uris respectively.",
             "type": "object",
             "properties": {
               "document": {
@@ -11524,15 +11536,8 @@
               "pageRanges": {
                 "$ref": "#/components/schemas/pageRangesWatermark"
               },
-              "appearOnForeground": {
-                "description": "Placement of watermark on the page. Watermark will be either foreground or background on the page. Default is background.",
-                "type": "boolean",
-                "default": false
-              },
-              "opacity": {
-                "description": "Percentage value specifying watermark opacity. Specified as an Integer value from 0 to 100.",
-                "type": "number",
-                "default": 100
+              "appearance": {
+                "$ref": "#/components/schemas/watermarkappearance"
               }
             }
           },
@@ -11566,8 +11571,10 @@
                 "end": 15
               }
             ],
-            "appearOnForeground": true,
-            "opacity": 50
+            "appearance": {
+              "appearOnForeground": true,
+              "opacity": 50
+            }
           },
           "notifiers": [
             {
@@ -12043,7 +12050,7 @@
           }
         ]
       },
-      "WatermarkJobStatus": {
+      "AddWatermarkJobStatus": {
         "oneOf": [
           {
             "$ref": "#/components/schemas/inprogress"
