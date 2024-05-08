@@ -8,7 +8,7 @@ the changes below for each release.
 
 ## Change history
 
-### April, 2024
+### May, 2024
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
 | Bug fix | Fixed the issue with opening word based password protected PDF files.        |
