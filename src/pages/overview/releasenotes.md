@@ -140,7 +140,7 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 ```
 <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.12" />
-    <PackageReference Include="Adobe.PDFServicesSDK" Version="3.4.1" />
+    <PackageReference Include="Adobe.PDFServicesSDK" Version="3.4.2" />
 </ItemGroup> 
 ```
 
@@ -172,6 +172,13 @@ Minor and Patch releases are backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
+
+### 3.4.2 (May 14, 2024: patch release)
+
+| Change | Language | Description                                                                                                                                                                                                                                          |
+|--------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| New    | .NET     | Added support to configure await which allows developers to configure how continuations of asynchronous operations are executed in terms of their synchronization context, where this settings can be set via "configureAwait" in the client config. |
+
 
 ### Adobe Document Generation Server Side Release (April 30, 2024: server side release)
 
