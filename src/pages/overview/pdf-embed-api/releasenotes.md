@@ -11,8 +11,10 @@ the changes below for each release.
 ### April, 2024
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
-| Bug fix | Fixed the issue with opening word based password protected PDF files.         |
+| Bug fix | Fixed the issue with opening word based password protected PDF files.        |
 | Bug fix | Fixed the issue regarding Content Security Policy in developer console.      |
+| Bug fix | Fixed console error issue when using chinese characters in form fields.      |
+| Bug fix | Fixed duplicate annotations issue when returning from full screen mode.      |
 
 ### January, 2024
 | Change | Description                                                            |
@@ -29,7 +31,7 @@ the changes below for each release.
 
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
-| Bug fix | Fixed PDF rendering issue when third party cookies are disabled.             |
+| Bug fix | Fixed PDF rendering issue when third party cookies are disabled.      |
 
 ### September, 2023
 
