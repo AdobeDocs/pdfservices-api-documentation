@@ -15,6 +15,7 @@ the changes below for each release.
 | Bug fix | Fixed the issue regarding Content Security Policy in developer console.      |
 | Bug fix | Fixed console error issue when using chinese characters in form fields.      |
 | Bug fix | Fixed duplicate annotations issue when returning from full screen mode.      |
+| New     | Added new previewFile API configuration option to hide full-screen button in right-hand panel.      |
 
 ### January, 2024
 | Change | Description                                                            |
