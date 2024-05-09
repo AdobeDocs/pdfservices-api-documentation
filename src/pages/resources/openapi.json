@@ -8751,6 +8751,24 @@
               ]
             }
           },
+          "includeHeaderFooter": {
+            "description": "If true, extract header and footer information as part of json.",
+            "type": "boolean",
+            "default": false
+          },
+          "tagEncapsulatedText": {
+            "description": "List of elements from which to extract encapsulated text content.",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "Figure"
+              ]
+            },
+            "default": [
+              "Figure"
+            ]
+          },
           "notifiers": {
             "$ref": "#/components/schemas/notifiers"
           }
@@ -8768,6 +8786,8 @@
             "tables",
             "figures"
           ],
+          "includeHeaderFooter": false,
+          "tagEncapsulatedText": ["Figure"],
           "notifiers": [
             {
               "type": "CALLBACK",
@@ -8840,6 +8860,24 @@
                     "figures"
                   ]
                 }
+              },
+              "includeHeaderFooter": {
+                "description": "If true, extract header and footer information as part of json.",
+                "type": "boolean",
+                "default": false
+              },
+              "tagEncapsulatedText": {
+                "description": "List of elements from which to extract encapsulated text content.",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "Figure"
+                  ]
+                },
+                "default": [
+                  "Figure"
+                ]
               }
             }
           },
@@ -8867,7 +8905,9 @@
             "renditionsToExtract": [
               "tables",
               "figures"
-            ]
+            ],
+            "includeHeaderFooter" : false,
+            "tagEncapsulatedText": ["Figure"]
           },
           "notifiers": [
             {
