@@ -63,7 +63,7 @@ To complete this guide, you will need:
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
-    <pdfservices.sdk.version>4.0.0</pdfservices.sdk.version>
+    <pdfservices.sdk.version>4.1.0</pdfservices.sdk.version>
   </properties>
 
   <dependencies>
