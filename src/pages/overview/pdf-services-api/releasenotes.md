@@ -50,8 +50,13 @@ version.
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
+<<<<<<< HEAD
     <pdfservices.sdk.version>4.0.0</pdfservices.sdk.version>
     <pdfservices.sdk.samples.version>4.0.0</pdfservices.sdk.samples.version>
+=======
+    <pdfservices.sdk.version>4.1.0</pdfservices.sdk.version>
+    <pdfservices.sdk.samples.version>4.1.0</pdfservices.sdk.samples.version>
+>>>>>>> f1a3ee334 (Java External Storage)
 </properties>
 
 <dependency>
