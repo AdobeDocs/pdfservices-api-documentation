@@ -14,7 +14,7 @@ the changes below for each release.
 | Bug fix | Fixed the issue with opening Word based password protected PDF files.                   |
 | Bug fix | Fixed developer console error issue when using Chinese characters in form fields.       |
 | Bug fix | Fixed duplicate annotations issue when returning from full screen mode.                 |
-| New     | Added new previewFile API configuration option([showFullScreenViewButton](../howtos_ui.md/#configuration-options-for-previewfile-api)) to hide full-screen button in right-hand panel.      |
+| New     | Added new previewFile API configuration option([showFullScreenViewButton](../howtos_ui.md/#menu-and-tool-options)) to hide full-screen button in right-hand panel.      |
 
 ### January, 2024
 | Change | Description                                                            |
