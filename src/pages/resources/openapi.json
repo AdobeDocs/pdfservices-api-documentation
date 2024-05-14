@@ -8519,7 +8519,8 @@
         "description": "Parameter for export pdf operation using external storage",
         "type": "object",
         "required": [
-          "input"
+          "input",
+          "params"
         ],
         "properties": {
           "input": {
@@ -10144,7 +10145,8 @@
         "description": "Params for Split PDF Operation using external storage.",
         "type": "object",
         "required": [
-          "input"
+          "input",
+          "params"
         ],
         "properties": {
           "input": {
@@ -10156,6 +10158,7 @@
           "params": {
             "description": "Params for Split PDF processing",
             "type": "object",
+            "required": ["splitoption"],
             "properties": {
               "splitoption": {
                 "description": "Provide option to split the PDF document. Different options for splitting PDF document are mutually exclusive.",
