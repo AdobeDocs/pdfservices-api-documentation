@@ -140,7 +140,7 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 ```
 <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.12" />
-    <PackageReference Include="Adobe.PDFServicesSDK" Version="3.4.2" />
+    <PackageReference Include="Adobe.PDFServicesSDK" Version="3.5.0" />
 </ItemGroup> 
 ```
 
@@ -173,7 +173,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
-### 3.4.2 (May 14, 2024: patch release)
+### 3.5.0 (May 15, 2024: minor release)
 
 | Change | Language | Description                                                                                                                                                                                                                                          |
 |--------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
