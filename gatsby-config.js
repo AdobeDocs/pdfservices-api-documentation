@@ -174,6 +174,10 @@ module.exports = {
                             {
                                 title:'.NET',
                                 path: 'overview/pdf-services-api/quickstarts/dotnet/index.md'
+                            },
+                            {
+                                title:'Python',
+                                path: 'overview/pdf-services-api/quickstarts/python/index.md'
                             }
                         ]
                     },
@@ -396,6 +400,10 @@ module.exports = {
                             {
                                 title:'.NET',
                                 path: 'overview/document-generation-api/quickstarts/dotnet/index.md'
+                            },
+                            {
+                                title:'Python',
+                                path: 'overview/document-generation-api/quickstarts/python/index.md'
                             }
                         ]
 
@@ -468,6 +476,10 @@ module.exports = {
                             {
                                 title:'.NET',
                                 path: 'overview/pdf-electronic-seal-api/quickstarts/dotnet/index.md'
+                            },
+                            {
+                                title:'Python',
+                                path: 'overview/pdf-electronic-seal-api/quickstarts/python/index.md'
                             }
                         ]
 
