@@ -174,7 +174,11 @@ module.exports = {
                             {
                                 title:'.NET',
                                 path: 'overview/pdf-services-api/quickstarts/dotnet/index.md'
-                            }
+                            },
+                            {
+                                title:'Python',
+                                path: 'overview/pdf-services-api/quickstarts/python/index.md'
+                            },
                         ]
                     },
                     {
