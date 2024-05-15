@@ -673,6 +673,7 @@ class ElectronicSeal:
             stream_asset: StreamAsset = pdf_services.get_content(result_asset)
 
             # Creates an output stream and copy stream asset's content to it
+
             output_file_path = 'output/ElectronicSeal.pdf'
             with open(output_file_path, "wb") as file:
                 file.write(stream_asset.get_input_stream())
@@ -1628,7 +1629,6 @@ const fs = require("fs");
     }
 })();
 ```
-
 #### Python
 
 ```javascript

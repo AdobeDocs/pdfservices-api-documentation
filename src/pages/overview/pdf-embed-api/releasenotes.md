@@ -8,6 +8,14 @@ the changes below for each release.
 
 ## Change history
 
+### May 9, 2024
+| Change | Description                                                            |
+| ------ | ---------------------------------------------------------------------- |
+| Bug fix | Fixed the issue with opening Word based password protected PDF files.                   |
+| Bug fix | Fixed developer console error issue when using Chinese characters in form fields.       |
+| Bug fix | Fixed duplicate annotations issue when returning from full screen mode.                 |
+| New     | Added new previewFile API configuration option([showFullScreenViewButton](../howtos_ui.md/#menu-and-tool-options)) to hide full-screen button in right-hand panel.      |
+
 ### January, 2024
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
@@ -23,7 +31,7 @@ the changes below for each release.
 
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
-| Bug fix | Fixed PDF rendering issue when third party cookies are disabled.             |
+| Bug fix | Fixed PDF rendering issue when third party cookies are disabled.      |
 
 ### September, 2023
 

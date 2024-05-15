@@ -290,6 +290,95 @@ function getSecondPageRangeForRotation() {
 }
 ```
 
+#### Python 
+
+```python
+# Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
+# Run the sample:
+# python rotate_pdf_pages.py
+
+# Initialize the logger
+logging.basicConfig(level=logging.INFO)
+
+
+#
+# This sample illustrates how to rotate pages in a PDF file.
+#
+# Refer to README.md for instructions on how to run the samples.
+#
+class RotatePDFPages:
+    def __init__(self):
+        try:
+            file = open('rotatePagesInput.pdf', 'rb')
+            input_stream = file.read()
+            file.close()
+
+            # Initial setup, create credentials instance
+            credentials = ServicePrincipalCredentials(
+                client_id=os.getenv('PDF_SERVICES_CLIENT_ID'),
+                client_secret=os.getenv('PDF_SERVICES_CLIENT_SECRET')
+            )
+
+            # Creates a PDF Services instance
+            pdf_services = PDFServices(credentials=credentials)
+
+            # Creates an asset(s) from source file(s) and upload
+            input_asset = pdf_services.upload(input_stream=input_stream, mime_type=PDFServicesMediaType.PDF)
+
+            # First set of page ranges for rotating the specified pages of the input PDF file.
+            first_page_range: PageRanges = self.get_first_page_range_for_rotation()
+
+            # Second set of page ranges for rotating the specified pages of the input PDF file.
+            second_page_range: PageRanges = self.get_second_page_range_for_rotation()
+
+            # Create parameters for the job
+            rotate_pages_params = RotatePagesParams()
+            rotate_pages_params.add_angle_to_rotate_for_page_ranges(angle=Angle.ANGLE_90, page_ranges=first_page_range)
+            rotate_pages_params.add_angle_to_rotate_for_page_ranges(angle=Angle.ANGLE_180, page_ranges=second_page_range)
+
+            # Creates a new job instance
+            reorder_pages_job = RotatePagesJob(input_asset=input_asset, rotate_pages_params=rotate_pages_params)
+
+            # Submit the job and gets the job result
+            location = pdf_services.submit(reorder_pages_job)
+            pdf_services_response = pdf_services.get_job_result(location, RotatePagesResult)
+
+            # Get content from the resulting asset(s)
+            result_asset: CloudAsset = pdf_services_response.get_result().get_asset()
+            stream_asset: StreamAsset = pdf_services.get_content(result_asset)
+
+            # Creates an output stream and copy stream asset's content to it
+            output_file_path = 'rotatePagesOutput.pdf'
+            with open(output_file_path, "wb") as file:
+                file.write(stream_asset.get_input_stream())
+
+        except (ServiceApiException, ServiceUsageException, SdkException) as e:
+            logging.exception(f'Exception encountered while executing operation: {e}')
+
+    @staticmethod
+    def get_first_page_range_for_rotation() -> PageRanges:
+        # Specify pages for rotation
+        first_page_range = PageRanges()
+        # Add page 1
+        first_page_range.add_single_page(1)
+        # Add pages 3 to 4
+        first_page_range.add_range(3, 4)
+        return first_page_range
+
+    @staticmethod
+    def get_second_page_range_for_rotation() -> PageRanges:
+        # Specify pages for rotation
+        second_page_range = PageRanges()
+        # Add page 2
+        second_page_range.add_single_page(2)
+        return second_page_range
+
+
+if __name__ == "__main__":
+    RotatePDFPages()
+
+```
+
 #### REST API 
 
 ```javascript
