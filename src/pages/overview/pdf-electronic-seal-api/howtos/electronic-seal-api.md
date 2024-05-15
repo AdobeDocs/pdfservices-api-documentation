@@ -545,6 +545,127 @@ const fs = require("fs");
     }
 })();
 ```
+
+#### Python
+
+```python
+# Initialize the logger
+logging.basicConfig(level=logging.INFO)
+
+
+#
+# This sample illustrates how to apply electronic seal over the PDF document using default appearance options.
+#
+# To know more about PDF Electronic Seal, please see the
+# <a href="https://www.adobe.com/go/dc_eseal_overview_doc" target="_blank">documentation</a>.
+#
+# Refer to README.md for instructions on how to run the samples.
+#
+class ElectronicSeal:
+    def __init__(self):
+        try:
+            pdf_file = open('sampleInvoice.pdf', 'rb')
+            file_input_stream = pdf_file.read()
+            pdf_file.close()
+
+            seal_image_file = open('sampleSealImage.png', 'rb')
+            seal_image_input_stream = seal_image_file.read()
+            seal_image_file.close()
+
+            # Initial setup, create credentials instance
+            credentials = ServicePrincipalCredentials(
+                client_id=os.getenv('PDF_SERVICES_CLIENT_ID'),
+                client_secret=os.getenv('PDF_SERVICES_CLIENT_SECRET')
+            )
+
+            # Creates a PDF Services instance
+            pdf_services = PDFServices(credentials=credentials)
+
+            # Creates an asset(s) from source file(s) and upload
+            asset = pdf_services.upload(input_stream=file_input_stream, mime_type=PDFServicesMediaType.PDF)
+            seal_image_asset = pdf_services.upload(input_stream=seal_image_input_stream, mime_type=PDFServicesMediaType.PNG)
+
+            # Set the document level permission to be applied for output document
+            document_level_permission = DocumentLevelPermission.FORM_FILLING
+
+            # Sets the Seal Field Name to be created in input PDF document.
+            seal_field_name = "Signature1"
+
+            # Sets the page number in input document for applying seal.
+            seal_page_number = 1
+
+            # Sets if seal should be visible or invisible.
+            seal_visible = True
+
+            # Creates FieldLocation instance and set the coordinates for applying signature
+            field_location = FieldLocation(150, 250, 350, 200)
+
+            # Create FieldOptions instance with required details.
+            field_options = FieldOptions(
+                field_name=seal_field_name,
+                field_location=field_location,
+                page_number=seal_page_number,
+                visible=seal_visible
+            )
+
+            # Sets the name of TSP Provider being used.
+            provider_name = "<PROVIDER_NAME>"
+
+            # Sets the access token to be used to access TSP provider hosted APIs.
+            access_token = "<ACCESS_TOKEN>"
+
+            # Sets the credential ID.
+            credential_id = "<CREDENTIAL_ID>"
+
+            # Sets the PIN generated while creating credentials.
+            pin = "<PIN>"
+
+            # Creates CSCAuthContext instance using access token and token type.
+            csc_auth_context = CSCAuthContext(
+                access_token=access_token,
+                token_type="Bearer",
+            )
+
+            # Create CertificateCredentials instance with required certificate details.
+            certificate_credentials = CSCCredentials(
+                provider_name=provider_name,
+                credential_id=credential_id,
+                pin=pin,
+                csc_auth_context=csc_auth_context,
+            )
+
+            # Create parameters for the job
+            electronic_seal_params = PDFElectronicSealParams(
+                seal_certificate_credentials=certificate_credentials,
+                seal_field_options=field_options,
+            )
+
+            # Creates a new job instance
+            electronic_seal_job = PDFElectronicSealJob(input_asset=asset,
+                                                       electronic_seal_params=electronic_seal_params,
+                                                       seal_image_asset=seal_image_asset)
+
+            # Submit the job and gets the job result
+            location = pdf_services.submit(electronic_seal_job)
+            pdf_services_response = pdf_services.get_job_result(location, ESealPDFResult)
+
+            # Get content from the resulting asset(s)
+            result_asset: CloudAsset = pdf_services_response.get_result().get_asset()
+            stream_asset: StreamAsset = pdf_services.get_content(result_asset)
+
+            # Creates an output stream and copy stream asset's content to it
+            output_file_path = 'sealedOutput.pdf'
+            with open(output_file_path, "wb") as file:
+                file.write(stream_asset.get_input_stream())
+
+        except (ServiceApiException, ServiceUsageException, SdkException) as e:
+            logging.exception(f'Exception encountered while executing operation: {e}')
+
+
+if __name__ == "__main__":
+    ElectronicSeal()
+```
+
 #### REST API
 
 ```javascript
@@ -1005,6 +1126,141 @@ const fs = require("fs");
     }
 })();
 ```
+
+#### Python
+
+````python
+# Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
+# Run the sample:
+# python electronic_seal_with_appearance_options.py
+
+# Initialize the logger
+logging.basicConfig(level=logging.INFO)
+
+
+#
+# This sample illustrates how to apply electronic seal over the PDF document using custom appearance options.
+#
+# To know more about PDF Electronic Seal, please see the
+# <a href="https://www.adobe.com/go/dc_eseal_overview_doc" target="_blank">documentation</a>.
+#
+# Refer to README.md for instructions on how to run the samples.
+#
+class ElectronicSealWithAppearanceOptions:
+    def __init__(self):
+        try:
+            pdf_file = open('sampleInvoice.pdf', 'rb')
+            file_input_stream = pdf_file.read()
+            pdf_file.close()
+
+            seal_image_file = open('sampleSealImage.png', 'rb')
+            seal_image_input_stream = seal_image_file.read()
+            seal_image_file.close()
+
+            # Initial setup, create credentials instance
+            credentials = ServicePrincipalCredentials(
+                client_id=os.getenv('PDF_SERVICES_CLIENT_ID'),
+                client_secret=os.getenv('PDF_SERVICES_CLIENT_SECRET')
+            )
+
+            # Creates a PDF Services instance
+            pdf_services = PDFServices(credentials=credentials)
+
+            # Creates an asset(s) from source file(s) and upload
+            asset = pdf_services.upload(input_stream=file_input_stream, mime_type=PDFServicesMediaType.PDF)
+            seal_image_asset = pdf_services.upload(input_stream=seal_image_input_stream, mime_type=PDFServicesMediaType.PNG)
+
+            # Create AppearanceOptions and add the required signature display items to it
+            appearance_options: AppearanceOptions = AppearanceOptions()
+            appearance_options.add_item(AppearanceItem.NAME)
+            appearance_options.add_item(AppearanceItem.LABELS)
+            appearance_options.add_item(AppearanceItem.DATE)
+            appearance_options.add_item(AppearanceItem.SEAL_IMAGE)
+            appearance_options.add_item(AppearanceItem.DISTINGUISHED_NAME)
+
+            # Set the document level permission to be applied for output document
+            document_level_permission = DocumentLevelPermission.FORM_FILLING
+
+            # Sets the Seal Field Name to be created in input PDF document.
+            seal_field_name = "Signature1"
+
+            # Sets the page number in input document for applying seal.
+            seal_page_number = 1
+
+            # Sets if seal should be visible or invisible.
+            seal_visible = True
+
+            # Creates FieldLocation instance and set the coordinates for applying signature
+            field_location = FieldLocation(150, 250, 350, 200)
+
+            # Create FieldOptions instance with required details.
+            field_options = FieldOptions(
+                field_name=seal_field_name,
+                field_location=field_location,
+                page_number=seal_page_number,
+                visible=seal_visible
+            )
+
+            # Sets the name of TSP Provider being used.
+            provider_name = "<PROVIDER_NAME>"
+
+            # Sets the access token to be used to access TSP provider hosted APIs.
+            access_token = "<ACCESS_TOKEN>"
+
+            # Sets the credential ID.
+            credential_id = "<CREDENTIAL_ID>"
+
+            # Sets the PIN generated while creating credentials.
+            pin = "<PIN>"
+
+            # Creates CSCAuthContext instance using access token and token type.
+            csc_auth_context = CSCAuthContext(
+                access_token=access_token,
+                token_type="Bearer",
+            )
+
+            # Create CertificateCredentials instance with required certificate details.
+            certificate_credentials = CSCCredentials(
+                provider_name=provider_name,
+                credential_id=credential_id,
+                pin=pin,
+                csc_auth_context=csc_auth_context,
+            )
+
+            # Create parameters for the job
+            electronic_seal_params = PDFElectronicSealParams(
+                seal_certificate_credentials=certificate_credentials,
+                seal_appearance_options=appearance_options,
+                seal_field_options=field_options,
+                document_level_permissions=document_level_permission,
+            )
+
+            # Creates a new job instance
+            electronic_seal_job = PDFElectronicSealJob(input_asset=asset,
+                                                       electronic_seal_params=electronic_seal_params,
+                                                       seal_image_asset=seal_image_asset)
+
+            # Submit the job and gets the job result
+            location = pdf_services.submit(electronic_seal_job)
+            pdf_services_response = pdf_services.get_job_result(location, ESealPDFResult)
+
+            # Get content from the resulting asset(s)
+            result_asset: CloudAsset = pdf_services_response.get_result().get_asset()
+            stream_asset: StreamAsset = pdf_services.get_content(result_asset)
+
+            # Creates an output stream and copy stream asset's content to it
+            output_file_path = 'electronicSealWithAppearanceOptionsOutput.pdf'
+            with open(output_file_path, "wb") as file:
+                file.write(stream_asset.get_input_stream())
+
+        except (ServiceApiException, ServiceUsageException, SdkException) as e:
+            logging.exception(f'Exception encountered while executing operation: {e}')
+
+
+if __name__ == "__main__":
+    ElectronicSealWithAppearanceOptions()
+
+````
 #### REST API
 
 ```javascript
@@ -1338,6 +1594,145 @@ const fs = require("fs");
 })();
 ```
 
+
+#### Python 
+
+```python
+# Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
+# Run the sample:
+# python electronic_seal_with_stamp_authority.py
+
+# Initialize the logger
+logging.basicConfig(level=logging.INFO)
+
+
+#
+# This sample illustrates how to apply electronic seal over the PDF document using time stamp authority options.
+#
+# To know more about PDF Electronic Seal, please see the
+# <a href="https://www.adobe.com/go/dc_eseal_overview_doc" target="_blank">documentation</a>.
+#
+# Refer to README.md for instructions on how to run the samples.
+#
+class ElectronicSealWithTimestampAuthority:
+    def __init__(self):
+        try:
+            pdf_file = open('sampleInvoice.pdf', 'rb')
+            file_input_stream = pdf_file.read()
+            pdf_file.close()
+
+            seal_image_file = open('sampleSealImage.png', 'rb')
+            seal_image_input_stream = seal_image_file.read()
+            seal_image_file.close()
+
+            # Initial setup, create credentials instance
+            credentials = ServicePrincipalCredentials(
+                client_id=os.getenv('PDF_SERVICES_CLIENT_ID'),
+                client_secret=os.getenv('PDF_SERVICES_CLIENT_SECRET')
+            )
+
+            # Creates a PDF Services instance
+            pdf_services = PDFServices(credentials=credentials)
+
+            # Creates an asset(s) from source file(s) and upload
+            asset = pdf_services.upload(input_stream=file_input_stream, mime_type=PDFServicesMediaType.PDF)
+            seal_image_asset = pdf_services.upload(input_stream=seal_image_input_stream, mime_type=PDFServicesMediaType.PNG)
+
+            # Set the document level permission to be applied for output document
+            document_level_permission = DocumentLevelPermission.FORM_FILLING
+
+            # Sets the Seal Field Name to be created in input PDF document.
+            seal_field_name = "Signature1"
+
+            # Sets the page number in input document for applying seal.
+            seal_page_number = 1
+
+            # Sets if seal should be visible or invisible.
+            seal_visible = True
+
+            # Creates FieldLocation instance and set the coordinates for applying signature
+            field_location = FieldLocation(150, 250, 350, 200)
+
+            # Create FieldOptions instance with required details.
+            field_options = FieldOptions(
+                field_name=seal_field_name,
+                field_location=field_location,
+                page_number=seal_page_number,
+                visible=seal_visible
+            )
+
+            # Sets the name of TSP Provider being used.
+            provider_name = "<PROVIDER_NAME>"
+
+            # Sets the access token to be used to access TSP provider hosted APIs.
+            access_token = "<ACCESS_TOKEN>"
+
+            # Sets the credential ID.
+            credential_id = "<CREDENTIAL_ID>"
+
+            # Sets the PIN generated while creating credentials.
+            pin = "<PIN>"
+
+            # Creates CSCAuthContext instance using access token and token type.
+            csc_auth_context = CSCAuthContext(
+                access_token=access_token,
+                token_type="Bearer",
+            )
+
+            # Create CertificateCredentials instance with required certificate details.
+            certificate_credentials = CSCCredentials(
+                provider_name=provider_name,
+                credential_id=credential_id,
+                pin=pin,
+                csc_auth_context=csc_auth_context,
+            )
+
+            # Create TSABasicAuthCredentials using username and password
+            tsa_basic_auth_credentials: TSABasicAuthCredentials = TSABasicAuthCredentials(
+                username="<USERNAME>",
+                password="<PASSWORD>",
+            )
+
+            # Set the Time Stamp Authority Options using url and TSA Auth credentials
+            tsa_options: RFC3161TSAOptions = RFC3161TSAOptions(
+                url="<TIMESTAMP_URL>",
+                tsa_basic_auth_credentials=tsa_basic_auth_credentials,
+            )
+
+            # Create parameters for the job
+            electronic_seal_params = PDFElectronicSealParams(
+                seal_certificate_credentials=certificate_credentials,
+                seal_field_options=field_options,
+                tsa_options=tsa_options,
+                document_level_permissions=document_level_permission,
+            )
+
+            # Creates a new job instance
+            electronic_seal_job = PDFElectronicSealJob(input_asset=asset,
+                                                       electronic_seal_params=electronic_seal_params,
+                                                       seal_image_asset=seal_image_asset)
+
+            # Submit the job and gets the job result
+            location = pdf_services.submit(electronic_seal_job)
+            pdf_services_response = pdf_services.get_job_result(location, ESealPDFResult)
+
+            # Get content from the resulting asset(s)
+            result_asset: CloudAsset = pdf_services_response.get_result().get_asset()
+            stream_asset: StreamAsset = pdf_services.get_content(result_asset)
+
+            # Creates an output stream and copy stream asset's content to it
+            output_file_path = 'electronicSealWithTimestampAuthorityOutput.pdf'
+            with open(output_file_path, "wb") as file:
+                file.write(stream_asset.get_input_stream())
+
+        except (ServiceApiException, ServiceUsageException, SdkException) as e:
+            logging.exception(f'Exception encountered while executing operation: {e}')
+
+
+if __name__ == "__main__":
+    ElectronicSealWithTimestampAuthority()
+
+```
 #### REST API
 ```javascript
 curl --location --request POST 'https://pdf-services.adobe.io/operation/electronicseal' \
