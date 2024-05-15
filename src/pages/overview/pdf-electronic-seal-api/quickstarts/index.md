@@ -8,4 +8,5 @@ Want to quickly test out PDF Electronic Seal API? The following quickstarts will
 
 * [Node.js](nodejs/)
 * [Java](java/)
-* [.NET](dotnet)
+* [.NET](dotnet/)
+* [Python](python)

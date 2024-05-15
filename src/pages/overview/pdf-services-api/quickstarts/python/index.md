@@ -1,5 +1,5 @@
 ---
-title: Python | Quickstarts | PDF Accessibility Auto-Tag API | Adobe PDF Services
+title: Python | Quickstarts | PDF Services API | Adobe PDF Services
 ---
 
 # Getting Started with PDF Accessibility Auto-Tag API (Python)
@@ -17,7 +17,7 @@ To complete this guide, you will need:
 
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
+1) To begin, open your browser to <https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
 
 ![Sign in](./shot1.png)
 
@@ -97,7 +97,7 @@ credentials = ServicePrincipalCredentials(
 pdf_services = PDFServices(credentials=credentials)
 ```
 
-4) Now, let's create an assets from source file and upload.
+4) Now, let's create an asset from source file and upload.
 
 ```python
 file = open('src/resources/exportPDFInput.pdf', 'rb')
@@ -165,7 +165,7 @@ logging.basicConfig(level=logging.INFO)
 class ExportPDFToDOCX:
     def __init__(self):
         try:
-            file = open('src/resources/exportPDFInput.pdf', 'rb')
+            file = open('./exportPDFInput.pdf', 'rb')
             input_stream = file.read()
             file.close()
 
