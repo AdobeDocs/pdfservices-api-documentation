@@ -241,7 +241,7 @@ logging.basicConfig(level=logging.INFO)
 class CreatePDFFromDOCX:
     def __init__(self):
         try:
-            file = open('src/resources/createPDFInput.docx', 'rb')
+            file = open('./createPDFInput.docx', 'rb')
             input_stream = file.read()
             file.close()
 
@@ -269,21 +269,12 @@ class CreatePDFFromDOCX:
             stream_asset: StreamAsset = pdf_services.get_content(result_asset)
 
             # Creates an output stream and copy stream asset's content to it
-            output_file_path = self.create_output_file_path()
+            output_file_path = 'output/CreatePDFFromDOCX.pdf'
             with open(output_file_path, "wb") as file:
                 file.write(stream_asset.get_input_stream())
 
         except (ServiceApiException, ServiceUsageException, SdkException) as e:
             logging.exception(f'Exception encountered while executing operation: {e}')
-
-    # Generates a string containing a directory structure and file name for the output file
-    @staticmethod
-    def create_output_file_path() -> str:
-        now = datetime.now()
-        time_stamp = now.strftime("%Y-%m-%dT%H-%M-%S")
-        os.makedirs("output/CreatePDFFromDOCX", exist_ok=True)
-        return f"output/CreatePDFFromDOCX/create{time_stamp}.pdf"
-
 
 if __name__ == "__main__":
     CreatePDFFromDOCX()
@@ -559,7 +550,7 @@ class CreatePDFFromDOCXWithOptions:
     def __init__(self):
 
         try:
-            file = open('src/resources/createPDFInput.docx', 'rb')
+            file = open('./createPDFInput.docx', 'rb')
             input_stream = file.read()
             file.close()
 
@@ -590,21 +581,12 @@ class CreatePDFFromDOCXWithOptions:
             stream_asset: StreamAsset = pdf_services.get_content(result_asset)
 
             # Creates an output stream and copy stream asset's content to it
-            output_file_path = self.create_output_file_path()
+            output_file_path = 'output/CreatePDFFromDOCXWithOptions.pdf'
             with open(output_file_path, "wb") as file:
                 file.write(stream_asset.get_input_stream())
 
         except (ServiceApiException, ServiceUsageException, SdkException) as e:
             logging.exception(f'Exception encountered while executing operation: {e}')
-
-    # Generates a string containing a directory structure and file name for the output file
-    @staticmethod
-    def create_output_file_path() -> str:
-        now = datetime.now()
-        time_stamp = now.strftime("%Y-%m-%dT%H-%M-%S")
-        os.makedirs("output/CreatePDFFromDOCXWithOptions", exist_ok=True)
-        return f"output/CreatePDFFromDOCXWithOptions/create{time_stamp}.pdf"
-
 
 if __name__ == "__main__":
     CreatePDFFromDOCXWithOptions()
@@ -896,7 +878,7 @@ logging.basicConfig(level=logging.INFO)
 class StaticHTMLtoPDF:
     def __init__(self):
         try:
-            file = open('src/resources/createPDFFromStaticHtmlInput.zip', 'rb')
+            file = open('./createPDFFromStaticHtmlInput.zip', 'rb')
             input_stream = file.read()
             file.close()
 
@@ -927,27 +909,18 @@ class StaticHTMLtoPDF:
             stream_asset: StreamAsset = pdf_services.get_content(result_asset)
 
             # Creates an output stream and copy stream asset's content to it
-            output_file_path = self.create_output_file_path()
+            output_file_path = 'output/StaticHTMLToPDF.pdf'
             with open(output_file_path, "wb") as file:
                 file.write(stream_asset.get_input_stream())
 
         except (ServiceApiException, ServiceUsageException, SdkException) as e:
             logging.exception(f'Exception encountered while executing operation: {e}')
 
-    # Generates a string containing a directory structure and file name for the output file
-    @staticmethod
-    def create_output_file_path() -> str:
-        now = datetime.now()
-        time_stamp = now.strftime("%Y-%m-%dT%H-%M-%S")
-        os.makedirs("output/StaticHTMLToPDF", exist_ok=True)
-        return f"output/StaticHTMLToPDF/htmltopdf{time_stamp}.pdf"
-
     @staticmethod
     def get_html_to_pdf_params() -> HTMLtoPDFParams:
         # Define the page layout, in this case an 8 x 11.5 inch page (effectively portrait orientation)
         page_layout = PageLayout(page_height=11.5, page_width=8)
         return HTMLtoPDFParams(page_layout=page_layout, include_header_footer=True)
-
 
 if __name__ == "__main__":
     StaticHTMLtoPDF()
@@ -1240,7 +1213,7 @@ logging.basicConfig(level=logging.INFO)
 class HTMLWithInlineCSSToPDF:
     def __init__(self):
         try:
-            file = open('src/resources/createPDFFromHTMLWithInlineCSSInput.html', 'rb')
+            file = open('./createPDFFromHTMLWithInlineCSSInput.html', 'rb')
             input_stream = file.read()
             file.close()
 
@@ -1271,20 +1244,12 @@ class HTMLWithInlineCSSToPDF:
             stream_asset: StreamAsset = pdf_services.get_content(result_asset)
 
             # Creates an output stream and copy stream asset's content to it
-            output_file_path = self.create_output_file_path()
+            output_file_path = 'output/HTMLWithInlineCSSToPDF.pdf'
             with open(output_file_path, "wb") as file:
                 file.write(stream_asset.get_input_stream())
 
         except (ServiceApiException, ServiceUsageException, SdkException) as e:
             logging.exception(f'Exception encountered while executing operation: {e}')
-
-    # Generates a string containing a directory structure and file name for the output file
-    @staticmethod
-    def create_output_file_path() -> str:
-        now = datetime.now()
-        time_stamp = now.strftime("%Y-%m-%dT%H-%M-%S")
-        os.makedirs("output/HTMLWithInlineCSSToPDF", exist_ok=True)
-        return f"output/HTMLWithInlineCSSToPDF/htmltopdf{time_stamp}.pdf"
 
     @staticmethod
     def get_html_to_pdf_params() -> HTMLtoPDFParams:
@@ -1599,20 +1564,12 @@ class HTMLtoPDFFromURL:
             stream_asset: StreamAsset = pdf_services.get_content(result_asset)
 
             # Creates an output stream and copy stream asset's content to it
-            output_file_path = self.create_output_file_path()
+            output_file_path = 'output/HTMLToPDFFromURL.pdf'
             with open(output_file_path, "wb") as file:
                 file.write(stream_asset.get_input_stream())
 
         except (ServiceApiException, ServiceUsageException, SdkException) as e:
             logging.exception(f'Exception encountered while executing operation: {e}')
-
-    # Generates a string containing a directory structure and file name for the output file
-    @staticmethod
-    def create_output_file_path() -> str:
-        now = datetime.now()
-        time_stamp = now.strftime("%Y-%m-%dT%H-%M-%S")
-        os.makedirs("output/HTMLToPDFFromURL", exist_ok=True)
-        return f"output/HTMLToPDFFromURL/htmltopdf{time_stamp}.pdf"
 
     @staticmethod
     def get_html_to_pdf_params() -> HTMLtoPDFParams:
@@ -1948,7 +1905,7 @@ logging.basicConfig(level=logging.INFO)
 class DynamicHTMLToPDF:
     def __init__(self):
         try:
-            file = open('src/resources/createPDFFromDynamicHtmlInput.zip', 'rb')
+            file = open('./createPDFFromDynamicHtmlInput.zip', 'rb')
             input_stream = file.read()
             file.close()
 
@@ -1979,20 +1936,12 @@ class DynamicHTMLToPDF:
             stream_asset: StreamAsset = pdf_services.get_content(result_asset)
 
             # Creates an output stream and copy stream asset's content to it
-            output_file_path = self.create_output_file_path()
+            output_file_path = 'output/DynamicHTMLToPDF.pdf'
             with open(output_file_path, "wb") as file:
                 file.write(stream_asset.get_input_stream())
 
         except (ServiceApiException, ServiceUsageException, SdkException) as e:
             logging.exception(f'Exception encountered while executing operation: {e}')
-
-    # Generates a string containing a directory structure and file name for the output file
-    @staticmethod
-    def create_output_file_path() -> str:
-        now = datetime.now()
-        time_stamp = now.strftime("%Y-%m-%dT%H-%M-%S")
-        os.makedirs("output/DynamicHTMLToPDF", exist_ok=True)
-        return f"output/DynamicHTMLToPDF/htmltopdf{time_stamp}.pdf"
 
     @staticmethod
     def get_html_to_pdf_params() -> HTMLtoPDFParams:

@@ -244,7 +244,7 @@ logging.basicConfig(level=logging.INFO)
 class ExportPDFToDOCX:
     def __init__(self):
         try:
-            file = open('src/resources/exportPDFInput.pdf', 'rb')
+            file = open('./exportPDFInput.pdf', 'rb')
             input_stream = file.read()
             file.close()
 
@@ -275,21 +275,12 @@ class ExportPDFToDOCX:
             stream_asset: StreamAsset = pdf_services.get_content(result_asset)
 
             # Creates an output stream and copy stream asset's content to it
-            output_file_path = self.create_output_file_path()
+            output_file_path = 'output/ExportPDFToDOCX.docx'
             with open(output_file_path, "wb") as file:
                 file.write(stream_asset.get_input_stream())
 
         except (ServiceApiException, ServiceUsageException, SdkException) as e:
             logging.exception(f'Exception encountered while executing operation: {e}')
-
-    # Generates a string containing a directory structure and file name for the output file
-    @staticmethod
-    def create_output_file_path() -> str:
-        now = datetime.now()
-        time_stamp = now.strftime("%Y-%m-%dT%H-%M-%S")
-        os.makedirs("output/ExportPDFToDOCX", exist_ok=True)
-        return f"output/ExportPDFToDOCX/export{time_stamp}.docx"
-
 
 if __name__ == "__main__":
     ExportPDFToDOCX()
@@ -552,7 +543,7 @@ logging.basicConfig(level=logging.INFO)
 class ExportPDFToDOCXWithOCROption:
     def __init__(self):
         try:
-            file = open('src/resources/exportPDFInput.pdf', 'rb')
+            file = open('./exportPDFInput.pdf', 'rb')
             input_stream = file.read()
             file.close()
 
@@ -583,21 +574,12 @@ class ExportPDFToDOCXWithOCROption:
             stream_asset: StreamAsset = pdf_services.get_content(result_asset)
 
             # Creates an output stream and copy stream asset's content to it
-            output_file_path = self.create_output_file_path()
+            output_file_path = 'output/ExportPDFToDOCXWithOCROption.docx'
             with open(output_file_path, "wb") as file:
                 file.write(stream_asset.get_input_stream())
 
         except (ServiceApiException, ServiceUsageException, SdkException) as e:
             logging.exception(f'Exception encountered while executing operation: {e}')
-
-    # Generates a string containing a directory structure and file name for the output file
-    @staticmethod
-    def create_output_file_path() -> str:
-        now = datetime.now()
-        time_stamp = now.strftime("%Y-%m-%dT%H-%M-%S")
-        os.makedirs("output/ExportPDFToDOCXWithOCROption", exist_ok=True)
-        return f"output/ExportPDFToDOCXWithOCROption/export{time_stamp}.docx"
-
 
 if __name__ == "__main__":
     ExportPDFToDOCXWithOCROption()
@@ -869,7 +851,7 @@ logging.basicConfig(level=logging.INFO)
 class ExportPDFtoJPEG:
     def __init__(self):
         try:
-            file = open('src/resources/exportPDFToImageInput.pdf', 'rb')
+            file = open('./exportPDFToImageInput.pdf', 'rb')
             input_stream = file.read()
             file.close()
 
@@ -904,7 +886,7 @@ class ExportPDFtoJPEG:
             # Get content from the resulting asset(s)
             result_assets = pdf_services_response.get_result().get_assets()
 
-            output_file_path = self.create_output_file_path()
+            output_file_path = 'output/ExportPDFToImages'
 
             for(asset_index, asset) in enumerate(result_assets):
                 save_output_file_path = f"{output_file_path}_{asset_index}.jpeg"
@@ -915,15 +897,6 @@ class ExportPDFtoJPEG:
 
         except (ServiceApiException, ServiceUsageException, SdkException) as e:
             logging.exception(f'Exception encountered while executing operation: {e}')
-
-    # Generates a string containing a directory structure and file name for the output file
-    @staticmethod
-    def create_output_file_path() -> str:
-        now = datetime.now()
-        time_stamp = now.strftime("%Y-%m-%dT%H-%M-%S")
-        os.makedirs("output/ExportPDFToImages", exist_ok=True)
-        return f"output/ExportPDFToImages/export{time_stamp}"
-
 
 if __name__ == "__main__":
     ExportPDFtoJPEG()
@@ -1184,7 +1157,7 @@ logging.basicConfig(level=logging.INFO)
 class ExportPDFToJPEGZip:
     def __init__(self):
         try:
-            file = open('src/resources/exportPDFToImageInput.pdf', 'rb')
+            file = open('./exportPDFToImageInput.pdf', 'rb')
             input_stream = file.read()
             file.close()
 
@@ -1220,7 +1193,7 @@ class ExportPDFToJPEGZip:
             result_assets = pdf_services_response.get_result().get_assets()
             stream_asset: StreamAsset = pdf_services.get_content(result_assets[0])
 
-            output_file_path = self.create_output_file_path()
+            output_file_path = 'output/ExportPDFToJPEGZip.zip'
 
             # Creates an output stream and copy stream asset's content to it
             with open(output_file_path, "wb") as file:
@@ -1228,15 +1201,6 @@ class ExportPDFToJPEGZip:
 
         except (ServiceApiException, ServiceUsageException, SdkException) as e:
             logging.exception(f'Exception encountered while executing operation: {e}')
-
-    # Generates a string containing a directory structure and file name for the output file
-    @staticmethod
-    def create_output_file_path() -> str:
-        now = datetime.now()
-        time_stamp = now.strftime("%Y-%m-%dT%H-%M-%S")
-        os.makedirs("output/ExportPDFToJPEGZip", exist_ok=True)
-        return f"output/ExportPDFToJPEGZip/export{time_stamp}.zip"
-
 
 if __name__ == "__main__":
     ExportPDFToJPEGZip()
