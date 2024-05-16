@@ -15,7 +15,7 @@ The delete pages operation selectively removes pages from a PDF file.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -257,12 +257,6 @@ const getPageRangesForDeletion = () => {
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to delete pages in a PDF file.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class DeletePDFPages:
     def __init__(self):
         try:

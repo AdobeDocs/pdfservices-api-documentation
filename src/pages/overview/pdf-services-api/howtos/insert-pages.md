@@ -16,7 +16,7 @@ an existing PDF.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -282,16 +282,9 @@ const fs = require("fs");
 # Run the sample:
 # python src/insertpages/insert_pdf_pages.py
 
-
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to insert specific pages of multiple PDF files into a single PDF file.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class InsertPDFPages:
     def __init__(self):
         try:

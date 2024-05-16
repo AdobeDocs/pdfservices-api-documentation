@@ -201,28 +201,9 @@ const fs = require("fs");
 # Run the sample:
 # python src/compresspdf/compress_pdf.py
 
-import logging
-import os
-from datetime import datetime
-
-from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
-from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
-from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
-from adobe.pdfservices.operation.io.stream_asset import StreamAsset
-from adobe.pdfservices.operation.pdf_services import PDFServices
-from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
-from adobe.pdfservices.operation.pdfjobs.jobs.compress_pdf_job import CompressPDFJob
-from adobe.pdfservices.operation.pdfjobs.result.compress_pdf_result import CompressPDFResult
-
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to compress PDF by reducing the size of the PDF file.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class CompressPDF:
     def __init__(self):
         try:
@@ -493,31 +474,6 @@ const fs = require("fs");
 # Run the sample:
 # python python src/compresspdf/compress_pdf_with_options.py
 
-import logging
-import os
-from datetime import datetime
-
-from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
-from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
-from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
-from adobe.pdfservices.operation.io.stream_asset import StreamAsset
-from adobe.pdfservices.operation.pdf_services import PDFServices
-from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
-from adobe.pdfservices.operation.pdfjobs.jobs.compress_pdf_job import CompressPDFJob
-from adobe.pdfservices.operation.pdfjobs.params.compress_pdf.compress_pdf_params import CompressPDFParams
-from adobe.pdfservices.operation.pdfjobs.params.compress_pdf.compression_level import CompressionLevel
-from adobe.pdfservices.operation.pdfjobs.result.compress_pdf_result import CompressPDFResult
-
-# Initialize the logger
-logging.basicConfig(level=logging.INFO)
-
-
-#
-# This sample illustrates how to compress PDF by reducing the size of the PDF file on the basis of
-# provided compression level.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class CompressPDFWithOptions:
     def __init__(self):
         try:

@@ -549,37 +549,10 @@ const fs = require("fs");
 #### Python
 
 ```javascript
-import logging
-import os
-from datetime import datetime
-
-from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
-from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
-from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
-from adobe.pdfservices.operation.io.stream_asset import StreamAsset
-from adobe.pdfservices.operation.pdf_services import PDFServices
-from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
-from adobe.pdfservices.operation.pdfjobs.jobs.eseal_job import PDFElectronicSealJob
-from adobe.pdfservices.operation.pdfjobs.params.eseal.csc_auth_context import CSCAuthContext
-from adobe.pdfservices.operation.pdfjobs.params.eseal.csc_credentials import CSCCredentials
-from adobe.pdfservices.operation.pdfjobs.params.eseal.document_level_permission import DocumentLevelPermission
-from adobe.pdfservices.operation.pdfjobs.params.eseal.electronic_seal_params import PDFElectronicSealParams
-from adobe.pdfservices.operation.pdfjobs.params.eseal.field_location import FieldLocation
-from adobe.pdfservices.operation.pdfjobs.params.eseal.field_options import FieldOptions
-from adobe.pdfservices.operation.pdfjobs.result.eseal_pdf_result import ESealPDFResult
 
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to apply electronic seal over the PDF document using default appearance options.
-#
-# To know more about PDF Electronic Seal, please see the
-# <a href="https://www.adobe.com/go/dc_eseal_overview_doc" target="_blank">documentation</a>.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class ElectronicSeal:
     def __init__(self):
         try:
@@ -1149,39 +1122,10 @@ const fs = require("fs");
 #### Python
 
 ```javascript
-import logging
-import os
-from datetime import datetime
-
-from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
-from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
-from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
-from adobe.pdfservices.operation.io.stream_asset import StreamAsset
-from adobe.pdfservices.operation.pdf_services import PDFServices
-from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
-from adobe.pdfservices.operation.pdfjobs.jobs.eseal_job import PDFElectronicSealJob
-from adobe.pdfservices.operation.pdfjobs.params.eseal.appearance_item import AppearanceItem
-from adobe.pdfservices.operation.pdfjobs.params.eseal.appearance_options import AppearanceOptions
-from adobe.pdfservices.operation.pdfjobs.params.eseal.csc_auth_context import CSCAuthContext
-from adobe.pdfservices.operation.pdfjobs.params.eseal.csc_credentials import CSCCredentials
-from adobe.pdfservices.operation.pdfjobs.params.eseal.document_level_permission import DocumentLevelPermission
-from adobe.pdfservices.operation.pdfjobs.params.eseal.electronic_seal_params import PDFElectronicSealParams
-from adobe.pdfservices.operation.pdfjobs.params.eseal.field_location import FieldLocation
-from adobe.pdfservices.operation.pdfjobs.params.eseal.field_options import FieldOptions
-from adobe.pdfservices.operation.pdfjobs.result.eseal_pdf_result import ESealPDFResult
 
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to apply electronic seal over the PDF document using custom appearance options.
-#
-# To know more about PDF Electronic Seal, please see the
-# <a href="https://www.adobe.com/go/dc_eseal_overview_doc" target="_blank">documentation</a>.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class ElectronicSealWithAppearanceOptions:
     def __init__(self):
         try:
@@ -1632,39 +1576,9 @@ const fs = require("fs");
 #### Python
 
 ```javascript
-import logging
-import os
-from datetime import datetime
-
-from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
-from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
-from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
-from adobe.pdfservices.operation.io.stream_asset import StreamAsset
-from adobe.pdfservices.operation.pdf_services import PDFServices
-from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
-from adobe.pdfservices.operation.pdfjobs.jobs.eseal_job import PDFElectronicSealJob
-from adobe.pdfservices.operation.pdfjobs.params.eseal.RFC3161_tsa_options import RFC3161TSAOptions
-from adobe.pdfservices.operation.pdfjobs.params.eseal.csc_auth_context import CSCAuthContext
-from adobe.pdfservices.operation.pdfjobs.params.eseal.csc_credentials import CSCCredentials
-from adobe.pdfservices.operation.pdfjobs.params.eseal.document_level_permission import DocumentLevelPermission
-from adobe.pdfservices.operation.pdfjobs.params.eseal.electronic_seal_params import PDFElectronicSealParams
-from adobe.pdfservices.operation.pdfjobs.params.eseal.field_location import FieldLocation
-from adobe.pdfservices.operation.pdfjobs.params.eseal.field_options import FieldOptions
-from adobe.pdfservices.operation.pdfjobs.params.eseal.tsa_basic_auth_credentials import TSABasicAuthCredentials
-from adobe.pdfservices.operation.pdfjobs.result.eseal_pdf_result import ESealPDFResult
-
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to apply electronic seal over the PDF document using time stamp authority options.
-#
-# To know more about PDF Electronic Seal, please see the
-# <a href="https://www.adobe.com/go/dc_eseal_overview_doc" target="_blank">documentation</a>.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class ElectronicSealWithTimestampAuthority:
     def __init__(self):
         try:

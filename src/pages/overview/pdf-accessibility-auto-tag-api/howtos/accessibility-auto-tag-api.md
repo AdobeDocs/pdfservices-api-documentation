@@ -263,12 +263,6 @@ const fs = require("fs");
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to generate a tagged PDF.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class AutoTagPDF:
     def __init__(self):
         try:
@@ -340,7 +334,7 @@ Here is a sample list of command line arguments and their description:
 - --shift_headings { If this argument is present then the headings will be shifted in the output PDF file }
 
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python, REST API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python" /> 
 
 #### Java
 
@@ -724,12 +718,6 @@ function getShiftHeadingsFromCmdArgs(args) {
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to generate a tagged PDF by setting options with command line arguments.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class AutotagPDFParameterised:
     _input_path: str
     _output_path: str

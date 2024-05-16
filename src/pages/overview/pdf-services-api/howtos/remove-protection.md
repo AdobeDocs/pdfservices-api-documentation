@@ -15,7 +15,7 @@ Use the below sample to remove security from a PDF document.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -216,12 +216,6 @@ const fs = require("fs");
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to remove password security from a PDF document.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class RemoveProtection:
     def __init__(self):
         try:

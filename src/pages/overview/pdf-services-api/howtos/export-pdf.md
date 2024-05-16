@@ -217,30 +217,9 @@ const fs = require("fs");
 # Run the sample:
 # python src/exportpdf/export_pdf_to_docx.py
 
-import logging
-import os
-from datetime import datetime
-
-from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
-from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
-from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
-from adobe.pdfservices.operation.io.stream_asset import StreamAsset
-from adobe.pdfservices.operation.pdf_services import PDFServices
-from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
-from adobe.pdfservices.operation.pdfjobs.jobs.export_pdf_job import ExportPDFJob
-from adobe.pdfservices.operation.pdfjobs.params.export_pdf.export_pdf_params import ExportPDFParams
-from adobe.pdfservices.operation.pdfjobs.params.export_pdf.export_pdf_target_format import ExportPDFTargetFormat
-from adobe.pdfservices.operation.pdfjobs.result.export_pdf_result import ExportPDFResult
-
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to export a PDF file to a Word (DOCX) file
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class ExportPDFToDOCX:
     def __init__(self):
         try:
@@ -514,32 +493,9 @@ const fs = require("fs");
 # Run the sample:
 # python src/exportpdf/export_pdf_to_docx_with_ocr_option.py
 
-import logging
-import os
-from datetime import datetime
-
-from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
-from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
-from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
-from adobe.pdfservices.operation.io.stream_asset import StreamAsset
-from adobe.pdfservices.operation.pdf_services import PDFServices
-from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
-from adobe.pdfservices.operation.pdfjobs.jobs.export_pdf_job import ExportPDFJob
-from adobe.pdfservices.operation.pdfjobs.params.export_pdf.export_ocr_locale import ExportOCRLocale
-from adobe.pdfservices.operation.pdfjobs.params.export_pdf.export_pdf_params import ExportPDFParams
-from adobe.pdfservices.operation.pdfjobs.params.export_pdf.export_pdf_target_format import ExportPDFTargetFormat
-from adobe.pdfservices.operation.pdfjobs.result.export_pdf_result import ExportPDFResult
-
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to export a PDF file to a Word (DOCX) file. The OCR processing is also performed on
-# the input PDF file to extract text from images in the document.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class ExportPDFToDOCXWithOCROption:
     def __init__(self):
         try:
@@ -821,33 +777,9 @@ const fs = require("fs");
 # Run the sample:
 # python python src/exportpdftoimages/export_pdf_to_jpeg.py
 
-import logging
-import os
-from datetime import datetime
-
-from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
-from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
-from adobe.pdfservices.operation.io.stream_asset import StreamAsset
-from adobe.pdfservices.operation.pdf_services import PDFServices
-from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
-from adobe.pdfservices.operation.pdfjobs.jobs.export_pdf_to_images_job import ExportPDFtoImagesJob
-from adobe.pdfservices.operation.pdfjobs.params.pdf_to_image.export_pdf_to_images_output_type import \
-    ExportPDFToImagesOutputType
-from adobe.pdfservices.operation.pdfjobs.params.pdf_to_image.export_pdf_to_images_params import \
-    ExportPDFtoImagesParams
-from adobe.pdfservices.operation.pdfjobs.params.pdf_to_image.export_pdf_to_images_target_format import \
-    ExportPDFToImagesTargetFormat
-from adobe.pdfservices.operation.pdfjobs.result.export_pdf_to_images_result import ExportPDFtoImagesResult
-
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to export a PDF file to a list of JPEG files.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class ExportPDFtoJPEG:
     def __init__(self):
         try:
@@ -1125,35 +1057,9 @@ const fs = require("fs");
 # Run the sample:
 # python src/exportpdftoimages/export_pdf_to_jpeg_zip.py
 
-import logging
-import os
-from datetime import datetime
-
-from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
-from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
-from adobe.pdfservices.operation.io.stream_asset import StreamAsset
-from adobe.pdfservices.operation.pdf_services import PDFServices
-from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
-from adobe.pdfservices.operation.pdfjobs.jobs.export_pdf_to_images_job import ExportPDFtoImagesJob
-from adobe.pdfservices.operation.pdfjobs.params.pdf_to_image.export_pdf_to_images_output_type import \
-    ExportPDFToImagesOutputType
-from adobe.pdfservices.operation.pdfjobs.params.pdf_to_image.export_pdf_to_images_params import \
-    ExportPDFtoImagesParams
-from adobe.pdfservices.operation.pdfjobs.params.pdf_to_image.export_pdf_to_images_target_format import \
-    ExportPDFToImagesTargetFormat
-from adobe.pdfservices.operation.pdfjobs.result.export_pdf_to_images_result import ExportPDFtoImagesResult
-
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to export a PDF file to JPEG.
-#
-# The resulting file is a ZIP archive containing one image per page of the source PDF file
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class ExportPDFToJPEGZip:
     def __init__(self):
         try:

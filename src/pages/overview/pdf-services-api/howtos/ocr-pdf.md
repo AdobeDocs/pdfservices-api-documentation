@@ -203,30 +203,9 @@ const fs = require("fs");
 # Run the sample:
 # python src/ocrpdf/ocr_pdf.py
 
-import logging
-import os
-from datetime import datetime
-
-from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
-from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
-from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
-from adobe.pdfservices.operation.io.stream_asset import StreamAsset
-from adobe.pdfservices.operation.pdf_services import PDFServices
-from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
-from adobe.pdfservices.operation.pdfjobs.jobs.ocr_pdf_job import OCRPDFJob
-from adobe.pdfservices.operation.pdfjobs.result.ocr_pdf_result import OCRPDFResult
-
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to perform OCR operation on a PDF file and convert it into a searchable PDF file.
-#
-# Note that OCR operation on a PDF file results in a PDF file.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class OcrPDF(object):
     def __init__(self):
         try:
@@ -512,35 +491,9 @@ const fs = require("fs");
 # Run the sample:
 # python src/ocrpdf/ocr_pdf_with_options.py
 
-import logging
-import os
-from datetime import datetime
-
-from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
-from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
-from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
-from adobe.pdfservices.operation.io.stream_asset import StreamAsset
-from adobe.pdfservices.operation.pdf_services import PDFServices
-from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
-from adobe.pdfservices.operation.pdfjobs.jobs.ocr_pdf_job import OCRPDFJob
-from adobe.pdfservices.operation.pdfjobs.params.ocr_pdf.ocr_params import OCRParams
-from adobe.pdfservices.operation.pdfjobs.params.ocr_pdf.ocr_supported_locale import OCRSupportedLocale
-from adobe.pdfservices.operation.pdfjobs.params.ocr_pdf.ocr_supported_type import OCRSupportedType
-from adobe.pdfservices.operation.pdfjobs.result.ocr_pdf_result import OCRPDFResult
-
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to perform an OCR operation on a PDF file and convert it into an searchable PDF file on
-# the basis of provided locale and SEARCHABLE_IMAGE_EXACT ocr type to keep the original image
-# (Recommended for cases requiring maximum fidelity to the original image.).
-#
-# Note that OCR operation on a PDF file results in a PDF file.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class OcrPDFWithOptions:
     def __init__(self):
         try:

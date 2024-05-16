@@ -17,7 +17,7 @@ file.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -234,13 +234,6 @@ const fs = require("fs");
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to split input PDF into multiple PDF files on the basis of the maximum number
-# of pages each of the output files can have.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class SplitPDFByNumberOfPages:
     def __init__(self):
         try:
@@ -316,7 +309,7 @@ ranges where each page range corresponds to a single output file.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -574,12 +567,6 @@ const getPageRanges = () => {
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to create a PDF file from a DOCX file.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class SplitPDFByPageRanges:
     def __init__(self):
         try:
@@ -678,7 +665,7 @@ an identical number of pages (if possible).
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -897,13 +884,6 @@ const fs = require("fs");
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to split input PDF into multiple PDF files on the basis of page ranges.
-# Each page range corresponds to a single output file having the pages specified in the page range.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class SplitPDFIntoNumberOfFiles:
     def __init__(self):
         try:

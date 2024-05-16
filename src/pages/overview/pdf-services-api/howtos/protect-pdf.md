@@ -224,32 +224,9 @@ const fs = require("fs");
 # Run the sample:
 # python src/protectpdf/protect_pdf.py
 
-import logging
-import os
-from datetime import datetime
-
-from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
-from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
-from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
-from adobe.pdfservices.operation.io.stream_asset import StreamAsset
-from adobe.pdfservices.operation.pdf_services import PDFServices
-from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
-from adobe.pdfservices.operation.pdfjobs.jobs.protect_pdf_job import ProtectPDFJob
-from adobe.pdfservices.operation.pdfjobs.params.protect_pdf.content_encryption import ContentEncryption
-from adobe.pdfservices.operation.pdfjobs.params.protect_pdf.encryption_algorithm import EncryptionAlgorithm
-from adobe.pdfservices.operation.pdfjobs.params.protect_pdf.password_protect_params import PasswordProtectParams
-from adobe.pdfservices.operation.pdfjobs.result.protect_pdf_result import ProtectPDFResult
-
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to convert a PDF file into a password-protected PDF file.
-# The password is used for encrypting PDF contents and will be required for viewing the PDF file.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class ProtectPDF:
     def __init__(self):
         try:
@@ -568,34 +545,9 @@ const fs = require("fs");
 # Run the sample:
 # python src/protectpdf/protect_pdf_with_owner_password.py
 
-import logging
-import os
-from datetime import datetime
-
-from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
-from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
-from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
-from adobe.pdfservices.operation.io.stream_asset import StreamAsset
-from adobe.pdfservices.operation.pdf_services import PDFServices
-from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
-from adobe.pdfservices.operation.pdfjobs.jobs.protect_pdf_job import ProtectPDFJob
-from adobe.pdfservices.operation.pdfjobs.params.protect_pdf.content_encryption import ContentEncryption
-from adobe.pdfservices.operation.pdfjobs.params.protect_pdf.encryption_algorithm import EncryptionAlgorithm
-from adobe.pdfservices.operation.pdfjobs.params.protect_pdf.password_protect_params import PasswordProtectParams
-from adobe.pdfservices.operation.pdfjobs.params.protect_pdf.permission import Permission
-from adobe.pdfservices.operation.pdfjobs.params.protect_pdf.permissions import Permissions
-from adobe.pdfservices.operation.pdfjobs.result.protect_pdf_result import ProtectPDFResult
-
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to secure a PDF file with owner password and allow certain access permissions
-# such as copying and editing the contents, and printing of the document at low resolution.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class ProtectPDFWithOwnerPassword:
     def __init__(self):
         try:

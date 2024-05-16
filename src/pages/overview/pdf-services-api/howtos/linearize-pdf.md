@@ -199,29 +199,9 @@ const fs = require("fs");
 # Run the sample:
 # python src/linearizepdf/linearize_pdf.py
 
-import logging
-import os
-from datetime import datetime
-
-from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
-from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
-from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
-from adobe.pdfservices.operation.io.stream_asset import StreamAsset
-from adobe.pdfservices.operation.pdf_services import PDFServices
-from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
-from adobe.pdfservices.operation.pdfjobs.jobs.linearize_pdf_job import LinearizePDFJob
-from adobe.pdfservices.operation.pdfjobs.result.linearize_pdf_result import LinearizePDFResult
-
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to convert a PDF file into a Linearized (also known as "web optimized") PDF file.
-# Such PDF files are optimized for incremental access in network environments.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class LinearizePDF:
     def __init__(self):
         try:
