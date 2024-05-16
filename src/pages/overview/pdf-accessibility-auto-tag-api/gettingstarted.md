@@ -593,7 +593,7 @@ After downloading the zip, you can run the samples in the zip directly by settin
 
 #### Setup a Python environment
 
-1. Install [Python 3.6](https://www.python.org/downloads/) or higher.
+1. Install [Python 3.10](https://www.python.org/downloads/) or higher.
 2. Verify your installation by running this command: `python --version`.
 
 ##### Running the samples
@@ -622,7 +622,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 1.  After downloading the package zip, run following command
 
 ```
-pip hash <download_dir>/pdfservices-sdk-2.3.1.tar.gz
+pip hash <download_dir>/pdfservices-sdk-3.0.0.tar.gz
 ```
 
 1.  Above command will return the hash of downloaded package.

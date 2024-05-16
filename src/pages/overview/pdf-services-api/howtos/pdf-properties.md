@@ -17,7 +17,7 @@ The sample below fetches the properties of an input PDF.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -206,9 +206,9 @@ const fs = require("fs");
 #### Python
 
 ```python
-# Get the samples from https://www.adobe.com/go/pdftoolsapi_python_samples
+# Get the samples from https://www.github.com/adobe/pdfservices-sdk-python-samples
 # Run the sample:
-# python PDFPropertiesAsJSONObject.py
+# python src/pdfproperties/get_pdf_properties.py
 
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)

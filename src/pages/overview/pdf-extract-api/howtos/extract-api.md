@@ -366,9 +366,9 @@ const fs = require("fs");
 #### Python
 
 ```python
-# Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
+# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples
 # Run the sample:
-# python src/extractpdf/extract_txt_from_pdf.py
+# python src/extractpdf/extract_text_info_from_pdf.py
 
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
@@ -665,9 +665,9 @@ const fs = require("fs");
 #### Python
 
 ```python
-# Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
+# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples
 # Run the sample:
-# python src/extractpdf/extract_txt_table_info_from_pdf.py
+# python src/extractpdf/extract_text_table_info_from_pdf.py
 
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
@@ -969,9 +969,9 @@ const fs = require("fs");
 #### Python
 
 ```python
-# Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
+# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples
 # Run the sample:
-# python src/extractpdf/extract_txt_table_info_with_rendition_from_pdf.py
+# python src/extractpdf/extract_text_table_info_with_renditions_from_pdf.py
 
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
@@ -1280,9 +1280,9 @@ const fs = require("fs");
 #### Python
 
 ```python
-# Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
+# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples
 # Run the sample:
-# python src/extractpdf/extract_txt_table_info_with_figure_tables_rendition_from_pdf.py
+# python src/extractpdf/extract_text_table_info_with_figures_tables_renditions_from_pdf.py
 
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
@@ -1590,9 +1590,9 @@ const fs = require("fs");
 #### Python
 
 ```python
-# Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
+# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples
 # Run the sample:
-# python src/extractpdf/extract_txt_table_info_with_char_bounds_from_pdf.py
+# python src/extractpdf/extract_text_info_with_char_bounds_from_pdf.py
 
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
@@ -1905,9 +1905,9 @@ const fs = require("fs");
 #### Python 
 
 ```python
-# Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
+# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples
 # Run the sample:
-# python src/extractpdf/extract_txt_table_info_with_table_structure_from_pdf.py
+# python src/extractpdf/extract_text_table_info_with_table_structure_from_pdf.py
 
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
@@ -2141,7 +2141,7 @@ namespace ExtractTextTableInfoWithStylingFromPDF
 #### Node JS
 
 ```javascript
-// Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
+// Get the samples from 
 // Run the sample:
 // node src/extractpdf/extract-text-table-with-styling-info-from-pdf.js
 
@@ -2219,7 +2219,7 @@ const fs = require("fs");
 #### Python
 
 ```python
-# Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
+# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples
 # Run the sample:
 # python src/extractpdf/extract_txt_table_with_styling_info_from_pdf.py
 
