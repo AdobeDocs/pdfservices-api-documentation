@@ -340,7 +340,7 @@ Here is a sample list of command line arguments and their description:
 - --shift_headings { If this argument is present then the headings will be shifted in the output PDF file }
 
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
