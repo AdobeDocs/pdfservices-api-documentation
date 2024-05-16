@@ -161,7 +161,7 @@ The sample below performs electronic seal operation with default appearance on a
 
 Please refer to the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -548,7 +548,26 @@ const fs = require("fs");
 
 #### Python
 
-```python
+```javascript
+import logging
+import os
+from datetime import datetime
+
+from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
+from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
+from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
+from adobe.pdfservices.operation.io.stream_asset import StreamAsset
+from adobe.pdfservices.operation.pdf_services import PDFServices
+from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
+from adobe.pdfservices.operation.pdfjobs.jobs.eseal_job import PDFElectronicSealJob
+from adobe.pdfservices.operation.pdfjobs.params.eseal.csc_auth_context import CSCAuthContext
+from adobe.pdfservices.operation.pdfjobs.params.eseal.csc_credentials import CSCCredentials
+from adobe.pdfservices.operation.pdfjobs.params.eseal.document_level_permission import DocumentLevelPermission
+from adobe.pdfservices.operation.pdfjobs.params.eseal.electronic_seal_params import PDFElectronicSealParams
+from adobe.pdfservices.operation.pdfjobs.params.eseal.field_location import FieldLocation
+from adobe.pdfservices.operation.pdfjobs.params.eseal.field_options import FieldOptions
+from adobe.pdfservices.operation.pdfjobs.result.eseal_pdf_result import ESealPDFResult
+
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
@@ -564,11 +583,11 @@ logging.basicConfig(level=logging.INFO)
 class ElectronicSeal:
     def __init__(self):
         try:
-            pdf_file = open('sampleInvoice.pdf', 'rb')
+            pdf_file = open('./sampleInvoice.pdf', 'rb')
             file_input_stream = pdf_file.read()
             pdf_file.close()
 
-            seal_image_file = open('sampleSealImage.png', 'rb')
+            seal_image_file = open('./sampleSealImage.png', 'rb')
             seal_image_input_stream = seal_image_file.read()
             seal_image_file.close()
 
@@ -654,13 +673,13 @@ class ElectronicSeal:
             stream_asset: StreamAsset = pdf_services.get_content(result_asset)
 
             # Creates an output stream and copy stream asset's content to it
-            output_file_path = 'sealedOutput.pdf'
+
+            output_file_path = 'output/ElectronicSeal.pdf'
             with open(output_file_path, "wb") as file:
                 file.write(stream_asset.get_input_stream())
 
         except (ServiceApiException, ServiceUsageException, SdkException) as e:
             logging.exception(f'Exception encountered while executing operation: {e}')
-
 
 if __name__ == "__main__":
     ElectronicSeal()
@@ -709,7 +728,7 @@ The sample below performs electronic seal operation with customized appearance o
 
 Please refer to the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -1129,10 +1148,27 @@ const fs = require("fs");
 
 #### Python
 
-````python
-# Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
-# Run the sample:
-# python electronic_seal_with_appearance_options.py
+```javascript
+import logging
+import os
+from datetime import datetime
+
+from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
+from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
+from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
+from adobe.pdfservices.operation.io.stream_asset import StreamAsset
+from adobe.pdfservices.operation.pdf_services import PDFServices
+from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
+from adobe.pdfservices.operation.pdfjobs.jobs.eseal_job import PDFElectronicSealJob
+from adobe.pdfservices.operation.pdfjobs.params.eseal.appearance_item import AppearanceItem
+from adobe.pdfservices.operation.pdfjobs.params.eseal.appearance_options import AppearanceOptions
+from adobe.pdfservices.operation.pdfjobs.params.eseal.csc_auth_context import CSCAuthContext
+from adobe.pdfservices.operation.pdfjobs.params.eseal.csc_credentials import CSCCredentials
+from adobe.pdfservices.operation.pdfjobs.params.eseal.document_level_permission import DocumentLevelPermission
+from adobe.pdfservices.operation.pdfjobs.params.eseal.electronic_seal_params import PDFElectronicSealParams
+from adobe.pdfservices.operation.pdfjobs.params.eseal.field_location import FieldLocation
+from adobe.pdfservices.operation.pdfjobs.params.eseal.field_options import FieldOptions
+from adobe.pdfservices.operation.pdfjobs.result.eseal_pdf_result import ESealPDFResult
 
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
@@ -1149,11 +1185,11 @@ logging.basicConfig(level=logging.INFO)
 class ElectronicSealWithAppearanceOptions:
     def __init__(self):
         try:
-            pdf_file = open('sampleInvoice.pdf', 'rb')
+            pdf_file = open('./sampleInvoice.pdf', 'rb')
             file_input_stream = pdf_file.read()
             pdf_file.close()
 
-            seal_image_file = open('sampleSealImage.png', 'rb')
+            seal_image_file = open('./sampleSealImage.png', 'rb')
             seal_image_input_stream = seal_image_file.read()
             seal_image_file.close()
 
@@ -1249,18 +1285,17 @@ class ElectronicSealWithAppearanceOptions:
             stream_asset: StreamAsset = pdf_services.get_content(result_asset)
 
             # Creates an output stream and copy stream asset's content to it
-            output_file_path = 'electronicSealWithAppearanceOptionsOutput.pdf'
+            output_file_path = 'output/ElectronicSeal.pdf'
             with open(output_file_path, "wb") as file:
                 file.write(stream_asset.get_input_stream())
 
         except (ServiceApiException, ServiceUsageException, SdkException) as e:
             logging.exception(f'Exception encountered while executing operation: {e}')
 
-
 if __name__ == "__main__":
     ElectronicSealWithAppearanceOptions()
+```
 
-````
 #### REST API
 
 ```javascript
@@ -1307,12 +1342,13 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/electron
     }
 }'
 ```
+
 ## Apply Electronic Seal with trusted timestamp on PDF
 The sample below performs electronic seal operation with a trusted timestamp on given PDF.
 
 Please refer to the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, Node JS, REST API" />
+<CodeBlock slots="heading, code" repeat="4" languages="Java, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -1593,14 +1629,29 @@ const fs = require("fs");
     }
 })();
 ```
+#### Python
 
+```javascript
+import logging
+import os
+from datetime import datetime
 
-#### Python 
-
-```python
-# Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
-# Run the sample:
-# python electronic_seal_with_stamp_authority.py
+from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
+from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
+from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
+from adobe.pdfservices.operation.io.stream_asset import StreamAsset
+from adobe.pdfservices.operation.pdf_services import PDFServices
+from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
+from adobe.pdfservices.operation.pdfjobs.jobs.eseal_job import PDFElectronicSealJob
+from adobe.pdfservices.operation.pdfjobs.params.eseal.RFC3161_tsa_options import RFC3161TSAOptions
+from adobe.pdfservices.operation.pdfjobs.params.eseal.csc_auth_context import CSCAuthContext
+from adobe.pdfservices.operation.pdfjobs.params.eseal.csc_credentials import CSCCredentials
+from adobe.pdfservices.operation.pdfjobs.params.eseal.document_level_permission import DocumentLevelPermission
+from adobe.pdfservices.operation.pdfjobs.params.eseal.electronic_seal_params import PDFElectronicSealParams
+from adobe.pdfservices.operation.pdfjobs.params.eseal.field_location import FieldLocation
+from adobe.pdfservices.operation.pdfjobs.params.eseal.field_options import FieldOptions
+from adobe.pdfservices.operation.pdfjobs.params.eseal.tsa_basic_auth_credentials import TSABasicAuthCredentials
+from adobe.pdfservices.operation.pdfjobs.result.eseal_pdf_result import ESealPDFResult
 
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
@@ -1617,11 +1668,11 @@ logging.basicConfig(level=logging.INFO)
 class ElectronicSealWithTimestampAuthority:
     def __init__(self):
         try:
-            pdf_file = open('sampleInvoice.pdf', 'rb')
+            pdf_file = open('./sampleInvoice.pdf', 'rb')
             file_input_stream = pdf_file.read()
             pdf_file.close()
 
-            seal_image_file = open('sampleSealImage.png', 'rb')
+            seal_image_file = open('./sampleSealImage.png', 'rb')
             seal_image_input_stream = seal_image_file.read()
             seal_image_file.close()
 
@@ -1721,19 +1772,19 @@ class ElectronicSealWithTimestampAuthority:
             stream_asset: StreamAsset = pdf_services.get_content(result_asset)
 
             # Creates an output stream and copy stream asset's content to it
-            output_file_path = 'electronicSealWithTimestampAuthorityOutput.pdf'
+            output_file_path = 'output/ElectronicSeal.pdf'
             with open(output_file_path, "wb") as file:
                 file.write(stream_asset.get_input_stream())
 
         except (ServiceApiException, ServiceUsageException, SdkException) as e:
             logging.exception(f'Exception encountered while executing operation: {e}')
 
-
 if __name__ == "__main__":
     ElectronicSealWithTimestampAuthority()
-
 ```
+
 #### REST API
+
 ```javascript
 curl --location --request POST 'https://pdf-services.adobe.io/operation/electronicseal' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
