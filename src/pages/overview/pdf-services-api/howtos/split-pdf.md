@@ -17,7 +17,7 @@ file.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -227,9 +227,9 @@ const fs = require("fs");
 #### Python
 
 ```python
-# Get the samples from https://www.adobe.com/go/pdftoolsapi_python_samples
+# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples
 # Run the sample:
-# python SplitPDFByNumberOfPages.py
+# python src/splitpdf/split_pdf_by_number_of_pages.py
 
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
@@ -316,7 +316,7 @@ ranges where each page range corresponds to a single output file.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -567,9 +567,9 @@ const getPageRanges = () => {
 #### Python
 
 ```python
-# Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
+# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples
 # Run the sample:
-# python split_pdf_by_page_ranges.py
+# python src/splitpdf/split_pdf_by_page_ranges.py
 
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
@@ -678,7 +678,7 @@ an identical number of pages (if possible).
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -890,9 +890,9 @@ const fs = require("fs");
 #### Python
 
 ```python
-# Get the samples from https://www.adobe.com/go/pdftoolsapi_python_samples
+# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples
 # Run the sample:
-# python SplitPDFIntoNumberOfFiles.py
+# python src/splitpdf/split_pdf_into_number_of_files.py
 
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)

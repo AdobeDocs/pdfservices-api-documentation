@@ -593,7 +593,7 @@ After downloading the zip, you can run the samples in the zip directly by settin
 
 #### Setup a Python environment
 
-1. Install [Python 3.6](https://www.python.org/downloads/) or higher.
+1. Install [Python 3.10](https://www.python.org/downloads/) or higher.
 2. Verify your installation by running this command: `python --version`.
 
 

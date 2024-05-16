@@ -15,7 +15,7 @@ Use the below sample to remove security from a PDF document.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -204,6 +204,69 @@ const fs = require("fs");
         readStream?.destroy();
     }
 })();
+```
+
+#### Python
+
+```python
+# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples
+# Run the sample:
+# python src/removeprotection/remove_protection.py
+
+# Initialize the logger
+logging.basicConfig(level=logging.INFO)
+
+
+#
+# This sample illustrates how to remove password security from a PDF document.
+#
+# Refer to README.md for instructions on how to run the samples.
+#
+class RemoveProtection:
+    def __init__(self):
+        try:
+            file = open('removeProtectionInput.pdf', 'rb')
+            input_stream = file.read()
+            file.close()
+
+            # Initial setup, create credentials instance
+            credentials = ServicePrincipalCredentials(
+                client_id=os.getenv('PDF_SERVICES_CLIENT_ID'),
+                client_secret=os.getenv('PDF_SERVICES_CLIENT_SECRET')
+            )
+
+            # Creates a PDF Services instance
+            pdf_services = PDFServices(credentials=credentials)
+
+            # Creates an asset(s) from source file(s) and upload
+            input_asset = pdf_services.upload(input_stream=input_stream, mime_type=PDFServicesMediaType.PDF)
+
+            # Create parameters for the job
+            remove_protection_params = RemoveProtectionParams(password="password")
+
+            # Creates a new job instance
+            remove_protection_job = RemoveProtectionJob(input_asset=input_asset,
+                                                        remove_protection_params=remove_protection_params)
+
+            # Submit the job and gets the job result
+            location = pdf_services.submit(remove_protection_job)
+            pdf_services_response = pdf_services.get_job_result(location, RemoveProtectionResult)
+
+            # Get content from the resulting asset(s)
+            result_asset: CloudAsset = pdf_services_response.get_result().get_asset()
+            stream_asset: StreamAsset = pdf_services.get_content(result_asset)
+
+            # Creates an output stream and copy stream asset's content to it
+            output_file_path = 'removeProtectionOutput.pdf'
+            with open(output_file_path, "wb") as file:
+                file.write(stream_asset.get_input_stream())
+
+        except (ServiceApiException, ServiceUsageException, SdkException) as e:
+            logging.exception(f'Exception encountered while executing operation: {e}')
+
+
+if __name__ == "__main__":
+    RemoveProtection()
 ```
 
 #### REST API

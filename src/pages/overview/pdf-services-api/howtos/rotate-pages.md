@@ -16,7 +16,7 @@ example, you can change portrait view to landscape view.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -293,9 +293,9 @@ function getSecondPageRangeForRotation() {
 #### Python 
 
 ```python
-# Get the samples from http://www.adobe.com/go/pdftoolsapi_python_sample
+# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples
 # Run the sample:
-# python rotate_pdf_pages.py
+# python src/rotatepages/rotate_pdf_pages.py
 
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
