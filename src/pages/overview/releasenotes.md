@@ -175,9 +175,9 @@ Upgrading to the latest SDK should not break existing applications.
 
 ### 3.5.0 (May 15, 2024: minor release)
 
-| Change | Language | Description                                                                                                                                                                                                                                          |
-|--------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| New    | .NET     | Added support to configure await which allows developers to configure how continuations of asynchronous operations are executed in terms of their synchronization context, where this settings can be set via "configureAwait" in the client config. |
+| Change | Language | Description                                                                                                                                                                                                                                                                                                                               |
+|--------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| New    | .NET     | Added support to enable or disable "configureAwait" using client config, which will allow developers to specify whether asynchronous continuations should execute on the original synchronization context or not. **Note**: Starting from the next major release, "configureAwait" will be disabled by default and won't be configurable. |
 
 
 ### Adobe Document Generation Server Side Release (April 30, 2024: server side release)
