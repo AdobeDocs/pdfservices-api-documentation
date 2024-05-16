@@ -216,28 +216,9 @@ const fs = require("fs");
 # Run the sample:
 # python src/createpdf/create_pdf_from_docx.py
 
-import logging
-import os
-from datetime import datetime
-
-from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
-from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
-from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
-from adobe.pdfservices.operation.io.stream_asset import StreamAsset
-from adobe.pdfservices.operation.pdf_services import PDFServices
-from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
-from adobe.pdfservices.operation.pdfjobs.jobs.create_pdf_job import CreatePDFJob
-from adobe.pdfservices.operation.pdfjobs.result.create_pdf_result import CreatePDFResult
-
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to create a PDF file from a DOCX file.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class CreatePDFFromDOCX:
     def __init__(self):
         try:
@@ -521,31 +502,9 @@ const fs = require("fs");
 # Run the sample:
 # python src/createpdf/create_pdf_from_docx_with_options.py
 
-import logging
-import os
-from datetime import datetime
-
-from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
-from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
-from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
-from adobe.pdfservices.operation.io.stream_asset import StreamAsset
-from adobe.pdfservices.operation.pdf_services import PDFServices
-from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
-from adobe.pdfservices.operation.pdfjobs.jobs.create_pdf_job import CreatePDFJob
-from adobe.pdfservices.operation.pdfjobs.params.create_pdf.word.create_pdf_from_word_params import \
-    CreatePDFFromWordParams
-from adobe.pdfservices.operation.pdfjobs.params.create_pdf.word.document_language import DocumentLanguage
-from adobe.pdfservices.operation.pdfjobs.result.create_pdf_result import CreatePDFResult
-
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to provide documentLanguage option when creating a pdf file from docx file.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class CreatePDFFromDOCXWithOptions:
     def __init__(self):
 
@@ -850,31 +809,9 @@ function getHTMLToPDFParams() {
 # Run the sample:
 # python src/htmltopdf/static_html_to_pdf.py
 
-import logging
-import os
-from datetime import datetime
-
-from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
-from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
-from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
-from adobe.pdfservices.operation.io.stream_asset import StreamAsset
-from adobe.pdfservices.operation.pdf_services import PDFServices
-from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
-from adobe.pdfservices.operation.pdfjobs.jobs.html_to_pdf_job import HTMLtoPDFJob
-from adobe.pdfservices.operation.pdfjobs.params.html_to_pdf.html_to_pdf_params import HTMLtoPDFParams
-from adobe.pdfservices.operation.pdfjobs.params.html_to_pdf.page_layout import PageLayout
-from adobe.pdfservices.operation.pdfjobs.result.html_to_pdf_result import HTMLtoPDFResult
-
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to convert an HTML file to PDF. The HTML file and its associated dependencies must be
-# in a single ZIP file.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class StaticHTMLtoPDF:
     def __init__(self):
         try:
@@ -1186,30 +1123,9 @@ function getHTMLToPDFParams() {
 # Run the sample:
 # python src/htmltopdf/html_with_inline_css_to_pdf.py
 
-import logging
-import os
-from datetime import datetime
-
-from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
-from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
-from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
-from adobe.pdfservices.operation.io.stream_asset import StreamAsset
-from adobe.pdfservices.operation.pdf_services import PDFServices
-from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
-from adobe.pdfservices.operation.pdfjobs.jobs.html_to_pdf_job import HTMLtoPDFJob
-from adobe.pdfservices.operation.pdfjobs.params.html_to_pdf.html_to_pdf_params import HTMLtoPDFParams
-from adobe.pdfservices.operation.pdfjobs.params.html_to_pdf.page_layout import PageLayout
-from adobe.pdfservices.operation.pdfjobs.result.html_to_pdf_result import HTMLtoPDFResult
-
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to create a PDF file from an HTML file with inline CSS.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class HTMLWithInlineCSSToPDF:
     def __init__(self):
         try:
@@ -1512,29 +1428,9 @@ function getHTMLToPDFParams() {
 # Run the sample:
 # python src/htmltopdf/html_to_pdf_from_url.py
 
-import logging
-import os
-from datetime import datetime
-
-from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
-from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
-from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
-from adobe.pdfservices.operation.io.stream_asset import StreamAsset
-from adobe.pdfservices.operation.pdf_services import PDFServices
-from adobe.pdfservices.operation.pdfjobs.jobs.html_to_pdf_job import HTMLtoPDFJob
-from adobe.pdfservices.operation.pdfjobs.params.html_to_pdf.html_to_pdf_params import HTMLtoPDFParams
-from adobe.pdfservices.operation.pdfjobs.params.html_to_pdf.page_layout import PageLayout
-from adobe.pdfservices.operation.pdfjobs.result.html_to_pdf_result import HTMLtoPDFResult
-
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to convert an HTML file specified via URL to a PDF file.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class HTMLtoPDFFromURL:
     def __init__(self):
         try:
@@ -1875,33 +1771,9 @@ function getHTMLToPDFParams() {
 # Run the sample:
 # python src/htmltopdf/dynamic_html_to_pdf.py
 
-import json
-import logging
-import os
-from datetime import datetime
-
-from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
-from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
-from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
-from adobe.pdfservices.operation.io.stream_asset import StreamAsset
-from adobe.pdfservices.operation.pdf_services import PDFServices
-from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
-from adobe.pdfservices.operation.pdfjobs.jobs.html_to_pdf_job import HTMLtoPDFJob
-from adobe.pdfservices.operation.pdfjobs.params.html_to_pdf.html_to_pdf_params import HTMLtoPDFParams
-from adobe.pdfservices.operation.pdfjobs.params.html_to_pdf.page_layout import PageLayout
-from adobe.pdfservices.operation.pdfjobs.result.html_to_pdf_result import HTMLtoPDFResult
-
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to provide data inputs to an HTML file before converting it to PDF. The data input is
-# used by the javascript in the HTML file to manipulate the HTML DOM, thus effectively updating the source HTML file.
-# This mechanism can be used to provide data to the template HTML dynamically and convert it into a PDF file.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class DynamicHTMLToPDF:
     def __init__(self):
         try:

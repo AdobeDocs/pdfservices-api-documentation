@@ -17,7 +17,7 @@ The sample below fetches the properties of an input PDF.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -213,12 +213,6 @@ const fs = require("fs");
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to retrieve properties of an input PDF file.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class GetPDFProperties:
     def __init__(self):
         try:

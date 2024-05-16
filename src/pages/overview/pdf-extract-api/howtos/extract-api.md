@@ -373,12 +373,6 @@ const fs = require("fs");
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to extract Text Information from PDF.
-#
-# Refer to README.md for instructions on how to run the samples & understand output zip file.
-#
 class ExtractTextInfoFromPDF:
     def __init__(self):
         try:
@@ -672,12 +666,6 @@ const fs = require("fs");
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to extract Text and Table Information from PDF.
-#
-# Refer to README.md for instructions on how to run the samples & understand output zip file.
-#
 class ExtractTextTableInfoFromPDF:
     def __init__(self):
         try:
@@ -976,13 +964,6 @@ const fs = require("fs");
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to extract Text, Table Elements Information from PDF along with renditions of Table
-# elements.
-#
-# Refer to README.md for instructions on how to run the samples & understand output zip file.
-#
 class ExtractTextTableInfoWithRenditionsFromPDF:
     def __init__(self):
         try:
@@ -1287,13 +1268,6 @@ const fs = require("fs");
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to extract Text, Table Elements Information from PDF along with renditions of Figure,
-# Table elements.
-#
-# Refer to README.md for instructions on how to run the samples & understand output zip file.
-#
 class ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF:
     def __init__(self):
         try:
@@ -1597,12 +1571,6 @@ const fs = require("fs");
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to extract Text and Table Information with text character bounds from PDF.
-#
-# Refer to README.md for instructions on how to run the samples & understand output zip file.
-#
 class ExtractTextTableInfoWithCharBoundsFromPDF:
     def __init__(self):
         try:
@@ -1912,15 +1880,6 @@ const fs = require("fs");
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to extract Text, Table Elements Information from PDF along with renditions of Table
-# elements.
-#
-# It also exports the table renditions in a CSV / XLSX format.
-#
-# Refer to README.md for instructions on how to run the samples & understand output zip file.
-#
 class ExtractTextTableInfoWithTableStructureFromPDF:
     def __init__(self):
         try:
@@ -2226,12 +2185,6 @@ const fs = require("fs");
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to extract Text and Table Information and styling information for text data from PDF.
-#
-# Refer to README.md for instructions on how to run the samples & understand output zip file.
-#
 class ExtractTextTableInfoWithStylingFromPDF:
     def __init__(self):
         try:

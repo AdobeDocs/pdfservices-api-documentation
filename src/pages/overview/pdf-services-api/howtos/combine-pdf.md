@@ -226,30 +226,9 @@ const fs = require("fs");
 # Run the sample:
 # python src/combinepdf/combine_pdf.py
 
-import logging
-import os
-from datetime import datetime
-
-from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
-from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
-from adobe.pdfservices.operation.io.stream_asset import StreamAsset
-from adobe.pdfservices.operation.pdf_services import PDFServices
-from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
-from adobe.pdfservices.operation.pdfjobs.jobs.combine_pdf_job import CombinePDFJob
-from adobe.pdfservices.operation.pdfjobs.params.combine_pdf.combine_pdf_params import CombinePDFParams
-from adobe.pdfservices.operation.pdfjobs.result.combine_pdf_result import CombinePDFResult
-
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to combine multiple PDF files into a single PDF file.
-#
-# Note that the SDK supports combining upto 20 files in one operation.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class CombinePDF:
     def __init__(self):
         try:
@@ -618,30 +597,9 @@ const getPageRangesForSecondFile = () => {
 # Run the sample:
 # python src/combinepdf/combine_pdf_with_page_ranges.py
 
-import logging
-import os
-from datetime import datetime
-
-from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
-from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
-from adobe.pdfservices.operation.io.stream_asset import StreamAsset
-from adobe.pdfservices.operation.pdf_services import PDFServices
-from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
-from adobe.pdfservices.operation.pdfjobs.jobs.combine_pdf_job import CombinePDFJob
-from adobe.pdfservices.operation.pdfjobs.params.combine_pdf.combine_pdf_params import CombinePDFParams
-from adobe.pdfservices.operation.pdfjobs.params.page_ranges import PageRanges
-from adobe.pdfservices.operation.pdfjobs.result.combine_pdf_result import CombinePDFResult
-
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-#
-# This sample illustrates how to combine specific pages of multiple PDF files into a single PDF file.
-#
-# Note that the SDK supports combining upto 20 files in one operation
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class CombinePDFWithPageRanges:
     def __init__(self):
         try:
