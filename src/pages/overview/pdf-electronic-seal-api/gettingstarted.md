@@ -443,7 +443,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 3.  Verify the hash in the downloaded file matches the value published here.
 
 ```
-RlwLjpqBl5/4GYc/bR3FjRroGJZ6VM7HtsuxdhJkhtJdyxT4tmLlg02l8iyRVU0EV3ZvfjeULTGV4qxiagvNOw==
+f6KSblmX/jegC23B8kT1O3rM9725Iu2y4ZYgy47qNxKqWHP9+NgaVTP7P4K0I+PZBkq/CZIFw7vmNB6WWuqmCA==
 ```
 
 #### Logging
