@@ -95,12 +95,12 @@
       "description": "Accessibility Checker API will check PDF files to see if they meet the machine-verifiable requirements of PDF/UA and WCAG 2.0."
     },
     {
-      "name": "Import Form Data",
-      "description": "The Import Form Data API will retrieve the data from a PDF form and return it as a JSON file."
+      "name": "Export PDF Form Data",
+      "description": "The Export PDF Form Data API will retrieve the data from a PDF form and return it as a JSON file."
     },
     {
-      "name": "Export Form Data",
-      "description": "The Export Form Data API will take the form data provided as a JSON, insert it into the PDF form, and generate the resulting PDF."
+      "name": "Import PDF Form Data",
+      "description": "The Import PDF Form Data API will take the form data provided as a JSON, insert it into the PDF form, and generate the resulting PDF."
     }
   ],
   "x-tagGroups": [
@@ -142,8 +142,8 @@
       "name": "PDF operations Beta",
       "tags": [
         "PDF Accessibility Checker",
-        "Import Form Data",
-        "Export Form Data"
+        "Export PDF Form Data",
+        "Import PDF Form Data"
       ]
     }
   ],
@@ -7756,10 +7756,10 @@
     "/operation/getformdata": {
       "post": {
         "tags": [
-          "Import Form Data"
+          "Export PDF Form Data"
         ],
-        "summary": "Import Form Data Operation",
-        "description": "The Import Form Data API will retrieve the data from a PDF form and return it as a JSON file where field names of form will be the keys and value will be the data of the form.",
+        "summary": "Export PDF Form Data Operation",
+        "description": "The Export PDF Form Data API will retrieve the data from a PDF form and return it as a JSON file where field names of form will be the keys and value will be the data of the form.",
         "operationId": "pdfoperations.getformdata",
         "parameters": [
           {
@@ -7782,7 +7782,7 @@
           }
         ],
         "requestBody": {
-          "description": "Input Params for Import Form Data Operation.",
+          "description": "Input Params for Export PDF Form Data Operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -7944,9 +7944,9 @@
     "/operation/getformdata/{jobID}/status": {
       "get": {
         "tags": [
-          "Import Form Data"
+          "Export PDF Form Data"
         ],
-        "summary": "Poll the Import Form Data job for completion",
+        "summary": "Poll the Export PDF Form Data job for completion",
         "operationId": "pdfoperations.getformdata.jobstatus",
         "parameters": [
           {
@@ -8134,10 +8134,10 @@
     "/operation/setformdata": {
       "post": {
         "tags": [
-          "Export Form Data"
+          "Import PDF Form Data"
         ],
-        "summary": "Export Form Data Operation",
-        "description": "The Export Form Data API will take the form data provided as a JSON, insert it into the PDF form, and generate the resulting PDF where field names of form will be the keys and value will be the data of the form in the input JSON.",
+        "summary": "Import PDF Form Data Operation",
+        "description": "The Import PDF Form Data API will take the form data provided as a JSON, insert it into the PDF form, and generate the resulting PDF where field names of form will be the keys and value will be the data of the form in the input JSON.",
         "operationId": "pdfoperations.setformdata",
         "parameters": [
           {
@@ -8160,7 +8160,7 @@
           }
         ],
         "requestBody": {
-          "description": "Input Params for Export Form Data Operation.",
+          "description": "Input Params for Import PDF Form Data Operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -8322,9 +8322,9 @@
     "/operation/setformdata/{jobID}/status": {
       "get": {
         "tags": [
-          "Export Form Data"
+          "Import PDF Form Data"
         ],
-        "summary": "Poll the Export Form Data job for completion",
+        "summary": "Poll the Import PDF Form Data job for completion",
         "operationId": "pdfoperations.setformdata.jobstatus",
         "parameters": [
           {
@@ -11904,7 +11904,7 @@
       },
       "GetFormDataInternal": {
         "title": "Internal",
-        "description": "Parameter for Import Form Data operation.",
+        "description": "Parameter for Export PDF Form Data operation.",
         "type": "object",
         "required": [
           "assetID"
@@ -11937,7 +11937,7 @@
       },
       "GetFormDataExternal": {
         "title": "External",
-        "description": "Params for Import Form Data Operation using external storage.",
+        "description": "Params for Export PDF Form Data Operation using external storage.",
         "type": "object",
         "required": [
           "input"
@@ -11979,7 +11979,7 @@
       },
       "SetFormDataInternal": {
         "title": "Internal",
-        "description": "Parameter for Export Form Data operation.",
+        "description": "Parameter for Import PDF Form Data operation.",
         "type": "object",
         "required": [
           "assetID",
@@ -12024,7 +12024,7 @@
       },
       "SetFormDataExternal": {
         "title": "External",
-        "description": "Params for Export Form Data Operation using external storage.",
+        "description": "Params for Import PDF Form Data Operation using external storage.",
         "type": "object",
         "required": [
           "input",
@@ -12038,7 +12038,7 @@
             "$ref": "#/components/schemas/ExternalStorageOutputZip"
           },
           "params": {
-            "description": "Params for Export Form Data Operation processing",
+            "description": "Params for Import PDF Form Data Operation processing",
             "type": "object",
             "required": ["jsonForFieldsData"],
             "properties": {
