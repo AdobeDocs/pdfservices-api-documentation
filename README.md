@@ -8,7 +8,6 @@ For local development, simply use :
 $ yarn install
 $ npm run dev
 open http://localhost:8000/overview in your browser.
-
 ```
 
 **Note!** You must use `yarn install`, do not install with npm.
