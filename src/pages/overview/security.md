@@ -31,6 +31,7 @@ The PDF Services API accepts and returns user-generated content (UGC). This cont
 ##### Authentication
 
 PDF Embed API is a client-side JavaScript- and WASM-based library and does not initiate any calls to cloud-based services except for the following three scenarios:
+
 - Validating the client ID specified in JavaScript code upon loading;
 - Logging anonymous usage data in Adobe Analytics for internal use by Adobe for product improvement and feedback.
 - Logging event data for out-of-the-box analytics and a pre-configured analytics dashboard is strictly opt-in and requires explicit configuration by the developer. If provided with an Adobe Analytics report suite ID by the PDF Embed API integrator, this logging occurs.
@@ -205,4 +206,4 @@ The Adobe Privacy Policy describes the privacy practices of Adobe's Services and
 
 ## Compliance
 
-Our [open, flexible framework](https://www.adobe.com/trust/compliance/adobe-ccf.html) adapts to constantly changing standards and regulations to help provide ongoing compliance across all our products and services. To learn more, please visit this [link](https://www.adobe.com/trust/compliance/compliance-list.html). 
+Our [open, flexible framework](https://www.adobe.com/trust/compliance/adobe-ccf.html) adapts to constantly changing standards and regulations to help provide ongoing compliance across all our products and services. To learn more, please visit this [link](https://www.adobe.com/trust/compliance/compliance-list.html).
