@@ -7,41 +7,50 @@ title: Security, Privacy and Compliance
 At Adobe, we know the security of your digital experiences is important. Security practices are deeply ingrained into our internal software development and operations processes and tools and are rigorously followed by our cross functional teams to prevent, detect, and respond to incidents in an expedient manner. Furthermore, our collaborative work with partners, leading researchers, security research institutions, and other industry organizations helps us keep up to date with the latest threats and vulnerabilities, and we regularly incorporate advanced security techniques into the products and services we offer.  
 
 ### Acrobat Services APIs Hosting and Security
+
 All Server-side components of PDF Services API and PDF Embed API are processed in Adobe Document Cloud, which is hosted on the data centers of AWS cloud infrastructure in the US-East and EMEA regions. Customers can choose the region where their documents will be processed.
 
 Publicly accessible and downloadable components, such as Acrobat Services SDKs and JavaScript libraries, are hosted on providers relevant to the component, such as library repositories and CDNs.
 
 #### Data Encryption
+
 All content in transit is encrypted using TLS 1.2 or greater.
 
 #### Acrobat Services API Security
 
 ##### Authentication
+
 The Acrobat Services APIs support Service Account authentication. For more information on this authentication type, please refer to the OAuth Server to Server credential section in the authentication guide linked here [Adobe I/O Authentication Overview](https://www.adobe.io/developer-console/docs/guides/authentication/).
 
 ##### User-Generated Content Storage
+
 The PDF Services API accepts and returns user-generated content (UGC). This content is uploaded to Adobe Document Cloud and temporarily cached as part of normal service operations.
 
 #### PDF Embed API Security
 
 ##### Authentication
+
 PDF Embed API is a client-side JavaScript- and WASM-based library and does not initiate any calls to cloud-based services except for the following three scenarios:
 - Validating the client ID specified in JavaScript code upon loading;
 - Logging anonymous usage data in Adobe Analytics for internal use by Adobe for product improvement and feedback.
 - Logging event data for out-of-the-box analytics and a pre-configured analytics dashboard is strictly opt-in and requires explicit configuration by the developer. If provided with an Adobe Analytics report suite ID by the PDF Embed API integrator, this logging occurs.
 
 ##### Iframe Security
+
 The core functionality of PDF Embed API is contained within a sandboxed HTML iframe, which helps prevent any vulnerabilities in the library from affecting the host website and vice versa. It also prevents unintended document object model (DOM) access and manipulation across the iframe boundary.
 
 ##### Content Security Policy (CSP)
+
 Content loaded in the iframe is governed by CSP directives that help protect against certain kinds of attacks, including cross-site scripting (XSS).
 
 ##### Content Storage
+
 The PDF Embed API does not manage content in cloud storage. Its primary functionality is restricted to loading and rendering PDF files supplied by the customer and, when asked to, saving a copy of the loaded file to local drives or external storage. Any controls or storage of the documents depend on the website or the browser's access controls to the PDF file.
 
 #### Details on User-Generated Content Storage
 
 ##### Interacting with the API
+
 Adobe Acrobat Services APIs are a collection of multiple services capable of quickly solving specific challenges and powering multi-step document workflows. With them, you gain access to basic PDF services, such as creating, securing, compressing, converting, combining, and splitting PDFs, as well as more advanced services, including Document Generation API and PDF Extract API.
 
 You can access the Acrobat Services by using our REST API, working through one of our SDKs for Node.js, Java, Python and .NET, or using Microsoft Power Automate, Workfront Fusion, and UiPath connectors. This section reviews the transient storage options for each method of using Acrobat Services.
@@ -49,6 +58,7 @@ You can access the Acrobat Services by using our REST API, working through one o
 All documents either uploaded as assets or generated as output by the API are stored in Adobe Document Cloud for 24 hours by default. It is important to note that the asset is only available to the developer using the same credential under which the asset was generated or  by the signed URL provided by the API. There is no API to get a list of the available assets.
 
 #### Acrobat Services Data Flow Diagram
+
 The following diagram illustrates the typical flow of data between the customer’s environment and Adobe Document Cloud.
 
 ![Data Flow Diagram](./images/data-flow.png)
@@ -102,7 +112,6 @@ a. Submit Delete Asset Request - This step involves optionally deleting the inpu
 
 b. Delete Asset from Cloud Storage - After receiving the delete request, the Acrobat Services delete the file associated with asset from cloud storage. It ensures that unnecessary files or data are removed from the system, reducing clutter and potential security risks.
 
-
 #### Adobe Acrobat Services REST API
 
 Calling the REST API directly offers the most flexible storage options. For most of the Acrobat Services, uploading and downloading assets to Adobe Document Cloud is not required. Developers can “bring their own storage” with signed URLs. Additionally, the REST API can delete assets uploaded to or generated by Acrobat Services immediately after they are no longer needed using the [Assets endpoint with the DELETE verb](https://developer.adobe.com/document-services/docs/apis/#tag/Assets/operation/asset.delete).
@@ -112,6 +121,7 @@ Acrobat Services APIs support accessing files directly from the external storage
 **Supported External Storage Solutions**
 
 The concept of signed URLs is common across various cloud storage solutions for downloading and uploading files. Adobe PDF Services APIs currently support the signed URLs generated through the following external storage providers.
+
 - Microsoft SharePoint
 - Amazon S3
 - Dropbox
@@ -189,10 +199,10 @@ PDF Extract API will process the PDF when “copying” is set to true.
 
 Export PDF API will process the conversion from PDF to images when “copying”. “page_extraction”, “document_assembly”, and ”printing” are all true.
 
-## Privacy 
+## Privacy
 
 The Adobe Privacy Policy describes the privacy practices of Adobe's Services and Software (as defined in our General [Terms of Use](https://www.adobe.com/legal/terms.html)) and anywhere we display or reference this policy. For more information, please visit this [page](https://www.adobe.com/privacy/policy.html).  
 
-## Compliance  
+## Compliance
 
 Our [open, flexible framework](https://www.adobe.com/trust/compliance/adobe-ccf.html) adapts to constantly changing standards and regulations to help provide ongoing compliance across all our products and services. To learn more, please visit this [link](https://www.adobe.com/trust/compliance/compliance-list.html). 
