@@ -156,7 +156,7 @@ PDF files that have any security settings to permit or deny functionality in con
 
 **Extract API**: PDF files with security settings that prevent content copying cannot be processed by Extract API. The call returns a statusCode of 400 with the errorCode 'DISQUALIFIED_PERMISSIONS'.
 
-![Image](./images/copy-not-allowed.png)
+![CopyNotAllowed](./images/copy-not-allowed.png)
 
 **PDF to Images**: PDF files with security settings that prevent content copying, page extraction, document assembly, or printing cannot be processed by PDF to Images API.
 
@@ -179,7 +179,7 @@ If that is not possible, developers can detect the permissions applied to a PDF 
 }
 ```
 
-![CopyNotAllowed](./images/no-permission.png)
+![NoPermission](./images/no-permission.png)
 
 ##### The Effect of PDF Permissions on Adobe PDF Services API
 
