@@ -179,7 +179,7 @@ If that is not possible, developers can detect the permissions applied to a PDF 
 }
 ```
 
-![Image](./images/copy-not-allowed.png)
+![CopyNotAllowed](./images/no-permission.png)
 
 ##### The Effect of PDF Permissions on Adobe PDF Services API
 
