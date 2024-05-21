@@ -37,21 +37,22 @@ To complete this guide, you will need:
 
 ## Step Two: Setting up the project
 
-1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-Python (Extract, Auto-tag)Samples.zip. If you unzip that archive, you will find a folder of samples and the `pdfservices-api-credentials.json` file.
+1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-PythonSamples.zip. If you unzip that archive, you will find a folder of samples and the `pdfservices-api-credentials.json` file.
 
 ![Samples](./shot5_spc.png)
 
-2) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
+2) Take the `pdfservices-api-credentials.json` file and place it in a new directory. Remember that these credential files are important and should be stored safely.
 
 3) At the command line, change to the directory you created, and run the following command to install the Python SDK: `pip install pdfservices-sdk`.
 
+[//]: # (TODO update this ss  )
 ![alt](shot7.png)
 
 At this point, we've installed the Python SDK for Adobe PDF Services API as a dependency for our project and have copied over our credentials files.
 
 Our application will take an Invoice PDF document, `sampleInvoice.pdf` (downloadable from <a href="./sampleInvoice.pdf" target="_blank">here</a>), and will use the sealing options with default appearance options to apply electronic seal over the PDF document by invoking Acrobat Services API and generate an electronically sealed PDF.
 
-4) In your editor, open the directory where you previously copied the credentials. Create a new file, `autotag.py`.
+4) In your editor, open the directory where you previously copied the credentials. Create a new file, `electronic-seal.py`.
 
 Now you're ready to begin coding.
 
@@ -205,37 +206,9 @@ with open(output_file_path, "wb") as file:
 Here's the complete application (`src/electronicseal/electronic_seal.py`):
 
 ```javascript
-import logging
-import os
-from datetime import datetime
-
-from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
-from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
-from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
-from adobe.pdfservices.operation.io.stream_asset import StreamAsset
-from adobe.pdfservices.operation.pdf_services import PDFServices
-from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
-from adobe.pdfservices.operation.pdfjobs.jobs.eseal_job import PDFElectronicSealJob
-from adobe.pdfservices.operation.pdfjobs.params.eseal.csc_auth_context import CSCAuthContext
-from adobe.pdfservices.operation.pdfjobs.params.eseal.csc_credentials import CSCCredentials
-from adobe.pdfservices.operation.pdfjobs.params.eseal.document_level_permission import DocumentLevelPermission
-from adobe.pdfservices.operation.pdfjobs.params.eseal.electronic_seal_params import PDFElectronicSealParams
-from adobe.pdfservices.operation.pdfjobs.params.eseal.field_location import FieldLocation
-from adobe.pdfservices.operation.pdfjobs.params.eseal.field_options import FieldOptions
-from adobe.pdfservices.operation.pdfjobs.result.eseal_pdf_result import ESealPDFResult
-
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to apply electronic seal over the PDF document using default appearance options.
-#
-# To know more about PDF Electronic Seal, please see the
-# <a href="https://www.adobe.com/go/dc_eseal_overview_doc" target="_blank">documentation</a>.
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class ElectronicSeal:
     def __init__(self):
         try:

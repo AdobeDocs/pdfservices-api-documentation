@@ -126,7 +126,7 @@ if(File.Exists(Directory.GetCurrentDirectory() + output))
 Console.Write("Exporting "+ input + " to " + output + "\n");
 ```
 
-4) Set the environment variables `CLIENT_ID` and `CLIET_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+4) Set the environment variables `CLIENT_ID` and `CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
 - **Windows:**
     - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
     - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`

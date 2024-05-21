@@ -642,8 +642,14 @@ After downloading the zip, you can run the samples in the zip directly by settin
 
 #### Setup a Python environment
 
+Running any sample or custom code requires the following steps:
+
 1. Install [Python 3.10](https://www.python.org/downloads/) or higher.
 2. Verify your installation by running this command: `python --version`.
+
+<InlineAlert slots="text" />
+
+pip uses requirements.txt file to fetch pdfservices-sdk from the public PyPi repository when running the project. The .whl automatically downloads when you build the sample project. Alternatively, you can download the pdfservices-sdk .whl file, and configure your own environment.
 
 
 ##### Running the samples
@@ -652,7 +658,7 @@ The quickest way to get up and running is to download the code samples during th
 
 1. Download and extract the [Python sample project](https://github.com/adobe/pdfservices-python-sdk-samples).
 2. Copy the downloaded zip to the directory that you set up for this project and unzip the files there.
-3.  Set the environment variables `PDF_SERVICES_CLIENT_ID` and `CLIET_SECRET` by running the following commands :
+3.  Set the environment variables `PDF_SERVICES_CLIENT_ID` and `CLIENT_SECRET` by running the following commands :
 - **Windows:**
   - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
   - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
@@ -660,10 +666,18 @@ The quickest way to get up and running is to download the code samples during th
 - **MacOS/Linux:**
   - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
   - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
-4. Go to the project directory (which contains `requirements.txt` file) and build the sample project using this command in terminal: `pip install -r requirements.txt`.
-5. Test the sample code on the command line.
-6. Refer to this document for details about running samples as well as the API Reference for API details.
-7. You can import the samples into your preferred IDE and run the samples from there or run the below commands from terminal:
+4. Go to the project directory (which contains `requirements.txt` file) and setup a virtual environment.
+
+```
+pip install virtualenv
+python -m venv myenv
+source myenv/bin/activate # on windows, use `myenv\Scripts\activate`
+```
+
+5. Now build the sample project using this command in terminal: `pip install -r requirements.txt`.
+6. Test the sample code on the command line.
+7. Refer to this document for details about running samples as well as the API Reference for API details.
+8. You can import the samples into your preferred IDE and run the samples from there or run the commands from the README.md file in terminal.
 
 #### Verifying download authenticity
 
@@ -672,7 +686,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 1.  After downloading the package zip, run following command
 
 ```
-pip hash <download_dir>/pdfservices-sdk-3.0.0.tar.gz
+pip hash <download_dir>/pdfservices-sdk-4.0.0.tar.gz
 ```
 
 2.  Above command will return the hash of downloaded package.
@@ -682,7 +696,7 @@ pip hash <download_dir>/pdfservices-sdk-3.0.0.tar.gz
 
 ```
 08d1c40995658e380c7e5d2fec4cebfbfc22b246582719c5451ae708a28b6a09
-
+```
 
 ## Public API
 

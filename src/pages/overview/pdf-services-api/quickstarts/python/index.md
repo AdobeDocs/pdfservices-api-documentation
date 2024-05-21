@@ -2,7 +2,7 @@
 title: Python | Quickstarts | PDF Services API | Adobe PDF Services
 ---
 
-# Getting Started with PDF Accessibility Auto-Tag API (Python)
+# Quickstart for Adobe PDF Services API (Python)
 
 To get started using Adobe PDF Services API, let's walk through a simple scenario - taking an input PDF document and exporting it to Microsoft Word. In this guide, we will walk you through the complete process for creating a program that will accomplish this task.
 
@@ -37,13 +37,15 @@ To complete this guide, you will need:
 
 ## Step Two: Setting up the project
 
-1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-Python (Extract, Auto-tag)Samples.zip. If you unzip that archive, you will find a folder of samples and the `pdfservices-api-credentials.json` file.
+1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-PythonSamples.zip. If you unzip that archive, you will find a folder of samples and the `pdfservices-api-credentials.json` file.
 
 ![Samples](./shot5_spc.png)
 
-2) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
+2) Take the `pdfservices-api-credentials.json` file and place it in a new directory. Remember that these credential files are important and should be stored safely.
 
 3) At the command line, change to the directory you created, and run the following command to install the Python SDK: `pip install pdfservices-sdk`.
+
+[//]: # (TODO update this ss)
 
 ![alt](shot7.png)
 
@@ -100,7 +102,7 @@ pdf_services = PDFServices(credentials=credentials)
 4) Now, let's create an asset from source file and upload.
 
 ```python
-file = open('src/resources/exportPDFInput.pdf', 'rb')
+file = open('src/resources/Bodea Brochure.pdf', 'rb')
 input_stream = file.read()
 file.close()
 
@@ -165,7 +167,7 @@ logging.basicConfig(level=logging.INFO)
 class ExportPDFToDOCX:
     def __init__(self):
         try:
-            file = open('./exportPDFInput.pdf', 'rb')
+            file = open('./Bodea Brochure.pdf', 'rb')
             input_stream = file.read()
             file.close()
 

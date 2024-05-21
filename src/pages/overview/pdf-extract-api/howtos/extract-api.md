@@ -994,7 +994,7 @@ class ExtractTextTableInfoWithRenditionsFromPDF:
             extract_pdf_job = ExtractPDFJob(input_asset=input_asset, extract_pdf_params=extract_pdf_params)
 
             # Submit the job and gets the job result
-            location = 'extractTextTableInfoWithRenditionsFromPDF.zip'
+            location = pdf_services.submit(extract_pdf_job)
             pdf_services_response = pdf_services.get_job_result(location, ExtractPDFResult)
 
             # Get content from the resulting asset(s)
@@ -1002,7 +1002,7 @@ class ExtractTextTableInfoWithRenditionsFromPDF:
             stream_asset: StreamAsset = pdf_services.get_content(result_asset)
 
             # Creates an output stream and copy stream asset's content to it
-            output_file_path = 'extractTextTableInfoWithRenditionsFromPDF.zip
+            output_file_path = 'extractTextTableInfoWithRenditionsFromPDF.zip'
             with open(output_file_path, "wb") as file:
                 file.write(stream_asset.get_input_stream())
 

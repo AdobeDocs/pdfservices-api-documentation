@@ -374,35 +374,9 @@ const fs = require("fs");
 # Run the sample:
 # python src/documentmerge/merge_document_to_pdf.py
 
-import json
-import logging
-import os
-from datetime import datetime
-
-from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
-from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
-from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
-from adobe.pdfservices.operation.io.stream_asset import StreamAsset
-from adobe.pdfservices.operation.pdf_services import PDFServices
-from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
-from adobe.pdfservices.operation.pdfjobs.jobs.document_merge_job import DocumentMergeJob
-from adobe.pdfservices.operation.pdfjobs.params.documentmerge.document_merge_params import DocumentMergeParams
-from adobe.pdfservices.operation.pdfjobs.params.documentmerge.output_format import OutputFormat
-from adobe.pdfservices.operation.pdfjobs.result.document_merge_result import DocumentMergePDFResult
-
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to merge the Word based document template with the input JSON data to generate
-# the output document in the PDF format.
-#
-# To know more about document generation and document templates, please see the
-# <a href="http://www.adobe.com/go/dcdocgen_overview_doc">documentation</a>
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class MergeDocumentToPDF:
     def __init__(self):
         try:
@@ -863,39 +837,9 @@ const fs = require("fs");
 # Run the sample:
 # python src/documentmerge/merge_document_to_docx_with_fragments.py
 
-import logging
-import os
-from datetime import datetime
-
-from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
-from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
-from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
-from adobe.pdfservices.operation.io.stream_asset import StreamAsset
-from adobe.pdfservices.operation.pdf_services import PDFServices
-from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
-from adobe.pdfservices.operation.pdfjobs.jobs.document_merge_job import DocumentMergeJob
-from adobe.pdfservices.operation.pdfjobs.params.documentmerge.document_merge_params import DocumentMergeParams
-from adobe.pdfservices.operation.pdfjobs.params.documentmerge.fragments import Fragments
-from adobe.pdfservices.operation.pdfjobs.params.documentmerge.output_format import OutputFormat
-from adobe.pdfservices.operation.pdfjobs.result.document_merge_result import DocumentMergePDFResult
-
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
-# This sample illustrates how to merge the Word based document template with the input JSON data and fragments JSON
-# to generate
-# the output document in the docx format.
-# The document template used in the sample covers the use of various document generation template tags.
-#
-# To know more about document generation and document templates, please see the
-# <a href="http://www.adobe.com/go/dcdocgen_overview_doc">documentation</a>
-# And to know more about fragments use-case in document generation and document templates, please see the
-# <a href="http://www.adobe.com/go/dcdocgen_fragments_support">documentation</a>
-#
-# Refer to README.md for instructions on how to run the samples.
-#
 class MergeDocumentToDOCXWithFragments:
     def __init__(self):
         try:
