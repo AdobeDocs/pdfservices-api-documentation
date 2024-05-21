@@ -29,6 +29,8 @@ the SDK supports custom timeouts for the API calls. You can tailor the
 timeout settings for your environment and network speed. In addition to
 the details below, you can refer to working code samples:
 
+[//]: # (TODO update python sample)
+
 -   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithCustomTimeouts.java)
 -   [.NET](https://github.com/adobe/PDFServices.NET.SDK.Samples/blob/master/CreatePDFWithCustomTimeouts/Program.cs)
 -   [Node.js](https://github.com/adobe/pdfservices-node-sdk-samples/blob/master/src/customconfigurations/create-pdf-with-custom-timeouts.js)
@@ -107,13 +109,10 @@ const clientConfig = new ClientConfig({
 Available properties:
 
 - **connectTimeout**: Default: 4000. The number of milliseconds
-    Requests will wait for the client to establish a connection to
-    Server.
+  Requests will wait for the client to establish a connection to
+  Server.
 - **readTimeout**: Default: 10000. The number of milliseconds the
-    client will wait for the server to send a response.
-- **processingTimeout**: Default: 600000. The maximum allowed time
-      in milliseconds for processing the documents. Any operation taking more time than the specified `processingTimeout` will result in an operation timeout exception.
-  - **Note :** It is advisable to set the `processingTimeout` to higher values for processing large files.
+  client will wait for the server to send a response.
 
 Override the timeout properties via a custom `ClientConfig` class:
 
@@ -122,9 +121,8 @@ Override the timeout properties via a custom `ClientConfig` class:
 ### 
 
 ```javascript
-client_config = ClientConfig.builder()
-    .with_connect_timeout(10000)
-    .with_read_timeout(40000)
-    .with_processing_timeout(900000)
-    .build()
+client_config = ClientConfig(
+    connect_timeout=4000,
+    read_timeout=10000
+)
 ```

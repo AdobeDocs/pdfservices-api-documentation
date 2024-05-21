@@ -2,7 +2,7 @@
 title: Python | Quickstarts | PDF Accessibility Auto-Tag API | Adobe PDF Services
 ---
 
-# Getting Started with PDF Accessibility Auto-Tag API (Python)
+# Quickstart for PDF Accessibility Auto-Tag API (Python)
 
 To get started using Adobe PDF Accessibility Auto-Tag API, let's walk through a simple scenario - taking an input PDF document and running PDF Accessibility Auto-Tag API against it. Once the PDF has been tagged, we'll provide the document with tags and optionally, a report file. In this guide, we will walk you through the complete process for creating a program that will accomplish this task. 
 
@@ -41,10 +41,11 @@ To complete this guide, you will need:
 
 ![Samples](./shot5_spc.png)
 
-2) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
+2) Take the `pdfservices-api-credentials.json` file and place it in a new directory. Remember that these credential files are important and should be stored safely.
 
 3) At the command line, change to the directory you created, and run the following command to install the Python SDK: `pip install pdfservices-sdk`.
 
+[//]: # (TODO update ss)
 ![alt](shot7.png)
 
 At this point, we've installed the Python SDK for Adobe PDF Services API as a dependency for our project and have copied over our credentials files.
@@ -60,110 +61,6 @@ Now you're ready to begin coding.
 1) We'll begin by including our required dependencies:
 
 ```python
-import os
-from datetime import datetime
-
-from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
-from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
-from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
-from adobe.pdfservices.operation.io.stream_asset import StreamAsset
-from adobe.pdfservices.operation.pdf_services import PDFServices
-from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
-from adobe.pdfservices.operation.pdfjobs.jobs.autotag_pdf_job import AutotagPDFJob
-from adobe.pdfservices.operation.pdfjobs.params.autotag_pdf.autotag_pdf_params import AutotagPDFParams
-from adobe.pdfservices.operation.pdfjobs.result.autotag_pdf_result import AutotagPDFResult
-```
-
-The first set of imports bring in the Adobe PDF Accessibility Auto-Tag SDK while the second set will be used by our code later on.
-
-2) Now let's define our input and output:
-
-```python
-input_pdf = "./Adobe Accessibility Auto-Tag API Sample.pdf"
-
-output_path = "./output/AutotagPDF/"
-
-Path(output_path).mkdir(parents=True, exist_ok=True)
-tagged_pdf_path = f'{output_path}{input_pdf}-tagged.pdf'
-report_path = f'{output_path}{input_pdf}-report.xlsx'
-```
-
-This defines what our output directory will be and optionally deletes it if it already exists. Then we define what PDF will be tagged. (You can download the source we used <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>.) In a real application, these values would be typically be dynamic. 
-
-3) Next, we setup the SDK to use our credentials.
-
-```python
-# Initial setup, create credentials instance
-credentials = ServicePrincipalCredentials(
-    client_id=os.getenv('PDF_SERVICES_CLIENT_ID'),
-    client_secret=os.getenv('PDF_SERVICES_CLIENT_SECRET')
-)
-```
-
-This code both points to the credentials downloaded previously as well as sets up an execution context object that will be used later.
-
-4) Now, let's create the operation:
-
-```python
-# Creates a PDF Services instance
-pdf_services = PDFServices(credentials=credentials)
-
-# Creates an asset(s) from source file(s) and upload
-input_asset = pdf_services.upload(input_stream=input_stream,
-                                  mime_type=PDFServicesMediaType.PDF)
-
-# Create parameters for the job
-autotag_pdf_params = AutotagPDFParams(
-    generate_report=True,
-    shift_headings=True
-)
-
-# Creates a new job instance
-autotag_pdf_job = AutotagPDFJob(input_asset=input_asset,
-                                autotag_pdf_params=autotag_pdf_params)
-```
-
-This set of code defines what we're doing (an Auto-Tag operation), points to our local file and specifies the input is a PDF, and then defines options for the Auto-Tag call. PDF Accessibility Auto-Tag API has a few different options, but in this example, we're simply asking for a basic tagging operation, which returns the tagged PDF document and an XLSX report of the document. 
-
-5) The next code block executes the operation:
-
-```python
-# Submit the job and gets the job result
-location = pdf_services.submit(autotag_pdf_job)
-pdf_services_response = pdf_services.get_job_result(location, AutotagPDFResult)
-
-# Get content from the resulting asset(s)
-result_asset: CloudAsset = pdf_services_response.get_result().get_tagged_pdf()
-result_asset_report: CloudAsset = pdf_services_response.get_result().get_report()
-stream_asset: StreamAsset = pdf_services.get_content(result_asset)
-stream_asset_report: StreamAsset = pdf_services.get_content(result_asset_report)
-
-# Creates an output stream and copy stream asset's content to it
-output_file_path = self.create_output_file_path()
-output_file_path_report = self.create_output_file_path_for_tagging_report()
-with open(output_file_path, "wb") as file:
-    file.write(stream_asset.get_input_stream())
-with open(output_file_path_report, "wb") as file:
-    file.write(stream_asset_report.get_input_stream())
-```
-
-This code runs the Auto-Tagging process and then stores the result files in the provided output directory. 
-
-
-Here's the complete application (`autotag.py`):
-
-```python
-"""
- Copyright 2024 Adobe
- All Rights Reserved.
-
- NOTICE: Adobe permits you to use, modify, and distribute this file in
- accordance with the terms of the Adobe license agreement accompanying
- it. If you have received this file from a source other than Adobe,
- then your use, modification, or distribution of it requires the prior
- written permission of Adobe.
-"""
-
 import logging
 import os
 from datetime import datetime
@@ -175,23 +72,87 @@ from adobe.pdfservices.operation.io.stream_asset import StreamAsset
 from adobe.pdfservices.operation.pdf_services import PDFServices
 from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
 from adobe.pdfservices.operation.pdfjobs.jobs.autotag_pdf_job import AutotagPDFJob
-from adobe.pdfservices.operation.pdfjobs.params.autotag_pdf.autotag_pdf_params import AutotagPDFParams
 from adobe.pdfservices.operation.pdfjobs.result.autotag_pdf_result import AutotagPDFResult
+```
 
+The first set of imports bring in the Adobe PDF Accessibility Auto-Tag SDK while the second set will be used by our code later on.
+
+2) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+- **Windows:**
+    - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+    - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+- **MacOS/Linux:**
+    - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+    - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+3) Next, we can create our credentials and use them:
+
+```python
+# Initial setup, create credentials instance
+credentials = ServicePrincipalCredentials(
+    client_id=os.getenv('PDF_SERVICES_CLIENT_ID'),
+    client_secret=os.getenv('PDF_SERVICES_CLIENT_SECRET'))
+
+# Creates a PDF Services instance
+pdf_services = PDFServices(credentials=credentials)
+```
+
+This defines what our output directory will be and optionally deletes it if it already exists. Then we define what PDF will be tagged. (You can download the source we used <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>.) In a real application, these values would be typically be dynamic. 
+
+4) Now, let's create an asset from source file and upload.
+
+```python
+file = open('src/resources/autotagPDFInput.pdf', 'rb')
+input_stream = file.read()
+file.close()
+
+# Creates an asset(s) from source file(s) and upload
+input_asset = pdf_services.upload(input_stream=input_stream,
+                                  mime_type=PDFServicesMediaType.PDF)
+```
+
+5) The next code block creates, submits and gets the job result:
+
+```python
+# Creates a new job instance
+autotag_pdf_job = AutotagPDFJob(input_asset)
+
+
+# Submit the job and gets the job result
+location = pdf_services.submit(electronic_seal_job)
+pdf_services_response = pdf_services.get_job_result(location, ESealPDFResult)
+
+# Get content from the resulting asset(s)
+result_asset: CloudAsset = pdf_services_response.get_result().get_asset()
+stream_asset: StreamAsset = pdf_services.get_content(result_asset)
+```
+
+6) The next code block saves the result at the specified location:
+
+```python
+output_file_path = 'output/tagged-pdf.pdf'
+with open(output_file_path, "wb") as file:
+    file.write(stream_asset.get_input_stream())
+```
+
+
+Here's the complete application (`autotag.py`):
+
+```python
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
 
 #
-# This sample illustrates how to generate a tagged PDF along with a report and shift the headings in
-# the output PDF file.
+# This sample illustrates how to generate a tagged PDF.
 #
 # Refer to README.md for instructions on how to run the samples.
 #
-class AutotagPDFWithOptions:
+class AutoTagPDF:
     def __init__(self):
         try:
-            file = open('./Adobe Accessibility Auto-Tag API Sample.pdf', 'rb')
+            file = open('src/resources/autotagPDFInput.pdf', 'rb')
             input_stream = file.read()
             file.close()
 
@@ -208,15 +169,8 @@ class AutotagPDFWithOptions:
             input_asset = pdf_services.upload(input_stream=input_stream,
                                               mime_type=PDFServicesMediaType.PDF)
 
-            # Create parameters for the job
-            autotag_pdf_params = AutotagPDFParams(
-                generate_report=True,
-                shift_headings=True
-            )
-
             # Creates a new job instance
-            autotag_pdf_job = AutotagPDFJob(input_asset=input_asset,
-                                            autotag_pdf_params=autotag_pdf_params)
+            autotag_pdf_job = AutotagPDFJob(input_asset)
 
             # Submit the job and gets the job result
             location = pdf_services.submit(autotag_pdf_job)
@@ -224,32 +178,19 @@ class AutotagPDFWithOptions:
 
             # Get content from the resulting asset(s)
             result_asset: CloudAsset = pdf_services_response.get_result().get_tagged_pdf()
-            result_asset_report: CloudAsset = pdf_services_response.get_result().get_report()
             stream_asset: StreamAsset = pdf_services.get_content(result_asset)
-            stream_asset_report: StreamAsset = pdf_services.get_content(result_asset_report)
 
             # Creates an output stream and copy stream asset's content to it
-            output_file_path = './output/AutotagPDF/'
-            output_file_path_report = self.create_output_file_path_for_tagging_report()
+            output_file_path = 'output/tagged-pdf.pdf'
             with open(output_file_path, "wb") as file:
                 file.write(stream_asset.get_input_stream())
-            with open(output_file_path_report, "wb") as file:
-                file.write(stream_asset_report.get_input_stream())
 
         except (ServiceApiException, ServiceUsageException, SdkException) as e:
             logging.exception(f'Exception encountered while executing operation: {e}')
-            
-    # Generates a string containing a directory structure and file name for the tagging report output
-    @staticmethod
-    def create_output_file_path_for_tagging_report() -> str:
-        now = datetime.now()
-        time_stamp = now.strftime("%Y-%m-%dT%H-%M-%S")
-        os.makedirs("output/AutotagPDF", exist_ok=True)
-        return f"output/AutotagPDF/autotag-tagged{time_stamp}.xlsx"
 
 
 if __name__ == "__main__":
-    AutotagPDFWithOptions()
+    AutoTagPDF()
 
 ```
 

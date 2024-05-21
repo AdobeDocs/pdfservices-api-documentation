@@ -347,7 +347,7 @@ Override the timeout properties via a custom `ClientConfig` class:
 ### 
 
 ```javascript
-    client_config = ClientConfig(
+client_config = ClientConfig(
     connect_timeout=4000,
     read_timeout=10000
 )
