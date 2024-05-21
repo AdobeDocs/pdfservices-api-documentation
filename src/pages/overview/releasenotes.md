@@ -149,6 +149,14 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 using Adobe.PDFServicesSDK;
 ```  
 
+### Python changes
+
+* Add the following dependency in your project’s requirements.txt file:
+
+```
+pdfservices-sdk~=4.0.0
+```
+
 ## Archived Documentation
 
 The last major version of our documentation may be found [here](../legacy-documentation/).
