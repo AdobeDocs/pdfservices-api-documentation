@@ -29,6 +29,8 @@ the SDK supports custom timeouts for the API calls. You can tailor the
 timeout settings for your environment and network speed. In addition to
 the details below, you can refer to working code samples:
 
+[//]: # (TODO update python sample)
+
 -   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithCustomTimeouts.java)
 -   [.NET](https://github.com/adobe/PDFServices.NET.SDK.Samples/blob/master/CreatePDFWithCustomTimeouts/Program.cs)
 -   [Node.js](https://github.com/adobe/pdfservices-node-sdk-samples/blob/master/src/customconfigurations/create-pdf-with-custom-timeouts.js)

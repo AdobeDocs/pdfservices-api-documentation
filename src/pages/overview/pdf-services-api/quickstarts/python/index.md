@@ -45,6 +45,8 @@ To complete this guide, you will need:
 
 3) At the command line, change to the directory you created, and run the following command to install the Python SDK: `pip install pdfservices-sdk`.
 
+[//]: # (TODO update this ss)
+
 ![alt](shot7.png)
 
 At this point, we've installed the Python SDK for Adobe PDF Services API as a dependency for our project and have copied over our credentials files.
