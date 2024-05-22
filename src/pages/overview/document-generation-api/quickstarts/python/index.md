@@ -199,6 +199,8 @@ with open(output_file_path, "wb") as file:
     file.write(stream_asset.get_input_stream())
 ```
 
+![alt](shot8.png)
+
 Here's the complete application (`src/documentmerge/merge_document_to_pdf.py`):
 
 ```python

@@ -641,11 +641,9 @@ pip hash <download_dir>/pdfservices-sdk-4.0.0.tar.gz
 
 2.  Above command will return the hash of downloaded package.
 3.  Verify the hash matches the value published here.
-    
-[//]: # (TODO Update hash value)
 
 ```
-08d1c40995658e380c7e5d2fec4cebfbfc22b246582719c5451ae708a28b6a09
+9537bf4659d3e939b86f0d925dec2eafc1fc533d09c96674791389b09c88e8c9
 ```
 
 ## Public API

@@ -692,10 +692,8 @@ pip hash <download_dir>/pdfservices-sdk-4.0.0.tar.gz
 2.  Above command will return the hash of downloaded package.
 3.  Verify the hash matches the value published here.
 
-[//]: # (TODO Update hash value)
-
 ```
-08d1c40995658e380c7e5d2fec4cebfbfc22b246582719c5451ae708a28b6a09
+9537bf4659d3e939b86f0d925dec2eafc1fc533d09c96674791389b09c88e8c9
 ```
 
 ## Public API
@@ -714,37 +712,6 @@ After downloading the zip, you can run the samples in the zip directly by settin
 - **MacOS/Linux:**
   - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
   - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
-
-**Example pdfservices-api-credentials.json file**
-
-```json 
-{
-    "client_credentials": {
-        "client_id": "<YOUR_CLIENT_ID>",
-        "client_secret": "<YOUR_CLIENT_SECRET>"
-    },
-    "service_principal_credentials": {
-       "organization_id": "<YOUR_ORGNIZATION_ID>"
-    }
-}
-```
-
-## Public API
-
-PDF Services API is accessible directly via REST APIs which requires Adobe-provided credential for authentication. Once you've completed the [Getting Credentials](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api) workflow, a zip file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples. The zip file structures are as follows:
-
--   **Personalized Download**: Downloads the zip which contains `adobe-dc-pdf-services-sdk-java-samples` with a preconfigured `pdfservices-api-credentials.json` file.
--   **Non Personalized Download**: Downloads the `pdfservices-api-credentials.json` with your preconfigured credentials.
-
-After downloading the zip, you can run the samples in the zip directly by setting up the two environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following cammands :
-
-- **Windows:**
-   - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
-   - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
-
-- **MacOS/Linux:**
-   - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
-   - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
 **Example pdfservices-api-credentials.json file**
 
