@@ -45,7 +45,6 @@ To complete this guide, you will need:
 
 3) At the command line, change to the directory you created, and run the following command to install the Python SDK: `pip install pdfservices-sdk`.
 
-[//]: # (TODO update this ss  )
 ![alt](shot7.png)
 
 At this point, we've installed the Python SDK for Adobe PDF Services API as a dependency for our project and have copied over our credentials files.
@@ -60,7 +59,7 @@ Now you're ready to begin coding.
 
 1) We'll begin by including our required dependencies:
 
-```javascript
+```python
 import logging
 import os
 from datetime import datetime
@@ -93,7 +92,7 @@ from adobe.pdfservices.operation.pdfjobs.result.eseal_pdf_result import ESealPDF
 
 3) Next, we can create our credentials and use them:
 
-```javascript
+```python
 # Initial setup, create credentials instance
 credentials = ServicePrincipalCredentials(
     client_id=os.getenv('PDF_SERVICES_CLIENT_ID'),
@@ -105,7 +104,7 @@ pdf_services = PDFServices(credentials=credentials)
 
 4) Now, let's create an asset from source file and upload.
 
-```javascript
+```python
 pdf_file = open('./sampleInvoice.pdf', 'rb')
 file_input_stream = pdf_file.read()
 pdf_file.close()
@@ -121,7 +120,7 @@ seal_image_asset = pdf_services.upload(input_stream=seal_image_input_stream, mim
 
 5) Now, let's create the parameters and the job:
 
-```javascript
+```python
 # Set the document level permission to be applied for output document
 document_level_permission = DocumentLevelPermission.FORM_FILLING
 
@@ -185,7 +184,7 @@ electronic_seal_job = PDFElectronicSealJob(input_asset=asset,
 
 6) The next code block submits the job and gets the job result:
 
-```javascript
+```python
 # Submit the job and gets the job result
 location = pdf_services.submit(electronic_seal_job)
 pdf_services_response = pdf_services.get_job_result(location, ESealPDFResult)
@@ -197,7 +196,7 @@ stream_asset: StreamAsset = pdf_services.get_content(result_asset)
 
 7) The next code block saves the result at the specified location:
 
-```javascript
+```python
 output_file_path = 'output/ElectronicSeal.pdf'
 with open(output_file_path, "wb") as file:
     file.write(stream_asset.get_input_stream())
@@ -205,7 +204,7 @@ with open(output_file_path, "wb") as file:
 
 Here's the complete application (`src/electronicseal/electronic_seal.py`):
 
-```javascript
+```python
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 

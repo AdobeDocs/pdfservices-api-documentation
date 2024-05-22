@@ -123,9 +123,8 @@ Available properties:
 
 ### Python
 
-[//]: # (TODO add correct sample links here)
-- [Python Sample for Proxy Server Config](https://correct-link)
-- [Python Sample for Proxy Server Config With Basic Authentication](https://correct-link)
+- [Python Sample for Proxy Server Config](https://github.com/adobe/pdfservices-python-sdk-samples/blob/main/src/customconfigurations/create_pdf_with_proxy_server.py)
+- [Python Sample for Proxy Server Config With Basic Authentication](https://github.com/adobe/pdfservices-python-sdk-samples/blob/main/src/customconfigurations/create_pdf_with_authenticated_proxy_server.py)
 
 ### Python Proxy Server configuration
 
@@ -255,12 +254,10 @@ the SDK supports custom timeouts for the API calls. You can tailor the
 timeout settings for your environment and network speed. In addition to
 the details below, you can refer to working code samples:
 
-[//]: # (TODO check python link here)
-
 -   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithCustomTimeouts.java)
 -   [.NET](https://github.com/adobe/PDFServices.NET.SDK.Samples/blob/master/CreatePDFWithCustomTimeouts/Program.cs)
 -   [Node.js](https://github.com/adobe/pdfservices-node-sdk-samples/blob/master/src/customconfigurations/create-pdf-with-custom-timeouts.js)
--   [Python](https://github.com/adobe/pdfservices-python-sdk-samples/blob/master/src/extractpdf/extract_txt_from_pdf_with_custom_timeouts.py)
+-   [Python](https://github.com/adobe/pdfservices-python-sdk-samples/blob/main/src/customconfigurations/create_pdf_with_custom_timeouts.py)
 
 ### Java timeout configuration
 

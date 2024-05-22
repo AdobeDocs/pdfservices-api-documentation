@@ -158,12 +158,11 @@ for element in data["elements"]:
         print(element["Text"])
 ```
 
-![Example running at the command line](./shot9.png)
+![alt](shot8.png)
 
 Here's the complete application (`extract.py`):
 
 ```python
-"""
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
