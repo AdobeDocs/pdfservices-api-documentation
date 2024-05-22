@@ -100,3 +100,26 @@ const clientConfig = new ClientConfig({
     timeout: 15000
 })
 ```  
+
+### Python timeout configuration
+
+Available properties:
+
+- **connectTimeout**: Default: 4000. The number of milliseconds
+  Requests will wait for the client to establish a connection to
+  Server.
+- **readTimeout**: Default: 10000. The number of milliseconds the
+  client will wait for the server to send a response.
+
+Override the timeout properties via a custom `ClientConfig` class:
+
+<CodeBlock slots="heading, code" repeat="1" languages="Python" />
+
+### 
+
+```javascript
+client_config = ClientConfig(
+    connect_timeout=4000,
+    read_timeout=10000
+)
+```

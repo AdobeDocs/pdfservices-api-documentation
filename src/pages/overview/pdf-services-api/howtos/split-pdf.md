@@ -17,7 +17,7 @@ file.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -224,6 +224,65 @@ const fs = require("fs");
 })();
 ```
 
+#### Python
+
+```python
+# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples
+# Run the sample:
+# python src/splitpdf/split_pdf_by_number_of_pages.py
+
+# Initialize the logger
+logging.basicConfig(level=logging.INFO)
+
+class SplitPDFByNumberOfPages:
+    def __init__(self):
+        try:
+
+            file = open('splitPDFInput.pdf', 'rb')
+            input_stream = file.read()
+            file.close()
+
+            # Initial setup, create credentials instance
+            credentials = ServicePrincipalCredentials(
+                client_id=os.getenv('PDF_SERVICES_CLIENT_ID'),
+                client_secret=os.getenv('PDF_SERVICES_CLIENT_SECRET')
+            )
+            # Creates a PDF Services instance
+            pdf_services = PDFServices(credentials=credentials)
+
+            # Creates an asset(s) from source file(s) and upload
+            input_asset = pdf_services.upload(input_stream=input_stream,
+                                              mime_type=PDFServicesMediaType.PDF)
+
+            # Create parameters for the job
+            split_pdf_params = SplitPDFParams(page_count=2)
+
+            # Creates a new job instance
+            split_pdf_job = SplitPDFJob(input_asset, split_pdf_params)
+
+            # Submit the job and gets the job result
+            location = pdf_services.submit(split_pdf_job)
+            pdf_services_response = pdf_services.get_job_result(location, SplitPDFResult)
+
+            # Get content from the resulting asset(s)
+            result_assets = pdf_services_response.get_result().get_assets()
+
+            # Creates an output stream and copy stream asset's content to it
+            output_file_path = 'SplitPDFByNumberOfPagesOutput.pdf'
+
+            for i, result_asset in enumerate(result_assets):
+                stream_asset: StreamAsset = pdf_services.get_content(result_asset)
+                with open(f"{output_file_path}_{i}.pdf", "wb") as file:
+                    file.write(stream_asset.get_input_stream())
+
+        except (ServiceApiException, ServiceUsageException, SdkException) as e:
+            logging.exception(f'Exception encountered while executing operation: {e}')
+
+
+if __name__ == "__main__":
+    SplitPDFByNumberOfPages()
+```
+
 #### REST API
 
 ```javascript
@@ -250,7 +309,7 @@ ranges where each page range corresponds to a single output file.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -497,6 +556,79 @@ const getPageRanges = () => {
 };
 ```
 
+
+#### Python
+
+```python
+# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples
+# Run the sample:
+# python src/splitpdf/split_pdf_by_page_ranges.py
+
+# Initialize the logger
+logging.basicConfig(level=logging.INFO)
+
+class SplitPDFByPageRanges:
+    def __init__(self):
+        try:
+            file = open('splitPDFInput.pdf', 'rb')
+            input_stream = file.read()
+            file.close()
+
+            # Initial setup, create credentials instance
+            credentials = ServicePrincipalCredentials(
+                client_id=os.getenv('PDF_SERVICES_CLIENT_ID'),
+                client_secret=os.getenv('PDF_SERVICES_CLIENT_SECRET')
+            )
+
+            # Creates a PDF Services instance
+            pdf_services = PDFServices(credentials=credentials)
+
+            # Creates an asset(s) from source file(s) and upload
+            input_asset = pdf_services.upload(input_stream=input_stream,
+                                              mime_type=PDFServicesMediaType.PDF)
+
+            page_ranges = self.get_page_ranges()
+
+            # Create parameters for the job
+            split_pdf_params = SplitPDFParams(page_ranges=page_ranges)
+
+            # Creates a new job instance
+            split_pdf_job = SplitPDFJob(input_asset, split_pdf_params)
+
+            # Submit the job and gets the job result
+            location = pdf_services.submit(split_pdf_job)
+            pdf_services_response = pdf_services.get_job_result(location, SplitPDFResult)
+
+            # Get content from the resulting asset(s)
+            result_assets = pdf_services_response.get_result().get_assets()
+
+            # Creates an output stream and copy stream asset's content to it
+            output_file_path = 'splitPDFByPageRangesOutput.pdf'
+
+            for i, result_asset in enumerate(result_assets):
+                stream_asset: StreamAsset = pdf_services.get_content(result_asset)
+                with open(f"{output_file_path}_{i}.pdf", "wb") as file:
+                    file.write(stream_asset.get_input_stream())
+
+        except (ServiceApiException, ServiceUsageException, SdkException) as e:
+            logging.exception(f'Exception encountered while executing operation: {e}')
+
+    @staticmethod
+    def get_page_ranges() -> PageRanges:
+        # Specify page ranges
+        page_ranges = PageRanges()
+        # Add page 1
+        page_ranges.add_single_page(1)
+        # Add pages 3 to 4
+        page_ranges.add_range(3, 4)
+        return page_ranges
+
+
+if __name__ == "__main__":
+    SplitPDFByPageRanges()
+
+```
+
 #### REST API 
 
 ```javascript
@@ -533,7 +665,7 @@ an identical number of pages (if possible).
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -740,6 +872,66 @@ const fs = require("fs");
         readStream?.destroy();
     }
 })();
+```
+
+#### Python
+
+```python
+# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples
+# Run the sample:
+# python src/splitpdf/split_pdf_into_number_of_files.py
+
+# Initialize the logger
+logging.basicConfig(level=logging.INFO)
+
+class SplitPDFIntoNumberOfFiles:
+    def __init__(self):
+        try:
+            file = open('splitPDFInput.pdf', 'rb')
+            input_stream = file.read()
+            file.close()
+
+            # Initial setup, create credentials instance
+            credentials = ServicePrincipalCredentials(
+                client_id=os.getenv('PDF_SERVICES_CLIENT_ID'),
+                client_secret=os.getenv('PDF_SERVICES_CLIENT_SECRET')
+            )
+
+            # Creates a PDF Services instance
+            pdf_services = PDFServices(credentials=credentials)
+
+            # Creates an asset(s) from source file(s) and upload
+            input_asset = pdf_services.upload(input_stream=input_stream,
+                                              mime_type=PDFServicesMediaType.PDF)
+
+            # Create parameters for the job
+            split_pdf_params = SplitPDFParams(file_count=2)
+
+            # Creates a new job instance
+            split_pdf_job = SplitPDFJob(input_asset, split_pdf_params)
+
+            # Submit the job and gets the job result
+            location = pdf_services.submit(split_pdf_job)
+            pdf_services_response = pdf_services.get_job_result(location, SplitPDFResult)
+
+            # Get content from the resulting asset(s)
+            result_assets = pdf_services_response.get_result().get_assets()
+
+            # Creates an output stream and copy stream asset's content to it
+            output_file_path = 'splitPDFIntoNumberOfFilesOutput.pdf'
+
+            for i, result_asset in enumerate(result_assets):
+                stream_asset: StreamAsset = pdf_services.get_content(result_asset)
+                with open(f"{output_file_path}_{i}.pdf", "wb") as file:
+                    file.write(stream_asset.get_input_stream())
+
+        except (ServiceApiException, ServiceUsageException, SdkException) as e:
+            logging.exception(f'Exception encountered while executing operation: {e}')
+
+
+if __name__ == "__main__":
+    SplitPDFIntoNumberOfFiles()
+
 ```
 
 #### REST API 

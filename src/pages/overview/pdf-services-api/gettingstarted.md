@@ -112,7 +112,7 @@ curl --location -g --request GET 'https://dcplatformstorageservice-prod-us-east-
 
 ## SDK
 
-PDF Services API is also accessible via SDKs in popular languages such as Node.js, Java and .NET.
+PDF Services API is also accessible via SDKs in popular languages such as Node.js, Java, Python and .NET.
 
 <InlineAlert slots="text"/>
 
@@ -549,6 +549,102 @@ While building the sample project automatically downloads the Node package, you 
 2.  Download the latest package.
 
 ![Adobe PDF Services SDK on NPM JS](../images/node_free_tier.png)
+
+### Python
+
+Jump start your development by bookmarking or downloading the following key resources:
+
+-   This document
+-   [Python API reference](https://opensource.adobe.com/pdfservices-python-sdk-samples/apidocs/latest/index.html)
+-   [Python sample code](https://github.com/adobe/pdfservices-python-sdk-samples)
+-   [Python SDK](https://www.adobe.com/go/pdfservices_python_pypi)
+
+#### Authentication
+
+Once you complete the [Getting Credentials](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html), a zip or json file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples.
+
+-   **Personalized Download**: Downloads the zip which contains `pdfservices-python-sdk-samples` with a preconfigured `pdfservices-api-credentials.json` file.
+-   **Non Personalized Download**: Downloads the `pdfservices-api-credentials.json` with your preconfigured credentials.
+
+After downloading the zip, you can run the samples in the zip directly by setting up the two environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following cammands :
+
+- **Windows:**
+    - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+    - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+- **MacOS/Linux:**
+    - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+    - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+**Example pdfservices-api-credentials.json file**
+
+```json 
+{
+    "client_credentials": {
+        "client_id": "<YOUR_CLIENT_ID>",
+        "client_secret": "<YOUR_CLIENT_SECRET>"
+    },
+    "service_principal_credentials": {
+       "organization_id": "<YOUR_ORGNIZATION_ID>"
+    }
+}
+```
+
+#### Setup a Python environment
+
+Running any sample or custom code requires the following steps:
+
+1. Install [Python 3.10](https://www.python.org/downloads/) or higher.
+2. Verify your installation by running this command: `python --version`.
+
+<InlineAlert slots="text" />
+
+pip uses requirements.txt file to fetch pdfservices-sdk from the public PyPi repository when running the project. The .whl automatically downloads when you build the sample project. Alternatively, you can download the pdfservices-sdk .whl file, and configure your own environment.
+
+
+##### Running the samples
+
+The quickest way to get up and running is to download the code samples during the Getting Credentials workflow. These samples provide everything from ready-to-run sample code, an embedded credential json file, and pre-configured connections to dependencies.
+
+1. Download and extract the [Python sample project](https://github.com/adobe/pdfservices-python-sdk-samples).
+2. Copy the downloaded zip to the directory that you set up for this project and unzip the files there.
+3.  Set the environment variables `PDF_SERVICES_CLIENT_ID` and `CLIENT_SECRET` by running the following commands :
+- **Windows:**
+    - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+    - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+
+- **MacOS/Linux:**
+    - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+    - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+4. Go to the project directory (which contains `requirements.txt` file) and setup a virtual environment.
+
+```
+pip install virtualenv
+python -m venv myenv
+source myenv/bin/activate # on windows, use `myenv\Scripts\activate`
+```
+
+5. Now build the sample project using this command in terminal: `pip install -r requirements.txt`.
+6. Test the sample code on the command line.
+7. Refer to this document for details about running samples as well as the API Reference for API details.
+8. You can import the samples into your preferred IDE and run the samples from there or run the commands from the README.md file in terminal.
+
+#### Verifying download authenticity
+
+For security reasons you may wish to confirm the installer's authenticity. To do so,
+
+1.  After downloading the package zip, run following command
+
+```
+pip hash <download_dir>/pdfservices-sdk-4.0.0.tar.gz
+```
+
+2.  Above command will return the hash of downloaded package.
+3.  Verify the hash matches the value published here.
+
+```
+9537bf4659d3e939b86f0d925dec2eafc1fc533d09c96674791389b09c88e8c9
+```
 
 ## Public API
 

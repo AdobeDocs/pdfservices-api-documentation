@@ -80,9 +80,9 @@ const clientConfig = new ClientConfig({
 ### Python
 
 ```javascript
-client_config = ClientConfig.builder()
-    .with_region(Region.EU)
-    .build()
+client_config = ClientConfig(
+    region=Region.US
+)
 ```
 
 ## Proxy Server Configuration
@@ -121,6 +121,21 @@ Available properties:
 - **username**: Username for the authentication.
 - **password**: Password for the authentication.
 
+### Python
+
+- [Python Sample for Proxy Server Config](https://github.com/adobe/pdfservices-python-sdk-samples/blob/main/src/customconfigurations/create_pdf_with_proxy_server.py)
+- [Python Sample for Proxy Server Config With Basic Authentication](https://github.com/adobe/pdfservices-python-sdk-samples/blob/main/src/customconfigurations/create_pdf_with_authenticated_proxy_server.py)
+
+### Python Proxy Server configuration
+
+Available properties:
+
+- **host**: The proxy Server Hostname (DNS or IP Address)
+- **scheme**: Default: http. Scheme of the proxy server i.e. http or https.
+- **port**: Default: 80 for http, 443 for https. Port on which proxy server is listening.
+- **username**: Username for the authentication.
+- **password**: Password for the authentication.
+
 All these properties are wrapped within the `proxyServerConfig` object. Further, `username` and `password` is to be provided
 inside the nested object `usernamePasswordCredentials`.
 
@@ -128,7 +143,7 @@ Set the above properties using a custom `ProxyServerConfig` class, and use `Clie
 
 **Sample showing proxy server configuration without authentication.**
 
-<CodeBlock slots="heading, code" repeat="2" languages="Java, Node JS" />
+<CodeBlock slots="heading, code" repeat="3" languages="Java, Node JS, Python" />
 
 ### Java
 
@@ -160,9 +175,23 @@ const clientConfig = new ClientConfig({
 });
 ```
 
+### Python
+
+```python
+proxy_server_config = ProxyServerConfig(
+    host="PROXY_HOSTNAME",
+    port=443,
+    scheme=ProxyScheme.HTTP,
+)
+
+client_config = ClientConfig(
+    proxy_server_config=proxy_server_config
+)
+```
+
 **Sample showing proxy server configuration with authentication.**
 
-<CodeBlock slots="heading, code" repeat="2" languages="Java, Node JS" />
+<CodeBlock slots="heading, code" repeat="3" languages="Java, Node JS, Python" />
 
 ### Java
 
@@ -199,6 +228,25 @@ const clientConfig = new ClientConfig({
 });
 ```
 
+### Python
+
+```python
+proxy_server_config = ProxyServerConfig(
+    host="PROXY_HOSTNAME",
+    port=443,
+    scheme=ProxyScheme.HTTP,
+    credentials=UsernamePasswordCredentials(
+        username="USERNAME",
+        password="PASSWORD"
+    )
+)
+
+client_config = ClientConfig(
+    proxy_server_config=proxy_server_config
+)
+```
+
+
 ## Custom timeout configuration
 
 The APIs use inferred timeout properties and provide defaults. However,
@@ -209,7 +257,7 @@ the details below, you can refer to working code samples:
 -   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithCustomTimeouts.java)
 -   [.NET](https://github.com/adobe/PDFServices.NET.SDK.Samples/blob/master/CreatePDFWithCustomTimeouts/Program.cs)
 -   [Node.js](https://github.com/adobe/pdfservices-node-sdk-samples/blob/master/src/customconfigurations/create-pdf-with-custom-timeouts.js)
--   [Python](https://github.com/adobe/pdfservices-python-sdk-samples/blob/master/src/extractpdf/extract_txt_from_pdf_with_custom_timeouts.py)
+-   [Python](https://github.com/adobe/pdfservices-python-sdk-samples/blob/main/src/customconfigurations/create_pdf_with_custom_timeouts.py)
 
 ### Java timeout configuration
 
@@ -288,9 +336,6 @@ Available properties:
     Server.
 - **readTimeout**: Default: 10000. The number of milliseconds the
     client will wait for the server to send a response.
-- **processingTimeout**: Default: 600000. The maximum allowed time
-      in milliseconds for processing the documents. Any operation taking more time than the specified `processingTimeout` will result in an operation timeout exception.
-  - **Note :** It is advisable to set the `processingTimeout` to higher values for processing large files.
 
 Override the timeout properties via a custom `ClientConfig` class:
 
@@ -299,9 +344,8 @@ Override the timeout properties via a custom `ClientConfig` class:
 ### 
 
 ```javascript
-client_config = ClientConfig.builder()
-    .with_connect_timeout(10000)
-    .with_read_timeout(40000)
-    .with_processing_timeout(900000)
-    .build()
+client_config = ClientConfig(
+    connect_timeout=4000,
+    read_timeout=10000
+)
 ```

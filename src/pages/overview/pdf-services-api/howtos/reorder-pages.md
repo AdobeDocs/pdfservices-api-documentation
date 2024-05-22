@@ -16,7 +16,7 @@ a PDF file.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -246,6 +246,76 @@ function getPageRangeForReorder() {
     pageRanges.addSinglePage(1);
     return pageRanges;
 }
+```
+
+
+#### Python
+
+```python
+# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples
+# Run the sample:
+# python src/reorderpages/reorder_pdf_pages.py
+
+# Initialize the logger
+logging.basicConfig(level=logging.INFO)
+
+class ReorderPDFPages:
+    def __init__(self):
+        try:
+            file = open('reorderPagesInput.pdf', 'rb')
+            input_stream = file.read()
+            file.close()
+
+            # Initial setup, create credentials instance
+            credentials = ServicePrincipalCredentials(
+                client_id=os.getenv('PDF_SERVICES_CLIENT_ID'),
+                client_secret=os.getenv('PDF_SERVICES_CLIENT_SECRET')
+            )
+
+            # Creates a PDF Services instance
+            pdf_services = PDFServices(credentials=credentials)
+
+            # Creates an asset(s) from source file(s) and upload
+            input_asset = pdf_services.upload(input_stream=input_stream, mime_type=PDFServicesMediaType.PDF)
+
+            pages_to_reorder = self.get_page_range_for_reorder()
+
+            # Create parameters for the job
+            reorder_pages_params = ReorderPagesParams(asset=input_asset, page_ranges=pages_to_reorder)
+
+            # Creates a new job instance
+            reorder_pages_job = ReorderPagesJob(reorder_pages_params=reorder_pages_params)
+
+            # Submit the job and gets the job result
+            location = pdf_services.submit(reorder_pages_job)
+            pdf_services_response = pdf_services.get_job_result(location, ReorderPagesResult)
+
+            # Get content from the resulting asset(s)
+            result_asset: CloudAsset = pdf_services_response.get_result().get_asset()
+            stream_asset: StreamAsset = pdf_services.get_content(result_asset)
+
+            # Creates an output stream and copy stream asset's content to it
+            output_file_path = "reorderPagesOutput.pdf"
+            with open(output_file_path, "wb") as file:
+                file.write(stream_asset.get_input_stream())
+
+        except (ServiceApiException, ServiceUsageException, SdkException) as e:
+            logging.exception(f'Exception encountered while executing operation: {e}')
+
+    @staticmethod
+    def get_page_range_for_reorder() -> PageRanges:
+        # Specify order of the pages for an output document
+        page_ranges = PageRanges()
+        # Add pages 3 to 4
+        page_ranges.add_range(3, 4)
+        # Add page 1
+        page_ranges.add_single_page(1)
+        return page_ranges
+
+
+if __name__ == "__main__":
+    ReorderPDFPages()
+
 ```
 
 #### REST API 

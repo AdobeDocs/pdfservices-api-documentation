@@ -18,7 +18,7 @@ password can open the file.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" />
 
 #### Java
 
@@ -217,6 +217,65 @@ const fs = require("fs");
 })();
 ```
 
+#### Python
+
+```python
+# Get the samples https://github.com/adobe/pdfservices-python-sdk-samples
+# Run the sample:
+# python src/protectpdf/protect_pdf.py
+
+# Initialize the logger
+logging.basicConfig(level=logging.INFO)
+
+class ProtectPDF:
+    def __init__(self):
+        try:
+            file = open('./protectPDFInput.pdf', 'rb')
+            input_stream = file.read()
+            file.close()
+
+            # Initial setup, create credentials instance
+            credentials = ServicePrincipalCredentials(
+                client_id=os.getenv('PDF_SERVICES_CLIENT_ID'),
+                client_secret=os.getenv('PDF_SERVICES_CLIENT_SECRET')
+            )
+
+            # Creates a PDF Services instance
+            pdf_services = PDFServices(credentials=credentials)
+
+            # Creates an asset(s) from source file(s) and upload
+            input_asset = pdf_services.upload(input_stream=input_stream, mime_type=PDFServicesMediaType.PDF)
+
+            # Create parameters for the job
+            protect_pdf_params = PasswordProtectParams(
+                user_password='password',
+                encryption_algorithm=EncryptionAlgorithm.AES_256,
+                content_encryption=ContentEncryption.ALL_CONTENT,
+            )
+
+            # Creates a new job instance
+            protect_pdf_job = ProtectPDFJob(input_asset=input_asset, protect_pdf_params=protect_pdf_params)
+
+            # Submit the job and gets the job result
+            location = pdf_services.submit(protect_pdf_job)
+            pdf_services_response = pdf_services.get_job_result(location, ProtectPDFResult)
+
+            # Get content from the resulting asset(s)
+            result_asset: CloudAsset = pdf_services_response.get_result().get_asset()
+            stream_asset: StreamAsset = pdf_services.get_content(result_asset)
+
+            # Creates an output stream and copy stream asset's content to it
+            output_file_path = 'output/ProtectPDF.pdf'
+            with open(output_file_path, "wb") as file:
+                file.write(stream_asset.get_input_stream())
+
+        except (ServiceApiException, ServiceUsageException, SdkException) as e:
+            logging.exception(f'Exception encountered while executing operation: {e}')
+
+if __name__ == "__main__":
+    ProtectPDF()
+```
+
 #### REST API 
 
 ```javascript
@@ -246,7 +305,7 @@ of document permissions.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" />
 
 #### Java
 
@@ -477,6 +536,72 @@ const fs = require("fs");
         readStream?.destroy();
     }
 })();
+```
+
+#### Python
+
+```python
+# Get the samples https://github.com/adobe/pdfservices-python-sdk-samples
+# Run the sample:
+# python src/protectpdf/protect_pdf_with_owner_password.py
+
+# Initialize the logger
+logging.basicConfig(level=logging.INFO)
+
+class ProtectPDFWithOwnerPassword:
+    def __init__(self):
+        try:
+            file = open('./protectPDFInput.pdf', 'rb')
+            input_stream = file.read()
+            file.close()
+
+            # Initial setup, create credentials instance
+            credentials = ServicePrincipalCredentials(
+                client_id=os.getenv('PDF_SERVICES_CLIENT_ID'),
+                client_secret=os.getenv('PDF_SERVICES_CLIENT_SECRET')
+            )
+
+            # Creates a PDF Services instance
+            pdf_services = PDFServices(credentials=credentials)
+
+            # Creates an asset(s) from source file(s) and upload
+            input_asset = pdf_services.upload(input_stream=input_stream, mime_type=PDFServicesMediaType.PDF)
+
+            # Create new permissions instance and add the required permissions
+            permissions = Permissions()
+            permissions.add_permission(Permission.PRINT_LOW_QUALITY)
+            permissions.add_permission(Permission.EDIT_DOCUMENT_ASSEMBLY)
+            permissions.add_permission(Permission.COPY_CONTENT)
+
+            # Create parameters for the job
+            protect_pdf_params = PasswordProtectParams(
+                owner_password='password',
+                encryption_algorithm=EncryptionAlgorithm.AES_256,
+                permissions=permissions,
+                content_encryption=ContentEncryption.ALL_CONTENT_EXCEPT_METADATA,
+            )
+
+            # Creates a new job instance
+            protect_pdf_job = ProtectPDFJob(input_asset=input_asset, protect_pdf_params=protect_pdf_params)
+
+            # Submit the job and gets the job result
+            location = pdf_services.submit(protect_pdf_job)
+            pdf_services_response = pdf_services.get_job_result(location, ProtectPDFResult)
+
+            # Get content from the resulting asset(s)
+            result_asset: CloudAsset = pdf_services_response.get_result().get_asset()
+            stream_asset: StreamAsset = pdf_services.get_content(result_asset)
+
+            # Creates an output stream and copy stream asset's content to it
+            output_file_path = 'output/ProtectPDFWithOwnerPassword.pdf'
+            with open(output_file_path, "wb") as file:
+                file.write(stream_asset.get_input_stream())
+
+        except (ServiceApiException, ServiceUsageException, SdkException) as e:
+            logging.exception(f'Exception encountered while executing operation: {e}')
+
+if __name__ == "__main__":
+    ProtectPDFWithOwnerPassword()
 ```
 
 #### REST API 
