@@ -149,6 +149,14 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 using Adobe.PDFServicesSDK;
 ```  
 
+### Python changes
+
+* Add the following dependency in your project’s requirements.txt file:
+
+```
+pdfservices-sdk~=4.0.0
+```
+
 ## Archived Documentation
 
 The last major version of our documentation may be found [here](../legacy-documentation/).
@@ -173,6 +181,17 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### 4.0.0 (May 22, 2024; major release)
+
+| Change  | Language | Description                                                                                                                     |
+|---------|----------|---------------------------------------------------------------------------------------------------------------------------------|
+| New     | Python   | Released Adobe PDF Services Python SDK v4.0.0, introducing new interfaces fully leveraging power of new PDF Services REST APIs. |
+| New     | Python   | Added support for all the operations powered by the Adobe PDF Services APIs.                                                    |
+| New     | Python   | Added support for deleting assets and webhook notifiers.                                                                        |
+| New     | Python   | Removed the need for intermediate result storage for chained operations by eliminating reliance on temporary local storage.     |
+| New     | Python   | Extended I/O capabilities by introducing external storage for PDF Services operations.                                          |
+| New     | Python   | Enabled connection to Internet through Proxy, where proxy server settings can be set via Proxy Server Config.                   |
+
 ### 3.5.0 (May 15, 2024: minor release)
 
 | Change | Language | Description                                                                                                                                                                                                                                                                                                                               |
@@ -192,7 +211,7 @@ Upgrading to the latest SDK should not break existing applications.
 |---------|----------|------------------------------------------------------------------------------------------------------------------------------------|
 | New     | NodeJS   | Released Adobe PDF Services Node SDK v4.0.0, introducing new interfaces fully leveraging power of new PDF Services rest APIs.      |
 | New     | NodeJS   | Added support for delete asset and webhook notifiers.                                                                              |
-| New     | NodeJS   | Eliminated need of storage to save intermediate result by removed dependency on temporary storage.                                 |
+| New     | NodeJS   | Eliminated need of storage to save intermediate result by removing dependency on temporary storage.                                |
 | New     | NodeJS   | Extended I/O capabilities by introducing external storage for PDF Services operations.                                             |
 | New     | NodeJS   | Enabled connection to Internet through Proxy, where proxy server settings can be set via "proxyServerConfig" in the client config. |
 | Changed | NodeJS   | Updated PDF Properties operation to return PDFProperties object along with JSON string.                                            |
@@ -224,7 +243,7 @@ Upgrading to the latest SDK should not break existing applications.
 |---------|----------|-------------------------------------------------------------------------------------------------------------------------------|
 | New     | Java     | Released Adobe PDF Services Java SDK v4.0.0, introducing new interfaces fully leveraging power of new PDF Services rest APIs. |
 | New     | Java     | Added support for delete asset, refresh download URI, webhook notifiers.                                                      |
-| New     | Java     | Eliminated need of storage to save intermediate result by removed dependency on temporary storage.                            |
+| New     | Java     | Eliminated need of storage to save intermediate result by removing dependency on temporary storage.                           |
 | New     | Java     | Extended I/O capabilities by introducing external storage for a majority of PDF Services operations.                          |
 | Changed | Java     | Updated PDF Properties operation to return PDFProperties object along with JSON string.                                       |
 | Changed | Java     | Updated Extract PDF operation to return content and resource asset along with content JSON object.                            |

@@ -17,7 +17,7 @@ The sample below fetches the properties of an input PDF.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -201,6 +201,63 @@ const fs = require("fs");
         readStream?.destroy();
     }
 })();
+```
+
+#### Python
+
+```python
+# Get the samples from https://www.github.com/adobe/pdfservices-sdk-python-samples
+# Run the sample:
+# python src/pdfproperties/get_pdf_properties.py
+
+# Initialize the logger
+logging.basicConfig(level=logging.INFO)
+
+class GetPDFProperties:
+    def __init__(self):
+        try:
+            file = open('pdfPropertiesInput.pdf', 'rb')
+            input_stream = file.read()
+            file.close()
+
+            # Initial setup, create credentials instance
+            credentials = ServicePrincipalCredentials(
+                client_id=os.getenv('PDF_SERVICES_CLIENT_ID'),
+                client_secret=os.getenv('PDF_SERVICES_CLIENT_SECRET')
+            )
+
+            # Creates a PDF Services instance
+            pdf_services = PDFServices(credentials=credentials)
+
+            # Creates an asset(s) from source file(s) and upload
+            input_asset = pdf_services.upload(input_stream=input_stream,
+                                              mime_type=PDFServicesMediaType.PDF)
+
+            pdf_properties_params = PDFPropertiesParams(include_page_level_properties=True)
+
+            # Creates a new job instance
+            pdf_properties_job = PDFPropertiesJob(input_asset=input_asset, pdf_properties_params=pdf_properties_params)
+
+            # Submit the job and gets the job result
+            location = pdf_services.submit(pdf_properties_job)
+            pdf_services_response = pdf_services.get_job_result(location, PDFPropertiesResult)
+
+            pdf_properties_result = pdf_services_response.get_result()
+
+            # Fetch the requisite properties of the specified PDF.
+            print("Size of the specified PDF file:"
+                  + str(pdf_properties_result.get_pdf_properties_dict().get("document").get("file_size")))
+            print("Version of the specified PDF file:"
+                  + str(pdf_properties_result.get_pdf_properties_dict().get("document").get("pdf_version")))
+            print("Page count of the specified PDF file:"
+                  + str(pdf_properties_result.get_pdf_properties_dict().get("document").get("page_count")))
+
+        except (ServiceApiException, ServiceUsageException, SdkException) as e:
+            logging.exception(f'Exception encountered while executing operation: {e}')
+
+
+if __name__ == '__main__':
+    GetPDFProperties()
 ```
 
 #### REST API 

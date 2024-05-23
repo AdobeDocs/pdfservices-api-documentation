@@ -25,7 +25,7 @@ The [PDF Services API](pdf-services-api) offers a number of operations to progra
 
 There are also capabilities to compress or linearize document for faster web viewing, and to insert, reorder, rotate, replace, and delete pages within documents.
 
-The PDF Services API includes ready-to-use code samples for Java, Node.js and .NET and has a [Free Tier which includes 500 free Document Transactions per month.](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api)
+The PDF Services API includes ready-to-use code samples for Java, Node.js, Python and .NET and has a [Free Tier which includes 500 free Document Transactions per month.](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api)
 
 The PDF Services API is also available on [Power Automate](https://docs.microsoft.com/en-us/power-automate/) with easy to integrate Power Automate connectors.
 
@@ -33,7 +33,7 @@ The PDF Services API is also available on [Power Automate](https://docs.microsof
 
 The [Document Generation API](document-generation-api) is a cloud-based web service that allows you to produce high fidelity PDF and Word documents with dynamic data inputs. Using Document Generation API, you can merge your data(e.g. JSON file) with Word templates to create dynamic documents for contracts and agreements, invoices, proposals, reports, forms, branded marketing documents and more.
 
-Embed Document Generation API into any application using [PDFServices SDK](pdf-services-api#sdk) for Node.js, .Net, and Java. [Start with a Free Tier which includes 500 free Document Transactions per month.](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=document-generation-api)
+Embed Document Generation API into any application using [PDFServices SDK](pdf-services-api#sdk) for Node.js, .Net, Python and Java. [Start with a Free Tier which includes 500 free Document Transactions per month.](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=document-generation-api)
 
 ## PDF Extract API for extracting PDF structure and information
 

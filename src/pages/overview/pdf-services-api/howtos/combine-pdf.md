@@ -15,7 +15,7 @@ This sample combines up to 20 PDF files into a single PDF file.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" />
 
 #### Java
 
@@ -219,6 +219,70 @@ const fs = require("fs");
 })();
 ```
 
+#### Python
+
+```python
+# Get the samples https://github.com/adobe/pdfservices-python-sdk-samples
+# Run the sample:
+# python src/combinepdf/combine_pdf.py
+
+# Initialize the logger
+logging.basicConfig(level=logging.INFO)
+
+class CombinePDF:
+    def __init__(self):
+        try:
+            file = open('./combineFilesInput1.pdf', 'rb')
+            input_stream_1 = file.read()
+            file.close()
+
+            file = open('./combineFilesInput2.pdf', 'rb')
+            input_stream_2 = file.read()
+            file.close()
+
+            # Initial setup, create credentials instance
+            credentials = ServicePrincipalCredentials(
+                client_id=os.getenv('PDF_SERVICES_CLIENT_ID'),
+                client_secret=os.getenv('PDF_SERVICES_CLIENT_SECRET')
+            )
+
+            # Creates a PDF Services instance
+            pdf_services = PDFServices(credentials=credentials)
+
+            # Creates an asset(s) from source file(s) and upload
+            stream_assets = [StreamAsset(input_stream_1, PDFServicesMediaType.PDF),
+                             StreamAsset(input_stream_2, PDFServicesMediaType.PDF)]
+
+            assets = pdf_services.upload_assets(stream_assets)
+
+            # Create parameters for the job
+            combine_pdf_params = ((CombinePDFParams()
+                                  .add_asset(assets[0]))
+                                  .add_asset(assets[1]))
+
+            # Creates a new job instance
+            combine_pdf_job = CombinePDFJob(combine_pdf_params=combine_pdf_params)
+
+            # Submit the job and gets the job result
+            location = pdf_services.submit(combine_pdf_job)
+            pdf_services_response = pdf_services.get_job_result(location, CombinePDFResult)
+
+            # Get content from the resulting asset(s)
+            result_asset: CombinePDFResult = pdf_services_response.get_result().get_asset()
+            stream_asset: StreamAsset = pdf_services.get_content(result_asset)
+
+            # Creates an output stream and copy stream asset's content to it
+            output_file_path = 'output/CombinePDF.pdf'
+            with open(output_file_path, "wb") as file:
+                file.write(stream_asset.get_input_stream())
+
+        except (ServiceApiException, ServiceUsageException, SdkException) as e:
+            logging.exception(f'Exception encountered while executing operation: {e}')
+
+if __name__ == "__main__":
+    CombinePDF()
+```
+
 #### REST API
 
 ```javascript
@@ -249,7 +313,7 @@ ranges for each file to combine in the output file.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" />
 
 #### Java
 
@@ -524,6 +588,93 @@ const getPageRangesForSecondFile = () => {
     pageRangesForSecondFile.addAllFrom(3);
     return pageRangesForSecondFile;
 };
+```
+
+#### Python
+
+```python
+# Get the samples https://github.com/adobe/pdfservices-python-sdk-samples
+# Run the sample:
+# python src/combinepdf/combine_pdf_with_page_ranges.py
+
+# Initialize the logger
+logging.basicConfig(level=logging.INFO)
+
+class CombinePDFWithPageRanges:
+    def __init__(self):
+        try:
+            file = open('./combineFilesInput1.pdf', 'rb')
+            input_stream_1 = file.read()
+            file.close()
+
+            file = open('./combineFilesInput2.pdf', 'rb')
+            input_stream_2 = file.read()
+            file.close()
+
+            # Initial setup, create credentials instance
+            credentials = ServicePrincipalCredentials(
+                client_id=os.getenv('PDF_SERVICES_CLIENT_ID'),
+                client_secret=os.getenv('PDF_SERVICES_CLIENT_SECRET')
+            )
+
+            # Creates a PDF Services instance
+            pdf_services = PDFServices(credentials=credentials)
+
+            # Creates an asset(s) from source file(s) and upload
+            stream_assets = [StreamAsset(input_stream_1, PDFServicesMediaType.PDF),
+                             StreamAsset(input_stream_2, PDFServicesMediaType.PDF)]
+
+            assets = pdf_services.upload_assets(stream_assets)
+
+            page_ranges_for_first_file = self.get_page_range_for_first_file()
+            page_ranges_for_second_file = self.get_page_range_for_second_file()
+
+            # Create parameters for the job
+            combine_pdf_params = ((CombinePDFParams()
+                                  .add_asset(assets[0],page_ranges=page_ranges_for_first_file))
+                                  .add_asset(assets[1],page_ranges=page_ranges_for_second_file))
+
+            # Creates a new job instance
+            combine_pdf_job = CombinePDFJob(combine_pdf_params=combine_pdf_params)
+
+            # Submit the job and gets the job result
+            location = pdf_services.submit(combine_pdf_job)
+            pdf_services_response = pdf_services.get_job_result(location, CombinePDFResult)
+
+            # Get content from the resulting asset(s)
+            result_asset: CombinePDFResult = pdf_services_response.get_result().get_asset()
+            stream_asset: StreamAsset = pdf_services.get_content(result_asset)
+
+            # Creates an output stream and copy stream asset's content to it
+            output_file_path = 'output/CombinePDFWithPageRanges.pdf'
+            with open(output_file_path, "wb") as file:
+                file.write(stream_asset.get_input_stream())
+
+        except (ServiceApiException, ServiceUsageException, SdkException) as e:
+            logging.exception(f'Exception encountered while executing operation: {e}')
+
+    @staticmethod
+    def get_page_range_for_first_file() -> PageRanges:
+        # Specify which pages of the first file are to be included in the combined file
+        page_ranges_for_first_file = PageRanges()
+        # Add page 1
+        page_ranges_for_first_file.add_single_page(1)
+        # Add page 2
+        page_ranges_for_first_file.add_single_page(2)
+        # Add pages 3 to 4
+        page_ranges_for_first_file.add_range(3, 4)
+        return page_ranges_for_first_file
+
+    @staticmethod
+    def get_page_range_for_second_file() -> PageRanges:
+        # Specify which pages of the first file are to be included in the combined file
+        page_ranges_for_second_file = PageRanges()
+        # Add all pages including and after page 3
+        page_ranges_for_second_file.add_all_from(3)
+        return page_ranges_for_second_file
+
+if __name__ == "__main__":
+    CombinePDFWithPageRanges()
 ```
 
 #### REST API
