@@ -185,10 +185,10 @@ Upgrading to the latest SDK should not break existing applications.
 
 | Change  | Language | Description                                                                                                                     |
 |---------|----------|---------------------------------------------------------------------------------------------------------------------------------|
-| New     | Python   | Released Adobe PDF Services Python SDK v4.0.0, introducing new interfaces fully leveraging power of new PDF Services rest APIs. |
+| New     | Python   | Released Adobe PDF Services Python SDK v4.0.0, introducing new interfaces fully leveraging power of new PDF Services REST APIs. |
 | New     | Python   | Added support for all the operations powered by the Adobe PDF Services APIs.                                                    |
-| New     | Python   | Added support for delete asset and webhook notifiers.                                                                           |
-| New     | Python   | Removed the need for intermediate result storage for chained operations by eliminating reliance on temporary storage.           |
+| New     | Python   | Added support for deleting assets and webhook notifiers.                                                                        |
+| New     | Python   | Removed the need for intermediate result storage for chained operations by eliminating reliance on temporary local storage.     |
 | New     | Python   | Extended I/O capabilities by introducing external storage for PDF Services operations.                                          |
 | New     | Python   | Enabled connection to Internet through Proxy, where proxy server settings can be set via Proxy Server Config.                   |
 
