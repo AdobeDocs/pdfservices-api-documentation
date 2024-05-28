@@ -9,11 +9,9 @@ download URIs, deleting assets, and streamline your workflows.
 
 ## Important Note on Expiry
 
-- Asset Expiry : Assets uploaded to Adobe internal storage have an expiry of 24 hours. After this period, 
-the asset will be automatically deleted from Adobe internal storage.
+- Asset Expiry : Assets uploaded to Adobe internal storage are transiently stored for 24 hours.
 
-- Pre-signed URI Expiry : The pre-signed URI provided for uploading or downloading the content has an expiry of 1 hour. 
-Ensure that you use the URI within this timeframe to avoid expiration and potential access issues.
+- Pre-signed URI Expiry : The pre-signed URI provided for uploading or downloading the content has an expiry of 1 hour.
 
 See our public API Reference for assets [here](../../../apis/#tag/Assets).
 
@@ -57,9 +55,8 @@ refreshed_asset = pdf_services.refreshDownloadURI(asset);
 
 ## Delete Asset
 
-This function deletes an asset from the Adobe internal storage, freeing up space and managing the lifecycle of 
-your documents. It's essential to use this function to remove assets that are no longer needed, ensuring efficient 
-use of storage resources.
+This function deletes an asset from Adobe internal storage. If you prefer not to store your asset on Adobe's storage, 
+where assets are transiently stored for 24 hours, you can use this function to delete the asset immediately.
 
 <CodeBlock slots="heading, code" repeat="3" languages="Java, Node.js, Python" />
 
