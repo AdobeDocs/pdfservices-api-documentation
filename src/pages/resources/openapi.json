@@ -20,7 +20,7 @@
     },
     {
       "name": "Assets",
-      "description": "Upload and download assets to Adobe internal storage. <br> Uploading and downloading of assets is not required when using a custom <a href = \"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol\">external storage solution</a> with signed URLs. <div><small><b>Note:</b> Assets uploaded to Adobe internal storage have are transiently stored for 24 hours.</small></div>"
+      "description": "Upload and download assets to Adobe internal storage. <br> Uploading and downloading of assets is not required when using a custom <a href = \"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol\">external storage solution</a> with signed URLs. <div><small><b>Note:</b> Assets uploaded to Adobe internal storage are transiently stored for 24 hours.</small></div>"
     },
     {
       "name": "Create PDF",
