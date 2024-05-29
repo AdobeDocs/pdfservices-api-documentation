@@ -131,6 +131,10 @@ module.exports = {
                         path: 'overview/pdf-electronic-seal-api/index.md'
                     },
                     {
+                        title: 'PDF Watermark API',
+                        path: 'overview/pdf-watermark-api/index.md'
+                    },
+                    {
                         title: 'PDF Embed API',
                         path: 'overview/pdf-embed-api/index.md'
                     }
@@ -493,6 +497,32 @@ module.exports = {
                                 title: 'PDF Electronic Seal API',
                                 path: 'overview/pdf-electronic-seal-api/howtos/electronic-seal-api.md'
                             },
+                        ]
+                    }
+                ]
+            },
+            {
+                title: 'PDF Watermark API',
+                subTitle: '',
+                path: 'overview/pdf-watermark-api/index.md',
+                pages: [
+                    {
+                        title: 'Overview',
+                        path: 'overview/pdf-watermark-api/index.md'
+                    },
+                    {
+                        title: 'Getting Started',
+                        path: 'overview/pdf-watermark-api/gettingstarted.md'
+                    },
+                    {
+                        title: 'How Tos',
+                        subTitle: '',
+                        path: 'overview/pdf-watermark-api/howtos_watermark-api',
+                        pages: [
+                            {
+                                title: 'PDF Watermark API',
+                                path: 'overview/pdf-watermark-api/howtos_watermark-api.md'
+                            }
                         ]
                     }
                 ]
