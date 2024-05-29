@@ -17,9 +17,8 @@ See our public API Reference for assets [here](../../../apis/#tag/Assets).
 
 ## Refresh Download URI
 
-This function ensures that you have a valid download URI for your assets, if the original URI has expired or is null. 
-This is essential for scenarios where assets need to be downloaded after a significant time has elapsed, 
-during which the original URI might have become invalid.
+This function will create a new download URI for your asset. This is useful for scenarios where the asset needs to be 
+downloaded after its URI has expired.
 
 <CodeBlock slots="heading, code" repeat="3" languages="Java, Node.js, Python" />
 
