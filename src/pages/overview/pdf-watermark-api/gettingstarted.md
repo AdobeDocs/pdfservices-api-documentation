@@ -57,7 +57,7 @@ curl --location -g --request PUT 'https://dcplatformstorageservice-prod-us-east-
 ```
 <InlineAlert slots="text"/>
 
-For PDF Watermark API, you need to specify an additional required document i.e. a source watermark document. Step 4 can be repeated for uploading this document.
+For PDF Watermark API, you need to specify an additional required document i.e. an input watermark document. Step 4 can be repeated for uploading this document.
 
 
 ## Step 3 : Creating the job
