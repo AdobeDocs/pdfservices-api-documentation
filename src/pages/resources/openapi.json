@@ -20,7 +20,7 @@
     },
     {
       "name": "Assets",
-      "description": "Upload and download assets to Adobe internal storage. <br> Uploading and downloading of assets is not required when using a custom <a href = \"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol\">external storage solution</a> with signed URLs."
+      "description": "Upload and download assets to Adobe internal storage. <br> Uploading and downloading of assets is not required when using a custom <a href = \"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol\">external storage solution</a> with signed URLs. <div><small><b>Note:</b> Assets uploaded to Adobe internal storage are transiently stored for 24 hours.</small></div>"
     },
     {
       "name": "Create PDF",
@@ -330,7 +330,7 @@
           "Assets"
         ],
         "summary": "Get upload pre-signed URI. ",
-        "description": "Get the pre-signed URI to directly upload the content to the adobe's internal cloud provider. \n\nOutput: Response will have the asset URI of created asset and pre-signed URI for uploading the content.",
+        "description": "Get the pre-signed URI to directly upload the content to the adobe's internal cloud provider. \n\nOutput: Response will have the asset URI of created asset and pre-signed URI for uploading the content.<div><small><b>Note:</b> The pre-signed URI provided for uploading or downloading the content has an expiry of 1 hour.</small></div>",
         "operationId": "asset.uploadpresignedurl",
         "parameters": [
           {
@@ -487,7 +487,7 @@
           "Assets"
         ],
         "summary": "Get download pre-signed URI.",
-        "description": "Get the pre-signed URI to fetch the content directly from the cloud provider.",
+        "description": "Get the pre-signed URI to fetch the content directly from the cloud provider.<div><small><b>Note:</b> The pre-signed URI provided for uploading or downloading the content has an expiry of 1 hour.</small></div>",
         "operationId": "asset.get",
         "parameters": [
           {
