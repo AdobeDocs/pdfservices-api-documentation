@@ -1,7 +1,13 @@
 ---
-title: How Tos | PDF Watermark API | Adobe PDF Services
+title: PDF Watermark | How Tos | PDF Services API | Adobe PDF Services
 ---
-# PDF Watermark API
+# PDF Watermark
+
+A watermark in a document is usually semi-translucent or faded text, a logo, or a pattern placed in the background or foreground of the page for security, authenticity, and branding.
+
+PDF Watermark API is a cloud based solution to apply watermark on specified pages of a PDF document using a source file.
+
+![PDF Watermark](../watermark_overview.png)
 
 ## Input Parameters : **Required**
 Supported format is PDF (application/pdf). Input PDF with version 1.6 and above is supported.
@@ -28,25 +34,6 @@ The page ranges are specified as an array of objects whose length cannot exceed 
 * **Foreground**  (*appearOnForeground*) : Specifies the placement of the watermark on the page. It can appear in the foreground or background. The default value is false, placing the watermark in the background.
 * **Opacity**  (*opacity*) : Specifies the opacity of the watermark, represented as an integer percentage value ranging from 0 to 100. The default value is 100.
 
-**Example JSON**
-
-```json
-{
-  "inputDocumentAssetID": "urn:aaid:AS:UE1:54cbf87f-d7f5-4918-8e4b-9f1878678",
-  "watermarkDocumentAssetID": "urn:aaid:AS:UE1:54cbf87f-d7f5-4918-8e4b-9f1878678e68",
-  "pageRanges": [
-    {
-      "start": 3,
-      "end": 7
-    }
-  ],
-  "appearance" : {
-    "opacity": 75,
-    "appearOnForeground": true
-  }
-}
-```
-
 ## REST API
 
 See our public API Reference for [PDF Watermark API](../../../apis/#tag/PDF-Watermark).
@@ -54,6 +41,8 @@ See our public API Reference for [PDF Watermark API](../../../apis/#tag/PDF-Wate
 ## Apply Watermark on specified pages
 
 The sample below performs watermark operation applying watermark in foreground on specified pages of a given PDF.
+
+Please refer the [API usage guide](../gettingstarted.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="1" languages="REST API" />
 
