@@ -134,9 +134,6 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
         .querySelector(`a[href='${navLinksDocsBaseUrl}/overview/pdf-electronic-seal-api/']`)
         ?.setAttribute("daa-ll", "Documentation PDF Electronic Seal API");
     header
-        .querySelector(`a[href='${navLinksDocsBaseUrl}/overview/pdf-watermark-api/']`)
-        ?.setAttribute("daa-ll", "Documentation PDF Watermark API");
-    header
       .querySelector(`a[href='${navLinksDocsBaseUrl}/overview/pdf-embed-api/']`)
       ?.setAttribute("daa-ll", "Documentation PDF Embed API");
     header
@@ -162,8 +159,6 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
       getCredentialsButton.href = `${baseurl}?api=document-generation-api`;
     } else if ( window.location.pathname.indexOf("pdf-electronic-seal-api") >= 0 ) {
       getCredentialsButton.href = `${baseurl}?api=pdf-electronic-seal-api`;
-    } else if ( window.location.pathname.indexOf("pdf-watermark-api") >= 0 ) {
-      getCredentialsButton.href = `${baseurl}?api=pdf-watermark-api`;
     } else if (window.location.pathname.indexOf("pdf-extract-api") >= 0) {
       getCredentialsButton.href = `${baseurl}?api=pdf-extract-api`;
     } else if (window.location.pathname.indexOf("pdf-embed-api") >= 0) {
@@ -416,10 +411,6 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
       ) {
         pageHeadTittle = "PDF Electronic Seal API Prerequisites";
       }
-    } else if (
-        window.location.pathname.indexOf("pdf-watermark-api/") >= 0
-    ) {
-      pageHeadTittle = "PDF Watermark API Overview";
     } else if (
         window.location.pathname.indexOf("overview/") >= 0
     ) {
