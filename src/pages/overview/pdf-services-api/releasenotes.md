@@ -50,8 +50,13 @@ version.
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
+<<<<<<< HEAD
     <pdfservices.sdk.version>4.0.0</pdfservices.sdk.version>
     <pdfservices.sdk.samples.version>4.0.0</pdfservices.sdk.samples.version>
+=======
+    <pdfservices.sdk.version>4.1.0</pdfservices.sdk.version>
+    <pdfservices.sdk.samples.version>4.1.0</pdfservices.sdk.samples.version>
+>>>>>>> f1a3ee334 (Java External Storage)
 </properties>
 
 <dependency>
@@ -138,6 +143,13 @@ Minor and Patch releases are backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
+
+### 4.1.0 (June 04, 2024: minor release)
+
+| Change | Language | Description                                                      |
+|--------|----------|------------------------------------------------------------------|
+| New    | Java     | Extend support for external storage and notifier config for all the operations. |
+
 
 ### 4.0.0 (May 22, 2024; major release)
 
