@@ -181,7 +181,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
-### 4.1.0 (June, 2024: minor release)
+### 4.1.0 (June 04, 2024: minor release)
 
 | Change | Language | Description                                                      |
 |--------|----------|------------------------------------------------------------------|
