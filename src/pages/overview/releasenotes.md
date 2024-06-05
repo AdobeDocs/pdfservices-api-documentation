@@ -140,7 +140,7 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 ```
 <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.12" />
-    <PackageReference Include="Adobe.PDFServicesSDK" Version="3.5.0" />
+    <PackageReference Include="Adobe.PDFServicesSDK" Version="3.5.1" />
 </ItemGroup> 
 ```
 
@@ -180,6 +180,12 @@ Minor and Patch releases are backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
+
+### 3.5.1 (June 05, 2024; patch release)
+
+| Change  | Language | Description                           |
+|---------|----------|---------------------------------------|
+| Changed | .NET     | Bug fixes and stability improvements. |
 
 ### 4.1.0 (June 04, 2024: minor release)
 
