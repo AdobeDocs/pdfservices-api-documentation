@@ -12599,7 +12599,7 @@
             "$ref": "#/components/schemas/ExternalStorageInput"
           },
           "output": {
-            "$ref": "#/components/schemas/ExternalStorageOutputZip"
+            "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "notifiers": {
             "$ref": "#/components/schemas/notifiers"
@@ -12700,7 +12700,7 @@
             "$ref": "#/components/schemas/ExternalStorageInput"
           },
           "output": {
-            "$ref": "#/components/schemas/ExternalStorageOutputZip"
+            "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
             "description": "Params for Import PDF Form Data Operation processing",
