@@ -12653,11 +12653,24 @@
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "jsonForFieldsData": {
-            "Page3[0]": {
-              "f3_06[0]": "test",
-              "f3_11[0]": "test",
-              "f3_02[0]": "test"
-            }
+            "dob": "10/10/1989",
+            "billTo": {
+              "zip": "12401",
+              "address": {
+                "line": {
+                  "1": "132",
+                  "2": "My Street"
+                }
+              },
+              "city": "Kingston",
+              "state": "New York"
+            },
+            "name": {
+              "middle": "",
+              "last": "Smith",
+              "first": "John"
+            },
+            "age": "34"
           },
           "notifiers": [
             {
@@ -12715,11 +12728,24 @@
           },
           "params":  {
             "jsonForFieldsData": {
-              "Page3[0]": {
-                "f3_06[0]": "test",
-                "f3_11[0]": "test",
-                "f3_02[0]": "test"
-              }
+              "dob": "10/10/1989",
+              "billTo": {
+                "zip": "12401",
+                "address": {
+                  "line": {
+                    "1": "132",
+                    "2": "My Street"
+                  }
+                },
+                "city": "Kingston",
+                "state": "New York"
+              },
+              "name": {
+                "middle": "",
+                "last": "Smith",
+                "first": "John"
+              },
+              "age": "34"
             }
           },
           "notifiers": [
