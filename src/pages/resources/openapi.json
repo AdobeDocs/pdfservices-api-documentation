@@ -12635,14 +12635,14 @@
         "type": "object",
         "required": [
           "assetID",
-          "jsonForFieldsData"
+          "jsonFormFieldsData"
         ],
         "properties": {
           "assetID": {
             "description": "A file assetID. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
-          "jsonForFieldsData": {
+          "jsonFormFieldsData": {
             "description": "JSON Form data of PDF.",
             "type": "object"
           },
@@ -12652,7 +12652,7 @@
         },
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
-          "jsonForFieldsData": {
+          "jsonFormFieldsData": {
             "dob": "10/10/1989",
             "billTo": {
               "zip": "12401",
@@ -12705,9 +12705,9 @@
           "params": {
             "description": "Params for Import PDF Form Data Operation processing",
             "type": "object",
-            "required": ["jsonForFieldsData"],
+            "required": ["jsonFormFieldsData"],
             "properties": {
-              "jsonForFieldsData": {
+              "jsonFormFieldsData": {
                 "description": "JSON Form data of PDF.",
                 "type": "object"
               }
@@ -12727,7 +12727,7 @@
             "storage": "S3"
           },
           "params":  {
-            "jsonForFieldsData": {
+            "jsonFormFieldsData": {
               "dob": "10/10/1989",
               "billTo": {
                 "zip": "12401",
