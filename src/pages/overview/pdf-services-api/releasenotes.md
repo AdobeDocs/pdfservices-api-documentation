@@ -48,10 +48,10 @@ version.
 ```
 <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <pdfservices.sdk.version>3.5.1</pdfservices.sdk.version>
-    <pdfservices.sdk.samples.version>3.5.1</pdfservices.sdk.samples.version>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <pdfservices.sdk.version>4.1.0</pdfservices.sdk.version>
+    <pdfservices.sdk.samples.version>4.1.0</pdfservices.sdk.samples.version>
 </properties>
 
 <dependency>
@@ -73,13 +73,13 @@ import com.adobe.pdfservices.operation.ExecutionContext;
 * Update the latest SDK dependency in package.json file of your project
  
 ```
-"@adobe/pdfservices-node-sdk": "4.0.0"
+"@adobe/pdfservices-node-sdk": "4.0.1"
 ```
 
 * Require the `@adobe/pdfservices-node-sdk` in the Sample file to access the SDK interface
 
 ```
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');  
+const PDFServicesSdk = require('@adobe/pdfservices-node-sdk'); 
 ```
 
 	
@@ -97,7 +97,7 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 ```
 <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.12" />
-    <PackageReference Include="Adobe.PDFServicesSDK" Version="3.5.0" />
+    <PackageReference Include="Adobe.PDFServicesSDK" Version="3.5.1" />
 </ItemGroup> 
 ```
 
@@ -106,9 +106,19 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 using Adobe.PDFServicesSDK;
 ```  
 
+### Python changes
+
+* Add the following dependency in your project’s requirements.txt file:
+
+```
+pdfservices-sdk~=4.0.0
+```
+
+
 ## Archived Documentation
 
 The last major version of our documentation may be found [here](../legacy-documentation/).
+
 
 ## Change types
 
@@ -117,7 +127,7 @@ Change types include the following:
 -   **New**: Features or implementation changes added in the current
  release.
 -   **Changed**: Modified code that changes a feature or implementation
- detail.x
+ detail.
 -   **Security**: A patch or bug fixed released in an out-of-band patch.
 -   **Deprecated**: Existing functionality for which support is ending
  (or ended).
@@ -129,17 +139,68 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### 4.0.1 (June 12, 2024; patch release)
+
+| Change  | Language | Description                           |
+|---------|----------|---------------------------------------|
+| Changed | NodeJS   | Bug fixes and stability improvements. |
+
+### 3.5.1 (June 05, 2024; patch release)
+
+| Change  | Language | Description                           |
+|---------|----------|---------------------------------------|
+| Changed | .NET     | Bug fixes and stability improvements. |
+
+### 4.1.0 (June 04, 2024: minor release)
+
+| Change | Language | Description                                                      |
+|--------|----------|------------------------------------------------------------------|
+| New    | Java     | Extend support for external storage and notifier config for all the operations. |
+
+
+### 4.0.0 (May 22, 2024; major release)
+
+| Change  | Language | Description                                                                                                                     |
+|---------|----------|---------------------------------------------------------------------------------------------------------------------------------|
+| New     | Python   | Released Adobe PDF Services Python SDK v4.0.0, introducing new interfaces fully leveraging power of new PDF Services REST APIs. |
+| New     | Python   | Added support for all the operations powered by the Adobe PDF Services APIs.                                                    |
+| New     | Python   | Added support for deleting assets and webhook notifiers.                                                                        |
+| New     | Python   | Removed the need for intermediate result storage for chained operations by eliminating reliance on temporary local storage.     |
+| New     | Python   | Extended I/O capabilities by introducing external storage for PDF Services operations.                                          |
+| New     | Python   | Enabled connection to Internet through Proxy, where proxy server settings can be set via Proxy Server Config.                   |
+
+### 3.5.0 (May 15, 2024: minor release)
+
+| Change | Language | Description                                                                                                                                                                                                                                                                                                                               |
+|--------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| New    | .NET     | Added support to enable or disable "configureAwait" using client config, which will allow developers to specify whether asynchronous continuations should execute on the original synchronization context or not. **Note**: Starting from the next major release, "configureAwait" will be disabled by default and won't be configurable. |
+
+
+### Adobe Document Generation Server Side Release (April 30, 2024: server side release)
+
+| Change  | Language | Description                                                                                                                                                                                                  |
+|---------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| New | All      | Added support for [discard the row in a horizontal table](../document-generation-api/tablewithmarkers/#discard-the-row-in-a-horizontal-table-if-the-condition-evaluates-to-true) in Document Generation API. |
+
 ### 4.0.0 (April, 2024; major release)
 
 | Change  | Language | Description                                                                                                                        |
 |---------|----------|------------------------------------------------------------------------------------------------------------------------------------|
 | New     | NodeJS   | Released Adobe PDF Services Node SDK v4.0.0, introducing new interfaces fully leveraging power of new PDF Services rest APIs.      |
 | New     | NodeJS   | Added support for delete asset and webhook notifiers.                                                                              |
-| New     | NodeJS   | Eliminated need of storage to save intermediate result by removed dependency on temporary storage.                                 |
+| New     | NodeJS   | Eliminated need of storage to save intermediate result by removing dependency on temporary storage.                                |
 | New     | NodeJS   | Extended I/O capabilities by introducing external storage for PDF Services operations.                                             |
 | New     | NodeJS   | Enabled connection to Internet through Proxy, where proxy server settings can be set via "proxyServerConfig" in the client config. |
 | Changed | NodeJS   | Updated PDF Properties operation to return PDFProperties object along with JSON string.                                            |
 | Changed | NodeJS   | Updated Extract PDF operation to return content and resource asset along with content JSON object.                                 |
+
+### Server Side Release (April, 2024; server side release)
+
+| Change | Language | Description                                                                                                                                                 |
+|--------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| New    | API     | Added support for [Webhook Notification](../pdf-services-api/howtos/webhook-notification/) in PDF Properties.                                               |
+| New    | API     | Added support for [External Storage](../pdf-services-api/howtos/pdf-external-storage-sol/) in Extract PDF, Split PDF, PDF Electronic Seal and Auto-Tag PDF. |
+| New    | API     | Added support for [Webhook Notification](../pdf-services-api/howtos/webhook-notification/) for external storage operations.                                 |
 
 ### 2.3.1 (March, 2024; patch release)
 
@@ -147,11 +208,42 @@ Upgrading to the latest SDK should not break existing applications.
 |---------|------------------|---------------------------------------------------------------------------------------------------------------------------------|
 | New | Python | PDF operations now support configurable timeouts. |
 
+### 3.4.1 (February, 2024: patch release)
+
+| Change  | Language | Description                                                                     |
+|---------|----------|---------------------------------------------------------------------------------|
+| Changed | .NET     | Dependent library upgrades and fixed compatibility issues with RestSharp v110+. |
+
+
+### 4.0.0 (January, 2024; major release)
+| Change  | Language | Description                                                                                                                   |
+|---------|----------|-------------------------------------------------------------------------------------------------------------------------------|
+| New     | Java     | Released Adobe PDF Services Java SDK v4.0.0, introducing new interfaces fully leveraging power of new PDF Services rest APIs. |
+| New     | Java     | Added support for delete asset, refresh download URI, webhook notifiers.                                                      |
+| New     | Java     | Eliminated need of storage to save intermediate result by removing dependency on temporary storage.                           |
+| New     | Java     | Extended I/O capabilities by introducing external storage for a majority of PDF Services operations.                          |
+| Changed | Java     | Updated PDF Properties operation to return PDFProperties object along with JSON string.                                       |
+| Changed | Java     | Updated Extract PDF operation to return content and resource asset along with content JSON object.                            |
+
+
+### Server Side Release (January, 2024; server side release)
+
+| Change | Language | Description                                                                                                                                                                                                                           |
+|--------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| New    | API     | Added support for [Webhook Notification](../pdf-services-api/howtos/webhook-notification/) in all the operations **except** PDF Properties. |
+
+### Adobe Document Generation Server Side Release (January, 2024: server side release)
+
+| Change  | Language | Description                                                                                            |
+|---------|----------|--------------------------------------------------------------------------------------------------------|
+| Changed | All      | Added support for [Table Tag with Markers](../document-generation-api/tablewithmarkers) in Document Generation API. |
+
 ### 3.5.1 (December, 2023: patch release)
 
 | Change  | Language | Description                                                                      |
 |---------|----------|----------------------------------------------------------------------------------|
 | Changed | Java     | Dependent library upgrades and fixed compatibility issues with Spring Boot v3.x. |
+
 
 ### 3.5.0 (October, 2023: minor release)
 
@@ -174,14 +266,14 @@ Upgrading to the latest SDK should not break existing applications.
 
 ### 3.4.2 (August, 2023, minor release)
 
-| Change  | Language | Description                 |
-|---------|----------|-----------------------------|
+| Change  | Language | Description                       |
+|---------|----------|-----------------------------------|
 | Changed | NodeJS      | Restructured the internals for improved organization. |
 
 ### 3.4.1 (July, 2023, minor release)
 
-| Change  | Language | Description                                                         |
-|---------|----------|---------------------------------------------------------------------|
+| Change  | Language | Description                    |
+|---------|----------|--------------------------------|
 | Changed | NodeJS      | Fixed links in README.md file. |
 
 ### 3.4.0 (June, 2023; minor release)

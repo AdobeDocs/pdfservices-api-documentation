@@ -202,6 +202,10 @@ module.exports = {
                                 path: 'overview/pdf-services-api/howtos/webhook-notification.md'
                             },
                             {
+                                title: 'SDK Utilities',
+                                path: 'overview/pdf-services-api/howtos/sdk-utilities.md'
+                            },
+                            {
                                 title: 'Create PDF',
                                 path: 'overview/pdf-services-api/howtos/create-pdf.md'
                             },
