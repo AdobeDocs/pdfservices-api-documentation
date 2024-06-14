@@ -1,4 +1,3 @@
----
 name: Github Pages
 on:
   push:
@@ -8,12 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-      - name: Yarn Install
+        uses: actions/checkout@v2.3.1 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
+        with:
+          persist-credentials: false
+      - name: NPM Install
         uses: bahmutov/npm-install@v1
       - name: Build
         run: |
-          yarn build
+          npm run build
         env:
           PREFIX_PATHS: true # works like --prefix-paths flag for 'gatsby build'
           PATH_PREFIX: ${{ github.event.repository.name }}
