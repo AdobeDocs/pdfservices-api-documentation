@@ -218,7 +218,6 @@ Adobe PDF Embed API allows you to embed a PDF viewer in your web applications wi
 
 The Adobe Accessibility Board has been created to set the strategy, review progress and oversee our commitment to supporting people with disabilities.
 
-
 ### Conformance Statement
 
 #### Adobe Embed API
