@@ -1,6 +1,10 @@
 ---
 title: PDF Watermark | How Tos | PDF Services API | Adobe PDF Services
 ---
+<InlineAlert slots="text"/>
+
+PDF Watermark is currently accessible through the REST API only.
+
 # PDF Watermark
 
 A watermark in a document is usually semi-translucent or faded text, a logo, or a pattern placed in the background or foreground of the page for security, authenticity, and branding.
@@ -9,7 +13,7 @@ PDF Watermark API is a cloud based solution to apply watermark on specified page
 
 ![PDF Watermark](../watermark_overview.png)
 
-## Input Parameters : **Required**
+## Input Documents : **Required**
 
 Supported format is PDF (application/pdf). Input PDF with version 1.6 and above is supported.
 
