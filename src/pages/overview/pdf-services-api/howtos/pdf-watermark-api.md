@@ -33,7 +33,7 @@ The page ranges are specified as an array of objects whose length cannot exceed 
 :
 ### Appearance (_appearance_)
 
-* **Foreground**  (*appearOnForeground*) : Specifies the placement of the watermark on the page. It can appear in the foreground or background. The default value is false, placing the watermark in the background.
+* **Foreground**  (*appearOnForeground*) : Specifies the placement of the watermark on the page. It can appear in the foreground or background. The default value is true, placing the watermark in the foreground.
 * **Opacity**  (*opacity*) : Specifies the opacity of the watermark, represented as an integer percentage value ranging from 0 to 100. The default value is 100.
 
 ## REST API
