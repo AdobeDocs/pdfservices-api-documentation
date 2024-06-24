@@ -65,7 +65,7 @@ repo as follows:
 2.  Select *Releases*.
 3.  Select and download the needed release.
 
-![Previous Release tags with release notes and links to the assets](./images/prevrelease.png)
+![Previous Release tags with release notes and links to the assets](../images/prevrelease.png)
 
 ## Migration Guide to PDF Services SDK
 
@@ -156,10 +156,6 @@ using Adobe.PDFServicesSDK;
 ```
 pdfservices-sdk~=4.0.0
 ```
-
-## Archived Documentation
-
-The last major version of our documentation may be found [here](../legacy-documentation/).
 
 
 ## Change types
