@@ -86,12 +86,6 @@ browsers:
 -   Android - Google Chrome.
 -   iOS - Safari, Google Chrome.
 
-### Support for print PDF
-
-PDF printing is currently not supported in Firefox browser. Clicking on the print PDF button will show a popup asking users to download the file and print using Adobe Acrobat Reader.
-
-![Print Unsupported Error in Firefox](../images/print_unsupported_FF.png)
-
 ## Mobile support
 
 Much of what the PDF Embed API delivers is supported in the mobile
