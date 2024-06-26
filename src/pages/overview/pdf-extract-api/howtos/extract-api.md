@@ -260,7 +260,9 @@ namespace ExtractTextInfoFromPDF
                 StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
 
                 // Creating output streams and copying stream asset's content to it
-                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + "/output/ExtractTextInfoFromPDF.zip");
+                String outputFilePath = "/output/ExtractTextInfoFromPDF.zip";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
                 streamAsset.Stream.CopyTo(outputStream);
                 outputStream.Close();
             }
@@ -562,7 +564,9 @@ namespace ExtractTextTableInfoFromPDF
                 StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
 
                 // Creating output streams and copying stream asset's content to it
-                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + "/output/ExtractTextTableInfoFromPDF.zip");
+                String outputFilePath = "/output/ExtractTextTableInfoFromPDF.zip";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
                 streamAsset.Stream.CopyTo(outputStream);
                 outputStream.Close();
             }
@@ -867,7 +871,9 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
                 StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
 
                 // Creating output streams and copying stream asset's content to it
-                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + "/output/ExtractTextTableInfoWithRenditionsFromPDF.zip");
+                String outputFilePath = "/output/ExtractTextTableInfoWithRenditionsFromPDF.zip";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
                 streamAsset.Stream.CopyTo(outputStream);
                 outputStream.Close();
             }
@@ -1181,7 +1187,9 @@ namespace ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF
                 StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
 
                 // Creating output streams and copying stream asset's content to it
-                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + "/output/ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF.zip");
+                String outputFilePath = "/output/ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF.zip";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
                 streamAsset.Stream.CopyTo(outputStream);
                 outputStream.Close();
             }
@@ -1493,7 +1501,9 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
                 StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
 
                 // Creating output streams and copying stream asset's content to it
-                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + "/output/ExtractTextTableInfoWithCharBoundsFromPDF.zip");
+                String outputFilePath = "/output/ExtractTextTableInfoWithCharBoundsFromPDF.zip";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
                 streamAsset.Stream.CopyTo(outputStream);
                 outputStream.Close();
             }
@@ -1808,7 +1818,9 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
                 StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
 
                 // Creating output streams and copying stream asset's content to it
-                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + "/output/ExtractTextTableInfoWithTableStructureFromPDF.zip");
+                String outputFilePath = "/output/ExtractTextTableInfoWithTableStructureFromPDF.zip";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
                 streamAsset.Stream.CopyTo(outputStream);
                 outputStream.Close();
             }
@@ -2125,7 +2137,9 @@ namespace ExtractTextTableInfoWithStylingFromPDF
                 StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
 
                 // Creating output streams and copying stream asset's content to it
-                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + "/output/ExtractTextTableInfoWithStylingFromPDF.zip");
+                String outputFilePath = "/output/ExtractTextTableInfoWithStylingFromPDF.zip";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
                 streamAsset.Stream.CopyTo(outputStream);
                 outputStream.Close();
             }

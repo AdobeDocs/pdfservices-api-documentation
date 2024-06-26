@@ -129,7 +129,9 @@ namespace CreatePDFFromDocx
                 StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
 
                 // Creating output streams and copying stream asset's content to it
-                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + "/output/createPdfOutput.pdf");
+                String outputFilePath = "/output/createPdfOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
                 streamAsset.Stream.CopyTo(outputStream);
                 outputStream.Close();
             }
@@ -423,7 +425,9 @@ namespace CreatePDFFromDocxWithOptions
                 StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
 
                 // Creating output streams and copying stream asset's content to it
-                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + "/output/createPDFFromDOCXWithOptionsOutput.pdf");
+                String outputFilePath = "/output/createPDFFromDOCXWithOptionsOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
                 streamAsset.Stream.CopyTo(outputStream);
                 outputStream.Close();
             }
@@ -730,7 +734,9 @@ namespace HTMLToPDFFromURL
                 StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
 
                 // Creating output streams and copying stream asset's content to it
-                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + "/output/createPdfFromStaticHtmlOutput.pdf");
+                String outputFilePath = "/output/createPdfFromStaticHtmlOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
                 streamAsset.Stream.CopyTo(outputStream);
                 outputStream.Close();
             }
@@ -1070,7 +1076,9 @@ namespace HTMLWithInlineCSSToPDF
                 StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
 
                 // Creating output streams and copying stream asset's content to it
-                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + "/output/createPDFFromHTMLWithInlineCSSOutput.pdf");
+                String outputFilePath = "/output/createPDFFromHTMLWithInlineCSSOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
                 streamAsset.Stream.CopyTo(outputStream);
                 outputStream.Close();
             }
@@ -1407,7 +1415,9 @@ namespace HTMLToPDFFromURL
                 StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
 
                 // Creating output streams and copying stream asset's content to it
-                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + "/output/createPdfFromURLOutput.pdf");
+                String outputFilePath = "/output/createPdfFromURLOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
                 streamAsset.Stream.CopyTo(outputStream);
                 outputStream.Close();
             }
@@ -1751,7 +1761,9 @@ namespace DynamicHTMLToPDF
                 StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
 
                 // Creating output streams and copying stream asset's content to it
-                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + "/output/createPdfFromDynamicHtmlOutput.pdf");
+                String outputFilePath = "/output/createPdfFromDynamicHtmlOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
                 streamAsset.Stream.CopyTo(outputStream);
                 outputStream.Close();
             }

@@ -114,7 +114,9 @@ namespace CompressPDF
                 StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
 
                 // Creating output streams and copying stream asset's content to it
-                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + "/output/compressPDFOutput.pdf");
+                String outputFilePath = "/output/compressPDFOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
                 streamAsset.Stream.CopyTo(outputStream);
                 outputStream.Close();
             }
@@ -404,7 +406,9 @@ namespace CompressPDFWithOptions
                 StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
 
                 // Creating output streams and copying stream asset's content to it
-                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + "/output/compressPDFWithOptionsOutput.pdf");
+                String outputFilePath = "/output/compressPDFWithOptionsOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
                 streamAsset.Stream.CopyTo(outputStream);
                 outputStream.Close();
             }
