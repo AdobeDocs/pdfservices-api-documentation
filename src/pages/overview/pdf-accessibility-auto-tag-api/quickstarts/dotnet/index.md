@@ -60,7 +60,7 @@ To complete this guide, you will need:
     </ItemGroup>
 
     <ItemGroup>
-        <None Update="autotagPDFInput.pdf">
+        <None Update="Adobe Accesibility Auto-Tag API Sample.pdf">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
         <None Update="log4net.config">
@@ -227,7 +227,7 @@ namespace AutotagPDF
                 PDFServices pdfServices = new PDFServices(credentials);
 
                 // Creates an asset(s) from source file(s) and upload
-                using Stream inputStream = File.OpenRead(@"autotagPdfInput.pdf");
+                using Stream inputStream = File.OpenRead(@"Adobe Accesibility Auto-Tag API Sample.pdf");
                 IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
 
                 // Create parameters for the job
@@ -248,9 +248,14 @@ namespace AutotagPDF
                 StreamAsset streamAssetReport = pdfServices.GetContent(resultAssetReport);
 
                 // Creating output streams and copying stream asset's content to it
-                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + "output/autotag-tagged.pdf");
+                String outputFilePath = "/output/autotag-tagged.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+
+                String outputFilePathReport = "/output/autotag-report.xlsx";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
                 Stream outputStreamReport =
-                    File.OpenWrite(Directory.GetCurrentDirectory() + "output/autotag-report.xlsx");
+                    File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePathReport);
                 streamAsset.Stream.CopyTo(outputStream);
                 streamAssetReport.Stream.CopyTo(outputStreamReport);
                 outputStream.Close();

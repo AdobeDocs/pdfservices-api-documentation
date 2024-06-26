@@ -66,7 +66,7 @@ To complete this guide, you will need:
     <None Update="receiptTemplate.docx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="receipt.docx">
+    <None Update="receipt.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -234,7 +234,9 @@ StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
 
 ```javascript
 // Creating an output stream and copying stream asset's content to it
-Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + "output/generatePDFOutput.pdf");
+String outputFilePath = "/output/generatePDFOutput.pdf";
+new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
 streamAsset.Stream.CopyTo(outputStream);
 outputStream.Close();
 ```
@@ -308,7 +310,9 @@ namespace GeneratePDF
                 StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
 
                 // Creating output streams and copying stream asset's content to it
-                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + "output/generatePDFOutput.pdf");
+                String outputFilePath = "/output/generatePDFOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
                 streamAsset.Stream.CopyTo(outputStream);
                 outputStream.Close();
 
