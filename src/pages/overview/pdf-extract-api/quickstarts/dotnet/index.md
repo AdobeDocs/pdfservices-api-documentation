@@ -182,7 +182,9 @@ This code runs the Extraction process, gets the content of the result zip in str
 
 ```javascript
 // Creating output streams and copying stream asset's content to it
-Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + "/ExtractTextInfoFromPDF.zip");
+String outputFilePath = "/output/ExtractTextInfoFromPDF.zip";
+new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
 streamAsset.Stream.CopyTo(outputStream);
 outputStream.Close();
 ```
@@ -277,13 +279,15 @@ namespace ExtractTextInfoFromPDF
                 StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
 
                 // Creating output streams and copying stream asset's content to it
-                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + "/ExtractTextInfoFromPDF.zip");
+                String outputFilePath = "/output/ExtractTextInfoFromPDF.zip";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
                 streamAsset.Stream.CopyTo(outputStream);
                 outputStream.Close();
                 
                 Console.Write("Successfully extracted information from PDF. Printing H1 Headers:\n\n");
                 
-                ZipArchive archive = ZipFile.OpenRead(Directory.GetCurrentDirectory() + "/ExtractTextInfoFromPDF.zip");
+                ZipArchive archive = ZipFile.OpenRead(Directory.GetCurrentDirectory() + outputFilePath);
                 ZipArchiveEntry jsonEntry = archive.GetEntry("structuredData.json");
                 StreamReader osr = new StreamReader(jsonEntry.Open());
                 String contents = osr.ReadToEnd();
