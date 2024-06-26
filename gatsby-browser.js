@@ -411,9 +411,11 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
       ) {
         pageHeadTittle = "PDF Electronic Seal API Prerequisites";
       }
-    }else  if (window.location.pathname.indexOf("overview/") >= 0) {
+    } else if (
+        window.location.pathname.indexOf("overview/") >= 0
+    ) {
         pageHeadTittle = "Overview Introduction";
-      }
+    }
     if (pageHeadTittle != null) {
       document
         .querySelector("footer")
