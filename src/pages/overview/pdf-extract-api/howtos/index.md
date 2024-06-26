@@ -67,11 +67,6 @@ Available properties:
 -   **timeout**: Default: 400000. The maximum allowed time in
     milliseconds for establishing a connection, sending a request, and
     getting a response.
--   **readWriteTimeout**: Default: 10000. The maximum allowed time in
-    milliseconds to read or write data after connection is established.
--   **processingTimeout**: Default: 600000. The maximum allowed time
-    in milliseconds for processing the documents. Any operation taking more time than the specified `processingTimeout` will result in an operation timeout exception.
-    - **Note :** It is advisable to set the `processingTimeout` to higher values for processing large files.
 
 Override the timeout properties via a custom `ClientConfig` class:
 
@@ -81,8 +76,7 @@ Override the timeout properties via a custom `ClientConfig` class:
 
 ```javascript
 ClientConfig clientConfig = ClientConfig.ConfigBuilder()
-    .timeout(500000)
-    .readWriteTimeout(15000)
+    .WithTimeout(500000)
     .Build();
 ```
 
