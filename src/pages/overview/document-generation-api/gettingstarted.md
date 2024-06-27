@@ -213,74 +213,88 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
 // cd MergeDocumentToPDF/
 // dotnet run MergeDocumentToPDF.csproj
 
-  namespace MergeDocumentToPDF
-   {
-       class Program
-       {
-           private static readonly ILog log = LogManager.GetLogger(typeof(Program));
-  
-           static void Main()
-           {
-               //Configure the logging.
-               ConfigureLogging();
-               try
-               {
-                   // Initial setup, create credentials instance.
-                   Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                            .WithClientId("PDF_SERVICES_CLIENT_ID")
-                            .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                            .Build();
-  
-                   // Create an ExecutionContext using credentials.
-                   ExecutionContext executionContext = ExecutionContext.Create(credentials);
-  
-                   // Setup input data for the document merge process.
-                   JObject jsonDataForMerge = JObject.Parse("{\"customerName\": \"Kane Miller\",\"customerVisits\": 100}");
-  
-                   // Create a new DocumentMerge Options instance.
-                   DocumentMergeOptions documentMergeOptions = new DocumentMergeOptions(jsonDataForMerge, OutputFormat.PDF);
-  
-                   // Create a new DocumentMerge Operation instance with the DocumentMerge Options instance.
-                   DocumentMergeOperation documentMergeOperation = DocumentMergeOperation.CreateNew(documentMergeOptions);
-  
-                   // Set the operation input document template from a source file.
-                   documentMergeOperation.SetInput(FileRef.CreateFromLocalFile(@"documentMergeTemplate.docx"));
-  
-                   // Execute the operation.
-                   FileRef result = documentMergeOperation.Execute(executionContext);
-  
-                   // Save the result to the specified location.
-                   result.SaveAs(Directory.GetCurrentDirectory() + "/output/documentMergeOutput.pdf");
-               }
-               catch (ServiceUsageException ex)
-               {
-                   log.Error("Exception encountered while executing operation", ex);
-               }
-               catch (ServiceApiException ex)
-               {
-                   log.Error("Exception encountered while executing operation", ex);
-               }
-               catch (SDKException ex)
-               {
-                   log.Error("Exception encountered while executing operation", ex);
-               }
-               catch (IOException ex)
-               {
-                   log.Error("Exception encountered while executing operation", ex);
-               }
-               catch (Exception ex)
-               {
-                   log.Error("Exception encountered while executing operation", ex);
-               }
-           }
-  
-           static void ConfigureLogging()
-           {
-               ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-               XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-           }
-       }
-   }
+
+namespace MergeDocumentToPDF
+{
+    class Program
+    {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
+        static void Main()
+        {
+            //Configure the logging
+            ConfigureLogging();
+            try
+            {
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
+
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
+
+                // Creates an asset from source file and upload
+                using Stream inputStream = File.OpenRead(@"documentMergeTemplate.docx");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.DOCX.GetMIMETypeValue());
+
+                // Setup input data for the document merge process
+                JObject jsonDataForMerge = JObject.Parse("{\"customerName\": \"Kane Miller\",\"customerVisits\": 100}");
+
+                // Create parameters for the job
+                DocumentMergeParams documentMergeParams = DocumentMergeParams.DocumentMergeParamsBuilder()
+                    .WithJsonDataForMerge(jsonDataForMerge)
+                    .WithOutputFormat(OutputFormat.PDF)
+                    .Build();
+
+                // Creates a new job instance
+                DocumentMergeJob documentMergeJob = new DocumentMergeJob(asset, documentMergeParams);
+
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(documentMergeJob);
+                PDFServicesResponse<DocumentMergeResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<DocumentMergeResult>(location, typeof(DocumentMergeResult));
+
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.Asset;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+
+                // Creating output streams and copying stream asset's content to it
+                String outputFilePath = "/output/documentMergeOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+        }
+
+        static void ConfigureLogging()
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
+    }
+}
 ```
 
 ##### Node JS
@@ -634,92 +648,107 @@ Please refer the [API usage guide](../pdf-services-api/howtos/api-usage.md) to u
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
-// cd MergeDocumentToDocx/
+// cd MergeDocumentToDocxFragments/
 // dotnet run MergeDocumentToDocxFragments.csproj
-  namespace MergeDocumentToDocxFragments
+
+namespace MergeDocumentToDocxFragments
+{
+    class Program
     {
-        class Program
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
+        static void Main()
         {
-            private static readonly ILog log = LogManager.GetLogger(typeof(Program));
-    
-            static void Main()
+            //Configure the logging
+            ConfigureLogging();
+            try
             {
-                //Configure the logging
-                ConfigureLogging();
-                try
-                {
-                    // Initial setup, create credentials instance.
-                    Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                            .WithClientId("PDF_SERVICES_CLIENT_ID")
-                            .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                            .Build();
-    
-                    // Create an ExecutionContext using credentials.
-                    ExecutionContext executionContext = ExecutionContext.Create(credentials);
-    
-                    // Setup input data for the document merge process
-                    var content = File.ReadAllText(@"orderDetail.json");
-                    JObject jsonDataForMerge = JObject.Parse(content);
-    
-                    // Fragment one
-                    JObject obj1 = JObject.Parse("{\"orderDetails\": \"<b>Quantity</b>:{{quantity}}, <b>Description</b>:{{description}}, <b>Amount</b>:{{amount}}\"}");
-    
-                    // Fragment two
-                    JObject obj2 = JObject.Parse("{\"customerDetails\": \"{{customerName}}, Visits: {{customerVisits}}\"}");
-    
-                    // Fragment Object
-                    Fragments fragments = new Fragments();
-    
-                    // Adding Fragments to the Fragment object
-                    fragments.AddFragment(obj1);
-                    fragments.AddFragment(obj2);
-    
-    
-    
-                    // Create a new DocumentMerge Options instance with fragment
-                    DocumentMergeOptions documentMergeOptions = new DocumentMergeOptions(jsonDataForMerge, OutputFormat.DOCX, fragments);
-    
-                    // Create a new DocumentMerge Operation instance with the DocumentMerge Options instance
-                    DocumentMergeOperation documentMergeOperation = DocumentMergeOperation.CreateNew(documentMergeOptions);
-    
-                    // Set the operation input document template from a source file.
-                    documentMergeOperation.SetInput(FileRef.CreateFromLocalFile(@"orderDetailTemplate.docx"));
-    
-                    // Execute the operation.
-                    FileRef result = documentMergeOperation.Execute(executionContext);
-    
-                    // Save the result to the specified location
-                    result.SaveAs(Directory.GetCurrentDirectory() + "/output/orderDetailOutput.docx");
-                }
-                catch (ServiceUsageException ex)
-                {
-                    log.Error("Exception encountered while executing operation", ex);
-                }
-                catch (ServiceApiException ex)
-                {
-                    log.Error("Exception encountered while executing operation", ex);
-                }
-                catch (SDKException ex)
-                {
-                    log.Error("Exception encountered while executing operation", ex);
-                }
-                catch (IOException ex)
-                {
-                    log.Error("Exception encountered while executing operation", ex);
-                }
-                catch (Exception ex)
-                {
-                    log.Error("Exception encountered while executing operation", ex);
-                }
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
+
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
+
+                // Creates an asset from source file and upload
+                using Stream inputStream = File.OpenRead(@"orderDetailTemplate.docx");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.DOCX.GetMIMETypeValue());
+
+                // Setup input data for the document merge process
+                String content = File.ReadAllText(@"orderDetail.json");
+                JObject jsonDataForMerge = JObject.Parse(content);
+
+                // Fragment one
+                JObject obj1 =
+                    JObject.Parse(
+                        "{\"orderDetails\": \"<b>Quantity</b>:{{quantity}}, <b>Description</b>:{{description}}, <b>Amount</b>:{{amount}}\"}");
+
+                // Fragment two
+                JObject obj2 = JObject.Parse("{\"customerDetails\": \"{{customerName}}, Visits: {{customerVisits}}\"}");
+
+                // Fragment Object
+                Fragments fragments = new Fragments();
+
+                // Adding Fragments to the Fragment object
+                fragments.AddFragment(obj1);
+                fragments.AddFragment(obj2);
+
+                // Create parameters for the job
+                DocumentMergeParams documentMergeParams = DocumentMergeParams.DocumentMergeParamsBuilder()
+                    .WithJsonDataForMerge(jsonDataForMerge)
+                    .WithOutputFormat(OutputFormat.DOCX)
+                    .WithFragments(fragments)
+                    .Build();
+
+                // Creates a new job instance
+                DocumentMergeJob documentMergeJob = new DocumentMergeJob(asset, documentMergeParams);
+
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(documentMergeJob);
+                PDFServicesResponse<DocumentMergeResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<DocumentMergeResult>(location, typeof(DocumentMergeResult));
+
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.Asset;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+
+                // Creating output streams and copying stream asset's content to it
+                String outputFilePath = "/output/orderDetailOutput.docx";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
             }
-    
-            static void ConfigureLogging()
+            catch (ServiceUsageException ex)
             {
-                ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-                XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
             }
         }
+
+        static void ConfigureLogging()
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
     }
+}
 ```
 ##### Node JS
 
