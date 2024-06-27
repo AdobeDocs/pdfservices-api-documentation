@@ -181,7 +181,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
-### July 08, 2024; Server Side Release
+### July 08, 2024; PDF Watermark API Added
 
 - Added [PDF Watermark](../pdf-services-api/howtos/pdf-watermark-api/) operation in PDF Services API to add a watermark on specified pages of PDF document.
 

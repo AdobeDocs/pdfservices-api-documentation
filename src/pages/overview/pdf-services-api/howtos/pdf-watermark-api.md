@@ -8,7 +8,7 @@ PDF Watermark is currently accessible through the REST API only.
 # PDF Watermark
 
 A watermark in a document is usually semi-transparent or faded text, a logo, or a pattern placed in the background or foreground of the page for security, authenticity, and branding.
-PDF Watermark API is a cloud based solution to apply watermark on specified pages of a PDF document using a source file.
+PDF Watermark API is a cloud based solution to apply watermark on specified pages of PDF document using a source watermark PDF. The first page of source watermark PDF will be added as a watermark in input PDF document. If a page range is not specified, the watermark will be applied on all pages of the source document.
 
 ![PDF Watermark](../watermark_overview.png)
 
@@ -29,7 +29,7 @@ The output generated will retain the content along with the watermark from the f
 
 ### Page ranges (_pageRanges_)
 
-Specifies the number of pages on which the watermark will be applied. Page numbers are indexed from 1 to N.
+Specifies the number of pages on which the watermark will be applied. Page numbers are indexed from 1 to N. If a page range is not specified, the watermark will be applied on all pages of the source document.
 The page ranges are specified as an array of objects whose length cannot exceed beyond 20. Each object has the following properties:
 * **Start Page**  (*start*) : The first page number of the range. Default value is 1.
 * **End Page**  (*end*) : The last page number of the range. Default value is the last page of the document.
