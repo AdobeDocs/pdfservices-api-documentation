@@ -12543,9 +12543,9 @@
         "description": "Specifies the appearance parameters for watermark.",
         "properties": {
           "appearOnForeground": {
-            "description": "Placement of watermark on the page. Watermark will be either foreground or background on the page. Default is background.",
+            "description": "Placement of watermark on the page. Watermark will be either foreground or background on the page. Default is foreground.",
             "type": "boolean",
-            "default": false
+            "default": true
           },
           "opacity": {
             "description": "Percentage value specifying watermark opacity. Specified as an Integer value from 0 to 100.",
