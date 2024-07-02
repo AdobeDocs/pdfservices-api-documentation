@@ -316,7 +316,7 @@ namespace GeneratePDF
                 streamAsset.Stream.CopyTo(outputStream);
                 outputStream.Close();
 
-                Console.WriteLine("Saving asset at " + Directory.GetCurrentDirectory() + "output/generatePDFOutput.pdf");
+                Console.WriteLine("Saving asset at " + Directory.GetCurrentDirectory() + outputFilePath);
             }
             catch (ServiceUsageException ex)
             {
