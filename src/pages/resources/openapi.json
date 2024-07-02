@@ -11756,7 +11756,7 @@
       },
       "pageRangesWatermark": {
         "title": "pageRanges",
-        "description": "Specifies the page ranges on which watermark has to be applied in the input PDF file.",
+        "description": "Specifies the page ranges on which watermark has to be applied in the input PDF file. The page ranges are specified as an array of objects whose length cannot exceed beyond 20. If a page range is not specified, the watermark will be applied on all pages of the source document.",
         "type": "array",
         "items": {
           "properties": {
