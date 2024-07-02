@@ -276,6 +276,10 @@ module.exports = {
                             {
                                 title: 'PDF Electronic Seal',
                                 path: 'overview/pdf-services-api/howtos/electronic-seal-api.md'
+                            },
+                            {
+                                title: 'PDF Watermark',
+                                path: 'overview/pdf-services-api/howtos/pdf-watermark-api.md'
                             }
                         ]
                     }
