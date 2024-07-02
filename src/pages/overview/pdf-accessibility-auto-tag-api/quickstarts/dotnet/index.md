@@ -261,8 +261,8 @@ namespace AutotagPDF
                 outputStream.Close();
                 outputStreamReport.Close();
                 
-                Console.WriteLine("Saving asset at " + Directory.GetCurrentDirectory() + "output/autotag-tagged.pdf");
-                Console.WriteLine("Saving asset at " + Directory.GetCurrentDirectory() + "output/autotag-report.xlsx");
+                Console.WriteLine("Saving asset at " + Directory.GetCurrentDirectory() + outputFilePath);
+                Console.WriteLine("Saving asset at " + Directory.GetCurrentDirectory() + outputFilePathReport);
             }
             catch (ServiceUsageException ex)
             {
