@@ -6,7 +6,10 @@ title: FAQ
 
 ## 1. How can I get access to Adobe PDF Services API Free Tier if I am using company or school account?
 
-Invoking PDF Services API requires an Adobe-provided credential. To get one, [click here](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api), and complete the workflow.
+To get access, you can either use your personal email or [Personal Adobe ID](https://helpx.adobe.com/in/enterprise/using/identity.html) 
+with your work email to create an Adobe-provided credential. You can learn more about choosing the appropriate account
+[here](https://helpx.adobe.com/enterprise/kb/enterprise-id-faq.html). To use a Personal Adobe ID with your work email, 
+follow the workflow below:
 
 #### Step 1:
 
@@ -22,7 +25,7 @@ Invoking PDF Services API requires an Adobe-provided credential. To get one, [cl
 
 #### Step 3:
 
-**Click on** "Create an account", and **Sign up** using same email.
+**Click on** "Create an account", and **Sign up** using your work email.
 
 ![create account](./images/create-account.png)
 
@@ -37,5 +40,3 @@ Invoking PDF Services API requires an Adobe-provided credential. To get one, [cl
 **Select**  "Personal Profile" to sign in.
 
 ![personal profile](./images/personal-profile.jpg)
-
-Now you should be able to create credentials to get access to the Adobe PDF Services API Free Tier! 
