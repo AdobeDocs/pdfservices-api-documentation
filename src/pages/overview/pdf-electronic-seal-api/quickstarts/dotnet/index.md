@@ -383,8 +383,6 @@ namespace ElectronicSeal
                 Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
                 streamAsset.Stream.CopyTo(outputStream);
                 outputStream.Close();
-
-                Console.WriteLine("Saving asset at " + Directory.GetCurrentDirectory() + outputFilePath);
             }
             catch (ServiceUsageException ex)
             {
