@@ -85,54 +85,89 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // cd CombinePDF/
 // dotnet run CombinePDF.csproj
 
- namespace CombinePDF
- {
-   class Program
-   {
-     private static readonly ILog log = LogManager.GetLogger(typeof(Program));
-     static void Main()
-     {
-       //Configure the logging
-       ConfigureLogging();
-       try
-       {
-           // Initial setup, create credentials instance.
-           Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                .WithClientId("PDF_SERVICES_CLIENT_ID")
-                .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                .Build();
+namespace CombinePDF
+{
+    class Program
+    {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
 
-         //Create an ExecutionContext using credentials and create a new operation instance.
-         ExecutionContext executionContext = ExecutionContext.Create(credentials);
-         CombineFilesOperation combineFilesOperation = CombineFilesOperation.CreateNew();
+        static void Main()
+        {
+            //Configure the logging
+            ConfigureLogging();
+            try
+            {
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
 
-         // Add operation input from source files.
-         FileRef combineSource1 = FileRef.CreateFromLocalFile(@"combineFilesInput1.pdf");
-         FileRef combineSource2 = FileRef.CreateFromLocalFile(@"combineFilesInput2.pdf");
-         combineFilesOperation.AddInput(combineSource1);
-         combineFilesOperation.AddInput(combineSource2);
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
 
-         // Execute the operation.
-         FileRef result = combineFilesOperation.Execute(executionContext);
+                // Creates an asset(s) from source file(s) and upload
+                using Stream inputStream1 = File.OpenRead(@"combineFilesInput1.pdf");
+                using Stream inputStream2 = File.OpenRead(@"combineFilesInput2.pdf");
+                List<IAsset> assets = pdfServices.UploadAssets(new List<StreamAsset>()
+                {
+                    new StreamAsset(inputStream1, PDFServicesMediaType.PDF.GetMIMETypeValue()),
+                    new StreamAsset(inputStream2, PDFServicesMediaType.PDF.GetMIMETypeValue())
+                });
 
-         // Save the result to the specified location.
-         result.SaveAs(Directory.GetCurrentDirectory() + "/output/combineFilesOutput.pdf");
+                // Create parameters for the job
+                CombinePDFParams combinePDFParams = CombinePDFParams.CombinePDFParamsBuilder()
+                    .AddAsset(assets[0])
+                    .AddAsset(assets[1])
+                    .Build();
 
-       }
-       catch (ServiceUsageException ex)
-       {
-         log.Error("Exception encountered while executing operation", ex);
-       }
-       // Catch more errors here. . .
-     }
+                // Creates a new job instance
+                CombinePDFJob combinePDFJob = new CombinePDFJob(combinePDFParams);
 
-     static void ConfigureLogging()
-     {
-       ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-       XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-     }
-   }
- }
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(combinePDFJob);
+                PDFServicesResponse<CombinePDFResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<CombinePDFResult>(location, typeof(CombinePDFResult));
+
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.Asset;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+
+                // Creating output streams and copying stream asset's content to it
+                String outputFilePath = "/output/combineFilesOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+        }
+
+        static void ConfigureLogging()
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
+    }
+}
 ```
 
 #### Node JS
@@ -406,83 +441,116 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // cd CombinePDFWithPageRanges/
 // dotnet run CombinePDFWithPageRanges.csproj
 
-  namespace CombinePDFWithPageRanges
-  {
+
+namespace CombinePDFWithPageRanges
+{
     class Program
     {
-      private static readonly ILog log = LogManager.GetLogger(typeof(Program));
-      static void Main()
-      {
-        //Configure the logging
-        ConfigureLogging();
-        try
-        {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
 
-            // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                    .WithClientId("PDF_SERVICES_CLIENT_ID")
-                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                    .Build();
- 
-          //Create an ExecutionContext using credentials and create a new operation instance.
-          ExecutionContext executionContext = ExecutionContext.Create(credentials);
-          CombineFilesOperation combineFilesOperation = CombineFilesOperation.CreateNew();
- 
-          // Create a FileRef instance from a local file.
-          FileRef firstFileToCombine = FileRef.CreateFromLocalFile(@"combineFileWithPageRangeInput1.pdf");
-          PageRanges pageRangesForFirstFile = GetPageRangeForFirstFile();
-          // Add the first file as input to the operation, along with its page range.
-          combineFilesOperation.AddInput(firstFileToCombine, pageRangesForFirstFile);
- 
-          // Create a second FileRef instance using a local file.
-          FileRef secondFileToCombine = FileRef.CreateFromLocalFile(@"combineFileWithPageRangeInput2.pdf");
-          PageRanges pageRangesForSecondFile = GetPageRangeForSecondFile();
-          // Add the second file as input to the operation, along with its page range.
-          combineFilesOperation.AddInput(secondFileToCombine, pageRangesForSecondFile);
- 
-          // Execute the operation.
-          FileRef result = combineFilesOperation.Execute(executionContext);
- 
-          // Save the result to the specified location.
-          result.SaveAs(Directory.GetCurrentDirectory() + "/output/combineFilesOutput.pdf");
- 
-        }
-        catch (ServiceUsageException ex)
+        static void Main()
         {
-          log.Error("Exception encountered while executing operation", ex);
+            //Configure the logging
+            ConfigureLogging();
+            try
+            {
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
+
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
+
+                // Creates an asset(s) from source file(s) and upload
+                using Stream inputStream1 = File.OpenRead(@"combineFileWithPageRangeInput1.pdf");
+                using Stream inputStream2 = File.OpenRead(@"combineFileWithPageRangeInput2.pdf");
+                List<IAsset> assets = pdfServices.UploadAssets(new List<StreamAsset>()
+                {
+                    new StreamAsset(inputStream1, PDFServicesMediaType.PDF.GetMIMETypeValue()),
+                    new StreamAsset(inputStream2, PDFServicesMediaType.PDF.GetMIMETypeValue())
+                });
+
+                PageRanges pageRangesForFirstFile = GetPageRangeForFirstFile();
+                PageRanges pageRangesForSecondFile = GetPageRangeForSecondFile();
+
+                // Create parameters for the job
+                CombinePDFParams combinePDFParams = CombinePDFParams.CombinePDFParamsBuilder()
+                    .AddAsset(assets[0], pageRangesForFirstFile)
+                    .AddAsset(assets[1], pageRangesForSecondFile)
+                    .Build();
+
+                // Creates a new job instance
+                CombinePDFJob combinePDFJob = new CombinePDFJob(combinePDFParams);
+
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(combinePDFJob);
+                PDFServicesResponse<CombinePDFResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<CombinePDFResult>(location, typeof(CombinePDFResult));
+
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.Asset;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+
+                // Creating output streams and copying stream asset's content to it
+                String outputFilePath = "/output/combineFilesOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
         }
-        // Catch more errors here. . .
-      }
- 
-      private static PageRanges GetPageRangeForSecondFile()
-      {
-        // Specify which pages of the second file are to be included in the combined file.
-        PageRanges pageRangesForSecondFile = new PageRanges();
-        // Add all pages including and after page 5.
-        pageRangesForSecondFile.AddAllFrom(5);
-        return pageRangesForSecondFile;
-      }
- 
-      private static PageRanges GetPageRangeForFirstFile()
-      {
-        // Specify which pages of the first file are to be included in the combined file.
-        PageRanges pageRangesForFirstFile = new PageRanges();
-        // Add page 2.
-        pageRangesForFirstFile.AddSinglePage(2);
-        // Add page 3.
-        pageRangesForFirstFile.AddSinglePage(3);
-        // Add pages 5 to 7.
-        pageRangesForFirstFile.AddRange(5, 7);
-        return pageRangesForFirstFile;
-      }
- 
-      static void ConfigureLogging()
-      {
-        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-      }
+
+        private static PageRanges GetPageRangeForSecondFile()
+        {
+            // Specify which pages of the second file are to be included in the combined file.
+            PageRanges pageRangesForSecondFile = new PageRanges();
+            // Add all pages including and after page 5.
+            pageRangesForSecondFile.AddAllFrom(5);
+            return pageRangesForSecondFile;
+        }
+
+        private static PageRanges GetPageRangeForFirstFile()
+        {
+            // Specify which pages of the first file are to be included in the combined file.
+            PageRanges pageRangesForFirstFile = new PageRanges();
+            // Add page 2.
+            pageRangesForFirstFile.AddSinglePage(2);
+            // Add page 3.
+            pageRangesForFirstFile.AddSinglePage(3);
+            // Add pages 5 to 7.
+            pageRangesForFirstFile.AddRange(5, 7);
+            return pageRangesForFirstFile;
+        }
+
+
+        static void ConfigureLogging()
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
     }
-  }
+}
 ```
 
 #### Node JS

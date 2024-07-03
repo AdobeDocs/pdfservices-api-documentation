@@ -83,60 +83,91 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // cd ProtectPDF/
 // dotnet run ProtectPDF.csproj
 
-  namespace ProtectPDF
-  {
+namespace ProtectPDF
+{
     class Program
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
         static void Main()
         {
             //Configure the logging
             ConfigureLogging();
             try
             {
-                // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                        .WithClientId("PDF_SERVICES_CLIENT_ID")
-                        .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                        .Build();
- 
-                // Create an ExecutionContext using credentials.
-                ExecutionContext executionContext = ExecutionContext.Create(credentials);
- 
-                // Build ProtectPDF options by setting a User Password and Encryption
-                // Algorithm (used for encrypting the PDF file).
-                ProtectPDFOptions protectPDFOptions = ProtectPDFOptions.PasswordProtectOptionsBuilder()
-                        .SetUserPassword("encryptPassword")
-                        .SetEncryptionAlgorithm(EncryptionAlgorithm.AES_256)
-                        .Build();
- 
-                // Create a new operation instance
-                ProtectPDFOperation protectPDFOperation = ProtectPDFOperation.CreateNew(protectPDFOptions);
- 
-                // Set operation input from a source file.
-                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"protectPDFInput.pdf");
-                protectPDFOperation.SetInput(sourceFileRef);
- 
-                // Execute the operation.
-                FileRef result = protectPDFOperation.Execute(executionContext);
- 
-                // Save the result to the specified location.
-                result.SaveAs(Directory.GetCurrentDirectory() + "/output/protectPDFOutput.pdf");
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
+
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
+
+                // Creates an asset(s) from source file(s) and upload
+                using Stream inputStream = File.OpenRead(@"protectPDFInput.pdf");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
+
+                // Create parameters for the job
+                ProtectPDFParams protectPDFParams = ProtectPDFParams.PasswordProtectParamsBuilder()
+                    .SetUserPassword("password")
+                    .SetEncryptionAlgorithm(EncryptionAlgorithm.AES_256)
+                    .Build();
+
+                // Creates a new job instance
+                ProtectPDFJob protectPDFJob = new ProtectPDFJob(asset, protectPDFParams);
+
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(protectPDFJob);
+                PDFServicesResponse<ProtectPDFResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<ProtectPDFResult>(location, typeof(ProtectPDFResult));
+
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.Asset;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+
+                // Creating output streams and copying stream asset's content to it
+                String outputFilePath = "/output/protectPDFOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
             }
             catch (ServiceUsageException ex)
             {
                 log.Error("Exception encountered while executing operation", ex);
             }
-            // Catch more errors here . . .
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
         }
- 
+
         static void ConfigureLogging()
         {
             ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
             XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
         }
+
+        // Generates a string containing a directory structure and file name for the output file.
+        private static String CreateOutputFilePath()
+        {
+            String timeStamp = DateTime.Now.ToString("yyyy'-'MM'-'dd'T'HH'-'mm'-'ss");
+            return ("/output/protect" + timeStamp + ".pdf");
+        }
     }
-  }
+}
 ```
 
 #### Node JS
@@ -381,69 +412,92 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // cd ProtectPDFWithOwnerPassword/
 // dotnet run ProtectPDFWithOwnerPassword.csproj
 
- namespace ProtectPDFWithOwnerPassword
- {
-   class Program
-   {
-       private static readonly ILog log = LogManager.GetLogger(typeof(Program));
-       static void Main()
-       {
-           //Configure the logging
-           ConfigureLogging();
-           try
-           {
-               // Initial setup, create credentials instance.
-               Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                    .WithClientId("PDF_SERVICES_CLIENT_ID")
-                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+namespace ProtectPDFWithOwnerPassword
+{
+    class Program
+    {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
+        static void Main()
+        {
+            //Configure the logging
+            ConfigureLogging();
+            try
+            {
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
+
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
+
+                // Creates an asset(s) from source file(s) and upload
+                using Stream inputStream = File.OpenRead(@"protectPDFInput.pdf");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
+
+                // Create new permissions instance and add the required permissions
+                Permissions permissions = new Permissions();
+                permissions.AddPermission(Permission.PRINT_LOW_QUALITY);
+                permissions.AddPermission(Permission.EDIT_DOCUMENT_ASSEMBLY);
+                permissions.AddPermission(Permission.COPY_CONTENT);
+
+                // Create parameters for the job
+                ProtectPDFParams protectPDFParams = ProtectPDFParams.PasswordProtectParamsBuilder()
+                    .SetOwnerPassword("password")
+                    .SetPermissions(permissions)
+                    .SetEncryptionAlgorithm(EncryptionAlgorithm.AES_256)
+                    .SetContentEncryption(ContentEncryption.ALL_CONTENT_EXCEPT_METADATA)
                     .Build();
 
-               // Create an ExecutionContext using credentials.
-               ExecutionContext executionContext = ExecutionContext.Create(credentials);
+                // Creates a new job instance
+                ProtectPDFJob protectPDFJob = new ProtectPDFJob(asset, protectPDFParams);
 
-               // Create new permissions instance and add the required permissions
-               Permissions permissions = Permissions.CreateNew();
-               permissions.AddPermission(Permission.PRINT_LOW_QUALITY);
-               permissions.AddPermission(Permission.EDIT_DOCUMENT_ASSEMBLY);
-               permissions.AddPermission(Permission.COPY_CONTENT);
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(protectPDFJob);
+                PDFServicesResponse<ProtectPDFResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<ProtectPDFResult>(location, typeof(ProtectPDFResult));
 
-               // Build ProtectPDF options by setting an Owner/Permissions Password, Permissions,
-               // Encryption Algorithm (used for encrypting the PDF file) and specifying the type of content to encrypt.
-               ProtectPDFOptions protectPDFOptions = ProtectPDFOptions.PasswordProtectOptionsBuilder()
-                   .SetOwnerPassword("password")
-                   .SetPermissions(permissions)
-                   .SetEncryptionAlgorithm(EncryptionAlgorithm.AES_256)
-                   .SetContentEncryption(ContentEncryption.ALL_CONTENT_EXCEPT_METADATA)
-                   .Build();
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.Asset;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
 
-               // Create a new operation instance
-               ProtectPDFOperation protectPDFOperation = ProtectPDFOperation.CreateNew(protectPDFOptions);
+                // Creating output streams and copying stream asset's content to it
+                String outputFilePath = "/output/protectPDFWithOwnerPasswordOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+        }
 
-               // Set operation input from a source file.
-               FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"protectPDFInput.pdf");
-               protectPDFOperation.SetInput(sourceFileRef);
-
-               // Execute the operation.
-               FileRef result = protectPDFOperation.Execute(executionContext);
-
-               // Save the result to the specified location.
-               result.SaveAs(Directory.GetCurrentDirectory() + "/output/protectPDFWithOwnerPasswordOutput.pdf");
-           }
-           catch (ServiceUsageException ex)
-           {
-               log.Error("Exception encountered while executing operation", ex);
-           }
-           // Catch more errors here . . .
-       }
-
-       static void ConfigureLogging()
-       {
-           ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-           XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-       }
-   }
- }
-   
+        static void ConfigureLogging()
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
+    }
+}
 ```
 
 #### Node JS

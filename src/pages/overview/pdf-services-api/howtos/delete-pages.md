@@ -92,69 +92,96 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // cd DeletePDFPages/
 // dotnet run DeletePDFPages.csproj
 
-    namespace DeletePDFPages
+namespace DeletePDFPages
+{
+    class Program
     {
-      class Program
-      {
-          private static readonly ILog log = LogManager.GetLogger(typeof(Program));
-          static void Main()
-          {
-              // Configure the logging
-              ConfigureLogging();
-              try
-              {
-                  // Initial setup, create credentials instance.
-                  Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                        .WithClientId("PDF_SERVICES_CLIENT_ID")
-                        .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                        .Build();
-   
-                  // Create an ExecutionContext using credentials.
-                  ExecutionContext executionContext = ExecutionContext.Create(credentials);
-   
-                  // Create a new operation instance
-                  DeletePagesOperation deletePagesOperation = DeletePagesOperation.CreateNew();
-   
-                  // Set operation input from a source file.
-                  FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"deletePagesInput.pdf");
-                  deletePagesOperation.SetInput(sourceFileRef);
-   
-                  // Delete pages of the document (as specified by PageRanges).
-                  PageRanges pageRangeForDeletion = GetPageRangeForDeletion();
-                  deletePagesOperation.SetPageRanges(pageRangeForDeletion);
-   
-                  // Execute the operation.
-                  FileRef result = deletePagesOperation.Execute(executionContext);
-   
-                  // Save the result to the specified location.
-                  result.SaveAs(Directory.GetCurrentDirectory() + "/output/deletePagesOutput.pdf");
-              }
-              catch (ServiceUsageException ex)
-              {
-                  log.Error("Exception encountered while executing operation", ex);
-              }
-              // Catch more errors here . . .
-          }
-   
-          private static PageRanges GetPageRangeForDeletion()
-          {
-              // Specify pages for deletion.
-              PageRanges pageRangeForDeletion = new PageRanges();
-              // Add page 1.
-              pageRangeForDeletion.AddSinglePage(1);
-   
-              // Add pages 3 to 4.
-              pageRangeForDeletion.AddRange(3, 4);
-              return pageRangeForDeletion;
-          }
-   
-          static void ConfigureLogging()
-          {
-              ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-              XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-          }
-      }
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
+        static void Main()
+        {
+            // Configure the logging
+            ConfigureLogging();
+            try
+            {
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
+
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
+
+                // Creates an asset from source file and upload
+                using Stream inputStream = File.OpenRead(@"deletePagesInput.pdf");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
+
+                // Delete pages of the document (as specified by PageRanges).
+                PageRanges pageRangeForDeletion = GetPageRangeForDeletion();
+
+                // Create parameters for the job
+                DeletePagesParams deletePagesParams = new DeletePagesParams(pageRangeForDeletion);
+
+                // Creates a new job instance
+                DeletePagesJob deletePagesJob = new DeletePagesJob(asset, deletePagesParams);
+
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(deletePagesJob);
+                PDFServicesResponse<DeletePagesResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<DeletePagesResult>(location, typeof(DeletePagesResult));
+
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.Asset;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+
+                // Creating output streams and copying stream asset's content to it
+                String outputFilePath = "/output/deletePagesOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+        }
+
+        private static PageRanges GetPageRangeForDeletion()
+        {
+            // Specify pages for deletion.
+            PageRanges pageRangeForDeletion = new PageRanges();
+            // Add page 1.
+            pageRangeForDeletion.AddSinglePage(1);
+
+            // Add pages 3 to 4.
+            pageRangeForDeletion.AddRange(3, 4);
+            return pageRangeForDeletion;
+        }
+
+        static void ConfigureLogging()
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
     }
+}
 ```
 
 #### Node JS

@@ -88,3 +88,14 @@ output_asset = create_pdf_result.getAsset()
 # delete asset
 pdf_services.deleteAsset(output_asset);
 ```
+
+
+### DotNet
+
+```csharp
+CreatePDFResult result = pdfServicesResponse.Result;
+IAsset asset = result.Asset;
+ 
+// delete asset
+pdfServices.deleteAsset((CloudAsset) asset);
+```
