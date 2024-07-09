@@ -181,6 +181,10 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### July 08, 2024; PDF Watermark API Added
+
+- Added [PDF Watermark](../pdf-services-api/howtos/pdf-watermark-api/) operation in PDF Services API to add a watermark on specified pages of PDF document.
+
 ### June 12, 2024; NodeJS SDK 4.0.1 patch release
 
 - Bug fixes and stability improvements.
