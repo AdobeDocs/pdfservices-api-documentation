@@ -691,10 +691,10 @@ public class StaticHTMLToPDF {
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
-// cd HTMLToPDFFromURL/
-// dotnet run HTMLToPDFFromURL.csproj
+// cd StaticHTMLToPDF/
+// dotnet run StaticHTMLToPDF.csproj
 
-namespace HTMLToPDFFromURL
+namespace StaticHTMLToPDF
 {
     class Program
     {
