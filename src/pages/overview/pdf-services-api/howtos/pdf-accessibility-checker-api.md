@@ -19,11 +19,13 @@ A PDF document for which accessibility to be checked.
 
 ## API Parameters
 
-### Page ranges (_pageRanges_)
+### Page start (_pageStart_)
 
-Specifies the number of pages for which accessibility to be checked. Each object has the following properties:
-* **Start Page**  (*start*) : If "pageStart" is not provided, the first page is considered the default startPage. It should be greater than equal to 1.
-* **End Page**  (*end*) : If "pageEnd" is not provided, the last page is considered the default pageEnd. It should be greater than equal to 1.
+The parameter allows for the specification of the starting page for the accessibility check. If "pageStart" is not provided, the first page is considered the default startPage. It should be greater than equal to 1.
+
+### Page end (_pageEnd_)
+
+The parameter allows for the specification of the ending page for the accessibility check. If "pageEnd" is not provided, the last page is considered the default pageEnd. It should be greater than equal to 1.g
 
 ## REST API
 
