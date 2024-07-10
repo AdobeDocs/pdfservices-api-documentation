@@ -8,6 +8,14 @@ the changes below for each release.
 
 ## Change history
 
+### June 27, 2024
+| Change | Description                                                            |
+| ------ | ---------------------------------------------------------------------- |
+| Bug fix | Fixed issue regarding developer console error "Feature can't be enabled or disabled".   |
+| Bug fix | Fixed issue regarding developer console error "Edit dropin is not loaded".             |
+| Bug fix | Fixed PDF download allowed issue through PDF printing option even when download is disabled in Firefox browser.  |
+| New     | PDF Embed API now supports PDF printing in Firefox browser. |
+
 ### May 9, 2024
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
