@@ -25,7 +25,7 @@ The parameter allows for the specification of the starting page for the accessib
 
 ### Page end (_pageEnd_)
 
-The parameter allows for the specification of the ending page for the accessibility check. If "pageEnd" is not provided, the last page is considered the default pageEnd. It should be greater than equal to 1.g
+The parameter allows for the specification of the ending page for the accessibility check. If "pageEnd" is not provided, the last page is considered the default pageEnd. It should be greater than equal to 1.
 
 ## REST API
 
