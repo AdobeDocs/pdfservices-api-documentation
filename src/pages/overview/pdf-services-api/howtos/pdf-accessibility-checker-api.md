@@ -9,15 +9,11 @@ PDF Accessibility Checker is currently accessible through the REST API only.
 
 Accessibility Checker API will check PDF files to see if they meet the machine-verifiable requirements of PDF/UA and WCAG 2.0. It will generate a report that summarizes the findings of the accessibility checks. Additional human remediation may be required to ensure that the reading order of elements is correct and that alternative text tags properly convey the meaning of an image. The report contains links to documentation that assist in manually fixing problems using Adobe Acrobat Pro.
 
-## Input Documents : **Required**
-
-Supported format is PDF (application/pdf). Input PDF with version 1.6 and above is supported.
+## API Parameters
 
 ### Input Document
 
 A PDF document for which accessibility to be checked.
-
-## API Parameters
 
 ### Page start (_pageStart_)
 
