@@ -566,7 +566,7 @@ namespace AutotagPDFParameterised
 
                 // Creating output streams and copying stream asset's content to it
                 String outputPath = GetOutputFilePathFromCmdArgs(args);
-                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() +  outputPath + "autotagPDFInput-tagged.pdf");
+                Stream outputStream = File.OpenWrite(outputPath + "autotagPDFInput-tagged.pdf");
                 streamAsset.Stream.CopyTo(outputStream);
                 outputStream.Close();
 
@@ -578,7 +578,7 @@ namespace AutotagPDFParameterised
 
                     // Creating output streams and copying stream asset's content to it
                     Stream outputStreamReport =
-                        File.OpenWrite(Directory.GetCurrentDirectory() + outputPath + "autotagPDFInput-report.xlsx");
+                        File.OpenWrite(outputPath + "autotagPDFInput-report.xlsx");
                     streamAssetReport.Stream.CopyTo(outputStreamReport);
                     outputStreamReport.Close();
                 }
