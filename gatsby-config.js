@@ -577,6 +577,10 @@ module.exports = {
                 path: 'overview/support.md'
             },
             {
+                title: 'FAQ',
+                path: 'overview/faq.md'
+            },
+            {
                 title: 'API Status',
                 path: 'overview/status.md'
             },
