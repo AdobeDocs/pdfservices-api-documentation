@@ -87,62 +87,86 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // cd SplitPDFByNumberOfPages/
 // dotnet run SplitPDFByNumberOfPages.csproj
 
-   namespace SplitPDFByNumberOfPages
-   {
-     class Program
-     {
-         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
-         static void Main()
-         {
-             //Configure the logging
-             ConfigureLogging();
-             try
-             {
-                 // Initial setup, create credentials instance.
-                 Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                        .WithClientId("PDF_SERVICES_CLIENT_ID")
-                        .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                        .Build();
-  
-                 // Create an ExecutionContext using credentials.
-                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
-  
-                 // Create a new operation instance
-                 SplitPDFOperation splitPDFOperation = SplitPDFOperation.CreateNew();
-  
-                 // Set operation input from a source file.
-                 FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"splitPDFInput.pdf");
-                 splitPDFOperation.SetInput(sourceFileRef);
-  
-                 // Set the maximum number of pages each of the output files can have.
-                 splitPDFOperation.SetPageCount(2);
-  
-                 // Execute the operation.
-                 List result = splitPDFOperation.Execute(executionContext);
-  
-                 // Save the result to the specified location.
-                 int index = 0;
-                 foreach (FileRef fileRef in result)
-                 {
-                     fileRef.SaveAs(Directory.GetCurrentDirectory() + "/output/SplitPDFByNumberOfPagesOutput_" + index + ".pdf");
-                     index++;
-                 }
-  
-             }
-             catch (ServiceUsageException ex)
-             {
-                 log.Error("Exception encountered while executing operation", ex);
-             }
-             // Catch more errors here . . .
-         }
-  
-         static void ConfigureLogging()
-         {
-             ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-             XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-         }
-     }
-   }
+
+namespace SplitPDFByNumberOfPages
+{
+    class Program
+    {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
+        static void Main()
+        {
+            //Configure the logging
+            ConfigureLogging();
+            try
+            {
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
+
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
+
+                // Creates an asset(s) from source file(s) and upload
+                using Stream inputStream = File.OpenRead(@"splitPDFInput.pdf");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
+
+                // Create parameters for the job
+                SplitPDFParams splitPDFParams = new SplitPDFParams();
+                splitPDFParams.SetPageCount(2);
+
+                // Creates a new job instance
+                SplitPDFJob splitPDFJob = new SplitPDFJob(asset, splitPDFParams);
+
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(splitPDFJob);
+                PDFServicesResponse<SplitPDFResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<SplitPDFResult>(location, typeof(SplitPDFResult));
+                List<IAsset> resultAssets = pdfServicesResponse.Result.Assets;
+
+                // Save the result to the specified location.
+                int index = 0;
+                foreach (IAsset resultAsset in resultAssets)
+                {
+                    // Get content from the resulting asset(s)
+                    StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+                    Stream outputStream =
+                        File.OpenWrite(Directory.GetCurrentDirectory() + "/output/SplitPDFByNumberOfPagesOutput_" + index + ".pdf");
+                    streamAsset.Stream.CopyTo(outputStream);
+                    outputStream.Close();
+                    index++;
+                }
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+        }
+
+        static void ConfigureLogging()
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
+    }
+}
 ```
 
 #### Node JS
@@ -394,75 +418,100 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // cd SplitPDFByPageRanges/
 // dotnet run SplitPDFByPageRanges.csproj
 
- namespace SplitPDFByPageRanges
-  {
+namespace SplitPDFByPageRanges
+{
     class Program
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
         static void Main()
         {
             //Configure the logging
             ConfigureLogging();
             try
             {
-                // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                        .WithClientId("PDF_SERVICES_CLIENT_ID")
-                        .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                        .Build();
- 
-                // Create an ExecutionContext using credentials.
-                ExecutionContext executionContext = ExecutionContext.Create(credentials);
- 
-                // Create a new operation instance
-                SplitPDFOperation splitPDFOperation = SplitPDFOperation.CreateNew();
- 
-                // Set operation input from a source file.
-                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"splitPDFInput.pdf");
-                splitPDFOperation.SetInput(sourceFileRef);
- 
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
+
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
+
+                // Creates an asset(s) from source file(s) and upload
+                using Stream inputStream = File.OpenRead(@"splitPDFInput.pdf");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
+
                 // Set the page ranges where each page range corresponds to a single output file.
                 PageRanges pageRanges = GetPageRanges();
-                splitPDFOperation.SetPageRanges(pageRanges);
- 
-                // Execute the operation.
-                List result = splitPDFOperation.Execute(executionContext);
- 
+
+                // Create parameters for the job
+                SplitPDFParams splitPDFParams = new SplitPDFParams();
+                splitPDFParams.SetPageRanges(pageRanges);
+
+                // Creates a new job instance
+                SplitPDFJob splitPDFJob = new SplitPDFJob(asset, splitPDFParams);
+
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(splitPDFJob);
+                PDFServicesResponse<SplitPDFResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<SplitPDFResult>(location, typeof(SplitPDFResult));
+                List<IAsset> resultAssets = pdfServicesResponse.Result.Assets;
+
                 // Save the result to the specified location.
                 int index = 0;
-                foreach (FileRef fileRef in result)
+                foreach (IAsset resultAsset in resultAssets)
                 {
-                    fileRef.SaveAs(Directory.GetCurrentDirectory() + "/output/SplitPDFByPageRangesOutput_" + index + ".pdf");
+                    // Get content from the resulting asset(s)
+                    StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+                    Stream outputStream =
+                        File.OpenWrite(Directory.GetCurrentDirectory() + "/output/SplitPDFByPageRangesOutput_" + index + ".pdf");
+                    streamAsset.Stream.CopyTo(outputStream);
+                    outputStream.Close();
                     index++;
                 }
- 
             }
             catch (ServiceUsageException ex)
             {
                 log.Error("Exception encountered while executing operation", ex);
             }
-            // Catch more errors here . . .
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
         }
- 
+
         static void ConfigureLogging()
         {
             ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
             XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
         }
- 
+
         private static PageRanges GetPageRanges()
         {
             // Specify page ranges.
             PageRanges pageRanges = new PageRanges();
             // Add page 1.
             pageRanges.AddSinglePage(1);
- 
+
             // Add pages 3 to 4.
             pageRanges.AddRange(3, 4);
             return pageRanges;
         }
     }
-  }
+}
 ```
 
 #### Node JS
@@ -736,63 +785,85 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // cd SplitPDFIntoNumberOfFiles/
 // dotnet run SplitPDFIntoNumberOfFiles.csproj
 
-  namespace SplitPDFIntoNumberOfFiles
-  {
+namespace SplitPDFIntoNumberOfFiles
+{
     class Program
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
         static void Main()
         {
             //Configure the logging
             ConfigureLogging();
             try
             {
-                // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                        .WithClientId("PDF_SERVICES_CLIENT_ID")
-                        .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                        .Build();
- 
-                // Create an ExecutionContext using credentials.
-                ExecutionContext executionContext = ExecutionContext.Create(credentials);
- 
-                // Create a new operation instance
-                SplitPDFOperation splitPDFOperation = SplitPDFOperation.CreateNew();
- 
-                // Set operation input from a source file.
-                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"splitPDFInput.pdf");
-                splitPDFOperation.SetInput(sourceFileRef);
- 
-                // Set the number of documents to split the input PDF file into.
-                splitPDFOperation.SetFileCount(2);
- 
-                // Execute the operation.
-                List result = splitPDFOperation.Execute(executionContext);
- 
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
+
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
+
+                // Creates an asset(s) from source file(s) and upload
+                using Stream inputStream = File.OpenRead(@"splitPDFInput.pdf");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
+
+                // Create parameters for the job
+                SplitPDFParams splitPDFParams = new SplitPDFParams();
+                splitPDFParams.SetFileCount(2);
+
+                // Creates a new job instance
+                SplitPDFJob splitPDFJob = new SplitPDFJob(asset, splitPDFParams);
+
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(splitPDFJob);
+                PDFServicesResponse<SplitPDFResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<SplitPDFResult>(location, typeof(SplitPDFResult));
+                List<IAsset> resultAssets = pdfServicesResponse.Result.Assets;
+
                 // Save the result to the specified location.
                 int index = 0;
-                foreach (FileRef fileRef in result)
+                foreach (IAsset resultAsset in resultAssets)
                 {
-                    fileRef.SaveAs(Directory.GetCurrentDirectory() + "/output/SplitPDFIntoNumberOfFilesOutput_" + index + ".pdf");
+                    // Get content from the resulting asset(s)
+                    StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+                    Stream outputStream =
+                        File.OpenWrite(Directory.GetCurrentDirectory() + "/output/SplitPDFIntoNumberOfFilesOutput_" + index + ".pdf");
+                    streamAsset.Stream.CopyTo(outputStream);
+                    outputStream.Close();
                     index++;
                 }
- 
             }
             catch (ServiceUsageException ex)
             {
                 log.Error("Exception encountered while executing operation", ex);
             }
-             // Catch more errors here . . .
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
         }
- 
+
         static void ConfigureLogging()
         {
             ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
             XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
         }
     }
-  }
-      
+} 
 ```
 
 #### Node JS

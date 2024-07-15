@@ -323,14 +323,14 @@ Jumpstart your development by bookmarking or downloading the following key resou
 
 The samples project requires the following:
 
--   NET: version 6.0 or above
+-   NET: version 8.0 or above
 -   A build Tool: Either Visual Studio or .NET Core CLI.
 
 #### Authentication
 
 Once you complete the [Getting Credentials](https://documentservices.adobe.com/dc-integration-creation-app-cdn/main.html), a zip or json file automatically downloads that contains content whose structure varies based on whether you opted to download personalized code samples.
 
--   **Personalized Download**: Downloads the zip which contains `adobe-dc-pdf-services-sdk-java-samples` with a preconfigured `pdfservices-api-credentials.json` file.
+-   **Personalized Download**: Downloads the zip which contains `adobe-DC.PDFServices.SDK.NET.Samples` with a preconfigured `pdfservices-api-credentials.json` file.
 -   **Non Personalized Download**: Downloads the `pdfservices-api-credentials.json` with your preconfigured credentials.
 
 After downloading the zip, you can run the samples in the zip directly by setting up the two environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following cammands :

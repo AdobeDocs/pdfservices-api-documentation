@@ -121,6 +121,7 @@ public class AutotagPDF {
 // cd AutotagPDF/
 // dotnet run AutotagPDF.csproj
 
+
 namespace AutotagPDF
 {
     class Program
@@ -128,57 +129,69 @@ namespace AutotagPDF
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
 
         static void Main()
-    {
-        //Configure the logging
-        ConfigureLogging();
-        try
         {
-            // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                    .WithClientId("PDF_SERVICES_CLIENT_ID")
-                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                    .Build();
+            // Configure the logging
+            ConfigureLogging();
+            try
+            {
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
 
-            //Create an ExecutionContext using credentials and create a new operation instance.
-            ExecutionContext executionContext = ExecutionContext.Create(credentials);
-            AutotagPDFOperation autotagPDFOperation = AutotagPDFOperation.CreateNew();
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
 
-            // Provide an input FileRef for the operation
-            autotagPDFOperation.SetInput(FileRef.CreateFromLocalFile(@"autotagPDFInput.pdf"));
+                // Creates an asset(s) from source file(s) and upload
+                using Stream inputStream = File.OpenRead(@"autotagPdfInput.pdf");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
 
-            // Execute the operation
-            AutotagPDFOutput autotagPDFOutput = autotagPDFOperation.Execute(executionContext);
-            
-            // Save the output files at the specified location
-            autotagPDFOutput.GetTaggedPDF().SaveAs(Directory.GetCurrentDirectory() + "autotagPDFOutput.pdf");
+                // Creates a new job instance
+                AutotagPDFJob autotagPDFJob = new AutotagPDFJob(asset);
+
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(autotagPDFJob);
+                PDFServicesResponse<AutotagPDFResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<AutotagPDFResult>(location, typeof(AutotagPDFResult));
+
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.TaggedPDF;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+
+                // Creating output streams and copying stream asset's content to it
+                String outputFilePath = "/output/autotagPDFOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
         }
-        catch (ServiceUsageException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (ServiceApiException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (SDKException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (IOException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (Exception ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    }
 
         static void ConfigureLogging()
-    {
-        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-    }
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
     }
 }
 ```
@@ -452,8 +465,8 @@ public class AutotagPDFParameterised {
 
 // Get the samples from https://github.com/adobe/PDFServices.NET.SDK.Samples
 // Run the sample:
-// cd AutotagPDF/
-// dotnet run .csproj
+// cd AutotagPDFParameterised/
+// dotnet run AutotagPDFParameterised.csproj
 
 namespace AutotagPDFParameterised
 {
@@ -461,125 +474,143 @@ namespace AutotagPDFParameterised
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
 
-        private static AutotagPDFOptions GetOptionsFromCmdArgs(String[] args)
-    {
-        Boolean generateReport = GetGenerateReportFromCmdArgs(args);
-        Boolean shiftHeadings = GetShiftHeadingsFromCmdArgs(args);
+        private static AutotagPDFParams GetParamsFromCmdArgs(String[] args)
+        {
+            Boolean generateReport = GetGenerateReportFromCmdArgs(args);
+            Boolean shiftHeadings = GetShiftHeadingsFromCmdArgs(args);
 
-        AutotagPDFOptions.Builder builder = AutotagPDFOptions.AutotagPDFOptionsBuilder();
+            AutotagPDFParams.Builder builder = AutotagPDFParams.AutotagPDFParamsBuilder();
 
-        if (generateReport) builder.GenerateReport();
-        if (shiftHeadings) builder.ShiftHeadings();
+            if (generateReport) builder.GenerateReport();
+            if (shiftHeadings) builder.ShiftHeadings();
 
-        return builder.Build();
+            return builder.Build();
+        }
+
+        private static Boolean GetShiftHeadingsFromCmdArgs(String[] args)
+        {
+            return Array.Exists(args, element => element == "--shift_headings");
+        }
+
+        private static Boolean GetGenerateReportFromCmdArgs(String[] args)
+        {
+            return Array.Exists(args, element => element == "--report");
+        }
+
+        private static String GetInputFilePathFromCmdArgs(String[] args)
+        {
+            String inputFilePath = @"autotagPdfInput.pdf";
+            int inputFilePathIndex = Array.IndexOf(args, "--input");
+            if (inputFilePathIndex >= 0 && inputFilePathIndex < args.Length - 1)
+            {
+                inputFilePath = args[inputFilePathIndex + 1];
+            }
+            else
+                log.Info("input file not specified, using default value : autotagPdfInput.pdf");
+
+            return inputFilePath;
+        }
+
+        private static String GetOutputFilePathFromCmdArgs(String[] args)
+        {
+            String outputFilePath = Directory.GetCurrentDirectory() + "/output/";
+            int outputFilePathIndex = Array.IndexOf(args, "--output");
+            if (outputFilePathIndex >= 0 && outputFilePathIndex < args.Length - 1)
+            {
+                outputFilePath = args[outputFilePathIndex + 1];
+            }
+            else
+                log.Info("output path not specified, using default value : /output/");
+
+            return outputFilePath;
+        }
+
+        static void Main(String[] args)
+        {
+            // Configure the logging
+            ConfigureLogging();
+
+            log.Info("--input " + GetInputFilePathFromCmdArgs(args));
+            log.Info("--output " + GetOutputFilePathFromCmdArgs(args));
+            log.Info("--report " + GetGenerateReportFromCmdArgs(args));
+            log.Info("--shift_headings " + GetShiftHeadingsFromCmdArgs(args));
+
+            try
+            {
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
+
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
+
+                // Creates an asset(s) from source file(s) and upload
+                using Stream inputStream = File.OpenRead(GetInputFilePathFromCmdArgs(args));
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
+
+                // Create parameters for the job
+                AutotagPDFParams autotagPDFParams = GetParamsFromCmdArgs(args);
+
+                // Creates a new job instance
+                AutotagPDFJob autotagPDFJob = new AutotagPDFJob(asset).SetParams(autotagPDFParams);
+
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(autotagPDFJob);
+                PDFServicesResponse<AutotagPDFResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<AutotagPDFResult>(location, typeof(AutotagPDFResult));
+
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.TaggedPDF;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+
+                // Creating output streams and copying stream asset's content to it
+                String outputPath = GetOutputFilePathFromCmdArgs(args);
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() +  outputPath + "autotagPDFInput-tagged.pdf");
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
+
+                if (autotagPDFParams != null && autotagPDFParams.IsGenerateReport)
+                {
+                    // Get content from the resulting asset(s)
+                    IAsset resultAssetReport = pdfServicesResponse.Result.Report;
+                    StreamAsset streamAssetReport = pdfServices.GetContent(resultAssetReport);
+
+                    // Creating output streams and copying stream asset's content to it
+                    Stream outputStreamReport =
+                        File.OpenWrite(Directory.GetCurrentDirectory() + outputPath + "autotagPDFInput-report.xlsx");
+                    streamAssetReport.Stream.CopyTo(outputStreamReport);
+                    outputStreamReport.Close();
+                }
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+        }
+
+        static void ConfigureLogging()
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
     }
-
-    private static Boolean GetShiftHeadingsFromCmdArgs(String[] args)
-    {
-        return Array.Exists(args, element => element == "--shift_headings");
-    }
-
-    private static Boolean GetGenerateReportFromCmdArgs(String[] args)
-    {
-        return Array.Exists(args, element => element == "--report");
-    }
-
-    private static String GetInputFilePathFromCmdArgs(String[] args)
-    {
-        String inputFilePath = @"autotagPdfInput.pdf";
-        int inputFilePathIndex = Array.IndexOf(args, "--input");
-        if (inputFilePathIndex >= 0 && inputFilePathIndex < args.Length - 1)
-        {
-            inputFilePath = args[inputFilePathIndex + 1];
-        }
-        else
-            log.Info("input file not specified, using default value : autotagPdfInput.pdf");
-
-        return inputFilePath;
-    }
-
-    private static String GetOutputFilePathFromCmdArgs(String[] args)
-    {
-        String outputFilePath = Directory.GetCurrentDirectory() + "/output/";
-        int outputFilePathIndex = Array.IndexOf(args, "--output");
-        if (outputFilePathIndex >= 0 && outputFilePathIndex < args.Length - 1)
-        {
-            outputFilePath = args[outputFilePathIndex + 1];
-        }
-        else
-            log.Info("output path not specified, using default value : /output/");
-
-        return outputFilePath;
-    }
-
-    static void Main(string[] args)
-    {
-        //Configure the logging
-        ConfigureLogging();
-
-        log.Info("--input " + GetInputFilePathFromCmdArgs(args));
-        log.Info("--output " + GetOutputFilePathFromCmdArgs(args));
-        log.Info("--report " + GetGenerateReportFromCmdArgs(args));
-        log.Info("--shift_headings " + GetShiftHeadingsFromCmdArgs(args));
-
-        try
-        {
-            // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                    .WithClientId("PDF_SERVICES_CLIENT_ID")
-                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                    .Build();
-
-            //Create an ExecutionContext using credentials and create a new operation instance.
-            ExecutionContext executionContext = ExecutionContext.Create(credentials);
-            AutotagPDFOperation autotagPDFOperation = AutotagPDFOperation.CreateNew();
-
-            // Provide an input FileRef for the operation
-            autotagPDFOperation.SetInput(FileRef.CreateFromLocalFile(GetInputFilePathFromCmdArgs(args)));
-
-            // Get and Build AutotagPDF options from command line args and set them into the operation
-            AutotagPDFOptions autotagPDFOptions = GetOptionsFromCmdArgs(args);
-            autotagPDFOperation.SetOptions(autotagPDFOptions);
-
-            // Execute the operation
-            AutotagPDFOutput autotagPDFOutput = autotagPDFOperation.Execute(executionContext);
-
-            // Save the output files at the specified location
-            string outputPath = GetOutputFilePathFromCmdArgs(args);
-            FileRef taggedPDF = autotagPDFOutput.GetTaggedPDF();
-            taggedPDF.SaveAs(Directory.GetCurrentDirectory() + outputPath + "autotagPDFInput-tagged.pdf");
-            if (autotagPDFOptions != null && autotagPDFOptions.IsGenerateReport)
-                autotagPDFOutput.GetReport()
-                    .SaveAs(Directory.GetCurrentDirectory() + outputPath + "autotagPDFInput-report.xlsx");
-        }
-        catch (ServiceUsageException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (ServiceApiException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (SDKException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (IOException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    catch (Exception ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-    }
-
-    static void ConfigureLogging()
-    {
-        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-    }
-}
 }
 ```
 
