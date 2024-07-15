@@ -178,8 +178,16 @@ Change types include the following:
 
 Minor and Patch releases are backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
-
+h
 ## Change history
+
+### July 17, 2024; PDF Accessibility Checker API Added
+
+- Added [PDF Accessibility Checker](../pdf-services-api/howtos/pdf-accessibility-checker-api/) operation in PDF Services API to check accessibility on specified pages of PDF document.
+
+### July 12, 2024; Server Side Release - Get PDF Properties
+
+- Bug fixes [Get PDF Properties](../pdf-services-api/howtos/pdf-properties/) fixed data issue related to permissions in JSON response.
 
 ### July 08, 2024; PDF Watermark API Added
 
