@@ -93,14 +93,14 @@ module.exports = {
                     title: 'Sales FAQ',
                     path: '../document-services/faq/sales/'
                 },
-                {
-                    title: 'Tech Support FAQ',
-                    path: '../document-services/faq/tech-support/'
-                },
-                {
-                    title: 'Contact Us',
-                    path: '../document-services/pricing/contact/'
-                }
+                    {
+                        title: 'Tech Support FAQ',
+                        path: '../document-services/faq/tech-support/'
+                    },
+                    {
+                        title: 'Contact Us',
+                        path: '../document-services/pricing/contact/'
+                    }
                 ]
             },
             {
@@ -577,6 +577,10 @@ module.exports = {
                 path: 'overview/support.md'
             },
             {
+                title: 'FAQ',
+                path: 'overview/faq.md'
+            },
+            {
                 title: 'API Status',
                 path: 'overview/status.md'
             },
@@ -829,14 +833,14 @@ module.exports = {
         ]
     },
     plugins: [`@adobe/gatsby-theme-aio`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/pages`,
-        name: "pages",
-        ignore: [`**/legacy-documentation`]
-      }
-    }
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                path: `${__dirname}/src/pages`,
+                name: "pages",
+                ignore: [`**/legacy-documentation`]
+            }
+        }
     ],
     pathPrefix: process.env.PATH_PREFIX || '/document-services/docs/',
 };
