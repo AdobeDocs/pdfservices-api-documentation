@@ -30,6 +30,10 @@ following formats:
 If a Microsoft Word/PowerPoint input file has an embedded TrueType font, the output pdf will also contain the same embedded TrueType font.
 For more information, refer [Benefits of embedding custom fonts](https://support.microsoft.com/en-us/office/benefits-of-embedding-custom-fonts-cb3982aa-ea76-4323-b008-86670f222dbc#OfficeVersion=Windows).
 
+<InlineAlert slots="text"/>
+
+We are implementing a new security validation that will impose restrictions on the conversion requests in which:<br/>1. URL Scheme is not HTTPs.<br/>2. Hostname resolves to non-routable IP Address (Private/Local/Link local, etc). This will also include cases which will include redirects with non-routable IP addresses.
+
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
