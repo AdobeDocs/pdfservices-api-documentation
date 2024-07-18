@@ -32,7 +32,7 @@ For more information, refer [Benefits of embedding custom fonts](https://support
 
 <InlineAlert slots="text"/>
 
-We are implementing a new security validation that will impose restrictions on the conversion requests in which:<br/>1. URL Scheme is not HTTPs.<br/>2. Hostname resolves to non-routable IP Address (Private/Local/Link local, etc). This will also include cases which will include redirects with non-routable IP addresses.
+We have implemented a new security validation for HTML to PDF conversion for requests containing urls where:<br/>1. The URL Scheme is not HTTPS.<br/>2. The hostname resolves to a non-routable IP address. This encompasses scenarios where redirects lead to non-routable IP addresses as well.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
