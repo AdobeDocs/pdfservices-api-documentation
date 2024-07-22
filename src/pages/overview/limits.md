@@ -46,7 +46,10 @@ Document Transactions for the Operations below resulting in a Document will be c
 | Delete Pages        | Delete one or more pages in a single PDF                                                                                                                                                                                       | Document Transaction                 |
 | Rotate Pages        | Rotate one or more pages in a single PDF                                                                                                                                                                                       | Document Transaction                 |
 | Reorder Pages       | Reorder one or more pages in a single PDF                                                                                                                                                                                      | Document Transaction                 |
-| Get PDF Properties  | Get XMP metadata properties of a PDF file                                                                                                                                                                                      | Document Transaction: the 50-page count does not apply|
+| Get PDF Properties  | Get XMP metadata properties of a PDF
+file
+Document Transaction: the 50-page count does not apply                |
+| Accessibility Checker  | Check accessibility of a PDF and generate an accessibility report                                                                                                                                                                               | Document Transaction: the 50-page count does not apply|
 | Watermark              | Add a watermark to specified pages in a PDF                                                                                                                                                                                    | Document Transaction                 |
 
 ### Examples
