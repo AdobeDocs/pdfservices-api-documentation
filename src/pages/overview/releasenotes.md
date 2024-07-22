@@ -181,8 +181,8 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
-### July, 2024; .NET SDK 4.0.0 major release
-- Released Adobe PDF Services Node SDK v4.0.0, introducing new interfaces fully leveraging power of new PDF Services rest APIs.
+### July 22, 2024; .NET SDK 4.0.0 major release
+- Released Adobe PDF Services .NET SDK v4.0.0, introducing new interfaces fully leveraging power of new PDF Services rest APIs.
 - Added support for delete asset, refresh download URI and webhook notifiers.
 - Eliminated need of storage to save intermediate result by removing dependency on temporary storage.
 - Extended I/O capabilities by introducing external storage for PDF Services operations.
