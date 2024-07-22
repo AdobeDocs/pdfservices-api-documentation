@@ -79,54 +79,77 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // cd PDFPropertiesAsJSONObject/
 // dotnet run GetPDFProperties.csproj
 
+
 namespace GetPDFProperties
 {
     class Program
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
         static void Main()
-    {
-        //Configure the logging
-        ConfigureLogging();
-        try
         {
-            // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                    .WithClientId("PDF_SERVICES_CLIENT_ID")
-                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+            //Configure the logging
+            ConfigureLogging();
+            try
+            {
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
+
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
+
+                // Creates an asset(s) from source file(s) and upload
+                using Stream inputStream = File.OpenRead(@"pdfPropertiesInput.pdf");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
+
+                // Create parameters for the job
+                PDFPropertiesParams pdfPropertiesParams = PDFPropertiesParams.PDFPropertiesParamsBuilder()
+                    .IncludePageLevelProperties()
                     .Build();
 
-            //Create an ExecutionContext using credentials and create a new operation instance.
-            ExecutionContext executionContext = ExecutionContext.Create(credentials);
-            PDFPropertiesOperation pdfPropertiesOperation = PDFPropertiesOperation.CreateNew();
+                // Creates a new job instance
+                PDFPropertiesJob pdfPropertiesJob = new PDFPropertiesJob(asset);
+                pdfPropertiesJob.SetParams(pdfPropertiesParams);
 
-            // Provide an input FileRef for the operation
-            FileRef source = FileRef.CreateFromLocalFile(@"pdfPropertiesInput.pdf");
-            pdfPropertiesOperation.SetInput(source);
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(pdfPropertiesJob);
+                PDFServicesResponse<PDFPropertiesResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<PDFPropertiesResult>(location, typeof(PDFPropertiesResult));
 
-            // Build PDF Properties options to include page level properties and set them into the operation
-            PDFPropertiesOptions pdfPropertiesOptions = PDFPropertiesOptions.PDFPropertiesOptionsBuilder()
-            .IncludePageLevelProperties(true)
-            .Build();
-            pdfPropertiesOperation.SetOptions(pdfPropertiesOptions);
+                PDFProperties pdfProperties = pdfServicesResponse.Result.PDFProperties;
 
-            // Execute the operation ang get properties of the PDF in PDFProperties object.
-            PDFProperties pdfProperties = pdfPropertiesOperation.Execute(executionContext);
-            Console.WriteLine("The resultant PDF Properties are: " + result.ToString());
-
+                // Fetch the requisite properties of the specified PDF.
+                Console.WriteLine("The resultant PDF Properties are: " + pdfProperties.ToString());
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
         }
-        catch (ServiceUsageException ex)
-        {
-            log.Error("Exception encountered while executing operation", ex);
-        }
-        // Catch more errors here. . .
-    }
 
         static void ConfigureLogging()
-    {
-        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-    }
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
     }
 }
 ```

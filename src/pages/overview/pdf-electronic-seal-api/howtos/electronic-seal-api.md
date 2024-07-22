@@ -285,6 +285,7 @@ namespace ElectronicSeal
     {
         // Initialize the logger.
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
         static void Main()
         {
             //Configure the logging
@@ -292,79 +293,91 @@ namespace ElectronicSeal
 
             try
             {
-                // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                    .WithClientId("PDF_SERVICES_CLIENT_ID")
-                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                    .Build();
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
 
-                // Create an ExecutionContext using credentials.
-                ExecutionContext executionContext = ExecutionContext.Create(credentials);
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
 
-                //Set the input document to perform the sealing operation
-                FileRef sourceFile = FileRef.CreateFromLocalFile(@"SampleInvoice.pdf");
+                // Creates an asset(s) from source file(s) and upload
+                using Stream inputStream = File.OpenRead(@"SampleInvoice.pdf");
+                using Stream inputStreamSealImage = File.OpenRead(@"sampleSealImage.png");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
+                IAsset sealImageAsset =
+                    pdfServices.Upload(inputStreamSealImage, PDFServicesMediaType.PNG.GetMIMETypeValue());
 
-                //Set the background seal image for signature , if required.
-                FileRef sealImageFile = FileRef.CreateFromLocalFile(@"sampleSealImage.png");
+                // Set the document level permission to be applied for output document
+                DocumentLevelPermission documentLevelPermission = DocumentLevelPermission.FORM_FILLING;
 
-                //Set the Seal Field Name to be created in input PDF document.
-                string sealFieldName = "Signature1";
+                // Sets the Seal Field Name to be created in input PDF document.
+                String sealFieldName = "Signature1";
 
-                //Set the page number in input document for applying seal.
+                // Sets the page number in input document for applying seal.
                 int sealPageNumber = 1;
 
-                //Set if seal should be visible or invisible.
+                // Sets if seal should be visible or invisible.
                 bool sealVisible = true;
 
-                //Create FieldLocation instance and set the coordinates for applying signature
+                // Creates FieldLocation instance and set the coordinates for applying signature
                 FieldLocation fieldLocation = new FieldLocation(150, 250, 350, 200);
 
-                //Create FieldOptions instance with required details.
-                FieldOptions sealFieldOptions = new FieldOptions.Builder(sealFieldName)
-                .SetVisible(sealVisible)
-                .SetFieldLocation(fieldLocation)
-                .SetPageNumber(sealPageNumber)
-                .Build();
+                // Create FieldOptions instance with required details.
+                FieldOptions fieldOptions = new FieldOptions.Builder(sealFieldName)
+                    .SetVisible(sealVisible)
+                    .SetFieldLocation(fieldLocation)
+                    .SetPageNumber(sealPageNumber)
+                    .Build();
 
-                //Set the name of TSP Provider being used.
-                string providerName = "<PROVIDER_NAME>";
+                // Sets the name of TSP Provider being used.
+                String providerName = "<PROVIDER_NAME>";
 
-                //Set the access token to be used to access TSP provider hosted APIs.
-                string accessToken = "<ACCESS_TOKEN>";
+                // Sets the access token to be used to access TSP provider hosted APIs.
+                String accessToken = "<ACCESS_TOKEN>";
 
-                //Set the credential ID.
-                string credentialID = "<CREDENTIAL_ID>";
+                // Sets the credential ID.
+                String credentialID = "<CREDENTIAL_ID>";
 
-                //Set the PIN generated while creating credentials.
-                string pin = "<PIN>";
+                // Sets the PIN generated while creating credentials.
+                String pin = "<PIN>";
 
+                // Creates CSCAuthContext instance using access token and token type.
                 CSCAuthContext cscAuthContext = new CSCAuthContext(accessToken, "Bearer");
 
-                //Create CertificateCredentials instance with required certificate details.
+                // Create CertificateCredentials instance with required certificate details.
                 CertificateCredentials certificateCredentials = CertificateCredentials.CSCCredentialBuilder()
-                .WithProviderName(providerName)
-                .WithCredentialID(credentialID)
-                .WithPin(pin)
-                .WithCSCAuthContext(cscAuthContext)
-                .Build();
+                    .WithProviderName(providerName)
+                    .WithCredentialID(credentialID)
+                    .WithPin(pin)
+                    .WithCSCAuthContext(cscAuthContext)
+                    .Build();
 
-                //Create SealingOptions instance with all the sealing parameters.
-                SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions).build();
+                // Create parameters for the job
+                PDFElectronicSealParams pdfElectronicSealParams =
+                    PDFElectronicSealParams.PDFElectronicSealParamsBuilder(certificateCredentials, fieldOptions)
+                        .WithDocumentLevelPermission(documentLevelPermission)
+                        .Build();
 
-                //Create the PDFElectronicSealOperation instance using the PDFElectronicSealOptions instance
-                PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.CreateNew(sealOptions);
+                // Creates a new job instance
+                PDFElectronicSealJob pdfElectronicSealJob = new PDFElectronicSealJob(asset, pdfElectronicSealParams);
+                pdfElectronicSealJob.SetSealImageAsset(sealImageAsset);
 
-                //Set the input source file for PDFElectronicSealOperation instance
-                pdfElectronicSealOperation.SetInput(sourceFile);
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(pdfElectronicSealJob);
+                PDFServicesResponse<PDFElectronicSealResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<PDFElectronicSealResult>(location, typeof(PDFElectronicSealResult));
 
-                //Set the optional input seal image for PDFElectronicSealOperation instance
-                pdfElectronicSealOperation.SetSealImage(sealImageFile);
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.Asset;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
 
-                //Execute the operation
-                FileRef result = pdfElectronicSealOperation.Execute(executionContext);
-
-                // Save the output at specified location.
-                result.SaveAs(output/sealedOutput.pdf);
+                // Creating output streams and copying stream asset's content to it
+                String outputFilePath = "/output/sealedOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
             }
             catch (ServiceUsageException ex)
             {
@@ -386,8 +399,8 @@ namespace ElectronicSeal
             {
                 log.Error("Exception encountered while executing operation", ex);
             }
-
         }
+
         static void ConfigureLogging()
         {
             ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
@@ -829,10 +842,11 @@ public class ElectronicSealWithAppearanceOptions {
 
 namespace ElectronicSealWithAppearanceOptions
 {
-    class Program
+        class Program
     {
         // Initialize the logger.
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
         static void Main()
         {
             //Configure the logging
@@ -840,23 +854,22 @@ namespace ElectronicSealWithAppearanceOptions
 
             try
             {
-                // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                    .WithClientId("PDF_SERVICES_CLIENT_ID")
-                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                    .Build();
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
 
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
 
-                // Create an ExecutionContext using credentials.
-                ExecutionContext executionContext = ExecutionContext.Create(credentials);
+                // Creates an asset(s) from source file(s) and upload
+                using Stream inputStream = File.OpenRead(@"SampleInvoice.pdf");
+                using Stream inputStreamSealImage = File.OpenRead(@"sampleSealImage.png");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
+                IAsset sealImageAsset =
+                    pdfServices.Upload(inputStreamSealImage, PDFServicesMediaType.PNG.GetMIMETypeValue());
 
-                //Set the input document to perform the sealing operation
-                FileRef sourceFile = FileRef.CreateFromLocalFile(@"SampleInvoice.pdf");
-
-                //Set the background seal image for signature , if required.
-                FileRef sealImageFile = FileRef.CreateFromLocalFile(@"sampleSealImage.png");
-
-                //Create AppearanceOptions and add the required signature appearance items
+                // Create AppearanceOptions and add the required signature display items to it
                 AppearanceOptions appearanceOptions = new AppearanceOptions();
                 appearanceOptions.AddItem(AppearanceItem.NAME);
                 appearanceOptions.AddItem(AppearanceItem.LABELS);
@@ -864,66 +877,77 @@ namespace ElectronicSealWithAppearanceOptions
                 appearanceOptions.AddItem(AppearanceItem.SEAL_IMAGE);
                 appearanceOptions.AddItem(AppearanceItem.DISTINGUISHED_NAME);
 
-                //Set the Seal Field Name to be created in input PDF document.
-                string sealFieldName = "Signature1";
+                // Set the document level permission to be applied for output document
+                DocumentLevelPermission documentLevelPermission = DocumentLevelPermission.FORM_FILLING;
 
-                //Set the page number in input document for applying seal.
+                // Sets the Seal Field Name to be created in input PDF document.
+                String sealFieldName = "Signature1";
+
+                // Sets the page number in input document for applying seal.
                 int sealPageNumber = 1;
 
-                //Set if seal should be visible or invisible.
+                // Sets if seal should be visible or invisible.
                 bool sealVisible = true;
 
-                //Create FieldLocation instance and set the coordinates for applying signature
+                // Creates FieldLocation instance and set the coordinates for applying signature
                 FieldLocation fieldLocation = new FieldLocation(150, 250, 350, 200);
-                
-                //Create FieldOptions instance with required details.
+
+                // Create FieldOptions instance with required details.
                 FieldOptions fieldOptions = new FieldOptions.Builder(sealFieldName)
                     .SetVisible(sealVisible)
                     .SetFieldLocation(fieldLocation)
                     .SetPageNumber(sealPageNumber)
                     .Build();
 
-                //Set the name of TSP Provider being used.
-                string providerName = "<PROVIDER_NAME>";
+                // Sets the name of TSP Provider being used.
+                String providerName = "<PROVIDER_NAME>";
 
-                //Set the access token to be used to access TSP provider hosted APIs.
-                string accessToken = "<ACCESS_TOKEN>";
+                // Sets the access token to be used to access TSP provider hosted APIs.
+                String accessToken = "<ACCESS_TOKEN>";
 
-                //Set the credential ID.
-                string credentialID = "<CREDENTIAL_ID>";
+                // Sets the credential ID.
+                String credentialID = "<CREDENTIAL_ID>";
 
-                //Set the PIN generated while creating credentials.
-                string pin = "<PIN>";
+                // Sets the PIN generated while creating credentials.
+                String pin = "<PIN>";
 
+                // Creates CSCAuthContext instance using access token and token type.
                 CSCAuthContext cscAuthContext = new CSCAuthContext(accessToken, "Bearer");
 
-                //Create CertificateCredentials instance with required certificate details.
+                // Create CertificateCredentials instance with required certificate details.
                 CertificateCredentials certificateCredentials = CertificateCredentials.CSCCredentialBuilder()
                     .WithProviderName(providerName)
                     .WithCredentialID(credentialID)
                     .WithPin(pin)
                     .WithCSCAuthContext(cscAuthContext)
                     .Build();
-                
-                
-                //Create SealingOptions instance with all the sealing parameters.
-                SealOptions sealOptions = new SealOptions.Builder(certificateCredentials, fieldOptions)
-                    .WithAppearanceOptions(appearanceOptions).Build();
 
-                //Create the PDFElectronicSealOperation instance using the SealOptions instance
-                PDFElectronicSealOperation pdfElectronicSealOperation = PDFElectronicSealOperation.CreateNew(sealOptions);
+                // Create parameters for the job
+                PDFElectronicSealParams pdfElectronicSealParams =
+                    PDFElectronicSealParams.PDFElectronicSealParamsBuilder(certificateCredentials, fieldOptions)
+                        .WithDocumentLevelPermission(documentLevelPermission)
+                        .WithAppearanceOptions(appearanceOptions)
+                        .Build();
 
-                //Set the input source file for PDFElectronicSealOperation instance
-                pdfElectronicSealOperation.SetInput(sourceFile);
+                // Creates a new job instance
+                PDFElectronicSealJob pdfElectronicSealJob = new PDFElectronicSealJob(asset, pdfElectronicSealParams);
+                pdfElectronicSealJob.SetSealImageAsset(sealImageAsset);
 
-                //Set the optional input seal image for PDFElectronicSealOperation instance
-                pdfElectronicSealOperation.SetSealImage(sealImageFile);
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(pdfElectronicSealJob);
+                PDFServicesResponse<PDFElectronicSealResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<PDFElectronicSealResult>(location, typeof(PDFElectronicSealResult));
 
-                //Execute the operation
-                FileRef result = pdfElectronicSealOperation.Execute(executionContext);
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.Asset;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
 
-                // Save the output at specified location.
-                result.SaveAs(output/sealedOutput.pdf);
+                // Creating output streams and copying stream asset's content to it
+                String outputFilePath = "/output/sealedOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
             }
             catch (ServiceUsageException ex)
             {
@@ -945,8 +969,8 @@ namespace ElectronicSealWithAppearanceOptions
             {
                 log.Error("Exception encountered while executing operation", ex);
             }
-
         }
+
         static void ConfigureLogging()
         {
             ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
@@ -1292,7 +1316,7 @@ The sample below performs electronic seal operation with a trusted timestamp on 
 
 Please refer to the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, Node JS, Python, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
 #### Java
 
@@ -1408,6 +1432,155 @@ public class ElectronicSealWithTimeStampAuthority {
 }
 
 ```
+
+
+#### .NET
+
+```javascript
+// Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
+// Run the sample:
+// cd ElectronicSealWithTimeStampAuthority/
+// dotnet run ElectronicSealWithTimeStampAuthority.csproj
+
+namespace ElectronicSealWithTimeStampAuthority
+{
+        class Program
+    {
+        // Initialize the logger.
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
+        static void Main()
+        {
+            //Configure the logging
+            ConfigureLogging();
+
+            try
+            {
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
+
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
+
+                // Creates an asset(s) from source file(s) and upload
+                using Stream inputStream = File.OpenRead(@"SampleInvoice.pdf");
+                using Stream inputStreamSealImage = File.OpenRead(@"sampleSealImage.png");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
+                IAsset sealImageAsset =
+                    pdfServices.Upload(inputStreamSealImage, PDFServicesMediaType.PNG.GetMIMETypeValue());
+
+                // Set the document level permission to be applied for output document
+                DocumentLevelPermission documentLevelPermission = DocumentLevelPermission.FORM_FILLING;
+
+                // Sets the Seal Field Name to be created in input PDF document.
+                String sealFieldName = "Signature1";
+
+                // Sets the page number in input document for applying seal.
+                int sealPageNumber = 1;
+
+                // Sets if seal should be visible or invisible.
+                bool sealVisible = true;
+
+                // Creates FieldLocation instance and set the coordinates for applying signature
+                FieldLocation fieldLocation = new FieldLocation(150, 250, 350, 200);
+
+                // Create FieldOptions instance with required details.
+                FieldOptions fieldOptions = new FieldOptions.Builder(sealFieldName)
+                    .SetVisible(sealVisible)
+                    .SetFieldLocation(fieldLocation)
+                    .SetPageNumber(sealPageNumber)
+                    .Build();
+
+                // Sets the name of TSP Provider being used.
+                String providerName = "<PROVIDER_NAME>";
+
+                // Sets the access token to be used to access TSP provider hosted APIs.
+                String accessToken = "<ACCESS_TOKEN>";
+
+                // Sets the credential ID.
+                String credentialID = "<CREDENTIAL_ID>";
+
+                // Sets the PIN generated while creating credentials.
+                String pin = "<PIN>";
+
+                // Creates CSCAuthContext instance using access token and token type.
+                CSCAuthContext cscAuthContext = new CSCAuthContext(accessToken, "Bearer");
+
+                // Create CertificateCredentials instance with required certificate details.
+                CertificateCredentials certificateCredentials = CertificateCredentials.CSCCredentialBuilder()
+                    .WithProviderName(providerName)
+                    .WithCredentialID(credentialID)
+                    .WithPin(pin)
+                    .WithCSCAuthContext(cscAuthContext)
+                    .Build();
+
+                //Create TSABasicAuthCredentials using username and password
+                TSABasicAuthCredentials tsaBasicAuthCredentials =
+                    new TSABasicAuthCredentials("<USERNAME>", "<PASSWORD>");
+
+                // Set the Time Stamp Authority Options using url and TSA Auth credentials
+                TSAOptions tsaOptions = new RFC3161TSAOptions("<TIMESTAMP_URL>", tsaBasicAuthCredentials);
+
+                // Create parameters for the job
+                PDFElectronicSealParams pdfElectronicSealParams =
+                    PDFElectronicSealParams.PDFElectronicSealParamsBuilder(certificateCredentials, fieldOptions)
+                        .WithDocumentLevelPermission(documentLevelPermission)
+                        .WithTSAOptions(tsaOptions)
+                        .Build();
+
+                // Creates a new job instance
+                PDFElectronicSealJob pdfElectronicSealJob = new PDFElectronicSealJob(asset, pdfElectronicSealParams);
+                pdfElectronicSealJob.SetSealImageAsset(sealImageAsset);
+
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(pdfElectronicSealJob);
+                PDFServicesResponse<PDFElectronicSealResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<PDFElectronicSealResult>(location, typeof(PDFElectronicSealResult));
+
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.Asset;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+
+                // Creating output streams and copying stream asset's content to it
+                String outputFilePath = "/output/sealedOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+        }
+
+        static void ConfigureLogging()
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
+    }
+}
+```
+
 
 #### Node JS
 

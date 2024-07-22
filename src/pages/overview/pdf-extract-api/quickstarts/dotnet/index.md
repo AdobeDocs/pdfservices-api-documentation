@@ -10,8 +10,8 @@ To get started using Adobe PDF Extract API, let's walk through a simple scenario
 
 To complete this guide, you will need:
 
-* [.NET: version 6.0 or above](https://dotnet.microsoft.com/en-us/download)
-* [.Net SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+* [.NET: version 8.0 or above](https://dotnet.microsoft.com/en-us/download)
+* [.Net SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 * A build tool: Either Visual Studio or .NET Core CLI.
 * An Adobe ID. If you do not have one, the credential setup will walk you through creating one.
 * A way to edit code. No specific editor is required for this guide.
@@ -51,16 +51,16 @@ To complete this guide, you will need:
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="log4net" Version="2.0.12" />
-        <PackageReference Include="Adobe.PDFServicesSDK" Version="3.5.1" />
+        <PackageReference Include="Adobe.PDFServicesSDK" Version="4.0.0" />
+        <PackageReference Include="log4net" Version="2.0.17" />
     </ItemGroup>
 
     <ItemGroup>
-        <None Update="extractPDFInput.pdf">
+        <None Update="Adobe Extract API Sample.pdf">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
         <None Update="log4net.config">
@@ -70,6 +70,8 @@ To complete this guide, you will need:
 
 </Project>
 ```
+
+This file will define what dependencies we need and how the application will be built.
 
 Our application will take a PDF, `Adobe Extract API Sample.pdf` (downloadable from [here](/Adobe%20Extract%20API%20Sample.pdf)) and extract it's contents. The results will be saved as a ZIP file, `ExtractTextInfoFromPDF.zip`. We will then parse the results from the ZIP and print out the text of any `H1` headers found in the PDF.
 
@@ -82,21 +84,21 @@ Now you're ready to begin coding.
 1) We'll begin by including our required dependencies:
 
 ```javascript
-using System.Text.Json;
-using System.IO.Compression;
-using System.IO;
 using System;
-using System.Collections.Generic;
-using log4net.Repository;
-using log4net.Config;
-using log4net;
+using System.IO;
+using System.IO.Compression;
 using System.Reflection;
+using System.Text.Json;
 using Adobe.PDFServicesSDK;
 using Adobe.PDFServicesSDK.auth;
-using Adobe.PDFServicesSDK.pdfops;
-using Adobe.PDFServicesSDK.io;
 using Adobe.PDFServicesSDK.exception;
-using Adobe.PDFServicesSDK.options.extractpdf;
+using Adobe.PDFServicesSDK.io;
+using Adobe.PDFServicesSDK.pdfjobs.jobs;
+using Adobe.PDFServicesSDK.pdfjobs.parameters.extractpdf;
+using Adobe.PDFServicesSDK.pdfjobs.results;
+using log4net;
+using log4net.Config;
+using log4net.Repository;
 ```
 
 2) Now let's define our main class and `Main` method:
@@ -109,83 +111,89 @@ namespace ExtractTextInfoFromPDF
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         static void Main()
         {
-		}
-	}
+            
+        }
+    }
 }
 ```
 
-3) Now let's define our input and output:
-
-```javascript
-String input = "Adobe Extract API Sample.pdf";
-
-String output = "ExtractTextInfoFromPDF.zip";
-if(File.Exists(Directory.GetCurrentDirectory() + output))
-{
-	File.Delete(Directory.GetCurrentDirectory() + output);
-}
-```
-
-This defines what our output ZIP will be and optionally deletes it if it already exists. Then we define what PDF will be extracted. (You can download the source we used [here](/Adobe%20Extract%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic. 
-
-4) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+3) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
 - **Windows:**
-    - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
-    - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+  - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+  - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
 - **MacOS/Linux:**
-    - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
-    - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+  - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+  - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
-5) Next, we setup the SDK to use our credentials.
+4) Next, we can create our credentials and use them to create a PDF Services instance
 
 ```javascript
-// Initial setup, create credentials instance.
-Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-    .WithClientId(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"))
-    .WithClientSecret(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"))
-    .Build();
+// Initial setup, create credentials instance
+ICredentials credentials = new ServicePrincipalCredentials(
+        Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+        Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
 
-// Create an ExecutionContext using credentials and create a new operation instance.
-ExecutionContext executionContext = ExecutionContext.Create(credentials);
+// Creates a PDF Services instance
+PDFServices pdfServices = new PDFServices(credentials);
 ```
 
-This code both points to the credentials downloaded previously as well as sets up an execution context object that will be used later.
-
-6) Now, let's create the operation:
+5) Now, let's upload the asset:
 
 ```javascript
-ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
-
-// Provide an input FileRef for the operation.
-FileRef sourceFileRef = FileRef.CreateFromLocalFile(input);
-extractPdfOperation.SetInputFile(sourceFileRef);
-
-// Build ExtractPDF options and set them into the operation.
-ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPDFOptionsBuilder()
-	.AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT}))
-	.Build();
-extractPdfOperation .SetOptions(extractPdfOptions);
+// Creates an asset from source file and upload
+IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
 ```
 
-This set of code defines what we're doing (an Extract operation), points to our local file and specifies the input is a PDF, and then defines options for the Extract call. PDF Extract API has a few different options, but in this example, we're simply asking for the most basic of extractions, the textual content of the document. 
+we define what PDF will be extracted. (You can download the source we used [here](/Adobe%20Extract%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic.
 
-7) The next code block executes the operation:
+6) Now, let's create the job:
 
 ```javascript
-// Execute the operation.
-FileRef result = extractPdfOperation.Execute(executionContext);
+// Create parameters for the job
+ExtractPDFParams extractPDFParams = ExtractPDFParams.ExtractPDFParamsBuilder()
+        .AddElementToExtract(ExtractElementType.TEXT)
+        .Build();
 
-// Save the result to the specified location.
-result.SaveAs(Directory.GetCurrentDirectory() + output);
+// Creates a new job instance
+ExtractPDFJob extractPDFJob = new ExtractPDFJob(asset)
+        .SetParams(extractPDFParams);
 ```
 
-This code runs the Extraction process and then stores the result zip to the file system. 
+This set of code defines what we're doing (an Extract operation),
+it defines parameters for the Extract job. PDF Extract API has a few different options, but in this example, we're simply asking for the most basic of extractions, the textual content of the document.
 
-8) In this block, we read in the ZIP file, extract the JSON result file, and parse it: 
+7) The next code block submits the job and gets the job result:
 
 ```javascript
-ZipArchive archive = ZipFile.OpenRead(Directory.GetCurrentDirectory() + output);
+// Submits the job and gets the job result
+String location = pdfServices.Submit(extractPDFJob);
+PDFServicesResponse<ExtractPDFResult> pdfServicesResponse =
+        pdfServices.GetJobResult<ExtractPDFResult>(location, typeof(ExtractPDFResult));
+
+// Get content from the resulting asset(s)
+IAsset resultAsset = pdfServicesResponse.Result.Content;
+StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+```
+
+This code runs the Extraction process, gets the content of the result zip in stream asset.
+
+8) The next code block saves the result at the specified location:
+
+```javascript
+// Creating output streams and copying stream asset's content to it
+String outputFilePath = "/output/ExtractTextInfoFromPDF.zip";
+new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+streamAsset.Stream.CopyTo(outputStream);
+outputStream.Close();
+```
+
+
+9) In this block, we read in the ZIP file, extract the JSON result file, and parse it:
+
+```javascript
+ZipArchive archive = ZipFile.OpenRead(Directory.GetCurrentDirectory() + "/ExtractTextInfoFromPDF.zip");
 ZipArchiveEntry jsonEntry = archive.GetEntry("structuredData.json");
 StreamReader osr = new StreamReader(jsonEntry.Open());
 String contents = osr.ReadToEnd();
@@ -193,7 +201,7 @@ String contents = osr.ReadToEnd();
 JsonElement data = JsonSerializer.Deserialize<JsonElement>(contents);
 ```
 
-9) Finally we can loop over the result and print out any found element that is an `H1`:
+10) Finally we can loop over the result and print out any found element that is an `H1`:
 
 ```javascript
 JsonElement elements = data.GetProperty("elements");
@@ -212,71 +220,74 @@ foreach(JsonElement element in elements.EnumerateArray()) {
 Here's the complete application (`Program.cs`):
 
 ```javascript
-using System.Text.Json;
-using System.IO.Compression;
-using System.IO;
 using System;
-using System.Collections.Generic;
-using log4net.Repository;
-using log4net.Config;
-using log4net;
+using System.IO;
+using System.IO.Compression;
 using System.Reflection;
+using System.Text.Json;
 using Adobe.PDFServicesSDK;
 using Adobe.PDFServicesSDK.auth;
-using Adobe.PDFServicesSDK.pdfops;
-using Adobe.PDFServicesSDK.io;
 using Adobe.PDFServicesSDK.exception;
-using Adobe.PDFServicesSDK.options.extractpdf;
+using Adobe.PDFServicesSDK.io;
+using Adobe.PDFServicesSDK.pdfjobs.jobs;
+using Adobe.PDFServicesSDK.pdfjobs.parameters.extractpdf;
+using Adobe.PDFServicesSDK.pdfjobs.results;
+using log4net;
+using log4net.Config;
+using log4net.Repository;
 
 namespace ExtractTextInfoFromPDF
 {
     class Program
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+        
         static void Main()
         {
             // Configure the logging.
             ConfigureLogging();
             try
             {
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
 
-                String input = "Adobe Extract API Sample.pdf";
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
 
-                String output = "ExtractTextInfoFromPDF.zip";
-                if(File.Exists(Directory.GetCurrentDirectory() + output))
-                {
-                    File.Delete(Directory.GetCurrentDirectory() + output);
-                }
+                // Creates an asset from source file and upload
+                using Stream inputStream = File.OpenRead(@"Adobe Extract API Sample.pdf");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
 
-                // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                    .WithClientId(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"))
-                    .WithClientSecret(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"))
+                // Create parameters for the job
+                ExtractPDFParams extractPDFParams = ExtractPDFParams.ExtractPDFParamsBuilder()
+                    .AddElementToExtract(ExtractElementType.TEXT)
                     .Build();
 
-                // Create an ExecutionContext using credentials and create a new operation instance.
-                ExecutionContext executionContext = ExecutionContext.Create(credentials);
-                ExtractPDFOperation extractPdfOperation = ExtractPDFOperation.CreateNew();
+                // Creates a new job instance
+                ExtractPDFJob extractPDFJob = new ExtractPDFJob(asset)
+                    .SetParams(extractPDFParams);
 
-                // Provide an input FileRef for the operation.
-                FileRef sourceFileRef = FileRef.CreateFromLocalFile(input);
-                extractPdfOperation.SetInputFile(sourceFileRef);
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(extractPDFJob);
+                PDFServicesResponse<ExtractPDFResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<ExtractPDFResult>(location, typeof(ExtractPDFResult));
+
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.Resource;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+
+                // Creating output streams and copying stream asset's content to it
+                String outputFilePath = "/output/ExtractTextInfoFromPDF.zip";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
                 
-                // Build ExtractPDF options and set them into the operation.
-                ExtractPDFOptions extractPdfOptions = ExtractPDFOptions.ExtractPDFOptionsBuilder()
-                    .AddElementsToExtract(new List<ExtractElementType>(new []{ ExtractElementType.TEXT}))
-                    .Build();
-                extractPdfOperation .SetOptions(extractPdfOptions);
-
-                // Execute the operation.
-                FileRef result = extractPdfOperation.Execute(executionContext);
-
-                // Save the result to the specified location.
-                result.SaveAs(Directory.GetCurrentDirectory() + output);
-
-        		Console.Write("Successfully extracted information from PDF. Printing H1 Headers:\n\n");
-
-                ZipArchive archive = ZipFile.OpenRead(Directory.GetCurrentDirectory() + output);
+                Console.Write("Successfully extracted information from PDF. Printing H1 Headers:\n\n");
+                
+                ZipArchive archive = ZipFile.OpenRead(Directory.GetCurrentDirectory() + outputFilePath);
                 ZipArchiveEntry jsonEntry = archive.GetEntry("structuredData.json");
                 StreamReader osr = new StreamReader(jsonEntry.Open());
                 String contents = osr.ReadToEnd();
@@ -291,8 +302,6 @@ namespace ExtractTextInfoFromPDF
                         Console.Write(textElement.GetString() +"\n");
                     }
                 }
-
-                
             }
             catch (ServiceUsageException ex)
             {

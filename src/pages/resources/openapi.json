@@ -97,6 +97,14 @@
     {
       "name": "PDF Watermark",
       "description": "PDF Watermark API will add a watermark in PDF document."
+    },
+    {
+      "name": "Export PDF Form Data",
+      "description": "The Export PDF Form Data API will retrieve the data from a PDF form and return it as a JSON file."
+    },
+    {
+      "name": "Import PDF Form Data",
+      "description": "The Import PDF Form Data API will take the form data provided as a JSON, insert it into the PDF form, and generate the resulting PDF."
     }
   ],
   "x-tagGroups": [
@@ -132,13 +140,15 @@
         "PDF Properties",
         "Remove Protection",
         "Split PDF",
-        "PDF Watermark"
+        "PDF Watermark",
+        "PDF Accessibility Checker"
       ]
     },
     {
       "name": "PDF operations Beta",
       "tags": [
-        "PDF Accessibility Checker"
+        "Export PDF Form Data",
+        "Import PDF Form Data"
       ]
     }
   ],
@@ -7754,7 +7764,7 @@
           "PDF Watermark"
         ],
         "summary": "Add Watermark in PDF Document",
-        "description": "PDF Watermark API will add a watermark on specified pages of PDF document using a source watermark PDF. The first page of source watermark PDF will be added as a watermark in input PDF document. If a page range is not specified, the watermark will be applied on all pages of the source document.",
+        "description": "PDF Watermark API will add a watermark on specified pages of PDF document using a source watermark PDF. The first page of source watermark PDF will be added as a watermark in input PDF document.",
         "operationId": "pdfoperations.addwatermark",
         "parameters": [
           {
@@ -11756,7 +11766,7 @@
       },
       "pageRangesWatermark": {
         "title": "pageRanges",
-        "description": "Specifies the page ranges on which watermark has to be applied in the input PDF file. The page ranges are specified as an array of objects whose length cannot exceed beyond 20. If a page range is not specified, the watermark will be applied on all pages of the source document.",
+        "description": "Specifies the page ranges on which watermark has to be applied in the input PDF file.",
         "type": "array",
         "items": {
           "properties": {

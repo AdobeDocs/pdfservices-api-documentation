@@ -139,8 +139,8 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 
 ```
 <ItemGroup>
-    <PackageReference Include="log4net" Version="2.0.12" />
-    <PackageReference Include="Adobe.PDFServicesSDK" Version="3.5.1" />
+    <PackageReference Include="log4net" Version="2.0.17" />
+    <PackageReference Include="Adobe.PDFServicesSDK" Version="4.0.0" />
 </ItemGroup> 
 ```
 
@@ -180,6 +180,20 @@ Minor and Patch releases are backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
+
+### July 22, 2024; .NET SDK 4.0.0 major release
+- Released Adobe PDF Services .NET SDK v4.0.0, introducing new interfaces fully leveraging power of new PDF Services rest APIs.
+- Added support for delete asset, refresh download URI and webhook notifiers.
+- Eliminated need of storage to save intermediate result by removing dependency on temporary storage.
+- Extended I/O capabilities by introducing external storage for PDF Services operations.
+- Enabled connection to Internet through Proxy, where proxy server settings can be set via "proxyServerConfig" in the client config.
+- Updated PDF Properties operation to return PDFProperties object along with JSON string.
+- Updated Extract PDF operation to return content and resource asset along with content JSON object.
+
+### July 22, 2024; PDF Accessibility Checker API Added
+
+- Added [PDF Accessibility Checker](../pdf-services-api/howtos/pdf-accessibility-checker-api/) operation in PDF Services API to check accessibility on specified pages of PDF document.
+
 
 ### July 16, 2024; Server Side Release - Get PDF Properties
 

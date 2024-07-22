@@ -10,7 +10,7 @@ To get started using Adobe Document Generation API, let's walk through a simple 
 
 To complete this guide, you will need:
 
-* [.NET: version 6.0 or above](https://dotnet.microsoft.com/en-us/download)
+* [.NET: version 8.0 or above](https://dotnet.microsoft.com/en-us/download)
 * [.Net SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 * A build tool: Either Visual Studio or .NET Core CLI.
 * An Adobe ID. If you do not have one, the credential setup will walk you through creating one.
@@ -49,23 +49,30 @@ To complete this guide, you will need:
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <OutputType>Exe</OutputType>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
-    </PropertyGroup>
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="log4net" Version="2.0.12" />
-        <PackageReference Include="Adobe.PDFServicesSDK" Version="3.5.1" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Adobe.PDFServicesSDK" Version="4.0.0" />
+    <PackageReference Include="log4net" Version="2.0.17" />
+  </ItemGroup>
 
-    <ItemGroup>
-        <None Update="log4net.config">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
-    </ItemGroup>
+  <ItemGroup>
+    <None Update="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="receiptTemplate.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="receipt.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
 </Project>
+
 ```
 
 Our application will take a Word document, `receiptTemplate.docx` (downloadable from [here](/receiptTemplate.docx)), and combine it with data in a JSON file, `receipt.json` (downloadable from [here](/receipt.json)), to be sent to the Acrobat Services API and generate a receipt PDF.
@@ -132,19 +139,19 @@ Notice how the tokens in the Word document match up with values in our JSON. Whi
 3) We'll begin by including our required dependencies:
 
 ```javascript
-using System.IO;
 using System;
-using System.Collections.Generic;
-using log4net.Repository;
-using log4net.Config;
-using log4net;
+using System.IO;
 using System.Reflection;
 using Adobe.PDFServicesSDK;
 using Adobe.PDFServicesSDK.auth;
-using Adobe.PDFServicesSDK.pdfops;
-using Adobe.PDFServicesSDK.io;
 using Adobe.PDFServicesSDK.exception;
-using Adobe.PDFServicesSDK.options.documentmerge;
+using Adobe.PDFServicesSDK.io;
+using Adobe.PDFServicesSDK.pdfjobs.jobs;
+using Adobe.PDFServicesSDK.pdfjobs.parameters.documentmerge;
+using Adobe.PDFServicesSDK.pdfjobs.results;
+using log4net;
+using log4net.Config;
+using log4net.Repository;
 using Newtonsoft.Json.Linq;
 ```
 
@@ -158,76 +165,83 @@ namespace GeneratePDF
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         static void Main()
         {
-		}
-	}
+            
+        }
+    }
 }
 ```
 
-5) Inside our class, we'll begin by defining our input Word, JSON and output filenames. If the output file already exists, it will be deleted:
-
-```javascript
-String input = "receiptTemplate.docx";
-
-String output = "/generatedReceipt.pdf";
-if(File.Exists(Directory.GetCurrentDirectory() + output))
-{
-	File.Delete(Directory.GetCurrentDirectory() + output);
-}
-
-string json = File.ReadAllText("receipt.json");
-JObject data = JObject.Parse(json);
-```
-
-These lines are hard coded but in a real application would typically be dynamic.
-
-6) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+5) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
 - **Windows:**
-    - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
-    - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+  - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+  - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
 - **MacOS/Linux:**
-    - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
-    - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+  - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+  - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
-7) Next, we setup the SDK to use our credentials.
+
+6) Next, we can create our credentials and use them to create a PDF Services instance
 
 ```javascript
-// Initial setup, create credentials instance.
-Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-    .WithClientId(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"))
-    .WithClientSecret(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"))
-    .Build();
+// Initial setup, create credentials instance
+ICredentials credentials = new ServicePrincipalCredentials(
+        Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+        Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
 
-// Create an ExecutionContext using credentials and create a new operation instance.
-ExecutionContext executionContext = ExecutionContext.Create(credentials);
+// Creates a PDF Services instance
+PDFServices pdfServices = new PDFServices(credentials);
 ```
 
-This code both points to the credentials downloaded previously as well as sets up an execution context object that will be used later.
-
-8) Now, let's create the operation:
+7) Now, let's upload the asset and create JSON data for merge:
 
 ```javascript
-DocumentMergeOptions documentMergeOptions = new DocumentMergeOptions(data, OutputFormat.PDF);
-DocumentMergeOperation documentMergeOperation = DocumentMergeOperation.CreateNew(documentMergeOptions);
+IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.DOCX.GetMIMETypeValue());
 
-// Provide an input FileRef for the operation.
-FileRef sourceFileRef = FileRef.CreateFromLocalFile(input);
-documentMergeOperation.SetInput(sourceFileRef);
+String json = File.ReadAllText(@"receipt.json");
+JObject jsonDataForMerge = JObject.Parse(json);
+```
+
+8) Now, let's create the parameters and the job:
+
+```javascript
+// Create parameters for the job
+DocumentMergeParams documentMergeParams = DocumentMergeParams.DocumentMergeParamsBuilder()
+    .WithJsonDataForMerge(jsonDataForMerge)
+    .WithOutputFormat(OutputFormat.PDF)
+    .Build();
+
+// Creates a new job instance
+DocumentMergeJob documentMergeJob = new DocumentMergeJob(asset, documentMergeParams);
 ```
 
 This set of code defines what we're doing (a document merge operation, the SDK's way of describing Document Generation), points to our local JSON file and specifies the output is a PDF. It also points to the Word file used as a template.
 
-9) The next code block executes the operation:
+9) The next code block submits the job and gets the job result:
 
 ```javascript
-// Execute the operation.
-FileRef result = documentMergeOperation.Execute(executionContext);
+// Submits the job and gets the job result
+String location = pdfServices.Submit(documentMergeJob);
+PDFServicesResponse<DocumentMergeResult> pdfServicesResponse =
+    pdfServices.GetJobResult<DocumentMergeResult>(location, typeof(DocumentMergeResult));
 
-// Save the result to the specified location.
-result.SaveAs(Directory.GetCurrentDirectory() + output);
+// Get content from the resulting asset(s)
+IAsset resultAsset = pdfServicesResponse.Result.Asset;
+StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
 ```
 
-This code runs the document generation process and then stores the result PDF document to the file system. 
+10) The next code block saves the result at the specified location:
+
+```javascript
+// Creating an output stream and copying stream asset's content to it
+String outputFilePath = "/output/generatePDFOutput.pdf";
+new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+streamAsset.Stream.CopyTo(outputStream);
+outputStream.Close();
+```
+
+This code runs the Document Generation process and then stores the resulting PDF document to the file system.
 
 ![Example running at the command line](./shot9.png)
 
@@ -254,49 +268,55 @@ namespace GeneratePDF
     class Program
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+        
         static void Main()
         {
-            // Configure the logging.
+            //Configure the logging
             ConfigureLogging();
             try
             {
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
 
-                String input = "receiptTemplate.docx";
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
 
-                String output = "/generatedReceipt.pdf";
-                if(File.Exists(Directory.GetCurrentDirectory() + output))
-                {
-                    File.Delete(Directory.GetCurrentDirectory() + output);
-                }
+                // Creates an asset from source file and upload
+                using Stream inputStream = File.OpenRead(@"receiptTemplate.docx");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.DOCX.GetMIMETypeValue());
 
-                string json = File.ReadAllText("receipt.json");
-                JObject data = JObject.Parse(json);
+                // Setup input data for the document merge process
+                String json = File.ReadAllText(@"receipt.json");
+                JObject jsonDataForMerge = JObject.Parse(json);
 
-                // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                    .WithClientId(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"))
-                    .WithClientSecret(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"))
+                // Create parameters for the job
+                DocumentMergeParams documentMergeParams = DocumentMergeParams.DocumentMergeParamsBuilder()
+                    .WithJsonDataForMerge(jsonDataForMerge)
+                    .WithOutputFormat(OutputFormat.DOCX)
                     .Build();
 
-                // Create an ExecutionContext using credentials and create a new operation instance.
-                ExecutionContext executionContext = ExecutionContext.Create(credentials);
+                // Creates a new job instance
+                DocumentMergeJob documentMergeJob = new DocumentMergeJob(asset, documentMergeParams);
 
-                DocumentMergeOptions documentMergeOptions = new DocumentMergeOptions(data, OutputFormat.PDF);
-                DocumentMergeOperation documentMergeOperation = DocumentMergeOperation.CreateNew(documentMergeOptions);
- 
-                // Provide an input FileRef for the operation.
-                FileRef sourceFileRef = FileRef.CreateFromLocalFile(input);
-                documentMergeOperation.SetInput(sourceFileRef);
-                
-                // Execute the operation.
-                FileRef result = documentMergeOperation.Execute(executionContext);
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(documentMergeJob);
+                PDFServicesResponse<DocumentMergeResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<DocumentMergeResult>(location, typeof(DocumentMergeResult));
 
-                // Save the result to the specified location.
-                result.SaveAs(Directory.GetCurrentDirectory() + output);
-                
-        		Console.Write("All Done.\n");
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.Asset;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
 
-                
+                // Creating output streams and copying stream asset's content to it
+                String outputFilePath = "/output/generatePDFOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
+
+                Console.WriteLine("Saving asset at " + Directory.GetCurrentDirectory() + outputFilePath);
             }
             catch (ServiceUsageException ex)
             {
