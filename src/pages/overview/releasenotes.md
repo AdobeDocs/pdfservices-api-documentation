@@ -194,6 +194,11 @@ Upgrading to the latest SDK should not break existing applications.
 
 - Added [PDF Accessibility Checker](../pdf-services-api/howtos/pdf-accessibility-checker-api/) operation in PDF Services API to check accessibility on specified pages of PDF document.
 
+### July 16, 2024; Server Side Release - Get PDF Properties
+
+- Bug fixes [Get PDF Properties](../pdf-services-api/howtos/pdf-properties/) fixed data issue related to permissions in JSON response.
+
+
 ### July 08, 2024; PDF Watermark API Added
 
 - Added [PDF Watermark](../pdf-services-api/howtos/pdf-watermark-api/) operation in PDF Services API to add a watermark on specified pages of PDF document.
