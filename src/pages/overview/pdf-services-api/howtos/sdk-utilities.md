@@ -20,7 +20,7 @@ See our public API Reference for assets [here](../../../apis/#tag/Assets).
 This function will create a new download URI for your asset. This is useful for scenarios where the asset needs to be 
 downloaded after its URI has expired.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, Node.js, Python" />
+<CodeBlock slots="heading, code" repeat="4" languages="Java, Node.js, Python, .NET" />
 
 ### Java
 
@@ -52,12 +52,22 @@ asset = result.getAsset()
 refreshed_asset = pdf_services.refreshDownloadURI(asset);
 ```
 
+### .NET
+
+```csharp
+CreatePDFResult result = pdfServicesResponse.Result;
+IAsset asset = result.Asset;
+ 
+// refresh the download URI in case it expires or is null for the uploaded asset
+pdfServices.RefreshDownloadURI(asset);
+```
+
 ## Delete Asset
 
 This function deletes an asset from Adobe internal storage. If you prefer not to store your asset on Adobe's storage, 
 where assets are transiently stored for 24 hours, you can use this function to delete the asset immediately.
 
-<CodeBlock slots="heading, code" repeat="3" languages="Java, Node.js, Python" />
+<CodeBlock slots="heading, code" repeat="4" languages="Java, Node.js, Python, .NET" />
 
 ### Java
 
@@ -87,4 +97,15 @@ output_asset = create_pdf_result.getAsset()
 
 # delete asset
 pdf_services.deleteAsset(output_asset);
+```
+
+
+### .NET
+
+```csharp
+CreatePDFResult result = pdfServicesResponse.Result;
+IAsset asset = result.Asset;
+ 
+// delete asset
+pdfServices.deleteAsset(asset);
 ```

@@ -30,6 +30,10 @@ following formats:
 If a Microsoft Word/PowerPoint input file has an embedded TrueType font, the output pdf will also contain the same embedded TrueType font.
 For more information, refer [Benefits of embedding custom fonts](https://support.microsoft.com/en-us/office/benefits-of-embedding-custom-fonts-cb3982aa-ea76-4323-b008-86670f222dbc#OfficeVersion=Windows).
 
+<InlineAlert slots="text"/>
+
+We do not support HTML to PDF conversion for requests containing urls where:<br/>1. The URL Scheme is not HTTPS.<br/>2. The hostname resolves to a non-routable IP address. This encompasses scenarios where redirects lead to non-routable IP addresses as well.
+
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
@@ -93,50 +97,77 @@ public class CreatePDFFromDOCX {
 // dotnet run CreatePDFFromDocx.csproj
 
 namespace CreatePDFFromDocx
- {
-   class Program
-   {
-     private static readonly ILog log = LogManager.GetLogger(typeof(Program));
-     static void Main()
-     {
-       //Configure the logging
-       ConfigureLogging();
-       try
-       {
-           // Initial setup, create credentials instance.
-           Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                .WithClientId("PDF_SERVICES_CLIENT_ID")
-                .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                .Build();
+{
+    class Program
+    {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
 
-         //Create an ExecutionContext using credentials and create a new operation instance.
-         ExecutionContext executionContext = ExecutionContext.Create(credentials);
-         CreatePDFOperation createPdfOperation = CreatePDFOperation.CreateNew();
+        static void Main()
+        {
+            //Configure the logging
+            ConfigureLogging();
+            try
+            {
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
 
-         // Set operation input from a source file.
-         FileRef source = FileRef.CreateFromLocalFile(@"createPdfInput.docx");
-         createPdfOperation.SetInput(source);
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
 
-         // Execute the operation.
-         FileRef result = createPdfOperation.Execute(executionContext);
+                // Creates an asset(s) from source file(s) and upload
+                using Stream inputStream = File.OpenRead(@"createPdfInput.docx");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.DOCX.GetMIMETypeValue());
 
-         // Save the result to the specified location.
-         result.SaveAs(Directory.GetCurrentDirectory() + "/output/createPdfOutput.pdf");
-       }
-       catch (ServiceUsageException ex)
-       {
-         log.Error("Exception encountered while executing operation", ex);
-       }
-       // Catch more errors here. . .
-     }
+                // Creates a new job instance
+                CreatePDFJob createPDFJob = new CreatePDFJob(asset);
 
-     static void ConfigureLogging()
-     {
-       ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-       XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-     }
-   }
- }
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(createPDFJob);
+                PDFServicesResponse<CreatePDFResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<CreatePDFResult>(location, typeof(CreatePDFResult));
+
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.Asset;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+
+                // Creating output streams and copying stream asset's content to it
+                String outputFilePath = "/output/createPdfOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+        }
+
+        static void ConfigureLogging()
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
+    }
+}
 ```
 
 #### Node JS
@@ -357,65 +388,82 @@ public class CreatePDFFromDOCXWithOptions {
 // dotnet run CreatePDFFromDocxWithOptions.csproj
 
 namespace CreatePDFFromDocxWithOptions
- {
-   class Program
-   {
-     private static readonly ILog log = LogManager.GetLogger(typeof(Program));
-     static void Main()
-     {
-       //Configure the logging
-       ConfigureLogging();
-       try
-       {
-         // Initial setup, create credentials instance.
-           Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                .WithClientId("PDF_SERVICES_CLIENT_ID")
-                .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                .Build();
+{
+    class Program
+    {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
 
-         //Create an ExecutionContext using credentials and create a new operation instance.
-         ExecutionContext executionContext = ExecutionContext.Create(credentials);
-         CreatePDFOperation createPdfOperation = CreatePDFOperation.CreateNew();
+        static void Main()
+        {
+            //Configure the logging
+            ConfigureLogging();
+            try
+            {
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
 
-         // Set operation input from a source file.
-         FileRef source = FileRef.CreateFromLocalFile(@"createPdfInput.docx");
-         createPdfOperation.SetInput(source);
-         
-         //Provide any custom conifguration option for the operation.
-         SetCustomOptions(createPdfOperation);  
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
 
-         // Execute the operation.
-         FileRef result = createPdfOperation.Execute(executionContext);
+                // Creates an asset(s) from source file(s) and upload
+                using Stream inputStream = File.OpenRead(@"createPdfInput.docx");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.DOCX.GetMIMETypeValue());
 
-         // Save the result to the specified location.
-         result.SaveAs(Directory.GetCurrentDirectory() + "/output/createPDFFromDOCXWithOptionsOutput.pdf");
-       }
-       catch (ServiceUsageException ex)
-       {
-         log.Error("Exception encountered while executing operation", ex);
-       }
-       // Catch more errors here. . .
-     }
+                // Create parameters for the job
+                CreatePDFParams createPDFParams = CreatePDFParams.WordParamsBuilder()
+                    .WithDocumentLanguage(DocumentLanguage.EN_US)
+                    .Build();
 
-     private static void SetCustomOptions(CreatePDFOperation createPdfOperation)
-     {
-       // Select the documentLanguage for input file.
-       SupportedDocumentLanguage documentLanguage = SupportedDocumentLanguage.EN_US;
+                // Creates a new job instance
+                CreatePDFJob createPDFJob = new CreatePDFJob(asset).SetParams(createPDFParams);
 
-       // Set the desired Word-to-PDF conversion options.
-       CreatePDFOptions createPDFOptions = CreatePDFOptions.WordOptionsBuilder()
-       .WithDocumentLanguage(documentLanguage)
-       .Build();
-       createPdfOperation.SetOptions(createPDFOptions);
-     }
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(createPDFJob);
+                PDFServicesResponse<CreatePDFResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<CreatePDFResult>(location, typeof(CreatePDFResult));
 
-     static void ConfigureLogging()
-     {
-       ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-       XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-     }
-   }
- }
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.Asset;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+
+                // Creating output streams and copying stream asset's content to it
+                String outputFilePath = "/output/createPDFFromDOCXWithOptionsOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+        }
+
+        static void ConfigureLogging()
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
+    }
+}
 ```
 
 #### Node JS
@@ -647,71 +695,99 @@ public class StaticHTMLToPDF {
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
-// cd CreatePDFFromStaticHtml/
-// dotnet run CreatePDFFromStaticHtml.csproj
+// cd StaticHTMLToPDF/
+// dotnet run StaticHTMLToPDF.csproj
 
-namespace CreatePDFFromStaticHtml
- {
-   class Program
-   {
-     private static readonly ILog log = LogManager.GetLogger(typeof(Program));
-     static void Main()
-     {
-       //Configure the logging
-       ConfigureLogging();
-       try
-       {
-           // Initial setup, create credentials instance.
-           Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                .WithClientId("PDF_SERVICES_CLIENT_ID")
-                .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+namespace StaticHTMLToPDF
+{
+    class Program
+    {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
+        static void Main()
+        {
+            //Configure the logging
+            ConfigureLogging();
+            try
+            {
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
+
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
+
+                // Creates an asset(s) from source file(s) and upload
+                using Stream inputStream = File.OpenRead(@"createPDFFromStaticHtmlInput.zip");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.ZIP.GetMIMETypeValue());
+
+                // Create parameters for the job
+                HTMLToPDFParams htmlToPDFParams = GetHTMLToPDFParams();
+
+                // Creates a new job instance
+                HTMLToPDFJob htmlToPDFJob = new HTMLToPDFJob(asset).SetParams(htmlToPDFParams);
+
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(htmlToPDFJob);
+                PDFServicesResponse<HTMLToPDFResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<HTMLToPDFResult>(location, typeof(HTMLToPDFResult));
+
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.Asset;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+
+                // Creating output streams and copying stream asset's content to it
+                String outputFilePath = "/output/createPdfFromStaticHtmlOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+        }
+
+        private static HTMLToPDFParams GetHTMLToPDFParams()
+        {
+            // Define the page layout, in this case an 8 x 11.5 inch page (effectively portrait orientation).
+            PageLayout pageLayout = new PageLayout();
+            pageLayout.SetPageSize(8, 11.5);
+
+            // Set the desired HTML-to-PDF conversion options.
+            HTMLToPDFParams htmlToPDFParams = HTMLToPDFParams.HTMLToPDFParamsBuilder()
+                .IncludeHeaderFooter(true)
+                .WithPageLayout(pageLayout)
                 .Build();
+            return htmlToPDFParams;
+        }
 
-         //Create an ExecutionContext using credentials and create a new operation instance.
-         ExecutionContext executionContext = ExecutionContext.Create(credentials);
-         CreatePDFOperation htmlToPDFOperation = CreatePDFOperation.CreateNew();
 
-         // Set operation input from a source file.
-         FileRef source = FileRef.CreateFromLocalFile(@"createPDFFromStaticHtmlInput.zip");
-         htmlToPDFOperation.SetInput(source);
-
-         // Provide any custom configuration options for the operation.
-         SetCustomOptions(htmlToPDFOperation);
-
-         // Execute the operation.
-         FileRef result = htmlToPDFOperation.Execute(executionContext);
-
-         // Save the result to the specified location.
-         result.SaveAs(Directory.GetCurrentDirectory() + "/output/createPdfFromStaticHtmlOutput.pdf");
-       }
-       catch (ServiceUsageException ex)
-       {
-         log.Error("Exception encountered while executing operation", ex);
-       }
-        // Catch more errors here. . .
-     }
-
-     private static void SetCustomOptions(CreatePDFOperation htmlToPDFOperation)
-     {
-       // Define the page layout, in this case an 8 x 11.5 inch page (effectively portrait orientation).
-       PageLayout pageLayout = new PageLayout();
-       pageLayout.SetPageSize(8, 11.5);
-
-       // Set the desired HTML-to-PDF conversion options.
-       CreatePDFOptions htmlToPdfOptions = CreatePDFOptions.HtmlOptionsBuilder()
-           .IncludeHeaderFooter(true)
-           .WithPageLayout(pageLayout)
-           . Build();
-       htmlToPDFOperation.SetOptions(htmlToPdfOptions);
-     }
-
-     static void ConfigureLogging()
-     {
-       ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-       XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-     }
-   }
- }
+        static void ConfigureLogging()
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
+    }
+}
 ```
 
 #### Node JS
@@ -961,71 +1037,98 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
-// cd CreatePDFFromHTMLWithInlineCSS/
-// dotnet run CreatePDFFromHTMLWithInlineCSS.csproj
+// cd HTMLWithInlineCSSToPDF/
+// dotnet run HTMLWithInlineCSSToPDF.csproj
 
-namespace CreatePDFFromHTMLWithInlineCSS
-  {
+namespace HTMLWithInlineCSSToPDF
+{
     class Program
     {
-      private static readonly ILog log = LogManager.GetLogger(typeof(Program));
-      static void Main()
-      {
-        //Configure the logging
-        ConfigureLogging();
-        try
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
+        static void Main()
         {
-            // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                    .WithClientId("PDF_SERVICES_CLIENT_ID")
-                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                    .Build();
+            //Configure the logging
+            ConfigureLogging();
+            try
+            {
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
 
-          //Create an ExecutionContext using credentials and create a new operation instance.
-          ExecutionContext executionContext = ExecutionContext.Create(credentials);
-          CreatePDFOperation htmlToPDFOperation = CreatePDFOperation.CreateNew();
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
 
-          // Set operation input from a source file.
-          FileRef source = FileRef.CreateFromLocalFile(@"createPDFFromHTMLWithInlineCSSInput.html");
-          htmlToPDFOperation.SetInput(source);
+                // Creates an asset(s) from source file(s) and upload
+                using Stream inputStream = File.OpenRead(@"createPDFFromHTMLWithInlineCSSInput.html");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.HTML.GetMIMETypeValue());
 
-          // Provide any custom configuration options for the operation.
-          SetCustomOptions(htmlToPDFOperation);
+                // Create parameters for the job
+                HTMLToPDFParams htmlToPDFParams = GetHTMLToPDFParams();
 
-          // Execute the operation.
-          FileRef result = htmlToPDFOperation.Execute(executionContext);
+                // Creates a new job instance
+                HTMLToPDFJob htmlToPDFJob = new HTMLToPDFJob(asset).SetParams(htmlToPDFParams);
 
-          // Save the result to the specified location.
-          result.SaveAs(Directory.GetCurrentDirectory() + "/output/createPDFFromHTMLWithInlineCSSOutput.pdf");
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(htmlToPDFJob);
+                PDFServicesResponse<HTMLToPDFResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<HTMLToPDFResult>(location, typeof(HTMLToPDFResult));
+
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.Asset;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+
+                // Creating output streams and copying stream asset's content to it
+                String outputFilePath = "/output/createPDFFromHTMLWithInlineCSSOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
         }
-        catch (ServiceUsageException ex)
+
+        private static HTMLToPDFParams GetHTMLToPDFParams()
         {
-          log.Error("Exception encountered while executing operation", ex);
+            // Define the page layout, in this case an 20 x 25 inch page (effectively portrait orientation).
+            PageLayout pageLayout = new PageLayout();
+            pageLayout.SetPageSize(20, 25);
+
+            // Set the desired HTML-to-PDF conversion options.
+            HTMLToPDFParams htmlToPDFParams = HTMLToPDFParams.HTMLToPDFParamsBuilder()
+                .IncludeHeaderFooter(true)
+                .WithPageLayout(pageLayout)
+                .Build();
+            return htmlToPDFParams;
         }
-         // Catch more errors here. . .
-      }
 
-      private static void SetCustomOptions(CreatePDFOperation htmlToPDFOperation)
-      {
-        // Define the page layout, in this case an 20 x 25 inch page (effectively portrait orientation).
-        PageLayout pageLayout = new PageLayout();
-        pageLayout.SetPageSize(20, 25);
-
-        // Set the desired HTML-to-PDF conversion options.
-        CreatePDFOptions htmlToPdfOptions = CreatePDFOptions.HtmlOptionsBuilder()
-            .IncludeHeaderFooter(true)
-            .WithPageLayout(pageLayout)
-            . Build();
-        htmlToPDFOperation.SetOptions(htmlToPdfOptions);
-      }
-
-      static void ConfigureLogging()
-      {
-        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-      }
+        static void ConfigureLogging()
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
     }
-  }
+}
 ```
 
 #### Node JS
@@ -1275,70 +1378,95 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
-// cd CreatePDFFromURL/
-// dotnet run CreatePDFFromURL.csproj
+// cd HTMLToPDFFromURL/
+// dotnet run HTMLToPDFFromURL.csproj
 
-namespace CreatePDFFromURL
+namespace HTMLToPDFFromURL
 {
     class Program
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
         static void Main()
-    {
-        //Configure the logging
-        ConfigureLogging();
-        try
         {
-            // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                    .WithClientId("PDF_SERVICES_CLIENT_ID")
-                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                    .Build();
+            //Configure the logging
+            ConfigureLogging();
+            try
+            {
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
 
-            //Create an ExecutionContext using credentials and create a new operation instance.
-            ExecutionContext executionContext = ExecutionContext.Create(credentials);
-            CreatePDFOperation htmlToPDFOperation = CreatePDFOperation.CreateNew();
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
 
-            // Set operation input from a source URL.
-            FileRef source = FileRef.CreateFromURI(new Uri("https://www.adobe.io"));
-            htmlToPDFOperation.SetInput(source);
+                String htmlURL = "https://www.adobe.io";
 
-            // Provide any custom configuration options for the operation.
-            SetCustomOptions(htmlToPDFOperation);
+                // Create parameters for the job
+                HTMLToPDFParams htmlToPDFParams = GetHTMLToPDFParams();
 
-            // Execute the operation.
-            FileRef result = htmlToPDFOperation.Execute(executionContext);
+                // Creates a new job instance
+                HTMLToPDFJob htmlToPDFJob = new HTMLToPDFJob(htmlURL).SetParams(htmlToPDFParams);
 
-            // Save the result to the specified location.
-            result.SaveAs(Directory.GetCurrentDirectory() + "/output/createPdfFromURLOutput.pdf");
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(htmlToPDFJob);
+                PDFServicesResponse<HTMLToPDFResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<HTMLToPDFResult>(location, typeof(HTMLToPDFResult));
+
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.Asset;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+
+                // Creating output streams and copying stream asset's content to it
+                String outputFilePath = "/output/createPdfFromURLOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
         }
-        catch (ServiceUsageException ex)
+
+        private static HTMLToPDFParams GetHTMLToPDFParams()
         {
-            log.Error("Exception encountered while executing operation", ex);
+            // Define the page layout, in this case an 20 x 25 inch page (effectively portrait orientation).
+            PageLayout pageLayout = new PageLayout();
+            pageLayout.SetPageSize(20, 25);
+
+            // Set the desired HTML-to-PDF conversion options.
+            HTMLToPDFParams htmlToPDFParams = HTMLToPDFParams.HTMLToPDFParamsBuilder()
+                .IncludeHeaderFooter(true)
+                .WithPageLayout(pageLayout)
+                .Build();
+            return htmlToPDFParams;
         }
-        // Catch more errors here. . .
-    }
 
-        private static void SetCustomOptions(CreatePDFOperation htmlToPDFOperation)
-    {
-        // Define the page layout, in this case an 20 x 25 inch page (effectively portrait orientation).
-        PageLayout pageLayout = new PageLayout();
-        pageLayout.SetPageSize(20, 25);
-
-        // Set the desired HTML-to-PDF conversion options.
-        CreatePDFOptions htmlToPdfOptions = CreatePDFOptions.HtmlOptionsBuilder()
-        .IncludeHeaderFooter(true)
-        .WithPageLayout(pageLayout)
-        . Build();
-        htmlToPDFOperation.SetOptions(htmlToPdfOptions);
+        static void ConfigureLogging()
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
     }
-
-    static void ConfigureLogging()
-    {
-        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-    }
-}
 }
 ```
 
@@ -1594,79 +1722,107 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
-// cd CreatePDFFromDynamicHtml/
-// dotnet run CreatePDFFromDynamicHtml.csproj
+// cd DynamicHTMLToPDF/
+// dotnet run DynamicHTMLToPDF.csproj
 
- namespace CreatePDFFromDynamicHtml
- {
-   class Program
-   {
-     private static readonly ILog log = LogManager.GetLogger(typeof(Program));
-     static void Main()
-     {
-       //Configure the logging
-       ConfigureLogging();
-       try
-       {
-           // Initial setup, create credentials instance.
-           Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                .WithClientId("PDF_SERVICES_CLIENT_ID")
-                .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+namespace DynamicHTMLToPDF
+{
+    class Program
+    {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
+        static void Main()
+        {
+            //Configure the logging
+            ConfigureLogging();
+            try
+            {
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
+
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
+
+                // Creates an asset(s) from source file(s) and upload
+                using Stream inputStream = File.OpenRead(@"createPDFFromDynamicHtmlInput.zip");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.ZIP.GetMIMETypeValue());
+
+                // Create parameters for the job
+                HTMLToPDFParams htmlToPDFParams = GetHTMLToPDFParams();
+
+                // Creates a new job instance
+                HTMLToPDFJob htmlToPDFJob = new HTMLToPDFJob(asset).SetParams(htmlToPDFParams);
+
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(htmlToPDFJob);
+                PDFServicesResponse<HTMLToPDFResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<HTMLToPDFResult>(location, typeof(HTMLToPDFResult));
+
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.Asset;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+
+                // Creating output streams and copying stream asset's content to it
+                String outputFilePath = "/output/createPdfFromDynamicHtmlOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+        }
+
+        private static HTMLToPDFParams GetHTMLToPDFParams()
+        {
+            // Define the page layout, in this case an 8 x 11.5 inch page (effectively portrait orientation).
+            PageLayout pageLayout = new PageLayout();
+            pageLayout.SetPageSize(8, 11.5);
+
+            //Set the dataToMerge field that needs to be populated in the HTML before its conversion
+            JObject dataToMerge = new JObject
+            {
+                { "title", "Create, Convert PDFs and More!" },
+                { "sub_title", "Easily integrate PDF actions within your document workflows." }
+            };
+
+            // Set the desired HTML-to-PDF conversion options.
+            HTMLToPDFParams htmlToPDFParams = HTMLToPDFParams.HTMLToPDFParamsBuilder()
+                .IncludeHeaderFooter(true)
+                .WithPageLayout(pageLayout)
+                .WithDataToMerge(dataToMerge)
                 .Build();
+            return htmlToPDFParams;
+        }
 
-         //Create an ExecutionContext using credentials and create a new operation instance.
-         ExecutionContext executionContext = ExecutionContext.Create(credentials);
-         CreatePDFOperation htmlToPDFOperation = CreatePDFOperation.CreateNew();
 
-         // Set operation input from a source file.
-         FileRef source = FileRef.CreateFromLocalFile(@"createPDFFromDynamicHtmlInput.zip");
-         htmlToPDFOperation.SetInput(source);
-
-         // Provide any custom configuration options for the operation.
-         SetCustomOptions(htmlToPDFOperation);
-
-         // Execute the operation.
-         FileRef result = htmlToPDFOperation.Execute(executionContext);
-
-         // Save the result to the specified location.
-         result.SaveAs(Directory.GetCurrentDirectory() + "/output/createPdfFromDynamicHtmlOutput.pdf");
-       }
-       catch (ServiceUsageException ex)
-       {
-         log.Error("Exception encountered while executing operation", ex);
-       }
-       // errors continued. . .
-     }
-
-     private static void SetCustomOptions(CreatePDFOperation htmlToPDFOperation)
-     {
-       // Define the page layout, in this case an 8 x 11.5 inch page (effectively portrait orientation).
-       PageLayout pageLayout = new PageLayout();
-       pageLayout.SetPageSize(8, 11.5);
-
-       //Set the dataToMerge field that needs to be populated in the HTML before its conversion
-       JObject dataToMerge = new JObject
-       {
-         { "title", "Create, Convert PDFs and More!" },
-         { "sub_title", "Easily integrate PDF actions within your document workflows." }
-       };
-
-       // Set the desired HTML-to-PDF conversion options.
-       CreatePDFOptions htmlToPdfOptions = CreatePDFOptions.HtmlOptionsBuilder()
-           .IncludeHeaderFooter(true)
-           .WithPageLayout(pageLayout)
-           .WithDataToMerge(dataToMerge)
-           .Build();
-       htmlToPDFOperation.SetOptions(htmlToPdfOptions);
-     }
-
-     static void ConfigureLogging()
-     {
-       ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-       XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-     }
-   }
- }
+        static void ConfigureLogging()
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
+    }
+}
 ```
 
 #### Node JS

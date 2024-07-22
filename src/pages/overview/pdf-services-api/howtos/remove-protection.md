@@ -77,57 +77,81 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // cd RemoveProtection/
 // dotnet run RemoveProtection.csproj
 
-  namespace RemoveProtection
-  {
+namespace RemoveProtection
+{
     class Program
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
         static void Main()
         {
             //Configure the logging
             ConfigureLogging();
             try
             {
-                // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                        .WithClientId("PDF_SERVICES_CLIENT_ID")
-                        .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                        .Build();
- 
-                // Create an ExecutionContext using credentials.
-                ExecutionContext executionContext = ExecutionContext.Create(credentials);
- 
-                // Create a new operation instance
-                RemoveProtectionOperation removeProtectionOperation = RemoveProtectionOperation.CreateNew();
- 
-                // Set operation input from a source file.
-                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"removeProtectionInput.pdf");
-                removeProtectionOperation.SetInput(sourceFileRef);
- 
-                // Set the password for removing security from a PDF document.
-                removeProtectionOperation.SetPassword("password");
- 
-                // Execute the operation.
-                FileRef result = removeProtectionOperation.Execute(executionContext);
- 
-                // Save the result to the specified location.
-                result.SaveAs(Directory.GetCurrentDirectory() + "/output/removeProtectionOutput.pdf");
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
+
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
+
+                // Creates an asset from source file and upload
+                using Stream inputStream = File.OpenRead(@"removeProtectionInput.pdf");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
+
+                // Create parameters for the job
+                RemoveProtectionParams removeProtectionParams = new RemoveProtectionParams("password");
+
+                // Creates a new job instance
+                RemoveProtectionJob removeProtectionJob = new RemoveProtectionJob(asset, removeProtectionParams);
+
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(removeProtectionJob);
+                PDFServicesResponse<RemoveProtectionResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<RemoveProtectionResult>(location, typeof(RemoveProtectionResult));
+
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.Asset;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+
+                // Creating output streams and copying stream asset's content to it
+                String outputFilePath = "/output/removeProtectionOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
             }
             catch (ServiceUsageException ex)
             {
                 log.Error("Exception encountered while executing operation", ex);
             }
-            // Catch more errors here . . .
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
         }
- 
+
         static void ConfigureLogging()
         {
             ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
             XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
         }
     }
-  }
-   
+} 
 ```
 
 #### Node JS

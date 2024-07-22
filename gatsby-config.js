@@ -280,6 +280,10 @@ module.exports = {
                             {
                                 title: 'PDF Watermark',
                                 path: 'overview/pdf-services-api/howtos/pdf-watermark-api.md'
+                            },
+                            {
+                                title: 'PDF Accessibility Checker',
+                                path: 'overview/pdf-services-api/howtos/pdf-accessibility-checker-api.md'
                             }
                         ]
                     }

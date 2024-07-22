@@ -96,8 +96,8 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 
 ```
 <ItemGroup>
-    <PackageReference Include="log4net" Version="2.0.12" />
-    <PackageReference Include="Adobe.PDFServicesSDK" Version="3.5.1" />
+    <PackageReference Include="log4net" Version="2.0.17" />
+    <PackageReference Include="Adobe.PDFServicesSDK" Version="4.0.0" />
 </ItemGroup> 
 ```
 
@@ -138,6 +138,18 @@ Minor and Patch releases are backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
+
+### 4.0.0 (July 22, 2024; major release)
+
+| Change  | Language  | Description                                                                                                                        |
+|---------|-----------|------------------------------------------------------------------------------------------------------------------------------------|
+| New     | .NET      | Released Adobe PDF Services .NET SDK v4.0.0, introducing new interfaces fully leveraging power of new PDF Services rest APIs.      |
+| New     | .NET      | Added support for delete asset, refresh download URI and webhook notifiers.                                                        |
+| New     | .NET      | Eliminated need of storage to save intermediate result by removing dependency on temporary storage.                                |
+| New     | .NET      | Extended I/O capabilities by introducing external storage for PDF Services operations.                                             |
+| New     | .NET      | Enabled connection to Internet through Proxy, where proxy server settings can be set via "proxyServerConfig" in the client config. |
+| Changed | .NET      | Updated PDF Properties operation to return PDFProperties object along with JSON string.                                            |
+| Changed | .NET      | Updated Extract PDF operation to return content and resource asset along with content JSON object.                                 |
 
 ### 4.0.1 (June 12, 2024; patch release)
 
