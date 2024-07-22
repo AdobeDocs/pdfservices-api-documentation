@@ -140,7 +140,7 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 ```
 <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.12" />
-    <PackageReference Include="Adobe.PDFServicesSDK" Version="3.5.1" />
+    <PackageReference Include="Adobe.PDFServicesSDK" Version="4.0.0" />
 </ItemGroup> 
 ```
 
