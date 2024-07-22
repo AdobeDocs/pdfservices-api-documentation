@@ -132,12 +132,7 @@
         "PDF Properties",
         "Remove Protection",
         "Split PDF",
-        "PDF Watermark"
-      ]
-    },
-    {
-      "name": "PDF operations Beta",
-      "tags": [
+        "PDF Watermark",
         "PDF Accessibility Checker"
       ]
     }
