@@ -74,6 +74,16 @@ A prefix value can be specified for the placeholder variable. Doing so will appe
 this value before the result of the tag.
 
 ![Placeholder tags with prefix image set](../images/placeholder_prefix.png)
+
+**Functions**
+
+The Document Generation API supports a variety of functions that are compliant with JSONata.
+
+<InlineAlert slots="text"/>
+
+Please note that the `$match()` and `$split()` functions are *not* supported
+
+
 ## Images
 
 To dynamically insert an image in the document, add any image as
@@ -384,6 +394,12 @@ Dynamically generate a numbered or bullet list by placing it inside a repeating 
 
 ![Template tag items are replaced by numbered or bullet list](../images/simple_lists.png)
 
+<InlineAlert slots="text"/>
+
+The repeating section can only accept values that are present as keys in the JSON.
+
+
+
 ## Numerical Calculations
 
 Performing numerical calculations on the input data.
@@ -456,3 +472,4 @@ These tags are converted into Adobe Sign form fields when the final document is 
 <InlineAlert slots="text"/>
 
 Please visit [Adobe Sign Text Tag Guide](https://helpx.adobe.com/in/sign/using/text-tag.html) to learn about different Adobe Sign text tags.
+
