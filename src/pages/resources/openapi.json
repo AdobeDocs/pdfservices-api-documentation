@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "PDF Services API",
-    "description": "<p><ul>\n\t<li>Learn more about using \n\t<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/api-usage/\"> Adobe PDF Services API.</a>\n\t</li>\n\t<li> Invoking PDF Services API requires an Adobe-provided credential, <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">learn more about authentication.</a>\n\t</li>\n<li><a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/#sdk\">Downloadable SDKs</a></li>\n<li><a href=\"https://raw.githubusercontent.com/AdobeDocs/pdfservices-api-documentation/main/src/pages/resources/Platform%20PDF%20Services%20Postman%20Collection.zip\" download>Click here</a> to download sample Postman collection</li>\n<li><a href=\"https://raw.githubusercontent.com/AdobeDocs/pdfservices-api-documentation/main/src/pages/resources/Platform%20PDF%20Services%20with%20External%20Storage%20Postman%20Collection.zip\">Click here</a> to download sample Postman collection with External Storage</li><li><a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/service-region-configuration-for-apis/\">Click here</a> to know more about <b>multi-region support</b> for PDF Services API</li><li><a href=\"https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK\">Support Forum</a></li><li>First released on 26th September, 2022</li><li>To use your custom external storage, click <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol\">here</a>.</li></ul></p>",
+    "description": "<p><ul>\n\t<li>Learn more about using \n\t<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/api-usage/\"> Adobe PDF Services API.</a>\n\t</li>\n\t<li> Invoking PDF Services API requires an Adobe-provided credential, <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">learn more about authentication.</a>\n\t</li>\n<li><a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/#sdk\">Downloadable SDKs</a></li>\n<li><a href=\"https://raw.githubusercontent.com/AdobeDocs/pdfservices-api-documentation/main/src/pages/resources/Platform%20PDF%20Services%20Postman%20Collection.zip\" download>Click here</a> to download sample Postman collection</li>\n<li><a href=\"https://raw.githubusercontent.com/AdobeDocs/pdfservices-api-documentation/new_features_and_postmancollection/src/pages/resources/Platform%20PDF%20Services%20with%20External%20Storage%20Postman%20Collection.zip\">Click here</a> to download sample Postman collection with External Storage</li><li><a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/service-region-configuration-for-apis/\">Click here</a> to know more about <b>multi-region support</b> for PDF Services API</li><li><a href=\"https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK\">Support Forum</a></li><li>First released on 26th September, 2022</li><li>To use your custom external storage, click <a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/howtos/pdf-external-storage-sol\">here</a>.</li></ul></p>",
     "version": ""
   },
   "servers": [
@@ -7420,7 +7420,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AccessibilityChecker"
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/AccessibilityCheckerInternal"
+                  },
+                  {
+                    "$ref": "#/components/schemas/AccessibilityCheckerExternal"
+                  }
+                ]
               }
             }
           },
@@ -11531,7 +11538,8 @@
         },
         "additionalProperties": false
       },
-      "AccessibilityChecker": {
+      "AccessibilityCheckerInternal": {
+        "title": "Internal",
         "description": "Parameter for PDF Accessibility Checker API operation.",
         "type": "object",
         "required": [
@@ -11558,6 +11566,64 @@
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "pageStart": 1,
           "pageEnd": 5,
+          "notifiers": [
+            {
+              "type": "CALLBACK",
+              "data": {
+                "url": "https://dummy.callback.org/",
+                "headers": {
+                  "x-api-key": "dummykey",
+                  "access-token": "dummytoken"
+                }
+              }
+            }
+          ]
+        },
+        "additionalProperties": false
+      },
+      "AccessibilityCheckerExternal": {
+        "title": "External",
+        "description": "Parameter for PDF Accessibility Checker API operation.",
+        "type": "object",
+        "required": [
+          "input"
+        ],
+        "properties": {
+          "input": {
+            "$ref": "#/components/schemas/ExternalStorageInput"
+          },
+          "output": {
+            "$ref": "#/components/schemas/ExternalStorageOutputZip"
+          },
+          "params": {
+            "description": "Params for Accessibility Checker processing",
+            "type": "object",
+            "properties": {
+              "pageStart": {
+                "description": "The parameter allows for the specification of the starting page for the accessibility check. If \"pageStart\" is not provided, the first page is considered the default startPage. It should be greater than equal to 1.",
+                "type": "number"
+              },
+              "pageEnd": {
+                "description": "The parameter allows for the specification of the ending page for the accessibility check. If \"pageEnd\" is not provided, the last page is considered the default pageEnd. It should be greater than equal to 1.",
+                "type": "number"
+              }
+            }
+          },
+          "notifiers": {
+            "$ref": "#/components/schemas/notifiers"
+          }
+        },
+        "example": {
+          "inputs": {
+            "document": {
+              "uri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/dc-platformService-automation_dc-platformService-automation%40AdobeID/1c4f4674-ce8d-4b21-a69d-60aeae35bf43?X-Amz-Security-Token=FwoGZXIvYXdzEBkaDK%2By2wxl94khIbkxzCLTAQn6n6Wo0vFSul%2FpXW66aFX4T%2BPxtuOy%2Bz8eTxrnexeJRvMreBHNQm1myLwp20MkE%2Bb0H%2BwYgOhFaepi9AMml1aLNxXn1UPnEWJ7y8llhvsrXHimEfWvb3TMAkZddgUIDBue8oGUYqm4f2s0sMvPWBCxI45zM0%2F37EK%2B4JnIo1SlrKNm0GSZ44AEiOAhXupQ8ih6KoUbUciD3Biile6CwTMVIhME3mJiRSgVK6W91EaDn8%2Ba3mU%2BVvU1K9sgDSPZ%2F81DOpj25pvMW%2B1cMuCtUNsu9KUo7dHvpAYyLYiy%2FPGEmO9EquKjfMPRr17PAjeunD1QdgbRss4ysG%2B6XF2Has8zsGqX1sQalA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230628T081557Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3599&X-Amz-Credential=ASIAU5PA7W47IMX73XEA%2F20230628%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=ac6998566dbbde22509b128fe94d1cb5d3146cd3fb8ba78d7068e10d61302ec2",
+              "storage": "S3"
+            }
+          },
+          "params":  {
+            "pageStart": 1,
+            "pageEnd": 5
+          },
           "notifiers": [
             {
               "type": "CALLBACK",
