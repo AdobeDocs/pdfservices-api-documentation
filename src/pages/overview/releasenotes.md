@@ -190,11 +190,6 @@ Upgrading to the latest SDK should not break existing applications.
 - Updated PDF Properties operation to return PDFProperties object along with JSON string.
 - Updated Extract PDF operation to return content and resource asset along with content JSON object.
 
-### July 22, 2024; PDF Accessibility Checker API Added
-
-- Added [PDF Accessibility Checker](../pdf-services-api/howtos/pdf-accessibility-checker-api/) operation in PDF Services API to check accessibility on specified pages of PDF document.
-
-
 ### July 16, 2024; Server Side Release - Get PDF Properties
 
 - Bug fixes [Get PDF Properties](../pdf-services-api/howtos/pdf-properties/) fixed data issue related to permissions in JSON response.
