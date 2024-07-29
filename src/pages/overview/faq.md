@@ -39,4 +39,4 @@ follow the workflow below:
 
 **Select**  "Personal Profile" to sign in.
 
-![personal profile](./images/personal-profile.jpg)
+![personal profile](./images/personal-profile.png)
