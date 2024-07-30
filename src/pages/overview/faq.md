@@ -15,7 +15,7 @@ follow the workflow below:
 
 **Sign out** if you receive the message, “You don’t have access to PDF Services API”.
 
-![entp signup failure](./images/entp-singup-failure.png)
+![entp signup failure](./images/entp-signup-failure.png)
 
 #### Step 2:
 
