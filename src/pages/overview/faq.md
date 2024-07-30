@@ -4,7 +4,7 @@ title: FAQ
 
 # Frequently Asked Questions (FAQ)
 
-## 1. How can I get access to Adobe PDF Services API Free Tier if I am using company or school account?
+## How can I get access to Adobe PDF Services API Free Tier if I am using company or school account?
 
 To get access, you can either use your personal email or [Personal Adobe ID](https://helpx.adobe.com/in/enterprise/using/identity.html) 
 with your work email to create an Adobe-provided credential. You can learn more about choosing the appropriate account
@@ -15,7 +15,7 @@ follow the workflow below:
 
 **Sign out** if you receive the message, “You don’t have access to PDF Services API”.
 
-![entp signup failure](./images/entp-singup-failure.jpg)
+![entp signup failure](./images/entp-singup-failure.png)
 
 #### Step 2:
 
