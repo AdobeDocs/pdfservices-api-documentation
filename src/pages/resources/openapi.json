@@ -140,13 +140,13 @@
         "PDF Properties",
         "Remove Protection",
         "Split PDF",
-        "PDF Watermark"
+        "PDF Watermark",
+        "PDF Accessibility Checker"
       ]
     },
     {
       "name": "PDF operations Beta",
       "tags": [
-        "PDF Accessibility Checker",
         "Export PDF Form Data",
         "Import PDF Form Data"
       ]
