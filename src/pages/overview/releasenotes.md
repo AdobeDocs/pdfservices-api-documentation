@@ -181,6 +181,10 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### July 30, 2024; PDF Accessibility Checker API Added
+
+- Added [PDF Accessibility Checker](../pdf-services-api/howtos/pdf-accessibility-checker-api/) operation in PDF Services API to check accessibility on specified pages of PDF document.
+
 ### July 22, 2024; .NET SDK 4.0.0 major release
 - Released Adobe PDF Services .NET SDK v4.0.0, introducing new interfaces fully leveraging power of new PDF Services rest APIs.
 - Added support for delete asset, refresh download URI and webhook notifiers.
@@ -189,11 +193,6 @@ Upgrading to the latest SDK should not break existing applications.
 - Enabled connection to Internet through Proxy, where proxy server settings can be set via "proxyServerConfig" in the client config.
 - Updated PDF Properties operation to return PDFProperties object along with JSON string.
 - Updated Extract PDF operation to return content and resource asset along with content JSON object.
-
-### July 22, 2024; PDF Accessibility Checker API Added
-
-- Added [PDF Accessibility Checker](../pdf-services-api/howtos/pdf-accessibility-checker-api/) operation in PDF Services API to check accessibility on specified pages of PDF document.
-
 
 ### July 16, 2024; Server Side Release - Get PDF Properties
 

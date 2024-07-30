@@ -139,6 +139,12 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### Server Side Release (July 30, 2024; server side release)
+
+| Change | Language | Description                                                                                                                                                                            |
+|--------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| New    | API     | Added [PDF Accessibility Checker](../pdf-services-api/howtos/pdf-accessibility-checker-api/) operation in PDF Services API to check accessibility on specified pages of PDF document.  |
+
 ### 4.0.0 (July 22, 2024; major release)
 
 | Change  | Language  | Description                                                                                                                        |
