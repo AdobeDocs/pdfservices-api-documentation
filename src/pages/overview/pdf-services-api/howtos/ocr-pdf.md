@@ -79,51 +79,78 @@ public class OcrPDF {
 // cd OcrPDF/
 // dotnet run OcrPDF.csproj
 
- namespace OcrPDF
- {
-   class Program
-   {
-     private static readonly ILog log = LogManager.GetLogger(typeof(Program));
-     static void Main()
-     {
-       //Configure the logging
-       ConfigureLogging();
-       try
-       {
-           // Initial setup, create credentials instance.
-           Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                .WithClientId("PDF_SERVICES_CLIENT_ID")
-                .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                .Build();
+namespace OcrPDF
+{
+    class Program
+    {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
 
-         //Create an ExecutionContext using credentials and create a new operation instance.
-         ExecutionContext executionContext = ExecutionContext.Create(credentials);
-         OCROperation ocrOperation = OCROperation.CreateNew();
+        static void Main()
+        {
+            //Configure the logging
+            ConfigureLogging();
+            try
+            {
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
 
-         // Set operation input from a source file.
-         FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"ocrInput.pdf");
-         ocrOperation.SetInput(sourceFileRef);
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
 
-         // Execute the operation.
-         FileRef result = ocrOperation.Execute(executionContext);
+                // Creates an asset(s) from source file(s) and upload
+                using Stream inputStream = File.OpenRead(@"ocrInput.pdf");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
 
-         // Save the result to the specified location.
-         result.SaveAs(Directory.GetCurrentDirectory() + "/output/ocrOperationOutput.pdf");
-       }
-       catch (ServiceUsageException ex)
-       {
-         log.Error("Exception encountered while executing operation", ex);
-       }
-       // Catch more errors here. . .
-     }
+                // Creates a new job instance
+                OCRJob ocrJob = new OCRJob(asset);
 
-     static void ConfigureLogging()
-     {
-       ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-       XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-     }
-   }
- }
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(ocrJob);
+                PDFServicesResponse<OCRResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<OCRResult>(location, typeof(OCRResult));
+
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.Asset;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+
+                // Creating output streams and copying stream asset's content to it
+                String outputFilePath = "/output/ocrOperationOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+        }
+
+        static void ConfigureLogging()
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
+    }
+}
 ```
 
 #### Node JS
@@ -352,57 +379,84 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // cd OcrPDFWithOptions
 // dotnet run OcrPDFWithOptions.csproj
 
- namespace OcrPDFWithOptions
- {
-  class Program
-  {
-    private static readonly ILog log = LogManager.GetLogger(typeof(Program));
-    static void Main()
+namespace OcrPDFWithOptions
+{
+    class Program
     {
-      //Configure the logging
-      ConfigureLogging();
-      try
-      {
-          // Initial setup, create credentials instance.
-          Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                .WithClientId("PDF_SERVICES_CLIENT_ID")
-                .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                .Build();
- 
-        //Create an ExecutionContext using credentials and create a new operation instance.
-        ExecutionContext executionContext = ExecutionContext.Create(credentials);
-        OCROperation ocrOperation = OCROperation.CreateNew();
- 
-        // Set operation input from a source file.
-        FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"ocrWithOptionsInput.pdf");
-        ocrOperation.SetInput(sourceFileRef);
-        // Build OCR options from supported locales and OCR-types and set them into the operation
-        OCROptions ocrOptions = OCROptions.OCROptionsBuilder()
-            .WithOcrLocale(OCRSupportedLocale.EN_US)
-            .WithOcrType(OCRSupportedType.SEARCHABLE_IMAGE_EXACT)
-            .Build();
-        ocrOperation.SetOptions(ocrOptions);
- 
-        // Execute the operation.
-        FileRef result = ocrOperation.Execute(executionContext);
- 
-        // Save the result to the specified location.
-        result.SaveAs(Directory.GetCurrentDirectory() + "/output/ocrOperationWithOptionsOutput.pdf");
-      }
-      catch (ServiceUsageException ex)
-      {
-        log.Error("Exception encountered while executing operation", ex);
-      }
-      // Catch more errors here . . .
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
+        static void Main()
+        {
+            //Configure the logging
+            ConfigureLogging();
+            try
+            {
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
+
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
+
+                // Creates an asset(s) from source file(s) and upload
+                using Stream inputStream = File.OpenRead(@"ocrWithOptionsInput.pdf");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
+
+                // Create parameters for the job
+                OCRParams ocrParams = OCRParams.OCRParamsBuilder()
+                    .WithOcrLocale(OCRSupportedLocale.EN_US)
+                    .WithOcrType(OCRSupportedType.SEARCHABLE_IMAGE_EXACT)
+                    .Build();
+
+                // Creates a new job instance
+                OCRJob ocrJob = new OCRJob(asset).SetParams(ocrParams);
+
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(ocrJob);
+                PDFServicesResponse<OCRResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<OCRResult>(location, typeof(OCRResult));
+
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.Asset;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+
+                // Creating output streams and copying stream asset's content to it
+                String outputFilePath = "/output/ocrOperationWithOptionsOutput.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+        }
+
+        static void ConfigureLogging()
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
     }
- 
-    static void ConfigureLogging()
-    {
-      ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-      XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-    }
-  }
- }
+}
 ```
 
 #### Node JS

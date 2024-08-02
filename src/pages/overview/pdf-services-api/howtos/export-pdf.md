@@ -86,51 +86,80 @@ public class ExportPDFToDOCX {
 // cd ExportPDFToDocx/
 // dotnet run ExportPDFToDocx.csproj
 
- namespace ExportPDFToDocx
-  {
+namespace ExportPDFToDocx
+{
     class Program
     {
-      private static readonly ILog log = LogManager.GetLogger(typeof(Program));
-      static void Main()
-      {
-        //Configure the logging
-        ConfigureLogging();
-        try
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
+        static void Main()
         {
-            // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                    .WithClientId("PDF_SERVICES_CLIENT_ID")
-                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+            //Configure the logging
+            ConfigureLogging();
+            try
+            {
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
+
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
+
+                // Creates an asset from source file and upload
+                using Stream inputStream = File.OpenRead(@"exportPdfInput.pdf");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
+
+                // Create parameters for the job
+                ExportPDFParams exportPDFParams = ExportPDFParams.ExportPDFParamsBuilder(ExportPDFTargetFormat.DOCX)
                     .Build();
- 
-          //Create an ExecutionContext using credentials and create a new operation instance.
-          ExecutionContext executionContext = ExecutionContext.Create(credentials);
-          ExportPDFOperation exportPdfOperation = ExportPDFOperation.CreateNew(ExportPDFTargetFormat.DOCX);
- 
-          // Set operation input from a local PDF file
-          FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"exportPdfInput.pdf");
-          exportPdfOperation.SetInput(sourceFileRef);
- 
-          // Execute the operation.
-          FileRef result = exportPdfOperation.Execute(executionContext);
- 
-          // Save the result to the specified location.
-          result.SaveAs(Directory.GetCurrentDirectory() + "/output/exportPdfOutput.docx");
+
+                // Creates a new job instance
+                ExportPDFJob exportPDFJob = new ExportPDFJob(asset, exportPDFParams);
+
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(exportPDFJob);
+                PDFServicesResponse<ExportPDFResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<ExportPDFResult>(location, typeof(ExportPDFResult));
+
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.Asset;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+
+                // Creating output streams and copying stream asset's content to it
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + "/output/exportPdfOutput.docx");
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
         }
-        catch (ServiceUsageException ex)
+
+        static void ConfigureLogging()
         {
-          log.Error("Exception encountered while executing operation", ex);
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
         }
-        // Catch more errors here. . .
-      }
- 
-      static void ConfigureLogging()
-      {
-        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-      }
     }
-  }
+}
 ```
 
 #### Node JS
@@ -358,55 +387,81 @@ public class ExportPDFToDOCXWithOCROption {
 // cd ExportPDFToDocx/
 // dotnet run ExportPDFToDocxWithOCROption.csproj
 
- namespace ExportPDFToDocxWithOCROption
-  {
+namespace ExportPDFToDocxWithOCROption
+{
     class Program
     {
-      private static readonly ILog log = LogManager.GetLogger(typeof(Program));
-      static void Main()
-      {
-        //Configure the logging
-        ConfigureLogging();
-        try
-        {
-            // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                    .WithClientId("PDF_SERVICES_CLIENT_ID")
-                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                    .Build();
- 
-          //Create an ExecutionContext using credentials and create a new operation instance.
-          ExecutionContext executionContext = ExecutionContext.Create(credentials);
-          ExportPDFOperation exportPdfOperation = ExportPDFOperation.CreateNew(ExportPDFTargetFormat.DOCX);
- 
-          // Set operation input from a local PDF file
-          FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"exportPdfInput.pdf");
-          exportPdfOperation.SetInput(sourceFileRef);
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
 
-          // Create a new ExportPDFOptions instance from the specified OCR locale and set it into the operation.
-          ExportPDFOptions exportPdfOptions = new ExportPDFOptions(ExportOCRLocale.EN_US);
-          exportPdfOperation.SetOptions(exportPdfOptions);
- 
-          // Execute the operation.
-          FileRef result = exportPdfOperation.Execute(executionContext);
- 
-          // Save the result to the specified location.
-          result.SaveAs(Directory.GetCurrentDirectory() + "/output/ExportPDFToDOCXWithOCROption.docx");
-        }
-        catch (ServiceUsageException ex)
+        static void Main()
         {
-          log.Error("Exception encountered while executing operation", ex);
+            //Configure the logging
+            ConfigureLogging();
+            try
+            {
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
+
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
+
+                // Creates an asset from source file and upload
+                using Stream inputStream = File.OpenRead(@"exportPdfInput.pdf");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
+
+                // Create parameters for the job
+                ExportPDFParams exportPDFParams = ExportPDFParams.ExportPDFParamsBuilder(ExportPDFTargetFormat.DOCX)
+                    .WithExportOCRLocale(ExportOCRLocale.EN_US)
+                    .Build();
+
+                // Creates a new job instance
+                ExportPDFJob exportPDFJob = new ExportPDFJob(asset, exportPDFParams);
+
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(exportPDFJob);
+                PDFServicesResponse<ExportPDFResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<ExportPDFResult>(location, typeof(ExportPDFResult));
+
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.Asset;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+
+                // Creating output streams and copying stream asset's content to it
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + "/output/ExportPDFToDOCXWithOCROption.docx");
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
+            }
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
         }
-        // Catch more errors here. . .
-      }
- 
-      static void ConfigureLogging()
-      {
-        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-      }
+
+        static void ConfigureLogging()
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
     }
-  }
+}
 ```
 
 #### Node JS
@@ -635,57 +690,87 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // cd ExportPDFToJPEG/
 // dotnet run ExportPDFToJPEG.csproj
 
- namespace ExportPDFToJPEG
-  {
+namespace ExportPDFToJPEG
+{
     class Program
     {
-      private static readonly ILog log = LogManager.GetLogger(typeof(Program));
-      static void Main()
-      {
-        //Configure the logging
-        ConfigureLogging();
-        try
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
+        static void Main()
         {
-            // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                    .WithClientId("PDF_SERVICES_CLIENT_ID")
-                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                    .Build();
- 
-          //Create an ExecutionContext using credentials and create a new operation instance.
-          ExecutionContext executionContext = ExecutionContext.Create(credentials);
-          ExportPDFOperation exportPdfOperation = ExportPDFOperation.CreateNew(ExportPDFTargetFormat.JPEG);
- 
-          // Set operation input from a source file.
-          FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"exportPdfToImageInput.pdf");
-          exportPdfOperation.SetInput(sourceFileRef);
- 
-          // Execute the operation.
-          List<FileRef> result = exportPDFToImagesOperation.Execute(executionContext);  
- 
-          // Save the result to the specified location.
-          int index = 0;
-          foreach (FileRef fileRef in result)
+            //Configure the logging
+            ConfigureLogging();
+            try
             {
-                fileRef.SaveAs(Directory.GetCurrentDirectory() + "/output/exportPDFToImagesOutput_" + index + ".jpeg");
-                index++;
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
+
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
+
+                // Creates an asset from source file and upload
+                using Stream inputStream = File.OpenRead(@"exportPDFToImagesInput.pdf");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
+
+                // Create parameters for the job
+                ExportPDFToImagesParams exportPDFToImagesParams = ExportPDFToImagesParams
+                    .ExportPDFToImagesParamsBuilder(ExportPDFToImagesTargetFormat.JPEG,
+                        ExportPDFToImagesOutputType.LIST_OF_PAGE_IMAGES)
+                    .Build();
+
+                // Creates a new job instance
+                ExportPDFToImagesJob exportPDFToImagesJob = new ExportPDFToImagesJob(asset, exportPDFToImagesParams);
+
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(exportPDFToImagesJob);
+                PDFServicesResponse<ExportPDFToImagesResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<ExportPDFToImagesResult>(location, typeof(ExportPDFToImagesResult));
+                List<IAsset> resultAssets = pdfServicesResponse.Result.Assets;
+
+                // Save the result to the specified location.
+                int index = 0;
+                foreach (IAsset resultAsset in resultAssets)
+                {
+                    // Get content from the resulting asset(s)
+                    StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+                    Stream outputStream =
+                        File.OpenWrite(Directory.GetCurrentDirectory() + "/output/exportPDFToImagesOutput_" + index + ".jpeg");
+                    streamAsset.Stream.CopyTo(outputStream);
+                    outputStream.Close();
+                    index++;
+                }
             }
-        }    
-        
-        catch (ServiceUsageException ex)
-        {
-          log.Error("Exception encountered while executing operation", ex);
+            catch (ServiceUsageException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
         }
-        // Catch more errors here. . .
-      }
- 
-      static void ConfigureLogging()
-      {
-        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-      }
+
+        static void ConfigureLogging()
+        {
+            ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+        }
     }
-  }
+}
 ```
 
 #### Node JS
@@ -921,45 +1006,73 @@ Please refer the [API usage guide](../api-usage.md) to understand how to use our
 // cd ExportPDFToJPEGZip/
 // dotnet run ExportPDFToJPEGZip.csproj
 
-namespace
+namespace ExportPDFToJPEGZip
 {
-    class Program ExportPDFToJPEGZip
+    class Program
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
         static void Main()
         {
             //Configure the logging
             ConfigureLogging();
             try
             {
-                // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                        .WithClientId("PDF_SERVICES_CLIENT_ID")
-                        .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
-                        .Build();
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
 
-                //Create an ExecutionContext using credentials and create a new operation instance.
-                ExecutionContext executionContext = ExecutionContext.Create(credentials);
-                ExportPDFToImagesOperation exportPDFToImagesOperation = ExportPDFToImagesOperation.CreateNew(ExportPDFToImagesTargetFormat.JPEG);
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
 
-                // Set operation input from a source file.
-                FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"exportPDFToImagesInput.pdf");
-                exportPDFToImagesOperation.SetInput(sourceFileRef);
+                // Creates an asset from source file and upload
+                using Stream inputStream = File.OpenRead(@"exportPdfToImageInput.pdf");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
 
-                // Set the output type to create zip of images.
-                exportPDFToImagesOperation.SetOutputType(ExportPDFToImagesOutputType.ZIP_OF_IMAGES);
+                // Create parameters for the job
+                ExportPDFToImagesParams exportPDFToImagesParams = ExportPDFToImagesParams
+                    .ExportPDFToImagesParamsBuilder(ExportPDFToImagesTargetFormat.JPEG,
+                        ExportPDFToImagesOutputType.ZIP_OF_PAGE_IMAGES)
+                    .Build();
 
-                // Execute the operation.
-                List<FileRef> result = exportPDFToImagesOperation.Execute(executionContext);
+                // Creates a new job instance
+                ExportPDFToImagesJob exportPDFToImagesJob = new ExportPDFToImagesJob(asset, exportPDFToImagesParams);
 
-                // Save the result to the specified location.
-                results[0].SaveAs(Directory.GetCurrentDirectory() + "/output/exportPDFToJPEGOutput.zip");
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(exportPDFToImagesJob);
+                PDFServicesResponse<ExportPDFToImagesResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<ExportPDFToImagesResult>(location, typeof(ExportPDFToImagesResult));
+
+                // Get content from the resulting asset(s)
+                List<IAsset> resultAssets = pdfServicesResponse.Result.Assets;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAssets[0]);
+
+                // Creating output streams and copying stream asset's content to it
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + "/output/exportPDFToJPEGOutput.zip");
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
             }
             catch (ServiceUsageException ex)
             {
                 log.Error("Exception encountered while executing operation", ex);
             }
-            // Catch more errors here. . .
+            catch (ServiceApiException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (SDKException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (IOException ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Exception encountered while executing operation", ex);
+            }
         }
 
         static void ConfigureLogging()
