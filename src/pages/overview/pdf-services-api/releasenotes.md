@@ -1,1 +1,1 @@
-/Users/jasnoors/Desktop/DevDocs/pdfservices-api-documentation/src/pages/overview/releasenotes.md
+../releasenotes.md
