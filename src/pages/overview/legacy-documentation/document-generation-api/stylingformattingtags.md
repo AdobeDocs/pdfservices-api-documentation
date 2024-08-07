@@ -13,7 +13,11 @@ Apply styling and formatting in the generated output document using the HTML bas
 
 - Underline text.
 
-- Create [Hyperlinks](../document-generation-api/hyperlink.md#how-it-works).
+- Create [Hyperlinks](../document-generation-api/hyperlink.md).
+
+- Create [Inline Images](../document-generation-api/inlineimages.md).
+
+- Create [Paragraphs](/overview/document-generation-api/stylingformattingtags/#how-to-create-paragraphs-in-document).
 
 ## How It Works
 
@@ -24,10 +28,10 @@ JSON representation of the input data:
 ```json
 {
     "LMS Certificate": {
-                "Employee Name": "Sarah Rose",
-                "Certification Program": "Certificate in Life and Thoughts of <span style=\"font-weight: bold \">Dr. BR Ambedkar </span> ",
-                "Completion Date": "01/03/2021"
-        }
+        "Employee Name": "Sarah Rose",
+        "Certification Program": "Certificate in Life and Thoughts of <span style=\"font-weight: bold \">Dr. BR Ambedkar </span> ",
+        "Completion Date": "01/03/2021"
+    }
 }
 ```
 
@@ -37,7 +41,7 @@ JSON representation of the input data:
 
 Styling for the text tag can be provided using the json data through the HTML based constructs. The constructs follows the additional rules as listed below :
 
-- HTML tags supported are <span\>, nested span, <br\> (new line), <b\> (bold), <strong\> (strong), <em\> (emphasis), <i\> (italic), <u\> (underline).
+- HTML tags supported are <span\>, nested span, <br\> (new line), <b\> (bold), <strong\> (strong), <em\> (emphasis), <i\> (italic), <u\> (underline), <p\> (para).
 
 - Either use Inline custom css inside the span tag to style the data or use basic styling tags such as <b\> (bold), <i\> (italic) and <u\> (underline).
 
@@ -47,7 +51,7 @@ Styling for the text tag can be provided using the json data through the HTML ba
 
 ## Inline styling attributes supported
 
-- font-size : xpt ;  x=dynamic positive integer, 1pt =1/72 inch ( point (pt) is the only supported unit for font size.)
+- font-size : Xpt or Ypx ;  X=dynamic positive integer 1–1638 pt, 1pt = 1/72 inch; Y=dynamic positive integer 1–2184 px, 1px = 1/96 inch ( point (pt) and pixels (px) are the only supported unit for font size.)
 
 - font-weight : bold;
 
@@ -61,12 +65,12 @@ JSON representation of the input data:
 
 ```json
 {
-  "Notes Section": "Has the Board of directors established a basic policy <span style=\"font-size: 12pt;\">regarding legal compliance<span style=\"font-weight: bold; font-style: italic;\"> (hereinafter referred to as the Legal Compliance policy) </span></span><a href=\"http://www.samplewebsite.com/\">Board</a>in accordance to the institution's <span style=\"text-decoration : underline; color:ff6347;\">corporate management policy</span> <span style=\"color: red;\">and disseminated it throughout the institution</span>"
+  "Notes Section": "Has the Board of directors established a basic policy <span style=\"font-size: 14pt;\">regarding legal compliance<span style=\"font-weight: bold; font-style: italic;\"> (hereinafter referred to as the Legal Compliance policy) </span></span><a href=\"http://www.samplewebsite.com/\">Board</a> in accordance to the institution's <span style=\"text-decoration : underline; color:ff6347;\">corporate management policy</span> <span style=\"color: red;\">and disseminated it throughout the institution</span>"
 }
 ```
-![Styling Tags Sample with style for font-size, font-weight and font-style attribute added to span tag](../images/styling_attributes_sample.png)
+![Styling Tags Sample with style for font-size, font-weight and font-style attribute added to span tag](../images/stylingAttributesJsonRep.png)
 
-![Styling Tags output when style for font-size, font-weight and font-style attribute was added to span tag](../images/styling_attributes1.png)
+![Styling Tags output when style for font-size, font-weight and font-style attribute was added to span tag](../images/stylingAttributesOutput.png)
 
 ## Tags Supported
 
@@ -86,16 +90,39 @@ JSON representation of the input data:
 
 - <u\> (underline)
 
+- <img\> (image)
+
+- [<p\> (para)](/overview/document-generation-api/stylingformattingtags/#how-to-create-paragraphs-in-document)
+
+
 JSON representation of the input data:
 
 ```json
 {
-  "Notes Section": "Has the Board of directors established a basic policy <span style=\"font-size: 12pt;\">regarding legal compliance <b><i>(hereinafter referred to as the Legal Compliance policy)</i></b><a href=\"http://www.samplewebsite.com/\">Board</a> in accordance to the institution's <br><u>corporate management policy</u> and disseminated it throughout the institution"
+  "Notes Section": "Has the Board of directors established a basic policy <span style=\"font-size: 14pt;\">regarding legal compliance <b><i>(hereinafter referred to as the Legal Compliance policy) </i></b></span><a href=\"http://www.samplewebsite.com/\">Board</a> in accordance to the institution's <br><u>corporate management policy</u> and disseminated it throughout the institution"
 }
 ```
-![Styling Tags Sample with style for font-size attribute added to span tag](../images/styling_tags_sample.png)
+![Styling Tags Sample with style for font-size attribute added to span tag](../images/stylingTagsJsonRep.png)
 
-![Styling Tags output when style for font-size attribute was added to span tag](../images/styling_tags1.png)
+![Styling Tags output when style for font-size attribute was added to span tag](../images/stylingTagsOutput.png)
+ 
+#### How to create paragraphs in document?
+
+Dynamically add new paragraphs in the document using `<p>` in the placeholder value.
+
+JSON representation of the input data:
+
+```json
+{
+    "Input_Data": "Here is the content before starting of paragraph.<p>This is first paragraph dynamically added.</p><p>This content belongs to second paragraph dynamically added.</p>"
+}
+```
+![Sample_for_P_tag](../images/sample_for_p_tags.png)
+![Sample for P tag_output](../images/sample_for_ptag_formatted.png)
+
+
+
+
 
 
 

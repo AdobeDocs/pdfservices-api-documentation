@@ -3,12 +3,20 @@ title: Insert Pages | How Tos | PDF Services API | Adobe PDF Services
 ---
 # Insert Pages
 
+Insert one or more pages into an existing document
+
+## Rest API 
+
+See our public API Reference for [Insert Pages](../../../apis/#tag/Combine-PDF)
+
 ## Insert Pages in PDF
 
 The insert operation inserts additional pages from different PDFs into
 an existing PDF.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -25,9 +33,10 @@ an existing PDF.
      public static void main(String[] args) {
          try {
              // Initial setup, create credentials instance.
-             Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                     .fromFile("pdfservices-api-credentials.json")
-                     .build();
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                .withClientId("PDF_SERVICES_CLIENT_ID")
+                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .build();
   
              // Create an ExecutionContext using credentials and create a new operation instance.
              ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -97,9 +106,10 @@ an existing PDF.
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                                .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                                .Build();
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                    .Build();
  
                 // Create an ExecutionContext using credentials.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -183,10 +193,11 @@ an existing PDF.
    
     try {
       // Initial setup, create credentials instance.
-      const credentials = PDFServicesSdk.Credentials
-          .serviceAccountCredentialsBuilder()
-          .fromFile("pdfservices-api-credentials.json")
-          .build();
+        const credentials =  PDFServicesSdk.Credentials
+            .servicePrincipalCredentialsBuilder()
+            .withClientId("PDF_SERVICES_CLIENT_ID")
+            .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+            .build();
    
       // Create an ExecutionContext using credentials and create a new operation instance.
       const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
@@ -227,69 +238,54 @@ an existing PDF.
     }
 ```
 
-#### REST API
+#### Rest API 
 
 ```javascript
-// Please refer our REST API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-combinePDF
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Combine-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/combinepdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"documentsIn\": [{
-			\"pageRanges\": {
-				\"cpf:inline\": [{
-					\"start\": 1,
-					\"end\": 4
-				}]
-			},
-			\"documentIn\": {
-				\"cpf:location\": \"InputFile0\",
-				\"dc:format\": \"application/pdf\"
-			}
-		}, {
-			\"pageRanges\": {
-				\"cpf:inline\": [{
-					\"start\": 1,
-					\"end\": 25
-				}]
-			},
-			\"documentIn\": {
-				\"cpf:location\": \"InputFile1\",
-				\"dc:format\": \"application/pdf\"
-			}
-		}, {
-			\"pageRanges\": {
-				\"cpf:inline\": [{
-					\"start\": 1
-				}, {
-					\"end\": 25
-				}, {
-					\"start\": 1,
-					\"end\": 25
-				}]
-			},
-			\"documentIn\": {
-				\"cpf:location\": \"InputFile2\",
-				\"dc:format\": \"application/pdf\"
-			}
-		}]
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-916ee91c156b42349a7847a7d564fb13\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"OutputFile\",
-			\"dc:format\": \"application/pdf\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"' \
---form 'InputFile1=@"{{Placeholder for input file (absolute path)}}"' \
---form 'InputFile2=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assets": [
+        {
+            "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+            "pageRanges": [
+                {
+                    "start": 1,
+                    "end": 1
+                }
+            ]
+        },
+        {
+            "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+            "pageRanges": [
+                {
+                    "start": 4
+                }
+            ]
+        },
+        {
+            "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+            "pageRanges": [
+                {
+                    "start": 1
+                }
+            ]
+        },
+        {
+            "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+            "pageRanges": [
+                {
+                    "start": 2
+                }
+            ]
+        }
+    ]
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-combinePDF
 ```

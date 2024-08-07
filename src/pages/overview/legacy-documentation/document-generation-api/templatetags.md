@@ -19,7 +19,7 @@ A placeholder(text tags) gets replaced by the actual input data.
 
 **How to insert Placeholder Variables**
 
-<Media slots="video"/>
+<Media slots="video" width="750" height="500"/>
 
 <https://images-tv.adobe.com/mpcv3/5158/aa393134-7cf7-4ebb-bfd0-1ced95237d20_1615916599.854x480at800_h264.mp4#t=3>
 
@@ -42,7 +42,8 @@ JSON representation of the input data:
     "street": "123 ABC Street",
     "state": "LA",
     "zip": "9XXXX"
-  }
+  },
+  "doctor" : "John Doe"
 }
 ```
 
@@ -55,8 +56,8 @@ Placeholder variables get replaced with the actual input data.
 
 **Default Value**
 
-A default value can be specified for the placeholder variable. In case,
-the specified variable is not present in the input data, the placeholder
+A default value can be specified for the placeholder variable. In case
+the specified tag is not present in the input json data, the placeholder
 gets replaced with the default value.
 
 ![Placeholder tags with default value set](../images/placeholder_default.png)
@@ -68,9 +69,14 @@ Setting placeholder variable as optional will replace the placeholder
 with an empty string in case the specified variable is not present in
 the input data.
 
-![Placeholder tags with optional image set](../images/placeholder_optional_image.png)
+![Placeholder tags with optional image set](../images/placeholder_optional.png)
 
+**Prefix**
 
+A prefix value can be specified for the placeholder variable. Doing so will append
+this value before the result of the tag.
+
+![Placeholder tags with prefix image set](../images/placeholder_prefix.png)
 ## Images
 
 To dynamically insert an image in the document, add any image as
@@ -140,10 +146,78 @@ the output document.
 
 ![Image placeholder replaced by the image data](../images/image_tag_final.png)
 
-## Tables
+<InlineAlert slots="text"/>
 
-Rows of a table can be dynamically populated by repeating over an array
-of objects from the input data.
+Image can also be inserted using the html `<img/>` tag. Please refer [Inline Images](../document-generation-api/inlineimages.md) to learn more about this.
+
+## Conditionals
+
+Show or hide content in the document based on the conditions.
+
+**How to insert Conditional Tags**
+
+<Media slots="video"/>
+
+<https://images-tv.adobe.com/mpcv3/5158/671b4819-2e8c-44a1-8667-e9dfd2556133_1615916356.854x480at800_h264.mp4#t=3>
+
+
+<InlineAlert slots="text"/>
+
+The condition must be wrapped inside *expr()*. <br/> Supported
+conditional operators are =, !=, >=, >, <=, <.
+
+JSON representation of the input data:
+
+```json
+{
+  "state": "CA"
+}
+```
+
+
+**Conditional Sections**
+
+Show or hide paragraphs based on conditions.
+
+![Showing an paragraph based on a condition](../images/conditional_section.png)
+
+
+**Conditional Phrases**
+
+Show or hide text inside a paragraph based on conditions.
+
+![Showing a text inside a paragraph based on a condition](../images/conditional_phrase.png)
+
+## Tables
+### Insert Table using `<table>` HTML Element
+
+Add tables in the document through json data using `<table>` tag.
+
+JSON representation of the input data:
+
+```json
+{
+  "Table_Data": "<table border='1' cellpadding='0' cellspacing='0' style='width:30%'><tr><th>Name</th><th>Age</th><th>Gender</th></tr><tr><td>Sheldon</td><td>29</td><td>Male</td></tr><tr><td>Leonard</td><td>30</td><td>Male</td></tr><tr><td>Howard</td><td>28</td><td>Male</td></tr><tr><td>Raj</td><td>29</td><td>Male</td></tr></table>"
+}
+```
+**Usage**
+
+Placeholder tag is replaced by a table generated using the html string provided in the input json.
+![Sample for HTML Table insertion](../images/html_table_output.png)
+
+
+<InlineAlert slots="text"/>
+
+- Placeholder Tags containing `<table>` HTML element as value in input json data, should be placed in a separate paragraph in the input document template.
+
+- Only Inline Styling of Table elements is possible. i.e. using `style` attribute of `<table>`. Internal and External styling are not allowed.
+
+
+
+### Insert Table using Placeholder Table Tag
+
+Rows of a table can be dynamically populated by repeating over an array of objects from the input data.
+
 
 **How to insert Tables**
 
@@ -197,48 +271,10 @@ over the specified array of objects.
 
 ![Table with template tags replaced with actual values in the rows](../images/table_result.png)
 
-### Dynamically expand table rows or columns
-
-Specify the cell extension property inside the table cell to indicate whether to expand table rows vertically or columns horizontally.
-
-JSON representation of the input data:
-
-```json
-{
-  "subscriptions": [
-    {
-      "name": "Adobe Document API",
-      "price": "99"
-    },
-    {
-      "name": "Adobe Marketing API",
-      "price": "199"
-    },
-    {
-      "name": "Adobe Design API",
-      "price": "299"
-    }
-
-  ]
-}
-```
-
-- *Repeat table rows vertically*
-    - {{subscriptions.name:**cell-extension(vertical)**}} tag lets the engine know that cells will be extended in vertical direction.
-
-![Table gets vertically extended as table rows are repeated](../images/vertical-extension1.png)
-
 <InlineAlert slots="text"/>
 
-Default extension is vertical. If cell-extension construct is not provided, then table will be extended in vertical direction.
-
-<br/>
-
-- *Repeat table columns horizontally*
-    - {{subscriptions.name:**cell-extension(horizontal)**}} tag lets the engine know that cells will be extended in horizontal direction.
-
-![Table gets horizontally extended as table columns are repeated](../images/horizontal-extension1.png)
-
+Please visit [Complex Table Constructs](../document-generation-api/complextableconstructs.md) to learn about advanced
+constructs inside tables.
 
 ## Lists
 
@@ -300,44 +336,6 @@ Dynamically generate a numbered or bullet list by placing it inside a repeating 
 
 ![Template tag items are replaced by numbered or bullet list](../images/simple_lists.png)
 
-
-## Conditionals
-
-Show or hide content in the document based on the conditions.
-
-**How to insert Conditional Tags**
-
-<Media slots="video"/>
-
-<https://images-tv.adobe.com/mpcv3/5158/671b4819-2e8c-44a1-8667-e9dfd2556133_1615916356.854x480at800_h264.mp4#t=3>
-
-
-<InlineAlert slots="text"/>
-
-The condition must be wrapped inside *expr()*. <br/> Supported
-conditional operators are =, !=, >=, >, <=, <.
-
-JSON representation of the input data:
-
-```json
-{
-  "state": "CA"
-}
-```
-
-
-**Conditional Sections**
-
-Show or hide paragraphs based on conditions.
-
-![Showing an paragraph based on a condition](../images/conditional_section.png)
-
-
-**Conditional Phrases**
-
-Show or hide text inside a paragraph based on conditions.
-
-![Showing a text inside a paragraph based on a condition](../images/conditional_phrase.png)
 
 ## Numerical Calculations
 
@@ -405,7 +403,7 @@ Here is the list of [supported aggregation functions](https://docs.jsonata.org/a
 aggregate numerical calculation can only be applied to a list of
 numbers.
 
-## Adobe Sign 
+## Adobe Sign
 
 Adobe Sign text tags can be placed anywhere within the contents of the document template.
 
@@ -414,4 +412,3 @@ These tags are converted into Adobe Sign form fields when the final document is 
 <InlineAlert slots="text"/>
 
 Please visit [Adobe Sign Text Tag Guide](https://helpx.adobe.com/in/sign/using/text-tag.html) to learn about different Adobe Sign text tags.
-
