@@ -3,11 +3,19 @@ title: Remove Protection | How Tos | PDF Services API | Adobe PDF Services
 ---
 # Remove Protection
 
+Remove password security from a PDF document. This can only be accomplished with the owner password of the document which must be passed in the operation.
+
+## Rest API 
+
+See our public API Reference for [Remove Protection](../../../apis/#tag/Remove-Protection)
+
 ## Remove security from PDFs
 
 Use the below sample to remove security from a PDF document.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -24,8 +32,9 @@ Use the below sample to remove security from a PDF document.
     public static void main(String[] args) {
         try {
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
+           Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                    .withClientId("PDF_SERVICES_CLIENT_ID")
+                    .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
                     .build();
  
             // Create an ExecutionContext using credentials and create a new operation instance.
@@ -72,9 +81,10 @@ Use the below sample to remove security from a PDF document.
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                                .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                                .Build();
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                        .WithClientId("PDF_SERVICES_CLIENT_ID")
+                        .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                        .Build();
  
                 // Create an ExecutionContext using credentials.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -123,10 +133,11 @@ Use the below sample to remove security from a PDF document.
   
    try {
      // Initial setup, create credentials instance.
-     const credentials =  PDFServicesSdk.Credentials
-         .serviceAccountCredentialsBuilder()
-         .fromFile("pdfservices-api-credentials.json")
-         .build();
+       const credentials =  PDFServicesSdk.Credentials
+           .servicePrincipalCredentialsBuilder()
+           .withClientId("PDF_SERVICES_CLIENT_ID")
+           .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+           .build();
   
      // Create an ExecutionContext using credentials
      const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
@@ -159,38 +170,21 @@ Use the below sample to remove security from a PDF document.
    }
 ```
 
-#### REST API
+#### Rest API
 
 ```javascript
-// Please refer our REST API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-removeProtection
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Remove-Protection
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/removeprotection' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"params\": {
-			\"cpf:inline\": {
-				\"password\": \"password\"
-			}
-		},
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-d80dc37d3aee44a8839e3429360db9a7\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"application/pdf\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "password": "mypassword",
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-removeProtection
 ```

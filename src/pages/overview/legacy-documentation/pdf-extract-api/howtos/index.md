@@ -4,11 +4,11 @@ title: How Tos | PDF Extract API | Adobe PDF Services
 # How Tos
 <p>
 
-The [samples and documentation](extract-api.md#extract-text-from-a-pdf) should get you quickly up and running with PDF Extract capabilities in the [PDFServices SDK](../../pdf-services-api/index.md) including:
+The [samples and documentation](extract-api.md#extract-text-from-a-pdf) should get you quickly up and running with PDF Extract capabilities in the [PDFServices SDK](../../pdf-extract-api/gettingstarted#sdk) including:
 
 - Extracting PDF as JSON: the content, structure & renditions of table and figure elements along with Character Bounding Boxes
 
-For code examples illustrating other PDF actions including those below, see the [PDFServices SDK](../../pdf-services-api/index.md) :
+For code examples illustrating other PDF actions including those below, see the [PDFServices SDK](../../pdf-extract-api/gettingstarted#sdk) :
 
 - Creating a PDF from multiple formats, including HTML, Microsoft Office documents, and text files
 - Exporting a PDF to other formats or an image
@@ -23,8 +23,7 @@ For code examples illustrating other PDF actions including those below, see the 
 
 ## How It Works
 
-PDF Extract uses AI/ML technology to identify and categorize the various objects within documents – such as paragraphs, lists, headings, tables, and images – and extract the text, formatting, and associated document structural information which is then delivered in a resulting JSON file. Extracted table data can optionally be delivered within .CSV or .XLSX files, and extracted images are delivered as .PNG files. For additional information, please refer to [PDF Extract API white paper](https://adobe.sharepoint.com/:w:/s/DCPM/EQUrHgYanq5Iq9PR0XwRIfsBI6uBOu5iG1nRB0t_7amJYA?email=cfrench%40adobe.com&e=JFgscn)
-
+PDF Extract uses AI/ML technology to identify and categorize the various objects within documents – such as paragraphs, lists, headings, tables, and images – and extract the text, formatting, and associated document structural information which is then delivered in a resulting JSON file. Extracted table data can optionally be delivered within .CSV or .XLSX files, and extracted images are delivered as .PNG files. For additional information, please refer to <a href="../../../overview/pdf/Adobe_PDF_Extract_API_Technical_Brief.pdf" target="_blank">PDF Extract API white paper</a>
 
 ## Custom timeout configuration
 
@@ -46,6 +45,10 @@ Available properties:
     milliseconds for creating an initial HTTPS connection.
 -   **socketTimeout**: Default: 10000. The maximum allowed time in
     milliseconds between two successive HTTP response packets.
+-   **processingTimeout**: Default: 600000. The maximum allowed time
+    in milliseconds for processing the documents. Any operation taking more time than the specified `processingTimeout` will result in an operation timeout exception.
+    - **Note :** It is advisable to set the `processingTimeout` to higher values for processing large files.
+
 
 Override the timeout properties via a custom `ClientConfig` class:
 
@@ -69,6 +72,9 @@ Available properties:
     getting a response.
 -   **readWriteTimeout**: Default: 10000. The maximum allowed time in
     milliseconds to read or write data after connection is established.
+-   **processingTimeout**: Default: 600000. The maximum allowed time
+    in milliseconds for processing the documents. Any operation taking more time than the specified `processingTimeout` will result in an operation timeout exception.
+    - **Note :** It is advisable to set the `processingTimeout` to higher values for processing large files.
 
 Override the timeout properties via a custom `ClientConfig` class:
 
@@ -91,6 +97,10 @@ Available properties:
     milliseconds for creating an initial HTTPS connection.
 -   **readTimeout**: Default: 10000. The maximum allowed time in
     milliseconds between two successive HTTP response packets.
+-   **processingTimeout**: Default: 600000. The maximum allowed time
+    in milliseconds for processing the documents. Any operation taking more time than the specified `processingTimeout` will result in an operation timeout exception.
+    - **Note :** It is advisable to set the `processingTimeout` to higher values for processing large files.
+
 
 Override the timeout properties via a custom `ClientConfig` class:
 

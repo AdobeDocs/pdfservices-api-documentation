@@ -3,12 +3,20 @@ title: Rotate Pages | How Tos | PDF Services API | Adobe PDF Services
 ---
 # Rotate Pages
 
+Rotate a page in an existing document.
+
+## Rest API
+
+See our public API Reference for [Rotate Pages.](../../../apis/#tag/Page-Manipulation)
+
 ## Rotate Pages in PDF
 
 The rotate pages operation selectively rotates pages in PDF file. For
 example, you can change portrait view to landscape view.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -25,8 +33,9 @@ example, you can change portrait view to landscape view.
     public static void main(String[] args) {
         try {
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
+           Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                    .withClientId("PDF_SERVICES_CLIENT_ID")
+                    .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
                     .build();
  
             // Create an ExecutionContext using credentials and create a new operation instance.
@@ -100,9 +109,10 @@ example, you can change portrait view to landscape view.
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                                .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                                .Build();
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                        .WithClientId("PDF_SERVICES_CLIENT_ID")
+                        .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                        .Build();
  
                 // Create an ExecutionContext using credentials.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -200,10 +210,11 @@ example, you can change portrait view to landscape view.
  
   try {
     // Initial setup, create credentials instance.
-    const credentials = PDFServicesSdk.Credentials
-        .serviceAccountCredentialsBuilder()
-        .fromFile("pdfservices-api-credentials.json")
-        .build();
+      const credentials =  PDFServicesSdk.Credentials
+          .servicePrincipalCredentialsBuilder()
+          .withClientId("PDF_SERVICES_CLIENT_ID")
+          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+          .build();
  
     // Create an ExecutionContext using credentials and create a new operation instance.
     const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
@@ -239,48 +250,43 @@ example, you can change portrait view to landscape view.
   }
 ```
 
-#### REST API
+#### Rest API 
 
 ```javascript
-// Please refer our REST API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-pageManipulation
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Page-Manipulation
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/pagemanipulation' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"params\": {
-			\"cpf:inline\": {
-				\"pageActions\": [{
-					\"pageAction\": {
-						\"rotate\": {
-							\"pageRanges\": [{
-								\"start\": 1,
-								\"end\": 1
-							}],
-							\"angle\": 90
-						}
-					}
-				}]
-			}
-		},
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-4735fcf3cf924b25879e6fcf7aa84ad4\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"cid:multipartLabelOut\",
-			\"dc:format\": \"application/pdf\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718f",
+    "pageActions": [
+        {
+            "rotate": {
+                "angle": 90,
+                "pageRanges": [
+                    {
+                        "start": 1
+                    }
+                ]
+            }
+        },
+        {
+            "rotate": {
+                "angle": 180,
+                "pageRanges": [
+                    {
+                        "start": 2,
+                        "end": 2
+                    }
+                ]
+            }
+        }
+    ]
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-pageManipulation
 ```

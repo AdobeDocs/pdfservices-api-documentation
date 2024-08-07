@@ -3,13 +3,21 @@ title: Split PDF | How Tos | PDF Services API | Adobe PDF Services
 ---
 # Split PDF
 
+Split a PDF document into multiple smaller documents by simply specifying either the number of files, pages per file, or page ranges.
+
+## Rest API 
+
+See our public API Reference for [Split PDF](../../../apis/#tag/Split-PDF).
+
 ## Split PDF by number of pages
 
 This operation splits a PDF into multiple smaller documents. Simply use
 the page count to specify the maximum number of pages of each output
 file.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -26,9 +34,10 @@ file.
      public static void main(String[] args) {
          try {
              // Initial setup, create credentials instance.
-             Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                     .fromFile("pdfservices-api-credentials.json")
-                     .build();
+             Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                    .withClientId("PDF_SERVICES_CLIENT_ID")
+                    .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                    .build();
   
              // Create an ExecutionContext using credentials and create a new operation instance.
              ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -79,9 +88,10 @@ file.
              try
              {
                  // Initial setup, create credentials instance.
-                 Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                                 .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                                 .Build();
+                 Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                        .WithClientId("PDF_SERVICES_CLIENT_ID")
+                        .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                        .Build();
   
                  // Create an ExecutionContext using credentials.
                  ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -135,10 +145,11 @@ file.
 
  try {
    // Initial setup, create credentials instance.
-   const credentials =  PDFServicesSdk.Credentials
-       .serviceAccountCredentialsBuilder()
-       .fromFile("pdfservices-api-credentials.json")
-       .build();
+     const credentials =  PDFServicesSdk.Credentials
+         .servicePrincipalCredentialsBuilder()
+         .withClientId("PDF_SERVICES_CLIENT_ID")
+         .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+         .build();
 
    // Create an ExecutionContext using credentials
    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
@@ -178,40 +189,25 @@ file.
      
 ```
 
-#### REST API
+#### Rest API
 
 ```javascript
-// Please refer our REST API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Split-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"params\": {
-			\"cpf:inline\": {
-				\"pageCount\": 4
-			}
-		},
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-d99c7660cba14e5c98f9023221dab40f\"
-	},
-	\"cpf:outputs\": {
-		\"documentOutList\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"text/directory\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+    "splitoption": {
+        "pageCount": 9
+    }
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
 ```
 
 ## Split PDF by page ranges
@@ -220,7 +216,9 @@ As an alternative to creating smaller PDFs with a set number of pages,
 you can split PDFs into multiple smaller documents by specifying page
 ranges where each page range corresponds to a single output file.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -237,9 +235,10 @@ ranges where each page range corresponds to a single output file.
       public static void main(String[] args) {
           try {
               // Initial setup, create credentials instance.
-              Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                      .fromFile("pdfservices-api-credentials.json")
-                      .build();
+              Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                    .withClientId("PDF_SERVICES_CLIENT_ID")
+                    .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                    .build();
    
               // Create an ExecutionContext using credentials and create a new operation instance.
               ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -303,9 +302,10 @@ ranges where each page range corresponds to a single output file.
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                                .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                                .Build();
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                        .WithClientId("PDF_SERVICES_CLIENT_ID")
+                        .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                        .Build();
  
                 // Create an ExecutionContext using credentials.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -382,10 +382,11 @@ ranges where each page range corresponds to a single output file.
   };
   try {
     // Initial setup, create credentials instance.
-    const credentials =  PDFServicesSdk.Credentials
-        .serviceAccountCredentialsBuilder()
-        .fromFile("pdfservices-api-credentials.json")
-        .build();
+      const credentials =  PDFServicesSdk.Credentials
+          .servicePrincipalCredentialsBuilder()
+          .withClientId("PDF_SERVICES_CLIENT_ID")
+          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+          .build();
  
     // Create an ExecutionContext using credentials
     const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
@@ -425,46 +426,34 @@ ranges where each page range corresponds to a single output file.
   }
 ```
 
-#### REST API
+#### Rest API 
 
 ```javascript
-// Please refer our REST API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Split-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"params\": {
-			\"cpf:inline\": {
-				\"pageRanges\": [{
-					\"start\": 2,
-					\"end\": 4
-				}, {
-					\"start\": 7,
-					\"end\": 9
-				}]
-			}
-		},
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-d99c7660cba14e5c98f9023221dab40f\"
-	},
-	\"cpf:outputs\": {
-		\"documentOutList\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"text/directory\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+    "splitoption": {
+        "pageRanges": [
+            {
+                "start": 2,
+                "end": 4
+            },
+            {
+                "start": 7,
+                "end": 9
+            }
+        ]
+    }
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
 ```
 
 ## Split PDF into number of files
@@ -474,7 +463,9 @@ pages or a page range, you can split PDFs by file count. In this case,
 the operation creates the specified number of files with each containing
 an identical number of pages (if possible).
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -491,9 +482,10 @@ an identical number of pages (if possible).
        public static void main(String[] args) {
            try {
                // Initial setup, create credentials instance.
-               Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                       .fromFile("pdfservices-api-credentials.json")
-                       .build();
+               Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                    .withClientId("PDF_SERVICES_CLIENT_ID")
+                    .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                    .build();
     
                // Create an ExecutionContext using credentials and create a new operation instance.
                ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -545,9 +537,10 @@ an identical number of pages (if possible).
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                                .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                                .Build();
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                        .WithClientId("PDF_SERVICES_CLIENT_ID")
+                        .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                        .Build();
  
                 // Create an ExecutionContext using credentials.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -602,10 +595,11 @@ an identical number of pages (if possible).
   
    try {
      // Initial setup, create credentials instance.
-     const credentials =  PDFServicesSdk.Credentials
-         .serviceAccountCredentialsBuilder()
-         .fromFile("pdfservices-api-credentials.json")
-         .build();
+       const credentials =  PDFServicesSdk.Credentials
+           .servicePrincipalCredentialsBuilder()
+           .withClientId("PDF_SERVICES_CLIENT_ID")
+           .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+           .build();
   
      // Create an ExecutionContext using credentials
      const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
@@ -644,39 +638,23 @@ an identical number of pages (if possible).
    }
 ```
 
-#### REST API
+#### Rest API 
 
 ```javascript
-// Please refer our REST API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Split-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/splitpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"params\": {
-			\"cpf:inline\": {
-				\"fileCount\": 2
-			}
-		},
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-d99c7660cba14e5c98f9023221dab40f\"
-	},
-	\"cpf:outputs\": {
-		\"documentOutList\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"text/directory\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
-```
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+    "splitoption": {
+        "fileCount": 3
+    }
+}'
 
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-splitPDF
+```

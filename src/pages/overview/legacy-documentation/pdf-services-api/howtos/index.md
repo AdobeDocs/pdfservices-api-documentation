@@ -9,51 +9,146 @@ with the PDF Services SDK. These code examples illustrate how to perform
 PDF actions using the SDK, including:
 
 - Creating a PDF from multiple formats, including HTML, Microsoft
-    Office documents, and text files
+  Office documents, and text files
 - Exporting a PDF to other formats or an image
 - Combining entire PDFs or specified page ranges
 - Using OCR to make a PDF file searchable with a custom locale
 - Compress PDFs with compression level and Linearize PDFs
 - Protect PDFs with password(s) and Remove password protection from
-    PDFs
+  PDFs
 - Common page operations, including inserting, replacing, deleting,
-    reordering, and rotating
+  reordering, and rotating
 - Splitting PDFs into multiple files
 - Extract PDF as JSON: the content, structure & renditions of table
-    and figure elements along with Character Bounding Boxes
+  and figure elements along with Character Bounding Boxes
 - Get the properties of a PDF file like page count, PDF version, file size, compliance levels, font info, permissions and more
 - Improving the accessibility of PDFs (Available under Early Access Program)
 
 </p>
 
+## Service region configuration
+
+Adobe PDF Services SDKs use `US (United States)` as a default region to process all the documents.
+Once you purchase PDF Services SDK, the SDKs can be configured to process the documents in a specified region that is listed below.
+Currently, PDF Services SDKs has support for the following regions :
+
+|Region Code | Name         |
+| ------------| ------------|
+| `US`       | United States (default)|
+| `EU`       | Europe |
+
+In addition to
+the details below, you can refer to working code samples:
+
+-   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/ExportPDFWithSpecifiedRegion.java)
+-   [.NET](https://github.com/adobe/PDFServices.NET.SDK.Samples/blob/master/ExportPDFWithSpecifiedRegion/Program.cs)
+-   [Node.js](https://github.com/adobe/pdfservices-node-sdk-samples/blob/master/src/customconfigurations/export-pdf-with-specified-region.js)
+-   [Python](https://github.com/adobe/pdfservices-python-sdk-samples/blob/master/src/extractpdf/extract_txt_from_pdf_with_specified_region.py)
+
+Available properties:
+
+-   **region**: Default: `US`. All documents will be processed in the specified region.
+
+Override the `region` property via a custom `ClientConfig` class:
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python" />
+
+### Java
+
+```javascript
+ClientConfig clientConfig = ClientConfig.builder()
+    .setRegion(Region.EU)
+    .build();
+```
+
+### .NET
+
+```javascript
+ClientConfig clientConfig = ClientConfig.ConfigBuilder()
+    .SetRegion(Region.EU)
+    .Build();
+```
+
+### Node.js
+
+```javascript
+const clientConfig = PDFServicesSdk.ClientConfig
+    .clientConfigBuilder()
+    .setRegion(Region.EU)
+    .build();
+```
+### Python
+
+```javascript
+client_config = ClientConfig.builder()
+    .with_region(Region.EU)
+    .build()
+```
+
 ## Proxy Server Configuration
 
-The JAVA SDK enables to connect to API calls through Proxy via Client Configurations.
-It allows the clients to use SDK within the network where all outgoing calls have to 
-go through a proxy and allowed only if allow-listed on the proxy. Please refer the 
+The Java SDK enables connection to API calls through Proxy via Client Configurations.
+Also, it supports username and password based authentication for the proxy server.
+It allows the clients to use SDK within the network where all outgoing calls have to
+go through a proxy and are allowed only if allow-listed on the proxy. Please refer to the
 following sample for details.
 
--   [Java](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithProxyServer.java)
+- [Java Sample for Proxy Server Config](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithProxyServer.java )
+- [Java Sample for Proxy Server Config With Basic Authentication](https://github.com/adobe/pdfservices-java-sdk-samples/blob/master/src/main/java/com/adobe/pdfservices/operation/samples/customconfigurations/CreatePDFWithAuthenticatedProxyServer.java )
 
 ### Java Proxy Server configuration
 
 Available properties:
 
-- **proxyHost**: The proxy Server Hostname (DNS or IP Address)
-- **proxyScheme**: Default: http. Scheme of the proxy server i.e. http or https. 
-- **proxyPort**: Default: 80 for http, 443 for https. Port on which proxy server is listening.
+- **host**: The proxy Server Hostname (DNS or IP Address)
+- **scheme**: Default: http. Scheme of the proxy server i.e. http or https.
+- **port**: Default: 80 for http, 443 for https. Port on which proxy server is listening.
+- **username**: Username for the authentication.
+- **password**: Password for the authentication.
 
-Configure the Proxy Server via a custom `ClientConfig` class:
+All these properties are wrapped within the `proxyServerConfig` object. Further, `username` and `password` is to be provided
+inside the nested object `usernamePasswordCredentials`.
+
+Set the above properties using a custom `ProxyServerConfig` class, and use `ClientConfig` class to configure proxy server.
+
+**Sample showing proxy server configuration without authentication.**
 
 <CodeBlock slots="heading, code" repeat="1" languages="Java" />
 
-### 
+###
 
 ```javascript
+ProxyServerConfig proxyServerConfig = new ProxyServerConfig.Builder()
+    .withHost("PROXY_HOSTNAME")
+    .withProxyScheme(ProxyScheme.HTTPS)
+    .withPort(443)
+    .build();
+
 ClientConfig clientConfig = ClientConfig.builder()
-    .withProxyScheme(ClientConfig.ProxyScheme.HTTPS)
-    .withProxyHost("PROXY_HOSTNAME")
-    .withProxyPort(443)
+    .withConnectTimeout(10000)
+    .withSocketTimeout(40000)
+    .withProxyServerConfig(proxyServerConfig)
+    .build();
+```
+
+**Sample showing proxy server configuration with authentication.**
+
+<CodeBlock slots="heading, code" repeat="1" languages="Java" />
+
+###
+
+```javascript
+ProxyServerConfig proxyServerConfig = new ProxyServerConfig.Builder()
+    .withHost("PROXY_HOSTNAME")
+    .withProxyScheme(ProxyScheme.HTTPS)
+    .withPort(443)
+    .withCredentials(new UsernamePasswordCredentials("USERNAME", "PASSWORD"))
+    .build();
+
+ClientConfig clientConfig = ClientConfig.builder()
+    .withConnectTimeout(10000)
+    .withSocketTimeout(40000)
+    .withProxyServerConfig(proxyServerConfig)
     .build();
 ```
 
@@ -77,6 +172,9 @@ Available properties:
     milliseconds for creating an initial HTTPS connection.
 -   **socketTimeout**: Default: 10000. The maximum allowed time in
     milliseconds between two successive HTTP response packets.
+-   **processingTimeout**: Default: 600000. The maximum allowed time
+    in milliseconds for processing the documents. Any operation taking more time than the specified `processingTimeout` will result in an operation timeout exception.
+    - **Note :** It is advisable to set the `processingTimeout` to higher values for processing large files.
 
 Override the timeout properties via a custom `ClientConfig` class:
 
@@ -88,6 +186,7 @@ Override the timeout properties via a custom `ClientConfig` class:
 ClientConfig clientConfig = ClientConfig.builder()
     .withConnectTimeout(3000)
     .withSocketTimeout(20000)
+    .withProcessingTimeout(900000)
     .build();
 ```
 
@@ -100,7 +199,10 @@ Available properties:
     getting a response.
 -   **readWriteTimeout**: Default: 10000. The maximum allowed time in
     milliseconds to read or write data after connection is established.
-    
+-   **processingTimeout**: Default: 600000. The maximum allowed time
+    in milliseconds for processing the documents. Any operation taking more time than the specified `processingTimeout` will result in an operation timeout exception.
+    - **Note :** It is advisable to set the `processingTimeout` to higher values for processing large files.
+
 Override the timeout properties via a custom `ClientConfig` class:
 
 <CodeBlock slots="heading, code" repeat="1" languages=".NET" />
@@ -109,11 +211,12 @@ Override the timeout properties via a custom `ClientConfig` class:
 
 ```javascript
 ClientConfig clientConfig = ClientConfig.ConfigBuilder()
-    .timeout(500000)
-    .readWriteTimeout(15000)
+    .WithTimeout(40000)
+    .WithReadWriteTimeout(10000)
+    .WithProcessingTmeout(900000)
     .Build();
 ```
-    
+
 ### Node.js timeout configuration
 
 Available properties:
@@ -122,7 +225,10 @@ Available properties:
     milliseconds for creating an initial HTTPS connection.
 -   **readTimeout**: Default: 10000. The maximum allowed time in
     milliseconds between two successive HTTP response packets.
-    
+-   **processingTimeout**: Default: 600000. The maximum allowed time
+    in milliseconds for processing the documents. Any operation taking more time than the specified `processingTimeout` will result in an operation timeout exception.
+    - **Note :** It is advisable to set the `processingTimeout` to higher values for processing large files.
+
 Override the timeout properties via a custom `ClientConfig` class:
 
 <CodeBlock slots="heading, code" repeat="1" languages="Node JS" />
@@ -131,9 +237,10 @@ Override the timeout properties via a custom `ClientConfig` class:
 
 ```javascript
 const clientConfig = PDFServicesSdk.ClientConfig
-  .clientConfigBuilder()
-  .withConnectTimeout(15000)
-  .withReadTimeout(15000)
+    .clientConfigBuilder()
+    .withConnectTimeout(15000)
+    .withReadTimeout(15000)
+    .withProcessingTimeout(900000)
   .build();
 ```  
 

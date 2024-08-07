@@ -3,12 +3,22 @@ title: Protect PDF | How Tos | PDF Services API | Adobe PDF Services
 ---
 # Protect PDF
 
+Secure a PDF file with a password encrypt the document. Set an owner password and restrictions on certain features like printing, editing and copying in the PDF document to prevent end users from modifying it.
+
+Support for AES-128 and AES-256 encryption on PDF files, with granular permissions for high and low quality printing and fill and sign form field restrictions.
+
+## Rest API 
+
+See our public API Reference for [Protect PDF](../../../apis/#tag/Protect-PDF)
+
 ## Protect PDFs with user password
 
 You can password protect PDFs so that only users with a document open
 password can open the file.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -25,9 +35,10 @@ password can open the file.
      
             try {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                        .fromFile("pdfservices-api-credentials.json")
-                        .build();
+                Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                    .withClientId("PDF_SERVICES_CLIENT_ID")
+                    .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                    .build();
      
                 // Create an ExecutionContext using credentials.
                 ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -79,9 +90,10 @@ password can open the file.
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                                .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                                .Build();
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                        .WithClientId("PDF_SERVICES_CLIENT_ID")
+                        .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                        .Build();
  
                 // Create an ExecutionContext using credentials.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -133,10 +145,11 @@ password can open the file.
    
     try {
       // Initial setup, create credentials instance.
-      const credentials =  PDFServicesSdk.Credentials
-          .serviceAccountCredentialsBuilder()
-          .fromFile("pdfservices-api-credentials.json")
-          .build();
+        const credentials =  PDFServicesSdk.Credentials
+            .servicePrincipalCredentialsBuilder()
+            .withClientId("PDF_SERVICES_CLIENT_ID")
+            .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+            .build();
    
       // Create an ExecutionContext using credentials
       const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
@@ -172,43 +185,26 @@ password can open the file.
     }
 ```
 
-#### REST API
+#### Rest API 
 
 ```javascript
-// Please refer our REST API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-protectPDF
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Protect-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/protectpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"params\": {
-			\"cpf:inline\": {
-				\"passwordProtection\": {
-					\"userPassword\": \"user_password\",
-				},
-				\"encryptionAlgorithm\": \"AES_128\"
-			}
-		},
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-627aa455ac5d4c338ad49ca882e0fce5\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"application/pdf\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "passwordProtection": {
+        "userPassword": "user_password"
+    },
+    "encryptionAlgorithm": "AES_128",
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-protectPDF
 ```
 
 ## Protect PDFs with owner password
@@ -219,7 +215,9 @@ the PDF document. Refer to `ContentEncryption` and `Permission` in the
 API docs for a list of supported types of content to encrypt and types
 of document permissions.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -237,9 +235,10 @@ of document permissions.
 
        try {
            // Initial setup, create credentials instance.
-           Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                   .fromFile("pdfservices-api-credentials.json")
-                   .build();
+           Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                    .withClientId("PDF_SERVICES_CLIENT_ID")
+                    .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                    .build();
 
            // Create an ExecutionContext using credentials.
            ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -300,9 +299,10 @@ of document permissions.
            try
            {
                // Initial setup, create credentials instance.
-               Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                               .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                               .Build();
+               Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                    .Build();
 
                // Create an ExecutionContext using credentials.
                ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -363,10 +363,11 @@ of document permissions.
  
   try {
     // Initial setup, create credentials instance.
-    const credentials =  PDFServicesSdk.Credentials
-        .serviceAccountCredentialsBuilder()
-        .fromFile("pdfservices-api-credentials.json")
-        .build();
+      const credentials =  PDFServicesSdk.Credentials
+          .servicePrincipalCredentialsBuilder()
+          .withClientId("PDF_SERVICES_CLIENT_ID")
+          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+          .build();
  
     // Create an ExecutionContext using credentials
     const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
@@ -411,43 +412,24 @@ of document permissions.
   }
 ```
 
-#### REST API
+#### Rest API 
 
 ```javascript
-// Please refer our REST API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-protectPDF
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Protect-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/protectpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"params\": {
-			\"cpf:inline\": {
-				\"passwordProtection\": {
-					\"ownerPassword\": \"owner_password\"
-				},
-				\"permissions\": [\"PRINT_LOW_QUALITY\", \"PRINT_HIGH_QUALITY\", \"EDIT_CONTENT\", \"EDIT_FILL_AND_SIGN_FORM_FIELDS\", \"EDIT_ANNOTATIONS\", \"EDIT_DOCUMENT_ASSEMBLY\", \"COPY_CONTENT\"],
-				\"contentToEncrypt\": \"ALL_CONTENT_EXCEPT_METADATA\",
-				\"encryptionAlgorithm\": \"AES_128\"
-			}
-		},
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-627aa455ac5d4c338ad49ca882e0fce5\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"application/pdf\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+  "passwordProtection": {
+    "ownerPassword": "owner_password"
+  },
+  "encryptionAlgorithm": "AES_256",
+  "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-protectPDF
 ```

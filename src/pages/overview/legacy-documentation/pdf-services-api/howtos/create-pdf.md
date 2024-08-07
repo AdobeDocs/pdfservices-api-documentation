@@ -3,6 +3,14 @@ title: Create PDF | How Tos | PDF Services API | Adobe PDF Services
 ---
 # Create PDF
 
+Create PDFs from a variety of formats, including static and dynamic HTML; Microsoft Word, PowerPoint, and Excel; as well as text, image, Zip, and URL. Support for HTML to PDF, DOC to PDF, DOCX to PDF, PPT to PDF, PPTX to PDF, XLS to PDF, XLSX to PDF, TXT to PDF, RTF to PDF, BMP to PDF, JPEG to PDF, GIF to PDF, TIFF to PDF, PNG to PDF
+
+## Rest API
+
+See our public API Reference for :
+- [Create PDF from Office formats](../../../apis/#tag/Create-PDF)
+- [Create PDF from HTML](../../../apis/#tag/Html-To-PDF)
+
 ## Create a PDF
 
 Use the sample below to create PDFs from Microsoft Office documents
@@ -22,7 +30,9 @@ following formats:
 If a Microsoft Word/PowerPoint input file has an embedded TrueType font, the output pdf will also contain the same embedded TrueType font.
 For more information, refer [Benefits of embedding custom fonts](https://support.microsoft.com/en-us/office/benefits-of-embedding-custom-fonts-cb3982aa-ea76-4323-b008-86670f222dbc#OfficeVersion=Windows).
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -41,8 +51,10 @@ public class CreatePDFFromDOCX {
         try {
 
             // Initial setup, create credentials instance. 
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json").build();
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                .withClientId("PDF_SERVICES_CLIENT_ID")
+                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .build();
 
             //Create an ExecutionContext using credentials and create a new operation instance.
             ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -85,10 +97,11 @@ namespace CreatePDFFromDocx
        ConfigureLogging();
        try
        {
-         // Initial setup, create credentials instance.
-         Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                 .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                 .Build();
+           // Initial setup, create credentials instance.
+           Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                .WithClientId("PDF_SERVICES_CLIENT_ID")
+                .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .Build();
 
          //Create an ExecutionContext using credentials and create a new operation instance.
          ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -131,10 +144,11 @@ const PDFservicesSdk = require('@adobe/pdfservices-node-sdk');
 
  try {
    // Initial setup, create credentials instance.
-   const credentials =  PDFServicesSdk.Credentials
-       .serviceAccountCredentialsBuilder()
-       .fromFile("pdfservices-api-credentials.json")
-       .build();
+     const credentials =  PDFServicesSdk.Credentials
+         .servicePrincipalCredentialsBuilder()
+         .withClientId("PDF_SERVICES_CLIENT_ID")
+         .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+         .build();
 
    // Create an ExecutionContext using credentials and create a new operation instance.
    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
@@ -160,35 +174,22 @@ const PDFservicesSdk = require('@adobe/pdfservices-node-sdk');
  }
 ```
 
-#### REST API
+#### Rest API
 
 ```javascript
-// Please refer our REST API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-createPDF
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Create-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/createpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/vnd.openxmlformats-officedocument.wordprocessingml.document\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-1538ece812254acaac2a07799503a430\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"application/pdf\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-createPDF
 ```
 
 ## Create PDF with DocumentLanguage
@@ -203,9 +204,9 @@ file, the SDK supports the following formats:
 -   Microsoft Excel (XLS, XLSX)
 -   Text (TXT, RTF)
 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -224,9 +225,10 @@ public class CreatePDFFromDOCXWithOptions {
         try {
 
           // Initial setup, create credentials instance.
-          Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-              .fromFile("pdfservices-api-credentials.json")
-              .build();
+          Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+            .withClientId("PDF_SERVICES_CLIENT_ID")
+            .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+            .build();
 
           //Create an ExecutionContext using credentials and create a new operation instance.
           ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -284,9 +286,10 @@ namespace CreatePDFFromDocxWithOptions
        try
        {
          // Initial setup, create credentials instance.
-         Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                 .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                 .Build();
+           Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                .WithClientId("PDF_SERVICES_CLIENT_ID")
+                .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .Build();
 
          //Create an ExecutionContext using credentials and create a new operation instance.
          ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -355,8 +358,9 @@ const setCustomOptions = (createPdfOperation) => {
 try {
     // Initial setup, create credentials instance.
     const credentials =  PDFServicesSdk.Credentials
-        .serviceAccountCredentialsBuilder()
-        .fromFile("pdfservices-api-credentials.json")
+        .servicePrincipalCredentialsBuilder()
+        .withClientId("PDF_SERVICES_CLIENT_ID")
+        .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
         .build();
 
     // Create an ExecutionContext using credentials and create a new operation instance.
@@ -386,42 +390,23 @@ try {
 }
 ```
 
-#### REST API
+#### Rest API
 
 ```javascript
-// Please refer our REST API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-createPDF
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Create-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/createpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"params\": {
-			\"cpf:inline\": {
-				\"wordFormatOptions\": {
-					\"documentLanguage\": \"ja-JP\"
-				}
-			}
-		},
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/vnd.openxmlformats-officedocument.wordprocessingml.document\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-1538ece812254acaac2a07799503a430\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"application/pdf\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+    "documentLanguage": "en-US"
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-createPDF
 ```
 
 ## Create a PDF from static HTML
@@ -432,7 +417,9 @@ the input file must be a zip file containing an index.html at the top
 level of the archive as well as any dependencies such as images, css
 files, and so on.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -451,9 +438,10 @@ public class CreatePDFFromStaticHTML {
      try {
 
        // Initial setup, create credentials instance.
-       Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-           .fromFile("pdfservices-api-credentials.json")
-           .build();
+       Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+          .withClientId("PDF_SERVICES_CLIENT_ID")
+          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+          .build();
 
        //Create an ExecutionContext using credentials and create a new operation instance.
        ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -511,10 +499,11 @@ namespace CreatePDFFromStaticHtml
        ConfigureLogging();
        try
        {
-         // Initial setup, create credentials instance.
-         Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                 .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                 .Build();
+           // Initial setup, create credentials instance.
+           Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                .WithClientId("PDF_SERVICES_CLIENT_ID")
+                .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .Build();
 
          //Create an ExecutionContext using credentials and create a new operation instance.
          ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -588,10 +577,11 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 
  try {
    // Initial setup, create credentials instance.
-   const credentials =  PDFServicesSdk.Credentials
-     .serviceAccountCredentialsBuilder()
-     .fromFile("pdfservices-api-credentials.json")
-     .build();
+     const credentials =  PDFServicesSdk.Credentials
+         .servicePrincipalCredentialsBuilder()
+         .withClientId("PDF_SERVICES_CLIENT_ID")
+         .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+         .build();
 
    // Create an ExecutionContext using credentials and create a new operation instance.
    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
@@ -620,54 +610,37 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
  }
 ```
 
-#### REST API
+#### Rest API
 
 ```javascript
-// Please refer our REST API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-  \"cpf:inputs\": {
-    \"params\": {
-      \"cpf:inline\": {
-        \"print\": {
-          \"includeHeaderFooter\": true
-        },
-        \"pageLayout\": {
-          \"pageHeight\": 8.5,
-          \"pageWidth\": 11
-        },
-        \"json\": \"{\\\"k1\\\": \\\"v1\\\", \\\"k2\\\": \\\"v2\\\"}\"
-      }
-    },
-    \"documentIn\": {
-      \"cpf:location\": \"InputFile0\",
-      \"dc:format\": \"application/zip\"
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+    "json": "{}",
+    "includeHeaderFooter": true,
+    "pageLayout": {
+        "pageWidth": 11,
+        "pageHeight": 8.5
     }
-  },
-  \"cpf:engine\": {
-    \"repo:assetId\": \"urn:aaid:cpf:Service-e2ee120a2b06427cb449592f5db967e7\"
-  },
-  \"cpf:outputs\": {
-    \"documentOut\": {
-      \"cpf:location\": \"multipartLabelOut\",
-      \"dc:format\": \"application/pdf\"
-    }
-  }
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```
 
 ## Create a PDF from static HTML with inline CSS
 
 The sample below creates a PDF file from a static HTML file with inline CSS. The file must be local.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -686,9 +659,10 @@ The sample below creates a PDF file from a static HTML file with inline CSS. The
       try {
 
         // Initial setup, create credentials instance.
-        Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-            .fromFile("pdfservices-api-credentials.json")
-            .build();
+       Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+          .withClientId("PDF_SERVICES_CLIENT_ID")
+          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+          .build();
 
         //Create an ExecutionContext using credentials and create a new operation instance.
         ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -746,10 +720,11 @@ namespace CreatePDFFromHTMLWithInlineCSS
         ConfigureLogging();
         try
         {
-          // Initial setup, create credentials instance.
-          Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                  .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                  .Build();
+            // Initial setup, create credentials instance.
+            Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                    .Build();
 
           //Create an ExecutionContext using credentials and create a new operation instance.
           ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -824,8 +799,9 @@ const setCustomOptions = (htmlToPDFOperation) => {
 try {
     // Initial setup, create credentials instance.
     const credentials =  PDFServicesSdk.Credentials
-        .serviceAccountCredentialsBuilder()
-        .fromFile("pdfservices-api-credentials.json")
+        .servicePrincipalCredentialsBuilder()
+        .withClientId("PDF_SERVICES_CLIENT_ID")
+        .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
         .build();
 
     // Create an ExecutionContext using credentials and create a new operation instance.
@@ -855,54 +831,37 @@ try {
 }
 ```
 
-#### REST API
+#### Rest API
 
 ```javascript
-// Please refer our REST API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-  \"cpf:inputs\": {
-    \"params\": {
-      \"cpf:inline\": {
-        \"print\": {
-          \"includeHeaderFooter\": true
-        },
-        \"pageLayout\": {
-          \"pageHeight\": 8.5,
-          \"pageWidth\": 11
-        },
-        \"json\": \"{\\\"k1\\\": \\\"v1\\\", \\\"k2\\\": \\\"v2\\\"}\"
-      }
-    },
-    \"documentIn\": {
-      \"cpf:location\": \"InputFile0\",
-      \"dc:format\": \"application/zip\"
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+    "json": "{}",
+    "includeHeaderFooter": true,
+    "pageLayout": {
+        "pageWidth": 11,
+        "pageHeight": 8.5
     }
-  },
-  \"cpf:engine\": {
-    \"repo:assetId\": \"urn:aaid:cpf:Service-e2ee120a2b06427cb449592f5db967e7\"
-  },
-  \"cpf:outputs\": {
-    \"documentOut\": {
-      \"cpf:location\": \"multipartLabelOut\",
-      \"dc:format\": \"application/pdf\"
-    }
-  }
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```
 
 ## Create a PDF File From HTML specified via URL
 
 The sample below creates a PDF file from a HTML file specified via URL.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -921,9 +880,10 @@ The sample below creates a PDF file from a HTML file specified via URL.
       try {
 
         // Initial setup, create credentials instance.
-        Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-            .fromFile("pdfservices-api-credentials.json")
-            .build();
+       Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+          .withClientId("PDF_SERVICES_CLIENT_ID")
+          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+          .build();
 
         //Create an ExecutionContext using credentials and create a new operation instance.
         ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -982,9 +942,10 @@ namespace CreatePDFFromURL
         try
         {
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-            .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-            .Build();
+            Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                    .Build();
 
             //Create an ExecutionContext using credentials and create a new operation instance.
             ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -1058,8 +1019,9 @@ const setCustomOptions = (htmlToPDFOperation) => {
 try {
     // Initial setup, create credentials instance.
     const credentials =  PDFServicesSdk.Credentials
-        .serviceAccountCredentialsBuilder()
-        .fromFile("pdfservices-api-credentials.json")
+        .servicePrincipalCredentialsBuilder()
+        .withClientId("PDF_SERVICES_CLIENT_ID")
+        .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
         .build();
 
     // Create an ExecutionContext using credentials and create a new operation instance.
@@ -1091,43 +1053,28 @@ try {
 }
 ```
 
-#### REST API
+#### Rest API
 
 ```javascript
-// Please refer our REST API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-  \"cpf:inputs\": {
-    \"params\": {
-      \"cpf:inline\": {
-        \"print\": {
-          \"includeHeaderFooter\": true
-        },
-        \"pageLayout\": {
-          \"pageHeight\": 8.5,
-          \"pageWidth\": 11
-        },
-        \"json\": \"{\\\"k1\\\": \\\"v1\\\", \\\"k2\\\": \\\"v2\\\"}\"
-      }
-    },
-    \"inputUrl\": \"{{Placeholder for inputUrl}}\"
-  },
-  \"cpf:engine\": {
-    \"repo:assetId\": \"urn:aaid:cpf:Service-e2ee120a2b06427cb449592f5db967e7\"
-  },
-  \"cpf:outputs\": {
-    \"documentOut\": {
-      \"cpf:location\": \"multipartLabelOut\",
-      \"dc:format\": \"application/pdf\"
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "inputUrl": "https://developer.adobe.com/document-services/homepage",
+    "json": "{}",
+    "includeHeaderFooter": true,
+    "pageLayout": {
+        "pageWidth": 11,
+        "pageHeight": 8.5
     }
-  }
-}"'
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```
 
 ## Create a PDF from dynamic HTML
@@ -1147,7 +1094,9 @@ manipulate the HTML DOM, thus effectively updating the source HTML file.
 This mechanism can be used to provide data to the template HTML
 dynamically prior to PDF conversion.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -1165,9 +1114,10 @@ dynamically prior to PDF conversion.
      try {
 
        // Initial setup, create credentials instance.
-       Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-           .fromFile("pdfservices-api-credentials.json")
-           .build();
+       Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+          .withClientId("PDF_SERVICES_CLIENT_ID")
+          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+          .build();
 
        //Create an ExecutionContext using credentials and create a new operation instance.
        ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -1231,10 +1181,11 @@ dynamically prior to PDF conversion.
        ConfigureLogging();
        try
        {
-         // Initial setup, create credentials instance.
-         Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                 .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                 .Build();
+           // Initial setup, create credentials instance.
+           Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                .WithClientId("PDF_SERVICES_CLIENT_ID")
+                .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .Build();
 
          //Create an ExecutionContext using credentials and create a new operation instance.
          ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -1321,10 +1272,11 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 
  try {
    // Initial setup, create credentials instance.
-   const credentials =  PDFServicesSdk.Credentials
-       .serviceAccountCredentialsBuilder()
-       .fromFile("pdfservices-api-credentials.json")
-       .build();
+     const credentials =  PDFServicesSdk.Credentials
+         .servicePrincipalCredentialsBuilder()
+         .withClientId("PDF_SERVICES_CLIENT_ID")
+         .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+         .build();
 
    // Create an ExecutionContext using credentials and create a new operation instance.
    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
@@ -1353,45 +1305,26 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
  }
 ```
 
-#### REST API 
+#### Rest API 
 
 ```javascript
-// Please refer our REST API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Html-To-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-  \"cpf:inputs\": {
-    \"params\": {
-      \"cpf:inline\": {
-        \"print\": {
-          \"includeHeaderFooter\": true
-        },
-        \"pageLayout\": {
-          \"pageHeight\": 8.5,
-          \"pageWidth\": 11
-        },
-        \"json\": \"{\\\"k1\\\": \\\"v1\\\", \\\"k2\\\": \\\"v2\\\"}\"
-      }
-    },
-    \"documentIn\": {
-      \"cpf:location\": \"InputFile0\",
-      \"dc:format\": \"application/zip\"
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+    "json": "{}",
+    "includeHeaderFooter": true,
+    "pageLayout": {
+        "pageWidth": 11,
+        "pageHeight": 8.5
     }
-  },
-  \"cpf:engine\": {
-    \"repo:assetId\": \"urn:aaid:cpf:Service-e2ee120a2b06427cb449592f5db967e7\"
-  },
-  \"cpf:outputs\": {
-    \"documentOut\": {
-      \"cpf:location\": \"multipartLabelOut\",
-      \"dc:format\": \"application/pdf\"
-    }
-  }
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-htmlToPDF
 ```

@@ -78,25 +78,24 @@ result in an error message.
 
 | Usage limit                                                     | Value       |
 | --------------------------------------------------------------- | ----------- |
-| Document limit (combine, insert, replace)                       | 20          |
+| Document limit (combine, insert, replace, split)                | 20          |
 | Document file size                                              | 100MB       |
 | Output images per Document Transaction (export)                 | 50          |
 | Page limit (OCR)\*                                              | 100         |
 | Page limit(Non-Scanned - Extract API)\*                         | 400         |
 | JSON file size (Document Generation and HTML to PDF)            | 10MB        |
 | Maximum Requests Per Minute                                     | 25 RPM      |
-| Payload size (For all APIs)                                     | 100MB       |
 
 **Page limits may be lower for documents with a large number of tables.*
 
 Licensing Metrics & Free Tier
 ------------------------------
 
-The PDF Services API has a Free Tier so that you can take a deep dive 
-into its cool features at zero cost. Free Tier users get free credentials 
-that enable the processing of 500 Document Transactions per month. 
-A Document Transaction is based on the initial endpoint request (i.e., API call) 
-and the digital output. For detailed licensing metrics, please see the tables 
+The PDF Services API has a Free Tier so that you can take a deep dive
+into its cool features at zero cost. Free Tier users get free credentials
+that enable the processing of 500 Document Transactions per month.
+A Document Transaction is based on the initial endpoint request (i.e., API call)
+and the digital output. For detailed licensing metrics, please see the tables
 above.
 
 Processing is calculated on a per Document Transaction basis.

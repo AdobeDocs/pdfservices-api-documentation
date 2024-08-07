@@ -3,12 +3,22 @@ title: Compress PDF | How Tos | PDF Services API | Adobe PDF Services
 ---
 # Compress PDFs
 
+Reduce the size of PDF files by compressing to smaller sizes for lower bandwidth viewing, downloading, and sharing.
+
+Support for multiple compression levels to retain the quality of images and graphics
+
+## Rest API
+
+See our public API Reference for [Compress PDF](../../../apis/#tag/Compress-PDF)
+
 ## Compress PDFs
 
 Compress PDFs to reduce the file size prior to performing workflow
 operations that use bandwidth or memory.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" />
 
 #### Java
 
@@ -25,9 +35,10 @@ operations that use bandwidth or memory.
   
          try {
              // Initial setup, create credentials instance.
-             Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                     .fromFile("pdfservices-api-credentials.json")
-                     .build();
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                .withClientId("PDF_SERVICES_CLIENT_ID")
+                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .build();
   
              // Create an ExecutionContext using credentials and create a new operation instance.
              ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -70,10 +81,11 @@ operations that use bandwidth or memory.
            try
            {
                // Initial setup, create credentials instance.
-               Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                               .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                               .Build();
-
+               Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                    .Build();
+               
                // Create an ExecutionContext using credentials and create a new operation instance.
                ExecutionContext executionContext = ExecutionContext.Create(credentials);
                CompressPDFOperation compressPDFOperation = CompressPDFOperation.CreateNew();
@@ -115,10 +127,11 @@ operations that use bandwidth or memory.
   
    try {
      // Initial setup, create credentials instance.
-     const credentials =  PDFServicesSdk.Credentials
-         .serviceAccountCredentialsBuilder()
-         .fromFile("pdfservices-api-credentials.json")
-         .build();
+       const credentials =  PDFServicesSdk.Credentials
+           .servicePrincipalCredentialsBuilder()
+           .withClientId("PDF_SERVICES_CLIENT_ID")
+           .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+           .build();
   
      // Create an ExecutionContext using credentials and create a new operation instance.
      const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
@@ -145,35 +158,22 @@ operations that use bandwidth or memory.
    }
 ```
 
-#### REST API
+#### Rest API
 
 ```javascript
-// Please refer our REST API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-compressPDF
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Compress-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/compresspdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-f37d36f4e6724eed92149a8ff35ea061\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"application/pdf\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-compressPDF
 ```
 
 ## Compress PDFs with Compression Level
@@ -183,7 +183,9 @@ compression level, prior to performing workflow operations that use
 bandwidth or memory. Refer to `CompressionLevel` in the API docs for a
 list of supported compression levels.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -200,9 +202,10 @@ list of supported compression levels.
    
           try {
               // Initial setup, create credentials instance.
-              Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                      .fromFile("pdfservices-api-credentials.json")
-                      .build();
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                .withClientId("PDF_SERVICES_CLIENT_ID")
+                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .build();
    
               // Create an ExecutionContext using credentials and create a new operation instance.
               ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -251,9 +254,10 @@ list of supported compression levels.
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                                .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                                .Build();
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                        .WithClientId("PDF_SERVICES_CLIENT_ID")
+                        .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                        .Build();
  
                 // Create an ExecutionContext using credentials and create a new operation instance.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -302,10 +306,11 @@ list of supported compression levels.
 
  try {
    // Initial setup, create credentials instance.
-   const credentials =  PDFServicesSdk.Credentials
-       .serviceAccountCredentialsBuilder()
-       .fromFile("pdfservices-api-credentials.json")
-       .build();
+     const credentials =  PDFServicesSdk.Credentials
+         .servicePrincipalCredentialsBuilder()
+         .withClientId("PDF_SERVICES_CLIENT_ID")
+         .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+         .build();
 
    // Create an ExecutionContext using credentials and create a new operation instance.
    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
@@ -338,38 +343,21 @@ list of supported compression levels.
  }
 ```
 
-#### REST API
+#### Rest API
 
 ```javascript
-// Please refer our REST API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-compressPDF
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Compress-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/compresspdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"params\": {
-			\"cpf:inline\": {
-				\"compressionLevel\": \"MEDIUM\"
-			}
-		},
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-f37d36f4e6724eed92149a8ff35ea061\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"application/pdf\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+    "compressionLevel": "MEDIUM"
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-compressPDF
 ```

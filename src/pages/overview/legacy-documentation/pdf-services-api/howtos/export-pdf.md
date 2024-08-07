@@ -3,6 +3,14 @@ title: Export PDF | How Tos | PDF Services API | Adobe PDF Services
 ---
 # Export PDF
 
+Export a source PDF file into doc, docx, jpeg, png, pptx, rtf, xlsx.
+
+## Rest API 
+
+See our public API Reference for : 
+- [Export PDF to Office format or text files](../../../apis/#tag/Export-PDF)
+- [Export PDF to Images](../../../apis/#tag/PDF-To-Images)
+
 ## Export a PDF
 
 The sample below converts a PDF file into a number of [supported
@@ -11,9 +19,10 @@ such as:
 
 -   Microsoft Office file formats
 -   Text files
--   Images
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -31,9 +40,10 @@ public class ExportPDFToDOCX {
 
      try {
        // Initial setup, create credentials instance.
-       Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-           .fromFile("pdfservices-api-credentials.json")
-           .build();
+       Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+          .withClientId("PDF_SERVICES_CLIENT_ID")
+          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+          .build();
        //Create an ExecutionContext using credentials and create a new operation instance.
        ExecutionContext executionContext = ExecutionContext.create(credentials);
        ExportPDFOperation exportPdfOperation = ExportPDFOperation.createNew(ExportPDFTargetFormat.DOCX);
@@ -75,10 +85,11 @@ public class ExportPDFToDOCX {
         ConfigureLogging();
         try
         {
-          // Initial setup, create credentials instance.
-          Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                  .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                  .Build();
+            // Initial setup, create credentials instance.
+            Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                    .Build();
  
           //Create an ExecutionContext using credentials and create a new operation instance.
           ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -121,10 +132,11 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 
  try {
    // Initial setup, create credentials instance.
-   const credentials =  PDFServicesSdk.Credentials
-       .serviceAccountCredentialsBuilder()
-       .fromFile("pdfservices-api-credentials.json")
-       .build();
+     const credentials =  PDFServicesSdk.Credentials
+         .servicePrincipalCredentialsBuilder()
+         .withClientId("PDF_SERVICES_CLIENT_ID")
+         .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+         .build();
 
    //Create an ExecutionContext using credentials and create a new operation instance.
    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
@@ -151,93 +163,88 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
  }
 ```
 
-#### REST API
+#### Rest API 
 
 ```javascript
-// Please refer our REST API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Export-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/exportpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"params\": {
-			\"cpf:inline\": {
-				\"targetFormat\": \"docx\"
-			}
-		},
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-26c7fda2890b44ad9a82714682e35888\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"application/vnd.openxmlformats-officedocument.wordprocessingml.document\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+    "targetFormat": "docx"
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
 ```
 
-## Export a PDF to images
+## Export a PDF file to a DOCX file (apply OCR on the PDF file)
 
-The sample below converts a PDF file to one or more jpeg or png images.
-Exporting to an image produces a zip archive containing one image per
-page. Each image file name ends with
-"\_\<unpadded\_page\_index\_number\>". For example, a PDF file with 15
-pages will generate 15 image files. The first file's name ends with
-"\_1" and the last file's name ends with "\_15".
+The sample below converts a PDF file into a number of [supported
+formats](https://opensource.adobe.com/pdfservices-java-sdk-samples/apidocs/latest/com/adobe/pdfservices/operation/pdfops/options/exportpdf/ExportPDFTargetFormat.html)
+such as:
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+-   Microsoft Office file formats
+-   Text files
+
+OCR processing is also performed on the input PDF file to extract text from images in the document.
+
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
-// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.exportpdf.ExportPDFToJPEG
+// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.exportpdf.ExportPDFToDOCXWithOCROption
 
- public class ExportPDFToJPEG {
+public class ExportPDFToDOCXWithOCROption {
 
-   // Initialize the logger.
-   private static final Logger LOGGER = LoggerFactory.getLogger(ExportPDFToJPEG.class);
+    // Initialize the logger.
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExportPDFToDOCXWithOCROption.class);
 
-   public static void main(String[] args) {
-     try {
+    public static void main(String[] args) {
 
-       // Initial setup, create credentials instance.
-       Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-           .fromFile("pdfservices-api-credentials.json")
-           .build();
+        try {
 
-       //Create an ExecutionContext using credentials and create a new operation instance.
-       ExecutionContext executionContext = ExecutionContext.create(credentials);
-       ExportPDFOperation exportPdfOperation = ExportPDFOperation.createNew(ExportPDFTargetFormat.JPEG);
+            // Initial setup, create credentials instance.
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                .withClientId("PDF_SERVICES_CLIENT_ID")
+                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .build();
+            //Create an ExecutionContext using credentials and create a new operation instance.
+            ExecutionContext executionContext = ExecutionContext.create(credentials);
+            ExportPDFOperation exportPDFOperation = ExportPDFOperation.createNew(ExportPDFTargetFormat.DOCX);
 
-       // Set operation input from a source file.
-       FileRef sourceFileRef = FileRef.createFromLocalFile("src/main/resources/exportPDFToImageInput.pdf");
-       exportPdfOperation.setInput(sourceFileRef);
+            // Set operation input from a source file.
+            FileRef sourceFileRef = FileRef.createFromLocalFile("src/main/resources/exportPDFInput.pdf");
+            exportPDFOperation.setInput(sourceFileRef);
 
-       // Execute the operation.
-       FileRef result = exportPdfOperation.execute(executionContext);
+            // Create a new ExportPDFOptions instance from the specified OCR locale and set it into the operation.
+            ExportPDFOptions exportPDFOptions = new ExportPDFOptions(ExportOCRLocale.EN_US);
+            exportPDFOperation.setOptions(exportPDFOptions);
+            
+            // Create a new ExportPDFOptions instance from the specified OCR locale and set it into the operation.
+            ExportPDFOptions exportPDFOptions = new ExportPDFOptions(ExportOCRLocale.EN_US);
+            exportPDFOperation.setOptions(exportPDFOptions);
 
-       // Save the result to the specified location.
-       result.saveAs("output/exportPDFToJPEG.zip");
+            // Execute the operation.
+            FileRef result = exportPDFOperation.execute(executionContext);
 
-     } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
-       LOGGER.error("Exception encountered while executing operation", ex);
-     }
-   }
- }
-  
+            // Save the result to the specified location.
+            result.saveAs("output/exportPDFWithOCROptionsOutput.docx");
+
+        } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
+            LOGGER.error("Exception encountered while executing operation", ex);
+        }
+    }
+}  
 ```
 
 #### .NET
@@ -245,10 +252,10 @@ pages will generate 15 image files. The first file's name ends with
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
-// cd ExportPDFToImage/
-// dotnet run ExportPDFToImage.csproj
+// cd ExportPDFToDocx/
+// dotnet run ExportPDFToDocxWithOCROption.csproj
 
- namespace ExportPDFToImage
+ namespace ExportPDFToDocxWithOCROption
   {
     class Program
     {
@@ -259,24 +266,29 @@ pages will generate 15 image files. The first file's name ends with
         ConfigureLogging();
         try
         {
-          // Initial setup, create credentials instance.
-          Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                  .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                  .Build();
+            // Initial setup, create credentials instance.
+            Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                    .Build();
  
           //Create an ExecutionContext using credentials and create a new operation instance.
           ExecutionContext executionContext = ExecutionContext.Create(credentials);
-          ExportPDFOperation exportPdfOperation = ExportPDFOperation.CreateNew(ExportPDFTargetFormat.JPEG);
+          ExportPDFOperation exportPdfOperation = ExportPDFOperation.CreateNew(ExportPDFTargetFormat.DOCX);
  
-          // Set operation input from a source file.
-          FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"exportPdfToImageInput.pdf");
+          // Set operation input from a local PDF file
+          FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"exportPdfInput.pdf");
           exportPdfOperation.SetInput(sourceFileRef);
+
+          // Create a new ExportPDFOptions instance from the specified OCR locale and set it into the operation.
+          ExportPDFOptions exportPdfOptions = new ExportPDFOptions(ExportOCRLocale.EN_US);
+          exportPdfOperation.SetOptions(exportPdfOptions);
  
           // Execute the operation.
           FileRef result = exportPdfOperation.Execute(executionContext);
  
           // Save the result to the specified location.
-          result.SaveAs(Directory.GetCurrentDirectory() + "/output/exportPdfToImageOutput.zip");
+          result.SaveAs(Directory.GetCurrentDirectory() + "/output/ExportPDFToDOCXWithOCROption.docx");
         }
         catch (ServiceUsageException ex)
         {
@@ -299,29 +311,34 @@ pages will generate 15 image files. The first file's name ends with
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
-// node src/exportpdf/export-pdf-to-jpeg.js
+// node src/exportpdf/export-docx-to-pdf-with-ocr-options.js
 
- const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 
  try {
    // Initial setup, create credentials instance.
-   const credentials =  PDFServicesSdk.Credentials
-       .serviceAccountCredentialsBuilder()
-       .fromFile("pdfservices-api-credentials.json")
-       .build();
+     const credentials =  PDFServicesSdk.Credentials
+         .servicePrincipalCredentialsBuilder()
+         .withClientId("PDF_SERVICES_CLIENT_ID")
+         .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+         .build();
 
    //Create an ExecutionContext using credentials and create a new operation instance.
    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
        exportPDF = PDFServicesSdk.ExportPDF,
-       exportPdfOperation = exportPDF.Operation.createNew(exportPDF.SupportedTargetFormats.JPEG);
+       exportPdfOperation = exportPDF.Operation.createNew(exportPDF.SupportedTargetFormats.DOCX);
 
    // Set operation input from a source file
-   const input = PDFServicesSdk.FileRef.createFromLocalFile('resources/exportPDFToImageInput.pdf');
+   const input = PDFServicesSdk.FileRef.createFromLocalFile('resources/exportPDFInput.pdf');
    exportPdfOperation.setInput(input);
 
+   // Create a new ExportPDFOptions instance from the specified OCR locale and set it into the operation.
+   const options = new exportPDF.options.ExportPDFOptions(exportPDF.options.ExportPDFOptions.OCRSupportedLocale.EN_US);
+   exportPdfOperation.setOptions(options);
+   
    // Execute the operation and Save the result to the specified location.
    exportPdfOperation.execute(executionContext)
-       .then(result => result.saveAsFile('output/exportPDFToJPEG.zip'))
+       .then(result => result.saveAsFile('output/exportPdfWithOCROptionsOutput.docx'))
        .catch(err => {
            if(err instanceof PDFServicesSdk.Error.ServiceApiError
                || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
@@ -335,67 +352,241 @@ pages will generate 15 image files. The first file's name ends with
  }
 ```
 
-#### REST API
+#### Rest API
 
 ```javascript
-// Please refer our REST API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Export-PDF
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/exportpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"params\": {
-			\"cpf:inline\": {
-				\"targetFormat\": \"jpeg\"
-			}
-		},
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-26c7fda2890b44ad9a82714682e35888\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"application/zip\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+    "targetFormat": "docx",
+    "ocrLang": "en-US"
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
 ```
 
-## Export a PDF to list of images
+## Export a PDF to images
 
-The sample below converts a PDF file to one or more jpeg or png images.
+The sample below converts a PDF file's pages to a list of JPEG images. 
+Each image file name ends with "\_\<unpadded\_page\_index\_number\>". For example, a PDF file with 15
+pages will generate 15 image files. The first file's name ends with
+"\_1" and the last file's name ends with "\_15".
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
 ```javascript 
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
-// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.exportpdf.ExportPDFToJPEGList
+// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.exportpdftoimages.ExportPDFToJPEG
 
-  public class ExportPDFToJPEGList {
+ public class ExportPDFToJPEG {
+
+   // Initialize the logger.
+   private static final Logger LOGGER = LoggerFactory.getLogger(ExportPDFToJPEG.class);
+
+   public static void main(String[] args) {
+     try {
+
+       // Initial setup, create credentials instance.
+       Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+          .withClientId("PDF_SERVICES_CLIENT_ID")
+          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+          .build();
+
+       // Create an ExecutionContext using credentials and create a new operation instance.
+       ExecutionContext executionContext = ExecutionContext.create(credentials);
+       ExportPDFOperation exportPdfOperation = ExportPDFOperation.createNew(ExportPDFTargetFormat.JPEG);
+
+       // Set operation input from a source file.
+       FileRef sourceFileRef = FileRef.createFromLocalFile("src/main/resources/exportPDFToImageInput.pdf");
+       exportPdfOperation.setInput(sourceFileRef);
+
+       // Execute the operation.
+       List<FileRef> results = exportPDFToImagesOperation.execute(executionContext);
+
+       // Save the result to the specified location.
+       int index = 0;
+       for(FileRef result : results) {
+           result.saveAs("output/exportPDFToImagesOutput_" + index + ".jpeg");
+           index++;
+       }
+
+     } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
+       LOGGER.error("Exception encountered while executing operation", ex);
+     }
+   }
+ }
+  
+```
+
+#### .NET
+
+```javascript
+// Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
+// Run the sample:
+// cd ExportPDFToJPEG/
+// dotnet run ExportPDFToJPEG.csproj
+
+ namespace ExportPDFToJPEG
+  {
+    class Program
+    {
+      private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+      static void Main()
+      {
+        //Configure the logging
+        ConfigureLogging();
+        try
+        {
+            // Initial setup, create credentials instance.
+            Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                    .Build();
+ 
+          //Create an ExecutionContext using credentials and create a new operation instance.
+          ExecutionContext executionContext = ExecutionContext.Create(credentials);
+          ExportPDFOperation exportPdfOperation = ExportPDFOperation.CreateNew(ExportPDFTargetFormat.JPEG);
+ 
+          // Set operation input from a source file.
+          FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"exportPdfToImageInput.pdf");
+          exportPdfOperation.SetInput(sourceFileRef);
+ 
+          // Execute the operation.
+          List<FileRef> result = exportPDFToImagesOperation.Execute(executionContext);  
+ 
+          // Save the result to the specified location.
+          int index = 0;
+          foreach (FileRef fileRef in result)
+            {
+                fileRef.SaveAs(Directory.GetCurrentDirectory() + "/output/exportPDFToImagesOutput_" + index + ".jpeg");
+                index++;
+            }
+        }    
+        
+        catch (ServiceUsageException ex)
+        {
+          log.Error("Exception encountered while executing operation", ex);
+        }
+        // Catch more errors here. . .
+      }
+ 
+      static void ConfigureLogging()
+      {
+        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+      }
+    }
+  }
+```
+
+#### Node JS
+
+```javascript
+// Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
+// Run the sample:
+// node src/exportpdftoimages/export-pdf-to-jpeg.js
+
+ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+ try {
+    // Initial setup, create credentials instance.
+     const credentials =  PDFServicesSdk.Credentials
+         .servicePrincipalCredentialsBuilder()
+         .withClientId("PDF_SERVICES_CLIENT_ID")
+         .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+         .build();
+
+    // Create an ExecutionContext using credentials and create a new operation instance.
+    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
+        exportPDFToImages = PDFServicesSdk.ExportPDFToImages,
+        exportPDFToImagesOperation = exportPDFToImages.Operation.createNew(exportPDFToImages.SupportedTargetFormats.JPEG);
+
+    // Set operation input from a source file.
+    const input = PDFServicesSdk.FileRef.createFromLocalFile('resources/exportPDFToImageInput.pdf');
+    exportPDFToImagesOperation.setInput(input);
+
+    // Execute the operation and Save the result to the specified location.
+    exportPDFToImagesOperation.execute(executionContext)
+        .then(result => {
+            let saveFilesPromises = [];
+            for(let i = 0; i < result.length; i++){
+                saveFilesPromises.push(result[i].saveAsFile(`output/exportPDFToImagesOutput_${i}.jpeg`));
+            }
+            return Promise.all(saveFilesPromises);
+        })
+        .catch(err => {
+            if(err instanceof PDFServicesSdk.Error.ServiceApiError
+                || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
+                console.log('Exception encountered while executing operation', err);
+            } else {
+                console.log('Exception encountered while executing operation', err);
+            }
+        });
+} catch (err) {
+    console.log('Exception encountered while executing operation', err);
+}
+
+```
+
+#### Rest API 
+
+```javascript
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/PDF-To-Images
+
+curl --location --request POST 'https://pdf-services.adobe.io/operation/pdftoimages' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+    "targetFormat": "jpeg",
+    "outputType": "listOfPageImages"
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
+```
+
+## Export a PDF to zip of page images
+
+The sample below converts a PDF file to one or more jpeg or png images. The resulting file is a ZIP archive containing one image per page of the source PDF file.
+
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
+
+#### Java
+
+```javascript 
+// Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
+// Run the sample:
+// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.exportpdftoimages.ExportPDFToJPEGZip
+
+  public class ExportPDFToJPEGZip {
 
     // Initialize the logger.
-    private static final Logger LOGGER = LoggerFactory.getLogger(ExportPDFToJPEG.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExportPDFToJPEGZip.class);
 
     public static void main(String[] args) {
       try {
 
         // Initial setup, create credentials instance.
-        Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-            .fromFile("pdfservices-api-credentials.json")
-            .build();
+       Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+          .withClientId("PDF_SERVICES_CLIENT_ID")
+          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+          .build();
 
         //Create an ExecutionContext using credentials and create a new operation instance.
         ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -404,16 +595,15 @@ The sample below converts a PDF file to one or more jpeg or png images.
         // Set operation input from a source file.
         FileRef sourceFileRef = FileRef.createFromLocalFile("src/main/resources/exportPDFToImageInput.pdf");
         exportPDFToImagesOperation.setInput(sourceFileRef);
+        
+        // Set the output type to create zip of images.
+        exportPDFToImagesOperation.setOutputType(OutputType.ZIP_OF_PAGE_IMAGES);
 
         // Execute the operation.
         List<FileRef> results = exportPDFToImagesOperation.execute(executionContext);
 
         // Save the result to the specified location.
-        int index = 0;
-        for(FileRef result : results) {
-            result.saveAs("output/exportPDFToImagesOutput_" + index + ".jpeg");
-            index++;
-        }
+        results.get(0).saveAs("output/exportPDFToJPEGOutput.zip");
       } catch (ServiceApiException | IOException | SdkException | ServiceUsageException ex) {
         LOGGER.error("Exception encountered while executing operation", ex);
       }
@@ -426,12 +616,12 @@ The sample below converts a PDF file to one or more jpeg or png images.
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
-// cd ExportPDFToJPEGList/
-// dotnet run ExportPDFToJPEGList.csproj
+// cd ExportPDFToJPEGZip/
+// dotnet run ExportPDFToJPEGZip.csproj
 
 namespace
 {
-    class Program ExportPDFToJPEGList
+    class Program ExportPDFToJPEGZip
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         static void Main()
@@ -441,9 +631,10 @@ namespace
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                .Build();
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                        .WithClientId("PDF_SERVICES_CLIENT_ID")
+                        .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                        .Build();
 
                 //Create an ExecutionContext using credentials and create a new operation instance.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -453,16 +644,14 @@ namespace
                 FileRef sourceFileRef = FileRef.CreateFromLocalFile(@"exportPDFToImagesInput.pdf");
                 exportPDFToImagesOperation.SetInput(sourceFileRef);
 
+                // Set the output type to create zip of images.
+                exportPDFToImagesOperation.SetOutputType(ExportPDFToImagesOutputType.ZIP_OF_IMAGES);
+
                 // Execute the operation.
                 List<FileRef> result = exportPDFToImagesOperation.Execute(executionContext);
 
                 // Save the result to the specified location.
-                int index = 0;
-                foreach (FileRef fileRef in result)
-                {
-                    fileRef.SaveAs(Directory.GetCurrentDirectory() + "/output/exportPDFToImagesOutput_" + index + ".jpeg");
-                    index++;
-                }
+                results[0].SaveAs(Directory.GetCurrentDirectory() + "/output/exportPDFToJPEGOutput.zip");
             }
             catch (ServiceUsageException ex)
             {
@@ -485,15 +674,16 @@ namespace
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
-// node src/exportpdf/export-pdf-to-jpeg-list.js
+// node src/exportpdftoimages/export-pdf-to-jpeg-zip.js
 
 const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 
 try {
     // Initial setup, create credentials instance.
     const credentials =  PDFServicesSdk.Credentials
-        .serviceAccountCredentialsBuilder()
-        .fromFile("pdfservices-api-credentials.json")
+        .servicePrincipalCredentialsBuilder()
+        .withClientId("PDF_SERVICES_CLIENT_ID")
+        .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
         .build();
 
     //Create an ExecutionContext using credentials and create a new operation instance.
@@ -501,19 +691,16 @@ try {
         exportPDF = PDFServicesSdk.ExportPDF,
         exportPdfToImagesOperation = exportPDFToImages.Operation.createNew(exportPDFToImages.SupportedTargetFormats.JPEG);
 
+    // Set the output type to create zip of images.
+    exportPDFToImagesOperation.setOutputType(exportPDFToImages.OutputType.ZIP_OF_PAGE_IMAGES);
+
     // Set operation input from a source file
     const input = PDFServicesSdk.FileRef.createFromLocalFile('resources/exportPDFToImageInput.pdf');
     exportPdfToImagesOperation.setInput(input);
 
     // Execute the operation and Save the result to the specified location.
     exportPdfToImagesOperation.execute(executionContext)
-        .then(result => {
-            let saveFilesPromises = [];
-            for(let i = 0; i < result.length; i++){
-                saveFilesPromises.push(result[i].saveAsFile(`output/exportPDFToJPEGOutput_${i}.jpeg`));
-            }
-            return Promise.all(saveFilesPromises);
-        })
+        .then(result => result[0].saveAsFile('output/exportPDFToJPEG.zip'))
         .catch(err => {
             if(err instanceof PDFServicesSdk.Error.ServiceApiError
                 || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
@@ -527,39 +714,22 @@ try {
 }
 ```
 
-#### REST API
+#### Rest API 
 
 ```javascript
-// Please refer our REST API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/PDF-To-Images
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/pdftoimages' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-  \"cpf:inputs\": {
-    \"params\": {
-      \"cpf:inline\": {
-        \"targetFormat\": \"jpeg\",
-        \"outputType\": \"listOfPageImages\"
-      }
-    },
-    \"documentIn\": {
-      \"cpf:location\": \"InputFile0\",
-      \"dc:format\": \"application/pdf\"
-    }
-  },
-  \"cpf:engine\": {
-    \"repo:assetId\": \"urn:aaid:cpf:Service-26c7fda2890b44ad9a82714682e35888\"
-  },
-  \"cpf:outputs\": {
-    \"documentOutList\": {
-      \"cpf:location\": \"multipartLabelOut\",
-      \"dc:format\": \"image/jpeg\"
-    }
-  }
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+    "targetFormat": "jpeg",
+    "outputType": "zipOfPageImages"
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-exportPDF
 ```
