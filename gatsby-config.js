@@ -831,35 +831,31 @@ module.exports = {
                     {
                         title: 'PDF Electronic Seal API',
                         subTitle: '',
-                        path: 'overview/pdf-electronic-seal-api/index.md',
+                        path: 'overview/legacy-documentation/pdf-electronic-seal-api/index.md',
                         pages: [
                             {
                                 title: 'Overview',
-                                path: 'overview/pdf-electronic-seal-api/index.md'
+                                path: 'overview/legacy-documentation/pdf-electronic-seal-api/index.md'
                             },
                             {
                                 title: 'Getting Started',
-                                path: 'overview/pdf-electronic-seal-api/gettingstarted.md'
+                                path: 'overview/legacy-documentation/pdf-electronic-seal-api/gettingstarted.md'
                             },
                             {
                                 title: 'Quickstarts',
-                                path: 'overview/pdf-electronic-seal-api/quickstarts',
+                                path: 'overview/legacy-documentation/pdf-electronic-seal-api/quickstarts',
                                 pages: [
                                     {
                                         title:'Node.js',
-                                        path: 'overview/pdf-electronic-seal-api/quickstarts/nodejs/index.md'
+                                        path: 'overview/legacy-documentation/pdf-electronic-seal-api/quickstarts/nodejs/index.md'
                                     },
                                     {
                                         title:'Java',
-                                        path: 'overview/pdf-electronic-seal-api/quickstarts/java/index.md'
+                                        path: 'overview/legacy-documentation/pdf-electronic-seal-api/quickstarts/java/index.md'
                                     },
                                     {
                                         title:'.NET',
-                                        path: 'overview/pdf-electronic-seal-api/quickstarts/dotnet/index.md'
-                                    },
-                                    {
-                                        title:'Python',
-                                        path: 'overview/pdf-electronic-seal-api/quickstarts/python/index.md'
+                                        path: 'overview/legacy-documentation/pdf-electronic-seal-api/quickstarts/dotnet/index.md'
                                     }
                                 ]
 
@@ -867,11 +863,11 @@ module.exports = {
                             {
                                 title: 'How Tos',
                                 subTitle: '',
-                                path: 'overview/pdf-electronic-seal-api/howtos/index.md',
+                                path: 'overview/legacy-documentation/pdf-electronic-seal-api/howtos/index.md',
                                 pages: [
                                     {
                                         title: 'PDF Electronic Seal API',
-                                        path: 'overview/pdf-electronic-seal-api/howtos/electronic-seal-api.md'
+                                        path: 'overview/legacy-documentation/pdf-electronic-seal-api/howtos/electronic-seal-api.md'
                                     },
                                 ]
                             }
