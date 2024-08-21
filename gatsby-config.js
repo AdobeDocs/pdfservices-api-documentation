@@ -603,12 +603,42 @@ module.exports = {
                                 path: 'overview/legacy-documentation/pdf-services-api/index.md'
                             },
                             {
+                                title: 'Getting Started',
+                                path: 'overview/legacy-documentation/pdf-services-api/gettingstarted.md'
+                            },
+                            {
+                                title: 'Quickstarts',
+                                path: 'overview/legacy-documentation/pdf-services-api/quickstarts',
+                                pages: [
+                                    {
+                                        title:'Node.js',
+                                        path: 'overview/legacy-documentation/pdf-services-api/quickstarts/nodejs/index.md'
+                                    },
+                                    {
+                                        title:'Java',
+                                        path: 'overview/legacy-documentation/pdf-services-api/quickstarts/java/index.md'
+                                    },
+                                    {
+                                        title:'.NET',
+                                        path: 'overview/legacy-documentation/pdf-services-api/quickstarts/dotnet/index.md'
+                                    }
+                                ]
+                            },
+                            {
                                 title: 'How Tos',
                                 path: 'overview/legacy-documentation/pdf-services-api/howtos',
                                 pages: [
                                     {
                                         title: 'Overview',
                                         path: 'overview/legacy-documentation/pdf-services-api/howtos/index.md'
+                                    },
+                                    {
+                                        title: 'Region Configs for APIs',
+                                        path: 'overview/legacy-documentation/pdf-services-api/howtos/service-region-configuration-for-apis.md'
+                                    },
+                                    {
+                                        title: 'External Storage for APIs',
+                                        path: 'overview/legacy-documentation/pdf-services-api/howtos/pdf-external-storage-sol.md'
                                     },
                                     {
                                         title: 'Create PDF',
@@ -673,75 +703,63 @@ module.exports = {
                                     {
                                         title: 'Get PDF Properties',
                                         path: 'overview/legacy-documentation/pdf-services-api/howtos/pdf-properties.md'
+                                    },
+                                    {
+                                        title: 'PDF Accessibility Auto-Tag',
+                                        path: 'overview/legacy-documentation/pdf-services-api/howtos/pdf-accessibility-auto-tag-pdf.md'
+                                    },
+                                    {
+                                        title: 'PDF Electronic Seal',
+                                        path: 'overview/legacy-documentation/pdf-services-api/howtos/electronic-seal-api.md'
                                     }
                                 ]
-                            },
-                            {
-                                title: 'Version - Support policy',
-                                path: 'overview/legacy-documentation/pdf-services-api/policies.md'
-                            },
-                            {
-                                title: 'Release notes',
-                                path: 'overview/legacy-documentation/pdf-services-api/releasenotes.md'
-                            },
-                            {
-                                title: 'PDF Services API Licensing',
-                                path: 'overview/legacy-documentation/pdf-services-api/dcserviceslicensing.md'
-                            },
-                            {
-                                title: 'Usage Limits',
-                                path: 'overview/legacy-documentation/pdf-services-api/dcserviceslicensing.md#usage-limits'
                             }
                         ]
                     },
                     {
-                        title: 'Document Generation API',
-                        subTitle: '',
-                        path: 'overview/legacy-documentation/document-generation-api/index.md',
+                        title: 'PDF Accessibility Auto-Tag API',
+                        path: 'overview/legacy-documentation/pdf-accessibility-auto-tag-api/index.md',
                         pages: [
                             {
                                 title: 'Overview',
-                                path: 'overview/legacy-documentation/document-generation-api/index.md'
+                                path: 'overview/legacy-documentation/pdf-accessibility-auto-tag-api/index.md'
+                            },
+                            {
+                                title: 'Getting Started',
+                                path: 'overview/legacy-documentation/pdf-accessibility-auto-tag-api/gettingstarted.md'
                             },
                             {
                                 title: 'Quickstarts',
-                                path: 'overview/legacy-documentation/document-generation-api/quickstarts.md'
+                                path: 'overview/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts',
+                                pages: [
+                                    {
+                                        title:'Node.js',
+                                        path: 'overview/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/nodejs/index.md'
+                                    },
+                                    {
+                                        title:'Java',
+                                        path: 'overview/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/java/index.md'
+                                    },
+                                    {
+                                        title:'.NET',
+                                        path: 'overview/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/dotnet/index.md'
+                                    },
+                                    {
+                                        title:'Python',
+                                        path: 'overview/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/python/index.md'
+                                    }
+                                ]
                             },
                             {
-                                title: 'Template Tags',
-                                path: 'overview/legacy-documentation/document-generation-api/templatetags.md'
-                            },
-                            {
-                                title: 'Fragments',
-                                path: 'overview/legacy-documentation/document-generation-api/fragments.md'
-                            },
-                            {
-                                title: 'Apply styling and formatting',
-                                path: 'overview/legacy-documentation/document-generation-api/stylingformattingtags.md'
-                            },
-                            {
-                                title: 'Hyperlink',
-                                path: 'overview/legacy-documentation/document-generation-api/hyperlink.md'
-                            },
-                            {
-                                title: 'Dynamic Table Constructs ',
-                                path: 'overview/legacy-documentation/document-generation-api/dynamictableconstructs.md'
-                            },
-                            {
-                                title: 'Word Add-in',
-                                path: 'overview/legacy-documentation/document-generation-api/wordaddin.md'
-                            },
-                            {
-                                title: 'Release Notes',
-                                path: 'overview/legacy-documentation/pdf-services-api/releasenotes.md'
-                            },
-                            {
-                                title: 'PDF Services API Licensing',
-                                path: 'overview/legacy-documentation/document-generation-api/dcserviceslicensing.md'
-                            },
-                            {
-                                title: 'Usage Limits',
-                                path: 'overview/legacy-documentation/document-generation-api/dcserviceslicensing.md#usage-limits'
+                                title: 'How Tos',
+                                subTitle: '',
+                                path: 'overview/legacy-documentation/pdf-accessibility-auto-tag-api/howtos/index.md',
+                                pages: [
+                                    {
+                                        title: 'PDF Accessibility Auto-Tag API',
+                                        path: 'overview/legacy-documentation/pdf-accessibility-auto-tag-api/howtos/accessibility-auto-tag-api.md'
+                                    },
+                                ]
                             }
                         ]
                     },
@@ -755,76 +773,109 @@ module.exports = {
                                 path: 'overview/legacy-documentation/pdf-extract-api/index.md'
                             },
                             {
+                                title: 'Getting Started',
+                                path: 'overview/legacy-documentation/pdf-extract-api/gettingstarted.md'
+                            },
+                            {
                                 title: 'Quickstarts',
-                                path: 'overview/legacy-documentation/pdf-extract-api/quickstarts.md'
+                                path: 'overview/legacy-documentation/pdf-extract-api/quickstarts',
+                                pages: [
+                                    {
+                                        title:'Node.js',
+                                        path: 'overview/legacy-documentation/pdf-extract-api/quickstarts/nodejs/index.md'
+                                    },
+                                    {
+                                        title:'Java',
+                                        path: 'overview/legacy-documentation/pdf-extract-api/quickstarts/java/index.md'
+                                    },
+                                    {
+                                        title:'.NET',
+                                        path: 'overview/legacy-documentation/pdf-extract-api/quickstarts/dotnet/index.md'
+                                    },
+                                    {
+                                        title:'Python',
+                                        path: 'overview/legacy-documentation/pdf-extract-api/quickstarts/python/index.md'
+                                    }
+                                ]
                             },
                             {
                                 title: 'How Tos',
                                 subTitle: '',
-                                path: 'overview/legacy-documentation/pdf-extract-api/howtos',
+                                path: 'overview/legacy-documentation/pdf-extract-api/howtos/index.md',
                                 pages: [
-                                    {
-                                        title: 'Overview',
-                                        path: 'overview/legacy-documentation/pdf-extract-api/howtos/index.md'
-                                    },
                                     {
                                         title: 'PDF Extract API',
                                         path: 'overview/legacy-documentation/pdf-extract-api/howtos/extract-api.md'
                                     }
                                 ]
-                            },
-                            {
-                                title: 'Release Notes',
-                                path: 'overview/legacy-documentation/pdf-services-api/releasenotes.md'
-                            },
-                            {
-                                title: 'PDF Services API Licensing',
-                                path: 'overview/legacy-documentation/pdf-extract-api/dcserviceslicensing.md'
-                            },
-                            {
-                                title: 'Usage Limits',
-                                path: 'overview/legacy-documentation/pdf-extract-api/dcserviceslicensing.md#usage-limits'
                             }
                         ]
                     },
                     {
-                        title: 'PDF Accessibility Auto-Tag API',
-                        path: 'overview/legacy-documentation/pdf-accessibility-auto-tag-api/index.md',
+                        title: 'Document Generation API',
+                        subTitle: '',
+                        path: 'overview/legacy-documentation/document-generation-api/index.md',
                         pages: [
                             {
                                 title: 'Overview',
-                                path: 'overview/legacy-documentation/pdf-accessibility-auto-tag-api/index.md'
+                                path: 'overview/legacy-documentation/document-generation-api/index.md'
+                            },
+                            {
+                                title: 'Getting Started',
+                                path: 'overview/legacy-documentation/document-generation-api/gettingstarted.md'
                             },
                             {
                                 title: 'Quickstarts',
-                                path: 'overview/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts.md'
-                            },
-                            {
-                                title: 'How Tos',
-                                subTitle: '',
-                                path: 'overview/legacy-documentation/pdf-accessibility-auto-tag-api/howtos',
+                                path: 'overview/legacy-documentation/document-generation-api/quickstarts',
                                 pages: [
                                     {
-                                        title: 'Overview',
-                                        path: 'overview/legacy-documentation/pdf-accessibility-auto-tag-api/howtos/index.md'
+                                        title:'Node.js',
+                                        path: 'overview/legacy-documentation/document-generation-api/quickstarts/nodejs/index.md'
                                     },
                                     {
-                                        title: 'PDF Accessibility Auto-Tag API',
-                                        path: 'overview/legacy-documentation/pdf-accessibility-auto-tag-api/howtos/accessibility-auto-tag-api.md'
+                                        title:'Java',
+                                        path: 'overview/legacy-documentation/document-generation-api/quickstarts/java/index.md'
+                                    },
+                                    {
+                                        title:'.NET',
+                                        path: 'overview/legacy-documentation/document-generation-api/quickstarts/dotnet/index.md'
                                     }
                                 ]
+
                             },
                             {
-                                title: 'Release Notes',
-                                path: 'overview/legacy-documentation/pdf-services-api/releasenotes.md'
-                            },
-                            {
-                                title: 'PDF Services API Licensing',
-                                path: 'overview/legacy-documentation/pdf-accessibility-auto-tag-api/dcserviceslicensing.md'
-                            },
-                            {
-                                title: 'Usage Limits',
-                                path: 'overview/legacy-documentation/pdf-accessibility-auto-tag-api/dcserviceslicensing.md#usage-limits'
+                                title:'How Tos',
+                                path: 'overview/legacy-documentation/document-generation-api/templatetags.md',
+                                pages: [
+                                    {
+                                        title: 'Template Tags',
+                                        path: 'overview/legacy-documentation/document-generation-api/templatetags.md'
+                                    },
+                                    {
+                                        title: 'Fragments',
+                                        path: 'overview/legacy-documentation/document-generation-api/fragments.md'
+                                    },
+                                    {
+                                        title: 'Apply styling and formatting',
+                                        path: 'overview/legacy-documentation/document-generation-api/stylingformattingtags.md'
+                                    },
+                                    {
+                                        title: 'Hyperlink',
+                                        path: 'overview/legacy-documentation/document-generation-api/hyperlink.md'
+                                    },
+                                    {
+                                        title: 'Inline Images',
+                                        path: 'overview/legacy-documentation/document-generation-api/inlineimages.md'
+                                    },
+                                    {
+                                        title: 'Complex Table Constructs ',
+                                        path: 'overview/legacy-documentation/document-generation-api/complextableconstructs.md'
+                                    },
+                                    {
+                                        title: 'Word Add-in',
+                                        path: 'overview/legacy-documentation/document-generation-api/wordaddin.md'
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -872,6 +923,10 @@ module.exports = {
                                 ]
                             }
                         ]
+                    },
+                    {
+                        title: 'Version and Release Notes',
+                        path: 'overview/legacy-documentation/releasenotes.md'
                     }
                 ]
             },
