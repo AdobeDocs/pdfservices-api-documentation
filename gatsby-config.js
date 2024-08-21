@@ -577,7 +577,7 @@ module.exports = {
                 path: 'overview/support.md'
             },
             {
-                title: 'FAQ',
+                title: 'Technical FAQ',
                 path: 'overview/faq.md'
             },
             {
