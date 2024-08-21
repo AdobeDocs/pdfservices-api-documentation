@@ -13,6 +13,8 @@ Apply styling and formatting in the generated output document using the HTML bas
 
 - Underline text.
 
+- Set height and width of an image.
+
 - Create [Hyperlinks](../document-generation-api/hyperlink.md).
 
 - Create [Inline Images](../document-generation-api/inlineimages.md).
@@ -50,6 +52,12 @@ Styling for the text tag can be provided using the json data through the HTML ba
 - Styling precedence works as per the general convention of (local  - > global) scope for nested HTML span.
 
 - Any HTML tags which are not supported will be ignored.
+
+Formatting for image can be provided using the attributes of the img tag.
+
+- The img tag supports the height and width attributes.
+
+- Any other unsupported attributes inside the img tag will be ignored.
 
 ## Inline styling attributes supported
 
