@@ -45,6 +45,12 @@ Styling for the text tag can be provided using the json data through the HTML ba
 
 - Any HTML tags which are not supported will be ignored.
 
+Formatting for image can be provided using the attributes of the img tag.
+
+- The img tag supports the height and width attributes.
+
+- Any other unsupported attributes inside the img tag will be ignored.
+
 ## Inline styling attributes supported
 
 - font-size : xpt ;  x=dynamic positive integer, 1pt =1/72 inch ( point (pt) is the only supported unit for font size.)
