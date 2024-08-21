@@ -45,6 +45,8 @@ Styling for the text tag can be provided using the json data through the HTML ba
 
 - Any HTML tags which are not supported will be ignored.
 
+- Set height and width of an image.
+
 Formatting for image can be provided using the attributes of the img tag.
 
 - The img tag supports the height and width attributes.
