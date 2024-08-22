@@ -10,8 +10,8 @@ To get started using Adobe PDF Accessibility Auto-Tag API, let's walk through a 
 
 To complete this guide, you will need:
 
-* [.NET: version 6.0 or above](https://dotnet.microsoft.com/en-us/download)
-* [.Net SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+* [.NET: version 8.0 or above](https://dotnet.microsoft.com/en-us/download)
+* [.Net SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 * A build tool: Either Visual Studio or .NET Core CLI.
 * An Adobe ID. If you do not have one, the credential setup will walk you through creating one.
 * A way to edit code. No specific editor is required for this guide.
@@ -51,16 +51,16 @@ To complete this guide, you will need:
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="log4net" Version="2.0.12" />
-        <PackageReference Include="Adobe.PDFServicesSDK" Version="3.5.1" />
+        <PackageReference Include="log4net" Version="2.0.17" />
+        <PackageReference Include="Adobe.PDFServicesSDK" Version="4.0.0" />
     </ItemGroup>
 
     <ItemGroup>
-        <None Update="Adobe Accessibility Auto-Tag API Sample.pdf">
+        <None Update="Adobe Accesibility Auto-Tag API Sample.pdf">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
         <None Update="log4net.config">
@@ -70,6 +70,7 @@ To complete this guide, you will need:
 
 </Project>
 ```
+This file will define what dependencies we need and how the application will be built.
 
 Our application will take a PDF, `Adobe Accesibility Auto-Tag API Sample.pdf` (downloadable from <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>) and tag its contents. The results will be saved in a given directory `/output`.
 
@@ -84,16 +85,16 @@ Now you're ready to begin coding.
 ```javascript
 using System;
 using System.IO;
-using log4net;
-using log4net.Config;
 using System.Reflection;
 using Adobe.PDFServicesSDK;
-using log4net.Repository;
 using Adobe.PDFServicesSDK.auth;
-using Adobe.PDFServicesSDK.io;
 using Adobe.PDFServicesSDK.exception;
-using Adobe.PDFServicesSDK.io.autotag;
-using Adobe.PDFServicesSDK.pdfops;
+using Adobe.PDFServicesSDK.io;
+using Adobe.PDFServicesSDK.pdfjobs.jobs;
+using Adobe.PDFServicesSDK.pdfjobs.results;
+using log4net;
+using log4net.Config;
+using log4net.Repository;
 ```
 
 2) Now let's define our main class and `Main` method:
@@ -106,28 +107,13 @@ namespace AutotagPDF
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         static void Main()
         {
-		}
-	}
+            
+        }
+    }
 }
 ```
 
-3) Now let's define our input and output:
-
-```javascript
-String inputPDF = "./Adobe Accessibility Auto-Tag API Sample.pdf";
-
-String outputPath = "./output/AutotagPDF/";
-if(File.Exists(Directory.GetCurrentDirectory() + output))
-{
-	File.Delete(Directory.GetCurrentDirectory() + output);
-}
-String taggedPDF = outputPath + inputPDF +"-tagged-pdf.pdf";
-String taggingReport = outputPath + inputPDF + "-tagging-report.xlsx";
-```
-
-This defines what our output directory will be and optionally deletes it if it already exists. Then we define what PDF will be tagged. (You can download the source we used <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>.) In a real application, these values would be typically be dynamic.
-
-4) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+3) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
 - **Windows:**
   - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
   - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
@@ -136,48 +122,67 @@ This defines what our output directory will be and optionally deletes it if it a
   - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
   - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
-5) Next, we setup the SDK to use our credentials.
+4) Next, we can create our credentials and PDFServices instance:
 
 ```javascript
-// Initial setup, create credentials instance.
-Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-        .WithClientId(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"))
-        .WithClientSecret(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"))
-        .Build();
+// Initial setup, create credentials instance
+ICredentials credentials = new ServicePrincipalCredentials(
+        Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+        Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
 
-// Create an ExecutionContext using credentials and create a new operation instance.
-ExecutionContext executionContext = ExecutionContext.Create(credentials);
+// Creates a PDF Services instance
+PDFServices pdfServices = new PDFServices(credentials);
 ```
 
-This code both points to the credentials downloaded previously as well as sets up an execution context object that will be used later.
-
-6) Now, let's create the operation:
+5) Now, let's upload the asset:
 
 ```javascript
-AutotagPDFOperation autotagPDFOperation = AutotagPDFOperation.CreateNew();
-
-// Provide an input FileRef for the operation.
-FileRef sourceFileRef = FileRef.CreateFromLocalFile(inputPDF);
-autotagPDFOperation.SetInputFile(sourceFileRef);
-
-// Build AutotagPDF options and set them into the operation.
-AutotagPDFOptions autotagPDFOptions = AutotagPDFOptions.AutotagPDFOptionsBuilder()
-    .ShiftHeadings()
-    .GenerateReport()
-    .Build();
+IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
 ```
 
-This set of code defines what we're doing (an Auto-Tag operation), points to our local file and specifies the input is a PDF, and then defines options for the Auto-Tag call. PDF Accessibility Auto-Tag API has a few different options, but in this example, we're simply asking for a basic tagging operation, which returns the tagged PDF document and an XLSX report of the document.
+We define input stream for the PDF that will be tagged. (You can download the source we used <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>.) In a real application, these values would be typically be dynamic.
+Then we upload the content of input stream and specify the input media type as PDF.
 
-7) The next code block executes the operation:
+6) Now, let's create the job and parameters:
 
 ```javascript
-// Execute the operation.
-FileRef result = autotagPDFOperation.Execute(executionContext);
+// Create parameters for the job
+AutotagPDFParams autotagPDFParams = AutotagPDFParams.AutotagPDFParamsBuilder().GenerateReport().Build();
 
-// Save the result to the specified location.
-result.GetTaggedPDF().SaveAs(Directory.GetCurrentDirectory() + taggedPDF);
-result.GetReport().SaveAs(Directory.GetCurrentDirectory() + taggingReport);
+// Creates a new job instance
+AutotagPDFJob autotagPDFJob = new AutotagPDFJob(asset).SetParams(autotagPDFParams);
+```
+
+This set of code defines what we're doing (an Auto-Tag operation),
+it defines parameters for the Auto-Tag job. PDF Accessibility Auto-Tag API has a few different options, but in this example, we're simply asking for a basic tagging operation, which returns the tagged PDF document and an XLSX report of the document.
+
+
+7) The next code block submits the job and gets the job result:
+
+```javascript
+// Submits the job and gets the job result
+String location = pdfServices.Submit(autotagPDFJob);
+PDFServicesResponse<AutotagPDFResult> pdfServicesResponse =
+        pdfServices.GetJobResult<AutotagPDFResult>(location, typeof(AutotagPDFResult));
+
+// Get content from the resulting asset(s)
+IAsset resultAsset = pdfServicesResponse.Result.TaggedPDF;
+IAsset resultAssetReport = pdfServicesResponse.Result.Report;
+StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+StreamAsset streamAssetReport = pdfServices.GetContent(resultAssetReport)
+```
+
+8) The next code block saves the result at the specified location:
+
+```javascript
+// Creating output streams and copying stream asset's content to it
+Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + "output/autotag-tagged.pdf");
+Stream outputStreamReport =
+        File.OpenWrite(Directory.GetCurrentDirectory() + "output/autotag-report.xlsx");
+streamAsset.Stream.CopyTo(outputStream);
+streamAssetReport.Stream.CopyTo(outputStreamReport);
+outputStream.Close();
+outputStreamReport.Close();
 ```
 
 This code runs the Auto-Tagging process and then stores the result files in the provided output directory.
@@ -189,67 +194,75 @@ Here's the complete application (`Program.cs`):
 ```javascript
 using System;
 using System.IO;
-using log4net;
-using log4net.Config;
 using System.Reflection;
 using Adobe.PDFServicesSDK;
-using log4net.Repository;
 using Adobe.PDFServicesSDK.auth;
-using Adobe.PDFServicesSDK.io;
 using Adobe.PDFServicesSDK.exception;
-using Adobe.PDFServicesSDK.io.autotag;
-using Adobe.PDFServicesSDK.pdfops;
+using Adobe.PDFServicesSDK.io;
+using Adobe.PDFServicesSDK.pdfjobs.jobs;
+using Adobe.PDFServicesSDK.pdfjobs.parameters.autotag;
+using Adobe.PDFServicesSDK.pdfjobs.results;
+using log4net;
+using log4net.Config;
+using log4net.Repository;
 
 namespace AutotagPDF
 {
     class Program
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+        
         static void Main()
         {
-            // Configure the logging.
+            // Configure the logging
             ConfigureLogging();
             try
             {
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
 
-                String inputPDF = "./Adobe Accessibility Auto-Tag API Sample.pdf";
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
 
-                String outputPath = "./output/AutotagPDF/";
-                if(File.Exists(Directory.GetCurrentDirectory() + output))
-                {
-                    File.Delete(Directory.GetCurrentDirectory() + output);
-                }
-                String taggedPDF = outputPath + inputPDF +"-tagged-pdf.pdf";
-                String taggingReport = outputPath + inputPDF + "-tagging-report.xlsx";
+                // Creates an asset(s) from source file(s) and upload
+                using Stream inputStream = File.OpenRead(@"Adobe Accesibility Auto-Tag API Sample.pdf");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
 
-                // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                    .WithClientId(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"))
-                    .WithClientSecret(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"))
-                    .Build();
+                // Create parameters for the job
+                AutotagPDFParams autotagPDFParams = AutotagPDFParams.AutotagPDFParamsBuilder().GenerateReport().Build();
 
-                // Create an ExecutionContext using credentials and create a new operation instance.
-                ExecutionContext executionContext = ExecutionContext.Create(credentials);
-                AutotagPDFOperation autotagPDFOperation = AutotagPDFOperation.CreateNew();
+                // Creates a new job instance
+                AutotagPDFJob autotagPDFJob = new AutotagPDFJob(asset).SetParams(autotagPDFParams);
 
-                // Provide an input FileRef for the operation.
-                FileRef sourceFileRef = FileRef.CreateFromLocalFile(input);
-                autotagPDFOperation.SetInputFile(sourceFileRef);
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(autotagPDFJob);
+                PDFServicesResponse<AutotagPDFResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<AutotagPDFResult>(location, typeof(AutotagPDFResult));
 
-                // Build AutotagPDF options and set them into the operation.
-                AutotagPDFOptions autotagPDFOptions = AutotagPDFOptions.AutotagPDFOptionsBuilder()
-                    .ShiftHeadings()
-                    .GenerateReport()
-                    .Build();
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.TaggedPDF;
+                IAsset resultAssetReport = pdfServicesResponse.Result.Report;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+                StreamAsset streamAssetReport = pdfServices.GetContent(resultAssetReport);
 
-                // Execute the operation.
-                AutotagPDFOutput result = autotagPDFOperation.Execute(executionContext);
+                // Creating output streams and copying stream asset's content to it
+                String outputFilePath = "/output/autotag-tagged.pdf";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
 
-                // Save the result to the specified location.
-                result.GetTaggedPDF().SaveAs(Directory.GetCurrentDirectory() + taggedPDF);
-                result.GetReport().SaveAs(Directory.GetCurrentDirectory() + taggingReport);
-
-        		Console.Write("Successfully tagged information in PDF.");
+                String outputFilePathReport = "/output/autotag-report.xlsx";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStreamReport =
+                    File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePathReport);
+                streamAsset.Stream.CopyTo(outputStream);
+                streamAssetReport.Stream.CopyTo(outputStreamReport);
+                outputStream.Close();
+                outputStreamReport.Close();
+                
+                Console.WriteLine("Saving asset at " + Directory.GetCurrentDirectory() + outputFilePath);
+                Console.WriteLine("Saving asset at " + Directory.GetCurrentDirectory() + outputFilePathReport);
             }
             catch (ServiceUsageException ex)
             {

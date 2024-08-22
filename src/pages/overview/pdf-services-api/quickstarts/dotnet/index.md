@@ -10,8 +10,8 @@ To get started using Adobe PDF Services API, let's walk through a simple scenari
 
 To complete this guide, you will need:
 
-* [.NET: version 6.0 or above](https://dotnet.microsoft.com/en-us/download)
-* [.Net SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+* [.NET: version 8.0 or above](https://dotnet.microsoft.com/en-us/download)
+* [.Net SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 * A build tool: Either Visual Studio or .NET Core CLI.
 * An Adobe ID. If you do not have one, the credential setup will walk you through creating one.
 * A way to edit code. No specific editor is required for this guide.
@@ -49,27 +49,29 @@ To complete this guide, you will need:
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <OutputType>Exe</OutputType>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
-    </PropertyGroup>
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="log4net" Version="2.0.12" />
-        <PackageReference Include="Adobe.PDFServicesSDK" Version="3.5.1" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Adobe.PDFServicesSDK" Version="4.0.0" />
+    <PackageReference Include="log4net" Version="2.0.17" />
+  </ItemGroup>
 
-    <ItemGroup>
-        <None Update="extractPDFInput.pdf">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
-        <None Update="log4net.config">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
-    </ItemGroup>
+  <ItemGroup>
+    <None Update="Bodea Brochure.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
 </Project>
 ```
+
+This file will define what dependencies we need and how the application will be built.
 
 Our application will take a PDF, `Bodea Brochure.pdf` (downloadable from <a href="https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf">here</a>) and convert it to a Microsoft Word document, `Bodea Brochure.docx`.
 
@@ -82,97 +84,104 @@ Now you're ready to begin coding.
 1) We'll begin by including our required dependencies:
 
 ```javascript
-using System.IO;
 using System;
-using System.Collections.Generic;
-using log4net.Repository;
-using log4net.Config;
-using log4net;
+using System.IO;
 using System.Reflection;
 using Adobe.PDFServicesSDK;
 using Adobe.PDFServicesSDK.auth;
-using Adobe.PDFServicesSDK.pdfops;
-using Adobe.PDFServicesSDK.options.exportpdf;
-using Adobe.PDFServicesSDK.io;
 using Adobe.PDFServicesSDK.exception;
+using Adobe.PDFServicesSDK.io;
+using Adobe.PDFServicesSDK.pdfjobs.jobs;
+using Adobe.PDFServicesSDK.pdfjobs.parameters.exportpdf;
+using Adobe.PDFServicesSDK.pdfjobs.results;
+using log4net;
+using log4net.Config;
+using log4net.Repository;
 ```
 
 2) Now let's define our main class and `Main` method:
 
 ```javascript
-namespace ExportPDFToWord
+namespace ExportPDFToDocx
 {
     class Program
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         static void Main()
         {
-		}
-	}
+        }
+    }
 }
 ```
 
-3) Inside our class, we'll begin by defining our input PDF and output filenames. If the output file already exists, it will be deleted:
 
-```javascript
-String input = "./Bodea Brochure.pdf";
-
-String output = "./Bodea Brochure.docx";
-if(File.Exists(Directory.GetCurrentDirectory() + output))
-{
-	File.Delete(Directory.GetCurrentDirectory() + output);
-}
-
-Console.Write("Exporting "+ input + " to " + output + "\n");
-```
-
-4) Set the environment variables `CLIENT_ID` and `CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
+3) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
 - **Windows:**
-    - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
-    - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+  - `set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+  - `set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
 - **MacOS/Linux:**
-    - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
-    - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
+  - `export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>`
+  - `export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>`
 
-5) Next, we setup the SDK to use our credentials.
-
-```javascript
-// Initial setup, create credentials instance.
-Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-        .WithClientId(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"))
-        .WithClientSecret(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"))
-        .Build();
-
-// Create an ExecutionContext using credentials and create a new operation instance.
-ExecutionContext executionContext = ExecutionContext.Create(credentials);
-```
-
-This code both points to the credentials downloaded previously as well as sets up an execution context object that will be used later.
-
-6) Now, let's create the operation:
+4) Next, we can create our credentials and use them:
 
 ```javascript
-ExportPDFOperation exportPdfOperation = ExportPDFOperation.CreateNew(ExportPDFTargetFormat.DOCX);
+// Initial setup, create credentials instance
+ICredentials credentials = new ServicePrincipalCredentials(
+    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
 
-// Provide an input FileRef for the operation.
-FileRef sourceFileRef = FileRef.CreateFromLocalFile(input);
-exportPdfOperation.SetInput(sourceFileRef);
+// Creates a PDF Services instance
+PDFServices pdfServices = new PDFServices(credentials);
 ```
 
-This set of code defines what we're doing (an Export operation), points to our local file and specifies the input is a PDF, and then defines options for the Export call. In this example, the only option is the export format, DOCX.
-
-6) The next code block executes the operation:
+5) Now, let's upload the asset:
 
 ```javascript
-// Execute the operation.
-FileRef result = exportPdfOperation.Execute(executionContext);
-
-// Save the result to the specified location.
-result.SaveAs(Directory.GetCurrentDirectory() + output);
+IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
 ```
 
-This code runs the Extraction process and then stores the result Word document to the file system. 
+6) Now, let's create the parameters and the job:
+
+```javascript
+// Create parameters for the job
+ExportPDFParams exportPDFParams = ExportPDFParams.ExportPDFParamsBuilder(ExportPDFTargetFormat.DOCX)
+    .Build();
+
+// Creates a new job instance
+ExportPDFJob exportPDFJob = new ExportPDFJob(asset, exportPDFParams);
+```
+
+This set of code defines what we're doing (an Export operation), and sets parameter for the Export PDF job. In this example, the only parameter is the export format ,ie, DOCX.
+
+7) The next code block submits the job and gets the job result:
+
+```javascript
+// Submits the job and gets the job result
+String location = pdfServices.Submit(exportPDFJob);
+PDFServicesResponse<ExportPDFResult> pdfServicesResponse =
+    pdfServices.GetJobResult<ExportPDFResult>(location, typeof(ExportPDFResult));
+
+// Get content from the resulting asset(s)
+IAsset resultAsset = pdfServicesResponse.Result.Asset;
+StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+```
+
+8) The next code block saves the result at the specified location:
+
+```javascript
+// Creating output streams and copying stream asset's content to it
+String outputFilePath = "/output/Bodea Brochure.docx";
+new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+streamAsset.Stream.CopyTo(outputStream);
+outputStream.Close();
+```
+
+This code runs the Export process and then stores the result Word document to the file system.
+
+
 
 
 ![Example running in the command line](./shot9.png)
@@ -180,65 +189,67 @@ This code runs the Extraction process and then stores the result Word document t
 Here's the complete application (`Program.cs`):
 
 ```javascript
-using System.IO;
 using System;
-using System.Collections.Generic;
-using log4net.Repository;
-using log4net.Config;
-using log4net;
+using System.IO;
 using System.Reflection;
 using Adobe.PDFServicesSDK;
 using Adobe.PDFServicesSDK.auth;
-using Adobe.PDFServicesSDK.pdfops;
-using Adobe.PDFServicesSDK.options.exportpdf;
-using Adobe.PDFServicesSDK.io;
 using Adobe.PDFServicesSDK.exception;
+using Adobe.PDFServicesSDK.io;
+using Adobe.PDFServicesSDK.pdfjobs.jobs;
+using Adobe.PDFServicesSDK.pdfjobs.parameters.exportpdf;
+using Adobe.PDFServicesSDK.pdfjobs.results;
+using log4net;
+using log4net.Config;
+using log4net.Repository;
 
-namespace ExportPDFToWord
+namespace ExportPDFToDocx
 {
     class Program
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
-        static void Main()
+                static void Main()
         {
-            // Configure the logging.
+            //Configure the logging
             ConfigureLogging();
             try
             {
+                // Initial setup, create credentials instance
+                ICredentials credentials = new ServicePrincipalCredentials(
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+                    Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
 
-                String input = "./Bodea Brochure.pdf";
+                // Creates a PDF Services instance
+                PDFServices pdfServices = new PDFServices(credentials);
 
-                String output = "./Bodea Brochure.docx";
-                if(File.Exists(Directory.GetCurrentDirectory() + output))
-                {
-                    File.Delete(Directory.GetCurrentDirectory() + output);
-                }
+                // Creates an asset from source file and upload
+                using Stream inputStream = File.OpenRead(@"Bodea Brochure.pdf");
+                IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
 
-        		Console.Write("Exporting "+ input + " to " + output + "\n");
-
-                // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
-                    .WithClientId(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"))
-                    .WithClientSecret(Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"))
+                // Create parameters for the job
+                ExportPDFParams exportPDFParams = ExportPDFParams.ExportPDFParamsBuilder(ExportPDFTargetFormat.DOCX)
                     .Build();
 
-                // Create an ExecutionContext using credentials and create a new operation instance.
-                ExecutionContext executionContext = ExecutionContext.Create(credentials);
-                ExportPDFOperation exportPdfOperation = ExportPDFOperation.CreateNew(ExportPDFTargetFormat.DOCX);
+                // Creates a new job instance
+                ExportPDFJob exportPDFJob = new ExportPDFJob(asset, exportPDFParams);
 
-                // Provide an input FileRef for the operation.
-                FileRef sourceFileRef = FileRef.CreateFromLocalFile(input);
-                exportPdfOperation.SetInput(sourceFileRef);
+                // Submits the job and gets the job result
+                String location = pdfServices.Submit(exportPDFJob);
+                PDFServicesResponse<ExportPDFResult> pdfServicesResponse =
+                    pdfServices.GetJobResult<ExportPDFResult>(location, typeof(ExportPDFResult));
+
+                // Get content from the resulting asset(s)
+                IAsset resultAsset = pdfServicesResponse.Result.Asset;
+                StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+
+                // Creating output streams and copying stream asset's content to it
+                String outputFilePath = "/output/Bodea Brochure.docx";
+                new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+                Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+                streamAsset.Stream.CopyTo(outputStream);
+                outputStream.Close();
                 
-
-                // Execute the operation.
-                FileRef result = exportPdfOperation.Execute(executionContext);
-
-                // Save the result to the specified location.
-                result.SaveAs(Directory.GetCurrentDirectory() + output);
-
-        		Console.Write("All Done");
-                
+                Console.WriteLine("Saving asset at " + Directory.GetCurrentDirectory() + outputFilePath);
             }
             catch (ServiceUsageException ex)
             {
