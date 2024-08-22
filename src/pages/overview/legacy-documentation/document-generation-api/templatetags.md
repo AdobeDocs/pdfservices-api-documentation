@@ -336,6 +336,10 @@ Dynamically generate a numbered or bullet list by placing it inside a repeating 
 
 ![Template tag items are replaced by numbered or bullet list](../images/simple_lists.png)
 
+<InlineAlert slots="text"/>
+
+Only JSON keys should be placed inside a repeating section.
+
 
 ## Numerical Calculations
 
