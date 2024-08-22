@@ -11,7 +11,7 @@ the changes below for each release.
 ### August 14, 2024
 | Change  | Description                                                          |
 |---------|----------------------------------------------------------------------|
-| Changed | Updated rendering timeout to 5 minutes to preview complex pdf files. |
+| Changed | Updated rendering timeout to five minutes to preview complex pdf files. |
 
 ### June 27, 2024
 | Change | Description                                                            |
