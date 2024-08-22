@@ -16,7 +16,7 @@ The JSON output also captures document structure information, such as the natura
 
 The PDF Extract API provides a method for developers to extract and structure content for use in a number of downstream applications including content republishing, content processing, data analysis, and content aggregation, management, and search.
 
-The PDF Extract API can be embedded into any application using the [PDFServices SDK](../pdf-services-api/index.md) for Node.js, Python, .NET and Java. [Start with a Free Tier which includes 500 free Document Transactions per month.](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api)
+The PDF Extract API can be embedded into any application using the [PDFServices SDK](../pdf-extract-api/gettingstarted#sdk) for Node.js, Python, .NET and Java. [Start with a Free Tier which includes 500 free Document Transactions per month.](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api)
 
 </p>
 

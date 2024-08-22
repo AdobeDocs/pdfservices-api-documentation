@@ -103,19 +103,20 @@ schema](/extractJSONOutputSchema2.json)):
     represented in the natural reading order. Reading order is determined by Bounds and path element provided in the .json file.
 
 ## API limitations
-
-- **File size:** Files up to a maximum of 100MB are supported.
-- **Number of Pages:** Non-scanned PDFs up to 200 pages and scanned PDFs up to 100 pages are supported, however limits may be lower for files with a large number of tables.
-- **Rate limits:** Keep request rate below 25 requests per minutes.
-- **Page Size:** The API supports standard page sizes not to exceed 17.5” or less than 6” in either dimension.
-- **Hidden Objects:** PDF files that contain content that is not visible on the page like javascript, OCG (optional content groups), etc are not supported. Files that contain such hidden information may fail to process. For such cases, [removing hidden content](https://helpx.adobe.com/acrobat/using/removing-sensitive-content-pdfs.html) prior to processing files again may return a successful result.
-- **Language:** The API is currently optimized for English language content. Files containing content in other Latin languages should return good results, but may have issues with non-English punctuation.
-- **OCR and Scan quality:** The quality of text extracted from scanned files is dependent on the clarity of content in the input file. Conditions like skewed pages, shadowing, obscured or overlapping fonts, and page resolution less than 200 DPI can all result in lower quality text output.
-- **Form fields:** Files containing XFA and other fillable form elements are not supported.
-- **Unprotected files:** The API supports files that are unprotected or where security restrictions allow copying of content. Files that are secured and do not allow copying of content will not be processed.
-- **Annotations:** Content in PDF files containing annotations such as highlights and sticky notes will be processed, but annotations that obscure text could impact output quality. Text within annotations will not be included in the output.
-- **PDF Producers:** The Extract API is designed to extract content from files that contain text, table data, and figures. Files created from applications that produce other types of content like illustrations, CAD drawings or other types of vector art may not return quality results.
-- **PDF Collections:** PDFs that are made from a collection of files including PDF Portfolios are not currently supported.
+<br />
+<ul>
+<li><b>File size:</b> Files up to a maximum of 100MB are supported.</li>
+<li><b>Number of Pages:</b> Non-scanned PDFs have a limit of 400 pages. Scanned PDFs have a limit of 150 pages or less. Limits may be lower for files with multiple tables. For larger files or those with complex layouts, it is recommended to split the file into smaller sections before processing.</li>
+<li><b>Rate limits:</b> Keep request rate below 25 requests per minutes.</li>
+<li><b>Page Size:</b> The API supports standard page sizes not to exceed 17.5” or less than 6” in either dimension.</li>
+<li><b>Hidden Objects:</b> PDF files that contain content that is not visible on the page like javascript, OCG (optional content groups), etc are not supported. Files that contain such hidden information may fail to process. For such cases, [removing hidden content](https://helpx.adobe.com/acrobat/using/removing-sensitive-content-pdfs.html) prior to processing files again may return a successful result.</li>
+<li><b>Language:</b> The API is currently optimized for English language content. Files containing content in other Latin languages should return good results, but may have issues with non-English punctuation.</li>
+<li><b>OCR and Scan quality:</b> The quality of text extracted from scanned files is dependent on the clarity of content in the input file. Conditions like skewed pages, shadowing, obscured or overlapping fonts, and page resolution less than 200 DPI can all result in lower quality text output.</li>
+<li><b>Form fields:</b> Files containing XFA and other fillable form elements are not supported.</li>
+<li><b>Unprotected files:</b> The API supports files that are unprotected or where security restrictions allow copying of content. Files that are secured and do not allow copying of content will not be processed.</li>
+<li><b>Annotations:</b> Content in PDF files containing annotations such as highlights and sticky notes will be processed, but annotations that obscure text could impact output quality. Text within annotations will not be included in the output.</li>
+<li><b>PDF Producers:</b> The Extract API is designed to extract content from files that contain text, table data, and figures. Files created from applications that produce other types of content like illustrations, CAD drawings or other types of vector art may not return quality results.</li>
+</ul>
 
 ## Error codes
 | Scenario           | Error code                                                                                                                                                                                                                     | Error message                               |
@@ -125,8 +126,9 @@ schema](/extractJSONOutputSchema2.json)):
 | Page limit violation              | DISQUALIFIED_PAGE_LIMIT | File exceeds page limit.                 |
 | Scan page limit violation              | DISQUALIFIED_SCAN_PAGE_LIMIT                                                                                                                     | Scanned file exceeds page limit.                 |
 | Unsupported XFA file             | DISQUALIFIED_XFA                                                                                                                                                                         | File contains XFA form(s). Not supported for content extraction.                 |
-| Encryption permission                 | DISQUALIFIED_ENCRYPTION                                                                                                                                                                             | File permissions do not allow for content extraction.                 |
-| Complex file            | DISQUALIFIED_CMPLX_FILE                                                                                                                                                                                                       | File contents are too complex for content extraction.                 |
+| Encryption permission                 | DISQUALIFIED_PERMISSIONS                                                                                                                                                                             | File permissions do not allow for content extraction.                 |
+| Complex file            | DISQUALIFIED_COMPLEX_FILE                                                                                                                                                                                                       | File contents are too complex for content extraction.                 |
+| Unsupported language    | DISQUALIFIED_LANGUAGE                                                      | File content language is unsupported.                 |
 | Bad PDF             | BAD_PDF                                                                                                                                             | Unable to extract content. File is corrupted, malformed or an empty PDF.                 |
 | Invalid file type               | BAD_PDF_FILE_TYPE                                                                                                                                                                                | The input file is not a PDF file.                 |
 | Damaged file               | BAD_PDF_DAMAGED                                                                                                                                                                                | The input file is damaged.                 |
@@ -135,19 +137,28 @@ schema](/extractJSONOutputSchema2.json)):
 | File contains unsupported font                         | BAD_PDF_UNSUPPORTED_FONT                                                                                                                                                                                | The input file contains font data that is corrupted or not supported.                |
 | Large PDF               | BAD_PDF_LARGE_FILE                                                                                                                                                                                | The input file size exceeds the maximum allowed.                 |
 | Protected PDF     | PROTECTED_PDF                                                                   | Unable to extract content. File is password protected.                 |
+| Empty or corrupted input   | BAD_INPUT                                                              |	Input is corrupted or empty.                      |
+| Invalid input parameters    | BAD_INPUT_PARAMS                                                       | Invalid input parameters.                         |
+
 | Timeout           | TIMEOUT                                                                                             | Processing timeout. Please try splitting the file into multiple files with fewer pages.                 |
 | Unknown error / failure               | ERROR                                                                                                                                                                                | Unable to extract content - Internal error.                 |
 
+
+## Rest API 
+
+See our public API Reference for [Extract PDF](../../../apis/#tag/Extract-PDF).
 
 ## Extract Text from a PDF
 
 The sample below extracts text element information from a PDF document and returns a JSON file.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
 
 #### Java
 
-```javascript 
+```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
 // mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.extractpdf.ExtractTextInfoFromPDF
@@ -161,9 +172,10 @@ public class ExtractTextInfoFromPDF {
         try {
 
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
-                    .build();
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                .withClientId("PDF_SERVICES_CLIENT_ID")
+                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .build();
 
             // Create an ExecutionContext using credentials.
             ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -214,8 +226,9 @@ namespace ExtractTextInfoFromPDF
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
                     .Build();
 
                 //Create an ExecutionContext using credentials and create a new operation instance.
@@ -280,9 +293,10 @@ namespace ExtractTextInfoFromPDF
   try {
       // Initial setup, create credentials instance.
       const credentials =  PDFServicesSdk.Credentials
-          .serviceAccountCredentialsBuilder()
-          .fromFile("pdfservices-api-credentials.json")
-          .build();
+            .servicePrincipalCredentialsBuilder()
+            .withClientId("PDF_SERVICES_CLIENT_ID")
+            .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+            .build();
 
       // Create an ExecutionContext using credentials
       const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
@@ -333,9 +347,10 @@ namespace ExtractTextInfoFromPDF
          base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
    
          #Initial setup, create credentials instance.
-         credentials = Credentials.service_account_credentials_builder()\
-             .from_file(base_path + "/pdfservices-api-credentials.json") \
-             .build()
+        credentials = Credentials.service_principal_credentials_builder()
+            .with_client_id('PDF_SERVICES_CLIENT_ID')
+            .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+            .build()
    
          #Create an ExecutionContext using credentials and create a new operation instance.
          execution_context = ExecutionContext.create(credentials)
@@ -360,55 +375,38 @@ namespace ExtractTextInfoFromPDF
          logging.exception("Exception encountered while executing operation")
 ```
 
-#### REST API
+#### Rest API 
 
 ```javascript
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
+
+curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-    \"cpf:engine\": {
-        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
-    },
-    \"cpf:inputs\": {
-        \"documentIn\": {
-            \"cpf:location\": \"InputFile0\",
-            \"dc:format\": \"application/pdf\"
-        },
-        \"params\": {
-            \"cpf:inline\": {
-                \"elementsToExtract\": [
-                    \"text\"
-                ]
-            }
-        }
-    },
-    \"cpf:outputs\": {
-        \"elementsInfo\": {
-            \"cpf:location\": \"jsonoutput\",
-            \"dc:format\": \"application/json\"
-        },
-        \"elementsRenditions\": {
-            \"cpf:location\": \"fileoutpart\",
-            \"dc:format\": \"text/directory\"
-        }
-    }
-} "' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{  
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+    "elementsToExtract": [
+        "text"
+    ]
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables
 
 The sample below extracts text and table element information from a PDF document and returns a JSON file along with table data in XLSX format.
 
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java,.NET, Node JS, Python, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java,.NET, Node JS, Python, Rest API" /> 
 
 #### Java
 
-```javascript 
+```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
 // mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.extractpdf.ExtractTextTableInfoFromPDF
@@ -422,9 +420,10 @@ public class ExtractTextTableInfoFromPDF {
         try {
 
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
-                    .build();
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                .withClientId("PDF_SERVICES_CLIENT_ID")
+                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .build();
 
             // Create an ExecutionContext using credentials.
             ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -475,8 +474,9 @@ namespace ExtractTextTableInfoFromPDF
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
                     .Build();
     
                 // Create an ExecutionContext using credentials and create a new operation instance.
@@ -542,9 +542,10 @@ namespace ExtractTextTableInfoFromPDF
   try {
       // Initial setup, create credentials instance.
       const credentials =  PDFServicesSdk.Credentials
-          .serviceAccountCredentialsBuilder()
-          .fromFile("pdfservices-api-credentials.json")
-          .build();
+            .servicePrincipalCredentialsBuilder()
+            .withClientId("PDF_SERVICES_CLIENT_ID")
+            .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+            .build();
 
       // Create an ExecutionContext using credentials
       const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
@@ -597,9 +598,10 @@ namespace ExtractTextTableInfoFromPDF
       base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
       #Initial setup, create credentials instance.
-      credentials = Credentials.service_account_credentials_builder()\
-          .from_file(base_path + "/pdfservices-api-credentials.json") \
-          .build()
+      credentials = Credentials.service_principal_credentials_builder()
+            .with_client_id('PDF_SERVICES_CLIENT_ID')
+            .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+            .build()
 
       #Create an ExecutionContext using credentials and create a new operation instance.
       execution_context = ExecutionContext.create(credentials)
@@ -625,54 +627,39 @@ namespace ExtractTextTableInfoFromPDF
       logging.exception("Exception encountered while executing operation")
 ```
 
-#### REST API
+#### Rest API
 
 ```javascript
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
+
+curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-    \"cpf:engine\": {
-        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
-    },
-    \"cpf:inputs\": {
-        \"documentIn\": {
-            \"cpf:location\": \"InputFile0\",
-            \"dc:format\": \"application/pdf\"
-        },
-        \"params\": {
-            \"cpf:inline\": {
-                \"elementsToExtract\": [
-                    \"text\", \"tables\"
-                ]
-            }
-        }
-    },
-    \"cpf:outputs\": {
-        \"elementsInfo\": {
-            \"cpf:location\": \"jsonoutput\",
-            \"dc:format\": \"application/json\"
-        },
-        \"elementsRenditions\": {
-            \"cpf:location\": \"fileoutpart\",
-            \"dc:format\": \"text/directory\"
-        }
-    }
-} "' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+    "elementsToExtract": [
+        "text",
+        "tables"
+    ]
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables (w/ Tables Renditions)
 
 The sample below extracts text and table element information as well as table renditions from a PDF Document. Note that the output is a zip containing the structured information in a JSON file along with table renditions in PNG and XLSX format.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
 
 #### Java
 
-```javascript 
+```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
 // mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.extractpdf.ExtractTextTableInfoWithRenditionsFromPDF
@@ -686,9 +673,10 @@ public class ExtractTextTableInfoWithRenditionsFromPDF {
         try {
 
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
-                    .build();
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                .withClientId("PDF_SERVICES_CLIENT_ID")
+                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .build();
 
             // Create an ExecutionContext using credentials.
             ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -739,8 +727,9 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
                     .Build();
 
                 // Create an ExecutionContext using credentials and create a new operation instance.
@@ -807,8 +796,9 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
   try {
       // Initial setup, create credentials instance.
       const credentials =  PDFServicesSdk.Credentials
-          .serviceAccountCredentialsBuilder()
-          .fromFile("pdfservices-api-credentials.json")
+          .servicePrincipalCredentialsBuilder()
+          .withClientId("PDF_SERVICES_CLIENT_ID")
+          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
           .build();
 
       // Create an ExecutionContext using credentials
@@ -863,9 +853,10 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
       base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
       #Initial setup, create credentials instance.
-      credentials = Credentials.service_account_credentials_builder() \
-          .from_file(base_path + "/pdfservices-api-credentials.json") \
-          .build()
+      credentials = Credentials.service_principal_credentials_builder()
+            .with_client_id('PDF_SERVICES_CLIENT_ID')
+            .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+            .build()
 
       #Create an ExecutionContext using credentials and create a new operation instance.
       execution_context = ExecutionContext.create(credentials)
@@ -891,55 +882,42 @@ namespace ExtractTextTableInfoWithRenditionsFromPDF
       logging.exception("Exception encountered while executing operation")
 ```
 
-#### REST API
+#### Rest API 
 
 ```javascript
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
+
+curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-    \"cpf:engine\": {
-        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
-    },
-    \"cpf:inputs\": {
-        \"documentIn\": {
-            \"cpf:location\": \"InputFile0\",
-            \"dc:format\": \"application/pdf\"
-        },
-        \"params\": {
-            \"cpf:inline\": {
-                \"elementsToExtract\": [
-                    \"text\", \"tables\"
-                ],
-                \"renditionsToExtract\": [ \"tables\"]
-            }
-        }
-    },
-    \"cpf:outputs\": {
-        \"elementsInfo\": {
-            \"cpf:location\": \"jsonoutput\",
-            \"dc:format\": \"application/json\"
-        },
-        \"elementsRenditions\": {
-            \"cpf:location\": \"fileoutpart\",
-            \"dc:format\": \"text/directory\"
-        }
-    }
-} "' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+    "renditionsToExtract": [
+        "tables"
+    ],
+    "elementsToExtract": [
+        "text",
+        "tables"
+    ],
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables (w/ Tables and Figures Renditions)
 
 The sample below extracts text and table elements information as well as table and figure renditions from a PDF Document. Note that the output is a zip containing the structured information in a JSON file along with figure renditions as PNGs and table renditions in PNG and XLSX format.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
 
 #### Java
 
-```javascript 
+```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
 // mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.extractpdf.ExtractTextTableInfoWithRenditionsFromPDF
@@ -953,9 +931,10 @@ public class ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF {
           try {
 
               // Initial setup, create credentials instance.
-              Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                      .fromFile("pdfservices-api-credentials.json")
-                      .build();
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                .withClientId("PDF_SERVICES_CLIENT_ID")
+                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .build();
 
               // Create an ExecutionContext using credentials.
               ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -1006,8 +985,9 @@ namespace ExtractTextTableInfoWithFiguresTablesRenditionsFromPDF
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
                     .Build();
     
                 // Create an ExecutionContext using credentials and create a new operation instance.
@@ -1074,8 +1054,9 @@ const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
 try {
     // Initial setup, create credentials instance.
     const credentials =  PDFServicesSdk.Credentials
-        .serviceAccountCredentialsBuilder()
-        .fromFile("pdfservices-api-credentials.json")
+        .servicePrincipalCredentialsBuilder()
+        .withClientId("PDF_SERVICES_CLIENT_ID")
+        .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
         .build();
 
     // Create an ExecutionContext using credentials
@@ -1129,9 +1110,10 @@ try {
       base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
       #Initial setup, create credentials instance.
-      credentials = Credentials.service_account_credentials_builder() \
-          .from_file(base_path + "/pdfservices-api-credentials.json") \
-          .build()
+      credentials = Credentials.service_principal_credentials_builder()
+            .with_client_id('PDF_SERVICES_CLIENT_ID')
+            .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+            .build()
 
       #Create an ExecutionContext using credentials and create a new operation instance.
       execution_context = ExecutionContext.create(credentials)
@@ -1157,56 +1139,43 @@ try {
       logging.exception("Exception encountered while executing operation")
 ```
 
-#### REST API
+#### Rest API 
 
 ```javascript
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
+
+curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-    \"cpf:engine\": {
-        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
-    },
-    \"cpf:inputs\": {
-        \"documentIn\": {
-            \"cpf:location\": \"InputFile0\",
-            \"dc:format\": \"application/pdf\"
-        },
-        \"params\": {
-            \"cpf:inline\": {
-                \"elementsToExtract\": [
-                    \"text\", \"tables\"
-                ],
-                \"renditionsToExtract\": [ \"tables\", \"figures\"]
-            }
-        }
-    },
-    \"cpf:outputs\": {
-        \"elementsInfo\": {
-            \"cpf:location\": \"jsonoutput\",
-            \"dc:format\": \"application/json\"
-        },
-        \"elementsRenditions\": {
-            \"cpf:location\": \"fileoutpart\",
-            \"dc:format\": \"text/directory\"
-        }
-    }
-} "' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+    "renditionsToExtract": [
+        "tables",
+        "figures"
+    ], 
+    "elementsToExtract": [
+        "text", 
+        "tables"
+    ]
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables and Character Bounding Boxes (w/ Renditions)
 
 The sample below extracts table renditions and bounding boxes for characters present in text blocks (paragraphs, list, headings), in addition to text and table element information from a PDF Document. Note that the output is a zip containing the structured information along with table renditions in PNG and XLSX format.
 
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
 
 #### Java
 
-```javascript 
+```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
 // mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.extractpdf.ExtractTextTableInfoWithCharBoundsFromPDF
@@ -1220,9 +1189,10 @@ public class ExtractTextTableInfoWithCharBoundsFromPDF {
         try {
 
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
-                    .build();
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                .withClientId("PDF_SERVICES_CLIENT_ID")
+                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .build();
 
             // Create an ExecutionContext using credentials.
             ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -1273,9 +1243,10 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                .Build();
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                    .Build();
     
                 // Create an ExecutionContext using credentials and create a new operation instance.
                 ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -1341,8 +1312,9 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
   try {
       // Initial setup, create credentials instance.
       const credentials =  PDFServicesSdk.Credentials
-          .serviceAccountCredentialsBuilder()
-          .fromFile("pdfservices-api-credentials.json")
+          .servicePrincipalCredentialsBuilder()
+          .withClientId("PDF_SERVICES_CLIENT_ID")
+          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
           .build();
 
       // Create an ExecutionContext using credentials
@@ -1396,9 +1368,10 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
       base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
       #Initial setup, create credentials instance.
-      credentials = Credentials.service_account_credentials_builder()\
-          .from_file(base_path + "/pdfservices-api-credentials.json") \
-          .build()
+      credentials = Credentials.service_principal_credentials_builder()
+            .with_client_id('PDF_SERVICES_CLIENT_ID')
+            .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+            .build()
 
       #Create an ExecutionContext using credentials and create a new operation instance.
       execution_context = ExecutionContext.create(credentials)
@@ -1424,56 +1397,44 @@ namespace ExtractTextTableInfoWithCharBoundsFromPDF
       logging.exception("Exception encountered while executing operation")
 ```
 
-#### REST API
+#### Rest API 
 
 ```javascript
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
+
+curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-    \"cpf:engine\": {
-        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
-    },
-    \"cpf:inputs\": {
-        \"documentIn\": {
-            \"cpf:location\": \"InputFile0\",
-            \"dc:format\": \"application/pdf\"
-        },
-        \"params\": {
-            \"cpf:inline\": {
-                \"elementsToExtract\": [
-                    \"text\", \"tables\"
-                ],
-                \"renditionsToExtract\": [ \"tables\", \"figures\"]
-            }
-        }
-    },
-    \"cpf:outputs\": {
-        \"elementsInfo\": {
-            \"cpf:location\": \"jsonoutput\",
-            \"dc:format\": \"application/json\"
-        },
-        \"elementsRenditions\": {
-            \"cpf:location\": \"fileoutpart\",
-            \"dc:format\": \"text/directory\"
-        }
-    }
-} "' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+    "renditionsToExtract": [
+        "tables",
+        "figures"
+    ],
+    "elementsToExtract": [
+        "text",
+        "tables"
+    ],
+    "getCharBounds": true
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables and Table Structure as CSV (w/ Renditions)
 
 The sample below adds option to get CSV output for tables in addition to extracting text and table element information as well as table renditions from a PDF Document. Note that the output is a zip containing the structured information along with table renditions in PNG and CSV format.
 
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
 
 #### Java
 
-```javascript 
+```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
 // mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.extractpdf.ExtractTextTableInfoWithTableStructureFromPdf
@@ -1487,9 +1448,10 @@ public class ExtractTextTableInfoWithTableStructureFromPdf {
         try {
 
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
-                    .build();
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                .withClientId("PDF_SERVICES_CLIENT_ID")
+                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .build();
 
             // Create an ExecutionContext using credentials.
             ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -1541,8 +1503,9 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
                     .Build();
     
                 // Create an ExecutionContext using credentials and create a new operation instance.
@@ -1610,8 +1573,9 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
     try {
         // Initial setup, create credentials instance.
         const credentials =  PDFServicesSdk.Credentials
-            .serviceAccountCredentialsBuilder()
-            .fromFile("pdfservices-api-credentials.json")
+            .servicePrincipalCredentialsBuilder()
+            .withClientId("PDF_SERVICES_CLIENT_ID")
+            .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
             .build();
   
         // Create an ExecutionContext using credentials
@@ -1666,9 +1630,10 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
       base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
       #Initial setup, create credentials instance.
-      credentials = Credentials.service_account_credentials_builder() \
-          .from_file(base_path + "/pdfservices-api-credentials.json") \
-          .build()
+      credentials = Credentials.service_principal_credentials_builder()
+            .with_client_id('PDF_SERVICES_CLIENT_ID')
+            .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+            .build()
 
       #Create an ExecutionContext using credentials and create a new operation instance.
       execution_context = ExecutionContext.create(credentials)
@@ -1693,47 +1658,32 @@ namespace ExtractTextTableInfoWithTableStructureFromPDF
       result.save_as(base_path + "/output/ExtractTextTableWithTableStructure.zip")
   except (ServiceApiException, ServiceUsageException, SdkException):
       logging.exception("Exception encountered while executing operation")
-
 ```
 
-#### REST API
+#### Rest API 
 
 ```javascript
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
+
+curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-    \"cpf:engine\": {
-        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
-    },
-    \"cpf:inputs\": {
-        \"documentIn\": {
-            \"cpf:location\": \"InputFile0\",
-            \"dc:format\": \"application/pdf\"
-        },
-        \"params\": {
-            \"cpf:inline\": {
-                \"elementsToExtract\": [
-                    \"text\", \"tables\"
-                ],
-                \"renditionsToExtract\": [ \"tables\", \"figures\"]
-            }
-        }
-    },
-    \"cpf:outputs\": {
-        \"elementsInfo\": {
-            \"cpf:location\": \"jsonoutput\",
-            \"dc:format\": \"application/json\"
-        },
-        \"elementsRenditions\": {
-            \"cpf:location\": \"fileoutpart\",
-            \"dc:format\": \"text/directory\"
-        }
-    }
-} "' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+    "renditionsToExtract": [
+        "tables"
+    ],
+    "elementsToExtract": [
+        "text",
+        "tables"
+    ],
+    "tableOutputFormat": "csv"
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
 
 ## Extract Text and Tables and Styling Info
@@ -1741,11 +1691,13 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
 The sample below adds an option to get styling information for each text element( Bold / Italics / Superscript etc) in addition to extracting text and table element information. Note that the output is a zip containing the structured information along with table renditions in PNG and XLSX format. Please see the [Styling JSON
 schema](/extractJSONOutputSchemaStylingInfo.json) for reference.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java,.NET, Node JS, Python, REST API" /> 
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="5" languages="Java,.NET, Node JS, Python, Rest API" /> 
 
 #### Java
 
-```javascript 
+```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
 // Run the sample:
 // mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.extractpdf.ExtractTextTableWithStylingInfoFromPdf
@@ -1759,8 +1711,9 @@ public class ExtractTextTableInfoWithStylingFromPDF {
         try {
 
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                    .withClientId("PDF_SERVICES_CLIENT_ID")
+                    .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
                     .build();
 
             // Create an ExecutionContext using credentials.
@@ -1812,8 +1765,9 @@ namespace ExtractTextTableInfoWithStylingFromPDF
             try
             {
                 // Initial setup, create credentials instance.
-                Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                    .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                    .WithClientId("PDF_SERVICES_CLIENT_ID")
+                    .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
                     .Build();
     
                 // Create an ExecutionContext using credentials and create a new operation instance.
@@ -1881,8 +1835,9 @@ namespace ExtractTextTableInfoWithStylingFromPDF
   try {
       // Initial setup, create credentials instance.
       const credentials =  PDFServicesSdk.Credentials
-          .serviceAccountCredentialsBuilder()
-          .fromFile("pdfservices-api-credentials.json")
+          .servicePrincipalCredentialsBuilder()
+          .withClientId("PDF_SERVICES_CLIENT_ID")
+          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
           .build();
 
       // Create an ExecutionContext using credentials
@@ -1936,9 +1891,10 @@ namespace ExtractTextTableInfoWithStylingFromPDF
       base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
       #Initial setup, create credentials instance.
-      credentials = Credentials.service_account_credentials_builder()\
-          .from_file(base_path + "/pdfservices-api-credentials.json") \
-          .build()
+      credentials = Credentials.service_principal_credentials_builder()
+            .with_client_id('PDF_SERVICES_CLIENT_ID')
+            .with_client_secret('PDF_SERVICES_CLIENT_SECRET')
+            .build()
 
       #Create an ExecutionContext using credentials and create a new operation instance.
       execution_context = ExecutionContext.create(credentials)
@@ -1964,42 +1920,25 @@ namespace ExtractTextTableInfoWithStylingFromPDF
       logging.exception("Exception encountered while executing operation")
 ```
 
-#### REST API
+#### Rest API 
 
 ```javascript
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
+
+curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-    \"cpf:engine\": {
-        \"repo:assetId\": \"urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695\"
-    },
-    \"cpf:inputs\": {
-        \"documentIn\": {
-            \"cpf:location\": \"InputFile0\",
-            \"dc:format\": \"application/pdf\"
-        },
-        \"params\": {
-            \"cpf:inline\": {
-                \"elementsToExtract\": [
-                    \"text\", \"tables\"
-                ],
-                \"renditionsToExtract\": [ \"tables\", \"figures\"]
-            }
-        }
-    },
-    \"cpf:outputs\": {
-        \"elementsInfo\": {
-            \"cpf:location\": \"jsonoutput\",
-            \"dc:format\": \"application/json\"
-        },
-        \"elementsRenditions\": {
-            \"cpf:location\": \"fileoutpart\",
-            \"dc:format\": \"text/directory\"
-        }
-    }
-} "' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
+  "elementsToExtract": [
+        "text",
+        "tables"
+    ],
+    "includeStyling": true
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-extractPDF
 ```
