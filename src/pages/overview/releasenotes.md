@@ -181,7 +181,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
-### August 27, 2024; PDF Accessibility Checker API Added
+### August 23, 2024; PDF Accessibility Checker API Added
 
 - Added base64 format support for inline images.
 - Supported attributes for img tag (height and width only)

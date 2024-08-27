@@ -211,6 +211,11 @@ Placeholder tag is replaced by a table generated using the html string provided 
 Table tags can also inserted in a document using table markers. Please refer [Table Tag with Markers](../document-generation-api/tablewithmarkers.md)
 to learn more about the usage of table markers.
 
+<InlineAlert slots="text"/>
+
+Please visit [Complex Table Constructs with Table Markers](../document-generation-api/tablewithmarkers.md#complex-table-constructs-with-table-markers) to learn about advanced
+constructs inside tables.
+
 ### Insert Table using Placeholder Table Tag 
 
 **<span style="color: red;">DEPRECATED</span><span style="font-weight: normal;"> (Please use [Table Tag with Markers](../document-generation-api/tablewithmarkers.md))</span>**
