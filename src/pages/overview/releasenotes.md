@@ -181,6 +181,13 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### August 27, 2024; PDF Accessibility Checker API Added
+
+- Added base64 format support for inline images.
+- Supported attributes for img tag (height and width only)
+- Postman collection for external storage : Electronic Seal, Extract, Split, Accessibility Checker.
+- Added request body schema with example for accessibility checker with external storage.
+
 ### July 30, 2024; PDF Accessibility Checker API Added
 
 - Added [PDF Accessibility Checker](../pdf-services-api/howtos/pdf-accessibility-checker-api/) operation in PDF Services API to check accessibility on specified pages of PDF document.
