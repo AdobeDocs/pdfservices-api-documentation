@@ -181,10 +181,10 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
-### August 23, 2024; PDF Accessibility Checker API Added
+### August 23, 2024; Added new features for Document Generation API and updated Acrobat Service API postman collection
 
 - Added base64 format support for inline images.
-- Supported attributes for img tag (height and width only)
+- Supported attributes for img tag (height and width only).
 - Postman collection for external storage : Electronic Seal, Extract, Split, Accessibility Checker.
 - Added request body schema with example for accessibility checker with external storage.
 
