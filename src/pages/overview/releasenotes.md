@@ -93,8 +93,8 @@ version.
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
-    <pdfservices.sdk.version>4.1.1</pdfservices.sdk.version>
-    <pdfservices.sdk.samples.version>4.1.1</pdfservices.sdk.samples.version>
+    <pdfservices.sdk.version>4.1.0</pdfservices.sdk.version>
+    <pdfservices.sdk.samples.version>4.1.0</pdfservices.sdk.samples.version>
 </properties>
 
 <dependency>
@@ -181,18 +181,10 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
-### October 1, 2024; Java SDK 4.1.1 patch release
-
-- Bug fixes and stability improvements.
-
-### September 10, 2024; Adobe Document Generation Server Side Release
-
-- Enhanced support for [JSONata functions](../document-generation-api/templatetags/#jsonata-functions) in Table Tag with Markers.
-
-### August 23, 2024; Added new features for Document Generation API and updated Acrobat Service API postman collection
+### August 27, 2024; PDF Accessibility Checker API Added
 
 - Added base64 format support for inline images.
-- Supported attributes for img tag (height and width only).
+- Supported attributes for img tag (height and width only)
 - Postman collection for external storage : Electronic Seal, Extract, Split, Accessibility Checker.
 - Added request body schema with example for accessibility checker with external storage.
 
