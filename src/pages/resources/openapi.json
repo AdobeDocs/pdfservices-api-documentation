@@ -13131,7 +13131,7 @@
             "$ref": "#/components/schemas/inprogress"
           },
           {
-            "$ref": "#/components/schemas/done"
+            "$ref": "#/components/schemas/AccessibilityCheckerDone"
           },
           {
             "$ref": "#/components/schemas/failed"
