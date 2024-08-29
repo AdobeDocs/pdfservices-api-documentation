@@ -13131,7 +13131,7 @@
             "$ref": "#/components/schemas/inprogress"
           },
           {
-            "$ref": "#/components/schemas/done"
+            "$ref": "#/components/schemas/AccessibilityCheckerDone"
           },
           {
             "$ref": "#/components/schemas/failed"
@@ -14341,8 +14341,8 @@
           }
         }
       },
-      "AccessibilityCheckerDone": {
-        "title": "done",
+      "AccessibilityCheckerDoneInternal": {
+        "title": "Internal",
         "description": "Response in case of 'done' status",
         "type": "object",
         "properties": {
@@ -14435,6 +14435,17 @@
             "assetID": "urn:aaid:AS:UE1:23c30ee0-2c6d-46d6-87f2-087832fca718"
           }
         }
+      },
+      "AccessibilityCheckerDone": {
+        "title": "done",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/AccessibilityCheckerDoneInternal"
+          },
+          {
+            "$ref": "#/components/schemas/externalstatus"
+          }
+        ]
       },
       "AddWatermarkJobStatus": {
         "oneOf": [
