@@ -13,6 +13,8 @@ Apply styling and formatting in the generated output document using the HTML bas
 
 - Underline text.
 
+- Set height and width of an image.
+
 - Create [Hyperlinks](../document-generation-api/hyperlink.md).
 
 - Create [Inline Images](../document-generation-api/inlineimages.md).
@@ -73,6 +75,27 @@ JSON representation of the input data:
 ![Styling Tags Sample with style for font-size, font-weight and font-style attribute added to span tag](../images/stylingAttributesJsonRep.png)
 
 ![Styling Tags output when style for font-size, font-weight and font-style attribute was added to span tag](../images/stylingAttributesOutput.png)
+
+## Inline images supported attributes
+
+[Click here](../document-generation-api/inlineimages.md) to refer documentation on how to add Inline Images.
+
+Formatting for image can be provided using the attributes of the img tag.
+
+- The img tag supports the height and width attributes.
+
+- Any other unsupported attributes inside the img tag will be ignored.
+
+JSON representation of the input data:
+
+```json
+{
+  "ContentBlock": "sample image with height and width - <img src=\"https://documentcloud.adobe.com/dc-docgen-app/assets/dc_icon.png\" height=\"200\" width=\"200\">"
+}
+```
+![Formatting Inline images with height and width](../images/FormattedInlineImageHeightAndWidth.png)
+
+<b>Note:</b> Here the size of image is formatted according to input data.
 
 ## Tags Supported
 

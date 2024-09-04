@@ -213,12 +213,12 @@ to learn more about the usage of table markers.
 
 <InlineAlert slots="text"/>
 
-Please visit [Complex Table Constructs](../document-generation-api/complextableconstructs.md) to learn about advanced
+Please visit [Complex Table Constructs with Table Markers](../document-generation-api/tablewithmarkers.md#complex-table-constructs-with-table-markers) to learn about advanced
 constructs inside tables.
 
 ### Insert Table using Placeholder Table Tag 
 
-**<span style="color: red; ">DEPRECATED</span>**
+**<span style="color: red;">DEPRECATED</span><span style="font-weight: normal;"> (Please use [Table Tag with Markers](../document-generation-api/tablewithmarkers.md))</span>**
 
 Rows of a table can be dynamically populated by repeating over an array of objects from the input data.
 

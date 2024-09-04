@@ -3,6 +3,12 @@ title: OCR PDF | How Tos | PDF Services API | Adobe PDF Services
 ---
 # OCR PDF
 
+Use built-in optical character recognition (OCR) to convert images to text and enable fully text searchable documents for archiving and creation of searchable indexes.
+
+## Rest API 
+
+See our public API Reference for [OCR PDF](../../../apis/#tag/OCR)
+
 ## Text recognition (OCR)
 
 Optical character recognition (OCR) converts images to text so that you
@@ -10,9 +16,11 @@ and your users can fully interact with the PDF file. After performing
 OCR, the PDF may be fully editable and searchable. The input format must
 be `application/pdf`.
 
-This sample defaults to the en-us locale. For other languages, see [OCR with specific language.](#ocr-with-specific-language)
+This sample defaults to the en-us locale. For other languages, see [OCR with explicit language.](#ocr-with-explicit-language)
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -31,9 +39,10 @@ This sample defaults to the en-us locale. For other languages, see [OCR with spe
    try {
  
     // Initial setup, create credentials instance.
-    Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-      .fromFile("pdfservices-api-credentials.json")
-      .build();
+    Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+        .withClientId("PDF_SERVICES_CLIENT_ID")
+        .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+        .build();
  
     //Create an ExecutionContext using credentials and create a new operation instance.
     ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -75,10 +84,11 @@ This sample defaults to the en-us locale. For other languages, see [OCR with spe
        ConfigureLogging();
        try
        {
-         // Initial setup, create credentials instance.
-         Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                 .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
-                 .Build();
+           // Initial setup, create credentials instance.
+           Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                .WithClientId("PDF_SERVICES_CLIENT_ID")
+                .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .Build();
 
          //Create an ExecutionContext using credentials and create a new operation instance.
          ExecutionContext executionContext = ExecutionContext.Create(credentials);
@@ -121,10 +131,11 @@ This sample defaults to the en-us locale. For other languages, see [OCR with spe
 
  try {
    // Initial setup, create credentials instance.
-   const credentials =  PDFServicesSdk.Credentials
-       .serviceAccountCredentialsBuilder()
-       .fromFile("pdfservices-api-credentials.json")
-       .build();
+     const credentials =  PDFServicesSdk.Credentials
+         .servicePrincipalCredentialsBuilder()
+         .withClientId("PDF_SERVICES_CLIENT_ID")
+         .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+         .build();
 
    // Create an ExecutionContext using credentials and create a new operation instance.
    const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
@@ -150,38 +161,25 @@ This sample defaults to the en-us locale. For other languages, see [OCR with spe
  }
 ```
 
-#### REST API
+#### Rest API 
 
 ```javascript
-// Please refer our REST API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-ocr
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Ocr
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/ocr' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-7e6a5d2b6bb141d7832398076914a07b\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"application/pdf\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-ocr
 ```
 
-## OCR with specific language
+## OCR with explicit language
 
 You can perform OCR on files in other languages, including German,
 French, Danish, and other languages. Refer to `OCRSupportedLocale` and
@@ -202,7 +200,9 @@ are two types which produce a different result:
     unchanged. This type produces maximum fidelity to the original
     image.
 
-<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, REST API" /> 
+Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
 #### Java
 
@@ -221,9 +221,10 @@ are two types which produce a different result:
         try {
  
             // Initial setup, create credentials instance.
-            Credentials credentials = Credentials.serviceAccountCredentialsBuilder()
-                    .fromFile("pdfservices-api-credentials.json")
-                    .build();
+            Credentials credentials = Credentials.servicePrincipalCredentialsBuilder()
+                .withClientId("PDF_SERVICES_CLIENT_ID")
+                .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+                .build();
  
             //Create an ExecutionContext using credentials and create a new operation instance.
             ExecutionContext executionContext = ExecutionContext.create(credentials);
@@ -272,9 +273,10 @@ are two types which produce a different result:
       ConfigureLogging();
       try
       {
-        // Initial setup, create credentials instance.
-        Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+          // Initial setup, create credentials instance.
+          Credentials credentials = Credentials.ServicePrincipalCredentialsBuilder()
+                .WithClientId("PDF_SERVICES_CLIENT_ID")
+                .WithClientSecret("PDF_SERVICES_CLIENT_SECRET")
                 .Build();
  
         //Create an ExecutionContext using credentials and create a new operation instance.
@@ -324,10 +326,11 @@ are two types which produce a different result:
  
   try {
     // Initial setup, create credentials instance.
-    const credentials =  PDFServicesSdk.Credentials
-        .serviceAccountCredentialsBuilder()
-        .fromFile("pdfservices-api-credentials.json")
-        .build();
+      const credentials =  PDFServicesSdk.Credentials
+          .servicePrincipalCredentialsBuilder()
+          .withClientId("PDF_SERVICES_CLIENT_ID")
+          .withClientSecret("PDF_SERVICES_CLIENT_SECRET")
+          .build();
  
     //Create an ExecutionContext using credentials and create a new operation instance.
     const executionContext = PDFServicesSdk.ExecutionContext.create(credentials),
@@ -360,39 +363,21 @@ are two types which produce a different result:
   }
 ```
 
-#### REST API
+#### Rest API 
 
 ```javascript
-// Please refer our REST API docs for more information
-// https://documentcloud.adobe.com/document-services/index.html#post-ocr
+// Please refer our Rest API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Ocr
 
-curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D' \
---header 'Authorization: Bearer {{Placeholder for token}}' \
---header 'Accept: application/json, text/plain, */*' \
+curl --location --request POST 'https://pdf-services.adobe.io/operation/ocr' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
---header 'Prefer: respond-async,wait=0' \
---form 'contentAnalyzerRequests="{
-	\"cpf:inputs\": {
-		\"params\": {
-			\"cpf:inline\": {
-				\"ocrLang\": \"en-US\",
-				\"ocrType\": \"searchable_image\"
-			}
-		},
-		\"documentIn\": {
-			\"cpf:location\": \"InputFile0\",
-			\"dc:format\": \"application/pdf\"
-		}
-	},
-	\"cpf:engine\": {
-		\"repo:assetId\": \"urn:aaid:cpf:Service-7e6a5d2b6bb141d7832398076914a07b\"
-	},
-	\"cpf:outputs\": {
-		\"documentOut\": {
-			\"cpf:location\": \"multipartLabelOut\",
-			\"dc:format\": \"application/pdf\"
-		}
-	}
-}"' \
---form 'InputFile0=@"{{Placeholder for input file (absolute path)}}"'
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "ce8fe9da-99f2-4d01-999e-42b9ce22ec5f",
+    "ocrLang": "en-US"
+}'
+
+// Legacy API can be found here 
+// https://documentcloud.adobe.com/document-services/index.html#post-ocr
 ```
