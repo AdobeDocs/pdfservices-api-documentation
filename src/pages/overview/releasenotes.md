@@ -181,7 +181,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
-### August 10, 2024; Added support for funtions in Table with Markers
+### September 10, 2024; Added support for funtions in Table with Markers
 
 - JSONata functions can be used in Table with Markers. 
 
