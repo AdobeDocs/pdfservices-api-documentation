@@ -26,7 +26,7 @@ A placeholder(text tags) gets replaced by the actual input data.
 <InlineAlert slots="text"/>
 
 A placeholder variable can only be applied to an input field of type
-string, number or boolean.<br/> Please refer to the **Arrays** section to use array as placeholder variable.<br/> Formatting applied to the placeholder
+string, number or boolean.<br/> Please refer to the **Arrays** section to use array as a placeholder variable.<br/> Formatting applied to the placeholder
 variable in the document template will be retained in the output document.<br/>
 For more simplified styling and formatting for the placeholder tag from the input json data, please refer [styling and formatting](../document-generation-api/stylingformattingtags.md) section.
 
@@ -474,7 +474,7 @@ The Document Generation API supports various JSONata functions, including:
 - [Higher Order Functions](https://docs.jsonata.org/higher-order-functions)
 
 
-Please note that some functions may not produce the expected results. It is recommended to test these functions before incorporating them into your template.
+It is recommended to test these functions before incorporating them into your template.
 
 ## Adobe Sign
 
