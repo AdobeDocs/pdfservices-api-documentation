@@ -76,7 +76,7 @@ this value before the result of the tag.
 
 **Arrays**
 
-To print the array values from a JSON object, you can use the $string() function in JSONata with the array's key name.
+To work with arrays, please refer to the [JSONata Functions](#jsonata-functions) section.
 
 JSON representation of the input data:
 
@@ -85,11 +85,9 @@ JSON representation of the input data:
   "companyName": "Tech Corp",
   "discountCoupons": ["SummerSale", "BlackFriday", "NewYearSpecial"]
 }
-
 ```
-Prints array input as string in the output document.
 
-![Array_as_String](../images/array_as_string.png)
+![working_with_arrays](../images/working_with_array.png)
 ## Images
 
 To dynamically insert an image in the document, add any image as
@@ -474,7 +472,10 @@ The Document Generation API supports various JSONata functions, including:
 - [Date/Time Functions](https://docs.jsonata.org/date-time-functions)
 - [Higher Order Functions](https://docs.jsonata.org/higher-order-functions)
 
+
 Please note that some functions may not produce the expected results. It is recommended to test these functions before incorporating them into your template.
+
+
 
 ## Adobe Sign
 
