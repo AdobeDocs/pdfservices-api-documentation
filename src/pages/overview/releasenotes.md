@@ -181,7 +181,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
-### September 10, 2024; Enhanced support for JSONata functions in Table with Markers.
+### September 10, 2024; Adobe Document Generation Server Side Release
 
 - Enhanced support for [JSONata functions](../document-generation-api/templatetags/#jsonata-functions) in Table with Markers.
 
