@@ -183,7 +183,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 ### September 10, 2024; Adobe Document Generation Server Side Release
 
-- Enhanced support for [JSONata functions](../document-generation-api/templatetags/#jsonata-functions) in Table with Markers.
+- Enhanced support for [JSONata functions](../document-generation-api/templatetags/#jsonata-functions) in Table Tag with Markers.
 
 ### August 23, 2024; Added new features for Document Generation API and updated Acrobat Service API postman collection
 
