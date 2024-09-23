@@ -5503,7 +5503,7 @@
           "Protect PDF"
         ],
         "summary": "Add encryption and/or restrict permissions on a PDF File",
-        "description": "Secure a PDF Document with user or/and owner password and set the restrictions on certain features like printing, editing and copying in the PDF document. You can specify the type of content to be encrypted with your specified encryption algorithm.",
+        "description": "Secure a PDF Document with user or/and owner password and set the restrictions on certain features like printing, editing and copying in the PDF document. You can specify the type of content to be encrypted with your specified encryption algorithm.<br><b>All Adobe products enforce the restrictions set by the permissions password. However, if third-party products don’t support these settings, document recipients can bypass some or all your restrictions.</b>",
         "operationId": "pdfoperations.protectpdf",
         "parameters": [
           {
