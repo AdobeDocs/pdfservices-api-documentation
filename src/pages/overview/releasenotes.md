@@ -93,8 +93,8 @@ version.
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
-    <pdfservices.sdk.version>4.1.0</pdfservices.sdk.version>
-    <pdfservices.sdk.samples.version>4.1.0</pdfservices.sdk.samples.version>
+    <pdfservices.sdk.version>4.1.1</pdfservices.sdk.version>
+    <pdfservices.sdk.samples.version>4.1.1</pdfservices.sdk.samples.version>
 </properties>
 
 <dependency>
@@ -180,6 +180,10 @@ Minor and Patch releases are backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
+
+### October 1, 2024; Java SDK 4.1.1 patch release
+
+- Bug fixes and stability improvements.
 
 ### September 10, 2024; Adobe Document Generation Server Side Release
 
