@@ -204,8 +204,29 @@ with open(output_file_path, "wb") as file:
 Here's the complete application (`src/documentmerge/merge_document_to_pdf.py`):
 
 ```python
+import json
+import logging
+import os
+from datetime import datetime
+
+from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
+from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
+from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
+from adobe.pdfservices.operation.io.stream_asset import StreamAsset
+from adobe.pdfservices.operation.pdf_services import PDFServices
+from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
+from adobe.pdfservices.operation.pdfjobs.jobs.document_merge_job import DocumentMergeJob
+from adobe.pdfservices.operation.pdfjobs.params.documentmerge.document_merge_params import DocumentMergeParams
+from adobe.pdfservices.operation.pdfjobs.params.documentmerge.output_format import OutputFormat
+from adobe.pdfservices.operation.pdfjobs.result.document_merge_result import DocumentMergePDFResult
+
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
+
+# This sample illustrates how to merge the Word based document template with the input JSON data to generate
+# the output document in the PDF format.
+#
+# Refer to README.md for instructions on how to run the samples.
 
 class MergeDocumentToPDF:
     def __init__(self):
