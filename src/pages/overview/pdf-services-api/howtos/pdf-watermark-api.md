@@ -193,7 +193,7 @@ namespace PDFWatermark
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
-// node src/electronicseal/electronic-seal.js
+// node src/pdfwatermark/pdf-watermark.js
 
 const {
     ServicePrincipalCredentials,
@@ -353,7 +353,7 @@ Please refer to the [API usage guide](../api-usage.md) to understand how to use 
 ```javascript
 // Get the samples from https://github.com/adobe/pdfservices-java-sdk-samples/tree/beta
 // Run the sample:
-// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.electronicseal.ElectronicSealWithAppearanceOptions
+// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.pdfwatermark.PDFWatermarkWithOptions
 
 package com.adobe.pdfservices.operation.samples.pdfwatermark;
 
@@ -380,14 +380,14 @@ public class PDFWatermarkWithOptions {
         
             // Creates a new job instance
             PDFServices pdfServices = new PDFServices(credentials);
-        
-            // Creates an asset(s) from source file(s) and upload
-            Asset inputDocumentAsset = pdfServices.upload(inputStream1, PDFServicesMediaType.PDF.getMediaType());
-            Asset watermarkDocumentAsset = pdfServices.upload(inputStream2, PDFServicesMediaType.PDF.getMediaType());
-        
+
             // Watermark pages of the document (as specified by PageRanges).
-            PageRanges pageRangeForPDFWatermark = getPageRangeForPDFWatermark();
-        
+            PageRanges pageRangeForPDFWatermark = new PageRanges();
+            // Add page 1
+            pageRangeForPDFWatermark.addSinglePage(1);
+            // Add pages 3 to 4
+            pageRangeForPDFWatermark.addRange(3, 4);
+
             // Creates PDF Watermark appearance option
             WatermarkAppearance watermarkAppearance = new WatermarkAppearance();
             watermarkAppearance.setOpacity(50);
@@ -535,7 +535,7 @@ namespace PDFWatermark
 ```javascript
 // Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
 // Run the sample:
-// node src/electronicseal/electronic-seal.js
+// node src/pdfwatermark/pdf-watermark-with-options.js
 
 const {
     ServicePrincipalCredentials,
@@ -637,12 +637,12 @@ const fs = require("fs");
 ```javascript
 # Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples
 # Run the sample:
-# python src/watermarkpdf/watermark_pdf.py
+# python src/watermarkpdf/watermark_pdf_with_params.py
 
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-class PDFWatermarkWithOptions:
+class PDFWatermark:
     def __init__(self):
         try:
             pdf_file = open("src/resources/watermarkPDFInput.pdf", 'rb')
@@ -694,14 +694,12 @@ class PDFWatermarkWithOptions:
         except (ServiceApiException, ServiceUsageException, SdkException) as e:
             logging.exception(f'Exception encountered while executing operation: {e}')
 
-if __name__ == "__main__":
-    PDFWatermarkWithOptions()
+    if __name__ == "__main__":
+        PDFWatermark:()
 ```
 
 
 #### REST API
-
-```javascript
 
 ```javascript
 curl --location --request POST 'https://pdf-services.adobe.io/operation/addwatermark' \
