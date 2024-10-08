@@ -18,6 +18,7 @@ This parameter specifies the starting page for the accessibility check. If "page
 ### Page end (_pageEnd_)
 
 This parameter specifies the ending page for the accessibility check. If "pageEnd" is not provided, the last page is considered the default end page. It should be greater than or equal to 1.
+
 ## REST API
 
 See our public API Reference for the [PDF Accessibility Checker API](../../../apis/#tag/PDF-Accessibility-Checker).
@@ -28,7 +29,7 @@ The sample below performs an accessibility check operation on a given PDF.
 
 Please refer to the [API usage guide](../gettingstarted.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" />
 
 #### Java
 
@@ -324,7 +325,7 @@ The sample below performs an accessibility check operation for specified pages o
 
 Please refer to the [API usage guide](../gettingstarted.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" />
 
 #### Java
 
