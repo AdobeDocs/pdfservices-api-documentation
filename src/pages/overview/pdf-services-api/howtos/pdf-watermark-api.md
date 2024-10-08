@@ -28,13 +28,14 @@ The output generated will retain the content along with the watermark from the f
 
 Specifies the number of pages on which the watermark will be applied. Page numbers are indexed from 1 to N. If a page range is not specified, the watermark will be applied on all pages of the source document.
 The page ranges are specified as an array of objects whose length cannot exceed beyond 20. Each object has the following properties:
-* **Start Page**  (*start*) : The first page number of the range. Default value is 1.
-* **End Page**  (*end*) : The last page number of the range. Default value is the last page of the document.
+
+* **Start Page**  (_start_) : The first page number of the range. Default value is 1.
+* **End Page**  (_end_) : The last page number of the range. Default value is the last page of the document.
 
 ### Appearance (_appearance_)
 
-* **Foreground**  (*appearOnForeground*) : Specifies the placement of the watermark on the page. It can appear in the foreground or background. The default value is true, placing the watermark in the foreground.
-* **Opacity**  (*opacity*) : Specifies the opacity of the watermark, represented as an integer percentage value ranging from 0 to 100. The default value is 100.
+* **Foreground**  (_appearOnForeground_) : Specifies the placement of the watermark on the page. It can appear in the foreground or background. The default value is true, placing the watermark in the foreground.
+* **Opacity**  (_opacity_) : Specifies the opacity of the watermark, represented as an integer percentage value ranging from 0 to 100. The default value is 100.
 
 ## REST API
 
@@ -46,7 +47,7 @@ The sample below performs watermark operation applying watermark in foreground o
 
 Please refer the [API usage guide](../gettingstarted.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" />
 
 #### Java
 
@@ -346,7 +347,7 @@ The sample below performs watermark operation applying watermark with customized
 
 Please refer to the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
+<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" />
 
 #### Java
 
@@ -697,7 +698,6 @@ class PDFWatermark:
     if __name__ == "__main__":
         PDFWatermark:()
 ```
-
 
 #### REST API
 
