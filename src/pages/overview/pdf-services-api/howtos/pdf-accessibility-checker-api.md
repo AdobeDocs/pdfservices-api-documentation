@@ -25,14 +25,6 @@ See our public API Reference for the [PDF Accessibility Checker API](../../../ap
 
 ## Check accessibility for specified pages
 
-The sample below performs an accessibility check operation on a given PDF.
-
-Please refer to the [API usage guide](../gettingstarted.md) to understand how to use our APIs.
-
-<CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" />
-
-## Check accessibility for specified pages
-
 The sample below performs an accessibility check operation for specified pages of a given PDF.
 
 Please refer to the [API usage guide](../gettingstarted.md) to understand how to use our APIs.
