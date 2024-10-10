@@ -129,10 +129,10 @@ public class PDFWatermarkWithOptions {
 ```javascript
 // Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
 // Run the sample:
-// cd PDFWatermark/
-// dotnet run PDFWatermark.csproj
+// cd PDFWatermarkWithOptions/
+// dotnet run PDFWatermarkWithOptions.csproj
 
-namespace PDFWatermark
+namespace PDFWatermarkWithOptions
 {
     class Program
     {
@@ -243,7 +243,7 @@ const {
     SDKError,
     ServiceUsageError,
     ServiceApiError,
-} = require("@dcloud/pdfservices-node-sdk");
+} = require("@adobe/pdfservices-node-sdk");
 const fs = require("fs");
 
 (async () => {
