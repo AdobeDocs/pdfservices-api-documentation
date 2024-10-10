@@ -201,7 +201,7 @@ const {
     ServiceApiError,
     PDFAccessibilityCheckerJob,
     PDFAccessibilityCheckerResult
-} = require("@dcloud/pdfservices-node-sdk");
+} = require("@adobe/pdfservices-node-sdk");
 const fs = require("fs");
 
 (async () => {
