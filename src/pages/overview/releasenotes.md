@@ -324,3 +324,7 @@ Upgrading to the latest SDK should not break existing applications.
 ### June, 2023; Adobe Document Generation Server Side Release
 
 - Added support for [External Storage](../pdf-services-api/howtos/pdf-external-storage-sol/) in Document Generation API.
+
+### October, 2024; Java SDK 4.2.0 and NodeJS, .NET, Python SDK 4.1.0 minor release
+
+- PDF Watermark and PDF Accessibility Checker operations are now available for all the users in PDF Services SDKs and REST APIs.
