@@ -189,7 +189,7 @@ namespace PDFAccessibilityCheckerWithOptions
 #### Node JS
 
 ```javascript
-// Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
+// Get the samples from https://github.com/adobe/pdfservices-node-sdk-samples
 // Run the sample:
 // node src/pdfaccessibilitychecker/pdf-accessibility-checker-with-options.js
 const {
