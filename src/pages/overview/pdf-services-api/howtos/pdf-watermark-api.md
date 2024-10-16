@@ -344,11 +344,11 @@ class PDFWatermark:
     def __init__(self):
         try:
             pdf_file = open("src/resources/watermarkPDFInput.pdf", 'rb')
-            input_stream = pdf_file.read()
+            source_file_input_stream = pdf_file.read()
             pdf_file.close()
             
             pdf_file = open("src/resources/watermark.pdf", 'rb')
-            watermark_asset = pdf_file.read()
+            watermark_file_input_stream = pdf_file.read()
             pdf_file.close()
             
             # Initial setup, create credentials instance
@@ -361,8 +361,8 @@ class PDFWatermark:
 
 
             # Creates an asset(s) from source file(s) and upload
-            input_asset = pdf_services.upload(input_stream=input_stream, mime_type=PDFServicesMediaType.PDF)
-            watermark_asset = pdf_services.upload(input_stream=watermark_asset, mime_type=PDFServicesMediaType.PDF)
+            input_asset = pdf_services.upload(input_stream=source_file_input_stream, mime_type=PDFServicesMediaType.PDF)
+            watermark_asset = pdf_services.upload(input_stream=watermark_file_input_stream, mime_type=PDFServicesMediaType.PDF)
             
             watermark_appearance = WatermarkAppearance(appear_on_foreground=True, opacity=50)
             
@@ -371,19 +371,19 @@ class PDFWatermark:
             page_ranges.add_range(8, 10)
 
             # Create parameters for the job
-            watermark_params = WatermarkParams(page_ranges=page_ranges, watermark_appearance=watermark_appearance)
+            pdf_watermark_params = PDFWatermarkParams(page_ranges=page_ranges, watermark_appearance=watermark_appearance)
             
             # Creates a new job instance
-            watermark_job = PDFWatermarkJob(input_asset=input_asset, watermark_asset=watermark_asset,
-                watermark_params=watermark_params)
+            pdf_watermark_job = PDFWatermarkJob(input_asset=input_asset, watermark_asset=watermark_asset,
+                pdf_watermark_params=pdf_watermark_params)
 
             # Submit the job and gets the job result
-            location = pdf_services.submit(watermark_job)
-            pdf_services_response = pdf_services.get_job_result(location, WatermarkResult)
+            location = pdf_services.submit(pdf_watermark_job)
+            pdf_services_response = pdf_services.get_job_result(location, PDFWatermarkResult)
             
             # Get content from the resulting asset(s)
-            watermark_result: CloudAsset = pdf_services_response.get_result().get_asset()
-            stream_asset: StreamAsset = pdf_services.get_content(watermark_result)
+            pdf_watermark_result: CloudAsset = pdf_services_response.get_result().get_asset()
+            stream_asset: StreamAsset = pdf_services.get_content(pdf_watermark_result)
 
             # Creates an output stream and copy stream asset's content to it
             output_file_path = 'output/pdfWatermark.pdf'
