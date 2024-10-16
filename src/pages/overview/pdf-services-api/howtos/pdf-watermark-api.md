@@ -5,7 +5,7 @@ title: PDF Watermark | How Tos | PDF Services API | Adobe PDF Services
 # PDF Watermark
 
 A watermark in a document is usually semi-transparent or faded text, a logo, or a pattern placed in the background or foreground of the page for security, authenticity, and branding.
-PDF Watermark API is a cloud based solution to apply watermark on specified pages of PDF document using a source watermark PDF. The first page of source watermark PDF will be added as a watermark in input PDF document. If a page range is not specified, the watermark will be applied on all pages of the source document.
+PDF Watermark API is a cloud based solution to apply watermark on specified pages of PDF document using a source watermark PDF. The first page of the source watermark PDF will be added as a watermark in the input PDF document. If a page range is not specified, the watermark will be applied on all pages of the source document.
 
 ![PDF Watermark](../watermark_overview.png)
 
@@ -21,6 +21,10 @@ A PDF document to which a watermark will be applied.
 
 A PDF document whose first page will be used as a watermark for the input document.
 The output generated will retain the content along with the watermark from the first page.
+
+Note: If the watermark document is a scanned PDF, placing the watermark in the foreground may make the content of the input PDF unreadable. 
+Place watermarks from scanned PDF files in the background by setting appearOnForeground to false.
+
 
 ## Watermark Parameters
 
@@ -52,7 +56,7 @@ Please refer to the [API usage guide](../api-usage.md) to understand how to use 
 #### Java
 
 ```javascript
-// Get the samples from https://github.com/adobe/pdfservices-java-sdk-samples/tree/beta
+// Get the samples from https://github.com/adobe/pdfservices-java-sdk-samples
 // Run the sample:
 // mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.pdfwatermark.PDFWatermarkWithOptions
 
@@ -127,7 +131,7 @@ public class PDFWatermarkWithOptions {
 #### .NET
 
 ```javascript
-// Get the samples from https://www.adobe.com/go/pdftoolsapi_net_samples
+// Get the samples from https://github.com/adobe/PDFServices.NET.SDK.Samples
 // Run the sample:
 // cd PDFWatermarkWithOptions/
 // dotnet run PDFWatermarkWithOptions.csproj
@@ -230,7 +234,7 @@ namespace PDFWatermarkWithOptions
 #### Node JS
 
 ```javascript
-// Get the samples from http://www.adobe.com/go/pdftoolsapi_node_sample
+// Get the samples from https://github.com/adobe/pdfservices-node-sdk-samples
 // Run the sample:
 // node src/pdfwatermark/pdf-watermark-with-options.js
 
