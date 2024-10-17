@@ -181,6 +181,15 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+
+### October 22, 2024; Java SDK 4.2.0 and NodeJS, .NET, Python SDK 4.1.0 minor release
+
+- PDF Watermark and PDF Accessibility Checker operations are now available for all the users in PDF Services SDKs.
+
+### September 10, 2024; Adobe Document Generation Server Side Release
+
+- Enhanced support for [JSONata functions](../document-generation-api/templatetags/#jsonata-functions) in Table Tag with Markers.
+
 ### August 23, 2024; Added new features for Document Generation API and updated Acrobat Service API postman collection
 
 - Added base64 format support for inline images.
@@ -320,7 +329,3 @@ Upgrading to the latest SDK should not break existing applications.
 ### June, 2023; Adobe Document Generation Server Side Release
 
 - Added support for [External Storage](../pdf-services-api/howtos/pdf-external-storage-sol/) in Document Generation API.
-
-### October, 2024; Java SDK 4.2.0 and NodeJS, .NET, Python SDK 4.1.0 minor release
-
-- PDF Watermark and PDF Accessibility Checker operations are now available for all the users in PDF Services SDKs.
