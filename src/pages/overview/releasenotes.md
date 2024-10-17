@@ -327,4 +327,4 @@ Upgrading to the latest SDK should not break existing applications.
 
 ### October, 2024; Java SDK 4.2.0 and NodeJS, .NET, Python SDK 4.1.0 minor release
 
-- PDF Watermark and PDF Accessibility Checker operations are now available for all the users in PDF Services SDKs and REST APIs.
+- PDF Watermark and PDF Accessibility Checker operations are now available for all the users in PDF Services SDKs.

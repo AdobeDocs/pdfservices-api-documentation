@@ -278,12 +278,12 @@ module.exports = {
                                 path: 'overview/pdf-services-api/howtos/rotate-pages.md'
                             },
                             {
-                                title: 'SDK Utilities',
-                                path: 'overview/pdf-services-api/howtos/sdk-utilities.md'
-                            },
-                            {
                                 title: 'Split PDF',
                                 path: 'overview/pdf-services-api/howtos/split-pdf.md'
+                            },
+                            {
+                                title: 'SDK Utilities',
+                                path: 'overview/pdf-services-api/howtos/sdk-utilities.md'
                             }
                         ]
                     }
