@@ -85,7 +85,7 @@ zip_file = "./ExtractTextInfoFromPDF.zip"
 if os.path.isfile(zip_file):
 	os.remove(zip_file)
 
-input_pdf = "./Adobe Extract API Sample.pdf"
+input_pdf = "./extractPdfInput.pdf"
 ```
 
 This defines what our output ZIP will be and optionally deletes it if it already exists. Then we define what PDF will be extracted. (You can download the source we used [here](/Adobe%20Extract%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic. 
@@ -163,19 +163,32 @@ for element in data["elements"]:
 Here's the complete application (`extract.py`):
 
 ```python
+import logging
+import os
+from datetime import datetime
+
+from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
+from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
+from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
+from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
+from adobe.pdfservices.operation.io.stream_asset import StreamAsset
+from adobe.pdfservices.operation.pdf_services import PDFServices
+from adobe.pdfservices.operation.pdfjobs.jobs.extract_pdf_job import ExtractPDFJob
+from adobe.pdfservices.operation.pdfjobs.params.extract_pdf.extract_element_type import ExtractElementType
+from adobe.pdfservices.operation.pdfjobs.params.extract_pdf.extract_pdf_params import ExtractPDFParams
+from adobe.pdfservices.operation.pdfjobs.result.extract_pdf_result import ExtractPDFResult
+
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
 # This sample illustrates how to extract Text Information from PDF.
 #
 # Refer to README.md for instructions on how to run the samples & understand output zip file.
-#
+
 class ExtractTextInfoFromPDF:
     def __init__(self):
         try:
-            file = open('src/resources/extractPdfInput.pdf', 'rb')
+            file = open('./extractPdfInput.pdf', 'rb')
             input_stream = file.read()
             file.close()
 

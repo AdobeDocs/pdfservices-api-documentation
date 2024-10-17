@@ -202,64 +202,24 @@ module.exports = {
                                 path: 'overview/pdf-services-api/howtos/webhook-notification.md'
                             },
                             {
-                                title: 'SDK Utilities',
-                                path: 'overview/pdf-services-api/howtos/sdk-utilities.md'
-                            },
-                            {
-                                title: 'Create PDF',
-                                path: 'overview/pdf-services-api/howtos/create-pdf.md'
-                            },
-                            {
-                                title: 'Export PDF',
-                                path: 'overview/pdf-services-api/howtos/export-pdf.md'
-                            },
-                            {
                                 title: 'Combine PDF Files',
                                 path: 'overview/pdf-services-api/howtos/combine-pdf.md'
-                            },
-                            {
-                                title: 'OCR PDF',
-                                path: 'overview/pdf-services-api/howtos/ocr-pdf.md'
                             },
                             {
                                 title: 'Compress PDFs',
                                 path: 'overview/pdf-services-api/howtos/compress-pdf.md'
                             },
                             {
-                                title: 'Linearize PDF',
-                                path: 'overview/pdf-services-api/howtos/linearize-pdf.md'
-                            },
-                            {
-                                title: 'Protect PDF',
-                                path: 'overview/pdf-services-api/howtos/protect-pdf.md'
-                            },
-                            {
-                                title: 'Remove Protection',
-                                path: 'overview/pdf-services-api/howtos/remove-protection.md'
-                            },
-                            {
-                                title: 'Insert Pages',
-                                path: 'overview/pdf-services-api/howtos/insert-pages.md'
-                            },
-                            {
-                                title: 'Replace Pages',
-                                path: 'overview/pdf-services-api/howtos/replace-pages.md'
+                                title: 'Create PDF',
+                                path: 'overview/pdf-services-api/howtos/create-pdf.md'
                             },
                             {
                                 title: 'Delete Pages',
                                 path: 'overview/pdf-services-api/howtos/delete-pages.md'
                             },
                             {
-                                title: 'Reorder Pages',
-                                path: 'overview/pdf-services-api/howtos/reorder-pages.md'
-                            },
-                            {
-                                title: 'Rotate Pages',
-                                path: 'overview/pdf-services-api/howtos/rotate-pages.md'
-                            },
-                            {
-                                title: 'Split PDF',
-                                path: 'overview/pdf-services-api/howtos/split-pdf.md'
+                                title: 'Export PDF',
+                                path: 'overview/pdf-services-api/howtos/export-pdf.md'
                             },
                             {
                                 title: 'Extract PDF',
@@ -270,8 +230,24 @@ module.exports = {
                                 path: 'overview/pdf-services-api/howtos/pdf-properties.md'
                             },
                             {
+                                title: 'Insert Pages',
+                                path: 'overview/pdf-services-api/howtos/insert-pages.md'
+                            },
+                            {
+                                title: 'Linearize PDF',
+                                path: 'overview/pdf-services-api/howtos/linearize-pdf.md'
+                            },
+                            {
+                                title: 'OCR PDF',
+                                path: 'overview/pdf-services-api/howtos/ocr-pdf.md'
+                            },
+                            {
                                 title: 'PDF Accessibility Auto-Tag',
                                 path: 'overview/pdf-services-api/howtos/pdf-accessibility-auto-tag-pdf.md'
+                            },
+                            {
+                                title: 'PDF Accessibility Checker',
+                                path: 'overview/pdf-services-api/howtos/pdf-accessibility-checker-api.md'
                             },
                             {
                                 title: 'PDF Electronic Seal',
@@ -282,8 +258,32 @@ module.exports = {
                                 path: 'overview/pdf-services-api/howtos/pdf-watermark-api.md'
                             },
                             {
-                                title: 'PDF Accessibility Checker',
-                                path: 'overview/pdf-services-api/howtos/pdf-accessibility-checker-api.md'
+                                title: 'Protect PDF',
+                                path: 'overview/pdf-services-api/howtos/protect-pdf.md'
+                            },
+                            {
+                                title: 'Remove Protection',
+                                path: 'overview/pdf-services-api/howtos/remove-protection.md'
+                            },
+                            {
+                                title: 'Reorder Pages',
+                                path: 'overview/pdf-services-api/howtos/reorder-pages.md'
+                            },
+                            {
+                                title: 'Replace Pages',
+                                path: 'overview/pdf-services-api/howtos/replace-pages.md'
+                            },
+                            {
+                                title: 'Rotate Pages',
+                                path: 'overview/pdf-services-api/howtos/rotate-pages.md'
+                            },
+                            {
+                                title: 'Split PDF',
+                                path: 'overview/pdf-services-api/howtos/split-pdf.md'
+                            },
+                            {
+                                title: 'SDK Utilities',
+                                path: 'overview/pdf-services-api/howtos/sdk-utilities.md'
                             }
                         ]
                     }

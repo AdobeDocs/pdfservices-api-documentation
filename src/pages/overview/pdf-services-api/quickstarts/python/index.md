@@ -51,7 +51,7 @@ At this point, we've installed the Python SDK for Adobe PDF Services API as a de
 
 Our application will take a PDF, `Bodea Brochure.pdf` (downloadable from <a href="https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf">here</a>) and convert it to a Microsoft Word document, `Bodea Brochure.docx`.
 
-4) In your editor, open the directory where you previously copied the credentials. Create a new file, `autotag.py`.
+4) In your editor, open the directory where you previously copied the credentials. Create a new file, `export_pdf_to_docx.py`.
 
 Now you're ready to begin coding.
 
@@ -100,7 +100,7 @@ pdf_services = PDFServices(credentials=credentials)
 4) Now, let's create an asset from source file and upload.
 
 ```python
-file = open('src/resources/Bodea Brochure.pdf', 'rb')
+file = open('./Bodea Brochure.pdf', 'rb')
 input_stream = file.read()
 file.close()
 

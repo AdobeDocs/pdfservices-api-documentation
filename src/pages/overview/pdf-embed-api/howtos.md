@@ -70,7 +70,7 @@ viewer.
 
 <InlineAlert slots="text"/>
 
-The timeout for file rendering is 60 seconds. If the file exceeds this limit there will be a `Preview Rendering Failed` error.
+The timeout for file rendering is 5 minutes. If the file exceeds this limit there will be a `Preview Rendering Failed` error.
 
 ## Passing file content
 

@@ -102,7 +102,7 @@ This defines what our output directory will be and optionally deletes it if it a
 4) Now, let's create an asset from source file and upload.
 
 ```python
-file = open('src/resources/autotagPDFInput.pdf', 'rb')
+file = open('./autotagPDFInput.pdf', 'rb')
 input_stream = file.read()
 file.close()
 
@@ -140,19 +140,30 @@ with open(output_file_path, "wb") as file:
 Here's the complete application (`autotag.py`):
 
 ```python
+import logging
+import os
+from datetime import datetime
+
+from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
+from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, ServiceUsageException, SdkException
+from adobe.pdfservices.operation.io.cloud_asset import CloudAsset
+from adobe.pdfservices.operation.io.stream_asset import StreamAsset
+from adobe.pdfservices.operation.pdf_services import PDFServices
+from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
+from adobe.pdfservices.operation.pdfjobs.jobs.autotag_pdf_job import AutotagPDFJob
+from adobe.pdfservices.operation.pdfjobs.result.autotag_pdf_result import AutotagPDFResult
+
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
 
-
-#
 # This sample illustrates how to generate a tagged PDF.
 #
 # Refer to README.md for instructions on how to run the samples.
-#
+
 class AutoTagPDF:
     def __init__(self):
         try:
-            file = open('src/resources/autotagPDFInput.pdf', 'rb')
+            file = open('./autotagPDFInput.pdf', 'rb')
             input_stream = file.read()
             file.close()
 
