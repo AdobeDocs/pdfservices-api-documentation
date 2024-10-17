@@ -25,7 +25,7 @@ See our public API Reference for the [PDF Accessibility Checker API](../../../ap
 
 ## Check accessibility for input PDF
 
-The sample below performs an accessibility check operation for a given PDF.
+The sample below performs an accessibility check operation on a given PDF.
 
 Please refer to the [API usage guide](../gettingstarted.md) to understand how to use our APIs.
 
