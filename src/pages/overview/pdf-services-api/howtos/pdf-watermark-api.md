@@ -334,7 +334,7 @@ class PDFWatermark:
             logging.exception(f'Exception encountered while executing operation: {e}')
 
     if __name__ == "__main__":
-        PDFWatermark:()
+        PDFWatermark()
 ```
 
 #### REST API
@@ -699,7 +699,7 @@ class PDFWatermark:
             logging.exception(f'Exception encountered while executing operation: {e}')
 
     if __name__ == "__main__":
-        PDFWatermark:()
+        PDFWatermark()
 ```
 
 #### REST API

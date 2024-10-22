@@ -258,48 +258,48 @@ const fs = require("fs");
 
 class PDFAccessibilityChecker:
     def __init__(self):
-    try:
-        pdf_file = open("src/resources/CheckerPDFInput.pdf", 'rb')
-        input_stream = pdf_file.read()
-        pdf_file.close()
-        
-        # Initial setup, create credentials instance
-        credentials = ServicePrincipalCredentials(
-            client_id=os.getenv('PDF_SERVICES_CLIENT_ID'),
-            client_secret=os.getenv('PDF_SERVICES_CLIENT_SECRET'))
-        
-        # Creates a PDF Services instance
-        pdf_services = PDFServices(credentials=credentials)
-        
-        # Creates an asset(s) from source file(s) and upload
-        input_asset = pdf_services.upload(input_stream=input_stream, mime_type=PDFServicesMediaType.PDF)
-
-        # Creates a new job instance
-        pdf_accessibility_checker_job = PDFAccessibilityCheckerJob(input_asset=input_asset)
-        
-        # Submit the job and gets the job result
-        location = pdf_services.submit(pdf_accessibility_checker_job)
-        pdf_services_response = pdf_services.get_job_result(location, PDFAccessibilityCheckerResult)
-        
-        # Get content from the resulting asset(s)
-        result_asset: CloudAsset = pdf_services_response.get_result().get_asset()
-        stream_asset: StreamAsset = pdf_services.get_content(result_asset)
-        
-        report_asset: CloudAsset = pdf_services_response.get_result().get_report()
-        stream_report: StreamAsset = pdf_services.get_content(report_asset)
-        
-        output_file_path = 'output/accessibilitychecker.pdf'
-        with open(output_file_path, "wb") as file:
-            file.write(stream_asset.get_input_stream())
-        
-        output_file_path_json = 'output/accessibilitychecker.json'
-        with open(output_file_path_json, "wb") as file:
-            file.write(stream_report.get_input_stream())
+        try:
+            pdf_file = open("src/resources/CheckerPDFInput.pdf", 'rb')
+            input_stream = pdf_file.read()
+            pdf_file.close()
+            
+            # Initial setup, create credentials instance
+            credentials = ServicePrincipalCredentials(
+                client_id=os.getenv('PDF_SERVICES_CLIENT_ID'),
+                client_secret=os.getenv('PDF_SERVICES_CLIENT_SECRET'))
+            
+            # Creates a PDF Services instance
+            pdf_services = PDFServices(credentials=credentials)
+            
+            # Creates an asset(s) from source file(s) and upload
+            input_asset = pdf_services.upload(input_stream=input_stream, mime_type=PDFServicesMediaType.PDF)
     
-    except (ServiceApiException, ServiceUsageException, SdkException) as e:
-        logging.exception(f'Exception encountered while executing operation: {e}')
-    
-    
+            # Creates a new job instance
+            pdf_accessibility_checker_job = PDFAccessibilityCheckerJob(input_asset=input_asset)
+            
+            # Submit the job and gets the job result
+            location = pdf_services.submit(pdf_accessibility_checker_job)
+            pdf_services_response = pdf_services.get_job_result(location, PDFAccessibilityCheckerResult)
+            
+            # Get content from the resulting asset(s)
+            result_asset: CloudAsset = pdf_services_response.get_result().get_asset()
+            stream_asset: StreamAsset = pdf_services.get_content(result_asset)
+            
+            report_asset: CloudAsset = pdf_services_response.get_result().get_report()
+            stream_report: StreamAsset = pdf_services.get_content(report_asset)
+            
+            output_file_path = 'output/accessibilitychecker.pdf'
+            with open(output_file_path, "wb") as file:
+                file.write(stream_asset.get_input_stream())
+            
+            output_file_path_json = 'output/accessibilitychecker.json'
+            with open(output_file_path_json, "wb") as file:
+                file.write(stream_report.get_input_stream())
+        
+        except (ServiceApiException, ServiceUsageException, SdkException) as e:
+            logging.exception(f'Exception encountered while executing operation: {e}')
+        
+        
     if __name__ == "__main__":
         PDFAccessibilityChecker()
 ```
@@ -568,51 +568,51 @@ const fs = require("fs");
 
 class PDFAccessibilityChecker:
     def __init__(self):
-    try:
-        pdf_file = open("src/resources/CheckerPDFInput.pdf", 'rb')
-        input_stream = pdf_file.read()
-        pdf_file.close()
+        try:
+            pdf_file = open("src/resources/CheckerPDFInput.pdf", 'rb')
+            input_stream = pdf_file.read()
+            pdf_file.close()
+            
+            # Initial setup, create credentials instance
+            credentials = ServicePrincipalCredentials(
+                client_id=os.getenv('PDF_SERVICES_CLIENT_ID'),
+                client_secret=os.getenv('PDF_SERVICES_CLIENT_SECRET'))
+            
+            # Creates a PDF Services instance
+            pdf_services = PDFServices(credentials=credentials)
+            
+            # Creates an asset(s) from source file(s) and upload
+            input_asset = pdf_services.upload(input_stream=input_stream, mime_type=PDFServicesMediaType.PDF)
+            
+            # Create parameters for the job
+            pdf_accessibility_checker_params = PDFAccessibilityCheckerParams(page_start=1, page_end=5)
+            
+            # Creates a new job instance
+            pdf_accessibility_checker_job = PDFAccessibilityCheckerJob(input_asset=input_asset,
+                pdf_accessibility_checker_params=pdf_accessibility_checker_params)
+            
+            # Submit the job and gets the job result
+            location = pdf_services.submit(pdf_accessibility_checker_job)
+            pdf_services_response = pdf_services.get_job_result(location, PDFAccessibilityCheckerResult)
+            
+            # Get content from the resulting asset(s)
+            result_asset: CloudAsset = pdf_services_response.get_result().get_asset()
+            stream_asset: StreamAsset = pdf_services.get_content(result_asset)
+            
+            report_asset: CloudAsset = pdf_services_response.get_result().get_report()
+            stream_report: StreamAsset = pdf_services.get_content(report_asset)
+            
+            output_file_path = 'output/accessibilitychecker.pdf'
+            with open(output_file_path, "wb") as file:
+                file.write(stream_asset.get_input_stream())
+            
+            output_file_path_json = 'output/accessibilitychecker.json'
+            with open(output_file_path_json, "wb") as file:
+                file.write(stream_report.get_input_stream())
         
-        # Initial setup, create credentials instance
-        credentials = ServicePrincipalCredentials(
-            client_id=os.getenv('PDF_SERVICES_CLIENT_ID'),
-            client_secret=os.getenv('PDF_SERVICES_CLIENT_SECRET'))
+        except (ServiceApiException, ServiceUsageException, SdkException) as e:
+            logging.exception(f'Exception encountered while executing operation: {e}')
         
-        # Creates a PDF Services instance
-        pdf_services = PDFServices(credentials=credentials)
-        
-        # Creates an asset(s) from source file(s) and upload
-        input_asset = pdf_services.upload(input_stream=input_stream, mime_type=PDFServicesMediaType.PDF)
-        
-        # Create parameters for the job
-        pdf_accessibility_checker_params = PDFAccessibilityCheckerParams(page_start=1, page_end=5)
-        
-        # Creates a new job instance
-        pdf_accessibility_checker_job = PDFAccessibilityCheckerJob(input_asset=input_asset,
-            pdf_accessibility_checker_params=pdf_accessibility_checker_params)
-        
-        # Submit the job and gets the job result
-        location = pdf_services.submit(pdf_accessibility_checker_job)
-        pdf_services_response = pdf_services.get_job_result(location, PDFAccessibilityCheckerResult)
-        
-        # Get content from the resulting asset(s)
-        result_asset: CloudAsset = pdf_services_response.get_result().get_asset()
-        stream_asset: StreamAsset = pdf_services.get_content(result_asset)
-        
-        report_asset: CloudAsset = pdf_services_response.get_result().get_report()
-        stream_report: StreamAsset = pdf_services.get_content(report_asset)
-        
-        output_file_path = 'output/accessibilitychecker.pdf'
-        with open(output_file_path, "wb") as file:
-            file.write(stream_asset.get_input_stream())
-        
-        output_file_path_json = 'output/accessibilitychecker.json'
-        with open(output_file_path_json, "wb") as file:
-            file.write(stream_report.get_input_stream())
-    
-    except (ServiceApiException, ServiceUsageException, SdkException) as e:
-        logging.exception(f'Exception encountered while executing operation: {e}')
-    
     
     if __name__ == "__main__":
         PDFAccessibilityChecker()
