@@ -181,6 +181,11 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+
+### November 4, 2024; Adobe Document Generation Server Side Release
+
+- Limiting length of tags to 1000 characters in Document Generation API.
+
 ### August 23, 2024; Added new features for Document Generation API and updated Acrobat Service API postman collection
 
 - Added base64 format support for inline images.
