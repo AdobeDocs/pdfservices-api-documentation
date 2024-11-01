@@ -11,7 +11,8 @@ the input data to generate the output document.
 
 <InlineAlert slots="text"/>
 
-All the tags are [JSONata compliant](https://docs.jsonata.org/overview.html).
+All the tags are [JSONata compliant](https://docs.jsonata.org/overview.html).<br/>
+All tags should be kept within a 1000-character limit.
 
 ## Placeholder Variables
 
