@@ -26,10 +26,9 @@ A placeholder(text tags) gets replaced by the actual input data.
 <InlineAlert slots="text"/>
 
 A placeholder variable can only be applied to an input field of type
-string, number or boolean. <br/> Formatting applied to the placeholder
-variable in the document template will be retained in the output
-document.<br/>
-For more simplified styling and formatting for the placeholder tag from the input json data, please refer [styling and formatting](../document-generation-api/stylingformattingtags.md) section:
+string, number or boolean.<br/> Please refer to the **Arrays** section to use array as a placeholder variable.<br/> Formatting applied to the placeholder
+variable in the document template will be retained in the output document.<br/>
+For more simplified styling and formatting for the placeholder tag from the input json data, please refer [styling and formatting](../document-generation-api/stylingformattingtags.md) section.
 
 JSON representation of the input data:
 
@@ -74,6 +73,22 @@ A prefix value can be specified for the placeholder variable. Doing so will appe
 this value before the result of the tag.
 
 ![Placeholder tags with prefix image set](../images/placeholder_prefix.png)
+
+**Arrays**
+
+To work with arrays, please refer to the [JSONata Functions](#jsonata-functions) section.
+
+JSON representation of the input data:
+
+```json
+{
+  "companyName": "Tech Corp",
+  "discountCoupons": ["SummerSale", "BlackFriday", "NewYearSpecial"]
+}
+```
+
+![working_with_arrays](../images/working_with_array.png)
+
 ## Images
 
 To dynamically insert an image in the document, add any image as

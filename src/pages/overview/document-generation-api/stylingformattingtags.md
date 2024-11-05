@@ -53,12 +53,6 @@ Styling for the text tag can be provided using the json data through the HTML ba
 
 - Any HTML tags which are not supported will be ignored.
 
-Formatting for image can be provided using the attributes of the img tag.
-
-- The img tag supports the height and width attributes.
-
-- Any other unsupported attributes inside the img tag will be ignored.
-
 ## Inline styling attributes supported
 
 - font-size : Xpt or Ypx ;  X=dynamic positive integer 1–1638 pt, 1pt = 1/72 inch; Y=dynamic positive integer 1–2184 px, 1px = 1/96 inch ( point (pt) and pixels (px) are the only supported unit for font size.)
@@ -84,9 +78,9 @@ JSON representation of the input data:
 
 ## Inline images supported attributes
 
-[Click here](../document-generation-api/inlineimages.md) to refer documentation on how to add Inline Images.
+You may find documentation for using inline images [here](../document-generation-api/inlineimages.md).
 
-Formatting for image can be provided using the attributes of the img tag.
+Formatting for images can be provided using the attributes of the img tag.
 
 - The img tag supports the height and width attributes.
 
