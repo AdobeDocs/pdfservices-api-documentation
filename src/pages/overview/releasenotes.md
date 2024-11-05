@@ -186,6 +186,10 @@ Upgrading to the latest SDK should not break existing applications.
 
 - PDF Watermark and PDF Accessibility Checker operations are now available for all the users in PDF Services SDKs.
 
+### October 1, 2024; Java SDK 4.1.1 patch release
+
+- Bug fixes and stability improvements.
+
 ### September 10, 2024; Adobe Document Generation Server Side Release
 
 - Enhanced support for [JSONata functions](../document-generation-api/templatetags/#jsonata-functions) in Table Tag with Markers.
