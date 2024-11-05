@@ -154,7 +154,7 @@ using Adobe.PDFServicesSDK;
 * Add the following dependency in your project’s requirements.txt file:
 
 ```
-pdfservices-sdk~=4.0.0
+pdfservices-sdk~=4.1.0
 ```
 
 ## Archived Documentation
@@ -185,11 +185,6 @@ Upgrading to the latest SDK should not break existing applications.
 ### November 06, 2024; Java SDK 4.2.0 and NodeJS, .NET, Python SDK 4.1.0 minor release
 
 - PDF Watermark and PDF Accessibility Checker operations are now available for all the users in PDF Services SDKs.
-
-
-### October 1, 2024; Java SDK 4.1.1 patch release
-
-- Bug fixes and stability improvements.
 
 ### September 10, 2024; Adobe Document Generation Server Side Release
 

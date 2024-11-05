@@ -462,6 +462,20 @@ Here is the list of [supported aggregation functions](https://docs.jsonata.org/a
 aggregate numerical calculation can only be applied to a list of
 numbers.
 
+## JSONata Functions
+The Document Generation API supports various JSONata functions, including:
+
+- [String Functions](https://docs.jsonata.org/string-functions)
+- [Numeric Functions](https://docs.jsonata.org/numeric-functions)
+- [Aggregation Functions](https://docs.jsonata.org/aggregation-functions)
+- [Boolean Functions](https://docs.jsonata.org/boolean-functions)
+- [Array Functions](https://docs.jsonata.org/array-functions)
+- [Date/Time Functions](https://docs.jsonata.org/date-time-functions)
+- [Higher Order Functions](https://docs.jsonata.org/higher-order-functions)
+
+
+It is recommended to test these functions before incorporating them into your template.
+
 ## Adobe Sign
 
 Adobe Sign text tags can be placed anywhere within the contents of the document template.
