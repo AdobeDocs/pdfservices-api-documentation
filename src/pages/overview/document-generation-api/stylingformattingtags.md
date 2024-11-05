@@ -78,9 +78,9 @@ JSON representation of the input data:
 
 ## Inline images supported attributes
 
-[Click here](../document-generation-api/inlineimages.md) to refer documentation on how to add Inline Images.
+You may find documentation for using inline images [here](../document-generation-api/inlineimages.md).
 
-Formatting for image can be provided using the attributes of the img tag.
+Formatting for images can be provided using the attributes of the img tag.
 
 - The img tag supports the height and width attributes.
 
