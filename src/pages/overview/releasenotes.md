@@ -182,7 +182,7 @@ Upgrading to the latest SDK should not break existing applications.
 ## Change history
 
 
-### November 6, 2024; Adobe Document Generation Server Side Release
+### November 06, 2024; Adobe Document Generation Server Side Release
 
 - Restricting tag length to 1000 characters in the Document Generation API.
 
