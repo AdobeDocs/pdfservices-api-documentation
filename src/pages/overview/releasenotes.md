@@ -93,8 +93,8 @@ version.
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
-    <pdfservices.sdk.version>4.1.1</pdfservices.sdk.version>
-    <pdfservices.sdk.samples.version>4.1.1</pdfservices.sdk.samples.version>
+    <pdfservices.sdk.version>4.2.0</pdfservices.sdk.version>
+    <pdfservices.sdk.samples.version>4.2.0</pdfservices.sdk.samples.version>
 </properties>
 
 <dependency>
@@ -116,7 +116,7 @@ import com.adobe.pdfservices.operation.ExecutionContext;
 * Update the latest SDK dependency in package.json file of your project
  
 ```
-"@adobe/pdfservices-node-sdk": "4.0.1"
+"@adobe/pdfservices-node-sdk": "4.1.0"
 ```
 
 * Require the `@adobe/pdfservices-node-sdk` in the Sample file to access the SDK interface
@@ -140,7 +140,7 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 ```
 <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.17" />
-    <PackageReference Include="Adobe.PDFServicesSDK" Version="4.0.0" />
+    <PackageReference Include="Adobe.PDFServicesSDK" Version="4.1.0" />
 </ItemGroup> 
 ```
 
@@ -154,7 +154,7 @@ using Adobe.PDFServicesSDK;
 * Add the following dependency in your project’s requirements.txt file:
 
 ```
-pdfservices-sdk~=4.0.0
+pdfservices-sdk~=4.1.0
 ```
 
 ## Archived Documentation
@@ -180,6 +180,11 @@ Minor and Patch releases are backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
+
+
+### November 06, 2024; Java SDK 4.2.0 and NodeJS, .NET, Python SDK 4.1.0 minor release
+
+- PDF Watermark and PDF Accessibility Checker operations are now available for all the users in PDF Services SDKs.
 
 ### October 1, 2024; Java SDK 4.1.1 patch release
 
