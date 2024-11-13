@@ -182,10 +182,13 @@ Upgrading to the latest SDK should not break existing applications.
 ## Change history
 
 
+### November 14, 2024; Adobe Document Generation Server Side Release
+
+- Adding support for charts in Document Generation API.
+
 ### November 06, 2024; Adobe Document Generation Server Side Release
 
 - Restricting tag length to 1000 characters in the Document Generation API.
-
 
 ### November 06, 2024; Java SDK 4.2.0 and NodeJS, .NET, Python SDK 4.1.0 minor release
 
