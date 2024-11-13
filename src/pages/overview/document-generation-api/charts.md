@@ -165,11 +165,11 @@ Steps to add chart in the document:
 
 - Add the pie chart as a placeholder in the document template.
 
-![PLaceholder for pie chart](../images/input1.png)
+![PLaceholder for pie chart](../images/placeholder_column_chart.png)
 
 - Edit the chart data in the Excel by right click on chart and select "Edit Data in Excel".
 
-![Edit chart data in Excel](../images/excel.png)
+![Edit chart data in Excel](../images/pie_chart_excel.png)
 
 **JSON representation of the input data:**
 
@@ -199,4 +199,4 @@ Steps to add chart in the document:
 
 **Output chart in document after processing.**
 
-![Output of pie chart in document](../images/output1.png)
+![Output of pie chart in document](../images/pie_chart_output.png)
