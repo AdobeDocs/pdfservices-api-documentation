@@ -19,7 +19,7 @@ Steps to add chart in the document:
 - **Open your Word document** and place the cursor where you want the chart to appear.
 - **Go to the “Insert” tab** on the Ribbon.
 - **Click on “Chart”** in the Illustrations group.
-- **Choose the type of chart** you want from the list (e.g., column, line, pie) and click “OK”.
+- **Choose the type of chart** you want from the list (e.g. column, line, pie) and click “OK”.
 - An **Excel spreadsheet** will open with sample data. Replace this data with your own.
 - **Close the Excel** window once you’ve entered your data. The chart in Word will update automatically.
 
@@ -27,7 +27,17 @@ Steps to add chart in the document:
 
 ## Line Chart
 
-JSON representation of the input data:
+**Steps to insert a line chart in the document:**
+
+- Add the line chart as a placeholder in the document template.
+
+![PLaceholder for line chart](../images/placeholder_line_chart.png)
+
+- Edit the chart data in the Excel by right click on chart and select "Edit Data in Excel".
+
+![Edit chart data in Excel](../images/line_chart_excel.jpg)
+
+**JSON representation of the input data:**
 
 ```json
 {
@@ -95,26 +105,26 @@ JSON representation of the input data:
     }
   ]
 }
-
 ```
 
-Steps to insert a line chart in the document:
-
-- Add the line chart as a placeholder in the document template.
-
-![PLaceholder for line chart](../images/placeholder_line_chart.png)
-
-- Edit the chart data in the Excel by right click on chart and select "Edit Data in Excel".
-
-![Edit chart data in Excel](../images/line_chart_excel.jpg)
-
-- Output chart in document after processing.
+**Output chart in document after processing.**
 
 ![Output of line chart in document](../images/line_chart_output.png)
 
 ## Column Chart
 
-JSON representation of the input data:
+
+**Steps to insert a column chart in the document:**
+
+- Add the column chart as a placeholder in the document template.
+
+![PLaceholder for column chart](../images/placeholder_column_chart.png)
+
+- Edit the chart data in the Excel by right click on chart and select "Edit Data in Excel".
+
+![Edit chart data in Excel](../images/column_chart_excel.png)
+
+**JSON representation of the input data:**
 
 ```json
 {
@@ -144,67 +154,49 @@ JSON representation of the input data:
 }
 
 ```
-Steps to insert a column chart in the document:
 
-- Add the column chart as a placeholder in the document template.
-
-![PLaceholder for column chart](../images/placeholder_column_chart.png)
-
-- Edit the chart data in the Excel by right click on chart and select "Edit Data in Excel".
-
-![Edit chart data in Excel](../images/column_chart_excel.png)
-
-- Output chart in document after processing.
+**Output chart in document after processing.**
 
 ![Output of line chart in document](../images/column_chart_output.png)
 
 ## Pie Chart
 
-JSON representation of the input data:
-
-```json
-{
-  "Title": "Indian Car Brands Market Share",
-  "data": [
-    {
-      "brand": "Maruti Suzuki",
-      "market_share": 46
-    },
-    {
-      "brand": "Hyundai",
-      "market_share": 17
-    },
-    {
-      "brand": "Tata Motors",
-      "market_share": 14
-    },
-    {
-      "brand": "Mahindra",
-      "market_share": 7
-    },
-    {
-      "brand": "Kia",
-      "market_share": 6
-    },
-    {
-      "brand": "Others",
-      "market_share": 10
-    }
-  ]
-}
-
-
-```
-Steps to insert a pie chart in the document:
+**Steps to insert a pie chart in the document:**
 
 - Add the pie chart as a placeholder in the document template.
 
-![PLaceholder for pie chart](../images/placeholder_pie_chart.png)
+![PLaceholder for pie chart](../images/input1.png)
 
 - Edit the chart data in the Excel by right click on chart and select "Edit Data in Excel".
 
-![Edit chart data in Excel](../images/pie_chart_excel.png)
+![Edit chart data in Excel](../images/excel.png)
 
-- Output chart in document after processing.
+**JSON representation of the input data:**
 
-![Output of pie chart in document](../images/pie_chart_output.png)
+```json
+{
+  "Title": "Car Sales by Quarters",
+  "carSales": [
+    {
+      "quarter": "1st Qtr",
+      "value": 1500
+    },
+    {
+      "quarter": "2nd Qtr",
+      "value": 2000
+    },
+    {
+      "quarter": "3rd Qtr",
+      "value": 1800
+    },
+    {
+      "quarter": "4th Qtr",
+      "value": 2200
+    }
+  ]
+}
+```
+
+**Output chart in document after processing.**
+
+![Output of pie chart in document](../images/output1.png)
