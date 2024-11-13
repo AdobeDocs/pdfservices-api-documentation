@@ -106,7 +106,7 @@ Steps to insert a line chart in the document:
 
 - Edit the chart data in the Excel by right click on chart and select "Edit Data in Excel".
 
-![Edit chart data in Excel](../images/line_chart_excel.png)
+![Edit chart data in Excel](../images/line_chart_excel.jpg)
 
 - Output chart in document after processing.
 
