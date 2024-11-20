@@ -8,6 +8,16 @@ the changes below for each release.
 
 ## Change history
 
+### November 6, 2024
+| Change  | Description                                                     |
+|---------|-----------------------------------------------------------------|
+| Bug fix | Fixed file preview issue for macOS Safari version 18 and iOS 18 |
+
+### August 14, 2024
+| Change  | Description                                                          |
+|---------|----------------------------------------------------------------------|
+| Changed | Updated rendering timeout to five minutes to preview complex pdf files. |
+
 ### June 27, 2024
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
