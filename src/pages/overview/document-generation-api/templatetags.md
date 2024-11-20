@@ -11,7 +11,8 @@ the input data to generate the output document.
 
 <InlineAlert slots="text"/>
 
-All the tags are [JSONata compliant](https://docs.jsonata.org/overview.html).
+All the tags are [JSONata compliant](https://docs.jsonata.org/overview.html).<br/>
+All tags should be kept within a 1000-character limit.
 
 ## Placeholder Variables
 
@@ -26,10 +27,9 @@ A placeholder(text tags) gets replaced by the actual input data.
 <InlineAlert slots="text"/>
 
 A placeholder variable can only be applied to an input field of type
-string, number or boolean. <br/> Formatting applied to the placeholder
-variable in the document template will be retained in the output
-document.<br/>
-For more simplified styling and formatting for the placeholder tag from the input json data, please refer [styling and formatting](../document-generation-api/stylingformattingtags.md) section:
+string, number or boolean.<br/> Please refer to the **Arrays** section to use array as a placeholder variable.<br/> Formatting applied to the placeholder
+variable in the document template will be retained in the output document.<br/>
+For more simplified styling and formatting for the placeholder tag from the input json data, please refer [styling and formatting](../document-generation-api/stylingformattingtags.md) section.
 
 JSON representation of the input data:
 
@@ -74,6 +74,22 @@ A prefix value can be specified for the placeholder variable. Doing so will appe
 this value before the result of the tag.
 
 ![Placeholder tags with prefix image set](../images/placeholder_prefix.png)
+
+**Arrays**
+
+To work with arrays, please refer to the [JSONata Functions](#jsonata-functions) section.
+
+JSON representation of the input data:
+
+```json
+{
+  "companyName": "Tech Corp",
+  "discountCoupons": ["SummerSale", "BlackFriday", "NewYearSpecial"]
+}
+```
+
+![working_with_arrays](../images/working_with_array.png)
+
 ## Images
 
 To dynamically insert an image in the document, add any image as
@@ -446,6 +462,20 @@ Performs aggregations on a list of elements.
 Here is the list of [supported aggregation functions](https://docs.jsonata.org/aggregation-functions) <br/> An
 aggregate numerical calculation can only be applied to a list of
 numbers.
+
+## JSONata Functions
+The Document Generation API supports various JSONata functions, including:
+
+- [String Functions](https://docs.jsonata.org/string-functions)
+- [Numeric Functions](https://docs.jsonata.org/numeric-functions)
+- [Aggregation Functions](https://docs.jsonata.org/aggregation-functions)
+- [Boolean Functions](https://docs.jsonata.org/boolean-functions)
+- [Array Functions](https://docs.jsonata.org/array-functions)
+- [Date/Time Functions](https://docs.jsonata.org/date-time-functions)
+- [Higher Order Functions](https://docs.jsonata.org/higher-order-functions)
+
+
+It is recommended to test these functions before incorporating them into your template.
 
 ## Adobe Sign
 
