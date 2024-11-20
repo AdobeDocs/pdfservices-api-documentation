@@ -700,6 +700,10 @@
             "items": {
               "type": "string"
             }
+          },
+          "alternate_text": {
+            "description": "Provides alternate text present in the input pdf structure mapped to the updated structure",
+            "type": "string"
           }
         },
         "required": [
