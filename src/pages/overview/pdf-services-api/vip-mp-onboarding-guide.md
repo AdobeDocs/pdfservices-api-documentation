@@ -1,6 +1,13 @@
 ---
-title: VIP Onboarding Guide | PDF Services API | Adobe PDF Services
+title: VIP MP Onboarding Guide | PDF Services API | Adobe PDF Services
 ---
+## VIP MP Onboarding Guide
+This is an onboarding guide for our Value Incentive Program (VIP) Marketplace Customers. This guide includes: 
+
+- Prerequisites (IT Administrator)
+- Creating credentials and using Acrobat Services (Developer)
+- Getting support for Acrobat Services
+- Developer resources
 
 Before getting started, review the prerequisites below and ensure they are complete.
 

@@ -288,8 +288,8 @@ module.exports = {
                         ]
                     },
                     {
-                        title: 'VIP Onboarding Guide',
-                        path: 'overview/pdf-services-api/vip-onboarding-guide.md'
+                        title: 'VIP MP Onboarding Guide',
+                        path: 'overview/pdf-services-api/vip-mp-onboarding-guide.md'
                     }
                 ]
             },
