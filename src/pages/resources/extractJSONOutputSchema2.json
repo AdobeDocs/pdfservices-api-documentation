@@ -85,7 +85,7 @@
           "description": "Document contains AcroForms or not",
           "type": "boolean"
         },
-        "is_signed": {
+        "is_digitally_signed": {
           "description": "Document is digitally signed or not",
           "type": "boolean"
         },
@@ -127,7 +127,7 @@
         "has_embedded_files",
         "is_XFA",
         "is_certified",
-        "is_signed",
+        "is_digitally_signed",
         "is_encrypted",
         "language",
         "page_count",
@@ -223,6 +223,11 @@
             "description": "Clip path is associated with the element or not. True if at least one content item forming this element has an associated clip path, false otherwise",
             "type": "boolean",
             "default": false
+          },
+          "ObjectID": {
+            "description": "Unique identifier for the element",
+            "type": "integer",
+            "minimum": 0
           },
           "Lang": {
             "description": "BCP-47 code for language of text elements",
