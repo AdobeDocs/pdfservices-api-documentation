@@ -86,9 +86,7 @@ To create a case, do the following:
 
 4. Select the Specific Product Impacted as “Acrobat Services API”:
 
-5. In the form that appears, specify the name of the product you need assistance with. To see a list of options, type the first few letters of the product name.
-
-6. Provide more details about your issue in the window that appears.
+5. Provide more details about your issue in the window that appears.
 
    | **Details to be filled**                                                    | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
    |-----------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -110,7 +108,7 @@ o Data integrity compromised.<br/>
 o Imminent financial losses due to missing critical project deadlines or deliverables.<br/>
 
 
-7. Click **Next** to add more details about the issue. In the window that follows, fill in the following information:
+8. Click **Next** to add more details about the issue. In the window that follows, fill in the following information:
 
    
    | **Details to be filled**           | **Description**                                                                                                                         |
@@ -120,7 +118,7 @@ o Imminent financial losses due to missing critical project deadlines or deliver
    | **Time zone**                      | The time zone is populated by default, according to your system's information.                                                          |
    | **Working hours**                  | Use the time slider to let us know the best time of day to reach you.                                                                   |                                                                   |
 
-8. Click **Submit**. A support case is created, and a notification displays.<br/> When you submit a case, a case ID is assigned, and you can track the progress via the Admin Console. All responses are updated to the case and are also sent by email.<br/> To view the details, or update a support case, click the title of the case on the **Support Summary** or the **Support Cases** page.
+9. Click **Submit**. A support case is created, and a notification displays.<br/> When you submit a case, a case ID is assigned, and you can track the progress via the Admin Console. All responses are updated to the case and are also sent by email.<br/> To view the details, or update a support case, click the title of the case on the **Support Summary** or the **Support Cases** page.
 
 ## Developer Resources
 
