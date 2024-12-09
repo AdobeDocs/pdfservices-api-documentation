@@ -13,7 +13,7 @@ Before getting started, review the prerequisites below and ensure they are compl
 
 ## Prerequisites (IT Administrator)
 
-1. Log into your [VIP Admin Console](https://adminconsole.adobe.com/) and make sure the "Acrobat Services API - &lt;?&gt; DOC TRANS PACK" product is/are listed in available products, like the example below.<br/>
+1. Log into your [VIP Admin Console](https://adminconsole.adobe.com/) and make sure the "Acrobat Services API - **&lt;X&gt;** DOC TRANS PACK" product is listed in available products, like the example below.<br/>**X**  can take one of the values from 25K, 75K, 250K, 500K, or 750K.<br/>
 
    ![VIP Admin Console](../images/vip_admin_console.png)
 
@@ -23,15 +23,15 @@ Before getting started, review the prerequisites below and ensure they are compl
 
    ![Add_Developers](../images/add_developers.png)
 
-3. When adding the developer, make sure that “Acrobat Services API - &lt;&gt; DOC TRANS PACK” is selected as the product:
+3. When adding the developer, make sure that “Acrobat Services API - **&lt;X&gt;** DOC TRANS PACK” is selected as the product:<br/> **X** can take one of the values from 25K, 75K, 250K, 500K, or 750K.
 
    ![Select Product](../images/select_product.png)
 
    ![Add Developer_and_Product](../images/add_developer_and_product.png)
 
-4. When you have done selecting, click save.
+4. When you are done selecting, click save.
 
-Once these are in place, developers can self-create the credentials (using the steps below) to use the Adobe Acrobat Services APIs in the production environment.
+Once these are in place, developers can self-create the credentials (using the steps below) to use the Adobe Acrobat Services API in a production environment.
 
 ## Creating credentials and using Adobe Acrobat Services (Developer)
 
@@ -53,7 +53,7 @@ Once these are in place, developers can self-create the credentials (using the s
 
    ![Select_API](../images/select_api.png)
 
-6. Enter the name of your Credential and click Next:
+6. Enter the name of your credential and click Next:
 
    ![Change Crendential Name](../images/change_credential_name.png)
 
@@ -61,7 +61,7 @@ Once these are in place, developers can self-create the credentials (using the s
 
    ![Select_Product_Profile](../images/select_product_profile.png)
 
-8. After this, Credentials will be created, and you can start using the Credentials to invoke the APIs using the API Documentation available [here](https://developer.adobe.com/document-services/docs/apis/).
+8. After this, credentials will be created, and you can start using the credentials to invoke the APIs using the API Documentation available [here](https://developer.adobe.com/document-services/docs/apis/).
 
 ## Getting support for Adobe Acrobat Services
 
