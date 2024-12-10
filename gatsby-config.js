@@ -286,6 +286,10 @@ module.exports = {
                                 path: 'overview/pdf-services-api/howtos/sdk-utilities.md'
                             }
                         ]
+                    },
+                    {
+                        title: 'VIP MP Onboarding Guide',
+                        path: 'overview/pdf-services-api/vip-mp-onboarding-guide.md'
                     }
                 ]
             },
