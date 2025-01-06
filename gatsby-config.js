@@ -449,6 +449,10 @@ module.exports = {
                                 path: 'overview/document-generation-api/hyperlink.md'
                             },
                             {
+                                title: 'Charts',
+                                path: 'overview/document-generation-api/charts.md'
+                            },
+                            {
                                 title: 'Inline Images',
                                 path: 'overview/document-generation-api/inlineimages.md'
                             },
