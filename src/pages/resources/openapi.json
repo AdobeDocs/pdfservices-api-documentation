@@ -123,27 +123,27 @@
     {
       "name": "PDF Operations",
       "tags": [
-        "PDF Accessibility Auto-Tag",
-        "Extract PDF",
-        "Document Generation",
-        "PDF Electronic Seal",
-        "Create PDF",
-        "Export PDF",
-        "OCR",
-        "Html to PDF",
-        "Protect PDF",
         "Combine PDF",
         "Compress PDF",
-        "PDF To Images",
-        "Linearize PDF",
-        "Page Manipulation",
-        "PDF Properties",
-        "Remove Protection",
-        "Split PDF",
-        "PDF Watermark",
-        "PDF Accessibility Checker",
+        "Create PDF",
+        "Document Generation",
+        "Export PDF",
         "Export PDF Form Data",
-        "Import PDF Form Data"
+        "Extract PDF",
+        "Html to PDF",
+        "Import PDF Form Data",
+        "Linearize PDF",
+        "OCR",
+        "Page Manipulation",
+        "PDF Accessibility Auto-Tag",
+        "PDF Accessibility Checker",
+        "PDF Electronic Seal",
+        "PDF Properties",
+        "PDF To Images",
+        "PDF Watermark",
+        "Protect PDF",
+        "Remove Protection",
+        "Split PDF"
       ]
     }
   ],
@@ -12706,7 +12706,7 @@
             "type": "string"
           },
           "jsonFormFieldsData": {
-            "description": "JSON Form data of PDF.",
+            "description": "JSON form data for the PDF.\n This object should include each field name from the PDF form (including nested or hierarchical field names) as a key, with the corresponding value being the data to insert into the form. The API will use the provided key-value pairs to populate the corresponding fields in the PDF form.",
             "type": "object"
           },
           "notifiers": {
@@ -12771,7 +12771,7 @@
             "required": ["jsonFormFieldsData"],
             "properties": {
               "jsonFormFieldsData": {
-                "description": "JSON Form data of PDF.",
+                "description": "JSON form data for the PDF.\n This object should include each field name from the PDF form (including nested or hierarchical field names) as a key, with the corresponding value being the data to insert into the form. The API will use the provided key-value pairs to populate the corresponding fields in the PDF form.",
                 "type": "object"
               }
             }
