@@ -12706,7 +12706,7 @@
             "type": "string"
           },
           "jsonFormFieldsData": {
-            "description": "A JSON object containing the form data for the PDF. Each key in this object should correspond to a field name in the PDF form (including nested or hierarchical field names), and the associated value should be the data to insert into that field. The API will use these key-value pairs to populate the respective fields in the PDF form.",
+            "description": "A JSON object containing the form data for the PDF. Each key in this object should correspond to a field name in the PDF form (including nested or hierarchical field names), and the associated value should be the data to insert into that field. For example, consider the following JSON structure:\n\n```json\n{\n  \"dob\": \"01/14/2025\",\n  \"name\": {\n    \"first\": \"John\",\n    \"last\": \"Doe\"\n  }\n}\n```\n\nThis JSON corresponds to the following PDF field names:\n\n- dob\n- name.first\n- name.last\n\nThe API will use these key-value pairs to populate the respective fields in the PDF form.",
             "type": "object"
           },
           "notifiers": {
@@ -12771,7 +12771,7 @@
             "required": ["jsonFormFieldsData"],
             "properties": {
               "jsonFormFieldsData": {
-                "description": "A JSON object containing the form data for the PDF. Each key in this object should correspond to a field name in the PDF form (including nested or hierarchical field names), and the associated value should be the data to insert into that field. The API will use these key-value pairs to populate the respective fields in the PDF form.",
+                "description": "A JSON object containing the form data for the PDF. Each key in this object should correspond to a field name in the PDF form (including nested or hierarchical field names), and the associated value should be the data to insert into that field. For example, consider the following JSON structure:\n\n```json\n{\n  \"dob\": \"01/14/2025\",\n  \"name\": {\n    \"first\": \"John\",\n    \"last\": \"Doe\"\n  }\n}\n```\n\nThis JSON corresponds to the following PDF field names:\n\n- dob\n- name.first\n- name.last\n\nThe API will use these key-value pairs to populate the respective fields in the PDF form.",
                 "type": "object"
               }
             }
