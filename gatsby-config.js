@@ -258,6 +258,14 @@ module.exports = {
                                 path: 'overview/pdf-services-api/howtos/pdf-watermark-api.md'
                             },
                             {
+                                title: 'Export PDF Form Data',
+                                path: 'overview/pdf-services-api/howtos/export-pdfform-api.md'
+                            },
+                            {
+                                title: 'Import PDF Form Data',
+                                path: 'overview/pdf-services-api/howtos/import-pdfform-api.md'
+                            },
+                            {
                                 title: 'Protect PDF',
                                 path: 'overview/pdf-services-api/howtos/protect-pdf.md'
                             },
