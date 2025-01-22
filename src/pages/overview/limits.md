@@ -49,7 +49,9 @@ Document Transactions for the Operations below resulting in a Document will be c
 | Get PDF Properties  | Get XMP metadata properties of a PDF file                                                                                                                                                                                      | Document Transaction: the 50-page count does not apply|
 | Accessibility Checker | Check accessibility of a PDF and generate an accessibility report | Document Transaction: the 50-page count does not apply |
 | Watermark              | Add a watermark to specified pages in a PDF                                                                                                                                                                                    | Document Transaction                 |
-
+| ExportForm Data        | Export PDF form data and return it as a JSON file                                                                                                                                                                              | Document Transaction                 |
+| ImportForm Data        | Import form data from a json file in a PDF                                                                                                                                                                                     | Document Transaction                 |
+ 
 ### Examples
 
 | OPERATION                                      | EXAMPLE                                                                                                                                                                                                         | CALCULATION                                                                                                                                     |
@@ -73,15 +75,15 @@ Document Transactions for the Operations below resulting in a Document will be c
 
 There are several usage limits that apply to PDF Services API and its underlying Operations based on one initial endpoint request. Files submitted for processing that exceed usage limits below will fail and result in an error message.
 
-| USAGE LIMIT                                                     | VALUE       |
-| --------------------------------------------------------------- | ----------- |
-| Document limit (Combine, Insert, Replace, Split)                | 20          |
-| File size (for all documents)**                                 | 100MB       |
-| Output images per Document Transaction (Export)                 | 50          |
-| Page limit (Extract and Accessibility Auto-Tag)*                | 400         |
-| Page limit (Scanned - Extract and Accessibility Auto-Tag)*      | 150         |
-| JSON file size (Document Generation and HTML to PDF)            | 10MB        |
-| Maximum Requests Per Minute                                     | 100 RPM** (Enterprise), <br /> 25 RPM (Free Tier)|
+| USAGE LIMIT                                                         | VALUE       |
+|---------------------------------------------------------------------| ----------- |
+| Document limit (Combine, Insert, Replace, Split)                    | 20          |
+| File size (for all documents)**                                     | 100MB       |
+| Output images per Document Transaction (Export)                     | 50          |
+| Page limit (Extract and Accessibility Auto-Tag)*                    | 400         |
+| Page limit (Scanned - Extract and Accessibility Auto-Tag)*          | 150         |
+| JSON file size (Document Generation,HTML to PDF and Import PDFForm) | 10MB        |
+| Maximum Requests Per Minute                                         | 100 RPM** (Enterprise), <br /> 25 RPM (Free Tier)|
 
 **Page limits may be lower for documents with a large number of tables.*
 
