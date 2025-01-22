@@ -222,12 +222,20 @@ module.exports = {
                                 path: 'overview/pdf-services-api/howtos/export-pdf.md'
                             },
                             {
+                                title: 'Export PDF Form Data',
+                                path: 'overview/pdf-services-api/howtos/export-pdfform-api.md'
+                            },
+                            {
                                 title: 'Extract PDF',
                                 path: 'overview/pdf-services-api/howtos/extract-pdf.md'
                             },
                             {
                                 title: 'Get PDF Properties',
                                 path: 'overview/pdf-services-api/howtos/pdf-properties.md'
+                            },
+                            {
+                                title: 'Import PDF Form Data',
+                                path: 'overview/pdf-services-api/howtos/import-pdfform-api.md'
                             },
                             {
                                 title: 'Insert Pages',
@@ -256,14 +264,6 @@ module.exports = {
                             {
                                 title: 'PDF Watermark',
                                 path: 'overview/pdf-services-api/howtos/pdf-watermark-api.md'
-                            },
-                            {
-                                title: 'Export PDF Form Data',
-                                path: 'overview/pdf-services-api/howtos/export-pdfform-api.md'
-                            },
-                            {
-                                title: 'Import PDF Form Data',
-                                path: 'overview/pdf-services-api/howtos/import-pdfform-api.md'
                             },
                             {
                                 title: 'Protect PDF',

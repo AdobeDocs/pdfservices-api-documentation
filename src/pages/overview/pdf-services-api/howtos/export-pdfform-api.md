@@ -16,7 +16,7 @@ A PDF document basically an acroform for which the data needs to be exported.
 
 ## REST API
 
-See our public API Reference for [Export PDF Form API](../../../apis/#tag/Export PDF Form).
+See our public API Reference for [Export PDF Form API](../../../apis/#tag/Export-PDF-Form-Data).
 
 ## Export PDF Form Data
 
