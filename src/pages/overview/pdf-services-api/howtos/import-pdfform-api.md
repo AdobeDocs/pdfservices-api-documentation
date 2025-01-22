@@ -12,7 +12,7 @@ Supported format is PDF (application/pdf). Input PDF with version 1.6 and above 
 
 ### Input Document
 
-A PDF document basically an acroform to which we import a form data provided as a JSON, and generate the resulting PDF document.
+A PDF document basically an AcroForm to which form data, provided as a JSON, is imported to generate the resulting PDF document.
 
 ## REST API
 
