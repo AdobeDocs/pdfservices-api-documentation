@@ -12732,8 +12732,7 @@
               "middle": "",
               "last": "Smith",
               "first": "John"
-            },
-            "age": "34"
+            }
           },
           "notifiers": [
             {
@@ -12807,8 +12806,7 @@
                 "middle": "",
                 "last": "Smith",
                 "first": "John"
-              },
-              "age": "34"
+              }
             }
           },
           "notifiers": [

@@ -223,7 +223,7 @@ module.exports = {
                             },
                             {
                                 title: 'Export PDF Form Data',
-                                path: 'overview/pdf-services-api/howtos/export-pdfform-api.md'
+                                path: 'overview/pdf-services-api/howtos/export-pdf-form-api.md'
                             },
                             {
                                 title: 'Extract PDF',
@@ -235,7 +235,7 @@ module.exports = {
                             },
                             {
                                 title: 'Import PDF Form Data',
-                                path: 'overview/pdf-services-api/howtos/import-pdfform-api.md'
+                                path: 'overview/pdf-services-api/howtos/import-pdf-form-api.md'
                             },
                             {
                                 title: 'Insert Pages',
