@@ -184,7 +184,7 @@ Upgrading to the latest SDK should not break existing applications.
 ### January 27, 2024; Server Side Release
 
 - Added [Export PDF Form API](../pdf-services-api/howtos/export-pdfform-api/) operation in PDF Services API to retrieve the data from a PDF form and return it as a JSON file.
-- Added [Import PDF Form API](../pdf-services-api/howtos/import-pdfform-api/) operation in PDF Services API to import form data from a json file.
+- Added [Import PDF Form API](../pdf-services-api/howtos/import-pdfform-api/) operation in PDF Services API to import a form data provided as a JSON, insert it into the PDF form, and generate the resulting PDF document.
 - Support for external storage and webhook notifier config for both operations is excluded for this release.
 
 ### November 06, 2024; Adobe Document Generation Server Side Release

@@ -2,7 +2,7 @@
 title: Import PDF Form Data | How Tos | PDF Services API | Adobe PDF Services
 ---
 
-# Export PDF Form
+# Import PDF Form
 The Import PDF Form Data API will take the form data provided as a JSON, insert it into the PDF form, and generate the resulting PDF document.
 ![Import PDF Form](../importform_overview.png)
 
@@ -12,7 +12,7 @@ Supported format is PDF (application/pdf). Input PDF with version 1.6 and above 
 
 ### Input Document
 
-A PDF document basically an acroform to which the data needs to be imported from a json file that contains the form data.
+A PDF document basically an acroform to which we import a form data provided as a JSON into PDF, and generate the resulting PDF document.
 
 ## REST API
 
