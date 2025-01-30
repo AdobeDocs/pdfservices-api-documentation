@@ -30,7 +30,7 @@ Please refer to the [API usage guide](../api-usage.md) to understand how to use 
 
 ```javascript
 // Please refer our REST API docs for more information 
-// https://developer.adobe.com/document-services/docs/apis/#tag/Import-PDF-Form-API
+// https://developer.adobe.com/document-services/docs/apis/#tag/Import-PDF-Form-Data
 
 curl --location --request POST 'https://pdf-services.adobe.io/operation/setformdata' \
 --header 'x-api-key: {{Placeholder for client_id}}' \
