@@ -4,7 +4,6 @@ title: Licensing and Usage Limits
 
 # Licensing and Usage Limits
 
-
 Adobe PDF Services API licensing is measured per Document Transaction which is based on the initial
 endpoint request (i.e., API call) and the digital output, with each
 operation in the table described below. Usage limits apply and are provided along with examples for clarity. These limits do not apply to PDF Embed API.
@@ -51,7 +50,7 @@ Document Transactions for the Operations below resulting in a Document will be c
 | Watermark              | Add a watermark to specified pages in a PDF                                                                                                                                                                                    | Document Transaction                 |
 | Export Form Data       | Export PDF form data and return it as a JSON file                                                                                                                                                                              | Document Transaction                 |
 | Import Form Data       | Import form data from a json file in a PDF                                                                                                                                                                                     | Document Transaction                 |
- 
+
 ### Examples
 
 | OPERATION                                      | EXAMPLE                                                                                                                                                                                                         | CALCULATION                                                                                                                                     |
@@ -89,7 +88,7 @@ There are several usage limits that apply to PDF Services API and its underlying
 
 **<i>Please [contact us](https://developer.adobe.com/document-services/pricing/contact/sales/) on RPM or file size if interested in understanding how it can scale under your ETLA.</i>
 
-Free Tier
+### Free Tier
 ------------------------------
 
 The PDF Services API has a Free Tier so that you can take a deep dive

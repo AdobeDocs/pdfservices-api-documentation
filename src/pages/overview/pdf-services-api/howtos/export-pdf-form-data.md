@@ -3,16 +3,23 @@ title: Export PDF Form Data | How Tos | PDF Services API | Adobe PDF Services
 ---
 
 # Export PDF Form Data
+
 The Export PDF Form Data API will retrieve the data from a PDF form and return it as a JSON file
 ![Export PDF Form Data](../export-pdf-form.png)
 
 ## Input Documents : **Required**
 
-Supported format is PDF (application/pdf). Input PDF with version 1.6 and above is supported.
+Supported formats:
+- **PDF (application/pdf)** – Only **PDF version 1.6 and above** is supported.
+- **AcroForm and Static XFA** – The input document must contain an **interactive form** from which data needs to be extracted.
 
 ### Input Document
 
-A PDF AcroForm from which data needs to be exported.
+A **filled interactive PDF form (AcroForm/Static XFA)** from which data needs to be exported.
+
+#### Important Notes:
+- **Only Static XFA files are supported.**
+- **Dynamic XFA format is not supported** and will result in an error.
 
 ## REST API
 
