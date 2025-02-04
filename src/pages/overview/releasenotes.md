@@ -180,7 +180,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
-### January 27, 2024; Server Side Release
+### February 4, 2024; Server Side Release
 
 - Added [Export PDF Form Data API](../pdf-services-api/howtos/export-pdf-form-data/) operation in PDF Services API to retrieve the data from a PDF form and return it as a JSON file.
 - Added [Import PDF Form Data API](../pdf-services-api/howtos/import-pdf-form-data/) operation in PDF Services API to populate PDF forms with JSON data and generate the resulting PDF document.
