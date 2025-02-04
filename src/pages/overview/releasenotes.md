@@ -88,7 +88,7 @@ version.
 - `artifactId` changed from `pdftools-sdk` to `pdfservices-sdk`
 - Replace the `<properties>` tag and SDK `<dependency>` tag in your project’s `pom.xml` file with the following:
 
-```
+```javascript
 <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
@@ -106,7 +106,7 @@ version.
 
 - Update import statements as per new Package structure. For e.g.
 
-```
+```javascript
 import com.adobe.pdfservices.operation.ExecutionContext; 
 ```
 
@@ -114,20 +114,20 @@ import com.adobe.pdfservices.operation.ExecutionContext;
 
 - NPM package name changed from `@adobe/documentservices-pdftools-node-sdk` to `@adobe/pdfservices-node-sdk`
 - Update the latest SDK dependency in package.json file of your project
- 
-```
+
+```javascript
 "@adobe/pdfservices-node-sdk": "4.1.0"
 ```
 
 - Require the `@adobe/pdfservices-node-sdk` in the Sample file to access the SDK interface
 
-```
+```javascript
 const PDFServicesSdk = require('@adobe/pdfservices-node-sdk'); 
 ```
 
 For HTML to PDF Conversions, the PageLayout object is moved inside html object. To access the PageLayout interface use the following code:
 
-```
+```javascript
 const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout(); 
 ```
 
@@ -136,7 +136,7 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 - Nuget package name changed from `Adobe.DocumentServices.PDFTools` to `Adobe.PDFServicesSDK`
 - Update the SDK dependency in your project’s .csproj file with the following:
 
-```
+```javascript
 <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.17" />
     <PackageReference Include="Adobe.PDFServicesSDK" Version="4.1.0" />
@@ -153,7 +153,7 @@ using Adobe.PDFServicesSDK;
 
 - Add the following dependency in your project’s requirements.txt file:
 
-```
+```javascript
 pdfservices-sdk~=4.1.0
 ```
 
