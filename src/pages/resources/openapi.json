@@ -123,32 +123,27 @@
     {
       "name": "PDF Operations",
       "tags": [
-        "PDF Accessibility Auto-Tag",
-        "Extract PDF",
-        "Document Generation",
-        "PDF Electronic Seal",
-        "Create PDF",
-        "Export PDF",
-        "OCR",
-        "Html to PDF",
-        "Protect PDF",
         "Combine PDF",
         "Compress PDF",
-        "PDF To Images",
-        "Linearize PDF",
-        "Page Manipulation",
-        "PDF Properties",
-        "Remove Protection",
-        "Split PDF",
-        "PDF Watermark",
-        "PDF Accessibility Checker"
-      ]
-    },
-    {
-      "name": "PDF operations Beta",
-      "tags": [
+        "Create PDF",
+        "Document Generation",
+        "Export PDF",
         "Export PDF Form Data",
-        "Import PDF Form Data"
+        "Extract PDF",
+        "Html to PDF",
+        "Import PDF Form Data",
+        "Linearize PDF",
+        "OCR",
+        "Page Manipulation",
+        "PDF Accessibility Auto-Tag",
+        "PDF Accessibility Checker",
+        "PDF Electronic Seal",
+        "PDF Properties",
+        "PDF To Images",
+        "PDF Watermark",
+        "Protect PDF",
+        "Remove Protection",
+        "Split PDF"
       ]
     }
   ],
@@ -12711,7 +12706,7 @@
             "type": "string"
           },
           "jsonFormFieldsData": {
-            "description": "JSON Form data of PDF.",
+            "description": "A JSON object containing the form data for the PDF. Each key in this object should correspond to a field name in the PDF form (including nested or hierarchical field names), and the associated value should be the data to insert into that field. For example:\n\n```json\n{\n  \"name\": {\n    \"first\": \"John\",\n    \"last\": \"Doe\"\n  },\n  \"dob\": \"01/14/2025\",\n  \"address\": {\n    \"city\": \"Springfield\",\n    \"state\": \"IL\"\n  }\n}\n```\n\nThis JSON corresponds to the following PDF field names:\n\n- name.first\n- name.last\n- dob\n- address.city\n- address.state\n\nThe API will use these key-value pairs to populate the respective fields in the PDF form.",
             "type": "object"
           },
           "notifiers": {
@@ -12737,8 +12732,7 @@
               "middle": "",
               "last": "Smith",
               "first": "John"
-            },
-            "age": "34"
+            }
           },
           "notifiers": [
             {
@@ -12776,7 +12770,7 @@
             "required": ["jsonFormFieldsData"],
             "properties": {
               "jsonFormFieldsData": {
-                "description": "JSON Form data of PDF.",
+                "description": "A JSON object containing the form data for the PDF. Each key in this object should correspond to a field name in the PDF form (including nested or hierarchical field names), and the associated value should be the data to insert into that field. For example:\n\n```json\n{\n  \"name\": {\n    \"first\": \"John\",\n    \"last\": \"Doe\"\n  },\n  \"dob\": \"01/14/2025\",\n  \"address\": {\n    \"city\": \"Springfield\",\n    \"state\": \"IL\"\n  }\n}\n```\n\nThis JSON corresponds to the following PDF field names:\n\n- name.first\n- name.last\n- dob\n- address.city\n- address.state\n\nThe API will use these key-value pairs to populate the respective fields in the PDF form.",
                 "type": "object"
               }
             }
@@ -12812,8 +12806,7 @@
                 "middle": "",
                 "last": "Smith",
                 "first": "John"
-              },
-              "age": "34"
+              }
             }
           },
           "notifiers": [
