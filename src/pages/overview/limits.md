@@ -89,6 +89,7 @@ There are several usage limits that apply to PDF Services API and its underlying
 **<i>Please [contact us](https://developer.adobe.com/document-services/pricing/contact/sales/) on RPM or file size if interested in understanding how it can scale under your ETLA.</i>
 
 ### Free Tier
+
 ------------------------------
 
 The PDF Services API has a Free Tier so that you can take a deep dive

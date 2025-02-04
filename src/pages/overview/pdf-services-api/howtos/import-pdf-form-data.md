@@ -10,6 +10,7 @@ The Import PDF Form Data API will take the form data provided as a JSON, insert 
 ## Input Documents : **Required**
 
 Supported formats:
+
 - **PDF (application/pdf)** – Only **PDF version 1.6 and above** is supported.
 - **AcroForm and Static XFA** – The input document must contain an **interactive form** to which form data will be imported.
 
@@ -18,6 +19,7 @@ Supported formats:
 An **interactive PDF form (AcroForm/Static XFA)** to which form data, provided as a JSON, is imported to generate the resulting PDF document.
 
 #### Important Notes:
+
 - **Only Static XFA files are supported.**
 - **Dynamic XFA format is not supported** and will result in an error.
 

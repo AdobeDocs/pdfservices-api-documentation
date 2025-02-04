@@ -10,6 +10,7 @@ The Export PDF Form Data API will retrieve the data from a PDF form and return i
 ## Input Documents : **Required**
 
 Supported formats:
+
 - **PDF (application/pdf)** – Only **PDF version 1.6 and above** is supported.
 - **AcroForm and Static XFA** – The input document must contain an **interactive form** from which data needs to be extracted.
 
@@ -18,6 +19,7 @@ Supported formats:
 A **filled interactive PDF form (AcroForm/Static XFA)** from which data needs to be exported.
 
 #### Important Notes:
+
 - **Only Static XFA files are supported.**
 - **Dynamic XFA format is not supported** and will result in an error.
 
