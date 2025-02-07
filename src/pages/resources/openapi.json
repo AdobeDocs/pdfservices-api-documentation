@@ -10124,9 +10124,7 @@
           "waitTimeToLoad": {
             "description": "Specifies the maximum time (in milliseconds) to wait before finalizing the PDF. After this duration, the HTML is captured and converted into a PDF, regardless of whether all elements have finished loading or rendering. If a customer provides a custom value, it overrides the default.",
             "type": "number",
-            "default": [
-              100
-            ]
+            "default": "100 ms"
           },
           "notifiers": {
             "$ref": "#/components/schemas/notifiers"
@@ -10204,9 +10202,7 @@
               "waitTimeToLoad": {
                 "description": "Specifies the maximum time (in milliseconds) to wait before finalizing the PDF. After this duration, the HTML is captured and converted into a PDF, regardless of whether all elements have finished loading or rendering. If a customer provides a custom value, it overrides the default.",
                 "type": "number",
-                "default": [
-                  100
-                ]
+                "default": "100 ms"
               }
             }
           },
