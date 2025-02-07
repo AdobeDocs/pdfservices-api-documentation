@@ -957,7 +957,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
     "pageLayout": {
         "pageWidth": 11,
         "pageHeight": 8.5
-    }
+    },
+    "waitTimeToLoad": 100,
 }'
 ```
 
@@ -1299,7 +1300,8 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
     "pageLayout": {
         "pageWidth": 11,
         "pageHeight": 8.5
-    }
+    },
+    "waitTimeToLoad": 100,
 }'
 ```
 
@@ -1625,6 +1627,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
         "pageWidth": 11,
         "pageHeight": 8.5
     }
+    "waitTimeToLoad": 100,
 }'
 ```
 
@@ -2005,5 +2008,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/htmltopd
         "pageWidth": 11,
         "pageHeight": 8.5
     }
+    "waitTimeToLoad": 100,
 }'
 ```
