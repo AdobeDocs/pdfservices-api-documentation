@@ -8,7 +8,9 @@ Create PDFs from a variety of formats, including static and dynamic HTML; Micros
 ## REST API
 
 See our public API Reference for :
+
 - [Create PDF from Office formats](../../../apis/#tag/Create-PDF)
+
 - [Create PDF from HTML](../../../apis/#tag/Html-To-PDF)
 
 ## Create a PDF
