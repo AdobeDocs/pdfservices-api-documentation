@@ -10121,6 +10121,11 @@
               }
             }
           },
+          "waitTimeToLoad": {
+            "description": "Specifies the maximum time (in milliseconds) to wait before finalizing the PDF. After this duration, the HTML is captured and converted into a PDF, regardless of whether all elements have finished loading or rendering. If a customer provides a custom value, it overrides the default.",
+            "type": "number",
+            "default": 100
+          },
           "notifiers": {
             "$ref": "#/components/schemas/notifiers"
           }
@@ -10133,6 +10138,7 @@
             "pageWidth": 11,
             "pageHeight": 8.5
           },
+          "waitTimeToLoad": 100,
           "notifiers": [
             {
               "type": "CALLBACK",
@@ -10192,6 +10198,11 @@
                     ]
                   }
                 }
+              },
+              "waitTimeToLoad": {
+                "description": "Specifies the maximum time (in milliseconds) to wait before finalizing the PDF. After this duration, the HTML is captured and converted into a PDF, regardless of whether all elements have finished loading or rendering. If a customer provides a custom value, it overrides the default.",
+                "type": "number",
+                "default": 100
               }
             }
           },
@@ -10214,7 +10225,8 @@
             "pageLayout": {
               "pageWidth": 8.5,
               "pageHeight": 11
-            }
+            },
+            "waitTimeToLoad": 100
           },
           "notifiers": [
             {
