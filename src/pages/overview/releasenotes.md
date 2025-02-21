@@ -180,6 +180,12 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### February 21, 2024; .NET SDK 4.2.0 release
+
+- Added support for active sheet conversion in the Excel to PDF operation, allowing users to convert only the active sheet instead of the entire workbook.
+- Added support for pageRange in the Create PDF operation for all supported file formats, enabling selective page conversion.
+- Introduced `waitTimeToLoad` support in the HTML to PDF operation, allowing users to specify the maximum time (in milliseconds) to wait before finalizing the PDF
+
 ### February 4, 2024; Server Side Release
 
 - Added [Export PDF Form Data API](../pdf-services-api/howtos/export-pdf-form-data/) operation in PDF Services API to retrieve the data from a PDF form and return it as a JSON file.
