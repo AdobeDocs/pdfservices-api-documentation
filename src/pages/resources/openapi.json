@@ -11715,16 +11715,14 @@
         "title": "pageRange",
         "description": "Parameters to allow specifying which pages to be included for the PDF document. If pageRange is not provided, all pages are considered by default.",
         "type": "object",
-        "items": {
-          "properties": {
-            "start": {
-              "description": "Start page of this page range. Page numbers are indexed from 1 to N.",
-              "type": "number"
-            },
-            "end": {
-              "description": "End page of this page range. Page numbers are indexed from 1 to N.",
-              "type": "number"
-            }
+        "properties": {
+          "start": {
+            "description": "Start page of this page range. Page numbers are indexed from 1 to N.",
+            "type": "number"
+          },
+          "end": {
+            "description": "End page of this page range. Page numbers are indexed from 1 to N.",
+            "type": "number"
           }
         }
       },
