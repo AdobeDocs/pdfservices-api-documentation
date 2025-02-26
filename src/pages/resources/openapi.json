@@ -9531,8 +9531,9 @@
             "$ref": "#/components/schemas/documentLanguage"
           },
           "isActiveSheetConversion": {
-            "description": "Specifies whether to convert only the active sheet of the Excel file. Default value is false.",
-            "type": "string"
+            "description": "Specifies whether to convert only the active sheet of the Excel file.",
+            "type": "boolean",
+            "default": false
           },
           "pageRange": {
             "$ref": "#/components/schemas/CreatePDFPageRange"
