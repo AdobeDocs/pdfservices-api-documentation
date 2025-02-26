@@ -9530,6 +9530,27 @@
           "documentLanguage": {
             "$ref": "#/components/schemas/documentLanguage"
           },
+          "isActiveSheetConversion": {
+            "description": "Specifies whether to convert only the active sheet of the Excel file. Default value is false.",
+            "type": "string"
+          },
+          "pageRange": {
+            "title": "pageRanges",
+            "description": "Specifies the pageRange of document to be converted to PDF file.",
+            "type": "object",
+            "items": {
+              "properties": {
+                "start": {
+                  "description": "Start page of this page range. Page numbers are indexed from 1 to N.",
+                  "type": "number"
+                },
+                "end": {
+                  "description": "End page of this page range. Page numbers are indexed from 1 to N.",
+                  "type": "number"
+                }
+              }
+            }
+          },
           "notifiers": {
             "$ref": "#/components/schemas/notifiers"
           }
