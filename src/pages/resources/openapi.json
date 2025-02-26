@@ -9548,6 +9548,10 @@
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "documentLanguage": "en-US",
+          "pageRange": {
+            "start": 1,
+            "end": 4
+          },
           "notifiers": [
             {
               "type": "CALLBACK",
@@ -9603,7 +9607,11 @@
             "storage": "S3"
           },
           "params": {
-            "documentLanguage": "en-US"
+            "documentLanguage": "en-US",
+            "pageRange": {
+                "start": 1,
+                "end": 4
+            }
           },
           "notifiers": [
             {
