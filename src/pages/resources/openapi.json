@@ -9535,21 +9535,7 @@
             "type": "string"
           },
           "pageRange": {
-            "title": "pageRanges",
-            "description": "Specifies the pageRange of document to be converted to PDF file.",
-            "type": "object",
-            "items": {
-              "properties": {
-                "start": {
-                  "description": "Start page of this page range. Page numbers are indexed from 1 to N.",
-                  "type": "number"
-                },
-                "end": {
-                  "description": "End page of this page range. Page numbers are indexed from 1 to N.",
-                  "type": "number"
-                }
-              }
-            }
+            "$ref": "#/components/schemas/CreatePDFPageRange"
           },
           "notifiers": {
             "$ref": "#/components/schemas/notifiers"
@@ -11723,6 +11709,23 @@
               "type": "number"
             }
           ]
+        }
+      },
+      "CreatePDFPageRange": {
+        "title": "pageRange",
+        "description": "Parameters to allow specifying which pages to be included for the PDF document. If pageRange is not provided, all pages are considered by default.",
+        "type": "object",
+        "items": {
+          "properties": {
+            "start": {
+              "description": "Start page of this page range. Page numbers are indexed from 1 to N.",
+              "type": "number"
+            },
+            "end": {
+              "description": "End page of this page range. Page numbers are indexed from 1 to N.",
+              "type": "number"
+            }
+          }
         }
       },
       "PageAction": {
