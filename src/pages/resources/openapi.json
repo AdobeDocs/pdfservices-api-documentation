@@ -9530,6 +9530,14 @@
           "documentLanguage": {
             "$ref": "#/components/schemas/documentLanguage"
           },
+          "isActiveSheetConversion": {
+            "description": "Specifies whether to convert only the active sheet of the Excel file.",
+            "type": "boolean",
+            "default": false
+          },
+          "pageRange": {
+            "$ref": "#/components/schemas/CreatePDFPageRange"
+          },
           "notifiers": {
             "$ref": "#/components/schemas/notifiers"
           }
@@ -9540,6 +9548,10 @@
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "documentLanguage": "en-US",
+          "pageRange": {
+            "start": 1,
+            "end": 4
+          },
           "notifiers": [
             {
               "type": "CALLBACK",
@@ -9595,7 +9607,11 @@
             "storage": "S3"
           },
           "params": {
-            "documentLanguage": "en-US"
+            "documentLanguage": "en-US",
+            "pageRange": {
+                "start": 1,
+                "end": 4
+            }
           },
           "notifiers": [
             {
@@ -11702,6 +11718,21 @@
               "type": "number"
             }
           ]
+        }
+      },
+      "CreatePDFPageRange": {
+        "title": "pageRange",
+        "description": "Parameters to allow specifying which pages to be included for the PDF document. If pageRange is not provided, all pages are considered by default.",
+        "type": "object",
+        "properties": {
+          "start": {
+            "description": "Start page of this page range. Page numbers are indexed from 1 to N.",
+            "type": "number"
+          },
+          "end": {
+            "description": "End page of this page range. Page numbers are indexed from 1 to N.",
+            "type": "number"
+          }
         }
       },
       "PageAction": {
