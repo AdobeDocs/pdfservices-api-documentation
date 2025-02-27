@@ -449,6 +449,10 @@ module.exports = {
                                 path: 'overview/document-generation-api/fragments.md'
                             },
                             {
+                                title: 'Charts',
+                                path: 'overview/document-generation-api/charts.md'
+                            },
+                            {
                                 title: 'Apply styling and formatting',
                                 path: 'overview/document-generation-api/stylingformattingtags.md'
                             },
