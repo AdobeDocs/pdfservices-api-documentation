@@ -180,6 +180,10 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### February 24, 2025; Adobe Document Generation Server Side Release
+
+- Adding support for charts in Document Generation API.
+
 ### February 21, 2024; .NET SDK 4.2.0 release
 
 - Added support for active sheet conversion in the Excel to PDF operation, allowing users to convert only the active sheet instead of the entire workbook.
