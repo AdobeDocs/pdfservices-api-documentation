@@ -199,6 +199,25 @@ Show or hide text inside a paragraph based on conditions.
 
 ![Showing a text inside a paragraph based on a condition](../images/conditional_phrase.png)
 
+## Footnote Phrases
+
+Add footnotes in the document using input JSON data.
+
+JSON representation of the input data:
+
+```json
+{
+  "vitaminSources": "Fruits, whole grains, and leafy vegetables."
+}
+```
+
+**Usage**
+
+Add superscript annotations and insert corresponding footnotes at the end of the page.
+
+![Showing an phrase having footnote](../images/footnote_phrase.png)
+
+
 ## Tables
 ### Insert Table using `<table>` HTML Element
 
