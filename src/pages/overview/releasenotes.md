@@ -180,11 +180,23 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### March 03, 2025; Adobe Document Generation Server Side Release
+
+- Bug fixes in conditional-sections usage.
+
+### February 24, 2025; Adobe Document Generation Server Side Release
+
+- Added support for charts in Document Generation API, allowing users to insert different charts dynamically.
+
 ### February 21, 2025; .NET SDK 4.2.0 release
 
 - Added support for active sheet conversion in the Excel to PDF operation, allowing users to convert only the active sheet instead of the entire workbook.
 - Added support for pageRange in the Create PDF operation for all supported file formats, enabling selective page conversion.
 - Introduced `waitTimeToLoad` support in the HTML to PDF operation, allowing users to specify the maximum time (in milliseconds) to wait before finalizing the PDF
+
+### February 17, 2025; Adobe Document Generation Server Side Release
+
+- Added support for footnotes phrases in Document Generation API.
 
 ### February 4, 2025; Server Side Release
 
