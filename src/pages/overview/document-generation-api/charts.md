@@ -10,8 +10,8 @@ To dynamically insert a chart in the document, add the chart as placeholder and 
 To insert a chart in the document, add the chart as a placeholder in the document template. The chart placeholder is transformed into a chart in the output document by providing the chart data in the input JSON data.
 The following types of graphs are supported:
 
-- Column
 - Line
+- Column
 - Pie
 
 Steps to add chart in the document:
