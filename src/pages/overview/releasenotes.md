@@ -93,8 +93,8 @@ version.
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
-    <pdfservices.sdk.version>4.2.0</pdfservices.sdk.version>
-    <pdfservices.sdk.samples.version>4.2.0</pdfservices.sdk.samples.version>
+    <pdfservices.sdk.version>4.3.0</pdfservices.sdk.version>
+    <pdfservices.sdk.samples.version>4.3.0</pdfservices.sdk.samples.version>
 </properties>
 
 <dependency>
@@ -178,7 +178,11 @@ Change types include the following:
 Minor and Patch releases are backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
-## Change history
+## Change hist
+### April 17, 2025; .java SDK 4.3.0 Minor release
+
+- Added support for [Export PDF Form Data API](../pdf-services-api/howtos/export-pdf-form-data/) for all the users in PDF Services SDKs.
+- Added support for [Import PDF Form Data API](../pdf-services-api/howtos/import-pdf-form-data/) for all the users in PDF Services SDKs.
 
 ### March 03, 2025; Adobe Document Generation Server Side Release
 
