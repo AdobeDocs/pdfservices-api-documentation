@@ -86,7 +86,7 @@ version.
 ### Java changes
 
 - `artifactId` changed from `pdftools-sdk` to `pdfservices-sdk`
-- Replace the `<properties>` tag and SDK `<dependency>` tag in your project’s `pom.xml` file with the following:
+- Replace the `<properties>` tag and SDK `<dependency>` tag in your project's `pom.xml` file with the following:
 
 ```javascript
 <properties>
@@ -134,7 +134,7 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 ### .NET changes
 
 - Nuget package name changed from `Adobe.DocumentServices.PDFTools` to `Adobe.PDFServicesSDK`
-- Update the SDK dependency in your project’s .csproj file with the following:
+- Update the SDK dependency in your project's .csproj file with the following:
 
 ```javascript
 <ItemGroup>
@@ -151,7 +151,7 @@ using Adobe.PDFServicesSDK;
 
 ### Python changes
 
-- Add the following dependency in your project’s requirements.txt file:
+- Add the following dependency in your project's requirements.txt file:
 
 ```javascript
 pdfservices-sdk~=4.1.0
@@ -178,7 +178,8 @@ Change types include the following:
 Minor and Patch releases are backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
-## Change hist
+## Change history
+
 ### April 17, 2025; .java SDK 4.3.0 Minor release
 
 - Added support for [Export PDF Form Data API](../pdf-services-api/howtos/export-pdf-form-data/) for all the users in PDF Services SDKs.
