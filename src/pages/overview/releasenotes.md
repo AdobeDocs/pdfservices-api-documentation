@@ -180,7 +180,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
-### April 17, 2025; .java SDK 4.3.0 Minor release
+### April 17, 2025; .java SDK 4.3.0 minor release
 
 - Added support for [Export PDF Form Data API](../pdf-services-api/howtos/export-pdf-form-data/) for all the users in PDF Services SDKs.
 - Added support for [Import PDF Form Data API](../pdf-services-api/howtos/import-pdf-form-data/) for all the users in PDF Services SDKs.

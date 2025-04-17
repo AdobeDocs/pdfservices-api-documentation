@@ -33,7 +33,7 @@ The sample below exports PDF form data and returns it as a JSON file.
 
 Please refer to the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" languages="REST API" />
+<CodeBlock slots="heading, code" repeat="2" languages="REST API, Java" />
 
 #### REST API
 
@@ -46,17 +46,9 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/getformd
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
 --data-raw '{
-    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718",
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
 }'
 ```
-
-## Export PDF Form Data
-
-Export PDF Form Data API will retrieve the data from a PDF form and return it as a JSON file.
-
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
-
-<CodeBlock slots="heading, code" repeat="1" languages="Java" />
 
 #### Java
 

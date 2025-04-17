@@ -33,7 +33,7 @@ The sample below demonstrates how to import form data from a JSON into PDF and g
 
 Please refer to the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" languages="REST API" />
+<CodeBlock slots="heading, code" repeat="2" languages="REST API, Java" />
 
 #### REST API
 
@@ -50,14 +50,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/setformd
     "jsonFormFieldsData":"{}"
 }'
 ```
-
-## Import PDF Form Data
-
-Import PDF Form Data API will take the form data provided as a JSON, insert it into the PDF form, and generate the resulting PDF document.
-
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
-
-<CodeBlock slots="heading, code" repeat="1" languages="Java" />
 
 #### Java
 
