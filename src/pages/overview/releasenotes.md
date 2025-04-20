@@ -180,10 +180,12 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
-### April 17, 2025; .java SDK 4.3.0 minor release
+### April 22, 2025; Java SDK 4.3.0 release
 
-- Added support for [Export PDF Form Data API](../pdf-services-api/howtos/export-pdf-form-data/) for all the users in PDF Services SDKs.
-- Added support for [Import PDF Form Data API](../pdf-services-api/howtos/import-pdf-form-data/) for all the users in PDF Services SDKs.
+- Added support for [Export PDF Form Data](../pdf-services-api/howtos/export-pdf-form-data/) and [Import PDF Form Data](../pdf-services-api/howtos/import-pdf-form-data/) operations in PDF Services Java SDKs, enabling users to extract and populate form Data.
+- Added support for active sheet conversion in the Excel to PDF operation, allowing users to convert only the active sheet instead of the entire workbook.
+- Added support for pageRange in the Create PDF operation for all supported file formats, enabling selective page conversion.
+- Introduced `waitTimeToLoad` support in the HTML to PDF operation, allowing users to specify the maximum wait time (in milliseconds) before finalizing the PDF.
 
 ### March 03, 2025; Adobe Document Generation Server Side Release
 
