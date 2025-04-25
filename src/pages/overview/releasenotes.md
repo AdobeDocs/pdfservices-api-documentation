@@ -180,7 +180,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
-### April 22, 2025; Java SDK 4.3.0 release
+### April 22, 2025; Java SDK 4.3.0 Release
 
 - Added support for [Export PDF Form Data](../pdf-services-api/howtos/export-pdf-form-data/) and [Import PDF Form Data](../pdf-services-api/howtos/import-pdf-form-data/) operations in PDF Services Java SDKs, enabling users to extract and populate form Data.
 - Added support for active sheet conversion in the Excel to PDF operation, allowing users to convert only the active sheet instead of the entire workbook.
