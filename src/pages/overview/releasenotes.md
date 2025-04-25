@@ -86,15 +86,15 @@ version.
 ### Java changes
 
 - `artifactId` changed from `pdftools-sdk` to `pdfservices-sdk`
-- Replace the `<properties>` tag and SDK `<dependency>` tag in your project’s `pom.xml` file with the following:
+- Replace the `<properties>` tag and SDK `<dependency>` tag in your project's `pom.xml` file with the following:
 
 ```javascript
 <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
-    <pdfservices.sdk.version>4.2.0</pdfservices.sdk.version>
-    <pdfservices.sdk.samples.version>4.2.0</pdfservices.sdk.samples.version>
+    <pdfservices.sdk.version>4.3.0</pdfservices.sdk.version>
+    <pdfservices.sdk.samples.version>4.3.0</pdfservices.sdk.samples.version>
 </properties>
 
 <dependency>
@@ -134,7 +134,7 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 ### .NET changes
 
 - Nuget package name changed from `Adobe.DocumentServices.PDFTools` to `Adobe.PDFServicesSDK`
-- Update the SDK dependency in your project’s .csproj file with the following:
+- Update the SDK dependency in your project's .csproj file with the following:
 
 ```javascript
 <ItemGroup>
@@ -151,7 +151,7 @@ using Adobe.PDFServicesSDK;
 
 ### Python changes
 
-- Add the following dependency in your project’s requirements.txt file:
+- Add the following dependency in your project's requirements.txt file:
 
 ```javascript
 pdfservices-sdk~=4.1.0
@@ -179,6 +179,13 @@ Minor and Patch releases are backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
+
+### April 22, 2025; Java SDK 4.3.0 Release
+
+- Added support for [Export PDF Form Data](../pdf-services-api/howtos/export-pdf-form-data/) and [Import PDF Form Data](../pdf-services-api/howtos/import-pdf-form-data/) operations in PDF Services Java SDKs, enabling users to extract and populate form Data.
+- Added support for active sheet conversion in the Excel to PDF operation, allowing users to convert only the active sheet instead of the entire workbook.
+- Added support for pageRange in the Create PDF operation for all supported file formats, enabling selective page conversion.
+- Introduced `waitTimeToLoad` support in the HTML to PDF operation, allowing users to specify the maximum wait time (in milliseconds) before finalizing the PDF.
 
 ### March 03, 2025; Adobe Document Generation Server Side Release
 

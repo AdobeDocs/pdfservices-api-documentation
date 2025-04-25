@@ -33,7 +33,67 @@ The sample below demonstrates how to import form data from a JSON into PDF and g
 
 Please refer to the [API usage guide](../api-usage.md) to understand how to use our APIs.
 
-<CodeBlock slots="heading, code" languages="REST API" />
+<CodeBlock slots="heading, code" repeat="2" languages="Java, REST API" />
+
+#### Java
+
+```javascript
+// Get the samples from https://www.adobe.com/go/pdftoolsapi_java_samples
+// Run the sample:
+// mvn -f pom.xml exec:java -Dexec.mainClass=com.adobe.pdfservices.operation.samples.ImportPdfFormData
+
+public class ImportPdfFormData {
+    // Initialize the logger
+    private static final Logger LOGGER = LoggerFactory.getLogger(ImportPdfFormData.class);
+
+    public static void main(String[] args) {
+        try (InputStream inputStream = Files.newInputStream(new File("src/main/resources/importPdfFormDataInput.pdf").toPath())) {
+            // Initial setup, create credentials instance
+            Credentials credentials = new ServicePrincipalCredentials(
+                                            System.getenv("PDF_SERVICES_CLIENT_ID"), 
+                                            System.getenv("PDF_SERVICES_CLIENT_SECRET"));
+        
+            // Creates a PDF Services instance
+            PDFServices pdfServices = new PDFServices(credentials);
+        
+            // Creates an asset(s) from source file(s) and upload
+            Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
+            // Create parameters for the job
+            ImportPDFFormDataParams importPDFFormDataParams = ImportPDFFormDataParams.importPdfFormDataParamsBuilder()
+                .withJsonFormFieldsData(new JSONObject("{\n" +
+                    "  \"option_two\": \"Yes\",\n" +
+                    "  \"option_one\": \"Yes\",\n" +
+                    "  \"name\": \"sufia\",\n" +
+                    "  \"option_three\": \"Off\",\n" +
+                    "  \"age\": \"25\",\n" +
+                    "  \"favorite_movie\": \"Star Wars Again\"\n" +
+                    "}\n"))
+                .build();
+        
+            // Creates a new job instance
+            ImportPDFFormDataJob importPDFFormDataJob = new ImportPDFFormDataJob(asset);
+            importPDFFormDataJob.setParams(importPDFFormDataParams);
+        
+            // Submit the job and gets the job result
+            String location = pdfServices.submit(importPDFFormDataJob);
+            PDFServicesResponse<ImportPDFFormDataResult> pdfServicesResponse = pdfServices.getJobResult(location, ImportPDFFormDataResult.class);
+        
+            // Get content from the resulting asset(s)
+            Asset resultAsset = pdfServicesResponse.getResult().getAsset();
+            StreamAsset streamAsset = pdfServices.getContent(resultAsset);
+        
+            // Creates an output stream and copy stream asset's content to it
+            Files.createDirectories(Paths.get("output/"));
+            OutputStream outputStream = Files.newOutputStream(new File("output/ImportPDFFormData.pdf").toPath());
+            LOGGER.info(String.format("Saving asset at output/ImportPDFFormData.pdf", outputFilePath));
+            IOUtils.copy(streamAsset.getInputStream(), outputStream);
+            outputStream.close();
+        } catch (ServiceApiException | IOException | SDKException | ServiceUsageException ex) {
+            LOGGER.error("Exception encountered while executing operation", ex);
+        }
+    }
+}
+```
 
 #### REST API
 

@@ -250,7 +250,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 4.  Verify the hash you generated matches the value in the .sha1 file.
 
 ```
-29d29e4fee46bcb6891966a09124d74228ee2b50
+5d49322ced35a8195378a7ed297b4fb721780736
 ```
 
 #### Logging
