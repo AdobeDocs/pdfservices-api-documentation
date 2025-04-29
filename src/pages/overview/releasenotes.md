@@ -180,20 +180,23 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
-
 ### April 29, 2025; Python SDK 4.1.1 release
-- Removed setuptools from runtime dependencies; upgraded to v70.0.0 to address CVE-2024-6345.
-- Enhanced XML processing security with a secure XML parser; resolves issue #692 with requests.
+
+- Removed setuptools from runtime dependencies
+- Enhanced XML processing security with a secure XML parser
 
 ### April 29, 2025; Adobe Document Generation Server Side Release
+
 - Enabled handling of text alignment styles in Document Generation API
 
 ### April 28, 2025; Adobe Document Generation Server Side Release
+
 - Bug fixes for font inconsistencies occurring with content around tables.
 - Added support for Superscript and Subscript in Document Generation API.
 - Enhanced Document Generation API to recognize and render heading tags.
 
 ### April 25, 2025; Adobe Document Generation Server Side Release
+
 - Temporary fix to address the file corruption issue.
 
 ### April 22, 2025; Java SDK 4.3.0 Release
