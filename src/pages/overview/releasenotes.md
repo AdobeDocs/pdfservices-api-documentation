@@ -180,6 +180,11 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### May 08, 2025; Python SDK 4.1.1 release
+
+- Removed setuptools from runtime dependencies
+- Enhanced XML processing security with a secure XML parser
+
 ### April 30, 2025; Adobe Document Generation Server Side Release
 
 - Added support for text indentation styles in Document Generation API
