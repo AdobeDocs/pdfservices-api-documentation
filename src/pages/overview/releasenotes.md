@@ -180,6 +180,19 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### April 30, 2025; Adobe Document Generation Server Side Release
+
+- Added support for text indentation styles in Document Generation API
+- Added support for text alignment styles in Document Generation API
+- Bug fix for content duplication occurring with content involving paragraphs, lists and tables.
+
+### April 25, 2025; Adobe Document Generation Server Side Release
+
+- Bug fixes for font inconsistencies occurring with content around tables.
+- Added support for Superscript and Subscript in Document Generation API.
+- Enhanced Document Generation API to recognize and render heading tags.
+- Temporary fix to address the file corruption issue.
+
 ### April 22, 2025; Java SDK 4.3.0 Release
 
 - Added support for [Export PDF Form Data](../pdf-services-api/howtos/export-pdf-form-data/) and [Import PDF Form Data](../pdf-services-api/howtos/import-pdf-form-data/) operations in PDF Services Java SDKs, enabling users to extract and populate form Data.
