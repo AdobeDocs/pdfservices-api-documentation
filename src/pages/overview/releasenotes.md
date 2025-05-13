@@ -180,7 +180,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
-### May 08, 2025; Python SDK 4.1.1 release
+### May 12, 2025; Python SDK 4.1.1 release
 
 - Removed setuptools from runtime dependencies
 - Enhanced XML processing security with a secure XML parser
