@@ -85,16 +85,16 @@ version.
 
 ### Java changes
 
-* `artifactId` changed from `pdftools-sdk` to `pdfservices-sdk`
-* Replace the `<properties>` tag and SDK `<dependency>` tag in your project’s `pom.xml` file with the following:
+- `artifactId` changed from `pdftools-sdk` to `pdfservices-sdk`
+- Replace the `<properties>` tag and SDK `<dependency>` tag in your project's `pom.xml` file with the following:
 
-```
+```javascript
 <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
-    <pdfservices.sdk.version>4.2.0</pdfservices.sdk.version>
-    <pdfservices.sdk.samples.version>4.2.0</pdfservices.sdk.samples.version>
+    <pdfservices.sdk.version>4.3.0</pdfservices.sdk.version>
+    <pdfservices.sdk.samples.version>4.3.0</pdfservices.sdk.samples.version>
 </properties>
 
 <dependency>
@@ -104,63 +104,62 @@ version.
 </dependency>
 ```
 
-* Update import statements as per new Package structure. For e.g.
+- Update import statements as per new Package structure. For e.g.
 
-```
+```javascript
 import com.adobe.pdfservices.operation.ExecutionContext; 
 ```
 
 ### Node JS changes
 
-* NPM package name changed from `@adobe/documentservices-pdftools-node-sdk` to `@adobe/pdfservices-node-sdk`
-* Update the latest SDK dependency in package.json file of your project
- 
-```
+- NPM package name changed from `@adobe/documentservices-pdftools-node-sdk` to `@adobe/pdfservices-node-sdk`
+- Update the latest SDK dependency in package.json file of your project
+
+```javascript
 "@adobe/pdfservices-node-sdk": "4.1.0"
 ```
 
-* Require the `@adobe/pdfservices-node-sdk` in the Sample file to access the SDK interface
+- Require the `@adobe/pdfservices-node-sdk` in the Sample file to access the SDK interface
 
-```
+```javascript
 const PDFServicesSdk = require('@adobe/pdfservices-node-sdk'); 
 ```
 
-	
 For HTML to PDF Conversions, the PageLayout object is moved inside html object. To access the PageLayout interface use the following code:
 
-```
+```javascript
 const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout(); 
 ```
 
 ### .NET changes
 
-* Nuget package name changed from `Adobe.DocumentServices.PDFTools` to `Adobe.PDFServicesSDK`
-* Update the SDK dependency in your project’s .csproj file with the following:
+- Nuget package name changed from `Adobe.DocumentServices.PDFTools` to `Adobe.PDFServicesSDK`
+- Update the SDK dependency in your project's .csproj file with the following:
 
-```
+```javascript
 <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.17" />
-    <PackageReference Include="Adobe.PDFServicesSDK" Version="4.1.0" />
+    <PackageReference Include="Adobe.PDFServicesSDK" Version="4.2.0" />
 </ItemGroup> 
 ```
 
-* Update the namespaces accordingly in your .cs file as per the new dependency: 
+- Update the namespaces accordingly in your .cs file as per the new dependency:
+
 ```javascript
 using Adobe.PDFServicesSDK;
 ```  
 
 ### Python changes
 
-* Add the following dependency in your project’s requirements.txt file:
+- Add the following dependency in your project's requirements.txt file:
 
-```
+```javascript
 pdfservices-sdk~=4.1.0
 ```
 
 ## Archived Documentation
 
 The last major version of our documentation may be found [here](../legacy-documentation/).
-
 
 ## Change types
 
@@ -181,11 +180,61 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### May 22, 2025; .NET SDK 4.3.0 Release
+
+- Added support for [Export PDF Form Data](../pdf-services-api/howtos/export-pdf-form-data/) and [Import PDF Form Data](../pdf-services-api/howtos/import-pdf-form-data/) operations in PDF Services .NET SDK, enabling users to extract and populate form Data.
+
+### May 12, 2025; Python SDK 4.1.1 Release
+
+- Streamlined runtime dependencies (setuptools) for installation efficiency.
+- Enhanced XML processing security with a secure XML parser
+
+### April 30, 2025; Adobe Document Generation Server Side Release
+
+- Added support for text indentation styles in Document Generation API
+- Added support for text alignment styles in Document Generation API
+- Bug fix for content duplication occurring with content involving paragraphs, lists and tables.
+
+### April 25, 2025; Adobe Document Generation Server Side Release
+
+- Bug fixes for font inconsistencies occurring with content around tables.
+- Added support for Superscript and Subscript in Document Generation API.
+- Enhanced Document Generation API to recognize and render heading tags.
+- Temporary fix to address the file corruption issue.
+
+### April 22, 2025; Java SDK 4.3.0 Release
+
+- Added support for [Export PDF Form Data](../pdf-services-api/howtos/export-pdf-form-data/) and [Import PDF Form Data](../pdf-services-api/howtos/import-pdf-form-data/) operations in PDF Services Java SDKs, enabling users to extract and populate form Data.
+- Added support for active sheet conversion in the Excel to PDF operation, allowing users to convert only the active sheet instead of the entire workbook.
+- Added support for pageRange in the Create PDF operation for all supported file formats, enabling selective page conversion.
+- Introduced `waitTimeToLoad` support in the HTML to PDF operation, allowing users to specify the maximum wait time (in milliseconds) before finalizing the PDF.
+
+### March 03, 2025; Adobe Document Generation Server Side Release
+
+- Bug fixes in conditional-sections usage.
+
+### February 24, 2025; Adobe Document Generation Server Side Release
+
+- Added support for charts in Document Generation API, allowing users to insert different charts dynamically.
+
+### February 21, 2025; .NET SDK 4.2.0 release
+
+- Added support for active sheet conversion in the Excel to PDF operation, allowing users to convert only the active sheet instead of the entire workbook.
+- Added support for pageRange in the Create PDF operation for all supported file formats, enabling selective page conversion.
+- Introduced `waitTimeToLoad` support in the HTML to PDF operation, allowing users to specify the maximum time (in milliseconds) to wait before finalizing the PDF
+
+### February 17, 2025; Adobe Document Generation Server Side Release
+
+- Added support for footnotes phrases in Document Generation API.
+
+### February 4, 2025; Server Side Release
+
+- Added [Export PDF Form Data API](../pdf-services-api/howtos/export-pdf-form-data/) operation in PDF Services API to retrieve the data from a PDF form and return it as a JSON file.
+- Added [Import PDF Form Data API](../pdf-services-api/howtos/import-pdf-form-data/) operation in PDF Services API to populate PDF forms with JSON data and generate the resulting PDF document.
 
 ### November 06, 2024; Adobe Document Generation Server Side Release
 
 - Restricting tag length to 1000 characters in the Document Generation API.
-
 
 ### November 06, 2024; Java SDK 4.2.0 and NodeJS, .NET, Python SDK 4.1.0 minor release
 
@@ -211,6 +260,7 @@ Upgrading to the latest SDK should not break existing applications.
 - Added [PDF Accessibility Checker](../pdf-services-api/howtos/pdf-accessibility-checker-api/) operation in PDF Services API to check accessibility on specified pages of PDF document.
 
 ### July 22, 2024; .NET SDK 4.0.0 major release
+
 - Released Adobe PDF Services .NET SDK v4.0.0, introducing new interfaces fully leveraging power of new PDF Services rest APIs.
 - Added support for delete asset, refresh download URI and webhook notifiers.
 - Eliminated need of storage to save intermediate result by removing dependency on temporary storage.
@@ -258,13 +308,13 @@ Upgrading to the latest SDK should not break existing applications.
 
 ### April, 2024; NodeJS SDK 4.0.0 major release
 
-- Released Adobe PDF Services Node SDK v4.0.0, introducing new interfaces fully leveraging power of new PDF Services rest APIs.     
-- Added support for delete asset and webhook notifiers.                                                                             
-- Eliminated need of storage to save intermediate result by removing dependency on temporary storage.                               
-- Extended I/O capabilities by introducing external storage for PDF Services operations.                                            
+- Released Adobe PDF Services Node SDK v4.0.0, introducing new interfaces fully leveraging power of new PDF Services rest APIs.
+- Added support for delete asset and webhook notifiers.
+- Eliminated need of storage to save intermediate result by removing dependency on temporary storage.
+- Extended I/O capabilities by introducing external storage for PDF Services operations.
 - Enabled connection to Internet through Proxy, where proxy server settings can be set via "proxyServerConfig" in the client config.
-- Updated PDF Properties operation to return PDFProperties object along with JSON string.                                           
-- Updated Extract PDF operation to return content and resource asset along with content JSON object.                                
+- Updated PDF Properties operation to return PDFProperties object along with JSON string.
+- Updated Extract PDF operation to return content and resource asset along with content JSON object.
 
 ### April, 2024; Server Side Release
 
@@ -280,7 +330,6 @@ Upgrading to the latest SDK should not break existing applications.
 
 - Dependent library upgrades and fixed compatibility issues with RestSharp v110+.
 
-
 ### January, 2024; Java SDK 4.0.0 major release
 
 - Released Adobe PDF Services Java SDK v4.0.0, introducing new interfaces fully leveraging power of new PDF Services rest APIs.
@@ -289,7 +338,6 @@ Upgrading to the latest SDK should not break existing applications.
 - Extended I/O capabilities by introducing external storage for a majority of PDF Services operations.
 - Updated PDF Properties operation to return PDFProperties object along with JSON string.
 - Updated Extract PDF operation to return content and resource asset along with content JSON object.
-
 
 ### January, 2024; Server Side Release
 

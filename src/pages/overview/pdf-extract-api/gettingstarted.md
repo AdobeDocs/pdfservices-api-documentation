@@ -251,7 +251,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 4.  Verify the hash you generated matches the value in the .sha1 file.
 
 ```
-29d29e4fee46bcb6891966a09124d74228ee2b50
+5d49322ced35a8195378a7ed297b4fb721780736
 ```
 
 #### Logging
@@ -394,7 +394,7 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 3.  Verify the hash in the downloaded file matches the value published here.
 
 ```
-GVi6LEnaHwb0C4ZvhRbu3HyGwpDElG6FMhjCwmYsmSGS1hexoArNVvF7rY1T4ygHkdhY6WEEiVobwwLmoAraBw==
+WHFJGq3ou52F1SNmcLbVWwqtH+SaCo5gt5r5kkBd5ic7uSXcvQ5XWazEz1WeWzLKdPHWocxY96yacssnP6UBvQ==
 ```
 
 #### Logging
@@ -637,14 +637,14 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 1.  After downloading the package zip, run following command
 
 ```
-pip hash <download_dir>/pdfservices-sdk-4.1.0.tar.gz
+pip hash <download_dir>/pdfservices-sdk-4.1.1.tar.gz
 ```
 
 1.  Above command will return the hash of downloaded package.
 2.  Verify the hash matches the value published here.
 
 ```
-ec24e0ddb8da9a968e8b8aa94203f48afb496dc99e505f6debcf0c2d51307cd2
+a7592acd8c93eac52e0d8eae24cf2b8eee331f8704172a7b91ab7891fac5585d
 ```
 
 ###### To extract data from the sample PDF file

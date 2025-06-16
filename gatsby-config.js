@@ -222,12 +222,20 @@ module.exports = {
                                 path: 'overview/pdf-services-api/howtos/export-pdf.md'
                             },
                             {
+                                title: 'Export PDF Form Data',
+                                path: 'overview/pdf-services-api/howtos/export-pdf-form-data.md'
+                            },
+                            {
                                 title: 'Extract PDF',
                                 path: 'overview/pdf-services-api/howtos/extract-pdf.md'
                             },
                             {
                                 title: 'Get PDF Properties',
                                 path: 'overview/pdf-services-api/howtos/pdf-properties.md'
+                            },
+                            {
+                                title: 'Import PDF Form Data',
+                                path: 'overview/pdf-services-api/howtos/import-pdf-form-data.md'
                             },
                             {
                                 title: 'Insert Pages',
@@ -286,6 +294,10 @@ module.exports = {
                                 path: 'overview/pdf-services-api/howtos/sdk-utilities.md'
                             }
                         ]
+                    },
+                    {
+                        title: 'VIP MP Onboarding Guide',
+                        path: 'overview/pdf-services-api/vip-mp-onboarding-guide.md'
                     }
                 ]
             },
@@ -435,6 +447,10 @@ module.exports = {
                             {
                                 title: 'Fragments',
                                 path: 'overview/document-generation-api/fragments.md'
+                            },
+                            {
+                                title: 'Charts',
+                                path: 'overview/document-generation-api/charts.md'
                             },
                             {
                                 title: 'Apply styling and formatting',

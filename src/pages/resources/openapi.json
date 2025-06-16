@@ -123,32 +123,27 @@
     {
       "name": "PDF Operations",
       "tags": [
-        "PDF Accessibility Auto-Tag",
-        "Extract PDF",
-        "Document Generation",
-        "PDF Electronic Seal",
-        "Create PDF",
-        "Export PDF",
-        "OCR",
-        "Html to PDF",
-        "Protect PDF",
         "Combine PDF",
         "Compress PDF",
-        "PDF To Images",
-        "Linearize PDF",
-        "Page Manipulation",
-        "PDF Properties",
-        "Remove Protection",
-        "Split PDF",
-        "PDF Watermark",
-        "PDF Accessibility Checker"
-      ]
-    },
-    {
-      "name": "PDF operations Beta",
-      "tags": [
+        "Create PDF",
+        "Document Generation",
+        "Export PDF",
         "Export PDF Form Data",
-        "Import PDF Form Data"
+        "Extract PDF",
+        "Html to PDF",
+        "Import PDF Form Data",
+        "Linearize PDF",
+        "OCR",
+        "Page Manipulation",
+        "PDF Accessibility Auto-Tag",
+        "PDF Accessibility Checker",
+        "PDF Electronic Seal",
+        "PDF Properties",
+        "PDF To Images",
+        "PDF Watermark",
+        "Protect PDF",
+        "Remove Protection",
+        "Split PDF"
       ]
     }
   ],
@@ -9535,6 +9530,14 @@
           "documentLanguage": {
             "$ref": "#/components/schemas/documentLanguage"
           },
+          "isActiveSheetConversion": {
+            "description": "Specifies whether to convert only the active sheet of the Excel file.",
+            "type": "boolean",
+            "default": false
+          },
+          "pageRange": {
+            "$ref": "#/components/schemas/CreatePDFPageRange"
+          },
           "notifiers": {
             "$ref": "#/components/schemas/notifiers"
           }
@@ -9545,6 +9548,10 @@
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "documentLanguage": "en-US",
+          "pageRange": {
+            "start": 1,
+            "end": 4
+          },
           "notifiers": [
             {
               "type": "CALLBACK",
@@ -9600,7 +9607,11 @@
             "storage": "S3"
           },
           "params": {
-            "documentLanguage": "en-US"
+            "documentLanguage": "en-US",
+            "pageRange": {
+                "start": 1,
+                "end": 4
+            }
           },
           "notifiers": [
             {
@@ -10126,6 +10137,11 @@
               }
             }
           },
+          "waitTimeToLoad": {
+            "description": "Specifies the maximum time (in milliseconds) to wait before finalizing the PDF. After this duration, the HTML is captured and converted into a PDF, regardless of whether all elements have finished loading or rendering. If a customer provides a custom value, it overrides the default.",
+            "type": "number",
+            "default": 100
+          },
           "notifiers": {
             "$ref": "#/components/schemas/notifiers"
           }
@@ -10138,6 +10154,7 @@
             "pageWidth": 11,
             "pageHeight": 8.5
           },
+          "waitTimeToLoad": 100,
           "notifiers": [
             {
               "type": "CALLBACK",
@@ -10197,6 +10214,11 @@
                     ]
                   }
                 }
+              },
+              "waitTimeToLoad": {
+                "description": "Specifies the maximum time (in milliseconds) to wait before finalizing the PDF. After this duration, the HTML is captured and converted into a PDF, regardless of whether all elements have finished loading or rendering. If a customer provides a custom value, it overrides the default.",
+                "type": "number",
+                "default": 100
               }
             }
           },
@@ -10219,7 +10241,8 @@
             "pageLayout": {
               "pageWidth": 8.5,
               "pageHeight": 11
-            }
+            },
+            "waitTimeToLoad": 100
           },
           "notifiers": [
             {
@@ -11697,6 +11720,21 @@
           ]
         }
       },
+      "CreatePDFPageRange": {
+        "title": "pageRange",
+        "description": "Parameters to allow specifying which pages to be included for the PDF document. If pageRange is not provided, all pages are considered by default.",
+        "type": "object",
+        "properties": {
+          "start": {
+            "description": "Start page of this page range. Page numbers are indexed from 1 to N.",
+            "type": "number"
+          },
+          "end": {
+            "description": "End page of this page range. Page numbers are indexed from 1 to N.",
+            "type": "number"
+          }
+        }
+      },
       "PageAction": {
         "title": "pageAction",
         "description": "An action to perform on pdf pages",
@@ -12711,7 +12749,7 @@
             "type": "string"
           },
           "jsonFormFieldsData": {
-            "description": "JSON Form data of PDF.",
+            "description": "A JSON object containing the form data for the PDF. Each key in this object should correspond to a field name in the PDF form (including nested or hierarchical field names), and the associated value should be the data to insert into that field. For example:\n\n```json\n{\n  \"name\": {\n    \"first\": \"John\",\n    \"last\": \"Doe\"\n  },\n  \"dob\": \"01/14/2025\",\n  \"address\": {\n    \"city\": \"Springfield\",\n    \"state\": \"IL\"\n  }\n}\n```\n\nThis JSON corresponds to the following PDF field names:\n\n- name.first\n- name.last\n- dob\n- address.city\n- address.state\n\nThe API will use these key-value pairs to populate the respective fields in the PDF form.",
             "type": "object"
           },
           "notifiers": {
@@ -12737,8 +12775,7 @@
               "middle": "",
               "last": "Smith",
               "first": "John"
-            },
-            "age": "34"
+            }
           },
           "notifiers": [
             {
@@ -12776,7 +12813,7 @@
             "required": ["jsonFormFieldsData"],
             "properties": {
               "jsonFormFieldsData": {
-                "description": "JSON Form data of PDF.",
+                "description": "A JSON object containing the form data for the PDF. Each key in this object should correspond to a field name in the PDF form (including nested or hierarchical field names), and the associated value should be the data to insert into that field. For example:\n\n```json\n{\n  \"name\": {\n    \"first\": \"John\",\n    \"last\": \"Doe\"\n  },\n  \"dob\": \"01/14/2025\",\n  \"address\": {\n    \"city\": \"Springfield\",\n    \"state\": \"IL\"\n  }\n}\n```\n\nThis JSON corresponds to the following PDF field names:\n\n- name.first\n- name.last\n- dob\n- address.city\n- address.state\n\nThe API will use these key-value pairs to populate the respective fields in the PDF form.",
                 "type": "object"
               }
             }
@@ -12812,8 +12849,7 @@
                 "middle": "",
                 "last": "Smith",
                 "first": "John"
-              },
-              "age": "34"
+              }
             }
           },
           "notifiers": [

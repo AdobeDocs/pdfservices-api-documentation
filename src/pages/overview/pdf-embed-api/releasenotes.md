@@ -8,6 +8,13 @@ the changes below for each release.
 
 ## Change history
 
+### June 11, 2025
+| Change | Description                                                            |
+| ------ | ---------------------------------------------------------------------- |
+| Bug fix | Fixed issue regarding multiple "Load PDF" event triggers in Adobe Analytics.   |
+| Bug fix | Fixed issue regarding firing of duplicate DOCUMENT_OPEN events in analytics.             |
+| New     | PDF Embed API now supports a Close option in the invalid License error dialog box. |
+
 ### November 6, 2024
 | Change  | Description                                                     |
 |---------|-----------------------------------------------------------------|
