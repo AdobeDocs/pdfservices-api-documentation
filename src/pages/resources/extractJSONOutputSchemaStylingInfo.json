@@ -111,6 +111,11 @@
                     "type": "boolean",
                     "default": false
                 },
+                "ObjectID": {
+                    "description": "Unique identifier for the element",
+                    "type": "integer",
+                    "minimum": 0
+                },
                 "Lang": {
                     "description": "BCP-47 code for language of text elements",
                     "type": "string"
@@ -580,6 +585,10 @@
                     "minItems": 1,
                     "items": {
                         "type": "string"
+                    },
+                    "alternate_text": {
+                        "description": "Provides alternate text present in the input pdf structure use to mapped to the updated structure",
+                        "type": "string"
                     }
                 },
                 "Kids": {
@@ -620,7 +629,9 @@
                     "Image",
                     "Reference",
                     "Kids",
-                    "filePaths"
+                    "filePaths",
+                    "alternate_text",
+                    "ObjectID"
                 ]
             }
         },
@@ -642,7 +653,9 @@
                     "Rotation",
                     "Image",
                     "Reference",
-                    "filePaths"
+                    "filePaths",
+                    "alternate_text",
+                    "ObjectID"
                 ]
             }
         }
@@ -705,7 +718,7 @@
                     "description": "Document contains AcroForms or not",
                     "type": "boolean"
                 },
-                "is_signed": {
+                " is_digitally_signed": {
                     "description": "Document is digitally signed or not",
                     "type": "boolean"
                 },
@@ -747,7 +760,7 @@
                 "has_embedded_files",
                 "is_XFA",
                 "is_certified",
-                "is_signed",
+                "is_digitally_signed",
                 "is_encrypted",
                 "language",
                 "page_count",
