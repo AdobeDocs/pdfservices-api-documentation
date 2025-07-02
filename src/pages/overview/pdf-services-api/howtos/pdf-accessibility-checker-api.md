@@ -316,7 +316,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/accessib
 }'
 ```
 
-
 ## Check accessibility for specified pages
 
 The sample below performs an accessibility check operation for specified pages of a given PDF.
