@@ -636,14 +636,14 @@ For security reasons you may wish to confirm the installer's authenticity. To do
 1.  After downloading the package zip, run following command
 
 ```
-pip hash <download_dir>/pdfservices-sdk-4.1.1.tar.gz
+pip hash <download_dir>/pdfservices-sdk-4.2.0.tar.gz
 ```
 
 2.  Above command will return the hash of downloaded package.
 3.  Verify the hash matches the value published here.
 
 ```
-a7592acd8c93eac52e0d8eae24cf2b8eee331f8704172a7b91ab7891fac5585d
+378afa7d3b22683264a1817393932a649b98e4d4b3913816f839de240f7132d5
 ```
 
 ## Public API
