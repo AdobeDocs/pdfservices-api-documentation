@@ -1324,7 +1324,7 @@
     "/operation/pdftomarkdown": {
       "post": {
         "tags": [
-          "Extract PDF"
+          "PDF To Markdown"
         ],
         "summary": "Extract content from PDF documents and output it in a structured JSON format, along with tables and figures",
         "description": "Extractaaaaaaa PDF Content, Tables content and Tables/Figures renditions from a PDF document. Various available options are: (mutually exclusive)\n\n1. Extract text with structure (headings, paragraphs, lists and footnotes)\n\n2. Extract tables data as CSV or XLSX\n\n3. Extract tables as images.\n\n4. Extract bounding boxes for characters present in text blocks(paragraphs, list, headings)\n\n5. Extract figures or images as PNG",
@@ -1518,7 +1518,7 @@
     "/operation/pdftomarkdown/{jobID}/status": {
       "get": {
         "tags": [
-          "Extract PDF"
+          "PDF To Markdown"
         ],
         "summary": "Poll the extract pdf job for completion",
         "operationId": "pdfoperations.extractpdf.jobstatus",
