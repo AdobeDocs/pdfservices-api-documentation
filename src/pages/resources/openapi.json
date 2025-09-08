@@ -13625,7 +13625,7 @@
             "$ref": "#/components/schemas/inprogress"
           },
           {
-            "$ref": "#/components/schemas/PDFToMarkdownDone"
+            "$ref": "#/components/schemas/done"
           },
           {
             "$ref": "#/components/schemas/failed"
