@@ -9355,51 +9355,6 @@
             "description": "Params for Extract PDF processing",
             "type": "object",
             "properties": {
-              "getCharBounds": {
-                "description": "Extract bounding boxes for characters present in text blocks(paragraphs, list, headings)",
-                "type": "boolean",
-                "default": false
-              },
-              "includeStyling": {
-                "description": "Boolean specifying whether to add styling information to json output",
-                "type": "boolean",
-                "default": false
-              },
-              "elementsToExtract": {
-                "description": "List of elements that should be extracted as json. Possible values are text and tables.",
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "enum": [
-                    "text",
-                    "tables"
-                  ]
-                },
-                "default": [
-                  "text"
-                ]
-              },
-              "tableOutputFormat": {
-                "description": "Specifies the format of table contents output. Possible values are csv and xlsx.",
-                "type": "string",
-                "default": "xlsx"
-              },
-              "renditionsToExtract": {
-                "description": "List of elements whose renditions should be generated. Possible values are figures and tables.",
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "enum": [
-                    "tables",
-                    "figures"
-                  ]
-                }
-              },
-              "includeHeaderFooter": {
-                "description": "If true, extract header and footer information as part of json.",
-                "type": "boolean",
-                "default": false
-              },
               "tagEncapsulatedText": {
                 "description": "List of elements from which to extract encapsulated text content.",
                 "type": "array",
