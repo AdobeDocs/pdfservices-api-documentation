@@ -9299,9 +9299,9 @@
             "type": "string"
           },
           "getFigures": {
-            "description": "Specifies the format of table contents output. Possible values are csv and xlsx.",
-            "type": "string",
-            "default": "xlsx"
+            "description": "Extract figures or images in base64 format",
+            "type": "boolean",
+            "default": "false"
           },
           "notifiers": {
             "$ref": "#/components/schemas/notifiers"
@@ -9309,19 +9309,7 @@
         },
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
-          "getCharBounds": false,
-          "includeStyling": false,
-          "elementsToExtract": [
-            "text",
-            "tables"
-          ],
-          "tableOutputFormat": "xlsx",
-          "renditionsToExtract": [
-            "tables",
-            "figures"
-          ],
-          "includeHeaderFooter": false,
-          "tagEncapsulatedText": ["Figure"],
+          "getfigures": true,
           "notifiers": [
             {
               "type": "CALLBACK",
@@ -9384,19 +9372,7 @@
             "storage": "S3"
           },
           "params":  {
-            "getCharBounds": false,
-            "includeStyling": false,
-            "elementsToExtract": [
-              "text",
-              "tables"
-            ],
-            "tableOutputFormat": "xlsx",
-            "renditionsToExtract": [
-              "tables",
-              "figures"
-            ],
-            "includeHeaderFooter" : false,
-            "tagEncapsulatedText": ["Figure"]
+            "getfigures": true
           },
           "notifiers": [
             {
