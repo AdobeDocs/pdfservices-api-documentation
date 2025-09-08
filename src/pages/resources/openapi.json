@@ -39,6 +39,10 @@
       "description": "Extract content from PDF documents and output it in a structured JSON format, along with tables and figures"
     },
     {
+      "name": "PDF To Markdown",
+      "description": "Convert PDF documents to Markdown format"
+    },
+    {
       "name": "Html to PDF",
       "description": "Convert HTML Resources to a PDF File"
     },
@@ -148,6 +152,157 @@
     }
   ],
   "paths": {
+    "/operation/pdftomarkdown": {
+      "post": {
+        "tags": [
+          "PDF to Markdown"
+        ],
+        "summary": "Convert PDF documents to Markdown format",
+        "description": "Convert PDF documents to Markdown format while preserving document structure, formatting, and content organization. The output includes:\n\n1. Structured Markdown text with headings, paragraphs, and lists\n\n2. Formatted text elements like bold, italic, and links\n\n3. Tables converted to Markdown format\n\n4. Images extracted and referenced in Markdown\n\n5. Document metadata preservation",
+        "operationId": "pdfoperations.pdftomarkdown",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "The clientId from the generated credentials",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Parameters for PDF to Markdown Operation",
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/PDFToMarkdownInternal"
+                  },
+                  {
+                    "$ref": "#/components/schemas/PDFToMarkdownExternal"
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Request creation for the operation and status uri generated, which can be found in the 'location' header.",
+            "headers": {
+              "location": {
+                "description": "URI to check the status of the operation",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/Error4XX"
+          },
+          "5XX": {
+            "$ref": "#/components/responses/Error5XX"
+          }
+        }
+      }
+    },
+    "/operation/pdftomarkdown/{jobID}/status": {
+      "get": {
+        "tags": [
+          "PDF to Markdown"
+        ],
+        "summary": "Poll the PDF to Markdown job for completion",
+        "operationId": "pdfoperations.pdftomarkdown.jobstatus",
+        "parameters": [
+          {
+            "name": "jobID",
+            "in": "path",
+            "description": "Job ID of the request",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer + Token (<a href=\"https://developer.adobe.com/document-services/docs/overview/pdf-services-api/gettingstarted/#step-1--getting-the-access-token\">Learn more</a> about getting the access token)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "The clientId from the generated credentials",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A response with job information.",
+            "headers": {
+              "content-type": {
+                "description": "The content type of the status call response.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-request-id": {
+                "description": "A unique value to identify this request. If x-request-id is specified in the POST request, this value will be the same as the input.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "enum": ["in progress", "failed", "done"],
+                      "description": "Status of the job"
+                    },
+                    "result": {
+                      "type": "string",
+                      "description": "Base64 encoded Markdown content when status is done"
+                    },
+                    "error": {
+                      "$ref": "#/components/schemas/Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/Error4XX"
+          },
+          "5XX": {
+            "$ref": "#/components/responses/Error5XX"
+          }
+        }
+      }
+    },
     "/token": {
       "post": {
         "tags": [
@@ -8897,6 +9052,53 @@
   },
   "components": {
     "schemas": {
+      "PDFToMarkdownInternal": {
+        "type": "object",
+        "required": ["inputPDF"],
+        "properties": {
+          "inputPDF": {
+            "type": "string",
+            "description": "Base64 encoded PDF file content",
+            "format": "base64"
+          },
+          "options": {
+            "type": "object",
+            "properties": {
+              "tableFormat": {
+                "type": "string",
+                "enum": ["pipe", "grid"],
+                "default": "pipe",
+                "description": "Format for table conversion in Markdown (pipe: | based tables, grid: ASCII grid tables)"
+              },
+              "imageFormat": {
+                "type": "string",
+                "enum": ["embedded", "referenced"],
+                "default": "embedded",
+                "description": "How images should be handled in the Markdown output"
+              },
+              "preserveFormatting": {
+                "type": "boolean",
+                "default": true,
+                "description": "Whether to preserve text formatting (bold, italic, etc.)"
+              }
+            }
+          }
+        }
+      },
+      "PDFToMarkdownExternal": {
+        "type": "object",
+        "required": ["inputPDFUrl"],
+        "properties": {
+          "inputPDFUrl": {
+            "type": "string",
+            "description": "URL of the input PDF file",
+            "format": "uri"
+          },
+          "options": {
+            "$ref": "#/components/schemas/PDFToMarkdownInternal/properties/options"
+          }
+        }
+      },
       "Token": {
         "description": "Params for generating the Access Token.",
         "type": "object",
