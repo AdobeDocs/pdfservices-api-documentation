@@ -127,6 +127,7 @@
     {
       "name": "PDF Operations",
       "tags": [
+        "PDF To Markdown",
         "Combine PDF",
         "Compress PDF",
         "Create PDF",
