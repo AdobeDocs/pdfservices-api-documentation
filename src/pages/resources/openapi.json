@@ -36,7 +36,7 @@
     },
     {
       "name": "Extract PDF",
-      "description": "Extract content from PDF documents and output it in a structured JSON format, along with tables and figures"
+      "description": "Extract content from PDF docsssuments and output it in a structured JSON format, along with tables and figures"
     },
     {
       "name": "PDF To Markdown",
