@@ -123,4 +123,4 @@ The PDF to Markdown API is particularly valuable for:
 
 ## REST API
 
-See our public API Reference for [PDF to Markdown API](../../../apis/#tag/PDF-to-Markdown).
+See our public API Reference for [PDF to Markdown API](../../../apis/#tag/PDF-To-Markdown).
