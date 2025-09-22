@@ -2,7 +2,7 @@
 
 ## How to develop
 
-For local development, simply use:
+For local development, simply use :
 
 ```bash
 $ yarn install
