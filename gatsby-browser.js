@@ -263,13 +263,6 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
         pageHeadTittle = "PDF Services API Extract PDF";
       } else if (
         window.location.pathname.indexOf(
-          "pdf-services-api/howtos/pdf-to-markdown-api/"
-        ) >= 0
-      ) {
-        pageHeadTittle = "PDF Services API PDF to Markdown API";
-      }
-      else if (
-        window.location.pathname.indexOf(
           "pdf-services-api/howtos/pdf-properties/"
         ) >= 0
       ) {
