@@ -34,6 +34,11 @@ module.exports = {
                         path: '../document-services/apis/pdf-services/'
                     },
                     {
+                        title: 'PDF to Markdown',
+                        description: 'Convert PDF documents to Markdown format',
+                        path: '../document-services/apis/pdf-to-markdown/'
+                    },
+                    {
                         title: 'PDF Accessibility Auto-Tag',
                         description: 'Auto-tag PDF content to improve accessibility',
                         path: '../document-services/apis/pdf-accessibility-auto-tag/'
@@ -228,6 +233,10 @@ module.exports = {
                             {
                                 title: 'Extract PDF',
                                 path: 'overview/pdf-services-api/howtos/extract-pdf.md'
+                            },
+                            {
+                                title: 'PDF to Markdown API',
+                                path: 'overview/pdf-services-api/howtos/pdf-to-markdown-api.md'
                             },
                             {
                                 title: 'Get PDF Properties',
@@ -715,6 +724,10 @@ module.exports = {
                                     {
                                         title: 'Extract PDF',
                                         path: 'overview/legacy-documentation/pdf-services-api/howtos/extract-pdf.md'
+                                    },
+                                    {
+                                        title: 'PDF to Markdown API',
+                                        path: 'overview/legacy-documentation/pdf-services-api/howtos/pdf-to-markdown-api.md'
                                     },
                                     {
                                         title: 'Get PDF Properties',

@@ -3,7 +3,7 @@ title: PDF Accessibility Checker | How Tos | PDF Services API | Adobe PDF Servic
 ---
 # PDF Accessibility Checker
 
-The Accessibility Checker API verifies if PDF files meet the machine-verifiable requirements of PDF/UA and WCAG 2.0. It generates a report summarizing the findings of the accessibility checks. Additional human remediation may be required to ensure the reading order of elements is correct and that alternative text tags properly convey the meaning of images. The report contains links to documentation that assists in manually fixing problems using Adobe Acrobat Pro.
+The Accessibility Checker API verifies if PDF files meet the machine-verifiable requirements of PDF/UA and WCAG. It generates a report summarizing the findings of the accessibility checks. Additional human remediation may be required to ensure the reading order of elements is correct and that alternative text tags properly convey the meaning of images. The report contains links to documentation that assists in manually fixing problems using Adobe Acrobat Pro.
 
 ## API Parameters
 
@@ -315,7 +315,6 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/accessib
     "assetID": "urn:aaid:AS:UE1:54cbf87f-d7f5-4918-8e4b-9f1878678e68"
 }'
 ```
-
 
 ## Check accessibility for specified pages
 
