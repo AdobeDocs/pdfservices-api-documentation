@@ -180,6 +180,10 @@ Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
 
+### September 29, 2025; .NET SDK 4.3.1 patch release
+
+- Bug fixes and stability improvements.
+
 ### July 10, 2025; Python SDK 4.2.0 Release
 
 - Added support for [Export PDF Form Data](../pdf-services-api/howtos/export-pdf-form-data/) and [Import PDF Form Data](../pdf-services-api/howtos/import-pdf-form-data/) operations in PDF Services Python SDK, enabling users to extract and populate form Data.
