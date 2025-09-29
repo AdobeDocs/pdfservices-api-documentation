@@ -51,12 +51,12 @@ To complete this guide, you will need:
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="log4net" Version="2.0.12" />
-        <PackageReference Include="Adobe.PDFServicesSDK" Version="3.5.1" />
+        <PackageReference Include="log4net" Version="3.2.0" />
+        <PackageReference Include="Adobe.PDFServicesSDK" Version="4.3.1" />
     </ItemGroup>
 
     <ItemGroup>
