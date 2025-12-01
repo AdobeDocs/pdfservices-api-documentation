@@ -1326,8 +1326,8 @@
         "tags": [
           "PDF To Markdown"
         ],
-        "summary": "Extract content from PDF documents and output it in a markdown format, along with tables and figures",
-        "description": "Extract PDF Content, Tables content and Tables/Figures renditions from a PDF document. Various available options are: \n\n1. Extract figures or images in base64 format",
+        "summary": "Extract content from PDF documents and output it in a markdown format, embedded with tables and figures",
+        "description": "Extract PDF Content, Tables content and Image/Figure renditions from a PDF document. Available option is: \n\n1. Extract figures or images in base64 format",
         "operationId": "pdfoperations.pdftomarkdown",
         "parameters": [
           {
@@ -9309,7 +9309,7 @@
         },
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
-          "getfigures": false,
+          "getFigures": false,
           "notifiers": [
             {
               "type": "CALLBACK",
@@ -9337,23 +9337,17 @@
             "$ref": "#/components/schemas/ExternalStorageInput"
           },
           "output": {
-            "$ref": "#/components/schemas/ExternalStorageOutputZip"
+            "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for Extract PDF processing",
+            "description": "Params for PDF to Markdown processing",
             "type": "object",
             "properties": {
-              "tagEncapsulatedText": {
-                "description": "List of elements from which to extract encapsulated text content.",
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "enum": [
-                    "Figure"
-                  ]
-                },
+              "getFigures": {
+                "description": "Extract figures or images in base64 format",
+                "type": "boolean",
                 "default": [
-                  "Figure"
+                  "false"
                 ]
               }
             }
@@ -9372,7 +9366,7 @@
             "storage": "S3"
           },
           "params":  {
-            "getfigures": true
+            "getFigures": true
           },
           "notifiers": [
             {
