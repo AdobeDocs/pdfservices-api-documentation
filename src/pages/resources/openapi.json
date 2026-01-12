@@ -2095,7 +2095,7 @@
           "Create PDF"
         ],
         "summary": "Create PDF document from non PDF document.",
-        "description": "Create PDF document from Microsoft Office documents (Word, Excel and PowerPoint), Markdown, and Image file formats.",
+        "description": "Create PDF document from Microsoft Office documents (Word, Excel and PowerPoint), Markdown and Image file formats.",
         "operationId": "pdfoperations.createpdf",
         "parameters": [
           {
