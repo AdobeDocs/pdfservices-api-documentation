@@ -235,7 +235,7 @@ module.exports = {
                                 path: 'overview/pdf-services-api/howtos/extract-pdf.md'
                             },
                             {
-                                title: 'PDF to Markdown API',
+                                title: 'PDF to Markdown',
                                 path: 'overview/pdf-services-api/howtos/pdf-to-markdown-api.md'
                             },
                             {
@@ -726,7 +726,7 @@ module.exports = {
                                         path: 'overview/legacy-documentation/pdf-services-api/howtos/extract-pdf.md'
                                     },
                                     {
-                                        title: 'PDF to Markdown API',
+                                        title: 'PDF to Markdown',
                                         path: 'overview/legacy-documentation/pdf-services-api/howtos/pdf-to-markdown-api.md'
                                     },
                                     {
