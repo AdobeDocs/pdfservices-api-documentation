@@ -19,7 +19,7 @@ for purchase options.
 
 Document Transactions for the Operations below resulting in a Document will be counted with the following page limits:
 
-<ul><li>Extract Operation: 1 Document Transaction for up to 5 pages</li><li>Accessibility Auto-Tag Operation: 10 Document Transactions per page</li><li>Electronic Seal Operation: 10 Document Transactions per PDF</li><li>All other Operations: 1 Document Transaction for up to 50 pages</li></ul>
+<ul><li>Extract, PDF To Markdown Operations: 1 Document Transaction for up to 5 pages</li><li>Accessibility Auto-Tag Operation: 10 Document Transactions per page</li><li>Electronic Seal Operation: 10 Document Transactions per PDF</li><li>All other Operations: 1 Document Transaction for up to 50 pages</li></ul>
 
 </div>
 
@@ -30,8 +30,8 @@ Document Transactions for the Operations below resulting in a Document will be c
 | Accessibility Auto-Tag | Tag the content in a PDF to improve accessibility                                                                                                                           | 10 Document Transactions (per page)                 |
 | Electronic Seal        | Applies an organizational seal to a PDF using a digital certificate | 10 Document Transactions (per PDF) |
 | Document Generation    | Create PDF and Word documents from your own authored Microsoft Word templates and JSON data                                                                                                                                    | Document Transaction                 |
-| Extract                | Extracts PDF Elements such as text, images, tables in a structured format from a PDF.                                                                                                                                          | Document Transaction (per 5 pages) |
-| Create                 | Create PDF from static/dynamic HTML, HTML(with inline CSS), HTML(specified via URL), MS Office and other supported file types. File types: BMP, DOC, DOCX, GIF, JPEG, JPG, PNG, PPT, PPTX, RTF, TIF, TIFF, TXT, XLS, XLSX, ZIP | Document Transaction                 |
+| Extract, PDF To Markdown | Extracts PDF Elements such as text, images, tables in a structured format from a PDF.                                                                                                                                          | Document Transaction (per 5 pages) |
+| Create                 | Create PDF from static/dynamic HTML, HTML(with inline CSS), HTML(specified via URL), MS Office and other supported file types. File types: BMP, DOC, DOCX, GIF, JPEG, JPG, MD, PNG, PPT, PPTX, RTF, TIF, TIFF, TXT, XLS, XLSX, ZIP | Document Transaction                 |
 | Export                 | Convert PDF to MS Office and other supported file types. File types: DOC, DOCX, JPEG, PNG, PPTX, RTF, XLSX                                                                                                                     | Document Transaction                 |
 | Combine                | Combine multiple PDFs or pages in PDFs to a single PDF                                                                                                                                                                         | Document Transaction                 |
 | OCR                    | Convert scanned PDF to editable and searchable PDF                                                                                                                                                                             | Document Transaction                 |
@@ -58,7 +58,7 @@ Document Transactions for the Operations below resulting in a Document will be c
 | Document Generation                            | Generating a fifteen-page PDF Document from a two-page Microsoft Word template and 1MB JSON file consumes one Document Transaction.                                                                              | 1 (Operation: Document Generation) x 1 (Document) = 1 Document Transaction                                                                      |
 | Accessibility Auto-Tag                         | Auto-tagging a five-page PDF consumes 50 Document Transactions.   | 1 (Operation: Auto-Tag) X 1 (5-page document) = 50 Document Transactions                                                                      |
 | Electronic Seal                                | Sealing one PDF Document consumes 10 Document Transactions.   | 1 (Operation: Electronic Sealing) X 1 (document) = 10 Document Transactions                                                                      |
-| Extract PDF                                    | Extracting PDF Elements from an 8-page PDF Document consumes two Document Transactions.                                                                                                                          | 1 (Operation: Extract PDF) x 2 (5-page document) = 2 Document Transactions                                                                      |
+| Extract PDF, PDF To Markdown                   | Extracting PDF Elements from an 8-page PDF Document consumes two Document Transactions.                                                                                                                          | 1 (Operation: Extract PDF) x 2 (5-page document) = 2 Document Transactions                                                                      |
 | Create, Export                                 | Converting ten single page Word Documents into ten PDF Documents consumes ten Document Transactions.                                                                                                            | 1 (Operation: create) x 10 (documents) = 10 Document Transactions                                                                               |
 | Combine                                        | Combining six different PDF Documents into a single 250-page PDF Document consumes five Document Transactions.                                                                                                  | 1 (Operation: combine) x 5 (50-page documents) = 5 Document Transactions                                                                        |
 | OCR                                            | Running OCR on a single 50-page document consumes one Document Transaction.                                                                                                                                      | 1 (Operation: OCR) x 1 (50-page document) = 1 Document Transaction                                                                              |
@@ -79,8 +79,9 @@ There are several usage limits that apply to PDF Services API and its underlying
 | Document limit (Combine, Insert, Replace, Split)                    | 20          |
 | File size (for all documents)**                                     | 100MB       |
 | Output images per Document Transaction (Export)                     | 50          |
-| Page limit (Extract and Accessibility Auto-Tag)*                    | 400         |
-| Page limit (Scanned - Extract and Accessibility Auto-Tag)*          | 150         |
+| Page limit (Extract and PDF To Markdown)*                           | 400         |
+| Page limit (Scanned - Extract and PDF To Markdown)*                 | 150         |
+| Page limit (Accessibility Auto-Tag)*                                | 200         |
 | JSON file size (Document Generation,HTML to PDF and Import PDFForm) | 10MB        |
 | Maximum Requests Per Minute                                         | 100 RPM** (Enterprise), <br /> 25 RPM (Free Tier)|
 
