@@ -235,10 +235,6 @@ module.exports = {
                                 path: 'overview/pdf-services-api/howtos/extract-pdf.md'
                             },
                             {
-                                title: 'PDF to Markdown',
-                                path: 'overview/pdf-services-api/howtos/pdf-to-markdown-api.md'
-                            },
-                            {
                                 title: 'Get PDF Properties',
                                 path: 'overview/pdf-services-api/howtos/pdf-properties.md'
                             },
@@ -269,6 +265,10 @@ module.exports = {
                             {
                                 title: 'PDF Electronic Seal',
                                 path: 'overview/pdf-services-api/howtos/electronic-seal-api.md'
+                            },
+                            {
+                                title: 'PDF To Markdown',
+                                path: 'overview/pdf-services-api/howtos/pdf-to-markdown-api.md'
                             },
                             {
                                 title: 'PDF Watermark',
