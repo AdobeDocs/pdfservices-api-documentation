@@ -235,6 +235,10 @@ module.exports = {
                                 path: 'overview/pdf-services-api/howtos/extract-pdf.md'
                             },
                             {
+                                title: 'PDF to Markdown API',
+                                path: 'overview/pdf-services-api/howtos/pdf-to-markdown-api.md'
+                            },
+                            {
                                 title: 'Get PDF Properties',
                                 path: 'overview/pdf-services-api/howtos/pdf-properties.md'
                             },
