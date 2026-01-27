@@ -395,28 +395,6 @@ module.exports = {
                                         path: 'overview/pdf-extract-api/quickstarts/extract-pdf/python/index.md'
                                     }
                                 ]
-                            },
-                            {
-                                title: 'PDF To Markdown',
-                                path: 'overview/pdf-extract-api/quickstarts/pdf-to-markdown/index.md',
-                                pages: [
-                                    {
-                                        title:'Node.js',
-                                        path: 'overview/pdf-extract-api/quickstarts/pdf-to-markdown/nodejs/index.md'
-                                    },
-                                    {
-                                        title:'Java',
-                                        path: 'overview/pdf-extract-api/quickstarts/pdf-to-markdown/java/index.md'
-                                    },
-                                    {
-                                        title:'.NET',
-                                        path: 'overview/pdf-extract-api/quickstarts/pdf-to-markdown/dotnet/index.md'
-                                    },
-                                    {
-                                        title:'Python',
-                                        path: 'overview/pdf-extract-api/quickstarts/pdf-to-markdown/python/index.md'
-                                    }
-                                ]
                             }
                         ]
                     },
