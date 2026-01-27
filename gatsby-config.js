@@ -271,6 +271,10 @@ module.exports = {
                                 path: 'overview/pdf-services-api/howtos/electronic-seal-api.md'
                             },
                             {
+                                title: 'PDF To Markdown',
+                                path: 'overview/pdf-services-api/howtos/pdf-to-markdown-api.md'
+                            },
+                            {
                                 title: 'PDF Watermark',
                                 path: 'overview/pdf-services-api/howtos/pdf-watermark-api.md'
                             },
@@ -375,20 +379,26 @@ module.exports = {
                         path: 'overview/pdf-extract-api/quickstarts',
                         pages: [
                             {
-                                title:'Node.js',
-                                path: 'overview/pdf-extract-api/quickstarts/nodejs/index.md'
-                            },
-                            {
-                                title:'Java',
-                                path: 'overview/pdf-extract-api/quickstarts/java/index.md'
-                            },
-                            {
-                                title:'.NET',
-                                path: 'overview/pdf-extract-api/quickstarts/dotnet/index.md'
-                            },
-                            {
-                                title:'Python',
-                                path: 'overview/pdf-extract-api/quickstarts/python/index.md'
+                                title: 'Extract PDF',
+                                path: 'overview/pdf-extract-api/quickstarts/extract-pdf/index.md',
+                                pages: [
+                                    {
+                                        title:'Node.js',
+                                        path: 'overview/pdf-extract-api/quickstarts/extract-pdf/nodejs/index.md'
+                                    },
+                                    {
+                                        title:'Java',
+                                        path: 'overview/pdf-extract-api/quickstarts/extract-pdf/java/index.md'
+                                    },
+                                    {
+                                        title:'.NET',
+                                        path: 'overview/pdf-extract-api/quickstarts/extract-pdf/dotnet/index.md'
+                                    },
+                                    {
+                                        title:'Python',
+                                        path: 'overview/pdf-extract-api/quickstarts/extract-pdf/python/index.md'
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -400,6 +410,10 @@ module.exports = {
                             {
                                 title: 'PDF Extract API',
                                 path: 'overview/pdf-extract-api/howtos/extract-api.md'
+                            },
+                            {
+                                title: 'PDF to Markdown API',
+                                path: 'overview/pdf-extract-api/howtos/pdf-to-markdown-api.md'
                             }
                         ]
                     }
@@ -726,7 +740,7 @@ module.exports = {
                                         path: 'overview/legacy-documentation/pdf-services-api/howtos/extract-pdf.md'
                                     },
                                     {
-                                        title: 'PDF to Markdown API',
+                                        title: 'PDF to Markdown',
                                         path: 'overview/legacy-documentation/pdf-services-api/howtos/pdf-to-markdown-api.md'
                                     },
                                     {

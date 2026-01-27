@@ -138,8 +138,8 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 
 ```javascript
 <ItemGroup>
-    <PackageReference Include="log4net" Version="2.0.17" />
-    <PackageReference Include="Adobe.PDFServicesSDK" Version="4.2.0" />
+    <PackageReference Include="log4net" Version="3.2.0" />
+    <PackageReference Include="Adobe.PDFServicesSDK" Version="4.3.1" />
 </ItemGroup> 
 ```
 
@@ -179,6 +179,10 @@ Minor and Patch releases are backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
+
+### September 29, 2025; .NET SDK 4.3.1 patch release
+
+- Bug fixes and stability improvements.
 
 ### July 10, 2025; Python SDK 4.2.0 Release
 

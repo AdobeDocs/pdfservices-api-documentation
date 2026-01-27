@@ -55,8 +55,8 @@ To complete this guide, you will need:
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Adobe.PDFServicesSDK" Version="4.2.0" />
-        <PackageReference Include="log4net" Version="2.0.17" />
+        <PackageReference Include="Adobe.PDFServicesSDK" Version="4.3.1" />
+        <PackageReference Include="log4net" Version="3.2.0" />
     </ItemGroup>
 
     <ItemGroup>

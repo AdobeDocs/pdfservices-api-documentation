@@ -121,6 +121,16 @@ JSON representation of the input data:
 
 - [<ol\> & <ul\> (ordered lists and unordered lists)](/overview/document-generation-api/templatetags/#insert-list-using-ul-and-ol-html-elements)
 
+- <sup\> (superscript)
+
+- <sub\> (subscript)
+
+- <h1\>, <h2\>, <h3\>, <h4\>, <h5\>, <h6\> (headings)
+
+- <text-align\> (left, center, right, justify)
+
+- <margin-left\> (units: pt, px, em, cm, mm, in)
+
 JSON representation of the input data:
 
 ```json

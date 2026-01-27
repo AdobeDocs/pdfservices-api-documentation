@@ -4,9 +4,6 @@ title: Quickstarts | PDF Extract API | Adobe PDF Services
 
 # Quickstarts
 
-Want to quickly test out PDF Extract API? The following quickstarts will help you run your first successful operation and are tailored to our supported SDKs:
+Want to quickly test out Extract PDF API and PDF To Markdown API? Choose your operation to get started:
 
-* [Node.js](nodejs/)
-* [Java](java/)
-* [.NET](dotnet)
-* [Python](python)
+* [Extract PDF](extract-pdf/)
