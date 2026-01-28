@@ -1,11 +1,11 @@
 ---
 title: PDF to Markdown | Adobe PDF Services
-description: Learn about the PDF to Markdown service that converts PDF documents into well-formatted llm-friendly Markdown text.
+description: Learn about the PDF to Markdown service that converts PDF documents into well-formatted LLM-friendly Markdown text.
 ---
 
 # PDF to Markdown
 
-The PDF to Markdown API (included with the PDF Services API) is a cloud-based web service that automatically converts PDF documents – native or scanned – into well-formatted llm-friendly Markdown text. This service preserves the document's structure and formatting while converting it into a format that's widely used for LLM flows, content authoring and documentation.
+The PDF to Markdown API (included with the PDF Services API) is a cloud-based web service that automatically converts PDF documents – native or scanned – into well-formatted LLM-friendly Markdown text. This service preserves the document's structure and formatting while converting it into a format that's widely used for LLM flows, content authoring and documentation.
 
 ## Structured Information Output Format
 
@@ -45,7 +45,7 @@ The API processes various content types as follows:
 - Provided as base64-embedded images in the Markdown output
 - Referenced correctly in the Markdown output
 - Original quality preserved
-- Proper alt text and captions maintained
+- Proper alt-text and captions maintained
 
 ##### Tables
 
@@ -60,8 +60,8 @@ The API recognizes and converts the following structural elements:
 
 | Category  | Element Type      | Description                                               |
 | --------- | ----------------- | --------------------------------------------------------- |
-| Aside     | Aside             | Content which is not part of regular content flow         |
-| Figure    | Figure            | Non-reflowable constructs like graphs, images, flowcharts |
+| Aside     | Aside             | Content that is not part of the regular content flow      |
+| Figure    | Figure            | Non-reflowable constructs such as graphs, images, and flowcharts |
 | Footnote  | Footnote          | Footnote                                                  |
 | Headings  | H, H1, H2, etc    | Heading levels                                            |
 | List      | L, Li, Lbl, Lbody | List and list item elements                               |
@@ -86,30 +86,22 @@ The reading order in the output Markdown maintains:
 
 The PDF to Markdown API is particularly valuable for:
 
-- LLM-friendly content ingestion and prompt creation
-- Training/Fine-tuning LLM with PDFs
-- Content migration from PDF to documentation platforms
-- Legacy document conversion
-- Content repurposing for modern documentation systems
-- Integration with Markdown-based workflows
-- Automated document processing pipelines
-- Searchable internal knowledge repositories
+- **LLM and RAG ingestion**: Convert PDFs to Markdown for chunking, embeddings, and retrieval-augmented generation (RAG).
+- **Prompt and context packaging**: Produce Markdown that is easy to paste, structure, and cite in prompts and agent workflows.
+- **Training data preparation**: Create LLM fine-tuning datasets from PDF content after review, cleanup, and labeling.
+- **Doc-as-code workflows**: Bring PDF content into Git-based review, versioning, diffing, and static-site generators.
+- **Knowledge base publishing**: Migrate PDFs into documentation platforms and internal wikis as clean, editable Markdown.
+- **Legacy and archive modernization**: Convert historical PDFs so they become searchable, editable, and maintainable.
+- **Automated document processing**: Standardize PDF-to-text conversion inside ETL and document-processing pipelines.
+- **Enterprise search and indexing**: Feed converted Markdown into internal search systems and knowledge repositories.
+- **Compliance and audit readiness**: Make PDF policies, SOPs, and manuals searchable and easier to review for changes.
+- **Content QA and change tracking**: Compare converted Markdown across document versions to detect updates and regressions.
+- **Analytics and classification**: Use Markdown output for topic modeling, tagging, deduplication, and routing workflows.
+- **Localization workflows**: Convert to Markdown as a starting point for translation and multi-language documentation.
 
 ## API Limitations
 
-### File Constraints
-
-- **File Size**: Maximum of 100MB per file
-- **Page Count**:
-  - Non-scanned PDFs: Up to 400 pages
-  - Scanned PDFs: Up to 150 pages
-- **Page Dimensions**: Between 6" and 17.5" in either dimension
-
-### Processing Limits
-
-- **Rate Limits**: Maximum 25 requests per minute
-- **Language Support**: Optimized for English, supports other Latin-based languages
-- **OCR Quality**: Dependent on scan quality (minimum 200 DPI recommended)
+For File Constraints and Processing Limits, see [Licensing and Usage Limits](../dcserviceslicensing/).
 
 ### Document Requirements
 
