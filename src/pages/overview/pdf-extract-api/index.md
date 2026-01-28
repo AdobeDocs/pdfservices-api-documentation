@@ -6,7 +6,7 @@ title: PDF Extract API | Adobe PDF Services
 
 **What is Extract?**
 
-The PDF Extract API (included with the PDF Services API) is a cloud-based web service that uses Adobe's Sensei AI technology to automatically extract content and structural information from PDF documents – native or scanned. The API supports two output formats:
+The PDF Extract API suite (included with the PDF Services API) is a cloud-based web service that uses Adobe's Sensei AI technology to automatically extract content and structural information from PDF documents – native or scanned. Two output formats are available:
 
 - **Structured JSON output** ([Extract PDF](./howtos/extract-api.md)): Extracts content and structural information in JSON format
 - **Markdown output** ([PDF to Markdown](./howtos/pdf-to-markdown-api.md)): Converts PDF content to well-formatted, LLM-friendly Markdown text
