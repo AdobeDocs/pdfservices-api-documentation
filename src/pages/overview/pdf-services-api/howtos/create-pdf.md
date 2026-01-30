@@ -3,7 +3,7 @@ title: Create PDF | How Tos | PDF Services API | Adobe PDF Services
 ---
 # Create PDF
 
-Create PDFs from a variety of formats, including static and dynamic HTML; Microsoft Word, PowerPoint, and Excel; as well as text, image, Zip, and URL. Support for HTML to PDF, DOC to PDF, DOCX to PDF, PPT to PDF, PPTX to PDF, XLS to PDF, XLSX to PDF, TXT to PDF, RTF to PDF, BMP to PDF, JPEG to PDF, GIF to PDF, TIFF to PDF, PNG to PDF
+Create PDFs from a variety of formats, including static and dynamic HTML; Microsoft Word, PowerPoint, and Excel; as well as text, image, Zip, and URL. Support for HTML to PDF, DOC to PDF, DOCX to PDF, PPT to PDF, PPTX to PDF, XLS to PDF, XLSX to PDF, TXT to PDF, MD to PDF, RTF to PDF, BMP to PDF, JPEG to PDF, GIF to PDF, TIFF to PDF, PNG to PDF
 
 ## REST API
 
@@ -24,7 +24,7 @@ following formats:
 -   Microsoft Word (DOC, DOCX)
 -   Microsoft PowerPoint (PPT, PPTX)
 -   Microsoft Excel (XLS, XLSX)
--   Text (TXT, RTF)
+-   Text (TXT, RTF, MARKDOWN)
 -   Image (BMP, JPEG, GIF, TIFF, PNG)
 
 <InlineAlert slots="text"/>

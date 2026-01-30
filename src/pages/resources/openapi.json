@@ -2095,7 +2095,7 @@
           "Create PDF"
         ],
         "summary": "Create PDF document from non PDF document.",
-        "description": "Create PDF document from Microsoft Office documents (Word, Excel and PowerPoint) and Image file formats.",
+        "description": "Create PDF document from Microsoft Office documents (Word, Excel and PowerPoint), Markdown and Image file formats.",
         "operationId": "pdfoperations.createpdf",
         "parameters": [
           {
@@ -10016,7 +10016,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID. Supported file formats are bmp, doc, docx, gif, jpeg, jpg, png, ppt, pptx, rtf, tif, tiff, txt, xls and xlsx. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. Supported file formats are bmp, doc, docx, gif, jpeg, jpg, md, png, ppt, pptx, rtf, tif, tiff, txt, xls and xlsx. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "documentLanguage": {
@@ -10609,6 +10609,11 @@
             "type": "boolean",
             "default": false
           },
+          "includeRenderedHtml": {
+            "description": "When true, returns a ZIP containing both the generated PDF and the rendered HTML content.",
+            "type": "boolean",
+            "default": false
+          },
           "pageLayout": {
             "description": "Parameters for specifying the layout of the output page.",
             "type": "object",
@@ -10642,6 +10647,7 @@
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
           "json": "{}",
           "includeHeaderFooter": true,
+          "includeRenderedHtml": true,
           "pageLayout": {
             "pageWidth": 11,
             "pageHeight": 8.5
@@ -10687,6 +10693,11 @@
                 "type": "boolean",
                 "default": false
               },
+          "includeRenderedHtml": {
+            "description": "When true, returns a ZIP containing both the generated PDF and the rendered HTML content.",
+            "type": "boolean",
+            "default": false
+          },
               "pageLayout": {
                 "description": "Parameters for specifying the layout of the output page.",
                 "type": "object",
@@ -10730,6 +10741,7 @@
           "params": {
             "json": "{\"k1\":\"v1\",\"k2\": \"v2\"}",
             "includeHeaderFooter": true,
+            "includeRenderedHtml": true,
             "pageLayout": {
               "pageWidth": 8.5,
               "pageHeight": 11
