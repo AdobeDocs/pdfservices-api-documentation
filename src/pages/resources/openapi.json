@@ -40,7 +40,7 @@
     },
     {
       "name": "PDF To Markdown",
-      "description": "Convert PDF documents to Markdown format"
+      "description": "Extract content from PDF documents and output it in a well-formatted LLM-friendly Markdown text, along with tables and figures"
     },
     {
       "name": "Html to PDF",
@@ -9289,7 +9289,7 @@
     "schemas": {
       "PDFToMarkdownInternal": {
         "title": "Internal",
-        "description": "Params for Extract PDF Operation",
+        "description": "Params for PDF to Markdown Operation",
         "type": "object",
         "required": [
           "assetID"
@@ -9310,7 +9310,7 @@
         },
         "example": {
           "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718",
-          "getfigures": false,
+          "getFigures": false,
           "notifiers": [
             {
               "type": "CALLBACK",
@@ -9328,7 +9328,7 @@
       },
       "PDFToMarkdownExternal": {
         "title": "External",
-        "description": "Params for Extract PDF Operation using external storage.",
+        "description": "Params for PDF to Markdown Operation using external storage.",
         "type": "object",
         "required": [
           "input"
@@ -9338,24 +9338,16 @@
             "$ref": "#/components/schemas/ExternalStorageInput"
           },
           "output": {
-            "$ref": "#/components/schemas/ExternalStorageOutputZip"
+            "$ref": "#/components/schemas/ExternalStorageOutput"
           },
           "params": {
-            "description": "Params for Extract PDF processing",
+            "description": "Params for PDF to Markdown processing",
             "type": "object",
             "properties": {
-              "tagEncapsulatedText": {
-                "description": "List of elements from which to extract encapsulated text content.",
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "enum": [
-                    "Figure"
-                  ]
-                },
-                "default": [
-                  "Figure"
-                ]
+              "getFigures": {
+                "description": "Extract figures or images in base64 format",
+                "type": "boolean",
+                "default": "false"
               }
             }
           },
@@ -9373,7 +9365,7 @@
             "storage": "S3"
           },
           "params":  {
-            "getfigures": true
+            "getFigures": true
           },
           "notifiers": [
             {
@@ -14722,9 +14714,9 @@
               "done"
             ]
           },
-          "content": {
+          "asset": {
             "type": "object",
-            "description": "Asset of json file containig extracted content of pdf file. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "Asset of markdown file containing converted content of pdf file. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "properties": {
               "metadata": {
                 "type": "object",
@@ -14738,38 +14730,7 @@
                     "description": "The media type of the Resource.",
                     "type": "string",
                     "enum": [
-                      "application/json"
-                    ]
-                  }
-                }
-              },
-              "assetID": {
-                "description": "An asset ID identifying an asset that is globally unique and never reused.",
-                "type": "string"
-              },
-              "downloadUri": {
-                "description": "The URL used to download the Resource directly to the cloud provider.",
-                "type": "string"
-              }
-            }
-          },
-          "resource": {
-            "type": "object",
-            "description": "Asset of zip file containg generated resources from extract operation. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
-            "properties": {
-              "metadata": {
-                "type": "object",
-                "description": "metadata details of output asset.",
-                "properties": {
-                  "size": {
-                    "description": "The size of the Resource in bytes. This value helps in making range requests.",
-                    "type": "integer"
-                  },
-                  "type": {
-                    "description": "The media type of the Resource.",
-                    "type": "string",
-                    "enum": [
-                      "application/json"
+                      "text/markdown"
                     ]
                   }
                 }
@@ -14787,21 +14748,13 @@
         },
         "example": {
           "status": "done",
-          "content": {
+          "asset": {
             "metadata": {
-              "type": "application/json",
+              "type": "text/markdown",
               "size": 200791
             },
             "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
             "assetID": "urn:aaid:AS:UE1:23c30ee0-2c4d-46d6-87f2-087832fca718"
-          },
-          "resource": {
-            "metadata": {
-              "type": "application/zip",
-              "size": 200791
-            },
-            "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
-            "assetID": "urn:aaid:AS:UE1:23c30ee0-32s3-46d6-87f2-087832fca718"
           }
         }
       },
@@ -14828,15 +14781,15 @@
               "done"
             ]
           },
-          "resource": {
-            "$ref": "#/components/schemas/responseAssetZip"
+          "asset": {
+            "$ref": "#/components/schemas/responseAsset"
           }
         },
         "example": {
           "status": "done",
-          "resource": {
+          "asset": {
             "metadata": {
-              "type": "application/pdf",
+              "type": "text/markdown",
               "size": 200791
             },
             "downloadUri": "https://dcplatformstorageservice-dev-us-east-1.s3-accelerate.amazonaws.com/6bb12fd8-3233-4340-916b-4835917857be?X-Amz-Security-Token=FwoGZXIvYXdzEE0aDOLg7PFwVB1bjEMxQCLTAe3pjf%2Fgl2Pj%2FcjOaY%2BHfduju9SXTp1Pn8C4GapIXm%2F8tuR4cGPYGC0goU21qZxCq9R%2F8z2bOmB2EL%2BZrhbPLbaNcpzf5Vud%2B3Bmn61MEJiBdU%2BhZqasX5YhVxdnzhfpl5KfKeq2kwROVMqJcyHGdxw5h0%2Bi0sD2I8sqkbPmnBi0WOtYNwz7TQq42oe8W5KYHpq6WMya9OQgx0u7qg0inYwBnQu5UQ9NJJQY2MSU11IuZ0uE%2B%2FNAPuq3VfEIn3txK%2FFfIxGz9%2BInehhHroKjBFULzy0olY2rlwYyLQDwHHr2eyuy%2BaoGVaq%2BSUNH8T0OKIicbbZfQ5wjF0hK2FzVXwfebtDG4qq%2BiA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220803T190422Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIAU5PA7W47AH3PA2JV%2F20220803%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5d8c3f421c68c009b4471919a319ba460495c72afe51674d23266bc124fe9a56",
