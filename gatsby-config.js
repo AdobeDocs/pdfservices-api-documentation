@@ -34,11 +34,6 @@ module.exports = {
                         path: '../document-services/apis/pdf-services/'
                     },
                     {
-                        title: 'PDF to Markdown',
-                        description: 'Convert PDF documents to Markdown format',
-                        path: '../document-services/apis/pdf-to-markdown/'
-                    },
-                    {
                         title: 'PDF Accessibility Auto-Tag',
                         description: 'Auto-tag PDF content to improve accessibility',
                         path: '../document-services/apis/pdf-accessibility-auto-tag/'
