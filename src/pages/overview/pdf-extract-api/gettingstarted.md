@@ -70,9 +70,21 @@ To create a job for the operation, please use the  `assetID` obtained in Step 2 
 
 For creating the job, please refer to the corresponding API spec for the particular [PDF Operation](../../../apis).
 
+**Choose your operation endpoint:**
+
+- **For JSON output (Extract PDF):** Use the `/operation/extractpdf` endpoint
+- **For Markdown output (PDF to Markdown):** Use the `/operation/pdftomarkdown` endpoint
+
+[Extract PDF API Reference](../../../apis/#operation/pdfoperations.extractpdf) | [PDF to Markdown API Reference](../../../apis/#operation/pdfoperations.pdftomarkdown)
+
 ## Step 4 : Fetching the status
 
-Once the job is successfully created, you need to poll the at the `location` returned in response header of Step 3 by using the following API
+Once the job is successfully created, you need to poll the at the `location` returned in response header of Step 3 by using the following API.
+
+**Status polling endpoints:**
+
+- **For Extract PDF (JSON):** `/operation/extractpdf/{jobId}/status`
+- **For PDF to Markdown:** `/operation/pdftomarkdown/{jobId}/status`
 
 You can read more about the API in detail [here](../../../apis/#operation/pdfoperations.compresspdf.jobstatus).
 
