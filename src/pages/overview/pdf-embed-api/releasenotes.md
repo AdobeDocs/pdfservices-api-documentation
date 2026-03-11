@@ -8,6 +8,12 @@ the changes below for each release.
 
 ## Change history
 
+### March 9, 2026
+| Change | Description                                                            |
+| ------ | ---------------------------------------------------------------------- |
+| Bug fix | Fixed console error "Uncaught (in promise) Error: No callback registered by viewer for GET_FEATURE_FLAG".  |
+| Bug fix | Fixed console error "Uncaught TypeError: Cannot read properties of undefined (reading 'documentViewUpdateEventData')".             |
+
 ### June 11, 2025
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
