@@ -567,11 +567,11 @@ module.exports = {
                             },
                             {
                                 title: 'UI Customization',
-                                path: 'overview/pdf-embed-api/howtos_ui.md'
+                                path: 'overview/pdf-embed-api/howtos-ui.md'
                             },
                             {
                                 title: 'Comments and Markup',
-                                path: 'overview/pdf-embed-api/howtos_comments.md'
+                                path: 'overview/pdf-embed-api/howtos-comments.md'
                             },
                             {
                                 title: 'Analytics',

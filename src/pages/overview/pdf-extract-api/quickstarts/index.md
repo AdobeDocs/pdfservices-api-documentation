@@ -6,4 +6,4 @@ title: Quickstarts | PDF Extract API | Adobe PDF Services
 
 Want to quickly test out Extract PDF API and PDF To Markdown API? Choose your operation to get started:
 
-* [Extract PDF](extract-pdf/)
+* [Extract PDF](extract-pdf/index.md)

@@ -16,7 +16,7 @@ As of April 2023, the legacy viewer is no longer available. All requests to it w
 
 ### Full window embed mode in legacy viewer
 
-![Full window embed mode in legacy viewer](../images/fullwindow_legacy.png)
+![Full window embed mode in legacy viewer](../images/fullwindow-legacy.png)
 
 ### Full window embed mode in modern viewer
 
@@ -45,7 +45,7 @@ As of April 2023, the legacy viewer is no longer available. All requests to it w
 
 ### Sized container embed mode in legacy viewer
 
-![Sized container embed mode in legacy viewer](../images/sized_legacy.png)
+![Sized container embed mode in legacy viewer](../images/sized-legacy.png)
 
 ### Sized container embed mode in modern viewer
 
@@ -63,29 +63,29 @@ As of April 2023, the legacy viewer is no longer available. All requests to it w
 
 *Sized container embed mode*
 
-![Sized container embed mode in modern viewer](../images/sized_new.png)
+![Sized container embed mode in modern viewer](../images/sized-new.png)
 
 <br/>
 
 *Sized container in full screen mode*
 
-![Sized container embed mode in modern viewer](../images/sized_full.png)
+![Sized container embed mode in modern viewer](../images/sized-full.png)
 
 ## In-line embed mode
 
 ### In-line embed mode in legacy viewer
 
-![In-line embed mode in legacy viewer](../images/inline_legacy.png)
+![In-line embed mode in legacy viewer](../images/inline-legacy.png)
 
 ### In-line embed mode in modern viewer
 
-![In-line embed mode in modern viewer](../images/inline_search.png)
+![In-line embed mode in modern viewer](../images/inline-search.png)
 
 ## Lightbox embed mode
 
 ### Lightbox embed mode in legacy viewer
 
-![Lightbox embed mode in legacy viewer](../images/lightbox_legacy.png)
+![Lightbox embed mode in legacy viewer](../images/lightbox-legacy.png)
 
 ### Lightbox embed mode in modern viewer
 

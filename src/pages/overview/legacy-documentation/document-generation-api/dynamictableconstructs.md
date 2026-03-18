@@ -2,13 +2,13 @@
 title: Dynamic Table Constructs | Document Generation API | Adobe PDF Services
 ---
 # Dynamic Table Constructs
-Add dynamic behaviour to a table using [dynamic table columns constructs](../document-generation-api/dynamictableconstructs.md#dynamic-table-columns) to discard column or set of columns at runtime.
+Add dynamic behaviour to a table using [dynamic table columns constructs](dynamictableconstructs.md#dynamic-table-columns) to discard column or set of columns at runtime.
 
 ## Dynamic table columns
 Discard a column or set of columns in a table from the final generated document as follows :
 
-- [Discard column if empty](../document-generation-api/dynamictableconstructs.md#discard-column-if-empty).
-- [Discard column if condition evaluates to true](../document-generation-api/dynamictableconstructs.md#discard-column-if-condition-evaluates-to-true).
+- [Discard column if empty](dynamictableconstructs.md#discard-column-if-empty).
+- [Discard column if condition evaluates to true](dynamictableconstructs.md#discard-column-if-condition-evaluates-to-true).
 
 ### Discard column if empty
 Column in a table can be discarded if every element of an array in the input json is empty or null.
@@ -79,17 +79,17 @@ JSON representation of the input data:
   ]
 }
 ```
-![Adding discard-if-empty construct with boolean false/true along with the template tag to activate discard if empty feature for the corresponding column](../images/discard_column_if_empty.png)
+![Adding discard-if-empty construct with boolean false/true along with the template tag to activate discard if empty feature for the corresponding column](../images/discard-column-if-empty.png)
 
 - {{Project.Notes:**discard_if_empty(true)**}} tag lets the engine discard the particular column if every element of an array in the input json is either empty or null.
 
 **Note**: The row above the authored row will be considered as a header row. Cell from the header row will be discarded along with discarded column.
 
-![Header Row of Development Milestones table](../images/header_row1.png)
+![Header Row of Development Milestones table](../images/header-row1.png)
 
-![Header Row of Conversion tracking table](../images/header_row2.png)
+![Header Row of Conversion tracking table](../images/header-row2.png)
 
-![Development Milestones table without header row](../images/without_header_row.png)
+![Development Milestones table without header row](../images/without-header-row.png)
 
 ### Discard column if condition evaluates to true
 Column in the table can be discarded If condition provided in the discard-if(expr(**condition**)) evaluates to true. Add discard-if(expr(**condition**)) construct along with the template tag to activate discard if feature for the corresponding column.
@@ -128,7 +128,7 @@ JSON representation of the input data:
 }
 ```
 
-![Added discard-if(expr(**condition**)) construct along with the template tag to activate discard if feature for the corresponding column](../images/discard_if_condition_true.png)
+![Added discard-if(expr(**condition**)) construct along with the template tag to activate discard if feature for the corresponding column](../images/discard-if-condition-true.png)
 
 - {{Conversion.Rate:**discard-if(expr($sum(Conversion.Rate)!= 100))**}}% tag lets the engine discard the particular column if condition provided in the **expr** construct evaluates to true.
 

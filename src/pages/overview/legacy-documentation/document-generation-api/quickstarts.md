@@ -6,7 +6,7 @@ This quickstart will guide you through the necessary steps to setup and make a r
 Use Document Generation API to merge JSON data into Word based document
 templates and produce high fidelity PDF and Word documents from any
 application. <br/>
-To learn more about the Document Generation, read [Overview](../document-generation-api/index.md)
+To learn more about the Document Generation, read [Overview](index.md)
 
 
 ## Live Demo
@@ -21,7 +21,7 @@ This section details out step by step instructions to get started with Document 
 
 Authoring a document template involves adding the template tags to your Word document as illustrated below:
 
-![Document template with heading and template tags](../images/design_document_templates.gif)
+![Document template with heading and template tags](../images/design-document-templates.gif)
 
 <br/>
 
@@ -30,7 +30,7 @@ The quickest way to author a Word-based document template is by using [Adobe Doc
 
 <InlineAlert slots="text"/>
 
-Learn more about our [Word Add-in](../document-generation-api/wordaddin.md#add-in-demo).
+Learn more about our [Word Add-in](wordaddin.md#add-in-demo).
 
 ** Manually ** <br/>
 Alternatively, you can create a document template by manually inserting the template tags into a Word document.
@@ -38,7 +38,7 @@ Here are some prebuilt [sample document templates](https://www.adobe.com/go/dcdo
 
 <InlineAlert slots="text"/>
 
-Learn more about [Template Tags](../document-generation-api/templatetags.md).
+Learn more about [Template Tags](templatetags.md).
 
 ### 2. Prepare your JSON data 
 
@@ -66,11 +66,11 @@ You can use our cloud based [REST API](https://www.adobe.com/go/dcsdk_APIdocs#po
 Before you begin with the REST API, refer [How To Get Started](https://documentcloud.adobe.com/document-services/index.html#how-to-get-started-) to learn more about generating the required credentials and invoking the APIs.
 
 **3.2. PDF Services SDK** <br/>
-Alternatively, you can use our offering through [PDF Services SDK](../pdf-services-api#sdk).
+Alternatively, you can use our offering through [PDF Services SDK](../pdf-services-api/index.md#sdk).
 
 <InlineAlert slots="text"/>
 
-To get started with PDF Services SDK, refer [Quickstarts](../pdf-services-api).
+To get started with PDF Services SDK, refer [Quickstarts](../pdf-services-api/index.md).
 
 <br/>
 
@@ -324,10 +324,10 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
 As a result of the Document Generation API, template tags are replaced
 with the input JSON data.
 
-![Document template with template tags being replaced by actual values](../images/generate_document.gif)
+![Document template with template tags being replaced by actual values](../images/generate-document.gif)
 
 
-#### Generate PDF or Word document (with [Fragments](./fragments.md))
+#### Generate PDF or Word document (with [Fragments](fragments.md))
 
 The sample below shows the use of **Fragments** in the word template and generates the output document in the **PDF** format.
 

@@ -35,7 +35,7 @@ After getting the access token, we need to upload the asset. Uploading an asset 
 
 1. First you need to get an upload pre-signed URI by using the following API.
 
-You can read more about the API in detail [here](../../../apis/#operation/asset.uploadpresignedurl).
+You can read more about the API in detail [here](../../../apis/index.md#operation/asset.uploadpresignedurl).
 
 <CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
 
@@ -67,13 +67,13 @@ curl --location -g --request PUT 'https://dcplatformstorageservice-prod-us-east-
 
 To create a job for the operation, please use the  `assetID` obtained in Step 2 in the API request body. On successful job submission you will get a status code of `201` and a response header `location` which will be used for polling.
 
-For creating the job, please refer to the corresponding API spec for the particular [PDF Operation](../../../apis).
+For creating the job, please refer to the corresponding API spec for the particular [PDF Operation](../../../apis/index.md).
 
 ## Step 4 : Fetching the status
 
 Once the job is successfully created, you need to poll the at the `location` returned in response header of Step 3 by using the following API
 
-You can read more about the API in detail [here](../../../apis/#operation/pdfoperations.compresspdf.jobstatus).
+You can read more about the API in detail [here](../../../apis/index.md#operation/pdfoperations.compresspdf.jobstatus).
 
 <CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
 
@@ -93,7 +93,7 @@ If the `status` field is `in progress` you need to keep polling the location unt
 
 If the `status` field is `done` the response body will also have a download pre-signed URI in the `dowloadUri` field, which will be used to download the asset directly from cloud provider by making the following API call
 
-You can read more about the API in detail [here](../../../apis/#operation/asset.get).
+You can read more about the API in detail [here](../../../apis/index.md#operation/asset.get).
 
 <CodeBlock slots="heading, code" repeat="1" languages="Rest API" /> 
 
@@ -279,7 +279,7 @@ To build a custom project:
 1.  Access the .jar in the [central Maven repository](https://www.adobe.com/go/pdftoolsapi_java_maven).
 2.  Use your preferred dependency management tool (Ivy, Gradle, Maven), to include the SDK .jar dependency.
 3.  Open the pdfservices-api-credentials.json downloaded when you created your credential.
-4.  Add the [Authentication](./index.md#authentication) details as described above.
+4.  Add the [Authentication](index.md#authentication) details as described above.
 
 ![Adobe PDF Services SDK On Maven](../images/maven.png)
 
@@ -400,7 +400,7 @@ While building the sample project automatically downloads the Nuget package, you
 1.  Go to <https://www.adobe.com/go/pdftoolsapi_net_nuget>.
 2.  Download the latest package.
 
-![Adobe PDF Services SDK on Nuget](../images/nuget_free_tier.png)
+![Adobe PDF Services SDK on Nuget](../images/nuget-free-tier.png)
 
 ### Node.js
 
@@ -523,7 +523,7 @@ While building the sample project automatically downloads the Node package, you 
 1.  Go to <https://www.npmjs.com/package/@adobe/pdfservices-node-sdk>
 2.  Download the latest package.
 
-![Adobe PDF Services SDK on NPM JS](../images/node_free_tier.png)
+![Adobe PDF Services SDK on NPM JS](../images/node-free-tier.png)
 
 ## Public API
 

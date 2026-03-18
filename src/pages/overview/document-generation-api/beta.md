@@ -3,7 +3,7 @@ title: Beta | Document Generation API | Adobe PDF Services
 ---
 # DocGen Beta
 
-Generate mobile-optimized PDFs through Document Generation using [PDF Services Beta SDK](../document-generation-api/beta.md#beta-sdk) and [Beta API](https://documentcloud.adobe.com/document-services/beta.html#post-documentGeneration) The generated PDF is optimized
+Generate mobile-optimized PDFs through Document Generation using [PDF Services Beta SDK](beta.md#beta-sdk) and [Beta API](https://documentcloud.adobe.com/document-services/beta.html#post-documentGeneration) The generated PDF is optimized
 for mobile viewing experience using Adobe's Liquid Mode in the Acrobat Reader App.
 
 <Media slots="video"/>

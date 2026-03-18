@@ -27,10 +27,10 @@ Long Term Validation (LTV) information of Timestamp Certificates (if using Trust
 
 ### TSP Credential Information (_cscCredentialOptions_) : **Required**
 
-TSP parameters encapsulate the sealer's [certificate credential](../../pdf-electronic-seal-api/gettingstarted/#step-1-procure-digital-certificate-credentials) as well as the associated authentication and authorization data.
+TSP parameters encapsulate the sealer's [certificate credential](../gettingstarted.md#step-1-procure-digital-certificate-credentials) as well as the associated authentication and authorization data.
 
 * **TSP Name**  (*providerName*) : **Required** : Specifies the name of the Trust Service Provider used to generate the certificate. Presently, only TSPs supporting the OAuth 2.0 client credential authorization flow are supported. The table below provides the provider name mapping for each supported Trust Service Provider.
-  ![TSP Name Mapping](../../images/provider_mapping_ss.png)
+  ![TSP Name Mapping](../../images/provider-mapping-ss.png)
 
 * **TSP Credential Id**  (*credentialId*) : **Required** : Specifies the Digital ID stored with the TSP that should be used for sealing.
 * **TSP Authorization Context**  (*authorizationContext*) : **Required** : Encapsulates the authorization data required to communicate with the TSPs.
@@ -44,7 +44,7 @@ TSP parameters encapsulate the sealer's [certificate credential](../../pdf-elect
 
 ### TSA Information (_tsaOptions_) :
 
-TSA parameters encapsulate the [timestamping URL and credentials](../../pdf-electronic-seal-api/gettingstarted/#step-2-optional-procure-timestamping-url-and-credentials).
+TSA parameters encapsulate the [timestamping URL and credentials](../gettingstarted.md#step-2-optional-procure-timestamping-url-and-credentials).
 
 * **TSA URL**  (*url*) : **Required** : Specifies the TSA URL to be used for getting timestamp token.
 * **TSA Credential Authorization Parameter**  (*credentialAuthParameters*) : Encapsulates the credential information required to authenticate the TSA URL.
@@ -75,17 +75,17 @@ Specifies seal field appearance parameters. These are an enumerated set of displ
 * **Display Options**  (*displayOptions*): Specifies the information to display in the seal. NAME and LABELS are the default values.
 
     * **NAME**: Specifies that the certificate owner's name should be displayed.
-      ![Display Options](../../images/name_ss.png)
+      ![Display Options](../../images/name-ss.png)
     * **DATE**: Specifies that the sealing date/time should be displayed. This value should not be mistaken for a signed timestamp from a timestamp authority.
-      ![Display Options](../../images/date_ss.png)
+      ![Display Options](../../images/date-ss.png)
     * **DISTINGUISHED_NAME**: Specifies that the distinguished name information from the digital certificate should be displayed.
-      ![Display Options](../../images/dn_ss.png)
+      ![Display Options](../../images/dn-ss.png)
     * **LABELS**: Specifies that text labels should be displayed.
-      ![Display Options](../../images/labels_ss.png)
+      ![Display Options](../../images/labels-ss.png)
     * **SEAL_IMAGE**: Specifies the seal image should be displayed.
-      ![Display Options](../../images/seal2_ss.png)
+      ![Display Options](../../images/seal2-ss.png)
       If SEAL_IMAGE is given in appearance parameters and seal image is not passed in the request, the default Acrobat trefoil image is used.
-      ![Display Options](../../images/trefoil_ss.png)
+      ![Display Options](../../images/trefoil-ss.png)
 
 **Example JSON**
 
@@ -153,7 +153,7 @@ Other SDKs will support these features in future versions.
 
 ## REST API 
 
-See our public API Reference for [PDF Electronic Seal API](../../../apis/#tag/PDF-Electronic-Seal).
+See our public API Reference for [PDF Electronic Seal API](../../../apis/index.md#tag/PDF-Electronic-Seal).
 
 ## Apply Electronic Seal with default appearance on PDF
 

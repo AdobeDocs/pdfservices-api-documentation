@@ -71,4 +71,4 @@ curl --location --request GET 'https://pdf-services-ew1.adobe.io/operation/{Plac
 '
 ```
 
-For a step-by-step guide to use Adobe PDF services APIs, please [click here](./api-usage.md).
+For a step-by-step guide to use Adobe PDF services APIs, please [click here](api-usage.md).

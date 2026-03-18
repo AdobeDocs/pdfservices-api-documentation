@@ -10,9 +10,9 @@ following:
 
 -   The structuredData.json file with the extracted content & PDF
     element structure. See the [JSON
-    schema](/extractJSONOutputSchema2.json) for a
+    schema](/resources/extractJSONOutputSchema2.json) for a
     description of the default output. (Please refer the [Styling JSON
-    schema](/extractJSONOutputSchemaStylingInfo.json)
+    schema](/resources/extractJSONOutputSchemaStylingInfo.json)
     for a description of the output when the styling option is enabled.)
 -   A renditions folder(s) containing renditions for each element type
     selected as input. The folder name is either "tables" or "figures"
@@ -24,7 +24,7 @@ following:
 
 The following is a summary of key elements in the extracted JSON(See
 additional descriptions in the [JSON
-schema](/extractJSONOutputSchema2.json)):
+schema](/resources/extractJSONOutputSchema2.json)):
 
 -   Elements : Ordered list of semantic elements (like headings,
     paragraphs, tables, figures) found in the document, on the basis of
@@ -145,13 +145,13 @@ schema](/extractJSONOutputSchema2.json)):
 
 ## REST API 
 
-See our public API Reference for [Extract PDF](../../../apis/#tag/Extract-PDF).
+See our public API Reference for [Extract PDF](../../../apis/index.md#tag/Extract-PDF).
 
 ## Extract Text from a PDF
 
 The sample below extracts text element information from a PDF document and returns a JSON file.
 
-Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
@@ -454,7 +454,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
 
 The sample below extracts text and table element information from a PDF document and returns a JSON file along with table data in XLSX format.
 
-Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java,.NET, Node JS, Python, REST API" /> 
 
@@ -759,7 +759,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
 
 The sample below extracts text and table element information as well as table renditions from a PDF Document. Note that the output is a zip containing the structured information in a JSON file along with table renditions in PNG and XLSX format.
 
-Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
@@ -1074,7 +1074,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
 
 The sample below extracts text and table elements information as well as table and figure renditions from a PDF Document. Note that the output is a zip containing the structured information in a JSON file along with figure renditions as PNGs and table renditions in PNG and XLSX format.
 
-Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
@@ -1390,7 +1390,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
 
 The sample below extracts table renditions and bounding boxes for characters present in text blocks (paragraphs, list, headings), in addition to text and table element information from a PDF Document. Note that the output is a zip containing the structured information along with table renditions in PNG and XLSX format.
 
-Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
@@ -1704,7 +1704,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
 
 The sample below adds option to get CSV output for tables in addition to extracting text and table element information as well as table renditions from a PDF Document. Note that the output is a zip containing the structured information along with table renditions in PNG and CSV format.
 
-Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
@@ -2023,9 +2023,9 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
 ## Extract Text and Tables and Styling Info
 
 The sample below adds an option to get styling information for each text element( Bold / Italics / Superscript etc) in addition to extracting text and table element information. Note that the output is a zip containing the structured information along with table renditions in PNG and XLSX format. Please see the [Styling JSON
-schema](/extractJSONOutputSchemaStylingInfo.json) for reference.
+schema](/resources/extractJSONOutputSchemaStylingInfo.json) for reference.
 
-Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java,.NET, Node JS, Python, REST API" /> 
 

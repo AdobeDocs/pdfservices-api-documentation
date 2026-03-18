@@ -17,11 +17,11 @@ These APIs represent a paradigm shift in the way PDF workflows exist and interac
 
 ## PDF Embed API for viewing and collaboration within your web pages
 
-The [PDF Embed API](pdf-embed-api) brings PDF viewing to any web application with only a few lines of JavaScript. Multiple embed modes make it easy to support different views, from full browser to boxed containers and in line. Document collaboration is achieved with support for commenting, drawing, highlighting, and text editing tools. Analytics insights provide an opportunity to embed dynamic interactivity to enhance end-user experiences with chats, prompts, and other with event triggers based on PDF viewing activity.
+The [PDF Embed API](pdf-embed-api/index.md) brings PDF viewing to any web application with only a few lines of JavaScript. Multiple embed modes make it easy to support different views, from full browser to boxed containers and in line. Document collaboration is achieved with support for commenting, drawing, highlighting, and text editing tools. Analytics insights provide an opportunity to embed dynamic interactivity to enhance end-user experiences with chats, prompts, and other with event triggers based on PDF viewing activity.
 
 ## PDF Services API to automate for your document workflows
 
-The [PDF Services API](pdf-services-api) offers a number of operations to programmatically manipulate documents and automate many different types of document workflows. You can easily create a PDF from a dynamic HTML report, set a password to prevent unauthorized opening of the document, compress it for sharing as an attachment, or extract text, tables, images and document structure to enable downstream solutions. 
+The [PDF Services API](pdf-services-api/index.md) offers a number of operations to programmatically manipulate documents and automate many different types of document workflows. You can easily create a PDF from a dynamic HTML report, set a password to prevent unauthorized opening of the document, compress it for sharing as an attachment, or extract text, tables, images and document structure to enable downstream solutions. 
 
 There are also capabilities to compress or linearize document for faster web viewing, and to insert, reorder, rotate, replace, and delete pages within documents.
 
@@ -31,9 +31,9 @@ The PDF Services API is also available on [Power Automate](https://docs.microsof
 
 ## Document Generation API for automating document workflows    
 
-The [Document Generation API](document-generation-api) is a cloud-based web service that allows you to produce high fidelity PDF and Word documents with dynamic data inputs. Using Document Generation API, you can merge your data(e.g. JSON file) with Word templates to create dynamic documents for contracts and agreements, invoices, proposals, reports, forms, branded marketing documents and more.
+The [Document Generation API](document-generation-api/index.md) is a cloud-based web service that allows you to produce high fidelity PDF and Word documents with dynamic data inputs. Using Document Generation API, you can merge your data(e.g. JSON file) with Word templates to create dynamic documents for contracts and agreements, invoices, proposals, reports, forms, branded marketing documents and more.
 
-Embed Document Generation API into any application using [PDFServices SDK](pdf-services-api#sdk) for Node.js, .Net, Python and Java. [Start with a Free Tier which includes 500 free Document Transactions per month.](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=document-generation-api)
+Embed Document Generation API into any application using [PDFServices SDK](pdf-services-api/index.md#sdk) for Node.js, .Net, Python and Java. [Start with a Free Tier which includes 500 free Document Transactions per month.](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=document-generation-api)
 
 ## PDF Extract API for extracting PDF structure and information
 
@@ -49,7 +49,7 @@ The JSON output also captures document structure information, such as the natura
 
 The PDF Extract API provides a method for developers to extract and structure content for use in a number of downstream applications including content republishing, workflow automation, content analysis, and data aggregation, management, and search.
 
-The PDF Extract API can be embedded into any application using the [PDFServices SDK](./pdf-services-api/index.md#sdk) for Node.js, Python, and Java. [Start with a Free Tier which includes 500 free Document Transactions per month.](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api)
+The PDF Extract API can be embedded into any application using the [PDFServices SDK](pdf-services-api/index.md#sdk) for Node.js, Python, and Java. [Start with a Free Tier which includes 500 free Document Transactions per month.](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api)
 
 ## PDF Accessibility Auto-Tag API for improving accessibility in PDFs
 
@@ -61,15 +61,15 @@ The output from the API is a tagged PDF, but it is not guaranteed to fully compl
 
 You can learn more about PDF Accessibility in [this overview](https://www.adobe.com/accessibility/pdf/pdf-accessibility-overview.html).
 
-The PDF Accessibility Auto-Tag API can be embedded into any application using the [PDFServices SDK](./pdf-services-api/index.md#sdk) for Java, .NET, Node.js and Python. [Start with a Free Tier which includes 500 free Document Transactions per month.](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api)
+The PDF Accessibility Auto-Tag API can be embedded into any application using the [PDFServices SDK](pdf-services-api/index.md#sdk) for Java, .NET, Node.js and Python. [Start with a Free Tier which includes 500 free Document Transactions per month.](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api)
 
 ## PDF Services Region Support
 
-PDF Services now support two regions for transacting and working with documents. The default region uses the United States to process documents. Developers can now also use the European region (Ireland) for API calls. This can be done on a call by call basis so one project may make use of both. Details on how this is done can be found in [our documentation](./pdf-services-api/howtos/service-region-configuration-for-apis).
+PDF Services now support two regions for transacting and working with documents. The default region uses the United States to process documents. Developers can now also use the European region (Ireland) for API calls. This can be done on a call by call basis so one project may make use of both. Details on how this is done can be found in [our documentation](pdf-services-api/howtos/service-region-configuration-for-apis.md).
 
 ## PDF Services External Storage Support
 
-PDF Services Document Generation API now provide capabilities of accessing files directly from the storage solution of client. It reduces the overhead of downloading and uploading the file onto our storage. Details on how this is done can be found in [our documentation](./pdf-services-api/howtos/pdf-external-storage-sol).  
+PDF Services Document Generation API now provide capabilities of accessing files directly from the storage solution of client. It reduces the overhead of downloading and uploading the file onto our storage. Details on how this is done can be found in [our documentation](pdf-services-api/howtos/pdf-external-storage-sol.md).  
 
 ## Community forum and feedback
 

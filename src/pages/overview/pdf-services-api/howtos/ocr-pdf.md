@@ -7,7 +7,7 @@ Use built-in optical character recognition (OCR) to convert images to text and e
 
 ## REST API 
 
-See our public API Reference for [OCR PDF](../../../apis/#tag/OCR)
+See our public API Reference for [OCR PDF](../../../apis/index.md#tag/OCR)
 
 ## Text recognition (OCR)
 
