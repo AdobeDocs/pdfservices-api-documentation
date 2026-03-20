@@ -1,0 +1,1084 @@
+{
+  "total": 269,
+  "offset": 0,
+  "limit": 269,
+  "data": [
+    {
+      "Source": "/document-services/docs/pdf-services-api/vip-mp-onboarding-guide/",
+      "Destination": "/document-services/docs/pdf-services-api/vip-mp-onboarding-guide"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/releasenotes/",
+      "Destination": "/document-services/docs/pdf-services-api/releasenotes"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/policies/",
+      "Destination": "/document-services/docs/pdf-services-api/policies"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api",
+      "Destination": "/document-services/docs/pdf-services-api/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/index",
+      "Destination": "/document-services/docs/pdf-services-api/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/gettingstarted/",
+      "Destination": "/document-services/docs/pdf-services-api/gettingstarted"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/dcserviceslicensing/",
+      "Destination": "/document-services/docs/pdf-services-api/dcserviceslicensing"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/awsmarketplace/",
+      "Destination": "/document-services/docs/pdf-services-api/awsmarketplace"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/quickstarts",
+      "Destination": "/document-services/docs/pdf-services-api/quickstarts/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/quickstarts/index",
+      "Destination": "/document-services/docs/pdf-services-api/quickstarts/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/quickstarts/python",
+      "Destination": "/document-services/docs/pdf-services-api/quickstarts/python/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/quickstarts/python/index",
+      "Destination": "/document-services/docs/pdf-services-api/quickstarts/python/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/quickstarts/nodejs",
+      "Destination": "/document-services/docs/pdf-services-api/quickstarts/nodejs/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/quickstarts/nodejs/index",
+      "Destination": "/document-services/docs/pdf-services-api/quickstarts/nodejs/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/quickstarts/java",
+      "Destination": "/document-services/docs/pdf-services-api/quickstarts/java/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/quickstarts/java/index",
+      "Destination": "/document-services/docs/pdf-services-api/quickstarts/java/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/quickstarts/dotnet",
+      "Destination": "/document-services/docs/pdf-services-api/quickstarts/dotnet/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/quickstarts/dotnet/index",
+      "Destination": "/document-services/docs/pdf-services-api/quickstarts/dotnet/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/webhook-notification/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/webhook-notification"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/split-pdf/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/split-pdf"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/service-region-configuration-for-apis/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/service-region-configuration-for-apis"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/sdk-utilities/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/sdk-utilities"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/rotate-pages/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/rotate-pages"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/replace-pages/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/replace-pages"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/reorder-pages/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/reorder-pages"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/remove-protection/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/remove-protection"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/protect-pdf/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/protect-pdf"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/pdf-watermark-api/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/pdf-watermark-api"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/pdf-to-markdown-api/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/pdf-to-markdown-api"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/pdf-properties/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/pdf-properties"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/pdf-external-storage-sol/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/pdf-external-storage-sol"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/pdf-accessibility-checker-api/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/pdf-accessibility-checker-api"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/pdf-accessibility-auto-tag-pdf/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/pdf-accessibility-auto-tag-pdf"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/ocr-pdf/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/ocr-pdf"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/linearize-pdf/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/linearize-pdf"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/insert-pages/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/insert-pages"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/index",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/import-pdf-form-data/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/import-pdf-form-data"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/extract-pdf/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/extract-pdf"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/export-pdf/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/export-pdf"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/export-pdf-form-data/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/export-pdf-form-data"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/electronic-seal-api/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/electronic-seal-api"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/delete-pages/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/delete-pages"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/create-pdf/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/create-pdf"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/compress-pdf/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/compress-pdf"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/combine-pdf/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/combine-pdf"
+    },
+    {
+      "Source": "/document-services/docs/pdf-services-api/howtos/api-usage/",
+      "Destination": "/document-services/docs/pdf-services-api/howtos/api-usage"
+    },
+    {
+      "Source": "/document-services/docs/pdf-extract-api",
+      "Destination": "/document-services/docs/pdf-extract-api/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-extract-api/index",
+      "Destination": "/document-services/docs/pdf-extract-api/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-extract-api/gettingstarted/",
+      "Destination": "/document-services/docs/pdf-extract-api/gettingstarted"
+    },
+    {
+      "Source": "/document-services/docs/pdf-extract-api/dcserviceslicensing/",
+      "Destination": "/document-services/docs/pdf-extract-api/dcserviceslicensing"
+    },
+    {
+      "Source": "/document-services/docs/pdf-extract-api/quickstarts",
+      "Destination": "/document-services/docs/pdf-extract-api/quickstarts/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-extract-api/quickstarts/index",
+      "Destination": "/document-services/docs/pdf-extract-api/quickstarts/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-extract-api/quickstarts/extract-pdf",
+      "Destination": "/document-services/docs/pdf-extract-api/quickstarts/extract-pdf/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-extract-api/quickstarts/extract-pdf/index",
+      "Destination": "/document-services/docs/pdf-extract-api/quickstarts/extract-pdf/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-extract-api/quickstarts/extract-pdf/python",
+      "Destination": "/document-services/docs/pdf-extract-api/quickstarts/extract-pdf/python/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-extract-api/quickstarts/extract-pdf/python/index",
+      "Destination": "/document-services/docs/pdf-extract-api/quickstarts/extract-pdf/python/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-extract-api/quickstarts/extract-pdf/nodejs",
+      "Destination": "/document-services/docs/pdf-extract-api/quickstarts/extract-pdf/nodejs/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-extract-api/quickstarts/extract-pdf/nodejs/index",
+      "Destination": "/document-services/docs/pdf-extract-api/quickstarts/extract-pdf/nodejs/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-extract-api/quickstarts/extract-pdf/java",
+      "Destination": "/document-services/docs/pdf-extract-api/quickstarts/extract-pdf/java/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-extract-api/quickstarts/extract-pdf/java/index",
+      "Destination": "/document-services/docs/pdf-extract-api/quickstarts/extract-pdf/java/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-extract-api/quickstarts/extract-pdf/dotnet",
+      "Destination": "/document-services/docs/pdf-extract-api/quickstarts/extract-pdf/dotnet/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-extract-api/quickstarts/extract-pdf/dotnet/index",
+      "Destination": "/document-services/docs/pdf-extract-api/quickstarts/extract-pdf/dotnet/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-extract-api/howtos/pdf-to-markdown-api/",
+      "Destination": "/document-services/docs/pdf-extract-api/howtos/pdf-to-markdown-api"
+    },
+    {
+      "Source": "/document-services/docs/pdf-extract-api/howtos",
+      "Destination": "/document-services/docs/pdf-extract-api/howtos/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-extract-api/howtos/index",
+      "Destination": "/document-services/docs/pdf-extract-api/howtos/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-extract-api/howtos/extract-api/",
+      "Destination": "/document-services/docs/pdf-extract-api/howtos/extract-api"
+    },
+    {
+      "Source": "/document-services/docs/pdf-extract-api/howtos/api-usage/",
+      "Destination": "/document-services/docs/pdf-extract-api/howtos/api-usage"
+    },
+    {
+      "Source": "/document-services/docs/pdf-embed-api/searchengineindexing/",
+      "Destination": "/document-services/docs/pdf-embed-api/searchengineindexing"
+    },
+    {
+      "Source": "/document-services/docs/pdf-embed-api/releasenotes/",
+      "Destination": "/document-services/docs/pdf-embed-api/releasenotes"
+    },
+    {
+      "Source": "/document-services/docs/pdf-embed-api/modernviewer/",
+      "Destination": "/document-services/docs/pdf-embed-api/modernviewer"
+    },
+    {
+      "Source": "/document-services/docs/pdf-embed-api",
+      "Destination": "/document-services/docs/pdf-embed-api/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-embed-api/index",
+      "Destination": "/document-services/docs/pdf-embed-api/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-embed-api/howtos_ui/",
+      "Destination": "/document-services/docs/pdf-embed-api/howtos_ui"
+    },
+    {
+      "Source": "/document-services/docs/pdf-embed-api/howtos_comments/",
+      "Destination": "/document-services/docs/pdf-embed-api/howtos_comments"
+    },
+    {
+      "Source": "/document-services/docs/pdf-embed-api/howtos/",
+      "Destination": "/document-services/docs/pdf-embed-api/howtos"
+    },
+    {
+      "Source": "/document-services/docs/pdf-embed-api/howtodata/",
+      "Destination": "/document-services/docs/pdf-embed-api/howtodata"
+    },
+    {
+      "Source": "/document-services/docs/pdf-embed-api/gettingstarted/",
+      "Destination": "/document-services/docs/pdf-embed-api/gettingstarted"
+    },
+    {
+      "Source": "/document-services/docs/pdf-electronic-seal-api",
+      "Destination": "/document-services/docs/pdf-electronic-seal-api/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-electronic-seal-api/index",
+      "Destination": "/document-services/docs/pdf-electronic-seal-api/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-electronic-seal-api/gettingstarted/",
+      "Destination": "/document-services/docs/pdf-electronic-seal-api/gettingstarted"
+    },
+    {
+      "Source": "/document-services/docs/pdf-electronic-seal-api/quickstarts",
+      "Destination": "/document-services/docs/pdf-electronic-seal-api/quickstarts/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-electronic-seal-api/quickstarts/index",
+      "Destination": "/document-services/docs/pdf-electronic-seal-api/quickstarts/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-electronic-seal-api/quickstarts/python",
+      "Destination": "/document-services/docs/pdf-electronic-seal-api/quickstarts/python/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-electronic-seal-api/quickstarts/python/index",
+      "Destination": "/document-services/docs/pdf-electronic-seal-api/quickstarts/python/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-electronic-seal-api/quickstarts/nodejs",
+      "Destination": "/document-services/docs/pdf-electronic-seal-api/quickstarts/nodejs/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-electronic-seal-api/quickstarts/nodejs/index",
+      "Destination": "/document-services/docs/pdf-electronic-seal-api/quickstarts/nodejs/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-electronic-seal-api/quickstarts/java",
+      "Destination": "/document-services/docs/pdf-electronic-seal-api/quickstarts/java/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-electronic-seal-api/quickstarts/java/index",
+      "Destination": "/document-services/docs/pdf-electronic-seal-api/quickstarts/java/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-electronic-seal-api/quickstarts/dotnet",
+      "Destination": "/document-services/docs/pdf-electronic-seal-api/quickstarts/dotnet/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-electronic-seal-api/quickstarts/dotnet/index",
+      "Destination": "/document-services/docs/pdf-electronic-seal-api/quickstarts/dotnet/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-electronic-seal-api/howtos",
+      "Destination": "/document-services/docs/pdf-electronic-seal-api/howtos/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-electronic-seal-api/howtos/index",
+      "Destination": "/document-services/docs/pdf-electronic-seal-api/howtos/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-electronic-seal-api/howtos/electronic-seal-api/",
+      "Destination": "/document-services/docs/pdf-electronic-seal-api/howtos/electronic-seal-api"
+    },
+    {
+      "Source": "/document-services/docs/pdf-electronic-seal-api/howtos/api-usage/",
+      "Destination": "/document-services/docs/pdf-electronic-seal-api/howtos/api-usage"
+    },
+    {
+      "Source": "/document-services/docs/pdf-accessibility-auto-tag-api",
+      "Destination": "/document-services/docs/pdf-accessibility-auto-tag-api/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-accessibility-auto-tag-api/index",
+      "Destination": "/document-services/docs/pdf-accessibility-auto-tag-api/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-accessibility-auto-tag-api/gettingstarted/",
+      "Destination": "/document-services/docs/pdf-accessibility-auto-tag-api/gettingstarted"
+    },
+    {
+      "Source": "/document-services/docs/pdf-accessibility-auto-tag-api/dcserviceslicensing/",
+      "Destination": "/document-services/docs/pdf-accessibility-auto-tag-api/dcserviceslicensing"
+    },
+    {
+      "Source": "/document-services/docs/pdf-accessibility-auto-tag-api/quickstarts",
+      "Destination": "/document-services/docs/pdf-accessibility-auto-tag-api/quickstarts/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-accessibility-auto-tag-api/quickstarts/index",
+      "Destination": "/document-services/docs/pdf-accessibility-auto-tag-api/quickstarts/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-accessibility-auto-tag-api/quickstarts/python",
+      "Destination": "/document-services/docs/pdf-accessibility-auto-tag-api/quickstarts/python/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-accessibility-auto-tag-api/quickstarts/python/index",
+      "Destination": "/document-services/docs/pdf-accessibility-auto-tag-api/quickstarts/python/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-accessibility-auto-tag-api/quickstarts/nodejs",
+      "Destination": "/document-services/docs/pdf-accessibility-auto-tag-api/quickstarts/nodejs/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-accessibility-auto-tag-api/quickstarts/nodejs/index",
+      "Destination": "/document-services/docs/pdf-accessibility-auto-tag-api/quickstarts/nodejs/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-accessibility-auto-tag-api/quickstarts/java",
+      "Destination": "/document-services/docs/pdf-accessibility-auto-tag-api/quickstarts/java/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-accessibility-auto-tag-api/quickstarts/java/index",
+      "Destination": "/document-services/docs/pdf-accessibility-auto-tag-api/quickstarts/java/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-accessibility-auto-tag-api/quickstarts/dotnet",
+      "Destination": "/document-services/docs/pdf-accessibility-auto-tag-api/quickstarts/dotnet/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-accessibility-auto-tag-api/quickstarts/dotnet/index",
+      "Destination": "/document-services/docs/pdf-accessibility-auto-tag-api/quickstarts/dotnet/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-accessibility-auto-tag-api/howtos",
+      "Destination": "/document-services/docs/pdf-accessibility-auto-tag-api/howtos/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-accessibility-auto-tag-api/howtos/index",
+      "Destination": "/document-services/docs/pdf-accessibility-auto-tag-api/howtos/"
+    },
+    {
+      "Source": "/document-services/docs/pdf-accessibility-auto-tag-api/howtos/api-usage/",
+      "Destination": "/document-services/docs/pdf-accessibility-auto-tag-api/howtos/api-usage"
+    },
+    {
+      "Source": "/document-services/docs/pdf-accessibility-auto-tag-api/howtos/accessibility-auto-tag-api/",
+      "Destination": "/document-services/docs/pdf-accessibility-auto-tag-api/howtos/accessibility-auto-tag-api"
+    },
+    {
+      "Source": "/document-services/docs/overview/support/",
+      "Destination": "/document-services/docs/overview/support"
+    },
+    {
+      "Source": "/document-services/docs/overview/status/",
+      "Destination": "/document-services/docs/overview/status"
+    },
+    {
+      "Source": "/document-services/docs/overview/security/",
+      "Destination": "/document-services/docs/overview/security"
+    },
+    {
+      "Source": "/document-services/docs/overview/releasenotes/",
+      "Destination": "/document-services/docs/overview/releasenotes"
+    },
+    {
+      "Source": "/document-services/docs/overview/policies/",
+      "Destination": "/document-services/docs/overview/policies"
+    },
+    {
+      "Source": "/document-services/docs/overview/limits/",
+      "Destination": "/document-services/docs/overview/limits"
+    },
+    {
+      "Source": "/document-services/docs/overview",
+      "Destination": "/document-services/docs/overview/"
+    },
+    {
+      "Source": "/document-services/docs/overview/index",
+      "Destination": "/document-services/docs/overview/"
+    },
+    {
+      "Source": "/document-services/docs/overview/faq/",
+      "Destination": "/document-services/docs/overview/faq"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/releasenotes/",
+      "Destination": "/document-services/docs/legacy-documentation/releasenotes"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/policies/",
+      "Destination": "/document-services/docs/legacy-documentation/policies"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation",
+      "Destination": "/document-services/docs/legacy-documentation/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/index",
+      "Destination": "/document-services/docs/legacy-documentation/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/authentication/",
+      "Destination": "/document-services/docs/legacy-documentation/authentication"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/releasenotes/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/releasenotes"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/policies/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/policies"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/index",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/gettingstarted/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/gettingstarted"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/dcserviceslicensing/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/dcserviceslicensing"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/awsmarketplace/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/awsmarketplace"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/quickstarts",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/quickstarts/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/quickstarts/index",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/quickstarts/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/quickstarts/nodejs",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/quickstarts/nodejs/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/quickstarts/nodejs/index",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/quickstarts/nodejs/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/quickstarts/java",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/quickstarts/java/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/quickstarts/java/index",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/quickstarts/java/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/quickstarts/dotnet",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/quickstarts/dotnet/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/quickstarts/dotnet/index",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/quickstarts/dotnet/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/split-pdf/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/split-pdf"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/service-region-configuration-for-apis/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/service-region-configuration-for-apis"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/rotate-pages/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/rotate-pages"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/replace-pages/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/replace-pages"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/reorder-pages/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/reorder-pages"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/remove-protection/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/remove-protection"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/protect-pdf/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/protect-pdf"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/pdf-properties/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/pdf-properties"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/pdf-external-storage-sol/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/pdf-external-storage-sol"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/pdf-accessibility-auto-tag-pdf/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/pdf-accessibility-auto-tag-pdf"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/ocr-pdf/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/ocr-pdf"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/linearize-pdf/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/linearize-pdf"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/insert-pages/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/insert-pages"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/howtos",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/index",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/extract-pdf/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/extract-pdf"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/export-pdf/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/export-pdf"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/electronic-seal-api/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/electronic-seal-api"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/document-generation/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/document-generation"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/delete-pages/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/delete-pages"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/create-pdf/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/create-pdf"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/compress-pdf/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/compress-pdf"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/combine-pdf/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/combine-pdf"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/api-usage/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/api-usage"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/accessibility-auto-tag-pdf/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-services-api/howtos/accessibility-auto-tag-pdf"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-extract-api/quickstarts/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-extract-api/quickstarts"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-extract-api",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-extract-api/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-extract-api/index",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-extract-api/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-extract-api/gettingstarted/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-extract-api/gettingstarted"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-extract-api/dcserviceslicensing/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-extract-api/dcserviceslicensing"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-extract-api/quickstarts",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-extract-api/quickstarts/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-extract-api/quickstarts/index",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-extract-api/quickstarts/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-extract-api/quickstarts/python",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-extract-api/quickstarts/python/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-extract-api/quickstarts/python/index",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-extract-api/quickstarts/python/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-extract-api/quickstarts/nodejs",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-extract-api/quickstarts/nodejs/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-extract-api/quickstarts/nodejs/index",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-extract-api/quickstarts/nodejs/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-extract-api/quickstarts/java",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-extract-api/quickstarts/java/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-extract-api/quickstarts/java/index",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-extract-api/quickstarts/java/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-extract-api/quickstarts/dotnet",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-extract-api/quickstarts/dotnet/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-extract-api/quickstarts/dotnet/index",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-extract-api/quickstarts/dotnet/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-extract-api/howtos",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-extract-api/howtos/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-extract-api/howtos/index",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-extract-api/howtos/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-extract-api/howtos/extract-api/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-extract-api/howtos/extract-api"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-extract-api/howtos/api-usage/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-extract-api/howtos/api-usage"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/index",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/gettingstarted/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/gettingstarted"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/quickstarts",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/quickstarts/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/quickstarts/index",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/quickstarts/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/quickstarts/nodejs",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/quickstarts/nodejs/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/quickstarts/nodejs/index",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/quickstarts/nodejs/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/quickstarts/java",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/quickstarts/java/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/quickstarts/java/index",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/quickstarts/java/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/quickstarts/dotnet",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/quickstarts/dotnet/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/quickstarts/dotnet/index",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/quickstarts/dotnet/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/howtos",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/howtos/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/howtos/index",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/howtos/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/howtos/electronic-seal-api/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/howtos/electronic-seal-api"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/howtos/api-usage/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-electronic-seal-api/howtos/api-usage"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/index",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/gettingstarted/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/gettingstarted"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/dcserviceslicensing/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/dcserviceslicensing"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/index",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/python",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/python/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/python/index",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/python/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/nodejs",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/nodejs/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/nodejs/index",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/nodejs/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/java",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/java/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/java/index",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/java/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/dotnet",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/dotnet/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/dotnet/index",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/dotnet/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/howtos",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/howtos/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/howtos/index",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/howtos/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/howtos/api-usage/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/howtos/api-usage"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/howtos/accessibility-auto-tag-api/",
+      "Destination": "/document-services/docs/legacy-documentation/pdf-accessibility-auto-tag-api/howtos/accessibility-auto-tag-api"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/document-generation-api/wordaddin/",
+      "Destination": "/document-services/docs/legacy-documentation/document-generation-api/wordaddin"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/document-generation-api/templatetags/",
+      "Destination": "/document-services/docs/legacy-documentation/document-generation-api/templatetags"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/document-generation-api/stylingformattingtags/",
+      "Destination": "/document-services/docs/legacy-documentation/document-generation-api/stylingformattingtags"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/document-generation-api/quickstarts/",
+      "Destination": "/document-services/docs/legacy-documentation/document-generation-api/quickstarts"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/document-generation-api/inlineimages/",
+      "Destination": "/document-services/docs/legacy-documentation/document-generation-api/inlineimages"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/document-generation-api",
+      "Destination": "/document-services/docs/legacy-documentation/document-generation-api/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/document-generation-api/index",
+      "Destination": "/document-services/docs/legacy-documentation/document-generation-api/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/document-generation-api/hyperlink/",
+      "Destination": "/document-services/docs/legacy-documentation/document-generation-api/hyperlink"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/document-generation-api/gettingstarted/",
+      "Destination": "/document-services/docs/legacy-documentation/document-generation-api/gettingstarted"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/document-generation-api/fragments/",
+      "Destination": "/document-services/docs/legacy-documentation/document-generation-api/fragments"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/document-generation-api/dynamictableconstructs/",
+      "Destination": "/document-services/docs/legacy-documentation/document-generation-api/dynamictableconstructs"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/document-generation-api/dcserviceslicensing/",
+      "Destination": "/document-services/docs/legacy-documentation/document-generation-api/dcserviceslicensing"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/document-generation-api/complextableconstructs/",
+      "Destination": "/document-services/docs/legacy-documentation/document-generation-api/complextableconstructs"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/document-generation-api/beta/",
+      "Destination": "/document-services/docs/legacy-documentation/document-generation-api/beta"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/document-generation-api/quickstarts",
+      "Destination": "/document-services/docs/legacy-documentation/document-generation-api/quickstarts/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/document-generation-api/quickstarts/index",
+      "Destination": "/document-services/docs/legacy-documentation/document-generation-api/quickstarts/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/document-generation-api/quickstarts/nodejs",
+      "Destination": "/document-services/docs/legacy-documentation/document-generation-api/quickstarts/nodejs/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/document-generation-api/quickstarts/nodejs/index",
+      "Destination": "/document-services/docs/legacy-documentation/document-generation-api/quickstarts/nodejs/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/document-generation-api/quickstarts/java",
+      "Destination": "/document-services/docs/legacy-documentation/document-generation-api/quickstarts/java/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/document-generation-api/quickstarts/java/index",
+      "Destination": "/document-services/docs/legacy-documentation/document-generation-api/quickstarts/java/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/document-generation-api/quickstarts/dotnet",
+      "Destination": "/document-services/docs/legacy-documentation/document-generation-api/quickstarts/dotnet/"
+    },
+    {
+      "Source": "/document-services/docs/legacy-documentation/document-generation-api/quickstarts/dotnet/index",
+      "Destination": "/document-services/docs/legacy-documentation/document-generation-api/quickstarts/dotnet/"
+    },
+    {
+      "Source": "/document-services/docs/document-generation-api/wordaddin/",
+      "Destination": "/document-services/docs/document-generation-api/wordaddin"
+    },
+    {
+      "Source": "/document-services/docs/document-generation-api/templatetags/",
+      "Destination": "/document-services/docs/document-generation-api/templatetags"
+    },
+    {
+      "Source": "/document-services/docs/document-generation-api/tablewithmarkers/",
+      "Destination": "/document-services/docs/document-generation-api/tablewithmarkers"
+    },
+    {
+      "Source": "/document-services/docs/document-generation-api/stylingformattingtags/",
+      "Destination": "/document-services/docs/document-generation-api/stylingformattingtags"
+    },
+    {
+      "Source": "/document-services/docs/document-generation-api/inlineimages/",
+      "Destination": "/document-services/docs/document-generation-api/inlineimages"
+    },
+    {
+      "Source": "/document-services/docs/document-generation-api",
+      "Destination": "/document-services/docs/document-generation-api/"
+    },
+    {
+      "Source": "/document-services/docs/document-generation-api/index",
+      "Destination": "/document-services/docs/document-generation-api/"
+    },
+    {
+      "Source": "/document-services/docs/document-generation-api/hyperlink/",
+      "Destination": "/document-services/docs/document-generation-api/hyperlink"
+    },
+    {
+      "Source": "/document-services/docs/document-generation-api/gettingstarted/",
+      "Destination": "/document-services/docs/document-generation-api/gettingstarted"
+    },
+    {
+      "Source": "/document-services/docs/document-generation-api/fragments/",
+      "Destination": "/document-services/docs/document-generation-api/fragments"
+    },
+    {
+      "Source": "/document-services/docs/document-generation-api/dcserviceslicensing/",
+      "Destination": "/document-services/docs/document-generation-api/dcserviceslicensing"
+    },
+    {
+      "Source": "/document-services/docs/document-generation-api/complextableconstructs/",
+      "Destination": "/document-services/docs/document-generation-api/complextableconstructs"
+    },
+    {
+      "Source": "/document-services/docs/document-generation-api/charts/",
+      "Destination": "/document-services/docs/document-generation-api/charts"
+    },
+    {
+      "Source": "/document-services/docs/document-generation-api/beta/",
+      "Destination": "/document-services/docs/document-generation-api/beta"
+    },
+    {
+      "Source": "/document-services/docs/document-generation-api/quickstarts",
+      "Destination": "/document-services/docs/document-generation-api/quickstarts/"
+    },
+    {
+      "Source": "/document-services/docs/document-generation-api/quickstarts/index",
+      "Destination": "/document-services/docs/document-generation-api/quickstarts/"
+    },
+    {
+      "Source": "/document-services/docs/document-generation-api/quickstarts/python",
+      "Destination": "/document-services/docs/document-generation-api/quickstarts/python/"
+    },
+    {
+      "Source": "/document-services/docs/document-generation-api/quickstarts/python/index",
+      "Destination": "/document-services/docs/document-generation-api/quickstarts/python/"
+    },
+    {
+      "Source": "/document-services/docs/document-generation-api/quickstarts/nodejs",
+      "Destination": "/document-services/docs/document-generation-api/quickstarts/nodejs/"
+    },
+    {
+      "Source": "/document-services/docs/document-generation-api/quickstarts/nodejs/index",
+      "Destination": "/document-services/docs/document-generation-api/quickstarts/nodejs/"
+    },
+    {
+      "Source": "/document-services/docs/document-generation-api/quickstarts/java",
+      "Destination": "/document-services/docs/document-generation-api/quickstarts/java/"
+    },
+    {
+      "Source": "/document-services/docs/document-generation-api/quickstarts/java/index",
+      "Destination": "/document-services/docs/document-generation-api/quickstarts/java/"
+    },
+    {
+      "Source": "/document-services/docs/document-generation-api/quickstarts/dotnet",
+      "Destination": "/document-services/docs/document-generation-api/quickstarts/dotnet/"
+    },
+    {
+      "Source": "/document-services/docs/document-generation-api/quickstarts/dotnet/index",
+      "Destination": "/document-services/docs/document-generation-api/quickstarts/dotnet/"
+    },
+    {
+      "Source": "/document-services/docs/apis",
+      "Destination": "/document-services/docs/apis/"
+    },
+    {
+      "Source": "/document-services/docs/apis/index",
+      "Destination": "/document-services/docs/apis/"
+    }
+  ],
+  ":type": "sheet"
+}
