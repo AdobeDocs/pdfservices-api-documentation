@@ -65,7 +65,7 @@ repo as follows:
 2.  Select *Releases*.
 3.  Select and download the needed release.
 
-![Previous Release tags with release notes and links to the assets](./images/prevrelease.png)
+![Previous Release tags with release notes and links to the assets](src/pages/images/prevrelease.png)
 
 ## Migration Guide to PDF Services SDK
 
@@ -76,12 +76,11 @@ JS](https://www.adobe.com/go/pdftoolsapi_node_sample),
 [.NET](https://www.adobe.com/go/pdftoolsapi_net_samples)). for the
 latest release.
 
-<InlineAlert slots="text"/>
-
-The 1.X.X versions of PDF Tools SDK will be reaching End of Life in
+> **Note:** The 1.X.X versions of PDF Tools SDK will be reaching End of Life in
 May 2022. Once a version reaches its end of life, functionality may be
 deprecated and stop working. Please upgrade to use our latest SDK
 version.
+
 
 ### Java changes
 
@@ -173,10 +172,9 @@ Change types include the following:
 -   **Deprecated**: Existing functionality for which support is ending
  (or ended).
 
-<InlineAlert slots="text" />
-
-Minor and Patch releases are backward compatible with the previous release.
+> **Note:** Minor and Patch releases are backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
+
 
 ## Change history
 

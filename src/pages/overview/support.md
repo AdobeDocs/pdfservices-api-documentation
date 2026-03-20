@@ -35,14 +35,13 @@ continue to function securely as follows:
     deployment on a supported major release should migrate to the last
     minor update for that release.
 
-<InlineAlert slots="text"/>
+> **Note:** Once a version reaches its end of life, functionality may be deprecated and stop working.
 
-Once a version reaches its end of life, functionality may be deprecated and stop working.
 
 ![Every Major/Minor Version is supported for one year after the
 release of a newer Major/Minor Version; that is a Major.Minor.X
 version reaches its end of life 1 year after the next Major/Minor
-Release](./images/support1.png)
+Release](src/pages/images/support1.png)
 
 ### Public API Support 
 
@@ -58,7 +57,6 @@ deprecation notice, no new enhancements are made to the service. Adobe
 reserves the right to modify, deprecate, or discontinue the service, in
 whole or in part, at any time.
 
-<InlineAlert slots="text" />
+> **Note:** Once a version reaches its end of life, functionality may be deprecated and stop working.
 
-Once a version reaches its end of life, functionality may be deprecated and stop working.
 

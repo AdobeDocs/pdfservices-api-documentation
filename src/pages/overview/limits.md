@@ -13,15 +13,14 @@ into a separate written agreement. To learn more, please see the
 [pricing page](/document-services/pricing/#main)
 for purchase options.
 
-<InlineAlert slots="text"/>
+> **Note:** \<div\>
 
-<div>
 
 Document Transactions for the Operations below resulting in a Document will be counted with the following page limits:
 
-<ul><li>Extract and PDF To Markdown Operations: 1 Document Transaction for up to 5 pages</li><li>Accessibility Auto-Tag Operation: 10 Document Transactions per page</li><li>Electronic Seal Operation: 10 Document Transactions per PDF</li><li>All other Operations: 1 Document Transaction for up to 50 pages</li></ul>
+\<ul\><li>Extract and PDF To Markdown Operations: 1 Document Transaction for up to 5 pages</li><li>Accessibility Auto-Tag Operation: 10 Document Transactions per page</li><li>Electronic Seal Operation: 10 Document Transactions per PDF</li><li>All other Operations: 1 Document Transaction for up to 50 pages</li>\</ul\>
 
-</div>
+\</div\>
 
 ###  Document Transaction Definitions
 
