@@ -8,7 +8,7 @@ for mobile viewing experience using Adobe's Liquid Mode in the Acrobat Reader Ap
 
 <Media slots="video"/>
 
-<https://images-tv.adobe.com/mpcv3/5644/7be694f8-5299-41eb-a2da-2d47fbce1891_1629809837.1920x1080at3000_h264.mp4>
+[https://images-tv.adobe.com/mpcv3/5644/7be694f8-5299-41eb-a2da-2d47fbce1891_1629809837.1920x1080at3000_h264.mp4](https://images-tv.adobe.com/mpcv3/5644/7be694f8-5299-41eb-a2da-2d47fbce1891_1629809837.1920x1080at3000_h264.mp4)
 
 
 **Note**:  Generating mobile-optimized PDFs is in Beta and not ready to use in production.

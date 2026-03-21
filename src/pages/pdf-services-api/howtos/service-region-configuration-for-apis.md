@@ -18,7 +18,7 @@ Currently, PDF Services APIs have support for the following regions :
 | `ue1`       | United States (default)| https://pdf-services-ue1.adobe.io |
 | `ew1`       | Europe                 | https://pdf-services-ew1.adobe.io |
 
-<br />
+\<br/\>
 
 For invoking region specific PDF Services API endpoints, hostnames needs to be changed to the following pattern : `https://pdf-services-{regionCode}.adobe.io`.
 

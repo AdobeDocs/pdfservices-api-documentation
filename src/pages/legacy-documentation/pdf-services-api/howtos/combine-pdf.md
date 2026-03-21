@@ -7,7 +7,7 @@ Combine two or more documents into a single PDF file
 
 ## Rest API
 
-See our public API Reference for [Combine PDF](../../../apis/#tag/Combine-PDF)
+See our public API Reference for [Combine PDF](../../../apis/index.md#tag/Combine-PDF)
 
 ## Combine Files
 

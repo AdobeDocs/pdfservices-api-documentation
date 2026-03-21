@@ -36,7 +36,7 @@ correspond to a major release, minor release, and patch/update
 ### Versioning
 
 As mentioned on [Public API
-Docs](../../apis),
+Docs](../../apis/index.md),
 each operation has a unique assetId which is passed in Form Parameters.
 Generally, APIs will be enhanced while keeping them backward compatible.
 If its functionality can't be enhanced without breaking changes, then
@@ -159,7 +159,7 @@ pdfservices-sdk~=4.1.0
 
 ## Archived Documentation
 
-The last major version of our documentation may be found [here](../legacy-documentation/).
+The last major version of our documentation may be found [here](../legacy-documentation/index.md).
 
 ## Change types
 
@@ -186,11 +186,11 @@ Upgrading to the latest SDK should not break existing applications.
 
 ### July 10, 2025; Python SDK 4.2.0 Release
 
-- Added support for [Export PDF Form Data](../pdf-services-api/howtos/export-pdf-form-data/) and [Import PDF Form Data](../pdf-services-api/howtos/import-pdf-form-data/) operations in PDF Services Python SDK, enabling users to extract and populate form Data.
+- Added support for [Export PDF Form Data](../pdf-services-api/howtos/export-pdf-form-data.md) and [Import PDF Form Data](../pdf-services-api/howtos/import-pdf-form-data.md) operations in PDF Services Python SDK, enabling users to extract and populate form Data.
 
 ### May 22, 2025; .NET SDK 4.3.0 Release
 
-- Added support for [Export PDF Form Data](../pdf-services-api/howtos/export-pdf-form-data/) and [Import PDF Form Data](../pdf-services-api/howtos/import-pdf-form-data/) operations in PDF Services .NET SDK, enabling users to extract and populate form Data.
+- Added support for [Export PDF Form Data](../pdf-services-api/howtos/export-pdf-form-data.md) and [Import PDF Form Data](../pdf-services-api/howtos/import-pdf-form-data.md) operations in PDF Services .NET SDK, enabling users to extract and populate form Data.
 
 ### May 12, 2025; Python SDK 4.1.1 Release
 
@@ -212,7 +212,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 ### April 22, 2025; Java SDK 4.3.0 Release
 
-- Added support for [Export PDF Form Data](../pdf-services-api/howtos/export-pdf-form-data/) and [Import PDF Form Data](../pdf-services-api/howtos/import-pdf-form-data/) operations in PDF Services Java SDKs, enabling users to extract and populate form Data.
+- Added support for [Export PDF Form Data](../pdf-services-api/howtos/export-pdf-form-data.md) and [Import PDF Form Data](../pdf-services-api/howtos/import-pdf-form-data.md) operations in PDF Services Java SDKs, enabling users to extract and populate form Data.
 - Added support for active sheet conversion in the Excel to PDF operation, allowing users to convert only the active sheet instead of the entire workbook.
 - Added support for pageRange in the Create PDF operation for all supported file formats, enabling selective page conversion.
 - Introduced `waitTimeToLoad` support in the HTML to PDF operation, allowing users to specify the maximum wait time (in milliseconds) before finalizing the PDF.
@@ -237,8 +237,8 @@ Upgrading to the latest SDK should not break existing applications.
 
 ### February 4, 2025; Server Side Release
 
-- Added [Export PDF Form Data API](../pdf-services-api/howtos/export-pdf-form-data/) operation in PDF Services API to retrieve the data from a PDF form and return it as a JSON file.
-- Added [Import PDF Form Data API](../pdf-services-api/howtos/import-pdf-form-data/) operation in PDF Services API to populate PDF forms with JSON data and generate the resulting PDF document.
+- Added [Export PDF Form Data API](../pdf-services-api/howtos/export-pdf-form-data.md) operation in PDF Services API to retrieve the data from a PDF form and return it as a JSON file.
+- Added [Import PDF Form Data API](../pdf-services-api/howtos/import-pdf-form-data.md) operation in PDF Services API to populate PDF forms with JSON data and generate the resulting PDF document.
 
 ### November 06, 2024; Adobe Document Generation Server Side Release
 
@@ -254,7 +254,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 ### September 10, 2024; Adobe Document Generation Server Side Release
 
-- Enhanced support for [JSONata functions](../document-generation-api/templatetags/#jsonata-functions) in Table Tag with Markers.
+- Enhanced support for [JSONata functions](../document-generation-api/templatetags.md#jsonata-functions) in Table Tag with Markers.
 
 ### August 23, 2024; Added new features for Document Generation API and updated Acrobat Service API postman collection
 
@@ -265,7 +265,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 ### July 30, 2024; PDF Accessibility Checker API Added
 
-- Added [PDF Accessibility Checker](../pdf-services-api/howtos/pdf-accessibility-checker-api/) operation in PDF Services API to check accessibility on specified pages of PDF document.
+- Added [PDF Accessibility Checker](../pdf-services-api/howtos/pdf-accessibility-checker-api.md) operation in PDF Services API to check accessibility on specified pages of PDF document.
 
 ### July 22, 2024; .NET SDK 4.0.0 major release
 
@@ -279,11 +279,11 @@ Upgrading to the latest SDK should not break existing applications.
 
 ### July 16, 2024; Server Side Release - Get PDF Properties
 
-- Bug fixes [Get PDF Properties](../pdf-services-api/howtos/pdf-properties/) fixed data issue related to permissions in JSON response.
+- Bug fixes [Get PDF Properties](../pdf-services-api/howtos/pdf-properties.md) fixed data issue related to permissions in JSON response.
 
 ### July 09, 2024; Server Side Release
 
-- Added [PDF Watermark](../pdf-services-api/howtos/pdf-watermark-api/) operation in PDF Services API to add a watermark on specified pages of PDF document.
+- Added [PDF Watermark](../pdf-services-api/howtos/pdf-watermark-api.md) operation in PDF Services API to add a watermark on specified pages of PDF document.
 
 ### June 12, 2024; NodeJS SDK 4.0.1 patch release
 
@@ -312,7 +312,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 ### April 30, 2024; Adobe Document Generation Server Side Release
 
-- Added support for [discard the row in a horizontal table](../document-generation-api/tablewithmarkers/#discard-the-row-in-a-horizontal-table-if-the-condition-evaluates-to-true) in Document Generation API.
+- Added support for [discard the row in a horizontal table](../document-generation-api/tablewithmarkers.md#discard-the-row-in-a-horizontal-table-if-the-condition-evaluates-to-true) in Document Generation API.
 
 ### April, 2024; NodeJS SDK 4.0.0 major release
 
@@ -326,9 +326,9 @@ Upgrading to the latest SDK should not break existing applications.
 
 ### April, 2024; Server Side Release
 
-- Added support for [Webhook Notification](../pdf-services-api/howtos/webhook-notification/) in PDF Properties.
-- Added support for [External Storage](../pdf-services-api/howtos/pdf-external-storage-sol/) in Extract PDF, Split PDF, PDF Electronic Seal and Auto-Tag PDF.
-- Added support for [Webhook Notification](../pdf-services-api/howtos/webhook-notification/) for external storage operations.
+- Added support for [Webhook Notification](../pdf-services-api/howtos/webhook-notification.md) in PDF Properties.
+- Added support for [External Storage](../pdf-services-api/howtos/pdf-external-storage-sol.md) in Extract PDF, Split PDF, PDF Electronic Seal and Auto-Tag PDF.
+- Added support for [Webhook Notification](../pdf-services-api/howtos/webhook-notification.md) for external storage operations.
 
 ### March, 2024; Python SDK 2.3.1 patch release
 
@@ -349,11 +349,11 @@ Upgrading to the latest SDK should not break existing applications.
 
 ### January, 2024; Server Side Release
 
-- Added support for [Webhook Notification](../pdf-services-api/howtos/webhook-notification/) in all the operations **except** PDF Properties.
+- Added support for [Webhook Notification](../pdf-services-api/howtos/webhook-notification.md) in all the operations **except** PDF Properties.
 
 ### January, 2024: Adobe Document Generation Server Side Release
 
-- Added support for [Table Tag with Markers](../document-generation-api/tablewithmarkers) in Document Generation API.
+- Added support for [Table Tag with Markers](../document-generation-api/tablewithmarkers.md) in Document Generation API.
 
 ### December, 2023: Java SDK 3.5.1 patch release
 
@@ -361,16 +361,16 @@ Upgrading to the latest SDK should not break existing applications.
 
 ### October, 2023: Java SDK 3.5.0 minor release
 
-- Added support for document level permissions and trusted timestamping (using [supported TSAs](../pdf-electronic-seal-api/#supported-timestamping-authorities)) in java sdk for [PDF Electronic Seal API](../pdf-electronic-seal-api/).
+- Added support for document level permissions and trusted timestamping (using [supported TSAs](../pdf-electronic-seal-api/index.md#supported-timestamping-authorities)) in java sdk for [PDF Electronic Seal API](../pdf-electronic-seal-api/index.md).
 
 ### October, 2023; Adobe Document Generation Server Side Release
 
-- Performance Improvements - Available in [REST API](../apis/#tag/Document-Generation) and SDK(s) v3.0.0 and above.
+- Performance Improvements - Available in [REST API](../apis/index.md#tag/Document-Generation) and SDK(s) v3.0.0 and above.
 
 ### August, 2023; Server Side Release
 
-- Added support for document level permissions and trusted timestamping (using [supported TSAs](../pdf-electronic-seal-api/#supported-timestamping-authorities)) in [PDF Electronic Seal API](../pdf-electronic-seal-api/).
-- Added support for [External Storage](../pdf-services-api/howtos/pdf-external-storage-sol/) in all the operations **except** Extract PDF, Split PDF, PDF Electronic Seal and Auto-Tag PDF.
+- Added support for document level permissions and trusted timestamping (using [supported TSAs](../pdf-electronic-seal-api/index.md#supported-timestamping-authorities)) in [PDF Electronic Seal API](../pdf-electronic-seal-api/index.md).
+- Added support for [External Storage](../pdf-services-api/howtos/pdf-external-storage-sol.md) in all the operations **except** Extract PDF, Split PDF, PDF Electronic Seal and Auto-Tag PDF.
 
 ### August, 2023, NodeJS SDK 3.4.2 minor release
 
@@ -393,4 +393,4 @@ Upgrading to the latest SDK should not break existing applications.
 
 ### June, 2023; Adobe Document Generation Server Side Release
 
-- Added support for [External Storage](../pdf-services-api/howtos/pdf-external-storage-sol/) in Document Generation API.
+- Added support for [External Storage](../pdf-services-api/howtos/pdf-external-storage-sol.md) in Document Generation API.

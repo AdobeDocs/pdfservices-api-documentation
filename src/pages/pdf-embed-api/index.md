@@ -2,7 +2,7 @@
 title: PDF Embed API | Adobe PDF Services
 ---
 # Overview
-<p>
+\<p\>
 Adobe PDF Embed API allows you to embed a PDF viewer in your web applications with only a few lines of code. With options for controlling how a PDF appears and functions, your applications can deliver the rich and compelling digital document experiences to your customers expect and need.
 
 
@@ -14,7 +14,7 @@ to rely on Reader download buttons, 3rd party apps, and PDF viewers that
 care little for PDF standards. With web-based JavaScript and in-page JS
 options, displaying a PDF on the web couldn't be easier. And it's
 simple: a few of lines of code are all you need to get started.
-</p>
+\</p\>
 <InlineAlert slots="text" />
 
 Check out the [online demo](https://acrobatservices.adobe.com/view-sdk-demo/index.html#/view/FULL_WINDOW/Bodea%20Brochure.pdf),

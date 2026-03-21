@@ -13,7 +13,7 @@ Discard a column or set of columns in a table from the final generated document 
 ### Discard column if empty
 Column in a table can be discarded if every element of an array in the input json is empty or null.
 
-**How to use** <br/>
+**How to use** \<br/\>
 Add discard-if-empty construct with boolean false/true along with the template tag to activate discard if empty feature for the corresponding column.
 
 JSON representation of the input data:
@@ -81,7 +81,7 @@ JSON representation of the input data:
 ```
 ![Adding discard-if-empty construct with boolean false/true along with the template tag to activate discard if empty feature for the corresponding column](../images/discard_column_if_empty.png)
 
-- {{Project.Notes:**discard_if_empty(true)**}} tag lets the engine discard the particular column if every element of an array in the input json is either empty or null.
+- \{\{Project.Notes:**discard_if_empty(true)**\}\} tag lets the engine discard the particular column if every element of an array in the input json is either empty or null.
 
 **Note**: The row above the authored row will be considered as a header row. Cell from the header row will be discarded along with discarded column.
 
@@ -130,5 +130,5 @@ JSON representation of the input data:
 
 ![Added discard-if(expr(**condition**)) construct along with the template tag to activate discard if feature for the corresponding column](../images/discard_if_condition_true.png)
 
-- {{Conversion.Rate:**discard-if(expr($sum(Conversion.Rate)!= 100))**}}% tag lets the engine discard the particular column if condition provided in the **expr** construct evaluates to true.
+- \{\{Conversion.Rate:**discard-if(expr($sum(Conversion.Rate)!= 100))**\}\}% tag lets the engine discard the particular column if condition provided in the **expr** construct evaluates to true.
 

@@ -4,10 +4,10 @@ title: Getting Started | Document Generation API | Adobe PDF Services
 
 # Getting Started
 
-This document will guide you through the necessary steps to setup and make a request to the Document Generation API.<br/>
+This document will guide you through the necessary steps to setup and make a request to the Document Generation API.\<br/\>
 Use Document Generation API to merge JSON data into Word based document
 templates and produce high fidelity PDF and Word documents from any
-application. <br/>
+application. \<br/\>
 To learn more about the Document Generation, read [Overview](../document-generation-api/index.md)
 
 
@@ -25,16 +25,16 @@ Authoring a document template involves adding the template tags to your Word doc
 
 ![Document template with heading and template tags](../images/design_document_templates.gif)
 
-<br/>
+\<br/\>
 
-** Using MS Word Add-In ** <br/>
+** Using MS Word Add-In ** \<br/\>
 The quickest way to author a Word-based document template is by using [Adobe Document Generation Word Add-In](https://appsource.microsoft.com/en-us/product/office/WA200002654). The Add-in significantly reduces the time and effort required to insert the template tags into a Word document.
 
 <InlineAlert slots="text"/>
 
 Learn more about our [Word Add-in](../document-generation-api/wordaddin.md).
 
-** Manually ** <br/>
+** Manually ** \<br/\>
 Alternatively, you can create a document template by manually inserting the template tags into a Word document.
 Here are some prebuilt [sample document templates](https://www.adobe.com/go/dcdocgen_templates) to start with.
 
@@ -57,85 +57,85 @@ Compose the JSON data that will be merged with your Word-based document template
 
 ### 3. Generate PDF and Word documents using Document Generation API
 
-Once you are ready with the Word-based document template and the JSON data, the final step is to invoke the Document Generation API to generate the output PDF or Word documents.<br/>
+Once you are ready with the Word-based document template and the JSON data, the final step is to invoke the Document Generation API to generate the output PDF or Word documents.\<br/\>
 There are two ways to access the Document Generation API:
 
-**3.1. REST API** <br/>
-You can use our cloud based [REST API](../../../apis/#tag/Document-Generation) to generate documents.
+**3.1. REST API** \<br/\>
+You can use our cloud based [REST API](../../../apis/index.md#tag/Document-Generation) to generate documents.
 
 <InlineAlert slots="text"/>
 
 Before you begin with the REST API, refer [How To Get Started](../pdf-services-api/howtos/api-usage.md) to learn more about generating the required credentials and invoking the APIs.
 
-**3.2. REST API with External Storage** <br/>
+**3.2. REST API with External Storage** \<br/\>
 
 The Adobe Document Generation API now supports accessing client files directly from their external storage. Clients can use Signed URLs from their storage solution to conveniently access and utilize their files through the Document Generation API.
 
-To learn more, please visit [External Storage for Adobe PDF Services APIs](../pdf-services-api/howtos/pdf-external-storage-sol).
+To learn more, please visit [External Storage for Adobe PDF Services APIs](../pdf-services-api/howtos/pdf-external-storage-sol.md).
 
 
-**3.3. PDF Services SDK** <br/>
-Alternatively, you can use our offering through [PDF Services SDK](../pdf-services-api/gettingstarted#sdk).
-
-<InlineAlert slots="text"/>
-
-To get started with PDF Services SDK, refer [Quickstarts](../document-generation-api/quickstarts).
-
-<br/>
+**3.3. PDF Services SDK** \<br/\>
+Alternatively, you can use our offering through [PDF Services SDK](../pdf-services-api/gettingstarted.md#sdk).
 
 <InlineAlert slots="text"/>
 
-<div>
+To get started with PDF Services SDK, refer [Quickstarts](../document-generation-api/quickstarts/index.md).
+
+\<br/\>
+
+<InlineAlert slots="text"/>
+
+\<div\>
 
 Please allow-list the following hostnames before using Adobe PDF Services SDK:
-<ul><li>ims-na1.adobelogin.com (Required for all the clients)</li></ul>
+\<ul\>\<li\>ims-na1.adobelogin.com (Required for all the clients)\</li\>\</ul\>
 
 For clients using SDK version 4.x and above :
-<ul>
-<li> Using United States (Default) region for processing documents :
-  <ul>
-    <li>dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com (Not required, if using external storage for both input and output)</li>
-    <li>pdf-services-ue1.adobe.io</li>
-    <li>pdf-services.adobe.io (Default URI)</li>
-  </ul>
-</li>
-</ul>
+\<ul\>
+\<li\> Using United States (Default) region for processing documents :
+  \<ul\>
+    \<li\>dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com (Not required, if using external storage for both input and output)\</li\>
+    \<li\>pdf-services-ue1.adobe.io\</li\>
+    \<li\>pdf-services.adobe.io (Default URI)\</li\>
+  \</ul\>
+\</li\>
+\</ul\>
 
-<ul>
-  <li> Using Europe region for processing documents :
-  <ul>
-    <li>dcplatformstorageservice-prod-eu-west-1.s3.amazonaws.com (Not required, if using external storage for both input and output)</li>
-    <li>pdf-services-ew1.adobe.io</li>
-  </ul>
-</li>
-</ul>
+\<ul\>
+  \<li\> Using Europe region for processing documents :
+  \<ul\>
+    \<li\>dcplatformstorageservice-prod-eu-west-1.s3.amazonaws.com (Not required, if using external storage for both input and output)\</li\>
+    \<li\>pdf-services-ew1.adobe.io\</li\>
+  \</ul\>
+\</li\>
+\</ul\>
 
 For clients using SDK version 3.x and above  :
-<ul>
-<li> Using United States region for processing documents :
-  <ul>
-    <li>dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com</li>
-    <li>pdf-services-ue1.adobe.io</li>
-    <li>pdf-services.adobe.io (Default URI)</li>
-  </ul>
-</li>
-</ul>
+\<ul\>
+\<li\> Using United States region for processing documents :
+  \<ul\>
+    \<li\>dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com\</li\>
+    \<li\>pdf-services-ue1.adobe.io\</li\>
+    \<li\>pdf-services.adobe.io (Default URI)\</li\>
+  \</ul\>
+\</li\>
+\</ul\>
 
-<ul>
-  <li> Using Europe region for processing documents :
-  <ul>
-    <li>dcplatformstorageservice-prod-eu-west-1.s3.amazonaws.com</li>
-    <li>pdf-services-ew1.adobe.io</li>
-  </ul>
-</li>
-</ul>
+\<ul\>
+  \<li\> Using Europe region for processing documents :
+  \<ul\>
+    \<li\>dcplatformstorageservice-prod-eu-west-1.s3.amazonaws.com\</li\>
+    \<li\>pdf-services-ew1.adobe.io\</li\>
+  \</ul\>
+\</li\>
+\</ul\>
 
 For clients using SDK version upto 2.x :
-<ul><li>cpf-ue1.adobe.io</li></ul>
+\<ul\>\<li\>cpf-ue1.adobe.io\</li\>\</ul\>
 
-</div>
+\</div\>
 
-<br/>
+\<br/\>
 
 #### Generate PDF or Word document
 

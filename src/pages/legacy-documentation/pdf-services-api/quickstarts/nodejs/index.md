@@ -16,7 +16,7 @@ To complete this guide, you will need:
 
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
+1) To begin, open your browser to [https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api). If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
 
 ![Sign in](./shot1.png)
 
@@ -52,7 +52,7 @@ To complete this guide, you will need:
 
 At this point, we've installed the Node.js SDK for Adobe PDF Services API as a dependency for our project and have copied over our credentials files. 
 
-Our application will take a PDF, `Bodea Brochure.pdf` (downloadable from <a href="https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf">here</a>) and convert it to a Microsoft Word document, `Bodea Brochure.docx`.
+Our application will take a PDF, `Bodea Brochure.pdf` (downloadable from [here](https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf)) and convert it to a Microsoft Word document, `Bodea Brochure.docx`.
 
 6) In your editor, open the directory where you previously copied the credentials. Create a new file, `export.js`.
 

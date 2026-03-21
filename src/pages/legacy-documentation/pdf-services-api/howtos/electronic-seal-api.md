@@ -9,8 +9,8 @@ title: Electronic Seal API | How Tos | PDF Electronic Seal API | Adobe PDF Servi
 
 Specifies a supported digital signature format:
 
-* PADES : This is the latest and improved signature format which is more strict, concrete, and secure. For details, see <a href="../PDF_ISO_32000-2.pdf" target="_blank">ISO 32000-2</a> and <a href="../ETSI_EN_319_142-1.pdf" target="_blank">ETSI EN 319 142-1</a>.
-* PKCS7 : This signature format is less stringent than PADES since it permits more PDF changes without invalidating the digital signature. This is the default signature format. For details, see <a href="../PDF_ISO_32000-1.pdf" target="_blank">ISO 32000-1</a>.
+* PADES : This is the latest and improved signature format which is more strict, concrete, and secure. For details, see [ISO 32000-2](../PDF_ISO_32000-2.pdf) and [ETSI EN 319 142-1](../ETSI_EN_319_142-1.pdf).
+* PKCS7 : This signature format is less stringent than PADES since it permits more PDF changes without invalidating the digital signature. This is the default signature format. For details, see [ISO 32000-1](../PDF_ISO_32000-1.pdf).
 
 
 ### Document Level Permission (_documentLevelPermission_)
@@ -27,7 +27,7 @@ Long Term Validation (LTV) information of Timestamp Certificates (if using Trust
 
 ### TSP Credential Information (_cscCredentialOptions_) : **Required**
 
-TSP parameters encapsulate the sealer's [certificate credential](../../pdf-electronic-seal-api/gettingstarted/#step-1-procure-digital-certificate-credentials) as well as the associated authentication and authorization data.
+TSP parameters encapsulate the sealer's [certificate credential](../../pdf-electronic-seal-api/gettingstarted.md#step-1-procure-digital-certificate-credentials) as well as the associated authentication and authorization data.
 
 * **TSP Name**  (*providerName*) : **Required** : Specifies the name of the Trust Service Provider used to generate the certificate. Presently, only TSPs supporting the OAuth 2.0 client credential authorization flow are supported. The table below provides the provider name mapping for each supported Trust Service Provider.
   ![TSP Name Mapping](../../images/provider_mapping_ss.png)
@@ -44,7 +44,7 @@ TSP parameters encapsulate the sealer's [certificate credential](../../pdf-elect
 
 ### TSA Information (_tsaOptions_) :
 
-TSA parameters encapsulate the [timestamping URL and credentials](../../pdf-electronic-seal-api/gettingstarted/#step-2-optional-procure-timestamping-url-and-credentials).
+TSA parameters encapsulate the [timestamping URL and credentials](../../pdf-electronic-seal-api/gettingstarted.md#step-2-optional-procure-timestamping-url-and-credentials).
 
 * **TSA URL**  (*url*) : **Required** : Specifies the TSA URL to be used for getting timestamp token.
 * **TSA Credential Authorization Parameter**  (*credentialAuthParameters*) : Encapsulates the credential information required to authenticate the TSA URL.
@@ -59,8 +59,8 @@ The seal field parameters are required to create a new signature field or use an
 
 * **Field Name**  (*fieldName*) : **Required** : Specifies the signature field's name. This must be a non-empty string. If signature field with this field name already exists, that field is used. else a signature field with this name will be created.
 * **Visible** (_visible_): Specifies whether the signature field should be visible or hidden. The default value of `true` creates a visible seal.
-* **Page Number** (_pageNumber_) : **Required** : Specifies the page number to which the signature field should be attached. Page numbers are 1-based. It is only <b>required</b> if the signature field needs to be visible and, it does not exist in the pdf document. If this is provided along with the signature field then the page number should be same on which signature field is present in the document, else an error is thrown. This parameter will be ignored in case of invisible signature field.
-* **Location** (_location_) : **Required** : Specifies the coordinates of the seal appearance's bounding box in default PDF user space units. The location is only <b>required</b> if the signature field does not exist in the pdf document. If this is provided along with the existing signature field, then it is ignored. This parameter will also be ignored for invisible signature field.
+* **Page Number** (_pageNumber_) : **Required** : Specifies the page number to which the signature field should be attached. Page numbers are 1-based. It is only \<b\>required\</b\> if the signature field needs to be visible and, it does not exist in the pdf document. If this is provided along with the signature field then the page number should be same on which signature field is present in the document, else an error is thrown. This parameter will be ignored in case of invisible signature field.
+* **Location** (_location_) : **Required** : Specifies the coordinates of the seal appearance's bounding box in default PDF user space units. The location is only \<b\>required\</b\> if the signature field does not exist in the pdf document. If this is provided along with the existing signature field, then it is ignored. This parameter will also be ignored for invisible signature field.
 
     * **Left** (_left_) : **Required** : The left x-coordinate
     * **Bottom** (_bottom_) : **Required** : The bottom y-coordinate
@@ -141,7 +141,7 @@ Other SDKs will support these features in future versions.
 
 ## API limitations
 
-<br />
+\<br/\>
 
 - **Input PDF size:** Input PDF files up to a maximum of 100 MB are supported.
 - **Seal Image size:** Seal Image files up to a maximum of 5 MB are supported.
@@ -153,7 +153,7 @@ Other SDKs will support these features in future versions.
 
 ## REST API 
 
-See our public API Reference for [PDF Electronic Seal API](../../../apis/#tag/PDF-Electronic-Seal).
+See our public API Reference for [PDF Electronic Seal API](../../../apis/index.md#tag/PDF-Electronic-Seal).
 
 ## Apply Electronic Seal with default appearance on PDF
 

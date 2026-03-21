@@ -2,13 +2,13 @@
 title: How Tos | PDF Extract API | Adobe PDF Services
 ---
 # How Tos
-<p>
+\<p\>
 
-The [samples and documentation](extract-api.md#extract-text-from-a-pdf) should get you quickly up and running with PDF Extract capabilities in the [PDFServices SDK](../../pdf-extract-api/gettingstarted#sdk) including:
+The [samples and documentation](extract-api.md#extract-text-from-a-pdf) should get you quickly up and running with PDF Extract capabilities in the [PDFServices SDK](../../pdf-extract-api/gettingstarted.md#sdk) including:
 
 - Extracting PDF as JSON: the content, structure & renditions of table and figure elements along with Character Bounding Boxes
 
-For code examples illustrating other PDF actions including those below, see the [PDFServices SDK](../../pdf-extract-api/gettingstarted#sdk) :
+For code examples illustrating other PDF actions including those below, see the [PDFServices SDK](../../pdf-extract-api/gettingstarted.md#sdk) :
 
 - Creating a PDF from multiple formats, including HTML, Microsoft Office documents, and text files
 - Exporting a PDF to other formats or an image
@@ -19,11 +19,11 @@ For code examples illustrating other PDF actions including those below, see the 
 - Common page operations, including inserting, replacing, deleting, reordering, and rotating
 - Splitting PDFs into multiple files
 
-</p>
+\</p\>
 
 ## How It Works
 
-PDF Extract uses AI/ML technology to identify and categorize the various objects within documents – such as paragraphs, lists, headings, tables, and images – and extract the text, formatting, and associated document structural information which is then delivered in a resulting JSON file. Extracted table data can optionally be delivered within .CSV or .XLSX files, and extracted images are delivered as .PNG files. For additional information, please refer to <a href="../../../overview/pdf/Adobe_PDF_Extract_API_Technical_Brief.pdf" target="_blank">PDF Extract API white paper</a>
+PDF Extract uses AI/ML technology to identify and categorize the various objects within documents – such as paragraphs, lists, headings, tables, and images – and extract the text, formatting, and associated document structural information which is then delivered in a resulting JSON file. Extracted table data can optionally be delivered within .CSV or .XLSX files, and extracted images are delivered as .PNG files. For additional information, please refer to [PDF Extract API white paper](../../../overview/pdf/Adobe_PDF_Extract_API_Technical_Brief.pdf)
 
 ## Custom timeout configuration
 

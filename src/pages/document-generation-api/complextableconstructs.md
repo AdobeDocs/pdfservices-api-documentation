@@ -4,7 +4,7 @@ title: Complex Table Constructs | Document Generation API | Adobe PDF Services
 # Complex Table Constructs
 Add additional properties to table tags to apply advanced functionalities on table.
 
-This section is <span style="color:red">DEPRECATED</span>. To continue using complex table constructs, please refer to [Complex Table Constructs with Table markers](../document-generation-api/tablewithmarkers.md#complex-table-constructs-with-table-markers).
+This section is \<span style="color:red"\>DEPRECATED\</span\>. To continue using complex table constructs, please refer to [Complex Table Constructs with Table markers](../document-generation-api/tablewithmarkers.md#complex-table-constructs-with-table-markers).
 ## Dynamically expand table rows or columns
 Specify the cell extension property inside the table cell to indicate whether to expand table rows vertically or columns horizontally.
 
@@ -30,11 +30,11 @@ JSON representation of the input data:
 }
 ```
 
-- **Repeat table rows vertically** - *{{subscriptions.name:**cell-extension(vertical)**}}* tag lets the engine know that cells will be extended in vertical direction.
+- **Repeat table rows vertically** - *\{\{subscriptions.name:**cell-extension(vertical)**\}\}* tag lets the engine know that cells will be extended in vertical direction.
 
 ![Table gets vertically extended as table rows are repeated](../images/vertical-extension1.png)
 
-- **Repeat table columns horizontally** - *{{subscriptions.name:**cell-extension(horizontal)**}}* tag lets the engine know that cells will be extended in horizontal direction.
+- **Repeat table columns horizontally** - *\{\{subscriptions.name:**cell-extension(horizontal)**\}\}* tag lets the engine know that cells will be extended in horizontal direction.
 
 ![Table gets horizontally extended as table columns are repeated](../images/horizontal-extension1.png)
 
@@ -52,7 +52,7 @@ Discard a column or set of columns in a table from the final generated document 
 ### Discard column if empty
 Column in a table can be discarded if every element of an array in the input json is empty or null.
 
-**How to use** <br/>
+**How to use** \<br/\>
 Add discard-if-empty construct with boolean false/true along with the template tag to activate discard if empty feature for the corresponding column.
 
 JSON representation of the input data:
@@ -120,7 +120,7 @@ JSON representation of the input data:
 ```
 ![Adding discard-if-empty construct with boolean false/true along with the template tag to activate discard if empty feature for the corresponding column](../images/discard_column_if_empty.png)
 
-{{Project.Notes:**discard-if-empty(true)**}} tag lets the engine discard the particular column if every element of an array in the input json is either empty or null.
+\{\{Project.Notes:**discard-if-empty(true)**\}\} tag lets the engine discard the particular column if every element of an array in the input json is either empty or null.
 
 **Note**: The row above the authored row will be considered as a header row. Cell from the header row will be discarded along with discarded column.
 
@@ -169,7 +169,7 @@ JSON representation of the input data:
 
 ![Added discard-if(expr(**condition**)) construct along with the template tag to activate discard if feature for the corresponding column](../images/discard_if_condition_true.png)
 
-{{Conversion.Rate:**discard-if(expr($sum(Conversion.Rate)!= 100))**}} tag lets the engine discard the particular column if condition provided in the **expr** construct evaluates to true.
+\{\{Conversion.Rate:**discard-if(expr($sum(Conversion.Rate)!= 100))**\}\} tag lets the engine discard the particular column if condition provided in the **expr** construct evaluates to true.
 
 ## Dynamic table rows
 Discard a row or set of rows in a table from the final generated document.
@@ -177,7 +177,7 @@ Discard a row or set of rows in a table from the final generated document.
 ### Discard row if condition evaluates to true
 A row in the table can be discarded only when the condition in the discard-row-if(expr(**condition**),**context**) evaluates to true in the provided context. Add this construct along with the template tag to discard the row based on the provided condition.
 
-For Example: {{TABLE_CONTEXT.PROPERTY:**discard-row-if(expr(PROPERTY = "TEST_VALUE"),TABLE_CONTEXT)**}}
+For Example: \{\{TABLE_CONTEXT.PROPERTY:**discard-row-if(expr(PROPERTY = "TEST_VALUE"),TABLE_CONTEXT)**\}\}
 
 JSON representation of the input data:
 ```json

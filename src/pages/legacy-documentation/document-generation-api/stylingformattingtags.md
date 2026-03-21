@@ -17,7 +17,7 @@ Apply styling and formatting in the generated output document using the HTML bas
 
 - Create [Inline Images](../document-generation-api/inlineimages.md).
 
-- Create [Paragraphs](/overview/document-generation-api/stylingformattingtags/#how-to-create-paragraphs-in-document).
+- Create [Paragraphs](/overview/document-generation-api/stylingformattingtags.md#how-to-create-paragraphs-in-document).
 
 ## How It Works
 
@@ -92,7 +92,7 @@ JSON representation of the input data:
 
 - <img\> (image)
 
-- [<p\> (para)](/overview/document-generation-api/stylingformattingtags/#how-to-create-paragraphs-in-document)
+- [<p\> (para)](/overview/document-generation-api/stylingformattingtags.md#how-to-create-paragraphs-in-document)
 
 
 JSON representation of the input data:

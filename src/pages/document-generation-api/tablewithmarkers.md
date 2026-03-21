@@ -9,7 +9,7 @@ There are two constructs introduced to insert tables inside a document called **
 - table-start `{% table-start ARRAY_FIELD %}`
 - table-end   `{% table-end %}`
 
-**How to use** <br/>
+**How to use** \<br/\>
 - In the table row that needs to be dynamically expanded, place the `table-start` marker in the first cell and the `table-end` marker in the last cell of the row.
 - The `table-start` marker requires an array field (ARRAY_FIELD), which will be used to create the rows/columns in the table depending on the orientation of the table.
 - The content between these markers is then dynamically populated by iterating over the array of objects corresponding to the tag(ARRAY_FIELD) specified in the `table-start` marker.
@@ -177,7 +177,7 @@ Discard a column or set of columns in a table from the final generated document 
 #### Discard column if empty
 Columns in a table can be discarded if every element of an array in the input json is empty or null.
 
-**How to use** <br/>
+**How to use** \<br/\>
 Add a discard-if-empty construct with a boolean false/true along with the template tag to activate discard if empty feature for the corresponding column.
 
 JSON representation of the input data:
@@ -220,7 +220,7 @@ JSON representation of the input data:
 Column in a table can be discarded if the condition provided in the discard-if(expr(**condition**)) evaluates to true for
 any entry in the array of objects.
 
-**How to use** <br/>
+**How to use** \<br/\>
 Add discard-if(expr(**condition**)) construct along with the template tag to activate the discard-if feature for the corresponding column.
 
 **Note:** discard-if construct can also take a context input as discard-if(expr(**condition**), **context_tag**). In this case the `condition`
@@ -273,9 +273,9 @@ Discard a row or set of rows in a table from the final generated document.
 A row in the table can be discarded only when the condition in the discard-row-if(expr(**condition**)) evaluates
 to true in the provided context. Add this construct along with the template tag to discard the row based on the provided condition.
 
-For Example: {{PROPERTY:**discard-row-if(expr(condition))**}}
+For Example: \{\{PROPERTY:**discard-row-if(expr(condition))**\}\}
 
-**Note:** We can also use context in a similar way to discard-if, as {{PROPERTY:**discard-row-if(expr(condition),context_tag)**}}.
+**Note:** We can also use context in a similar way to discard-if, as \{\{PROPERTY:**discard-row-if(expr(condition),context_tag)**\}\}.
 
 JSON representation of the input data:
 ```json
@@ -322,7 +322,7 @@ JSON representation of the input data:
 A row in the horizontal table can be discarded only when the condition in the discard-row-if(expr(**condition**)) evaluates
 to true in the provided context. Add this construct along with the template tag to discard the row based on the provided condition.
 
-For Example: {{PROPERTY:**discard-row-if(expr(condition))**}} <br/>
+For Example: \{\{PROPERTY:**discard-row-if(expr(condition))**\}\} \<br/\>
 JSON representation of the input data:
 ```json
 {

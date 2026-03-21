@@ -18,7 +18,7 @@ To complete this guide, you will need:
   
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommended and not a federated ID.
+1) To begin, open your browser to [https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api). If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommended and not a federated ID.
 
 ![Sign in](./shot1.png)
 
@@ -76,7 +76,7 @@ To complete this guide, you will need:
 
 This file will define what dependencies we need and how the application will be built.
 
-Our application will take an Invoice PDF document, `sampleInvoice.pdf` (downloadable from <a href="./sampleInvoice.pdf" target="_blank">here</a>), and will use the sealing options with default appearance options to apply electronic seal over the PDF document by invoking Acrobat Services API and generate an electronically sealed PDF.
+Our application will take an Invoice PDF document, `sampleInvoice.pdf` (downloadable from [here](./sampleInvoice.pdf)), and will use the sealing options with default appearance options to apply electronic seal over the PDF document by invoking Acrobat Services API and generate an electronically sealed PDF.
 
 4) In your editor, open the directory where you previously copied the credentials and created the `csproj` file. Create a new file, `Program.cs`. 
 

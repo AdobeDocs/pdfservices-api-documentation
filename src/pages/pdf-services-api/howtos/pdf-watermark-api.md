@@ -43,7 +43,7 @@ The page ranges are specified as an array of objects whose length cannot exceed 
 
 ## REST API
 
-See our public API Reference for [PDF Watermark API](../../../apis/#tag/PDF-Watermark).
+See our public API Reference for [PDF Watermark API](../../../apis/index.md#tag/PDF-Watermark).
 
 ## Apply Watermark on Input PDF
 

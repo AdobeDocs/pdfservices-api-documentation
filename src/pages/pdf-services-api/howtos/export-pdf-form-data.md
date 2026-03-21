@@ -25,7 +25,7 @@ A **filled interactive PDF form (AcroForm/Static XFA)** from which data needs to
 
 ## REST API
 
-See our public API Reference for [Export PDF Form Data API](../../../apis/#tag/Export-PDF-Form-Data).
+See our public API Reference for [Export PDF Form Data API](../../../apis/index.md#tag/Export-PDF-Form-Data).
 
 ## Export PDF Form Data
 

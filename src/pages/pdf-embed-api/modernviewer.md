@@ -37,7 +37,7 @@ As of April 2023, the legacy viewer is no longer available. All requests to it w
 * The left hand panel is deprecated and page thumbnails, bookmarks, page navigation, 
   view mode and zoom options have moved to the right-hand panel.
 
-<br/>
+\<br/\>
 
 ![Full window embed mode in legacy viewer](../images/fullwindow1.png)
 
@@ -59,13 +59,13 @@ As of April 2023, the legacy viewer is no longer available. All requests to it w
 * The full screen view contains additional options to display page thumbnails, 
   bookmarks and page navigation options.
 
-<br/>
+\<br/\>
 
 *Sized container embed mode*
 
 ![Sized container embed mode in modern viewer](../images/sized_new.png)
 
-<br/>
+\<br/\>
 
 *Sized container in full screen mode*
 
@@ -96,7 +96,7 @@ As of April 2023, the legacy viewer is no longer available. All requests to it w
   view mode and zoom options have moved to the right-hand panel.
 * The right-hand panel also contains page thumbnails and bookmarks.
 
-<br/>
+\<br/\>
 
 ![Lightbox embed mode in modern viewer](../images/lightboxscreen.png)
 
@@ -149,4 +149,4 @@ with significant improvement in user experience.
 ```
 
 For more details about the configurations supported in modern PDF viewer,
-see the section [Menu and tool options](../howtos_ui.md/#menu-and-tool-options).
+see the section [Menu and tool options](../howtos_ui.md#menu-and-tool-options).

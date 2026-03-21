@@ -19,9 +19,9 @@ Apply styling and formatting in the generated output document using the HTML bas
 
 - Create [Inline Images](../document-generation-api/inlineimages.md).
 
-- Create [Paragraphs](/overview/document-generation-api/stylingformattingtags/#how-to-create-paragraphs-in-document).
+- Create [Paragraphs](/overview/document-generation-api/stylingformattingtags.md#how-to-create-paragraphs-in-document).
 
-- Create [Lists](/overview/document-generation-api/templatetags/#insert-list-using-ul-and-ol-html-elements).
+- Create [Lists](/overview/document-generation-api/templatetags.md#insert-list-using-ul-and-ol-html-elements).
 
 ## How It Works
 
@@ -95,7 +95,7 @@ JSON representation of the input data:
 ```
 ![Formatting Inline images with height and width](../images/FormattedInlineImageHeightAndWidth.png)
 
-<b>Note:</b> Here the size of image is formatted according to input data.
+\<b\>Note:\</b\> Here the size of image is formatted according to input data.
 
 ## Tags Supported
 
@@ -117,9 +117,9 @@ JSON representation of the input data:
 
 - <img\> (image)
 
-- [<p\> (para)](/overview/document-generation-api/stylingformattingtags/#how-to-create-paragraphs-in-document)
+- [<p\> (para)](/overview/document-generation-api/stylingformattingtags.md#how-to-create-paragraphs-in-document)
 
-- [<ol\> & <ul\> (ordered lists and unordered lists)](/overview/document-generation-api/templatetags/#insert-list-using-ul-and-ol-html-elements)
+- [<ol\> & <ul\> (ordered lists and unordered lists)](/overview/document-generation-api/templatetags.md#insert-list-using-ul-and-ol-html-elements)
 
 - <sup\> (superscript)
 

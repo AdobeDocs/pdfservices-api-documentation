@@ -13,7 +13,7 @@ provided along with examples for clarity.
 
 Paid credentials enable a greater processing quota and require entering
 into a separate written agreement. To learn more, please see our
-[pricing page](/document-services/pricing/#main)
+[pricing page](/document-services/pricing/index.md#main)
 for purchase options.
 
 Document Transactions for the Operations below resulting in a Document
@@ -22,7 +22,7 @@ will be counted with the following page limits:
 <InlineAlert slots="text"/>
 
 Document Transactions for the Operations below resulting in a Document
-will be counted with the following page limits:<ul><li>Extract and PDF To Markdown Operations: 1 Document Transaction for up to 5 pages</li><li>Accessibility Auto-Tag Operation: 10 Document Transactions per page</li><li>Electronic Seal Operation: 10 Document Transactions per PDF</li><li>All other Operations: 1 Document Transaction for up to 50 pages</li></ul>
+will be counted with the following page limits:\<ul\>\<li\>Extract and PDF To Markdown Operations: 1 Document Transaction for up to 5 pages\</li\>\<li\>Accessibility Auto-Tag Operation: 10 Document Transactions per page\</li\>\<li\>Electronic Seal Operation: 10 Document Transactions per PDF\</li\>\<li\>All other Operations: 1 Document Transaction for up to 50 pages\</li\>\</ul\>
 
 ### Metrics
 
@@ -124,4 +124,4 @@ and running with the easy-to-use APIs with little investment.
 
 Paid credentials enable a greater processing quota and require entering
 into a separate written agreement. To learn more, please see our
-[pricing page](/document-services/pricing/#main) for purchase options.
+[pricing page](/document-services/pricing/index.md#main) for purchase options.

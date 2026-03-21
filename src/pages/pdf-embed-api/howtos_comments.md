@@ -118,7 +118,7 @@ Embed API supports the following text markup annotation types - highlight, strik
 underline. Features include:
 
 ![Text Selection with strikethrough](../images/textselectiontool.png)
-<br/>
+\<br/\>
 
 -   Adding a text markup: There are two ways to add a text markup:
     -   Click the highlight/underline/strikethrough tool in the quick tools 
@@ -129,7 +129,7 @@ underline. Features include:
         a comment box opens up where you can type in some text.
 
 ![Context Menu with text styling options available](../images/contextmenu.png)
-<br/>
+\<br/\>
 
 -   Updating a text markup: While moving or resizing text markup is
     unsupported, you can:
@@ -139,7 +139,7 @@ underline. Features include:
         overflow menu in the comments panel.
 
 ![Highlight Menu with option to change color and delete](../images/highlight_menu.png)
-<br/>
+\<br/\>
 
 -   Removing a text markup
     -   Click on an existing text markup to open the toolbar, and choose
@@ -312,7 +312,7 @@ key fields:
 
 | Parameter        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Required? |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| context          | The context that determines the meaning of the JSON as an annotation. The annotation MUST have these two values in the context parameter:<br/>[https://www.w3.org/ns/anno.jsonld](https://www.w3.org/ns/anno.jsonld),<br/>[https://comments.acrobat.com/ns/anno.jsonld](https://comments.acrobat.com/ns/anno.jsonld)                                                                                                                                                                                                  | Yes       |
+| context          | The context that determines the meaning of the JSON as an annotation. The annotation MUST have these two values in the context parameter:\<br/\>[https://www.w3.org/ns/anno.jsonld](https://www.w3.org/ns/anno.jsonld),\<br/\>[https://comments.acrobat.com/ns/anno.jsonld](https://comments.acrobat.com/ns/anno.jsonld)                                                                                                                                                                                                  | Yes       |
 | type             | The annotation type which must be _Annotation_.                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Yes       |
 | id               | The annotation’s unique identifier.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Yes       |
 | bodyValue        | The string value of the plain text comment associated with the annotation.                                                                                                                                                                                                                                                                                                                                                                                                                                            | Yes       |
@@ -324,7 +324,7 @@ key fields:
 | modified         | The date-time in UTC timezone format to denote the annotation modification time after it was created. Use xsd:dateTime with the UTC timezone expressed as “Z”.                                                                                                                                                                                                                                                                                                                                                        | Yes       |
 | source           | The PDF’s unique identifier. This is same as the value of `id` in the metadata field in the `previewFile` API.                                                                                                                                                                                                                                                                                                                                                                                                        | Yes       |
 | stylesheet.type  | The type of style applied to freehand text annotations. The only permissible value is CssStylesheet.                                                                                                                                                                                                                                                                                                                                                                                                                  | No        |
-| stylesheet.value | This specifies the font size and color as a valid CSS JSON. This parameter is applicable only in case of freehand text annotations.<br/>**Note:** In the current implementation, there is no support to set the font family of the text annotation. Depending on the language of the text, the following font families will be applied:<br/><ul><li>English: Helvetica</li><li>Chinese Simplified: Adobe Song Std L</li><li>Chinese Traditional: Kozuka Mincho Pr6N R</li><li>Japanese: Kozuka Mincho Pr6N R</li><li>Korean: Adobe Myungjo Std M</li><li>Other languages: Helvetica</li></ul> | No        |
+| stylesheet.value | This specifies the font size and color as a valid CSS JSON. This parameter is applicable only in case of freehand text annotations.\<br/\>**Note:** In the current implementation, there is no support to set the font family of the text annotation. Depending on the language of the text, the following font families will be applied:\<br/\>\<ul\>\<li\>English: Helvetica\</li\>\<li\>Chinese Simplified: Adobe Song Std L\</li\>\<li\>Chinese Traditional: Kozuka Mincho Pr6N R\</li\>\<li\>Japanese: Kozuka Mincho Pr6N R\</li\>\<li\>Korean: Adobe Myungjo Std M\</li\>\<li\>Other languages: Helvetica\</li\>\</ul\> | No        |
 
 If the annotation is a comment on the PDF, then the value of the
 `target` parameter is *target-node* as follows:
@@ -366,7 +366,7 @@ annotation associated with the current reply):
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
 | source               | The PDF’s unique identifier                                                                                                                                                                                                                                                                                                                                                               | Yes                                                                             |
 | selector.type        | The PDF Embed API supports one value: _AdobeAnnoSelector_                                                                                                                                                                                                                                                                                                                                 | Yes                                                                             |
-| selector.subtype     | The type of annotation. Permissible values include:<br/><ul><li>_note_</li><li>_highlight_</li><li>_shape_</li><li>_underline_</li><li>_strikeout_</li><li>_freetext_</li></ul>                                                                                                                                                                                                                                         | Yes                                               |
+| selector.subtype     | The type of annotation. Permissible values include:\<br/\>\<ul\>\<li\>_note_\</li\>\<li\>_highlight_\</li\>\<li\>_shape_\</li\>\<li\>_underline_\</li\>\<li\>_strikeout_\</li\>\<li\>_freetext_\</li\>\</ul\>                                                                                                                                                                                                                                         | Yes                                               |
 | selector.node        | The element within a document upon which the user is commenting. For PDF documents, the `node` object contains a single property named `index`.                                                                                                                                                                                                                                           | Yes                                                                             |
 | selector.node.index  | The PDF page index starting from 0.                                                                                                                                                                                                                                                                                                                                                       | Yes                                                                             |
 | selector.boundingBox | The PDF page coordinates of the rectangular bounding box containing the annotation. The value will be an array of four coordinates \[Xmin, Ymin, Xmax, Ymax\] which represent the box bounded from Xmin to Xmax on X-axis and Ymin to Ymax on Y-axis. All the values Xmin, Ymin, Xmax, and Ymax are of float type.                                                                        | Yes                                                                             |
@@ -590,7 +590,7 @@ previewFilePromise.then(adobeViewer => {
 });
 ```
 
-<hr />
+\<hr/\>
 
 ### getAnnotations API
 
@@ -651,7 +651,7 @@ received through the GET API. Note that the ID of such annotations
 received in the GET API output will be different for every browser
 session.
 
-<hr />
+\<hr/\>
 
 ### deleteAnnotations API
 
@@ -700,7 +700,7 @@ previewFilePromise.then(adobeViewer => {
 });
 ```
 
-<hr />
+\<hr/\>
 
 ### updateAnnotation API
 
@@ -744,7 +744,7 @@ previewFilePromise.then(adobeViewer => {
 });
 ```
 
-<hr />
+\<hr/\>
 
 ## Annotation events
 
@@ -800,17 +800,17 @@ event gets triggered.
 
 | Event type                | Description                                                                                                                                                     | Event data                |
 | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
-| ANNOTATION_ADDED         | A new annotation is added to PDF from the UI or API.                                                                                                            | <ANNOTATION_DATA>        |
-| ANNOTATION_CLICKED       | Any annotation in the PDF is clicked.                                                                                                                           | <ANNOTATION_DATA>        |
-| ANNOTATION_UPDATED       | The annotation is updated from the UI or API.                                                                                                                   | <ANNOTATION_DATA>        |
-| ANNOTATION_DELETED       | The annotation is deleted from the UI or API.                                                                                                                   | <ANNOTATION_DATA>        |
-| ANNOTATION_MOUSE_OVER   | The mouse pointer moves over any annotation.                                                                                                                    | <ANNOTATION_DATA>        |
-| ANNOTATION_MOUSE_OUT    | The mouse pointer moves out of any annotation.                                                                                                                  | <ANNOTATION_DATA>        |
-| ANNOTATION_SELECTED      | Any annotation is selected from the UI or API.                                                                                                                  | <ANNOTATION_DATA>        |
-| ANNOTATION_UNSELECTED    | Any annotation is unselected from the UI or API.                                                                                                                | <ANNOTATION_DATA>        |
-| ANNOTATION_MODE_STARTED | The event is generated when a user selects a particular annotation type from the toolbar or when `startAnnotationMode` is invoked to start any annotation mode. | <ANNOTATION_TYPE>        |
-| ANNOTATION_MODE_ENDED   | When a user exits any previously selected annotation mode.                                                                                                      | <ANNOTATION_TYPE>        |
-| ANNOTATION_COUNT         | Denotes the total number of annotations when any new annotation is added or any existing annotation is deleted.                                                 | <NUMBER_OF_ANNOTATIONS> |
+| ANNOTATION_ADDED         | A new annotation is added to PDF from the UI or API.                                                                                                            | \<ANNOTATION_DATA\>        |
+| ANNOTATION_CLICKED       | Any annotation in the PDF is clicked.                                                                                                                           | \<ANNOTATION_DATA\>        |
+| ANNOTATION_UPDATED       | The annotation is updated from the UI or API.                                                                                                                   | \<ANNOTATION_DATA\>        |
+| ANNOTATION_DELETED       | The annotation is deleted from the UI or API.                                                                                                                   | \<ANNOTATION_DATA\>        |
+| ANNOTATION_MOUSE_OVER   | The mouse pointer moves over any annotation.                                                                                                                    | \<ANNOTATION_DATA\>        |
+| ANNOTATION_MOUSE_OUT    | The mouse pointer moves out of any annotation.                                                                                                                  | \<ANNOTATION_DATA\>        |
+| ANNOTATION_SELECTED      | Any annotation is selected from the UI or API.                                                                                                                  | \<ANNOTATION_DATA\>        |
+| ANNOTATION_UNSELECTED    | Any annotation is unselected from the UI or API.                                                                                                                | \<ANNOTATION_DATA\>        |
+| ANNOTATION_MODE_STARTED | The event is generated when a user selects a particular annotation type from the toolbar or when `startAnnotationMode` is invoked to start any annotation mode. | \<ANNOTATION_TYPE\>        |
+| ANNOTATION_MODE_ENDED   | When a user exits any previously selected annotation mode.                                                                                                      | \<ANNOTATION_TYPE\>        |
+| ANNOTATION_COUNT         | Denotes the total number of annotations when any new annotation is added or any existing annotation is deleted.                                                 | \<NUMBER_OF_ANNOTATIONS\> |
 
 ## Handling existing annotations
 
@@ -848,7 +848,7 @@ previewFilePromise.then(adobeViewer => {
 });
 ```
 
-<hr />
+\<hr/\>
 
 ### addAnnotationsInPDF API
 
@@ -881,7 +881,7 @@ previewFilePromise.then(adobeViewer => {
 });
 ```
 
-<hr />
+\<hr/\>
 
 ## APIs to control UI configurations
 
@@ -916,7 +916,7 @@ as needed:
     toolbar is visible. Set to *false* to hide the toolbar.
 
 ![Drawing Tools with optin to showToolbar and showCommentsPanel](../images/drawingtools1.png)
-<br/>
+\<br/\>
 
 -   `downloadWithAnnotations`: Annotations are not saved to the PDF
     buffer if annotation APIs are enabled. By default, the downloaded
@@ -991,7 +991,7 @@ annotationUIConfig: {
 }
 ```
 
-<hr />
+\<hr/\>
 
 ### selectAnnotation API
 
@@ -1023,7 +1023,7 @@ previewFilePromise.then(adobeViewer => {
   });
 });
 ```
-<hr />
+\<hr/\>
 
 ### unselectAnnotation API
 
@@ -1048,7 +1048,7 @@ previewFilePromise.then(adobeViewer => {
 });
 ```
 
-<hr />
+\<hr/\>
 
 ### startAnnotationMode API
 
@@ -1073,7 +1073,7 @@ optional parameters:
 There are two parameters which accept the following values:
 
 * `mode`: Permissible values include: note, highlight, shape, underline, strikeout, freetext or eraser
-* `options`: defaultColor: <COLOR_HEX_CODE>, cursor: <CURSOR_TYPE>, fontSize: <FONT_SIZE>, strokeWidth: <STROKE_WIDTH>
+* `options`: defaultColor: \<COLOR_HEX_CODE\>, cursor: \<CURSOR_TYPE\>, fontSize: \<FONT_SIZE\>, strokeWidth: \<STROKE_WIDTH\>
 
 #### API output
 
@@ -1110,7 +1110,7 @@ previewFilePromise.then(adobeViewer => {
 });
 ```  
 
-<hr />
+\<hr/\>
 
 ### endAnnotationMode API
 
@@ -1134,7 +1134,7 @@ previewFilePromise.then(adobeViewer => {
 });
 ```
 
-<hr />
+\<hr/\>
 
 ## Code Samples
 

@@ -9,9 +9,9 @@ Create PDFs from a variety of formats, including static and dynamic HTML; Micros
 
 See our public API Reference for :
 
-- [Create PDF from Office formats](../../../apis/#tag/Create-PDF)
+- [Create PDF from Office formats](../../../apis/index.md#tag/Create-PDF)
 
-- [Create PDF from HTML](../../../apis/#tag/Html-To-PDF)
+- [Create PDF from HTML](../../../apis/index.md#tag/Html-To-PDF)
 
 ## Create a PDF
 
@@ -34,7 +34,7 @@ For more information, refer [Benefits of embedding custom fonts](https://support
 
 <InlineAlert slots="text"/>
 
-We do not support HTML to PDF conversion for requests containing urls where:<br/>1. The URL Scheme is not HTTPS.<br/>2. The hostname resolves to a non-routable IP address. This encompasses scenarios where redirects lead to non-routable IP addresses as well.
+We do not support HTML to PDF conversion for requests containing urls where:\<br/\>1. The URL Scheme is not HTTPS.\<br/\>2. The hostname resolves to a non-routable IP address. This encompasses scenarios where redirects lead to non-routable IP addresses as well.
 
 Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
 

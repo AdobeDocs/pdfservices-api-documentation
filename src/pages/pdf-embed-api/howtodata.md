@@ -44,14 +44,14 @@ Once you've logged in to Analytics, do the following:
 2.  Select your report suite.
 
 ![Selecting Site Title as DC SDK PDF Viewer Metrics in AEM Suite](../images/aemsuite.png)
-<br/>
+\<br/\>
 
 3.  Navigate to the Report Suite Manager.
 4.  Highlight your report suite.
 5.  Choose **Edit Settings > General > Processing Rules**.
 
 ![Selecting Processing Rules from AEM Edit Settings Menu](../images/aemeditsettingsmenu.png)
-<br/>
+\<br/\>
 
 6.  Click the **Processing Rules** tab. You'll need to create two rules
     and configure them so that you can map collected events and event
@@ -202,7 +202,7 @@ Once you've logged in to Google Analytics, do the following:
 3.  Click **Create custom dimensions**.
 
 ![Configure in GA4](../images/ga_create_dimension.png)
-<br/>
+\<br/\>
 
 4.  Enter Dimension name.
 5.  Set the scope as **Event**.
@@ -231,7 +231,7 @@ Once you've logged in to Google Analytics, do the following:
 
 
 ![Configure in GA4](../images/ga_custom_dimension.png)
-<br/>
+\<br/\>
 
 ### Viewing your data in Google Analytics 4
 
@@ -343,7 +343,7 @@ generated:
 | APP_RENDERING_FAILED | When the PDF fails to render because of an unexpected error.                                                                                                                                                                                                                                                                                                                                | None       |
 | PDF_VIEWER_OPEN      | When the PDF viewer opens.                                                                                                                                                                                                                                                                                                                                                                  | None       |
 | PDF_VIEWER_CLOSE     | When the PDF viewer closes.                                                                                                                                                                                                                                                                                                                                                                 | None       |
-| PDF_VIEWER_READY     | When the PDF is rendered completely and the PDF viewer is ready to perform functionalities, such as annotations and form-filling. This event is especially useful in case of linearized PDFs to check when the PDF gets fully downloaded. To know more about linearization, see the section [PDF Linearization](../howtos/#pdf-linearization). | None       |
+| PDF_VIEWER_READY     | When the PDF is rendered completely and the PDF viewer is ready to perform functionalities, such as annotations and form-filling. This event is especially useful in case of linearized PDFs to check when the PDF gets fully downloaded. To know more about linearization, see the section [PDF Linearization](../howtos/index.md#pdf-linearization). | None       |
 
 In order to receive additional file preview events, set
 `enableFilePreviewEvents` to *true* and pass it to the events callback.
@@ -415,17 +415,17 @@ const eventOptions = {
 
 | Event type  | Event description | Event data  |
 | ------ | -----------------------  | ----------------------------------------------- |
-| ANNOTATION_ADDED         | A new annotation is added to PDF.                                                                               | <ANNOTATION_TYPE>        |
-| ANNOTATION_CLICKED       | An existing annotation is clicked.                                                                              | <ANNOTATION_TYPE>        |
-| ANNOTATION_UPDATED       | An existing annotation is updated.                                                                              | <ANNOTATION_TYPE>        |
-| ANNOTATION_DELETED       | An annotation is deleted.                                                                                       | <ANNOTATION_TYPE>        |
-| ANNOTATION_MOUSE_OVER   | The cursor moves over any annotation.                                                                           | <ANNOTATION_TYPE>        |
-| ANNOTATION_MOUSE_OUT    | The cursor moves out of any annotation.                                                                         | <ANNOTATION_TYPE>        |
-| ANNOTATION_SELECTED      | Any existing annotation is selected.                                                                            | <ANNOTATION_TYPE>        |
-| ANNOTATION_UNSELECTED    | A selected annotation is unselected                                                                             | <ANNOTATION_TYPE>        |
-| ANNOTATION_MODE_STARTED | The user selects a particular annotation type from the toolbar.                                                 | <ANNOTATION_TYPE>        |
-| ANNOTATION_MODE_ENDED   | A user exits any previously selected annotation mode.                                                           | <ANNOTATION_TYPE>        |
-| ANNOTATION_COUNT         | Denotes the total number of annotations when any new annotation is added or any existing annotation is deleted. | <NUMBER_OF_ANNOTATIONS> |
+| ANNOTATION_ADDED         | A new annotation is added to PDF.                                                                               | \<ANNOTATION_TYPE\>        |
+| ANNOTATION_CLICKED       | An existing annotation is clicked.                                                                              | \<ANNOTATION_TYPE\>        |
+| ANNOTATION_UPDATED       | An existing annotation is updated.                                                                              | \<ANNOTATION_TYPE\>        |
+| ANNOTATION_DELETED       | An annotation is deleted.                                                                                       | \<ANNOTATION_TYPE\>        |
+| ANNOTATION_MOUSE_OVER   | The cursor moves over any annotation.                                                                           | \<ANNOTATION_TYPE\>        |
+| ANNOTATION_MOUSE_OUT    | The cursor moves out of any annotation.                                                                         | \<ANNOTATION_TYPE\>        |
+| ANNOTATION_SELECTED      | Any existing annotation is selected.                                                                            | \<ANNOTATION_TYPE\>        |
+| ANNOTATION_UNSELECTED    | A selected annotation is unselected                                                                             | \<ANNOTATION_TYPE\>        |
+| ANNOTATION_MODE_STARTED | The user selects a particular annotation type from the toolbar.                                                 | \<ANNOTATION_TYPE\>        |
+| ANNOTATION_MODE_ENDED   | A user exits any previously selected annotation mode.                                                           | \<ANNOTATION_TYPE\>        |
+| ANNOTATION_COUNT         | Denotes the total number of annotations when any new annotation is added or any existing annotation is deleted. | \<NUMBER_OF_ANNOTATIONS\> |
 
 <InlineAlert slots="text"/>
 

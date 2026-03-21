@@ -2,10 +2,10 @@
 title: Quickstarts | Document Generation API | Adobe PDF Services
 ---
 # Quickstarts
-This quickstart will guide you through the necessary steps to setup and make a request to the Document Generation API.<br/>
+This quickstart will guide you through the necessary steps to setup and make a request to the Document Generation API.\<br/\>
 Use Document Generation API to merge JSON data into Word based document
 templates and produce high fidelity PDF and Word documents from any
-application. <br/>
+application. \<br/\>
 To learn more about the Document Generation, read [Overview](../document-generation-api/index.md)
 
 
@@ -23,16 +23,16 @@ Authoring a document template involves adding the template tags to your Word doc
 
 ![Document template with heading and template tags](../images/design_document_templates.gif)
 
-<br/>
+\<br/\>
 
-** Using MS Word Add-In ** <br/>
+** Using MS Word Add-In ** \<br/\>
 The quickest way to author a Word-based document template is by using [Adobe Document Generation Word Add-In](https://appsource.microsoft.com/en-us/product/office/WA200002654). The Add-in significantly reduces the time and effort required to insert the template tags into a Word document.
 
 <InlineAlert slots="text"/>
 
 Learn more about our [Word Add-in](../document-generation-api/wordaddin.md#add-in-demo).
 
-** Manually ** <br/>
+** Manually ** \<br/\>
 Alternatively, you can create a document template by manually inserting the template tags into a Word document.
 Here are some prebuilt [sample document templates](https://www.adobe.com/go/dcdocgen_templates) to start with.
 
@@ -55,30 +55,30 @@ Compose the JSON data that will be merged with your Word-based document template
 
 ### 3. Generate PDF and Word documents using Document Generation API
 
-Once you are ready with the Word-based document template and the JSON data, the final step is to invoke the Document Generation API to generate the output PDF or Word documents.<br/>
+Once you are ready with the Word-based document template and the JSON data, the final step is to invoke the Document Generation API to generate the output PDF or Word documents.\<br/\>
 There are two ways to access the Document Generation API:
 
-**3.1. REST API** <br/>
+**3.1. REST API** \<br/\>
 You can use our cloud based [REST API](https://www.adobe.com/go/dcsdk_APIdocs#post-documentGeneration) to generate documents.
 
 <InlineAlert slots="text"/>
 
 Before you begin with the REST API, refer [How To Get Started](https://documentcloud.adobe.com/document-services/index.html#how-to-get-started-) to learn more about generating the required credentials and invoking the APIs.
 
-**3.2. PDF Services SDK** <br/>
-Alternatively, you can use our offering through [PDF Services SDK](../pdf-services-api#sdk).
+**3.2. PDF Services SDK** \<br/\>
+Alternatively, you can use our offering through [PDF Services SDK](../pdf-services-api/index.md#sdk).
 
 <InlineAlert slots="text"/>
 
-To get started with PDF Services SDK, refer [Quickstarts](../pdf-services-api).
+To get started with PDF Services SDK, refer [Quickstarts](../pdf-services-api/index.md).
 
-<br/>
+\<br/\>
 
 <InlineAlert slots="text"/>
 
-Please allow-list the following hostnames before using Adobe PDF Services SDK:<ul><li>ims-na1.adobelogin.com</li><li>pdf-services.adobe.io (for versions 3.x.x)</li><li>cpf-ue1.adobe.io (for versions 2.x.x)</li></ul>
+Please allow-list the following hostnames before using Adobe PDF Services SDK:\<ul\>\<li\>ims-na1.adobelogin.com\</li\>\<li\>pdf-services.adobe.io (for versions 3.x.x)\</li\>\<li\>cpf-ue1.adobe.io (for versions 2.x.x)\</li\>\</ul\>
 
-<br/>
+\<br/\>
 
 #### Generate PDF or Word document
 

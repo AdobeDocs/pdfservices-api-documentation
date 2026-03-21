@@ -17,7 +17,7 @@ To complete this guide, you will need:
 
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
+1) To begin, open your browser to [https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api). If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
 
 ![Sign in](./shot1.png)
 
@@ -49,7 +49,7 @@ To complete this guide, you will need:
 
 At this point, we've installed the Python SDK for Adobe PDF Services API as a dependency for our project and have copied over our credentials files.
 
-Our application will take a PDF, `Adobe Accesibility Auto-Tag API Sample.pdf` (downloadable from <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>) and tag its contents. The results will be saved in a given directory `/output/AutotagPDF`. 
+Our application will take a PDF, `Adobe Accesibility Auto-Tag API Sample.pdf` (downloadable from [here](../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf)) and tag its contents. The results will be saved in a given directory `/output/AutotagPDF`. 
 
 4) In your editor, open the directory where you previously copied the credentials. Create a new file, `autotag.py`.
 
@@ -85,7 +85,7 @@ tagged_pdf_path = f'{output_path}{input_pdf}-tagged.pdf'
 report_path = f'{output_path}{input_pdf}-report.xlsx'
 ```
 
-This defines what our output directory will be and optionally deletes it if it already exists. Then we define what PDF will be tagged. (You can download the source we used <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>.) In a real application, these values would be typically be dynamic. 
+This defines what our output directory will be and optionally deletes it if it already exists. Then we define what PDF will be tagged. (You can download the source we used [here](../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf).) In a real application, these values would be typically be dynamic. 
 
 3) Next, we setup the SDK to use our credentials.
 

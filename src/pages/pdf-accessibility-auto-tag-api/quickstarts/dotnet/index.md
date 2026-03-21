@@ -18,7 +18,7 @@ To complete this guide, you will need:
   
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
+1) To begin, open your browser to [https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api). If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
 
 ![Sign in](./shot1.png)
 
@@ -72,7 +72,7 @@ To complete this guide, you will need:
 ```
 This file will define what dependencies we need and how the application will be built.
 
-Our application will take a PDF, `Adobe Accesibility Auto-Tag API Sample.pdf` (downloadable from <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>) and tag its contents. The results will be saved in a given directory `/output`.
+Our application will take a PDF, `Adobe Accesibility Auto-Tag API Sample.pdf` (downloadable from [here](../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf)) and tag its contents. The results will be saved in a given directory `/output`.
 
 4) In your editor, open the directory where you previously copied the credentials and created the `csproj` file. Create a new file, `Program.cs`. 
 
@@ -140,7 +140,7 @@ PDFServices pdfServices = new PDFServices(credentials);
 IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
 ```
 
-We define input stream for the PDF that will be tagged. (You can download the source we used <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>.) In a real application, these values would be typically be dynamic.
+We define input stream for the PDF that will be tagged. (You can download the source we used [here](../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf).) In a real application, these values would be typically be dynamic.
 Then we upload the content of input stream and specify the input media type as PDF.
 
 6) Now, let's create the job and parameters:

@@ -3,9 +3,9 @@ title: How Tos | PDF Accessibility Auto-Tag API | Adobe PDF Services
 ---
 # How Tos
 
-<p>
+\<p\>
 
-The [samples and documentation](accessibility-auto-tag-api.md/#generate-tagged-pdf-from-a-pdf) should get you quickly up and running with PDF Accessibility Auto-Tag capabilities in the [PDFServices SDK](../../pdf-services-api/index.md) including:
+The [samples and documentation](accessibility-auto-tag-api.md#generate-tagged-pdf-from-a-pdf) should get you quickly up and running with PDF Accessibility Auto-Tag capabilities in the [PDFServices SDK](../../pdf-services-api/index.md) including:
 
 - Improving the accessibility of PDFs
 
@@ -20,7 +20,7 @@ For code examples illustrating other PDF actions including those below, see the 
 - Common page operations, including inserting, replacing, deleting, reordering, and rotating
 - Splitting PDFs into multiple files
 
-</p>
+\</p\>
 
 ## Custom timeout configuration
 

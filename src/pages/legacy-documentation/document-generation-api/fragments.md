@@ -184,7 +184,7 @@ In the above fragment, `doctor` tag further contains `doctorName` tag, to which 
 
 ## Limitations
 
-<ul>
-<br />
-<li>The Expressions and Jsonata functions are not supported inside the fragments.</li>
-</ul>
+\<ul\>
+\<br/\>
+\<li\>The Expressions and Jsonata functions are not supported inside the fragments.\</li\>
+\</ul\>
