@@ -45,9 +45,9 @@ JSON representation of the input data:
 
 Styling for the text tag can be provided using the json data through the HTML based constructs. The constructs follows the additional rules as listed below :
 
-- HTML tags supported are <span\>, nested span, <br\> (new line), <b\> (bold), <strong\> (strong), <em\> (emphasis), <i\> (italic), <u\> (underline), <p\> (para).
+- HTML tags supported are `<span>`, nested span, `<br>` (new line), `<b>` (bold), `<strong>` (strong), `<em>` (emphasis), `<i>` (italic), `<u>` (underline), `<p>` (para).
 
-- Either use Inline custom css inside the span tag to style the data or use basic styling tags such as <b\> (bold), <i\> (italic) and <u\> (underline).
+- Either use Inline custom css inside the span tag to style the data or use basic styling tags such as `<b>` (bold), `<i>` (italic) and `<u>` (underline).
 
 - Styling precedence works as per the general convention of (local  - > global) scope for nested HTML span.
 
@@ -95,41 +95,41 @@ JSON representation of the input data:
 ```
 ![Formatting Inline images with height and width](../images/FormattedInlineImageHeightAndWidth.png)
 
-\<b\>Note:\</b\> Here the size of image is formatted according to input data.
+**Note:** Here the size of image is formatted according to input data.
 
 ## Tags Supported
 
-- <span\>
+- `<span>`
 
-- <a\> (anchor)
+- `<a>` (anchor)
 
-- <br\> (new line)
+- `<br>` (new line)
 
-- <b\> (bold)
+- `<b>` (bold)
 
-- <strong\> (strong)
+- `<strong>` (strong)
 
-- <em\> (emphasis)
+- `<em>` (emphasis)
 
-- <i\> (italic)
+- `<i>` (italic)
 
-- <u\> (underline)
+- `<u>` (underline)
 
-- <img\> (image)
+- `<img>` (image)
 
-- [<p\> (para)](/overview/document-generation-api/stylingformattingtags.md#how-to-create-paragraphs-in-document)
+- [`<p>` (para)](/overview/document-generation-api/stylingformattingtags.md#how-to-create-paragraphs-in-document)
 
-- [<ol\> & <ul\> (ordered lists and unordered lists)](/overview/document-generation-api/templatetags.md#insert-list-using-ul-and-ol-html-elements)
+- [`<ol>` & `<ul>` (ordered lists and unordered lists)](/overview/document-generation-api/templatetags.md#insert-list-using-ul-and-ol-html-elements)
 
-- <sup\> (superscript)
+- `<sup>` (superscript)
 
-- <sub\> (subscript)
+- `<sub>` (subscript)
 
-- <h1\>, <h2\>, <h3\>, <h4\>, <h5\>, <h6\> (headings)
+- `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` (headings)
 
-- <text-align\> (left, center, right, justify)
+- `<text-align>` (left, center, right, justify)
 
-- <margin-left\> (units: pt, px, em, cm, mm, in)
+- `<margin-left>` (units: pt, px, em, cm, mm, in)
 
 JSON representation of the input data:
 

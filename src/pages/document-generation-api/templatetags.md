@@ -20,7 +20,7 @@ A placeholder(text tags) gets replaced by the actual input data.
 
 **How to insert Placeholder Variables**
 
-<Media slots="video"/>
+<Media slot="video"/>
 
 [https://images-tv.adobe.com/mpcv3/5158/aa393134-7cf7-4ebb-bfd0-1ced95237d20_1615916599.854x480at800_h264.mp4#t=3](https://images-tv.adobe.com/mpcv3/5158/aa393134-7cf7-4ebb-bfd0-1ced95237d20_1615916599.854x480at800_h264.mp4#t=3)
 
@@ -97,7 +97,7 @@ placeholder and edit the alt text as per the defined format:
 
 **How to insert Images**
 
-<Media slots="video"/>
+<Embed slots="video"/>
 
 [https://images-tv.adobe.com/mpcv3/5158/43cb78ad-e98d-4deb-bdca-cf32edd0df95_1615916490.854x480at800_h264.mp4#t=3](https://images-tv.adobe.com/mpcv3/5158/43cb78ad-e98d-4deb-bdca-cf32edd0df95_1615916490.854x480at800_h264.mp4#t=3)
 
@@ -170,14 +170,15 @@ Show or hide content in the document based on the conditions.
 
 **How to insert Conditional Tags**
 
-<Media slots="video"/>
+<Embed slots="video"/>
 
 [https://images-tv.adobe.com/mpcv3/5158/671b4819-2e8c-44a1-8667-e9dfd2556133_1615916356.854x480at800_h264.mp4#t=3](https://images-tv.adobe.com/mpcv3/5158/671b4819-2e8c-44a1-8667-e9dfd2556133_1615916356.854x480at800_h264.mp4#t=3)
+
 
 <InlineAlert slots="text"/>
 
 The condition must be wrapped inside *expr()*. \<br/\> Supported
-conditional operators are =, !=, >=, >, <=, <.
+conditional operators are =, !=, \>=, \>, \<=, \<.
 
 JSON representation of the input data:
 
@@ -259,9 +260,10 @@ Rows of a table can be dynamically populated by repeating over an array of objec
 
 **How to insert Tables**
 
-<Media slots="video"/>
+<Embed slots="video"/>
 
 [https://images-tv.adobe.com/mpcv3/5158/d58772af-7a62-49fa-a098-12b11a27fb71_1615917048.854x480at800_h264.mp4#t=3](https://images-tv.adobe.com/mpcv3/5158/d58772af-7a62-49fa-a098-12b11a27fb71_1615917048.854x480at800_h264.mp4#t=3)
+
 
 <InlineAlert slots="text"/>
 
@@ -369,7 +371,7 @@ Dynamically generate numbered or bullet lists by repeating over a list.
 
 **How to insert Lists**
 
-<Media slots="video"/>
+<Embed slots="video"/>
 
 [https://images-tv.adobe.com/mpcv3/5158/d58772af-7a62-49fa-a098-12b11a27fb71_1615917048.854x480at800_h264.mp4#t=3](https://images-tv.adobe.com/mpcv3/5158/d58772af-7a62-49fa-a098-12b11a27fb71_1615917048.854x480at800_h264.mp4#t=3)
 
@@ -425,7 +427,7 @@ Performing numerical calculations on the input data.
 
 **How to insert Numerical Calculations**
 
-<Media slots="video"/>
+<Embed slots="video"/>
 
 [https://images-tv.adobe.com/mpcv3/5158/e5e5e7c6-a63c-45cf-8a17-b60291068626_1615916868.854x480at800_h264.mp4#t=3](https://images-tv.adobe.com/mpcv3/5158/e5e5e7c6-a63c-45cf-8a17-b60291068626_1615916868.854x480at800_h264.mp4#t=3)
 

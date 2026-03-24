@@ -20,7 +20,7 @@ Document Generation add-in is developed in such a way that you don't
 need to learn any code. The system does it all for you, as you'll see in
 the video below:
 
-<Media slots="video"/>
+<Embed slots="video"/>
 
 [https://images-tv.adobe.com/mpcv3/5158/38713027-f9e6-4020-ac97-7de5d873476f_1615914905.854x480at800_h264.mp4#t=1](https://images-tv.adobe.com/mpcv3/5158/38713027-f9e6-4020-ac97-7de5d873476f_1615914905.854x480at800_h264.mp4#t=1)
 

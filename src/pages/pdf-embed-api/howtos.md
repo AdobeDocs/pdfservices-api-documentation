@@ -36,7 +36,7 @@ This table lists down the various options which can be passed in `metaData`.
 | Variable | Default | Description |
 | -------- | ------- | ----------- |
 | fileName | None | The name of the PDF to be rendered. An example of `fileName` is "Bodea Brochure.pdf". Note that `fileName` is mandatory. |
-| id | None | Pass the PDF ID when annotation APIs are enabled to uniquely identify the PDF. For more details, see [Annotations API overview](./howtos_comments.md#annotations-api-overview). |
+| id | None | Pass the PDF ID when annotation APIs are enabled to uniquely identify the PDF. For more details, see [Annotations API overview](./howtos-comments.md#annotations-api-overview). |
 | hasReadOnlyAccess | false | Set this flag to *true* if you want to render the PDF in read-only mode. Commenting is not allowed and existing PDF comments are displayed as read only. |
 
 That's it! View the page in a browser to see your fully functional PDF

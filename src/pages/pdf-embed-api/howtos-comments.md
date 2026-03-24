@@ -1001,7 +1001,7 @@ specified by the annotation ID.
 
 #### Input parameters
 
-<Annotation_ID>
+\<Annotation_ID\>
 
 #### API output
 

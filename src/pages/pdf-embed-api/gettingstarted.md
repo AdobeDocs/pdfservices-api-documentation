@@ -130,7 +130,7 @@ and select the desired view mode from the dropdown.
 These view modes can also be set using the configuration variable
 `defaultViewMode`. Set the appropriate value of the variable and pass it
 as a preview configuration to the `previewFile` API. For details, see
-[Menu and tool options](./howtos_ui.md#menu-and-tool-options).
+[Menu and tool options](./howtos-ui.md#menu-and-tool-options).
 
 ### Go to a Page
 

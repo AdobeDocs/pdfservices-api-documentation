@@ -29,6 +29,7 @@
         - [Document Generation API](document-generation-api/index.md)
         - [PDF Electronic Seal API](pdf-electronic-seal-api/index.md)
         - [PDF Embed API](pdf-embed-api/index.md)
+        - [Legacy Documentation](legacy-documentation/index.md)
     - [REST APIs](apis/index.md)
 
 - subPages:

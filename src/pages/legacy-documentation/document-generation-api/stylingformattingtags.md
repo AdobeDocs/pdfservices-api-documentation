@@ -41,9 +41,9 @@ JSON representation of the input data:
 
 Styling for the text tag can be provided using the json data through the HTML based constructs. The constructs follows the additional rules as listed below :
 
-- HTML tags supported are <span\>, nested span, <br\> (new line), <b\> (bold), <strong\> (strong), <em\> (emphasis), <i\> (italic), <u\> (underline), <p\> (para).
+- HTML tags supported are `<span>`, nested span, `<br>` (new line), `<b>` (bold), `<strong>` (strong), `<em>` (emphasis), `<i>` (italic), `<u>` (underline), `<p>` (para).
 
-- Either use Inline custom css inside the span tag to style the data or use basic styling tags such as <b\> (bold), <i\> (italic) and <u\> (underline).
+- Either use Inline custom css inside the span tag to style the data or use basic styling tags such as `<b>` (bold), `<i>` (italic) and `<u>` (underline).
 
 - Styling precedence works as per the general convention of (local  - > global) scope for nested HTML span.
 
@@ -74,25 +74,25 @@ JSON representation of the input data:
 
 ## Tags Supported
 
-- <span\>
+- `<span>`
 
-- <a\> (anchor)
+- `<a>` (anchor)
 
-- <br\> (new line)
+- `<br>` (new line)
 
-- <b\> (bold)
+- `<b>` (bold)
 
-- <strong\> (strong)
+- `<strong>` (strong)
 
-- <em\> (emphasis)
+- `<em>` (emphasis)
 
-- <i\> (italic)
+- `<i>` (italic)
 
-- <u\> (underline)
+- `<u>` (underline)
 
-- <img\> (image)
+- `<img>` (image)
 
-- [<p\> (para)](/overview/document-generation-api/stylingformattingtags.md#how-to-create-paragraphs-in-document)
+- [`<p>` (para)](/overview/document-generation-api/stylingformattingtags.md#how-to-create-paragraphs-in-document)
 
 
 JSON representation of the input data:
