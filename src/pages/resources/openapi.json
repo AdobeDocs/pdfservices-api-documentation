@@ -10627,7 +10627,7 @@
             "default": 100
           },
           "includeRenderedHtml": {
-            "description": "When set to `true`, the operation returns a ZIP file containing both the generated PDF and the rendered HTML content.",
+            "description": "When set to `true`, the operation returns a ZIP file containing both the generated PDF and the rendered HTML content. Valid and accepted input type of files are - HTML files and ZIP files (containing HTML + assets)",
             "type": "boolean",
             "default": false
           },
@@ -10711,7 +10711,7 @@
                 "default": 100
               },
               "includeRenderedHtml": {
-                "description": "When set to `true`, the operation returns a ZIP file containing both the generated PDF and the rendered HTML content.",
+                "description": "When set to `true`, the operation returns a ZIP file containing both the generated PDF and the rendered HTML content.Valid and accepted input type of files are - HTML files and ZIP files (containing HTML + assets)",
                 "type": "boolean",
                 "default": false
               }

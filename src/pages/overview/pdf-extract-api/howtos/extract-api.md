@@ -2330,3 +2330,392 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
     "includeStyling": true
 }'
 ```
+
+## Extract Text and Tables and Header-Footer Information
+
+The sample below adds an option to get header-footer information from given PDFs. 
+
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="3" languages=".NET, Python, REST API" /> 
+
+
+#### .NET
+
+```javascript
+// Get the samples from https://github.com/adobe/PDFServices.NET.SDK.Samples
+// Run the sample:
+// cd ExtractPDFWithIncludeHeaderFooter/
+// dotnet run ExtractPDFWithIncludeHeaderFooter.csproj
+namespace ExtractPDFWithIncludeHeaderFooter
+{
+    class Program
+    {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
+        static void Main()
+    {
+        // Configure the logging.
+        ConfigureLogging();
+        try
+        {
+            // Initial setup, create credentials instance
+            ICredentials credentials = new ServicePrincipalCredentials(
+            Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+            Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
+
+            // Creates a PDF Services instance
+            PDFServices pdfServices = new PDFServices(credentials);
+
+            // Creates an asset from source file and upload
+            using Stream inputStream = File.OpenRead(@"extractPDFInput.pdf");
+            IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
+
+            // Create parameters for the job
+            ExtractPDFParams extractPDFParams = ExtractPDFParams.ExtractPDFParamsBuilder()
+            .AddElementsToExtract(new List<ExtractElementType>(new[]
+            { ExtractElementType.TEXT, ExtractElementType.TABLES }))
+        .AddIncludeHeaderFooter(true)  // Enable header and footer extraction
+            .Build();
+
+            // Creates a new job instance
+            ExtractPDFJob extractPDFJob = new ExtractPDFJob(asset).SetParams(extractPDFParams);
+
+            // Submits the job and gets the job result
+            String location = pdfServices.Submit(extractPDFJob);
+            PDFServicesResponse<ExtractPDFResult> pdfServicesResponse =
+                pdfServices.GetJobResult<ExtractPDFResult>(location, typeof(ExtractPDFResult));
+
+            // Get content from the resulting asset(s)
+            IAsset resultAsset = pdfServicesResponse.Result.Resource;
+            StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+
+            // Creating output streams and copying stream asset's content to it
+            String outputFilePath = CreateOutputFilePath();
+            new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+            Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+            streamAsset.Stream.CopyTo(outputStream);
+            outputStream.Close();
+
+            Console.WriteLine("Successfully extracted PDF content with header and footer information!");
+            Console.WriteLine("Output saved to: " + Directory.GetCurrentDirectory() + outputFilePath);
+        }
+        catch (ServiceUsageException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (ServiceApiException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (SDKException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (IOException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (Exception ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    }
+
+        static void ConfigureLogging()
+    {
+        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+    }
+
+        // Generates a string containing a directory structure and file name for the output file.
+        private static String CreateOutputFilePath()
+    {
+        String timeStamp = DateTime.Now.ToString("yyyy'-'MM'-'dd'T'HH'-'mm'-'ss");
+        return ("/output/extract" + timeStamp + ".zip");
+    }
+    }
+}
+```
+
+#### Python
+
+```python
+# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples
+# Run the sample:
+# python src/extractpdf/extract_text_table_with_header_footer_from_pdf.py
+
+# Initialize the logger
+logging.basicConfig(level=logging.INFO)
+
+class ExtractTextTableWithHeaderFooterFromPDF:
+    def __init__(self):
+        try:
+            file = open('src/resources/extractPdfInput.pdf', 'rb')
+            input_stream = file.read()
+            file.close()
+
+            # Initial setup, create credentials instance
+            credentials = ServicePrincipalCredentials(
+                client_id=os.getenv('PDF_SERVICES_CLIENT_ID'),
+                client_secret=os.getenv('PDF_SERVICES_CLIENT_SECRET')
+            )
+
+            # Creates a PDF Services instance
+            pdf_services = PDFServices(credentials=credentials)
+
+            # Creates an asset(s) from source file(s) and upload
+            input_asset = pdf_services.upload(input_stream=input_stream, mime_type=PDFServicesMediaType.PDF)
+
+            # Create parameters for the job with header/footer extraction enabled
+            extract_pdf_params = ExtractPDFParams(
+                elements_to_extract=[ExtractElementType.TEXT, ExtractElementType.TABLES],
+                include_header_footer=True  # Extract header and footer information from PDF
+            )
+
+            # Creates a new job instance
+            extract_pdf_job = ExtractPDFJob(input_asset=input_asset, extract_pdf_params=extract_pdf_params)
+
+            # Submit the job and gets the job result
+            location = pdf_services.submit(extract_pdf_job)
+            pdf_services_response = pdf_services.get_job_result(location, ExtractPDFResult)
+
+            # Get content from the resulting asset(s)
+            result_asset: CloudAsset = pdf_services_response.get_result().get_resource()
+            stream_asset: StreamAsset = pdf_services.get_content(result_asset)
+
+            # Creates an output stream and copy stream asset's content to it
+            output_file_path = self.create_output_file_path()
+            with open(output_file_path, "wb") as file:
+                file.write(stream_asset.get_input_stream())
+
+        except (ServiceApiException, ServiceUsageException, SdkException) as e:
+            logging.exception(f'Exception encountered while executing operation: {e}')
+
+    # Generates a string containing a directory structure and file name for the output file
+    @staticmethod
+    def create_output_file_path() -> str:
+        now = datetime.now()
+        time_stamp = now.strftime("%Y-%m-%dT%H-%M-%S")
+        os.makedirs("output/ExtractTextTableWithHeaderFooterFromPDF", exist_ok=True)
+        return f"output/ExtractTextTableWithHeaderFooterFromPDF/extract{time_stamp}.zip"
+
+
+if __name__ == "__main__":
+    ExtractTextTableWithHeaderFooterFromPDF()
+```
+
+#### REST API
+
+```javascript
+// Please refer our REST API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
+
+curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
+  "elementsToExtract": [
+        "text",
+        "tables"
+    ],
+    "includeHeaderFooter": true
+}'
+```
+
+## Extract Text and Tables and Encapsulated Text from list of elements
+
+The sample below adds an option to extract encapsulated text content from list of elements.
+
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
+
+<CodeBlock slots="heading, code" repeat="3" languages=".NET, Python, REST API" /> 
+
+
+#### .NET
+
+```javascript
+// Get the samples from https://github.com/adobe/PDFServices.NET.SDK.Samples
+// Run the sample:
+// cd ExtractPDFWithTagEncapsulatedText/
+// dotnet run ExtractPDFWithTagEncapsulatedText.csproj
+
+namespace ExtractPDFWithTagEncapsulatedText
+{
+    class Program
+    {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
+        static void Main()
+    {
+        // Configure the logging.
+        ConfigureLogging();
+        try
+        {
+            // Initial setup, create credentials instance
+            ICredentials credentials = new ServicePrincipalCredentials(
+            Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_ID"),
+            Environment.GetEnvironmentVariable("PDF_SERVICES_CLIENT_SECRET"));
+
+            // Creates a PDF Services instance
+            PDFServices pdfServices = new PDFServices(credentials);
+
+            // Creates an asset from source file and upload
+            using Stream inputStream = File.OpenRead(@"extractPDFInput.pdf");
+            IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
+
+            // Create parameters for the job
+            ExtractPDFParams extractPDFParams = ExtractPDFParams.ExtractPDFParamsBuilder()
+            .AddElementsToExtract(new List<ExtractElementType>(new[]
+            { ExtractElementType.TEXT, ExtractElementType.TABLES }))
+        .AddTagEncapsulatedTextType(TagEncapsulatedTextType.FIGURE)  // Enable figure tag encapsulation
+            .Build();
+
+            // Creates a new job instance
+            ExtractPDFJob extractPDFJob = new ExtractPDFJob(asset).SetParams(extractPDFParams);
+
+            // Submits the job and gets the job result
+            String location = pdfServices.Submit(extractPDFJob);
+            PDFServicesResponse<ExtractPDFResult> pdfServicesResponse =
+                pdfServices.GetJobResult<ExtractPDFResult>(location, typeof(ExtractPDFResult));
+
+            // Get content from the resulting asset(s)
+            IAsset resultAsset = pdfServicesResponse.Result.Resource;
+            StreamAsset streamAsset = pdfServices.GetContent(resultAsset);
+
+            // Creating output streams and copying stream asset's content to it
+            String outputFilePath = CreateOutputFilePath();
+            new FileInfo(Directory.GetCurrentDirectory() + outputFilePath).Directory.Create();
+            Stream outputStream = File.OpenWrite(Directory.GetCurrentDirectory() + outputFilePath);
+            streamAsset.Stream.CopyTo(outputStream);
+            outputStream.Close();
+
+            Console.WriteLine("Successfully extracted PDF content with tag encapsulated text for figures!");
+            Console.WriteLine("Output saved to: " + Directory.GetCurrentDirectory() + outputFilePath);
+        }
+        catch (ServiceUsageException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (ServiceApiException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (SDKException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (IOException ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    catch (Exception ex)
+        {
+            log.Error("Exception encountered while executing operation", ex);
+        }
+    }
+
+        static void ConfigureLogging()
+    {
+        ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+        XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+    }
+
+        // Generates a string containing a directory structure and file name for the output file.
+        private static String CreateOutputFilePath()
+    {
+        String timeStamp = DateTime.Now.ToString("yyyy'-'MM'-'dd'T'HH'-'mm'-'ss");
+        return ("/output/extract" + timeStamp + ".zip");
+    }
+    }
+}
+```
+
+#### Python
+
+```python
+# Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples
+# Run the sample:
+# python src/extractpdf/extract_text_table_with_header_footer_from_pdf.py
+
+# Initialize the logger
+logging.basicConfig(level=logging.INFO)
+
+class ExtractTextWithEncapsulatedTextFromPDF:
+    def __init__(self):
+        try:
+            file = open('src/resources/extractPdfInput.pdf', 'rb')
+            input_stream = file.read()
+            file.close()
+
+            # Initial setup, create credentials instance
+            credentials = ServicePrincipalCredentials(
+                client_id=os.getenv('PDF_SERVICES_CLIENT_ID'),
+                client_secret=os.getenv('PDF_SERVICES_CLIENT_SECRET')
+            )
+
+            # Creates a PDF Services instance
+            pdf_services = PDFServices(credentials=credentials)
+
+            # Creates an asset(s) from source file(s) and upload
+            input_asset = pdf_services.upload(input_stream=input_stream, mime_type=PDFServicesMediaType.PDF)
+
+            # Create parameters for the job with encapsulated text extraction from figures
+            extract_pdf_params = ExtractPDFParams(
+                elements_to_extract=[ExtractElementType.TEXT, ExtractElementType.TABLES],
+                tag_encapsulated_text=["Figure"]  # Extract encapsulated text content from figures
+            )
+
+            # Creates a new job instance
+            extract_pdf_job = ExtractPDFJob(input_asset=input_asset, extract_pdf_params=extract_pdf_params)
+
+            # Submit the job and gets the job result
+            location = pdf_services.submit(extract_pdf_job)
+            pdf_services_response = pdf_services.get_job_result(location, ExtractPDFResult)
+
+            # Get content from the resulting asset(s)
+            result_asset: CloudAsset = pdf_services_response.get_result().get_resource()
+            stream_asset: StreamAsset = pdf_services.get_content(result_asset)
+
+            # Creates an output stream and copy stream asset's content to it
+            output_file_path = self.create_output_file_path()
+            with open(output_file_path, "wb") as file:
+                file.write(stream_asset.get_input_stream())
+
+        except (ServiceApiException, ServiceUsageException, SdkException) as e:
+            logging.exception(f'Exception encountered while executing operation: {e}')
+
+    # Generates a string containing a directory structure and file name for the output file
+    @staticmethod
+    def create_output_file_path() -> str:
+        now = datetime.now()
+        time_stamp = now.strftime("%Y-%m-%dT%H-%M-%S")
+        os.makedirs("output/ExtractTextWithEncapsulatedTextFromPDF", exist_ok=True)
+        return f"output/ExtractTextWithEncapsulatedTextFromPDF/extract{time_stamp}.zip"
+
+
+if __name__ == "__main__":
+    ExtractTextWithEncapsulatedTextFromPDF()
+```
+
+#### REST API
+
+```javascript
+// Please refer our REST API docs for more information 
+// https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF
+
+curl --location --request POST 'https://pdf-services.adobe.io/operation/extractpdf' \
+--header 'x-api-key: {{Placeholder for client_id}}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{Placeholder for token}}' \
+--data-raw '{
+    "assetID": "urn:aaid:AS:UE1:23c30ee0-2e4d-46d6-87f2-087832fca718"
+  "elementsToExtract": [
+        "text",
+        "tables"
+    ],
+    "tagEncapsulatedText": ["Figure"]
+}'
+```
