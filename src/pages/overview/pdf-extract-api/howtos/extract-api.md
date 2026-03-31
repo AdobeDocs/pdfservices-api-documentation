@@ -2638,7 +2638,7 @@ namespace ExtractPDFWithTagEncapsulatedText
 ```python
 # Get the samples from https://github.com/adobe/pdfservices-python-sdk-samples
 # Run the sample:
-# python src/extractpdf/extract_text_table_with_header_footer_from_pdf.py
+# python src/extractpdf/extract_text_with_encapsulated_text_from_pdf.py
 
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
