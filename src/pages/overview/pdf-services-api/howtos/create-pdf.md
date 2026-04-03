@@ -26,6 +26,7 @@ following formats:
 -   Microsoft Excel (XLS, XLSX)
 -   Text (TXT, RTF)
 -   Image (BMP, JPEG, GIF, TIFF, PNG)
+-   Markdown (MARKDOWN)
 
 <InlineAlert slots="text"/>
 

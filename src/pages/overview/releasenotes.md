@@ -139,7 +139,7 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 ```javascript
 <ItemGroup>
     <PackageReference Include="log4net" Version="3.2.0" />
-    <PackageReference Include="Adobe.PDFServicesSDK" Version="4.3.1" />
+    <PackageReference Include="Adobe.PDFServicesSDK" Version="4.4.0" />
 </ItemGroup> 
 ```
 
@@ -154,7 +154,7 @@ using Adobe.PDFServicesSDK;
 - Add the following dependency in your project's requirements.txt file:
 
 ```javascript
-pdfservices-sdk~=4.1.0
+pdfservices-sdk~=4.3.0
 ```
 
 ## Archived Documentation
@@ -179,6 +179,20 @@ Minor and Patch releases are backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
+
+### April 6, 2026; .NET SDK 4.4.0 Release
+
+- Added support for [PDF to Markdown](../pdf-extract-api/howtos/pdf-to-markdown/) operation in PDF Services .NET SDK.
+- Introduced support for generating PDFs from Markdown files in Create PDF operation
+- Added includeRenderedHtml Parameter in the HTML to PDF operation
+- Introduced includeHeaderFooter and tagEncapsulatedText Params in Extract operation
+
+### April 6, 2026; Python SDK 4.3.0 Release
+
+- Added support for [PDF to Markdown](../pdf-extract-api/howtos/pdf-to-markdown/) operation in PDF Services Python SDK.
+- Introduced support for generating PDFs from Markdown files in Create PDF operation
+- Added includeRenderedHtml Parameter in the HTML to PDF operation
+- Introduced includeHeaderFooter and tagEncapsulatedText Params in Extract operation
 
 ### September 29, 2025; .NET SDK 4.3.1 patch release
 
