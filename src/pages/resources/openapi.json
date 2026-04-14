@@ -24,7 +24,7 @@
     },
     {
       "name": "Create PDF",
-      "description": "Create PDF document from Microsoft Office documents (Word, Excel and PowerPoint) and Image file formats."
+      "description": "Create PDF document from Microsoft Office documents (Word, Excel and PowerPoint), Markdown and Image file formats."
     },
     {
       "name": "Export PDF",
@@ -2095,7 +2095,7 @@
           "Create PDF"
         ],
         "summary": "Create PDF document from non PDF document.",
-        "description": "Create PDF document from Microsoft Office documents (Word, Excel and PowerPoint) and Image file formats.",
+        "description": "Create PDF document from Microsoft Office documents (Word, Excel and PowerPoint), Markdown and Image file formats.",
         "operationId": "pdfoperations.createpdf",
         "parameters": [
           {
@@ -10008,7 +10008,7 @@
         "type": "object",
         "properties": {
           "assetID": {
-            "description": "A file assetID. Supported file formats are bmp, doc, docx, gif, jpeg, jpg, png, ppt, pptx, rtf, tif, tiff, txt, xls and xlsx. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
+            "description": "A file assetID. Supported file formats are bmp, doc, docx, gif, jpeg, jpg, png, ppt, pptx, rtf, tif, tiff, txt, xls, xlsx and md. For more details <a href = 'https://developer.adobe.com/document-services/docs/apis/#tag/Assets'> click here </a>.",
             "type": "string"
           },
           "documentLanguage": {
@@ -10626,6 +10626,11 @@
             "type": "number",
             "default": 100
           },
+          "includeRenderedHtml": {
+            "description": "When set to `true`, the operation returns a ZIP file containing both the generated PDF and the rendered HTML content. Valid and accepted input type of files are - HTML files and ZIP files (containing HTML + assets)",
+            "type": "boolean",
+            "default": false
+          },
           "notifiers": {
             "$ref": "#/components/schemas/notifiers"
           }
@@ -10639,6 +10644,7 @@
             "pageHeight": 8.5
           },
           "waitTimeToLoad": 100,
+          "includeRenderedHtml": true,
           "notifiers": [
             {
               "type": "CALLBACK",
@@ -10703,6 +10709,11 @@
                 "description": "Specifies the maximum time (in milliseconds) to wait before finalizing the PDF. After this duration, the HTML is captured and converted into a PDF, regardless of whether all elements have finished loading or rendering. If a customer provides a custom value, it overrides the default.",
                 "type": "number",
                 "default": 100
+              },
+              "includeRenderedHtml": {
+                "description": "When set to `true`, the operation returns a ZIP file containing both the generated PDF and the rendered HTML content.Valid and accepted input type of files are - HTML files and ZIP files (containing HTML + assets)",
+                "type": "boolean",
+                "default": false
               }
             }
           },
@@ -10726,7 +10737,8 @@
               "pageWidth": 8.5,
               "pageHeight": 11
             },
-            "waitTimeToLoad": 100
+            "waitTimeToLoad": 100,
+            "includeRenderedHtml": true
           },
           "notifiers": [
             {

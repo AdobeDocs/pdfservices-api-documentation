@@ -394,6 +394,20 @@ module.exports = {
                                         path: 'overview/pdf-extract-api/quickstarts/extract-pdf/python/index.md'
                                     }
                                 ]
+                            },
+                            {
+                                title: 'PDF to Markdown',
+                                path: 'overview/pdf-extract-api/quickstarts/pdf-to-markdown/index.md',
+                                pages: [
+                                    {
+                                        title:'.NET',
+                                        path: 'overview/pdf-extract-api/quickstarts/pdf-to-markdown/dotnet/index.md'
+                                    },
+                                    {
+                                        title:'Python',
+                                        path: 'overview/pdf-extract-api/quickstarts/pdf-to-markdown/python/index.md'
+                                    }
+                                ]
                             }
                         ]
                     },
