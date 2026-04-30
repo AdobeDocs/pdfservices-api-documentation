@@ -23,7 +23,7 @@ module.exports = {
             {
                 title: 'Adobe Acrobat Services',
                 subTitle: '',
-                path: '../../../document-services/'
+                path: 'https://developer.adobe.com/document-services/'
             },
             {
                 title: 'APIs',
@@ -31,58 +31,58 @@ module.exports = {
                     {
                         title: 'PDF Services',
                         description: 'Create, combine and export PDFs',
-                        path: '../document-services/apis/pdf-services/'
+                        path: 'https://developer.adobe.com/document-services/apis/pdf-services/'
                     },
                     {
                         title: 'PDF Accessibility Auto-Tag',
                         description: 'Auto-tag PDF content to improve accessibility',
-                        path: '../document-services/apis/pdf-accessibility-auto-tag/'
+                        path: 'https://developer.adobe.com/document-services/apis/pdf-accessibility-auto-tag/'
                     },
                     {
                         title: 'PDF Extract',
                         description: 'Extract text, tables, images, and document structure',
-                        path: '../document-services/apis/pdf-extract/'
+                        path: 'https://developer.adobe.com/document-services/apis/pdf-extract/'
                     },
                     {
                         title: 'Document Generation',
                         description: 'Generate PDF and Word documents from custom Word templates',
-                        path: '../document-services/apis/doc-generation/'
+                        path: 'https://developer.adobe.com/document-services/apis/doc-generation/'
                     },
                     {
                         title: 'Electronic Seal API',
                         description: 'Electronically seal PDF documents at scale to provide document athenticity and identity',
-                        path: '../document-services/apis/electronic-seal-api/'
+                        path: 'https://developer.adobe.com/document-services/apis/electronic-seal-api/'
                     },
                     {
                         title: 'PDF Embed',
                         description: 'Embed high-fidelity PDFs in web apps with analytics',
-                        path: '../document-services/apis/pdf-embed/'
+                        path: 'https://developer.adobe.com/document-services/apis/pdf-embed/'
                     },
                     {
                         title: 'Sign API',
                         description: 'Integrate e-signatures into your platform or application',
-                        path: '../document-services/apis/sign-api/'
+                        path: 'https://developer.adobe.com/document-services/apis/sign-api/'
                     },
                     {
                         title: 'Power Automate Connector',
                         description: 'Build workflows on Microsoft Power Platform easily',
-                        path: '../document-services/apis/microsoft-pa-integration/'
+                        path: 'https://developer.adobe.com/document-services/apis/microsoft-pa-integration/'
                     }
                 ]
             },
             {
                 title: 'Use Cases',
-                path: '../document-services/use-cases/agreements-and-contracts/sales-proposals-and-contracts.md'
+                path: 'https://developer.adobe.com/document-services/use-cases/agreements-and-contracts/sales-proposals-and-contracts/'
             },
             {
                 title: 'Pricing',
-                path: '../document-services/pricing/main'
+                path: 'https://developer.adobe.com/document-services/pricing/main/'
             },
             {
                 title: 'Resources',
                 menu: [{
                     title: 'Developer Resources',
-                    path: '../document-services/resources/'
+                    path: 'https://developer.adobe.com/document-services/resources/'
                 }, {
                     title: 'Forum',
                     path: 'https://community.adobe.com/t5/document-services-apis/bd-p/Document-Cloud-SDK?page=1&sort=latest_replies&filter=all'
@@ -91,15 +91,15 @@ module.exports = {
                     path: process.env.LICENSING || 'https://developer.adobe.com/document-services/docs/overview/limits/'
                 },{
                     title: 'Sales FAQ',
-                    path: '../document-services/faq/sales/'
+                    path: 'https://developer.adobe.com/document-services/faq/sales/'
                 },
                 {
                     title: 'Tech Support FAQ',
-                    path: '../document-services/faq/tech-support/'
+                    path: 'https://developer.adobe.com/document-services/faq/tech-support/'
                 },
                 {
                     title: 'Contact Us',
-                    path: '../document-services/pricing/contact/'
+                    path: 'https://developer.adobe.com/document-services/pricing/contact/'
                 }
                 ]
             },
