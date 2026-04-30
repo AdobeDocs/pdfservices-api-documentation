@@ -108,7 +108,7 @@ using Adobe.PDFServicesSDK;
 
 ## Archived Documentation
 
-The last major version of our documentation may be found [here](../legacy-documentation/).
+The last major version of our documentation may be found [here](index.md).
 
 ## Change types
 
@@ -139,7 +139,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 | Change  | Language | Description                                                                                                                                                                                                                            |
 |---------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Changed | Java     | Added support for document level permissions and trusted timestamping (using [supported TSAs](../pdf-electronic-seal-api/#supported-timestamping-authorities)) in java sdk for [PDF Electronic Seal API](../pdf-electronic-seal-api/). |
+| Changed | Java     | Added support for document level permissions and trusted timestamping (using [supported TSAs](../pdf-electronic-seal-api/index.md#supported-timestamping-authorities)) in java sdk for [PDF Electronic Seal API](../pdf-electronic-seal-api/index.md). |
 
 ### Adobe Document Generation Server Side Release (October, 2023; server side release)
 
@@ -151,8 +151,8 @@ Upgrading to the latest SDK should not break existing applications.
 
 | Change | Language | Description                                                                                                              |
 |--------|----------|--------------------------------------------------------------------------------------------------------------------------|
-| New    | API     | Added support for document level permissions and trusted timestamping (using [supported TSAs](../pdf-electronic-seal-api/#supported-timestamping-authorities)) in [PDF Electronic Seal API](../pdf-electronic-seal-api/).   |
-| New    | API     | Added support for [External Storage](../pdf-services-api/howtos/pdf-external-storage-sol/) in all the operations **except** Extract PDF, Split PDF, PDF Electronic Seal and Auto-Tag PDF. |
+| New    | API     | Added support for document level permissions and trusted timestamping (using [supported TSAs](../pdf-electronic-seal-api/index.md#supported-timestamping-authorities)) in [PDF Electronic Seal API](../pdf-electronic-seal-api/index.md).   |
+| New    | API     | Added support for [External Storage](../pdf-services-api/howtos/pdf-external-storage-sol.md) in all the operations **except** Extract PDF, Split PDF, PDF Electronic Seal and Auto-Tag PDF. |
 
 ### 3.4.2 (August, 2023, minor release)
 
@@ -185,7 +185,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 | Change | Language | Description                                                                                                              |
 |--------|----------|--------------------------------------------------------------------------------------------------------------------------|
-| New    | API     | Added support for [External Storage](../pdf-services-api/howtos/pdf-external-storage-sol/) in Document Generation API.   |
+| New    | API     | Added support for [External Storage](../pdf-services-api/howtos/pdf-external-storage-sol.md) in Document Generation API.   |
 
 ### 3.3.0 (May, 2023; minor release)
 

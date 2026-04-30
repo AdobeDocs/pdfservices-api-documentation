@@ -36,7 +36,7 @@ This table lists down the various options which can be passed in `metaData`.
 | Variable | Default | Description |
 | -------- | ------- | ----------- |
 | fileName | None | The name of the PDF to be rendered. An example of `fileName` is "Bodea Brochure.pdf". Note that `fileName` is mandatory. |
-| id | None | Pass the PDF ID when annotation APIs are enabled to uniquely identify the PDF. For more details, see [Annotations API overview](./howtos_comments/#annotations-api-overview). |
+| id | None | Pass the PDF ID when annotation APIs are enabled to uniquely identify the PDF. For more details, see [Annotations API overview](howtos-comments.md#annotations-api-overview). |
 | hasReadOnlyAccess | false | Set this flag to *true* if you want to render the PDF in read-only mode. Commenting is not allowed and existing PDF comments are displayed as read only. |
 
 That's it! View the page in a browser to see your fully functional PDF
@@ -371,7 +371,7 @@ To use this mode:
 </script>
 ```
 
-![Sized Container](../images/sized_new.png)
+![Sized Container](../images/sized-new.png)
 
 #### Toggling full screen
 
@@ -383,11 +383,11 @@ In mobile browsers, the user will be prompted to view the PDF in full screen mod
 
 *Full screen button in sized container embed mode*
 
-![Sized Container full screen button](../images/sized_fullscreen.png)
+![Sized Container full screen button](../images/sized-fullscreen.png)
 
 *Exit button in sized container full screen mode*
 
-![Sized Container full screen view](../images/sized_exit.png)
+![Sized Container full screen view](../images/sized-exit.png)
 
 
 ### In-Line embed mode
@@ -424,7 +424,7 @@ To use this mode:
 </script>
 ```
 
-![Inline Search](../images/inline_search.png)
+![Inline Search](../images/inline-search.png)
 
 ### Lightbox embed mode
 
@@ -704,7 +704,7 @@ mobile browsers, it will automatically fall back to the normal behaviour
     annotation tools and APIs, print and download PDF, document search,
     etc.) will be available once the PDF is fully downloaded and website
     developers will be notified through the PDF\_VIEWER\_READY event. To
-    know more about this event, see the section [Basic events](./howtodata.md#basic-events) under
+    know more about this event, see the section [Basic events](howtodata.md#basic-events) under
     Analytics.
 
 ### Enabling byte-streaming on a server

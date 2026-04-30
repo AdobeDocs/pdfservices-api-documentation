@@ -8,8 +8,8 @@ title: PDF Extract API | Adobe PDF Services
 
 The PDF Extract API suite (included with the PDF Services API) is a cloud-based web service that uses Adobe's Sensei AI technology to automatically extract content and structural information from PDF documents – native or scanned. Two output formats are available:
 
-- **Structured JSON output** ([Extract PDF](./howtos/extract-api.md)): Extracts content and structural information in JSON format
-- **Markdown output** ([PDF to Markdown](./howtos/pdf-to-markdown-api.md)): Converts PDF content to well-formatted, LLM-friendly Markdown text
+- **Structured JSON output** ([Extract PDF](howtos/extract-api.md)): Extracts content and structural information in JSON format
+- **Markdown output** ([PDF to Markdown](howtos/pdf-to-markdown-api.md)): Converts PDF content to well-formatted, LLM-friendly Markdown text
 
 Both formats extract text, complex tables, and figures from PDF documents:
 
@@ -34,7 +34,7 @@ Best for:
 
 The JSON output captures document structure information, such as the natural reading order of the various extracted elements and the layout of the elements on each given page. Table data can optionally be delivered in CSV and XLSX files, and images are extracted as PNG files.
 
-[Learn more about Extract PDF →](./howtos/extract-api.md)
+[Learn more about Extract PDF →](howtos/extract-api.md)
 
 ### Markdown (PDF to Markdown)
 
@@ -48,13 +48,13 @@ Best for:
 
 The Markdown output preserves document structure and reading order while converting content to a widely-used text format. Tables are converted to Markdown table syntax, and figures can be embedded as base64 images.
 
-[Learn more about PDF to Markdown →](./howtos/pdf-to-markdown-api.md)
+[Learn more about PDF to Markdown →](howtos/pdf-to-markdown-api.md)
 
 
-The PDF Extract API can be embedded into any application using the [PDFServices SDK](../pdf-extract-api/gettingstarted#sdk) for Node.js, Python, .NET and Java. [Start with a Free Tier which includes 500 free Document Transactions per month.](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api)
+The PDF Extract API can be embedded into any application using the [PDFServices SDK](gettingstarted.md#sdk) for Node.js, Python, .NET and Java. [Start with a Free Tier which includes 500 free Document Transactions per month.](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api)
 
 </p>
 
 ## Extract Process
 
-![PDF Extract Process : PDF containing title, image, header, paragraph, list and table and provide output as json, png and csv files to client applications](../images/extract_process_21.png)
+![PDF Extract Process : PDF containing title, image, header, paragraph, list and table and provide output as json, png and csv files to client applications](../images/extract-process-21.png)

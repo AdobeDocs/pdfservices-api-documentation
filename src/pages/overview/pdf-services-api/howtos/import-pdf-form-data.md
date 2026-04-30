@@ -25,7 +25,7 @@ An **interactive PDF form (AcroForm/Static XFA)** to which form data, provided a
 
 ## REST API
 
-See our public API Reference for [Import PDF Form Data API](../../../apis/#tag/Import-PDF-Form-Data).
+See our public API Reference for [Import PDF Form Data API](../../../apis/index.md#tag/Import-PDF-Form-Data).
 
 ## Import PDF Form Data
 

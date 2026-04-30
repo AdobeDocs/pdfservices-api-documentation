@@ -152,7 +152,7 @@ See our public API Reference for [Extract PDF](../../../apis/#tag/Extract-PDF).
 
 The sample below extracts text element information from a PDF document and returns a JSON file.
 
-Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
 
@@ -400,7 +400,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
 
 The sample below extracts text and table element information from a PDF document and returns a JSON file along with table data in XLSX format.
 
-Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java,.NET, Node JS, Python, Rest API" /> 
 
@@ -653,7 +653,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
 
 The sample below extracts text and table element information as well as table renditions from a PDF Document. Note that the output is a zip containing the structured information in a JSON file along with table renditions in PNG and XLSX format.
 
-Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
 
@@ -911,7 +911,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
 
 The sample below extracts text and table elements information as well as table and figure renditions from a PDF Document. Note that the output is a zip containing the structured information in a JSON file along with figure renditions as PNGs and table renditions in PNG and XLSX format.
 
-Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
 
@@ -1169,7 +1169,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
 
 The sample below extracts table renditions and bounding boxes for characters present in text blocks (paragraphs, list, headings), in addition to text and table element information from a PDF Document. Note that the output is a zip containing the structured information along with table renditions in PNG and XLSX format.
 
-Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
 
@@ -1428,7 +1428,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
 
 The sample below adds option to get CSV output for tables in addition to extracting text and table element information as well as table renditions from a PDF Document. Note that the output is a zip containing the structured information along with table renditions in PNG and CSV format.
 
-Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
 
@@ -1691,7 +1691,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
 The sample below adds an option to get styling information for each text element( Bold / Italics / Superscript etc) in addition to extracting text and table element information. Note that the output is a zip containing the structured information along with table renditions in PNG and XLSX format. Please see the [Styling JSON
 schema](/extractJSONOutputSchemaStylingInfo.json) for reference.
 
-Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java,.NET, Node JS, Python, Rest API" /> 
 

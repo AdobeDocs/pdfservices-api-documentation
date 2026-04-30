@@ -15,19 +15,19 @@ Before getting started, review the prerequisites below and ensure they are compl
 
 1. Log into your [VIP Admin Console](https://adminconsole.adobe.com/) and make sure the "Acrobat Services API - DOC TRANS PACK" product is listed in available products, like the example below.<br/>
 
-   ![VIP Admin Console](../images/vip_admin_console.png)
+   ![VIP Admin Console](../images/vip-admin-console.png)
 
 2. Click on “Add Developers” under Quick links section. Alternatively, click on the "Manage" link in Users section, then click on "Developers" card and then click on "Add Developers" button.
 
-   ![Quick_Links](../images/quick_links.png)
+   ![Quick_Links](../images/quick-links.png)
 
-   ![Add_Developers](../images/add_developers.png)
+   ![Add_Developers](../images/add-developers.png)
 
 3. When adding the developer, make sure that "Acrobat Services API - DOC TRANS PACK" is selected as the product.<br/>
 
-   ![Select Product](../images/select_product.png)
+   ![Select Product](../images/select-product.png)
 
-   ![Add Developer_and_Product](../images/add_developer_and_product.png)
+   ![Add Developer_and_Product](../images/add-developer-and-product.png)
 
 4. When you are done selecting, click save.
 
@@ -37,29 +37,29 @@ Once these are in place, developers can self-create the credentials (using the s
 
 1. Go to the [Adobe Developer Console](https://developer.adobe.com/console/).
 
-   ![Developer Console Home](../images/developer_console_home.png)
+   ![Developer Console Home](../images/developer-console-home.png)
 
 2. Sign In/Sign Up with the Adobe ID assigned to the product.
 
 3. Click on "Create new project" under Quick Start section.
 
-   ![Create_New_Project](../images/create_new_project.png)
+   ![Create_New_Project](../images/create-new-project.png)
 
 4. Click on "Add API" on the next page.
 
-   ![Add_API](../images/add_api.png)
+   ![Add_API](../images/add-api.png)
 
 5. Select “Document Cloud” and then "Adobe Acrobat Services API - VIP" product and click on "Next".
 
-   ![Select_API](../images/select_api.png)
+   ![Select_API](../images/select-api.png)
 
 6. Enter the name of your credential and click Next.
 
-   ![Change Crendential Name](../images/change_credential_name.png)
+   ![Change Crendential Name](../images/change-credential-name.png)
 
 7. Select the Product Profile and Click on "Save Configured API".
 
-   ![Select_Product_Profile](../images/select_product_profile.png)
+   ![Select_Product_Profile](../images/select-product-profile.png)
 
 8. After this, credentials will be created, and you can start using the credentials to invoke the APIs using the API Documentation available [here](https://developer.adobe.com/document-services/docs/apis/).
 
@@ -78,11 +78,11 @@ To create a case, do the following:
 
 2. Click **Create Case**. The **Create Case** window appears.<br/>
 
-   ![Create_Case](../images/create_case.png)
+   ![Create_Case](../images/create-case.png)
 
 3. Select the Product Impacted.
 
-   ![Select_Product_Impacted](../images/select_product_impacted.png)
+   ![Select_Product_Impacted](../images/select-product-impacted.png)
 
 4. Select the Specific Product Impacted as “Acrobat Services API”.
 

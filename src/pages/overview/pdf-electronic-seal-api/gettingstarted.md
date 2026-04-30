@@ -14,7 +14,7 @@ The SDK only supports server-based use cases where credentials are saved securel
 
 ## Step 1: Procure Digital Certificate Credentials
 
-1. A client must register with a Trust Service Provider (TSP) and obtain the digital certificate. A certificate may be purchased from any of the [supported TSPs](../#supported-trust-service-providers) which are Cloud Signature Consortium (CSC) compliant. For more details, see [CSC](https://cloudsignatureconsortium.org/wp-content/uploads/2020/01/CSC_API_V1_1.0.4.0.pdf) standard.
+1. A client must register with a Trust Service Provider (TSP) and obtain the digital certificate. A certificate may be purchased from any of the [supported TSPs](../index.md#supported-trust-service-providers) which are Cloud Signature Consortium (CSC) compliant. For more details, see [CSC](https://cloudsignatureconsortium.org/wp-content/uploads/2020/01/CSC_API_V1_1.0.4.0.pdf) standard.
 2. TSP performs remote identity verification of the client who acts as the legal owner of the digital certificate.
 3. After identity verification, the TSP issues a digital certificate to the client with a `credential_id`, `client_id` and `client_secret`. These are typically protected by a static PIN. The client should securely store the credential details and PIN for later use.
 
@@ -23,13 +23,13 @@ The SDK only supports server-based use cases where credentials are saved securel
 ## Step 2: (OPTIONAL) Procure Timestamping URL and Credentials
 
 1. Client can register themselves with a Timestamping Authority (TSA) of their choice to include a trusted timestamp while performing eSeal operation on a document. Client will need the TSA URL along with optional username and password to use this feature.
-2. The supported TSAs are listed [here](../#supported-timestamping-authorities). If support for any other TSA is required, reach out to us through customer support.
+2. The supported TSAs are listed [here](../index.md#supported-timestamping-authorities). If support for any other TSA is required, reach out to us through customer support.
 
 ## Step 3: Obtain your TSP OAuth Token
 
 The client sends the `client_id` and `client_secret` to the TSP's OAuth 2.0 authorization API. The TSP responds with an access token which is passed as one of the [input parameters](./howtos/electronic-seal-api.md/#api-parameters) to the PDF Electronic Seal API. The purpose of this token is to access the TSP's end points for the sealing process. It is valid during a timeframe specified by the TSP.
 
-![TSP Token Generation](../images/TSPToken.png)
+![TSP Token Generation](../images/tsp-token.png)
 
 **Sample OAuth Request**
 
@@ -57,7 +57,7 @@ curl --location --request POST 'https://<base-url>/<API-domain-name>/csc/v0/oaut
 
 Once the customer has all the necessary prerequisites in place, they have to call the PDF Electronic Seal API with the appropriate parameters to get the electronically sealed PDF.
 
-![Seal Workflow](../images/sealFlow.png)
+![Seal Workflow](../images/seal-flow.png)
 
 ## Step 4 : Getting the API access token
 
@@ -354,7 +354,7 @@ To build a custom project:
 1.  Access the .jar in the [central Maven repository](https://www.adobe.com/go/pdftoolsapi_java_maven).
 2.  Use your preferred dependency management tool (Ivy, Gradle, Maven), to include the SDK .jar dependency.
 3.  Open the pdfservices-api-credentials.json downloaded when you created your credential.
-4.  Add the [Authentication](./index.md#authentication) details as described above.
+4.  Add the [Authentication](index.md#authentication) details as described above.
 
 ![Adobe PDF Services SDK On Maven](../images/maven.png)
 
@@ -475,7 +475,7 @@ While building the sample project automatically downloads the Nuget package, you
 1.  Go to <https://www.adobe.com/go/pdftoolsapi_net_nuget>.
 2.  Download the latest package.
 
-![Adobe PDF Services SDK on Nuget](../images/nuget_free_tier.png)
+![Adobe PDF Services SDK on Nuget](../images/nuget-free-tier.png)
 
 ### Node.js
 
@@ -598,7 +598,7 @@ While building the sample project automatically downloads the Node package, you 
 1.  Go to <https://www.npmjs.com/package/@adobe/pdfservices-node-sdk>
 2.  Download the latest package.
 
-![Adobe PDF Services SDK on NPM JS](../images/node_free_tier.png)
+![Adobe PDF Services SDK on NPM JS](../images/node-free-tier.png)
 
 ### Python
 

@@ -7,7 +7,7 @@ Split a PDF document into multiple smaller documents by simply specifying either
 
 ## REST API 
 
-See our public API Reference for [Split PDF](../../../apis/#tag/Split-PDF).
+See our public API Reference for [Split PDF](../../../apis/index.md#tag/Split-PDF).
 
 ## Split PDF by number of pages
 

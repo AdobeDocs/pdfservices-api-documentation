@@ -21,7 +21,7 @@ This parameter specifies the ending page for the accessibility check. If "pageEn
 
 ## REST API
 
-See our public API Reference for the [PDF Accessibility Checker API](../../../apis/#tag/PDF-Accessibility-Checker).
+See our public API Reference for the [PDF Accessibility Checker API](../../../apis/index.md#tag/PDF-Accessibility-Checker).
 
 ## Check accessibility for input PDF
 

@@ -7,7 +7,7 @@ Delete one or more pages from a document
 
 ## REST API
 
-See our public API Reference for [Delete Pages](../../../apis/#tag/Page-Manipulation)
+See our public API Reference for [Delete Pages](../../../apis/index.md#tag/Page-Manipulation)
 
 ## Delete Pages in a PDF
 

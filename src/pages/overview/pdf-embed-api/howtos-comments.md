@@ -83,7 +83,7 @@ comments panel. Features include:
     location on the same PDF page. You can also drag one of the corner
     circles of the text box to resize.
 
-![Add Text Menu with option to style font and delete](../images/addtext_menu.png)
+![Add Text Menu with option to style font and delete](../images/addtext-menu.png)
 
 ### Sticky notes
 
@@ -138,7 +138,7 @@ underline. Features include:
     -   You can edit the comment by clicking on the Edit option in the
         overflow menu in the comments panel.
 
-![Highlight Menu with option to change color and delete](../images/highlight_menu.png)
+![Highlight Menu with option to change color and delete](../images/highlight-menu.png)
 <br/>
 
 -   Removing a text markup
@@ -175,7 +175,7 @@ Use this tool to create any freehand drawing or shape. Features include:
     -   Place the cursor over a drawing and drag one of the corner
         circles to resize the annotation.
 
-![Drawing Menu with option to change color of marker and delete](../images/drawing_menu.png)
+![Drawing Menu with option to change color of marker and delete](../images/drawing-menu.png)
 
 ### Eraser tool
 
@@ -202,7 +202,7 @@ remove as many of the previous actions as necessary.
 
 Use the Redo tool to reverse the action of the undo command.
 
-![Undo Redo button on top right toolbar](../images/undo_redo.png)
+![Undo Redo button on top right toolbar](../images/undo-redo.png)
 
 ### Select text
 
@@ -210,7 +210,7 @@ There are a couple of select text options available in the quick tools menu.
 Choose **Select** option to select some text in the document 
 and **Pan** option to drag and pan the entire document.
 
-![Select and pan option](../images/select_pan.png)
+![Select and pan option](../images/select-pan.png)
 
 ## Annotations API overview
 
@@ -760,7 +760,7 @@ callback or the `annotationManager` interface.
 Register the events callback and enable the flag
 `enableAnnotationEvents` to receive these events.
 
-For details, see [Annotation events](./howtodata.md#annotation-events)
+For details, see [Annotation events](howtodata.md#annotation-events)
 
 ### annotationManager interface
 

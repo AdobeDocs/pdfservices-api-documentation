@@ -66,7 +66,7 @@ Release](../images/support1.png)
 ### Versioning
 
 As mentioned on [Public API
-Docs](../../apis),
+Docs](../../apis/index.md),
 each operation has a unique assetId which is passed in Form Parameters.
 Generally, APIs will be enhanced while keeping them backward compatible.
 If its functionality can't be enhanced without breaking changes, then
@@ -101,7 +101,7 @@ Once a version reaches its end of life, functionality may be deprecated and stop
 ## Deprecated docs - past versions
 
 Only the latest documentation is typically available online. Refer to
-the [Documentation Library](./releasenotes.md#archived-documentation) for links.
+the [Documentation Library](releasenotes.md#archived-documentation) for links.
 
 <InlineAlert slots="text" />
 

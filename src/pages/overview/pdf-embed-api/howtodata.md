@@ -201,7 +201,7 @@ Once you've logged in to Google Analytics, do the following:
 2.  Click **Custom definitions** under **Configure** (in the left navigation pane).
 3.  Click **Create custom dimensions**.
 
-![Configure in GA4](../images/ga_create_dimension.png)
+![Configure in GA4](../images/ga-create-dimension.png)
 <br/>
 
 4.  Enter Dimension name.
@@ -230,7 +230,7 @@ Once you've logged in to Google Analytics, do the following:
 
 
 
-![Configure in GA4](../images/ga_custom_dimension.png)
+![Configure in GA4](../images/ga-custom-dimension.png)
 <br/>
 
 ### Viewing your data in Google Analytics 4
@@ -253,7 +253,7 @@ This example below creates a sample exploration to track page views in the PDF.
 8.  Select match type 'contains' and enter 'Page View' in expression. 
 9.  Click Apply. 
 
-![View sample exploration in GA4](../images/ga_page_view_2.png)
+![View sample exploration in GA4](../images/ga-page-view-2.png)
 
 <InlineAlert slots="text" />
 
@@ -265,7 +265,7 @@ data would be sent to Google Analytics.
 
 If your website is already integrated with analytics tools such as Adobe Analytics or Google Analytics, 
 then you can collect PDF analytics with few additional setup steps. 
-To know more about the setup steps, see the sections [Adobe Analytics](./howtodata.md#adobe-analytics) and [Google Analytics](./howtodata.md#google-analytics).
+To know more about the setup steps, see the sections [Adobe Analytics](howtodata.md#adobe-analytics) and [Google Analytics](howtodata.md#google-analytics).
 
 The `sendAutoPDFAnalytics` configuration controls the PDF analytics collection in these tools. 
 The default value of `sendAutoPDFAnalytics` is *true*. 
