@@ -21,16 +21,9 @@
         - [Sales FAQ](https://developer.adobe.com/document-services/faq/sales/)
         - [Tech Support FAQ](https://developer.adobe.com/document-services/faq/tech-support/)
         - [Contact Us](https://developer.adobe.com/document-services/pricing/contact/)
-    - Documentation
-        - [Overview](overview/index.md)
-        - [PDF Services API](overview/pdf-services-api/index.md)
-        - [PDF Accessibility Auto-Tag API](overview/pdf-accessibility-auto-tag-api/index.md)
-        - [PDF Extract API](overview/pdf-extract-api/index.md)
-        - [Document Generation API](overview/document-generation-api/index.md)
-        - [PDF Electronic Seal API](overview/pdf-electronic-seal-api/index.md)
-        - [PDF Embed API](overview/pdf-embed-api/index.md)
+    - [Documentation](overview/index.md)
     - [REST APIs](apis/index.md)
-
+    - [Get credentials](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html)
 - subPages:
     - [Introduction](overview/index.md)
     - [PDF Services API](overview/pdf-services-api/index.md)

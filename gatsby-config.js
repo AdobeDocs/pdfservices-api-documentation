@@ -105,40 +105,15 @@ module.exports = {
             },
             {
                 title: 'Documentation',
-                menu: [
-                    {
-                        title: 'Overview',
-                        path: 'overview'
-                    },
-                    {
-                        title: 'PDF Services API',
-                        path: 'overview/pdf-services-api/index.md'
-                    },
-                    {
-                        title: 'PDF Accessibility Auto-Tag API',
-                        path: 'overview/pdf-accessibility-auto-tag-api/index.md'
-                    },
-                    {
-                        title: 'PDF Extract API',
-                        path: 'overview/pdf-extract-api/index.md'
-                    },
-                    {
-                        title: 'Document Generation API',
-                        path: 'overview/document-generation-api/index.md'
-                    },
-                    {
-                        title: 'PDF Electronic Seal API',
-                        path: 'overview/pdf-electronic-seal-api/index.md'
-                    },
-                    {
-                        title: 'PDF Embed API',
-                        path: 'overview/pdf-embed-api/index.md'
-                    }
-                ]
+                path: 'overview/index.md'
             },
             {
                 title: "REST APIs",
                 path: 'apis/index.md'
+            },
+            {
+                title: 'Get credentials',
+                path: 'https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html'
             }
         ],
         subPages: [
