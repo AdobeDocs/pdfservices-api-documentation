@@ -1,5 +1,8 @@
 ---
-title: Webhook Notification support for Adobe PDF Services APIs | Adobe PDF Services
+title: Webhook Notification | PDF Services API
+description: |
+  Webhook notification support for Adobe PDF Services APIs to receive automatic job completion notifications.
+
 ---
 # **Webhook Notification Support for Adobe PDF Services APIs**
 

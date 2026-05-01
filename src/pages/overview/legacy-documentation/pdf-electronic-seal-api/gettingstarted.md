@@ -1,12 +1,14 @@
 ---
-title: Getting Started | PDF Electronic Seal API | Adobe PDF Services
+title: Getting started | PDF Electronic Seal API
+description: |
+  Server-side SDK use only: keep credentials secure and never expose them
+  to untrusted environments or end-user devices.
+
 ---
 
 # Getting Started
 
-<p>
 The API is accessible through SDKs which help you get up and running quickly. Once you've received your developer credential, download and set up one of the sample projects. After you're familiar with the APIs, leverage the samples in your own server-side code.
-</p>
 
 <InlineAlert slots="text"/>
 
@@ -18,7 +20,7 @@ The SDK only supports server-based use cases where credentials are saved securel
 2. TSP performs remote identity verification of the client who acts as the legal owner of the digital certificate.
 3. After identity verification, the TSP issues a digital certificate to the client with a `credential_id`, `client_id` and `client_secret`. These are typically protected by a static PIN. The client should securely store the credential details and PIN for later use.
 
-![TSP Token Generation](../images/cert.png)
+![TSP Token Generation](../../images/cert.png)
 
 ## Step 2: (OPTIONAL) Procure Timestamping URL and Credentials
 
@@ -27,9 +29,9 @@ The SDK only supports server-based use cases where credentials are saved securel
 
 ## Step 3: Obtain your TSP OAuth Token
 
-The client sends the `client_id` and `client_secret` to the TSP's OAuth 2.0 authorization API. The TSP responds with an access token which is passed as one of the [input parameters](./howtos/electronic-seal-api.md/#api-parameters) to the PDF Electronic Seal API. The purpose of this token is to access the TSP's end points for the sealing process. It is valid during a timeframe specified by the TSP.
+The client sends the `client_id` and `client_secret` to the TSP's OAuth 2.0 authorization API. The TSP responds with an access token which is passed as one of the [input parameters](./howtos/electronic-seal-api.md#api-parameters) to the PDF Electronic Seal API. The purpose of this token is to access the TSP's end points for the sealing process. It is valid during a timeframe specified by the TSP.
 
-![TSP Token Generation](../images/tsp-token.png)
+![TSP Token Generation](../../images/tsp-token.png)
 
 **Sample OAuth Request**
 
@@ -57,7 +59,7 @@ curl --location --request POST 'https://<base-url>/<API-domain-name>/csc/v0/oaut
 
 Once the customer has all the necessary prerequisites in place, they have to call the PDF Electronic Seal API with the appropriate parameters to get the electronically sealed PDF.
 
-![Seal Workflow](../images/seal-flow.png)
+![Seal Workflow](../../images/seal-flow.png)
 
 ## Step 4 : Getting the API access token
 
@@ -159,37 +161,28 @@ curl --location -g --request GET 'https://dcplatformstorageservice-prod-us-east-
 
 PDF Services API is also accessible via SDKs in popular languages such as Node.js, Java and .NET.
 
-<InlineAlert slots="text"/>
-
-<div>
+<InlineAlert slots="text1, text2, text3, text4, text5, text6"/>
 
 Please allow-list the following hostnames before using Adobe PDF Services SDK:
-<ul><li>ims-na1.adobelogin.com (Required for all the clients)</li></ul>
 
-For clients using SDK version 3.x and above  :
-<ul>
-<li> Using United States (Default) region for processing documents :
-  <ul>
-    <li>dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com</li>
-    <li>pdf-services-ue1.adobe.io</li>
-    <li>pdf-services.adobe.io (Default URI)</li>
-  </ul>
-</li>
-</ul>
+- ims-na1.adobelogin.com (Required for all the clients)
 
-<ul>
-  <li> Using Europe region for processing documents :
-  <ul>
-    <li>dcplatformstorageservice-prod-eu-west-1.s3.amazonaws.com</li>
-    <li>pdf-services-ew1.adobe.io</li>
-  </ul>
-</li>
-</ul>
+For clients using SDK version 3.x and above:
 
-For clients using SDK version upto 2.x :
-<ul><li>cpf-ue1.adobe.io</li></ul>
+- Using United States (Default) region for processing documents:
 
-</div>
+  - dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com
+  - pdf-services-ue1.adobe.io
+  - pdf-services.adobe.io (Default URI)
+
+- Using Europe region for processing documents:
+
+  - dcplatformstorageservice-prod-eu-west-1.s3.amazonaws.com
+  - pdf-services-ew1.adobe.io
+
+For clients using SDK version up to 2.x:
+
+- cpf-ue1.adobe.io
 
 ### Java
 
@@ -318,7 +311,7 @@ logger.apache.level=WARN
 ```
 
 
-![Samples directory structure Java](../images/samplefilesjava.png)
+![Samples directory structure Java](../../images/samplefilesjava.png)
 
 #### Custom projects
 
@@ -331,7 +324,7 @@ To build a custom project:
 3.  Open the pdfservices-api-credentials.json downloaded when you created your credential.
 4.  Add the [Authentication](index.md#authentication) details as described above.
 
-![Adobe PDF Services SDK On Maven](../images/maven.png)
+![Adobe PDF Services SDK On Maven](../../images/maven.png)
 
 ### .NET
 
@@ -447,10 +440,10 @@ The .NET SDK uses [LibLog](https://github.com/damianh/LibLog) as a bridge betwee
 
 While building the sample project automatically downloads the Nuget package, you can do it manually if you wish to use your own tools and process.
 
-1.  Go to <https://www.adobe.com/go/pdftoolsapi_net_nuget>.
+1.  Go to [Link](https://www.adobe.com/go/pdftoolsapi_net_nuget).
 2.  Download the latest package.
 
-![Adobe PDF Services SDK on Nuget](../images/nuget-free-tier.png)
+![Adobe PDF Services SDK on Nuget](../../images/nuget-free-tier.png)
 
 ### Node.js
 
@@ -570,10 +563,10 @@ The SDK uses the [log4js API](https://www.npmjs.com/package/log4js) for logging.
 
 While building the sample project automatically downloads the Node package, you can do it manually if you wish to use your own tools and process.
 
-1.  Go to <https://www.npmjs.com/package/@adobe/pdfservices-node-sdk>
+1.  Go to [Link](https://www.npmjs.com/package/@adobe/pdfservices-node-sdk)
 2.  Download the latest package.
 
-![Adobe PDF Services SDK on NPM JS](../images/node-free-tier.png)
+![Adobe PDF Services SDK on NPM JS](../../images/node-free-tier.png)
 
 ## Public API
 

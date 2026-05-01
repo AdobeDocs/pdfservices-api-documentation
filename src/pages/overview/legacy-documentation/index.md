@@ -1,5 +1,9 @@
 ---
 title: Adobe PDF Services
+description: |
+  Cloud-based PDF APIs for viewing, generating, extracting, and
+  manipulating PDF documents.
+
 ---
 
 # Introduction
@@ -17,7 +21,7 @@ These APIs represent a paradigm shift in the way PDF workflows exist and interac
 
 ## PDF Embed API for viewing and collaboration within your web pages
 
-The [PDF Embed API](pdf-embed-api) brings PDF viewing to any web application with only a few lines of JavaScript. Multiple embed modes make it easy to support different views, from full browser to boxed containers and in line. Document collaboration is achieved with support for commenting, drawing, highlighting, and text editing tools. Analytics insights provide an opportunity to embed dynamic interactivity to enhance end-user experiences with chats, prompts, and other with event triggers based on PDF viewing activity.
+The [PDF Embed API](../pdf-embed-api/index.md) brings PDF viewing to any web application with only a few lines of JavaScript. Multiple embed modes make it easy to support different views, from full browser to boxed containers and in line. Document collaboration is achieved with support for commenting, drawing, highlighting, and text editing tools. Analytics insights provide an opportunity to embed dynamic interactivity to enhance end-user experiences with chats, prompts, and other with event triggers based on PDF viewing activity.
 
 ## PDF Services API to automate for your document workflows
 

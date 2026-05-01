@@ -1,5 +1,7 @@
 ---
-title: Extract API | How Tos | PDF Extract API | Adobe PDF Services
+title: Extract API | How Tos | PDF Extract API
+description: The output of an SDK extract operation is a zip package containing the structured JSON and renditions for tables and figures.
+
 ---
 # Extract PDF
 
@@ -10,9 +12,9 @@ following:
 
 -   The structuredData.json file with the extracted content & PDF
     element structure. See the [JSON
-    schema](/extractJSONOutputSchema2.json) for a
-    description of the default output. (Please refer the [Styling JSON
-    schema](/extractJSONOutputSchemaStylingInfo.json)
+    schema](/static/resources/extract-json-output-schema2.json) for a
+    description of the default output. (Please refer to the [Styling JSON
+    schema](/static/resources/extract-json-output-schema-styling-info.json)
     for a description of the output when the styling option is enabled.)
 -   A renditions folder(s) containing renditions for each element type
     selected as input. The folder name is either "tables" or "figures"
@@ -22,9 +24,9 @@ following:
 
 ![Extract sample directory structure](../../images/extractsamplefiles.png)
 
-The following is a summary of key elements in the extracted JSON(See
+The following is a summary of key elements in the extracted JSON (see
 additional descriptions in the [JSON
-schema](/extractJSONOutputSchema2.json)):
+schema](/static/resources/extract-json-output-schema2.json)):
 
 -   Elements : Ordered list of semantic elements (like headings,
     paragraphs, tables, figures) found in the document, on the basis of
@@ -103,20 +105,18 @@ schema](/extractJSONOutputSchema2.json)):
     represented in the natural reading order. Reading order is determined by Bounds and path element provided in the .json file.
 
 ## API limitations
-<br />
-<ul>
-<li><b>File size:</b> Files up to a maximum of 100MB are supported.</li>
-<li><b>Number of Pages:</b> Non-scanned PDFs have a limit of 400 pages. Scanned PDFs have a limit of 150 pages or less. Limits may be lower for files with multiple tables. For larger files or those with complex layouts, it is recommended to split the file into smaller sections before processing.</li>
-<li><b>Rate limits:</b> Keep request rate below 25 requests per minutes.</li>
-<li><b>Page Size:</b> The API supports standard page sizes not to exceed 17.5” or less than 6” in either dimension.</li>
-<li><b>Hidden Objects:</b> PDF files that contain content that is not visible on the page like javascript, OCG (optional content groups), etc are not supported. Files that contain such hidden information may fail to process. For such cases, [removing hidden content](https://helpx.adobe.com/acrobat/using/removing-sensitive-content-pdfs.html) prior to processing files again may return a successful result.</li>
-<li><b>Language:</b> The API is currently optimized for English language content. Files containing content in other Latin languages should return good results, but may have issues with non-English punctuation.</li>
-<li><b>OCR and Scan quality:</b> The quality of text extracted from scanned files is dependent on the clarity of content in the input file. Conditions like skewed pages, shadowing, obscured or overlapping fonts, and page resolution less than 200 DPI can all result in lower quality text output.</li>
-<li><b>Form fields:</b> Files containing XFA and other fillable form elements are not supported.</li>
-<li><b>Unprotected files:</b> The API supports files that are unprotected or where security restrictions allow copying of content. Files that are secured and do not allow copying of content will not be processed.</li>
-<li><b>Annotations:</b> Content in PDF files containing annotations such as highlights and sticky notes will be processed, but annotations that obscure text could impact output quality. Text within annotations will not be included in the output.</li>
-<li><b>PDF Producers:</b> The Extract API is designed to extract content from files that contain text, table data, and figures. Files created from applications that produce other types of content like illustrations, CAD drawings or other types of vector art may not return quality results.</li>
-</ul>
+
+- **File size:** Files up to a maximum of 100MB are supported.
+- **Number of Pages:** Non-scanned PDFs have a limit of 400 pages. Scanned PDFs have a limit of 150 pages or less. Limits may be lower for files with multiple tables. For larger files or those with complex layouts, it is recommended to split the file into smaller sections before processing.
+- **Rate limits:** Keep request rate below 25 requests per minutes.
+- **Page Size:** The API supports standard page sizes not to exceed 17.5” or less than 6” in either dimension.
+- **Hidden Objects:** PDF files that contain content that is not visible on the page like javascript, OCG (optional content groups), etc are not supported. Files that contain such hidden information may fail to process. For such cases, [removing hidden content](https://helpx.adobe.com/acrobat/using/removing-sensitive-content-pdfs.html) prior to processing files again may return a successful result.
+- **Language:** The API is currently optimized for English language content. Files containing content in other Latin languages should return good results, but may have issues with non-English punctuation.
+- **OCR and Scan quality:** The quality of text extracted from scanned files is dependent on the clarity of content in the input file. Conditions like skewed pages, shadowing, obscured or overlapping fonts, and page resolution less than 200 DPI can all result in lower quality text output.
+- **Form fields:** Files containing XFA and other fillable form elements are not supported.
+- **Unprotected files:** The API supports files that are unprotected or where security restrictions allow copying of content. Files that are secured and do not allow copying of content will not be processed.
+- **Annotations:** Content in PDF files containing annotations such as highlights and sticky notes will be processed, but annotations that obscure text could impact output quality. Text within annotations will not be included in the output.
+- **PDF Producers:** The Extract API is designed to extract content from files that contain text, table data, and figures. Files created from applications that produce other types of content like illustrations, CAD drawings or other types of vector art may not return quality results.
 
 ## Error codes
 | Scenario           | Error code                                                                                                                                                                                                                     | Error message                               |
@@ -2022,8 +2022,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/extractp
 
 ## Extract Text and Tables and Styling Info
 
-The sample below adds an option to get styling information for each text element( Bold / Italics / Superscript etc) in addition to extracting text and table element information. Note that the output is a zip containing the structured information along with table renditions in PNG and XLSX format. Please see the [Styling JSON
-schema](/extractJSONOutputSchemaStylingInfo.json) for reference.
+The sample below adds an option to get styling information for each text element (Bold / Italics / Superscript etc) in addition to extracting text and table element information. Note that the output is a zip containing the structured information along with table renditions in PNG and XLSX format.
 
 Please refer the [API usage guide](api-usage.md) to understand how to use our APIs.
 

@@ -1,5 +1,8 @@
 ---
-title: Insert Pages | How Tos | PDF Services API | Adobe PDF Services
+title: Insert Pages | PDF Services API
+description: |
+  Insert one or more pages into an existing document.
+
 ---
 # Insert Pages
 
@@ -14,7 +17,7 @@ See our public API Reference for [Insert Pages](../../../apis/index.md#tag/Combi
 The insert operation inserts additional pages from different PDFs into
 an existing PDF.
 
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 

@@ -1,8 +1,10 @@
 ---
 title: PDF Extract API | Adobe PDF Services
+description: |
+  Cloud-based web service that uses AI to automatically extract content and structural information from PDF documents.
+
 ---
 # Overview
-<p>
 
 **What is Extract?**
 
@@ -52,8 +54,6 @@ The Markdown output preserves document structure and reading order while convert
 
 
 The PDF Extract API can be embedded into any application using the [PDFServices SDK](gettingstarted.md#sdk) for Node.js, Python, .NET and Java. [Start with a Free Tier which includes 500 free Document Transactions per month.](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api)
-
-</p>
 
 ## Extract Process
 

@@ -1,5 +1,8 @@
 ---
-title: Accessibility API | How Tos | PDF Accessibility Auto-Tag API | Adobe PDF Services
+title: Accessibility Auto-Tag API how-tos
+description: |
+  Output format and how to generate tagged PDFs with the PDF Accessibility Auto-Tag API.
+
 ---
 # PDF Accessibility Auto-Tag API
 
@@ -12,7 +15,7 @@ The output of the PDF Accessibility Auto-Tag API contains the following:
 
 ## API limitations
 
-<br />
+\<br/\>
 
 - **File size:** Files up to a maximum of 100 MB are supported.
 - **Number of Pages:** Non-scanned PDFs up to 200 pages and scanned PDFs up to 100 pages are supported, however limits may be lower for files with a large number of tables.
@@ -22,7 +25,7 @@ The output of the PDF Accessibility Auto-Tag API contains the following:
 - **Language:** The API is currently optimized for English language content. Files containing content in French, German, Spanish, Danish, Dutch, Norwegian (Bokmal), Galician, Catalan, Finnish, Italian, Swedish, Portuguese, and Romanian should return good results most of the time. Files containing content in Afrikaans, Bosnian, Croatian, Czech, Hungarian, Indonesian, Malay, Polish, Russian, Serbian, Turkish, Hindi, Marathi and other similar languages should return good results often. Non-English files may have issues with non-English punctuation. OCR is configured for English content.
 - **OCR and Scan quality:** The quality of text extracted from scanned files is dependent on the clarity of content in the input file and is currently configured for English content. Conditions like skewed pages, shadowing, obscured or overlapping fonts, and page resolution less than 200 DPI can all result in lower quality text output.
 - **Form fields:** Files containing XFA and other fillable form elements are not supported.
-- **Unprotected files:** The API supports files that are unprotected or where security restrictions allow editing of content. Files that are secured and do not allow editing of content will not be processed. If the password of a protected PDF is known, the permissions of the file can be modified using the PDF Services API as shown [here](remove-protection.md).
+- **Unprotected files:** The API supports files that are unprotected or where security restrictions allow editing of content. Files that are secured and do not allow editing of content will not be processed. If the password of a protected PDF is known, the permissions of the file can be modified using the PDF Services API as shown [here](../../pdf-services-api/howtos/remove-protection.md).
 - **Annotations:** Content in PDF files containing annotations such as highlights and sticky notes will be processed, but annotations that obscure text could impact output quality. Text within annotations will not be included in the output.
 - **PDF Producers:** The PDF Accessibility Auto-Tag API is designed to add tags to PDF to make it easier to make the file accessible. Files created from applications that produce other types of content like illustrations, CAD drawings or other types of vector art may not return high quality results.
 - **PDF Collections:** PDFs that are made from a collection of files including PDF Portfolios are not currently supported.
@@ -55,13 +58,13 @@ The output of the PDF Accessibility Auto-Tag API contains the following:
 
 ## REST API 
 
-See our public API Reference for [PDF Accessibility Auto-Tag API](../../../apis/#tag/PDF-Accessibility-Auto-Tag).
+See our public API Reference for [PDF Accessibility Auto-Tag API](../../../../apis/index.md#tag/PDF-Accessibility-Auto-Tag).
 
 ## Generate tagged PDF from a PDF
 
 The sample below generates a tagged PDF from a PDF.
 
-Please refer to the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer to the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, Rest API" /> 
 
@@ -286,8 +289,8 @@ The sample below generates a tagged PDF by setting options through command line 
 Here is a sample list of command line arguments and their description:
 - --input < input file path >
 - --output < output file path >
-- --report { If this argument is present then the output will be generated with the report }
-- --shift_headings { If this argument is present then the headings will be shifted in the output PDF file }
+- --report \{ If this argument is present then the output will be generated with the report \}
+- --shift_headings \{ If this argument is present then the headings will be shifted in the output PDF file \}
 
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python, Rest API" /> 

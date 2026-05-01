@@ -1,0 +1,2534 @@
+═══════════════════════════════════════════════════════════════
+                     LINTER REPORT
+═══════════════════════════════════════════════════════════════
+
+Generated: 2026-05-01T18:18:22.856Z
+Mode: Full Linting (all rules + dead links check)
+Target Directory: /Users/louisa/adobe-dev-site/pdfservices-api-documentation
+
+───────────────────────────────────────────────────────────────
+
+Files to process: 198
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/document-generation-api/beta.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 23:68
+    Message: Unexpected dead URL `https://www.adobe.com/go/pdfservicesapi_java_beta_docs`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 24:3
+    Message: Unexpected dead URL `http://www.adobe.com/go/pdfservicesapi_node_beta_npm`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 25:3
+    Message: Unexpected dead URL `https://www.adobe.com/go/pdfservicesapi_net_beta_nuget`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 23:3
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdfservicesapi_java_beta_maven`, expected final URL `https://mvnrepository.com/artifact/com.adobe.documentservices/pdfservices-sdk`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 9:112
+    Message: Unexpected dead URL `https://documentcloud.adobe.com/document-services/beta.html#post-documentGeneration`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 24:69
+    Message: Unexpected dead URL `https://www.adobe.com/go/pdfservicesapi_node_beta_docs`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 25:69
+    Message: Unexpected dead URL `https://www.adobe.com/go/pdfservicesapi_net_beta_docs`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 25:183
+    Message: Unexpected dead URL `https://www.adobe.com/go/pdfservicesapi_net_beta_samples`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 24:183
+    Message: Unexpected dead URL `http://www.adobe.com/go/pdfservicesapi_node_beta_samples`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 23:183
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdfservicesapi_java_beta_samples`, expected final URL `https://github.com/adobe/pdfservices-java-sdk-samples/tree/beta`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/document-generation-api/dcserviceslicensing.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 49:44
+    Message: Unexpected dead URL `https://helpx.adobe.com/acrobat/using/optimizing-pdfs-acrobat-pro.html#EnableFastWebViewinaPDF`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 49:44
+    Message: Unexpected redirecting URL `https://helpx.adobe.com/acrobat/using/optimizing-pdfs-acrobat-pro.html#EnableFastWebViewinaPDF`, expected final URL `https://helpx.adobe.com/acrobat/desktop/create-documents/optimize-pdfs/advance-size-reduction.html`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/document-generation-api/fragments.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 3:1
+    Message: Description is too long (240 characters). Consider keeping it under 160 characters.
+    Rule: check-frontmatter
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/document-generation-api/gettingstarted.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 2:1
+    Message: Title is too long (62 characters). Consider keeping it under 60 characters.
+    Rule: check-frontmatter
+
+  ⚠️  WARNING
+    Location: Line 35:71
+    Message: Unexpected dead URL `https://appsource.microsoft.com/en-us/product/office/WA200002654`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 20:5
+    Message: Unexpected dead URL `https://acrobatservices.adobe.com/dc-docgen-playground/index.html#/`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 43:24
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/dcdocgen_templates`, expected final URL `https://developer.adobe.com/document-services/apis/doc-generation/#sample-blade`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/document-generation-api/quickstarts/dotnet/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 355:220
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/document-generation-api/quickstarts/java/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 381:220
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 14:3
+    Message: Unexpected redirecting URL `http://www.oracle.com/technetwork/java/javase/downloads/index.html`, expected final URL `https://www.oracle.com/java/technologies/downloads/`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/document-generation-api/quickstarts/nodejs/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 295:220
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/document-generation-api/quickstarts/python/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 287:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/acrobat-services-api/ct-p/ct-Document-Cloud-SDK?page=1&sort=latest_replies&filter=all&lang=all&tabid=discussions&topics=label-accessibilityauto-tagapi`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/document-generation-api/stylingformattingtags.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 2:1
+    Message: Title is too long (69 characters). Consider keeping it under 60 characters.
+    Rule: check-frontmatter
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/document-generation-api/tablewithmarkers.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 2:1
+    Message: Title is too long (69 characters). Consider keeping it under 60 characters.
+    Rule: check-frontmatter
+
+  ⚠️  WARNING
+    Location: Line 3:1
+    Message: Description is too long (165 characters). Consider keeping it under 160 characters.
+    Rule: check-frontmatter
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/document-generation-api/templatetags.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 181:1
+    Message: Unexpected dead URL `https://images-tv.adobe.com/mpcv3/5158/671b4819-2e8c-44a1-8667-e9dfd2556133_1615916356.854x480at800_h264.mp4#t=3`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 108:1
+    Message: Unexpected dead URL `https://images-tv.adobe.com/mpcv3/5158/43cb78ad-e98d-4deb-bdca-cf32edd0df95_1615916490.854x480at800_h264.mp4#t=3`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 436:1
+    Message: Unexpected dead URL `https://images-tv.adobe.com/mpcv3/5158/e5e5e7c6-a63c-45cf-8a17-b60291068626_1615916868.854x480at800_h264.mp4#t=3`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 31:1
+    Message: Unexpected dead URL `https://images-tv.adobe.com/mpcv3/5158/aa393134-7cf7-4ebb-bfd0-1ced95237d20_1615916599.854x480at800_h264.mp4#t=3`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 270:1
+    Message: Unexpected dead URL `https://images-tv.adobe.com/mpcv3/5158/d58772af-7a62-49fa-a098-12b11a27fb71_1615917048.854x480at800_h264.mp4#t=3`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 380:1
+    Message: Unexpected dead URL `https://images-tv.adobe.com/mpcv3/5158/d58772af-7a62-49fa-a098-12b11a27fb71_1615917048.854x480at800_h264.mp4#t=3`, expected live URL
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/document-generation-api/wordaddin.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 31:1
+    Message: Unexpected dead URL `https://images-tv.adobe.com/mpcv3/5158/38713027-f9e6-4020-ac97-7de5d873476f_1615914905.854x480at800_h264.mp4#t=1`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 21:1
+    Message: Unexpected dead URL `https://appsource.microsoft.com/en-us/product/office/WA200002654`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 36:37
+    Message: Unexpected dead URL `https://appsource.microsoft.com/en-us/product/office/WA200002654`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 140:12
+    Message: Unexpected redirecting URL `https://docs.microsoft.com/en-gb/microsoft-365/admin/manage/manage-deployment-of-add-ins?redirectSourcePath=%252fen-us%252farticle%252fdeploy-office-add-ins-in-the-office-365-admin-center-737e8c86-be63-44d7-bf02-492fa7cd9c3f&view=o365-worldwide`, expected final URL `https://learn.microsoft.com/en-gb/microsoft-365/admin/manage/manage-deployment-of-add-ins?redirectSourcePath=%252fen-us%252farticle%252fdeploy-office-add-ins-in-the-office-365-admin-center-737e8c86-be63-44d7-bf02-492fa7cd9c3f&view=o365-worldwide`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 127:30
+    Message: Unexpected redirecting URL `https://support.microsoft.com/en-us/office/view-manage-and-install-add-ins-in-office-programs-16278816-1948-4028-91e5-76dca5380f8d`, expected final URL `https://support.microsoft.com/en-us/office/view-manage-and-install-add-ins-for-excel-powerpoint-and-word-16278816-1948-4028-91e5-76dca5380f8d`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 143:1
+    Message: Unexpected redirecting URL `https://docs.microsoft.com/en-gb/microsoft-365/admin/manage/centralized-deployment-of-add-ins?view=o365-worldwide`, expected final URL `https://learn.microsoft.com/en-gb/microsoft-365/admin/manage/centralized-deployment-of-add-ins?view=o365-worldwide`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 33:43
+    Message: Unexpected redirecting URL `https://docs.microsoft.com/en-us/power-automate/`, expected final URL `https://learn.microsoft.com/en-us/power-automate/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 79:178
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-cloud-sdk/bd-p/Document-Cloud-SDK?page=1&sort=latest_replies&filter=all`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/authentication.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 32:18
+    Message: Unexpected dead URL `https://developer.adobe.com/developer-console/docs/guides/#!AdobeDocs/adobeio-auth/master/JWT/JWT.md#exchanging-jwt-to-retrieve-an-access-token`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 28:5
+    Message: Unexpected dead URL `https://developer.adobe.com/developer-console/docs/guides/authentication/JWT/samples/#sample-code`, expected live URL
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/document-generation-api/beta.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 23:3
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdfservicesapi_java_beta_maven`, expected final URL `https://mvnrepository.com/artifact/com.adobe.documentservices/pdfservices-sdk`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 25:69
+    Message: Unexpected dead URL `https://www.adobe.com/go/pdfservicesapi_net_beta_docs`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 24:3
+    Message: Unexpected dead URL `http://www.adobe.com/go/pdfservicesapi_node_beta_npm`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 25:183
+    Message: Unexpected dead URL `https://www.adobe.com/go/pdfservicesapi_net_beta_samples`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 9:112
+    Message: Unexpected dead URL `https://documentcloud.adobe.com/document-services/beta.html#post-documentGeneration`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 25:3
+    Message: Unexpected dead URL `https://www.adobe.com/go/pdfservicesapi_net_beta_nuget`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 23:68
+    Message: Unexpected dead URL `https://www.adobe.com/go/pdfservicesapi_java_beta_docs`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 24:183
+    Message: Unexpected dead URL `http://www.adobe.com/go/pdfservicesapi_node_beta_samples`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 24:69
+    Message: Unexpected dead URL `https://www.adobe.com/go/pdfservicesapi_node_beta_docs`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 23:183
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdfservicesapi_java_beta_samples`, expected final URL `https://github.com/adobe/pdfservices-java-sdk-samples/tree/beta`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/document-generation-api/dcserviceslicensing.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 49:44
+    Message: Unexpected dead URL `https://helpx.adobe.com/acrobat/using/optimizing-pdfs-acrobat-pro.html#EnableFastWebViewinaPDF`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 49:44
+    Message: Unexpected redirecting URL `https://helpx.adobe.com/acrobat/using/optimizing-pdfs-acrobat-pro.html#EnableFastWebViewinaPDF`, expected final URL `https://helpx.adobe.com/acrobat/desktop/create-documents/optimize-pdfs/advance-size-reduction.html`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/document-generation-api/gettingstarted.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 2:1
+    Message: Title is too long (62 characters). Consider keeping it under 60 characters.
+    Rule: check-frontmatter
+
+  ⚠️  WARNING
+    Location: Line 20:5
+    Message: Unexpected dead URL `https://acrobatservices.adobe.com/dc-docgen-playground/index.html#/`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 43:24
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/dcdocgen_templates`, expected final URL `https://developer.adobe.com/document-services/apis/doc-generation/#sample-blade`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 35:71
+    Message: Unexpected dead URL `https://appsource.microsoft.com/en-us/product/office/WA200002654`, expected live URL
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/document-generation-api/quickstarts/dotnet/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 337:220
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/document-generation-api/quickstarts/java/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 401:220
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 16:3
+    Message: Unexpected redirecting URL `http://www.oracle.com/technetwork/java/javase/downloads/index.html`, expected final URL `https://www.oracle.com/java/technologies/downloads/`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/document-generation-api/quickstarts/nodejs/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 259:220
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/document-generation-api/quickstarts.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 16:5
+    Message: Unexpected dead URL `https://acrobatservices.adobe.com/dc-docgen-playground/index.html#/`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 31:71
+    Message: Unexpected dead URL `https://appsource.microsoft.com/en-us/product/office/WA200002654`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 39:24
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/dcdocgen_templates`, expected final URL `https://developer.adobe.com/document-services/apis/doc-generation/#sample-blade`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 64:29
+    Message: Unexpected dead URL `https://www.adobe.com/go/dcsdk_APIdocs#post-documentGeneration`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 64:29
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/dcsdk_APIdocs#post-documentGeneration`, expected final URL `https://documentcloud.adobe.com/document-services/index.html`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/document-generation-api/templatetags.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 26:1
+    Message: Unexpected dead URL `https://images-tv.adobe.com/mpcv3/5158/aa393134-7cf7-4ebb-bfd0-1ced95237d20_1615916599.854x480at800_h264.mp4#t=3`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 228:1
+    Message: Unexpected dead URL `https://images-tv.adobe.com/mpcv3/5158/d58772af-7a62-49fa-a098-12b11a27fb71_1615917048.854x480at800_h264.mp4#t=3`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 289:1
+    Message: Unexpected dead URL `https://images-tv.adobe.com/mpcv3/5158/d58772af-7a62-49fa-a098-12b11a27fb71_1615917048.854x480at800_h264.mp4#t=3`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 163:1
+    Message: Unexpected dead URL `https://images-tv.adobe.com/mpcv3/5158/671b4819-2e8c-44a1-8667-e9dfd2556133_1615916356.854x480at800_h264.mp4#t=3`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 91:1
+    Message: Unexpected dead URL `https://images-tv.adobe.com/mpcv3/5158/43cb78ad-e98d-4deb-bdca-cf32edd0df95_1615916490.854x480at800_h264.mp4#t=3`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 350:1
+    Message: Unexpected dead URL `https://images-tv.adobe.com/mpcv3/5158/e5e5e7c6-a63c-45cf-8a17-b60291068626_1615916868.854x480at800_h264.mp4#t=3`, expected live URL
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/document-generation-api/wordaddin.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 31:1
+    Message: Unexpected dead URL `https://images-tv.adobe.com/mpcv3/5158/38713027-f9e6-4020-ac97-7de5d873476f_1615914905.854x480at800_h264.mp4#t=1`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 21:1
+    Message: Unexpected dead URL `https://appsource.microsoft.com/en-us/product/office/WA200002654`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 36:37
+    Message: Unexpected dead URL `https://appsource.microsoft.com/en-us/product/office/WA200002654`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 140:12
+    Message: Unexpected redirecting URL `https://docs.microsoft.com/en-gb/microsoft-365/admin/manage/manage-deployment-of-add-ins?redirectSourcePath=%252fen-us%252farticle%252fdeploy-office-add-ins-in-the-office-365-admin-center-737e8c86-be63-44d7-bf02-492fa7cd9c3f&view=o365-worldwide`, expected final URL `https://learn.microsoft.com/en-gb/microsoft-365/admin/manage/manage-deployment-of-add-ins?redirectSourcePath=%252fen-us%252farticle%252fdeploy-office-add-ins-in-the-office-365-admin-center-737e8c86-be63-44d7-bf02-492fa7cd9c3f&view=o365-worldwide`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 143:1
+    Message: Unexpected redirecting URL `https://docs.microsoft.com/en-gb/microsoft-365/admin/manage/centralized-deployment-of-add-ins?view=o365-worldwide`, expected final URL `https://learn.microsoft.com/en-gb/microsoft-365/admin/manage/centralized-deployment-of-add-ins?view=o365-worldwide`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 127:30
+    Message: Unexpected redirecting URL `https://support.microsoft.com/en-us/office/view-manage-and-install-add-ins-in-office-programs-16278816-1948-4028-91e5-76dca5380f8d`, expected final URL `https://support.microsoft.com/en-us/office/view-manage-and-install-add-ins-for-excel-powerpoint-and-word-16278816-1948-4028-91e5-76dca5380f8d`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 34:43
+    Message: Unexpected redirecting URL `https://docs.microsoft.com/en-us/power-automate/`, expected final URL `https://learn.microsoft.com/en-us/power-automate/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 80:178
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-cloud-sdk/bd-p/Document-Cloud-SDK?page=1&sort=latest_replies&filter=all`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-accessibility-auto-tag-api/dcserviceslicensing.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 49:44
+    Message: Unexpected dead URL `https://helpx.adobe.com/acrobat/using/optimizing-pdfs-acrobat-pro.html#EnableFastWebViewinaPDF`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 49:44
+    Message: Unexpected redirecting URL `https://helpx.adobe.com/acrobat/using/optimizing-pdfs-acrobat-pro.html#EnableFastWebViewinaPDF`, expected final URL `https://helpx.adobe.com/acrobat/desktop/create-documents/optimize-pdfs/advance-size-reduction.html`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-accessibility-auto-tag-api/gettingstarted.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 145:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_maven`, expected final URL `https://mvnrepository.com/artifact/com.adobe.documentservices/pdfservices-sdk`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 273:28
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_maven`, expected final URL `https://mvnrepository.com/artifact/com.adobe.documentservices/pdfservices-sdk`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 143:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_docs`, expected final URL `https://opensource.adobe.com/pdfservices-java-sdk-samples/apidocs/latest/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 286:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_docs`, expected final URL `https://opensource.adobe.com/PDFServices.NET.SDK.Samples/apidocs/latest/api/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 184:29
+    Message: Unexpected redirecting URL `https://chocolatey.org/packages/maven`, expected final URL `https://community.chocolatey.org/packages/maven`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 180:13
+    Message: Unexpected redirecting URL `http://www.oracle.com/technetwork/java/javase/downloads/index.html`, expected final URL `https://www.oracle.com/java/technologies/downloads/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 285:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_nuget`, expected final URL `https://www.nuget.org/packages/Adobe.PDFServicesSDK/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 394:11
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_nuget`, expected final URL `https://www.nuget.org/packages/Adobe.PDFServicesSDK/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 404:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_node_docs`, expected final URL `https://opensource.adobe.com/pdfservices-node-sdk-samples/apidocs/latest/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 406:5
+    Message: Unexpected redirecting URL `http://www.adobe.com/go/pdftoolsapi_node_npm`, expected final URL `https://www.npmjs.com/package/@adobe/pdfservices-node-sdk`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 529:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdfservices_python_pypi`, expected final URL `https://pypi.org/project/pdfservices-sdk/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 287:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_samples`, expected final URL `https://github.com/adobe/PDFServices.NET.SDK.Samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 343:26
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_samples`, expected final URL `https://github.com/adobe/PDFServices.NET.SDK.Samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 229:26
+    Message: Unexpected dead URL `https://www.slf4j.org/`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 372:19
+    Message: Unexpected redirecting URL `https://github.com/damianh/LibLog`, expected final URL `https://github.com/damianh-archive/LibLog`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 144:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_samples`, expected final URL `https://github.com/adobe/pdfservices-java-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 195:14
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_samples`, expected final URL `https://github.com/adobe/pdfservices-java-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 405:5
+    Message: Unexpected redirecting URL `http://www.adobe.com/go/pdftoolsapi_node_sample`, expected final URL `https://github.com/adobe/pdfservices-node-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 457:13
+    Message: Unexpected redirecting URL `http://www.adobe.com/go/pdftoolsapi_node_sample`, expected final URL `https://github.com/adobe/pdfservices-node-sdk-samples`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-accessibility-auto-tag-api/howtos/accessibility-auto-tag-api.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 24:237
+    Message: Unexpected redirecting URL `https://helpx.adobe.com/acrobat/using/removing-sensitive-content-pdfs.html`, expected final URL `https://helpx.adobe.com/acrobat/desktop/protect-documents/redact-pdfs/redact.html`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-accessibility-auto-tag-api/howtos/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 34:5
+    Message: Unexpected dead URL `https://github.com/adobe/pdfservices-python-sdk-samples/blob/master/src/extractpdf/extract_txt_from_pdf_with_custom_timeouts.py`, expected live URL
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-accessibility-auto-tag-api/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 48:63
+    Message: Unexpected redirecting URL `https://www.pdfa.org/resource/iso-14289-pdfua/`, expected final URL `https://pdfa.org/resource/iso-14289-pdfua/`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/dotnet/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 290:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/java/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 340:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 16:3
+    Message: Unexpected redirecting URL `http://www.oracle.com/technetwork/java/javase/downloads/index.html`, expected final URL `https://www.oracle.com/java/technologies/downloads/`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/nodejs/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 199:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/python/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 199:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/acrobat-services-api/ct-p/ct-Document-Cloud-SDK?page=1&sort=latest_replies&filter=all&lang=all&tabid=discussions&topics=label-accessibilityauto-tagapi`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 42:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_maven`, expected final URL `https://mvnrepository.com/artifact/com.adobe.documentservices/pdfservices-sdk`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 125:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdfservices_python_pypi`, expected final URL `https://pypi.org/project/pdfservices-sdk/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 14:95
+    Message: Unexpected dead URL `https://adobe.com/go/accessibility_early_access_form`, expected live URL
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-electronic-seal-api/gettingstarted.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 193:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_samples`, expected final URL `https://github.com/adobe/pdfservices-java-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 244:14
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_samples`, expected final URL `https://github.com/adobe/pdfservices-java-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 335:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_docs`, expected final URL `https://opensource.adobe.com/PDFServices.NET.SDK.Samples/apidocs/latest/api/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 192:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_docs`, expected final URL `https://opensource.adobe.com/pdfservices-java-sdk-samples/apidocs/latest/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 194:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_maven`, expected final URL `https://mvnrepository.com/artifact/com.adobe.documentservices/pdfservices-sdk`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 322:28
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_maven`, expected final URL `https://mvnrepository.com/artifact/com.adobe.documentservices/pdfservices-sdk`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 336:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_samples`, expected final URL `https://github.com/adobe/PDFServices.NET.SDK.Samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 392:26
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_samples`, expected final URL `https://github.com/adobe/PDFServices.NET.SDK.Samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 19:286
+    Message: Unexpected dead URL `https://cloudsignatureconsortium.org/wp-content/uploads/2020/01/CSC_API_V1_1.0.4.0.pdf`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 278:26
+    Message: Unexpected dead URL `https://www.slf4j.org/`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 233:28
+    Message: Unexpected dead URL `https://chocolatey.org/packages/maven`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 453:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_node_docs`, expected final URL `https://opensource.adobe.com/pdfservices-node-sdk-samples/apidocs/latest/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 454:5
+    Message: Unexpected redirecting URL `http://www.adobe.com/go/pdftoolsapi_node_sample`, expected final URL `https://github.com/adobe/pdfservices-node-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 506:13
+    Message: Unexpected redirecting URL `http://www.adobe.com/go/pdftoolsapi_node_sample`, expected final URL `https://github.com/adobe/pdfservices-node-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 334:5
+    Message: Unexpected dead URL `https://www.adobe.com/go/pdftoolsapi_net_nuget`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 443:11
+    Message: Unexpected dead URL `https://www.adobe.com/go/pdftoolsapi_net_nuget`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 229:13
+    Message: Unexpected redirecting URL `http://www.oracle.com/technetwork/java/javase/downloads/index.html`, expected final URL `https://www.oracle.com/java/technologies/downloads/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 421:19
+    Message: Unexpected redirecting URL `https://github.com/damianh/LibLog`, expected final URL `https://github.com/damianh-archive/LibLog`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 455:5
+    Message: Unexpected redirecting URL `http://www.adobe.com/go/pdftoolsapi_node_npm`, expected final URL `https://www.npmjs.com/package/@adobe/pdfservices-node-sdk`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-electronic-seal-api/howtos/electronic-seal-api.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 73:44
+    Message: Unexpected redirecting URL `https://www.adobe.com/sign/hub/how-to/add-a-signature-block-to-pdf`, expected final URL `https://www.adobe.com/acrobat/hub/add-a-signature-block-to-pdf.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 15:180
+    Message: Unexpected dead URL `https://www.etsi.org/deliver/etsi_en/319100_319199/31914201/03.01.01_60/en_31914201v030101p.pdf`, expected live URL
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-electronic-seal-api/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 43:3
+    Message: Unexpected redirecting URL `https://www.globalsign.com/en/digital-signatures`, expected final URL `https://www.globalsign.com/en/document-signing`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 55:3
+    Message: Unexpected redirecting URL `https://www.globalsign.com/en-in`, expected final URL `https://www.globalsign.com/en`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 57:3
+    Message: Unexpected redirecting URL `https://support.namirial.com/en/docs/docs-tsp-qualified-signature-timestamp/`, expected final URL `https://www.namirial.com/en/documentation/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 42:3
+    Message: Unexpected dead URL `https://www.entrust.com/pdf-signing-certificates/`, expected live URL
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-electronic-seal-api/quickstarts/dotnet/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 398:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-electronic-seal-api/quickstarts/java/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 468:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 16:3
+    Message: Unexpected redirecting URL `http://www.oracle.com/technetwork/java/javase/downloads/index.html`, expected final URL `https://www.oracle.com/java/technologies/downloads/`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-electronic-seal-api/quickstarts/nodejs/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 348:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-extract-api/dcserviceslicensing.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 47:44
+    Message: Unexpected dead URL `https://helpx.adobe.com/acrobat/using/optimizing-pdfs-acrobat-pro.html#EnableFastWebViewinaPDF`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 47:44
+    Message: Unexpected redirecting URL `https://helpx.adobe.com/acrobat/using/optimizing-pdfs-acrobat-pro.html#EnableFastWebViewinaPDF`, expected final URL `https://helpx.adobe.com/acrobat/desktop/create-documents/optimize-pdfs/advance-size-reduction.html`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-extract-api/gettingstarted.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 143:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_docs`, expected final URL `https://opensource.adobe.com/pdfservices-java-sdk-samples/apidocs/latest/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 145:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_maven`, expected final URL `https://mvnrepository.com/artifact/com.adobe.documentservices/pdfservices-sdk`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 273:28
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_maven`, expected final URL `https://mvnrepository.com/artifact/com.adobe.documentservices/pdfservices-sdk`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 286:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_docs`, expected final URL `https://opensource.adobe.com/PDFServices.NET.SDK.Samples/apidocs/latest/api/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 404:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_node_docs`, expected final URL `https://opensource.adobe.com/pdfservices-node-sdk-samples/apidocs/latest/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 184:29
+    Message: Unexpected redirecting URL `https://chocolatey.org/packages/maven`, expected final URL `https://community.chocolatey.org/packages/maven`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 180:13
+    Message: Unexpected redirecting URL `http://www.oracle.com/technetwork/java/javase/downloads/index.html`, expected final URL `https://www.oracle.com/java/technologies/downloads/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 287:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_samples`, expected final URL `https://github.com/adobe/PDFServices.NET.SDK.Samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 343:26
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_samples`, expected final URL `https://github.com/adobe/PDFServices.NET.SDK.Samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 285:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_nuget`, expected final URL `https://www.nuget.org/packages/Adobe.PDFServicesSDK/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 394:11
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_nuget`, expected final URL `https://www.nuget.org/packages/Adobe.PDFServicesSDK/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 372:19
+    Message: Unexpected redirecting URL `https://github.com/damianh/LibLog`, expected final URL `https://github.com/damianh-archive/LibLog`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 144:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_samples`, expected final URL `https://github.com/adobe/pdfservices-java-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 195:14
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_samples`, expected final URL `https://github.com/adobe/pdfservices-java-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 405:5
+    Message: Unexpected dead URL `http://www.adobe.com/go/pdftoolsapi_node_sample`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 457:13
+    Message: Unexpected dead URL `http://www.adobe.com/go/pdftoolsapi_node_sample`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 486:18
+    Message: Unexpected dead URL `https://www.npmjs.com/package/log4js`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 517:11
+    Message: Unexpected dead URL `https://www.npmjs.com/package/@adobe/pdfservices-node-sdk`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 406:5
+    Message: Unexpected redirecting URL `http://www.adobe.com/go/pdftoolsapi_node_npm`, expected final URL `https://www.npmjs.com/package/@adobe/pdfservices-node-sdk`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 529:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdfservices_python_pypi`, expected final URL `https://pypi.org/project/pdfservices-sdk/`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-extract-api/howtos/extract-api.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 115:237
+    Message: Unexpected redirecting URL `https://helpx.adobe.com/acrobat/using/removing-sensitive-content-pdfs.html`, expected final URL `https://helpx.adobe.com/acrobat/desktop/protect-documents/redact-pdfs/redact.html`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-extract-api/howtos/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 39:5
+    Message: Unexpected dead URL `https://github.com/adobe/pdfservices-python-sdk-samples/blob/master/src/extractpdf/extract_txt_from_pdf_with_custom_timeouts.py`, expected live URL
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-extract-api/quickstarts/dotnet/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 334:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-extract-api/quickstarts/java/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 397:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 17:3
+    Message: Unexpected redirecting URL `http://www.oracle.com/technetwork/java/javase/downloads/index.html`, expected final URL `https://www.oracle.com/java/technologies/downloads/`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-extract-api/quickstarts/nodejs/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 228:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-extract-api/quickstarts/python/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 225:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK?page=1&sort=latest_replies&filter=all&lang=all&tabid=discussions&topics=label-documentgenerationapi`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-extract-api/quickstarts.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 43:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_docs`, expected final URL `https://opensource.adobe.com/pdfservices-java-sdk-samples/apidocs/latest/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 188:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_docs`, expected final URL `https://opensource.adobe.com/PDFServices.NET.SDK.Samples/apidocs/latest/api/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 80:27
+    Message: Unexpected redirecting URL `https://chocolatey.org/packages/maven`, expected final URL `https://community.chocolatey.org/packages/maven`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 45:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_maven`, expected final URL `https://mvnrepository.com/artifact/com.adobe.documentservices/pdfservices-sdk`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 175:28
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_maven`, expected final URL `https://mvnrepository.com/artifact/com.adobe.documentservices/pdfservices-sdk`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 306:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_node_docs`, expected final URL `https://opensource.adobe.com/pdfservices-node-sdk-samples/apidocs/latest/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 270:19
+    Message: Unexpected redirecting URL `https://github.com/damianh/LibLog`, expected final URL `https://github.com/damianh-archive/LibLog`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 187:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_nuget`, expected final URL `https://www.nuget.org/packages/Adobe.PDFServicesSDK/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 296:11
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_nuget`, expected final URL `https://www.nuget.org/packages/Adobe.PDFServicesSDK/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 21:221
+    Message: Unexpected redirecting URL `https://console.adobe.io/`, expected final URL `https://developer.adobe.com/console/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 75:13
+    Message: Unexpected redirecting URL `http://www.oracle.com/technetwork/java/javase/downloads/index.html`, expected final URL `https://www.oracle.com/java/technologies/downloads/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 44:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_samples`, expected final URL `https://github.com/adobe/pdfservices-java-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 54:165
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_samples`, expected final URL `https://github.com/adobe/pdfservices-java-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 91:14
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_samples`, expected final URL `https://github.com/adobe/pdfservices-java-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 100:14
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_samples`, expected final URL `https://github.com/adobe/pdfservices-java-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 189:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_samples`, expected final URL `https://github.com/adobe/PDFServices.NET.SDK.Samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 206:165
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_samples`, expected final URL `https://github.com/adobe/PDFServices.NET.SDK.Samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 248:27
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_samples`, expected final URL `https://github.com/adobe/PDFServices.NET.SDK.Samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 229:30
+    Message: Unexpected dead URL `https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/install`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 383:18
+    Message: Unexpected dead URL `https://www.npmjs.com/package/log4js`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 417:11
+    Message: Unexpected dead URL `https://www.npmjs.com/package/@adobe/pdfservices-node-sdk`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 426:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdfservices_python_docs`, expected final URL `https://opensource.adobe.com/pdfservices-python-sdk-samples/apidocs/latest/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 474:118
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdfservices_python_docs`, expected final URL `https://opensource.adobe.com/pdfservices-python-sdk-samples/apidocs/latest/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 482:118
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdfservices_python_docs`, expected final URL `https://opensource.adobe.com/pdfservices-python-sdk-samples/apidocs/latest/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 307:5
+    Message: Unexpected redirecting URL `http://www.adobe.com/go/pdftoolsapi_node_sample`, expected final URL `https://github.com/adobe/pdfservices-node-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 317:165
+    Message: Unexpected redirecting URL `http://www.adobe.com/go/pdftoolsapi_node_sample`, expected final URL `https://github.com/adobe/pdfservices-node-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 361:14
+    Message: Unexpected redirecting URL `http://www.adobe.com/go/pdftoolsapi_node_sample`, expected final URL `https://github.com/adobe/pdfservices-node-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 427:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdfservices_python_samples`, expected final URL `https://github.com/adobe/pdfservices-python-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 459:13
+    Message: Unexpected dead URL `https://www.python.org/downloads/`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 308:5
+    Message: Unexpected dead URL `http://www.adobe.com/go/pdftoolsapi_node_npm`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 428:5
+    Message: Unexpected dead URL `https://www.adobe.com/go/pdfservices_python_pypi`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 521:11
+    Message: Unexpected dead URL `https://pypi.org/project/pdfservices-sdk/`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 437:165
+    Message: Unexpected redirecting URL `http://www.adobe.com/go/pdfservices_python_samples`, expected final URL `https://github.com/adobe/pdfservices-python-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 533:170
+    Message: Unexpected dead URL `https://documentcloud.adobe.com/document-services/index.html#how-to-get-started-`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 515:32
+    Message: Unexpected dead URL `https://github.com/adobe/pdfservices-python-sdk-samples/tree/master/resources`, expected live URL
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-services-api/awsmarketplace.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 14:140
+    Message: Unexpected dead URL `https://developer.adobe.com/document-services/pricing/main#adobe-pdf-services-api`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 14:285
+    Message: Unexpected redirecting URL `https://www.adobe.io/apis/documentcloud/dcsdk/form.html`, expected final URL `https://developer.adobe.com/document-services/pricing/contact`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-services-api/dcserviceslicensing.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 47:44
+    Message: Unexpected dead URL `https://helpx.adobe.com/acrobat/using/optimizing-pdfs-acrobat-pro.html#EnableFastWebViewinaPDF`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 47:44
+    Message: Unexpected redirecting URL `https://helpx.adobe.com/acrobat/using/optimizing-pdfs-acrobat-pro.html#EnableFastWebViewinaPDF`, expected final URL `https://helpx.adobe.com/acrobat/desktop/create-documents/optimize-pdfs/advance-size-reduction.html`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-services-api/gettingstarted.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 144:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_docs`, expected final URL `https://opensource.adobe.com/pdfservices-java-sdk-samples/apidocs/latest/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 146:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_maven`, expected final URL `https://mvnrepository.com/artifact/com.adobe.documentservices/pdfservices-sdk`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 274:28
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_maven`, expected final URL `https://mvnrepository.com/artifact/com.adobe.documentservices/pdfservices-sdk`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 287:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_docs`, expected final URL `https://opensource.adobe.com/PDFServices.NET.SDK.Samples/apidocs/latest/api/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 185:29
+    Message: Unexpected redirecting URL `https://chocolatey.org/packages/maven`, expected final URL `https://community.chocolatey.org/packages/maven`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 405:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_node_docs`, expected final URL `https://opensource.adobe.com/pdfservices-node-sdk-samples/apidocs/latest/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 145:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_samples`, expected final URL `https://github.com/adobe/pdfservices-java-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 196:14
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_samples`, expected final URL `https://github.com/adobe/pdfservices-java-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 286:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_nuget`, expected final URL `https://www.nuget.org/packages/Adobe.PDFServicesSDK/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 395:11
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_nuget`, expected final URL `https://www.nuget.org/packages/Adobe.PDFServicesSDK/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 288:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_samples`, expected final URL `https://github.com/adobe/PDFServices.NET.SDK.Samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 344:26
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_samples`, expected final URL `https://github.com/adobe/PDFServices.NET.SDK.Samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 406:5
+    Message: Unexpected dead URL `http://www.adobe.com/go/pdftoolsapi_node_sample`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 458:13
+    Message: Unexpected dead URL `http://www.adobe.com/go/pdftoolsapi_node_sample`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 407:5
+    Message: Unexpected dead URL `http://www.adobe.com/go/pdftoolsapi_node_npm`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 444:13
+    Message: Unexpected dead URL `https://nodejs.org/en/download/`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 181:13
+    Message: Unexpected redirecting URL `http://www.oracle.com/technetwork/java/javase/downloads/index.html`, expected final URL `https://www.oracle.com/java/technologies/downloads/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 373:19
+    Message: Unexpected redirecting URL `https://github.com/damianh/LibLog`, expected final URL `https://github.com/damianh-archive/LibLog`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-services-api/howtos/accessibility-auto-tag-pdf.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 24:237
+    Message: Unexpected redirecting URL `https://helpx.adobe.com/acrobat/using/removing-sensitive-content-pdfs.html`, expected final URL `https://helpx.adobe.com/acrobat/desktop/protect-documents/redact-pdfs/redact.html`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-services-api/howtos/create-pdf.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 21:40
+    Message: Unexpected dead URL `https://opensource.adobe.com/pdfservices-java-sdk-samples/apidocs/latest/com/adobe/pdfservices/operation/pdfops/CreatePDFOperation.SupportedSourceFormat.html`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 35:29
+    Message: Unexpected dead URL `https://support.microsoft.com/en-us/office/benefits-of-embedding-custom-fonts-cb3982aa-ea76-4323-b008-86670f222dbc#OfficeVersion=Windows`, expected live URL
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-services-api/howtos/document-generation.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 33:71
+    Message: Unexpected dead URL `https://appsource.microsoft.com/en-us/product/office/WA200002654`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 41:24
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/dcdocgen_templates`, expected final URL `https://developer.adobe.com/document-services/apis/doc-generation/#sample-blade`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 18:5
+    Message: Unexpected dead URL `https://acrobatservices.adobe.com/dc-docgen-playground/index.html#/`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 66:29
+    Message: Unexpected dead URL `https://www.adobe.com/go/dcsdk_APIdocs#post-documentGeneration`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 66:29
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/dcsdk_APIdocs#post-documentGeneration`, expected final URL `https://documentcloud.adobe.com/document-services/index.html`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-services-api/howtos/electronic-seal-api.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 74:44
+    Message: Unexpected redirecting URL `https://www.adobe.com/sign/hub/how-to/add-a-signature-block-to-pdf`, expected final URL `https://www.adobe.com/acrobat/hub/add-a-signature-block-to-pdf.html`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-services-api/howtos/export-pdf.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 19:55
+    Message: Unexpected dead URL `https://opensource.adobe.com/pdfservices-java-sdk-samples/apidocs/latest/com/adobe/pdfservices/operation/pdfops/options/exportpdf/ExportPDFTargetFormat.html`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 190:55
+    Message: Unexpected dead URL `https://opensource.adobe.com/pdfservices-java-sdk-samples/apidocs/latest/com/adobe/pdfservices/operation/pdfops/options/exportpdf/ExportPDFTargetFormat.html`, expected live URL
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-services-api/howtos/extract-pdf.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 115:237
+    Message: Unexpected redirecting URL `https://helpx.adobe.com/acrobat/using/removing-sensitive-content-pdfs.html`, expected final URL `https://helpx.adobe.com/acrobat/desktop/protect-documents/redact-pdfs/redact.html`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-services-api/howtos/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 166:5
+    Message: Unexpected dead URL `https://github.com/adobe/pdfservices-python-sdk-samples/blob/master/src/extractpdf/extract_txt_from_pdf_with_custom_timeouts.py`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 47:5
+    Message: Unexpected dead URL `https://github.com/adobe/pdfservices-python-sdk-samples/blob/master/src/extractpdf/extract_txt_from_pdf_with_specified_region.py`, expected live URL
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-services-api/howtos/pdf-accessibility-auto-tag-pdf.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 24:237
+    Message: Unexpected redirecting URL `https://helpx.adobe.com/acrobat/using/removing-sensitive-content-pdfs.html`, expected final URL `https://helpx.adobe.com/acrobat/desktop/protect-documents/redact-pdfs/redact.html`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-services-api/howtos/service-region-configuration-for-apis.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 22:42
+    Message: Unexpected dead URL `https://pdf-services-ue1.adobe.io/`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 23:42
+    Message: Unexpected dead URL `https://pdf-services-ew1.adobe.io/`, expected live URL
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-services-api/quickstarts/dotnet/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 280:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-services-api/quickstarts/java/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 324:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 17:3
+    Message: Unexpected redirecting URL `http://www.oracle.com/technetwork/java/javase/downloads/index.html`, expected final URL `https://www.oracle.com/java/technologies/downloads/`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-services-api/quickstarts/nodejs/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 198:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/pdf-services-api/releasenotes.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 35:60
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_node_sample`, expected final URL `https://github.com/adobe/pdfservices-node-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 37:1
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_samples`, expected final URL `https://github.com/adobe/PDFServices.NET.SDK.Samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 25:15
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_samples`, expected final URL `https://github.com/adobe/pdfservices-java-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 35:1
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_samples`, expected final URL `https://github.com/adobe/pdfservices-java-sdk-samples`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/legacy-documentation/releasenotes.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 36:1
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_samples`, expected final URL `https://github.com/adobe/PDFServices.NET.SDK.Samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 34:60
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_node_sample`, expected final URL `https://github.com/adobe/pdfservices-node-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 24:15
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_samples`, expected final URL `https://github.com/adobe/pdfservices-java-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 34:1
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_samples`, expected final URL `https://github.com/adobe/pdfservices-java-sdk-samples`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/limits.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 14:1
+    Message: Unexpected dead URL `https://developer.adobe.com/document-services/pricing/main#adobe-pdf-services-api`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 115:1
+    Message: Unexpected dead URL `https://developer.adobe.com/document-services/pricing/main#adobe-pdf-services-api`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 36:47
+    Message: Unexpected dead URL `https://helpx.adobe.com/acrobat/using/optimizing-pdfs-acrobat-pro.html#EnableFastWebViewinaPDF`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 36:47
+    Message: Unexpected redirecting URL `https://helpx.adobe.com/acrobat/using/optimizing-pdfs-acrobat-pro.html#EnableFastWebViewinaPDF`, expected final URL `https://helpx.adobe.com/acrobat/desktop/create-documents/optimize-pdfs/advance-size-reduction.html`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-accessibility-auto-tag-api/dcserviceslicensing.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 49:44
+    Message: Unexpected dead URL `https://helpx.adobe.com/acrobat/using/optimizing-pdfs-acrobat-pro.html#EnableFastWebViewinaPDF`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 49:44
+    Message: Unexpected redirecting URL `https://helpx.adobe.com/acrobat/using/optimizing-pdfs-acrobat-pro.html#EnableFastWebViewinaPDF`, expected final URL `https://helpx.adobe.com/acrobat/desktop/create-documents/optimize-pdfs/advance-size-reduction.html`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-accessibility-auto-tag-api/gettingstarted.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 156:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_docs`, expected final URL `https://opensource.adobe.com/pdfservices-java-sdk-samples/apidocs/latest/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 299:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_docs`, expected final URL `https://opensource.adobe.com/PDFServices.NET.SDK.Samples/apidocs/latest/api/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 158:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_maven`, expected final URL `https://mvnrepository.com/artifact/com.adobe.documentservices/pdfservices-sdk`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 286:28
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_maven`, expected final URL `https://mvnrepository.com/artifact/com.adobe.documentservices/pdfservices-sdk`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 157:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_samples`, expected final URL `https://github.com/adobe/pdfservices-java-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 208:14
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_samples`, expected final URL `https://github.com/adobe/pdfservices-java-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 197:29
+    Message: Unexpected redirecting URL `https://chocolatey.org/packages/maven`, expected final URL `https://community.chocolatey.org/packages/maven`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 385:19
+    Message: Unexpected redirecting URL `https://github.com/damianh/LibLog`, expected final URL `https://github.com/damianh-archive/LibLog`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 417:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_node_docs`, expected final URL `https://opensource.adobe.com/pdfservices-node-sdk-samples/apidocs/latest/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 298:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_nuget`, expected final URL `https://www.nuget.org/packages/Adobe.PDFServicesSDK/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 407:11
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_nuget`, expected final URL `https://www.nuget.org/packages/Adobe.PDFServicesSDK/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 193:13
+    Message: Unexpected redirecting URL `http://www.oracle.com/technetwork/java/javase/downloads/index.html`, expected final URL `https://www.oracle.com/java/technologies/downloads/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 300:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_samples`, expected final URL `https://github.com/adobe/PDFServices.NET.SDK.Samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 356:26
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_samples`, expected final URL `https://github.com/adobe/PDFServices.NET.SDK.Samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 456:13
+    Message: Unexpected dead URL `https://nodejs.org/en/download/`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 346:30
+    Message: Unexpected dead URL `https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/install`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 418:5
+    Message: Unexpected redirecting URL `http://www.adobe.com/go/pdftoolsapi_node_sample`, expected final URL `https://github.com/adobe/pdfservices-node-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 470:13
+    Message: Unexpected redirecting URL `http://www.adobe.com/go/pdftoolsapi_node_sample`, expected final URL `https://github.com/adobe/pdfservices-node-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 419:5
+    Message: Unexpected dead URL `http://www.adobe.com/go/pdftoolsapi_node_npm`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 542:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdfservices_python_pypi`, expected final URL `https://pypi.org/project/pdfservices-sdk/`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-accessibility-auto-tag-api/howtos/accessibility-auto-tag-api.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 25:237
+    Message: Unexpected redirecting URL `https://helpx.adobe.com/acrobat/using/removing-sensitive-content-pdfs.html`, expected final URL `https://helpx.adobe.com/acrobat/desktop/protect-documents/redact-pdfs/redact.html`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-accessibility-auto-tag-api/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 48:63
+    Message: Unexpected redirecting URL `https://www.pdfa.org/resource/iso-14289-pdfua/`, expected final URL `https://pdfa.org/resource/iso-14289-pdfua/`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-accessibility-auto-tag-api/quickstarts/dotnet/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 303:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-accessibility-auto-tag-api/quickstarts/java/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 317:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 16:3
+    Message: Unexpected redirecting URL `http://www.oracle.com/technetwork/java/javase/downloads/index.html`, expected final URL `https://www.oracle.com/java/technologies/downloads/`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-accessibility-auto-tag-api/quickstarts/nodejs/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 237:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-accessibility-auto-tag-api/quickstarts/python/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 213:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/acrobat-services-api/ct-p/ct-Document-Cloud-SDK?page=1&sort=latest_replies&filter=all&lang=all&tabid=discussions&topics=label-accessibilityauto-tagapi`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-electronic-seal-api/gettingstarted.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 205:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_docs`, expected final URL `https://opensource.adobe.com/pdfservices-java-sdk-samples/apidocs/latest/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 207:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_maven`, expected final URL `https://mvnrepository.com/artifact/com.adobe.documentservices/pdfservices-sdk`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 335:28
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_maven`, expected final URL `https://mvnrepository.com/artifact/com.adobe.documentservices/pdfservices-sdk`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 348:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_docs`, expected final URL `https://opensource.adobe.com/PDFServices.NET.SDK.Samples/apidocs/latest/api/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 246:28
+    Message: Unexpected redirecting URL `https://chocolatey.org/packages/maven`, expected final URL `https://community.chocolatey.org/packages/maven`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 466:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_node_docs`, expected final URL `https://opensource.adobe.com/pdfservices-node-sdk-samples/apidocs/latest/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 242:13
+    Message: Unexpected redirecting URL `http://www.oracle.com/technetwork/java/javase/downloads/index.html`, expected final URL `https://www.oracle.com/java/technologies/downloads/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 434:19
+    Message: Unexpected redirecting URL `https://github.com/damianh/LibLog`, expected final URL `https://github.com/damianh-archive/LibLog`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 347:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_nuget`, expected final URL `https://www.nuget.org/packages/Adobe.PDFServicesSDK/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 456:11
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_nuget`, expected final URL `https://www.nuget.org/packages/Adobe.PDFServicesSDK/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 206:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_samples`, expected final URL `https://github.com/adobe/pdfservices-java-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 257:14
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_samples`, expected final URL `https://github.com/adobe/pdfservices-java-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 467:5
+    Message: Unexpected redirecting URL `http://www.adobe.com/go/pdftoolsapi_node_sample`, expected final URL `https://github.com/adobe/pdfservices-node-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 519:13
+    Message: Unexpected redirecting URL `http://www.adobe.com/go/pdftoolsapi_node_sample`, expected final URL `https://github.com/adobe/pdfservices-node-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 349:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_samples`, expected final URL `https://github.com/adobe/PDFServices.NET.SDK.Samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 405:26
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_samples`, expected final URL `https://github.com/adobe/PDFServices.NET.SDK.Samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 468:5
+    Message: Unexpected dead URL `http://www.adobe.com/go/pdftoolsapi_node_npm`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 579:11
+    Message: Unexpected dead URL `https://www.npmjs.com/package/@adobe/pdfservices-node-sdk`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 591:5
+    Message: Unexpected dead URL `https://www.adobe.com/go/pdfservices_python_pypi`, expected live URL
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-electronic-seal-api/howtos/electronic-seal-api.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 74:44
+    Message: Unexpected redirecting URL `https://www.adobe.com/sign/hub/how-to/add-a-signature-block-to-pdf`, expected final URL `https://www.adobe.com/acrobat/hub/add-a-signature-block-to-pdf.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 16:180
+    Message: Unexpected dead URL `https://www.etsi.org/deliver/etsi_en/319100_319199/31914201/03.01.01_60/en_31914201v030101p.pdf`, expected live URL
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-electronic-seal-api/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 55:3
+    Message: Unexpected redirecting URL `https://www.globalsign.com/en-in`, expected final URL `https://www.globalsign.com/en`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 43:3
+    Message: Unexpected redirecting URL `https://www.globalsign.com/en/digital-signatures`, expected final URL `https://www.globalsign.com/en/document-signing`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 42:3
+    Message: Unexpected dead URL `https://www.entrust.com/pdf-signing-certificates/`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 57:3
+    Message: Unexpected redirecting URL `https://support.namirial.com/en/docs/docs-tsp-qualified-signature-timestamp/`, expected final URL `https://www.namirial.com/en/documentation/`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-electronic-seal-api/quickstarts/dotnet/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 424:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-electronic-seal-api/quickstarts/java/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 454:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 17:3
+    Message: Unexpected redirecting URL `http://www.oracle.com/technetwork/java/javase/downloads/index.html`, expected final URL `https://www.oracle.com/java/technologies/downloads/`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-electronic-seal-api/quickstarts/nodejs/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 413:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-electronic-seal-api/quickstarts/python/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 344:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/acrobat-services-api/ct-p/ct-Document-Cloud-SDK?page=1&sort=latest_replies&filter=all&lang=all&tabid=discussions&topics=label-accessibilityauto-tagapi`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-embed-api/gettingstarted.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 188:37
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/Document-Cloud-SDK/bd-p/Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 75:5
+    Message: Unexpected dead URL `https://acrobatservices.adobe.com/view-sdk-demo/index.html#/view/FULL_WINDOW/Bodea%20Brochure.pdf`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 66:18
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdfembedapi_samples`, expected final URL `https://github.com/adobe/pdf-embed-api-samples`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-embed-api/howtodata.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 143:5
+    Message: Unexpected dead URL `https://forums.adobe.com/community/experience-cloud/analytics-cloud/analytics`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 38:18
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdfembedapi_samples`, expected final URL `https://github.com/adobe/pdf-embed-api-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 191:18
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdfembedapi_samples`, expected final URL `https://github.com/adobe/pdf-embed-api-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 319:33
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdfembedapi_samples`, expected final URL `https://github.com/adobe/pdf-embed-api-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 144:5
+    Message: Unexpected redirecting URL `https://helpx.adobe.com/support/analytics.html`, expected final URL `https://experienceleague.adobe.com/en/docs/analytics`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 139:67
+    Message: Unexpected redirecting URL `https://experienceleague.adobe.com/docs/analytics/admin/admin-tools/processing-rules/processing-rules.html`, expected final URL `https://experienceleague.adobe.com/en/docs/analytics/admin/admin-tools/manage-report-suites/edit-report-suite/report-suite-general/processing-rules/pr-overview`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-embed-api/howtos-comments.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 393:57
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdfembedapi_samples`, expected final URL `https://github.com/adobe/pdf-embed-api-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 1170:1
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdfembedapi_samples`, expected final URL `https://github.com/adobe/pdf-embed-api-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 320:244
+    Message: Unexpected dead URL `https://comments.acrobat.com/ns/anno.jsonld`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 1086:17
+    Message: Unexpected redirecting URL `https://developer.mozilla.org/en-US/docs/Web/CSS/cursor`, expected final URL `https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/cursor`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-embed-api/howtos-ui.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 3:1
+    Message: Missing or empty description in frontmatter
+    Rule: check-frontmatter
+
+  ⚠️  WARNING
+    Location: Line 1320:1
+    Message: Unexpected redirecting URL `https://developer.mozilla.org/en-US/docs/Web/CSS/cursor`, expected final URL `https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/cursor`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 267:1
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdfembedapi_samples`, expected final URL `https://github.com/adobe/pdf-embed-api-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 1017:1
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdfembedapi_samples`, expected final URL `https://github.com/adobe/pdf-embed-api-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 1104:1
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdfembedapi_samples`, expected final URL `https://github.com/adobe/pdf-embed-api-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 1192:1
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdfembedapi_samples`, expected final URL `https://github.com/adobe/pdf-embed-api-samples`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-embed-api/howtos.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 214:161
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdfembedapi_samples`, expected final URL `https://github.com/adobe/pdf-embed-api-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 689:30
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdfembedapi_samples`, expected final URL `https://github.com/adobe/pdf-embed-api-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 140:23
+    Message: Unexpected dead URL `https://example.com/viewer/test.html`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 141:15
+    Message: Unexpected dead URL `https://example.com/resources/abc.pdf`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 233:2
+    Message: Unexpected dead URL `https://acrobatservices.adobe.com/view-sdk-demo/index.html#/view/FULL_WINDOW`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 214:37
+    Message: Unexpected dead URL `https://acrobatservices.adobe.com/view-sdk-demo/index.html#/view/FULL_WINDOW/Bodea%20Brochure.pdf`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 351:53
+    Message: Unexpected dead URL `https://acrobatservices.adobe.com/view-sdk-demo/index.html#/view/SIZED_CONTAINER`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 438:2
+    Message: Unexpected dead URL `https://acrobatservices.adobe.com/view-sdk-demo/index.html#/view/LIGHT_BOX`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 403:67
+    Message: Unexpected dead URL `https://acrobatservices.adobe.com/view-sdk-demo/index.html#/view/IN_LINE`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 737:1
+    Message: Unexpected redirecting URL `https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Headers`, expected final URL `https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Access-Control-Allow-Headers`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 133:1
+    Message: Unexpected redirecting URL `https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS`, expected final URL `https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-embed-api/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 25:15
+    Message: Unexpected dead URL `https://acrobatservices.adobe.com/view-sdk-demo/index.html#/view/FULL_WINDOW/Bodea%20Brochure.pdf`, expected live URL
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-embed-api/releasenotes.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 170:287
+    Message: Unexpected redirecting URL `https://documentcloud.adobe.com/link/home`, expected final URL `https://acrobat.adobe.com/link/home`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-embed-api/searchengineindexing.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 69:1
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdfembedapi_samples`, expected final URL `https://github.com/adobe/pdf-embed-api-samples`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-extract-api/dcserviceslicensing.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 49:44
+    Message: Unexpected dead URL `https://helpx.adobe.com/acrobat/using/optimizing-pdfs-acrobat-pro.html#EnableFastWebViewinaPDF`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 49:44
+    Message: Unexpected redirecting URL `https://helpx.adobe.com/acrobat/using/optimizing-pdfs-acrobat-pro.html#EnableFastWebViewinaPDF`, expected final URL `https://helpx.adobe.com/acrobat/desktop/create-documents/optimize-pdfs/advance-size-reduction.html`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-extract-api/gettingstarted.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 165:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_docs`, expected final URL `https://opensource.adobe.com/pdfservices-java-sdk-samples/apidocs/latest/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 308:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_docs`, expected final URL `https://opensource.adobe.com/PDFServices.NET.SDK.Samples/apidocs/latest/api/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 167:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_maven`, expected final URL `https://mvnrepository.com/artifact/com.adobe.documentservices/pdfservices-sdk`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 295:28
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_maven`, expected final URL `https://mvnrepository.com/artifact/com.adobe.documentservices/pdfservices-sdk`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 206:29
+    Message: Unexpected redirecting URL `https://chocolatey.org/packages/maven`, expected final URL `https://community.chocolatey.org/packages/maven`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 426:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_node_docs`, expected final URL `https://opensource.adobe.com/pdfservices-node-sdk-samples/apidocs/latest/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 166:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_samples`, expected final URL `https://github.com/adobe/pdfservices-java-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 217:14
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_samples`, expected final URL `https://github.com/adobe/pdfservices-java-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 307:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_nuget`, expected final URL `https://www.nuget.org/packages/Adobe.PDFServicesSDK/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 416:11
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_nuget`, expected final URL `https://www.nuget.org/packages/Adobe.PDFServicesSDK/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 394:19
+    Message: Unexpected redirecting URL `https://github.com/damianh/LibLog`, expected final URL `https://github.com/damianh-archive/LibLog`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 202:13
+    Message: Unexpected redirecting URL `http://www.oracle.com/technetwork/java/javase/downloads/index.html`, expected final URL `https://www.oracle.com/java/technologies/downloads/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 309:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_samples`, expected final URL `https://github.com/adobe/PDFServices.NET.SDK.Samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 365:26
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_samples`, expected final URL `https://github.com/adobe/PDFServices.NET.SDK.Samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 427:5
+    Message: Unexpected redirecting URL `http://www.adobe.com/go/pdftoolsapi_node_sample`, expected final URL `https://github.com/adobe/pdfservices-node-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 479:13
+    Message: Unexpected redirecting URL `http://www.adobe.com/go/pdftoolsapi_node_sample`, expected final URL `https://github.com/adobe/pdfservices-node-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 588:12
+    Message: Unexpected dead URL `https://www.python.org/downloads/`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 428:5
+    Message: Unexpected redirecting URL `http://www.adobe.com/go/pdftoolsapi_node_npm`, expected final URL `https://www.npmjs.com/package/@adobe/pdfservices-node-sdk`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 551:5
+    Message: Unexpected dead URL `https://www.adobe.com/go/pdfservices_python_pypi`, expected live URL
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-extract-api/howtos/extract-api.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 113:237
+    Message: Unexpected redirecting URL `https://helpx.adobe.com/acrobat/using/removing-sensitive-content-pdfs.html`, expected final URL `https://helpx.adobe.com/acrobat/desktop/protect-documents/redact-pdfs/redact.html`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-extract-api/howtos/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 26:465
+    Message: Unexpected dead URL `https://www.adobe.com/content/dam/cc/en/trust-center/ungated/whitepapers/dx/Adobe-PDF-Extract-API-Technical-Brief.pdf`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 38:5
+    Message: Unexpected dead URL `https://github.com/adobe/pdfservices-python-sdk-samples/blob/master/src/extractpdf/extract_txt_from_pdf_with_custom_timeouts.py`, expected live URL
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-extract-api/quickstarts/extract-pdf/dotnet/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 342:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-extract-api/quickstarts/extract-pdf/java/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 375:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 16:3
+    Message: Unexpected redirecting URL `http://www.oracle.com/technetwork/java/javase/downloads/index.html`, expected final URL `https://www.oracle.com/java/technologies/downloads/`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-extract-api/quickstarts/extract-pdf/nodejs/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 257:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-extract-api/quickstarts/extract-pdf/python/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 258:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK?page=1&sort=latest_replies&filter=all&lang=all&tabid=discussions&topics=label-documentgenerationapi`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-services-api/awsmarketplace.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 13:140
+    Message: Unexpected dead URL `https://developer.adobe.com/document-services/pricing/main#adobe-pdf-services-api`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 13:285
+    Message: Unexpected redirecting URL `https://www.adobe.io/apis/documentcloud/dcsdk/form.html`, expected final URL `https://developer.adobe.com/document-services/pricing/contact`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-services-api/dcserviceslicensing.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 49:44
+    Message: Unexpected dead URL `https://helpx.adobe.com/acrobat/using/optimizing-pdfs-acrobat-pro.html#EnableFastWebViewinaPDF`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 49:44
+    Message: Unexpected redirecting URL `https://helpx.adobe.com/acrobat/using/optimizing-pdfs-acrobat-pro.html#EnableFastWebViewinaPDF`, expected final URL `https://helpx.adobe.com/acrobat/desktop/create-documents/optimize-pdfs/advance-size-reduction.html`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-services-api/gettingstarted.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 154:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_docs`, expected final URL `https://opensource.adobe.com/pdfservices-java-sdk-samples/apidocs/latest/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 156:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_maven`, expected final URL `https://mvnrepository.com/artifact/com.adobe.documentservices/pdfservices-sdk`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 284:28
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_maven`, expected final URL `https://mvnrepository.com/artifact/com.adobe.documentservices/pdfservices-sdk`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 297:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_docs`, expected final URL `https://opensource.adobe.com/PDFServices.NET.SDK.Samples/apidocs/latest/api/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 195:29
+    Message: Unexpected redirecting URL `https://chocolatey.org/packages/maven`, expected final URL `https://community.chocolatey.org/packages/maven`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 415:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_node_docs`, expected final URL `https://opensource.adobe.com/pdfservices-node-sdk-samples/apidocs/latest/index.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 191:13
+    Message: Unexpected redirecting URL `http://www.oracle.com/technetwork/java/javase/downloads/index.html`, expected final URL `https://www.oracle.com/java/technologies/downloads/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 298:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_samples`, expected final URL `https://github.com/adobe/PDFServices.NET.SDK.Samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 354:26
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_samples`, expected final URL `https://github.com/adobe/PDFServices.NET.SDK.Samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 296:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_nuget`, expected final URL `https://www.nuget.org/packages/Adobe.PDFServicesSDK/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 405:11
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_nuget`, expected final URL `https://www.nuget.org/packages/Adobe.PDFServicesSDK/`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 383:19
+    Message: Unexpected redirecting URL `https://github.com/damianh/LibLog`, expected final URL `https://github.com/damianh-archive/LibLog`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 155:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_samples`, expected final URL `https://github.com/adobe/pdfservices-java-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 206:14
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_java_samples`, expected final URL `https://github.com/adobe/pdfservices-java-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 497:18
+    Message: Unexpected dead URL `https://www.npmjs.com/package/log4js`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 417:5
+    Message: Unexpected dead URL `http://www.adobe.com/go/pdftoolsapi_node_npm`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 416:5
+    Message: Unexpected redirecting URL `http://www.adobe.com/go/pdftoolsapi_node_sample`, expected final URL `https://github.com/adobe/pdfservices-node-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 468:13
+    Message: Unexpected redirecting URL `http://www.adobe.com/go/pdftoolsapi_node_sample`, expected final URL `https://github.com/adobe/pdfservices-node-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 528:11
+    Message: Unexpected dead URL `https://www.npmjs.com/package/@adobe/pdfservices-node-sdk`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 540:5
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdfservices_python_pypi`, expected final URL `https://pypi.org/project/pdfservices-sdk/`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-services-api/howtos/create-pdf.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 22:40
+    Message: Unexpected dead URL `https://developer.adobe.com/document-services/docs/apis/#tag/Create-PDF`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 36:29
+    Message: Unexpected dead URL `https://support.microsoft.com/en-us/office/benefits-of-embedding-custom-fonts-cb3982aa-ea76-4323-b008-86670f222dbc#OfficeVersion=Windows`, expected live URL
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-services-api/howtos/electronic-seal-api.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 74:44
+    Message: Unexpected redirecting URL `https://www.adobe.com/sign/hub/how-to/add-a-signature-block-to-pdf`, expected final URL `https://www.adobe.com/acrobat/hub/add-a-signature-block-to-pdf.html`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 16:180
+    Message: Unexpected dead URL `https://www.etsi.org/deliver/etsi_en/319100_319199/31914201/03.01.01_60/en_31914201v030101p.pdf`, expected live URL
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-services-api/howtos/export-pdf.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 19:55
+    Message: Unexpected dead URL `https://developer.adobe.com/document-services/docs/apis/#tag/Export-PDF`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 318:55
+    Message: Unexpected dead URL `https://developer.adobe.com/document-services/docs/apis/#tag/Export-PDF`, expected live URL
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-services-api/howtos/extract-pdf.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 113:237
+    Message: Unexpected redirecting URL `https://helpx.adobe.com/acrobat/using/removing-sensitive-content-pdfs.html`, expected final URL `https://helpx.adobe.com/acrobat/desktop/protect-documents/redact-pdfs/redact.html`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-services-api/howtos/pdf-accessibility-auto-tag-pdf.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 25:237
+    Message: Unexpected redirecting URL `https://helpx.adobe.com/acrobat/using/removing-sensitive-content-pdfs.html`, expected final URL `https://helpx.adobe.com/acrobat/desktop/protect-documents/redact-pdfs/redact.html`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-services-api/howtos/service-region-configuration-for-apis.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 21:42
+    Message: Unexpected dead URL `https://pdf-services-ue1.adobe.io/`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 22:42
+    Message: Unexpected dead URL `https://pdf-services-ew1.adobe.io/`, expected live URL
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-services-api/howtos/webhook-notification.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 11:138
+    Message: Unexpected dead URL `https://developer.adobe.com/document-services/docs/apis/#tag/Create-PDF/operation/pdfoperations.createpdf`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 9:222
+    Message: Unexpected dead URL `https://developer.adobe.com/document-services/docs/apis/#tag/Create-PDF/operation/pdfoperations.jobstatus`, expected live URL
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-services-api/quickstarts/dotnet/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 290:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-services-api/quickstarts/java/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 308:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 16:3
+    Message: Unexpected redirecting URL `http://www.oracle.com/technetwork/java/javase/downloads/index.html`, expected final URL `https://www.oracle.com/java/technologies/downloads/`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-services-api/quickstarts/nodejs/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 221:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/ct-p/ct-Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-services-api/quickstarts/python/index.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 216:213
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/acrobat-services-api/ct-p/ct-Document-Cloud-SDK?page=1&sort=latest_replies&filter=all&lang=all&tabid=discussions&topics=label-accessibilityauto-tagapi`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/pdf-services-api/vip-mp-onboarding-guide.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 130:3
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/document-services-apis/bd-p/Document-Cloud-SDK?page=1&sort=latest_replies&filter=all`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/releasenotes.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 77:60
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_node_sample`, expected final URL `https://github.com/adobe/pdfservices-node-sdk-samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 79:1
+    Message: Unexpected redirecting URL `https://www.adobe.com/go/pdftoolsapi_net_samples`, expected final URL `https://github.com/adobe/PDFServices.NET.SDK.Samples`
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 67:15
+    Message: Unexpected dead URL `https://www.adobe.com/go/pdftoolsapi_java_samples`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 77:1
+    Message: Unexpected dead URL `https://www.adobe.com/go/pdftoolsapi_java_samples`, expected live URL
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/security.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 181:99
+    Message: Unexpected dead URL `https://developer.adobe.com/document-services/docs/apis/#tag/PDF-Properties`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 179:94
+    Message: Unexpected dead URL `https://developer.adobe.com/document-services/docs/apis/#tag/Remove-Protection`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 121:384
+    Message: Unexpected dead URL `https://developer.adobe.com/document-services/docs/apis/#tag/Assets/operation/asset.delete`, expected live URL
+    Rule: no-dead-urls
+
+  ⚠️  WARNING
+    Location: Line 26:219
+    Message: Unexpected redirecting URL `https://www.adobe.io/developer-console/docs/guides/authentication/`, expected final URL `https://developer.adobe.com/developer-console/docs/guides/authentication/`
+    Rule: no-dead-urls
+
+───────────────────────────────────────────────────────────────
+📄 FILE: src/pages/overview/support.md
+───────────────────────────────────────────────────────────────
+  ⚠️  WARNING
+    Location: Line 14:37
+    Message: Unexpected redirecting URL `https://community.adobe.com/t5/Document-Cloud-SDK/bd-p/Document-Cloud-SDK`, expected final URL `https://community.adobe.com/acrobat-services-api-19`
+    Rule: no-dead-urls
+
+
+═══════════════════════════════════════════════════════════════
+                        SUMMARY
+═══════════════════════════════════════════════════════════════
+
+  📁 Files processed:    198
+  📄 Files with issues:  116
+  ❌ Total errors:       0
+  ⚠️  Total warnings:     432
+  📋 Total issues:       432
+
+Result: ⚠️  PASSED WITH WARNINGS - No fatal errors
+
+═══════════════════════════════════════════════════════════════

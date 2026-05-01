@@ -1,8 +1,10 @@
 ---
 title: How Tos | PDF Extract API | Adobe PDF Services
+description: |
+  Samples and documentation to get you up and running with PDF Extract capabilities in the PDFServices SDK.
+
 ---
 # How Tos
-<p>
 
 The [samples and documentation](extract-api.md#extract-text-from-a-pdf) should get you quickly up and running with PDF Extract capabilities in the [PDFServices SDK](../gettingstarted.md#sdk) including:
 
@@ -19,11 +21,9 @@ For code examples illustrating other PDF actions including those below, see the 
 - Common page operations, including inserting, replacing, deleting, reordering, and rotating
 - Splitting PDFs into multiple files
 
-</p>
-
 ## How It Works
 
-PDF Extract uses AI/ML technology to identify and categorize the various objects within documents – such as paragraphs, lists, headings, tables, and images – and extract the text, formatting, and associated document structural information which is then delivered in a resulting JSON file. Extracted table data can optionally be delivered within .CSV or .XLSX files, and extracted images are delivered as .PNG files. For additional information, please refer to <a href="../../../overview/pdf/Adobe_PDF_Extract_API_Technical_Brief.pdf" target="_blank">PDF Extract API white paper</a>
+PDF Extract uses AI/ML technology to identify and categorize the various objects within documents – such as paragraphs, lists, headings, tables, and images – and extract the text, formatting, and associated document structural information which is then delivered in a resulting JSON file. Extracted table data can optionally be delivered within .CSV or .XLSX files, and extracted images are delivered as .PNG files. For additional information, please refer to the [PDF Extract API white paper](https://www.adobe.com/content/dam/cc/en/trust-center/ungated/whitepapers/dx/Adobe-PDF-Extract-API-Technical-Brief.pdf).
 
 ## Custom timeout configuration
 

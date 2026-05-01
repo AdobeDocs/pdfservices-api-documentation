@@ -1,5 +1,8 @@
 ---
-title: Java | Quickstarts | Document Generation API | Adobe PDF Services
+title: Java Document Generation API quickstart
+description: |
+  Build an app that merges a Word receipt template with JSON and calls Document Generation API for a PDF.
+
 ---
 
 # Quickstart for Adobe Document Generation API (Java)
@@ -17,7 +20,7 @@ To complete this guide, you will need:
 
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=document-generation-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
+1) To begin, open your browser to [https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=document-generation-api](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=document-generation-api). If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
 
 ![Sign in](./shot1.png)
 
@@ -152,7 +155,7 @@ To complete this guide, you will need:
 
 This file will define what dependencies we need and how the application will be built. 
 
-Our application will take a Word document, `receiptTemplate.docx` (downloadable from [here](/receiptTemplate.docx)), and combine it with data in a JSON file, `receipt.json` (downloadable from [here](/receipt.json)), to be sent to the Acrobat Services API and generate a receipt PDF.
+Our application will take a Word document, `receiptTemplate.docx` (downloadable from [here](https://developer.adobe.com/document-services/docs/receiptTemplate.docx)), and combine it with data in a JSON file, `receipt.json` (downloadable from [here](https://developer.adobe.com/document-services/docs/receipt.json)), to be sent to the Acrobat Services API and generate a receipt PDF.
 
 4) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `GeneratePDF.java`. 
 

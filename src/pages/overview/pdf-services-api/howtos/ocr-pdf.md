@@ -1,5 +1,8 @@
 ---
-title: OCR PDF | How Tos | PDF Services API | Adobe PDF Services
+title: OCR PDF | PDF Services API
+description: |
+  Use OCR to convert images to text and create fully text-searchable PDF documents.
+
 ---
 # OCR PDF
 
@@ -18,7 +21,7 @@ be `application/pdf`.
 
 This sample defaults to the en-us locale. For other languages, see [OCR with specific language.](#ocr-with-specific-language)
 
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" />
 
@@ -312,7 +315,7 @@ are two types which produce a different result:
     unchanged. This type produces maximum fidelity to the original
     image.
 
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" />
 

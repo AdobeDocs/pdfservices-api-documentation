@@ -1,5 +1,7 @@
 ---
 title: Styling And Formatting | Document Generation API | Adobe PDF Services
+description: Apply styling and formatting in the generated output document using the HTML based constructs.
+
 ---
 # Apply styling and formatting
 
@@ -19,9 +21,9 @@ Apply styling and formatting in the generated output document using the HTML bas
 
 - Create [Inline Images](inlineimages.md).
 
-- Create [Paragraphs](/overview/document-generation-api/stylingformattingtags/#how-to-create-paragraphs-in-document).
+- Create [Paragraphs](./stylingformattingtags.md#how-to-create-paragraphs-in-document).
 
-- Create [Lists](/overview/document-generation-api/templatetags/#insert-list-using-ul-and-ol-html-elements).
+- Create [Lists](./templatetags.md#insert-list-using-ul-and-ol-html-elements).
 
 ## How It Works
 
@@ -45,11 +47,11 @@ JSON representation of the input data:
 
 Styling for the text tag can be provided using the json data through the HTML based constructs. The constructs follows the additional rules as listed below :
 
-- HTML tags supported are <span\>, nested span, <br\> (new line), <b\> (bold), <strong\> (strong), <em\> (emphasis), <i\> (italic), <u\> (underline), <p\> (para).
+- HTML tags supported are `<span>`, nested `<span>`, `<br>` (new line), `<b>` (bold), `<strong>` (strong), `<em>` (emphasis), `<i>` (italic), `<u>` (underline), `<p>` (para).
 
-- Either use Inline custom css inside the span tag to style the data or use basic styling tags such as <b\> (bold), <i\> (italic) and <u\> (underline).
+- Either use Inline custom css inside the `<span>` tag to style the data or use basic styling tags such as `<b>` (bold), `<i>` (italic) and `<u>` (underline).
 
-- Styling precedence works as per the general convention of (local  - > global) scope for nested HTML span.
+- Styling precedence works as per the general convention of (local  - > global) scope for nested HTML `<span>`.
 
 - Any HTML tags which are not supported will be ignored.
 
@@ -80,11 +82,11 @@ JSON representation of the input data:
 
 You may find documentation for using inline images [here](inlineimages.md).
 
-Formatting for images can be provided using the attributes of the img tag.
+Formatting for images can be provided using the attributes of the `<img>` tag.
 
-- The img tag supports the height and width attributes.
+- The `<img>` tag supports the height and width attributes.
 
-- Any other unsupported attributes inside the img tag will be ignored.
+- Any other unsupported attributes inside the `<img>` tag will be ignored.
 
 JSON representation of the input data:
 
@@ -95,41 +97,41 @@ JSON representation of the input data:
 ```
 ![Formatting Inline images with height and width](../images/formatted-inline-image-height-and-width.png)
 
-<b>Note:</b> Here the size of image is formatted according to input data.
+**Note:** Here the size of image is formatted according to input data.
 
 ## Tags Supported
 
-- <span\>
+- `<span>`
 
-- <a\> (anchor)
+- `<a>` (anchor)
 
-- <br\> (new line)
+- `<br>` (new line)
 
-- <b\> (bold)
+- `<b>` (bold)
 
-- <strong\> (strong)
+- `<strong>` (strong)
 
-- <em\> (emphasis)
+- `<em>` (emphasis)
 
-- <i\> (italic)
+- `<i>` (italic)
 
-- <u\> (underline)
+- `<u>` (underline)
 
-- <img\> (image)
+- `<img>` (image)
 
-- [<p\> (para)](/overview/document-generation-api/stylingformattingtags/#how-to-create-paragraphs-in-document)
+- [`<p>` (para)](./stylingformattingtags.md#how-to-create-paragraphs-in-document)
 
-- [<ol\> & <ul\> (ordered lists and unordered lists)](/overview/document-generation-api/templatetags/#insert-list-using-ul-and-ol-html-elements)
+- [`<ol>` & `<ul>`](./templatetags.md#insert-list-using-ul-and-ol-html-elements)
 
-- <sup\> (superscript)
+- `<sup>` (superscript)
 
-- <sub\> (subscript)
+- `<sub>` (subscript)
 
-- <h1\>, <h2\>, <h3\>, <h4\>, <h5\>, <h6\> (headings)
+- `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` (headings)
 
-- <text-align\> (left, center, right, justify)
+- `<text-align>` (left, center, right, justify)
 
-- <margin-left\> (units: pt, px, em, cm, mm, in)
+- `<margin-left>` (units: pt, px, em, cm, mm, in)
 
 JSON representation of the input data:
 

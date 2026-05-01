@@ -1,16 +1,19 @@
 ---
 title: How Tos UI | PDF Embed API | Adobe PDF Services
+description: 
+  Customize the PDF Embed API viewer UI and user interactions, including
+  commenting, download and print options, and Fit Page or Fit Width display.
 ---
-UI Customization
-================
 
-<p>
+# UI Customization
+================
 
 The Embed API provides a number of options for customizing the user
 interface and user interactions with the PDF. Features which are enabled
 by default can be explicitly disabled.
 Optional configurations include
 controls for:
+
 -   Enabling and disabling commenting, form filling, and other user
     interactions (applicable only in Full Window embed mode).
 -   Enabling and disabling PDF download and print options.
@@ -18,8 +21,6 @@ controls for:
     Full Window and Lightbox embed modes).
 
 ![Options for Customising User Interface using undo-redo, annotation tools, navigation, zoom etc](../images/ui.png)
-
-</p>
 
 ## Menu and tool options
 
@@ -62,41 +63,41 @@ document.addEventListener("adobe_dc_view_sdk.ready", function () {
 **Configuration options for AdobeDC.View object**
 
 This table lists down the various configurations which can be passed while initializing the `AdobeDC.View` object.
-<br/>
+\<br/\>
 
 | Variable | Default | Description |
 | -------- | ------- | ----------- |
 | clientId | None | You'll need a client ID to use the Adobe PDF Embed API. To get one, [click HERE]( https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-embed-api).|
 | divId | "adobe-dc-view" | The div ID where your PDF will render. |
-| locale | "en-US" | You can select another language by passing the locale code variable. For more details, see the section [Language support](../howtos/#language-support). |
-| reportSuiteId | None | Pass the report suite ID to collect PDF analytics in Adobe Analytics. For more details, see the section [Adobe analytics](../howtodata/#adobe-analytics). |
-| measurementId | None | Pass the measurement ID to collect PDF analytics in Google Analytics. For more details, see the section [Google Analytics](../howtodata/#google-analytics). |
-| sendAutoPDFAnalytics | *true* | Use this configuration to disable PDF analytics collection in Adobe Analytics or Google Analytics. For more details, see the section [Control analytics collection](../howtodata/#control-analytics-collection). |
+| locale | "en-US" | You can select another language by passing the locale code variable. For more details, see the section [Language support](howtos.md#language-support). |
+| reportSuiteId | None | Pass the report suite ID to collect PDF analytics in Adobe Analytics. For more details, see the section [Adobe analytics](howtodata.md#adobe-analytics). |
+| measurementId | None | Pass the measurement ID to collect PDF analytics in Google Analytics. For more details, see the section [Google Analytics](howtodata.md#google-analytics). |
+| sendAutoPDFAnalytics | *true* | Use this configuration to disable PDF analytics collection in Adobe Analytics or Google Analytics. For more details, see the section [Control analytics collection](howtodata.md#control-analytics-collection). |
 
 
 **Configuration options for previewFile API**
 
 This table lists down the various preview configurations which can be passed to the `previewFile` API to customize the PDF viewer.
-<br/>
+\<br/\>
 
 | Variable            | Default                        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | ------------------- |--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | showZoomControl    | *true*                         | Set this to *false* to hide the zoom-in and zoom-out options available in the right-hand panel. This configuration will work for full window and lightbox embed modes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | showAnnotationTools | *true*                         | If *true*, tools such as add text, sticky note, highlight, and so on appear in the quick tools menu on the left-hand side in full window embed mode. For more details, see [Comments and Markup](howtos-comments.md).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | showFullScreen   | *true*                         | By default, the full screen toggle appears in the bottom toolbar in sized container embed mode. Set this to *false* to hide the full screen toggle.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| defaultViewMode     | ""                             | This variable takes a string value of "**FIT\_WIDTH**", "**FIT\_PAGE**", "**TWO\_COLUMN**" or "**TWO\_COLUMN\_FIT\_PAGE**". <br/> 1. **FIT\_WIDTH**: Expands the page horizontally to the full width of the document pane. <br/> 2. **FIT\_PAGE**: Displays the entire page in the current view pane. <br/> 3. **TWO\_COLUMN**: Displays two pages of the PDF side by side in the current view pane. <br/> 4. **TWO\_COLUMN\_FIT\_PAGE**: Displays two pages of the PDF side by side where the entire two pages are displayed in the current view pane. Note that end users can also toggle the view mode via the Fit Width, Fit Page or Two-Column button on the right-hand panel. <br/><br/>In addition to these, there are two other view modes which are supported only in mobile browsers: <br/> 1. **CONTINUOUS**: This mode displays all the document pages one after the other and users can easily navigate through the pages by scrolling up or down. <br/> 2. **SINGLE\_PAGE**: This mode displays only a single document page at a time and doesn’t show any adjoining page. Users can use the swipe gesture to navigate to other pages which will be displayed one at a time. |
+| defaultViewMode     | ""                             | This variable takes a string value of "**FIT\_WIDTH**", "**FIT\_PAGE**", "**TWO\_COLUMN**" or "**TWO\_COLUMN\_FIT\_PAGE**". \<br/\> 1. **FIT\_WIDTH**: Expands the page horizontally to the full width of the document pane. \<br/\> 2. **FIT\_PAGE**: Displays the entire page in the current view pane. \<br/\> 3. **TWO\_COLUMN**: Displays two pages of the PDF side by side in the current view pane. \<br/\> 4. **TWO\_COLUMN\_FIT\_PAGE**: Displays two pages of the PDF side by side where the entire two pages are displayed in the current view pane. Note that end users can also toggle the view mode via the Fit Width, Fit Page or Two-Column button on the right-hand panel. \<br/\>\<br/\>In addition to these, there are two other view modes which are supported only in mobile browsers: \<br/\> 1. **CONTINUOUS**: This mode displays all the document pages one after the other and users can easily navigate through the pages by scrolling up or down. \<br/\> 2. **SINGLE\_PAGE**: This mode displays only a single document page at a time and doesn’t show any adjoining page. Users can use the swipe gesture to navigate to other pages which will be displayed one at a time. |
 | enableFormFilling   | *true*                         | If *true*, form filling is enabled and users can edit fields in full window embed mode.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | showDownloadPDF     | *true*                         | If *true*, PDF can be downloaded in all embed modes. Set this to *false*  to disable PDF download.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | showPrintPDF        | *true*                         | If true, PDF can be printed in all embed modes. Set this to *false* to disable PDF printing.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |  exitPDFViewerType    | "CLOSE"                        | The top bar in lightbox embed mode contains the close button by default to close the PDF preview which can be configured to Back button by setting `exitPDFViewerType` to "RETURN".                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | showThumbnails         | *true*                         | Page thumbnails are available by default in full window and lightbox embed modes. Set this to *false* if you want to hide the thumbnails from the right-hand panel.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | showBookmarks         | *true*                         | PDF bookmarks are available by default in full window and lightbox embed modes. Set this to *false* if you want to hide the bookmarks from the right-hand panel.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| enableLinearization | *false*                        | Set this to *true* to enable PDF linearization. For more details, see the section [PDF linearization](../howtos.md#pdf-linearization).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| enableAnnotationAPIs| *false*                        | Set this to *true* to add, update and delete PDF annotations programmatically in full window embed mode. For more details, see the section [Annotations API overview](../howtos_comments/#annotations-api-overview).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| includePDFAnnotations | *false*                        | This configuration is used with `enableAnnotationAPIs` to access existing PDF annotations. For more details, see the section [Annotations API overview](../howtos_comments/#annotations-api-overview).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| enableSearchAPIs | *false*                        | Set this to *true* to perform search operation in the PDF programmatically. For more details, see the section [Search APIs](../howtos_ui/#search-apis).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| enableLinearization | *false*                        | Set this to *true* to enable PDF linearization. For more details, see the section [PDF linearization](howtos.md#pdf-linearization).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| enableAnnotationAPIs| *false*                        | Set this to *true* to add, update and delete PDF annotations programmatically in full window embed mode. For more details, see the section [Annotations API overview](howtos-comments.md#annotations-api-overview).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| includePDFAnnotations | *false*                        | This configuration is used with `enableAnnotationAPIs` to access existing PDF annotations. For more details, see the section [Annotations API overview](howtos-comments.md#annotations-api-overview).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| enableSearchAPIs | *false*                        | Set this to *true* to perform search operation in the PDF programmatically. For more details, see the section [Search APIs](howtos-ui.md#search-apis).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | showDisabledSaveButton | *false*                        | Set this to *true* to show the save button in disabled state even when there are no changes to be saved to the PDF.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| focusOnRendering | Varies according to embed mode | With this configuration, website developers have the flexibility to control if the PDF should take focus when it is rendered. For more details, see the section [Focus on PDF rendering](../howtos/#focus-on-pdf-rendering).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| focusOnRendering | Varies according to embed mode | With this configuration, website developers have the flexibility to control if the PDF should take focus when it is rendered. For more details, see the section [Focus on PDF rendering](howtos.md#focus-on-pdf-rendering).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | showFullScreenViewButton | *true*                         | Set this to *false* to hide the full-screen option available in the right-hand panel. This configuration will work for full window and lightbox embed modes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 
 ## Annotations
@@ -393,7 +394,7 @@ and data in the following format:
 
 ![Generic Error Message](../images/fail.png)
 
-<br/>
+\<br/\>
 
 -   FILE\_MODIFIED: Use the response code FILE\_MODIFIED to capture the case when two users
 simultaneously modify a single PDF. This case only occurs for shared
@@ -539,7 +540,7 @@ modifying the same file. Note the following:
     which will reload the latest version of the file.
 
 ![Get Latest Version message](../images/getlatest.png)
-<br/>
+\<br/\>
 
 -   If the Promise returns FILE\_MODIFIED after the current user has
     changed the file, that denotes that two users are modifying the same
@@ -628,7 +629,9 @@ follows:
 </html>
 ```
 
-<hr />
+
+<HorizontalLine />
+
 
 ### Zoom APIs
 
@@ -664,7 +667,9 @@ previewFilePromise.then(adobeViewer => {
 });
 ```
 
-<hr />
+
+<HorizontalLine />
+
 
 #### zoomIn
 
@@ -695,7 +700,9 @@ previewFilePromise.then(adobeViewer => {
 });
 ```
 
-<hr />
+
+<HorizontalLine />
+
 
 #### zoomOut
 
@@ -726,7 +733,9 @@ previewFilePromise.then(adobeViewer => {
 });
 ```
 
-<hr />
+
+<HorizontalLine />
+
 
 #### setZoomLevel
 
@@ -741,7 +750,7 @@ applied.
 
 ##### Input parameters
 
-<ZOOM_LEVEL: Float>
+`<ZOOM_LEVEL: Float>`
 
 ##### API output
 
@@ -762,7 +771,9 @@ previewFilePromise.then(adobeViewer => {
 });
 ```
 
-<hr />
+
+<HorizontalLine />
+
 
 ### Search APIs
 
@@ -814,7 +825,7 @@ term is highlighted in the PDF, starting from the current page in view.
 
 ##### Input parameters
 
-<SEARCH_STRING: String>
+`<SEARCH_STRING: String>`
 
 ##### API output
 
@@ -839,7 +850,9 @@ previewFilePromise.then(adobeViewer => {
 });
 ```
 
-<hr />
+
+<HorizontalLine />
+
 
 #### onResultsUpdate
 
@@ -893,7 +906,9 @@ previewFilePromise.then(adobeViewer => {
 });
 ```    
 
-<hr />
+
+<HorizontalLine />
+
 
 #### next
 
@@ -926,7 +941,9 @@ previewFilePromise.then(adobeViewer => {
 });
 ```   
 
-<hr />
+
+<HorizontalLine />
+
 
 #### previous
 
@@ -959,7 +976,9 @@ previewFilePromise.then(adobeViewer => {
 });
 ```   
 
-<hr />
+
+<HorizontalLine />
+
 
 #### clear
 
@@ -998,7 +1017,9 @@ Find the working code sample for search and zoom APIs
 [here](https://www.adobe.com/go/pdfembedapi_samples) under
 `/More Samples/Viewer APIs/Search and Zoom APIs`
 
-<hr />
+
+<HorizontalLine />
+
 
 ### Bookmark APIs
 
@@ -1043,7 +1064,9 @@ previewFilePromise.then(adobeViewer => {
 });
 ```       
 
-<hr />
+
+<HorizontalLine />
+
 
 #### openBookmark
 
@@ -1052,7 +1075,7 @@ PDF bookmark.
 
 ##### Input parameters
 
-<BOOKMARK_ID>
+`<BOOKMARK_ID>`
 
 ##### API output
 
@@ -1081,7 +1104,9 @@ Find the working code sample
 [here](https://www.adobe.com/go/pdfembedapi_samples) under
 `/More Samples/Viewer APIs/Bookmark APIs`
 
-<hr />
+
+<HorizontalLine />
+
 
 ### Attachment APIs
 
@@ -1129,7 +1154,9 @@ previewFilePromise.then(adobeViewer => {
 });
 ```      
 
-<hr />
+
+<HorizontalLine />
+
 
 #### getAttachmentBuffer
 
@@ -1138,7 +1165,7 @@ ArrayBuffer of the attachment content.
 
 ##### Input parameters
 
-<ATTACHMENT_NAME: String>
+`<ATTACHMENT_NAME: String>`
 
 ##### API output
 
@@ -1165,7 +1192,9 @@ Find the working code sample
 [here](https://www.adobe.com/go/pdfembedapi_samples) under
 `/More Samples/Viewer APIs/Attachment APIs`
 
-<hr />
+
+<HorizontalLine />
+
 
 ### getPDFMetadata
 
@@ -1195,7 +1224,9 @@ previewFilePromise.then(adobeViewer => {
 });
 ```   
 
-<hr />
+
+<HorizontalLine />
+
 
 ### getXMPMetadata
 
@@ -1241,7 +1272,9 @@ previewFilePromise.then(adobeViewer => {
 });
 ```
 
-<hr />
+
+<HorizontalLine />
+
 
 ### getSelectedContent
 
@@ -1273,7 +1306,9 @@ previewFilePromise.then(adobeViewer => {
 });
 ```   
 
-<hr />
+
+<HorizontalLine />
+
 
 ### setCursor
 
@@ -1282,7 +1317,7 @@ crosshair, etc.
 
 ##### Input parameters
 
-[A string denoting the cursor style](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor): <Cursor_Type>
+[A string denoting the cursor style](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor): `<Cursor_Type>`
 
 ##### API output
 
@@ -1302,7 +1337,9 @@ previewFilePromise.then(adobeViewer => {
 });
 ```   
 
-<hr />
+
+<HorizontalLine />
+
 
 ### resetCursor
 
@@ -1328,7 +1365,9 @@ previewFilePromise.then(adobeViewer => {
 });
 ```   
 
-<hr />
+
+<HorizontalLine />
+
 
 ### getCurrentPage
 
@@ -1357,7 +1396,9 @@ previewFilePromise.then(adobeViewer => {
 });
 ```   
 
-<hr />
+
+<HorizontalLine />
+
 
 ### getPageZoom
 
@@ -1366,7 +1407,7 @@ of that page.
 
 ##### Input parameters
 
-<Page_Number>
+`<Page_Number>`
 
 ##### API output
 
@@ -1388,7 +1429,9 @@ previewFilePromise.then(adobeViewer => {
 });
 ```
 
-<hr />
+
+<HorizontalLine />
+
 
 ### gotoLocation
 
@@ -1407,7 +1450,7 @@ not within the page limit, then they default to 0.
 
 ##### Input parameters
 
-(<Page_Number>, <X_Coordinate>, <Y_Coordinate>)
+(`<Page_Number>`, `<X_Coordinate>`, `<Y_Coordinate>`)
 
 ##### API output
 
@@ -1429,7 +1472,9 @@ previewFilePromise.then(adobeViewer => {
 });
 ```   
 
-<hr />
+
+<HorizontalLine />
+
 
 ### clearPageSelection
 
@@ -1438,7 +1483,7 @@ applied to the page.
 
 ##### Input parameters
 
-<Page_Number>
+`<Page_Number>`
 
 ##### API output
 
@@ -1460,7 +1505,9 @@ adobeViewer.getAPIs().then(apis => {
 });
 ```
 
-<hr />
+
+<HorizontalLine />
+
 
 ### enableTextSelection
 

@@ -1,5 +1,8 @@
 ---
-title: Quickstarts | PDF Electronic Seal API | Adobe PDF Services
+title: Quickstarts | PDF Electronic Seal API
+description: |
+  Quickstarts to run your first PDF Electronic Seal operation across the supported SDKs.
+
 ---
 
 # Quickstarts

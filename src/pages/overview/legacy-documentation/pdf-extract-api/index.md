@@ -1,8 +1,11 @@
 ---
 title: PDF Extract API | Adobe PDF Services
+description: |
+  Cloud-based service that uses AI to extract text, tables, and figures
+  from PDFs into structured JSON.
+
 ---
 # Overview
-<p>
 
 **What is Extract?**
 
@@ -18,8 +21,6 @@ The PDF Extract API provides a method for developers to extract and structure co
 
 The PDF Extract API can be embedded into any application using the [PDFServices SDK](gettingstarted.md#sdk) for Node.js, Python, .NET and Java. [Start with a Free Tier which includes 500 free Document Transactions per month.](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api)
 
-</p>
-
 ## Extract Process
 
-![PDF Extract Process : PDF containing title, image, header, paragraph, list and table and provide output as json, png and csv files to client applications](../images/extract-process-21.png)
+![PDF Extract Process : PDF containing title, image, header, paragraph, list and table and provide output as json, png and csv files to client applications](../../images/extract-process-21.png)

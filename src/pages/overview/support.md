@@ -1,5 +1,8 @@
 ---
-title: Support
+title: Support | Adobe PDF Services
+description: |
+  Technical support, version support policy, and community forum for Adobe PDF Services.
+
 ---
 
 # Technical Support 

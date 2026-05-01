@@ -1,5 +1,8 @@
 ---
-title: Rotate Pages | How Tos | PDF Services API | Adobe PDF Services
+title: Rotate Pages | PDF Services API
+description: |
+  Rotate a page in an existing document.
+
 ---
 # Rotate Pages
 
@@ -14,7 +17,7 @@ See our public API Reference for [Rotate Pages.](../../../apis/index.md#tag/Page
 The rotate pages operation selectively rotates pages in PDF file. For
 example, you can change portrait view to landscape view.
 
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 

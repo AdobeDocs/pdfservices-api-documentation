@@ -1,12 +1,14 @@
 ---
-title: Getting Started | PDF Accessibility Auto-Tag API | Adobe PDF Services
+title: Getting started | PDF Extract API
+description: |
+  Server-side SDK use only: keep credentials secure and never expose them
+  to untrusted environments or end-user devices.
+
 ---
 
 # Getting Started
 
-<p>
-PDF Accessibility Auto-Tag API assists in the process of improving accessibility in individual PDFs via auto-tagging, adding document structure tags to the PDF file that are used to read a document's text and presenting it in a way that makes sense to users using assistive technology. The API is accessible through SDKs which help you get up and running quickly. Once you've received your developer credential, download and set up one of the sample projects. After you're familiar with the APIs, leverage the samples in your own server-side code.
-</p>
+PDF Extract API is accessible through SDKs which help you get up and running quickly. Once you've received your developer credential, download and set up one of the sample projects. After you're familiar with the APIs, leverage the samples in your own server-side code.
 
 <InlineAlert slots="text"/>
 
@@ -110,37 +112,28 @@ curl --location -g --request GET 'https://dcplatformstorageservice-prod-us-east-
 
 PDF Services API is also accessible via SDKs in popular languages such as Java, .NET, Node JS and Python.
 
-<InlineAlert slots="text"/>
-
-<div>
+<InlineAlert slots="text1, text2, text3, text4, text5, text6"/>
 
 Please allow-list the following hostnames before using Adobe PDF Services SDK:
-<ul><li>ims-na1.adobelogin.com (Required for all the clients)</li></ul>
 
-For clients using SDK version 3.x and above  :
-<ul>
-<li> Using United States region for processing documents :
-  <ul>
-    <li>dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com</li>
-    <li>pdf-services-ue1.adobe.io</li>
-    <li>pdf-services.adobe.io (Default URI)</li>
-  </ul>
-</li>
-</ul>
+- ims-na1.adobelogin.com (Required for all the clients)
 
-<ul>
-  <li> Using Europe region for processing documents :
-  <ul>
-    <li>dcplatformstorageservice-prod-eu-west-1.s3.amazonaws.com</li>
-    <li>pdf-services-ew1.adobe.io</li>
-  </ul>
-</li>
-</ul>
+For clients using SDK version 3.x and above:
 
-For clients using SDK version upto 2.x :
-<ul><li>cpf-ue1.adobe.io</li></ul>
+- Using United States region for processing documents:
 
-</div>
+  - dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com
+  - pdf-services-ue1.adobe.io
+  - pdf-services.adobe.io (Default URI)
+
+- Using Europe region for processing documents:
+
+  - dcplatformstorageservice-prod-eu-west-1.s3.amazonaws.com
+  - pdf-services-ew1.adobe.io
+
+For clients using SDK version up to 2.x:
+
+- cpf-ue1.adobe.io
 
 ### Java
 
@@ -269,7 +262,7 @@ logger.apache.level=WARN
 ```
 
 
-![Samples directory structure Java](../images/samplefilesjava.png)
+![Samples directory structure Java](../../images/samplefilesjava.png)
 
 #### Custom projects
 
@@ -282,7 +275,7 @@ To build a custom project:
 3.  Open the pdfservices-api-credentials.json downloaded when you created your credential.
 4.  Add the [Authentication](index.md#authentication) details as described above.
 
-![Adobe PDF Services SDK On Maven](../images/maven.png)
+![Adobe PDF Services SDK On Maven](../../images/maven.png)
 
 ### .NET
 
@@ -398,10 +391,10 @@ The .NET SDK uses [LibLog](https://github.com/damianh/LibLog) as a bridge betwee
 
 While building the sample project automatically downloads the Nuget package, you can do it manually if you wish to use your own tools and process.
 
-1.  Go to <https://www.adobe.com/go/pdftoolsapi_net_nuget>.
+1.  Go to [Link](https://www.adobe.com/go/pdftoolsapi_net_nuget).
 2.  Download the latest package.
 
-![Adobe PDF Services SDK on Nuget](../images/nuget-free-tier.png)
+![Adobe PDF Services SDK on Nuget](../../images/nuget-free-tier.png)
 
 ### Node.js
 
@@ -521,10 +514,10 @@ The SDK uses the [log4js API](https://www.npmjs.com/package/log4js) for logging.
 
 While building the sample project automatically downloads the Node package, you can do it manually if you wish to use your own tools and process.
 
-1.  Go to <https://www.npmjs.com/package/@adobe/pdfservices-node-sdk>
+1.  Go to [Link](https://www.npmjs.com/package/@adobe/pdfservices-node-sdk)
 2.  Download the latest package.
 
-![Adobe PDF Services SDK on NPM JS](../images/node-free-tier.png)
+![Adobe PDF Services SDK on NPM JS](../../images/node-free-tier.png)
 
 ### Python
 

@@ -1,5 +1,9 @@
 ---
-title: Node.js | Quickstarts | PDF Electronic Seal API | Adobe PDF Services
+title: Node.js quickstart | PDF Electronic Seal API
+description: |
+  Apply an electronic seal to an invoice PDF using the Node.js SDK—setup through
+  a complete sample program.
+
 ---
 
 # Quickstart for Adobe PDF Electronic Seal API (Node.js)
@@ -16,7 +20,7 @@ To complete this guide, you will need:
 
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommended and not a federated ID.
+1) To begin, open your browser to [Link](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api). If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommended and not a federated ID.
 
 ![Sign in](./shot1.png)
 
@@ -52,7 +56,7 @@ To complete this guide, you will need:
 
 At this point, we've installed the Node.js SDK for Adobe PDF Services API as a dependency for our project and have copied over our credentials files. 
 
-Our application will take an Invoice PDF document, `sampleInvoice.pdf` (downloadable from <a href="./sampleInvoice.pdf" target="_blank">here</a>), and will use the sealing options with default appearance options to apply electronic seal over the PDF document by invoking Acrobat Services API and generate an electronically sealed PDF.
+Our application will take an Invoice PDF document, `sampleInvoice.pdf` (included with the sample project download), and will use the sealing options with default appearance options to apply electronic seal over the PDF document by invoking Acrobat Services API and generate an electronically sealed PDF.
 
 6) In your editor, open the directory where you previously copied the credentials. Create a new file, `electronic-seal.js`.
 

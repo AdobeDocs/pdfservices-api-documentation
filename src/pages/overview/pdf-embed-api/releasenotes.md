@@ -1,5 +1,9 @@
 ---
 title: Release Notes | PDF Embed API | Adobe PDF Services
+description: |
+  In addition to general bug fixes and performance enhancements, refer to
+  the changes below for each release.
+
 ---
 # Release Notes
 
@@ -45,7 +49,7 @@ the changes below for each release.
 | Bug fix | Fixed the issue with opening Word based password protected PDF files.                   |
 | Bug fix | Fixed developer console error issue when using Chinese characters in form fields.       |
 | Bug fix | Fixed duplicate annotations issue when returning from full screen mode.                 |
-| New     | Added new previewFile API configuration option([showFullScreenViewButton](../howtos_ui.md/#menu-and-tool-options)) to hide full-screen button in right-hand panel.      |
+| New     | Added new previewFile API configuration option([showFullScreenViewButton](howtos-ui.md#menu-and-tool-options)) to hide full-screen button in right-hand panel.      |
 
 ### January, 2024
 | Change | Description                                                            |
@@ -82,7 +86,7 @@ the changes below for each release.
 
 | Change | Description                                                                                                                                                                   |
 | ------ |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| New    | PDF Embed API is also available on the new <b>acrobatservices.adobe.com</b> subdomain. For sample usage, see the section [sample usage](./gettingstarted.md/#copy-it-run-it).
+| New    | PDF Embed API is also available on the new **acrobatservices.adobe.com** subdomain. For sample usage, see the section [sample usage](./gettingstarted.md#copy-it-run-it).
 | Changed | Enhanced the commenting experience.
 | Bug fix | Fixed issues in the Annotations API to improve the dragging and placing of text comments onto the PDF.
 | Bug fix | Fixed issues to improve the support for interactive PDFs.
@@ -120,13 +124,13 @@ the changes below for each release.
 
 | Change | Description                                                                                                                                                                     |
 | ------ |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| New    | PDF Embed API is also available on the new <b>documentservices.adobe.com</b> subdomain. For sample usage, see the section  [sample usage](./gettingstarted.md/#copy-it-run-it). |
+| New    | PDF Embed API is also available on the new **documentservices.adobe.com** subdomain. For sample usage, see the section [sample usage](./gettingstarted.md#copy-it-run-it). |
 
 ### August, 2022
 
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
-| New    | Adobe has launched a modern PDF viewer across all embed modes to render PDFs. For more details, see the section [Legacy to Modern viewer](../modernviewer/). |
+| New    | Adobe has launched a modern PDF viewer across all embed modes to render PDFs. For more details, see the section [Legacy to Modern viewer](modernviewer.md). |
 
 ### May, 2022
 

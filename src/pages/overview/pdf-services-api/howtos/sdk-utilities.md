@@ -1,5 +1,8 @@
 ---
-title: SDK Utilities | How Tos | PDF Services API | Adobe PDF Services
+title: SDK Utilities | PDF Services API
+description: |
+  Utilities provided by the Adobe PDF Services SDKs, including refreshing download URIs and deleting assets.
+
 ---
 
 # SDK Utilities

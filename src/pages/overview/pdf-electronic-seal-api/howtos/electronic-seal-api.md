@@ -1,5 +1,9 @@
 ---
-title: Electronic Seal API | How Tos | PDF Electronic Seal API | Adobe PDF Services
+title: Electronic Seal API parameters | Adobe PDF Services
+description: |
+  Specifies supported digital signature formats and API parameters for PDF
+  Electronic Seal.
+
 ---
 # PDF Electronic Seal API
 
@@ -9,8 +13,8 @@ title: Electronic Seal API | How Tos | PDF Electronic Seal API | Adobe PDF Servi
 
 Specifies a supported digital signature format:
 
-* PADES : This is the latest and improved signature format which is more strict, concrete, and secure. For details, see <a href="../PDF_ISO_32000-2.pdf" target="_blank">ISO 32000-2</a> and <a href="../ETSI_EN_319_142-1.pdf" target="_blank">ETSI EN 319 142-1</a>.
-* PKCS7 : This signature format is less stringent than PADES since it permits more PDF changes without invalidating the digital signature. This is the default signature format. For details, see <a href="../PDF_ISO_32000-1.pdf" target="_blank">ISO 32000-1</a>.
+* PADES : This is the latest and improved signature format which is more strict, concrete, and secure. For details, see [ISO 32000-2](https://www.iso.org/standard/75839.html) and [ETSI EN 319 142-1](https://www.etsi.org/deliver/etsi_en/319100_319199/31914201/03.01.01_60/en_31914201v030101p.pdf).
+* PKCS7 : This signature format is less stringent than PADES since it permits more PDF changes without invalidating the digital signature. This is the default signature format. For details, see [ISO 32000-1](https://www.iso.org/standard/63534.html).
 
 
 ### Document Level Permission (_documentLevelPermission_)
@@ -59,8 +63,8 @@ The seal field parameters are required to create a new signature field or use an
 
 * **Field Name**  (*fieldName*) : **Required** : Specifies the signature field's name. This must be a non-empty string. If signature field with this field name already exists, that field is used. else a signature field with this name will be created.
 * **Visible** (_visible_): Specifies whether the signature field should be visible or hidden. The default value of `true` creates a visible seal.
-* **Page Number** (_pageNumber_) : **Required** : Specifies the page number to which the signature field should be attached. Page numbers are 1-based. It is only <b>required</b> if the signature field needs to be visible and, it does not exist in the pdf document. If this is provided along with the signature field then the page number should be same on which signature field is present in the document, else an error is thrown. This parameter will be ignored in case of invisible signature field.
-* **Location** (_location_) : **Required** : Specifies the coordinates of the seal appearance's bounding box in default PDF user space units. The location is only <b>required</b> if the signature field does not exist in the pdf document. If this is provided along with the existing signature field, then it is ignored. This parameter will also be ignored for invisible signature field.
+* **Page Number** (_pageNumber_) : **Required** : Specifies the page number to which the signature field should be attached. Page numbers are 1-based. It is only **required** if the signature field needs to be visible and, it does not exist in the pdf document. If this is provided along with the signature field then the page number should be same on which signature field is present in the document, else an error is thrown. This parameter will be ignored in case of invisible signature field.
+* **Location** (_location_) : **Required** : Specifies the coordinates of the seal appearance's bounding box in default PDF user space units. The location is only **required** if the signature field does not exist in the pdf document. If this is provided along with the existing signature field, then it is ignored. This parameter will also be ignored for invisible signature field.
 
     * **Left** (_left_) : **Required** : The left x-coordinate
     * **Bottom** (_bottom_) : **Required** : The bottom y-coordinate
@@ -141,7 +145,7 @@ Other SDKs will support these features in future versions.
 
 ## API limitations
 
-<br />
+\<br/\>
 
 - **Input PDF size:** Input PDF files up to a maximum of 100 MB are supported.
 - **Seal Image size:** Seal Image files up to a maximum of 5 MB are supported.
@@ -159,7 +163,7 @@ See our public API Reference for [PDF Electronic Seal API](../../../apis/index.m
 
 The sample below performs electronic seal operation with default appearance on a given PDF.
 
-Please refer to the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer to the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
@@ -712,7 +716,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/electron
 
 The sample below performs electronic seal operation with customized appearance on a given PDF.
 
-Please refer to the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer to the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
@@ -1314,7 +1318,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/electron
 ## Apply Electronic Seal with trusted timestamp on PDF
 The sample below performs electronic seal operation with a trusted timestamp on given PDF.
 
-Please refer to the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer to the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 

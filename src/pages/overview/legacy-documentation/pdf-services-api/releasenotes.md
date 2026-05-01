@@ -1,5 +1,9 @@
 ---
-title: Release Notes | PDF Services API | Adobe PDF Services
+title: Release Notes | PDF Services API
+description: |
+  Change history across releases for supported PDF Services API versions
+  and SDK release notes.
+
 ---
 # Release Notes
 
@@ -22,7 +26,7 @@ repo as follows:
 2.  Select *Releases*.
 3.  Select and download the needed release.
 
-![Previous Release tags with release notes and links to the assets](../images/prevrelease.png)
+![Previous Release tags with release notes and links to the assets](../../images/prevrelease.png)
 
 ## Migration Guide to PDF Services SDK
 
@@ -108,7 +112,7 @@ using Adobe.PDFServicesSDK;
 
 ## Archived Documentation
 
-The last major version of our documentation may be found [here](../legacy-documentation/).
+The last major version of our documentation may be found [here](../index.md).
 
 ## Change types
 
@@ -145,7 +149,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 | Change  | Language | Description                                                                                                       |
 |---------|----------|-------------------------------------------------------------------------------------------------------------------|
-| Changed | All      | Performance Improvements - Available in [REST API](../apis/#tag/Document-Generation) and SDK(s) v3.0.0 and above. |
+| Changed | All      | Performance Improvements - Available in [REST API](../../../apis/index.md#tag/Document-Generation) and SDK(s) v3.0.0 and above. |
 
 ### Server Side Release (August, 2023; server side release)
 

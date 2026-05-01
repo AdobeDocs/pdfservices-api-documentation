@@ -1,5 +1,8 @@
 ---
-title: Release Notes | PDF Services API | Adobe PDF Services
+title: Release Notes | PDF Services API
+description: Change history across releases for supported PDF Services API versions
+  and SDK release notes.
+
 ---
 # Release Notes
 
@@ -145,7 +148,7 @@ Upgrading to the latest SDK should not break existing applications.
 
 | Change  | Language | Description                                                                                                       |
 |---------|----------|-------------------------------------------------------------------------------------------------------------------|
-| Changed | All      | Performance Improvements - Available in [REST API](../apis/#tag/Document-Generation) and SDK(s) v3.0.0 and above. |
+| Changed | All      | Performance Improvements - Available in [REST API](../../apis/index.md#tag/Document-Generation) and SDK(s) v3.0.0 and above. |
 
 ### Server Side Release (August, 2023; server side release)
 
@@ -328,10 +331,10 @@ Upgrading to the latest SDK should not break existing applications.
 
 ### Adobe Document Generation Server Side Release (14 December, 2021; server side release)
 
-| Change  | Language | Description                                                                                                                                                              |
-| ------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| New     | All      | Adding support for additional tags (<strong\> and <em\>) in [styling and formatting](../document-generation-api/stylingformattingtags.md#apply-styling-and-formatting) feature.                                                                               |
-| New     | All      | Support for [dynamic table constructs](../document-generation-api/complextableconstructs.md).     |
+| Change  | Language | Description                                                                                                                                                                     |
+| ------- | -------- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| New     | All      | Adding support for additional tags (`<strong>` and `<em>`) in [styling and formatting](../document-generation-api/stylingformattingtags.md#apply-styling-and-formatting) feature. |
+| New     | All      | Support for [dynamic table constructs](../document-generation-api/complextableconstructs.md).                                                                                   |
 
 ### Extract PDF Server Side Release (15 November, 2021; server side release)
 | Change  | Language            | Description                                                                                    |

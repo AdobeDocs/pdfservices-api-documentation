@@ -1,5 +1,8 @@
 ---
-title: Delete Pages | How Tos | PDF Services API | Adobe PDF Services
+title: Delete Pages | PDF Services API
+description: |
+  Delete one or more pages from a document.
+
 ---
 # Delete Pages
 
@@ -13,7 +16,7 @@ See our public API Reference for [Delete Pages](../../../apis/index.md#tag/Page-
 
 The delete pages operation selectively removes pages from a PDF file.
 
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 

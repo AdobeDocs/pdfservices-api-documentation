@@ -1,5 +1,9 @@
 ---
-title: External Storage for Adobe PDF Services APIs | Adobe PDF Services
+title: External Storage | PDF Services API
+description: |
+  Use Signed URLs to let PDF Services APIs access files directly from
+  client external storage.
+
 ---
 # Overview
 
@@ -11,17 +15,14 @@ A **Signed URL** temporarily provides access to a resource. Signed URLs contain 
 
 PDF Services APIs supports the signed URLs of input and output files in the request body. Please refer to the **External Section** in Request Body of each API for more details.
 
-<InlineAlert slots="text"/>
+<InlineAlert slots="text1, text2"/>
 
-<div>
-Accessing files from External Storage is currently <b>not</b> supported in the following APIs
-<ul>
-    <li> <a href="../../../apis/#tag/PDF-Accessibility-Auto-Tag">PDF Accessibility Auto Tag</a> </li>
-    <li><a href="../../../apis/#tag/Extract-PDF">Extract PDF</a></li>
-    <li><a href="../../../apis/#tag/PDF-Electronic-Seal">PDF Electronic Seal</a> </li>
-    <li><a href="../../../apis/#tag/Split-PDF">Split PDF</a> </li>
-</ul>
-</div>
+Accessing files from External Storage is currently **not** supported in the following APIs:
+
+- [PDF Accessibility Auto Tag](../../../../apis/index.md#tag/PDF-Accessibility-Auto-Tag)
+- [Extract PDF](../../../../apis/index.md#tag/Extract-PDF)
+- [PDF Electronic Seal](../../../../apis/index.md#tag/PDF-Electronic-Seal)
+- [Split PDF](../../../../apis/index.md#tag/Split-PDF)
 
 ## Supported External Storage Solutions
 

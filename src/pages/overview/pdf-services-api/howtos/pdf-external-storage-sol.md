@@ -1,5 +1,8 @@
 ---
-title: External Storage for Adobe PDF Services APIs | Adobe PDF Services
+title: External Storage | PDF Services API
+description: |
+  Access files from external storage directly when invoking PDF Services APIs with signed URLs.
+
 ---
 # Overview
 

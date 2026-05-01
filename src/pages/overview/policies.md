@@ -1,5 +1,8 @@
 ---
 title: Version Support Policy | Adobe PDF Services
+description: |
+  Read about our version support policy.
+
 ---
 # Version Support Policy
 

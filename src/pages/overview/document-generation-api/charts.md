@@ -1,5 +1,7 @@
 ---
 title: Charts | Document Generation API | Adobe PDF Services
+description: "To dynamically insert a chart in the document, add the chart as placeholder and edit the chart and excel data."
+
 ---
 # Charts
 

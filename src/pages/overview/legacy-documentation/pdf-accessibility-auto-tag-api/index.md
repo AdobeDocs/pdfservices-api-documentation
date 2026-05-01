@@ -1,8 +1,11 @@
 ---
 title: PDF Accessibility Auto-Tag API | Adobe PDF Services
+description: |
+  Auto-tag PDFs for assistive technology using Adobe PDF Services structure
+  detection and optional remediation reporting.
+
 ---
 # Overview
-<p>
 
 **What is PDF Tag structure?**
 
@@ -44,5 +47,3 @@ etc), along with language identification for each paragraph for content and to i
 tagged PDF, however it is not guaranteed to comply with accessibility standards such as 
 [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) and [PDF/UA](https://www.pdfa.org/resource/iso-14289-pdfua/), 
 as you may need to perform further downstream remediation to meet those standards.
-
-</p>

@@ -1,5 +1,11 @@
 ---
 title: Word Add-in | Document Generation API | Adobe PDF Services
+description: Document Generation Word Add-in provides the capability to author
+templates to generate data-driven Word and PDF documents. It provides
+the capability to add different tags and enable users to author
+templates seamlessly. You can refer to the Add-in Demo for the explanation
+on how to use the add-in.
+
 ---
 # Word Add-in
 
@@ -20,9 +26,9 @@ Document Generation add-in is developed in such a way that you don't
 need to learn any code. The system does it all for you, as you'll see in
 the video below:
 
-<Media slots="video"/>
+<Embed slots="video" />
 
-<https://images-tv.adobe.com/mpcv3/5158/38713027-f9e6-4020-ac97-7de5d873476f_1615914905.854x480at800_h264.mp4#t=1>
+[Video](https://images-tv.adobe.com/mpcv3/5158/38713027-f9e6-4020-ac97-7de5d873476f_1615914905.854x480at800_h264.mp4#t=1)
 
 
 ## How to install
@@ -50,7 +56,7 @@ at the user level if desired.
 ![Insert tab in Microsoft Word Web](../images/browser-insert-tab.png)
 
 ![Select Add-Ins under the Insert tab in Microsoft Word Web](../images/browser-addin-tab.png)
-<br/>
+\<br/\>
 
 *   Check for the **Adobe Document Generation** add-in in the **MY
     ADDINS** tab on Add-ins pop-up page.
@@ -65,18 +71,18 @@ Office 365 Admins to get
 [Add-in installed at the tenant level](#installing-at-the-tenant-level).
 
 ![Error message for enterprises when their organization has disabled access to Office Store in Microsoft Word Web](../images/enterprise-error.png)
-<br/>
+\<br/\>
 
 - Otherwise, In the top left search box, search for **Adobe Document Generation** and click on add button.
 
 ![Office Add-Ins search result for Adobe Document Generation in Microsoft Word Web](../images/document-generation-search-browser.png)
-<br/>
+\<br/\>
 
 *   After enabling/installing the add-in, you will find a new Adobe
     Document Generation add-in on the Home tab.
 
 ![Adding Document Generation in you home tab in Microsoft Word Web](../images/browser-final2.png)
-<br/>
+\<br/\>
 
 **Installing the add-in for the desktop client**
 
@@ -87,7 +93,7 @@ Office 365 Admins to get
 ![Insert tab in Microsoft Word](../images/desktop-insert-tab.png)
 
 ![Select Add-Ins under the Insert tab in Microsoft Word](../images/desktop-addin-tab.png)
-<br/>
+\<br/\>
 
 *   Check for the **Adobe Document Generation** add-in in the **MY
     ADDINS** tab on Add-ins pop-up page.
@@ -102,18 +108,18 @@ Office 365 Admins to get
 [Add-in installed at the tenant level](#installing-at-the-tenant-level).
 
 ![Error message for enterprises when their organization has disabled access to Office Store in Microsoft Word](../images/enterprise-error.png)
-<br/>
+\<br/\>
 
 -   Otherwise, In the top left search box, search for **Adobe Document Generation** and click on **add** button to install.
 
     ![Office Add-Ins search result for Adobe Document Generation in Microsoft Word](../images/document-generation-search-desktop.png)
-    <br/>
+    \<br/\>
 
 *   After enabling/installing the add-in, you will find a new Adobe
     Document Generation add-in on the Home tab.
 
 ![Adding Document Generation in you home tab in Microsoft Word](../images/browser-final2.png)
-<br/>
+\<br/\>
 
 
 <InlineAlert slots="text"/>
@@ -133,7 +139,7 @@ users have access without issue.
 The below process enables the add-in at the tenant level for the whole
 user base. [Check here if you would like more granular control over
 the
-deployment.](https://docs.microsoft.com/en-gb/microsoft-365/admin/manage/manage-deployment-of-add-ins?redirectSourcePath=%252fen-us%252farticle%252fdeploy-office-add-ins-in-the-office-365-admin-center-737e8c86-be63-44d7-bf02-492fa7cd9c3f&view=o365-worldwide)<br/> 
+deployment.](https://docs.microsoft.com/en-gb/microsoft-365/admin/manage/manage-deployment-of-add-ins?redirectSourcePath=%252fen-us%252farticle%252fdeploy-office-add-ins-in-the-office-365-admin-center-737e8c86-be63-44d7-bf02-492fa7cd9c3f&view=o365-worldwide)\<br/\> 
 [Determine if Centralized Deployment of add-ins works for your
 organization.](https://docs.microsoft.com/en-gb/microsoft-365/admin/manage/centralized-deployment-of-add-ins?view=o365-worldwide)
 
@@ -147,7 +153,7 @@ organization.](https://docs.microsoft.com/en-gb/microsoft-365/admin/manage/centr
 -   On the top of the Integrated apps page, click the Add-ins link.
 
 ![Microsoft 365 Admin Center Add-In tab](../images/admincenter-addin-tab.png)
-<br/>
+\<br/\>
 
 -   Select Deploy Add-in at the top of the page, and then select Next.
 -   Select the option to add an add-in from the Office Store. In the top
@@ -155,7 +161,7 @@ organization.](https://docs.microsoft.com/en-gb/microsoft-365/admin/manage/centr
     on add button.
 
 ![Microsoft 365 Admin Center tenant search results for Adobe Document Generation](../images/tenant-search.png)
-<br/>
+\<br/\>
 
 -   Assign Users
     -   Everyone - Applies the deployment method to all users in the
@@ -166,7 +172,7 @@ organization.](https://docs.microsoft.com/en-gb/microsoft-365/admin/manage/centr
         doing the configuration
 
 ![Microsoft 365 Admin Center assigning Add-In to the user](../images/admincenter-assign-user.png)
-<br/>
+\<br/\>
 
 -   Click Deploy after assigning users.
 

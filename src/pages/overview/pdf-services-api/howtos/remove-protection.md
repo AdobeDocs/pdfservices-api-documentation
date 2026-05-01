@@ -1,5 +1,8 @@
 ---
-title: Remove Protection | How Tos | PDF Services API | Adobe PDF Services
+title: Remove Protection | PDF Services API
+description: |
+  Remove password security from a PDF document using the owner password.
+
 ---
 # Remove Protection
 
@@ -13,7 +16,7 @@ See our public API Reference for [Remove Protection](../../../apis/index.md#tag/
 
 Use the below sample to remove security from a PDF document.
 
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 

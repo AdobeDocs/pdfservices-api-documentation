@@ -1,5 +1,6 @@
 ---
 title: Fragments | Document Generation API | Adobe PDF Services
+description: Fragments are special tags which enables users to write a composition using text tags or other fragments. Fragments introduce re-usability among the tags and enable users to create multiple such compositions and use them in their templates.
 ---
 # Fragments
 
@@ -184,7 +185,5 @@ In the above fragment, `doctor` tag further contains `doctorName` tag, to which 
 
 ## Limitations
 
-<ul>
-<br />
-<li>The Expressions and Jsonata functions are not supported inside the fragments.</li>
-</ul>
+- The Expressions and Jsonata functions are not supported inside the fragments.
+

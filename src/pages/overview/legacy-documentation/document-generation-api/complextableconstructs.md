@@ -1,5 +1,7 @@
 ---
-title: Complex Table Constructs | Document Generation API | Adobe PDF Services
+title: "Complex Table Constructs | Document Generation API | Adob..."
+description: "JSON representation of the input data:"
+
 ---
 # Complex Table Constructs
 Add additional properties to table tags to apply advanced functionalities on table.
@@ -29,13 +31,13 @@ JSON representation of the input data:
 }
 ```
 
-- **Repeat table rows vertically** - *{{subscriptions.name:**cell-extension(vertical)**}}* tag lets the engine know that cells will be extended in vertical direction.
+- **Repeat table rows vertically** - *\{\{subscriptions.name:**cell-extension(vertical)**\}\}* tag lets the engine know that cells will be extended in vertical direction.
 
-![Table gets vertically extended as table rows are repeated](../images/vertical-extension1.png)
+![Table gets vertically extended as table rows are repeated](../../images/vertical-extension1.png)
 
-- **Repeat table columns horizontally** - *{{subscriptions.name:**cell-extension(horizontal)**}}* tag lets the engine know that cells will be extended in horizontal direction.
+- **Repeat table columns horizontally** - *\{\{subscriptions.name:**cell-extension(horizontal)**\}\}* tag lets the engine know that cells will be extended in horizontal direction.
 
-![Table gets horizontally extended as table columns are repeated](../images/horizontal-extension1.png)
+![Table gets horizontally extended as table columns are repeated](../../images/horizontal-extension1.png)
 
 
 
@@ -51,7 +53,7 @@ Discard a column or set of columns in a table from the final generated document 
 ### Discard column if empty
 Column in a table can be discarded if every element of an array in the input json is empty or null.
 
-**How to use** <br/>
+**How to use** \<br/\>
 Add discard-if-empty construct with boolean false/true along with the template tag to activate discard if empty feature for the corresponding column.
 
 JSON representation of the input data:
@@ -117,17 +119,17 @@ JSON representation of the input data:
   ]
 }
 ```
-![Adding discard-if-empty construct with boolean false/true along with the template tag to activate discard if empty feature for the corresponding column](../images/discard-column-if-empty.png)
+![Adding discard-if-empty construct with boolean false/true along with the template tag to activate discard if empty feature for the corresponding column](../../images/discard-column-if-empty.png)
 
-{{Project.Notes:**discard-if-empty(true)**}} tag lets the engine discard the particular column if every element of an array in the input json is either empty or null.
+\{\{Project.Notes:**discard-if-empty(true)**\}\} tag lets the engine discard the particular column if every element of an array in the input json is either empty or null.
 
 **Note**: The row above the authored row will be considered as a header row. Cell from the header row will be discarded along with discarded column.
 
-![Header Row of Development Milestones table](../images/header-row1.png)
+![Header Row of Development Milestones table](../../images/header-row1.png)
 
-![Header Row of Conversion tracking table](../images/header-row2.png)
+![Header Row of Conversion tracking table](../../images/header-row2.png)
 
-![Development Milestones table without header row](../images/without-header-row.png)
+![Development Milestones table without header row](../../images/without-header-row.png)
 
 ### Discard column if condition evaluates to true
 Column in the table can be discarded If condition provided in the discard-if(expr(**condition**)) evaluates to true. Add discard-if(expr(**condition**)) construct along with the template tag to activate discard if feature for the corresponding column.
@@ -166,9 +168,9 @@ JSON representation of the input data:
 }
 ```
 
-![Added discard-if(expr(**condition**)) construct along with the template tag to activate discard if feature for the corresponding column](../images/discard-if-condition-true.png)
+![Added discard-if(expr(**condition**)) construct along with the template tag to activate discard if feature for the corresponding column](../../images/discard-if-condition-true.png)
 
-{{Conversion.Rate:**discard-if(expr($sum(Conversion.Rate)!= 100))**}} tag lets the engine discard the particular column if condition provided in the **expr** construct evaluates to true.
+\{\{Conversion.Rate:**discard-if(expr($sum(Conversion.Rate)!= 100))**\}\} tag lets the engine discard the particular column if condition provided in the **expr** construct evaluates to true.
 
 ## Dynamic table rows
 Discard a row or set of rows in a table from the final generated document.
@@ -176,7 +178,7 @@ Discard a row or set of rows in a table from the final generated document.
 ### Discard row if condition evaluates to true
 A row in the table can be discarded only when the condition in the discard-row-if(expr(**condition**),**context**) evaluates to true in the provided context. Add this construct along with the template tag to discard the row based on the provided condition.
 
-For Example: {{TABLE_CONTEXT.PROPERTY:**discard-row-if(expr(PROPERTY = "TEST_VALUE"),TABLE_CONTEXT)**}}
+For Example: \{\{TABLE_CONTEXT.PROPERTY:**discard-row-if(expr(PROPERTY = "TEST_VALUE"),TABLE_CONTEXT)**\}\}
 
 JSON representation of the input data:
 ```json
@@ -215,7 +217,7 @@ JSON representation of the input data:
   ]
 }
 ```
-![Added discard-row-if(expr(condition),context) construct along with the template tag to activate discard row if feature for the corresponding rows](../images/discard-row-if-condition-true.png)
+![Added discard-row-if(expr(condition),context) construct along with the template tag to activate discard row if feature for the corresponding rows](../../images/discard-row-if-condition-true.png)
 In a row, if multiple “discard-row-if” are used, then the row will be discarded if any one of the conditions evaluates to true.
 
 **Note**: The header row is also removed when all the rows are discarded thus removing the complete table.
@@ -243,7 +245,7 @@ JSON representation of the input data:
 }
 ```
 
-![Index based conditional evaluation inside table](../images/conditions-inside-tables.png)
+![Index based conditional evaluation inside table](../../images/conditions-inside-tables.png)
 In the above example, the array of objects on which the condition needs to be evaluated (*company*) is provided in
 **eval**, and the expr contains the actual condition `supportsX="TRUE"`. The condition is evaluated based on each
 entry of the array and applied to the corresponding row in the output table.

@@ -1,5 +1,7 @@
 ---
 title: Template Tags | Document Generation API | Adobe PDF Services
+description:Template tags used to author a document template that the Document Generation API replaces with input data.
+
 ---
 # Template Tags
 
@@ -19,17 +21,17 @@ A placeholder(text tags) gets replaced by the actual input data.
 
 **How to insert Placeholder Variables**
 
-<Media slots="video" width="750" height="500"/>
+<Embed slots="video" />
 
-<https://images-tv.adobe.com/mpcv3/5158/aa393134-7cf7-4ebb-bfd0-1ced95237d20_1615916599.854x480at800_h264.mp4#t=3>
+[Video](https://images-tv.adobe.com/mpcv3/5158/aa393134-7cf7-4ebb-bfd0-1ced95237d20_1615916599.854x480at800_h264.mp4#t=3)
 
 
 <InlineAlert slots="text"/>
 
 A placeholder variable can only be applied to an input field of type
-string, number or boolean. <br/> Formatting applied to the placeholder
+string, number or boolean. \<br/\> Formatting applied to the placeholder
 variable in the document template will be retained in the output
-document.<br/>
+document.\<br/\>
 For more simplified styling and formatting for the placeholder tag from the input json data, please refer [styling and formatting](stylingformattingtags.md) section:
 
 JSON representation of the input data:
@@ -51,7 +53,7 @@ JSON representation of the input data:
 
 Placeholder variables get replaced with the actual input data.
 
-![Placeholder tags being replaced by values](../images/placeholder-basic.png)
+![Placeholder tags being replaced by values](../../images/placeholder-basic.png)
 
 
 **Default Value**
@@ -60,7 +62,7 @@ A default value can be specified for the placeholder variable. In case
 the specified tag is not present in the input json data, the placeholder
 gets replaced with the default value.
 
-![Placeholder tags with default value set](../images/placeholder-default.png)
+![Placeholder tags with default value set](../../images/placeholder-default.png)
 
 
 **Optional**
@@ -69,14 +71,14 @@ Setting placeholder variable as optional will replace the placeholder
 with an empty string in case the specified variable is not present in
 the input data.
 
-![Placeholder tags with optional image set](../images/placeholder-optional.png)
+![Placeholder tags with optional image set](../../images/placeholder-optional.png)
 
 **Prefix**
 
 A prefix value can be specified for the placeholder variable. Doing so will append
 this value before the result of the tag.
 
-![Placeholder tags with prefix image set](../images/placeholder-prefix.png)
+![Placeholder tags with prefix image set](../../images/placeholder-prefix.png)
 ## Images
 
 To dynamically insert an image in the document, add any image as
@@ -84,9 +86,9 @@ placeholder and edit the alt text as per the defined format:
 
 **How to insert Images**
 
-<Media slots="video"/>
+<Embed slots="video" />
 
-<https://images-tv.adobe.com/mpcv3/5158/43cb78ad-e98d-4deb-bdca-cf32edd0df95_1615916490.854x480at800_h264.mp4#t=3>
+[Video](https://images-tv.adobe.com/mpcv3/5158/43cb78ad-e98d-4deb-bdca-cf32edd0df95_1615916490.854x480at800_h264.mp4#t=3)
 
 
 ```json
@@ -110,7 +112,7 @@ property as defined in the format.
 <InlineAlert slots="text"/>
 
 The height and width of the placeholder image is retained in the
-output document. <br/> Supported image formats are JPEG, PNG, GIF, BMP, TIFF
+output document. \<br/\> Supported image formats are JPEG, PNG, GIF, BMP, TIFF
 and SVG.
 
 JSON representation of the input data:
@@ -122,7 +124,7 @@ Image data can be provided either in the form of the base64 encoded string or in
   "logo": "data:image/png;base64,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"
 }
 ```
-<p style="text-align:center;">OR</p>
+**OR**
 
 ```json
 {
@@ -135,16 +137,16 @@ Only https image urls with an image size of less than 20 MB are allowed.
 
 Add the image placeholder.
 
-![Initial rendering of the image tag](../images/image-tag-initial.png)
+![Initial rendering of the image tag](../../images/image-tag-initial.png)
 
 Add the alt text to the image as per the specified format.
 
-![Adding alternative text for the image](../images/image-alt-text.png)
+![Adding alternative text for the image](../../images/image-alt-text.png)
 
 The image placeholder will be replaced by the image data in
 the output document.
 
-![Image placeholder replaced by the image data](../images/image-tag-final.png)
+![Image placeholder replaced by the image data](../../images/image-tag-final.png)
 
 <InlineAlert slots="text"/>
 
@@ -156,15 +158,15 @@ Show or hide content in the document based on the conditions.
 
 **How to insert Conditional Tags**
 
-<Media slots="video"/>
+<Embed slots="video" />
 
-<https://images-tv.adobe.com/mpcv3/5158/671b4819-2e8c-44a1-8667-e9dfd2556133_1615916356.854x480at800_h264.mp4#t=3>
+[Video](https://images-tv.adobe.com/mpcv3/5158/671b4819-2e8c-44a1-8667-e9dfd2556133_1615916356.854x480at800_h264.mp4#t=3)
 
 
 <InlineAlert slots="text"/>
 
-The condition must be wrapped inside *expr()*. <br/> Supported
-conditional operators are =, !=, >=, >, <=, <.
+The condition must be wrapped inside *expr()*. \<br/\> Supported
+conditional operators are =, !=, \>=, \>, \<=, \<.
 
 JSON representation of the input data:
 
@@ -179,14 +181,14 @@ JSON representation of the input data:
 
 Show or hide paragraphs based on conditions.
 
-![Showing an paragraph based on a condition](../images/conditional-section.png)
+![Showing an paragraph based on a condition](../../images/conditional-section.png)
 
 
 **Conditional Phrases**
 
 Show or hide text inside a paragraph based on conditions.
 
-![Showing a text inside a paragraph based on a condition](../images/conditional-phrase.png)
+![Showing a text inside a paragraph based on a condition](../../images/conditional-phrase.png)
 
 ## Tables
 ### Insert Table using `<table>` HTML Element
@@ -203,7 +205,7 @@ JSON representation of the input data:
 **Usage**
 
 Placeholder tag is replaced by a table generated using the html string provided in the input json.
-![Sample for HTML Table insertion](../images/html-table-output.png)
+![Sample for HTML Table insertion](../../images/html-table-output.png)
 
 
 <InlineAlert slots="text"/>
@@ -221,9 +223,9 @@ Rows of a table can be dynamically populated by repeating over an array of objec
 
 **How to insert Tables**
 
-<Media slots="video"/>
+<Embed slots="video" />
 
-<https://images-tv.adobe.com/mpcv3/5158/d58772af-7a62-49fa-a098-12b11a27fb71_1615917048.854x480at800_h264.mp4#t=3>
+[Video](https://images-tv.adobe.com/mpcv3/5158/d58772af-7a62-49fa-a098-12b11a27fb71_1615917048.854x480at800_h264.mp4#t=3)
 
 
 <InlineAlert slots="text"/>
@@ -259,17 +261,17 @@ place the template tags referring to the properties of the objects in
 the array inside the row under the required column headings.
 
 The template tag should indicate the name of the array followed by the
-property name of the objects in the array. *{{subscriptions.name}}*
+property name of the objects in the array. *\{\{subscriptions.name\}\}*
 illustrates one such template tag where *subscriptions* refer to the
 array of objects while name refers to the property of one such object in
 the array.
 
-![Table created with column headers and template tags for each subsequent rows](../images/table.png)
+![Table created with column headers and template tags for each subsequent rows](../../images/table.png)
 
 Table rows are dynamically populated in the output document by repeating
 over the specified array of objects.
 
-![Table with template tags replaced with actual values in the rows](../images/table-result.png)
+![Table with template tags replaced with actual values in the rows](../../images/table-result.png)
 
 <InlineAlert slots="text"/>
 
@@ -282,9 +284,9 @@ Dynamically generate numbered or bullet lists by repeating over a list.
 
 **How to insert Lists**
 
-<Media slots="video"/>
+<Embed slots="video" />
 
-<https://images-tv.adobe.com/mpcv3/5158/d58772af-7a62-49fa-a098-12b11a27fb71_1615917048.854x480at800_h264.mp4#t=3>
+[Video](https://images-tv.adobe.com/mpcv3/5158/d58772af-7a62-49fa-a098-12b11a27fb71_1615917048.854x480at800_h264.mp4#t=3)
 
 
 JSON representation of the input data:
@@ -311,14 +313,14 @@ JSON representation of the input data:
 Dynamically generate a numbered list by placing it inside a repeating
 section.
 
-![Template tag items are replaced by numbered list](../images/numbered-list.png)
+![Template tag items are replaced by numbered list](../../images/numbered-list.png)
 
 **Bullet Lists**
 
 Dynamically generate a bullet list by placing it inside a repeating
 section.
 
-![Template tag items are replaced by bullet list](../images/bullet-list.png)
+![Template tag items are replaced by bullet list](../../images/bullet-list.png)
 
 
 
@@ -334,7 +336,7 @@ JSON representation of the input data in case of simple lists:
 
 Dynamically generate a numbered or bullet list by placing it inside a repeating section.
 
-![Template tag items are replaced by numbered or bullet list](../images/simple-lists.png)
+![Template tag items are replaced by numbered or bullet list](../../images/simple-lists.png)
 
 
 ## Numerical Calculations
@@ -343,9 +345,9 @@ Performing numerical calculations on the input data.
 
 **How to insert Numerical Calculations**
 
-<Media slots="video"/>
+<Embed slots="video" />
 
-<https://images-tv.adobe.com/mpcv3/5158/e5e5e7c6-a63c-45cf-8a17-b60291068626_1615916868.854x480at800_h264.mp4#t=3>
+[Video](https://images-tv.adobe.com/mpcv3/5158/e5e5e7c6-a63c-45cf-8a17-b60291068626_1615916868.854x480at800_h264.mp4#t=3)
 
 
 All calculations supported are [JSONata compliant](https://docs.jsonata.org/overview.html).
@@ -382,11 +384,11 @@ JSON representation of the input data:
 
 Performs simple arithmetic operations.
 
-![Performing simple arithmetic to show revenue-expenditure](../images/arithmetic.png)
+![Performing simple arithmetic to show revenue-expenditure](../../images/arithmetic.png)
 
 <InlineAlert slots="text"/>
 
-Supported arithmetic operations are +, -, \*, /, % . <br/> An
+Supported arithmetic operations are +, -, \*, /, % . \<br/\> An
 arithmetic numerical calculation can only be applied to input fields
 that corresponds to a number.
 
@@ -395,11 +397,11 @@ that corresponds to a number.
 
 Performs aggregations on a list of elements.
 
-![Performing simple arithmetic to show aggregation](../images/aggregation.png)
+![Performing simple arithmetic to show aggregation](../../images/aggregation.png)
 
 <InlineAlert slots="text"/>
 
-Here is the list of [supported aggregation functions](https://docs.jsonata.org/aggregation-functions) <br/> An
+Here is the list of [supported aggregation functions](https://docs.jsonata.org/aggregation-functions) \<br/\> An
 aggregate numerical calculation can only be applied to a list of
 numbers.
 

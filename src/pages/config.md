@@ -17,7 +17,7 @@
     - Resources
         - [Developer Resources](https://developer.adobe.com/document-services/resources/)
         - [Forum](https://community.adobe.com/t5/document-services-apis/bd-p/Document-Cloud-SDK?page=1&sort=latest_replies&filter=all)
-        - [Licensing](https://developer.adobe.com/document-services/docs/overview/limits/)
+        - [Licensing](overview/limits.md)
         - [Sales FAQ](https://developer.adobe.com/document-services/faq/sales/)
         - [Tech Support FAQ](https://developer.adobe.com/document-services/faq/tech-support/)
         - [Contact Us](https://developer.adobe.com/document-services/pricing/contact/)
@@ -164,6 +164,7 @@
                 - [Get PDF Properties](overview/legacy-documentation/pdf-services-api/howtos/pdf-properties.md)
                 - [PDF Accessibility Auto-Tag](overview/legacy-documentation/pdf-services-api/howtos/pdf-accessibility-auto-tag-pdf.md)
                 - [PDF Electronic Seal](overview/legacy-documentation/pdf-services-api/howtos/electronic-seal-api.md)
+                - [API Usage](overview/legacy-documentation/pdf-services-api/howtos/api-usage.md)
         - [PDF Accessibility Auto-Tag API](overview/legacy-documentation/pdf-accessibility-auto-tag-api/index.md)
             - [Overview](overview/legacy-documentation/pdf-accessibility-auto-tag-api/index.md)
             - [Getting Started](overview/legacy-documentation/pdf-accessibility-auto-tag-api/gettingstarted.md)

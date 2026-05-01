@@ -1,5 +1,9 @@
 ---
 title: Getting Started | PDF Embed API | Adobe PDF Services
+description: |
+  You'll need a client ID to use the Adobe PDF Embed API. To get one,
+  click HERE, and complete the workflow.
+
 ---
 # Getting Started
 

@@ -1,5 +1,8 @@
 ---
-title: FAQ
+title: FAQ | Adobe PDF Services
+description: |
+  Frequently asked questions about getting access to Adobe PDF Services API.
+
 ---
 
 # Frequently Asked Questions (FAQ)

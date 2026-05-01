@@ -1,5 +1,6 @@
 ---
-title: Python | Quickstarts | Document Generation API | Adobe PDF Services
+title: Python Document Generation API quickstart
+description: Build an app that merges a Word receipt template with JSON and calls Document Generation API for a PDF. Covers setup, credentials, and runnable sample code.
 ---
 
 # Quickstart for Adobe Document Generation API (Python)
@@ -17,7 +18,7 @@ To complete this guide, you will need:
 
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
+1) To begin, open your browser to [https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api). If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
 
 ![Sign in](./shot1.png)
 
@@ -49,7 +50,7 @@ To complete this guide, you will need:
 
 At this point, we've installed the Python SDK for Adobe PDF Services API as a dependency for our project and have copied over our credentials files.
 
-Our application will take a Word document, `receiptTemplate.docx` (downloadable from [here](/receiptTemplate.docx)), and combine it with data in a JSON file, `receipt.json` (downloadable from [here](/receipt.json)), to be sent to the Acrobat Services API and generate a receipt PDF.
+Our application will take a Word document, `receiptTemplate.docx` (downloadable from [here](https://developer.adobe.com/document-services/docs/receiptTemplate.docx)), and combine it with data in a JSON file, `receipt.json` (downloadable from [here](https://developer.adobe.com/document-services/docs/receipt.json)), to be sent to the Acrobat Services API and generate a receipt PDF.
 
 4) In your editor, open the directory where you previously copied the credentials. Create a new file, `generate_pdf.py`.
 

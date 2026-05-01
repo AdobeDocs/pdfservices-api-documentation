@@ -1,5 +1,8 @@
 ---
-title: PDF Watermark | How Tos | PDF Services API | Adobe PDF Services
+title: PDF Watermark | PDF Services API
+description: |
+  Apply watermarks on specified pages of a PDF document using a source watermark file.
+
 ---
 
 # PDF Watermark
@@ -49,7 +52,7 @@ See our public API Reference for [PDF Watermark API](../../../apis/index.md#tag/
 
 The sample below performs watermark operation applying watermark in foreground on all pages of a given PDF.
 
-Please refer to the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer to the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" />
 
@@ -354,7 +357,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/addwater
 
 The sample below performs watermark operation applying watermark in foreground on specified pages of a given PDF.
 
-Please refer to the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer to the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" />
 

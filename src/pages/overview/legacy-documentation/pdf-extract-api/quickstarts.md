@@ -1,10 +1,13 @@
 ---
-title: Quickstarts | PDF Extract API | Adobe PDF Services
+title: Quickstarts | PDF Extract API
+description: |
+  PDF Extract API SDK quickstarts to help you run your first
+  successful operation.
+
 ---
 # Quickstarts
-<p>
+
 The PDF Extract API provides modern cloud-based capabilities for automatically extracting contents from PDF. The API is accessible through SDKs which help you get up and running quickly. Once you've received your developer credential, download and set up one of the sample projects. After you're familiar with the APIs, leverage the samples in your own server-side code.
-</p>
 
 <InlineAlert slots="text"/>
 
@@ -27,7 +30,10 @@ PDF Services API is also accessible via SDKs in popular languages such as Node.j
 
 <InlineAlert slots="text"/>
 
-Please allow-list the following hostnames before using Adobe PDF Services SDK:<ul><li>ims-na1.adobelogin.com</li><li>cpf-ue1.adobe.io</li></ul>
+Please allow-list the following hostnames before using Adobe PDF Services SDK:
+
+- ims-na1.adobelogin.com
+- cpf-ue1.adobe.io
 
 ### Java
 
@@ -158,7 +164,7 @@ logger.apache.level=WARN
 
 The sample files reference input and output files located in the sample project's /resources/ directory. You can of course modify the files and paths or use your own files.
 
-![Samples directory structure Java](../images/samplefilesjava.png)
+![Samples directory structure Java](../../images/samplefilesjava.png)
 
 #### Custom projects
 
@@ -171,7 +177,7 @@ To build a custom project:
 3.  Open the pdfservices-api-credentials.json downloaded when you created your credential.
 4.  Add the [Authentication](index.md#authentication) details as described above.
 
-![Adobe PDF Services SDK on Maven](../images/maven.png)
+![Adobe PDF Services SDK on Maven](../../images/maven.png)
 
 ### .NET
 
@@ -287,10 +293,10 @@ Refer to each sample directory for the requisite input/output files.
 
 While building the sample project automatically downloads the Nuget package, you can do it manually if you wish to use your own tools and process.
 
-1.  Go to <https://www.adobe.com/go/pdftoolsapi_net_nuget>.
+1.  Go to [Link](https://www.adobe.com/go/pdftoolsapi_net_nuget).
 2.  Download the latest package.
 
-![Adobe PDF Services SDK on Nuget](../images/nuget.png)
+![Adobe PDF Services SDK on Nuget](../../images/nuget.png)
 
 ### Node.js
 
@@ -408,10 +414,10 @@ The sample files reference input and output files located in the sample projectâ
 
 While building the sample project automatically downloads the Node package, you can do it manually if you wish to use your own tools and process.
 
-1.  Go to <https://www.npmjs.com/package/@adobe/pdfservices-node-sdk>
+1.  Go to [Link](https://www.npmjs.com/package/@adobe/pdfservices-node-sdk)
 2.  Download the latest package.
 
-![Adobe PDF Services SDK on NPM JS](../images/node.png)
+![Adobe PDF Services SDK on NPM JS](../../images/node.png)
 
 ### Python
 
@@ -512,10 +518,10 @@ Refer to each sample project's [resource directory](https://github.com/adobe/pdf
 
 While building the sample project automatically downloads the Python package, you can do it manually if you wish to use your own tools and process.
 
-1.  Go to <https://pypi.org/project/pdfservices-sdk/>
+1.  Go to [Link](https://pypi.org/project/pdfservices-sdk/)
 2.  Download the latest package.
 
-![Adobe PDF Services SDK on Pypi](../images/python2.png)
+![Adobe PDF Services SDK on Pypi](../../images/python2.png)
 
 ## Public API
 

@@ -1,5 +1,7 @@
 ---
-title: Using Our APIs | How Tos | PDF Services API | Adobe PDF Services
+title: API usage | PDF Services API
+description: Pointer to the PDF Services getting started guide for API usage.
+
 ---
 # Using Our APIs
 

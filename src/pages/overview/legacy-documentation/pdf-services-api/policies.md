@@ -1,5 +1,8 @@
 ---
-title: Policies | PDF Services API | Adobe PDF Services
+title: Policies | PDF Services API
+description: |
+  Versioning and support policies for the PDF Services SDK and Public API.
+
 ---
 # Version - Support policy
 
@@ -59,14 +62,14 @@ Once a version reaches its end of life, functionality may be deprecated and stop
 ![Every Major/Minor Version is supported for one year after the
 release of a newer Major/Minor Version; that is a Major.Minor.X
 version reaches its end of life 1 year after the next Major/Minor
-Release](../images/support1.png)
+Release](../../images/support1.png)
 
 ## Public API
 
 ### Versioning
 
 As mentioned on [Public API
-Docs](../../apis),
+Docs](../../../apis/index.md),
 each operation has a unique assetId which is passed in Form Parameters.
 Generally, APIs will be enhanced while keeping them backward compatible.
 If its functionality can't be enhanced without breaking changes, then

@@ -1,5 +1,8 @@
 ---
-title: Export PDF Form Data | How Tos | PDF Services API | Adobe PDF Services
+title: Export PDF Form Data | PDF Services API
+description: |
+  Retrieve the data from a PDF form and return it as a JSON file.
+
 ---
 
 # Export PDF Form Data
@@ -31,7 +34,7 @@ See our public API Reference for [Export PDF Form Data API](../../../apis/index.
 
 The sample below exports PDF form data and returns it as a JSON file.
 
-Please refer to the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer to the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="3" languages="Java, Python, REST API" />
 

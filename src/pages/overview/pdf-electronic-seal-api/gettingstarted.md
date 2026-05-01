@@ -1,12 +1,14 @@
 ---
-title: Getting Started | PDF Electronic Seal API | Adobe PDF Services
+title: Getting started | PDF Electronic Seal API
+description: |
+  Server-side SDK use only: keep credentials secure and never expose them
+  to untrusted environments or end-user devices.
+
 ---
 
 # Getting Started
 
-<p>
 The API is accessible through SDKs which help you get up and running quickly. Once you've received your developer credential, download and set up one of the sample projects. After you're familiar with the APIs, leverage the samples in your own server-side code.
-</p>
 
 <InlineAlert slots="text"/>
 
@@ -27,7 +29,7 @@ The SDK only supports server-based use cases where credentials are saved securel
 
 ## Step 3: Obtain your TSP OAuth Token
 
-The client sends the `client_id` and `client_secret` to the TSP's OAuth 2.0 authorization API. The TSP responds with an access token which is passed as one of the [input parameters](./howtos/electronic-seal-api.md/#api-parameters) to the PDF Electronic Seal API. The purpose of this token is to access the TSP's end points for the sealing process. It is valid during a timeframe specified by the TSP.
+The client sends the `client_id` and `client_secret` to the TSP's OAuth 2.0 authorization API. The TSP responds with an access token which is passed as one of the [input parameters](./howtos/electronic-seal-api.md#api-parameters) to the PDF Electronic Seal API. The purpose of this token is to access the TSP's end points for the sealing process. It is valid during a timeframe specified by the TSP.
 
 ![TSP Token Generation](../images/tsp-token.png)
 
@@ -82,7 +84,7 @@ After getting the access token, we need to upload the asset. Uploading an asset 
 
 1. First you need to get an upload pre-signed URI by using the following API.
 
-You can read more about the API in detail [here](../../../apis/#operation/asset.uploadpresignedurl).
+You can read more about the API in detail [here](../../apis/index.md#operation/asset.uploadpresignedurl).
 
 <CodeBlock slots="heading, code" repeat="1" languages="REST API" /> 
 
@@ -117,13 +119,13 @@ For PDF Electronic Seal API, you can specify an optional seal image i.e. a logo/
 
 To create a job for the operation, please use the  `assetID` obtained in Step 2 in the API request body. On successful job submission you will get a status code of `201` and a response header `location` which will be used for polling.
 
-For creating the job, please refer to the corresponding API spec for the particular [PDF Operation](../../../apis).
+For creating the job, please refer to the corresponding API spec for the particular [PDF Operation](../../apis/index.md).
 
 ## Step 7 : Fetching the status
 
 Once the job is successfully created, you need to poll the at the `location` returned in response header of Step 3 by using the following API
 
-You can read more about the API in detail [here](../../../apis/#operation/pdfoperations.electronicseal.jobstatus).
+You can read more about the API in detail [here](../../apis/index.md#operation/pdfoperations.electronicseal.jobstatus).
 
 <CodeBlock slots="heading, code" repeat="1" languages="REST API" />
 
@@ -136,9 +138,8 @@ curl --location -g --request GET 'https://pdf-services.adobe.io/operation/electr
 ```
 
 <InlineAlert slots="text"/>
-<div>
-Instead of using the status API to check the job status, you have the option to receive job completion notifications through Webhook. For more information, please refer the <a href="../../pdf-services-api/howtos/webhook-notification/">documentation</a>.
-</div>
+
+Instead of using the status API to check the job status, you have the option to receive job completion notifications through Webhook. For more information, see the [webhook documentation](../pdf-services-api/howtos/webhook-notification.md).
 
 ## Step 8 : Downloading the asset
 
@@ -148,7 +149,7 @@ If the `status` field is `in progress` you need to keep polling the location unt
 
 If the `status` field is `done` the response body will also have a download pre-signed URI in the `dowloadUri` field, which will be used to download the asset directly from cloud provider by making the following API call
 
-You can read more about the API in detail [here](../../../apis/#operation/asset.get).
+You can read more about the API in detail [here](../../apis/index.md#operation/asset.get).
 
 <CodeBlock slots="heading, code" repeat="1" languages="REST API" />
 
@@ -166,55 +167,35 @@ PDF Services API is also accessible via SDKs in popular languages such as Node.j
 
 <InlineAlert slots="text"/>
 
-<div>
-
 Please allow-list the following hostnames before using Adobe PDF Services SDK:
-<ul><li>ims-na1.adobelogin.com (Required for all the clients)</li></ul>
 
-For clients using SDK version 4.x and above :
-<ul>
-<li> Using United States (Default) region for processing documents :
-  <ul>
-    <li>dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com (Not required, if using external storage for both input and output)</li>
-    <li>pdf-services-ue1.adobe.io</li>
-    <li>pdf-services.adobe.io (Default URI)</li>
-  </ul>
-</li>
-</ul>
+- ims-na1.adobelogin.com (required for all clients)
 
-<ul>
-  <li> Using Europe region for processing documents :
-  <ul>
-    <li>dcplatformstorageservice-prod-eu-west-1.s3.amazonaws.com (Not required, if using external storage for both input and output)</li>
-    <li>pdf-services-ew1.adobe.io</li>
-  </ul>
-</li>
-</ul>
+**SDK version 4.x and above — United States (Default) region**
 
-For clients using SDK version 3.x and above  :
-<ul>
-<li> Using United States (Default) region for processing documents :
-  <ul>
-    <li>dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com</li>
-    <li>pdf-services-ue1.adobe.io</li>
-    <li>pdf-services.adobe.io (Default URI)</li>
-  </ul>
-</li>
-</ul>
+- dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com (not required if using external storage for both input and output)
+- pdf-services-ue1.adobe.io
+- pdf-services.adobe.io (default URI)
 
-<ul>
-  <li> Using Europe region for processing documents :
-  <ul>
-    <li>dcplatformstorageservice-prod-eu-west-1.s3.amazonaws.com</li>
-    <li>pdf-services-ew1.adobe.io</li>
-  </ul>
-</li>
-</ul>
+**SDK version 4.x and above — Europe region**
 
-For clients using SDK version upto 2.x :
-<ul><li>cpf-ue1.adobe.io</li></ul>
+- dcplatformstorageservice-prod-eu-west-1.s3.amazonaws.com (not required if using external storage for both input and output)
+- pdf-services-ew1.adobe.io
 
-</div>
+**SDK version 3.x and above — United States (Default) region**
+
+- dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com
+- pdf-services-ue1.adobe.io
+- pdf-services.adobe.io (default URI)
+
+**SDK version 3.x and above — Europe region**
+
+- dcplatformstorageservice-prod-eu-west-1.s3.amazonaws.com
+- pdf-services-ew1.adobe.io
+
+**SDK version up to 2.x**
+
+- cpf-ue1.adobe.io
 
 ### Java
 
@@ -472,7 +453,7 @@ The .NET SDK uses [LibLog](https://github.com/damianh/LibLog) as a bridge betwee
 
 While building the sample project automatically downloads the Nuget package, you can do it manually if you wish to use your own tools and process.
 
-1.  Go to <https://www.adobe.com/go/pdftoolsapi_net_nuget>.
+1.  Go to [Link](https://www.adobe.com/go/pdftoolsapi_net_nuget).
 2.  Download the latest package.
 
 ![Adobe PDF Services SDK on Nuget](../images/nuget-free-tier.png)
@@ -595,7 +576,7 @@ The SDK uses the [log4js API](https://www.npmjs.com/package/log4js) for logging.
 
 While building the sample project automatically downloads the Node package, you can do it manually if you wish to use your own tools and process.
 
-1.  Go to <https://www.npmjs.com/package/@adobe/pdfservices-node-sdk>
+1.  Go to [Link](https://www.npmjs.com/package/@adobe/pdfservices-node-sdk)
 2.  Download the latest package.
 
 ![Adobe PDF Services SDK on NPM JS](../images/node-free-tier.png)

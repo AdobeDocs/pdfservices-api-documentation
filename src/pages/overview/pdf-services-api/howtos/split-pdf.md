@@ -1,5 +1,8 @@
 ---
-title: Split PDF | How Tos | PDF Services API | Adobe PDF Services
+title: Split PDF | PDF Services API
+description: |
+  Split a PDF document into smaller documents by file count, pages per file, or page ranges.
+
 ---
 # Split PDF
 
@@ -15,7 +18,7 @@ This operation splits a PDF into multiple smaller documents. Simply use
 the page count to specify the maximum number of pages of each output
 file.
 
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
@@ -331,7 +334,7 @@ As an alternative to creating smaller PDFs with a set number of pages,
 you can split PDFs into multiple smaller documents by specifying page
 ranges where each page range corresponds to a single output file.
 
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
@@ -712,7 +715,7 @@ pages or a page range, you can split PDFs by file count. In this case,
 the operation creates the specified number of files with each containing
 an identical number of pages (if possible).
 
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 

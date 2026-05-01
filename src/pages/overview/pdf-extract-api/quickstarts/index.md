@@ -1,5 +1,8 @@
 ---
-title: Quickstarts | PDF Extract API | Adobe PDF Services
+title: Quickstarts | PDF Extract API
+description: |
+  Choose Extract PDF API or PDF To Markdown API to get started.
+
 ---
 
 # Quickstarts

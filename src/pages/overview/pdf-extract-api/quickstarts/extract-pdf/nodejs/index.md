@@ -1,5 +1,8 @@
 ---
-title: Node.js | Quickstarts | PDF Extract API | Adobe PDF Services
+title: Node.js | Quickstart | PDF Extract API
+description: |
+  Walk through a simple scenario using PDF Extract API in Node.js to extract content and report on major headers.
+
 ---
 
 # Quickstart for PDF Extract API (Node.js)
@@ -16,7 +19,7 @@ To complete this guide, you will need:
 
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
+1) To begin, open your browser to [https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api). If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
 
 ![Sign in](./shot1.png)
 
@@ -54,7 +57,7 @@ To complete this guide, you will need:
 
 At this point, we've installed the Node.js SDK for Adobe PDF Services API as a dependency for our project and have copied over our credentials files. 
 
-Our application will take a PDF, `Adobe Extract API Sample.pdf` (downloadable from [here](/Adobe%20Extract%20API%20Sample.pdf)) and extract it's contents. The results will be saved as a ZIP file, `ExtractTextInfoFromPDF.zip`. We will then parse the results from the ZIP and print out the text of any `H1` headers found in the PDF.
+Our application will take a PDF, `Adobe Extract API Sample.pdf` (included as part of the Node.js sample project), and extract its contents. The results will be saved as a ZIP file, `ExtractTextInfoFromPDF.zip`. We will then parse the results from the ZIP and print out the text of any `H1` headers found in the PDF.
 
 6) In your editor, open the directory where you previously copied the credentials. Create a new file, `extract.js`.
 
@@ -108,7 +111,7 @@ const inputAsset = await pdfServices.upload({
   mimeType: MimeType.PDF
 });
 ```
-We define what PDF will be extracted. (You can download the source we used [here](/Adobe%20Extract%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic.
+We define what PDF will be extracted. (The source `Adobe Extract API Sample.pdf` is included with the Node.js sample project.) In a real application, these values would typically be dynamic.
 
 5) Now, let's create the parameters and the job:
 

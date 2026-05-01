@@ -1,5 +1,9 @@
 ---
 title: Document Generation API | Adobe PDF Services
+description: Document Generation is the method of creating business-critical
+documents like invoices, contracts, sales proposals, and work orders
+automatically.
+
 ---
 # Overview
 
@@ -55,4 +59,4 @@ replacing all the template tags in the document template with the
 dynamic content based on the actual values corresponding to the data
 input.
 
-To learn more, please visit [QuickStarts](quickstarts.md)
+To learn more, please visit [QuickStarts](quickstarts/index.md)

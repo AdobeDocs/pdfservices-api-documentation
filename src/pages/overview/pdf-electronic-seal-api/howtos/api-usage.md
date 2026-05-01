@@ -1,5 +1,8 @@
 ---
-title: Using Our APIs | How Tos | PDF Electronic Seal API | Adobe PDF Services
+title: API usage | PDF Electronic Seal API
+description: |
+  Pointer to the PDF Services getting started guide for API usage.
+
 ---
 # Using Our APIs
 

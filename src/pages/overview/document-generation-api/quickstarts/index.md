@@ -1,5 +1,7 @@
 ---
-title: Quickstarts | Document Generation API | Adobe PDF Services
+title: "Document Generation API quickstarts"
+description: "Runnable guides for Node.js, Java, .NET, and Python: call Document Generation API with a sample Word template and JSON."
+
 ---
 
 # Quickstarts

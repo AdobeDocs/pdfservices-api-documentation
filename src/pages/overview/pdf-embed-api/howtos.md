@@ -1,5 +1,10 @@
 ---
 title: How Tos | PDF Embed API | Adobe PDF Services
+description: |
+  The samples and documentation provide an easy way to jump-start
+  development. The sections below describe how to embed a customized PDF
+  viewer in a web page.
+
 ---
 # PDF Embed API basics
 
@@ -7,15 +12,13 @@ The samples and documentation provide an easy way to jump-start
 development. The sections below describe how to embed a customized PDF
 viewer in a web page.
 
-<!-- ![PDF Embed API Workflow : User opens your web application which has a script tag containing the PDF Embed API by source URL. PDF Embed API is initialized by passing the API Key, The PDF will now be embedded in your web app and displayed to the user](../images/workflow.png) -->
-
 ## Embed a PDF viewer
 
 Once you've received your client ID, embedding the PDF viewer
 involves:
 
 1.  Adding a `<script>` tag to load the PDF Embed API by source url:
-    <https://acrobatservices.adobe.com/view-sdk/viewer.js> (**line 6**).
+    [https://acrobatservices.adobe.com/view-sdk/viewer.js](https://acrobatservices.adobe.com/view-sdk/viewer.js) (**line 6**).
 2.  Setting up the rendering area: use a div tag with an ID of
     `adobe-dc-view` (**line 9**).
 3.  Initializing the PDF Embed API by passing client ID, and call
@@ -31,7 +34,7 @@ two fields:
 -   **metaData**: File metadata information.
 
 This table lists down the various options which can be passed in `metaData`.
-<br/>
+\<br/\>
 
 | Variable | Default | Description |
 | -------- | ------- | ----------- |
@@ -134,8 +137,8 @@ to download the file from the provided location in order to render it.
 To avoid this situation, you can choose one of two methods:
 
 -   Locate your webpage and file location URL on the same domain.
-    Example: webpage: <https://example.com/viewer/test.html>; PDF
-    location: <https://example.com/resources/abc.pdf>)
+    Example: webpage: [Link](https://example.com/viewer/test.html); PDF
+    location: [Link](https://example.com/resources/abc.pdf))
 -   Enable CORS headers on the PDF resource to allow access from your
     webpage domain.
 
@@ -258,11 +261,11 @@ To use this mode:
 -   **Form-filling**: Control form editing capability by simply toggling `enableFormFilling` on and off as needed.
     For more details, see the section [Forms handling](#forms-handling).
 -   **Annotation APIs**: Enable annotation APIs to be able to access PDF annotations programmatically. 
-    For more details, see the section [Annotations API overview](../howtos_comments/#annotations-api-overview).
+    For more details, see the section [Annotations API overview](howtos-comments.md#annotations-api-overview).
 
 <InlineAlert slots="text"/>
 
-For the complete list of supported preview configurations, see the section [Menu and tool options](../howtos_ui/#menu-and-tool-options).
+For the complete list of supported preview configurations, see the section [Menu and tool options](howtos-ui.md#menu-and-tool-options).
 
 
 ```html
