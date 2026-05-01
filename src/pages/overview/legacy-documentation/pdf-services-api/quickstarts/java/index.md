@@ -1,7 +1,6 @@
 ---
 title: Java | Quickstarts | PDF Services API
-description: |
-  Walkthrough for exporting a PDF to Microsoft Word using the Adobe
+description: Walkthrough for exporting a PDF to Microsoft Word using the Adobe
   PDF Services API in Java.
 
 ---

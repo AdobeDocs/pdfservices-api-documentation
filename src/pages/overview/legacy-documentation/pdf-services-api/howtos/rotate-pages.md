@@ -1,7 +1,6 @@
 ---
 title: Rotate Pages | How Tos | PDF Services API
-description: |
-  Rotate a page in an existing document.
+description: Rotate a page in an existing document.
 
 ---
 # Rotate Pages
