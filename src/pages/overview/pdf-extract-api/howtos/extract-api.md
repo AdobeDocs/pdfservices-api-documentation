@@ -12,9 +12,9 @@ following:
 
 -   The structuredData.json file with the extracted content & PDF
     element structure. See the [JSON
-    schema](/src/pages/resources/extract-json-output-schema2.json) for a
+    schema](../../../static/extract-json-output-schema2.json) for a
     description of the default output. (Please refer to the [Styling JSON
-    schema](/src/pages/resources/extract-json-output-schema-styling-info.json)
+    schema](/static/extract-json-output-schema-styling-info.json)
     for a description of the output when the styling option is enabled.)
 -   A renditions folder(s) containing renditions for each element type
     selected as input. The folder name is either "tables" or "figures"
@@ -26,7 +26,7 @@ following:
 
 The following is a summary of key elements in the extracted JSON (see
 additional descriptions in the [JSON
-schema](/src/pages/resources/extract-json-output-schema2.json)):
+schema](/static/extract-json-output-schema2.json)):
 
 -   Elements : Ordered list of semantic elements (like headings,
     paragraphs, tables, figures) found in the document, on the basis of
