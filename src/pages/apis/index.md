@@ -4,4 +4,4 @@ description: The OpenAPI spec for Adobe PDF Services API endpoints, parameters, 
 layout: none
 ---
 
-<RedoclyAPIBlock src="/document-services/docs/resources/openapi.json" />
+<RedoclyAPIBlock src="/document-services/docs/openapi.json" />
