@@ -67,8 +67,10 @@
     },
     {
       "page": "/overview/document-generation-api/dcserviceslicensing",
-      "avatars": [],
-      "lastUpdated": "9/28/2021"
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/26/2026"
     },
     {
       "page": "/overview/document-generation-api/fragments",
@@ -938,8 +940,10 @@
     },
     {
       "page": "/overview/pdf-accessibility-auto-tag-api/dcserviceslicensing",
-      "avatars": [],
-      "lastUpdated": "7/13/2022"
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/26/2026"
     },
     {
       "page": "/overview/pdf-accessibility-auto-tag-api/gettingstarted",
@@ -985,8 +989,10 @@
     },
     {
       "page": "/overview/pdf-accessibility-auto-tag-api/howtos/api-usage",
-      "avatars": [],
-      "lastUpdated": "9/26/2022"
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/26/2026"
     },
     {
       "page": "/overview/pdf-accessibility-auto-tag-api/quickstarts/",
@@ -1236,8 +1242,10 @@
     },
     {
       "page": "/overview/pdf-extract-api/dcserviceslicensing",
-      "avatars": [],
-      "lastUpdated": "9/28/2021"
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/26/2026"
     },
     {
       "page": "/overview/pdf-extract-api/gettingstarted",
@@ -1271,8 +1279,10 @@
     },
     {
       "page": "/overview/pdf-extract-api/howtos/api-usage",
-      "avatars": [],
-      "lastUpdated": "9/26/2022"
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/26/2026"
     },
     {
       "page": "/overview/pdf-extract-api/howtos/extract-api",
@@ -1453,9 +1463,10 @@
     {
       "page": "/overview/pdf-services-api/howtos/electronic-seal-api",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
         "https://avatars.githubusercontent.com/u/95277167?v=4"
       ],
-      "lastUpdated": "6/19/2023"
+      "lastUpdated": "5/26/2026"
     },
     {
       "page": "/overview/pdf-services-api/howtos/export-pdf",
@@ -1477,8 +1488,10 @@
     },
     {
       "page": "/overview/pdf-services-api/howtos/extract-pdf",
-      "avatars": [],
-      "lastUpdated": "9/28/2021"
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/26/2026"
     },
     {
       "page": "/overview/pdf-services-api/howtos/import-pdf-form-data",
@@ -1522,9 +1535,10 @@
     {
       "page": "/overview/pdf-services-api/howtos/pdf-accessibility-auto-tag-pdf",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
         "https://avatars.githubusercontent.com/u/32357056?v=4"
       ],
-      "lastUpdated": "4/4/2023"
+      "lastUpdated": "5/26/2026"
     },
     {
       "page": "/overview/pdf-services-api/howtos/pdf-accessibility-checker-api",
