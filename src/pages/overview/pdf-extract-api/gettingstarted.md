@@ -1,12 +1,13 @@
 ---
-title: Getting Started | PDF Accessibility Auto-Tag API | Adobe PDF Services
+title: Getting Started | PDF Extract API | Adobe PDF Services
+description: |
+  The SDK only supports server-based use cases where credentials are saved securely in a safe environment.
+
 ---
 
 # Getting Started
 
-<p>
 The PDF Extract API provides modern cloud-based capabilities for automatically extracting contents from PDF. The API is accessible through SDKs which help you get up and running quickly. Once you've received your developer credential, download and set up one of the sample projects. After you're familiar with the APIs, leverage the samples in your own server-side code.
-</p>
 
 <InlineAlert slots="text"/>
 
@@ -36,7 +37,7 @@ After getting the access token, we need to upload the asset. Uploading an asset 
 
 1. First you need to get an upload pre-signed URI by using the following API.
 
-You can read more about the API in detail [here](../../../apis/#operation/asset.uploadpresignedurl).
+You can read more about the API in detail [here](../../apis/index.md#operation/asset.uploadpresignedurl).
 
 <CodeBlock slots="heading, code" repeat="1" languages="REST API" /> 
 
@@ -68,14 +69,14 @@ curl --location -g --request PUT 'https://dcplatformstorageservice-prod-us-east-
 
 To create a job for the operation, please use the  `assetID` obtained in Step 2 in the API request body. On successful job submission you will get a status code of `201` and a response header `location` which will be used for polling.
 
-For creating the job, please refer to the corresponding API spec for the particular [PDF Operation](../../../apis).
+For creating the job, please refer to the corresponding API spec for the particular [PDF Operation](../../apis/index.md).
 
 **Choose your operation endpoint:**
 
 - **For JSON output (Extract PDF):** Use the `/operation/extractpdf` endpoint
 - **For Markdown output (PDF to Markdown):** Use the `/operation/pdftomarkdown` endpoint
 
-[Extract PDF API Reference](../../../apis/#operation/pdfoperations.extractpdf) | [PDF to Markdown API Reference](../../../apis/#operation/pdfoperations.pdftomarkdown)
+[Extract PDF API Reference](../../apis/index.md#operation/pdfoperations.extractpdf) | [PDF to Markdown API Reference](../../apis/index.md#operation/pdfoperations.pdftomarkdown)
 
 ## Step 4 : Fetching the status
 
@@ -86,22 +87,21 @@ Once the job is successfully created, you need to poll the at the `location` ret
 - **For Extract PDF (JSON):** `/operation/extractpdf/{jobId}/status`
 - **For PDF to Markdown:** `/operation/pdftomarkdown/{jobId}/status`
 
-You can read more about the API in detail [here](../../../apis/#operation/pdfoperations.compresspdf.jobstatus).
+You can read more about the API in detail [here](../../apis/index.md#operation/pdfoperations.extractpdf.jobstatus).
 
 <CodeBlock slots="heading, code" repeat="1" languages="REST API" /> 
 
 ### REST API
 
 ```javascript
-curl --location -g --request GET 'https://pdf-services.adobe.io/operation/compresspdf/{{Placeholder for job id}}/status' \
+curl --location -g --request GET 'https://pdf-services.adobe.io/operation/extractpdf/{{Placeholder for job id}}/status' \
 --header 'Authorization: Bearer {{Placeholder for token}}' \
 --header 'x-api-key: {{Placeholder for client id}}'
 ```
 
 <InlineAlert slots="text"/>
-<div>
-Instead of using the status API to check the job status, you have the option to receive job completion notifications through Webhook. For more information, please refer the <a href="../../pdf-services-api/howtos/webhook-notification/">documentation</a>.
-</div>
+
+Instead of using the status API to check the job status, you have the option to receive job completion notifications through Webhook. For more information, please refer the [documentation](../pdf-services-api/howtos/webhook-notification.md).
 
 ## Step 5 : Downloading the asset
 
@@ -111,7 +111,7 @@ If the `status` field is `in progress` you need to keep polling the location unt
 
 If the `status` field is `done` the response body will also have a download pre-signed URI in the `dowloadUri` field, which will be used to download the asset directly from cloud provider by making the following API call
 
-You can read more about the API in detail [here](../../../apis/#operation/asset.get).
+You can read more about the API in detail [here](../../apis/index.md#operation/asset.get).
 
 <CodeBlock slots="heading, code" repeat="1" languages="REST API" /> 
 
@@ -127,57 +127,35 @@ curl --location -g --request GET 'https://dcplatformstorageservice-prod-us-east-
 
 PDF Services API is also accessible via SDKs in popular languages such as Java, .NET, Node JS and Python.
 
-<InlineAlert slots="text"/>
-
-<div>
+<InlineAlert slots="text1, text2, text3, text4, text5, text6, text7, text8"/>
 
 Please allow-list the following hostnames before using Adobe PDF Services SDK:
-<ul><li>ims-na1.adobelogin.com (Required for all the clients)</li></ul>
 
-For clients using SDK version 4.x and above :
-<ul>
-<li> Using United States (Default) region for processing documents :
-  <ul>
-    <li>dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com (Not required, if using external storage for both input and output)</li>
-    <li>pdf-services-ue1.adobe.io</li>
-    <li>pdf-services.adobe.io (Default URI)</li>
-  </ul>
-</li>
-</ul>
+- ims-na1.adobelogin.com (Required for all the clients)
 
-<ul>
-  <li> Using Europe region for processing documents :
-  <ul>
-    <li>dcplatformstorageservice-prod-eu-west-1.s3.amazonaws.com (Not required, if using external storage for both input and output)</li>
-    <li>pdf-services-ew1.adobe.io</li>
-  </ul>
-</li>
-</ul>
+For clients using SDK version 4.x and above:
 
-For clients using SDK version 3.x and above  :
-<ul>
-<li> Using United States region for processing documents :
-  <ul>
-    <li>dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com</li>
-    <li>pdf-services-ue1.adobe.io</li>
-    <li>pdf-services.adobe.io (Default URI)</li>
-  </ul>
-</li>
-</ul>
+- Using United States (Default) region for processing documents:
+  - dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com (Not required, if using external storage for both input and output)
+  - pdf-services-ue1.adobe.io
+  - pdf-services.adobe.io (Default URI)
+- Using Europe region for processing documents:
+  - dcplatformstorageservice-prod-eu-west-1.s3.amazonaws.com (Not required, if using external storage for both input and output)
+  - pdf-services-ew1.adobe.io
 
-<ul>
-  <li> Using Europe region for processing documents :
-  <ul>
-    <li>dcplatformstorageservice-prod-eu-west-1.s3.amazonaws.com</li>
-    <li>pdf-services-ew1.adobe.io</li>
-  </ul>
-</li>
-</ul>
+For clients using SDK version 3.x and above:
 
-For clients using SDK version upto 2.x :
-<ul><li>cpf-ue1.adobe.io</li></ul>
+- Using United States region for processing documents:
+  - dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com
+  - pdf-services-ue1.adobe.io
+  - pdf-services.adobe.io (Default URI)
+- Using Europe region for processing documents:
+  - dcplatformstorageservice-prod-eu-west-1.s3.amazonaws.com
+  - pdf-services-ew1.adobe.io
 
-</div>
+For clients using SDK version upto 2.x:
+
+- cpf-ue1.adobe.io
 
 ### Java
 
@@ -317,7 +295,7 @@ To build a custom project:
 1.  Access the .jar in the [central Maven repository](https://www.adobe.com/go/pdftoolsapi_java_maven).
 2.  Use your preferred dependency management tool (Ivy, Gradle, Maven), to include the SDK .jar dependency.
 3.  Open the pdfservices-api-credentials.json downloaded when you created your credential.
-4.  Add the [Authentication](./index.md#authentication) details as described above.
+4.  Add the [Authentication](index.md#authentication) details as described above.
 
 ![Adobe PDF Services SDK On Maven](../images/maven.png)
 
@@ -435,10 +413,10 @@ The .NET SDK uses [LibLog](https://github.com/damianh/LibLog) as a bridge betwee
 
 While building the sample project automatically downloads the Nuget package, you can do it manually if you wish to use your own tools and process.
 
-1.  Go to <https://www.adobe.com/go/pdftoolsapi_net_nuget>.
+1.  Go to [Link](https://www.adobe.com/go/pdftoolsapi_net_nuget).
 2.  Download the latest package.
 
-![Adobe PDF Services SDK on Nuget](../images/nuget_free_tier.png)
+![Adobe PDF Services SDK on Nuget](../images/nuget-free-tier.png)
 
 ### Node.js
 
@@ -558,10 +536,10 @@ The SDK uses the [log4js API](https://www.npmjs.com/package/log4js) for logging.
 
 While building the sample project automatically downloads the Node package, you can do it manually if you wish to use your own tools and process.
 
-1.  Go to <https://www.npmjs.com/package/@adobe/pdfservices-node-sdk>
+1.  Go to [Link](https://www.npmjs.com/package/@adobe/pdfservices-node-sdk)
 2.  Download the latest package.
 
-![Adobe PDF Services SDK on NPM JS](../images/node_free_tier.png)
+![Adobe PDF Services SDK on NPM JS](../images/node-free-tier.png)
 
 ### Python
 

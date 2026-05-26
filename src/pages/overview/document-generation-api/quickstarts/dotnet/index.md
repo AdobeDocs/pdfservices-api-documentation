@@ -1,5 +1,6 @@
 ---
-title: .NET | Quickstarts | Document Generation API | Adobe PDF Services
+title: .NET Document Generation API quickstart
+description: Build an app that merges a Word receipt template with JSON and calls Document Generation API for a PDF. Covers setup, credentials, and runnable sample code.
 ---
 
 # Quickstart for Adobe Document Generation API (.NET)
@@ -18,7 +19,7 @@ To complete this guide, you will need:
   
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=document-generation-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
+1) To begin, open your browser to [https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=document-generation-api](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=document-generation-api). If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
 
 ![Sign in](./shot1.png)
 
@@ -30,17 +31,17 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2_spc.png)
+![Project setup](./shot2-spc.png)
 
 6) After your credentials are created, they are automatically downloaded:
 
-![alt](./shot3_spc.png)
+![alt](./shot3-spc.png)
 
 ## Step Two: Setting up the project
 
 1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-.NetSamples.zip. If you unzip that archive, you will find a folder of samples and the `pdfservices-api-credentials.json` file.
 
-![alt](./shot5_spc.png)
+![alt](./shot5-spc.png)
 
 2) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
 
@@ -75,7 +76,7 @@ To complete this guide, you will need:
 
 ```
 
-Our application will take a Word document, `receiptTemplate.docx` (downloadable from [here](/receiptTemplate.docx)), and combine it with data in a JSON file, `receipt.json` (downloadable from [here](/receipt.json)), to be sent to the Acrobat Services API and generate a receipt PDF.
+Our application will take a Word document, `receiptTemplate.docx` (downloadable from [here](https://developer.adobe.com/document-services/docs/receiptTemplate.docx)), and combine it with data in a JSON file, `receipt.json` (downloadable from [here](https://developer.adobe.com/document-services/docs/receipt.json)), to be sent to the Acrobat Services API and generate a receipt PDF.
 
 4) In your editor, open the directory where you previously copied the credentials and created the `csproj` file. Create a new file, `Program.cs`. 
 

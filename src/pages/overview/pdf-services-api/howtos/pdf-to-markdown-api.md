@@ -101,7 +101,7 @@ The PDF to Markdown API is particularly valuable for:
 
 ## API Limitations
 
-For File Constraints and Processing Limits, see [Licensing and Usage Limits](../dcserviceslicensing/).
+For File Constraints and Processing Limits, see [Licensing and Usage Limits](../dcserviceslicensing.md).
 
 ### Document Requirements
 
@@ -115,4 +115,4 @@ For File Constraints and Processing Limits, see [Licensing and Usage Limits](../
 
 ## REST API
 
-See our public API Reference for [PDF to Markdown API](../../../apis/#tag/PDF-To-Markdown).
+See our public API Reference for [PDF to Markdown API](../../../apis/index.md#tag/PDF-To-Markdown).

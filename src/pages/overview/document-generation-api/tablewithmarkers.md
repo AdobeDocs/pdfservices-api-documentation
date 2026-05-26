@@ -1,5 +1,7 @@
 ---
 title: Table Tag with Markers | Document Generation API | Adobe PDF Services
+description: There are two constructs introduced to insert tables inside a document called Table Markers. Table Markers will be used to create the table tags inside the document.
+
 ---
 # Table Tag with Markers
 Use Table markers to insert table tags in a document
@@ -9,7 +11,7 @@ There are two constructs introduced to insert tables inside a document called **
 - table-start `{% table-start ARRAY_FIELD %}`
 - table-end   `{% table-end %}`
 
-**How to use** <br/>
+**How to use** \<br/\>
 - In the table row that needs to be dynamically expanded, place the `table-start` marker in the first cell and the `table-end` marker in the last cell of the row.
 - The `table-start` marker requires an array field (ARRAY_FIELD), which will be used to create the rows/columns in the table depending on the orientation of the table.
 - The content between these markers is then dynamically populated by iterating over the array of objects corresponding to the tag(ARRAY_FIELD) specified in the `table-start` marker.
@@ -39,7 +41,7 @@ JSON representation of the input data:
 
 ```
 
-![Table created with table start and end constructs](../images/table_tag_with_markers.png)
+![Table created with table start and end constructs](../images/table-tag-with-markers.png)
 
 In the above example, `school` serves as the ARRAY_FIELD over whose data the table is populated. A new row is created for each
 school, and data is filled in accordingly.
@@ -99,7 +101,7 @@ JSON representation of the input data:
 
 ```
 
-![Nested tables with table markers](../images/nested_tables.png)
+![Nested tables with table markers](../images/nested-tables.png)
 
 Create both tables with their respective table markers. In the above example, the `school` tag acts as the array
 upon which the outer table is expanded. For each school, the inner table is expanded on its respective `class` tag,
@@ -117,14 +119,14 @@ in the `class` table, so we add the `school` tag in the **eval** construct of th
 
 Similarly, if a condition needs to be evaluated on data outside the current table, add the context for the same using the **eval** construct.
 
-![Table Markers With different context](../images/table_markers_context_input.png)
+![Table Markers With different context](../images/table-markers-context-input.png)
 
 - In the above example, we've used the **eval** construct with the `board` tag. As specified earlier, **$** indicates that the context is input json itself. So, as mentioned in the input json, the tag will be replaced
   by its value **CBSE**. 
 
 - We've also used the **eval** construct with conditions. In the above examples, both the conditions indicated have `school` as context. So, the conditional expressions are evaluated in the context of the corresponding school.
 
-![Table Markers with different context output](../images/table_markers_context_output.png)
+![Table Markers with different context output](../images/table-markers-context-output.png)
 
 <InlineAlert slots="text"/>
 
@@ -163,13 +165,13 @@ vertically or columns horizontally.
 - **Repeat table rows vertically with table markers** - To use vertical extension with table markers, add *cell-extension(vertical)* to a tag.
 
 
-![Vertical extension with table markers](../images/table_markers_vertical_extension.png)
+![Vertical extension with table markers](../images/table-markers-vertical-extension.png)
 
 
 - **Repeat table columns horizontally with table markers** - To use horizontal extension with table markers, add *cell-extension(horizontal)*
   to a tag and place the table start and end markers at the beginning and end of the column instead of the row.
 
-![Horizontal extension with table markers](../images/table_markers_horizontal_extension.png)
+![Horizontal extension with table markers](../images/table-markers-horizontal-extension.png)
 
 ### Dynamic table columns
 Discard a column or set of columns in a table from the final generated document using table markers.
@@ -177,7 +179,7 @@ Discard a column or set of columns in a table from the final generated document 
 #### Discard column if empty
 Columns in a table can be discarded if every element of an array in the input json is empty or null.
 
-**How to use** <br/>
+**How to use** \<br/\>
 Add a discard-if-empty construct with a boolean false/true along with the template tag to activate discard if empty feature for the corresponding column.
 
 JSON representation of the input data:
@@ -214,13 +216,13 @@ JSON representation of the input data:
 ```
 
 
-![Discard if empty with table markers](../images/discard_if_empty_table_markers.png)
+![Discard if empty with table markers](../images/discard-if-empty-table-markers.png)
 
 #### Discard column if the condition evaluates to true
 Column in a table can be discarded if the condition provided in the discard-if(expr(**condition**)) evaluates to true for
 any entry in the array of objects.
 
-**How to use** <br/>
+**How to use** \<br/\>
 Add discard-if(expr(**condition**)) construct along with the template tag to activate the discard-if feature for the corresponding column.
 
 **Note:** discard-if construct can also take a context input as discard-if(expr(**condition**), **context_tag**). In this case the `condition`
@@ -261,7 +263,7 @@ JSON representation of the input data:
 ```
 
 
-![Discard if with table markers](../images/discard_if_table_markers.png)
+![Discard if with table markers](../images/discard-if-table-markers.png)
 
 In the above example, we've used discard-if along with context **$**($ here indicates that the context is the input json itself).
 So, in this case, the conditions will be evaluated in the context of input json.
@@ -273,9 +275,9 @@ Discard a row or set of rows in a table from the final generated document.
 A row in the table can be discarded only when the condition in the discard-row-if(expr(**condition**)) evaluates
 to true in the provided context. Add this construct along with the template tag to discard the row based on the provided condition.
 
-For Example: {{PROPERTY:**discard-row-if(expr(condition))**}}
+For Example: \{\{PROPERTY:**discard-row-if(expr(condition))**\}\}
 
-**Note:** We can also use context in a similar way to discard-if, as {{PROPERTY:**discard-row-if(expr(condition),context_tag)**}}.
+**Note:** We can also use context in a similar way to discard-if, as \{\{PROPERTY:**discard-row-if(expr(condition),context_tag)**\}\}.
 
 JSON representation of the input data:
 ```json
@@ -316,13 +318,13 @@ JSON representation of the input data:
 ```
 
 
-![Discard row if with table markers](../images/discard_row_if_table_markers.png)
+![Discard row if with table markers](../images/discard-row-if-table-markers.png)
 
 ### Discard the row in a horizontal table if the condition evaluates to true
 A row in the horizontal table can be discarded only when the condition in the discard-row-if(expr(**condition**)) evaluates
 to true in the provided context. Add this construct along with the template tag to discard the row based on the provided condition.
 
-For Example: {{PROPERTY:**discard-row-if(expr(condition))**}} <br/>
+For Example: \{\{PROPERTY:**discard-row-if(expr(condition))**\}\} \<br/\>
 JSON representation of the input data:
 ```json
 {
@@ -362,4 +364,4 @@ JSON representation of the input data:
 ```
 
 
-![Discard row if with table markers](../images/discard_row_in_horizontal_table.png)
+![Discard row if with table markers](../images/discard-row-in-horizontal-table.png)

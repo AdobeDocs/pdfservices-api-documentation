@@ -1,5 +1,8 @@
 ---
-title: Protect PDF | How Tos | PDF Services API | Adobe PDF Services
+title: Protect PDF | PDF Services API
+description: |
+  Encrypt a PDF with a password and set restrictions on printing, editing, and copying.
+
 ---
 # Protect PDF
 
@@ -9,14 +12,14 @@ Support for AES-128 and AES-256 encryption on PDF files, with granular permissio
 
 ## REST API 
 
-See our public API Reference for [Protect PDF](../../../apis/#tag/Protect-PDF)
+See our public API Reference for [Protect PDF](../../../apis/index.md#tag/Protect-PDF)
 
 ## Protect PDFs with user password
 
 You can password protect PDFs so that only users with a document open
 password can open the file.
 
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" />
 
@@ -334,7 +337,7 @@ the PDF document. Refer to `ContentEncryption` and `Permission` in the
 API docs for a list of supported types of content to encrypt and types
 of document permissions.
 
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" />
 

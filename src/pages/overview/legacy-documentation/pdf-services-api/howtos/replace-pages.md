@@ -1,5 +1,8 @@
 ---
-title: Replace Pages | How Tos | PDF Services API | Adobe PDF Services
+title: Replace Pages | How Tos | PDF Services API
+description: |
+  Replace one or more pages with another page in an existing document.
+
 ---
 # Replace Pages
 
@@ -7,14 +10,14 @@ Replace one or more pages with another page in an existing document
 
 ## Rest API 
 
-See our public API Reference for [Replace Pages](../../../apis/#tag/Combine-PDF)
+See our public API Reference for [Replace Pages](../../../../apis/index.md#tag/Combine-PDF)
 
 ## Replace Pages in PDF
 
 The replace pages operation replaces pages in a PDF with pages from
 other PDF files.
 
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 

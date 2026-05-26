@@ -1,5 +1,9 @@
 ---
 title: Getting Started | PDF Embed API | Adobe PDF Services
+description: |
+  You'll need a client ID to use the Adobe PDF Embed API. To get one,
+  click HERE, and complete the workflow.
+
 ---
 # Getting Started
 
@@ -121,16 +125,16 @@ and select the desired view mode from the dropdown.
 
 **Continuous view mode**
 
-![Continous Mode](../images/continuous_mode.png)
+![Continous Mode](../images/continuous-mode.png)
 
 **Single page view mode**
 
-![Single Page Mode](../images/single_page_mode.png)
+![Single Page Mode](../images/single-page-mode.png)
 
 These view modes can also be set using the configuration variable
 `defaultViewMode`. Set the appropriate value of the variable and pass it
 as a preview configuration to the `previewFile` API. For details, see
-[Menu and tool options](./howtos_ui.md#menu-and-tool-options).
+[Menu and tool options](howtos-ui.md#menu-and-tool-options).
 
 ### Go to a Page
 
@@ -146,7 +150,7 @@ particular page.
 Note that this functionality is available only with Full Window embed
 mode.
 
-![Go To Page Dialog](../images/goto_page.png)
+![Go To Page Dialog](../images/goto-page.png)
 
 ### Zoom in
 

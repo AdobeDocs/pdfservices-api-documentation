@@ -1,5 +1,8 @@
 ---
-title: Combine PDF | How Tos | PDF Services API | Adobe PDF Services
+title: Combine PDF | PDF Services API
+description: |
+  Combine two or more documents into a single PDF file.
+
 ---
 # Combine PDF Files
 
@@ -7,13 +10,13 @@ Combine two or more documents into a single PDF file
 
 ## REST API
 
-See our public API Reference for [Combine PDF](../../../apis/#tag/Combine-PDF)
+See our public API Reference for [Combine PDF](../../../apis/index.md#tag/Combine-PDF)
 
 ## Combine Files
 
 This sample combines up to 20 PDF files into a single PDF file.
 
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" />
 
@@ -346,7 +349,7 @@ This combine sample combines specific pages from up to 20 different PDF
 files into a single PDF file. Optional arguments allow specifying page
 ranges for each file to combine in the output file.
 
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" />
 

@@ -1,5 +1,9 @@
 ---
-title: Region Configuration for APIs | How Tos | PDF Services API | Adobe PDF Services
+title: Service Region Configuration | PDF Services API
+description: |
+  Configure the region used to process documents with Adobe PDF
+  Services APIs.
+
 ---
 
 # Service Region Configuration for PDF Services APIs
@@ -18,7 +22,7 @@ Currently, PDF Services APIs have support for the following regions :
 | `ue1`       | United States (default)| https://pdf-services-ue1.adobe.io |
 | `ew1`       | Europe                 | https://pdf-services-ew1.adobe.io |
 
-<br />
+\<br/\>
 
 For invoking region specific PDF Services API endpoints, hostnames needs to be changed to the following pattern : `https://pdf-services-{regionCode}.adobe.io`.
 
@@ -71,4 +75,4 @@ curl --location --request GET 'https://pdf-services-ew1.adobe.io/operation/{Plac
 '
 ```
 
-For a step-by-step guide to use Adobe PDF services APIs, please [click here](./api-usage.md).
+For a step-by-step guide to use Adobe PDF services APIs, please [click here](api-usage.md).

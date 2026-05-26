@@ -1,5 +1,9 @@
 ---
-title: Linearize PDF | How Tos | PDF Services API | Adobe PDF Services
+title: Linearize PDF | How Tos | PDF Services API
+description: |
+  Optimize PDFs for quick incremental viewing on the web and on mobile,
+  especially in low-bandwidth conditions.
+
 ---
 # Linearize PDFs
 
@@ -7,14 +11,14 @@ Optimize PDFs for quick viewing on the web, especially for mobile clients. Linea
 
 ## Rest API 
 
-See our public API Reference for [Linearize PDF](../../../apis/#tag/Linearize-PDF)
+See our public API Reference for [Linearize PDF](../../../../apis/index.md#tag/Linearize-PDF)
 
 ## Linearize PDF
 
 Linearizing a PDF creates a web-optimized PDF file which supports
 incremental access in network environments.
 
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 

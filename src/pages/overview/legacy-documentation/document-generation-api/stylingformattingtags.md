@@ -1,5 +1,8 @@
 ---
-title: Styling And Formatting | Document Generation API | Adobe PDF Services
+title: Styling and Formatting | Document Generation API
+description: |
+  Apply styling and formatting in the generated output document using the HTML based constructs.
+
 ---
 # Apply styling and formatting
 
@@ -13,11 +16,11 @@ Apply styling and formatting in the generated output document using the HTML bas
 
 - Underline text.
 
-- Create [Hyperlinks](../document-generation-api/hyperlink.md).
+- Create [Hyperlinks](hyperlink.md).
 
-- Create [Inline Images](../document-generation-api/inlineimages.md).
+- Create [Inline Images](inlineimages.md).
 
-- Create [Paragraphs](/overview/document-generation-api/stylingformattingtags/#how-to-create-paragraphs-in-document).
+- Create [Paragraphs](#how-to-create-paragraphs-in-document).
 
 ## How It Works
 
@@ -35,17 +38,17 @@ JSON representation of the input data:
 }
 ```
 
-![Sending text styling constructs, provide styling for the output document in json file. Adobe Document Generation API analyses the json data and inserts styled text in output documents](../images/consolidated_styling_formatting.png)
+![Sending text styling constructs, provide styling for the output document in json file. Adobe Document Generation API analyses the json data and inserts styled text in output documents](../../images/consolidated-styling-formatting.png)
 
 ## Styling and Formatting rules
 
 Styling for the text tag can be provided using the json data through the HTML based constructs. The constructs follows the additional rules as listed below :
 
-- HTML tags supported are <span\>, nested span, <br\> (new line), <b\> (bold), <strong\> (strong), <em\> (emphasis), <i\> (italic), <u\> (underline), <p\> (para).
+- HTML tags supported are `<span>`, nested `<span>`, `<br>` (new line), `<b>` (bold), `<strong>` (strong), `<em>` (emphasis), `<i>` (italic), `<u>` (underline), `<p>` (para).
 
-- Either use Inline custom css inside the span tag to style the data or use basic styling tags such as <b\> (bold), <i\> (italic) and <u\> (underline).
+- Either use Inline custom css inside the `<span>` tag to style the data or use basic styling tags such as `<b>` (bold), `<i>` (italic) and `<u>` (underline).
 
-- Styling precedence works as per the general convention of (local  - > global) scope for nested HTML span.
+- Styling precedence works as per the general convention of (local  - > global) scope for nested HTML `<span>`.
 
 - Any HTML tags which are not supported will be ignored.
 
@@ -68,31 +71,31 @@ JSON representation of the input data:
   "Notes Section": "Has the Board of directors established a basic policy <span style=\"font-size: 14pt;\">regarding legal compliance<span style=\"font-weight: bold; font-style: italic;\"> (hereinafter referred to as the Legal Compliance policy) </span></span><a href=\"http://www.samplewebsite.com/\">Board</a> in accordance to the institution's <span style=\"text-decoration : underline; color:ff6347;\">corporate management policy</span> <span style=\"color: red;\">and disseminated it throughout the institution</span>"
 }
 ```
-![Styling Tags Sample with style for font-size, font-weight and font-style attribute added to span tag](../images/stylingAttributesJsonRep.png)
+![Styling Tags Sample with style for font-size, font-weight and font-style attribute added to span tag](../../images/styling-attributes-json-rep.png)
 
-![Styling Tags output when style for font-size, font-weight and font-style attribute was added to span tag](../images/stylingAttributesOutput.png)
+![Styling Tags output when style for font-size, font-weight and font-style attribute was added to span tag](../../images/styling-attributes-output.png)
 
 ## Tags Supported
 
-- <span\>
+- `<span>`
 
-- <a\> (anchor)
+- `<a>` (anchor)
 
-- <br\> (new line)
+- `<br>` (new line)
 
-- <b\> (bold)
+- `<b>` (bold)
 
-- <strong\> (strong)
+- `<strong>` (strong)
 
-- <em\> (emphasis)
+- `<em>` (emphasis)
 
-- <i\> (italic)
+- `<i>` (italic)
 
-- <u\> (underline)
+- `<u>` (underline)
 
-- <img\> (image)
+- `<img>` (image)
 
-- [<p\> (para)](/overview/document-generation-api/stylingformattingtags/#how-to-create-paragraphs-in-document)
+- [`<p>` (para)](#how-to-create-paragraphs-in-document)
 
 
 JSON representation of the input data:
@@ -102,9 +105,9 @@ JSON representation of the input data:
   "Notes Section": "Has the Board of directors established a basic policy <span style=\"font-size: 14pt;\">regarding legal compliance <b><i>(hereinafter referred to as the Legal Compliance policy) </i></b></span><a href=\"http://www.samplewebsite.com/\">Board</a> in accordance to the institution's <br><u>corporate management policy</u> and disseminated it throughout the institution"
 }
 ```
-![Styling Tags Sample with style for font-size attribute added to span tag](../images/stylingTagsJsonRep.png)
+![Styling Tags Sample with style for font-size attribute added to span tag](../../images/styling-tags-json-rep.png)
 
-![Styling Tags output when style for font-size attribute was added to span tag](../images/stylingTagsOutput.png)
+![Styling Tags output when style for font-size attribute was added to span tag](../../images/styling-tags-output.png)
  
 #### How to create paragraphs in document?
 
@@ -117,8 +120,8 @@ JSON representation of the input data:
     "Input_Data": "Here is the content before starting of paragraph.<p>This is first paragraph dynamically added.</p><p>This content belongs to second paragraph dynamically added.</p>"
 }
 ```
-![Sample_for_P_tag](../images/sample_for_p_tags.png)
-![Sample for P tag_output](../images/sample_for_ptag_formatted.png)
+![Sample_for_P_tag](../../images/sample-for-p-tags.png)
+![Sample for P tag_output](../../images/sample-for-ptag-formatted.png)
 
 
 

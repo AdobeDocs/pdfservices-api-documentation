@@ -1,5 +1,8 @@
 ---
-title: Node.js | Quickstarts | PDF Accessibility Auto-Tag API | Adobe PDF Services
+title: Node.js quickstart | PDF Accessibility Auto-Tag API
+description: |
+  Tag an input PDF with the Accessibility Auto-Tag API using the Node.js SDK.
+
 ---
 
 # Quickstart for PDF Accessibility Auto-Tag API (Node.js)
@@ -16,7 +19,7 @@ To complete this guide, you will need:
 
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
+1) To begin, open your browser to [https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api). If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
 
 ![Sign in](./shot1.png)
 
@@ -28,17 +31,17 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2_spc.png)
+![Project setup](./shot2-spc.png)
 
 6) After your credentials are created, they are automatically downloaded:
 
-![alt](./shot3_spc.png)
+![alt](./shot3-spc.png)
 
 ## Step Two: Setting up the project
 
 1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-Node.jsSamples.zip. If you unzip that archive, you will find a folder of samples and the `pdfservices-api-credentials.json` file.
 
-![alt](./shot5_spc.png)
+![alt](./shot5-spc.png)
 
 2) Take these the `pdfservices-api-credentials.json` and place it in a new directory. Remember that these credential files are important and should be stored safely.
 
@@ -54,7 +57,7 @@ To complete this guide, you will need:
 
 At this point, we've installed the Node.js SDK for Adobe PDF Services API as a dependency for our project and have copied over our credentials files. 
 
-Our application will take a PDF, `Adobe Accesibility Auto-Tag API Sample.pdf` (downloadable from <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>)) and tag its contents. The results will be saved in a given directory `/output/AutotagPDF`.
+Our application will take a PDF, `Adobe Accesibility Auto-Tag API Sample.pdf` (included with the sample project download) and tag its contents. The results will be saved in a given directory `/output/AutotagPDF`.
 
 6) In your editor, open the directory where you previously copied the credentials. Create a new file, `autotag-pdf.js`.
 
@@ -83,7 +86,7 @@ const TAGGED_PDF = OUTPUT_PATH + INPUT_PDF + "-tagged-pdf.pdf";
 const TAGGING_REPORT = OUTPUT_PATH + INPUT_PDF + "-tagging-report.xlsx";
 ```
 
-This defines what our output directory will be and optionally deletes it if it already exists. Then we define what PDF will be tagged. (You can download the source we used <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>.) In a real application, these values would be typically be dynamic.
+This defines what our output directory will be and optionally deletes it if it already exists. Then we define what PDF will be tagged. The source PDF is included with the sample project download. In a real application, these values would be typically be dynamic.
 
 3) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
 - **Windows:**
@@ -142,7 +145,7 @@ autotagPDFOperation.execute(executionContext)
 	.catch(err => console.log(err));
 ```
 
-![Example running at the command line](./shot9_ga.png)
+![Example running at the command line](./shot9-ga.png)
 
 Here's the complete application (`autotag-pdf.js`):
 

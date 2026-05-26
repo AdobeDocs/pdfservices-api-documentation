@@ -1,9 +1,12 @@
 ---
 title: Inline Images | Document Generation API | Adobe PDF Services
+description: |
+  Add inline images via JSON using the img element with HTTPS URLs.
+
 ---
 # Inline Images
 
-Add inline images in the document through json data using the <img\> tag.
+Add inline images in the document through json data using the `<img>` tag.
 
 ## How It Works
 
@@ -16,9 +19,9 @@ JSON representation of the input data:
   "ContentBlock": "sample image - <img src=\"https://documentcloud.adobe.com/dc-docgen-app/assets/dc_icon.png\">"
 }
 ```
-![Representation of sample json data](../images/inlineImageJson.png)
+![Representation of sample json data](../../images/inline-image-json.png)
 
-In the above example, the tag <b>ContentBlock</b> contains an <b><img\></b> html tag. This image will be downloaded and placed in the final document as shown below.
-![Adding inline image in the document through json data using image <img\> tag](../images/inlineImage.png)
+In the above example, the tag **ContentBlock** contains an **img** HTML element. This image will be downloaded and placed in the final document as shown below.
+![Adding inline image in the document through json data using image `<img>` tag](../../images/inline-image.png)
 
-<b>Note:</b> Only https urls are supported.
+**Note:** Only https urls are supported.

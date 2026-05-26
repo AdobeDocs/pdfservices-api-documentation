@@ -1,5 +1,9 @@
 ---
 title: Release Notes | PDF Embed API | Adobe PDF Services
+description: |
+  In addition to general bug fixes and performance enhancements, refer to
+  the changes below for each release.
+
 ---
 # Release Notes
 
@@ -45,7 +49,7 @@ the changes below for each release.
 | Bug fix | Fixed the issue with opening Word based password protected PDF files.                   |
 | Bug fix | Fixed developer console error issue when using Chinese characters in form fields.       |
 | Bug fix | Fixed duplicate annotations issue when returning from full screen mode.                 |
-| New     | Added new previewFile API configuration option([showFullScreenViewButton](../howtos_ui.md/#menu-and-tool-options)) to hide full-screen button in right-hand panel.      |
+| New     | Added new previewFile API configuration option([showFullScreenViewButton](howtos-ui.md#menu-and-tool-options)) to hide full-screen button in right-hand panel.      |
 
 ### January, 2024
 | Change | Description                                                            |
@@ -82,7 +86,7 @@ the changes below for each release.
 
 | Change | Description                                                                                                                                                                   |
 | ------ |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| New    | PDF Embed API is also available on the new <b>acrobatservices.adobe.com</b> subdomain. For sample usage, see the section [sample usage](./gettingstarted.md/#copy-it-run-it).
+| New    | PDF Embed API is also available on the new **acrobatservices.adobe.com** subdomain. For sample usage, see the section [sample usage](./gettingstarted.md#copy-it-run-it).
 | Changed | Enhanced the commenting experience.
 | Bug fix | Fixed issues in the Annotations API to improve the dragging and placing of text comments onto the PDF.
 | Bug fix | Fixed issues to improve the support for interactive PDFs.
@@ -113,50 +117,50 @@ the changes below for each release.
 
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
-| New | Deprecation messaging for PDF Embed API legacy viewer. Refer the [migration guide](./modernviewer.md).
+| New | Deprecation messaging for PDF Embed API legacy viewer. Refer the [migration guide](modernviewer.md).
 | Bug fix | Added fixes for PDF preview issue on latest Safari versions and full screen view in FULL_WINDOW embed mode.
 
 ### September, 2022
 
 | Change | Description                                                                                                                                                                     |
 | ------ |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| New    | PDF Embed API is also available on the new <b>documentservices.adobe.com</b> subdomain. For sample usage, see the section  [sample usage](./gettingstarted.md/#copy-it-run-it). |
+| New    | PDF Embed API is also available on the new **documentservices.adobe.com** subdomain. For sample usage, see the section [sample usage](./gettingstarted.md#copy-it-run-it). |
 
 ### August, 2022
 
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
-| New    | Adobe has launched a modern PDF viewer across all embed modes to render PDFs. For more details, see the section [Legacy to Modern viewer](../modernviewer/). |
+| New    | Adobe has launched a modern PDF viewer across all embed modes to render PDFs. For more details, see the section [Legacy to Modern viewer](modernviewer.md). |
 
 ### May, 2022
 
 | Change | Description                                                            |
 | ------ | ---------------------------------------------------------------------- |
-| New    | Website developers can now integrate Google Analytics with PDF Embed API with only a few steps and collect PDF analytics. For more details, see the section [Google Analytics](./howtodata.md#google-analytics).                         |
+| New    | Website developers can now integrate Google Analytics with PDF Embed API with only a few steps and collect PDF analytics. For more details, see the section [Google Analytics](howtodata.md#google-analytics).                         |
 
 ### August, 2021 (Patch Release)
 
 | Change  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Changed | PDF Embed API now no longer uses Adobe Analytics to gather anonymous usage data for measuring performance. For more details, see the section [Analytics](../#analytics) |
+| Changed | PDF Embed API now no longer uses Adobe Analytics to gather anonymous usage data for measuring performance. For more details, see the section [Analytics](../index.md#analytics) |
 
 ### August, 2021
 
 | Change  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| New | PDF Embed API will end support for Internet Explorer 11 and Microsoft Edge Legacy after September, 2021. A warning message will be displayed when the PDF is rendered on these browsers till the end of September, 2021, notifying users to use any other supported browser. Beginning October 1, 2021, PDF rendering will stop working on these browsers. To know about the list of supported browsers, see the section [Supported browsers](../#supported-browsers)|
+| New | PDF Embed API will end support for Internet Explorer 11 and Microsoft Edge Legacy after September, 2021. A warning message will be displayed when the PDF is rendered on these browsers till the end of September, 2021, notifying users to use any other supported browser. Beginning October 1, 2021, PDF rendering will stop working on these browsers. To know about the list of supported browsers, see the section [Supported browsers](../index.md#supported-browsers)|
 
 ### July, 2021
 
 | Change  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Changed | Previously, the PDF always used to take focus on rendering, irrespective of the embed mode. Now the default behaviour has been changed and the PDF will take focus only when rendered in full window and lightbox embed modes. Website developers can override this default behaviour using the preview configuration ``focusOnRendering``. For more details, see the section [Focus on PDF rendering](./howtos.md#focus-on-pdf-rendering).                 |
+| Changed | Previously, the PDF always used to take focus on rendering, irrespective of the embed mode. Now the default behaviour has been changed and the PDF will take focus only when rendered in full window and lightbox embed modes. Website developers can override this default behaviour using the preview configuration ``focusOnRendering``. For more details, see the section [Focus on PDF rendering](howtos.md#focus-on-pdf-rendering).                 |
 
 ### June, 2021
 
 | Change  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Changed | The default behaviour of saving user preferences in the local storage (such as updated annotation color) has been deprecated for the commenting feature in full window embed mode. Website developers can still save these user preferences elsewhere using the existing user setting callbacks provided by PDF Embed API. For more details, see the section [User settings](howtos_ui.md#user-settings). |
+| Changed | The default behaviour of saving user preferences in the local storage (such as updated annotation color) has been deprecated for the commenting feature in full window embed mode. Website developers can still save these user preferences elsewhere using the existing user setting callbacks provided by PDF Embed API. For more details, see the section [User settings](howtos-ui.md#user-settings). |
 
 ### May, 2021
 

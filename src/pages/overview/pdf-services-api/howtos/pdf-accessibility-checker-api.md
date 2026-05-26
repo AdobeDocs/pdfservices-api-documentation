@@ -1,5 +1,8 @@
 ---
-title: PDF Accessibility Checker | How Tos | PDF Services API | Adobe PDF Services
+title: Accessibility Checker | PDF Services API
+description: |
+  Verify if PDF files meet the machine-verifiable requirements of PDF/UA and WCAG.
+
 ---
 # PDF Accessibility Checker
 
@@ -21,7 +24,7 @@ This parameter specifies the ending page for the accessibility check. If "pageEn
 
 ## REST API
 
-See our public API Reference for the [PDF Accessibility Checker API](../../../apis/#tag/PDF-Accessibility-Checker).
+See our public API Reference for the [PDF Accessibility Checker API](../../../apis/index.md#tag/PDF-Accessibility-Checker).
 
 ## Check accessibility for input PDF
 

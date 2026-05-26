@@ -1,5 +1,8 @@
 ---
 title: Fragments | Document Generation API | Adobe PDF Services
+description: |
+  Reusable composition tags that combine text tags or other fragments for use across templates.
+
 ---
 # Fragments
 
@@ -80,19 +83,19 @@ Below are the sample input and output documents snapshots describing the use of 
 
 Here the `addressDetails` fragment is used in the Word document template file.
 
-![Address Input fragment](../images/address_input.png)
+![Address Input fragment](../../images/address-input.png)
 
 The output document generated will look like:
 
-![Output of address fragment in document](../images/address_output.png)
+![Output of address fragment in document](../../images/address-output.png)
 
 Similarly,  the `fullname` fragment can be used like this in the word document template file.
 
-![Name Input fragment](../images/name_input.png)
+![Name Input fragment](../../images/name-input.png)
 
 And the output document generated will look like:
 
-![Output of name fragment in document](../images/name_output.png)
+![Output of name fragment in document](../../images/name-output.png)
 
 ## Other supported constructs
 
@@ -122,7 +125,7 @@ The format of `localityDetails` for India is
 `city` `state` `zip`,
 `country`.
 
-![Output of fragment with condition in document](../images/fragments-condition.png)
+![Output of fragment with condition in document](../../images/fragments-condition.png)
 
 
 ### Optional
@@ -142,7 +145,7 @@ JSON representation of the input data:
 
 In the above fragment, there is an optional property used with `middlename` tag. Since the optional property is set to true, the `middlename` tag will be replaced by an empty string if it does not exist.
 
-![Output of fragment with optional value in document](../images/fragments-optional.png)
+![Output of fragment with optional value in document](../../images/fragments-optional.png)
 
 ### Default
 A *default value* can be specified for a tag inside the fragment. 
@@ -161,7 +164,7 @@ JSON representation of the input data:
 
 In the above fragment, if the `organisation` tag does not exist either in input or fragment json data, then default value (i.e. "Org") will be used.
 
-![Output of fragment with default value in document](../images/fragments-default.png)
+![Output of fragment with default value in document](../../images/fragments-default.png)
 
 ### Prefix
 A *prefix value* can be specified for a tag inside the fragment.
@@ -180,11 +183,10 @@ JSON representation of the input data:
 ```
 In the above fragment, `doctor` tag further contains `doctorName` tag, to which a prefix value is specified. So, the prefix value (i.e. "Dr. ") will be added before the value of the `doctorName` tag in the output.
 
-![Output of fragment with prefix in document](../images/fragments-prefix.png)
+![Output of fragment with prefix in document](../../images/fragments-prefix.png)
 
 ## Limitations
 
-<ul>
-<br />
-<li>The Expressions and Jsonata functions are not supported inside the fragments.</li>
-</ul>
+\<br/\>
+
+- The Expressions and Jsonata functions are not supported inside the fragments.

@@ -1,5 +1,8 @@
 ---
-title: Reorder Pages | How Tos | PDF Services API | Adobe PDF Services
+title: Reorder Pages | PDF Services API
+description: |
+  Reorder the pages of a PDF file to reorganize.
+
 ---
 # Reorder Pages
 
@@ -7,14 +10,14 @@ Reorder the pages of a PDF file to reorganize.
 
 ## REST API
 
-See our public API Reference for [Reorder Pages](../../../apis/#tag/Combine-PDF)
+See our public API Reference for [Reorder Pages](../../../apis/index.md#tag/Combine-PDF)
 
 ## Reorder Pages in PDF
 
 The reorder pages operation moves pages from one location to another in
 a PDF file.
 
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 

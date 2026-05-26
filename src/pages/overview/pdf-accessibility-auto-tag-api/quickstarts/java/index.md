@@ -1,5 +1,8 @@
 ---
-title: Java | Quickstarts | PDF Accessibility Auto-Tag API | Adobe PDF Services
+title: Java quickstart | PDF Accessibility Auto-Tag API
+description: |
+  Tag an input PDF with the Accessibility Auto-Tag API using the Java SDK.
+
 ---
 
 # Quickstart for PDF Accessibility Auto-Tag API (Java)
@@ -17,7 +20,7 @@ To complete this guide, you will need:
 
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
+1) To begin, open your browser to [https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api). If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
 
 ![Sign in](./shot1.png)
 
@@ -29,17 +32,17 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2_spc.png)
+![Project setup](./shot2-spc.png)
 
 6) After your credentials are created, they are automatically  downloaded:
 
-![alt](./shot3_spc.png)
+![alt](./shot3-spc.png)
 
 ## Step Two: Setting up the project
 
 1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-JavaSamples.zip. If you unzip that archive, you will find a folder of samples and the `pdfservices-api-credentials.json` file.
 
-![alt](./shot5_spc.png)
+![alt](./shot5-spc.png)
 
 2) Take `pdfservices-api-credentials.json` file and place it in a new directory.
 
@@ -113,7 +116,7 @@ To complete this guide, you will need:
 
 This file will define what dependencies we need and how the application will be built. 
 
-Our application will take a PDF, `Adobe_Accessibility_Auto_Tag_API_Sample.pdf` (downloadable from <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>) and tag its contents. The results will be saved in the directory `/output`.
+Our application will take a PDF, `Adobe_Accessibility_Auto_Tag_API_Sample.pdf` (included with the sample project download) and tag its contents. The results will be saved in the directory `/output`.
 
 4) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `AutotagPDF.java`. 
 
@@ -189,7 +192,7 @@ PDFServices pdfServices = new PDFServices(credentials);
 Asset asset = pdfServices.upload(inputStream, PDFServicesMediaType.PDF.getMediaType());
 ```
 
-We define input stream for the PDF that will be tagged. (You can download the source we used <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>.) In a real application, these values would be typically be dynamic.
+We define input stream for the PDF that will be tagged. (Use the sample PDF included with the sample project download.) In a real application, these values would be typically be dynamic.
 Then we upload the content of input stream and specify the input media type as PDF.
 
 
@@ -230,7 +233,7 @@ IOUtils.copy(streamAsset.getInputStream(), outputStream);
 IOUtils.copy(streamAssetReport.getInputStream(), outputStreamReport);
 ```
 
-![Example running in the command line](./shot9_ga.png)
+![Example running in the command line](./shot9-ga.png)
 
 Here's the complete application (`src/main/java/AutotagPDF.java`):
 

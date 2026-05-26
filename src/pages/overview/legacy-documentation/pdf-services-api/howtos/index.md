@@ -1,9 +1,12 @@
 ---
-title: How Tos | PDF Services API | Adobe PDF Services
+title: How Tos | PDF Services API
+description: |
+  Samples and documentation that walk through PDF Services SDK actions
+  with code examples.
+
 ---
 # How Tos
 
-<p>
 The samples and documentation here should get you quickly up and running
 with the PDF Services SDK. These code examples illustrate how to perform
 PDF actions using the SDK, including:
@@ -23,8 +26,6 @@ PDF actions using the SDK, including:
   and figure elements along with Character Bounding Boxes
 - Get the properties of a PDF file like page count, PDF version, file size, compliance levels, font info, permissions and more
 - Improving the accessibility of PDFs (Available under Early Access Program)
-
-</p>
 
 ## Service region configuration
 

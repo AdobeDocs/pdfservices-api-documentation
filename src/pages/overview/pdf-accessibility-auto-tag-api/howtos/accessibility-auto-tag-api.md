@@ -1,5 +1,9 @@
 ---
-title: Accessibility API | How Tos | PDF Accessibility Auto-Tag API | Adobe PDF Services
+title: Auto-Tag API parameters | Adobe PDF Services
+description: |
+  Output format, limitations, error codes, and samples for PDF Accessibility
+  Auto-Tag API.
+
 ---
 # PDF Accessibility Auto-Tag API
 
@@ -12,7 +16,7 @@ The output of the PDF Accessibility Auto-Tag API contains the following:
 
 ## API limitations
 
-<br />
+\<br/\>
 
 - **File size:** Files up to a maximum of 100 MB are supported.
 - **Number of Pages:** Non-scanned PDFs up to 200 pages and scanned PDFs up to 100 pages are supported, however limits may be lower for files with a large number of tables.
@@ -55,13 +59,13 @@ The output of the PDF Accessibility Auto-Tag API contains the following:
 
 ## REST API 
 
-See our public API Reference for [PDF Accessibility Auto-Tag API](../../../apis/#tag/PDF-Accessibility-Auto-Tag).
+See our public API Reference for [PDF Accessibility Auto-Tag API](../../../apis/index.md#tag/PDF-Accessibility-Auto-Tag).
 
 ## Generate tagged PDF from a PDF
 
 The sample below generates a tagged PDF from a PDF.
 
-Please refer to the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer to the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
@@ -343,8 +347,8 @@ The sample below generates a tagged PDF by setting options through command line 
 Here is a sample list of command line arguments and their description:
 - --input < input file path >
 - --output < output file path >
-- --report { If this argument is present then the output will be generated with the report }
-- --shift_headings { If this argument is present then the headings will be shifted in the output PDF file }
+- --report \{ If this argument is present then the output will be generated with the report \}
+- --shift_headings \{ If this argument is present then the headings will be shifted in the output PDF file \}
 
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Python" /> 

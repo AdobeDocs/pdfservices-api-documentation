@@ -1,5 +1,11 @@
 ---
 title: Modern Viewer | PDF Embed API | Adobe PDF Services
+description: |
+  Adobe’s new modern PDF viewer is a reimagining of the look and feel of PDF viewing
+  on web, desktop, mobile, and PDF integrations. It introduces a new framework and
+  workflows that better map to user mental models and enables a consistent user
+  experience whether you are viewing a PDF in Adobe Acrobat or embedded on your website.
+
 ---
 # Legacy to Modern Viewer
 
@@ -16,7 +22,7 @@ As of April 2023, the legacy viewer is no longer available. All requests to it w
 
 ### Full window embed mode in legacy viewer
 
-![Full window embed mode in legacy viewer](../images/fullwindow_legacy.png)
+![Full window embed mode in legacy viewer](../images/fullwindow-legacy.png)
 
 ### Full window embed mode in modern viewer
 
@@ -37,7 +43,7 @@ As of April 2023, the legacy viewer is no longer available. All requests to it w
 * The left hand panel is deprecated and page thumbnails, bookmarks, page navigation, 
   view mode and zoom options have moved to the right-hand panel.
 
-<br/>
+\<br/\>
 
 ![Full window embed mode in legacy viewer](../images/fullwindow1.png)
 
@@ -45,7 +51,7 @@ As of April 2023, the legacy viewer is no longer available. All requests to it w
 
 ### Sized container embed mode in legacy viewer
 
-![Sized container embed mode in legacy viewer](../images/sized_legacy.png)
+![Sized container embed mode in legacy viewer](../images/sized-legacy.png)
 
 ### Sized container embed mode in modern viewer
 
@@ -59,33 +65,33 @@ As of April 2023, the legacy viewer is no longer available. All requests to it w
 * The full screen view contains additional options to display page thumbnails, 
   bookmarks and page navigation options.
 
-<br/>
+\<br/\>
 
 *Sized container embed mode*
 
-![Sized container embed mode in modern viewer](../images/sized_new.png)
+![Sized container embed mode in modern viewer](../images/sized-new.png)
 
-<br/>
+\<br/\>
 
 *Sized container in full screen mode*
 
-![Sized container embed mode in modern viewer](../images/sized_full.png)
+![Sized container embed mode in modern viewer](../images/sized-full.png)
 
 ## In-line embed mode
 
 ### In-line embed mode in legacy viewer
 
-![In-line embed mode in legacy viewer](../images/inline_legacy.png)
+![In-line embed mode in legacy viewer](../images/inline-legacy.png)
 
 ### In-line embed mode in modern viewer
 
-![In-line embed mode in modern viewer](../images/inline_search.png)
+![In-line embed mode in modern viewer](../images/inline-search.png)
 
 ## Lightbox embed mode
 
 ### Lightbox embed mode in legacy viewer
 
-![Lightbox embed mode in legacy viewer](../images/lightbox_legacy.png)
+![Lightbox embed mode in legacy viewer](../images/lightbox-legacy.png)
 
 ### Lightbox embed mode in modern viewer
 
@@ -96,7 +102,7 @@ As of April 2023, the legacy viewer is no longer available. All requests to it w
   view mode and zoom options have moved to the right-hand panel.
 * The right-hand panel also contains page thumbnails and bookmarks.
 
-<br/>
+\<br/\>
 
 ![Lightbox embed mode in modern viewer](../images/lightboxscreen.png)
 
@@ -149,4 +155,4 @@ with significant improvement in user experience.
 ```
 
 For more details about the configurations supported in modern PDF viewer,
-see the section [Menu and tool options](../howtos_ui.md/#menu-and-tool-options).
+see the section [Menu and tool options](howtos-ui.md#menu-and-tool-options).

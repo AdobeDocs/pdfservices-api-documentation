@@ -1,5 +1,8 @@
 ---
-title: Export PDF | How Tos | PDF Services API | Adobe PDF Services
+title: Export PDF | How Tos | PDF Services API
+description: |
+  Export a source PDF file into DOC, DOCX, JPEG, PNG, PPTX, RTF, or XLSX.
+
 ---
 # Export PDF
 
@@ -8,8 +11,8 @@ Export a source PDF file into doc, docx, jpeg, png, pptx, rtf, xlsx.
 ## Rest API 
 
 See our public API Reference for : 
-- [Export PDF to Office format or text files](../../../apis/#tag/Export-PDF)
-- [Export PDF to Images](../../../apis/#tag/PDF-To-Images)
+- [Export PDF to Office format or text files](../../../../apis/index.md#tag/Export-PDF)
+- [Export PDF to Images](../../../../apis/index.md#tag/PDF-To-Images)
 
 ## Export a PDF
 
@@ -20,7 +23,7 @@ such as:
 -   Microsoft Office file formats
 -   Text files
 
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
@@ -193,7 +196,7 @@ such as:
 
 OCR processing is also performed on the input PDF file to extract text from images in the document.
 
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
@@ -379,7 +382,7 @@ Each image file name ends with "\_\<unpadded\_page\_index\_number\>". For exampl
 pages will generate 15 image files. The first file's name ends with
 "\_1" and the last file's name ends with "\_15".
 
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
@@ -563,7 +566,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/pdftoima
 
 The sample below converts a PDF file to one or more jpeg or png images. The resulting file is a ZIP archive containing one image per page of the source PDF file.
 
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 

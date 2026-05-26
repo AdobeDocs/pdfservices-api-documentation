@@ -1,5 +1,8 @@
 ---
-title: Node.js | Quickstarts | PDF Electronic Seal API | Adobe PDF Services
+title: Node.js quickstart | PDF Electronic Seal API
+description: |
+  Apply an electronic seal to an invoice PDF using the PDF Electronic Seal API Node.js SDK.
+
 ---
 
 # Quickstart for Adobe PDF Electronic Seal API (Node.js)
@@ -16,7 +19,7 @@ To complete this guide, you will need:
 
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommended and not a federated ID.
+1) To begin, open your browser to [https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-services-api). If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommended and not a federated ID.
 
 ![Sign in](./shot1.png)
 
@@ -28,17 +31,17 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2_spc.png)
+![Project setup](./shot2-spc.png)
 
 6) After your credentials are created, they are automatically downloaded:
 
-![alt](./shot3_spc.png)
+![alt](./shot3-spc.png)
 
 ## Step Two: Setting up the project
 
 1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-Node.jsSamples.zip. If you unzip that archive, you will find a folder of samples and the `pdfservices-api-credentials.json` file.
 
-![alt](./shot5_spc.png)
+![alt](./shot5-spc.png)
 
 2) Take the `pdfservices-api-credentials.json` and place it in a new directory. Remember that these credential files are important and should be stored safely.
 
@@ -52,7 +55,7 @@ To complete this guide, you will need:
 
 At this point, we've installed the Node.js SDK for Adobe PDF Services API as a dependency for our project and have copied over our credentials files. 
 
-Our application will take an Invoice PDF document, `sampleInvoice.pdf` (downloadable from <a href="./sampleInvoice.pdf" target="_blank">here</a>), and will use the sealing options with default appearance options to apply electronic seal over the PDF document by invoking Acrobat Services API and generate an electronically sealed PDF.
+Our application will take an Invoice PDF document, `sampleInvoice.pdf` (included with the sample project download), and will use the sealing options with default appearance options to apply electronic seal over the PDF document by invoking Acrobat Services API and generate an electronically sealed PDF.
 
 6) In your editor, open the directory where you previously copied the credentials. Create a new file, `electronic-seal.js`.
 

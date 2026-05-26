@@ -1,5 +1,9 @@
 ---
-title: Compress PDF | How Tos | PDF Services API | Adobe PDF Services
+title: Compress PDF | How Tos | PDF Services API
+description: |
+  Reduce the size of PDF files for lower bandwidth viewing, downloading,
+  and sharing.
+
 ---
 # Compress PDFs
 
@@ -9,14 +13,14 @@ Support for multiple compression levels to retain the quality of images and grap
 
 ## Rest API
 
-See our public API Reference for [Compress PDF](../../../apis/#tag/Compress-PDF)
+See our public API Reference for [Compress PDF](../../../../apis/index.md#tag/Compress-PDF)
 
 ## Compress PDFs
 
 Compress PDFs to reduce the file size prior to performing workflow
 operations that use bandwidth or memory.
 
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" />
 
@@ -183,7 +187,7 @@ compression level, prior to performing workflow operations that use
 bandwidth or memory. Refer to `CompressionLevel` in the API docs for a
 list of supported compression levels.
 
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 

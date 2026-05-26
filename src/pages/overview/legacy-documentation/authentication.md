@@ -1,5 +1,9 @@
 ---
 title: Authentication | Adobe PDF Services
+description: |
+  Get an Adobe-provided credential, generate a JWT, and retrieve an
+  access token to authenticate PDF Services API calls.
+
 ---
 # Authentication
 

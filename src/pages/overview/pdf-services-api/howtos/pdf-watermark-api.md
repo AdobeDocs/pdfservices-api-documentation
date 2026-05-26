@@ -1,5 +1,8 @@
 ---
-title: PDF Watermark | How Tos | PDF Services API | Adobe PDF Services
+title: PDF Watermark | PDF Services API
+description: |
+  Apply watermarks on specified pages of a PDF document using a source watermark file.
+
 ---
 
 # PDF Watermark
@@ -7,7 +10,7 @@ title: PDF Watermark | How Tos | PDF Services API | Adobe PDF Services
 A watermark in a document is usually semi-transparent or faded text, a logo, or a pattern placed in the background or foreground of the page for security, authenticity, and branding.
 PDF Watermark API is a cloud based solution to apply watermark on specified pages of PDF document using a source watermark PDF. The first page of the source watermark PDF will be added as a watermark in the input PDF document. If a page range is not specified, the watermark will be applied on all pages of the source document.
 
-![PDF Watermark](../watermark_overview.png)
+![PDF Watermark](../watermark-overview.png)
 
 ## Input Documents : **Required**
 
@@ -43,13 +46,13 @@ The page ranges are specified as an array of objects whose length cannot exceed 
 
 ## REST API
 
-See our public API Reference for [PDF Watermark API](../../../apis/#tag/PDF-Watermark).
+See our public API Reference for [PDF Watermark API](../../../apis/index.md#tag/PDF-Watermark).
 
 ## Apply Watermark on Input PDF
 
 The sample below performs watermark operation applying watermark in foreground on all pages of a given PDF.
 
-Please refer to the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer to the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" />
 
@@ -354,7 +357,7 @@ curl --location --request POST 'https://pdf-services.adobe.io/operation/addwater
 
 The sample below performs watermark operation applying watermark in foreground on specified pages of a given PDF.
 
-Please refer to the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer to the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" />
 

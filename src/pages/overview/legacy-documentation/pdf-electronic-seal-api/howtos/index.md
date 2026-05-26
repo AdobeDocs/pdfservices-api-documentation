@@ -1,11 +1,12 @@
 ---
-title: How Tos | PDF Electronic Seal API | Adobe PDF Services
+title: How Tos | PDF Electronic Seal API
+description: |
+  Samples and documentation for PDF Electronic Seal with the PDFServices SDK.
+
 ---
 # How Tos
 
-<p>
-
-The [samples and documentation](electronic-seal-api.md/#apply-electronic-seal-with-default-appearance-on-pdf) should get you quickly up and running with PDF Electronic Seal capabilities in the [PDFServices SDK](../../pdf-services-api/index.md) including:
+The [samples and documentation](electronic-seal-api.md#apply-electronic-seal-with-default-appearance-on-pdf) should get you quickly up and running with PDF Electronic Seal capabilities in the [PDFServices SDK](../../pdf-services-api/index.md) including:
 
 - Applying Electronic Seal on PDFs
 
@@ -19,8 +20,6 @@ For code examples illustrating other PDF actions including those below, see the 
 - Protect PDFs with password(s) and Remove password protection from PDFs
 - Common page operations, including inserting, replacing, deleting, reordering, and rotating
 - Splitting PDFs into multiple files
-
-</p>
 
 ## Custom timeout configuration
 

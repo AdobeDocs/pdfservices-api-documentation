@@ -1,5 +1,8 @@
 ---
-title: .NET | Quickstarts | PDF Accessibility Auto-Tag API | Adobe PDF Services
+title: .NET quickstart | PDF Accessibility Auto-Tag API
+description: |
+  Tag an input PDF with the Accessibility Auto-Tag API using the .NET SDK.
+
 ---
 
 # Quickstart for PDF Accessibility Auto-Tag API (.NET)
@@ -18,7 +21,7 @@ To complete this guide, you will need:
   
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
+1) To begin, open your browser to [https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api). If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
 
 ![Sign in](./shot1.png)
 
@@ -30,17 +33,17 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2_spc.png)
+![Project setup](./shot2-spc.png)
 
 6) After your credentials are created, they are automatically  downloaded:
 
-![alt](./shot3_spc.png)
+![alt](./shot3-spc.png)
 
 ## Step Two: Setting up the project
 
 1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-.NetSamples.zip. If you unzip that archive, you will find a folder of samples and the `pdfservices-api-credentials.json` file.
 
-![alt](./shot5_spc.png)
+![alt](./shot5-spc.png)
 
 2) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
 
@@ -72,7 +75,7 @@ To complete this guide, you will need:
 ```
 This file will define what dependencies we need and how the application will be built.
 
-Our application will take a PDF, `Adobe Accesibility Auto-Tag API Sample.pdf` (downloadable from <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>) and tag its contents. The results will be saved in a given directory `/output`.
+Our application will take a PDF, `Adobe Accesibility Auto-Tag API Sample.pdf` (included with the sample project download) and tag its contents. The results will be saved in a given directory `/output`.
 
 4) In your editor, open the directory where you previously copied the credentials and created the `csproj` file. Create a new file, `Program.cs`. 
 
@@ -140,7 +143,7 @@ PDFServices pdfServices = new PDFServices(credentials);
 IAsset asset = pdfServices.Upload(inputStream, PDFServicesMediaType.PDF.GetMIMETypeValue());
 ```
 
-We define input stream for the PDF that will be tagged. (You can download the source we used <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>.) In a real application, these values would be typically be dynamic.
+We define input stream for the PDF that will be tagged. (Use the sample PDF included with the sample project download.) In a real application, these values would be typically be dynamic.
 Then we upload the content of input stream and specify the input media type as PDF.
 
 6) Now, let's create the job and parameters:
@@ -187,7 +190,7 @@ outputStreamReport.Close();
 
 This code runs the Auto-Tagging process and then stores the result files in the provided output directory.
 
-![Example running in the command line](./shot9_ga.png)
+![Example running in the command line](./shot9-ga.png)
 
 Here's the complete application (`Program.cs`):
 

@@ -1,5 +1,6 @@
 ---
-title: DC Services Licensing | How Tos | PDF Services API | Adobe PDF Services
+title: PDF Services API licensing and Document Transactions
+description: How Document Transactions are counted per API call and output, with page limits and examples. Covers paid programs, metrics, and free tier.
 ---
 # PDF Services API Licensing
 
@@ -13,7 +14,7 @@ provided along with examples for clarity.
 
 Paid credentials enable a greater processing quota and require entering
 into a separate written agreement. To learn more, please see our
-[pricing page](/document-services/pricing/#main)
+[pricing page](https://developer.adobe.com/document-services/pricing/main/)
 for purchase options.
 
 Document Transactions for the Operations below resulting in a Document
@@ -22,7 +23,13 @@ will be counted with the following page limits:
 <InlineAlert slots="text"/>
 
 Document Transactions for the Operations below resulting in a Document
-will be counted with the following page limits:<ul><li>Extract and PDF To Markdown Operations: 1 Document Transaction for up to 5 pages</li><li>Accessibility Auto-Tag Operation: 10 Document Transactions per page</li><li>Electronic Seal Operation: 10 Document Transactions per PDF</li><li>All other Operations: 1 Document Transaction for up to 50 pages</li></ul>
+will be counted with the following page limits:
+
+- Extract and PDF To Markdown Operations: 1 Document Transaction for up to 5 pages
+- Accessibility Auto-Tag Operation: 10 Document Transactions per page
+- Electronic Seal Operation: 10 Document Transactions per PDF
+- All other Operations: 1 Document Transaction for up to 50 pages
+
 
 ### Metrics
 
@@ -124,4 +131,4 @@ and running with the easy-to-use APIs with little investment.
 
 Paid credentials enable a greater processing quota and require entering
 into a separate written agreement. To learn more, please see our
-[pricing page](/document-services/pricing/#main) for purchase options.
+[pricing page](https://developer.adobe.com/document-services/pricing/main/) for purchase options.

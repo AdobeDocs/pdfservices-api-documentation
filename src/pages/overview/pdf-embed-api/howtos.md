@@ -1,5 +1,10 @@
 ---
 title: How Tos | PDF Embed API | Adobe PDF Services
+description: |
+  The samples and documentation provide an easy way to jump-start
+  development. The sections below describe how to embed a customized PDF
+  viewer in a web page.
+
 ---
 # PDF Embed API basics
 
@@ -7,15 +12,13 @@ The samples and documentation provide an easy way to jump-start
 development. The sections below describe how to embed a customized PDF
 viewer in a web page.
 
-<!-- ![PDF Embed API Workflow : User opens your web application which has a script tag containing the PDF Embed API by source URL. PDF Embed API is initialized by passing the API Key, The PDF will now be embedded in your web app and displayed to the user](../images/workflow.png) -->
-
 ## Embed a PDF viewer
 
 Once you've received your client ID, embedding the PDF viewer
 involves:
 
 1.  Adding a `<script>` tag to load the PDF Embed API by source url:
-    <https://acrobatservices.adobe.com/view-sdk/viewer.js> (**line 6**).
+    [https://acrobatservices.adobe.com/view-sdk/viewer.js](https://acrobatservices.adobe.com/view-sdk/viewer.js) (**line 6**).
 2.  Setting up the rendering area: use a div tag with an ID of
     `adobe-dc-view` (**line 9**).
 3.  Initializing the PDF Embed API by passing client ID, and call
@@ -31,12 +34,12 @@ two fields:
 -   **metaData**: File metadata information.
 
 This table lists down the various options which can be passed in `metaData`.
-<br/>
+\<br/\>
 
 | Variable | Default | Description |
 | -------- | ------- | ----------- |
 | fileName | None | The name of the PDF to be rendered. An example of `fileName` is "Bodea Brochure.pdf". Note that `fileName` is mandatory. |
-| id | None | Pass the PDF ID when annotation APIs are enabled to uniquely identify the PDF. For more details, see [Annotations API overview](./howtos_comments/#annotations-api-overview). |
+| id | None | Pass the PDF ID when annotation APIs are enabled to uniquely identify the PDF. For more details, see [Annotations API overview](howtos-comments.md#annotations-api-overview). |
 | hasReadOnlyAccess | false | Set this flag to *true* if you want to render the PDF in read-only mode. Commenting is not allowed and existing PDF comments are displayed as read only. |
 
 That's it! View the page in a browser to see your fully functional PDF
@@ -134,8 +137,8 @@ to download the file from the provided location in order to render it.
 To avoid this situation, you can choose one of two methods:
 
 -   Locate your webpage and file location URL on the same domain.
-    Example: webpage: <https://example.com/viewer/test.html>; PDF
-    location: <https://example.com/resources/abc.pdf>)
+    Example: webpage: [Link](https://example.com/viewer/test.html); PDF
+    location: [Link](https://example.com/resources/abc.pdf))
 -   Enable CORS headers on the PDF resource to allow access from your
     webpage domain.
 
@@ -258,11 +261,11 @@ To use this mode:
 -   **Form-filling**: Control form editing capability by simply toggling `enableFormFilling` on and off as needed.
     For more details, see the section [Forms handling](#forms-handling).
 -   **Annotation APIs**: Enable annotation APIs to be able to access PDF annotations programmatically. 
-    For more details, see the section [Annotations API overview](../howtos_comments/#annotations-api-overview).
+    For more details, see the section [Annotations API overview](howtos-comments.md#annotations-api-overview).
 
 <InlineAlert slots="text"/>
 
-For the complete list of supported preview configurations, see the section [Menu and tool options](../howtos_ui/#menu-and-tool-options).
+For the complete list of supported preview configurations, see the section [Menu and tool options](howtos-ui.md#menu-and-tool-options).
 
 
 ```html
@@ -371,7 +374,7 @@ To use this mode:
 </script>
 ```
 
-![Sized Container](../images/sized_new.png)
+![Sized Container](../images/sized-new.png)
 
 #### Toggling full screen
 
@@ -383,11 +386,11 @@ In mobile browsers, the user will be prompted to view the PDF in full screen mod
 
 *Full screen button in sized container embed mode*
 
-![Sized Container full screen button](../images/sized_fullscreen.png)
+![Sized Container full screen button](../images/sized-fullscreen.png)
 
 *Exit button in sized container full screen mode*
 
-![Sized Container full screen view](../images/sized_exit.png)
+![Sized Container full screen view](../images/sized-exit.png)
 
 
 ### In-Line embed mode
@@ -424,7 +427,7 @@ To use this mode:
 </script>
 ```
 
-![Inline Search](../images/inline_search.png)
+![Inline Search](../images/inline-search.png)
 
 ### Lightbox embed mode
 
@@ -704,7 +707,7 @@ mobile browsers, it will automatically fall back to the normal behaviour
     annotation tools and APIs, print and download PDF, document search,
     etc.) will be available once the PDF is fully downloaded and website
     developers will be notified through the PDF\_VIEWER\_READY event. To
-    know more about this event, see the section [Basic events](./howtodata.md#basic-events) under
+    know more about this event, see the section [Basic events](howtodata.md#basic-events) under
     Analytics.
 
 ### Enabling byte-streaming on a server

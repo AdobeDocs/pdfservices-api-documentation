@@ -1,5 +1,7 @@
 ---
 title: Charts | Document Generation API | Adobe PDF Services
+description: "To dynamically insert a chart in the document, add the chart as placeholder and edit the chart and excel data."
+
 ---
 # Charts
 
@@ -23,7 +25,7 @@ Steps to add chart in the document:
 - An **Excel spreadsheet** will open with sample data. Replace this data with your own tags.
 - **Close the Excel** window once you’ve entered your data. The chart in Word will update automatically.
 
-![Edit chart data in Excel](../images/insert_chart_in_document.png)
+![Edit chart data in Excel](../images/insert-chart-in-document.png)
 
 <InlineAlert slots="text"/>
 
@@ -35,11 +37,11 @@ Include only the chart data in the Excel sheet, omitting any additional text.
 
 - Add the line chart as a placeholder in the document template.
 
-![Placeholder for line chart](../images/line_chart_placeholder.png)
+![Placeholder for line chart](../images/line-chart-placeholder.png)
 
 - Edit the chart data in the Excel by right click on chart and select "Edit Data in Excel".
 
-![Edit chart data in Excel](../images/excel_line_chart.png)
+![Edit chart data in Excel](../images/excel-line-chart.png)
 
 **JSON representation of the input data:**
 
@@ -73,7 +75,7 @@ Include only the chart data in the Excel sheet, omitting any additional text.
 
 **Output chart in document after processing.**
 
-![Output of line chart in document](../images/output_line_chart.png)
+![Output of line chart in document](../images/output-line-chart.png)
 
 ## Column Chart
 
@@ -81,11 +83,11 @@ Include only the chart data in the Excel sheet, omitting any additional text.
 
 - Add the column chart as a placeholder in the document template.
 
-![Placeholder for column chart](../images/column_chart_placeholder.png)
+![Placeholder for column chart](../images/column-chart-placeholder.png)
 
 - Edit the chart data in the Excel by right click on chart and select "Edit Data in Excel".
 
-![Edit chart data in Excel](../images/excel_column_chart.png)
+![Edit chart data in Excel](../images/excel-column-chart.png)
 
 **JSON representation of the input data:**
 
@@ -120,7 +122,7 @@ Include only the chart data in the Excel sheet, omitting any additional text.
 
 **Output chart in document after processing.**
 
-![Output of line chart in document](../images/output_column_chart.png)
+![Output of line chart in document](../images/output-column-chart.png)
 
 ## Pie Chart
 
@@ -128,11 +130,11 @@ Include only the chart data in the Excel sheet, omitting any additional text.
 
 - Add the pie chart as a placeholder in the document template.
 
-![Placeholder for pie chart](../images/pie_chart_placeholder.png)
+![Placeholder for pie chart](../images/pie-chart-placeholder.png)
 
 - Edit the chart data in the Excel by right click on chart and select "Edit Data in Excel".
 
-![Edit chart data in Excel](../images/excel_pie_chart.png)
+![Edit chart data in Excel](../images/excel-pie-chart.png)
 
 **JSON representation of the input data:**
 
@@ -162,7 +164,7 @@ Include only the chart data in the Excel sheet, omitting any additional text.
 
 **Output chart in document after processing.**
 
-![Output of pie chart in document](../images/output_pie_chart.png)
+![Output of pie chart in document](../images/output-pie-chart.png)
 
 <InlineAlert slots="text"/>
 

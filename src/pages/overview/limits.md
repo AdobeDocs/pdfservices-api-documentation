@@ -1,5 +1,6 @@
 ---
-title: Licensing and Usage Limits
+title: Licensing and Usage Limits | Adobe PDF Services
+description: Document Transaction licensing model and usage limits for Adobe PDF Services API operations.
 ---
 
 # Licensing and Usage Limits
@@ -10,18 +11,12 @@ operation in the table described below. Usage limits apply and are provided alon
 
 Paid credentials enable a greater processing quota and require entering
 into a separate written agreement. To learn more, please see the
-[pricing page](/document-services/pricing/#main)
+[pricing page](https://developer.adobe.com/document-services/pricing/main#adobe-pdf-services-api)
 for purchase options.
 
 <InlineAlert slots="text"/>
 
-<div>
-
-Document Transactions for the Operations below resulting in a Document will be counted with the following page limits:
-
-<ul><li>Extract and PDF To Markdown Operations: 1 Document Transaction for up to 5 pages</li><li>Accessibility Auto-Tag Operation: 10 Document Transactions per page</li><li>Electronic Seal Operation: 10 Document Transactions per PDF</li><li>All other Operations: 1 Document Transaction for up to 50 pages</li></ul>
-
-</div>
+Document Transactions for the Operations below resulting in a Document will be counted with the following page limits: Extract and PDF To Markdown Operations — 1 Document Transaction for up to 5 pages; Accessibility Auto-Tag Operation — 10 Document Transactions per page; Electronic Seal Operation — 10 Document Transactions per PDF; All other Operations — 1 Document Transaction for up to 50 pages.
 
 ###  Document Transaction Definitions
 
@@ -83,15 +78,15 @@ There are several usage limits that apply to PDF Services API and its underlying
 | Page limit (Accessibility Auto-Tag)*                                        | 200         |
 | Page limit (Scanned - Extract, PDF To Markdown and Accessibility Auto-Tag)* | 150         |
 | JSON file size (Document Generation,HTML to PDF and Import PDFForm)         | 10MB        |
-| Maximum Requests Per Minute                                                 | 100 RPM** (Enterprise), <br /> 25 RPM (Free Tier)|
+| Maximum Requests Per Minute                                                 | 100 RPM** (Enterprise), \<br/\> 25 RPM (Free Tier)|
 
 **Page limits may be lower for documents with a large number of tables.*
 
-**<i>Please [contact us](https://developer.adobe.com/document-services/pricing/contact/sales/) on RPM or file size if interested in understanding how it can scale under your ETLA.</i>
+***Please [contact us](https://developer.adobe.com/document-services/pricing/contact/sales/) on RPM or file size if interested in understanding how it can scale under your ETLA.*
 
 ### Free Tier
 
-------------------------------
+<HorizontalLine />
 
 The PDF Services API has a Free Tier so that you can take a deep dive
 into its cool features at zero cost. Free Tier users get free credentials
@@ -117,4 +112,4 @@ and running with the easy-to-use APIs with little investment.
 
 Paid credentials enable a greater processing quota and require entering
 into a separate written agreement. To learn more, please see our
-[pricing page](/document-services/pricing/#main) for purchase options.
+[pricing page](https://developer.adobe.com/document-services/pricing/main#adobe-pdf-services-api) for purchase options.

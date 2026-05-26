@@ -1,5 +1,9 @@
 ---
-title: DC Services Licensing | How Tos | PDF Services API | Adobe PDF Services
+title: DC Services Licensing | PDF Services API
+description: |
+  PDF Services API licensing measured per Document Transaction with
+  content limits per operation.
+
 ---
 # PDF Services API Licensing
 
@@ -13,7 +17,7 @@ provided along with examples for clarity.
 
 Paid credentials enable a greater processing quota and require entering
 into a separate written agreement. To learn more, please see our
-[pricing page](/document-services/pricing/#main)
+[pricing page](https://developer.adobe.com/document-services/pricing/main/)
 for purchase options.
 
 Document Transactions for the Operations below resulting in a Document
@@ -22,7 +26,10 @@ will be counted with the following page limits:
 <InlineAlert slots="text"/>
 
 Document Transactions for the Operations below resulting in a Document
-will be counted with the following page limits:<ul><li>Extract PDF Operation: up to 5 pages per Document Transaction</li><li>All other Operations: up to 50 pages per Document Transaction</li></ul>
+will be counted with the following page limits:
+
+- Extract PDF Operation: up to 5 pages per Document Transaction
+- All other Operations: up to 50 pages per Document Transaction
 
 ### Metrics
 
@@ -118,4 +125,4 @@ and running with the easy-to-use APIs with little investment.
 
 Paid credentials enable a greater processing quota and require entering
 into a separate written agreement. To learn more, please see our
-[pricing page](/document-services/pricing/#main) for purchase options.
+[pricing page](https://developer.adobe.com/document-services/pricing/main/) for purchase options.

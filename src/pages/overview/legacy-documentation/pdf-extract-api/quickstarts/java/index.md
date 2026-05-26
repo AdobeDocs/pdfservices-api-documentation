@@ -1,5 +1,9 @@
 ---
-title: Java | Quickstarts | PDF Extract API | Adobe PDF Services
+title: Java | Quickstarts | PDF Extract API
+description: |
+  Walkthrough for running PDF Extract API on a sample PDF and reporting
+  on major headers using Java.
+
 ---
 
 # Quickstart for PDF Extract API (Java)
@@ -17,7 +21,7 @@ To complete this guide, you will need:
 
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
+1) To begin, open your browser to [https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-extract-api). If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
 
 ![Sign in](./shot1.png)
 
@@ -29,17 +33,17 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2_spc.png)
+![Project setup](./shot2-spc.png)
 
 6) After your credentials are created, they are automatically  downloaded:
 
-![alt](./shot3_spc.png)
+![alt](./shot3-spc.png)
 
 ## Step Two: Setting up the project
 
 1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-JavaSamples.zip. If you unzip that archive, you will find a folder of samples and the `pdfservices-api-credentials.json` file.
 
-![alt](./shot5_spc.png)
+![alt](./shot5-spc.png)
 
 2) Take the `pdfservices-api-credentials.json` file and place it in a new directory.
 
@@ -152,7 +156,7 @@ To complete this guide, you will need:
 
 This file will define what dependencies we need and how the application will be built. 
 
-Our application will take a PDF, `Adobe Extract API Sample.pdf` (downloadable from [here](/Adobe%20Extract%20API%20Sample.pdf)) and extract it's contents. The results will be saved as a ZIP file, `ExtractTextInfoFromPDF.zip`. We will then parse the results from the ZIP and print out the text of any `H1` headers found in the PDF.
+Our application will take a PDF, `Adobe Extract API Sample.pdf` (included with the Java sample project), and extract its contents. The results will be saved as a ZIP file, `ExtractTextInfoFromPDF.zip`. We will then parse the results from the ZIP and print out the text of any `H1` headers found in the PDF.
 
 4) In your editor, open the directory where you previously copied the credentials, and create a new directory, `src/main/java`. In that directory, create `ExtractTextInfoFromPDF.java`. 
 
@@ -209,7 +213,7 @@ Files.deleteIfExists(Paths.get(zip_file));
 String input_file = "./Adobe Extract API Sample.pdf";
 ```
 
-This defines what our output ZIP will be and optionally deletes it if it already exists. Then we define what PDF will be extracted. (You can download the source we used [here](/Adobe%20Extract%20API%20Sample.pdf).) In a real application, these values would be typically be dynamic. 
+This defines what our output ZIP will be and optionally deletes it if it already exists. Then we define what PDF will be extracted. (The source `Adobe Extract API Sample.pdf` is included with the Java sample project.) In a real application, these values would typically be dynamic. 
 
 4) Set the environment variables `PDF_SERVICES_CLIENT_ID` and `PDF_SERVICES_CLIENT_SECRET` by running the following commands and replacing placeholders `YOUR CLIENT ID` and `YOUR CLIENT SECRET` with the credentials present in `pdfservices-api-credentials.json` file:
 - **Windows:**

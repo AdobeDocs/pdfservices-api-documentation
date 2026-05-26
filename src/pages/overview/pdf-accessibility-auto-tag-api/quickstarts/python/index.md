@@ -1,5 +1,8 @@
 ---
-title: Python | Quickstarts | PDF Accessibility Auto-Tag API | Adobe PDF Services
+title: Python quickstart | PDF Accessibility Auto-Tag API
+description: |
+  Tag an input PDF with the Accessibility Auto-Tag API using the Python SDK.
+
 ---
 
 # Quickstart for PDF Accessibility Auto-Tag API (Python)
@@ -17,7 +20,7 @@ To complete this guide, you will need:
 
 ## Step One: Getting credentials
 
-1) To begin, open your browser to <https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api>. If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
+1) To begin, open your browser to [https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html?api=pdf-accessibility-auto-tag-api). If you are not already logged in to Adobe.com, you will need to sign in or create a new user. Using a personal email account is recommend and not a federated ID.
 
 ![Sign in](./shot1.png)
 
@@ -29,17 +32,17 @@ To complete this guide, you will need:
 
 5) Click the checkbox saying you agree to the developer terms and then click "Create credentials."
 
-![Project setup](./shot2_spc.png)
+![Project setup](./shot2-spc.png)
 
 6) After your credentials are created, they are automatically downloaded:
 
-![Credentials](./shot3_spc.png)
+![Credentials](./shot3-spc.png)
 
 ## Step Two: Setting up the project
 
 1) In your Downloads folder, find the ZIP file with your credentials: PDFServicesSDK-Python Samples.zip. If you unzip that archive, you will find a folder of samples and the `pdfservices-api-credentials.json` file.
 
-![Samples](./shot5_spc.png)
+![Samples](./shot5-spc.png)
 
 2) Take the `pdfservices-api-credentials.json` file and place it in a new directory. Remember that these credential files are important and should be stored safely.
 
@@ -49,7 +52,7 @@ To complete this guide, you will need:
 
 At this point, we've installed the Python SDK for Adobe PDF Services API as a dependency for our project and have copied over our credentials files.
 
-Our application will take a PDF, `Adobe Accesibility Auto-Tag API Sample.pdf` (downloadable from <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>) and tag its contents. The results will be saved in a given directory `/output`. 
+Our application will take a PDF, `Adobe Accesibility Auto-Tag API Sample.pdf` (included with the sample project download) and tag its contents. The results will be saved in a given directory `/output`. 
 
 4) In your editor, open the directory where you previously copied the credentials. Create a new file, `autotag.py`.
 
@@ -97,7 +100,7 @@ credentials = ServicePrincipalCredentials(
 pdf_services = PDFServices(credentials=credentials)
 ```
 
-This defines what our output directory will be and optionally deletes it if it already exists. Then we define what PDF will be tagged. (You can download the source we used <a href="../../../../overview/pdf/Adobe_Accessibility_Auto_Tag_API_Sample.pdf" target="_blank">here</a>.) In a real application, these values would be typically be dynamic. 
+This defines what our output directory will be and optionally deletes it if it already exists. Then we define what PDF will be tagged. (Use the sample PDF included with the sample project download.) In a real application, these values would be typically be dynamic. 
 
 4) Now, let's create an asset from source file and upload.
 

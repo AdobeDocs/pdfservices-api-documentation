@@ -1,5 +1,8 @@
 ---
-title: SDK Utilities | How Tos | PDF Services API | Adobe PDF Services
+title: SDK Utilities | PDF Services API
+description: |
+  Utilities provided by the Adobe PDF Services SDKs, including refreshing download URIs and deleting assets.
+
 ---
 
 # SDK Utilities
@@ -13,7 +16,7 @@ download URIs, deleting assets, and streamline your workflows.
 
 - Pre-signed URI Expiry : The pre-signed URI provided for uploading or downloading the content has an expiry of 1 hour.
 
-See our public API Reference for assets [here](../../../apis/#tag/Assets).
+See our public API Reference for assets [here](../../../apis/index.md#tag/Assets).
 
 ## Refresh Download URI
 

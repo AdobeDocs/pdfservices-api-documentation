@@ -1,17 +1,23 @@
 ---
 title: Template Tags | Document Generation API | Adobe PDF Services
+description: This section describes all the template tags that can be used to author
+a document template. During the Document Generation
+Process , the Document
+Generation API replaces the template tags in the document template with
+the input data to generate the output document.
+
 ---
 # Template Tags
 
 **This section describes all the template tags that can be used to author
 a document template.** During the [Document Generation
-Process](../document-generation-api/index.md#document-generation-process) , the Document
+Process](index.md#document-generation-process) , the Document
 Generation API replaces the template tags in the document template with
 the input data to generate the output document.
 
 <InlineAlert slots="text"/>
 
-All the tags are [JSONata compliant](https://docs.jsonata.org/overview.html).<br/>
+All the tags are [JSONata compliant](https://docs.jsonata.org/overview.html).\<br/\>
 All tags should be kept within a 1000-character limit.
 
 ## Placeholder Variables
@@ -20,16 +26,16 @@ A placeholder(text tags) gets replaced by the actual input data.
 
 **How to insert Placeholder Variables**
 
-<Media slots="video"/>
+<Embed slots="video" />
 
-<https://images-tv.adobe.com/mpcv3/5158/aa393134-7cf7-4ebb-bfd0-1ced95237d20_1615916599.854x480at800_h264.mp4#t=3>
+[Video](https://images-tv.adobe.com/mpcv3/5158/aa393134-7cf7-4ebb-bfd0-1ced95237d20_1615916599.854x480at800_h264.mp4#t=3)
 
 <InlineAlert slots="text"/>
 
 A placeholder variable can only be applied to an input field of type
-string, number or boolean.<br/> Please refer to the **Arrays** section to use array as a placeholder variable.<br/> Formatting applied to the placeholder
-variable in the document template will be retained in the output document.<br/>
-For more simplified styling and formatting for the placeholder tag from the input json data, please refer [styling and formatting](../document-generation-api/stylingformattingtags.md) section.
+string, number or boolean.\<br/\> Please refer to the **Arrays** section to use array as a placeholder variable.\<br/\> Formatting applied to the placeholder
+variable in the document template will be retained in the output document.\<br/\>
+For more simplified styling and formatting for the placeholder tag from the input json data, please refer [styling and formatting](stylingformattingtags.md) section.
 
 JSON representation of the input data:
 
@@ -50,7 +56,7 @@ JSON representation of the input data:
 
 Placeholder variables get replaced with the actual input data.
 
-![Placeholder tags being replaced by values](../images/placeholder_basic.png)
+![Placeholder tags being replaced by values](../images/placeholder-basic.png)
 
 **Default Value**
 
@@ -58,7 +64,7 @@ A default value can be specified for the placeholder variable. In case
 the specified tag is not present in the input json data, the placeholder
 gets replaced with the default value.
 
-![Placeholder tags with default value set](../images/placeholder_default.png)
+![Placeholder tags with default value set](../images/placeholder-default.png)
 
 **Optional**
 
@@ -66,14 +72,14 @@ Setting placeholder variable as optional will replace the placeholder
 with an empty string in case the specified variable is not present in
 the input data.
 
-![Placeholder tags with optional image set](../images/placeholder_optional.png)
+![Placeholder tags with optional image set](../images/placeholder-optional.png)
 
 **Prefix**
 
 A prefix value can be specified for the placeholder variable. Doing so will append
 this value before the result of the tag.
 
-![Placeholder tags with prefix image set](../images/placeholder_prefix.png)
+![Placeholder tags with prefix image set](../images/placeholder-prefix.png)
 
 **Arrays**
 
@@ -88,7 +94,7 @@ JSON representation of the input data:
 }
 ```
 
-![working_with_arrays](../images/working_with_array.png)
+![working_with_arrays](../images/working-with-array.png)
 
 ## Images
 
@@ -97,9 +103,9 @@ placeholder and edit the alt text as per the defined format:
 
 **How to insert Images**
 
-<Media slots="video"/>
+<Embed slots="video" />
 
-<https://images-tv.adobe.com/mpcv3/5158/43cb78ad-e98d-4deb-bdca-cf32edd0df95_1615916490.854x480at800_h264.mp4#t=3>
+[Video](https://images-tv.adobe.com/mpcv3/5158/43cb78ad-e98d-4deb-bdca-cf32edd0df95_1615916490.854x480at800_h264.mp4#t=3)
 
 ```json
 {
@@ -122,7 +128,7 @@ property as defined in the format.
 <InlineAlert slots="text"/>
 
 The height and width of the placeholder image is retained in the
-output document. <br/> Supported image formats are JPEG, PNG, GIF, BMP, TIFF
+output document. \<br/\> Supported image formats are JPEG, PNG, GIF, BMP, TIFF
 and SVG.
 
 JSON representation of the input data:
@@ -135,7 +141,7 @@ Image data can be provided either in the form of the base64 encoded string or in
 }
 ```
 
-<p style="text-align:center;">OR</p>
+**OR**
 
 ```json
 {
@@ -149,20 +155,20 @@ Only https image urls with an image size of less than 20 MB are allowed.
 
 Add the image placeholder.
 
-![Initial rendering of the image tag](../images/image_tag_initial.png)
+![Initial rendering of the image tag](../images/image-tag-initial.png)
 
 Add the alt text to the image as per the specified format.
 
-![Adding alternative text for the image](../images/image_alt_text.png)
+![Adding alternative text for the image](../images/image-alt-text.png)
 
 The image placeholder will be replaced by the image data in
 the output document.
 
-![Image placeholder replaced by the image data](../images/image_tag_final.png)
+![Image placeholder replaced by the image data](../images/image-tag-final.png)
 
 <InlineAlert slots="text"/>
 
-Image can also be inserted using the html `<img/>` tag. Please refer [Inline Images](../document-generation-api/inlineimages.md) to learn more about this.
+Image can also be inserted using the html `<img/>` tag. Please refer [Inline Images](inlineimages.md) to learn more about this.
 
 ## Conditionals
 
@@ -170,14 +176,14 @@ Show or hide content in the document based on the conditions.
 
 **How to insert Conditional Tags**
 
-<Media slots="video"/>
+<Embed slots="video" />
 
-<https://images-tv.adobe.com/mpcv3/5158/671b4819-2e8c-44a1-8667-e9dfd2556133_1615916356.854x480at800_h264.mp4#t=3>
+[Video](https://images-tv.adobe.com/mpcv3/5158/671b4819-2e8c-44a1-8667-e9dfd2556133_1615916356.854x480at800_h264.mp4#t=3)
 
 <InlineAlert slots="text"/>
 
-The condition must be wrapped inside *expr()*. <br/> Supported
-conditional operators are =, !=, >=, >, <=, <.
+The condition must be wrapped inside *expr()*. \<br/\> Supported
+conditional operators are =, !=, \>=, \>, \<=, \<.
 
 JSON representation of the input data:
 
@@ -191,13 +197,13 @@ JSON representation of the input data:
 
 Show or hide paragraphs based on conditions.
 
-![Showing an paragraph based on a condition](../images/conditional_section.png)
+![Showing an paragraph based on a condition](../images/conditional-section.png)
 
 **Conditional Phrases**
 
 Show or hide text inside a paragraph based on conditions.
 
-![Showing a text inside a paragraph based on a condition](../images/conditional_phrase.png)
+![Showing a text inside a paragraph based on a condition](../images/conditional-phrase.png)
 
 ## Footnote Phrases
 
@@ -215,7 +221,7 @@ JSON representation of the input data:
 
 Add superscript annotations and insert corresponding footnotes at the end of the page.
 
-![Showing an phrase having footnote](../images/footnote_phrase.png)
+![Showing an phrase having footnote](../images/footnote-phrase.png)
 
 
 ## Tables
@@ -234,7 +240,7 @@ JSON representation of the input data:
 **Usage**
 
 Placeholder tag is replaced by a table generated using the html string provided in the input json.
-![Sample for HTML Table insertion](../images/html_table_output.png)
+![Sample for HTML Table insertion](../images/html-table-output.png)
 
 <InlineAlert slots="text"/>
 
@@ -243,25 +249,25 @@ Placeholder tag is replaced by a table generated using the html string provided 
 - Only Inline Styling of Table elements is possible. i.e. using `style` attribute of `<table>`. Internal and External styling are not allowed.
 
 ### Insert Table using table markers
-Table tags can also inserted in a document using table markers. Please refer [Table Tag with Markers](../document-generation-api/tablewithmarkers.md)
+Table tags can also inserted in a document using table markers. Please refer [Table Tag with Markers](tablewithmarkers.md)
 to learn more about the usage of table markers.
 
 <InlineAlert slots="text"/>
 
-Please visit [Complex Table Constructs with Table Markers](../document-generation-api/tablewithmarkers.md#complex-table-constructs-with-table-markers) to learn about advanced
+Please visit [Complex Table Constructs with Table Markers](tablewithmarkers.md#complex-table-constructs-with-table-markers) to learn about advanced
 constructs inside tables.
 
 ### Insert Table using Placeholder Table Tag 
 
-**<span style="color: red;">DEPRECATED</span><span style="font-weight: normal;"> (Please use [Table Tag with Markers](../document-generation-api/tablewithmarkers.md))</span>**
+**DEPRECATED.** Please use [Table Tag with Markers](tablewithmarkers.md) instead of the placeholder table tag approach below.
 
 Rows of a table can be dynamically populated by repeating over an array of objects from the input data.
 
 **How to insert Tables**
 
-<Media slots="video"/>
+<Embed slots="video" />
 
-<https://images-tv.adobe.com/mpcv3/5158/d58772af-7a62-49fa-a098-12b11a27fb71_1615917048.854x480at800_h264.mp4#t=3>
+[Video](https://images-tv.adobe.com/mpcv3/5158/d58772af-7a62-49fa-a098-12b11a27fb71_1615917048.854x480at800_h264.mp4#t=3)
 
 <InlineAlert slots="text"/>
 
@@ -296,7 +302,7 @@ place the template tags referring to the properties of the objects in
 the array inside the row under the required column headings.
 
 The template tag should indicate the name of the array followed by the
-property name of the objects in the array. *{{subscriptions.name}}*
+property name of the objects in the array. *\{\{subscriptions.name\}\}*
 illustrates one such template tag where *subscriptions* refer to the
 array of objects while name refers to the property of one such object in
 the array.
@@ -306,7 +312,7 @@ the array.
 Table rows are dynamically populated in the output document by repeating
 over the specified array of objects.
 
-![Table with template tags replaced with actual values in the rows](../images/table_result.png)
+![Table with template tags replaced with actual values in the rows](../images/table-result.png)
 
 ## Lists
 
@@ -325,7 +331,7 @@ JSON representation of the input data:
 
 Placeholder tag is replaced by a list generated using the html string provided in the input json.
 
-![Sample for HTML Table insertion](../images/List_Example_1.png)
+![Sample for HTML Table insertion](../images/list-example-1.png)
 
 **Nested Lists**
 
@@ -339,7 +345,7 @@ JSON representation of the input data:
 
 Placeholder tag is replaced by a list generated using the html string provided in the input json.
 
-![Sample for HTML Table insertion](../images/Nested_Numbered_Lists_Example.png)
+![Sample for HTML Table insertion](../images/nested-numbered-lists-example.png)
 
 <InlineAlert slots="text"/>
 
@@ -361,7 +367,7 @@ JSON representation of the input data:
 
 Placeholder tag is replaced by a list generated using the html string provided in the input json.
 
-![Sample for HTML Table insertion](../images/Upper_Roman_List_Example.png)
+![Sample for HTML Table insertion](../images/upper-roman-list-example.png)
 
 ### Insert Lists using Repeating Sections
 
@@ -369,9 +375,9 @@ Dynamically generate numbered or bullet lists by repeating over a list.
 
 **How to insert Lists**
 
-<Media slots="video"/>
+<Embed slots="video" />
 
-<https://images-tv.adobe.com/mpcv3/5158/d58772af-7a62-49fa-a098-12b11a27fb71_1615917048.854x480at800_h264.mp4#t=3>
+[Video](https://images-tv.adobe.com/mpcv3/5158/d58772af-7a62-49fa-a098-12b11a27fb71_1615917048.854x480at800_h264.mp4#t=3)
 
 JSON representation of the input data:
 
@@ -396,14 +402,14 @@ JSON representation of the input data:
 Dynamically generate a numbered list by placing it inside a repeating
 section.
 
-![Template tag items are replaced by numbered list](../images/numbered_list.png)
+![Template tag items are replaced by numbered list](../images/numbered-list.png)
 
 **Bullet Lists**
 
 Dynamically generate a bullet list by placing it inside a repeating
 section.
 
-![Template tag items are replaced by bullet list](../images/bullet_list.png)
+![Template tag items are replaced by bullet list](../images/bullet-list.png)
 
 **Simple Lists**
 
@@ -417,7 +423,7 @@ JSON representation of the input data in case of simple lists:
 
 Dynamically generate a numbered or bullet list by placing it inside a repeating section.
 
-![Template tag items are replaced by numbered or bullet list](../images/simple_lists.png)
+![Template tag items are replaced by numbered or bullet list](../images/simple-lists.png)
 
 ## Numerical Calculations
 
@@ -425,9 +431,9 @@ Performing numerical calculations on the input data.
 
 **How to insert Numerical Calculations**
 
-<Media slots="video"/>
+<Embed slots="video" />
 
-<https://images-tv.adobe.com/mpcv3/5158/e5e5e7c6-a63c-45cf-8a17-b60291068626_1615916868.854x480at800_h264.mp4#t=3>
+[Video](https://images-tv.adobe.com/mpcv3/5158/e5e5e7c6-a63c-45cf-8a17-b60291068626_1615916868.854x480at800_h264.mp4#t=3)
 
 All calculations supported are [JSONata compliant](https://docs.jsonata.org/overview.html).
 
@@ -466,7 +472,7 @@ Performs simple arithmetic operations.
 
 <InlineAlert slots="text"/>
 
-Supported arithmetic operations are +, -, \*, /, % . <br/> An
+Supported arithmetic operations are +, -, \*, /, % . \<br/\> An
 arithmetic numerical calculation can only be applied to input fields
 that corresponds to a number.
 
@@ -478,7 +484,7 @@ Performs aggregations on a list of elements.
 
 <InlineAlert slots="text"/>
 
-Here is the list of [supported aggregation functions](https://docs.jsonata.org/aggregation-functions) <br/> An
+Here is the list of [supported aggregation functions](https://docs.jsonata.org/aggregation-functions) \<br/\> An
 aggregate numerical calculation can only be applied to a list of
 numbers.
 

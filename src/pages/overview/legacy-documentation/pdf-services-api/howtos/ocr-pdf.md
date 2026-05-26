@@ -1,5 +1,9 @@
 ---
-title: OCR PDF | How Tos | PDF Services API | Adobe PDF Services
+title: OCR PDF | How Tos | PDF Services API
+description: |
+  Use built-in OCR to convert images to text and create fully searchable
+  PDFs for archiving and indexing.
+
 ---
 # OCR PDF
 
@@ -7,7 +11,7 @@ Use built-in optical character recognition (OCR) to convert images to text and e
 
 ## Rest API 
 
-See our public API Reference for [OCR PDF](../../../apis/#tag/OCR)
+See our public API Reference for [OCR PDF](../../../../apis/index.md#tag/OCR)
 
 ## Text recognition (OCR)
 
@@ -18,7 +22,7 @@ be `application/pdf`.
 
 This sample defaults to the en-us locale. For other languages, see [OCR with explicit language.](#ocr-with-explicit-language)
 
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 
@@ -200,7 +204,7 @@ are two types which produce a different result:
     unchanged. This type produces maximum fidelity to the original
     image.
 
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="4" languages="Java, .NET, Node JS, Rest API" /> 
 

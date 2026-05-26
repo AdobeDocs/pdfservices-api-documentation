@@ -1,5 +1,8 @@
 ---
-title: Getting Started | PDF Services API | Adobe PDF Services
+title: Getting Started | PDF Services API
+description: |
+  Developing with the PDF Services SDK requires an Adobe-provided credential.
+
 ---
 
 # Getting credentials
@@ -35,7 +38,7 @@ After getting the access token, we need to upload the asset. Uploading an asset 
 
 1. First you need to get an upload pre-signed URI by using the following API.
 
-You can read more about the API in detail [here](../../../apis/#operation/asset.uploadpresignedurl).
+You can read more about the API in detail [here](../../apis/index.md#operation/asset.uploadpresignedurl).
 
 <CodeBlock slots="heading, code" repeat="1" languages="REST API" /> 
 
@@ -67,13 +70,13 @@ curl --location -g --request PUT 'https://dcplatformstorageservice-prod-us-east-
 
 To create a job for the operation, please use the  `assetID` obtained in Step 2 in the API request body. On successful job submission you will get a status code of `201` and a response header `location` which will be used for polling.
 
-For creating the job, please refer to the corresponding API spec for the particular [PDF Operation](../../../apis).
+For creating the job, please refer to the corresponding API spec for the particular [PDF Operation](../../apis/index.md).
 
 ## Step 4 : Fetching the status
 
 Once the job is successfully created, you need to poll the at the `location` returned in response header of Step 3 by using the following API
 
-You can read more about the API in detail [here](../../../apis/#operation/pdfoperations.compresspdf.jobstatus).
+You can read more about the API in detail [here](../../apis/index.md#operation/pdfoperations.jobstatus).
 
 <CodeBlock slots="heading, code" repeat="1" languages="REST API" /> 
 
@@ -86,9 +89,8 @@ curl --location -g --request GET 'https://pdf-services.adobe.io/operation/compre
 ```
 
 <InlineAlert slots="text"/>
-<div>
-Instead of using the status API to check the job status, you have the option to receive job completion notifications through Webhook. For more information, please refer the <a href="../howtos/webhook-notification/">documentation</a>.
-</div>
+
+Instead of using the status API to check the job status, you have the option to receive job completion notifications through Webhook. For more information, please refer the [documentation](./howtos/webhook-notification.md).
 
 ## Step 5 : Downloading the asset
 
@@ -98,7 +100,7 @@ If the `status` field is `in progress` you need to keep polling the location unt
 
 If the `status` field is `done` the response body will also have a download pre-signed URI in the `dowloadUri` field, which will be used to download the asset directly from cloud provider by making the following API call
 
-You can read more about the API in detail [here](../../../apis/#operation/asset.get).
+You can read more about the API in detail [here](../../apis/index.md#operation/asset.get).
 
 <CodeBlock slots="heading, code" repeat="1" languages="REST API" /> 
 
@@ -114,57 +116,35 @@ curl --location -g --request GET 'https://dcplatformstorageservice-prod-us-east-
 
 PDF Services API is also accessible via SDKs in popular languages such as Node.js, Java, Python and .NET.
 
-<InlineAlert slots="text"/>
-
-<div>
+<InlineAlert slots="text1, text2, text3, text4, text5, text6, text7, text8"/>
 
 Please allow-list the following hostnames before using Adobe PDF Services SDK:
-<ul><li>ims-na1.adobelogin.com (Required for all the clients)</li></ul>
 
-For clients using SDK version 4.x and above :
-<ul>
-<li> Using United States (Default) region for processing documents :
-  <ul>
-    <li>dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com (Not required, if using external storage for both input and output)</li>
-    <li>pdf-services-ue1.adobe.io</li>
-    <li>pdf-services.adobe.io (Default URI)</li>
-  </ul>
-</li>
-</ul>
+- ims-na1.adobelogin.com (Required for all the clients)
 
-<ul>
-  <li> Using Europe region for processing documents :
-  <ul>
-    <li>dcplatformstorageservice-prod-eu-west-1.s3.amazonaws.com (Not required, if using external storage for both input and output)</li>
-    <li>pdf-services-ew1.adobe.io</li>
-  </ul>
-</li>
-</ul>
+For clients using SDK version 4.x and above:
 
-For clients using SDK version 3.x and above  :
-<ul>
-<li> Using United States (Default) region for processing documents :
-  <ul>
-    <li>dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com</li>
-    <li>pdf-services-ue1.adobe.io</li>
-    <li>pdf-services.adobe.io (Default URI)</li>
-  </ul>
-</li>
-</ul>
+- Using United States (Default) region for processing documents:
+  - dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com (Not required, if using external storage for both input and output)
+  - pdf-services-ue1.adobe.io
+  - pdf-services.adobe.io (Default URI)
+- Using Europe region for processing documents:
+  - dcplatformstorageservice-prod-eu-west-1.s3.amazonaws.com (Not required, if using external storage for both input and output)
+  - pdf-services-ew1.adobe.io
 
-<ul>
-  <li> Using Europe region for processing documents :
-  <ul>
-    <li>dcplatformstorageservice-prod-eu-west-1.s3.amazonaws.com</li>
-    <li>pdf-services-ew1.adobe.io</li>
-  </ul>
-</li>
-</ul>
+For clients using SDK version 3.x and above:
 
-For clients using SDK version upto 2.x :
-<ul><li>cpf-ue1.adobe.io</li></ul>
+- Using United States (Default) region for processing documents:
+  - dcplatformstorageservice-prod-us-east-1.s3-accelerate.amazonaws.com
+  - pdf-services-ue1.adobe.io
+  - pdf-services.adobe.io (Default URI)
+- Using Europe region for processing documents:
+  - dcplatformstorageservice-prod-eu-west-1.s3.amazonaws.com
+  - pdf-services-ew1.adobe.io
 
-</div>
+For clients using SDK version upto 2.x:
+
+- cpf-ue1.adobe.io
 
 ### Java
 
@@ -304,7 +284,7 @@ To build a custom project:
 1.  Access the .jar in the [central Maven repository](https://www.adobe.com/go/pdftoolsapi_java_maven).
 2.  Use your preferred dependency management tool (Ivy, Gradle, Maven), to include the SDK .jar dependency.
 3.  Open the pdfservices-api-credentials.json downloaded when you created your credential.
-4.  Add the [Authentication](./index.md#authentication) details as described above.
+4.  Add the [Authentication](index.md#authentication) details as described above.
 
 ![Adobe PDF Services SDK On Maven](../images/maven.png)
 
@@ -422,10 +402,10 @@ The .NET SDK uses [LibLog](https://github.com/damianh/LibLog) as a bridge betwee
 
 While building the sample project automatically downloads the Nuget package, you can do it manually if you wish to use your own tools and process.
 
-1.  Go to <https://www.adobe.com/go/pdftoolsapi_net_nuget>.
+1.  Go to [Link](https://www.adobe.com/go/pdftoolsapi_net_nuget).
 2.  Download the latest package.
 
-![Adobe PDF Services SDK on Nuget](../images/nuget_free_tier.png)
+![Adobe PDF Services SDK on Nuget](../images/nuget-free-tier.png)
 
 ### Node.js
 
@@ -545,10 +525,10 @@ The SDK uses the [log4js API](https://www.npmjs.com/package/log4js) for logging.
 
 While building the sample project automatically downloads the Node package, you can do it manually if you wish to use your own tools and process.
 
-1.  Go to <https://www.npmjs.com/package/@adobe/pdfservices-node-sdk>
+1.  Go to [Link](https://www.npmjs.com/package/@adobe/pdfservices-node-sdk)
 2.  Download the latest package.
 
-![Adobe PDF Services SDK on NPM JS](../images/node_free_tier.png)
+![Adobe PDF Services SDK on NPM JS](../images/node-free-tier.png)
 
 ### Python
 
@@ -687,25 +667,25 @@ You can check your consumption for PDF Services API by following the below menti
 
 ![Check Usage](./shot1.png)
 
-<br />
+\<br/\>
 
 3. A popup opens up which provides you with the option to specify the time period for which the consumption is to be checked as shown below : 
 
 ![Check Usage Popup](./shot2.png)
 
-<br />
+\<br/\>
 
 4. Select the time period for which you want to check the usage and click on `Generate Report` button :
 
 ![Time period selection](./shot3.png)
 
-<br />
+\<br/\>
 
 5. This will generate a report of all the API usage for your organisation. You can also download the report in a CSV format as shown below : 
 
 ![Usage](./shot4.png)
 
-<br />
+\<br/\>
 
 6. If you want to check usage for a particular `client id` just click on the drop down menu below Client ID label and select your `client id` as shown below :
 

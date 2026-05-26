@@ -1,5 +1,8 @@
 ---
-title: PDF Properties | How Tos | PDF Services API | Adobe PDF Services
+title: PDF Properties | PDF Services API
+description: |
+  Get the metadata properties of a PDF (page count, version, file size, fonts, permissions, and more).
+
 ---
 # Get PDF Properties
 
@@ -9,13 +12,13 @@ This data can be used to: check if a document is fully text searchable (OCR), un
 
 ## REST API 
 
-See our public API Reference for [PDF Properties](../../../apis/#tag/PDF-Properties).
+See our public API Reference for [PDF Properties](../../../apis/index.md#tag/PDF-Properties).
 
 ### Fetch PDF Properties
 
 The sample below fetches the properties of an input PDF.
 
-Please refer the [API usage guide](../api-usage.md) to understand how to use our APIs.
+Please refer the [API usage guide](./api-usage.md) to understand how to use our APIs.
 
 <CodeBlock slots="heading, code" repeat="5" languages="Java, .NET, Node JS, Python, REST API" /> 
 
