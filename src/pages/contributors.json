@@ -1,1 +1,1780 @@
-{"total":199,"offset":0,"limit":199,"data":[{"page":"/apis/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/56316668?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/32520775?v=4"],"lastUpdated":"5/1/2026"},{"page":"/config","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/32520775?v=4","https://avatars.githubusercontent.com/u/32357056?v=4","https://avatars.githubusercontent.com/u/393660?v=4","https://avatars.githubusercontent.com/u/32288634?v=4","https://avatars.githubusercontent.com/u/57922?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/document-generation-api/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/document-generation-api/beta","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/document-generation-api/charts","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/57210650?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/document-generation-api/complextableconstructs","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/143107745?v=4","https://avatars.githubusercontent.com/u/88659558?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/document-generation-api/dcserviceslicensing","avatars":[],"lastUpdated":"9/28/2021"},{"page":"/overview/document-generation-api/fragments","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/143107745?v=4","https://avatars.githubusercontent.com/u/95292088?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/document-generation-api/gettingstarted","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/4571811?v=4","https://avatars.githubusercontent.com/u/15727050?v=4","https://avatars.githubusercontent.com/u/393660?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/document-generation-api/hyperlink","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/document-generation-api/inlineimages","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/143107745?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/document-generation-api/quickstarts/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/393660?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/document-generation-api/quickstarts/dotnet/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/32520775?v=4","https://avatars.githubusercontent.com/u/393660?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/document-generation-api/quickstarts/java/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/4571811?v=4","https://avatars.githubusercontent.com/u/143107745?v=4","https://avatars.githubusercontent.com/u/32520775?v=4","https://avatars.githubusercontent.com/u/95292088?v=4","https://avatars.githubusercontent.com/u/393660?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/document-generation-api/quickstarts/nodejs/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/32520775?v=4","https://avatars.githubusercontent.com/u/95292088?v=4","https://avatars.githubusercontent.com/u/143107745?v=4","https://avatars.githubusercontent.com/u/393660?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/document-generation-api/quickstarts/python/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/document-generation-api/stylingformattingtags","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/57210650?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/143107745?v=4","https://avatars.githubusercontent.com/u/22520041?v=4","https://avatars.githubusercontent.com/u/95277167?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/document-generation-api/tablewithmarkers","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/143107745?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/document-generation-api/templatetags","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/57210650?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/143107745?v=4","https://avatars.githubusercontent.com/u/22520041?v=4","https://avatars.githubusercontent.com/u/95277167?v=4","https://avatars.githubusercontent.com/u/95292088?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/document-generation-api/wordaddin","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/faq","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/authentication","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/document-generation-api/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/document-generation-api/beta","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/document-generation-api/complextableconstructs","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/document-generation-api/dcserviceslicensing","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/document-generation-api/dynamictableconstructs","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/document-generation-api/fragments","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/document-generation-api/gettingstarted","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/document-generation-api/hyperlink","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/document-generation-api/inlineimages","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/document-generation-api/quickstarts","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/22620821?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/document-generation-api/quickstarts/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/document-generation-api/quickstarts/dotnet/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/document-generation-api/quickstarts/java/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/document-generation-api/quickstarts/nodejs/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/document-generation-api/stylingformattingtags","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/document-generation-api/templatetags","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/document-generation-api/wordaddin","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-accessibility-auto-tag-api/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-accessibility-auto-tag-api/dcserviceslicensing","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-accessibility-auto-tag-api/gettingstarted","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-accessibility-auto-tag-api/howtos/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-accessibility-auto-tag-api/howtos/accessibility-auto-tag-api","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-accessibility-auto-tag-api/howtos/api-usage","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/dotnet/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/java/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/nodejs/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/python/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-electronic-seal-api/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-electronic-seal-api/gettingstarted","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-electronic-seal-api/howtos/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-electronic-seal-api/howtos/api-usage","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-electronic-seal-api/howtos/electronic-seal-api","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-electronic-seal-api/quickstarts/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-electronic-seal-api/quickstarts/dotnet/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-electronic-seal-api/quickstarts/java/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-electronic-seal-api/quickstarts/nodejs/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-extract-api/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-extract-api/dcserviceslicensing","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-extract-api/gettingstarted","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-extract-api/howtos/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-extract-api/howtos/api-usage","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-extract-api/howtos/extract-api","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-extract-api/quickstarts","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/22620821?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-extract-api/quickstarts/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-extract-api/quickstarts/dotnet/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-extract-api/quickstarts/java/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-extract-api/quickstarts/nodejs/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-extract-api/quickstarts/python/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/awsmarketplace","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/dcserviceslicensing","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/gettingstarted","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/howtos/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/howtos/accessibility-auto-tag-pdf","avatars":[],"lastUpdated":"10/5/2023"},{"page":"/overview/legacy-documentation/pdf-services-api/howtos/api-usage","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/howtos/combine-pdf","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/howtos/compress-pdf","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/howtos/create-pdf","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/howtos/delete-pages","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/howtos/document-generation","avatars":[],"lastUpdated":"10/5/2023"},{"page":"/overview/legacy-documentation/pdf-services-api/howtos/electronic-seal-api","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/howtos/export-pdf","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/howtos/extract-pdf","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/howtos/insert-pages","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/howtos/linearize-pdf","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/howtos/ocr-pdf","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/howtos/pdf-accessibility-auto-tag-pdf","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/howtos/pdf-external-storage-sol","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/howtos/pdf-properties","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/howtos/protect-pdf","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/howtos/remove-protection","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/howtos/reorder-pages","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/howtos/replace-pages","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/howtos/rotate-pages","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/howtos/service-region-configuration-for-apis","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/howtos/split-pdf","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/policies","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/quickstarts/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/quickstarts/dotnet/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/quickstarts/java/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/quickstarts/nodejs/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/pdf-services-api/releasenotes","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/policies","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/legacy-documentation/releasenotes","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/limits","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/107267970?v=4","https://avatars.githubusercontent.com/u/88659558?v=4","https://avatars.githubusercontent.com/u/32520775?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/141735408?v=4","https://avatars.githubusercontent.com/u/393660?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-accessibility-auto-tag-api/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-accessibility-auto-tag-api/dcserviceslicensing","avatars":[],"lastUpdated":"7/13/2022"},{"page":"/overview/pdf-accessibility-auto-tag-api/gettingstarted","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/39935646?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/117627709?v=4","https://avatars.githubusercontent.com/u/4571811?v=4","https://avatars.githubusercontent.com/u/143107745?v=4","https://avatars.githubusercontent.com/u/32520775?v=4","https://avatars.githubusercontent.com/u/32357056?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-accessibility-auto-tag-api/howtos/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/117627709?v=4","https://avatars.githubusercontent.com/u/4571811?v=4","https://avatars.githubusercontent.com/u/32357056?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-accessibility-auto-tag-api/howtos/accessibility-auto-tag-api","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/4571811?v=4","https://avatars.githubusercontent.com/u/32357056?v=4","https://avatars.githubusercontent.com/u/32520775?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-accessibility-auto-tag-api/howtos/api-usage","avatars":[],"lastUpdated":"9/26/2022"},{"page":"/overview/pdf-accessibility-auto-tag-api/quickstarts/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/32357056?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-accessibility-auto-tag-api/quickstarts/dotnet/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/4571811?v=4","https://avatars.githubusercontent.com/u/32357056?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-accessibility-auto-tag-api/quickstarts/java/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/4571811?v=4","https://avatars.githubusercontent.com/u/143107745?v=4","https://avatars.githubusercontent.com/u/32357056?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-accessibility-auto-tag-api/quickstarts/nodejs/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/4571811?v=4","https://avatars.githubusercontent.com/u/32357056?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-accessibility-auto-tag-api/quickstarts/python/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/4571811?v=4","https://avatars.githubusercontent.com/u/32357056?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-electronic-seal-api/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/95277167?v=4","https://avatars.githubusercontent.com/u/95292088?v=4","https://avatars.githubusercontent.com/u/50121312?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-electronic-seal-api/gettingstarted","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/4571811?v=4","https://avatars.githubusercontent.com/u/143107745?v=4","https://avatars.githubusercontent.com/u/95277167?v=4","https://avatars.githubusercontent.com/u/22520041?v=4","https://avatars.githubusercontent.com/u/8987271?v=4","https://avatars.githubusercontent.com/u/95292088?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-electronic-seal-api/howtos/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/4571811?v=4","https://avatars.githubusercontent.com/u/95277167?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-electronic-seal-api/howtos/api-usage","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/95277167?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-electronic-seal-api/howtos/electronic-seal-api","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/4571811?v=4","https://avatars.githubusercontent.com/u/143107745?v=4","https://avatars.githubusercontent.com/u/95277167?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-electronic-seal-api/quickstarts/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/95277167?v=4","https://avatars.githubusercontent.com/u/95292088?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-electronic-seal-api/quickstarts/dotnet/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/95277167?v=4","https://avatars.githubusercontent.com/u/95292088?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-electronic-seal-api/quickstarts/java/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/4571811?v=4","https://avatars.githubusercontent.com/u/143107745?v=4","https://avatars.githubusercontent.com/u/95277167?v=4","https://avatars.githubusercontent.com/u/95292088?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-electronic-seal-api/quickstarts/nodejs/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/95277167?v=4","https://avatars.githubusercontent.com/u/95292088?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-electronic-seal-api/quickstarts/python/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-embed-api/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/393660?v=4","https://avatars.githubusercontent.com/u/81377447?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-embed-api/gettingstarted","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117627709?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-embed-api/howtodata","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/81377447?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-embed-api/howtos","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117627709?v=4","https://avatars.githubusercontent.com/u/81377447?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-embed-api/howtos-comments","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-embed-api/howtos-ui","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-embed-api/modernviewer","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/393660?v=4","https://avatars.githubusercontent.com/u/22152075?v=4","https://avatars.githubusercontent.com/u/81377447?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-embed-api/releasenotes","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/56316668?v=4","https://avatars.githubusercontent.com/u/117627709?v=4","https://avatars.githubusercontent.com/u/22152075?v=4","https://avatars.githubusercontent.com/u/81377447?v=4","https://avatars.githubusercontent.com/u/32520775?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-embed-api/searchengineindexing","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/81377447?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-extract-api/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/393660?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-extract-api/dcserviceslicensing","avatars":[],"lastUpdated":"9/28/2021"},{"page":"/overview/pdf-extract-api/gettingstarted","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/39935646?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/117627709?v=4","https://avatars.githubusercontent.com/u/4571811?v=4","https://avatars.githubusercontent.com/u/143107745?v=4","https://avatars.githubusercontent.com/u/141735408?v=4","https://avatars.githubusercontent.com/u/393660?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-extract-api/howtos/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/117627709?v=4","https://avatars.githubusercontent.com/u/4571811?v=4","https://avatars.githubusercontent.com/u/22152075?v=4","https://avatars.githubusercontent.com/u/393660?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-extract-api/howtos/api-usage","avatars":[],"lastUpdated":"9/26/2022"},{"page":"/overview/pdf-extract-api/howtos/extract-api","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/117627709?v=4","https://avatars.githubusercontent.com/u/4571811?v=4","https://avatars.githubusercontent.com/u/103112742?v=4","https://avatars.githubusercontent.com/u/393660?v=4","https://avatars.githubusercontent.com/u/21309021?v=4","https://avatars.githubusercontent.com/u/65894914?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-extract-api/howtos/pdf-to-markdown-api","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"4/29/2026"},{"page":"/overview/pdf-extract-api/quickstarts/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/393660?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-extract-api/quickstarts/extract-pdf/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-extract-api/quickstarts/extract-pdf/dotnet/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-extract-api/quickstarts/extract-pdf/java/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-extract-api/quickstarts/extract-pdf/nodejs/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-extract-api/quickstarts/extract-pdf/python/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/393660?v=4","https://avatars.githubusercontent.com/u/65894914?v=4","https://avatars.githubusercontent.com/u/95292088?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/awsmarketplace","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/dcserviceslicensing","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/141735408?v=4","https://avatars.githubusercontent.com/u/393660?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/gettingstarted","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/39935646?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/4571811?v=4","https://avatars.githubusercontent.com/u/143107745?v=4","https://avatars.githubusercontent.com/u/32520775?v=4","https://avatars.githubusercontent.com/u/141735408?v=4","https://avatars.githubusercontent.com/u/393660?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/howtos/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/117627709?v=4","https://avatars.githubusercontent.com/u/4571811?v=4","https://avatars.githubusercontent.com/u/65894914?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/howtos/api-usage","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/22152075?v=4","https://avatars.githubusercontent.com/u/393660?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/howtos/combine-pdf","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/4571811?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/howtos/compress-pdf","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/4571811?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/howtos/create-pdf","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/56316668?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/4571811?v=4","https://avatars.githubusercontent.com/u/101633389?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/howtos/delete-pages","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/4571811?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/howtos/electronic-seal-api","avatars":["https://avatars.githubusercontent.com/u/95277167?v=4"],"lastUpdated":"6/19/2023"},{"page":"/overview/pdf-services-api/howtos/export-pdf","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/4571811?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/howtos/export-pdf-form-data","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/howtos/extract-pdf","avatars":[],"lastUpdated":"9/28/2021"},{"page":"/overview/pdf-services-api/howtos/import-pdf-form-data","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/howtos/insert-pages","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/4571811?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/howtos/linearize-pdf","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/4571811?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/howtos/ocr-pdf","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/4571811?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/howtos/pdf-accessibility-auto-tag-pdf","avatars":["https://avatars.githubusercontent.com/u/32357056?v=4"],"lastUpdated":"4/4/2023"},{"page":"/overview/pdf-services-api/howtos/pdf-accessibility-checker-api","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/107267970?v=4","https://avatars.githubusercontent.com/u/175206800?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/howtos/pdf-external-storage-sol","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/15727050?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/howtos/pdf-properties","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/4571811?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/howtos/pdf-to-markdown-api","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/56316668?v=4"],"lastUpdated":"4/29/2026"},{"page":"/overview/pdf-services-api/howtos/pdf-watermark-api","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/88659558?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/howtos/protect-pdf","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/4571811?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/howtos/remove-protection","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/4571811?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/howtos/reorder-pages","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/4571811?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/howtos/replace-pages","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/4571811?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/howtos/rotate-pages","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/4571811?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/howtos/sdk-utilities","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/22620821?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/howtos/service-region-configuration-for-apis","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/22620821?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/howtos/split-pdf","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/4571811?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/howtos/webhook-notification","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/policies","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/quickstarts/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/393660?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/quickstarts/dotnet/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/32520775?v=4","https://avatars.githubusercontent.com/u/393660?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/quickstarts/java/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/4571811?v=4","https://avatars.githubusercontent.com/u/143107745?v=4","https://avatars.githubusercontent.com/u/32520775?v=4","https://avatars.githubusercontent.com/u/393660?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/quickstarts/nodejs/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/32520775?v=4","https://avatars.githubusercontent.com/u/393660?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/quickstarts/python/","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/117148595?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/pdf-services-api/vip-mp-onboarding-guide","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/57210650?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/policies","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/releasenotes","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/39935646?v=4","https://avatars.githubusercontent.com/u/57210650?v=4","https://avatars.githubusercontent.com/u/117148595?v=4","https://avatars.githubusercontent.com/u/119481807?v=4","https://avatars.githubusercontent.com/u/175206800?v=4","https://avatars.githubusercontent.com/u/88659558?v=4","https://avatars.githubusercontent.com/u/117627709?v=4","https://avatars.githubusercontent.com/u/4571811?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/security","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/22620821?v=4","https://avatars.githubusercontent.com/u/393660?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/status","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/393660?v=4"],"lastUpdated":"5/1/2026"},{"page":"/overview/support","avatars":["https://avatars.githubusercontent.com/u/14320591?v=4","https://avatars.githubusercontent.com/u/393660?v=4"],"lastUpdated":"5/1/2026"}],":type":"sheet"}
+{
+  "total": 199,
+  "offset": 0,
+  "limit": 199,
+  "data": [
+    {
+      "page": "/apis/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/56316668?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/32520775?v=4"
+      ],
+      "lastUpdated": "5/7/2026"
+    },
+    {
+      "page": "/config",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/32520775?v=4",
+        "https://avatars.githubusercontent.com/u/32357056?v=4",
+        "https://avatars.githubusercontent.com/u/393660?v=4",
+        "https://avatars.githubusercontent.com/u/32288634?v=4",
+        "https://avatars.githubusercontent.com/u/57922?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/document-generation-api/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/document-generation-api/beta",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/document-generation-api/charts",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/57210650?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/document-generation-api/complextableconstructs",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/143107745?v=4",
+        "https://avatars.githubusercontent.com/u/88659558?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/document-generation-api/dcserviceslicensing",
+      "avatars": [],
+      "lastUpdated": "9/28/2021"
+    },
+    {
+      "page": "/overview/document-generation-api/fragments",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/143107745?v=4",
+        "https://avatars.githubusercontent.com/u/95292088?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/document-generation-api/gettingstarted",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4",
+        "https://avatars.githubusercontent.com/u/15727050?v=4",
+        "https://avatars.githubusercontent.com/u/393660?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/document-generation-api/hyperlink",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/document-generation-api/inlineimages",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/143107745?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/document-generation-api/quickstarts/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/393660?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/document-generation-api/quickstarts/dotnet/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/32520775?v=4",
+        "https://avatars.githubusercontent.com/u/393660?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/document-generation-api/quickstarts/java/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4",
+        "https://avatars.githubusercontent.com/u/143107745?v=4",
+        "https://avatars.githubusercontent.com/u/32520775?v=4",
+        "https://avatars.githubusercontent.com/u/95292088?v=4",
+        "https://avatars.githubusercontent.com/u/393660?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/document-generation-api/quickstarts/nodejs/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/32520775?v=4",
+        "https://avatars.githubusercontent.com/u/95292088?v=4",
+        "https://avatars.githubusercontent.com/u/143107745?v=4",
+        "https://avatars.githubusercontent.com/u/393660?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/document-generation-api/quickstarts/python/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/document-generation-api/stylingformattingtags",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/57210650?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/143107745?v=4",
+        "https://avatars.githubusercontent.com/u/22520041?v=4",
+        "https://avatars.githubusercontent.com/u/95277167?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/document-generation-api/tablewithmarkers",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/143107745?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/document-generation-api/templatetags",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/57210650?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/143107745?v=4",
+        "https://avatars.githubusercontent.com/u/22520041?v=4",
+        "https://avatars.githubusercontent.com/u/95277167?v=4",
+        "https://avatars.githubusercontent.com/u/95292088?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/document-generation-api/wordaddin",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/faq",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/authentication",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/document-generation-api/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/document-generation-api/beta",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/document-generation-api/complextableconstructs",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/document-generation-api/dcserviceslicensing",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/document-generation-api/dynamictableconstructs",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/document-generation-api/fragments",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/document-generation-api/gettingstarted",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/document-generation-api/hyperlink",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/document-generation-api/inlineimages",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/document-generation-api/quickstarts",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/document-generation-api/quickstarts/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/document-generation-api/quickstarts/dotnet/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/document-generation-api/quickstarts/java/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/document-generation-api/quickstarts/nodejs/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/document-generation-api/stylingformattingtags",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/document-generation-api/templatetags",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/document-generation-api/wordaddin",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-accessibility-auto-tag-api/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-accessibility-auto-tag-api/dcserviceslicensing",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-accessibility-auto-tag-api/gettingstarted",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-accessibility-auto-tag-api/howtos/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-accessibility-auto-tag-api/howtos/accessibility-auto-tag-api",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-accessibility-auto-tag-api/howtos/api-usage",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/dotnet/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/java/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/nodejs/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-accessibility-auto-tag-api/quickstarts/python/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-electronic-seal-api/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-electronic-seal-api/gettingstarted",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-electronic-seal-api/howtos/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-electronic-seal-api/howtos/api-usage",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-electronic-seal-api/howtos/electronic-seal-api",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-electronic-seal-api/quickstarts/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-electronic-seal-api/quickstarts/dotnet/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-electronic-seal-api/quickstarts/java/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-electronic-seal-api/quickstarts/nodejs/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-extract-api/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-extract-api/dcserviceslicensing",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-extract-api/gettingstarted",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-extract-api/howtos/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-extract-api/howtos/api-usage",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-extract-api/howtos/extract-api",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4"
+      ],
+      "lastUpdated": "5/4/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-extract-api/quickstarts",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-extract-api/quickstarts/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-extract-api/quickstarts/dotnet/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-extract-api/quickstarts/java/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-extract-api/quickstarts/nodejs/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-extract-api/quickstarts/python/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/awsmarketplace",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/dcserviceslicensing",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/gettingstarted",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/howtos/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/howtos/accessibility-auto-tag-pdf",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/howtos/api-usage",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/howtos/combine-pdf",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/howtos/compress-pdf",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/howtos/create-pdf",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/howtos/delete-pages",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/howtos/document-generation",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/howtos/electronic-seal-api",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/howtos/export-pdf",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/howtos/extract-pdf",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/howtos/insert-pages",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/howtos/linearize-pdf",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/howtos/ocr-pdf",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/howtos/pdf-accessibility-auto-tag-pdf",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/howtos/pdf-external-storage-sol",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/howtos/pdf-properties",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/howtos/protect-pdf",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/howtos/remove-protection",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/howtos/reorder-pages",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/howtos/replace-pages",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/howtos/rotate-pages",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/howtos/service-region-configuration-for-apis",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/howtos/split-pdf",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/policies",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/quickstarts/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/quickstarts/dotnet/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/quickstarts/java/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/quickstarts/nodejs/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/pdf-services-api/releasenotes",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/policies",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/legacy-documentation/releasenotes",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/limits",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/107267970?v=4",
+        "https://avatars.githubusercontent.com/u/88659558?v=4",
+        "https://avatars.githubusercontent.com/u/32520775?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/141735408?v=4",
+        "https://avatars.githubusercontent.com/u/393660?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-accessibility-auto-tag-api/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-accessibility-auto-tag-api/dcserviceslicensing",
+      "avatars": [],
+      "lastUpdated": "7/13/2022"
+    },
+    {
+      "page": "/overview/pdf-accessibility-auto-tag-api/gettingstarted",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/39935646?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/117627709?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4",
+        "https://avatars.githubusercontent.com/u/143107745?v=4",
+        "https://avatars.githubusercontent.com/u/32520775?v=4",
+        "https://avatars.githubusercontent.com/u/32357056?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-accessibility-auto-tag-api/howtos/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/117627709?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4",
+        "https://avatars.githubusercontent.com/u/32357056?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-accessibility-auto-tag-api/howtos/accessibility-auto-tag-api",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4",
+        "https://avatars.githubusercontent.com/u/32357056?v=4",
+        "https://avatars.githubusercontent.com/u/32520775?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-accessibility-auto-tag-api/howtos/api-usage",
+      "avatars": [],
+      "lastUpdated": "9/26/2022"
+    },
+    {
+      "page": "/overview/pdf-accessibility-auto-tag-api/quickstarts/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/32357056?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-accessibility-auto-tag-api/quickstarts/dotnet/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4",
+        "https://avatars.githubusercontent.com/u/32357056?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-accessibility-auto-tag-api/quickstarts/java/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4",
+        "https://avatars.githubusercontent.com/u/143107745?v=4",
+        "https://avatars.githubusercontent.com/u/32357056?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-accessibility-auto-tag-api/quickstarts/nodejs/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4",
+        "https://avatars.githubusercontent.com/u/32357056?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-accessibility-auto-tag-api/quickstarts/python/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4",
+        "https://avatars.githubusercontent.com/u/32357056?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-electronic-seal-api/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/95277167?v=4",
+        "https://avatars.githubusercontent.com/u/95292088?v=4",
+        "https://avatars.githubusercontent.com/u/50121312?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-electronic-seal-api/gettingstarted",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4",
+        "https://avatars.githubusercontent.com/u/143107745?v=4",
+        "https://avatars.githubusercontent.com/u/95277167?v=4",
+        "https://avatars.githubusercontent.com/u/22520041?v=4",
+        "https://avatars.githubusercontent.com/u/8987271?v=4",
+        "https://avatars.githubusercontent.com/u/95292088?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-electronic-seal-api/howtos/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4",
+        "https://avatars.githubusercontent.com/u/95277167?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-electronic-seal-api/howtos/api-usage",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/95277167?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-electronic-seal-api/howtos/electronic-seal-api",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4",
+        "https://avatars.githubusercontent.com/u/143107745?v=4",
+        "https://avatars.githubusercontent.com/u/95277167?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-electronic-seal-api/quickstarts/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/95277167?v=4",
+        "https://avatars.githubusercontent.com/u/95292088?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-electronic-seal-api/quickstarts/dotnet/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/95277167?v=4",
+        "https://avatars.githubusercontent.com/u/95292088?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-electronic-seal-api/quickstarts/java/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4",
+        "https://avatars.githubusercontent.com/u/143107745?v=4",
+        "https://avatars.githubusercontent.com/u/95277167?v=4",
+        "https://avatars.githubusercontent.com/u/95292088?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-electronic-seal-api/quickstarts/nodejs/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/95277167?v=4",
+        "https://avatars.githubusercontent.com/u/95292088?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-electronic-seal-api/quickstarts/python/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-embed-api/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/393660?v=4",
+        "https://avatars.githubusercontent.com/u/81377447?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-embed-api/gettingstarted",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117627709?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-embed-api/howtodata",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/81377447?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-embed-api/howtos",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117627709?v=4",
+        "https://avatars.githubusercontent.com/u/81377447?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-embed-api/howtos-comments",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-embed-api/howtos-ui",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-embed-api/modernviewer",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/393660?v=4",
+        "https://avatars.githubusercontent.com/u/22152075?v=4",
+        "https://avatars.githubusercontent.com/u/81377447?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-embed-api/releasenotes",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/56316668?v=4",
+        "https://avatars.githubusercontent.com/u/117627709?v=4",
+        "https://avatars.githubusercontent.com/u/22152075?v=4",
+        "https://avatars.githubusercontent.com/u/81377447?v=4",
+        "https://avatars.githubusercontent.com/u/32520775?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-embed-api/searchengineindexing",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/81377447?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-extract-api/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/393660?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-extract-api/dcserviceslicensing",
+      "avatars": [],
+      "lastUpdated": "9/28/2021"
+    },
+    {
+      "page": "/overview/pdf-extract-api/gettingstarted",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/39935646?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/117627709?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4",
+        "https://avatars.githubusercontent.com/u/143107745?v=4",
+        "https://avatars.githubusercontent.com/u/141735408?v=4",
+        "https://avatars.githubusercontent.com/u/393660?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-extract-api/howtos/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/117627709?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4",
+        "https://avatars.githubusercontent.com/u/22152075?v=4",
+        "https://avatars.githubusercontent.com/u/393660?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-extract-api/howtos/api-usage",
+      "avatars": [],
+      "lastUpdated": "9/26/2022"
+    },
+    {
+      "page": "/overview/pdf-extract-api/howtos/extract-api",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/117627709?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4",
+        "https://avatars.githubusercontent.com/u/103112742?v=4",
+        "https://avatars.githubusercontent.com/u/393660?v=4",
+        "https://avatars.githubusercontent.com/u/21309021?v=4",
+        "https://avatars.githubusercontent.com/u/65894914?v=4"
+      ],
+      "lastUpdated": "5/4/2026"
+    },
+    {
+      "page": "/overview/pdf-extract-api/howtos/pdf-to-markdown-api",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "4/30/2026"
+    },
+    {
+      "page": "/overview/pdf-extract-api/quickstarts/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/393660?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-extract-api/quickstarts/extract-pdf/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-extract-api/quickstarts/extract-pdf/dotnet/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-extract-api/quickstarts/extract-pdf/java/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-extract-api/quickstarts/extract-pdf/nodejs/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-extract-api/quickstarts/extract-pdf/python/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/393660?v=4",
+        "https://avatars.githubusercontent.com/u/65894914?v=4",
+        "https://avatars.githubusercontent.com/u/95292088?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/awsmarketplace",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/dcserviceslicensing",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/141735408?v=4",
+        "https://avatars.githubusercontent.com/u/393660?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/gettingstarted",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/39935646?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4",
+        "https://avatars.githubusercontent.com/u/143107745?v=4",
+        "https://avatars.githubusercontent.com/u/32520775?v=4",
+        "https://avatars.githubusercontent.com/u/141735408?v=4",
+        "https://avatars.githubusercontent.com/u/393660?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/117627709?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4",
+        "https://avatars.githubusercontent.com/u/65894914?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/api-usage",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/22152075?v=4",
+        "https://avatars.githubusercontent.com/u/393660?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/combine-pdf",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/compress-pdf",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/create-pdf",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/56316668?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4",
+        "https://avatars.githubusercontent.com/u/101633389?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/delete-pages",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/electronic-seal-api",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/95277167?v=4"
+      ],
+      "lastUpdated": "6/19/2023"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/export-pdf",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/export-pdf-form-data",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/extract-pdf",
+      "avatars": [],
+      "lastUpdated": "9/28/2021"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/import-pdf-form-data",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/insert-pages",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/linearize-pdf",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/ocr-pdf",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/pdf-accessibility-auto-tag-pdf",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/32357056?v=4"
+      ],
+      "lastUpdated": "4/4/2023"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/pdf-accessibility-checker-api",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/107267970?v=4",
+        "https://avatars.githubusercontent.com/u/175206800?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/pdf-external-storage-sol",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/15727050?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/pdf-properties",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/pdf-to-markdown-api",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/56316668?v=4"
+      ],
+      "lastUpdated": "4/30/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/pdf-watermark-api",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/88659558?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/protect-pdf",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/remove-protection",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/reorder-pages",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/replace-pages",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/rotate-pages",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/sdk-utilities",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/service-region-configuration-for-apis",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/split-pdf",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/webhook-notification",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/policies",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/quickstarts/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/393660?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/quickstarts/dotnet/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/32520775?v=4",
+        "https://avatars.githubusercontent.com/u/393660?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/quickstarts/java/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4",
+        "https://avatars.githubusercontent.com/u/143107745?v=4",
+        "https://avatars.githubusercontent.com/u/32520775?v=4",
+        "https://avatars.githubusercontent.com/u/393660?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/quickstarts/nodejs/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/32520775?v=4",
+        "https://avatars.githubusercontent.com/u/393660?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/quickstarts/python/",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/vip-mp-onboarding-guide",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/57210650?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/policies",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/releasenotes",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/39935646?v=4",
+        "https://avatars.githubusercontent.com/u/57210650?v=4",
+        "https://avatars.githubusercontent.com/u/117148595?v=4",
+        "https://avatars.githubusercontent.com/u/119481807?v=4",
+        "https://avatars.githubusercontent.com/u/175206800?v=4",
+        "https://avatars.githubusercontent.com/u/88659558?v=4",
+        "https://avatars.githubusercontent.com/u/117627709?v=4",
+        "https://avatars.githubusercontent.com/u/4571811?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/security",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/22620821?v=4",
+        "https://avatars.githubusercontent.com/u/393660?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/status",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/393660?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/support",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/14320591?v=4",
+        "https://avatars.githubusercontent.com/u/393660?v=4"
+      ],
+      "lastUpdated": "5/1/2026"
+    }
+  ],
+  ":type": "sheet"
+}
