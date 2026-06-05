@@ -76,7 +76,7 @@ To complete this guide, you will need:
 
 ```
 
-Our application will take a Word document, `receiptTemplate.docx` (downloadable from [here](https://developer.adobe.com/document-services/docs/receiptTemplate.docx)), and combine it with data in a JSON file, `receipt.json` (downloadable from [here](https://developer.adobe.com/document-services/docs/receipt.json)), to be sent to the Acrobat Services API and generate a receipt PDF.
+Our application will take a Word document, `receiptTemplate.docx` (downloadable from [here](https://raw.githubusercontent.com/AdobeDocs/pdfservices-api-documentation/main/static/receiptTemplate.docx)), and combine it with data in a JSON file, `receipt.json` (downloadable from [here](https://raw.githubusercontent.com/AdobeDocs/pdfservices-api-documentation/main/static/receipt.json)), to be sent to the Acrobat Services API and generate a receipt PDF.
 
 4) In your editor, open the directory where you previously copied the credentials and created the `csproj` file. Create a new file, `Program.cs`. 
 
