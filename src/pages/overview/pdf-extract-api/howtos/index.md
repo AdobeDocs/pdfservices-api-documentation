@@ -23,7 +23,7 @@ For code examples illustrating other PDF actions including those below, see the 
 
 ## How It Works
 
-PDF Extract uses AI/ML technology to identify and categorize the various objects within documents – such as paragraphs, lists, headings, tables, and images – and extract the text, formatting, and associated document structural information which is then delivered in a resulting JSON file. Extracted table data can optionally be delivered within .CSV or .XLSX files, and extracted images are delivered as .PNG files. For additional information, please refer to the [PDF Extract API white paper](https://www.adobe.com/content/dam/cc/en/trust-center/ungated/whitepapers/dx/Adobe-PDF-Extract-API-Technical-Brief.pdf).
+PDF Extract uses AI/ML technology to identify and categorize the various objects within documents – such as paragraphs, lists, headings, tables, and images – and extract the text, formatting, and associated document structural information which is then delivered in a resulting JSON file. Extracted table data can optionally be delivered within .CSV or .XLSX files, and extracted images are delivered as .PNG files. For additional information, please refer to the [PDF Extract API white paper](https://www.adobe.com/cc-shared/assets/pdf/trust-center/ungated/whitepapers/doc-cloud/adobe-document-services-security-overview.pdf).
 
 ## Custom timeout configuration
 
