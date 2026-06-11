@@ -122,17 +122,19 @@
     {
       "page": "/overview/document-generation-api/quickstarts/dotnet/",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/276200381?v=4",
         "https://avatars.githubusercontent.com/u/14320591?v=4",
         "https://avatars.githubusercontent.com/u/22620821?v=4",
         "https://avatars.githubusercontent.com/u/119481807?v=4",
         "https://avatars.githubusercontent.com/u/32520775?v=4",
         "https://avatars.githubusercontent.com/u/393660?v=4"
       ],
-      "lastUpdated": "5/1/2026"
+      "lastUpdated": "6/5/2026"
     },
     {
       "page": "/overview/document-generation-api/quickstarts/java/",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/276200381?v=4",
         "https://avatars.githubusercontent.com/u/14320591?v=4",
         "https://avatars.githubusercontent.com/u/119481807?v=4",
         "https://avatars.githubusercontent.com/u/4571811?v=4",
@@ -141,11 +143,12 @@
         "https://avatars.githubusercontent.com/u/95292088?v=4",
         "https://avatars.githubusercontent.com/u/393660?v=4"
       ],
-      "lastUpdated": "5/1/2026"
+      "lastUpdated": "6/5/2026"
     },
     {
       "page": "/overview/document-generation-api/quickstarts/nodejs/",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/276200381?v=4",
         "https://avatars.githubusercontent.com/u/14320591?v=4",
         "https://avatars.githubusercontent.com/u/22620821?v=4",
         "https://avatars.githubusercontent.com/u/32520775?v=4",
@@ -153,15 +156,16 @@
         "https://avatars.githubusercontent.com/u/143107745?v=4",
         "https://avatars.githubusercontent.com/u/393660?v=4"
       ],
-      "lastUpdated": "5/1/2026"
+      "lastUpdated": "6/5/2026"
     },
     {
       "page": "/overview/document-generation-api/quickstarts/python/",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/276200381?v=4",
         "https://avatars.githubusercontent.com/u/14320591?v=4",
         "https://avatars.githubusercontent.com/u/117148595?v=4"
       ],
-      "lastUpdated": "5/1/2026"
+      "lastUpdated": "6/5/2026"
     },
     {
       "page": "/overview/document-generation-api/stylingformattingtags",
@@ -1266,6 +1270,7 @@
     {
       "page": "/overview/pdf-extract-api/howtos/",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/276200381?v=4",
         "https://avatars.githubusercontent.com/u/14320591?v=4",
         "https://avatars.githubusercontent.com/u/119481807?v=4",
         "https://avatars.githubusercontent.com/u/117148595?v=4",
@@ -1275,7 +1280,7 @@
         "https://avatars.githubusercontent.com/u/22152075?v=4",
         "https://avatars.githubusercontent.com/u/393660?v=4"
       ],
-      "lastUpdated": "5/1/2026"
+      "lastUpdated": "6/10/2026"
     },
     {
       "page": "/overview/pdf-extract-api/howtos/api-usage",
@@ -1287,6 +1292,7 @@
     {
       "page": "/overview/pdf-extract-api/howtos/extract-api",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/276200381?v=4",
         "https://avatars.githubusercontent.com/u/14320591?v=4",
         "https://avatars.githubusercontent.com/u/119481807?v=4",
         "https://avatars.githubusercontent.com/u/117148595?v=4",
@@ -1298,7 +1304,7 @@
         "https://avatars.githubusercontent.com/u/21309021?v=4",
         "https://avatars.githubusercontent.com/u/65894914?v=4"
       ],
-      "lastUpdated": "5/4/2026"
+      "lastUpdated": "6/5/2026"
     },
     {
       "page": "/overview/pdf-extract-api/howtos/pdf-to-markdown-api",
@@ -1489,9 +1495,10 @@
     {
       "page": "/overview/pdf-services-api/howtos/extract-pdf",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/276200381?v=4",
         "https://avatars.githubusercontent.com/u/14320591?v=4"
       ],
-      "lastUpdated": "5/26/2026"
+      "lastUpdated": "6/5/2026"
     },
     {
       "page": "/overview/pdf-services-api/howtos/import-pdf-form-data",
