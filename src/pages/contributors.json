@@ -1,7 +1,7 @@
 {
-  "total": 199,
+  "total": 200,
   "offset": 0,
-  "limit": 199,
+  "limit": 200,
   "data": [
     {
       "page": "/apis/",
@@ -1465,6 +1465,13 @@
         "https://avatars.githubusercontent.com/u/4571811?v=4"
       ],
       "lastUpdated": "5/1/2026"
+    },
+    {
+      "page": "/overview/pdf-services-api/howtos/document-generation",
+      "avatars": [
+        "https://avatars.githubusercontent.com/u/276200381?v=4"
+      ],
+      "lastUpdated": "6/11/2026"
     },
     {
       "page": "/overview/pdf-services-api/howtos/electronic-seal-api",
