@@ -43,7 +43,7 @@
             - [Compress PDFs](overview/pdf-services-api/howtos/compress-pdf.md)
             - [Create PDF](overview/pdf-services-api/howtos/create-pdf.md)
             - [Delete Pages](overview/pdf-services-api/howtos/delete-pages.md)
-            - [Document Generation](overview/pdf-services-api/howtos/document-generation.md)
+            - [Document Generation](https://developer.adobe.com/document-services/docs/overview/document-generation-api/)
             - [Export PDF](overview/pdf-services-api/howtos/export-pdf.md)
             - [Export PDF Form Data](overview/pdf-services-api/howtos/export-pdf-form-data.md)
             - [Extract PDF](overview/pdf-services-api/howtos/extract-pdf.md)
