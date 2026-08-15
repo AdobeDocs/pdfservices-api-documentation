@@ -1,0 +1,15 @@
+name: Task 8.3 CI Validation
+
+on:
+  push:
+    branches:
+      - fix/hud-keychain-cancel-animation
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run tests (CI_TASK8_ONLY)
+        run: swift test -Xswiftc -DCI_TASK8_ONLY --filter VisionAssistantActorIntegrationTests 2>&1 | tee test-log.txt
