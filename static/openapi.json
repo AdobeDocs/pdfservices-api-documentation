@@ -36,11 +36,11 @@
     },
     {
       "name": "Extract PDF",
-      "description": "Extract content from PDF documents and output it in a structured JSON format, along with tables and figures"
+      "description": "Extract content from PDF documents and output it in a structured JSON format, along with tables and figures.\n\nFor the PDF to Markdown API, see [this page](https://developer.adobe.com/document-services/docs/apis/#tag/PDF-To-Markdown)."
     },
     {
       "name": "PDF To Markdown",
-      "description": "Extract content from PDF documents and output it in a well-formatted LLM-friendly Markdown text, along with tables and figures"
+      "description": "Extract content from PDF documents and output it in a well-formatted LLM-friendly Markdown text, along with tables and figures.\n\nFor the PDF to JSON API, see [this page](https://developer.adobe.com/document-services/docs/apis/#tag/Extract-PDF)."
     },
     {
       "name": "Html to PDF",

@@ -17,12 +17,11 @@
     - Resources
         - [Developer Resources](https://developer.adobe.com/document-services/resources/)
         - [Forum](https://community.adobe.com/t5/document-services-apis/bd-p/Document-Cloud-SDK?page=1&sort=latest_replies&filter=all)
-        - [Licensing](overview/limits.md)
+        - [Licensing and Usage Limits](overview/limits.md)
         - [Sales FAQ](https://developer.adobe.com/document-services/faq/sales/)
         - [Tech Support FAQ](https://developer.adobe.com/document-services/faq/tech-support/)
         - [Contact Us](https://developer.adobe.com/document-services/pricing/contact/)
     - [Documentation](overview/index.md)
-    - [REST APIs](apis/index.md)
     - [Get credentials](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html)
 - subPages:
     - [Introduction](overview/index.md)
@@ -135,6 +134,7 @@
     - [Support](overview/support.md)
     - [Technical FAQ](overview/faq.md)
     - [API Status](overview/status.md)
+    - [REST APIs](overview/apis/index.md)
     - [Legacy Documentation](overview/legacy-documentation/index.md)
         - [Introduction](overview/legacy-documentation/index.md)
         - [PDF Services API](overview/legacy-documentation/pdf-services-api/index.md)
