@@ -2,24 +2,25 @@
     - /document-services/docs/
 
 - pages:
-    - [Adobe Acrobat Services](/)
+    - [Adobe Acrobat Services](https://developer.adobe.com/document-services/)
     - APIs
-        - [PDF Services](/document-services/docs/../apis/pdf-services/) Create, combine and export PDFs
-        - [PDF Accessibility APIs](/apis/pdf-accessibility-apis/) Auto-Tag API and Checker API to improve accessibility
-        - [PDF Extract](/apis/pdf-extract/) Extract text, tables, images, and document structure to JSON or Markdown
-        - [Document Generation](/apis/doc-generation/) Generate PDF and Word documents from custom Word templates
-        - [PDF Embed](/apis/pdf-embed/) Embed high-fidelity PDFs in web apps with analytics
-        - [Power Automate Connector](/apis/microsoft-pa-integration/) Build workflows on Microsoft Power Platform easily
-        - [Sign API](/apis/sign-api/) Integrate e-signatures into your platform or application
-        - [Electronic Seal API](/apis/electronic-seal-api/) Electronically seal PDF documents at scale to provide document athenticity and identity
-    - [Pricing](/pricing/main/)
+        - [PDF Services](https://developer.adobe.com/document-services/apis/pdf-services/) Create, combine and export PDFs
+        - [PDF Accessibility Auto-Tag](https://developer.adobe.com/document-services/apis/pdf-accessibility-auto-tag/) Auto-tag PDF content to improve accessibility
+        - [PDF Extract](https://developer.adobe.com/document-services/apis/pdf-extract/) Extract text, tables, images, and document structure
+        - [Document Generation](https://developer.adobe.com/document-services/apis/doc-generation/) Generate PDF and Word documents from custom Word templates
+        - [Electronic Seal API](https://developer.adobe.com/document-services/apis/electronic-seal-api/) Electronically seal PDF documents at scale to provide document athenticity and identity
+        - [PDF Embed](https://developer.adobe.com/document-services/apis/pdf-embed/) Embed high-fidelity PDFs in web apps with analytics
+        - [Sign API](https://developer.adobe.com/document-services/apis/sign-api/) Integrate e-signatures into your platform or application
+        - [Power Automate Connector](https://developer.adobe.com/document-services/apis/microsoft-pa-integration/) Build workflows on Microsoft Power Platform easily
+    - [Use Cases](https://developer.adobe.com/document-services/use-cases/agreements-and-contracts/sales-proposals-and-contracts/)
+    - [Pricing](https://developer.adobe.com/document-services/pricing/main/)
     - Resources
-        - [Customer Stories](/resources/customer-stories/)
+        - [Developer Resources](https://developer.adobe.com/document-services/resources/)
         - [Forum](https://community.adobe.com/t5/document-services-apis/bd-p/Document-Cloud-SDK?page=1&sort=latest_replies&filter=all)
         - [Licensing and Usage Limits](overview/limits.md)
-        - [Sales FAQ](/faq/sales/)
-        - [Tech Support FAQ](/faq/tech-support/)
-        - [Contact Us](/pricing/contact/)
+        - [Sales FAQ](https://developer.adobe.com/document-services/faq/sales/)
+        - [Tech Support FAQ](https://developer.adobe.com/document-services/faq/tech-support/)
+        - [Contact Us](https://developer.adobe.com/document-services/pricing/contact/)
     - [Documentation](overview/index.md)
     - [Get credentials](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html)
 - subPages:
@@ -41,7 +42,7 @@
             - [Compress PDFs](overview/pdf-services-api/howtos/compress-pdf.md)
             - [Create PDF](overview/pdf-services-api/howtos/create-pdf.md)
             - [Delete Pages](overview/pdf-services-api/howtos/delete-pages.md)
-            - [Document Generation](/docs/overview/document-generation-api/)
+           - [Document Generation](https://developer.adobe.com/document-services/docs/overview/document-generation-api/)
             - [Export PDF](overview/pdf-services-api/howtos/export-pdf.md)
             - [Export PDF Form Data](overview/pdf-services-api/howtos/export-pdf-form-data.md)
             - [Extract PDF](overview/pdf-services-api/howtos/extract-pdf.md)
