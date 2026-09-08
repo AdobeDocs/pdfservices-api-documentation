@@ -2,24 +2,24 @@
     - /document-services/docs/
 
 - pages:
-    - [Adobe Acrobat Services](/document-services/)
+    - [Adobe Acrobat Services](/)
     - APIs
-        - [PDF Services](/document-services/apis/pdf-services/) Create, combine and export PDFs
-        - [PDF Accessibility APIs](/document-services/apis/pdf-accessibility-apis/) Auto-Tag API and Checker API to improve accessibility
-        - [PDF Extract](/document-services/apis/pdf-extract/) Extract text, tables, images, and document structure to JSON or Markdown
-        - [Document Generation](/document-services/apis/doc-generation/) Generate PDF and Word documents from custom Word templates
-        - [PDF Embed](/document-services/apis/pdf-embed/) Embed high-fidelity PDFs in web apps with analytics
-        - [Power Automate Connector](/document-services/apis/microsoft-pa-integration/) Build workflows on Microsoft Power Platform easily
-        - [Sign API](/document-services/apis/sign-api/) Integrate e-signatures into your platform or application
-        - [Electronic Seal API](/document-services/apis/electronic-seal-api/) Electronically seal PDF documents at scale to provide document athenticity and identity
-    - [Pricing](/document-services/pricing/main/)
+        - [PDF Services](/apis/pdf-services/) Create, combine and export PDFs
+        - [PDF Accessibility APIs](/apis/pdf-accessibility-apis/) Auto-Tag API and Checker API to improve accessibility
+        - [PDF Extract](/apis/pdf-extract/) Extract text, tables, images, and document structure to JSON or Markdown
+        - [Document Generation](/apis/doc-generation/) Generate PDF and Word documents from custom Word templates
+        - [PDF Embed](/apis/pdf-embed/) Embed high-fidelity PDFs in web apps with analytics
+        - [Power Automate Connector](/apis/microsoft-pa-integration/) Build workflows on Microsoft Power Platform easily
+        - [Sign API](/apis/sign-api/) Integrate e-signatures into your platform or application
+        - [Electronic Seal API](/apis/electronic-seal-api/) Electronically seal PDF documents at scale to provide document athenticity and identity
+    - [Pricing](/pricing/main/)
     - Resources
-        - [Customer Stories](/document-services/resources/customer-stories/)
+        - [Customer Stories](/resources/customer-stories/)
         - [Forum](https://community.adobe.com/t5/document-services-apis/bd-p/Document-Cloud-SDK?page=1&sort=latest_replies&filter=all)
         - [Licensing and Usage Limits](overview/limits.md)
-        - [Sales FAQ](/document-services/faq/sales/)
-        - [Tech Support FAQ](/document-services/faq/tech-support/)
-        - [Contact Us](/document-services/pricing/contact/)
+        - [Sales FAQ](/faq/sales/)
+        - [Tech Support FAQ](/faq/tech-support/)
+        - [Contact Us](/pricing/contact/)
     - [Documentation](overview/index.md)
     - [Get credentials](https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/main.html)
 - subPages:
@@ -41,7 +41,7 @@
             - [Compress PDFs](overview/pdf-services-api/howtos/compress-pdf.md)
             - [Create PDF](overview/pdf-services-api/howtos/create-pdf.md)
             - [Delete Pages](overview/pdf-services-api/howtos/delete-pages.md)
-            - [Document Generation](/document-services/docs/overview/document-generation-api/)
+            - [Document Generation](/docs/overview/document-generation-api/)
             - [Export PDF](overview/pdf-services-api/howtos/export-pdf.md)
             - [Export PDF Form Data](overview/pdf-services-api/howtos/export-pdf-form-data.md)
             - [Extract PDF](overview/pdf-services-api/howtos/extract-pdf.md)
