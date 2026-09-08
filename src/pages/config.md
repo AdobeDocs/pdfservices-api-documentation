@@ -4,7 +4,7 @@
 - pages:
     - [Adobe Acrobat Services](/)
     - APIs
-        - [PDF Services](/apis/pdf-services/) Create, combine and export PDFs
+        - [PDF Services](apis/pdf-services/) Create, combine and export PDFs
         - [PDF Accessibility APIs](/apis/pdf-accessibility-apis/) Auto-Tag API and Checker API to improve accessibility
         - [PDF Extract](/apis/pdf-extract/) Extract text, tables, images, and document structure to JSON or Markdown
         - [Document Generation](/apis/doc-generation/) Generate PDF and Word documents from custom Word templates
