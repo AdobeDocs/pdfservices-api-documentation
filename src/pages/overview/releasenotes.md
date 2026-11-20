@@ -142,7 +142,7 @@ const pageLayout = new PDFServicesSdk.CreatePDF.options.html.PageLayout();
 ```javascript
 <ItemGroup>
     <PackageReference Include="log4net" Version="3.2.0" />
-    <PackageReference Include="Adobe.PDFServicesSDK" Version="4.3.1" />
+    <PackageReference Include="Adobe.PDFServicesSDK" Version="4.4.1" />
 </ItemGroup> 
 ```
 
@@ -182,6 +182,10 @@ Minor and Patch releases are backward compatible with the previous release.
 Upgrading to the latest SDK should not break existing applications.
 
 ## Change history
+
+### November 20, 2026; .NET SDK 4.4.1 patch release
+
+- Minor bug fix in Create PDF operation.
 
 ### August 10, 2026; .NET SDK 4.4.0 Release
 
